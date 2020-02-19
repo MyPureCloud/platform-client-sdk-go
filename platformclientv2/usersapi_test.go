@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/mypurecloud/platformclientv2"
+	"github.com/MyPureCloud/platform-client-sdk-go/platformclientv2"
 )
 
 func ExampleUsersApi_GetUsers() {

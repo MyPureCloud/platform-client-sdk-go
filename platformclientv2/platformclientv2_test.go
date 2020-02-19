@@ -7,8 +7,8 @@ import (
 	"reflect"
 	"testing"
 
+	"github.com/MyPureCloud/platform-client-sdk-go/platformclientv2"
 	"github.com/google/uuid"
-	"github.com/mypurecloud/platformclientv2"
 )
 
 type testConfig struct {
