@@ -1,0 +1,66 @@
+package platformclientv2
+import (
+	"time"
+	"encoding/json"
+)
+
+// Response - Contains information about a response.
+type Response struct { 
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name
+	Name *string `json:"name,omitempty"`
+
+
+	// Version - Version number required for updates.
+	Version *int32 `json:"version,omitempty"`
+
+
+	// Libraries - One or more libraries response is associated with.
+	Libraries *[]Domainentityref `json:"libraries,omitempty"`
+
+
+	// Texts - One or more texts associated with the response.
+	Texts *[]Responsetext `json:"texts,omitempty"`
+
+
+	// CreatedBy - User that created the response
+	CreatedBy *User `json:"createdBy,omitempty"`
+
+
+	// DateCreated - The date and time the response was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// InteractionType - The interaction type for this response.
+	InteractionType *string `json:"interactionType,omitempty"`
+
+
+	// Substitutions - Details about any text substitutions used in the texts for this response.
+	Substitutions *[]Responsesubstitution `json:"substitutions,omitempty"`
+
+
+	// SubstitutionsSchema - Metadata about the text substitutions in json schema format.
+	SubstitutionsSchema *Jsonschemadocument `json:"substitutionsSchema,omitempty"`
+
+
+	// ResponseType - The response type represented by the response
+	ResponseType *string `json:"responseType,omitempty"`
+
+
+	// MessagingTemplate - The messaging template definition. This is required when adding to a library with responseType set to MessagingTemplate.
+	MessagingTemplate *Messagingtemplate `json:"messagingTemplate,omitempty"`
+
+
+	// SelfUri - The URI for this object
+	SelfUri *string `json:"selfUri,omitempty"`
+
+}
+
+// String returns a JSON representation of the model
+func (o *Response) String() string {
+	j, _ := json.Marshal(o)
+	return string(j)
+}

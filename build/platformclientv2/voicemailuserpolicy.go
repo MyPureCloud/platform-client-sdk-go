@@ -1,0 +1,30 @@
+package platformclientv2
+import (
+	"time"
+	"encoding/json"
+)
+
+// Voicemailuserpolicy
+type Voicemailuserpolicy struct { 
+	// Enabled - Whether the user has voicemail enabled
+	Enabled *bool `json:"enabled,omitempty"`
+
+
+	// AlertTimeoutSeconds - The number of seconds to ring the user's phone before a call is transfered to voicemail
+	AlertTimeoutSeconds *int32 `json:"alertTimeoutSeconds,omitempty"`
+
+
+	// Pin - The user's PIN to access their voicemail. This property is only used for updates and never provided otherwise to ensure security
+	Pin *string `json:"pin,omitempty"`
+
+
+	// ModifiedDate - The date the policy was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
+
+}
+
+// String returns a JSON representation of the model
+func (o *Voicemailuserpolicy) String() string {
+	j, _ := json.Marshal(o)
+	return string(j)
+}
