@@ -3228,6 +3228,11 @@ func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorab
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'customerSurveyUrl' is set
+	if &customerSurveyUrl == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'customerSurveyUrl' when calling QualityApi->GetQualitySurveysScorable")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)

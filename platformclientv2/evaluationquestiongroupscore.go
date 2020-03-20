@@ -29,6 +29,14 @@ type Evaluationquestiongroupscore struct {
 	MaxTotalCriticalScore *float32 `json:"maxTotalCriticalScore,omitempty"`
 
 
+	// TotalNonCriticalScore
+	TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
+
+
+	// MaxTotalNonCriticalScore
+	MaxTotalNonCriticalScore *float32 `json:"maxTotalNonCriticalScore,omitempty"`
+
+
 	// TotalScoreUnweighted
 	TotalScoreUnweighted *float32 `json:"totalScoreUnweighted,omitempty"`
 
@@ -43,6 +51,14 @@ type Evaluationquestiongroupscore struct {
 
 	// MaxTotalCriticalScoreUnweighted
 	MaxTotalCriticalScoreUnweighted *float32 `json:"maxTotalCriticalScoreUnweighted,omitempty"`
+
+
+	// TotalNonCriticalScoreUnweighted
+	TotalNonCriticalScoreUnweighted *float32 `json:"totalNonCriticalScoreUnweighted,omitempty"`
+
+
+	// MaxTotalNonCriticalScoreUnweighted
+	MaxTotalNonCriticalScoreUnweighted *float32 `json:"maxTotalNonCriticalScoreUnweighted,omitempty"`
 
 
 	// QuestionScores

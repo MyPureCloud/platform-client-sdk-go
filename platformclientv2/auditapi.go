@@ -104,7 +104,7 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 // Get results of audit query
 //
 // 
-func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int32) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
+func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int32, expand []string) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/audits/query/{transactionId}/results"
@@ -149,6 +149,18 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 	
 		collectionFormat = ""
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range expand {
+			queryParams["expand"] = value
+		}
+	} else {
+		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
+	
 	
 	
 

@@ -13,8 +13,12 @@ type Campaignprogress struct {
 	ContactList *Domainentityref `json:"contactList,omitempty"`
 
 
-	// NumberOfContactsCalled - Number of contacts processed during the campaign
+	// NumberOfContactsCalled - Number of contacts called during the campaign
 	NumberOfContactsCalled *int64 `json:"numberOfContactsCalled,omitempty"`
+
+
+	// NumberOfContactsMessaged - Number of contacts messaged during the campaign
+	NumberOfContactsMessaged *int64 `json:"numberOfContactsMessaged,omitempty"`
 
 
 	// TotalNumberOfContacts - Total number of contacts in the campaign

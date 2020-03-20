@@ -5,12 +5,12 @@ import (
 
 // Analyticsconversationasyncqueryresponse
 type Analyticsconversationasyncqueryresponse struct { 
-	// Conversations
-	Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
-
-
 	// Cursor - Optional cursor to indicate where to resume the results
 	Cursor *string `json:"cursor,omitempty"`
+
+
+	// Conversations
+	Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
 
 }
 

@@ -13,6 +13,10 @@ type Dialercampaignprogresseventcampaignprogress struct {
 	NumberOfContactsCalled *float32 `json:"numberOfContactsCalled,omitempty"`
 
 
+	// NumberOfContactsMessaged
+	NumberOfContactsMessaged *float32 `json:"numberOfContactsMessaged,omitempty"`
+
+
 	// TotalNumberOfContacts
 	TotalNumberOfContacts *float32 `json:"totalNumberOfContacts,omitempty"`
 

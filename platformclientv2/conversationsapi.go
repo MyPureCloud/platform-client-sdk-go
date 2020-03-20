@@ -877,7 +877,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*As
 // Fetch a page of results for an async query
 //
 // 
-func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
+func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}/results"
@@ -916,6 +916,12 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId strin
 	
 		collectionFormat = ""
 		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
 	
 	
 

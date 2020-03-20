@@ -53,6 +53,10 @@ type Organization struct {
 	VoicemailEnabled *bool `json:"voicemailEnabled,omitempty"`
 
 
+	// ProductPlatform - Organizations Originating Platform.
+	ProductPlatform *string `json:"productPlatform,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

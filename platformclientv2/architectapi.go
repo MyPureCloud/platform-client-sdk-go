@@ -4264,6 +4264,239 @@ func (a ArchitectApi) GetFlowsDatatable(datatableId string, expand string) (*Dat
 	return successPayload, response, err
 }
 
+// GetFlowsDatatableExportJob invokes GET /api/v2/flows/datatables/{datatableId}/export/jobs/{exportJobId}
+//
+// Returns the state information about an export job
+//
+// Returns the state information about an export job.
+func (a ArchitectApi) GetFlowsDatatableExportJob(datatableId string, exportJobId string) (*Datatableexportjob, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/export/jobs/{exportJobId}"
+	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{exportJobId}", fmt.Sprintf("%v", exportJobId), -1)
+	defaultReturn := new(Datatableexportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'datatableId' is set
+	if &datatableId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableExportJob")
+	}
+	// verify the required parameter 'exportJobId' is set
+	if &exportJobId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'exportJobId' when calling ArchitectApi->GetFlowsDatatableExportJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Datatableexportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetFlowsDatatableImportJob invokes GET /api/v2/flows/datatables/{datatableId}/import/jobs/{importJobId}
+//
+// Returns the state information about an import job
+//
+// Returns the state information about an import job.
+func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId string) (*Datatableimportjob, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs/{importJobId}"
+	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	path = strings.Replace(path, "{importJobId}", fmt.Sprintf("%v", importJobId), -1)
+	defaultReturn := new(Datatableimportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'datatableId' is set
+	if &datatableId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableImportJob")
+	}
+	// verify the required parameter 'importJobId' is set
+	if &importJobId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'importJobId' when calling ArchitectApi->GetFlowsDatatableImportJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Datatableimportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetFlowsDatatableImportJobs invokes GET /api/v2/flows/datatables/{datatableId}/import/jobs
+//
+// Get all recent import jobs
+//
+// Get all recent import jobs
+func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber int32, pageSize int32) (*Entitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs"
+	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	defaultReturn := new(Entitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'datatableId' is set
+	if &datatableId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->GetFlowsDatatableImportJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Entitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // GetFlowsDatatableRow invokes GET /api/v2/flows/datatables/{datatableId}/rows/{rowId}
 //
 // Returns a specific row for the datatable
@@ -6180,6 +6413,152 @@ func (a ArchitectApi) PostFlowsActionsUnlock(flow string) (*Flow, *APIResponse, 
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Flow
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostFlowsDatatableExportJobs invokes POST /api/v2/flows/datatables/{datatableId}/export/jobs
+//
+// Begin an export process for exporting all rows from a datatable
+//
+// Create an export job for exporting rows. The caller can then poll for status of the export using the token returned in the response
+func (a ArchitectApi) PostFlowsDatatableExportJobs(datatableId string) (*Datatableexportjob, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/export/jobs"
+	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	defaultReturn := new(Datatableexportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'datatableId' is set
+	if &datatableId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PostFlowsDatatableExportJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Datatableexportjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostFlowsDatatableImportJobs invokes POST /api/v2/flows/datatables/{datatableId}/import/jobs
+//
+// Begin an import process for importing rows into a datatable
+//
+// Create an import job for importing rows. The caller can then poll for status of the import using the token returned in the response
+func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Datatableimportjob) (*Datatableimportjob, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs"
+	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
+	defaultReturn := new(Datatableimportjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'datatableId' is set
+	if &datatableId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PostFlowsDatatableImportJobs")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PostFlowsDatatableImportJobs")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Datatableimportjob
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

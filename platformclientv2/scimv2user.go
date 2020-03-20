@@ -41,10 +41,6 @@ type Scimv2user struct {
 	Emails *[]Scimemail `json:"emails,omitempty"`
 
 
-	// Photos - The list of the user's photos.
-	Photos *[]Photo `json:"photos,omitempty"`
-
-
 	// ExternalId - The external ID of the user. Set by the provisioning client. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readWrite\".
 	ExternalId *string `json:"externalId,omitempty"`
 

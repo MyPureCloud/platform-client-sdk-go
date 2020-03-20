@@ -11,7 +11,7 @@ type Auditlogmessage struct {
 
 
 	// User - User associated with this audit message.
-	User *Addressableentityref `json:"user,omitempty"`
+	User *Domainentityref `json:"user,omitempty"`
 
 
 	// Client - Client associated with this audit message.

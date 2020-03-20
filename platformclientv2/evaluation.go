@@ -74,6 +74,10 @@ type Evaluation struct {
 	ConversationDate *time.Time `json:"conversationDate,omitempty"`
 
 
+	// ConversationEndDate - End date of conversation if it had completed before evaluation creation. Null if created before the conversation ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	ConversationEndDate *time.Time `json:"conversationEndDate,omitempty"`
+
+
 	// NeverRelease - Signifies if the evaluation is never to be released. This cannot be set true if release date is also set.
 	NeverRelease *bool `json:"neverRelease,omitempty"`
 

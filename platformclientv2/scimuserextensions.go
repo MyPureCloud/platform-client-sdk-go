@@ -5,11 +5,11 @@ import (
 
 // Scimuserextensions - SCIM PureCloud extensions of user.
 type Scimuserextensions struct { 
-	// RoutingSkills - Routing Skills assigned to user.
+	// RoutingSkills - Routing Skills assigned to user. No more than 50 skills may be assigned to a user.
 	RoutingSkills *[]Scimuserroutingskill `json:"routingSkills,omitempty"`
 
 
-	// RoutingLanguages - Routing Languages assigned to user
+	// RoutingLanguages - Routing Languages assigned to user. No more than 50 languages may be assigned to a user.
 	RoutingLanguages *[]Scimuserroutinglanguage `json:"routingLanguages,omitempty"`
 
 }

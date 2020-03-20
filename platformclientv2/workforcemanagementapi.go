@@ -3831,12 +3831,12 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitActivitycod
 // Query published schedules for given given time range for set of users
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedulesSearch(muId string, body Busearchagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Userschedulecontainer, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedulesSearch(muId string, body Busearchagentschedulesrequest, forceAsync bool, forceDownloadService bool) (*Buasyncagentschedulessearchresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/agentschedules/search"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Userschedulecontainer)
+	defaultReturn := new(Buasyncagentschedulessearchresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3900,7 +3900,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 	// body params
 	postBody = &body
 
-	var successPayload *Userschedulecontainer
+	var successPayload *Buasyncagentschedulessearchresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

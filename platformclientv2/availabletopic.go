@@ -13,12 +13,20 @@ type Availabletopic struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// RequiresPermissions
+	// RequiresPermissions - Permissions required to subscribe to the topic
 	RequiresPermissions *[]string `json:"requiresPermissions,omitempty"`
 
 
 	// Schema
 	Schema *map[string]interface{} `json:"schema,omitempty"`
+
+
+	// RequiresCurrentUser - True if the topic user ID is required to match the subscribing user ID
+	RequiresCurrentUser *bool `json:"requiresCurrentUser,omitempty"`
+
+
+	// RequiresCurrentUserOrPermission - True if permissions are only required when the topic user ID does not match the subscribing user ID
+	RequiresCurrentUserOrPermission *bool `json:"requiresCurrentUserOrPermission,omitempty"`
 
 }
 

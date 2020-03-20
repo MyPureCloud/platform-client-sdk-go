@@ -650,9 +650,9 @@ func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int32, *APIResponse
 
 // GetAuthorizationDivisionspermittedMe invokes GET /api/v2/authorization/divisionspermitted/me
 //
-// Returns whether or not current user can perform the specified action(s).
+// Returns which divisions the current user has the given permission in.
 //
-// 
+// This route is deprecated, use authorization/divisionspermitted/paged/me instead.
 func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string, name string) ([]Authzdivision, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -730,11 +730,193 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 	return successPayload, response, err
 }
 
-// GetAuthorizationDivisionspermittedSubjectId invokes GET /api/v2/authorization/divisionspermitted/{subjectId}
+// GetAuthorizationDivisionspermittedPagedMe invokes GET /api/v2/authorization/divisionspermitted/paged/me
 //
-// Returns whether or not specified user can perform the specified action(s).
+// Returns which divisions the current user has the given permission in.
 //
 // 
+func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/me"
+	defaultReturn := new(Divspermittedentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'permission' is set
+	if &permission == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling AuthorizationApi->GetAuthorizationDivisionspermittedPagedMe")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Divspermittedentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetAuthorizationDivisionspermittedPagedSubjectId invokes GET /api/v2/authorization/divisionspermitted/paged/{subjectId}
+//
+// Returns which divisions the specified user has the given permission in.
+//
+// 
+func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/{subjectId}"
+	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	defaultReturn := new(Divspermittedentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'subjectId' is set
+	if &subjectId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->GetAuthorizationDivisionspermittedPagedSubjectId")
+	}
+	// verify the required parameter 'permission' is set
+	if &permission == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'permission' when calling AuthorizationApi->GetAuthorizationDivisionspermittedPagedSubjectId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Divspermittedentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetAuthorizationDivisionspermittedSubjectId invokes GET /api/v2/authorization/divisionspermitted/{subjectId}
+//
+// Returns which divisions the specified user has the given permission in.
+//
+// This route is deprecated, use authorization/divisionspermitted/paged/{subjectId} instead.
 func (a AuthorizationApi) GetAuthorizationDivisionspermittedSubjectId(subjectId string, permission string, name string) ([]Authzdivision, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

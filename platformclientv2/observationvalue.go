@@ -66,6 +66,10 @@ type Observationvalue struct {
 	Dnis *string `json:"dnis,omitempty"`
 
 
+	// TeamId - The team Id the user is a member of
+	TeamId *string `json:"teamId,omitempty"`
+
+
 	// ScoredAgents
 	ScoredAgents *[]Analyticsscoredagent `json:"scoredAgents,omitempty"`
 

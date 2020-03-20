@@ -448,7 +448,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 // Fetch a page of results for an async query
 //
 // 
-func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}/results"
@@ -487,6 +487,12 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 	
 		collectionFormat = ""
 		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
 	
 	
 
@@ -1379,7 +1385,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 // Fetch a page of results for an async query
 //
 // 
-func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/users/details/jobs/{jobId}/results"
@@ -1418,6 +1424,12 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor st
 	
 		collectionFormat = ""
 		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
 	
 	
 

@@ -1,15 +1,13 @@
-package platformclientv2_test
+package platformclientv2
 
 import (
 	"fmt"
 	"os"
-
-	"github.com/MyPureCloud/platform-client-sdk-go/platformclientv2"
 )
 
 func ExampleUsersApi_GetUsers() {
 	// Use the default config instance and retrieve settings from env vars
-	config := platformclientv2.GetDefaultConfiguration()
+	config := GetDefaultConfiguration()
 	config.SetDebug(false)
 	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
 	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
@@ -22,7 +20,7 @@ func ExampleUsersApi_GetUsers() {
 	}
 
 	// Create an API instance using the default config
-	usersAPI := platformclientv2.NewUsersApi()
+	usersAPI := NewUsersApi()
 
 	// Invoke API
 	_, response, err := usersAPI.GetUsers(100, 1, make([]string, 0), make([]string, 0), "", make([]string, 0), "")

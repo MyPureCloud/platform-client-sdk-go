@@ -169,34 +169,6 @@ type Viewfilter struct {
 	SurveyNpsScore *Numericrange `json:"surveyNpsScore,omitempty"`
 
 
-	// ShowSecondaryStatus - Indicates if the Secondary Status should be shown
-	ShowSecondaryStatus *bool `json:"showSecondaryStatus,omitempty"`
-
-
-	// AgentDurationSortOrder - Provides the agent duration sort order
-	AgentDurationSortOrder *string `json:"agentDurationSortOrder,omitempty"`
-
-
-	// WaitingDurationSortOrder - Provides the waiting duration sort order
-	WaitingDurationSortOrder *string `json:"waitingDurationSortOrder,omitempty"`
-
-
-	// InteractingDurationSortOrder - Provides the interacting duration sort order
-	InteractingDurationSortOrder *string `json:"interactingDurationSortOrder,omitempty"`
-
-
-	// AgentName - Displays the Agent name as provided by the user
-	AgentName *string `json:"agentName,omitempty"`
-
-
-	// SkillsList - The list of skill strings as free form text
-	SkillsList *[]string `json:"skillsList,omitempty"`
-
-
-	// LanguageList - The list of language strings as free form text
-	LanguageList *[]string `json:"languageList,omitempty"`
-
-
 	// Mos - The desired range for mos values
 	Mos *Numericrange `json:"mos,omitempty"`
 
@@ -265,10 +237,6 @@ type Viewfilter struct {
 	RemoteParticipants *[]string `json:"remoteParticipants,omitempty"`
 
 
-	// StatusList - A list of status for the configuration view
-	StatusList *[]string `json:"statusList,omitempty"`
-
-
 	// FlowIds - The list of flow Ids
 	FlowIds *[]string `json:"flowIds,omitempty"`
 
@@ -319,14 +287,6 @@ type Viewfilter struct {
 
 	// HasJourneyVisitId - Indicates filtering for Journey visit id
 	HasJourneyVisitId *bool `json:"hasJourneyVisitId,omitempty"`
-
-
-	// OauthClientIds - A list of OAuth client IDs
-	OauthClientIds *[]string `json:"oauthClientIds,omitempty"`
-
-
-	// ApiOperations - A list of API operations (ex: [\"GET /api/v2/users/{userId}/queues\"])
-	ApiOperations *[]string `json:"apiOperations,omitempty"`
 
 
 	// HasMedia - Indicates filtering for presence of MMS media

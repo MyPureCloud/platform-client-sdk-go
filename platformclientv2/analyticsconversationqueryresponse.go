@@ -5,12 +5,12 @@ import (
 
 // Analyticsconversationqueryresponse
 type Analyticsconversationqueryresponse struct { 
-	// Conversations
-	Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
-
-
 	// Aggregations
 	Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
+
+
+	// Conversations
+	Conversations *[]Analyticsconversationwithoutattributes `json:"conversations,omitempty"`
 
 }
 

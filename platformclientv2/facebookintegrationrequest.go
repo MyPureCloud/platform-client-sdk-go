@@ -25,11 +25,11 @@ type Facebookintegrationrequest struct {
 	PageId *string `json:"pageId,omitempty"`
 
 
-	// AppId - The app Id of a facebook app
+	// AppId - The app Id of a facebook app. The appId is required when a customer wants to use their own approved facebook app.
 	AppId *string `json:"appId,omitempty"`
 
 
-	// AppSecret - The app Secret of a facebook app
+	// AppSecret - The app Secret of a facebook app. The appSecret is required when appId is provided.
 	AppSecret *string `json:"appSecret,omitempty"`
 
 

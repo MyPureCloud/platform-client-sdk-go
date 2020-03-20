@@ -33,6 +33,10 @@ type Analyticsparticipantwithoutattributes struct {
 	FlaggedReason *string `json:"flaggedReason,omitempty"`
 
 
+	// TeamId - The team id the user is a member of
+	TeamId *string `json:"teamId,omitempty"`
+
+
 	// Sessions - List of sessions associated to this participant
 	Sessions *[]Analyticssession `json:"sessions,omitempty"`
 

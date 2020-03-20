@@ -13,6 +13,10 @@ type Evaluationscoringset struct {
 	TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 
 
+	// TotalNonCriticalScore
+	TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
+
+
 	// QuestionGroupScores
 	QuestionGroupScores *[]Evaluationquestiongroupscore `json:"questionGroupScores,omitempty"`
 
