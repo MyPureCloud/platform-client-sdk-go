@@ -134,6 +134,10 @@ type Dialercampaignconfigchangecampaign struct {
 	Division *Dialercampaignconfigchangeurireference `json:"division,omitempty"`
 
 
+	// AgentOwnedColumn
+	AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

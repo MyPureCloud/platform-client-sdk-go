@@ -213,6 +213,10 @@ type Analyticssession struct {
 	// MediaCount - Count of any media (images, files, etc) included in this session
 	MediaCount *int32 `json:"mediaCount,omitempty"`
 
+
+	// FlowOutType - Type of flow out that occurred, e.g. voicemail, callback, or acd
+	FlowOutType *string `json:"flowOutType,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

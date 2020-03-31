@@ -42,6 +42,10 @@ type Queueconversationeventtopicparticipant struct {
 	GroupId *string `json:"groupId,omitempty"`
 
 
+	// TeamId
+	TeamId *string `json:"teamId,omitempty"`
+
+
 	// Purpose
 	Purpose *string `json:"purpose,omitempty"`
 

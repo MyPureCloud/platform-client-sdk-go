@@ -50,6 +50,10 @@ type Participant struct {
 	GroupId *string `json:"groupId,omitempty"`
 
 
+	// TeamId - The team id that this participant is a member of when added to the conversation.
+	TeamId *string `json:"teamId,omitempty"`
+
+
 	// QueueName - If present, the queue name that the communication channel came in on.
 	QueueName *string `json:"queueName,omitempty"`
 

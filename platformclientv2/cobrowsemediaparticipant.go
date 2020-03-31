@@ -70,6 +70,10 @@ type Cobrowsemediaparticipant struct {
 	Queue *Domainentityref `json:"queue,omitempty"`
 
 
+	// Team - The PureCloud team for this participant.
+	Team *Domainentityref `json:"team,omitempty"`
+
+
 	// Attributes - A list of ad-hoc attributes for the participant.
 	Attributes *map[string]string `json:"attributes,omitempty"`
 

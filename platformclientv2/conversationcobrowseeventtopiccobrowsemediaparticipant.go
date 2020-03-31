@@ -70,6 +70,10 @@ type Conversationcobrowseeventtopiccobrowsemediaparticipant struct {
 	Queue *Conversationcobrowseeventtopicurireference `json:"queue,omitempty"`
 
 
+	// Team
+	Team *Conversationcobrowseeventtopicurireference `json:"team,omitempty"`
+
+
 	// Attributes
 	Attributes *map[string]string `json:"attributes,omitempty"`
 

@@ -5,24 +5,24 @@ import (
 
 // Queueusereventtopicqueuemember
 type Queueusereventtopicqueuemember struct { 
-	// MemberId
-	MemberId *string `json:"memberId,omitempty"`
+	// Id
+	Id *string `json:"id,omitempty"`
 
 
-	// Name
-	Name *string `json:"name,omitempty"`
+	// User
+	User *Queueusereventtopicuserreference `json:"user,omitempty"`
 
 
-	// RingNumber
-	RingNumber *int32 `json:"ringNumber,omitempty"`
-
-
-	// VarType
-	VarType *string `json:"type,omitempty"`
+	// QueueId
+	QueueId *string `json:"queueId,omitempty"`
 
 
 	// Joined
 	Joined *bool `json:"joined,omitempty"`
+
+
+	// AdditionalProperties
+	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 
 }
 
