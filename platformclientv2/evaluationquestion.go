@@ -37,12 +37,12 @@ type Evaluationquestion struct {
 	AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
 
 
-	// IsCritical
-	IsCritical *bool `json:"isCritical,omitempty"`
-
-
 	// IsKill
 	IsKill *bool `json:"isKill,omitempty"`
+
+
+	// IsCritical
+	IsCritical *bool `json:"isCritical,omitempty"`
 
 }
 

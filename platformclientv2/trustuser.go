@@ -113,6 +113,10 @@ type Trustuser struct {
 	Groups *[]Group `json:"groups,omitempty"`
 
 
+	// Team - The team the user is a member of
+	Team *Team `json:"team,omitempty"`
+
+
 	// Skills - Routing (ACD) skills possessed by the user
 	Skills *[]Userroutingskill `json:"skills,omitempty"`
 
