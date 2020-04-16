@@ -26,7 +26,7 @@ type Library struct {
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
-	// ResponseType - The response type for the library. If set, only response's of this type may be added to this library.
+	// ResponseType - This value is deprecated. Responses representing message templates may be added to any library.
 	ResponseType *string `json:"responseType,omitempty"`
 
 

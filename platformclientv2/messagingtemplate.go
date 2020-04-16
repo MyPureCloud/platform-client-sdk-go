@@ -3,18 +3,10 @@ import (
 	"encoding/json"
 )
 
-// Messagingtemplate - The messaging template identifies a structured message templates supported by a messaging channel. For example, WhatsApp
+// Messagingtemplate - The messaging template identifies a structured message templates supported by a messaging channel.
 type Messagingtemplate struct { 
-	// Name - The messaging template name.
-	Name *string `json:"name,omitempty"`
-
-
-	// Namespace - The messaging template namespace.
-	Namespace *string `json:"namespace,omitempty"`
-
-
-	// Language - The messaging template language. For example, 'en-US'
-	Language *string `json:"language,omitempty"`
+	// WhatsApp - Defines a messaging template for a WhatsApp messaging channel
+	WhatsApp *Whatsappdefinition `json:"whatsApp,omitempty"`
 
 }
 

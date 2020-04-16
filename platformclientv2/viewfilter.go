@@ -149,6 +149,10 @@ type Viewfilter struct {
 	Abandoned *bool `json:"abandoned,omitempty"`
 
 
+	// Answered - Indicates filtering for answered interactions
+	Answered *bool `json:"answered,omitempty"`
+
+
 	// MessageTypes - The message media types used to filter the view
 	MessageTypes *[]string `json:"messageTypes,omitempty"`
 
@@ -303,6 +307,14 @@ type Viewfilter struct {
 
 	// LocationIds - The location Ids used to filter the view
 	LocationIds *[]string `json:"locationIds,omitempty"`
+
+
+	// FlowOutTypes - A list of flow out types
+	FlowOutTypes *[]string `json:"flowOutTypes,omitempty"`
+
+
+	// ProviderList - A list of providers
+	ProviderList *[]string `json:"providerList,omitempty"`
 
 }
 

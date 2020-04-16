@@ -911,7 +911,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 //
 // Returns which divisions the specified user has the given permission in.
 //
-// 
+// This route is deprecated, use authorization/divisionspermitted/paged/me instead.
 func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

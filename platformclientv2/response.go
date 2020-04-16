@@ -46,11 +46,11 @@ type Response struct {
 	SubstitutionsSchema *Jsonschemadocument `json:"substitutionsSchema,omitempty"`
 
 
-	// ResponseType - The response type represented by the response
+	// ResponseType - The response type represented by the response.
 	ResponseType *string `json:"responseType,omitempty"`
 
 
-	// MessagingTemplate - The messaging template definition. This is required when adding to a library with responseType set to MessagingTemplate.
+	// MessagingTemplate - An optional messaging template definition for responseType.MessagingTemplate.
 	MessagingTemplate *Messagingtemplate `json:"messagingTemplate,omitempty"`
 
 

@@ -167,7 +167,7 @@ func (a ResponseManagementApi) DeleteResponsemanagementResponse(responseId strin
 // Gets a list of existing response libraries.
 //
 // 
-func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int32, pageSize int32) (*Libraryentitylisting, *APIResponse, error) {
+func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int32, pageSize int32, messagingTemplateFilter string) (*Libraryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/responsemanagement/libraries"
@@ -206,6 +206,12 @@ func (a ResponseManagementApi) GetResponsemanagementLibraries(pageNumber int32, 
 	
 		collectionFormat = ""
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["messagingTemplateFilter"] = a.Configuration.APIClient.ParameterToString(messagingTemplateFilter, collectionFormat)
 	
 	
 

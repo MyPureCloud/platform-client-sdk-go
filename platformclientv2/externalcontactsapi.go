@@ -35,19 +35,20 @@ func NewExternalContactsApiWithConfig(config *Configuration) *ExternalContactsAp
 // Delete an external contact
 //
 // 
-func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*Empty, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}"
 	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
+	defaultReturn := new(Empty)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->DeleteExternalcontactsContact")
+		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->DeleteExternalcontactsContact")
 	}
 
 	headerParams := make(map[string]string)
@@ -86,14 +87,16 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*A
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
+	var successPayload *Empty
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // DeleteExternalcontactsContactNote invokes DELETE /api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}
@@ -101,25 +104,26 @@ func (a ExternalContactsApi) DeleteExternalcontactsContact(contactId string) (*A
 // Delete a note for an external contact
 //
 // 
-func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string, noteId string) (*APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string, noteId string) (*Empty, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes/{noteId}"
 	path = strings.Replace(path, "{contactId}", fmt.Sprintf("%v", contactId), -1)
 	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	defaultReturn := new(Empty)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'contactId' is set
 	if &contactId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->DeleteExternalcontactsContactNote")
+		return defaultReturn, nil, errors.New("Missing required parameter 'contactId' when calling ExternalContactsApi->DeleteExternalcontactsContactNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->DeleteExternalcontactsContactNote")
+		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->DeleteExternalcontactsContactNote")
 	}
 
 	headerParams := make(map[string]string)
@@ -158,14 +162,16 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
+	var successPayload *Empty
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // DeleteExternalcontactsOrganization invokes DELETE /api/v2/externalcontacts/organizations/{externalOrganizationId}
@@ -173,19 +179,20 @@ func (a ExternalContactsApi) DeleteExternalcontactsContactNote(contactId string,
 // Delete an external organization
 //
 // 
-func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganizationId string) (*APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganizationId string) (*Empty, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}"
 	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
+	defaultReturn := new(Empty)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganization")
+		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganization")
 	}
 
 	headerParams := make(map[string]string)
@@ -224,14 +231,16 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
+	var successPayload *Empty
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // DeleteExternalcontactsOrganizationNote invokes DELETE /api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}
@@ -239,25 +248,26 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganization(externalOrganiza
 // Delete a note for an external organization
 //
 // 
-func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrganizationId string, noteId string) (*APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrganizationId string, noteId string) (*Empty, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes/{noteId}"
 	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
 	path = strings.Replace(path, "{noteId}", fmt.Sprintf("%v", noteId), -1)
+	defaultReturn := new(Empty)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'externalOrganizationId' is set
 	if &externalOrganizationId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationNote")
+		return defaultReturn, nil, errors.New("Missing required parameter 'externalOrganizationId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationNote")
 	}
 	// verify the required parameter 'noteId' is set
 	if &noteId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationNote")
+		return defaultReturn, nil, errors.New("Missing required parameter 'noteId' when calling ExternalContactsApi->DeleteExternalcontactsOrganizationNote")
 	}
 
 	headerParams := make(map[string]string)
@@ -296,14 +306,16 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationNote(externalOrga
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
+	var successPayload *Empty
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // DeleteExternalcontactsOrganizationTrustor invokes DELETE /api/v2/externalcontacts/organizations/{externalOrganizationId}/trustor
@@ -377,19 +389,20 @@ func (a ExternalContactsApi) DeleteExternalcontactsOrganizationTrustor(externalO
 // Delete a relationship
 //
 // 
-func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId string) (*APIResponse, error) {
+func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId string) (*Empty, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/relationships/{relationshipId}"
 	path = strings.Replace(path, "{relationshipId}", fmt.Sprintf("%v", relationshipId), -1)
+	defaultReturn := new(Empty)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'relationshipId' is set
 	if &relationshipId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'relationshipId' when calling ExternalContactsApi->DeleteExternalcontactsRelationship")
+		return defaultReturn, nil, errors.New("Missing required parameter 'relationshipId' when calling ExternalContactsApi->DeleteExternalcontactsRelationship")
 	}
 
 	headerParams := make(map[string]string)
@@ -428,14 +441,16 @@ func (a ExternalContactsApi) DeleteExternalcontactsRelationship(relationshipId s
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
+	var successPayload *Empty
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // GetExternalcontactsContact invokes GET /api/v2/externalcontacts/contacts/{contactId}
