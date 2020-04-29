@@ -34,6 +34,10 @@ type Oauthauthorization struct {
 	ModifiedBy *Domainentityref `json:"modifiedBy,omitempty"`
 
 
+	// Pending
+	Pending *bool `json:"pending,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

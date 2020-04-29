@@ -38,12 +38,12 @@ type Managementunit struct {
 	Version *int32 `json:"version,omitempty"`
 
 
-	// ModifiedBy - The user who last modified this entity.  Deprecated, use field from settings.metadata instead
-	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
-
-
 	// DateModified - The date and time at which this entity was last modified.  Deprecated, use field from settings.metadata instead. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// ModifiedBy - The user who last modified this entity.  Deprecated, use field from settings.metadata instead
+	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 
 	// SelfUri - The URI for this object

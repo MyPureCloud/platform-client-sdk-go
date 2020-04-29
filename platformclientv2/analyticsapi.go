@@ -531,7 +531,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, c
 // Get all view export requests for a user
 //
 // 
-func (a AnalyticsApi) GetAnalyticsReportingExports() (*Reportingexportjoblisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int32, pageSize int32) (*Reportingexportjoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/exports"
@@ -557,6 +557,20 @@ func (a AnalyticsApi) GetAnalyticsReportingExports() (*Reportingexportjoblisting
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
 	
 
 	// to determine the Content-Type header

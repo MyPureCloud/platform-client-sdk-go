@@ -5434,7 +5434,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 //
 // Add a management unit
 //
-// 
+// It may take a minute or two for a new management unit to be available for api operations
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunits(body Createmanagementunitapirequest) (*Managementunit, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

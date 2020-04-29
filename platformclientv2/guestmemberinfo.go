@@ -9,6 +9,22 @@ type Guestmemberinfo struct {
 	DisplayName *string `json:"displayName,omitempty"`
 
 
+	// FirstName - The first name to use for the guest member in the conversation.
+	FirstName *string `json:"firstName,omitempty"`
+
+
+	// LastName - The last name to use for the guest member in the conversation.
+	LastName *string `json:"lastName,omitempty"`
+
+
+	// Email - The email address to use for the guest member in the conversation.
+	Email *string `json:"email,omitempty"`
+
+
+	// PhoneNumber - The phone number to use for the guest member in the conversation.
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
+
+
 	// AvatarImageUrl - The URL to the avatar image to use for the guest member in the conversation, if any.
 	AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
 

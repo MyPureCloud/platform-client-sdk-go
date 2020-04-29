@@ -14,6 +14,22 @@ type Webchatmemberinfo struct {
 	DisplayName *string `json:"displayName,omitempty"`
 
 
+	// FirstName - The first name of the member.
+	FirstName *string `json:"firstName,omitempty"`
+
+
+	// LastName - The last name of the member.
+	LastName *string `json:"lastName,omitempty"`
+
+
+	// Email - The email address of the member.
+	Email *string `json:"email,omitempty"`
+
+
+	// PhoneNumber - The phone number of the member.
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
+
+
 	// AvatarImageUrl - The url to the avatar image of the member.
 	AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
 

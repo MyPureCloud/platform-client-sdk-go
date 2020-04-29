@@ -17,12 +17,12 @@ type Onelogin struct {
 	Certificate *string `json:"certificate,omitempty"`
 
 
-	// SsoTargetURI
-	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
-
-
 	// IssuerURI
 	IssuerURI *string `json:"issuerURI,omitempty"`
+
+
+	// SsoTargetURI
+	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
 
 
 	// Disabled
