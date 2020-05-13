@@ -12,6 +12,10 @@ type Transcriptionsettings struct {
 	// TranscriptionConfidenceThreshold - Configure confidence threshold. The possible values are from 1 to 100.
 	TranscriptionConfidenceThreshold *int32 `json:"transcriptionConfidenceThreshold,omitempty"`
 
+
+	// ContentSearchEnabled - Setting to enable/disable content search
+	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

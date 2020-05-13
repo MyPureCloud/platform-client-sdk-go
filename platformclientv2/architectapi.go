@@ -1286,7 +1286,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 // Get resources that consume a given Dependency Tracking object
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string, objectType string, resourceType []string, pageNumber int32, pageSize int32, flowFilter string) (*Consumingresourcesentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string, objectType string, resourceType []string, version string, pageNumber int32, pageSize int32, flowFilter string) (*Consumingresourcesentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/consumingresources"
@@ -1347,6 +1347,12 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 		queryParams["resourceType"] = a.Configuration.APIClient.ParameterToString(resourceType, collectionFormat)
 	}
 	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
 	
 	
 	
@@ -1522,7 +1528,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 // Get a Dependency Tracking object
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version string, objectType string, consumedResources bool, consumingResources bool, consumedResourceType []string, consumingResourceType []string) (*Dependencyobject, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version string, objectType string, consumedResources bool, consumingResources bool, consumedResourceType []string, consumingResourceType []string, consumedResourceRequest bool) (*Dependencyobject, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/object"
@@ -1608,6 +1614,12 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 		queryParams["consumingResourceType"] = a.Configuration.APIClient.ParameterToString(consumingResourceType, collectionFormat)
 	}
 	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["consumedResourceRequest"] = a.Configuration.APIClient.ParameterToString(consumedResourceRequest, collectionFormat)
 	
 	
 

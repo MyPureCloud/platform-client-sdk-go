@@ -2352,13 +2352,13 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationNote(externalOrganiz
 // Links a Trustor with an External Organization
 //
 // 
-func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(externalOrganizationId string, trustorId string) (*Externalorganization, *APIResponse, error) {
+func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(externalOrganizationId string, trustorId string) (*Externalorganizationtrustorlink, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/trustor/{trustorId}"
 	path = strings.Replace(path, "{externalOrganizationId}", fmt.Sprintf("%v", externalOrganizationId), -1)
 	path = strings.Replace(path, "{trustorId}", fmt.Sprintf("%v", trustorId), -1)
-	defaultReturn := new(Externalorganization)
+	defaultReturn := new(Externalorganizationtrustorlink)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2410,7 +2410,7 @@ func (a ExternalContactsApi) PutExternalcontactsOrganizationTrustorTrustorId(ext
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Externalorganization
+	var successPayload *Externalorganizationtrustorlink
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

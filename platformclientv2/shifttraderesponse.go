@@ -14,8 +14,8 @@ type Shifttraderesponse struct {
 	WeekDate *time.Time `json:"weekDate,omitempty"`
 
 
-	// Schedule - The ID of the associated schedule
-	Schedule *Weekschedulereference `json:"schedule,omitempty"`
+	// Schedule - A reference to the associated schedule
+	Schedule *Buschedulereferenceformuroute `json:"schedule,omitempty"`
 
 
 	// State - The state of this shift trade

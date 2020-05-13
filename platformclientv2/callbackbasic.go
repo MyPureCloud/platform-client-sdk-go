@@ -54,6 +54,10 @@ type Callbackbasic struct {
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
+	// ExternalCampaign - True if the call for the callback uses external dialing.
+	ExternalCampaign *bool `json:"externalCampaign,omitempty"`
+
+
 	// SkipEnabled - True if the ability to skip a callback should be enabled.
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 

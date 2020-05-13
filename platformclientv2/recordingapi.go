@@ -387,7 +387,7 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 // Gets a specific recording.
 //
 // 
-func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, download bool, fileName string) (*Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}"
@@ -444,6 +444,12 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 	
 		collectionFormat = ""
 		queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, collectionFormat)
 	
 	
 
@@ -934,7 +940,7 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 // Gets the media of a single orphan recording
 //
 // A 202 response means the orphaned media is currently transcoding and will be available shortly.A 200 response denotes the transcoded orphan media is available now and is contained in the response body.
-func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, download bool, fileName string) (*Recording, *APIResponse, error) {
+func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}/media"
@@ -985,6 +991,12 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 	
 		collectionFormat = ""
 		queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, collectionFormat)
 	
 	
 
@@ -2960,9 +2972,9 @@ func (a RecordingApi) PutOrphanrecording(orphanId string, body Orphanupdatereque
 
 // PutRecordingJob invokes PUT /api/v2/recording/jobs/{jobId}
 //
-// Execute the recording bulk job
+// Execute the recording bulk job.
 //
-// 
+// A job must be executed by the same user whom originally created the job.  In addition, the user must have permission to update the recording&#39;s retention.
 func (a RecordingApi) PutRecordingJob(jobId string, body Executerecordingjobsquery) (*Recordingjob, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

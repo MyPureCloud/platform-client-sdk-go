@@ -154,7 +154,11 @@ type Callbackmediaparticipant struct {
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
 
 
-	// SkipEnabled - If true, the callback can be skipped
+	// ExternalCampaign - True if the call for the callback uses external dialing.
+	ExternalCampaign *bool `json:"externalCampaign,omitempty"`
+
+
+	// SkipEnabled - If true, the callback can be skipped.
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
 

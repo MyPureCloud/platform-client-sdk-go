@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"encoding/json"
 )
 
@@ -7,6 +8,10 @@ import (
 type Analyticsconversationasyncqueryresponse struct { 
 	// Cursor - Optional cursor to indicate where to resume the results
 	Cursor *string `json:"cursor,omitempty"`
+
+
+	// DataAvailabilityDate - Data available up to at least this datetime. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	DataAvailabilityDate *time.Time `json:"dataAvailabilityDate,omitempty"`
 
 
 	// Conversations
