@@ -73,6 +73,10 @@ type Socialexpression struct {
 	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
+
+	// Wrapup - Call wrap up or disposition data.
+	Wrapup *Wrapup `json:"wrapup,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

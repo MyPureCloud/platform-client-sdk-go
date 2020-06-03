@@ -17,12 +17,16 @@ type Dialogflowagent struct {
 	Project *Dialogflowproject `json:"project,omitempty"`
 
 
-	// Languages - The target languages of the Dialogflow agent
+	// Languages - The supported languages of the Dialogflow agent
 	Languages *[]string `json:"languages,omitempty"`
 
 
-	// Intents - An array of Intents associated with this bot alias
+	// Intents - An array of Intents associated with this agent
 	Intents *[]Dialogflowintent `json:"intents,omitempty"`
+
+
+	// Environments - Available environments for this agent
+	Environments *[]string `json:"environments,omitempty"`
 
 
 	// SelfUri - The URI for this object

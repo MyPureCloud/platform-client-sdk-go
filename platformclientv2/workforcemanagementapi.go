@@ -612,7 +612,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(muId str
 
 // DeleteWorkforcemanagementManagementunitActivitycode invokes DELETE /api/v2/workforcemanagement/managementunits/{muId}/activitycodes/{acId}
 //
-// Deletes an activity code
+// Deprecated/Gone: Use the new business unit activity code resources
 //
 // 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitActivitycode(muId string, acId string) (*APIResponse, error) {
@@ -684,7 +684,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitActivityc
 
 // DeleteWorkforcemanagementManagementunitSchedulingRun invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}
 //
-// Cancel a schedule run
+// Gone.  Scheduling has moved under business units
 //
 // 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitSchedulingRun(managementUnitId string, runId string) (*APIResponse, error) {
@@ -756,7 +756,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitSchedulin
 
 // DeleteWorkforcemanagementManagementunitServicegoalgroup invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups/{serviceGoalGroupId}
 //
-// Delete a service goal group
+// Gone. Replaced with service goal templates and planning groups under business units
 //
 // 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitServicegoalgroup(managementUnitId string, serviceGoalGroupId string) (*APIResponse, error) {
@@ -828,7 +828,7 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitServicego
 
 // DeleteWorkforcemanagementManagementunitWeekSchedule invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
-// Delete a schedule
+// Gone.  Scheduling has moved under business units
 //
 // 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWeekSchedule(managementUnitId string, weekId string, scheduleId string) (*APIResponse, error) {
@@ -906,9 +906,9 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWeekSched
 
 // DeleteWorkforcemanagementManagementunitWeekShorttermforecast invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}
 //
-// Delete a short term forecast
+// Gone. Use equivalent business unit resource instead
 //
-// Must not be tied to any schedules
+// 
 func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunitWeekShorttermforecast(managementUnitId string, weekDateId string, forecastId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -3517,28 +3517,22 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgentShifttr
 
 // GetWorkforcemanagementManagementunitIntradayQueues invokes GET /api/v2/workforcemanagement/managementunits/{muId}/intraday/queues
 //
-// Get intraday queues for the given date
+// Gone.  Moved under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitIntradayQueues(muId string, date string) (*Wfmintradayqueuelisting, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitIntradayQueues(muId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/intraday/queues"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Wfmintradayqueuelisting)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitIntradayQueues")
-	}
-	// verify the required parameter 'date' is set
-	if &date == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'date' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitIntradayQueues")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitIntradayQueues")
 	}
 
 	headerParams := make(map[string]string)
@@ -3557,14 +3551,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitIntradayQueu
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -3585,43 +3571,40 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitIntradayQueu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Wfmintradayqueuelisting
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitSchedulingRun invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}
 //
-// Gets the status for a specific scheduling run
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRun(managementUnitId string, runId string) (*Schedulingrunresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRun(managementUnitId string, runId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
-	defaultReturn := new(Schedulingrunresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRun")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRun")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRun")
+		return nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRun")
 	}
 
 	headerParams := make(map[string]string)
@@ -3660,43 +3643,40 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Schedulingrunresponse
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitSchedulingRunResult invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}/result
 //
-// Gets the result of a specific scheduling run
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRunResult(managementUnitId string, runId string) (*Rescheduleresult, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRunResult(managementUnitId string, runId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}/result"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
-	defaultReturn := new(Rescheduleresult)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRunResult")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRunResult")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRunResult")
+		return nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRunResult")
 	}
 
 	headerParams := make(map[string]string)
@@ -3735,37 +3715,34 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Rescheduleresult
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitSchedulingRuns invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs
 //
-// Get the status of all the ongoing schedule runs
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRuns(managementUnitId string) (*Schedulingrunlistresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRuns(managementUnitId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	defaultReturn := new(Schedulingrunlistresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRuns")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSchedulingRuns")
 	}
 
 	headerParams := make(map[string]string)
@@ -3804,43 +3781,40 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSchedulingRu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Schedulingrunlistresponse
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitServicegoalgroup invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups/{serviceGoalGroupId}
 //
-// Get a service goal group
+// Gone. Replaced with service goal templates and planning groups under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitServicegoalgroup(managementUnitId string, serviceGoalGroupId string) (*Servicegoalgroup, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitServicegoalgroup(managementUnitId string, serviceGoalGroupId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups/{serviceGoalGroupId}"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{serviceGoalGroupId}", fmt.Sprintf("%v", serviceGoalGroupId), -1)
-	defaultReturn := new(Servicegoalgroup)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitServicegoalgroup")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitServicegoalgroup")
 	}
 	// verify the required parameter 'serviceGoalGroupId' is set
 	if &serviceGoalGroupId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'serviceGoalGroupId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitServicegoalgroup")
+		return nil, errors.New("Missing required parameter 'serviceGoalGroupId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitServicegoalgroup")
 	}
 
 	headerParams := make(map[string]string)
@@ -3879,37 +3853,34 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitServicegoalg
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Servicegoalgroup
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitServicegoalgroups invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups
 //
-// Get service goal groups
+// Gone. Replaced with service goal templates and planning groups under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitServicegoalgroups(managementUnitId string) (*Servicegoalgrouplist, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitServicegoalgroups(managementUnitId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	defaultReturn := new(Servicegoalgrouplist)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitServicegoalgroups")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitServicegoalgroups")
 	}
 
 	headerParams := make(map[string]string)
@@ -3948,37 +3919,34 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitServicegoalg
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Servicegoalgrouplist
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitSettings invokes GET /api/v2/workforcemanagement/managementunits/{muId}/settings
 //
-// Get the settings for the requested management unit. Deprecated, use the GET management unit route instead
+// Gone. Get management unit settings via expand parameters on the GET management unit
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSettings(muId string) (*Managementunitsettingsresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSettings(muId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/settings"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Managementunitsettingsresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSettings")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitSettings")
 	}
 
 	headerParams := make(map[string]string)
@@ -4017,16 +3985,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitSettings(muI
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Managementunitsettingsresponse
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitShifttradesMatched invokes GET /api/v2/workforcemanagement/managementunits/{muId}/shifttrades/matched
@@ -4402,7 +4368,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUsers(muId s
 
 // GetWorkforcemanagementManagementunitWeekSchedule invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
-// Get a week schedule
+// Deprecated.  Use the equivalent business unit resource instead. Get a week schedule
 //
 // 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule(managementUnitId string, weekId string, scheduleId string, expand string, forceDownloadService bool) (*Weekscheduleresponse, *APIResponse, error) {
@@ -4497,35 +4463,34 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 
 // GetWorkforcemanagementManagementunitWeekScheduleGenerationresults invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}/generationresults
 //
-// Get week schedule generation results
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekScheduleGenerationresults(managementUnitId string, weekId string, scheduleId string) (*Weekschedulegenerationresult, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekScheduleGenerationresults(managementUnitId string, weekId string, scheduleId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}/generationresults"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
 	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
-	defaultReturn := new(Weekschedulegenerationresult)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekScheduleGenerationresults")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekScheduleGenerationresults")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekScheduleGenerationresults")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekScheduleGenerationresults")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekScheduleGenerationresults")
+		return nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekScheduleGenerationresults")
 	}
 
 	headerParams := make(map[string]string)
@@ -4564,21 +4529,19 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Weekschedulegenerationresult
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitWeekSchedules invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules
 //
-// Get the list of schedules in a week in management unit
+// Deprecated.  Use the equivalent business unit resource instead. Get the list of schedules in a week in management unit
 //
 // 
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedules(managementUnitId string, weekId string, includeOnlyPublished bool, earliestWeekDate string, latestWeekDate string) (*Weekschedulelistresponse, *APIResponse, error) {
@@ -4756,35 +4719,34 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 
 // GetWorkforcemanagementManagementunitWeekShorttermforecastFinal invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/final
 //
-// Get the final result of a short term forecast calculation with modifications applied
+// Gone. Use equivalent business unit resource instead
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShorttermforecastFinal(managementUnitId string, weekDateId string, forecastId string, forceDownloadService bool) (*Forecastresultresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShorttermforecastFinal(managementUnitId string, weekDateId string, forecastId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/final"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
 	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
-	defaultReturn := new(Forecastresultresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecastFinal")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecastFinal")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecastFinal")
+		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecastFinal")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecastFinal")
+		return nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecastFinal")
 	}
 
 	headerParams := make(map[string]string)
@@ -4803,14 +4765,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShortter
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -4831,43 +4785,40 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShortter
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Forecastresultresponse
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitWeekShorttermforecasts invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts
 //
-// Get short term forecasts
+// Gone. Use equivalent business unit resource instead
 //
-// Use \&quot;recent\&quot; for the `weekDateId` path parameter to fetch all forecasts for +/- 26 weeks from the current date
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShorttermforecasts(managementUnitId string, weekDateId string) (*Shorttermforecastlistresponse, *APIResponse, error) {
+// 
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShorttermforecasts(managementUnitId string, weekDateId string) (*APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	defaultReturn := new(Shorttermforecastlistresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecasts")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecasts")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecasts")
+		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunitWeekShorttermforecasts")
 	}
 
 	headerParams := make(map[string]string)
@@ -4906,16 +4857,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShortter
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Shorttermforecastlistresponse
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // GetWorkforcemanagementManagementunitWorkplan invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}
@@ -6038,29 +5987,28 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(muId stri
 
 // PatchWorkforcemanagementManagementunitActivitycode invokes PATCH /api/v2/workforcemanagement/managementunits/{muId}/activitycodes/{acId}
 //
-// Update an activity code
+// Deprecated/Gone: Use the new business unit activity code resources
 //
 // 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitActivitycode(muId string, acId string, body Updateactivitycoderequest) (*Activitycode, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitActivitycode(muId string, acId string, body Updateactivitycoderequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/activitycodes/{acId}"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
 	path = strings.Replace(path, "{acId}", fmt.Sprintf("%v", acId), -1)
-	defaultReturn := new(Activitycode)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitActivitycode")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitActivitycode")
 	}
 	// verify the required parameter 'acId' is set
 	if &acId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'acId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitActivitycode")
+		return nil, errors.New("Missing required parameter 'acId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitActivitycode")
 	}
 
 	headerParams := make(map[string]string)
@@ -6102,43 +6050,40 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitActivityco
 	// body params
 	postBody = &body
 
-	var successPayload *Activitycode
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchWorkforcemanagementManagementunitSchedulingRun invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}
 //
-// Marks a specific scheduling run as applied, allowing a new rescheduling run to be started
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitSchedulingRun(managementUnitId string, runId string, body Updateschedulingrunrequest) (*Rescheduleresult, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitSchedulingRun(managementUnitId string, runId string, body Updateschedulingrunrequest) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/scheduling/runs/{runId}"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{runId}", fmt.Sprintf("%v", runId), -1)
-	defaultReturn := new(Rescheduleresult)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitSchedulingRun")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitSchedulingRun")
 	}
 	// verify the required parameter 'runId' is set
 	if &runId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitSchedulingRun")
+		return nil, errors.New("Missing required parameter 'runId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitSchedulingRun")
 	}
 
 	headerParams := make(map[string]string)
@@ -6180,43 +6125,40 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitScheduling
 	// body params
 	postBody = &body
 
-	var successPayload *Rescheduleresult
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchWorkforcemanagementManagementunitServicegoalgroup invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups/{serviceGoalGroupId}
 //
-// Update a service goal group
+// Gone. Replaced with service goal templates and planning groups under business units
 //
 // 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitServicegoalgroup(managementUnitId string, serviceGoalGroupId string, body Servicegoalgroup) (*Servicegoalgroup, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitServicegoalgroup(managementUnitId string, serviceGoalGroupId string) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups/{serviceGoalGroupId}"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{serviceGoalGroupId}", fmt.Sprintf("%v", serviceGoalGroupId), -1)
-	defaultReturn := new(Servicegoalgroup)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitServicegoalgroup")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitServicegoalgroup")
 	}
 	// verify the required parameter 'serviceGoalGroupId' is set
 	if &serviceGoalGroupId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'serviceGoalGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitServicegoalgroup")
+		return nil, errors.New("Missing required parameter 'serviceGoalGroupId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitServicegoalgroup")
 	}
 
 	headerParams := make(map[string]string)
@@ -6255,40 +6197,34 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitServicegoa
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Servicegoalgroup
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchWorkforcemanagementManagementunitSettings invokes PATCH /api/v2/workforcemanagement/managementunits/{muId}/settings
 //
-// Update the settings for the requested management unit
+// Gone. Update settings by PATCHing the management unit
 //
 // 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitSettings(muId string, body Managementunitsettingsrequest) (*Managementunitsettingsresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitSettings(muId string) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/settings"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Managementunitsettingsresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitSettings")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitSettings")
 	}
 
 	headerParams := make(map[string]string)
@@ -6327,19 +6263,14 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitSettings(m
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Managementunitsettingsresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchWorkforcemanagementManagementunitUserTimeoffrequest invokes PATCH /api/v2/workforcemanagement/managementunits/{muId}/users/{userId}/timeoffrequests/{timeOffRequestId}
@@ -6428,35 +6359,34 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitUserTimeof
 
 // PatchWorkforcemanagementManagementunitWeekSchedule invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}
 //
-// Update a week schedule
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekSchedule(managementUnitId string, weekId string, scheduleId string, forceAsync bool, forceDownloadService bool, body Updateweekschedulerequest) (*Asyncweekscheduleresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekSchedule(managementUnitId string, weekId string, scheduleId string) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
 	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
-	defaultReturn := new(Asyncweekscheduleresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekSchedule")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekSchedule")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekSchedule")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekSchedule")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekSchedule")
+		return nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunitWeekSchedule")
 	}
 
 	headerParams := make(map[string]string)
@@ -6475,20 +6405,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekSchedu
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -6509,19 +6425,14 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekSchedu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Asyncweekscheduleresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchWorkforcemanagementManagementunitWeekShifttrade invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}
@@ -7980,23 +7891,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 
 // PostWorkforcemanagementManagementunitActivitycodes invokes POST /api/v2/workforcemanagement/managementunits/{muId}/activitycodes
 //
-// Create a new activity code
+// Deprecated/Gone: Use the new business unit activity code resources
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitActivitycodes(muId string, body Createactivitycoderequest) (*Activitycode, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitActivitycodes(muId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/activitycodes"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Activitycode)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitActivitycodes")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitActivitycodes")
 	}
 
 	headerParams := make(map[string]string)
@@ -8035,19 +7945,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitActivitycod
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Activitycode
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitAgentschedulesSearch invokes POST /api/v2/workforcemanagement/managementunits/{muId}/agentschedules/search
@@ -8210,23 +8115,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitHistoricala
 
 // PostWorkforcemanagementManagementunitIntraday invokes POST /api/v2/workforcemanagement/managementunits/{muId}/intraday
 //
-// Get intraday data for the given date for the requested queueIds
+// Gone.  Moved under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitIntraday(muId string, body Intradayquerydatacommand) (*Intradayresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitIntraday(muId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/intraday"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Intradayresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitIntraday")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitIntraday")
 	}
 
 	headerParams := make(map[string]string)
@@ -8265,19 +8169,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitIntraday(mu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Intradayresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitMove invokes POST /api/v2/workforcemanagement/managementunits/{muId}/move
@@ -8426,23 +8325,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitSchedulesSe
 
 // PostWorkforcemanagementManagementunitServicegoalgroups invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups
 //
-// Create a new service goal group
+// Gone. Replaced with service goal templates and planning groups under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitServicegoalgroups(managementUnitId string, body Createservicegoalgrouprequest) (*Servicegoalgroup, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitServicegoalgroups(managementUnitId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/servicegoalgroups"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	defaultReturn := new(Servicegoalgroup)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitServicegoalgroups")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitServicegoalgroups")
 	}
 
 	headerParams := make(map[string]string)
@@ -8481,19 +8379,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitServicegoal
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Servicegoalgroup
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitTimeoffrequests invokes POST /api/v2/workforcemanagement/managementunits/{muId}/timeoffrequests
@@ -8570,23 +8463,22 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 
 // PostWorkforcemanagementManagementunitTimeoffrequestsFetchdetails invokes POST /api/v2/workforcemanagement/managementunits/{muId}/timeoffrequests/fetchdetails
 //
-// Gets a list of time off requests from lookup ids
+// Gone.  All data is now returned in the query route
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsFetchdetails(muId string, body Timeoffrequestlookuplist) (*Timeoffrequestentitylist, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsFetchdetails(muId string, body Timeoffrequestlisting) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/timeoffrequests/fetchdetails"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Timeoffrequestentitylist)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'muId' is set
 	if &muId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsFetchdetails")
+		return nil, errors.New("Missing required parameter 'muId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitTimeoffrequestsFetchdetails")
 	}
 
 	headerParams := make(map[string]string)
@@ -8628,16 +8520,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	// body params
 	postBody = &body
 
-	var successPayload *Timeoffrequestentitylist
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitTimeoffrequestsQuery invokes POST /api/v2/workforcemanagement/managementunits/{muId}/timeoffrequests/query
@@ -8645,12 +8535,12 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 // Gets the lookup ids to fetch the specified set of requests
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(muId string, body Timeoffrequestquerybody) (*Timeoffrequestlookuplist, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(muId string, body Timeoffrequestquerybody) (*Timeoffrequestlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{muId}/timeoffrequests/query"
 	path = strings.Replace(path, "{muId}", fmt.Sprintf("%v", muId), -1)
-	defaultReturn := new(Timeoffrequestlookuplist)
+	defaultReturn := new(Timeoffrequestlisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -8700,7 +8590,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 	// body params
 	postBody = &body
 
-	var successPayload *Timeoffrequestlookuplist
+	var successPayload *Timeoffrequestlisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -8714,35 +8604,34 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 
 // PostWorkforcemanagementManagementunitWeekScheduleCopy invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}/copy
 //
-// Copy a week schedule
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekScheduleCopy(managementUnitId string, weekId string, scheduleId string, forceAsync bool, forceDownloadService bool, body Copyweekschedulerequest) (*Asyncweekscheduleresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekScheduleCopy(managementUnitId string, weekId string, scheduleId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}/copy"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
 	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
-	defaultReturn := new(Asyncweekscheduleresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleCopy")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleCopy")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleCopy")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleCopy")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleCopy")
+		return nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleCopy")
 	}
 
 	headerParams := make(map[string]string)
@@ -8761,20 +8650,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -8795,52 +8670,46 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Asyncweekscheduleresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekScheduleReschedule invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}/reschedule
 //
-// Start a scheduling run to compute the reschedule. When the scheduling run finishes, a client can get the reschedule changes and then the client can apply them to the schedule, save the schedule, and mark the scheduling run as applied
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekScheduleReschedule(managementUnitId string, weekId string, scheduleId string, body Reschedulerequest) (*Asyncweekscheduleresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekScheduleReschedule(managementUnitId string, weekId string, scheduleId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/{scheduleId}/reschedule"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
 	path = strings.Replace(path, "{scheduleId}", fmt.Sprintf("%v", scheduleId), -1)
-	defaultReturn := new(Asyncweekscheduleresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleReschedule")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleReschedule")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleReschedule")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleReschedule")
 	}
 	// verify the required parameter 'scheduleId' is set
 	if &scheduleId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleReschedule")
+		return nil, errors.New("Missing required parameter 'scheduleId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekScheduleReschedule")
 	}
 
 	headerParams := make(map[string]string)
@@ -8879,46 +8748,40 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Asyncweekscheduleresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekSchedules invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules
 //
-// Add a schedule for a week in management unit using imported data. Use partial uploads of user schedules if activity count in schedule is greater than 17500
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedules(managementUnitId string, weekId string, forceAsync bool, forceDownloadService bool, body Importweekschedulerequest) (*Asyncweekscheduleresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedules(managementUnitId string, weekId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	defaultReturn := new(Asyncweekscheduleresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedules")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedules")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedules")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedules")
 	}
 
 	headerParams := make(map[string]string)
@@ -8937,20 +8800,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -8971,46 +8820,40 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Asyncweekscheduleresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekSchedulesGenerate invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/generate
 //
-// Generate a week schedule
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedulesGenerate(managementUnitId string, weekId string, body Generateweekschedulerequest) (*Generateweekscheduleresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedulesGenerate(managementUnitId string, weekId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/generate"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	defaultReturn := new(Generateweekscheduleresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesGenerate")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesGenerate")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesGenerate")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesGenerate")
 	}
 
 	headerParams := make(map[string]string)
@@ -9049,46 +8892,40 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Generateweekscheduleresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekSchedulesPartialupload invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/partialupload
 //
-// Partial upload of user schedules where activity count is greater than 17500
+// Gone.  Scheduling has moved under business units
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedulesPartialupload(managementUnitId string, weekId string, body Userschedulespartialuploadrequest) (*Partialuploadresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedulesPartialupload(managementUnitId string, weekId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekId}/schedules/partialupload"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekId}", fmt.Sprintf("%v", weekId), -1)
-	defaultReturn := new(Partialuploadresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesPartialupload")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesPartialupload")
 	}
 	// verify the required parameter 'weekId' is set
 	if &weekId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesPartialupload")
+		return nil, errors.New("Missing required parameter 'weekId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekSchedulesPartialupload")
 	}
 
 	headerParams := make(map[string]string)
@@ -9127,19 +8964,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekSchedul
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Partialuploadresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekShifttradeMatch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shifttrades/{tradeId}/match
@@ -9490,40 +9322,34 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 
 // PostWorkforcemanagementManagementunitWeekShorttermforecastCopy invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/copy
 //
-// Copy a short term forecast
+// Gone. Use equivalent business unit resource instead
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecastCopy(managementUnitId string, weekDateId string, forecastId string, body Copyshorttermforecastrequest, forceAsync bool) (*Shorttermforecastresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecastCopy(managementUnitId string, weekDateId string, forecastId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/copy"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
 	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
-	defaultReturn := new(Shorttermforecastresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
+		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
 	}
 	// verify the required parameter 'forecastId' is set
 	if &forecastId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
+		return nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastCopy")
 	}
 
 	headerParams := make(map[string]string)
@@ -9542,14 +9368,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -9570,51 +9388,40 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Shorttermforecastresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekShorttermforecasts invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts
 //
-// Import a short term forecast
+// Gone. Use equivalent business unit resource instead
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecasts(managementUnitId string, weekDateId string, body Importshorttermforecastrequest, forceAsync bool) (*Shorttermforecastresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecasts(managementUnitId string, weekDateId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	defaultReturn := new(Shorttermforecastresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecasts")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecasts")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecasts")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecasts")
+		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecasts")
 	}
 
 	headerParams := make(map[string]string)
@@ -9633,14 +9440,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -9661,51 +9460,40 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Shorttermforecastresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/generate
 //
-// Generate a short term forecast
+// Gone. Use equivalent business unit resource instead
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate(managementUnitId string, weekDateId string, body Generateshorttermforecastrequest, forceAsync bool) (*Generateshorttermforecastresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate(managementUnitId string, weekDateId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/generate"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	defaultReturn := new(Generateshorttermforecastresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate")
+		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsGenerate")
 	}
 
 	headerParams := make(map[string]string)
@@ -9724,14 +9512,6 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	var collectionFormat string
-	
-	
-	
-		collectionFormat = ""
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	
 	
 
 	// to determine the Content-Type header
@@ -9752,51 +9532,40 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Generateshorttermforecastresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/partialupload
 //
-// Import a short term forecast
+// Gone. Use equivalent business unit resource instead
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload(managementUnitId string, weekDateId string, body Routegrouplist) (*Partialuploadresponse, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload(managementUnitId string, weekDateId string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/weeks/{weekDateId}/shorttermforecasts/partialupload"
 	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
 	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
-	defaultReturn := new(Partialuploadresponse)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'managementUnitId' is set
 	if &managementUnitId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload")
+		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload")
 	}
 	// verify the required parameter 'weekDateId' is set
 	if &weekDateId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload")
+		return nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->PostWorkforcemanagementManagementunitWeekShorttermforecastsPartialupload")
 	}
 
 	headerParams := make(map[string]string)
@@ -9835,19 +9604,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShortte
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	// body params
-	postBody = &body
 
-	var successPayload *Partialuploadresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitWorkplanCopy invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}/copy

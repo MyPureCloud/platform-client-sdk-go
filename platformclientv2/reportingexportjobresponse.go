@@ -86,6 +86,14 @@ type Reportingexportjobresponse struct {
 	HasCustomParticipantAttributes *bool `json:"hasCustomParticipantAttributes,omitempty"`
 
 
+	// RecipientEmails - The list of email recipients for the exports
+	RecipientEmails *[]string `json:"recipientEmails,omitempty"`
+
+
+	// EmailStatuses - The status of individual email addresses as a map
+	EmailStatuses *map[string]string `json:"emailStatuses,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

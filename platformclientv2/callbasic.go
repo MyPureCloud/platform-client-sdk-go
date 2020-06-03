@@ -105,6 +105,10 @@ type Callbasic struct {
 	// Other - Address and name data for a call endpoint.
 	Other *Address `json:"other,omitempty"`
 
+
+	// Wrapup - Call wrap up or disposition data.
+	Wrapup *Wrapup `json:"wrapup,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

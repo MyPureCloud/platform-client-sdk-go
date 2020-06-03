@@ -65,6 +65,10 @@ type Video struct {
 	// Self - Address and name data for a call endpoint.
 	Self *Address `json:"self,omitempty"`
 
+
+	// Wrapup - Call wrap up or disposition data.
+	Wrapup *Wrapup `json:"wrapup,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

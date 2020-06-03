@@ -54,6 +54,10 @@ type Conversationeventtopiccallback struct {
 	PeerId *string `json:"peerId,omitempty"`
 
 
+	// ExternalCampaign
+	ExternalCampaign *bool `json:"externalCampaign,omitempty"`
+
+
 	// SkipEnabled
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 

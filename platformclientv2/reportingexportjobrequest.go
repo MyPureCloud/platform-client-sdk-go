@@ -56,6 +56,10 @@ type Reportingexportjobrequest struct {
 	// HasCustomParticipantAttributes - Indicates if custom participant attributes will be exported
 	HasCustomParticipantAttributes *bool `json:"hasCustomParticipantAttributes,omitempty"`
 
+
+	// RecipientEmails - The list of email recipients for the exports
+	RecipientEmails *[]string `json:"recipientEmails,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

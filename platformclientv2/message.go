@@ -89,6 +89,10 @@ type Message struct {
 	// Messages - The messages sent on this communication channel.
 	Messages *[]Messagedetails `json:"messages,omitempty"`
 
+
+	// Wrapup - Call wrap up or disposition data.
+	Wrapup *Wrapup `json:"wrapup,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

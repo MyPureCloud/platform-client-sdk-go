@@ -122,7 +122,7 @@ type Edge struct {
 	Site *Site `json:"site,omitempty"`
 
 
-	// SoftwareStatus
+	// SoftwareStatus - Details about an in-progress or recently in-progress Edge software upgrade. This node appears only if a software upgrade was recently initiated for this Edge.
 	SoftwareStatus *Domainedgesoftwareupdatedto `json:"softwareStatus,omitempty"`
 
 

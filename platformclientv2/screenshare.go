@@ -53,6 +53,10 @@ type Screenshare struct {
 	// Segments - The time line of the participant's call, divided into activity segments.
 	Segments *[]Segment `json:"segments,omitempty"`
 
+
+	// Wrapup - Call wrap up or disposition data.
+	Wrapup *Wrapup `json:"wrapup,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

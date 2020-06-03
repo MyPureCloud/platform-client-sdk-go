@@ -162,6 +162,10 @@ type Conversationcallbackeventtopiccallbackmediaparticipant struct {
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
 
+	// ExternalCampaign
+	ExternalCampaign *bool `json:"externalCampaign,omitempty"`
+
+
 	// TimeoutSeconds
 	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty"`
 

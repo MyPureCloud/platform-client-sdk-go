@@ -89,6 +89,10 @@ type Email struct {
 	// Spam - Indicates if the inbound email was marked as spam.
 	Spam *bool `json:"spam,omitempty"`
 
+
+	// Wrapup - Call wrap up or disposition data.
+	Wrapup *Wrapup `json:"wrapup,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

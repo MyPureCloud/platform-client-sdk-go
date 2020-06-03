@@ -16,6 +16,10 @@ type Scimv2enterpriseuser struct {
 	// Manager - The user's manager.
 	Manager *Manager `json:"manager,omitempty"`
 
+
+	// EmployeeNumber - The users employee number.
+	EmployeeNumber *string `json:"employeeNumber,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

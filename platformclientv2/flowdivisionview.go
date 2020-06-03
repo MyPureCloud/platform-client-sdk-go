@@ -29,6 +29,14 @@ type Flowdivisionview struct {
 	OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
 
 
+	// PublishedVersion - published version information if there is a published version
+	PublishedVersion *Flowversion `json:"publishedVersion,omitempty"`
+
+
+	// DebugVersion - debug version information if there is a debug version
+	DebugVersion *Flowversion `json:"debugVersion,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
