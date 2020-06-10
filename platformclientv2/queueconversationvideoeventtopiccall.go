@@ -94,6 +94,10 @@ type Queueconversationvideoeventtopiccall struct {
 	UuiData *string `json:"uuiData,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

@@ -58,6 +58,10 @@ type Conversationeventtopicchat struct {
 	JourneyContext *Conversationeventtopicjourneycontext `json:"journeyContext,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

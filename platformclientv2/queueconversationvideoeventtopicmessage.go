@@ -74,6 +74,10 @@ type Queueconversationvideoeventtopicmessage struct {
 	RecipientType *string `json:"recipientType,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

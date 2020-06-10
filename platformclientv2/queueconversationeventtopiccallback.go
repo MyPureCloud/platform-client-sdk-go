@@ -86,6 +86,10 @@ type Queueconversationeventtopiccallback struct {
 	AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

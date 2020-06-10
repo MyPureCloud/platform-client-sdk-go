@@ -50,6 +50,10 @@ type Queueconversationsocialexpressioneventtopicscreenshare struct {
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Queueconversationsocialexpressioneventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

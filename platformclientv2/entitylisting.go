@@ -6,7 +6,23 @@ import (
 // Entitylisting
 type Entitylisting struct { 
 	// Entities
-	Entities *[]map[string]interface{} `json:"entities,omitempty"`
+	Entities *[]Datatableimportjob `json:"entities,omitempty"`
+
+
+	// PageSize
+	PageSize *int32 `json:"pageSize,omitempty"`
+
+
+	// PageNumber
+	PageNumber *int32 `json:"pageNumber,omitempty"`
+
+
+	// Total
+	Total *int64 `json:"total,omitempty"`
+
+
+	// PageCount
+	PageCount *int32 `json:"pageCount,omitempty"`
 
 }
 

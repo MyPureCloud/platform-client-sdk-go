@@ -78,6 +78,10 @@ type Queueconversationeventtopicemail struct {
 	Spam *bool `json:"spam,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

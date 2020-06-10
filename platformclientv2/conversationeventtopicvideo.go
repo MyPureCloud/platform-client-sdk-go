@@ -62,6 +62,10 @@ type Conversationeventtopicvideo struct {
 	Msids *[]string `json:"msids,omitempty"`
 
 
+	// Wrapup
+	Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 
