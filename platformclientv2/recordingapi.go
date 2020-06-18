@@ -387,7 +387,7 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 // Gets a specific recording.
 //
 // 
-func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}"
@@ -432,6 +432,24 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 	
 		collectionFormat = ""
 		queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["emailFormatId"] = a.Configuration.APIClient.ParameterToString(emailFormatId, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["chatFormatId"] = a.Configuration.APIClient.ParameterToString(chatFormatId, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["messageFormatId"] = a.Configuration.APIClient.ParameterToString(messageFormatId, collectionFormat)
 	
 	
 	
@@ -940,7 +958,7 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 // Gets the media of a single orphan recording
 //
 // A 202 response means the orphaned media is currently transcoding and will be available shortly.A 200 response denotes the transcoded orphan media is available now and is contained in the response body.
-func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
+func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}/media"
@@ -979,6 +997,24 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 	
 		collectionFormat = ""
 		queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["emailFormatId"] = a.Configuration.APIClient.ParameterToString(emailFormatId, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["chatFormatId"] = a.Configuration.APIClient.ParameterToString(chatFormatId, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["messageFormatId"] = a.Configuration.APIClient.ParameterToString(messageFormatId, collectionFormat)
 	
 	
 	

@@ -29,6 +29,10 @@ type Auditqueryexecutionstatusresponse struct {
 	// Filters - Filters for the audit query.
 	Filters *[]Auditqueryfilter `json:"filters,omitempty"`
 
+
+	// Sort - Sort parameter for the audit query.
+	Sort *[]Auditquerysort `json:"sort,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

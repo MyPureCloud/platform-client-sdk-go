@@ -16,6 +16,10 @@ type Auditqueryrequest struct {
 	// Filters - Additional filters for the query.
 	Filters *[]Auditqueryfilter `json:"filters,omitempty"`
 
+
+	// Sort - Sort parameter for the query.
+	Sort *[]Auditquerysort `json:"sort,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

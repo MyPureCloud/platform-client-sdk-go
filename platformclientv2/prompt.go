@@ -17,11 +17,11 @@ type Prompt struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// Resources
+	// Resources - List of resources associated with this prompt
 	Resources *[]Promptasset `json:"resources,omitempty"`
 
 
-	// CurrentOperation
+	// CurrentOperation - Current prompt operation status
 	CurrentOperation *Operation `json:"currentOperation,omitempty"`
 
 

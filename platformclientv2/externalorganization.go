@@ -78,6 +78,14 @@ type Externalorganization struct {
 	Trustor *Trustor `json:"trustor,omitempty"`
 
 
+	// Schema - The schema defining custom fields for this contact
+	Schema *Dataschema `json:"schema,omitempty"`
+
+
+	// CustomFields - Custom fields defined in the schema referenced by schemaId and schemaVersion.
+	CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+
+
 	// ExternalDataSources - Links to the sources of data (e.g. one source might be a CRM) that contributed data to this record.  Read-only, and only populated when requested via expand param.
 	ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
 

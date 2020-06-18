@@ -42,6 +42,10 @@ type Nludomainversion struct {
 	TrainingStatus *string `json:"trainingStatus,omitempty"`
 
 
+	// EvaluationStatus - The evaluation status of the NLU domain version.
+	EvaluationStatus *string `json:"evaluationStatus,omitempty"`
+
+
 	// Intents - The intents defined for this NLU domain version.
 	Intents *[]Intentdefinition `json:"intents,omitempty"`
 

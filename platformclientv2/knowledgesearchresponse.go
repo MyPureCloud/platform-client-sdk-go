@@ -5,6 +5,10 @@ import (
 
 // Knowledgesearchresponse
 type Knowledgesearchresponse struct { 
+	// SearchId - Search Id
+	SearchId *string `json:"searchId,omitempty"`
+
+
 	// Total - Total number of records returned
 	Total *int32 `json:"total,omitempty"`
 
@@ -19,10 +23,6 @@ type Knowledgesearchresponse struct {
 
 	// PageNumber - Current page number for the returned records
 	PageNumber *int32 `json:"pageNumber,omitempty"`
-
-
-	// SearchId - ID of the Search Response
-	SearchId *string `json:"searchId,omitempty"`
 
 
 	// Results - Results associated to the search response
