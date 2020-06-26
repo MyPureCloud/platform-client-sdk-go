@@ -5,7 +5,7 @@ import (
 
 // Scimemail - Defines a SCIM email address.
 type Scimemail struct { 
-	// Value - The email address.
+	// Value - The email address. Note value for type 'other'is immutable.
 	Value *string `json:"value,omitempty"`
 
 

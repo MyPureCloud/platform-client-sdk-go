@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go/platformclientv2). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 13.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
+Latest version: 14.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
 
 ## Get SDK Package
 
@@ -81,7 +81,7 @@ config.SetDebug(false)
 The SDK provides a helper to authorize using client credentials. Use the `AuthorizeClientCredentials` function on the client to make a request to Genesys Cloud to exchange the client id and secret for an access token. If no error was returned, the configuration instance is now authorized and can begin making API requests. 
 
 ```go
-err := config.AuthorizeClientCredentials(os.Getenv("PURECLOUD_CLIENT_ID"), os.Getenv("PURECLOUD_CLIENT_SECRET"))
+err := config.AuthorizeClientCredentials(os.Getenv("GENESYS_CLOUD_CLIENT_ID"), os.Getenv("GENESYS_CLOUD_CLIENT_SECRET"))
 if err != nil {
     panic(err)
 }
@@ -116,6 +116,6 @@ The SDK's version is incremented according to the [Semantic Versioning Specifica
 
 ## Support
 
-This package is intended to be forwards compatible with v2 of PureCloud's Platform API. While the general policy for the API is not to introduce breaking changes, there are certain additions and changes to the API that cause breaking changes for the SDK, often due to the way the API is expressed in its swagger definition. Because of this, the SDK can have a major version bump while the API remains at major version 2. While the SDK is intended to be forward compatible, patches will only be released to the latest version. For these reasons, it is strongly recommended that all applications using this SDK are kept up to date and use the latest version of the SDK.
+This package is intended to be forwards compatible with v2 of Genesys Cloud's Platform API. While the general policy for the API is not to introduce breaking changes, there are certain additions and changes to the API that cause breaking changes for the SDK, often due to the way the API is expressed in its swagger definition. Because of this, the SDK can have a major version bump while the API remains at major version 2. While the SDK is intended to be forward compatible, patches will only be released to the latest version. For these reasons, it is strongly recommended that all applications using this SDK are kept up to date and use the latest version of the SDK.
 
-For any issues, questions, or suggestions for the SDK, visit the [PureCloud Developer Forum](https://developer.mypurecloud.com/forum/).
+For any issues, questions, or suggestions for the SDK, visit the [Genesys Cloud Developer Forum](https://developer.mypurecloud.com/forum/).

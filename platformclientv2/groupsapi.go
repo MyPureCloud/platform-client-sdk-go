@@ -497,7 +497,7 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int32, pageNumber in
 //
 // Get group profile
 //
-// 
+// This api is deprecated. Use /api/v2/groups instead
 func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -769,7 +769,7 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 //
 // Get group profile listing
 //
-// 
+// This api is deprecated. Use /api/v2/groups instead.
 func (a GroupsApi) GetProfilesGroups(pageSize int32, pageNumber int32, id []string, sortOrder string) (*Groupprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -1213,7 +1213,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 //
 // Get a user profile listing
 //
-// 
+// This api is deprecated. User /api/v2/users
 func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string, jid []string, sortOrder string, expand []string) (*Userprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1970,7 +1970,7 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 //
 // Get user profile
 //
-// 
+// This api has been deprecated. Use api/v2/users instead
 func (a UsersApi) GetUserProfile(userId string, expand []string) (*Userprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
