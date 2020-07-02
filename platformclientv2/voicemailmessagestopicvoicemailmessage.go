@@ -53,6 +53,14 @@ type Voicemailmessagestopicvoicemailmessage struct {
 	// ModifiedByUserId
 	ModifiedByUserId *string `json:"modifiedByUserId,omitempty"`
 
+
+	// CopiedTo
+	CopiedTo *[]Voicemailmessagestopicvoicemailcopyrecord `json:"copiedTo,omitempty"`
+
+
+	// CopiedFrom
+	CopiedFrom *Voicemailmessagestopicvoicemailcopyrecord `json:"copiedFrom,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

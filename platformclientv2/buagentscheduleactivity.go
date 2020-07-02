@@ -29,6 +29,14 @@ type Buagentscheduleactivity struct {
 	// TimeOffRequestId - The ID of the time off request associated with this activity, if applicable
 	TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 
+
+	// ExternalActivityId - The ID of the external activity associated with this activity, if applicable
+	ExternalActivityId *string `json:"externalActivityId,omitempty"`
+
+
+	// ExternalActivityType - The type of the external activity associated with this activity, if applicable
+	ExternalActivityType *string `json:"externalActivityType,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

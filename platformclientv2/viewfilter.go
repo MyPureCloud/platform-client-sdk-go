@@ -316,6 +316,14 @@ type Viewfilter struct {
 	// ProviderList - A list of providers
 	ProviderList *[]string `json:"providerList,omitempty"`
 
+
+	// CallbackNumberList - A list of callback numbers or substrings of numbers (ex: [\"317\", \"13172222222\"])
+	CallbackNumberList *[]string `json:"callbackNumberList,omitempty"`
+
+
+	// CallbackInterval - An interval of time to filter for scheduled callbacks. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
+	CallbackInterval *string `json:"callbackInterval,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

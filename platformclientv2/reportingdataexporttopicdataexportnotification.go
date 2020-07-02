@@ -49,6 +49,10 @@ type Reportingdataexporttopicdataexportnotification struct {
 	// PercentageComplete
 	PercentageComplete *float32 `json:"percentageComplete,omitempty"`
 
+
+	// EmailStatuses
+	EmailStatuses *map[string]string `json:"emailStatuses,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

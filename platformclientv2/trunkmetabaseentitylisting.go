@@ -25,12 +25,12 @@ type Trunkmetabaseentitylisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
+
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 
 	// LastUri
