@@ -54,6 +54,10 @@ type Edgegroup struct {
 	Managed *bool `json:"managed,omitempty"`
 
 
+	// Hybrid - Is this edge group hybrid.
+	Hybrid *bool `json:"hybrid,omitempty"`
+
+
 	// EdgeTrunkBaseAssignment - A trunk base settings assignment of trunkType \"EDGE\" to use for edge-to-edge communication.
 	EdgeTrunkBaseAssignment *Trunkbaseassignment `json:"edgeTrunkBaseAssignment,omitempty"`
 

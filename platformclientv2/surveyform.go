@@ -34,14 +34,6 @@ type Surveyform struct {
 	Language *string `json:"language,omitempty"`
 
 
-	// HeaderImageId - Id of the header image appearing at the top of the form.
-	HeaderImageId *string `json:"headerImageId,omitempty"`
-
-
-	// HeaderImageUrl - Temporary URL for accessing header image
-	HeaderImageUrl *string `json:"headerImageUrl,omitempty"`
-
-
 	// Header - Markdown text for the top of the form.
 	Header *string `json:"header,omitempty"`
 

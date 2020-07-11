@@ -22,6 +22,10 @@ type Nludomainversion struct {
 	Language *string `json:"language,omitempty"`
 
 
+	// Published - Whether this NLU domain version has been published.
+	Published *bool `json:"published,omitempty"`
+
+
 	// DateCreated - The date when the NLU domain version was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 

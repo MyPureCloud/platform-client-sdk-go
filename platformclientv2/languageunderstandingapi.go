@@ -169,6 +169,78 @@ func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainFeedbackFeedb
 	return response, err
 }
 
+// DeleteLanguageunderstandingDomainVersion invokes DELETE /api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}
+//
+// Delete an NLU Domain Version
+//
+// 
+func (a LanguageUnderstandingApi) DeleteLanguageunderstandingDomainVersion(domainId string, domainVersionId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions/{domainVersionId}"
+	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	path = strings.Replace(path, "{domainVersionId}", fmt.Sprintf("%v", domainVersionId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomainVersion")
+	}
+	// verify the required parameter 'domainVersionId' is set
+	if &domainVersionId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->DeleteLanguageunderstandingDomainVersion")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // GetLanguageunderstandingDomain invokes GET /api/v2/languageunderstanding/domains/{domainId}
 //
 // Find an NLU Domain.
@@ -796,6 +868,11 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 		// 
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PatchLanguageunderstandingDomain")
 	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PatchLanguageunderstandingDomain")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -867,6 +944,11 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainFeedback(domain
 	if &domainId == nil {
 		// 
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainFeedback")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainFeedback")
 	}
 
 	headerParams := make(map[string]string)
@@ -945,6 +1027,11 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionDetect(d
 	if &domainVersionId == nil {
 		// 
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionDetect")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersionDetect")
 	}
 
 	headerParams := make(map[string]string)
@@ -1148,6 +1235,83 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersionTrain(do
 	return successPayload, response, err
 }
 
+// PostLanguageunderstandingDomainVersions invokes POST /api/v2/languageunderstanding/domains/{domainId}/versions
+//
+// Create an NLU Domain Version.
+//
+// 
+func (a LanguageUnderstandingApi) PostLanguageunderstandingDomainVersions(domainId string, body Nludomainversion) (*Nludomainversion, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions"
+	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	defaultReturn := new(Nludomainversion)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersions")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomainVersions")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Nludomainversion
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // PostLanguageunderstandingDomains invokes POST /api/v2/languageunderstanding/domains
 //
 // Create an NLU Domain.
@@ -1162,6 +1326,11 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingDomains(body Nludomai
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PostLanguageunderstandingDomains")
+	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -1239,6 +1408,11 @@ func (a LanguageUnderstandingApi) PutLanguageunderstandingDomainVersion(domainId
 	if &domainVersionId == nil {
 		// 
 		return defaultReturn, nil, errors.New("Missing required parameter 'domainVersionId' when calling LanguageUnderstandingApi->PutLanguageunderstandingDomainVersion")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LanguageUnderstandingApi->PutLanguageunderstandingDomainVersion")
 	}
 
 	headerParams := make(map[string]string)
