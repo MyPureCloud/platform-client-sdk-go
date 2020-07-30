@@ -217,6 +217,22 @@ type Analyticssession struct {
 	// FlowOutType - Type of flow out that occurred, e.g. voicemail, callback, or acd
 	FlowOutType *string `json:"flowOutType,omitempty"`
 
+
+	// RequestedRoutings - All routing types for requested/attempted routing methods.
+	RequestedRoutings *[]string `json:"requestedRoutings,omitempty"`
+
+
+	// UsedRouting - Complete routing method
+	UsedRouting *string `json:"usedRouting,omitempty"`
+
+
+	// SelectedAgentId - Selected agent id
+	SelectedAgentId *string `json:"selectedAgentId,omitempty"`
+
+
+	// SelectedAgentRank - Selected agent GPR rank
+	SelectedAgentRank *int32 `json:"selectedAgentRank,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

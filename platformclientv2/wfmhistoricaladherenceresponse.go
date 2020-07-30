@@ -13,6 +13,10 @@ type Wfmhistoricaladherenceresponse struct {
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
 
 
+	// DownloadResult - Result will always come via downloadUrls; however the schema is included for documentation
+	DownloadResult *Wfmhistoricaladherenceresultwrapper `json:"downloadResult,omitempty"`
+
+
 	// DownloadUrls - The uri list to GET the results of the Historical Adherence query. For notification purposes only
 	DownloadUrls *[]string `json:"downloadUrls,omitempty"`
 

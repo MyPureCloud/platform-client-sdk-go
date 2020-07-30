@@ -13,7 +13,7 @@ type Scimv2createuser struct {
 	Active *bool `json:"active,omitempty"`
 
 
-	// UserName - The user's PureCloud email address. Must be unique.
+	// UserName - The user's Genesys Cloud email address. Must be unique.
 	UserName *string `json:"userName,omitempty"`
 
 
@@ -21,7 +21,7 @@ type Scimv2createuser struct {
 	DisplayName *string `json:"displayName,omitempty"`
 
 
-	// Password - The new password for the PureCloud user. Does not return an existing password.
+	// Password - The new password for the Genesys Cloud user. Does not return an existing password.
 	Password *string `json:"password,omitempty"`
 
 
@@ -53,7 +53,7 @@ type Scimv2createuser struct {
 	UrnIetfParamsScimSchemasExtensionEnterprise20User *Scimv2enterpriseuser `json:"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User,omitempty"`
 
 
-	// UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User
+	// UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User - The URI of the schema for the Genesys Cloud user.
 	UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User *Scimuserextensions `json:"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User,omitempty"`
 
 }

@@ -3,13 +3,13 @@ import (
 	"encoding/json"
 )
 
-// Scimuserextensions - SCIM PureCloud extensions of user.
+// Scimuserextensions - Defines a SCIM Genesys Cloud user.
 type Scimuserextensions struct { 
-	// RoutingSkills - Routing Skills assigned to user. No more than 50 skills may be assigned to a user.
+	// RoutingSkills - The list of routing skills assigned to a user. Maximum 50 skills.
 	RoutingSkills *[]Scimuserroutingskill `json:"routingSkills,omitempty"`
 
 
-	// RoutingLanguages - Routing Languages assigned to user. No more than 50 languages may be assigned to a user.
+	// RoutingLanguages - The list of routing languages assigned to a user. Maximum 50 languages.
 	RoutingLanguages *[]Scimuserroutinglanguage `json:"routingLanguages,omitempty"`
 
 }

@@ -5,7 +5,7 @@ import (
 
 // Scimv2user - Defines a SCIM user.
 type Scimv2user struct { 
-	// Id - The ID of the SCIM resource. Set by the service provider. \"caseExact\" is set to \"true\". \"Mutability\" is set to \"readOnly\". \"Returned\" is set to \"always\".
+	// Id - The ID of the SCIM resource. Set by the service provider. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readOnly\". \"returned\" is set to \"always\".
 	Id *string `json:"id,omitempty"`
 
 
@@ -17,7 +17,7 @@ type Scimv2user struct {
 	Active *bool `json:"active,omitempty"`
 
 
-	// UserName - The user's PureCloud email address. Must be unique.
+	// UserName - The user's Genesys Cloud email address. Must be unique.
 	UserName *string `json:"userName,omitempty"`
 
 
@@ -25,7 +25,7 @@ type Scimv2user struct {
 	DisplayName *string `json:"displayName,omitempty"`
 
 
-	// Password - The new password for the PureCloud user. Does not return an existing password.
+	// Password - The new password for the Genesys Cloud user. Does not return an existing password.
 	Password *string `json:"password,omitempty"`
 
 
@@ -57,7 +57,7 @@ type Scimv2user struct {
 	UrnIetfParamsScimSchemasExtensionEnterprise20User *Scimv2enterpriseuser `json:"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User,omitempty"`
 
 
-	// UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User
+	// UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User - The URI of the schema for the Genesys Cloud user.
 	UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User *Scimuserextensions `json:"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User,omitempty"`
 
 

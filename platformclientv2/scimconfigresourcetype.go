@@ -5,7 +5,7 @@ import (
 
 // Scimconfigresourcetype - Defines a SCIM resource.
 type Scimconfigresourcetype struct { 
-	// Id - The ID of the SCIM resource. Set by the service provider. \"caseExact\" is set to \"true\". \"Mutability\" is set to \"readOnly\". \"Returned\" is set to \"always\".
+	// Id - The ID of the SCIM resource. Set by the service provider. \"caseExact\" is set to \"true\". \"mutability\" is set to \"readOnly\". \"returned\" is set to \"always\".
 	Id *string `json:"id,omitempty"`
 
 

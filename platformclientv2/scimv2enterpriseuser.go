@@ -3,7 +3,7 @@ import (
 	"encoding/json"
 )
 
-// Scimv2enterpriseuser - Defines an SCIM enterprise user.
+// Scimv2enterpriseuser - Defines a SCIM enterprise user.
 type Scimv2enterpriseuser struct { 
 	// Division - The division that the user belongs to.
 	Division *string `json:"division,omitempty"`

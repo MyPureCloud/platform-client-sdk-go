@@ -21,6 +21,10 @@ type Voicemailuserpolicy struct {
 	// ModifiedDate - The date the policy was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
+
+	// SendEmailNotifications - Whether email notifications are sent to the user when a new voicemail is received
+	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

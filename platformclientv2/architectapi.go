@@ -2836,7 +2836,7 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 // Get a list of schedule groups.
 //
 // 
-func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string) (*Schedulegroupentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string, scheduleIds string) (*Schedulegroupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedulegroups"
@@ -2893,6 +2893,12 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int32, pageSize int3
 	
 		collectionFormat = ""
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["scheduleIds"] = a.Configuration.APIClient.ParameterToString(scheduleIds, collectionFormat)
 	
 	
 

@@ -5,7 +5,7 @@ import (
 
 // Conversationassociation
 type Conversationassociation struct { 
-	// ExternalContactId - External Contact ID
+	// ExternalContactId - An external contact ID.  If not supplied, implies the conversation should be disassociated with any external contact.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
 

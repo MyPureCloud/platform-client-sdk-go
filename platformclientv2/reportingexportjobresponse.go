@@ -78,6 +78,14 @@ type Reportingexportjobresponse struct {
 	HasSplitFilters *bool `json:"hasSplitFilters,omitempty"`
 
 
+	// ExcludeEmptyRows - Excludes empty rows from the exports
+	ExcludeEmptyRows *bool `json:"excludeEmptyRows,omitempty"`
+
+
+	// HasSplitByMedia - Indicates if media type will be split in aggregate detail exports
+	HasSplitByMedia *bool `json:"hasSplitByMedia,omitempty"`
+
+
 	// SelectedColumns - The list of ordered selected columns from the export view by the user
 	SelectedColumns *[]Selectedcolumns `json:"selectedColumns,omitempty"`
 
@@ -92,6 +100,10 @@ type Reportingexportjobresponse struct {
 
 	// EmailStatuses - The status of individual email addresses as a map
 	EmailStatuses *map[string]string `json:"emailStatuses,omitempty"`
+
+
+	// Enabled
+	Enabled *bool `json:"enabled,omitempty"`
 
 
 	// SelfUri - The URI for this object

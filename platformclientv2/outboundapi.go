@@ -863,6 +863,75 @@ func (a OutboundApi) DeleteOutboundDnclist(dncListId string) (*APIResponse, erro
 	return response, err
 }
 
+// DeleteOutboundMessagingcampaign invokes DELETE /api/v2/outbound/messagingcampaigns/{messagingCampaignId}
+//
+// Delete an Outbound Messaging Campaign
+//
+// 
+func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string) (*Messagingcampaign, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Messagingcampaign)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->DeleteOutboundMessagingcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaign
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // DeleteOutboundRuleset invokes DELETE /api/v2/outbound/rulesets/{ruleSetId}
 //
 // Delete a Rule set.
@@ -1201,7 +1270,7 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 // Query attempt limits list
 //
 // 
-func (a OutboundApi) GetOutboundAttemptlimits(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string) (*Attemptlimitsentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundAttemptlimits(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Attemptlimitsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/attemptlimits"
@@ -1240,6 +1309,12 @@ func (a OutboundApi) GetOutboundAttemptlimits(pageSize int32, pageNumber int32, 
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -1371,7 +1446,7 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 // Query callable time set list
 //
 // 
-func (a OutboundApi) GetOutboundCallabletimesets(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string) (*Callabletimesetentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCallabletimesets(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Callabletimesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callabletimesets"
@@ -1410,6 +1485,12 @@ func (a OutboundApi) GetOutboundCallabletimesets(pageSize int32, pageNumber int3
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -1541,7 +1622,7 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 // Query a list of dialer call analysis response sets.
 //
 // 
-func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string) (*Responsesetentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Responsesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callanalysisresponsesets"
@@ -1580,6 +1661,12 @@ func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int32, pageNum
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -2056,7 +2143,7 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 // Query Campaign Rule list
 //
 // 
-func (a OutboundApi) GetOutboundCampaignrules(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string) (*Campaignruleentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCampaignrules(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignruleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaignrules"
@@ -2095,6 +2182,12 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int32, pageNumber int32, 
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -2296,6 +2389,256 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int32, pageNumber int32, filt
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Campaignentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundCampaignsAll invokes GET /api/v2/outbound/campaigns/all
+//
+// Query across all types of campaigns by division
+//
+// 
+func (a OutboundApi) GetOutboundCampaignsAll(pageSize int32, pageNumber int32, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaignentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/all"
+	defaultReturn := new(Commoncampaignentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range id {
+			queryParams["id"] = value
+		}
+	} else {
+		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
+	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range divisionId {
+			queryParams["divisionId"] = value
+		}
+	} else {
+		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range mediaType {
+			queryParams["mediaType"] = value
+		}
+	} else {
+		queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, collectionFormat)
+	}
+	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Commoncampaignentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundCampaignsAllDivisionviews invokes GET /api/v2/outbound/campaigns/all/divisionviews
+//
+// Query across all types of campaigns
+//
+// 
+func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int32, pageNumber int32, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaigndivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/all/divisionviews"
+	defaultReturn := new(Commoncampaigndivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range id {
+			queryParams["id"] = value
+		}
+	} else {
+		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
+	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range divisionId {
+			queryParams["divisionId"] = value
+		}
+	} else {
+		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range mediaType {
+			queryParams["mediaType"] = value
+		}
+	} else {
+		queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, collectionFormat)
+	}
+	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Commoncampaigndivisionviewentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -2936,7 +3279,7 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 // Query Contact list filters
 //
 // 
-func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string, contactListId string) (*Contactlistfilterentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string, contactListId string) (*Contactlistfilterentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlistfilters"
@@ -2975,6 +3318,12 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber in
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -3043,7 +3392,7 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber in
 // Query a list of contact lists.
 //
 // 
-func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, filterType string, name string, id []string, divisionId []string, sortBy string, sortOrder string) (*Contactlistentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, id []string, divisionId []string, sortBy string, sortOrder string) (*Contactlistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists"
@@ -3094,6 +3443,12 @@ func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSi
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -3617,7 +3972,7 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 // Query dialer DNC lists
 //
 // 
-func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, filterType string, name string, dncSourceType string, divisionId []string, sortBy string, sortOrder string) (*Dnclistentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, dncSourceType string, divisionId []string, sortBy string, sortOrder string) (*Dnclistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists"
@@ -3668,6 +4023,12 @@ func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize b
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -4127,6 +4488,457 @@ func (a OutboundApi) GetOutboundEvents(pageSize int32, pageNumber int32, filterT
 	return successPayload, response, err
 }
 
+// GetOutboundMessagingcampaign invokes GET /api/v2/outbound/messagingcampaigns/{messagingCampaignId}
+//
+// Get an Outbound Messaging Campaign
+//
+// 
+func (a OutboundApi) GetOutboundMessagingcampaign(messagingCampaignId string) (*Messagingcampaign, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Messagingcampaign)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundMessagingcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaign
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundMessagingcampaignProgress invokes GET /api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress
+//
+// Get messaging campaign&#39;s progress
+//
+// 
+func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId string) (*Campaignprogress, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Campaignprogress)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundMessagingcampaignProgress")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Campaignprogress
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundMessagingcampaigns invokes GET /api/v2/outbound/messagingcampaigns
+//
+// Query a list of Messaging Campaigns
+//
+// 
+func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int32, pageNumber int32, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string) (*Messagingcampaignentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns"
+	defaultReturn := new(Messagingcampaignentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range divisionId {
+			queryParams["divisionId"] = value
+		}
+	} else {
+		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+	}
+	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range id {
+			queryParams["id"] = value
+		}
+	} else {
+		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
+	
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaignentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundMessagingcampaignsDivisionview invokes GET /api/v2/outbound/messagingcampaigns/divisionviews/{messagingCampaignId}
+//
+// Get a basic Messaging Campaign information object
+//
+// This returns a simplified version of a Messaging Campaign, consisting of id, name, and division.
+func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaignId string) (*Messagingcampaigndivisionview, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/divisionviews/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Messagingcampaigndivisionview)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundMessagingcampaignsDivisionview")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaigndivisionview
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundMessagingcampaignsDivisionviews invokes GET /api/v2/outbound/messagingcampaigns/divisionviews
+//
+// Query a list of basic Messaging Campaign information objects
+//
+// This returns a listing of simplified Messaging Campaigns, each consisting of id, name, and division.
+func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int32, pageNumber int32, sortOrder string, name string, id []string, senderSmsPhoneNumber string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/divisionviews"
+	defaultReturn := new(Messagingcampaigndivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range id {
+			queryParams["id"] = value
+		}
+	} else {
+		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
+	
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaigndivisionviewentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // GetOutboundRuleset invokes GET /api/v2/outbound/rulesets/{ruleSetId}
 //
 // Get a Rule Set by ID.
@@ -4201,7 +5013,7 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 // Query a list of Rule Sets.
 //
 // 
-func (a OutboundApi) GetOutboundRulesets(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string) (*Rulesetentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundRulesets(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Rulesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/rulesets"
@@ -4240,6 +5052,12 @@ func (a OutboundApi) GetOutboundRulesets(pageSize int32, pageNumber int32, filte
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -4635,7 +5453,7 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 // Query a list of dialer campaign sequences.
 //
 // 
-func (a OutboundApi) GetOutboundSequences(pageSize int32, pageNumber int32, filterType string, name string, sortBy string, sortOrder string) (*Campaignsequenceentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundSequences(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignsequenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/sequences"
@@ -4674,6 +5492,12 @@ func (a OutboundApi) GetOutboundSequences(pageSize int32, pageNumber int32, filt
 	
 		collectionFormat = ""
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	
+	
+	
+	
+		collectionFormat = ""
+		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
 	
 	
 	
@@ -6333,6 +7157,148 @@ func (a OutboundApi) PostOutboundDnclists(body Dnclistcreate) (*Dnclist, *APIRes
 	return successPayload, response, err
 }
 
+// PostOutboundMessagingcampaigns invokes POST /api/v2/outbound/messagingcampaigns
+//
+// Create a Messaging Campaign
+//
+// 
+func (a OutboundApi) PostOutboundMessagingcampaigns(body Messagingcampaign) (*Messagingcampaign, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns"
+	defaultReturn := new(Messagingcampaign)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundMessagingcampaigns")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingcampaign
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostOutboundMessagingcampaignsProgress invokes POST /api/v2/outbound/messagingcampaigns/progress
+//
+// Get progress for a list of messaging campaigns
+//
+// 
+func (a OutboundApi) PostOutboundMessagingcampaignsProgress(body []string) ([]Campaignprogress, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/progress"
+	defaultReturn := make([]Campaignprogress, 0)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// true
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PostOutboundMessagingcampaignsProgress")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload []Campaignprogress
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // PostOutboundRulesets invokes POST /api/v2/outbound/rulesets
 //
 // Create a Dialer Call Analysis Response Set.
@@ -7246,6 +8212,83 @@ func (a OutboundApi) PutOutboundDnclist(dncListId string, body Dnclist) (*Dnclis
 	postBody = &body
 
 	var successPayload *Dnclist
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PutOutboundMessagingcampaign invokes PUT /api/v2/outbound/messagingcampaigns/{messagingCampaignId}
+//
+// Update an Outbound Messaging Campaign
+//
+// 
+func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, body Messagingcampaign) (*Messagingcampaign, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Messagingcampaign)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->PutOutboundMessagingcampaign")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundMessagingcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingcampaign
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

@@ -2952,9 +2952,9 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 
 // PutExternalcontactsConversation invokes PUT /api/v2/externalcontacts/conversations/{conversationId}
 //
-// Associate an external contact with a conversation
+// Associate/disassociate an external contact with a conversation
 //
-// 
+// To associate, supply a value for the externalContactId.  To disassociate, do not include the property at all.
 func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId string, body Conversationassociation) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables

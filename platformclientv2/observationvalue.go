@@ -66,8 +66,16 @@ type Observationvalue struct {
 	Dnis *string `json:"dnis,omitempty"`
 
 
-	// TeamId - The team Id the user is a member of
+	// TeamId - The team id the user is a member of
 	TeamId *string `json:"teamId,omitempty"`
+
+
+	// RequestedRoutings - All routing types for requested/attempted routing methods
+	RequestedRoutings *[]string `json:"requestedRoutings,omitempty"`
+
+
+	// UsedRouting - Complete routing method
+	UsedRouting *string `json:"usedRouting,omitempty"`
 
 
 	// ScoredAgents

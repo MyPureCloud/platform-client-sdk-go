@@ -32,7 +32,7 @@ func NewSCIMApiWithConfig(config *Configuration) *SCIMApi {
 
 // DeleteScimGroup invokes DELETE /api/v2/scim/groups/{groupId}
 //
-// Delete a group.
+// Delete a group
 //
 // 
 func (a SCIMApi) DeleteScimGroup(groupId string, ifMatch string) (*APIResponse, error) {
@@ -177,7 +177,7 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 
 // DeleteScimV2Group invokes DELETE /api/v2/scim/v2/groups/{groupId}
 //
-// Delete a group.
+// Delete a group
 //
 // 
 func (a SCIMApi) DeleteScimV2Group(groupId string, ifMatch string) (*APIResponse, error) {
@@ -664,7 +664,7 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 
 // GetScimSchema invokes GET /api/v2/scim/schemas/{schemaId}
 //
-// Get the SCIM schema by id
+// Get a SCIM schema
 //
 // 
 func (a SCIMApi) GetScimSchema(schemaId string) (*Scimconfigresourcetype, *APIResponse, error) {
@@ -734,7 +734,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimconfigresourcetype, *APIRe
 
 // GetScimSchemas invokes GET /api/v2/scim/schemas
 //
-// Get the SCIM schemas
+// Get a list of SCIM schemas
 //
 // 
 func (a SCIMApi) GetScimSchemas(filter string) (*Scimconfigresourcetypeslistresponse, *APIResponse, error) {
@@ -976,7 +976,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 //
 // Get a list of users
 //
-// To return all active users, do not use a filter parameter. To return inactive users, set \&quot;filter\&quot; to \&quot;active eq false\&quot;. By default, returns SCIM attributes externalId, enterprise-user:manager, and roles. To exclude these attributes, set \&quot;attributes\&quot; to \&quot;id,active\&quot; or \&quot;excludeAttributes\&quot; to \&quot;externalId,roles,urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division\&quot;.
+// To return all active users, do not use the filter parameter. To return inactive users, set the filter parameter to \&quot;active eq false\&quot;. By default, returns SCIM attributes \&quot;externalId\&quot;, \&quot;enterprise-user:manager\&quot;, and \&quot;roles\&quot;. To exclude these attributes, set the attributes parameter to \&quot;id,active\&quot; or the excludeAttributes parameter to \&quot;externalId,roles,urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division\&quot;.
 func (a SCIMApi) GetScimUsers(startIndex int32, count int32, attributes []string, excludedAttributes []string, filter string) (*Scimuserlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -1429,7 +1429,7 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 
 // GetScimV2Schema invokes GET /api/v2/scim/v2/schemas/{schemaId}
 //
-// Get the SCIM schema by id
+// Get a SCIM schema
 //
 // 
 func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *APIResponse, error) {
@@ -1499,7 +1499,7 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 
 // GetScimV2Schemas invokes GET /api/v2/scim/v2/schemas
 //
-// Get the SCIM schemas
+// Get a list of SCIM schemas
 //
 // 
 func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *APIResponse, error) {
@@ -1741,7 +1741,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 //
 // Get a list of users
 //
-// To return all active users, do not use a filter parameter. To return inactive users, set \&quot;filter\&quot; to \&quot;active eq false\&quot;. By default, returns SCIM attributes externalId, enterprise-user:manager, and roles. To exclude these attributes, set \&quot;attributes\&quot; to \&quot;id,active\&quot; or \&quot;excludeAttributes\&quot; to \&quot;externalId,roles,urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division\&quot;.
+// To return all active users, do not use the filter parameter. To return inactive users, set the filter parameter to \&quot;active eq false\&quot;. By default, returns SCIM attributes \&quot;externalId\&quot;, \&quot;enterprise-user:manager\&quot;, and \&quot;roles\&quot;. To exclude these attributes, set the attributes parameter to \&quot;id,active\&quot; or the excludeAttributes parameter to \&quot;externalId,roles,urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division\&quot;.
 func (a SCIMApi) GetScimV2Users(startIndex int32, count int32, attributes []string, excludedAttributes []string, filter string) (*Scimuserlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2175,9 +2175,9 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 
 // PostScimGroups invokes POST /api/v2/scim/groups
 //
-// The information used to create a group.
+// Creates a group
 //
-// PureCloud group will be created as \&quot;Official\&quot; group with visibility set \&quot;Public\&quot;, and rules visibility True. Will auto-create an external ID if one is not provided on create. External ID is used to determine if delete should be allowed.
+// Creates a Genesys Cloud group with group visibility set to \&quot;public\&quot; and rules visibility set to \&quot;true\&quot;. Auto-creates an \&quot;externalId\&quot;. \&quot;externalId\&quot; is used to determine if DELETE /api/v2/scim/groups/{groupId} or DELETE /api/v2/scim/v2/groups/{groupId} should be allowed.
 func (a SCIMApi) PostScimGroups(body Scimv2group) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2319,9 +2319,9 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 
 // PostScimV2Groups invokes POST /api/v2/scim/v2/groups
 //
-// The information used to create a group.
+// Create a group
 //
-// PureCloud group will be created as \&quot;Official\&quot; group with visibility set \&quot;Public\&quot;, and rules visibility True. Will auto-create an external ID if one is not provided on create. External ID is used to determine if delete should be allowed.
+// Creates an \&quot;official\&quot; Genesys Cloud group with group visibility set to \&quot;public\&quot; and rules visibility set to \&quot;true\&quot;. Auto-creates an \&quot;externalId\&quot;. \&quot;externalId\&quot; is used to determine if DELETE /api/v2/scim/groups/{groupId} or DELETE /api/v2/scim/v2/groups/{groupId} should be allowed.
 func (a SCIMApi) PostScimV2Groups(body Scimv2group) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

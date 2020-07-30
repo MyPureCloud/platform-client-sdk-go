@@ -3,7 +3,7 @@ import (
 	"encoding/json"
 )
 
-// Scimv2schemalistresponse - SCIM Resource Types list response
+// Scimv2schemalistresponse - Defines the list response for SCIM resource types.
 type Scimv2schemalistresponse struct { 
 	// TotalResults - The total number of results.
 	TotalResults *int64 `json:"totalResults,omitempty"`
@@ -17,7 +17,7 @@ type Scimv2schemalistresponse struct {
 	ItemsPerPage *int64 `json:"itemsPerPage,omitempty"`
 
 
-	// Resources - Resources
+	// Resources - The list of requested resources.
 	Resources *[]Scimv2schemadefinition `json:"Resources,omitempty"`
 
 

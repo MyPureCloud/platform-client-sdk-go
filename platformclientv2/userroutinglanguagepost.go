@@ -13,7 +13,7 @@ type Userroutinglanguagepost struct {
 	Proficiency *float64 `json:"proficiency,omitempty"`
 
 
-	// LanguageUri - URI to the organization language used by this user langauge.
+	// LanguageUri - URI to the organization language used by this user language.
 	LanguageUri *string `json:"languageUri,omitempty"`
 
 

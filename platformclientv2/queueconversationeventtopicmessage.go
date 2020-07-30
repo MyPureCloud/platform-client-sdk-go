@@ -18,6 +18,10 @@ type Queueconversationeventtopicmessage struct {
 	Held *bool `json:"held,omitempty"`
 
 
+	// ErrorInfo
+	ErrorInfo *Queueconversationeventtopicerrordetails `json:"errorInfo,omitempty"`
+
+
 	// Provider
 	Provider *string `json:"provider,omitempty"`
 

@@ -35,19 +35,20 @@ func NewCoachingApiWithConfig(config *Configuration) *CoachingApi {
 // Delete an existing appointment
 //
 // Permission not required if you are the creator of the appointment
-func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*APIResponse, error) {
+func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*Coachingappointmentreference, *APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}"
 	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
+	defaultReturn := new(Coachingappointmentreference)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'appointmentId' is set
 	if &appointmentId == nil {
 		// 
-		return nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->DeleteCoachingAppointment")
+		return defaultReturn, nil, errors.New("Missing required parameter 'appointmentId' when calling CoachingApi->DeleteCoachingAppointment")
 	}
 
 	headerParams := make(map[string]string)
@@ -86,14 +87,16 @@ func (a CoachingApi) DeleteCoachingAppointment(appointmentId string) (*APIRespon
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-
+	var successPayload *Coachingappointmentreference
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // DeleteCoachingAppointmentAnnotation invokes DELETE /api/v2/coaching/appointments/{appointmentId}/annotations/{annotationId}

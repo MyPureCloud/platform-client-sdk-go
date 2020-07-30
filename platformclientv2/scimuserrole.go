@@ -5,7 +5,7 @@ import (
 
 // Scimuserrole - Defines a user role.
 type Scimuserrole struct { 
-	// Value - Purecloud user role name
+	// Value - The role of the Genesys Cloud user.
 	Value *string `json:"value,omitempty"`
 
 }
