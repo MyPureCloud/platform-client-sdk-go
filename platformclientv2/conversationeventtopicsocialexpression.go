@@ -70,6 +70,10 @@ type Conversationeventtopicsocialexpression struct {
 	Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
 
 
+	// AfterCallWork
+	AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

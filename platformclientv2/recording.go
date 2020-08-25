@@ -114,6 +114,10 @@ type Recording struct {
 	Users *[]User `json:"users,omitempty"`
 
 
+	// RecordingFileRole - Role of the file recording. It can be either customer_experience or adhoc.
+	RecordingFileRole *string `json:"recordingFileRole,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

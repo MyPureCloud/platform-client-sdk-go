@@ -284,14 +284,26 @@ func (a LocationsApi) GetLocations(pageSize int32, pageNumber int32, id []string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -308,8 +320,14 @@ func (a LocationsApi) GetLocations(pageSize int32, pageNumber int32, id []string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -384,8 +402,14 @@ func (a LocationsApi) GetLocationsSearch(q64 string, expand []string) (*Location
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	

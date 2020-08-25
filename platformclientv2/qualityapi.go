@@ -78,8 +78,14 @@ func (a QualityApi) DeleteQualityCalibration(calibrationId string, calibratorId 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(calibratorId).(string); ok {
+		if str != "" {
+			queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, collectionFormat)
+		}
+	} else {
 		queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, collectionFormat)
+	}
 	
 	
 
@@ -161,8 +167,14 @@ func (a QualityApi) DeleteQualityConversationEvaluation(conversationId string, e
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -500,8 +512,14 @@ func (a QualityApi) DeleteQualityKeywordsets(ids string) (*APIResponse, error) {
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(ids).(string); ok {
+		if str != "" {
+			queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+		}
+	} else {
 		queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+	}
 	
 	
 
@@ -569,20 +587,38 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int32, pageNumber int32, s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -599,26 +635,50 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int32, pageNumber int32, s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startTime).(string); ok {
+		if str != "" {
+			queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+		}
+	} else {
 		queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(endTime).(string); ok {
+		if str != "" {
+			queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+		}
+	} else {
 		queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+	}
 	
 	
 	
@@ -635,20 +695,38 @@ func (a QualityApi) GetQualityAgentsActivity(pageSize int32, pageNumber int32, s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(evaluatorUserId).(string); ok {
+		if str != "" {
+			queryParams["evaluatorUserId"] = a.Configuration.APIClient.ParameterToString(evaluatorUserId, collectionFormat)
+		}
+	} else {
 		queryParams["evaluatorUserId"] = a.Configuration.APIClient.ParameterToString(evaluatorUserId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(group).(string); ok {
+		if str != "" {
+			queryParams["group"] = a.Configuration.APIClient.ParameterToString(group, collectionFormat)
+		}
+	} else {
 		queryParams["group"] = a.Configuration.APIClient.ParameterToString(group, collectionFormat)
+	}
 	
 	
 
@@ -724,14 +802,26 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(calibratorId).(string); ok {
+		if str != "" {
+			queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, collectionFormat)
+		}
+	} else {
 		queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(conversationId).(string); ok {
+		if str != "" {
+			queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
+		}
+	} else {
 		queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
+	}
 	
 	
 
@@ -806,20 +896,38 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -836,38 +944,74 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(conversationId).(string); ok {
+		if str != "" {
+			queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
+		}
+	} else {
 		queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startTime).(string); ok {
+		if str != "" {
+			queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+		}
+	} else {
 		queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(endTime).(string); ok {
+		if str != "" {
+			queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+		}
+	} else {
 		queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(calibratorId).(string); ok {
+		if str != "" {
+			queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, collectionFormat)
+		}
+	} else {
 		queryParams["calibratorId"] = a.Configuration.APIClient.ParameterToString(calibratorId, collectionFormat)
+	}
 	
 	
 
@@ -943,20 +1087,38 @@ func (a QualityApi) GetQualityConversationAudits(conversationId string, pageSize
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -973,26 +1135,50 @@ func (a QualityApi) GetQualityConversationAudits(conversationId string, pageSize
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(recordingId).(string); ok {
+		if str != "" {
+			queryParams["recordingId"] = a.Configuration.APIClient.ParameterToString(recordingId, collectionFormat)
+		}
+	} else {
 		queryParams["recordingId"] = a.Configuration.APIClient.ParameterToString(recordingId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(entityType).(string); ok {
+		if str != "" {
+			queryParams["entityType"] = a.Configuration.APIClient.ParameterToString(entityType, collectionFormat)
+		}
+	} else {
 		queryParams["entityType"] = a.Configuration.APIClient.ParameterToString(entityType, collectionFormat)
+	}
 	
 	
 
@@ -1074,8 +1260,14 @@ func (a QualityApi) GetQualityConversationEvaluation(conversationId string, eval
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -1214,20 +1406,38 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int32, pageNumber int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -1244,50 +1454,98 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int32, pageNumber int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(conversationId).(string); ok {
+		if str != "" {
+			queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
+		}
+	} else {
 		queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(agentUserId).(string); ok {
+		if str != "" {
+			queryParams["agentUserId"] = a.Configuration.APIClient.ParameterToString(agentUserId, collectionFormat)
+		}
+	} else {
 		queryParams["agentUserId"] = a.Configuration.APIClient.ParameterToString(agentUserId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(evaluatorUserId).(string); ok {
+		if str != "" {
+			queryParams["evaluatorUserId"] = a.Configuration.APIClient.ParameterToString(evaluatorUserId, collectionFormat)
+		}
+	} else {
 		queryParams["evaluatorUserId"] = a.Configuration.APIClient.ParameterToString(evaluatorUserId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(queueId).(string); ok {
+		if str != "" {
+			queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, collectionFormat)
+		}
+	} else {
 		queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startTime).(string); ok {
+		if str != "" {
+			queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+		}
+	} else {
 		queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(endTime).(string); ok {
+		if str != "" {
+			queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+		}
+	} else {
 		queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+	}
 	
 	
 	
@@ -1304,32 +1562,62 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int32, pageNumber int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(isReleased).(string); ok {
+		if str != "" {
+			queryParams["isReleased"] = a.Configuration.APIClient.ParameterToString(isReleased, collectionFormat)
+		}
+	} else {
 		queryParams["isReleased"] = a.Configuration.APIClient.ParameterToString(isReleased, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(agentHasRead).(string); ok {
+		if str != "" {
+			queryParams["agentHasRead"] = a.Configuration.APIClient.ParameterToString(agentHasRead, collectionFormat)
+		}
+	} else {
 		queryParams["agentHasRead"] = a.Configuration.APIClient.ParameterToString(agentHasRead, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expandAnswerTotalScores).(string); ok {
+		if str != "" {
+			queryParams["expandAnswerTotalScores"] = a.Configuration.APIClient.ParameterToString(expandAnswerTotalScores, collectionFormat)
+		}
+	} else {
 		queryParams["expandAnswerTotalScores"] = a.Configuration.APIClient.ParameterToString(expandAnswerTotalScores, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(maximum).(string); ok {
+		if str != "" {
+			queryParams["maximum"] = a.Configuration.APIClient.ParameterToString(maximum, collectionFormat)
+		}
+	} else {
 		queryParams["maximum"] = a.Configuration.APIClient.ParameterToString(maximum, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -1399,20 +1687,38 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int32, pageNumber int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -1429,32 +1735,62 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int32, pageNumber int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startTime).(string); ok {
+		if str != "" {
+			queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+		}
+	} else {
 		queryParams["startTime"] = a.Configuration.APIClient.ParameterToString(startTime, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(endTime).(string); ok {
+		if str != "" {
+			queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+		}
+	} else {
 		queryParams["endTime"] = a.Configuration.APIClient.ParameterToString(endTime, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -1471,8 +1807,14 @@ func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int32, pageNumber int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(group).(string); ok {
+		if str != "" {
+			queryParams["group"] = a.Configuration.APIClient.ParameterToString(group, collectionFormat)
+		}
+	} else {
 		queryParams["group"] = a.Configuration.APIClient.ParameterToString(group, collectionFormat)
+	}
 	
 	
 
@@ -1617,14 +1959,26 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int32, pageNu
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -1694,50 +2048,98 @@ func (a QualityApi) GetQualityForms(pageSize int32, pageNumber int32, sortBy str
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -1882,14 +2284,26 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -1959,50 +2373,98 @@ func (a QualityApi) GetQualityFormsEvaluations(pageSize int32, pageNumber int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2147,14 +2609,26 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -2224,50 +2698,98 @@ func (a QualityApi) GetQualityFormsSurveys(pageSize int32, pageNumber int32, sor
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2436,8 +2958,14 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(published).(string); ok {
+		if str != "" {
+			queryParams["published"] = a.Configuration.APIClient.ParameterToString(published, collectionFormat)
+		}
+	} else {
 		queryParams["published"] = a.Configuration.APIClient.ParameterToString(published, collectionFormat)
+	}
 	
 	
 
@@ -2576,20 +3104,38 @@ func (a QualityApi) GetQualityKeywordsets(pageSize int32, pageNumber int32, sort
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -2606,38 +3152,74 @@ func (a QualityApi) GetQualityKeywordsets(pageSize int32, pageNumber int32, sort
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(queueId).(string); ok {
+		if str != "" {
+			queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, collectionFormat)
+		}
+	} else {
 		queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(agentId).(string); ok {
+		if str != "" {
+			queryParams["agentId"] = a.Configuration.APIClient.ParameterToString(agentId, collectionFormat)
+		}
+	} else {
 		queryParams["agentId"] = a.Configuration.APIClient.ParameterToString(agentId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(operator).(string); ok {
+		if str != "" {
+			queryParams["operator"] = a.Configuration.APIClient.ParameterToString(operator, collectionFormat)
+		}
+	} else {
 		queryParams["operator"] = a.Configuration.APIClient.ParameterToString(operator, collectionFormat)
+	}
 	
 	
 
@@ -2776,26 +3358,50 @@ func (a QualityApi) GetQualityPublishedforms(pageSize int32, pageNumber int32, n
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(onlyLatestPerContext).(string); ok {
+		if str != "" {
+			queryParams["onlyLatestPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestPerContext, collectionFormat)
+		}
+	} else {
 		queryParams["onlyLatestPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestPerContext, collectionFormat)
+	}
 	
 	
 
@@ -2934,26 +3540,50 @@ func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int32, pageNumb
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(onlyLatestPerContext).(string); ok {
+		if str != "" {
+			queryParams["onlyLatestPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestPerContext, collectionFormat)
+		}
+	} else {
 		queryParams["onlyLatestPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestPerContext, collectionFormat)
+	}
 	
 	
 
@@ -3092,26 +3722,50 @@ func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int32, pageNumber i
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(onlyLatestEnabledPerContext).(string); ok {
+		if str != "" {
+			queryParams["onlyLatestEnabledPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestEnabledPerContext, collectionFormat)
+		}
+	} else {
 		queryParams["onlyLatestEnabledPerContext"] = a.Configuration.APIClient.ParameterToString(onlyLatestEnabledPerContext, collectionFormat)
+	}
 	
 	
 
@@ -3250,8 +3904,14 @@ func (a QualityApi) GetQualitySurveysScorable(customerSurveyUrl string) (*Scorab
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(customerSurveyUrl).(string); ok {
+		if str != "" {
+			queryParams["customerSurveyUrl"] = a.Configuration.APIClient.ParameterToString(customerSurveyUrl, collectionFormat)
+		}
+	} else {
 		queryParams["customerSurveyUrl"] = a.Configuration.APIClient.ParameterToString(customerSurveyUrl, collectionFormat)
+	}
 	
 	
 
@@ -3545,8 +4205,14 @@ func (a QualityApi) PostQualityCalibrations(body Calibrationcreate, expand strin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -3630,8 +4296,14 @@ func (a QualityApi) PostQualityConversationEvaluations(conversationId string, bo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -3993,8 +4665,14 @@ func (a QualityApi) PostQualityKeywordsets(body Keywordset, expand string) (*Key
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -4511,8 +5189,14 @@ func (a QualityApi) PutQualityConversationEvaluation(conversationId string, eval
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -4893,8 +5577,14 @@ func (a QualityApi) PutQualitySurveysScorable(body Scorablesurvey, customerSurve
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(customerSurveyUrl).(string); ok {
+		if str != "" {
+			queryParams["customerSurveyUrl"] = a.Configuration.APIClient.ParameterToString(customerSurveyUrl, collectionFormat)
+		}
+	} else {
 		queryParams["customerSurveyUrl"] = a.Configuration.APIClient.ParameterToString(customerSurveyUrl, collectionFormat)
+	}
 	
 	
 

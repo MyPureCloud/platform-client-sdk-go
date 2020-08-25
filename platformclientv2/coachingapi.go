@@ -357,14 +357,26 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -440,14 +452,26 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -534,20 +558,38 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(interval).(string); ok {
+		if str != "" {
+			queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
+		}
+	} else {
 		queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
@@ -576,8 +618,14 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -647,20 +695,38 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(interval).(string); ok {
+		if str != "" {
+			queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
+		}
+	} else {
 		queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
@@ -689,8 +755,14 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -729,7 +801,7 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32
 // Get an existing notification
 //
 // Permission not required if you are the owner of the notification.
-func (a CoachingApi) GetCoachingNotification(notificationId string) (*Coachingnotification, *APIResponse, error) {
+func (a CoachingApi) GetCoachingNotification(notificationId string, expand []string) (*Coachingnotification, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/notifications/{notificationId}"
@@ -761,6 +833,20 @@ func (a CoachingApi) GetCoachingNotification(notificationId string) (*Coachingno
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range expand {
+			queryParams["expand"] = value
+		}
+	} else {
+		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
+	
+	
 	
 
 	// to determine the Content-Type header
@@ -798,7 +884,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string) (*Coachingno
 // Retrieve the list of your notifications.
 //
 // 
-func (a CoachingApi) GetCoachingNotifications(pageNumber int32, pageSize int32) (*Coachingnotificationlist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingNotifications(pageNumber int32, pageSize int32, expand []string) (*Coachingnotificationlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/notifications"
@@ -829,14 +915,38 @@ func (a CoachingApi) GetCoachingNotifications(pageNumber int32, pageSize int32) 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range expand {
+			queryParams["expand"] = value
+		}
+	} else {
+		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
+	
 	
 	
 

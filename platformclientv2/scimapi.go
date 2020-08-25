@@ -456,14 +456,26 @@ func (a SCIMApi) GetScimGroups(startIndex int32, count int32, attributes []strin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startIndex).(string); ok {
+		if str != "" {
+			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+		}
+	} else {
 		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(count).(string); ok {
+		if str != "" {
+			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+		}
+	} else {
 		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+	}
 	
 	
 	
@@ -492,8 +504,14 @@ func (a SCIMApi) GetScimGroups(startIndex int32, count int32, attributes []strin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filter).(string); ok {
+		if str != "" {
+			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+		}
+	} else {
 		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+	}
 	
 	
 
@@ -667,12 +685,12 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 // Get a SCIM schema
 //
 // 
-func (a SCIMApi) GetScimSchema(schemaId string) (*Scimconfigresourcetype, *APIResponse, error) {
+func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/schemas/{schemaId}"
 	path = strings.Replace(path, "{schemaId}", fmt.Sprintf("%v", schemaId), -1)
-	defaultReturn := new(Scimconfigresourcetype)
+	defaultReturn := new(Scimv2schemadefinition)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -720,7 +738,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimconfigresourcetype, *APIRe
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Scimconfigresourcetype
+	var successPayload *Scimv2schemadefinition
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -737,11 +755,11 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimconfigresourcetype, *APIRe
 // Get a list of SCIM schemas
 //
 // 
-func (a SCIMApi) GetScimSchemas(filter string) (*Scimconfigresourcetypeslistresponse, *APIResponse, error) {
+func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/schemas"
-	defaultReturn := new(Scimconfigresourcetypeslistresponse)
+	defaultReturn := new(Scimv2schemalistresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -768,8 +786,14 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimconfigresourcetypeslistresp
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filter).(string); ok {
+		if str != "" {
+			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+		}
+	} else {
 		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+	}
 	
 	
 
@@ -792,7 +816,7 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimconfigresourcetypeslistresp
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Scimconfigresourcetypeslistresponse
+	var successPayload *Scimv2schemalistresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -1008,14 +1032,26 @@ func (a SCIMApi) GetScimUsers(startIndex int32, count int32, attributes []string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startIndex).(string); ok {
+		if str != "" {
+			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+		}
+	} else {
 		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(count).(string); ok {
+		if str != "" {
+			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+		}
+	} else {
 		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+	}
 	
 	
 	
@@ -1044,8 +1080,14 @@ func (a SCIMApi) GetScimUsers(startIndex int32, count int32, attributes []string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filter).(string); ok {
+		if str != "" {
+			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+		}
+	} else {
 		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+	}
 	
 	
 
@@ -1221,14 +1263,26 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int32, count int32, a
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startIndex).(string); ok {
+		if str != "" {
+			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+		}
+	} else {
 		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(count).(string); ok {
+		if str != "" {
+			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+		}
+	} else {
 		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+	}
 	
 	
 	
@@ -1257,8 +1311,14 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int32, count int32, a
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filter).(string); ok {
+		if str != "" {
+			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+		}
+	} else {
 		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+	}
 	
 	
 
@@ -1533,8 +1593,14 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filter).(string); ok {
+		if str != "" {
+			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+		}
+	} else {
 		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+	}
 	
 	
 
@@ -1773,14 +1839,26 @@ func (a SCIMApi) GetScimV2Users(startIndex int32, count int32, attributes []stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startIndex).(string); ok {
+		if str != "" {
+			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+		}
+	} else {
 		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(count).(string); ok {
+		if str != "" {
+			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+		}
+	} else {
 		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
+	}
 	
 	
 	
@@ -1809,8 +1887,14 @@ func (a SCIMApi) GetScimV2Users(startIndex int32, count int32, attributes []stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filter).(string); ok {
+		if str != "" {
+			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+		}
+	} else {
 		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
+	}
 	
 	
 

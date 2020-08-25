@@ -57,6 +57,10 @@ type Screenshare struct {
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Wrapup `json:"wrapup,omitempty"`
 
+
+	// AfterCallWork - After-call work for the communication.
+	AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

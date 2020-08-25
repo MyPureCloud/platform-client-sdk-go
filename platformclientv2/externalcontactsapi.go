@@ -733,20 +733,38 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -828,26 +846,50 @@ func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int32, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q).(string); ok {
+		if str != "" {
+			queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
+		}
+	} else {
 		queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -1211,14 +1253,26 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeTrustors).(string); ok {
+		if str != "" {
+			queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
+		}
+	} else {
 		queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
+	}
 	
 	
 
@@ -1294,26 +1348,50 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q).(string); ok {
+		if str != "" {
+			queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
+		}
+	} else {
 		queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -1490,20 +1568,38 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -1591,26 +1687,50 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -1680,20 +1800,38 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int32, pa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q).(string); ok {
+		if str != "" {
+			queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
+		}
+	} else {
 		queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
+	}
 	
 	
 	
@@ -1710,8 +1848,14 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int32, pa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -1728,8 +1872,14 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int32, pa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeTrustors).(string); ok {
+		if str != "" {
+			queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
+		}
+	} else {
 		queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
+	}
 	
 	
 
@@ -2081,8 +2231,14 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -2157,8 +2313,14 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(lookupVal).(string); ok {
+		if str != "" {
+			queryParams["lookupVal"] = a.Configuration.APIClient.ParameterToString(lookupVal, collectionFormat)
+		}
+	} else {
 		queryParams["lookupVal"] = a.Configuration.APIClient.ParameterToString(lookupVal, collectionFormat)
+	}
 	
 	
 	
@@ -2193,6 +2355,362 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Reversewhitepageslookupresult
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanContacts invokes GET /api/v2/externalcontacts/scan/contacts
+//
+// Scan for external contacts using paging
+//
+// 
+func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int32, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/contacts"
+	defaultReturn := new(Cursorcontactlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
+		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
+		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursorcontactlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanNotes invokes GET /api/v2/externalcontacts/scan/notes
+//
+// Scan for notes using paging
+//
+// 
+func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int32, cursor string) (*Cursornotelisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/notes"
+	defaultReturn := new(Cursornotelisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
+		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
+		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursornotelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanOrganizations invokes GET /api/v2/externalcontacts/scan/organizations
+//
+// Scan for external organizations using paging
+//
+// 
+func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int32, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/organizations"
+	defaultReturn := new(Cursororganizationlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
+		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
+		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursororganizationlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetExternalcontactsScanRelationships invokes GET /api/v2/externalcontacts/scan/relationships
+//
+// Scan for relationships
+//
+// 
+func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int32, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/relationships"
+	defaultReturn := new(Cursorrelationshiplisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
+		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
+		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Cursorrelationshiplisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -2955,7 +3473,7 @@ func (a ExternalContactsApi) PutExternalcontactsContactsSchema(schemaId string, 
 // Associate/disassociate an external contact with a conversation
 //
 // To associate, supply a value for the externalContactId.  To disassociate, do not include the property at all.
-func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId string, body Conversationassociation) (*APIResponse, error) {
+func (a ExternalContactsApi) PutExternalcontactsConversation(body Conversationassociation, conversationId string) (*APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/conversations/{conversationId}"
@@ -2964,15 +3482,15 @@ func (a ExternalContactsApi) PutExternalcontactsConversation(conversationId stri
 		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'conversationId' is set
-	if &conversationId == nil {
-		// 
-		return nil, errors.New("Missing required parameter 'conversationId' when calling ExternalContactsApi->PutExternalcontactsConversation")
-	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// 
 		return nil, errors.New("Missing required parameter 'body' when calling ExternalContactsApi->PutExternalcontactsConversation")
+	}
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'conversationId' when calling ExternalContactsApi->PutExternalcontactsConversation")
 	}
 
 	headerParams := make(map[string]string)

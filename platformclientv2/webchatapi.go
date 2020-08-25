@@ -616,20 +616,38 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(excludeDisconnectedMembers).(string); ok {
+		if str != "" {
+			queryParams["excludeDisconnectedMembers"] = a.Configuration.APIClient.ParameterToString(excludeDisconnectedMembers, collectionFormat)
+		}
+	} else {
 		queryParams["excludeDisconnectedMembers"] = a.Configuration.APIClient.ParameterToString(excludeDisconnectedMembers, collectionFormat)
+	}
 	
 	
 
@@ -778,26 +796,50 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
 		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(before).(string); ok {
+		if str != "" {
+			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+		}
+	} else {
 		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(maxResults).(string); ok {
+		if str != "" {
+			queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, collectionFormat)
+		}
+	} else {
 		queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, collectionFormat)
+	}
 	
 	
 

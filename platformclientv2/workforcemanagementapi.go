@@ -1479,8 +1479,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(date).(string); ok {
+		if str != "" {
+			queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, collectionFormat)
+		}
+	} else {
 		queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, collectionFormat)
+	}
 	
 	
 
@@ -1556,14 +1562,26 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(feature).(string); ok {
+		if str != "" {
+			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
+		}
+	} else {
 		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(divisionId).(string); ok {
+		if str != "" {
+			queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+		}
+	} else {
 		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+	}
 	
 	
 
@@ -2356,8 +2374,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownload).(string); ok {
+		if str != "" {
+			queryParams["forceDownload"] = a.Configuration.APIClient.ParameterToString(forceDownload, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownload"] = a.Configuration.APIClient.ParameterToString(forceDownload, collectionFormat)
+	}
 	
 	
 
@@ -2439,14 +2463,26 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeOnlyPublished).(string); ok {
+		if str != "" {
+			queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
+		}
+	} else {
 		queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -2629,14 +2665,26 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(weekNumber).(string); ok {
+		if str != "" {
+			queryParams["weekNumber"] = a.Configuration.APIClient.ParameterToString(weekNumber, collectionFormat)
+		}
+	} else {
 		queryParams["weekNumber"] = a.Configuration.APIClient.ParameterToString(weekNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownloadService).(string); ok {
+		if str != "" {
+			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+	}
 	
 	
 
@@ -2943,14 +2991,26 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunits(feature stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(feature).(string); ok {
+		if str != "" {
+			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
+		}
+	} else {
 		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(divisionId).(string); ok {
+		if str != "" {
+			queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+		}
+	} else {
 		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+	}
 	
 	
 
@@ -3330,8 +3390,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownloadService).(string); ok {
+		if str != "" {
+			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+	}
 	
 	
 
@@ -4262,8 +4328,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(recentlyReviewed).(string); ok {
+		if str != "" {
+			queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
+		}
+	} else {
 		queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
+	}
 	
 	
 
@@ -4420,14 +4492,26 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownloadService).(string); ok {
+		if str != "" {
+			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+	}
 	
 	
 
@@ -4587,20 +4671,38 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeOnlyPublished).(string); ok {
+		if str != "" {
+			queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
+		}
+	} else {
 		queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(earliestWeekDate).(string); ok {
+		if str != "" {
+			queryParams["earliestWeekDate"] = a.Configuration.APIClient.ParameterToString(earliestWeekDate, collectionFormat)
+		}
+	} else {
 		queryParams["earliestWeekDate"] = a.Configuration.APIClient.ParameterToString(earliestWeekDate, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(latestWeekDate).(string); ok {
+		if str != "" {
+			queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, collectionFormat)
+		}
+	} else {
 		queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, collectionFormat)
+	}
 	
 	
 
@@ -4682,8 +4784,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(evaluateMatches).(string); ok {
+		if str != "" {
+			queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, collectionFormat)
+		}
+	} else {
 		queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, collectionFormat)
+	}
 	
 	
 
@@ -5061,32 +5169,62 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunits(pageSize i
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(feature).(string); ok {
+		if str != "" {
+			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
+		}
+	} else {
 		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(divisionId).(string); ok {
+		if str != "" {
+			queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+		}
+	} else {
 		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
+	}
 	
 	
 
@@ -5497,8 +5635,14 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(recentlyReviewed).(string); ok {
+		if str != "" {
+			queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
+		}
+	} else {
 		queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
+	}
 	
 	
 
@@ -6920,14 +7064,26 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownloadService).(string); ok {
+		if str != "" {
+			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+	}
 	
 	
 
@@ -7006,8 +7162,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 
@@ -7247,14 +7409,26 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownloadService).(string); ok {
+		if str != "" {
+			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+	}
 	
 	
 
@@ -7694,8 +7868,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 
@@ -7785,8 +7965,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 
@@ -7997,14 +8183,26 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceDownloadService).(string); ok {
+		if str != "" {
+			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+		}
+	} else {
 		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
+	}
 	
 	
 
@@ -9282,8 +9480,14 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(forceAsync).(string); ok {
+		if str != "" {
+			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+		}
+	} else {
 		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
+	}
 	
 	
 

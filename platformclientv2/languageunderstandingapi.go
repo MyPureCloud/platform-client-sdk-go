@@ -352,44 +352,86 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(intentName).(string); ok {
+		if str != "" {
+			queryParams["intentName"] = a.Configuration.APIClient.ParameterToString(intentName, collectionFormat)
+		}
+	} else {
 		queryParams["intentName"] = a.Configuration.APIClient.ParameterToString(intentName, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(assessment).(string); ok {
+		if str != "" {
+			queryParams["assessment"] = a.Configuration.APIClient.ParameterToString(assessment, collectionFormat)
+		}
+	} else {
 		queryParams["assessment"] = a.Configuration.APIClient.ParameterToString(assessment, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(dateStart).(string); ok {
+		if str != "" {
+			queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, collectionFormat)
+		}
+	} else {
 		queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(dateEnd).(string); ok {
+		if str != "" {
+			queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, collectionFormat)
+		}
+	} else {
 		queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeDeleted).(string); ok {
+		if str != "" {
+			queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, collectionFormat)
+		}
+	} else {
 		queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
@@ -572,8 +614,14 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeUtterances).(string); ok {
+		if str != "" {
+			queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
+		}
+	} else {
 		queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
+	}
 	
 	
 
@@ -724,20 +772,38 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeUtterances).(string); ok {
+		if str != "" {
+			queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
+		}
+	} else {
 		queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -807,14 +873,26 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 

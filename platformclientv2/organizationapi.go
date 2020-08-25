@@ -71,8 +71,14 @@ func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIRespo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(varType).(string); ok {
+		if str != "" {
+			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+		}
+	} else {
 		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+	}
 	
 	
 

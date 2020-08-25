@@ -378,26 +378,50 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(before).(string); ok {
+		if str != "" {
+			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+		}
+	} else {
 		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
 		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
 		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -641,32 +665,62 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(before).(string); ok {
+		if str != "" {
+			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+		}
+	} else {
 		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
 		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
 		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(categories).(string); ok {
+		if str != "" {
+			queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, collectionFormat)
+		}
+	} else {
 		queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, collectionFormat)
+	}
 	
 	
 
@@ -829,26 +883,50 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(before).(string); ok {
+		if str != "" {
+			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+		}
+	} else {
 		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
 		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
 		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -918,26 +996,50 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(before).(string); ok {
+		if str != "" {
+			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+		}
+	} else {
 		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
 		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(limit).(string); ok {
+		if str != "" {
+			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+		}
+	} else {
 		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 

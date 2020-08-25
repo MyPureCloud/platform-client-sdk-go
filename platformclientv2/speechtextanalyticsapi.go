@@ -30,18 +30,18 @@ func NewSpeechTextAnalyticsApiWithConfig(config *Configuration) *SpeechTextAnaly
 	}
 }
 
-// GetConversationTranscriptproperty invokes GET /api/v2/conversations/{conversationId}/transcriptproperties/{communicationId}
+// GetSpeechandtextanalyticsConversationCommunicationTranscripturl invokes GET /api/v2/speechandtextanalytics/conversations/{conversationId}/communications/{communicationId}/transcripturl
 //
 // Get the pre-signed S3 URL for the transcript of a specific communication of a conversation
 //
 // 
-func (a SpeechTextAnalyticsApi) GetConversationTranscriptproperty(conversationId string, communicationId string) (*Transcriptproperty, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicationTranscripturl(conversationId string, communicationId string) (*Transcripturl, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/transcriptproperties/{communicationId}"
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/conversations/{conversationId}/communications/{communicationId}/transcripturl"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
 	path = strings.Replace(path, "{communicationId}", fmt.Sprintf("%v", communicationId), -1)
-	defaultReturn := new(Transcriptproperty)
+	defaultReturn := new(Transcripturl)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -49,12 +49,12 @@ func (a SpeechTextAnalyticsApi) GetConversationTranscriptproperty(conversationId
 	// verify the required parameter 'conversationId' is set
 	if &conversationId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling SpeechTextAnalyticsApi->GetConversationTranscriptproperty")
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsConversationCommunicationTranscripturl")
 	}
 	// verify the required parameter 'communicationId' is set
 	if &communicationId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling SpeechTextAnalyticsApi->GetConversationTranscriptproperty")
+		return defaultReturn, nil, errors.New("Missing required parameter 'communicationId' when calling SpeechTextAnalyticsApi->GetSpeechandtextanalyticsConversationCommunicationTranscripturl")
 	}
 
 	headerParams := make(map[string]string)
@@ -93,7 +93,7 @@ func (a SpeechTextAnalyticsApi) GetConversationTranscriptproperty(conversationId
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Transcriptproperty
+	var successPayload *Transcripturl
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

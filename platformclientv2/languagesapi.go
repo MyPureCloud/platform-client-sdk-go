@@ -267,26 +267,50 @@ func (a LanguagesApi) GetLanguages(pageSize int32, pageNumber int32, sortOrder s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 
@@ -424,8 +448,14 @@ func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[str
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(language).(string); ok {
+		if str != "" {
+			queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
+		}
+	} else {
 		queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
+	}
 	
 	
 
@@ -500,8 +530,14 @@ func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*ma
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(language).(string); ok {
+		if str != "" {
+			queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
+		}
+	} else {
 		queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
+	}
 	
 	
 

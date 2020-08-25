@@ -278,8 +278,14 @@ func (a NotificationsApi) GetNotificationsChannels(includechannels string) (*Cha
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includechannels).(string); ok {
+		if str != "" {
+			queryParams["includechannels"] = a.Configuration.APIClient.ParameterToString(includechannels, collectionFormat)
+		}
+	} else {
 		queryParams["includechannels"] = a.Configuration.APIClient.ParameterToString(includechannels, collectionFormat)
+	}
 	
 	
 

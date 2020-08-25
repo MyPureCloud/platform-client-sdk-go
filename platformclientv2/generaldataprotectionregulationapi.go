@@ -135,14 +135,26 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int32, page
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -222,14 +234,26 @@ func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(searchType).(string); ok {
+		if str != "" {
+			queryParams["searchType"] = a.Configuration.APIClient.ParameterToString(searchType, collectionFormat)
+		}
+	} else {
 		queryParams["searchType"] = a.Configuration.APIClient.ParameterToString(searchType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(searchValue).(string); ok {
+		if str != "" {
+			queryParams["searchValue"] = a.Configuration.APIClient.ParameterToString(searchValue, collectionFormat)
+		}
+	} else {
 		queryParams["searchValue"] = a.Configuration.APIClient.ParameterToString(searchValue, collectionFormat)
+	}
 	
 	
 
@@ -304,8 +328,14 @@ func (a GeneralDataProtectionRegulationApi) PostGdprRequests(body Gdprrequest, d
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleteConfirmed).(string); ok {
+		if str != "" {
+			queryParams["deleteConfirmed"] = a.Configuration.APIClient.ParameterToString(deleteConfirmed, collectionFormat)
+		}
+	} else {
 		queryParams["deleteConfirmed"] = a.Configuration.APIClient.ParameterToString(deleteConfirmed, collectionFormat)
+	}
 	
 	
 

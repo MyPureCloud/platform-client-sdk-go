@@ -204,14 +204,26 @@ func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, curso
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
 		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	

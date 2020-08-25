@@ -4,7 +4,13 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go/platformclientv2). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 17.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
+Latest version: 18.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
+
+## Golang Version Dependency
+
+:::danger
+Some macOS users encounter the error "argument list too long" when building or installing this package if their golang version is less than 1.15. Visit [Go Downloads](https://golang.org/dl/) and install _go1.15_ or newer if this error is thrown.
+:::
 
 ## Get SDK Package
 

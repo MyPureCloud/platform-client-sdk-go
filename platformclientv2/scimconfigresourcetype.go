@@ -33,7 +33,7 @@ type Scimconfigresourcetype struct {
 	Endpoint *string `json:"endpoint,omitempty"`
 
 
-	// Meta - The metadata of the SCIM resource.
+	// Meta - The metadata of the SCIM resource. Only location and resourceType are set for ResourceType resources.
 	Meta *Scimmetadata `json:"meta,omitempty"`
 
 }

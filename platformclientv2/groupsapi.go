@@ -143,8 +143,14 @@ func (a GroupsApi) DeleteGroupMembers(groupId string, ids string) (*Empty, *APIR
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(ids).(string); ok {
+		if str != "" {
+			queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+		}
+	} else {
 		queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+	}
 	
 	
 
@@ -219,8 +225,14 @@ func (a GroupsApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, e
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(varType).(string); ok {
+		if str != "" {
+			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+		}
+	} else {
 		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+	}
 	
 	
 
@@ -434,20 +446,38 @@ func (a GroupsApi) GetGroupMembers(groupId string, pageSize int32, pageNumber in
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -535,8 +565,14 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(fields).(string); ok {
+		if str != "" {
+			queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, collectionFormat)
+		}
+	} else {
 		queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, collectionFormat)
+	}
 	
 	
 
@@ -606,14 +642,26 @@ func (a GroupsApi) GetGroups(pageSize int32, pageNumber int32, id []string, jabb
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -642,8 +690,14 @@ func (a GroupsApi) GetGroups(pageSize int32, pageNumber int32, id []string, jabb
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -718,8 +772,14 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -801,14 +861,26 @@ func (a GroupsApi) GetProfilesGroups(pageSize int32, pageNumber int32, id []stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -825,8 +897,14 @@ func (a GroupsApi) GetProfilesGroups(pageSize int32, pageNumber int32, id []stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 

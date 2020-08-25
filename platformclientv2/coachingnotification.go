@@ -43,7 +43,7 @@ type Coachingnotification struct {
 
 
 	// Appointment - The appointment
-	Appointment *Coachingappointmentreference `json:"appointment,omitempty"`
+	Appointment *Coachingappointmentresponse `json:"appointment,omitempty"`
 
 
 	// SelfUri - The URI for this object

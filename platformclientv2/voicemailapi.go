@@ -267,14 +267,26 @@ func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -539,14 +551,26 @@ func (a VoicemailApi) GetVoicemailMeMessages(pageSize int32, pageNumber int32) (
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -768,8 +792,14 @@ func (a VoicemailApi) GetVoicemailMessageMedia(messageId string, formatId string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(formatId).(string); ok {
+		if str != "" {
+			queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+		}
+	} else {
 		queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+	}
 	
 	
 
@@ -839,8 +869,14 @@ func (a VoicemailApi) GetVoicemailMessages(ids string, expand []string) (*Voicem
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(ids).(string); ok {
+		if str != "" {
+			queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+		}
+	} else {
 		queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+	}
 	
 	
 	
@@ -991,14 +1027,26 @@ func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -1073,8 +1121,14 @@ func (a VoicemailApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemai
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	

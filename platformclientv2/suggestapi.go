@@ -71,8 +71,14 @@ func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonn
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -89,8 +95,14 @@ func (a SuggestApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonn
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 
@@ -165,8 +177,14 @@ func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -183,8 +201,14 @@ func (a SuggestApi) GetSearchSuggest(q64 string, expand []string, profile bool) 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 
@@ -259,8 +283,14 @@ func (a SuggestApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearc
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 
@@ -338,8 +368,14 @@ func (a SuggestApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 

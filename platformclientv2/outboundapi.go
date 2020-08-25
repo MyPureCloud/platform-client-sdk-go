@@ -1301,44 +1301,86 @@ func (a OutboundApi) GetOutboundAttemptlimits(pageSize int32, pageNumber int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -1477,44 +1519,86 @@ func (a OutboundApi) GetOutboundCallabletimesets(pageSize int32, pageNumber int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -1653,44 +1737,86 @@ func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int32, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2174,44 +2300,86 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int32, pageNumber int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2281,26 +2449,50 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int32, pageNumber int32, filt
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -2317,32 +2509,62 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int32, pageNumber int32, filt
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(contactListId).(string); ok {
+		if str != "" {
+			queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+		}
+	} else {
 		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(dncListIds).(string); ok {
+		if str != "" {
+			queryParams["dncListIds"] = a.Configuration.APIClient.ParameterToString(dncListIds, collectionFormat)
+		}
+	} else {
 		queryParams["dncListIds"] = a.Configuration.APIClient.ParameterToString(dncListIds, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(distributionQueueId).(string); ok {
+		if str != "" {
+			queryParams["distributionQueueId"] = a.Configuration.APIClient.ParameterToString(distributionQueueId, collectionFormat)
+		}
+	} else {
 		queryParams["distributionQueueId"] = a.Configuration.APIClient.ParameterToString(distributionQueueId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(edgeGroupId).(string); ok {
+		if str != "" {
+			queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, collectionFormat)
+		}
+	} else {
 		queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(callAnalysisResponseSetId).(string); ok {
+		if str != "" {
+			queryParams["callAnalysisResponseSetId"] = a.Configuration.APIClient.ParameterToString(callAnalysisResponseSetId, collectionFormat)
+		}
+	} else {
 		queryParams["callAnalysisResponseSetId"] = a.Configuration.APIClient.ParameterToString(callAnalysisResponseSetId, collectionFormat)
+	}
 	
 	
 	
@@ -2359,14 +2581,26 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int32, pageNumber int32, filt
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2436,14 +2670,26 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int32, pageNumber int32, i
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -2460,8 +2706,14 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int32, pageNumber int32, i
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -2490,8 +2742,14 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int32, pageNumber int32, i
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2561,14 +2819,26 @@ func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int32, pageNu
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -2585,8 +2855,14 @@ func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int32, pageNu
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -2615,8 +2891,14 @@ func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int32, pageNu
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2755,26 +3037,50 @@ func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int32, pageNumbe
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -2791,14 +3097,26 @@ func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int32, pageNumbe
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2874,14 +3192,26 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 
@@ -3032,8 +3362,14 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(download).(string); ok {
+		if str != "" {
+			queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+		}
+	} else {
 		queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+	}
 	
 	
 
@@ -3310,50 +3646,98 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber in
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(contactListId).(string); ok {
+		if str != "" {
+			queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+		}
+	} else {
 		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+	}
 	
 	
 
@@ -3423,44 +3807,86 @@ func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSi
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -3489,14 +3915,26 @@ func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSi
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -3572,14 +4010,26 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 
@@ -3649,38 +4099,74 @@ func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -3697,14 +4183,26 @@ func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -3780,14 +4278,26 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 
@@ -3863,8 +4373,14 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(download).(string); ok {
+		if str != "" {
+			queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+		}
+	} else {
 		queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+	}
 	
 	
 
@@ -4003,50 +4519,98 @@ func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize b
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(dncSourceType).(string); ok {
+		if str != "" {
+			queryParams["dncSourceType"] = a.Configuration.APIClient.ParameterToString(dncSourceType, collectionFormat)
+		}
+	} else {
 		queryParams["dncSourceType"] = a.Configuration.APIClient.ParameterToString(dncSourceType, collectionFormat)
+	}
 	
 	
 	
@@ -4063,14 +4627,26 @@ func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize b
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -4146,14 +4722,26 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 
@@ -4223,38 +4811,74 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeImportStatus).(string); ok {
+		if str != "" {
+			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+		}
+	} else {
 		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSize).(string); ok {
+		if str != "" {
+			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+		}
+	} else {
 		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -4271,14 +4895,26 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -4417,44 +5053,86 @@ func (a OutboundApi) GetOutboundEvents(pageSize int32, pageNumber int32, filterT
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(category).(string); ok {
+		if str != "" {
+			queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, collectionFormat)
+		}
+	} else {
 		queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(level).(string); ok {
+		if str != "" {
+			queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, collectionFormat)
+		}
+	} else {
 		queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -4662,38 +5340,74 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int32, pageNumber in
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(contactListId).(string); ok {
+		if str != "" {
+			queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+		}
+	} else {
 		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
+	}
 	
 	
 	
@@ -4710,14 +5424,26 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int32, pageNumber in
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(varType).(string); ok {
+		if str != "" {
+			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+		}
+	} else {
 		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(senderSmsPhoneNumber).(string); ok {
+		if str != "" {
+			queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
+		}
+	} else {
 		queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
+	}
 	
 	
 	
@@ -4868,26 +5594,50 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -4904,8 +5654,14 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(senderSmsPhoneNumber).(string); ok {
+		if str != "" {
+			queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
+		}
+	} else {
 		queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
+	}
 	
 	
 
@@ -5044,44 +5800,86 @@ func (a OutboundApi) GetOutboundRulesets(pageSize int32, pageNumber int32, allow
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -5484,44 +6282,86 @@ func (a OutboundApi) GetOutboundSequences(pageSize int32, pageNumber int32, allo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allowEmptyResult).(string); ok {
+		if str != "" {
+			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+		}
+	} else {
 		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(filterType).(string); ok {
+		if str != "" {
+			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+		}
+	} else {
 		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -5861,32 +6701,62 @@ func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(facetsOnly).(string); ok {
+		if str != "" {
+			queryParams["facetsOnly"] = a.Configuration.APIClient.ParameterToString(facetsOnly, collectionFormat)
+		}
+	} else {
 		queryParams["facetsOnly"] = a.Configuration.APIClient.ParameterToString(facetsOnly, collectionFormat)
+	}
 	
 	
 
@@ -6468,20 +7338,38 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(priority).(string); ok {
+		if str != "" {
+			queryParams["priority"] = a.Configuration.APIClient.ParameterToString(priority, collectionFormat)
+		}
+	} else {
 		queryParams["priority"] = a.Configuration.APIClient.ParameterToString(priority, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(clearSystemData).(string); ok {
+		if str != "" {
+			queryParams["clearSystemData"] = a.Configuration.APIClient.ParameterToString(clearSystemData, collectionFormat)
+		}
+	} else {
 		queryParams["clearSystemData"] = a.Configuration.APIClient.ParameterToString(clearSystemData, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(doNotQueue).(string); ok {
+		if str != "" {
+			queryParams["doNotQueue"] = a.Configuration.APIClient.ParameterToString(doNotQueue, collectionFormat)
+		}
+	} else {
 		queryParams["doNotQueue"] = a.Configuration.APIClient.ParameterToString(doNotQueue, collectionFormat)
+	}
 	
 	
 

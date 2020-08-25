@@ -90,6 +90,10 @@ type Queueconversationeventtopiccallback struct {
 	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
 
 
+	// AfterCallWork
+	AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

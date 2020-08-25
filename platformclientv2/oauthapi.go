@@ -414,8 +414,14 @@ func (a OAuthApi) GetOauthClientUsageSummary(clientId string, days string) (*Usa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(days).(string); ok {
+		if str != "" {
+			queryParams["days"] = a.Configuration.APIClient.ParameterToString(days, collectionFormat)
+		}
+	} else {
 		queryParams["days"] = a.Configuration.APIClient.ParameterToString(days, collectionFormat)
+	}
 	
 	
 

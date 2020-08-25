@@ -696,14 +696,26 @@ func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
 		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -778,14 +790,26 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(permission).(string); ok {
+		if str != "" {
+			queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+		}
+	} else {
 		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+	}
 	
 	
 
@@ -860,20 +884,38 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(permission).(string); ok {
+		if str != "" {
+			queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+		}
+	} else {
 		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -954,20 +996,38 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId str
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(permission).(string); ok {
+		if str != "" {
+			queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+		}
+	} else {
 		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -1174,8 +1234,14 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(varType).(string); ok {
+		if str != "" {
+			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+		}
+	} else {
 		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+	}
 	
 	
 
@@ -1214,7 +1280,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 // Get a user profile listing
 //
 // This api is deprecated. User /api/v2/users
-func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string, jid []string, sortOrder string, expand []string) (*Userprofileentitylisting, *APIResponse, error) {
+func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string, jid []string, sortOrder string, expand []string, integrationPresenceSource string) (*Userprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/profiles/users"
@@ -1245,14 +1311,26 @@ func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -1281,8 +1359,14 @@ func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -1295,6 +1379,18 @@ func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
 	}
 	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
 	
 	
 
@@ -1402,7 +1498,7 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Utilization, *APIRe
 // Get user.
 //
 // 
-func (a UsersApi) GetUser(userId string, expand []string, state string) (*User, *APIResponse, error) {
+func (a UsersApi) GetUser(userId string, expand []string, integrationPresenceSource string, state string) (*User, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}"
@@ -1451,8 +1547,26 @@ func (a UsersApi) GetUser(userId string, expand []string, state string) (*User, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(state).(string); ok {
+		if str != "" {
+			queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
+		}
+	} else {
 		queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
+	}
 	
 	
 
@@ -1763,20 +1877,38 @@ func (a UsersApi) GetUserFavorites(userId string, pageSize int32, pageNumber int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -1971,7 +2103,7 @@ func (a UsersApi) GetUserOutofoffice(userId string) (*Outofoffice, *APIResponse,
 // Get user profile
 //
 // This api has been deprecated. Use api/v2/users instead
-func (a UsersApi) GetUserProfile(userId string, expand []string) (*Userprofile, *APIResponse, error) {
+func (a UsersApi) GetUserProfile(userId string, expand []string, integrationPresenceSource string) (*Userprofile, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/profile"
@@ -2016,6 +2148,18 @@ func (a UsersApi) GetUserProfile(userId string, expand []string) (*Userprofile, 
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
 	}
 	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
 	
 	
 
@@ -2160,20 +2304,38 @@ func (a UsersApi) GetUserQueues(userId string, pageSize int32, pageNumber int32,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(joined).(string); ok {
+		if str != "" {
+			queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, collectionFormat)
+		}
+	} else {
 		queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, collectionFormat)
+	}
 	
 	
 	
@@ -2330,20 +2492,38 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int32, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2419,20 +2599,38 @@ func (a UsersApi) GetUserRoutingskills(userId string, pageSize int32, pageNumber
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2729,14 +2927,26 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int32, pageNumber int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -2775,7 +2985,7 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int32, pageNumber int3
 // Get the list of available users.
 //
 // 
-func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabberId []string, sortOrder string, expand []string, state string) (*Userentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabberId []string, sortOrder string, expand []string, integrationPresenceSource string, state string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users"
@@ -2806,14 +3016,26 @@ func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabber
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -2842,8 +3064,14 @@ func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabber
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -2860,8 +3088,26 @@ func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabber
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(state).(string); ok {
+		if str != "" {
+			queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
+		}
+	} else {
 		queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
+	}
 	
 	
 
@@ -2900,7 +3146,7 @@ func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabber
 // Get current user details.
 //
 // This request is not valid when using the Client Credentials OAuth grant.
-func (a UsersApi) GetUsersMe(expand []string) (*Userme, *APIResponse, error) {
+func (a UsersApi) GetUsersMe(expand []string, integrationPresenceSource string) (*Userme, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/me"
@@ -2941,6 +3187,18 @@ func (a UsersApi) GetUsersMe(expand []string) (*Userme, *APIResponse, error) {
 	
 	
 	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
+	
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -2977,7 +3235,7 @@ func (a UsersApi) GetUsersMe(expand []string) (*Userme, *APIResponse, error) {
 // Search users using the q64 value returned from a previous search
 //
 // 
-func (a UsersApi) GetUsersSearch(q64 string, expand []string) (*Userssearchresponse, *APIResponse, error) {
+func (a UsersApi) GetUsersSearch(q64 string, expand []string, integrationPresenceSource string) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/search"
@@ -3013,8 +3271,14 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string) (*Userssearchrespo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -3027,6 +3291,18 @@ func (a UsersApi) GetUsersSearch(q64 string, expand []string) (*Userssearchrespo
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
 	}
 	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
 	
 	
 
@@ -4109,8 +4385,14 @@ func (a UsersApi) PostAuthorizationSubjectBulkadd(subjectId string, body Rolediv
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(subjectType).(string); ok {
+		if str != "" {
+			queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
+		}
+	} else {
 		queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
+	}
 	
 	
 
@@ -4272,8 +4554,14 @@ func (a UsersApi) PostAuthorizationSubjectDivisionRole(subjectId string, divisio
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(subjectType).(string); ok {
+		if str != "" {
+			queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
+		}
+	} else {
 		queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
+	}
 	
 	
 
@@ -4346,8 +4634,14 @@ func (a UsersApi) PostUserInvite(userId string, force bool) (*APIResponse, error
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(force).(string); ok {
+		if str != "" {
+			queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
+		}
+	} else {
 		queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
+	}
 	
 	
 

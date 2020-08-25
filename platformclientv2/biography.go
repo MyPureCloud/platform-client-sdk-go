@@ -20,6 +20,10 @@ type Biography struct {
 	// Spouse
 	Spouse *string `json:"spouse,omitempty"`
 
+
+	// Education - User education details
+	Education *[]Education `json:"education,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

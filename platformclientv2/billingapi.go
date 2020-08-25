@@ -77,14 +77,26 @@ func (a BillingApi) GetBillingReportsBillableusage(startDate time.Time, endDate 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(startDate).(string); ok {
+		if str != "" {
+			queryParams["startDate"] = a.Configuration.APIClient.ParameterToString(startDate, collectionFormat)
+		}
+	} else {
 		queryParams["startDate"] = a.Configuration.APIClient.ParameterToString(startDate, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(endDate).(string); ok {
+		if str != "" {
+			queryParams["endDate"] = a.Configuration.APIClient.ParameterToString(endDate, collectionFormat)
+		}
+	} else {
 		queryParams["endDate"] = a.Configuration.APIClient.ParameterToString(endDate, collectionFormat)
+	}
 	
 	
 
@@ -160,8 +172,14 @@ func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId st
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(billingPeriodIndex).(string); ok {
+		if str != "" {
+			queryParams["billingPeriodIndex"] = a.Configuration.APIClient.ParameterToString(billingPeriodIndex, collectionFormat)
+		}
+	} else {
 		queryParams["billingPeriodIndex"] = a.Configuration.APIClient.ParameterToString(billingPeriodIndex, collectionFormat)
+	}
 	
 	
 

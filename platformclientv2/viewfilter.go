@@ -324,6 +324,14 @@ type Viewfilter struct {
 	// CallbackInterval - An interval of time to filter for scheduled callbacks. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
 	CallbackInterval *string `json:"callbackInterval,omitempty"`
 
+
+	// UsedRoutingTypes - A list of routing types used
+	UsedRoutingTypes *[]string `json:"usedRoutingTypes,omitempty"`
+
+
+	// RequestedRoutingTypes - A list of routing types requested
+	RequestedRoutingTypes *[]string `json:"requestedRoutingTypes,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

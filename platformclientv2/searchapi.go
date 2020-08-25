@@ -66,8 +66,14 @@ func (a SearchApi) GetDocumentationGknSearch(q64 string) (*Gkndocumentationsearc
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 
@@ -137,8 +143,14 @@ func (a SearchApi) GetDocumentationSearch(q64 string) (*Documentationsearchrespo
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 
@@ -213,8 +225,14 @@ func (a SearchApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -301,8 +319,14 @@ func (a SearchApi) GetLocationsSearch(q64 string, expand []string) (*Locationsse
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -389,8 +413,14 @@ func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonno
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -407,8 +437,14 @@ func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonno
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 
@@ -483,8 +519,14 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -501,8 +543,14 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 
@@ -541,7 +589,7 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 // Search users using the q64 value returned from a previous search
 //
 // 
-func (a SearchApi) GetUsersSearch(q64 string, expand []string) (*Userssearchresponse, *APIResponse, error) {
+func (a SearchApi) GetUsersSearch(q64 string, expand []string, integrationPresenceSource string) (*Userssearchresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/search"
@@ -577,8 +625,14 @@ func (a SearchApi) GetUsersSearch(q64 string, expand []string) (*Userssearchresp
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -591,6 +645,18 @@ func (a SearchApi) GetUsersSearch(q64 string, expand []string) (*Userssearchresp
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
 	}
 	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(integrationPresenceSource).(string); ok {
+		if str != "" {
+			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+		}
+	} else {
+		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
+	}
 	
 	
 
@@ -665,8 +731,14 @@ func (a SearchApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailss
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(q64).(string); ok {
+		if str != "" {
+			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+		}
+	} else {
 		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
+	}
 	
 	
 	
@@ -1099,8 +1171,14 @@ func (a SearchApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearch
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 
@@ -1178,8 +1256,14 @@ func (a SearchApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(profile).(string); ok {
+		if str != "" {
+			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+		}
+	} else {
 		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
+	}
 	
 	
 

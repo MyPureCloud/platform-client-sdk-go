@@ -914,14 +914,26 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId strin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(cursor).(string); ok {
+		if str != "" {
+			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+		}
+	} else {
 		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -1228,8 +1240,14 @@ func (a ConversationsApi) GetConversationParticipantWrapup(conversationId string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -1374,8 +1392,14 @@ func (a ConversationsApi) GetConversations(communicationType string) (*Conversat
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(communicationType).(string); ok {
+		if str != "" {
+			queryParams["communicationType"] = a.Configuration.APIClient.ParameterToString(communicationType, collectionFormat)
+		}
+	} else {
 		queryParams["communicationType"] = a.Configuration.APIClient.ParameterToString(communicationType, collectionFormat)
+	}
 	
 	
 
@@ -1526,8 +1550,14 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapup(conversationId s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -1753,8 +1783,14 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapup(conversation
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -2025,20 +2061,38 @@ func (a ConversationsApi) GetConversationsCallsHistory(pageSize int32, pageNumbe
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(interval).(string); ok {
+		if str != "" {
+			queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
+		}
+	} else {
 		queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
+	}
 	
 	
 	
@@ -2333,26 +2387,50 @@ func (a ConversationsApi) GetConversationsChatMessages(conversationId string, af
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
 		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(before).(string); ok {
+		if str != "" {
+			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+		}
+	} else {
 		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(maxResults).(string); ok {
+		if str != "" {
+			queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, collectionFormat)
+		}
+	} else {
 		queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, collectionFormat)
+	}
 	
 	
 
@@ -2434,8 +2512,14 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -2724,8 +2808,14 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conve
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -3227,8 +3317,14 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapup(conversationId 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -3673,8 +3769,14 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapup(conversationI
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(provisional).(string); ok {
+		if str != "" {
+			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+		}
+	} else {
 		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
+	}
 	
 	
 
@@ -3945,14 +4047,26 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -4022,14 +4136,26 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -4168,14 +4294,26 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -4314,14 +4452,26 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -4460,14 +4610,26 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -4612,14 +4774,26 @@ func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -6821,6 +6995,83 @@ func (a ConversationsApi) PatchConversationsMessageParticipantCommunication(conv
 	postBody = &body
 
 	var successPayload *Empty
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PatchConversationsMessagingIntegrationsFacebookIntegrationId invokes PATCH /api/v2/conversations/messaging/integrations/facebook/{integrationId}
+//
+// Update Facebook messaging integration
+//
+// 
+func (a ConversationsApi) PatchConversationsMessagingIntegrationsFacebookIntegrationId(integrationId string, body Facebookintegrationupdaterequest) (*Facebookintegration, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/facebook/{integrationId}"
+	path = strings.Replace(path, "{integrationId}", fmt.Sprintf("%v", integrationId), -1)
+	defaultReturn := new(Facebookintegration)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'integrationId' is set
+	if &integrationId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'integrationId' when calling ConversationsApi->PatchConversationsMessagingIntegrationsFacebookIntegrationId")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PatchConversationsMessagingIntegrationsFacebookIntegrationId")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Facebookintegration
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

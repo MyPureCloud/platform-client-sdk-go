@@ -24,6 +24,10 @@ type Contact struct {
 	// Extension - Use internal extension instead of address. Mutually exclusive with the address field.
 	Extension *string `json:"extension,omitempty"`
 
+
+	// CountryCode
+	CountryCode *string `json:"countryCode,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

@@ -36,6 +36,10 @@ type Oauthclientrequest struct {
 	// RoleDivisions - Set of roles and their corresponding divisions associated with this client. Roles and divisions only apply to clients using the client_credential grant
 	RoleDivisions *[]Roledivision `json:"roleDivisions,omitempty"`
 
+
+	// State - The state of the OAuth client. Active: The OAuth client can be used to create access tokens. This is the default state. Disabled: Access tokens created by the client are invalid and new ones cannot be created. Inactive: Access tokens cannot be created with this OAuth client and it will be deleted.
+	State *string `json:"state,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

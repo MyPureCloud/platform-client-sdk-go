@@ -36,6 +36,10 @@ type Phonecapabilities struct {
 	// MediaCodecs
 	MediaCodecs *[]string `json:"mediaCodecs,omitempty"`
 
+
+	// Cdm
+	Cdm *bool `json:"cdm,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

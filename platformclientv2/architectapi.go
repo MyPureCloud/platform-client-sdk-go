@@ -203,8 +203,14 @@ func (a ArchitectApi) DeleteArchitectPrompt(promptId string, allResources bool) 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(allResources).(string); ok {
+		if str != "" {
+			queryParams["allResources"] = a.Configuration.APIClient.ParameterToString(allResources, collectionFormat)
+		}
+	} else {
 		queryParams["allResources"] = a.Configuration.APIClient.ParameterToString(allResources, collectionFormat)
+	}
 	
 	
 
@@ -855,8 +861,14 @@ func (a ArchitectApi) DeleteFlowsDatatable(datatableId string, force bool) (*API
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(force).(string); ok {
+		if str != "" {
+			queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
+		}
+	} else {
 		queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
+	}
 	
 	
 
@@ -1001,20 +1013,38 @@ func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -1031,14 +1061,26 @@ func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumedResources).(string); ok {
+		if str != "" {
+			queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+		}
+	} else {
 		queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumingResources).(string); ok {
+		if str != "" {
+			queryParams["consumingResources"] = a.Configuration.APIClient.ParameterToString(consumingResources, collectionFormat)
+		}
+	} else {
 		queryParams["consumingResources"] = a.Configuration.APIClient.ParameterToString(consumingResources, collectionFormat)
+	}
 	
 	
 	
@@ -1210,20 +1252,38 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(id).(string); ok {
+		if str != "" {
+			queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+		}
+	} else {
 		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(version).(string); ok {
+		if str != "" {
+			queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+		}
+	} else {
 		queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(objectType).(string); ok {
+		if str != "" {
+			queryParams["objectType"] = a.Configuration.APIClient.ParameterToString(objectType, collectionFormat)
+		}
+	} else {
 		queryParams["objectType"] = a.Configuration.APIClient.ParameterToString(objectType, collectionFormat)
+	}
 	
 	
 	
@@ -1240,14 +1300,26 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -1327,14 +1399,26 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(id).(string); ok {
+		if str != "" {
+			queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+		}
+	} else {
 		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(objectType).(string); ok {
+		if str != "" {
+			queryParams["objectType"] = a.Configuration.APIClient.ParameterToString(objectType, collectionFormat)
+		}
+	} else {
 		queryParams["objectType"] = a.Configuration.APIClient.ParameterToString(objectType, collectionFormat)
+	}
 	
 	
 	
@@ -1351,26 +1435,50 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(version).(string); ok {
+		if str != "" {
+			queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+		}
+	} else {
 		queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flowFilter).(string); ok {
+		if str != "" {
+			queryParams["flowFilter"] = a.Configuration.APIClient.ParameterToString(flowFilter, collectionFormat)
+		}
+	} else {
 		queryParams["flowFilter"] = a.Configuration.APIClient.ParameterToString(flowFilter, collectionFormat)
+	}
 	
 	
 
@@ -1440,8 +1548,14 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -1458,14 +1572,26 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flowFilter).(string); ok {
+		if str != "" {
+			queryParams["flowFilter"] = a.Configuration.APIClient.ParameterToString(flowFilter, collectionFormat)
+		}
+	} else {
 		queryParams["flowFilter"] = a.Configuration.APIClient.ParameterToString(flowFilter, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumedResources).(string); ok {
+		if str != "" {
+			queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+		}
+	} else {
 		queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+	}
 	
 	
 	
@@ -1482,14 +1608,26 @@ func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(nam
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -1564,32 +1702,62 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(id).(string); ok {
+		if str != "" {
+			queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+		}
+	} else {
 		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(version).(string); ok {
+		if str != "" {
+			queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+		}
+	} else {
 		queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(objectType).(string); ok {
+		if str != "" {
+			queryParams["objectType"] = a.Configuration.APIClient.ParameterToString(objectType, collectionFormat)
+		}
+	} else {
 		queryParams["objectType"] = a.Configuration.APIClient.ParameterToString(objectType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumedResources).(string); ok {
+		if str != "" {
+			queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+		}
+	} else {
 		queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumingResources).(string); ok {
+		if str != "" {
+			queryParams["consumingResources"] = a.Configuration.APIClient.ParameterToString(consumingResources, collectionFormat)
+		}
+	} else {
 		queryParams["consumingResources"] = a.Configuration.APIClient.ParameterToString(consumingResources, collectionFormat)
+	}
 	
 	
 	
@@ -1618,8 +1786,14 @@ func (a ArchitectApi) GetArchitectDependencytrackingObject(id string, version st
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumedResourceRequest).(string); ok {
+		if str != "" {
+			queryParams["consumedResourceRequest"] = a.Configuration.APIClient.ParameterToString(consumedResourceRequest, collectionFormat)
+		}
+	} else {
 		queryParams["consumedResourceRequest"] = a.Configuration.APIClient.ParameterToString(consumedResourceRequest, collectionFormat)
+	}
 	
 	
 
@@ -1758,14 +1932,26 @@ func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int32, page
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -1835,8 +2021,14 @@ func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(nam
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -1853,8 +2045,14 @@ func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(nam
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(consumedResources).(string); ok {
+		if str != "" {
+			queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+		}
+	} else {
 		queryParams["consumedResources"] = a.Configuration.APIClient.ParameterToString(consumedResources, collectionFormat)
+	}
 	
 	
 	
@@ -1871,14 +2069,26 @@ func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(nam
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -2017,32 +2227,62 @@ func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int32, pageSize int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 
@@ -2181,32 +2421,62 @@ func (a ArchitectApi) GetArchitectIvrs(pageNumber int32, pageSize int32, sortBy 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 
@@ -2357,26 +2627,50 @@ func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, histor
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -2539,14 +2833,26 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -2616,14 +2922,26 @@ func (a ArchitectApi) GetArchitectPrompts(pageNumber int32, pageSize int32, name
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
@@ -2640,26 +2958,50 @@ func (a ArchitectApi) GetArchitectPrompts(pageNumber int32, pageSize int32, name
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(description).(string); ok {
+		if str != "" {
+			queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+		}
+	} else {
 		queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nameOrDescription).(string); ok {
+		if str != "" {
+			queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+		}
+	} else {
 		queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -2867,38 +3209,74 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int32, pageSize int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(scheduleIds).(string); ok {
+		if str != "" {
+			queryParams["scheduleIds"] = a.Configuration.APIClient.ParameterToString(scheduleIds, collectionFormat)
+		}
+	} else {
 		queryParams["scheduleIds"] = a.Configuration.APIClient.ParameterToString(scheduleIds, collectionFormat)
+	}
 	
 	
 
@@ -2968,32 +3346,62 @@ func (a ArchitectApi) GetArchitectSchedules(pageNumber int32, pageSize int32, so
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 
@@ -3144,26 +3552,50 @@ func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -3326,26 +3758,50 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -3415,44 +3871,86 @@ func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int32, pageSize int32
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(description).(string); ok {
+		if str != "" {
+			queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+		}
+	} else {
 		queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nameOrDescription).(string); ok {
+		if str != "" {
+			queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+		}
+	} else {
 		queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+	}
 	
 	
 
@@ -3528,8 +4026,14 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleted).(string); ok {
+		if str != "" {
+			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+		}
+	} else {
 		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+	}
 	
 	
 
@@ -3611,26 +4115,50 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -3718,8 +4246,14 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleted).(string); ok {
+		if str != "" {
+			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+		}
+	} else {
 		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+	}
 	
 	
 
@@ -3801,8 +4335,14 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleted).(string); ok {
+		if str != "" {
+			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+		}
+	} else {
 		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+	}
 	
 	
 
@@ -3884,8 +4424,14 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleted).(string); ok {
+		if str != "" {
+			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+		}
+	} else {
 		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+	}
 	
 	
 
@@ -3961,20 +4507,38 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int32, pageSize 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleted).(string); ok {
+		if str != "" {
+			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+		}
+	} else {
 		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+	}
 	
 	
 
@@ -4056,26 +4620,50 @@ func (a ArchitectApi) GetFlows(varType []string, pageNumber int32, pageSize int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -4092,74 +4680,146 @@ func (a ArchitectApi) GetFlows(varType []string, pageNumber int32, pageSize int3
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(description).(string); ok {
+		if str != "" {
+			queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+		}
+	} else {
 		queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nameOrDescription).(string); ok {
+		if str != "" {
+			queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+		}
+	} else {
 		queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(publishVersionId).(string); ok {
+		if str != "" {
+			queryParams["publishVersionId"] = a.Configuration.APIClient.ParameterToString(publishVersionId, collectionFormat)
+		}
+	} else {
 		queryParams["publishVersionId"] = a.Configuration.APIClient.ParameterToString(publishVersionId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(editableBy).(string); ok {
+		if str != "" {
+			queryParams["editableBy"] = a.Configuration.APIClient.ParameterToString(editableBy, collectionFormat)
+		}
+	} else {
 		queryParams["editableBy"] = a.Configuration.APIClient.ParameterToString(editableBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(lockedBy).(string); ok {
+		if str != "" {
+			queryParams["lockedBy"] = a.Configuration.APIClient.ParameterToString(lockedBy, collectionFormat)
+		}
+	} else {
 		queryParams["lockedBy"] = a.Configuration.APIClient.ParameterToString(lockedBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(lockedByClientId).(string); ok {
+		if str != "" {
+			queryParams["lockedByClientId"] = a.Configuration.APIClient.ParameterToString(lockedByClientId, collectionFormat)
+		}
+	} else {
 		queryParams["lockedByClientId"] = a.Configuration.APIClient.ParameterToString(lockedByClientId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(secure).(string); ok {
+		if str != "" {
+			queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, collectionFormat)
+		}
+	} else {
 		queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(deleted).(string); ok {
+		if str != "" {
+			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+		}
+	} else {
 		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSchemas).(string); ok {
+		if str != "" {
+			queryParams["includeSchemas"] = a.Configuration.APIClient.ParameterToString(includeSchemas, collectionFormat)
+		}
+	} else {
 		queryParams["includeSchemas"] = a.Configuration.APIClient.ParameterToString(includeSchemas, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(publishedAfter).(string); ok {
+		if str != "" {
+			queryParams["publishedAfter"] = a.Configuration.APIClient.ParameterToString(publishedAfter, collectionFormat)
+		}
+	} else {
 		queryParams["publishedAfter"] = a.Configuration.APIClient.ParameterToString(publishedAfter, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(publishedBefore).(string); ok {
+		if str != "" {
+			queryParams["publishedBefore"] = a.Configuration.APIClient.ParameterToString(publishedBefore, collectionFormat)
+		}
+	} else {
 		queryParams["publishedBefore"] = a.Configuration.APIClient.ParameterToString(publishedBefore, collectionFormat)
+	}
 	
 	
 	
@@ -4247,8 +4907,14 @@ func (a ArchitectApi) GetFlowsDatatable(datatableId string, expand string) (*Dat
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -4474,14 +5140,26 @@ func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 
@@ -4563,8 +5241,14 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(showbrief).(string); ok {
+		if str != "" {
+			queryParams["showbrief"] = a.Configuration.APIClient.ParameterToString(showbrief, collectionFormat)
+		}
+	} else {
 		queryParams["showbrief"] = a.Configuration.APIClient.ParameterToString(showbrief, collectionFormat)
+	}
 	
 	
 
@@ -4640,20 +5324,38 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int32
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(showbrief).(string); ok {
+		if str != "" {
+			queryParams["showbrief"] = a.Configuration.APIClient.ParameterToString(showbrief, collectionFormat)
+		}
+	} else {
 		queryParams["showbrief"] = a.Configuration.APIClient.ParameterToString(showbrief, collectionFormat)
+	}
 	
 	
 
@@ -4723,32 +5425,62 @@ func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int32, pageSi
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -4830,26 +5562,50 @@ func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -4866,26 +5622,50 @@ func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(publishVersionId).(string); ok {
+		if str != "" {
+			queryParams["publishVersionId"] = a.Configuration.APIClient.ParameterToString(publishVersionId, collectionFormat)
+		}
+	} else {
 		queryParams["publishVersionId"] = a.Configuration.APIClient.ParameterToString(publishVersionId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(publishedAfter).(string); ok {
+		if str != "" {
+			queryParams["publishedAfter"] = a.Configuration.APIClient.ParameterToString(publishedAfter, collectionFormat)
+		}
+	} else {
 		queryParams["publishedAfter"] = a.Configuration.APIClient.ParameterToString(publishedAfter, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(publishedBefore).(string); ok {
+		if str != "" {
+			queryParams["publishedBefore"] = a.Configuration.APIClient.ParameterToString(publishedBefore, collectionFormat)
+		}
+	} else {
 		queryParams["publishedBefore"] = a.Configuration.APIClient.ParameterToString(publishedBefore, collectionFormat)
+	}
 	
 	
 	
@@ -4902,8 +5682,14 @@ func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int32, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(includeSchemas).(string); ok {
+		if str != "" {
+			queryParams["includeSchemas"] = a.Configuration.APIClient.ParameterToString(includeSchemas, collectionFormat)
+		}
+	} else {
 		queryParams["includeSchemas"] = a.Configuration.APIClient.ParameterToString(includeSchemas, collectionFormat)
+	}
 	
 	
 
@@ -5111,26 +5897,50 @@ func (a ArchitectApi) GetFlowsOutcomes(pageNumber int32, pageSize int32, sortBy 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
@@ -5147,20 +5957,38 @@ func (a ArchitectApi) GetFlowsOutcomes(pageNumber int32, pageSize int32, sortBy 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(description).(string); ok {
+		if str != "" {
+			queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+		}
+	} else {
 		queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nameOrDescription).(string); ok {
+		if str != "" {
+			queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+		}
+	} else {
 		queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+	}
 	
 	
 
@@ -6090,8 +6918,14 @@ func (a ArchitectApi) PostFlowsActionsCheckin(flow string) (*Operation, *APIResp
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flow).(string); ok {
+		if str != "" {
+			queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+		}
+	} else {
 		queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+	}
 	
 	
 
@@ -6166,8 +7000,14 @@ func (a ArchitectApi) PostFlowsActionsCheckout(flow string) (*Flow, *APIResponse
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flow).(string); ok {
+		if str != "" {
+			queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+		}
+	} else {
 		queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+	}
 	
 	
 
@@ -6242,8 +7082,14 @@ func (a ArchitectApi) PostFlowsActionsDeactivate(flow string) (*Flow, *APIRespon
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flow).(string); ok {
+		if str != "" {
+			queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+		}
+	} else {
 		queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+	}
 	
 	
 
@@ -6318,14 +7164,26 @@ func (a ArchitectApi) PostFlowsActionsPublish(flow string, version string) (*Ope
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flow).(string); ok {
+		if str != "" {
+			queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+		}
+	} else {
 		queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(version).(string); ok {
+		if str != "" {
+			queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+		}
+	} else {
 		queryParams["version"] = a.Configuration.APIClient.ParameterToString(version, collectionFormat)
+	}
 	
 	
 
@@ -6400,8 +7258,14 @@ func (a ArchitectApi) PostFlowsActionsRevert(flow string) (*Flow, *APIResponse, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flow).(string); ok {
+		if str != "" {
+			queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+		}
+	} else {
 		queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+	}
 	
 	
 
@@ -6476,8 +7340,14 @@ func (a ArchitectApi) PostFlowsActionsUnlock(flow string) (*Flow, *APIResponse, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(flow).(string); ok {
+		if str != "" {
+			queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+		}
+	} else {
 		queryParams["flow"] = a.Configuration.APIClient.ParameterToString(flow, collectionFormat)
+	}
 	
 	
 
@@ -7612,8 +8482,14 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, expand string, body 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 

@@ -28,6 +28,10 @@ type Availabletopic struct {
 	// RequiresCurrentUserOrPermission - True if permissions are only required when the topic user ID does not match the subscribing user ID
 	RequiresCurrentUserOrPermission *bool `json:"requiresCurrentUserOrPermission,omitempty"`
 
+
+	// Transports - Transports that support events for the topic
+	Transports *[]string `json:"transports,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

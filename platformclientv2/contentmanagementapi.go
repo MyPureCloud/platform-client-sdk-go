@@ -71,8 +71,14 @@ func (a ContentManagementApi) DeleteContentmanagementDocument(documentId string,
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(override).(string); ok {
+		if str != "" {
+			queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+		}
+	} else {
 		queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+	}
 	
 	
 
@@ -277,8 +283,14 @@ func (a ContentManagementApi) DeleteContentmanagementWorkspace(workspaceId strin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(moveChildrenToWorkspaceId).(string); ok {
+		if str != "" {
+			queryParams["moveChildrenToWorkspaceId"] = a.Configuration.APIClient.ParameterToString(moveChildrenToWorkspaceId, collectionFormat)
+		}
+	} else {
 		queryParams["moveChildrenToWorkspaceId"] = a.Configuration.APIClient.ParameterToString(moveChildrenToWorkspaceId, collectionFormat)
+	}
 	
 	
 
@@ -579,38 +591,74 @@ func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId stri
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(transactionFilter).(string); ok {
+		if str != "" {
+			queryParams["transactionFilter"] = a.Configuration.APIClient.ParameterToString(transactionFilter, collectionFormat)
+		}
+	} else {
 		queryParams["transactionFilter"] = a.Configuration.APIClient.ParameterToString(transactionFilter, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(level).(string); ok {
+		if str != "" {
+			queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, collectionFormat)
+		}
+	} else {
 		queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -686,14 +734,26 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(disposition).(string); ok {
+		if str != "" {
+			queryParams["disposition"] = a.Configuration.APIClient.ParameterToString(disposition, collectionFormat)
+		}
+	} else {
 		queryParams["disposition"] = a.Configuration.APIClient.ParameterToString(disposition, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(contentType).(string); ok {
+		if str != "" {
+			queryParams["contentType"] = a.Configuration.APIClient.ParameterToString(contentType, collectionFormat)
+		}
+	} else {
 		queryParams["contentType"] = a.Configuration.APIClient.ParameterToString(contentType, collectionFormat)
+	}
 	
 	
 
@@ -768,14 +828,26 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(workspaceId).(string); ok {
+		if str != "" {
+			queryParams["workspaceId"] = a.Configuration.APIClient.ParameterToString(workspaceId, collectionFormat)
+		}
+	} else {
 		queryParams["workspaceId"] = a.Configuration.APIClient.ParameterToString(workspaceId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
@@ -792,26 +864,50 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -886,32 +982,62 @@ func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, page
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(queryPhrase).(string); ok {
+		if str != "" {
+			queryParams["queryPhrase"] = a.Configuration.APIClient.ParameterToString(queryPhrase, collectionFormat)
+		}
+	} else {
 		queryParams["queryPhrase"] = a.Configuration.APIClient.ParameterToString(queryPhrase, collectionFormat)
+	}
 	
 	
 	
@@ -1214,26 +1340,50 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(redirect).(string); ok {
+		if str != "" {
+			queryParams["redirect"] = a.Configuration.APIClient.ParameterToString(redirect, collectionFormat)
+		}
+	} else {
 		queryParams["redirect"] = a.Configuration.APIClient.ParameterToString(redirect, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(disposition).(string); ok {
+		if str != "" {
+			queryParams["disposition"] = a.Configuration.APIClient.ParameterToString(disposition, collectionFormat)
+		}
+	} else {
 		queryParams["disposition"] = a.Configuration.APIClient.ParameterToString(disposition, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(contentType).(string); ok {
+		if str != "" {
+			queryParams["contentType"] = a.Configuration.APIClient.ParameterToString(contentType, collectionFormat)
+		}
+	} else {
 		queryParams["contentType"] = a.Configuration.APIClient.ParameterToString(contentType, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 
@@ -1303,8 +1453,14 @@ func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(entityId).(string); ok {
+		if str != "" {
+			queryParams["entityId"] = a.Configuration.APIClient.ParameterToString(entityId, collectionFormat)
+		}
+	} else {
 		queryParams["entityId"] = a.Configuration.APIClient.ParameterToString(entityId, collectionFormat)
+	}
 	
 	
 	
@@ -1321,14 +1477,26 @@ func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -1398,14 +1566,26 @@ func (a ContentManagementApi) GetContentmanagementStatus(pageSize int32, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -1708,26 +1888,50 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
 	
 	
 
@@ -1892,14 +2096,26 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId s
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -2076,20 +2292,38 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(value).(string); ok {
+		if str != "" {
+			queryParams["value"] = a.Configuration.APIClient.ParameterToString(value, collectionFormat)
+		}
+	} else {
 		queryParams["value"] = a.Configuration.APIClient.ParameterToString(value, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -2171,14 +2405,26 @@ func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int32, pag
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
@@ -2354,14 +2600,26 @@ func (a ContentManagementApi) PostContentmanagementDocument(documentId string, b
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(override).(string); ok {
+		if str != "" {
+			queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+		}
+	} else {
 		queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+	}
 	
 	
 
@@ -2445,8 +2703,14 @@ func (a ContentManagementApi) PostContentmanagementDocumentContent(documentId st
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(override).(string); ok {
+		if str != "" {
+			queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+		}
+	} else {
 		queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+	}
 	
 	
 
@@ -2524,20 +2788,38 @@ func (a ContentManagementApi) PostContentmanagementDocuments(body Documentupload
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(copySource).(string); ok {
+		if str != "" {
+			queryParams["copySource"] = a.Configuration.APIClient.ParameterToString(copySource, collectionFormat)
+		}
+	} else {
 		queryParams["copySource"] = a.Configuration.APIClient.ParameterToString(copySource, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(moveSource).(string); ok {
+		if str != "" {
+			queryParams["moveSource"] = a.Configuration.APIClient.ParameterToString(moveSource, collectionFormat)
+		}
+	} else {
 		queryParams["moveSource"] = a.Configuration.APIClient.ParameterToString(moveSource, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(override).(string); ok {
+		if str != "" {
+			queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+		}
+	} else {
 		queryParams["override"] = a.Configuration.APIClient.ParameterToString(override, collectionFormat)
+	}
 	
 	
 
@@ -2615,8 +2897,14 @@ func (a ContentManagementApi) PostContentmanagementQuery(body Queryrequest, expa
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(expand).(string); ok {
+		if str != "" {
+			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+		}
+	} else {
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
 	
 	
 

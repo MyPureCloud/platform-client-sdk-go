@@ -283,8 +283,14 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicies(ids string) (*APIRes
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(ids).(string); ok {
+		if str != "" {
+			queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+		}
+	} else {
 		queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, collectionFormat)
+	}
 	
 	
 
@@ -430,44 +436,86 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(formatId).(string); ok {
+		if str != "" {
+			queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+		}
+	} else {
 		queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(emailFormatId).(string); ok {
+		if str != "" {
+			queryParams["emailFormatId"] = a.Configuration.APIClient.ParameterToString(emailFormatId, collectionFormat)
+		}
+	} else {
 		queryParams["emailFormatId"] = a.Configuration.APIClient.ParameterToString(emailFormatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(chatFormatId).(string); ok {
+		if str != "" {
+			queryParams["chatFormatId"] = a.Configuration.APIClient.ParameterToString(chatFormatId, collectionFormat)
+		}
+	} else {
 		queryParams["chatFormatId"] = a.Configuration.APIClient.ParameterToString(chatFormatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(messageFormatId).(string); ok {
+		if str != "" {
+			queryParams["messageFormatId"] = a.Configuration.APIClient.ParameterToString(messageFormatId, collectionFormat)
+		}
+	} else {
 		queryParams["messageFormatId"] = a.Configuration.APIClient.ParameterToString(messageFormatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(download).(string); ok {
+		if str != "" {
+			queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+		}
+	} else {
 		queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(fileName).(string); ok {
+		if str != "" {
+			queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, collectionFormat)
+		}
+	} else {
 		queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(locale).(string); ok {
+		if str != "" {
+			queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, collectionFormat)
+		}
+	} else {
 		queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, collectionFormat)
+	}
 	
 	
 
@@ -662,12 +710,12 @@ func (a RecordingApi) GetConversationRecordingAnnotations(conversationId string,
 // Get recording metadata for a conversation. Does not return playable media.
 //
 // 
-func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([]Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([]Recordingmetadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordingmetadata"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	defaultReturn := make([]Recording, 0)
+	defaultReturn := make([]Recordingmetadata, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -714,7 +762,7 @@ func (a RecordingApi) GetConversationRecordingmetadata(conversationId string) ([
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload []Recording
+	var successPayload []Recordingmetadata
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -843,14 +891,26 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(maxWaitMs).(string); ok {
+		if str != "" {
+			queryParams["maxWaitMs"] = a.Configuration.APIClient.ParameterToString(maxWaitMs, collectionFormat)
+		}
+	} else {
 		queryParams["maxWaitMs"] = a.Configuration.APIClient.ParameterToString(maxWaitMs, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(formatId).(string); ok {
+		if str != "" {
+			queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+		}
+	} else {
 		queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+	}
 	
 	
 
@@ -995,44 +1055,86 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(formatId).(string); ok {
+		if str != "" {
+			queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+		}
+	} else {
 		queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(emailFormatId).(string); ok {
+		if str != "" {
+			queryParams["emailFormatId"] = a.Configuration.APIClient.ParameterToString(emailFormatId, collectionFormat)
+		}
+	} else {
 		queryParams["emailFormatId"] = a.Configuration.APIClient.ParameterToString(emailFormatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(chatFormatId).(string); ok {
+		if str != "" {
+			queryParams["chatFormatId"] = a.Configuration.APIClient.ParameterToString(chatFormatId, collectionFormat)
+		}
+	} else {
 		queryParams["chatFormatId"] = a.Configuration.APIClient.ParameterToString(chatFormatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(messageFormatId).(string); ok {
+		if str != "" {
+			queryParams["messageFormatId"] = a.Configuration.APIClient.ParameterToString(messageFormatId, collectionFormat)
+		}
+	} else {
 		queryParams["messageFormatId"] = a.Configuration.APIClient.ParameterToString(messageFormatId, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(download).(string); ok {
+		if str != "" {
+			queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+		}
+	} else {
 		queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(fileName).(string); ok {
+		if str != "" {
+			queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, collectionFormat)
+		}
+	} else {
 		queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(locale).(string); ok {
+		if str != "" {
+			queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, collectionFormat)
+		}
+	} else {
 		queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, collectionFormat)
+	}
 	
 	
 
@@ -1102,20 +1204,38 @@ func (a RecordingApi) GetOrphanrecordings(pageSize int32, pageNumber int32, sort
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -1132,26 +1252,50 @@ func (a RecordingApi) GetOrphanrecordings(pageSize int32, pageNumber int32, sort
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(hasConversation).(string); ok {
+		if str != "" {
+			queryParams["hasConversation"] = a.Configuration.APIClient.ParameterToString(hasConversation, collectionFormat)
+		}
+	} else {
 		queryParams["hasConversation"] = a.Configuration.APIClient.ParameterToString(hasConversation, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(media).(string); ok {
+		if str != "" {
+			queryParams["media"] = a.Configuration.APIClient.ParameterToString(media, collectionFormat)
+		}
+	} else {
 		queryParams["media"] = a.Configuration.APIClient.ParameterToString(media, collectionFormat)
+	}
 	
 	
 
@@ -1359,38 +1503,74 @@ func (a RecordingApi) GetRecordingJobs(pageSize int32, pageNumber int32, sortBy 
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(state).(string); ok {
+		if str != "" {
+			queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
+		}
+	} else {
 		queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(showOnlyMyJobs).(string); ok {
+		if str != "" {
+			queryParams["showOnlyMyJobs"] = a.Configuration.APIClient.ParameterToString(showOnlyMyJobs, collectionFormat)
+		}
+	} else {
 		queryParams["showOnlyMyJobs"] = a.Configuration.APIClient.ParameterToString(showOnlyMyJobs, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(jobType).(string); ok {
+		if str != "" {
+			queryParams["jobType"] = a.Configuration.APIClient.ParameterToString(jobType, collectionFormat)
+		}
+	} else {
 		queryParams["jobType"] = a.Configuration.APIClient.ParameterToString(jobType, collectionFormat)
+	}
 	
 	
 
@@ -1592,20 +1772,38 @@ func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int32, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
 	
 	
 	
@@ -1622,38 +1820,74 @@ func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int32, pageNum
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(nextPage).(string); ok {
+		if str != "" {
+			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+		}
+	} else {
 		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(previousPage).(string); ok {
+		if str != "" {
+			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+		}
+	} else {
 		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
 		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(enabled).(string); ok {
+		if str != "" {
+			queryParams["enabled"] = a.Configuration.APIClient.ParameterToString(enabled, collectionFormat)
+		}
+	} else {
 		queryParams["enabled"] = a.Configuration.APIClient.ParameterToString(enabled, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(summary).(string); ok {
+		if str != "" {
+			queryParams["summary"] = a.Configuration.APIClient.ParameterToString(summary, collectionFormat)
+		}
+	} else {
 		queryParams["summary"] = a.Configuration.APIClient.ParameterToString(summary, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(hasErrors).(string); ok {
+		if str != "" {
+			queryParams["hasErrors"] = a.Configuration.APIClient.ParameterToString(hasErrors, collectionFormat)
+		}
+	} else {
 		queryParams["hasErrors"] = a.Configuration.APIClient.ParameterToString(hasErrors, collectionFormat)
+	}
 	
 	
 
@@ -1792,14 +2026,26 @@ func (a RecordingApi) GetRecordingRecordingkeys(pageSize int32, pageNumber int32
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -1932,8 +2178,14 @@ func (a RecordingApi) GetRecordingSettings(createDefault bool) (*Recordingsettin
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(createDefault).(string); ok {
+		if str != "" {
+			queryParams["createDefault"] = a.Configuration.APIClient.ParameterToString(createDefault, collectionFormat)
+		}
+	} else {
 		queryParams["createDefault"] = a.Configuration.APIClient.ParameterToString(createDefault, collectionFormat)
+	}
 	
 	
 
@@ -2003,14 +2255,26 @@ func (a RecordingApi) GetRecordingsScreensessions(pageSize int32, pageNumber int
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
 	
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
 	
 	
 
@@ -3414,8 +3678,14 @@ func (a RecordingApi) PutRecordingsDeletionprotection(protect bool, body Convers
 	
 	
 	
-		collectionFormat = ""
+	collectionFormat = ""
+	if str, ok := interface{}(protect).(string); ok {
+		if str != "" {
+			queryParams["protect"] = a.Configuration.APIClient.ParameterToString(protect, collectionFormat)
+		}
+	} else {
 		queryParams["protect"] = a.Configuration.APIClient.ParameterToString(protect, collectionFormat)
+	}
 	
 	
 

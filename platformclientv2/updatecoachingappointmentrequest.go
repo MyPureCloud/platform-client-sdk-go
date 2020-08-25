@@ -14,7 +14,7 @@ type Updatecoachingappointmentrequest struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// DateStart - The date/time the coaching appointment starts. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateStart - The date/time the coaching appointment starts. Times will be rounded down to the minute. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
 
@@ -28,6 +28,10 @@ type Updatecoachingappointmentrequest struct {
 
 	// DocumentIds - IDs of documents associated with this coaching appointment.
 	DocumentIds *[]string `json:"documentIds,omitempty"`
+
+
+	// Status - The status of the coaching appointment.
+	Status *string `json:"status,omitempty"`
 
 }
 
