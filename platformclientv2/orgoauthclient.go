@@ -46,6 +46,10 @@ type Orgoauthclient struct {
 	State *string `json:"state,omitempty"`
 
 
+	// DateToDelete - The time at which this client will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	DateToDelete *time.Time `json:"dateToDelete,omitempty"`
+
+
 	// Organization - The  oauth client's organization.
 	Organization *Namedentity `json:"organization,omitempty"`
 

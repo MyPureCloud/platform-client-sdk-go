@@ -22,6 +22,10 @@ type Userscheduleadherence struct {
 	ManagementUnit *Managementunit `json:"managementUnit,omitempty"`
 
 
+	// Team - The team to which this user belongs
+	Team *Team `json:"team,omitempty"`
+
+
 	// ScheduledActivityCategory - Activity for which the user is scheduled
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 

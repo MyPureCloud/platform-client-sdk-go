@@ -1,374 +1,261 @@
-Platform API version: 4158
+Platform API version: 4182
 
 
-# Major Changes (14 changes)
+# Major Changes (11 changes)
 
-**GET /api/v2/profiles/users** (1 change)
+**GET /api/v2/coaching/appointments** (3 changes)
 
-* Parameter integrationPresenceSource was added
+* Parameter relationships was added
+* Parameter completionInterval was added
+* Parameter overdue was added
 
-**GET /api/v2/telephony/providers/edges/dids** (1 change)
+**GET /api/v2/coaching/appointments/me** (3 changes)
 
-* Parameter id was added
+* Parameter relationships was added
+* Parameter completionInterval was added
+* Parameter overdue was added
 
-**GET /api/v2/coaching/notifications/{notificationId}** (1 change)
+**ReportingExportJobResponse** (1 change)
 
-* Parameter expand was added
+* Required property runId was added
 
-**GET /api/v2/scim/schemas** (1 change)
+**Permissions** (2 changes)
 
-* Response 200 type was changed from ScimConfigResourceTypesListResponse to ScimV2SchemaListResponse
+* Property id was removed
+* Property name was removed
 
-**GET /api/v2/scim/schemas/{schemaId}** (1 change)
+**ExternalOrganizationTrustorLink** (2 changes)
 
-* Response 200 type was changed from ScimConfigResourceType to ScimV2SchemaDefinition
-
-**PUT /api/v2/externalcontacts/conversations/{conversationId}** (1 change)
-
-* Response 422 was removed
-
-**GET /api/v2/users/{userId}/profile** (1 change)
-
-* Parameter integrationPresenceSource was added
-
-**GET /api/v2/users/{userId}** (1 change)
-
-* Parameter integrationPresenceSource was added
-
-**GET /api/v2/users** (1 change)
-
-* Parameter integrationPresenceSource was added
-
-**GET /api/v2/coaching/notifications** (1 change)
-
-* Parameter expand was added
-
-**GET /api/v2/users/search** (1 change)
-
-* Parameter integrationPresenceSource was added
-
-**GET /api/v2/users/me** (1 change)
-
-* Parameter integrationPresenceSource was added
-
-**GET /api/v2/telephony/providers/edges/didpools** (1 change)
-
-* Parameter id was added
-
-**CoachingNotification** (1 change)
-
-* Property appointment was changed from CoachingAppointmentReference to CoachingAppointmentResponse
+* Property id was removed
+* Property selfUri was removed
 
 
-# Minor Changes (72 changes)
+# Minor Changes (69 changes)
 
-**/api/v2/speechandtextanalytics/conversations/{conversationId}/communications/{communicationId}/transcripturl** (2 changes)
+**/api/v2/audits/query/realtime/servicemapping** (2 changes)
 
 * Path was added
 * Operation GET was added
 
-**/api/v2/users/{userId}/presences/purecloud** (3 changes)
-
-* Path was added
-* Operation GET was added
-* Operation PATCH was added
-
-**/api/v2/users/{userId}/presences/microsoftteams** (2 changes)
+**/api/v2/speechandtextanalytics/conversations/{conversationId}** (2 changes)
 
 * Path was added
 * Operation GET was added
 
-**/api/v2/externalcontacts/scan/contacts** (2 changes)
-
-* Path was added
-* Operation GET was added
-
-**/api/v2/conversations/messaging/integrations/facebook/{integrationId}** (1 change)
-
-* Operation patch was added. Summary: Update Facebook messaging integration
-
-**/api/v2/analytics/journeys/aggregates/query** (2 changes)
+**/api/v2/coaching/appointments/aggregates/query** (2 changes)
 
 * Path was added
 * Operation POST was added
 
-**/api/v2/externalcontacts/scan/organizations** (2 changes)
+**AcwSettings** (1 change)
 
-* Path was added
-* Operation GET was added
+* Enum value AGENT_REQUESTED was added to property wrapupPrompt
 
-**/api/v2/externalcontacts/scan/notes** (2 changes)
+**UserScheduleAdherence** (1 change)
 
-* Path was added
-* Operation GET was added
+* Optional property team was added
 
-**/api/v2/externalcontacts/scan/relationships** (2 changes)
+**ViewFilter** (1 change)
 
-* Path was added
-* Operation GET was added
+* Enum value webmessaging was added to property messageTypes
 
-**Biography** (1 change)
+**Recipient** (1 change)
 
-* Optional property education was added
+* Enum value webmessaging was added to property messengerType
 
-**Contact** (1 change)
+**Message** (2 changes)
 
-* Optional property countryCode was added
+* Enum value unknown was added to property type
+* Enum value webmessaging was added to property type
 
-**Education** (1 change)
+**Participant** (1 change)
 
-* Model was added
+* Enum value agentRequested was added to property wrapupPrompt
 
-**OAuthClient** (1 change)
+**FlowAggregateQueryPredicate** (2 changes)
 
-* Optional property state was added
+* Enum value agentRank was added to property dimension
+* Enum value proposedAgentId was added to property dimension
 
-**OAuthClientRequest** (1 change)
+**FlowAggregationQuery** (2 changes)
 
-* Optional property state was added
+* Enum value agentRank was added to property groupBy
+* Enum value proposedAgentId was added to property groupBy
 
-**Library** (1 change)
+**MessagingIntegration** (1 change)
 
-* Enum value CampaignSmsTemplate was added to property responseType
+* Enum value webmessaging was added to property messengerType
 
-**SegmentDetailQueryPredicate** (2 changes)
+**IpAddressRange** (1 change)
 
-* Enum value agentAssistantId was added to property dimension
-* Enum value journeySegmentScope was added to property dimension
-
-**ConversationAggregateQueryPredicate** (1 change)
-
-* Enum value agentAssistantId was added to property dimension
-
-**ConversationAggregationQuery** (1 change)
-
-* Enum value agentAssistantId was added to property groupBy
-
-**IntentFeedback** (1 change)
-
-* Enum value Disabled was added to property assessment
-
-**PhoneCapabilities** (1 change)
-
-* Optional property cdm was added
-
-**Recording** (1 change)
-
-* Optional property recordingFileRole was added
-
-**AfterCallWork** (1 change)
-
-* Model was added
-
-**Call** (1 change)
-
-* Optional property afterCallWork was added
-
-**Callback** (1 change)
-
-* Optional property afterCallWork was added
-
-**Cobrowsesession** (1 change)
-
-* Optional property afterCallWork was added
-
-**ConversationChat** (1 change)
-
-* Optional property afterCallWork was added
-
-**Email** (1 change)
-
-* Optional property afterCallWork was added
-
-**Message** (1 change)
-
-* Optional property afterCallWork was added
-
-**Screenshare** (1 change)
-
-* Optional property afterCallWork was added
-
-**SocialExpression** (1 change)
-
-* Optional property afterCallWork was added
-
-**Video** (1 change)
-
-* Optional property afterCallWork was added
-
-**TranscriptUrl** (1 change)
-
-* Model was added
-
-**AvailableTopic** (1 change)
-
-* Optional property transports was added
-
-**ViewFilter** (2 changes)
-
-* Optional property usedRoutingTypes was added
-* Optional property requestedRoutingTypes was added
+* Enum value smtp was added to property service
 
 **OAuthClientListing** (1 change)
 
-* Optional property state was added
+* Optional property dateToDelete was added
 
-**PresenceExpand** (1 change)
+**OAuthClient** (1 change)
+
+* Optional property dateToDelete was added
+
+**OAuthClientRequest** (1 change)
+
+* Optional property dateToDelete was added
+
+**AuditQueryEntity** (3 changes)
+
+* Enum value Trigger was added to property name
+* Enum value Enable was added to property actions
+* Enum value Disable was added to property actions
+
+**AuditQueryService** (1 change)
+
+* Enum value Triggers was added to property name
+
+**AuditQueryExecutionStatusResponse** (1 change)
+
+* Enum value Triggers was added to property serviceName
+
+**AuditQueryRequest** (1 change)
+
+* Enum value Triggers was added to property serviceName
+
+**AuditLogMessage** (4 changes)
+
+* Enum value Triggers was added to property serviceName
+* Enum value Enable was added to property action
+* Enum value Disable was added to property action
+* Enum value Trigger was added to property entityType
+
+**AuditRealtimeQueryRequest** (1 change)
+
+* Enum value Triggers was added to property serviceName
+
+**MessagingSticker** (1 change)
+
+* Enum value webmessaging was added to property messengerType
+
+**MessageMediaParticipant** (2 changes)
+
+* Enum value unknown was added to property type
+* Enum value webmessaging was added to property type
+
+**CreateOutboundMessagingConversationRequest** (1 change)
+
+* Enum value webmessaging was added to property toAddressMessengerType
+
+**SendAgentlessOutboundMessageResponse** (1 change)
+
+* Enum value webmessaging was added to property messengerType
+
+**SendAgentlessOutboundMessageRequest** (1 change)
+
+* Enum value webmessaging was added to property toAddressMessengerType
+
+**MessageData** (1 change)
+
+* Enum value webmessaging was added to property messengerType
+
+**WfmBusinessUnitReference** (1 change)
+
+* id is no longer readonly
+
+**WfmScheduleReference** (1 change)
+
+* id is no longer readonly
+
+**AnalyticsProposedAgent** (1 change)
 
 * Model was added
 
-**CursorContactListing** (1 change)
+**AnalyticsSession** (2 changes)
 
-* Model was added
+* Optional property agentAssistantId was added
+* Optional property proposedAgents was added
 
-**ScimGenesysUserExternalId** (1 change)
+**ConversationAggregateQueryPredicate** (2 changes)
 
-* Model was added
+* Enum value agentRank was added to property dimension
+* Enum value proposedAgentId was added to property dimension
 
-**ScimPhoneNumber** (2 changes)
+**ConversationAggregationQuery** (2 changes)
 
-* Enum value microsoftteams was added to property type
-* Enum value zoomphone was added to property type
+* Enum value agentRank was added to property groupBy
+* Enum value proposedAgentId was added to property groupBy
 
-**ScimUserExtensions** (1 change)
+**SegmentDetailQueryPredicate** (2 changes)
 
-* Optional property externalIds was added
+* Enum value agentRank was added to property dimension
+* Enum value proposedAgentId was added to property dimension
 
-**FacebookIntegrationUpdateRequest** (1 change)
+**CoachingAppointmentResponse** (1 change)
 
-* Model was added
+* Optional property isOverdue was added
 
 **OrgOAuthClient** (1 change)
 
-* Optional property state was added
+* Optional property dateToDelete was added
 
-**JourneyAggregateDataContainer** (1 change)
+**ParticipantBasic** (1 change)
 
-* Model was added
+* Enum value agentRequested was added to property wrapupPrompt
 
-**JourneyAggregateQueryResponse** (1 change)
-
-* Model was added
-
-**JourneyAggregateQueryClause** (1 change)
+**ConversationMetrics** (1 change)
 
 * Model was added
 
-**JourneyAggregateQueryFilter** (1 change)
+**EventMessage** (2 changes)
 
-* Model was added
+* Enum value CAMPAIGN_CONTENT_TEMPLATE_SUBSTITUTION_MISMATCH was added to property code
+* Enum value CAMPAIGN_MESSAGE_CHARACTER_LIMIT_EXCEEDED was added to property code
 
-**JourneyAggregateQueryPredicate** (1 change)
+**BuAgentSchedulesQueryResponse** (1 change)
 
-* Model was added
-
-**JourneyAggregationQuery** (1 change)
-
-* Model was added
-
-**JourneyAggregationView** (1 change)
-
-* Model was added
-
-**Response** (1 change)
-
-* Enum value CampaignSmsTemplate was added to property responseType
-
-**CursorOrganizationListing** (1 change)
-
-* Model was added
-
-**FlowAggregateQueryPredicate** (1 change)
-
-* Enum value agentAssistantId was added to property dimension
-
-**FlowAggregationQuery** (1 change)
-
-* Enum value agentAssistantId was added to property groupBy
-
-**UpdateCoachingAppointmentRequest** (1 change)
-
-* Optional property status was added
-
-**CursorNoteListing** (1 change)
-
-* Model was added
-
-**CallBasic** (1 change)
-
-* Optional property afterCallWork was added
-
-**CallbackBasic** (1 change)
-
-* Optional property afterCallWork was added
-
-**ScheduleGenerationMessage** (1 change)
-
-* Enum value UnableToProduceAgentSchedule was added to property type
-
-**CursorRelationshipListing** (1 change)
-
-* Model was added
+* Optional property businessUnitTimeZone was added
 
 **UserSearchRequest** (1 change)
 
-* Optional property integrationPresenceSource was added
+* Optional property enforcePermissions was added
+
+**ExternalOrganizationTrustorLink** (1 change)
+
+* Optional property externalOrganizationUri was added
+
+**CoachingAppointmentAggregateResponse** (1 change)
+
+* Model was added
+
+**QueryResponseData** (1 change)
+
+* Model was added
+
+**QueryResponseGroupedData** (1 change)
+
+* Model was added
+
+**QueryResponseMetric** (1 change)
+
+* Model was added
+
+**QueryResponseStats** (1 change)
+
+* Model was added
+
+**CoachingAppointmentAggregateRequest** (1 change)
+
+* Model was added
+
+**QueryRequestClause** (1 change)
+
+* Model was added
+
+**QueryRequestFilter** (1 change)
+
+* Model was added
+
+**QueryRequestPredicate** (1 change)
+
+* Model was added
 
 
-# Point Changes (23 changes)
-
-**GET /api/v2/users/{userId}/presences/{sourceId}** (2 changes)
-
-* Description was changed
-* Description was changed for parameter sourceId
-
-**PATCH /api/v2/users/{userId}/presences/{sourceId}** (2 changes)
-
-* Description was changed
-* Description was changed for parameter sourceId
-
-**GET /api/v2/scim/v2/users/{userId}** (2 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-
-**GET /api/v2/scim/v2/users** (3 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-* Description was changed for parameter filter
-
-**POST /api/v2/analytics/reporting/exports** (1 change)
-
-* Description was changed
-
-**GET /api/v2/scim/v2/groups/{groupId}** (2 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-
-**GET /api/v2/scim/v2/groups** (2 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-
-**GET /api/v2/scim/groups/{groupId}** (2 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-
-**GET /api/v2/scim/groups** (2 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-
-**GET /api/v2/scim/users/{userId}** (2 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-
-**GET /api/v2/scim/users** (3 changes)
-
-* Description was changed for parameter attributes
-* Description was changed for parameter excludedAttributes
-* Description was changed for parameter filter
+# Point Changes (0 changes)

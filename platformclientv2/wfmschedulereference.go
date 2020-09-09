@@ -6,7 +6,7 @@ import (
 
 // Wfmschedulereference
 type Wfmschedulereference struct { 
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the WFM schedule
 	Id *string `json:"id,omitempty"`
 
 

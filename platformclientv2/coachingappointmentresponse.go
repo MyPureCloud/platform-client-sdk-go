@@ -62,6 +62,10 @@ type Coachingappointmentresponse struct {
 	Documents *[]Documentreference `json:"documents,omitempty"`
 
 
+	// IsOverdue - Whether the appointment is overdue.
+	IsOverdue *bool `json:"isOverdue,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

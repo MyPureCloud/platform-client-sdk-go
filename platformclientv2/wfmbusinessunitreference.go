@@ -5,7 +5,7 @@ import (
 
 // Wfmbusinessunitreference
 type Wfmbusinessunitreference struct { 
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the business unit
 	Id *string `json:"id,omitempty"`
 
 

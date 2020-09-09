@@ -233,6 +233,14 @@ type Analyticssession struct {
 	// SelectedAgentRank - Selected agent GPR rank
 	SelectedAgentRank *int32 `json:"selectedAgentRank,omitempty"`
 
+
+	// AgentAssistantId - Unique identifier of the active virtual agent assistant
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+
+	// ProposedAgents - Proposed agents
+	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

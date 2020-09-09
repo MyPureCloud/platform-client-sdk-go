@@ -62,6 +62,10 @@ type Oauthclientlisting struct {
 	State *string `json:"state,omitempty"`
 
 
+	// DateToDelete - The time at which this client will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	DateToDelete *time.Time `json:"dateToDelete,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

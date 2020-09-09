@@ -10,6 +10,10 @@ type Reportingdataexporttopicdataexportnotification struct {
 	Id *string `json:"id,omitempty"`
 
 
+	// RunId
+	RunId *string `json:"runId,omitempty"`
+
+
 	// Name
 	Name *string `json:"name,omitempty"`
 

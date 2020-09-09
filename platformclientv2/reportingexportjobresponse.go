@@ -14,6 +14,10 @@ type Reportingexportjobresponse struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// RunId - The unique run id of the export schedule execute
+	RunId *string `json:"runId,omitempty"`
+
+
 	// Status - The current status of the export request
 	Status *string `json:"status,omitempty"`
 

@@ -14,6 +14,10 @@ type Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate struct {
 	ManagementUnitId *string `json:"managementUnitId,omitempty"`
 
 
+	// Team
+	Team *Wfmuserscheduleadherenceupdatedtopicurireference `json:"team,omitempty"`
+
+
 	// ScheduledActivityCategory
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 

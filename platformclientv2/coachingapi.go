@@ -510,7 +510,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 // Get appointments for users and optional date range
 //
 // 
-func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int32, pageSize int32, statuses []string, facilitatorIds []string, sortOrder string) (*Coachingappointmentresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int32, pageSize int32, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments"
@@ -628,6 +628,42 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 	}
 	
 	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range relationships {
+			queryParams["relationships"] = value
+		}
+	} else {
+		queryParams["relationships"] = a.Configuration.APIClient.ParameterToString(relationships, collectionFormat)
+	}
+	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(completionInterval).(string); ok {
+		if str != "" {
+			queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
+		}
+	} else {
+		queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(overdue).(string); ok {
+		if str != "" {
+			queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
+		}
+	} else {
+		queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
+	}
+	
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -664,7 +700,7 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 // Get my appointments for a given date range
 //
 // 
-func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32, pageSize int32, statuses []string, facilitatorIds []string, sortOrder string) (*Coachingappointmentresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32, pageSize int32, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/me"
@@ -762,6 +798,42 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32
 		}
 	} else {
 		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range relationships {
+			queryParams["relationships"] = value
+		}
+	} else {
+		queryParams["relationships"] = a.Configuration.APIClient.ParameterToString(relationships, collectionFormat)
+	}
+	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(completionInterval).(string); ok {
+		if str != "" {
+			queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
+		}
+	} else {
+		queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(overdue).(string); ok {
+		if str != "" {
+			queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
+		}
+	} else {
+		queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
 	}
 	
 	
@@ -1431,6 +1503,77 @@ func (a CoachingApi) PostCoachingAppointments(body Createcoachingappointmentrequ
 	postBody = &body
 
 	var successPayload *Coachingappointmentresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostCoachingAppointmentsAggregatesQuery invokes POST /api/v2/coaching/appointments/aggregates/query
+//
+// Retrieve aggregated appointment data
+//
+// 
+func (a CoachingApi) PostCoachingAppointmentsAggregatesQuery(body Coachingappointmentaggregaterequest) (*Coachingappointmentaggregateresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/aggregates/query"
+	defaultReturn := new(Coachingappointmentaggregateresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling CoachingApi->PostCoachingAppointmentsAggregatesQuery")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Coachingappointmentaggregateresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

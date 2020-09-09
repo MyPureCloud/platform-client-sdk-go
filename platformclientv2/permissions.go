@@ -5,14 +5,6 @@ import (
 
 // Permissions
 type Permissions struct { 
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
 	// Ids - List of permission ids.
 	Ids *[]string `json:"ids,omitempty"`
 

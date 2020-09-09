@@ -61,6 +61,10 @@ type Wemcoachingappointmenttopiccoachingappointmentnotification struct {
 	// ChangeType
 	ChangeType *string `json:"changeType,omitempty"`
 
+
+	// DateCompleted
+	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

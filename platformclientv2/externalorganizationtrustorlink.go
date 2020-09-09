@@ -6,10 +6,6 @@ import (
 
 // Externalorganizationtrustorlink
 type Externalorganizationtrustorlink struct { 
-	// Id - The globally unique identifier for the object.
-	Id *string `json:"id,omitempty"`
-
-
 	// ExternalOrganizationId - The id of a PureCloud External Organization entity in the External Contacts system that will be used to represent the trustor org
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
@@ -22,8 +18,8 @@ type Externalorganizationtrustorlink struct {
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
-	// SelfUri - The URI for this object
-	SelfUri *string `json:"selfUri,omitempty"`
+	// ExternalOrganizationUri - The URI for the External Organization that is linked to the trustor org
+	ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
 
 }
 

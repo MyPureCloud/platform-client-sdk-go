@@ -25,24 +25,12 @@ type Arraynode struct {
 	Object *bool `json:"object,omitempty"`
 
 
-	// ValueNode
-	ValueNode *bool `json:"valueNode,omitempty"`
-
-
-	// ContainerNode
-	ContainerNode *bool `json:"containerNode,omitempty"`
-
-
-	// MissingNode
-	MissingNode *bool `json:"missingNode,omitempty"`
+	// FloatingPointNumber
+	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
 
 
 	// Pojo
 	Pojo *bool `json:"pojo,omitempty"`
-
-
-	// FloatingPointNumber
-	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
 
 
 	// IntegralNumber
@@ -79,6 +67,18 @@ type Arraynode struct {
 
 	// Binary
 	Binary *bool `json:"binary,omitempty"`
+
+
+	// ValueNode
+	ValueNode *bool `json:"valueNode,omitempty"`
+
+
+	// ContainerNode
+	ContainerNode *bool `json:"containerNode,omitempty"`
+
+
+	// MissingNode
+	MissingNode *bool `json:"missingNode,omitempty"`
 
 
 	// Array

@@ -14,6 +14,10 @@ type Wfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdate struct {
 	ManagementUnitId *string `json:"managementUnitId,omitempty"`
 
 
+	// Team
+	Team *Wfmuserscheduleadherenceupdatedmutopicurireference `json:"team,omitempty"`
+
+
 	// ScheduledActivityCategory
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 

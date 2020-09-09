@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"encoding/json"
 )
 
@@ -39,6 +40,10 @@ type Oauthclientrequest struct {
 
 	// State - The state of the OAuth client. Active: The OAuth client can be used to create access tokens. This is the default state. Disabled: Access tokens created by the client are invalid and new ones cannot be created. Inactive: Access tokens cannot be created with this OAuth client and it will be deleted.
 	State *string `json:"state,omitempty"`
+
+
+	// DateToDelete - The time at which this client will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	DateToDelete *time.Time `json:"dateToDelete,omitempty"`
 
 }
 
