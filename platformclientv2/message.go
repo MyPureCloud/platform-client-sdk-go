@@ -97,6 +97,10 @@ type Message struct {
 	// AfterCallWork - After-call work for the communication.
 	AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 
+
+	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
+	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

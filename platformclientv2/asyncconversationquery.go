@@ -5,10 +5,6 @@ import (
 
 // Asyncconversationquery
 type Asyncconversationquery struct { 
-	// Interval - Specifies the date and time range of data being queried. Results will include conversations that both started on a day touched by the interval AND either started, ended, or any activity during the interval. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
-	Interval *string `json:"interval,omitempty"`
-
-
 	// ConversationFilters - Filters that target conversation-level data
 	ConversationFilters *[]Conversationdetailqueryfilter `json:"conversationFilters,omitempty"`
 
@@ -35,6 +31,10 @@ type Asyncconversationquery struct {
 
 	// OrderBy - Specify which data element within the result set to use for sorting. The options  to use as a basis for sorting the results: conversationStart, segmentStart, and segmentEnd. If not specified, the default is conversationStart
 	OrderBy *string `json:"orderBy,omitempty"`
+
+
+	// Interval - Specifies the date and time range of data being queried. Results will include all conversations that had activity during the interval. Intervals are represented as an ISO-8601 string. For example: YYYY-MM-DDThh:mm:ss/YYYY-MM-DDThh:mm:ss
+	Interval *string `json:"interval,omitempty"`
 
 
 	// Limit - Specify number of results to be returned

@@ -57,6 +57,14 @@ type Reportingdataexporttopicdataexportnotification struct {
 	// EmailStatuses
 	EmailStatuses *map[string]string `json:"emailStatuses,omitempty"`
 
+
+	// EmailErrorDescription
+	EmailErrorDescription *string `json:"emailErrorDescription,omitempty"`
+
+
+	// ScheduleExpression
+	ScheduleExpression *string `json:"scheduleExpression,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

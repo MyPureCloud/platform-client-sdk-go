@@ -70,6 +70,14 @@ type Userqueue struct {
 	WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
 
 
+	// EnableTranscription - Indicates whether voice transcription is enabled for this queue.
+	EnableTranscription *bool `json:"enableTranscription,omitempty"`
+
+
+	// EnableManualAssignment - Indicates whether manual assignment is enabled for this queue.
+	EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
+
+
 	// CallingPartyName - The name to use for caller identification for outbound calls from this queue.
 	CallingPartyName *string `json:"callingPartyName,omitempty"`
 

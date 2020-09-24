@@ -972,6 +972,75 @@ func (a ArchitectApi) DeleteFlowsDatatableRow(datatableId string, rowId string) 
 	return response, err
 }
 
+// DeleteFlowsMilestone invokes DELETE /api/v2/flows/milestones/{milestoneId}
+//
+// Delete a flow milestone.
+//
+// 
+func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*Empty, *APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
+	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
+	defaultReturn := new(Empty)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'milestoneId' is set
+	if &milestoneId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'milestoneId' when calling ArchitectApi->DeleteFlowsMilestone")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Empty
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // GetArchitectDependencytracking invokes GET /api/v2/architect/dependencytracking
 //
 // Get Dependency Tracking objects that have a given display name
@@ -5792,6 +5861,236 @@ func (a ArchitectApi) GetFlowsExecution(flowExecutionId string) (*Flowruntimeexe
 	return successPayload, response, err
 }
 
+// GetFlowsMilestone invokes GET /api/v2/flows/milestones/{milestoneId}
+//
+// Get a flow milestone
+//
+// Returns a specified flow milestone
+func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
+	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
+	defaultReturn := new(Flowmilestone)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'milestoneId' is set
+	if &milestoneId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'milestoneId' when calling ArchitectApi->GetFlowsMilestone")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowmilestone
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetFlowsMilestones invokes GET /api/v2/flows/milestones
+//
+// Get a pageable list of flow milestones, filtered by query parameters
+//
+// Multiple IDs can be specified, in which case all matching flow milestones will be returned, and no other parameters will be evaluated.
+func (a ArchitectApi) GetFlowsMilestones(pageNumber int32, pageSize int32, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowmilestonelisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/milestones"
+	defaultReturn := new(Flowmilestonelisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
+		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range id {
+			queryParams["id"] = value
+		}
+	} else {
+		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
+	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(description).(string); ok {
+		if str != "" {
+			queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+		}
+	} else {
+		queryParams["description"] = a.Configuration.APIClient.ParameterToString(description, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(nameOrDescription).(string); ok {
+		if str != "" {
+			queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+		}
+	} else {
+		queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowmilestonelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // GetFlowsOutcome invokes GET /api/v2/flows/outcomes/{flowOutcomeId}
 //
 // Get a flow outcome
@@ -7746,6 +8045,72 @@ func (a ArchitectApi) PostFlowsExecutions(flowLaunchRequest Flowexecutionlaunchr
 	return successPayload, response, err
 }
 
+// PostFlowsMilestones invokes POST /api/v2/flows/milestones
+//
+// Create a flow milestone
+//
+// 
+func (a ArchitectApi) PostFlowsMilestones(body Flowmilestone) (*Flowmilestone, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/milestones"
+	defaultReturn := new(Flowmilestone)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Flowmilestone
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // PostFlowsOutcomes invokes POST /api/v2/flows/outcomes
 //
 // Create a flow outcome
@@ -8593,6 +8958,78 @@ func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, bod
 	postBody = &body
 
 	var successPayload *map[string]interface{}
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PutFlowsMilestone invokes PUT /api/v2/flows/milestones/{milestoneId}
+//
+// Updates a flow milestone
+//
+// 
+func (a ArchitectApi) PutFlowsMilestone(milestoneId string, body Flowmilestone) (*Flowmilestone, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/milestones/{milestoneId}"
+	path = strings.Replace(path, "{milestoneId}", fmt.Sprintf("%v", milestoneId), -1)
+	defaultReturn := new(Flowmilestone)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'milestoneId' is set
+	if &milestoneId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'milestoneId' when calling ArchitectApi->PutFlowsMilestone")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Flowmilestone
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

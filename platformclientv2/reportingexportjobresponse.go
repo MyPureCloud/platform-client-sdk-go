@@ -106,6 +106,10 @@ type Reportingexportjobresponse struct {
 	EmailStatuses *map[string]string `json:"emailStatuses,omitempty"`
 
 
+	// EmailErrorDescription - The optional error message in case the export fail to email
+	EmailErrorDescription *string `json:"emailErrorDescription,omitempty"`
+
+
 	// Enabled
 	Enabled *bool `json:"enabled,omitempty"`
 

@@ -7450,6 +7450,83 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsQuery(body Conversati
 	return successPayload, response, err
 }
 
+// PostConversationAssign invokes POST /api/v2/conversations/{conversationId}/assign
+//
+// Attempts to manually assign a specified conversation to a specified agent.  Ignores bullseye ring, PAR score, skills, and languages.
+//
+// 
+func (a ConversationsApi) PostConversationAssign(conversationId string, body Conversationuser) (*string, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/assign"
+	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
+	defaultReturn := new(string)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'conversationId' is set
+	if &conversationId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'conversationId' when calling ConversationsApi->PostConversationAssign")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ConversationsApi->PostConversationAssign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *string
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // PostConversationDisconnect invokes POST /api/v2/conversations/{conversationId}/disconnect
 //
 // Performs a full conversation teardown. Issues disconnect requests for any connected media. Applies a system wrap-up code to any participants that are pending wrap-up. This is not intended to be the normal way of ending interactions but is available in the event of problems with the application to allow a resynchronization of state across all components. It is recommended that users submit a support case if they are relying on this endpoint systematically as there is likely something that needs investigation.

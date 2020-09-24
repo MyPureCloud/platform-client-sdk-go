@@ -332,6 +332,10 @@ type Viewfilter struct {
 	// RequestedRoutingTypes - A list of routing types requested
 	RequestedRoutingTypes *[]string `json:"requestedRoutingTypes,omitempty"`
 
+
+	// HasAgentAssistId - Indicates filtering for agent assist id
+	HasAgentAssistId *bool `json:"hasAgentAssistId,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

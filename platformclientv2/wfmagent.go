@@ -13,36 +13,36 @@ type Wfmagent struct {
 	User *Userreference `json:"user,omitempty"`
 
 
-	// WorkPlan - The work plan associated with this agent
+	// WorkPlan - The work plan associated with this agent, if applicable
 	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 
 
-	// TimeZone - The time zone for this agent. Defaults to the time zone of the management unit to which the agent belongs
-	TimeZone *Wfmtimezone `json:"timeZone,omitempty"`
+	// WorkPlanRotation - The work plan rotation associated with this agent, if applicable
+	WorkPlanRotation *Workplanrotationreference `json:"workPlanRotation,omitempty"`
 
 
 	// AcceptDirectShiftTrades - Whether the agent accepts direct shift trade requests
 	AcceptDirectShiftTrades *bool `json:"acceptDirectShiftTrades,omitempty"`
 
 
-	// Metadata - Metadata for this agent
-	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
-
-
-	// Queues - List of queues to which the agent belongs and which are defined in the service goal groups in this management unit
+	// Queues - List of queues to which this agent is capable of handling
 	Queues *[]Queuereference `json:"queues,omitempty"`
 
 
-	// Languages - The list of languages
+	// Languages - The list of languages this agent is capable of handling
 	Languages *[]Languagereference `json:"languages,omitempty"`
 
 
-	// Skills - The list of skills
+	// Skills - The list of skills this agent is capable of handling
 	Skills *[]Routingskillreference `json:"skills,omitempty"`
 
 
 	// Schedulable - Whether the agent has the permission to be included in schedule generation
 	Schedulable *bool `json:"schedulable,omitempty"`
+
+
+	// Metadata - Metadata for this agent
+	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
 
 	// SelfUri - The URI for this object

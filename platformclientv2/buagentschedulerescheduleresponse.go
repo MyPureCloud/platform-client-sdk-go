@@ -20,6 +20,10 @@ type Buagentschedulerescheduleresponse struct {
 	// WorkPlan - The work plan for this user
 	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 
+
+	// WorkPlansPerWeek - The work plans per week for this user from the work plan rotation. Null values in the list denotes that user is not part of any work plan for that week
+	WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

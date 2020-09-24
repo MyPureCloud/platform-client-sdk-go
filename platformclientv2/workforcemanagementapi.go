@@ -3436,7 +3436,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 // Get data for agent in the management unit
 //
 // 
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(managementUnitId string, agentId string) (*Wfmagent, *APIResponse, error) {
+func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(managementUnitId string, agentId string, excludeCapabilities bool) (*Wfmagent, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}"
@@ -3474,6 +3474,20 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(excludeCapabilities).(string); ok {
+		if str != "" {
+			queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, collectionFormat)
+		}
+	} else {
+		queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header

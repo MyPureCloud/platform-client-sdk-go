@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 )
 
-// Wfmhistoricaladherencequeryforusers - Query to request a historical adherence report for users across management units from Workforce Management Service
+// Wfmhistoricaladherencequeryforusers
 type Wfmhistoricaladherencequeryforusers struct { 
 	// StartDate - Beginning of the date range to query in ISO-8601 format
 	StartDate *time.Time `json:"startDate,omitempty"`
@@ -14,12 +14,16 @@ type Wfmhistoricaladherencequeryforusers struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 
 
-	// TimeZone - The time zone to use for returned results in olson format
+	// TimeZone - The time zone to use for returned results in olson format. If it is not set, the business unit time zone will be used to compute adherence
 	TimeZone *string `json:"timeZone,omitempty"`
 
 
-	// UserIds - The userIds to report on
+	// UserIds - The userIds to report on. Note: Only one of [teamIds, userIds] can be requested
 	UserIds *[]string `json:"userIds,omitempty"`
+
+
+	// TeamIds - The teamIds to report on. Note: Only one of [teamIds, userIds] can be requested
+	TeamIds *[]string `json:"teamIds,omitempty"`
 
 
 	// IncludeExceptions - Whether user exceptions should be returned as part of the results

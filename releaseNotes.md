@@ -1,261 +1,312 @@
-Platform API version: 4182
+Platform API version: 4219
 
 
-# Major Changes (11 changes)
+# Major Changes (5 changes)
 
-**GET /api/v2/coaching/appointments** (3 changes)
+**GET /api/v2/workforcemanagement/managementunits/{managementUnitId}/agents/{agentId}** (1 change)
 
-* Parameter relationships was added
-* Parameter completionInterval was added
-* Parameter overdue was added
+* Parameter excludeCapabilities was added
 
-**GET /api/v2/coaching/appointments/me** (3 changes)
+**WfmTimeZone** (1 change)
 
-* Parameter relationships was added
-* Parameter completionInterval was added
-* Parameter overdue was added
+* Model WfmTimeZone was removed
 
-**ReportingExportJobResponse** (1 change)
+**WfmAgent** (1 change)
 
-* Required property runId was added
+* Property timeZone was removed
 
-**Permissions** (2 changes)
+**EntityListing** (1 change)
 
-* Property id was removed
-* Property name was removed
+* Property entities was changed from object[] to DataTableImportJob[]
 
-**ExternalOrganizationTrustorLink** (2 changes)
+**WfmHistoricalAdherenceQueryForUsers** (1 change)
 
-* Property id was removed
-* Property selfUri was removed
+* Required property teamIds was added
 
 
-# Minor Changes (69 changes)
+# Minor Changes (93 changes)
 
-**/api/v2/audits/query/realtime/servicemapping** (2 changes)
-
-* Path was added
-* Operation GET was added
-
-**/api/v2/speechandtextanalytics/conversations/{conversationId}** (2 changes)
-
-* Path was added
-* Operation GET was added
-
-**/api/v2/coaching/appointments/aggregates/query** (2 changes)
+**/api/v2/users/development/activities/aggregates/query** (2 changes)
 
 * Path was added
 * Operation POST was added
 
-**AcwSettings** (1 change)
+**/api/v2/users/development/activities/me** (2 changes)
 
-* Enum value AGENT_REQUESTED was added to property wrapupPrompt
+* Path was added
+* Operation GET was added
 
-**UserScheduleAdherence** (1 change)
+**/api/v2/users/development/activities** (2 changes)
 
-* Optional property team was added
+* Path was added
+* Operation GET was added
 
-**ViewFilter** (1 change)
+**/api/v2/users/development/activities/{activityId}** (2 changes)
 
-* Enum value webmessaging was added to property messageTypes
+* Path was added
+* Operation GET was added
 
-**Recipient** (1 change)
+**/api/v2/conversations/{conversationId}/assign** (2 changes)
 
-* Enum value webmessaging was added to property messengerType
+* Path was added
+* Operation POST was added
 
-**Message** (2 changes)
+**/api/v2/flows/milestones** (3 changes)
 
-* Enum value unknown was added to property type
-* Enum value webmessaging was added to property type
+* Path was added
+* Operation GET was added
+* Operation POST was added
 
-**Participant** (1 change)
+**/api/v2/flows/milestones/{milestoneId}** (4 changes)
 
-* Enum value agentRequested was added to property wrapupPrompt
+* Path was added
+* Operation GET was added
+* Operation PUT was added
+* Operation DELETE was added
 
-**FlowAggregateQueryPredicate** (2 changes)
+**Call** (2 changes)
 
-* Enum value agentRank was added to property dimension
-* Enum value proposedAgentId was added to property dimension
+* Optional property afterCallWorkRequired was added
+* Optional property agentAssistantId was added
 
-**FlowAggregationQuery** (2 changes)
+**Callback** (1 change)
 
-* Enum value agentRank was added to property groupBy
-* Enum value proposedAgentId was added to property groupBy
+* Optional property afterCallWorkRequired was added
 
-**MessagingIntegration** (1 change)
+**Cobrowsesession** (1 change)
 
-* Enum value webmessaging was added to property messengerType
+* Optional property afterCallWorkRequired was added
 
-**IpAddressRange** (1 change)
+**ConversationChat** (1 change)
 
-* Enum value smtp was added to property service
+* Optional property afterCallWorkRequired was added
 
-**OAuthClientListing** (1 change)
+**Email** (1 change)
 
-* Optional property dateToDelete was added
+* Optional property afterCallWorkRequired was added
 
-**OAuthClient** (1 change)
+**Message** (1 change)
 
-* Optional property dateToDelete was added
+* Optional property afterCallWorkRequired was added
 
-**OAuthClientRequest** (1 change)
+**Queue** (2 changes)
 
-* Optional property dateToDelete was added
+* Optional property enableTranscription was added
+* Optional property enableManualAssignment was added
 
-**AuditQueryEntity** (3 changes)
+**Screenshare** (1 change)
 
-* Enum value Trigger was added to property name
-* Enum value Enable was added to property actions
-* Enum value Disable was added to property actions
+* Optional property afterCallWorkRequired was added
 
-**AuditQueryService** (1 change)
+**SocialExpression** (1 change)
 
-* Enum value Triggers was added to property name
+* Optional property afterCallWorkRequired was added
+
+**Video** (1 change)
+
+* Optional property afterCallWorkRequired was added
+
+**QueueRequest** (2 changes)
+
+* Optional property enableTranscription was added
+* Optional property enableManualAssignment was added
 
 **AuditQueryExecutionStatusResponse** (1 change)
 
-* Enum value Triggers was added to property serviceName
+* Enum value ResponseManagement was added to property serviceName
 
 **AuditQueryRequest** (1 change)
 
-* Enum value Triggers was added to property serviceName
+* Enum value ResponseManagement was added to property serviceName
 
 **AuditLogMessage** (4 changes)
 
-* Enum value Triggers was added to property serviceName
-* Enum value Enable was added to property action
-* Enum value Disable was added to property action
-* Enum value Trigger was added to property entityType
+* Enum value ResponseManagement was added to property serviceName
+* Enum value SessionType was added to property entityType
+* Enum value EventType was added to property entityType
+* Enum value Response was added to property entityType
 
 **AuditRealtimeQueryRequest** (1 change)
 
-* Enum value Triggers was added to property serviceName
+* Enum value ResponseManagement was added to property serviceName
 
-**MessagingSticker** (1 change)
+**AuditQueryEntity** (3 changes)
 
-* Enum value webmessaging was added to property messengerType
+* Enum value SessionType was added to property name
+* Enum value EventType was added to property name
+* Enum value Response was added to property name
 
-**MessageMediaParticipant** (2 changes)
+**AuditQueryService** (1 change)
 
-* Enum value unknown was added to property type
-* Enum value webmessaging was added to property type
+* Enum value ResponseManagement was added to property name
 
-**CreateOutboundMessagingConversationRequest** (1 change)
+**KnowledgeBase** (1 change)
 
-* Enum value webmessaging was added to property toAddressMessengerType
+* Enum value de-DE was added to property coreLanguage
 
-**SendAgentlessOutboundMessageResponse** (1 change)
+**AvailableTopic** (1 change)
 
-* Enum value webmessaging was added to property messengerType
+* Optional property publicApiTemplateUriPaths was added
 
-**SendAgentlessOutboundMessageRequest** (1 change)
+**WfmAgent** (1 change)
 
-* Enum value webmessaging was added to property toAddressMessengerType
+* Optional property workPlanRotation was added
 
-**MessageData** (1 change)
-
-* Enum value webmessaging was added to property messengerType
-
-**WfmBusinessUnitReference** (1 change)
-
-* id is no longer readonly
-
-**WfmScheduleReference** (1 change)
-
-* id is no longer readonly
-
-**AnalyticsProposedAgent** (1 change)
+**WorkPlanRotationReference** (1 change)
 
 * Model was added
 
-**AnalyticsSession** (2 changes)
+**ViewFilter** (1 change)
 
+* Optional property hasAgentAssistId was added
+
+**WfmHistoricalAdherenceQuery** (1 change)
+
+* Optional property teamIds was added
+
+**FlowAggregateQueryPredicate** (1 change)
+
+* Enum value flowMilestoneId was added to property dimension
+
+**FlowAggregationQuery** (3 changes)
+
+* Enum value flowMilestoneId was added to property groupBy
+* Enum value nFlowMilestone was added to property metrics
+* Enum value oFlowMilestone was added to property metrics
+
+**FlowAggregationView** (2 changes)
+
+* Enum value nFlowMilestone was added to property target
+* Enum value oFlowMilestone was added to property target
+
+**BuAgentScheduleRescheduleResponse** (1 change)
+
+* Optional property workPlansPerWeek was added
+
+**ConversationDetailQueryPredicate** (2 changes)
+
+* Enum value nFlowMilestone was added to property metric
+* Enum value oFlowMilestone was added to property metric
+
+**Dependency** (1 change)
+
+* Enum value FLOWMILESTONE was added to property type
+
+**DependencyObject** (1 change)
+
+* Enum value FLOWMILESTONE was added to property type
+
+**KnowledgeCategory** (1 change)
+
+* Enum value de-DE was added to property languageCode
+
+**KnowledgeDocument** (1 change)
+
+* Enum value de-DE was added to property languageCode
+
+**KnowledgeSearchDocument** (1 change)
+
+* Enum value de-DE was added to property languageCode
+
+**EntityListing** (4 changes)
+
+* Optional property pageSize was added
+* Optional property pageNumber was added
+* Optional property total was added
+* Optional property pageCount was added
+
+**BuAgentScheduleQueryResponse** (1 change)
+
+* Optional property workPlansPerWeek was added
+
+**UserQueue** (2 changes)
+
+* Optional property enableTranscription was added
+* Optional property enableManualAssignment was added
+
+**DevelopmentActivityAggregateQueryResponseData** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateQueryResponseGroupedData** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateQueryResponseMetric** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateQueryResponseStatistics** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateResponse** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateParam** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateQueryRequestClause** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateQueryRequestFilter** (1 change)
+
+* Model was added
+
+**DevelopmentActivityAggregateQueryRequestPredicate** (1 change)
+
+* Model was added
+
+**ReportingExportJobResponse** (2 changes)
+
+* Enum value FAILED_AS_EXPORT_FILE_SIZE_IS_GREATER_THAN_10MB was added to property exportErrorMessagesType
+* Optional property emailErrorDescription was added
+
+**DevelopmentActivity** (1 change)
+
+* Model was added
+
+**DevelopmentActivityListing** (1 change)
+
+* Model was added
+
+**ConversationUser** (1 change)
+
+* Model was added
+
+**CreateQueueRequest** (2 changes)
+
+* Optional property enableTranscription was added
+* Optional property enableManualAssignment was added
+
+**FlowMilestone** (1 change)
+
+* Model was added
+
+**FlowMilestoneListing** (1 change)
+
+* Model was added
+
+**QueueObservationQuery** (2 changes)
+
+* Enum value oAlerting was added to property metrics
+* Enum value oAlerting was added to property detailMetrics
+
+**CallBasic** (2 changes)
+
+* Optional property afterCallWorkRequired was added
 * Optional property agentAssistantId was added
-* Optional property proposedAgents was added
 
-**ConversationAggregateQueryPredicate** (2 changes)
+**CallbackBasic** (1 change)
 
-* Enum value agentRank was added to property dimension
-* Enum value proposedAgentId was added to property dimension
+* Optional property afterCallWorkRequired was added
 
-**ConversationAggregationQuery** (2 changes)
+**KnowledgeExtendedCategory** (1 change)
 
-* Enum value agentRank was added to property groupBy
-* Enum value proposedAgentId was added to property groupBy
-
-**SegmentDetailQueryPredicate** (2 changes)
-
-* Enum value agentRank was added to property dimension
-* Enum value proposedAgentId was added to property dimension
-
-**CoachingAppointmentResponse** (1 change)
-
-* Optional property isOverdue was added
-
-**OrgOAuthClient** (1 change)
-
-* Optional property dateToDelete was added
-
-**ParticipantBasic** (1 change)
-
-* Enum value agentRequested was added to property wrapupPrompt
-
-**ConversationMetrics** (1 change)
-
-* Model was added
-
-**EventMessage** (2 changes)
-
-* Enum value CAMPAIGN_CONTENT_TEMPLATE_SUBSTITUTION_MISMATCH was added to property code
-* Enum value CAMPAIGN_MESSAGE_CHARACTER_LIMIT_EXCEEDED was added to property code
-
-**BuAgentSchedulesQueryResponse** (1 change)
-
-* Optional property businessUnitTimeZone was added
-
-**UserSearchRequest** (1 change)
-
-* Optional property enforcePermissions was added
-
-**ExternalOrganizationTrustorLink** (1 change)
-
-* Optional property externalOrganizationUri was added
-
-**CoachingAppointmentAggregateResponse** (1 change)
-
-* Model was added
-
-**QueryResponseData** (1 change)
-
-* Model was added
-
-**QueryResponseGroupedData** (1 change)
-
-* Model was added
-
-**QueryResponseMetric** (1 change)
-
-* Model was added
-
-**QueryResponseStats** (1 change)
-
-* Model was added
-
-**CoachingAppointmentAggregateRequest** (1 change)
-
-* Model was added
-
-**QueryRequestClause** (1 change)
-
-* Model was added
-
-**QueryRequestFilter** (1 change)
-
-* Model was added
-
-**QueryRequestPredicate** (1 change)
-
-* Model was added
+* Enum value de-DE was added to property languageCode
 
 
 # Point Changes (0 changes)

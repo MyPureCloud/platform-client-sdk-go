@@ -113,6 +113,14 @@ type Callbasic struct {
 	// AfterCallWork - After-call work for the communication.
 	AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 
+
+	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
+	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+
+	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

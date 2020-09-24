@@ -21,6 +21,10 @@ type Buagentschedulequeryresponse struct {
 	WorkPlan *Workplanreference `json:"workPlan,omitempty"`
 
 
+	// WorkPlansPerWeek - The work plans per week for this user from the work plan rotation. Null values in the list denotes that user is not part of any work plan for that week
+	WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+
+
 	// Metadata - Versioned entity metadata for this agent schedule
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 

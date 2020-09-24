@@ -32,6 +32,10 @@ type Availabletopic struct {
 	// Transports - Transports that support events for the topic
 	Transports *[]string `json:"transports,omitempty"`
 
+
+	// PublicApiTemplateUriPaths
+	PublicApiTemplateUriPaths *[]string `json:"publicApiTemplateUriPaths,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

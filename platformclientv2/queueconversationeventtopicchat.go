@@ -66,6 +66,10 @@ type Queueconversationeventtopicchat struct {
 	AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
+	// AfterCallWorkRequired
+	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

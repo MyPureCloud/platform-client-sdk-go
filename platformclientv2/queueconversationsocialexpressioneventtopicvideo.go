@@ -70,6 +70,10 @@ type Queueconversationsocialexpressioneventtopicvideo struct {
 	AfterCallWork *Queueconversationsocialexpressioneventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
+	// AfterCallWorkRequired
+	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 

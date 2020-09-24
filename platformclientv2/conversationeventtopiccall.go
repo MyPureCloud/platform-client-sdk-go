@@ -102,6 +102,14 @@ type Conversationeventtopiccall struct {
 	AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
+	// AfterCallWorkRequired
+	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+
+	// AgentAssistantId
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
 
