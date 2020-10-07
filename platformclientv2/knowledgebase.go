@@ -30,6 +30,10 @@ type Knowledgebase struct {
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 
+	// FaqCount - The count representing the number of documents of type FAQ per KnowledgeBase
+	FaqCount *int32 `json:"faqCount,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

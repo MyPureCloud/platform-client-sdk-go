@@ -94,6 +94,10 @@ type Site struct {
 	NtpSettings *Ntpsettings `json:"ntpSettings,omitempty"`
 
 
+	// CoreSite - The core site
+	CoreSite *bool `json:"coreSite,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

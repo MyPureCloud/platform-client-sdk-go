@@ -122,6 +122,10 @@ type Participantbasic struct {
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
+	// CoachedParticipantId - If this participant is a coach, then this will be the id of the participant that is being coached.
+	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+
+
 	// Attributes - Additional participant attributes
 	Attributes *map[string]string `json:"attributes,omitempty"`
 

@@ -90,6 +90,14 @@ type Reportingexportjobresponse struct {
 	HasSplitByMedia *bool `json:"hasSplitByMedia,omitempty"`
 
 
+	// HasSummaryRow - Indicates if summary row needs to be present in exports
+	HasSummaryRow *bool `json:"hasSummaryRow,omitempty"`
+
+
+	// CsvDelimiter - The user supplied csv delimiter string value either of type 'comma' or 'semicolon' permitted for the export request
+	CsvDelimiter *string `json:"csvDelimiter,omitempty"`
+
+
 	// SelectedColumns - The list of ordered selected columns from the export view by the user
 	SelectedColumns *[]Selectedcolumns `json:"selectedColumns,omitempty"`
 

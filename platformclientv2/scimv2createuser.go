@@ -21,7 +21,7 @@ type Scimv2createuser struct {
 	DisplayName *string `json:"displayName,omitempty"`
 
 
-	// Password - The new password for the Genesys Cloud user. Does not return an existing password.
+	// Password - The new password for the Genesys Cloud user. Does not return an existing password. When creating a user if a password is not supplied a password will be randomly generated which is 40 characters in length and will contain five characters from each of the password policy groups.
 	Password *string `json:"password,omitempty"`
 
 

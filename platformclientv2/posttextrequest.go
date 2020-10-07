@@ -41,6 +41,10 @@ type Posttextrequest struct {
 	BotCorrelationId *string `json:"botCorrelationId,omitempty"`
 
 
+	// MessagingPlatformType - If the channels list contains a 'Messaging' item and the messaging platform is known, include it here to get accurate analytics
+	MessagingPlatformType *string `json:"messagingPlatformType,omitempty"`
+
+
 	// AmazonLexRequest
 	AmazonLexRequest *Amazonlexrequest `json:"amazonLexRequest,omitempty"`
 

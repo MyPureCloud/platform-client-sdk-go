@@ -5,11 +5,11 @@ import (
 
 // Servicelevel
 type Servicelevel struct { 
-	// Percentage
+	// Percentage - The desired Service Level. A value between 0 and 1.
 	Percentage *float64 `json:"percentage,omitempty"`
 
 
-	// DurationMs
+	// DurationMs - Service Level target in milliseconds.
 	DurationMs *int64 `json:"durationMs,omitempty"`
 
 }

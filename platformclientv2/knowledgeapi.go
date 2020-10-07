@@ -965,7 +965,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // Get knowledge bases
 //
 // 
-func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string) (*Knowledgebaselisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string, name string) (*Knowledgebaselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases"
@@ -1039,6 +1039,18 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 		}
 	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
 	}
 	
 	

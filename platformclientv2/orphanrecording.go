@@ -50,6 +50,10 @@ type Orphanrecording struct {
 	OrphanStatus *string `json:"orphanStatus,omitempty"`
 
 
+	// SourceOrphaningId - An identifier used during recovery operations by the supplying hybrid platform to track back and determine which interaction this recording is associated with
+	SourceOrphaningId *string `json:"sourceOrphaningId,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

@@ -17,6 +17,10 @@ type Tokeninfo struct {
 	AuthorizedScope *[]string `json:"authorizedScope,omitempty"`
 
 
+	// ClonedUser - Only present when a user is a clone of trustee user in the trustor org.
+	ClonedUser *Tokeninfocloneduser `json:"clonedUser,omitempty"`
+
+
 	// OAuthClient
 	OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
 

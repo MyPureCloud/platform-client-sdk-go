@@ -22,7 +22,7 @@ type Bumanagementunitschedulesummary struct {
 	EndDate *time.Time `json:"endDate,omitempty"`
 
 
-	// Agents - The changed agents in the management unit. Only populated in schedule update notifications
+	// Agents - The agents in the management unit who are part of this schedule, or in schedule change notifications, the agents that were changed. Note this will come back as an empty list unless the appropriate expand query parameter is passed
 	Agents *[]Userreference `json:"agents,omitempty"`
 
 }
