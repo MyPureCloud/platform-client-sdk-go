@@ -39,7 +39,7 @@ type Auditlogmessage struct {
 
 
 	// Entity - Entity that was impacted.
-	Entity *Addressableentityref `json:"entity,omitempty"`
+	Entity *Domainentityref `json:"entity,omitempty"`
 
 
 	// EntityType - Type of the entity that was impacted.

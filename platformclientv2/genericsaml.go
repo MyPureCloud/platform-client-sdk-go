@@ -13,16 +13,16 @@ type Genericsaml struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// LogoImageData
-	LogoImageData *string `json:"logoImageData,omitempty"`
-
-
 	// RelyingPartyIdentifier
 	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 
 
 	// EndpointCompression
 	EndpointCompression *bool `json:"endpointCompression,omitempty"`
+
+
+	// LogoImageData
+	LogoImageData *string `json:"logoImageData,omitempty"`
 
 
 	// Certificate
