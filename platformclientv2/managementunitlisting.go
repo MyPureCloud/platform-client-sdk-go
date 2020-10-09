@@ -33,12 +33,12 @@ type Managementunitlisting struct {
 	PageCount *int32 `json:"pageCount,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
