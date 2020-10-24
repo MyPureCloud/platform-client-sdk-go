@@ -54,7 +54,7 @@ type Recording struct {
 	FileState *string `json:"fileState,omitempty"`
 
 
-	// RestoreExpirationTime - The amount of time a restored recording will remain restored before being archived again. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// RestoreExpirationTime - The amount of time a restored recording will remain restored before being archived again. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RestoreExpirationTime *time.Time `json:"restoreExpirationTime,omitempty"`
 
 
@@ -70,7 +70,7 @@ type Recording struct {
 	ActualTranscodeTimeMs *int64 `json:"actualTranscodeTimeMs,omitempty"`
 
 
-	// ArchiveDate - The date the recording will be archived. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ArchiveDate - The date the recording will be archived. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ArchiveDate *time.Time `json:"archiveDate,omitempty"`
 
 
@@ -78,15 +78,15 @@ type Recording struct {
 	ArchiveMedium *string `json:"archiveMedium,omitempty"`
 
 
-	// DeleteDate - The date the recording will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DeleteDate - The date the recording will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DeleteDate *time.Time `json:"deleteDate,omitempty"`
 
 
-	// ExportDate - The date the recording will be exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ExportDate - The date the recording will be exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExportDate *time.Time `json:"exportDate,omitempty"`
 
 
-	// ExportedDate - The date the recording was exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ExportedDate - The date the recording was exported. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExportedDate *time.Time `json:"exportedDate,omitempty"`
 
 

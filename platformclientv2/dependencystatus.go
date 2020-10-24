@@ -26,11 +26,11 @@ type Dependencystatus struct {
 	BuildId *string `json:"buildId,omitempty"`
 
 
-	// DateStarted - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateStarted - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateStarted *time.Time `json:"dateStarted,omitempty"`
 
 
-	// DateCompleted - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCompleted - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 
 

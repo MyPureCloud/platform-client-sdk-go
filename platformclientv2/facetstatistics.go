@@ -26,11 +26,11 @@ type Facetstatistics struct {
 	StdDeviation *float64 `json:"stdDeviation,omitempty"`
 
 
-	// DateMin - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateMin - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateMin *time.Time `json:"dateMin,omitempty"`
 
 
-	// DateMax - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateMax - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateMax *time.Time `json:"dateMax,omitempty"`
 
 }

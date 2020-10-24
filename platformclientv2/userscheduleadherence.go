@@ -62,7 +62,7 @@ type Userscheduleadherence struct {
 	TimeOfAdherenceChange *time.Time `json:"timeOfAdherenceChange,omitempty"`
 
 
-	// PresenceUpdateTime - Time when presence was last updated.  Used to calculate time in current status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// PresenceUpdateTime - Time when presence was last updated.  Used to calculate time in current status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	PresenceUpdateTime *time.Time `json:"presenceUpdateTime,omitempty"`
 
 
@@ -70,7 +70,7 @@ type Userscheduleadherence struct {
 	ActiveQueues *[]Queuereference `json:"activeQueues,omitempty"`
 
 
-	// ActiveQueuesModifiedTime - Time when the list of active queues for this user was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ActiveQueuesModifiedTime - Time when the list of active queues for this user was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ActiveQueuesModifiedTime *time.Time `json:"activeQueuesModifiedTime,omitempty"`
 
 

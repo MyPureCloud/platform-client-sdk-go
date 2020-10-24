@@ -26,15 +26,15 @@ type Voicemailmessage struct {
 	AudioRecordingSizeBytes *int64 `json:"audioRecordingSizeBytes,omitempty"`
 
 
-	// CreatedDate - The date the voicemail message was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreatedDate - The date the voicemail message was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
 
-	// ModifiedDate - The date the voicemail message was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ModifiedDate - The date the voicemail message was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
 
-	// DeletedDate - The date the voicemail message deleted property was set to true. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DeletedDate - The date the voicemail message deleted property was set to true. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DeletedDate *time.Time `json:"deletedDate,omitempty"`
 
 

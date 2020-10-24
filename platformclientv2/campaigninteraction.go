@@ -30,23 +30,23 @@ type Campaigninteraction struct {
 	ActivePreviewCall *bool `json:"activePreviewCall,omitempty"`
 
 
-	// LastActivePreviewWrapupTime - The time when the last preview of the interaction was wrapped up. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// LastActivePreviewWrapupTime - The time when the last preview of the interaction was wrapped up. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	LastActivePreviewWrapupTime *time.Time `json:"lastActivePreviewWrapupTime,omitempty"`
 
 
-	// CreationTime - The time when dialer created the interaction. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreationTime - The time when dialer created the interaction. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreationTime *time.Time `json:"creationTime,omitempty"`
 
 
-	// CallPlacedTime - The time when the agent or system places the call. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CallPlacedTime - The time when the agent or system places the call. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CallPlacedTime *time.Time `json:"callPlacedTime,omitempty"`
 
 
-	// CallRoutedTime - The time when the agent was connected to the call. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CallRoutedTime - The time when the agent was connected to the call. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CallRoutedTime *time.Time `json:"callRoutedTime,omitempty"`
 
 
-	// PreviewConnectedTime - The time when the customer and routing participant are connected. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// PreviewConnectedTime - The time when the customer and routing participant are connected. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	PreviewConnectedTime *time.Time `json:"previewConnectedTime,omitempty"`
 
 
@@ -70,7 +70,7 @@ type Campaigninteraction struct {
 	CallerAddress *string `json:"callerAddress,omitempty"`
 
 
-	// PreviewPopDeliveredTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// PreviewPopDeliveredTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	PreviewPopDeliveredTime *time.Time `json:"previewPopDeliveredTime,omitempty"`
 
 

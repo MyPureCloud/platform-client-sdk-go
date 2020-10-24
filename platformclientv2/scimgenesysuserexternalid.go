@@ -5,7 +5,7 @@ import (
 
 // Scimgenesysuserexternalid - External Identifiers of user. The external identifier must be unique within the organization and the 'authority'
 type Scimgenesysuserexternalid struct { 
-	// Authority - Authority, or scope, of the external id.  Allows multiple external ids to be defined and should represent the source of the external identifier
+	// Authority - Authority, or scope, of \"externalId\". Allows multiple external identifiers to be defined. Represents the source of the external identifier.
 	Authority *string `json:"authority,omitempty"`
 
 

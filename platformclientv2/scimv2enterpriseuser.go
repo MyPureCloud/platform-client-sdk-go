@@ -17,7 +17,7 @@ type Scimv2enterpriseuser struct {
 	Manager *Manager `json:"manager,omitempty"`
 
 
-	// EmployeeNumber - The users employee number.
+	// EmployeeNumber - The user's employee number.
 	EmployeeNumber *string `json:"employeeNumber,omitempty"`
 
 }

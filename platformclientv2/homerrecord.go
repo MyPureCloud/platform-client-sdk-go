@@ -14,7 +14,7 @@ type Homerrecord struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Date - metadata associated to the SIP calls. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Date - metadata associated to the SIP calls. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Date *time.Time `json:"date,omitempty"`
 
 

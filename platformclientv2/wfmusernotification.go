@@ -14,7 +14,7 @@ type Wfmusernotification struct {
 	MutableGroupId *string `json:"mutableGroupId,omitempty"`
 
 
-	// Timestamp - The timestamp for this notification. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Timestamp - The timestamp for this notification. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
 

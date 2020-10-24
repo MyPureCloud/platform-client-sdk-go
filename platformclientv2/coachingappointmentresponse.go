@@ -18,7 +18,7 @@ type Coachingappointmentresponse struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// DateStart - The date/time the coaching appointment starts. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateStart - The date/time the coaching appointment starts. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
 
@@ -42,7 +42,7 @@ type Coachingappointmentresponse struct {
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
 
-	// DateCreated - The date/time the coaching appointment was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - The date/time the coaching appointment was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
@@ -50,7 +50,7 @@ type Coachingappointmentresponse struct {
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 
-	// DateModified - The date/time the coaching appointment was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateModified - The date/time the coaching appointment was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 

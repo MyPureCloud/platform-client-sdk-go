@@ -18,7 +18,7 @@ type Flowruntimeexecution struct {
 	FlowVersion *Flowversion `json:"flowVersion,omitempty"`
 
 
-	// DateLaunched - The time the flow was launched. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateLaunched - The time the flow was launched. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateLaunched *time.Time `json:"dateLaunched,omitempty"`
 
 
@@ -26,7 +26,7 @@ type Flowruntimeexecution struct {
 	Status *string `json:"status,omitempty"`
 
 
-	// DateCompleted - The time the flow completed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCompleted - The time the flow completed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 
 

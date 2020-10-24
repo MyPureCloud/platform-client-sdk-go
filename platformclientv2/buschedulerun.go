@@ -42,7 +42,7 @@ type Buschedulerun struct {
 	ScheduleDescription *string `json:"scheduleDescription,omitempty"`
 
 
-	// SchedulingStartTime - When the schedule generation run started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// SchedulingStartTime - When the schedule generation run started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SchedulingStartTime *time.Time `json:"schedulingStartTime,omitempty"`
 
 
@@ -54,7 +54,7 @@ type Buschedulerun struct {
 	SchedulingCanceledBy *Userreference `json:"schedulingCanceledBy,omitempty"`
 
 
-	// SchedulingCompletedTime - When the scheduling run was completed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// SchedulingCompletedTime - When the scheduling run was completed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SchedulingCompletedTime *time.Time `json:"schedulingCompletedTime,omitempty"`
 
 
@@ -66,7 +66,7 @@ type Buschedulerun struct {
 	ReschedulingOptions *Reschedulingoptionsrunresponse `json:"reschedulingOptions,omitempty"`
 
 
-	// ReschedulingResultExpiration - When the reschedule result will expire.  Null unless intradayRescheduling is true. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReschedulingResultExpiration - When the reschedule result will expire.  Null unless intradayRescheduling is true. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReschedulingResultExpiration *time.Time `json:"reschedulingResultExpiration,omitempty"`
 
 

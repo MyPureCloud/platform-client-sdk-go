@@ -6,11 +6,11 @@ import (
 
 // Analyticsconversationsegment
 type Analyticsconversationsegment struct { 
-	// SegmentStart - The timestamp when this segment began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// SegmentStart - The timestamp when this segment began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SegmentStart *time.Time `json:"segmentStart,omitempty"`
 
 
-	// SegmentEnd - The timestamp when this segment ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// SegmentEnd - The timestamp when this segment ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SegmentEnd *time.Time `json:"segmentEnd,omitempty"`
 
 

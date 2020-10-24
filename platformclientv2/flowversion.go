@@ -65,6 +65,10 @@ type Flowversion struct {
 	OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
 
 
+	// NluInfo - Information about the NLU domain version for the flow version
+	NluInfo *Nluinfo `json:"nluInfo,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

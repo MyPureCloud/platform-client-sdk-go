@@ -22,7 +22,7 @@ type Recordingmessagingmessage struct {
 	To *string `json:"to,omitempty"`
 
 
-	// Timestamp - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Timestamp - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
 

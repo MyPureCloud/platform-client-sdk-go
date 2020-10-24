@@ -18,7 +18,7 @@ type Recordingjob struct {
 	RecordingJobsQuery *Recordingjobsquery `json:"recordingJobsQuery,omitempty"`
 
 
-	// DateCreated - Date when the job was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - Date when the job was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 

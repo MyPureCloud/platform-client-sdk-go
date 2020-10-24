@@ -18,7 +18,7 @@ type Analyticsevaluation struct {
 	UserId *string `json:"userId,omitempty"`
 
 
-	// EventTime - Specifies when an evaluation occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// EventTime - Specifies when an evaluation occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EventTime *time.Time `json:"eventTime,omitempty"`
 
 

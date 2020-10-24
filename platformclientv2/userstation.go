@@ -22,7 +22,7 @@ type Userstation struct {
 	AssociatedUser *User `json:"associatedUser,omitempty"`
 
 
-	// AssociatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// AssociatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	AssociatedDate *time.Time `json:"associatedDate,omitempty"`
 
 

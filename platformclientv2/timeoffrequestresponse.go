@@ -50,7 +50,7 @@ type Timeoffrequestresponse struct {
 	SubmittedBy *Userreference `json:"submittedBy,omitempty"`
 
 
-	// SubmittedDate - The timestamp when this request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// SubmittedDate - The timestamp when this request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SubmittedDate *time.Time `json:"submittedDate,omitempty"`
 
 
@@ -58,7 +58,7 @@ type Timeoffrequestresponse struct {
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 
-	// ReviewedDate - The timestamp when this request was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReviewedDate - The timestamp when this request was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReviewedDate *time.Time `json:"reviewedDate,omitempty"`
 
 
@@ -66,7 +66,7 @@ type Timeoffrequestresponse struct {
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 
-	// ModifiedDate - The timestamp when this request was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ModifiedDate - The timestamp when this request was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
 

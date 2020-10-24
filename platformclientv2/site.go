@@ -22,11 +22,11 @@ type Site struct {
 	Version *int32 `json:"version,omitempty"`
 
 
-	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
-	// DateModified - The date of the last modification to the resource. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateModified - The date of the last modification to the resource. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 
@@ -92,6 +92,10 @@ type Site struct {
 
 	// NtpSettings - Network Time Protocol settings for the site
 	NtpSettings *Ntpsettings `json:"ntpSettings,omitempty"`
+
+
+	// MediaModel - Media model for the site
+	MediaModel *string `json:"mediaModel,omitempty"`
 
 
 	// CoreSite - The core site

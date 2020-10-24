@@ -30,7 +30,7 @@ type Sendagentlessoutboundmessageresponse struct {
 	TextBody *string `json:"textBody,omitempty"`
 
 
-	// Timestamp - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Timestamp - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
 

@@ -10,7 +10,7 @@ type Developmentactivity struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// DateCompleted - Date that activity was completed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCompleted - Date that activity was completed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 
 
@@ -18,7 +18,7 @@ type Developmentactivity struct {
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
 
-	// DateCreated - Date activity was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - Date activity was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
@@ -38,7 +38,7 @@ type Developmentactivity struct {
 	Status *string `json:"status,omitempty"`
 
 
-	// DateDue - Due date for completion of the activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateDue - Due date for completion of the activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateDue *time.Time `json:"dateDue,omitempty"`
 
 

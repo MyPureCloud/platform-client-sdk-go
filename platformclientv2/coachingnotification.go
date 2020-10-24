@@ -26,7 +26,7 @@ type Coachingnotification struct {
 	Relationship *string `json:"relationship,omitempty"`
 
 
-	// DateStart - The start time of the appointment relating to this notification. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateStart - The start time of the appointment relating to this notification. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
 

@@ -18,7 +18,7 @@ type Addshifttraderequest struct {
 	ReceivingUserId *string `json:"receivingUserId,omitempty"`
 
 
-	// Expiration - When this shift trade request should expire. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Expiration - When this shift trade request should expire. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Expiration *time.Time `json:"expiration,omitempty"`
 
 

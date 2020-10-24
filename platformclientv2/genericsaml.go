@@ -17,24 +17,28 @@ type Genericsaml struct {
 	LogoImageData *string `json:"logoImageData,omitempty"`
 
 
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+
+
 	// EndpointCompression
 	EndpointCompression *bool `json:"endpointCompression,omitempty"`
 
 
-	// RelyingPartyIdentifier
-	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+	// NameIdentifierFormat
+	NameIdentifierFormat *string `json:"nameIdentifierFormat,omitempty"`
 
 
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
 
-	// IssuerURI
-	IssuerURI *string `json:"issuerURI,omitempty"`
-
-
 	// SsoTargetURI
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
+
+
+	// IssuerURI
+	IssuerURI *string `json:"issuerURI,omitempty"`
 
 
 	// Disabled

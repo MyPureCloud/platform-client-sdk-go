@@ -6,7 +6,7 @@ import (
 
 // Buforecastresult
 type Buforecastresult struct { 
-	// ReferenceStartDate - The reference start date for interval-based data for this forecast. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReferenceStartDate - The reference start date for interval-based data for this forecast. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReferenceStartDate *time.Time `json:"referenceStartDate,omitempty"`
 
 

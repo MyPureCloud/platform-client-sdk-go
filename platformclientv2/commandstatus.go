@@ -14,7 +14,7 @@ type Commandstatus struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Expiration - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Expiration - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Expiration *time.Time `json:"expiration,omitempty"`
 
 

@@ -18,11 +18,11 @@ type Analyticsflowoutcome struct {
 	FlowOutcome *string `json:"flowOutcome,omitempty"`
 
 
-	// FlowOutcomeStartTimestamp - Date/time the outcome started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// FlowOutcomeStartTimestamp - Date/time the outcome started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	FlowOutcomeStartTimestamp *time.Time `json:"flowOutcomeStartTimestamp,omitempty"`
 
 
-	// FlowOutcomeEndTimestamp - Date/time the outcome ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// FlowOutcomeEndTimestamp - Date/time the outcome ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	FlowOutcomeEndTimestamp *time.Time `json:"flowOutcomeEndTimestamp,omitempty"`
 
 }

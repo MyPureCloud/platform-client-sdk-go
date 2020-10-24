@@ -26,7 +26,7 @@ type Auditlogmessage struct {
 	ServiceName *string `json:"serviceName,omitempty"`
 
 
-	// EventDate - Date and time of when the audit message was logged. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// EventDate - Date and time of when the audit message was logged. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EventDate *time.Time `json:"eventDate,omitempty"`
 
 

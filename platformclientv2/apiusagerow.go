@@ -54,7 +54,7 @@ type Apiusagerow struct {
 	Requests *int64 `json:"requests,omitempty"`
 
 
-	// Date - Date of requests, based on granularity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Date - Date of requests, based on granularity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Date *time.Time `json:"date,omitempty"`
 
 }

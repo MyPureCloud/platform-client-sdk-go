@@ -14,7 +14,7 @@ type Routingstatus struct {
 	Status *string `json:"status,omitempty"`
 
 
-	// StartTime - The timestamp when the agent went into this state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// StartTime - The timestamp when the agent went into this state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
 }

@@ -14,11 +14,11 @@ type Orphanrecording struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// CreatedTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreatedTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedTime *time.Time `json:"createdTime,omitempty"`
 
 
-	// RecoveredTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// RecoveredTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RecoveredTime *time.Time `json:"recoveredTime,omitempty"`
 
 

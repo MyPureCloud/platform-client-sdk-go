@@ -26,7 +26,7 @@ type Gdprrequest struct {
 	RequestType *string `json:"requestType,omitempty"`
 
 
-	// CreatedDate - When the request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreatedDate - When the request was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDate *time.Time `json:"createdDate,omitempty"`
 
 

@@ -10,11 +10,11 @@ type Locationaddressverificationdetails struct {
 	Status *string `json:"status,omitempty"`
 
 
-	// DateFinished - Finished time of address verification process. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateFinished - Finished time of address verification process. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateFinished *time.Time `json:"dateFinished,omitempty"`
 
 
-	// DateStarted - Time started of address verification process. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateStarted - Time started of address verification process. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateStarted *time.Time `json:"dateStarted,omitempty"`
 
 

@@ -5,7 +5,7 @@ import (
 
 // Scimv2schemaattribute - A complex type that defines service provider attributes or subattributes and their qualities.
 type Scimv2schemaattribute struct { 
-	// Name - The attribute's name
+	// Name - The name of the attribute.
 	Name *string `json:"name,omitempty"`
 
 

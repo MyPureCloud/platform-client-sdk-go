@@ -14,15 +14,15 @@ type Domainedgesoftwareupdatedto struct {
 	MaxDownloadRate *int32 `json:"maxDownloadRate,omitempty"`
 
 
-	// DownloadStartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DownloadStartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DownloadStartTime *time.Time `json:"downloadStartTime,omitempty"`
 
 
-	// ExecuteStartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ExecuteStartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExecuteStartTime *time.Time `json:"executeStartTime,omitempty"`
 
 
-	// ExecuteStopTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ExecuteStopTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExecuteStopTime *time.Time `json:"executeStopTime,omitempty"`
 
 

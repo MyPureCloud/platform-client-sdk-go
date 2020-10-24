@@ -14,7 +14,7 @@ type Coachingannotation struct {
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
 
-	// DateCreated - The date/time the annotation was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - The date/time the annotation was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
@@ -22,7 +22,7 @@ type Coachingannotation struct {
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 
-	// DateModified - The date/time the annotation was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateModified - The date/time the annotation was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 

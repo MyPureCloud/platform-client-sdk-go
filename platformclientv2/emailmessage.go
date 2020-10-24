@@ -46,7 +46,7 @@ type Emailmessage struct {
 	HtmlBody *string `json:"htmlBody,omitempty"`
 
 
-	// Time - The time when the message was received or sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Time - The time when the message was received or sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Time *time.Time `json:"time,omitempty"`
 
 

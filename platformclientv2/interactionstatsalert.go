@@ -50,11 +50,11 @@ type Interactionstatsalert struct {
 	Unread *bool `json:"unread,omitempty"`
 
 
-	// StartDate - The date/time the alert was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// StartDate - The date/time the alert was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartDate *time.Time `json:"startDate,omitempty"`
 
 
-	// EndDate - The date/time the owning rule exiting in alarm status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// EndDate - The date/time the owning rule exiting in alarm status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndDate *time.Time `json:"endDate,omitempty"`
 
 

@@ -22,7 +22,7 @@ type Linestatus struct {
 	ContactAddresses *[]string `json:"contactAddresses,omitempty"`
 
 
-	// ReachableStateTime - The time the line entered its current reachable state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReachableStateTime - The time the line entered its current reachable state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReachableStateTime *time.Time `json:"reachableStateTime,omitempty"`
 
 }

@@ -5,11 +5,11 @@ import (
 
 // Scimemail - Defines a SCIM email address.
 type Scimemail struct { 
-	// Value - The email address. Note value for type 'other'is immutable.
+	// Value - The email address. Is immutable if \"type\" is set to \"other\".
 	Value *string `json:"value,omitempty"`
 
 
-	// VarType - The type of email address.
+	// VarType - The type of email address. \"value\" is immutable if \"type\" is set to \"other\".
 	VarType *string `json:"type,omitempty"`
 
 

@@ -5,7 +5,7 @@ import (
 
 // Facebookappcredentials
 type Facebookappcredentials struct { 
-	// Id - Genesys Facebook App Id
+	// Id - Genesys Cloud Facebook App Id
 	Id *string `json:"id,omitempty"`
 
 }

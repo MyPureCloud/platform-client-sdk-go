@@ -30,11 +30,11 @@ type Shifttraderesponse struct {
 	InitiatingShiftId *string `json:"initiatingShiftId,omitempty"`
 
 
-	// InitiatingShiftStart - The start date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// InitiatingShiftStart - The start date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftStart *time.Time `json:"initiatingShiftStart,omitempty"`
 
 
-	// InitiatingShiftEnd - The end date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// InitiatingShiftEnd - The end date/time of the shift being offered for trade. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftEnd *time.Time `json:"initiatingShiftEnd,omitempty"`
 
 
@@ -46,15 +46,15 @@ type Shifttraderesponse struct {
 	ReceivingShiftId *string `json:"receivingShiftId,omitempty"`
 
 
-	// ReceivingShiftStart - The start date/time of the receiving shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReceivingShiftStart - The start date/time of the receiving shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReceivingShiftStart *time.Time `json:"receivingShiftStart,omitempty"`
 
 
-	// ReceivingShiftEnd - The end date/time of the receiving shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReceivingShiftEnd - The end date/time of the receiving shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReceivingShiftEnd *time.Time `json:"receivingShiftEnd,omitempty"`
 
 
-	// Expiration - When this shift trade offer will expire if not matched or approved. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Expiration - When this shift trade offer will expire if not matched or approved. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Expiration *time.Time `json:"expiration,omitempty"`
 
 
@@ -70,7 +70,7 @@ type Shifttraderesponse struct {
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 
-	// ReviewedDate - The timestamp when this shift trade was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReviewedDate - The timestamp when this shift trade was reviewed. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReviewedDate *time.Time `json:"reviewedDate,omitempty"`
 
 

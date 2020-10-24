@@ -10,7 +10,7 @@ type Billingusageresource struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Date - The date that the usage was first observed by the billing subsystem. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Date - The date that the usage was first observed by the billing subsystem. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Date *time.Time `json:"date,omitempty"`
 
 }

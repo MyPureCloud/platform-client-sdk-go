@@ -45,7 +45,7 @@ type Annotation struct {
 	User *User `json:"user,omitempty"`
 
 
-	// Description - Text of annotation. Maximum character limit is 300.
+	// Description - Text of annotation.
 	Description *string `json:"description,omitempty"`
 
 

@@ -2259,9 +2259,9 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 
 // PostScimGroups invokes POST /api/v2/scim/groups
 //
-// Creates a group
+// Create a group
 //
-// Creates a Genesys Cloud group with group visibility set to \&quot;public\&quot; and rules visibility set to \&quot;true\&quot;. Auto-creates an \&quot;externalId\&quot;. \&quot;externalId\&quot; is used to determine if DELETE /api/v2/scim/groups/{groupId} or DELETE /api/v2/scim/v2/groups/{groupId} should be allowed.
+// Creates a Genesys Cloud group with group visibility set to \&quot;public\&quot; and rules visibility set to \&quot;true\&quot;. Auto-creates an \&quot;externalId\&quot;. \&quot;externalId\&quot; is used to determine if DELETE /api/v2/scim/groups/{groupId} or DELETE /api/v2/scim/v2/groups/{groupId} is allowed.
 func (a SCIMApi) PostScimGroups(body Scimv2group) (*Scimv2group, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

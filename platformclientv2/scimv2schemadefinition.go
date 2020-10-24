@@ -21,7 +21,7 @@ type Scimv2schemadefinition struct {
 	Attributes *[]Scimv2schemaattribute `json:"attributes,omitempty"`
 
 
-	// Meta - The metadata of the SCIM resource. Only location and resourceType are set for Schema resources.
+	// Meta - The metadata of the SCIM resource. Only \"location\" and \"resourceType\" are set for \"Schema\" resources.
 	Meta *Scimmetadata `json:"meta,omitempty"`
 
 }

@@ -13,7 +13,7 @@ type Scimuserextensions struct {
 	RoutingLanguages *[]Scimuserroutinglanguage `json:"routingLanguages,omitempty"`
 
 
-	// ExternalIds - External Identifiers assigned to user. SCIM External ID will be visible here with authority prefix 'x-pc:scimv2:v1' but will be immutable.
+	// ExternalIds - The list of external identifiers assigned to user. Always includes an immutable SCIM authority prefixed with \"x-pc:scimv2:v1\".
 	ExternalIds *[]Scimgenesysuserexternalid `json:"externalIds,omitempty"`
 
 }

@@ -18,7 +18,7 @@ type Reportrunentry struct {
 	ReportId *string `json:"reportId,omitempty"`
 
 
-	// RunTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// RunTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	RunTime *time.Time `json:"runTime,omitempty"`
 
 

@@ -10,7 +10,7 @@ type Scimmetadata struct {
 	ResourceType *string `json:"resourceType,omitempty"`
 
 
-	// LastModified - The last time that the resource was modified. Date time is represented as an ISO-8601 string, for example, yyyy-MM-ddTHH:mm:ss.SSSZ. Not present on Schema and ResourceType resource.
+	// LastModified - The last time that the resource was modified. Date time is represented as an \"ISO-8601 string\", for example, yyyy-MM-ddTHH:mm:ss.SSSZ. Not included with \"Schema\" and \"ResourceType\" resources.
 	LastModified *time.Time `json:"lastModified,omitempty"`
 
 
@@ -18,7 +18,7 @@ type Scimmetadata struct {
 	Location *string `json:"location,omitempty"`
 
 
-	// Version - The version of the resource. Matches the ETag HTTP response header. Not present on Schema and ResourceType resources.
+	// Version - The version of the resource. Matches the ETag HTTP response header. Not included with \"Schema\" and \"ResourceType\" resources.
 	Version *string `json:"version,omitempty"`
 
 }

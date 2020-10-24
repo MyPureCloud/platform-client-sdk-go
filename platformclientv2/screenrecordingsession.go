@@ -26,7 +26,7 @@ type Screenrecordingsession struct {
 	Conversation *Conversation `json:"conversation,omitempty"`
 
 
-	// StartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// StartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
 

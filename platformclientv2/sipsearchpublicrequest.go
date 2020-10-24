@@ -34,11 +34,11 @@ type Sipsearchpublicrequest struct {
 	ParticipantId *string `json:"participantId,omitempty"`
 
 
-	// DateStart - Start date of the search. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateStart - Start date of the search. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
 
-	// DateEnd - End date of the search. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateEnd - End date of the search. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateEnd *time.Time `json:"dateEnd,omitempty"`
 
 

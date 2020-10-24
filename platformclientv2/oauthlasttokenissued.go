@@ -6,7 +6,7 @@ import (
 
 // Oauthlasttokenissued
 type Oauthlasttokenissued struct { 
-	// DateIssued - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateIssued - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateIssued *time.Time `json:"dateIssued,omitempty"`
 
 }

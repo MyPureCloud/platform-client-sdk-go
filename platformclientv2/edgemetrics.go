@@ -10,7 +10,7 @@ type Edgemetrics struct {
 	Edge *Domainentityref `json:"edge,omitempty"`
 
 
-	// EventTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// EventTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EventTime *time.Time `json:"eventTime,omitempty"`
 
 

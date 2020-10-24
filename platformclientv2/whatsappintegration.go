@@ -26,11 +26,11 @@ type Whatsappintegration struct {
 	Recipient *Domainentityref `json:"recipient,omitempty"`
 
 
-	// DateCreated - Date this Integration was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - Date this Integration was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
-	// DateModified - Date this Integration was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateModified - Date this Integration was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 
@@ -52,6 +52,14 @@ type Whatsappintegration struct {
 
 	// ActivationErrorInfo - The error information of WhatsApp Integration activation process
 	ActivationErrorInfo *Errorbody `json:"activationErrorInfo,omitempty"`
+
+
+	// CreateStatus - Status of asynchronous create operation
+	CreateStatus *string `json:"createStatus,omitempty"`
+
+
+	// CreateError - Error information returned, if createStatus is set to Error
+	CreateError *Errorbody `json:"createError,omitempty"`
 
 
 	// SelfUri - The URI for this object

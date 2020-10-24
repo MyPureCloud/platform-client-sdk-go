@@ -14,7 +14,7 @@ type Voicemailcopyrecord struct {
 	Group *Group `json:"group,omitempty"`
 
 
-	// Date - The date when the voicemail was copied. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Date - The date when the voicemail was copied. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Date *time.Time `json:"date,omitempty"`
 
 }

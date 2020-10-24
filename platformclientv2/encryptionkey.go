@@ -14,7 +14,7 @@ type Encryptionkey struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// CreateDate - create date of the key pair. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreateDate - create date of the key pair. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreateDate *time.Time `json:"createDate,omitempty"`
 
 

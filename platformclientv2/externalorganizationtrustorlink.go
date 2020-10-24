@@ -14,7 +14,7 @@ type Externalorganizationtrustorlink struct {
 	TrustorOrgId *string `json:"trustorOrgId,omitempty"`
 
 
-	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 

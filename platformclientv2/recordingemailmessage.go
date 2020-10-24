@@ -42,7 +42,7 @@ type Recordingemailmessage struct {
 	Attachments *[]Emailattachment `json:"attachments,omitempty"`
 
 
-	// Time - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Time - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Time *time.Time `json:"time,omitempty"`
 
 }

@@ -77,6 +77,10 @@ type Flow struct {
 	CurrentOperation *Operation `json:"currentOperation,omitempty"`
 
 
+	// NluInfo - Information about the NLU domain version for the flow
+	NluInfo *Nluinfo `json:"nluInfo,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

@@ -14,7 +14,7 @@ type Analyticsuserdetailsasyncqueryresponse struct {
 	Cursor *string `json:"cursor,omitempty"`
 
 
-	// DataAvailabilityDate - Data available up to at least this datetime. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DataAvailabilityDate - Data available up to at least this datetime. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DataAvailabilityDate *time.Time `json:"dataAvailabilityDate,omitempty"`
 
 }

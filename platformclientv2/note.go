@@ -18,11 +18,11 @@ type Note struct {
 	NoteText *string `json:"noteText,omitempty"`
 
 
-	// ModifyDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ModifyDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifyDate *time.Time `json:"modifyDate,omitempty"`
 
 
-	// CreateDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreateDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreateDate *time.Time `json:"createDate,omitempty"`
 
 

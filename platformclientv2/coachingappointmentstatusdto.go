@@ -14,7 +14,7 @@ type Coachingappointmentstatusdto struct {
 	CreatedBy *Userreference `json:"createdBy,omitempty"`
 
 
-	// DateCreated - Creation time of the status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCreated - Creation time of the status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 

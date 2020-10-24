@@ -98,6 +98,10 @@ type Queueconversationvideoeventtopicparticipant struct {
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
+	// CoachedParticipantId
+	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+
+
 	// ScreenRecordingState
 	ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 

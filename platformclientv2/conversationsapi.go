@@ -9419,7 +9419,7 @@ func (a ConversationsApi) PostConversationsFaxes(body Faxsendrequest) (*Faxsendr
 //
 // Send message
 //
-// 
+// Send message on existing conversation/communication. Only one message body field can be accepted, per request. Example: 1 textBody, 1 mediaId, 1 stickerId, or 1 messageTemplate.
 func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversationId string, communicationId string, body Additionalmessage) (*Messagedata, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9872,7 +9872,7 @@ func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlesso
 // Create a Facebook Integration
 //
 // 
-func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Facebookintegrationrequest) (*Facebookintegration, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Facebookintegrationrequest, async bool) (*Facebookintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/facebook"
@@ -9903,6 +9903,20 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Fa
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(async).(string); ok {
+		if str != "" {
+			queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+		}
+	} else {
+		queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header
@@ -9943,7 +9957,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsFacebook(body Fa
 // Create a LINE messenger Integration
 //
 // 
-func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Lineintegrationrequest) (*Lineintegration, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Lineintegrationrequest, async bool) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/line"
@@ -9974,6 +9988,20 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Linein
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(async).(string); ok {
+		if str != "" {
+			queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+		}
+	} else {
+		queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header
@@ -10014,7 +10042,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsLine(body Linein
 // Create a Twitter Integration
 //
 // 
-func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twitterintegrationrequest) (*Twitterintegration, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twitterintegrationrequest, async bool) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/twitter"
@@ -10045,6 +10073,20 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twi
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(async).(string); ok {
+		if str != "" {
+			queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+		}
+	} else {
+		queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header
@@ -10085,7 +10127,7 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsTwitter(body Twi
 // Create a WhatsApp Integration
 //
 // You must be approved by WhatsApp to use this feature. Your approved e164-formatted phone number and valid WhatsApp certificate for your number are required. Your WhatsApp certificate must have valid base64 encoding. Please paste carefully and do not add any leading or trailing spaces. Do not alter any characters. An integration must be activated within 7 days of certificate generation. If you cannot complete the addition and activation of the number within 7 days, please obtain a new certificate before creating the integration. Integrations created with an invalid number or certificate may immediately incur additional integration fees. Please carefully enter your number and certificate as described.
-func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Whatsappintegrationrequest) (*Whatsappintegration, *APIResponse, error) {
+func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Whatsappintegrationrequest, async bool) (*Whatsappintegration, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/whatsapp"
@@ -10116,6 +10158,20 @@ func (a ConversationsApi) PostConversationsMessagingIntegrationsWhatsapp(body Wh
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(async).(string); ok {
+		if str != "" {
+			queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+		}
+	} else {
+		queryParams["async"] = a.Configuration.APIClient.ParameterToString(async, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header

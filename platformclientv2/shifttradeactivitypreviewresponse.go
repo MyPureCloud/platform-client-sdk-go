@@ -6,7 +6,7 @@ import (
 
 // Shifttradeactivitypreviewresponse
 type Shifttradeactivitypreviewresponse struct { 
-	// StartDate - The start date and time of this activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// StartDate - The start date and time of this activity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartDate *time.Time `json:"startDate,omitempty"`
 
 

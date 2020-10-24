@@ -22,7 +22,7 @@ type Assignedwrapupcode struct {
 	DurationSeconds *int32 `json:"durationSeconds,omitempty"`
 
 
-	// EndTime - The timestamp when the wrap-up segment ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// EndTime - The timestamp when the wrap-up segment ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndTime *time.Time `json:"endTime,omitempty"`
 
 }

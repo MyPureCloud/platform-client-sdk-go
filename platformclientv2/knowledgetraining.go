@@ -14,11 +14,11 @@ type Knowledgetraining struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// DateTriggered - Trigger date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateTriggered - Trigger date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateTriggered *time.Time `json:"dateTriggered,omitempty"`
 
 
-	// DateCompleted - Training completed date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateCompleted - Training completed date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 
 
@@ -42,7 +42,7 @@ type Knowledgetraining struct {
 	KnowledgeDocumentsState *string `json:"knowledgeDocumentsState,omitempty"`
 
 
-	// DatePromoted - Trained Documents Promoted date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DatePromoted - Trained Documents Promoted date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DatePromoted *time.Time `json:"datePromoted,omitempty"`
 
 

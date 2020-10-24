@@ -10,7 +10,7 @@ type Propertyindexrequest struct {
 	SessionId *string `json:"sessionId,omitempty"`
 
 
-	// TargetDate - Attach properties to a segment covering a specific point in time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// TargetDate - Attach properties to a segment covering a specific point in time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	TargetDate *time.Time `json:"targetDate,omitempty"`
 
 

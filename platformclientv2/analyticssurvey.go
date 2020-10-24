@@ -22,7 +22,7 @@ type Analyticssurvey struct {
 	SurveyFormContextId *string `json:"surveyFormContextId,omitempty"`
 
 
-	// EventTime - Specifies when a survey occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// EventTime - Specifies when a survey occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EventTime *time.Time `json:"eventTime,omitempty"`
 
 
@@ -42,7 +42,7 @@ type Analyticssurvey struct {
 	SurveyPromoterScore *int32 `json:"surveyPromoterScore,omitempty"`
 
 
-	// SurveyCompletedDate - Completion date/time of the survey. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// SurveyCompletedDate - Completion date/time of the survey. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	SurveyCompletedDate *time.Time `json:"surveyCompletedDate,omitempty"`
 
 

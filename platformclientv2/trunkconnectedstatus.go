@@ -10,7 +10,7 @@ type Trunkconnectedstatus struct {
 	Connected *bool `json:"connected,omitempty"`
 
 
-	// ConnectedStateTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ConnectedStateTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConnectedStateTime *time.Time `json:"connectedStateTime,omitempty"`
 
 }

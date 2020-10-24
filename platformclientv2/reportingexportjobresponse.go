@@ -58,11 +58,11 @@ type Reportingexportjobresponse struct {
 	Read *bool `json:"read,omitempty"`
 
 
-	// CreatedDateTime - The created date/time of the request. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CreatedDateTime - The created date/time of the request. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CreatedDateTime *time.Time `json:"createdDateTime,omitempty"`
 
 
-	// ModifiedDateTime - The last modified date/time of the request. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ModifiedDateTime - The last modified date/time of the request. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDateTime *time.Time `json:"modifiedDateTime,omitempty"`
 
 

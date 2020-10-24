@@ -6,7 +6,7 @@ import (
 
 // Valuewrapperdate - An object to provide context to nullable fields in PATCH requests
 type Valuewrapperdate struct { 
-	// Value - The value for the associated field. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Value - The value for the associated field. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Value *time.Time `json:"value,omitempty"`
 
 }

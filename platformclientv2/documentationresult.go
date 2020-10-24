@@ -30,7 +30,7 @@ type Documentationresult struct {
 	Link *string `json:"link,omitempty"`
 
 
-	// Modified - The modified date for the documentation entity. Will be returned in responses for certain entities. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Modified - The modified date for the documentation entity. Will be returned in responses for certain entities. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Modified *time.Time `json:"modified,omitempty"`
 
 

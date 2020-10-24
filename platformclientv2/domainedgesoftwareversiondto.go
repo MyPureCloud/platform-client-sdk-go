@@ -18,7 +18,7 @@ type Domainedgesoftwareversiondto struct {
 	EdgeVersion *string `json:"edgeVersion,omitempty"`
 
 
-	// PublishDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// PublishDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	PublishDate *time.Time `json:"publishDate,omitempty"`
 
 

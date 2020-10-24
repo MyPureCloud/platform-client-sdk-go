@@ -25,7 +25,7 @@ type Conversationaggregationquery struct {
 	Filter *Conversationaggregatequeryfilter `json:"filter,omitempty"`
 
 
-	// Metrics - Behaves like a SQL SELECT clause. Enables retrieving only named metrics. If omitted, all metrics that are available will be returned (like SELECT *).
+	// Metrics - Behaves like a SQL SELECT clause. Only named metrics will be retrieved.
 	Metrics *[]string `json:"metrics,omitempty"`
 
 

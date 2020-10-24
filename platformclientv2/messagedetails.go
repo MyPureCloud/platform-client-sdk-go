@@ -22,7 +22,7 @@ type Messagedetails struct {
 	MessageSegmentCount *int32 `json:"messageSegmentCount,omitempty"`
 
 
-	// MessageTime - The time when the message was sent or received. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// MessageTime - The time when the message was sent or received. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	MessageTime *time.Time `json:"messageTime,omitempty"`
 
 

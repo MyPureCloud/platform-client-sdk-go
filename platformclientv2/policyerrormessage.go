@@ -30,7 +30,7 @@ type Policyerrormessage struct {
 	UserParams *[]Userparam `json:"userParams,omitempty"`
 
 
-	// InsertDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// InsertDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InsertDate *time.Time `json:"insertDate,omitempty"`
 
 }

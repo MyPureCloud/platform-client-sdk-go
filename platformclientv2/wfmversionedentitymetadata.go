@@ -14,7 +14,7 @@ type Wfmversionedentitymetadata struct {
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
 
-	// DateModified - The date the associated entity was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// DateModified - The date the associated entity was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 }

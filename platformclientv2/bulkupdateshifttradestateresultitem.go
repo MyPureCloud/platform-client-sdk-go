@@ -18,7 +18,7 @@ type Bulkupdateshifttradestateresultitem struct {
 	ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
 
 
-	// ReviewedDate - The date the request was reviewed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReviewedDate - The date the request was reviewed, if applicable. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReviewedDate *time.Time `json:"reviewedDate,omitempty"`
 
 

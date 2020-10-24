@@ -10,7 +10,7 @@ type Recordingjobsquery struct {
 	Action *string `json:"action,omitempty"`
 
 
-	// ActionDate - The date when the action will be performed. If the operation will cause the delete date of a recording to be older than the export date, the export date will be adjusted to the delete date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ActionDate - The date when the action will be performed. If the operation will cause the delete date of a recording to be older than the export date, the export date will be adjusted to the delete date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ActionDate *time.Time `json:"actionDate,omitempty"`
 
 

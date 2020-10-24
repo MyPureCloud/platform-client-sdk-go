@@ -14,11 +14,11 @@ type Certificatedetails struct {
 	Subject *string `json:"subject,omitempty"`
 
 
-	// ExpirationDate - The expiration date of the certificate. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ExpirationDate - The expiration date of the certificate. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExpirationDate *time.Time `json:"expirationDate,omitempty"`
 
 
-	// IssueDate - The issue date of the certificate. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// IssueDate - The issue date of the certificate. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	IssueDate *time.Time `json:"issueDate,omitempty"`
 
 

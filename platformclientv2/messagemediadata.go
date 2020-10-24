@@ -17,7 +17,7 @@ type Messagemediadata struct {
 	Url *string `json:"url,omitempty"`
 
 
-	// MediaType - The optional internet media type of the the media object.  If null then the media type should be dictated by the url.
+	// MediaType - The detected internet media type of the the media object.  If null then the media type should be dictated by the url.
 	MediaType *string `json:"mediaType,omitempty"`
 
 

@@ -10,11 +10,11 @@ type Analyticsconversationwithoutattributes struct {
 	ConversationId *string `json:"conversationId,omitempty"`
 
 
-	// ConversationStart - Date/time the conversation started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ConversationStart - Date/time the conversation started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationStart *time.Time `json:"conversationStart,omitempty"`
 
 
-	// ConversationEnd - Date/time the conversation ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ConversationEnd - Date/time the conversation ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationEnd *time.Time `json:"conversationEnd,omitempty"`
 
 

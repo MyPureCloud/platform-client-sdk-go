@@ -38,7 +38,7 @@ type Survey struct {
 	Answers *Surveyscoringset `json:"answers,omitempty"`
 
 
-	// CompletedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CompletedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CompletedDate *time.Time `json:"completedDate,omitempty"`
 
 

@@ -6,7 +6,7 @@ import (
 
 // Provisioninfo
 type Provisioninfo struct { 
-	// Time - The time at which this phone was provisioned. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Time - The time at which this phone was provisioned. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Time *time.Time `json:"time,omitempty"`
 
 

@@ -98,7 +98,7 @@ type Analyticssession struct {
 	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 
 
-	// CallbackScheduledTime - Scheduled callback date/time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// CallbackScheduledTime - Scheduled callback date/time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
 
 
@@ -212,6 +212,10 @@ type Analyticssession struct {
 
 	// MediaCount - Count of any media (images, files, etc) included in this session
 	MediaCount *int32 `json:"mediaCount,omitempty"`
+
+
+	// FlowInType - Type of flow in that occurred, e.g. acd, ivr, etc.
+	FlowInType *string `json:"flowInType,omitempty"`
 
 
 	// FlowOutType - Type of flow out that occurred, e.g. voicemail, callback, or acd

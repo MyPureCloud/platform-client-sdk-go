@@ -26,7 +26,7 @@ type Shifttradenotification struct {
 	InitiatingUser *Userreference `json:"initiatingUser,omitempty"`
 
 
-	// InitiatingShiftDate - The start date and time of the initiating shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// InitiatingShiftDate - The start date and time of the initiating shift. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	InitiatingShiftDate *time.Time `json:"initiatingShiftDate,omitempty"`
 
 
@@ -34,7 +34,7 @@ type Shifttradenotification struct {
 	ReceivingUser *Userreference `json:"receivingUser,omitempty"`
 
 
-	// ReceivingShiftDate - The start date and time of the receiving shift (null if not matched or if one-sided. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ReceivingShiftDate - The start date and time of the receiving shift (null if not matched or if one-sided. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReceivingShiftDate *time.Time `json:"receivingShiftDate,omitempty"`
 
 }

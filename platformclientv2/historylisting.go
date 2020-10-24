@@ -58,11 +58,11 @@ type Historylisting struct {
 	System *bool `json:"system,omitempty"`
 
 
-	// Started - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Started - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Started *time.Time `json:"started,omitempty"`
 
 
-	// Completed - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// Completed - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Completed *time.Time `json:"completed,omitempty"`
 
 
@@ -74,12 +74,12 @@ type Historylisting struct {
 	Total *int64 `json:"total,omitempty"`
 
 
-	// PageSize
-	PageSize *int32 `json:"pageSize,omitempty"`
-
-
 	// PageNumber
 	PageNumber *int32 `json:"pageNumber,omitempty"`
+
+
+	// PageSize
+	PageSize *int32 `json:"pageSize,omitempty"`
 
 
 	// PageCount

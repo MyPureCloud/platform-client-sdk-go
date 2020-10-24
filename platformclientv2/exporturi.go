@@ -10,7 +10,7 @@ type Exporturi struct {
 	Uri *string `json:"uri,omitempty"`
 
 
-	// ExportTimestamp - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// ExportTimestamp - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ExportTimestamp *time.Time `json:"exportTimestamp,omitempty"`
 
 }

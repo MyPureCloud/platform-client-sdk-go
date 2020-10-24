@@ -18,7 +18,7 @@ type Authzgrant struct {
 	Role *Authzgrantrole `json:"role,omitempty"`
 
 
-	// GrantMadeAt - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss.SSSZ
+	// GrantMadeAt - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	GrantMadeAt *time.Time `json:"grantMadeAt,omitempty"`
 
 }
