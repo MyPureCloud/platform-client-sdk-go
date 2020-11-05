@@ -78,6 +78,10 @@ type Queueconversationeventtopicmessage struct {
 	RecipientType *string `json:"recipientType,omitempty"`
 
 
+	// JourneyContext
+	JourneyContext *Queueconversationeventtopicjourneycontext `json:"journeyContext,omitempty"`
+
+
 	// Wrapup
 	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
 

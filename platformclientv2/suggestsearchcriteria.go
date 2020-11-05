@@ -32,6 +32,10 @@ type Suggestsearchcriteria struct {
 	// Group - Groups multiple conditions
 	Group *[]Suggestsearchcriteria `json:"group,omitempty"`
 
+
+	// DateFormat - Set date format for criteria values when using date range search type.  Supports Java date format syntax, example yyyy-MM-dd'T'HH:mm:ss.SSSX.
+	DateFormat *string `json:"dateFormat,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

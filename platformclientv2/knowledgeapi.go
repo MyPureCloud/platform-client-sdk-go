@@ -837,10 +837,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTraining(knowledgeBaseId 
 
 // GetKnowledgeKnowledgebaseLanguageTrainings invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings
 //
-// Get All trainings information for a knowledgebase
+// Get all trainings information for a knowledgebase
 //
 // 
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string) (*Traininglisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, knowledgeDocumentsState string) (*Traininglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/trainings"
@@ -926,6 +926,18 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 		}
 	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(knowledgeDocumentsState).(string); ok {
+		if str != "" {
+			queryParams["knowledgeDocumentsState"] = a.Configuration.APIClient.ParameterToString(knowledgeDocumentsState, collectionFormat)
+		}
+	} else {
+		queryParams["knowledgeDocumentsState"] = a.Configuration.APIClient.ParameterToString(knowledgeDocumentsState, collectionFormat)
 	}
 	
 	

@@ -245,6 +245,14 @@ type Analyticssession struct {
 	// ProposedAgents - Proposed agents
 	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
 
+
+	// AssignerId - ID of the user that manually assigned a conversation
+	AssignerId *string `json:"assignerId,omitempty"`
+
+
+	// AcwSkipped - Marker for an agent that skipped after call work
+	AcwSkipped *bool `json:"acwSkipped,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

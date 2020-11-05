@@ -9,11 +9,11 @@ type Buttoncomponent struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Text - Text to show inside the button
+	// Text - Deprecated - Use title instead
 	Text *string `json:"text,omitempty"`
 
 
-	// Title - Tooltip text to show when hovering over the button
+	// Title - Text to show inside the button
 	Title *string `json:"title,omitempty"`
 
 

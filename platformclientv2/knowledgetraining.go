@@ -10,10 +10,6 @@ type Knowledgetraining struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
 	// DateTriggered - Trigger date-time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateTriggered *time.Time `json:"dateTriggered,omitempty"`
 
@@ -22,15 +18,15 @@ type Knowledgetraining struct {
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
 
 
-	// Status - Training status
+	// Status - Training status.
 	Status *string `json:"status,omitempty"`
 
 
-	// LanguageCode - Actual language of the Training
+	// LanguageCode - Language of the documents that are trained.
 	LanguageCode *string `json:"languageCode,omitempty"`
 
 
-	// KnowledgeBase - Knowledge base which Training does belong to
+	// KnowledgeBase - Knowledge Base that the training belongs to.
 	KnowledgeBase *Knowledgebase `json:"knowledgeBase,omitempty"`
 
 

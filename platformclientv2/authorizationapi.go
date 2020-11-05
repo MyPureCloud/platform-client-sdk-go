@@ -1048,7 +1048,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 // Get all permissions.
 //
 // Retrieve a list of all permission defined in the system.
-func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int32, pageNumber int32) (*Permissioncollectionentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int32, pageNumber int32, queryType string, query string) (*Permissioncollectionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/permissions"
@@ -1098,6 +1098,30 @@ func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int32, pageNumber
 		}
 	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(queryType).(string); ok {
+		if str != "" {
+			queryParams["queryType"] = a.Configuration.APIClient.ParameterToString(queryType, collectionFormat)
+		}
+	} else {
+		queryParams["queryType"] = a.Configuration.APIClient.ParameterToString(queryType, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(query).(string); ok {
+		if str != "" {
+			queryParams["query"] = a.Configuration.APIClient.ParameterToString(query, collectionFormat)
+		}
+	} else {
+		queryParams["query"] = a.Configuration.APIClient.ParameterToString(query, collectionFormat)
 	}
 	
 	

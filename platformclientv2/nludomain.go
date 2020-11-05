@@ -14,6 +14,10 @@ type Nludomain struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// Language - The ISO 639-1 language code of the NLU domain, e.g. `en`.
+	Language *string `json:"language,omitempty"`
+
+
 	// DraftVersion - The draft version of that NLU domain.
 	DraftVersion *Nludomainversion `json:"draftVersion,omitempty"`
 

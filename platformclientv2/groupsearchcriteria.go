@@ -33,6 +33,10 @@ type Groupsearchcriteria struct {
 	Group *[]Groupsearchcriteria `json:"group,omitempty"`
 
 
+	// DateFormat - Set date format for criteria values when using date range search type.  Supports Java date format syntax, example yyyy-MM-dd'T'HH:mm:ss.SSSX.
+	DateFormat *string `json:"dateFormat,omitempty"`
+
+
 	// VarType - Search Type
 	VarType *string `json:"type,omitempty"`
 

@@ -34,6 +34,10 @@ type Knowledgebase struct {
 	FaqCount *int32 `json:"faqCount,omitempty"`
 
 
+	// DateDocumentLastModified - The date representing when the last document is modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateDocumentLastModified *time.Time `json:"dateDocumentLastModified,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

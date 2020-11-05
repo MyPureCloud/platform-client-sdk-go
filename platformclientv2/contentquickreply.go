@@ -20,6 +20,10 @@ type Contentquickreply struct {
 	// Action - Specifies the type of action that is triggered upon clicking the quick reply. Currently, the only supported action is \"Message\" which sends a message using the quick reply text.
 	Action *string `json:"action,omitempty"`
 
+
+	// Payload - Payload content for the quick reply.
+	Payload *string `json:"payload,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

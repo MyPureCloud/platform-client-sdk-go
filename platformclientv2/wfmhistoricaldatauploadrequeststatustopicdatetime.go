@@ -13,12 +13,12 @@ type Wfmhistoricaldatauploadrequeststatustopicdatetime struct {
 	BeforeNow *bool `json:"beforeNow,omitempty"`
 
 
-	// AfterNow
-	AfterNow *bool `json:"afterNow,omitempty"`
-
-
 	// EqualNow
 	EqualNow *bool `json:"equalNow,omitempty"`
+
+
+	// AfterNow
+	AfterNow *bool `json:"afterNow,omitempty"`
 
 }
 
