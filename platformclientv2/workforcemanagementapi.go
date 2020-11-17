@@ -5410,7 +5410,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWeekShiftt
 // Update a work plan
 //
 // 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, body Workplan) (*Workplan, *APIResponse, error) {
+func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(managementUnitId string, workPlanId string, body Workplan, validationMode string) (*Workplan, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}"
@@ -5448,6 +5448,20 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(validationMode).(string); ok {
+		if str != "" {
+			queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
+		}
+	} else {
+		queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header
@@ -8025,7 +8039,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanrot
 // Create a new work plan
 //
 // 
-func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(managementUnitId string, body Createworkplan) (*Workplan, *APIResponse, error) {
+func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(managementUnitId string, body Createworkplan, validationMode string) (*Workplan, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans"
@@ -8057,6 +8071,20 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(validationMode).(string); ok {
+		if str != "" {
+			queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
+		}
+	} else {
+		queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
+	}
+	
 	
 
 	// to determine the Content-Type header

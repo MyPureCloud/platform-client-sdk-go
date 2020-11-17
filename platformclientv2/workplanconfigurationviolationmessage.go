@@ -12,6 +12,10 @@ type Workplanconfigurationviolationmessage struct {
 	// Arguments - Arguments of the message that provide information about the misconfigured value or the threshold that is exceeded by the misconfigured value
 	Arguments *[]Workplanvalidationmessageargument `json:"arguments,omitempty"`
 
+
+	// Severity - Severity of the message. A message with Error severity indicates the scheduler won't be able to produce schedules and thus the work plan is invalid.
+	Severity *string `json:"severity,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

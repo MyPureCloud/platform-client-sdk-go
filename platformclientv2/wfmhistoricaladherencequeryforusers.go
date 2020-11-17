@@ -18,12 +18,8 @@ type Wfmhistoricaladherencequeryforusers struct {
 	TimeZone *string `json:"timeZone,omitempty"`
 
 
-	// UserIds - The userIds to report on. Note: Only one of [teamIds, userIds] can be requested
+	// UserIds - The userIds to report on
 	UserIds *[]string `json:"userIds,omitempty"`
-
-
-	// TeamIds - The teamIds to report on. Note: Only one of [teamIds, userIds] can be requested
-	TeamIds *[]string `json:"teamIds,omitempty"`
 
 
 	// IncludeExceptions - Whether user exceptions should be returned as part of the results

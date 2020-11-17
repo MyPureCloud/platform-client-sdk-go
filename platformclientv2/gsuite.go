@@ -17,12 +17,12 @@ type Gsuite struct {
 	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 
 
-	// Certificate
-	Certificate *string `json:"certificate,omitempty"`
-
-
 	// IssuerURI
 	IssuerURI *string `json:"issuerURI,omitempty"`
+
+
+	// Certificate
+	Certificate *string `json:"certificate,omitempty"`
 
 
 	// SsoTargetURI

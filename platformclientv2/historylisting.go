@@ -74,12 +74,12 @@ type Historylisting struct {
 	Total *int64 `json:"total,omitempty"`
 
 
-	// PageSize
-	PageSize *int32 `json:"pageSize,omitempty"`
-
-
 	// PageNumber
 	PageNumber *int32 `json:"pageNumber,omitempty"`
+
+
+	// PageSize
+	PageSize *int32 `json:"pageSize,omitempty"`
 
 
 	// PageCount

@@ -32,6 +32,18 @@ type Messagecontent struct {
 	// Template - Template notification object
 	Template *Contentnotificationtemplate `json:"template,omitempty"`
 
+
+	// Reactions - A list of reactions
+	Reactions *[]Contentreaction `json:"reactions,omitempty"`
+
+
+	// Mention - This is used to identify who the message is sent to, as well as who it was sent from. This information is channel specific - depends on capabilities to describe party by the platform
+	Mention *Messagingrecipient `json:"mention,omitempty"`
+
+
+	// Postback - The postback object result of a user clicking in a button
+	Postback *Contentpostback `json:"postback,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

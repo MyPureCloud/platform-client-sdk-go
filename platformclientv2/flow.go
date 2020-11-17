@@ -77,8 +77,12 @@ type Flow struct {
 	CurrentOperation *Operation `json:"currentOperation,omitempty"`
 
 
-	// NluInfo - Information about the NLU domain version for the flow
+	// NluInfo - Information about the natural language understanding configuration for the published version of the flow
 	NluInfo *Nluinfo `json:"nluInfo,omitempty"`
+
+
+	// SupportedLanguages - List of supported languages for the published version of the flow.
+	SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
 
 
 	// SelfUri - The URI for this object

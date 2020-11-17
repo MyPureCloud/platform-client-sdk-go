@@ -13,12 +13,12 @@ type Onelogin struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Certificate
-	Certificate *string `json:"certificate,omitempty"`
-
-
 	// IssuerURI
 	IssuerURI *string `json:"issuerURI,omitempty"`
+
+
+	// Certificate
+	Certificate *string `json:"certificate,omitempty"`
 
 
 	// SsoTargetURI

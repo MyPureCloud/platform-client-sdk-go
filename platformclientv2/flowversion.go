@@ -65,8 +65,12 @@ type Flowversion struct {
 	OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
 
 
-	// NluInfo - Information about the NLU domain version for the flow version
+	// NluInfo - Information about the natural language understanding configuration for the flow version
 	NluInfo *Nluinfo `json:"nluInfo,omitempty"`
+
+
+	// SupportedLanguages - List of supported languages for this version of the flow
+	SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
 
 
 	// SelfUri - The URI for this object

@@ -2247,7 +2247,7 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 // Gets all the revisions for a specific evaluation.
 //
 // 
-func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int32, pageNumber int32) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int32, pageNumber int32, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}/versions"
@@ -2303,6 +2303,18 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 		}
 	} else {
 		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
 	}
 	
 	
