@@ -5,6 +5,10 @@ import (
 
 // Oauthauthorizationlisting
 type Oauthauthorizationlisting struct { 
+	// Total
+	Total *int64 `json:"total,omitempty"`
+
+
 	// Entities
 	Entities *[]Oauthauthorization `json:"entities,omitempty"`
 

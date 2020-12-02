@@ -3590,7 +3590,7 @@ func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval stri
 //
 // Get a Development Activity
 //
-// 
+// Permission not required if you are the attendee, creator or facilitator of the coaching appointment or you are the assigned user of the learning assignment.
 func (a UsersApi) GetUsersDevelopmentActivity(activityId string, varType string) (*Developmentactivity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

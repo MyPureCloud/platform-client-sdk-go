@@ -415,12 +415,12 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 // Get the list of status changes for a coaching appointment.
 //
 // Permission not required if you are an attendee, creator or facilitator of the appointment
-func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNumber int32, pageSize int32) (*Coachingappointmentstatusdtolist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNumber int32, pageSize int32) (*Coachingappointmentstatusresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/statuses"
 	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
-	defaultReturn := new(Coachingappointmentstatusdtolist)
+	defaultReturn := new(Coachingappointmentstatusresponselist)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -493,7 +493,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Coachingappointmentstatusdtolist
+	var successPayload *Coachingappointmentstatusresponselist
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -1217,12 +1217,12 @@ func (a CoachingApi) PatchCoachingAppointmentAnnotation(appointmentId string, an
 // Update the status of a coaching appointment
 //
 // Permission not required if you are an attendee, creator or facilitator of the appointment
-func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body Coachingappointmentstatusdto) (*Coachingappointmentstatusdto, *APIResponse, error) {
+func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body Coachingappointmentstatusrequest) (*Coachingappointmentstatusresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/status"
 	path = strings.Replace(path, "{appointmentId}", fmt.Sprintf("%v", appointmentId), -1)
-	defaultReturn := new(Coachingappointmentstatusdto)
+	defaultReturn := new(Coachingappointmentstatusresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1277,7 +1277,7 @@ func (a CoachingApi) PatchCoachingAppointmentStatus(appointmentId string, body C
 	// body params
 	postBody = &body
 
-	var successPayload *Coachingappointmentstatusdto
+	var successPayload *Coachingappointmentstatusresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

@@ -17,16 +17,16 @@ type Pureengage struct {
 	AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
 
 
-	// IssuerURI
-	IssuerURI *string `json:"issuerURI,omitempty"`
-
-
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
 
 	// SsoTargetURI
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
+
+
+	// IssuerURI
+	IssuerURI *string `json:"issuerURI,omitempty"`
 
 
 	// Disabled

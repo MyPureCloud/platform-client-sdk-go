@@ -3795,7 +3795,7 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 // Get list of wrapup codes.
 //
 // 
-func (a RoutingApi) GetRoutingWrapupcodes(pageSize int32, pageNumber int32, sortBy string, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingWrapupcodes(pageSize int32, pageNumber int32, sortBy string, sortOrder string, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes"
@@ -3857,6 +3857,18 @@ func (a RoutingApi) GetRoutingWrapupcodes(pageSize int32, pageNumber int32, sort
 		}
 	} else {
 		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
 	}
 	
 	

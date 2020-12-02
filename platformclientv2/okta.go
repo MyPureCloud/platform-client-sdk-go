@@ -13,16 +13,16 @@ type Okta struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// IssuerURI
-	IssuerURI *string `json:"issuerURI,omitempty"`
-
-
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
 
 	// SsoTargetURI
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
+
+
+	// IssuerURI
+	IssuerURI *string `json:"issuerURI,omitempty"`
 
 
 	// Disabled

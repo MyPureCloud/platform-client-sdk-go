@@ -34,6 +34,10 @@ type Actiontarget struct {
 	ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
 
 
+	// ShortAbandonThreshold - Indicates the non-default short abandon threshold
+	ShortAbandonThreshold *int32 `json:"shortAbandonThreshold,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

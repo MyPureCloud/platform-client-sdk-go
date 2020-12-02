@@ -5,6 +5,10 @@ import (
 
 // Oauthscopelisting
 type Oauthscopelisting struct { 
+	// Total
+	Total *int64 `json:"total,omitempty"`
+
+
 	// Entities
 	Entities *[]Oauthscope `json:"entities,omitempty"`
 

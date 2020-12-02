@@ -33,16 +33,16 @@ type Divspermittedentitylisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 
 	// PageCount

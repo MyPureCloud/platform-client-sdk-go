@@ -17,16 +17,16 @@ type Adfs struct {
 	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 
 
-	// IssuerURI
-	IssuerURI *string `json:"issuerURI,omitempty"`
-
-
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
 
 	// SsoTargetURI
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
+
+
+	// IssuerURI
+	IssuerURI *string `json:"issuerURI,omitempty"`
 
 
 	// Disabled

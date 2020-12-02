@@ -25,6 +25,38 @@ type Jsonnode struct {
 	Object *bool `json:"object,omitempty"`
 
 
+	// ContainerNode
+	ContainerNode *bool `json:"containerNode,omitempty"`
+
+
+	// ValueNode
+	ValueNode *bool `json:"valueNode,omitempty"`
+
+
+	// MissingNode
+	MissingNode *bool `json:"missingNode,omitempty"`
+
+
+	// Binary
+	Binary *bool `json:"binary,omitempty"`
+
+
+	// Pojo
+	Pojo *bool `json:"pojo,omitempty"`
+
+
+	// Short
+	Short *bool `json:"short,omitempty"`
+
+
+	// IntegralNumber
+	IntegralNumber *bool `json:"integralNumber,omitempty"`
+
+
+	// FloatingPointNumber
+	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
+
+
 	// Int
 	Int *bool `json:"int,omitempty"`
 
@@ -47,38 +79,6 @@ type Jsonnode struct {
 
 	// Textual
 	Textual *bool `json:"textual,omitempty"`
-
-
-	// FloatingPointNumber
-	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
-
-
-	// IntegralNumber
-	IntegralNumber *bool `json:"integralNumber,omitempty"`
-
-
-	// Short
-	Short *bool `json:"short,omitempty"`
-
-
-	// Binary
-	Binary *bool `json:"binary,omitempty"`
-
-
-	// Pojo
-	Pojo *bool `json:"pojo,omitempty"`
-
-
-	// ContainerNode
-	ContainerNode *bool `json:"containerNode,omitempty"`
-
-
-	// MissingNode
-	MissingNode *bool `json:"missingNode,omitempty"`
-
-
-	// ValueNode
-	ValueNode *bool `json:"valueNode,omitempty"`
 
 
 	// Array
