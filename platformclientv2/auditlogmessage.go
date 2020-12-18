@@ -10,6 +10,10 @@ type Auditlogmessage struct {
 	Id *string `json:"id,omitempty"`
 
 
+	// UserHomeOrgId - Home Organization Id associated with this audit message.
+	UserHomeOrgId *string `json:"userHomeOrgId,omitempty"`
+
+
 	// User - User associated with this audit message.
 	User *Domainentityref `json:"user,omitempty"`
 

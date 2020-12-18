@@ -341,7 +341,7 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 //
 // Gets all grants for a given division.
 //
-// 
+// Returns all grants assigned to a given division. Maximum page size is 500.
 func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, pageNumber int32, pageSize int32) (*Authzdivisiongrantentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

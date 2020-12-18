@@ -336,6 +336,30 @@ type Viewfilter struct {
 	// HasAgentAssistId - Indicates filtering for agent assist id
 	HasAgentAssistId *bool `json:"hasAgentAssistId,omitempty"`
 
+
+	// Transcripts - A list of transcript contents requested
+	Transcripts *[]Transcripts `json:"transcripts,omitempty"`
+
+
+	// TranscriptLanguages - A list of transcript languages requested
+	TranscriptLanguages *[]string `json:"transcriptLanguages,omitempty"`
+
+
+	// ParticipantPurposes - A list of participant purpose requested
+	ParticipantPurposes *[]string `json:"participantPurposes,omitempty"`
+
+
+	// ShowFirstQueue - Indicates filtering for first queue data
+	ShowFirstQueue *bool `json:"showFirstQueue,omitempty"`
+
+
+	// TeamIds - The team ids used to filter the view data
+	TeamIds *[]string `json:"teamIds,omitempty"`
+
+
+	// FilterUsersByTeamIds - The team ids are used to fetch associated users for the view
+	FilterUsersByTeamIds *[]string `json:"filterUsersByTeamIds,omitempty"`
+
 }
 
 // String returns a JSON representation of the model
