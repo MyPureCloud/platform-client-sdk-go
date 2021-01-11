@@ -315,7 +315,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 // Get all feedback in the given NLU Domain Version.
 //
 // 
-func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, pageNumber int32, pageSize int32, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, pageNumber int32, pageSize int32, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback"
@@ -431,6 +431,30 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 		}
 	} else {
 		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(enableCursorPagination).(string); ok {
+		if str != "" {
+			queryParams["enableCursorPagination"] = a.Configuration.APIClient.ParameterToString(enableCursorPagination, collectionFormat)
+		}
+	} else {
+		queryParams["enableCursorPagination"] = a.Configuration.APIClient.ParameterToString(enableCursorPagination, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(after).(string); ok {
+		if str != "" {
+			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
+		}
+	} else {
+		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
 	}
 	
 	
