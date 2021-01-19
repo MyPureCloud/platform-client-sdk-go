@@ -18,7 +18,7 @@ type Wfmhistoricaladherencequery struct {
 	TimeZone *string `json:"timeZone,omitempty"`
 
 
-	// UserIds - The userIds to report on. If null or not set, adherence will be computed for all the users in management unit or requested teamIds. Note: Only one of [teamIds, userIds] can be requested
+	// UserIds - The userIds to report on. If null or not set, adherence will be computed for all the users in management unit or requested teamIds
 	UserIds *[]string `json:"userIds,omitempty"`
 
 
@@ -26,7 +26,7 @@ type Wfmhistoricaladherencequery struct {
 	IncludeExceptions *bool `json:"includeExceptions,omitempty"`
 
 
-	// TeamIds - The teamIds to report on. If null or not set, adherence will be computed for requested users if applicable or otherwise all users in the management unit. Note: Only one of [teamIds, userIds] can be requested
+	// TeamIds - The teamIds to report on. If null or not set, adherence will be computed for requested users if applicable or otherwise all users in the management unit. Note: If teamIds is also specified, only adherence for users in the requested teams will be returned
 	TeamIds *[]string `json:"teamIds,omitempty"`
 
 }

@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go/platformclientv2). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 30.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
+Latest version: 31.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
 [![Release Notes Badge](https://developer.mypurecloud.com/images/sdk-release-notes.png)](releaseNotes.md)
 
 ## Golang Version Dependency
@@ -51,7 +51,7 @@ When creating configuration instances, they must be used when creating new API i
 
 ```go
 // Create new config
-config := platformclientv2.NewConfiguration()
+config := NewConfiguration()
 
 // Create API instance using config
 usersAPI := platformclientv2.NewUsersApiWithConfig(config)
@@ -67,7 +67,7 @@ config.BasePath = "https://api.mypurecloud.jp"
 
 #### Setting the access token
 
-If using a grant other than client credentials and code authorization, the access token can be set manually:
+If using a grant other than client credentials, the access token can be set manually:
 
 ```go
 config.AccessToken = "anaccesstokenobtainedmanuallyfromanoauthgrant"
@@ -89,33 +89,6 @@ The SDK provides a helper to authorize using client credentials. Use the `Author
 
 ```go
 err := config.AuthorizeClientCredentials(os.Getenv("GENESYS_CLOUD_CLIENT_ID"), os.Getenv("GENESYS_CLOUD_CLIENT_SECRET"))
-if err != nil {
-    panic(err)
-}
-```
-
-#### Authorization Code Grant
-
-* The app is authenticating as a human, the [Authorization Code Grant](https://developer.mypurecloud.com/api/rest/authorization/use-authorization-code.html)
-* The app is served via a web server
-* There is server-side code that will be making API requests
-
-Use the `AuthorizeCodeGrant` function on the client to make a request to Genesys Cloud to exchange the client id, client secret and authorization code for an access token. If no error was returned, the configuration instance is now authorized and can begin making API requests. 
-
-```go
-authData, err := config.AuthorizeCodeGrant(clientId, clientSecret, authCode, redirectUri)
-if err != nil {
-    panic(err)
-}
-```
-
-By default the SDK will transparently request a new access token when it expires. If multiple threads are running 1 thread will request a new token, other threads will wait a maximum of 10 seconds for the token refresh to complete, this time can be overriden with the _RefreshTokenWaitTime_ field of the _Configuration_ struct.  
-If you wish to apply the refresh logic yourself, set `ShouldRefreshAccessToken` to false and store the refresh token. The `ExpiresIn` member of the `authData` struct can be used to preemptively request a new token. Use `RefreshAuthorizationCodeGrant` to request a new token when necessary
-
-```go
-config.ShouldRefreshAccessToken = false
-// When token expires
-authData, err := config.RefreshAuthorizationCodeGrant(clientId, clientSecret, authData.RefreshToken)
 if err != nil {
     panic(err)
 }

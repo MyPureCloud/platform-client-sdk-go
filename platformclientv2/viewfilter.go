@@ -360,6 +360,22 @@ type Viewfilter struct {
 	// FilterUsersByTeamIds - The team ids are used to fetch associated users for the view
 	FilterUsersByTeamIds *[]string `json:"filterUsersByTeamIds,omitempty"`
 
+
+	// JourneyActionMapIds - The journey action map ids are used to fetch action maps for the associated view
+	JourneyActionMapIds *[]string `json:"journeyActionMapIds,omitempty"`
+
+
+	// JourneyOutcomeIds - The journey outcome ids are used to fetch outcomes for the associated view
+	JourneyOutcomeIds *[]string `json:"journeyOutcomeIds,omitempty"`
+
+
+	// JourneySegmentIds - The journey segment ids are used to fetch segments for the associated view
+	JourneySegmentIds *[]string `json:"journeySegmentIds,omitempty"`
+
+
+	// JourneyActionMapTypes - The journey action map types are used to filter action map data for the associated view
+	JourneyActionMapTypes *[]string `json:"journeyActionMapTypes,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

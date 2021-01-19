@@ -9,7 +9,6 @@ import (
 	"net/url"
 	"reflect"
 	"strings"
-	"sync/atomic"
 	"time"
 )
 
@@ -145,14 +144,6 @@ func (c *APIClient) CallAPI(path string, method string,
 	// Read body
 	body, _ := ioutil.ReadAll(res.Body)
 
-	if res.StatusCode == http.StatusUnauthorized && c.configuration.ShouldRefreshAccessToken && c.configuration.RefreshToken != "" {
-		err := c.handleExpiredAccessToken()
-		if err != nil {
-			return nil, err
-		}
-		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes)
-	}
-
 	// Debug response
 	if c.configuration.GetDebug() {
 		c.configuration.Debugf("==== RESPONSE %v (%v) ====\n", reqEnd, duration)
@@ -205,28 +196,6 @@ func (c *APIClient) ParameterToString(obj interface{}, collectionFormat string) 
 	default:
 		return fmt.Sprintf("%v", obj)
 	}
-}
-
-func (c *APIClient) handleExpiredAccessToken() error {
-	if atomic.CompareAndSwapInt64(&c.configuration.RefreshInProgress, 0, 1) {
-		defer atomic.StoreInt64(&c.configuration.RefreshInProgress, 0)
-		_, err := c.configuration.RefreshAuthorizationCodeGrant(c.configuration.ClientID, c.configuration.ClientSecret, c.configuration.RefreshToken)
-		return err
-	} else {
-		// Wait maximum of RefreshTokenWaitTime seconds for other thread to complete refresh
-		startTime := time.Now().Unix()
-		sleepDuration := time.Millisecond * 200
-		// Check if we've gone over the wait threshhold
-		for time.Now().Unix() - startTime < int64(c.configuration.RefreshTokenWaitTime) {
-			time.Sleep(sleepDuration) // Sleep for 200ms on every iteration
-			if atomic.LoadInt64(&c.configuration.RefreshInProgress) == 0 {
-				return nil
-			}
-		}
-		return fmt.Errorf("Token refresh took longer than %d seconds", c.configuration.RefreshTokenWaitTime)
-	}
-
-	return nil
 }
 
 // Int32 is an easy way to get a pointer
