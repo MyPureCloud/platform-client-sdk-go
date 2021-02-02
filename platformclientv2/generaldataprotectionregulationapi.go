@@ -104,7 +104,7 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequest(requestId string) (*G
 // Get all GDPR requests
 //
 // 
-func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int32, pageNumber int32) (*Gdprrequestentitylisting, *APIResponse, error) {
+func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int, pageNumber int) (*Gdprrequestentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gdpr/requests"

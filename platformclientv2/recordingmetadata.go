@@ -67,11 +67,11 @@ type Recordingmetadata struct {
 
 
 	// MaxAllowedRestorationsForOrg - How many archive restorations the organization is allowed to have.
-	MaxAllowedRestorationsForOrg *int32 `json:"maxAllowedRestorationsForOrg,omitempty"`
+	MaxAllowedRestorationsForOrg *int `json:"maxAllowedRestorationsForOrg,omitempty"`
 
 
 	// RemainingRestorationsAllowedForOrg - The remaining archive restorations the organization has.
-	RemainingRestorationsAllowedForOrg *int32 `json:"remainingRestorationsAllowedForOrg,omitempty"`
+	RemainingRestorationsAllowedForOrg *int `json:"remainingRestorationsAllowedForOrg,omitempty"`
 
 
 	// SessionId - The session id represents an external resource id, such as email, call, chat, etc

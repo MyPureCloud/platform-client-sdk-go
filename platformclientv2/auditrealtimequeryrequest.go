@@ -22,11 +22,11 @@ type Auditrealtimequeryrequest struct {
 
 
 	// PageNumber - Page number
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// PageSize - Page size
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 }
 

@@ -35,7 +35,7 @@ type Actiontarget struct {
 
 
 	// ShortAbandonThreshold - Indicates the non-default short abandon threshold
-	ShortAbandonThreshold *int32 `json:"shortAbandonThreshold,omitempty"`
+	ShortAbandonThreshold *int `json:"shortAbandonThreshold,omitempty"`
 
 
 	// SelfUri - The URI for this object

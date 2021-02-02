@@ -71,7 +71,7 @@ type Queueconversationvideoeventtopicparticipant struct {
 
 
 	// WrapupTimeoutMs
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// Wrapup
@@ -91,7 +91,7 @@ type Queueconversationvideoeventtopicparticipant struct {
 
 
 	// AlertingTimeoutMs
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// MonitoredParticipantId

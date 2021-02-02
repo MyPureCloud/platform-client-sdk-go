@@ -15,7 +15,7 @@ type Buagentscheduleshift struct {
 
 
 	// LengthMinutes - The length of this shift in minutes
-	LengthMinutes *int32 `json:"lengthMinutes,omitempty"`
+	LengthMinutes *int `json:"lengthMinutes,omitempty"`
 
 
 	// Activities - The activities associated with this shift

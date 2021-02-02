@@ -19,7 +19,7 @@ type Intradayplanninggrouprequest struct {
 
 
 	// IntervalLengthMinutes - The period/interval in minutes for which to aggregate the data. Required, defaults to 15
-	IntervalLengthMinutes *int32 `json:"intervalLengthMinutes,omitempty"`
+	IntervalLengthMinutes *int `json:"intervalLengthMinutes,omitempty"`
 
 }
 

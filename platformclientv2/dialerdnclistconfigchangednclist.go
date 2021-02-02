@@ -23,7 +23,7 @@ type Dialerdnclistconfigchangednclist struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ImportStatus
@@ -31,7 +31,7 @@ type Dialerdnclistconfigchangednclist struct {
 
 
 	// Size
-	Size *int32 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// DncSourceType

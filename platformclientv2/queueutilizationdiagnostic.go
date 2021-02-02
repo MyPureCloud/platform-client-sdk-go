@@ -10,35 +10,35 @@ type Queueutilizationdiagnostic struct {
 
 
 	// UsersInQueue - The number of users joined to the queue
-	UsersInQueue *int32 `json:"usersInQueue,omitempty"`
+	UsersInQueue *int `json:"usersInQueue,omitempty"`
 
 
 	// ActiveUsersInQueue - The number of users active on the queue
-	ActiveUsersInQueue *int32 `json:"activeUsersInQueue,omitempty"`
+	ActiveUsersInQueue *int `json:"activeUsersInQueue,omitempty"`
 
 
 	// UsersOnQueue - The number of users with a status of on-queue
-	UsersOnQueue *int32 `json:"usersOnQueue,omitempty"`
+	UsersOnQueue *int `json:"usersOnQueue,omitempty"`
 
 
 	// UsersNotUtilized - The number of users in the queue currently not engaged
-	UsersNotUtilized *int32 `json:"usersNotUtilized,omitempty"`
+	UsersNotUtilized *int `json:"usersNotUtilized,omitempty"`
 
 
 	// UsersOnQueueWithStation - The number of users in the queue with a station
-	UsersOnQueueWithStation *int32 `json:"usersOnQueueWithStation,omitempty"`
+	UsersOnQueueWithStation *int `json:"usersOnQueueWithStation,omitempty"`
 
 
 	// UsersOnACampaignCall - The number of users currently engaged in a campaign call
-	UsersOnACampaignCall *int32 `json:"usersOnACampaignCall,omitempty"`
+	UsersOnACampaignCall *int `json:"usersOnACampaignCall,omitempty"`
 
 
 	// UsersOnDifferentEdgeGroup - The number of users whose station is homed to an edge different from the campaign
-	UsersOnDifferentEdgeGroup *int32 `json:"usersOnDifferentEdgeGroup,omitempty"`
+	UsersOnDifferentEdgeGroup *int `json:"usersOnDifferentEdgeGroup,omitempty"`
 
 
 	// UsersOnANonCampaignCall - The number of users currently engaged in a communication that is not part of the campaign
-	UsersOnANonCampaignCall *int32 `json:"usersOnANonCampaignCall,omitempty"`
+	UsersOnANonCampaignCall *int `json:"usersOnANonCampaignCall,omitempty"`
 
 }
 

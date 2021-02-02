@@ -23,7 +23,7 @@ type Dnclistcreate struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ImportStatus - The status of the import process
@@ -31,7 +31,7 @@ type Dnclistcreate struct {
 
 
 	// Size - The total number of phone numbers in the DncList.
-	Size *int64 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// DncSourceType - The type of the DncList.

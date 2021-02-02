@@ -10,7 +10,7 @@ type Queueconversationvideoeventtopicdisconnectreason struct {
 
 
 	// Code
-	Code *int32 `json:"code,omitempty"`
+	Code *int `json:"code,omitempty"`
 
 
 	// Phrase

@@ -87,7 +87,7 @@ type Queueconversationcallbackeventtopiccallbackmediaparticipant struct {
 
 
 	// WrapupTimeoutMs
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// WrapupSkipped
@@ -95,7 +95,7 @@ type Queueconversationcallbackeventtopiccallbackmediaparticipant struct {
 
 
 	// AlertingTimeoutMs
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// Provider
@@ -167,7 +167,7 @@ type Queueconversationcallbackeventtopiccallbackmediaparticipant struct {
 
 
 	// TimeoutSeconds
-	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty"`
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 
 	// CallbackScheduledTime

@@ -10,11 +10,11 @@ type Timeoffrequestsettings struct {
 
 
 	// SubmissionEarliestDaysFromNow - The earliest number of days from now for which an agent can submit a time off request.  Use negative numbers to indicate days in the past
-	SubmissionEarliestDaysFromNow *int32 `json:"submissionEarliestDaysFromNow,omitempty"`
+	SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
 
 
 	// SubmissionLatestDaysFromNow - The latest number of days from now for which an agent can submit a time off request
-	SubmissionLatestDaysFromNow *int32 `json:"submissionLatestDaysFromNow,omitempty"`
+	SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
 
 }
 

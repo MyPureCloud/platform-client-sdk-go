@@ -10,31 +10,31 @@ type Queueconversationcalleventtopicfaxstatus struct {
 
 
 	// ExpectedPages
-	ExpectedPages *int32 `json:"expectedPages,omitempty"`
+	ExpectedPages *int `json:"expectedPages,omitempty"`
 
 
 	// ActivePage
-	ActivePage *int32 `json:"activePage,omitempty"`
+	ActivePage *int `json:"activePage,omitempty"`
 
 
 	// LinesTransmitted
-	LinesTransmitted *int32 `json:"linesTransmitted,omitempty"`
+	LinesTransmitted *int `json:"linesTransmitted,omitempty"`
 
 
 	// BytesTransmitted
-	BytesTransmitted *int32 `json:"bytesTransmitted,omitempty"`
+	BytesTransmitted *int `json:"bytesTransmitted,omitempty"`
 
 
 	// DataRate
-	DataRate *int32 `json:"dataRate,omitempty"`
+	DataRate *int `json:"dataRate,omitempty"`
 
 
 	// PageErrors
-	PageErrors *int32 `json:"pageErrors,omitempty"`
+	PageErrors *int `json:"pageErrors,omitempty"`
 
 
 	// LineErrors
-	LineErrors *int32 `json:"lineErrors,omitempty"`
+	LineErrors *int `json:"lineErrors,omitempty"`
 
 }
 

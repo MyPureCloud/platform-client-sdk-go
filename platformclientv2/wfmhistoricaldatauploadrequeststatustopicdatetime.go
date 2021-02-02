@@ -6,7 +6,7 @@ import (
 // Wfmhistoricaldatauploadrequeststatustopicdatetime
 type Wfmhistoricaldatauploadrequeststatustopicdatetime struct { 
 	// IMillis
-	IMillis *int32 `json:"iMillis,omitempty"`
+	IMillis *int `json:"iMillis,omitempty"`
 
 
 	// BeforeNow

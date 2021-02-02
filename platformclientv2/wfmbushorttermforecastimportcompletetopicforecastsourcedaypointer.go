@@ -10,7 +10,7 @@ type Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer struct {
 
 
 	// Weight
-	Weight *int32 `json:"weight,omitempty"`
+	Weight *int `json:"weight,omitempty"`
 
 
 	// Date

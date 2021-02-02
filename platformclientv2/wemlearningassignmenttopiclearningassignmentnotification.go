@@ -19,7 +19,7 @@ type Wemlearningassignmenttopiclearningassignmentnotification struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// State

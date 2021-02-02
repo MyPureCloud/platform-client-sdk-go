@@ -1046,7 +1046,7 @@ func (a ArchitectApi) DeleteFlowsMilestone(milestoneId string) (*Empty, *APIResp
 // Get Dependency Tracking objects that have a given display name
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int32, pageSize int32, objectType []string, consumedResources bool, consumingResources bool, consumedResourceType []string, consumingResourceType []string) (*Dependencyobjectentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytracking(name string, pageNumber int, pageSize int, objectType []string, consumedResources bool, consumingResources bool, consumedResourceType []string, consumingResourceType []string) (*Dependencyobjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking"
@@ -1275,7 +1275,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingBuild() (*Dependencystatus, 
 // Get resources that are consumed by a given Dependency Tracking object
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string, version string, objectType string, resourceType []string, pageNumber int32, pageSize int32) (*Consumedresourcesentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string, version string, objectType string, resourceType []string, pageNumber int, pageSize int) (*Consumedresourcesentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/consumedresources"
@@ -1427,7 +1427,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumedresources(id string,
 // Get resources that consume a given Dependency Tracking object
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string, objectType string, resourceType []string, version string, pageNumber int32, pageSize int32, flowFilter string) (*Consumingresourcesentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string, objectType string, resourceType []string, version string, pageNumber int, pageSize int, flowFilter string) (*Consumingresourcesentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/consumingresources"
@@ -1586,7 +1586,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingConsumingresources(id string
 // Get Dependency Tracking objects that consume deleted resources
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(name string, objectType []string, flowFilter string, consumedResources bool, consumedResourceType []string, pageNumber int32, pageSize int32) (*Dependencyobjectentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingDeletedresourceconsumers(name string, objectType []string, flowFilter string, consumedResources bool, consumedResourceType []string, pageNumber int, pageSize int) (*Dependencyobjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/deletedresourceconsumers"
@@ -1970,7 +1970,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingType(typeId string) (*Depend
 // Get Dependency Tracking types.
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int32, pageSize int32) (*Dependencytypeentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int, pageSize int) (*Dependencytypeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/types"
@@ -2059,7 +2059,7 @@ func (a ArchitectApi) GetArchitectDependencytrackingTypes(pageNumber int32, page
 // Get Dependency Tracking objects that depend on updated resources
 //
 // 
-func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(name string, objectType []string, consumedResources bool, consumedResourceType []string, pageNumber int32, pageSize int32) (*Dependencyobjectentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectDependencytrackingUpdatedresourceconsumers(name string, objectType []string, consumedResources bool, consumedResourceType []string, pageNumber int, pageSize int) (*Dependencyobjectentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/dependencytracking/updatedresourceconsumers"
@@ -2265,7 +2265,7 @@ func (a ArchitectApi) GetArchitectEmergencygroup(emergencyGroupId string) (*Emer
 // Get a list of emergency groups.
 //
 // 
-func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string) (*Emergencygrouplisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectEmergencygroups(pageNumber int, pageSize int, sortBy string, sortOrder string, name string) (*Emergencygrouplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/emergencygroups"
@@ -2459,7 +2459,7 @@ func (a ArchitectApi) GetArchitectIvr(ivrId string) (*Ivr, *APIResponse, error) 
 // Get IVR configs.
 //
 // 
-func (a ArchitectApi) GetArchitectIvrs(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string) (*Ivrentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectIvrs(pageNumber int, pageSize int, sortBy string, sortOrder string, name string) (*Ivrentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/ivrs"
@@ -2653,7 +2653,7 @@ func (a ArchitectApi) GetArchitectPrompt(promptId string) (*Prompt, *APIResponse
 // Get generated prompt history
 //
 // 
-func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, historyId string, pageNumber int32, pageSize int32, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectPromptHistoryHistoryId(promptId string, historyId string, pageNumber int, pageSize int, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/history/{historyId}"
@@ -2865,7 +2865,7 @@ func (a ArchitectApi) GetArchitectPromptResource(promptId string, languageCode s
 // Get a pageable list of user prompt resources
 //
 // The returned list is pageable, and query parameters can be used for filtering.
-func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber int32, pageSize int32) (*Promptassetentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber int, pageSize int) (*Promptassetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts/{promptId}/resources"
@@ -2960,7 +2960,7 @@ func (a ArchitectApi) GetArchitectPromptResources(promptId string, pageNumber in
 // Get a pageable list of user prompts
 //
 // The returned list is pageable, and query parameters can be used for filtering.  Multiple names can be specified, in which case all matching prompts will be returned, and no other filters will be evaluated.
-func (a ArchitectApi) GetArchitectPrompts(pageNumber int32, pageSize int32, name []string, description string, nameOrDescription string, sortBy string, sortOrder string) (*Promptentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectPrompts(pageNumber int, pageSize int, name []string, description string, nameOrDescription string, sortBy string, sortOrder string) (*Promptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/prompts"
@@ -3247,7 +3247,7 @@ func (a ArchitectApi) GetArchitectSchedulegroup(scheduleGroupId string) (*Schedu
 // Get a list of schedule groups.
 //
 // 
-func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string, scheduleIds string) (*Schedulegroupentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, scheduleIds string) (*Schedulegroupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedulegroups"
@@ -3384,7 +3384,7 @@ func (a ArchitectApi) GetArchitectSchedulegroups(pageNumber int32, pageSize int3
 // Get a list of schedules.
 //
 // 
-func (a ArchitectApi) GetArchitectSchedules(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string) (*Scheduleentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSchedules(pageNumber int, pageSize int, sortBy string, sortOrder string, name string) (*Scheduleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/schedules"
@@ -3578,7 +3578,7 @@ func (a ArchitectApi) GetArchitectSystemprompt(promptId string) (*Systemprompt, 
 // Get generated prompt history
 //
 // 
-func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, historyId string, pageNumber int32, pageSize int32, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSystempromptHistoryHistoryId(promptId string, historyId string, pageNumber int, pageSize int, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/history/{historyId}"
@@ -3790,7 +3790,7 @@ func (a ArchitectApi) GetArchitectSystempromptResource(promptId string, language
 // Get system prompt resources.
 //
 // 
-func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNumber int32, pageSize int32, sortBy string, sortOrder string) (*Systempromptassetentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNumber int, pageSize int, sortBy string, sortOrder string) (*Systempromptassetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts/{promptId}/resources"
@@ -3909,7 +3909,7 @@ func (a ArchitectApi) GetArchitectSystempromptResources(promptId string, pageNum
 // Get System Prompts
 //
 // 
-func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int32, pageSize int32, sortBy string, sortOrder string, name string, description string, nameOrDescription string) (*Systempromptentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetArchitectSystemprompts(pageNumber int, pageSize int, sortBy string, sortOrder string, name string, description string, nameOrDescription string) (*Systempromptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/architect/systemprompts"
@@ -4141,7 +4141,7 @@ func (a ArchitectApi) GetFlow(flowId string, deleted bool) (*Flow, *APIResponse,
 // Get generated flow history
 //
 // 
-func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, pageNumber int32, pageSize int32, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, pageNumber int, pageSize int, sortOrder string, sortBy string, action []string) (*Historylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/history/{historyId}"
@@ -4539,7 +4539,7 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 // Get flow version list
 //
 // 
-func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int32, pageSize int32, deleted bool) (*Flowversionentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int, pageSize int, deleted bool) (*Flowversionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions"
@@ -4646,7 +4646,7 @@ func (a ArchitectApi) GetFlowVersions(flowId string, pageNumber int32, pageSize 
 // Get a pageable list of flows, filtered by query parameters
 //
 // If one or more IDs are specified, the search will fetch flows that match the given ID(s) and not use any additional supplied query parameters in the search.
-func (a ArchitectApi) GetFlows(varType []string, pageNumber int32, pageSize int32, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, publishVersionId string, editableBy string, lockedBy string, lockedByClientId string, secure string, deleted bool, includeSchemas bool, publishedAfter string, publishedBefore string, divisionId []string) (*Flowentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlows(varType []string, pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, publishVersionId string, editableBy string, lockedBy string, lockedByClientId string, secure string, deleted bool, includeSchemas bool, publishedAfter string, publishedBefore string, divisionId []string) (*Flowentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows"
@@ -5172,7 +5172,7 @@ func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId
 // Get all recent import jobs
 //
 // Get all recent import jobs
-func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber int32, pageSize int32) (*Entitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber int, pageSize int) (*Entitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs"
@@ -5356,7 +5356,7 @@ func (a ArchitectApi) GetFlowsDatatableRow(datatableId string, rowId string, sho
 // Returns the rows for the datatable with the given id
 //
 // Returns all of the rows for the datatable with the given datatableId.  By default this will just be a truncated list returning the key for each row. Set showBrief to false to return all of the row contents.
-func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int32, pageSize int32, showbrief bool) (*Datatablerowentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, pageSize int, showbrief bool) (*Datatablerowentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows"
@@ -5463,7 +5463,7 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int32
 // Retrieve a list of datatables for the org
 //
 // Returns a metadata list of the datatables associated with this org, including datatableId, name and description.
-func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int32, pageSize int32, sortBy string, sortOrder string) (*Datatablesdomainentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int, pageSize int, sortBy string, sortOrder string) (*Datatablesdomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables"
@@ -5588,7 +5588,7 @@ func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int32, pageSi
 // Get a pageable list of basic flow information objects filterable by query parameters.
 //
 // This returns a simplified version of /flow consisting of name and type. If one or more IDs are specified, the search will fetch flows that match the given ID(s) and not use any additional supplied query parameters in the search.
-func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int32, pageSize int32, sortBy string, sortOrder string, id []string, name string, publishVersionId string, publishedAfter string, publishedBefore string, divisionId []string, includeSchemas bool) (*Flowdivisionviewentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDivisionviews(varType []string, pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, publishVersionId string, publishedAfter string, publishedBefore string, divisionId []string, includeSchemas bool) (*Flowdivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/divisionviews"
@@ -5935,7 +5935,7 @@ func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *AP
 // Get a pageable list of flow milestones, filtered by query parameters
 //
 // Multiple IDs can be specified, in which case all matching flow milestones will be returned, and no other parameters will be evaluated.
-func (a ArchitectApi) GetFlowsMilestones(pageNumber int32, pageSize int32, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowmilestonelisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowmilestonelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/milestones"
@@ -6165,7 +6165,7 @@ func (a ArchitectApi) GetFlowsOutcome(flowOutcomeId string) (*Flowoutcome, *APIR
 // Get a pageable list of flow outcomes, filtered by query parameters
 //
 // Multiple IDs can be specified, in which case all matching flow outcomes will be returned, and no other parameters will be evaluated.
-func (a ArchitectApi) GetFlowsOutcomes(pageNumber int32, pageSize int32, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowoutcomelisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowoutcomelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/outcomes"

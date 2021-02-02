@@ -448,7 +448,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*Asyncq
 // Fetch a page of results for an async query
 //
 // 
-func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}/results"
@@ -606,7 +606,7 @@ func (a AnalyticsApi) GetAnalyticsConversationsDetailsJobsAvailability() (*Dataa
 // Get all view export requests for a user
 //
 // 
-func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int32, pageSize int32) (*Reportingexportjoblisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingExports(pageNumber int, pageSize int) (*Reportingexportjoblisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/exports"
@@ -758,7 +758,7 @@ func (a AnalyticsApi) GetAnalyticsReportingExportsMetadata() (*Reportingexportme
 // Get list of reporting metadata.
 //
 // 
-func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int32, pageSize int32, locale string) (*Reportmetadataentitylisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingMetadata(pageNumber int, pageSize int, locale string) (*Reportmetadataentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/metadata"
@@ -1074,7 +1074,7 @@ func (a AnalyticsApi) GetAnalyticsReportingSchedule(scheduleId string) (*Reports
 // Get list of completed scheduled report jobs.
 //
 // 
-func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pageNumber int32, pageSize int32) (*Reportrunentryentitydomainlisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingScheduleHistory(scheduleId string, pageNumber int, pageSize int) (*Reportrunentryentitydomainlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules/{scheduleId}/history"
@@ -1313,7 +1313,7 @@ func (a AnalyticsApi) GetAnalyticsReportingScheduleHistoryRunId(runId string, sc
 // Get a list of scheduled report jobs
 //
 // Get a list of scheduled report jobs.
-func (a AnalyticsApi) GetAnalyticsReportingSchedules(pageNumber int32, pageSize int32) (*Reportscheduleentitylisting, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsReportingSchedules(pageNumber int, pageSize int) (*Reportscheduleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/reporting/schedules"
@@ -1534,7 +1534,7 @@ func (a AnalyticsApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystat
 // Fetch a page of results for an async query
 //
 // 
-func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
+func (a AnalyticsApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/users/details/jobs/{jobId}/results"

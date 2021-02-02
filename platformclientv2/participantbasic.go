@@ -99,7 +99,7 @@ type Participantbasic struct {
 
 
 	// WrapupTimeoutMs - Specifies how long a timed ACW session will last.
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// WrapupSkipped - The UI sets this field when the agent chooses to skip entering a wrapup for this participant.
@@ -115,7 +115,7 @@ type Participantbasic struct {
 
 
 	// AlertingTimeoutMs - Specifies how long the agent has to answer an interaction before being marked as not responding.
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// MonitoredParticipantId - If this participant is a monitor, then this will be the id of the participant that is being monitored.

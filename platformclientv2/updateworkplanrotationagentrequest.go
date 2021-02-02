@@ -14,7 +14,7 @@ type Updateworkplanrotationagentrequest struct {
 
 
 	// Position - Start position of the work plan in the pattern for this agent in the work plan rotation. Position value starts from 0
-	Position *int32 `json:"position,omitempty"`
+	Position *int `json:"position,omitempty"`
 
 
 	// Delete - If marked true for this agent when updating, then this agent will be removed from this work plan rotation

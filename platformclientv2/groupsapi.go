@@ -409,7 +409,7 @@ func (a GroupsApi) GetGroupIndividuals(groupId string) (*Userentitylisting, *API
 // Get group members, includes individuals, owners, and dynamically included people
 //
 // 
-func (a GroupsApi) GetGroupMembers(groupId string, pageSize int32, pageNumber int32, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
+func (a GroupsApi) GetGroupMembers(groupId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/members"
@@ -611,7 +611,7 @@ func (a GroupsApi) GetGroupProfile(groupId string, fields string) (*Groupprofile
 // Get a group list
 //
 // 
-func (a GroupsApi) GetGroups(pageSize int32, pageNumber int32, id []string, jabberId []string, sortOrder string) (*Groupentitylisting, *APIResponse, error) {
+func (a GroupsApi) GetGroups(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string) (*Groupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups"
@@ -830,7 +830,7 @@ func (a GroupsApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 // Get group profile listing
 //
 // This api is deprecated. Use /api/v2/groups instead.
-func (a GroupsApi) GetProfilesGroups(pageSize int32, pageNumber int32, id []string, sortOrder string) (*Groupprofileentitylisting, *APIResponse, error) {
+func (a GroupsApi) GetProfilesGroups(pageSize int, pageNumber int, id []string, sortOrder string) (*Groupprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/profiles/groups"

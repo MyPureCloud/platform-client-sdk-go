@@ -31,7 +31,7 @@ type Reportrunentry struct {
 
 
 	// RunDurationMsec
-	RunDurationMsec *int64 `json:"runDurationMsec,omitempty"`
+	RunDurationMsec *int `json:"runDurationMsec,omitempty"`
 
 
 	// ReportUrl

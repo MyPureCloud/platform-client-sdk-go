@@ -51,11 +51,11 @@ type Analyticsevaluation struct {
 
 
 	// OTotalScore
-	OTotalScore *int64 `json:"oTotalScore,omitempty"`
+	OTotalScore *int `json:"oTotalScore,omitempty"`
 
 
 	// OTotalCriticalScore
-	OTotalCriticalScore *int64 `json:"oTotalCriticalScore,omitempty"`
+	OTotalCriticalScore *int `json:"oTotalCriticalScore,omitempty"`
 
 }
 

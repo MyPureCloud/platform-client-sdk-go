@@ -15,7 +15,7 @@ type Buintradayresponse struct {
 
 
 	// IntervalLengthMinutes - The aggregation period in minutes, which determines the interval duration of the returned data
-	IntervalLengthMinutes *int32 `json:"intervalLengthMinutes,omitempty"`
+	IntervalLengthMinutes *int `json:"intervalLengthMinutes,omitempty"`
 
 
 	// NoDataReason - If not null, the reason there was no data for the request

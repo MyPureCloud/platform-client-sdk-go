@@ -39,7 +39,7 @@ type Queueconversationsocialexpressioneventtopicemail struct {
 
 
 	// MessagesSent
-	MessagesSent *int32 `json:"messagesSent,omitempty"`
+	MessagesSent *int `json:"messagesSent,omitempty"`
 
 
 	// ErrorInfo

@@ -14,11 +14,11 @@ type Documentthumbnail struct {
 
 
 	// Height
-	Height *int32 `json:"height,omitempty"`
+	Height *int `json:"height,omitempty"`
 
 
 	// Width
-	Width *int32 `json:"width,omitempty"`
+	Width *int `json:"width,omitempty"`
 
 }
 

@@ -22,7 +22,7 @@ type Schedulingstatusresponse struct {
 
 
 	// PercentComplete - The percentage of the job that is complete.
-	PercentComplete *int32 `json:"percentComplete,omitempty"`
+	PercentComplete *int `json:"percentComplete,omitempty"`
 
 }
 

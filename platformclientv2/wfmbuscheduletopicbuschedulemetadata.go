@@ -14,7 +14,7 @@ type Wfmbuscheduletopicbuschedulemetadata struct {
 
 
 	// WeekCount
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// Description

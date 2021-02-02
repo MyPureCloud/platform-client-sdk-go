@@ -6,15 +6,15 @@ import (
 // Faxsummary
 type Faxsummary struct { 
 	// ReadCount
-	ReadCount *int32 `json:"readCount,omitempty"`
+	ReadCount *int `json:"readCount,omitempty"`
 
 
 	// UnreadCount
-	UnreadCount *int32 `json:"unreadCount,omitempty"`
+	UnreadCount *int `json:"unreadCount,omitempty"`
 
 
 	// TotalCount
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 
 }
 

@@ -19,7 +19,7 @@ type Edge struct {
 
 
 	// Version - The current version of the resource.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -151,7 +151,7 @@ type Edge struct {
 
 
 	// ConversationCount
-	ConversationCount *int32 `json:"conversationCount,omitempty"`
+	ConversationCount *int `json:"conversationCount,omitempty"`
 
 
 	// Proxy - Edge HTTP proxy configuration for the WAN port. The field can be a hostname, FQDN, IPv4 or IPv6 address. If port is not included, port 80 is assumed.

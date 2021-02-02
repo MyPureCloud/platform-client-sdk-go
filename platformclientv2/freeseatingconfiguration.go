@@ -10,7 +10,7 @@ type Freeseatingconfiguration struct {
 
 
 	// TtlMinutes - The amount of time in minutes until an offline user is disassociated from their station
-	TtlMinutes *int32 `json:"ttlMinutes,omitempty"`
+	TtlMinutes *int `json:"ttlMinutes,omitempty"`
 
 }
 

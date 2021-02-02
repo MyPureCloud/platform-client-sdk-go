@@ -6,15 +6,15 @@ import (
 // Wfmbuscheduleruntopiclocaldate
 type Wfmbuscheduleruntopiclocaldate struct { 
 	// Year
-	Year *int32 `json:"year,omitempty"`
+	Year *int `json:"year,omitempty"`
 
 
 	// Month
-	Month *int32 `json:"month,omitempty"`
+	Month *int `json:"month,omitempty"`
 
 
 	// Day
-	Day *int32 `json:"day,omitempty"`
+	Day *int `json:"day,omitempty"`
 
 
 	// LeapYear

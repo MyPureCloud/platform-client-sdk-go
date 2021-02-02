@@ -250,7 +250,7 @@ func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIRe
 
 // DeleteRoutingQueueUser invokes DELETE /api/v2/routing/queues/{queueId}/users/{memberId}
 //
-// Delete queue member
+// DEPRECATED: use DELETE /routing/queues/{queueId}/members/{memberId}.  Delete queue member.
 //
 // 
 func (a RoutingApi) DeleteRoutingQueueUser(queueId string, memberId string) (*APIResponse, error) {
@@ -1135,7 +1135,7 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 // Get routes
 //
 // 
-func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int32, pageNumber int32, pattern string) (*Inboundrouteentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int, pageNumber int, pattern string) (*Inboundrouteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainName}/routes"
@@ -1368,7 +1368,7 @@ func (a RoutingApi) GetRoutingEmailSetup() (*Emailsetup, *APIResponse, error) {
 // Get the list of supported languages.
 //
 // 
-func (a RoutingApi) GetRoutingLanguages(pageSize int32, pageNumber int32, sortOrder string, name string, id []string) (*Languageentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingLanguages(pageSize int, pageNumber int, sortOrder string, name string, id []string) (*Languageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/languages"
@@ -1562,7 +1562,7 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 // Get recipients
 //
 // 
-func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize int32, pageNumber int32) (*Recipientlisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize int, pageNumber int) (*Recipientlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/message/recipients"
@@ -1887,10 +1887,10 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 
 // GetRoutingQueueUsers invokes GET /api/v2/routing/queues/{queueId}/users
 //
-// Get the members of this queue
+// DEPRECATED: use GET /routing/queues/{queueId}/members.  Get the members of this queue.
 //
 // 
-func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageSize int32, pageNumber int32, sortBy string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageSize int, pageNumber int, sortBy string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
@@ -2093,7 +2093,7 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageSize int32, pageNum
 // Get the wrap-up codes for a queue
 //
 // 
-func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int32, pageNumber int32) (*Wrapupcodeentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pageNumber int) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/wrapupcodes"
@@ -2188,7 +2188,7 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int32, p
 // Get list of queues.
 //
 // 
-func (a RoutingApi) GetRoutingQueues(pageSize int32, pageNumber int32, sortBy string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueues(pageSize int, pageNumber int, sortBy string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues"
@@ -2325,7 +2325,7 @@ func (a RoutingApi) GetRoutingQueues(pageSize int32, pageNumber int32, sortBy st
 // Get a paged listing of simplified queue objects, filterable by name, queue ID(s), or division ID(s).
 //
 // 
-func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int32, pageNumber int32, sortBy string, sortOrder string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/divisionviews"
@@ -2474,7 +2474,7 @@ func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int32, pageNumber int
 // Get a paged listing of simplified queue objects.  Can be used to get a digest of all queues in an organization.
 //
 // 
-func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int32, pageNumber int32, sortBy string, sortOrder string) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber int, sortBy string, sortOrder string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/divisionviews/all"
@@ -2587,7 +2587,7 @@ func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int32, pageNumber 
 // Get a paged listing of queues the user is a member of.
 //
 // 
-func (a RoutingApi) GetRoutingQueuesMe(joined bool, pageSize int32, pageNumber int32, sortBy string, sortOrder string) (*Userqueueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueuesMe(joined bool, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/me"
@@ -2970,7 +2970,7 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 // Get the list of routing skills.
 //
 // 
-func (a RoutingApi) GetRoutingSkills(pageSize int32, pageNumber int32, name string, id []string) (*Skillentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSkills(pageSize int, pageNumber int, name string, id []string) (*Skillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/skills"
@@ -3152,7 +3152,7 @@ func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIRes
 // Get a list of Addresses for SMS
 //
 // 
-func (a RoutingApi) GetRoutingSmsAddresses(pageSize int32, pageNumber int32) (*Smsaddressentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsAddresses(pageSize int, pageNumber int) (*Smsaddressentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/addresses"
@@ -3469,7 +3469,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber,
 // Get a list of provisioned phone numbers.
 //
 // 
-func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType string, phoneNumberStatus string, pageSize int32, pageNumber int32) (*Smsphonenumberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType string, phoneNumberStatus string, pageSize int, pageNumber int) (*Smsphonenumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers"
@@ -3795,7 +3795,7 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 // Get list of wrapup codes.
 //
 // 
-func (a RoutingApi) GetRoutingWrapupcodes(pageSize int32, pageNumber int32, sortBy string, sortOrder string, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy string, sortOrder string, name string) (*Wrapupcodeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/wrapupcodes"
@@ -3920,7 +3920,7 @@ func (a RoutingApi) GetRoutingWrapupcodes(pageSize int32, pageNumber int32, sort
 // Get queues for user
 //
 // 
-func (a RoutingApi) GetUserQueues(userId string, pageSize int32, pageNumber int32, joined bool, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, joined bool, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/queues"
@@ -4039,7 +4039,7 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int32, pageNumber int3
 // List routing language for user
 //
 // 
-func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int32, pageNumber int32, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumber int, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages"
@@ -4146,7 +4146,7 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int32, pageN
 // List routing skills for user
 //
 // 
-func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int32, pageNumber int32, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber int, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills"
@@ -4327,7 +4327,7 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 
 // PatchRoutingQueueUser invokes PATCH /api/v2/routing/queues/{queueId}/users/{memberId}
 //
-// Update the ring number OR joined status for a User in a Queue
+// DEPRECATED: use PATCH /routing/queues/{queueId}/members/{memberId}.  Update the ring number OR joined status for a User in a Queue.
 //
 // 
 func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body Queuemember) (*Queuemember, *APIResponse, error) {
@@ -4410,7 +4410,7 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 
 // PatchRoutingQueueUsers invokes PATCH /api/v2/routing/queues/{queueId}/users
 //
-// Join or unjoin a set of users for a queue
+// DEPRECATED: use PATCH /routing/queues/{queueId}/members.  Join or unjoin a set of users for a queue.
 //
 // 
 func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (*Queuememberentitylisting, *APIResponse, error) {
@@ -5328,7 +5328,7 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 
 // PostRoutingQueueUsers invokes POST /api/v2/routing/queues/{queueId}/users
 //
-// Bulk add or delete up to 100 queue members
+// DEPRECATED: use POST /routing/queues/{queueId}/members.  Bulk add or delete up to 100 queue members.
 //
 // 
 func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity, delete bool) (*string, *APIResponse, error) {

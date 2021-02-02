@@ -696,7 +696,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 // List notes for an external contact
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, pageSize int32, pageNumber int32, sortOrder string, expand []string) (*Notelisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Notelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts/{contactId}/notes"
@@ -815,7 +815,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 // Search for external contacts
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int32, pageNumber int32, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumber int, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/contacts"
@@ -1311,7 +1311,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 // Search for external contacts in an external organization
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrganizationId string, pageSize int32, pageNumber int32, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrganizationId string, pageSize int, pageNumber int, q string, sortOrder string, expand []string) (*Contactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/contacts"
@@ -1531,7 +1531,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 // List notes for an external organization
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrganizationId string, pageSize int32, pageNumber int32, sortOrder string, expand []string) (*Notelisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrganizationId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Notelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/notes"
@@ -1650,7 +1650,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 // Fetch a relationship for an external organization
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(externalOrganizationId string, pageSize int32, pageNumber int32, expand string, sortOrder string) (*Relationshiplisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(externalOrganizationId string, pageSize int, pageNumber int, expand string, sortOrder string) (*Relationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations/{externalOrganizationId}/relationships"
@@ -1769,7 +1769,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 // Search for external organizations
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int32, pageNumber int32, q string, trustorId []string, sortOrder string, expand []string, includeTrustors bool) (*Externalorganizationlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, pageNumber int, q string, trustorId []string, sortOrder string, expand []string, includeTrustors bool) (*Externalorganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/organizations"
@@ -2371,7 +2371,7 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 // Scan for external contacts using paging
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int32, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor string) (*Cursorcontactlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/contacts"
@@ -2460,7 +2460,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int32, cursor
 // Scan for notes using paging
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int32, cursor string) (*Cursornotelisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor string) (*Cursornotelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/notes"
@@ -2549,7 +2549,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int32, cursor st
 // Scan for external organizations using paging
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int32, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cursor string) (*Cursororganizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/organizations"
@@ -2638,7 +2638,7 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int32, c
 // Scan for relationships
 //
 // 
-func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int32, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
+func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cursor string) (*Cursorrelationshiplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/externalcontacts/scan/relationships"

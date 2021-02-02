@@ -10,11 +10,11 @@ type Buservicelevel struct {
 
 
 	// Percent - Service level target percent answered. Required if include == true
-	Percent *int32 `json:"percent,omitempty"`
+	Percent *int `json:"percent,omitempty"`
 
 
 	// Seconds - Service level target answer time. Required if include == true
-	Seconds *int32 `json:"seconds,omitempty"`
+	Seconds *int `json:"seconds,omitempty"`
 
 }
 

@@ -14,7 +14,7 @@ type Regiontimezone struct {
 
 
 	// Offset
-	Offset *int64 `json:"offset,omitempty"`
+	Offset *int `json:"offset,omitempty"`
 
 
 	// SelfUri - The URI for this object

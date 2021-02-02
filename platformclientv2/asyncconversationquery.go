@@ -25,6 +25,10 @@ type Asyncconversationquery struct {
 	SurveyFilters *[]Surveydetailqueryfilter `json:"surveyFilters,omitempty"`
 
 
+	// ResolutionFilters - Filters that target resolutions
+	ResolutionFilters *[]Resolutiondetailqueryfilter `json:"resolutionFilters,omitempty"`
+
+
 	// Order - Sort the result set in ascending/descending order. Default is ascending
 	Order *string `json:"order,omitempty"`
 
@@ -38,7 +42,7 @@ type Asyncconversationquery struct {
 
 
 	// Limit - Specify number of results to be returned
-	Limit *int32 `json:"limit,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 
 
 	// StartOfDayIntervalMatching - Add a filter to only include conversations that started after the beginning of the interval start date (UTC)

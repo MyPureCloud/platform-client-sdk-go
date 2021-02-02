@@ -19,7 +19,7 @@ type Assignedwrapupcode struct {
 
 
 	// DurationSeconds - The duration in seconds of the wrap-up segment.
-	DurationSeconds *int32 `json:"durationSeconds,omitempty"`
+	DurationSeconds *int `json:"durationSeconds,omitempty"`
 
 
 	// EndTime - The timestamp when the wrap-up segment ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

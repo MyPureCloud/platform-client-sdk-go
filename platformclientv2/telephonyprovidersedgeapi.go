@@ -905,7 +905,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesTrunkbasesetting
 // Lists available schema categories (Deprecated)
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize int32, pageNumber int32) (*Schemacategoryentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize int, pageNumber int) (*Schemacategoryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext"
@@ -994,7 +994,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize in
 // List schemas of a specific category (Deprecated)
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategory(schemaCategory string, pageSize int32, pageNumber int32) (*Schemareferenceentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategory(schemaCategory string, pageSize int, pageNumber int) (*Schemareferenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext/{schemaCategory}"
@@ -1089,7 +1089,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 // List schemas of a specific category (Deprecated)
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType(schemaCategory string, schemaType string, pageSize int32, pageNumber int32) (*Schemareferenceentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCategorySchemaType(schemaCategory string, schemaType string, pageSize int, pageNumber int) (*Schemareferenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/configuration/schemas/edges/vnext/{schemaCategory}/{schemaType}"
@@ -1812,7 +1812,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLine(edgeId string, 
 // Get the list of lines.
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string, pageSize int32, pageNumber int32) (*Edgelineentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string, pageSize int, pageNumber int) (*Edgelineentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/lines"
@@ -2574,7 +2574,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeSoftwareversions(edg
 // Get the list of available trunks for the given Edge.
 //
 // Trunks are created by assigning trunk base settings to an Edge or Edge Group.
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string, pageNumber int32, pageSize int32, sortBy string, sortOrder string, trunkBaseId string, trunkType string) (*Trunkentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string, pageNumber int, pageSize int, sortBy string, sortOrder string, trunkBaseId string, trunkType string) (*Trunkentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/{edgeId}/trunks"
@@ -2717,7 +2717,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 // Get the list of edges.
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int32, pageNumber int32, name string, siteId string, edgeGroupId string, sortBy string, managed bool) (*Edgeentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, pageNumber int, name string, siteId string, edgeGroupId string, sortBy string, managed bool) (*Edgeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges"
@@ -3199,7 +3199,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpool(didPoolId s
 // Get a listing of DID Pools
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize int32, pageNumber int32, sortBy string, id []string) (*Didpoolentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize int, pageNumber int, sortBy string, id []string) (*Didpoolentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/didpools"
@@ -3312,7 +3312,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize i
 // Get a listing of DIDs
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int32, pageNumber int32, sortBy string, sortOrder string, phoneNumber string, ownerId string, didPoolId string, id []string) (*Didentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int, pageNumber int, sortBy string, sortOrder string, phoneNumber string, ownerId string, didPoolId string, id []string) (*Didentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/dids"
@@ -3631,7 +3631,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroupEdgetrunkb
 // Get the list of edge groups.
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroups(pageSize int32, pageNumber int32, name string, sortBy string, managed bool) (*Edgegroupentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroups(pageSize int, pageNumber int, name string, sortBy string, managed bool) (*Edgegroupentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/edgegroups"
@@ -3957,7 +3957,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpool(exten
 // Get a listing of extension pools
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(pageSize int32, pageNumber int32, sortBy string, number string) (*Extensionpoolentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(pageSize int, pageNumber int, sortBy string, number string) (*Extensionpoolentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensionpools"
@@ -4070,7 +4070,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 // Get a listing of extensions
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize int32, pageNumber int32, sortBy string, sortOrder string, number string) (*Extensionentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize int, pageNumber int, sortBy string, sortOrder string, number string) (*Extensionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/extensions"
@@ -4333,7 +4333,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 // Get a listing of line base settings objects
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pageNumber int32, pageSize int32, sortBy string, sortOrder string) (*Linebaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pageNumber int, pageSize int, sortBy string, sortOrder string) (*Linebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/linebasesettings"
@@ -4446,7 +4446,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pa
 // Get a list of Lines
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int32, pageNumber int32, name string, sortBy string, expand []string) (*Lineentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int, pageNumber int, name string, sortBy string, expand []string) (*Lineentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/lines"
@@ -4898,7 +4898,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outbo
 // Get outbound routes
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(pageSize int32, pageNumber int32, name string, siteId string, externalTrunkBasesIds string, sortBy string) (*Outboundrouteentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(pageSize int, pageNumber int, name string, siteId string, externalTrunkBasesIds string, sortBy string) (*Outboundrouteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/outboundroutes"
@@ -5173,7 +5173,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesetting(ph
 // Get a list of Phone Base Settings objects
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(pageSize int32, pageNumber int32, sortBy string, sortOrder string, expand []string, name string) (*Phonebaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(pageSize int, pageNumber int, sortBy string, sortOrder string, expand []string, name string) (*Phonebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phonebasesettings"
@@ -5310,7 +5310,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(p
 // Get a list of available makes and models to create a new Phone Base Settings
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAvailablemetabases(pageSize int32, pageNumber int32) (*Phonemetabaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAvailablemetabases(pageSize int, pageNumber int) (*Phonemetabaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phonebasesettings/availablemetabases"
@@ -5481,7 +5481,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 // Get a list of Phone Instances
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber int32, pageSize int32, sortBy string, sortOrder string, siteId string, webRtcUserId string, phoneBaseSettingsId string, linesLoggedInUserId string, linesDefaultForUserId string, phoneHardwareId string, linesId string, linesName string, name string, expand []string, fields []string) (*Phoneentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber int, pageSize int, sortBy string, sortOrder string, siteId string, webRtcUserId string, phoneBaseSettingsId string, linesLoggedInUserId string, linesDefaultForUserId string, phoneHardwareId string, linesId string, linesName string, name string, expand []string, fields []string) (*Phoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phones"
@@ -6261,7 +6261,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroute(s
 // Get outbound routes
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(siteId string, pageSize int32, pageNumber int32, name string, externalTrunkBasesIds string, sortBy string) (*Outboundroutebaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(siteId string, pageSize int, pageNumber int, name string, externalTrunkBasesIds string, sortBy string) (*Outboundroutebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites/{siteId}/outboundroutes"
@@ -6392,7 +6392,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 // Get the list of Sites.
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int32, pageNumber int32, sortBy string, sortOrder string, name string, locationId string, managed bool) (*Siteentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, locationId string, managed bool) (*Siteentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/sites"
@@ -6541,7 +6541,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int3
 // Get a list of Edge-compatible time zones
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize int32, pageNumber int32) (*Timezoneentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize int, pageNumber int) (*Timezoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/timezones"
@@ -6851,7 +6851,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesetting(tr
 // Get Trunk Base Settings listing
 //
 // Managed properties will not be returned unless the user is assigned the internal:trunk:edit permission.
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(pageNumber int32, pageSize int32, sortBy string, sortOrder string, recordingEnabled bool, ignoreHidden bool, managed bool, expand []string, name string) (*Trunkbaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(pageNumber int, pageSize int, sortBy string, sortOrder string, recordingEnabled bool, ignoreHidden bool, managed bool, expand []string, name string) (*Trunkbaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunkbasesettings"
@@ -7024,7 +7024,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(p
 // Get a list of available makes and models to create a new Trunk Base Settings
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAvailablemetabases(varType string, pageSize int32, pageNumber int32) (*Trunkmetabaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAvailablemetabases(varType string, pageSize int, pageNumber int) (*Trunkmetabaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunkbasesettings/availablemetabases"
@@ -7207,7 +7207,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsTe
 // Get the list of available trunks.
 //
 // Trunks are created by assigning trunk base settings to an Edge or Edge Group.
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunks(pageNumber int32, pageSize int32, sortBy string, sortOrder string, edgeId string, trunkBaseId string, trunkType string) (*Trunkentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunks(pageNumber int, pageSize int, sortBy string, sortOrder string, edgeId string, trunkBaseId string, trunkType string) (*Trunkentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/trunks"

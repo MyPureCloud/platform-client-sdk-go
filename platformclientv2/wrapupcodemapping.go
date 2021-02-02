@@ -23,7 +23,7 @@ type Wrapupcodemapping struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// DefaultSet - The default set of wrap-up flags. These will be used if there is no entry for a given wrap-up code in the mapping.

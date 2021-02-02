@@ -10,7 +10,7 @@ type Campaignstats struct {
 
 
 	// IdleAgents - Number of available agents not currently being utilized
-	IdleAgents *int32 `json:"idleAgents,omitempty"`
+	IdleAgents *int `json:"idleAgents,omitempty"`
 
 
 	// EffectiveIdleAgents - Number of effective available agents not currently being utilized
@@ -22,11 +22,11 @@ type Campaignstats struct {
 
 
 	// OutstandingCalls - Number of campaign calls currently ongoing
-	OutstandingCalls *int32 `json:"outstandingCalls,omitempty"`
+	OutstandingCalls *int `json:"outstandingCalls,omitempty"`
 
 
 	// ScheduledCalls - Number of campaign calls currently scheduled
-	ScheduledCalls *int32 `json:"scheduledCalls,omitempty"`
+	ScheduledCalls *int `json:"scheduledCalls,omitempty"`
 
 }
 

@@ -580,7 +580,7 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 // Get the members of a chat conversation.
 //
 // 
-func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pageSize int32, pageNumber int32, excludeDisconnectedMembers bool) (*Webchatmemberinfoentitylist, *APIResponse, error) {
+func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pageSize int, pageNumber int, excludeDisconnectedMembers bool) (*Webchatmemberinfoentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/members"
@@ -760,7 +760,7 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 // Get the messages of a chat conversation.
 //
 // 
-func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, after string, before string, sortOrder string, maxResults int32) (*Webchatmessageentitylist, *APIResponse, error) {
+func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, after string, before string, sortOrder string, maxResults int) (*Webchatmessageentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/webchat/guest/conversations/{conversationId}/messages"

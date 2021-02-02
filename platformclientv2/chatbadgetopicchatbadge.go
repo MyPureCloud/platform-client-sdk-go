@@ -11,7 +11,7 @@ type Chatbadgetopicchatbadge struct {
 
 
 	// UnreadCount
-	UnreadCount *int32 `json:"unreadCount,omitempty"`
+	UnreadCount *int `json:"unreadCount,omitempty"`
 
 
 	// LastUnreadNotificationDate

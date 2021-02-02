@@ -6,7 +6,7 @@ import (
 // Unreadmetric
 type Unreadmetric struct { 
 	// Count - The count of unread alerts for a specific rule type.
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

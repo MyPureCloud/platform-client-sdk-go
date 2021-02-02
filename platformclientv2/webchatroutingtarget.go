@@ -22,7 +22,7 @@ type Webchatroutingtarget struct {
 
 
 	// Priority - The priority to assign to the conversation for routing.
-	Priority *int64 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 }
 

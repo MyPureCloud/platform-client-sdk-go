@@ -63,11 +63,11 @@ type Recording struct {
 
 
 	// EstimatedTranscodeTimeMs
-	EstimatedTranscodeTimeMs *int64 `json:"estimatedTranscodeTimeMs,omitempty"`
+	EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
 
 
 	// ActualTranscodeTimeMs
-	ActualTranscodeTimeMs *int64 `json:"actualTranscodeTimeMs,omitempty"`
+	ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
 
 
 	// ArchiveDate - The date the recording will be archived. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -91,19 +91,19 @@ type Recording struct {
 
 
 	// OutputDurationMs - Duration of transcoded media in milliseconds
-	OutputDurationMs *int32 `json:"outputDurationMs,omitempty"`
+	OutputDurationMs *int `json:"outputDurationMs,omitempty"`
 
 
 	// OutputSizeInBytes - Size of transcoded media in bytes. 0 if there is no transcoded media.
-	OutputSizeInBytes *int32 `json:"outputSizeInBytes,omitempty"`
+	OutputSizeInBytes *int `json:"outputSizeInBytes,omitempty"`
 
 
 	// MaxAllowedRestorationsForOrg - How many archive restorations the organization is allowed to have.
-	MaxAllowedRestorationsForOrg *int32 `json:"maxAllowedRestorationsForOrg,omitempty"`
+	MaxAllowedRestorationsForOrg *int `json:"maxAllowedRestorationsForOrg,omitempty"`
 
 
 	// RemainingRestorationsAllowedForOrg - The remaining archive restorations the organization has.
-	RemainingRestorationsAllowedForOrg *int32 `json:"remainingRestorationsAllowedForOrg,omitempty"`
+	RemainingRestorationsAllowedForOrg *int `json:"remainingRestorationsAllowedForOrg,omitempty"`
 
 
 	// SessionId - The session id represents an external resource id, such as email, call, chat, etc

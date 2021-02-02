@@ -6,7 +6,7 @@ import (
 // Shorttermforecastingsettings - Short Term Forecasting Settings
 type Shorttermforecastingsettings struct { 
 	// DefaultHistoryWeeks - The number of weeks to consider by default when generating a volume forecast
-	DefaultHistoryWeeks *int32 `json:"defaultHistoryWeeks,omitempty"`
+	DefaultHistoryWeeks *int `json:"defaultHistoryWeeks,omitempty"`
 
 }
 

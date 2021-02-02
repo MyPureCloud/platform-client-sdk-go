@@ -23,7 +23,7 @@ type Groupprofile struct {
 
 
 	// Version - The version of the group resource
-	Version *int64 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// SelfUri - The URI for this object

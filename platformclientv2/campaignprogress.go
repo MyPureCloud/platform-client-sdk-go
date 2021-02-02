@@ -14,19 +14,19 @@ type Campaignprogress struct {
 
 
 	// NumberOfContactsCalled - Number of contacts called during the campaign
-	NumberOfContactsCalled *int64 `json:"numberOfContactsCalled,omitempty"`
+	NumberOfContactsCalled *int `json:"numberOfContactsCalled,omitempty"`
 
 
 	// NumberOfContactsMessaged - Number of contacts messaged during the campaign
-	NumberOfContactsMessaged *int64 `json:"numberOfContactsMessaged,omitempty"`
+	NumberOfContactsMessaged *int `json:"numberOfContactsMessaged,omitempty"`
 
 
 	// TotalNumberOfContacts - Total number of contacts in the campaign
-	TotalNumberOfContacts *int64 `json:"totalNumberOfContacts,omitempty"`
+	TotalNumberOfContacts *int `json:"totalNumberOfContacts,omitempty"`
 
 
 	// Percentage - Percentage of contacts processed during the campaign
-	Percentage *int64 `json:"percentage,omitempty"`
+	Percentage *int `json:"percentage,omitempty"`
 
 }
 

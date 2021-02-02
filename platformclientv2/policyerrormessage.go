@@ -7,7 +7,7 @@ import (
 // Policyerrormessage
 type Policyerrormessage struct { 
 	// StatusCode
-	StatusCode *int32 `json:"statusCode,omitempty"`
+	StatusCode *int `json:"statusCode,omitempty"`
 
 
 	// UserMessage

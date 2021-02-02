@@ -170,7 +170,7 @@ func (a MobileDevicesApi) GetMobiledevice(deviceId string) (*Userdevice, *APIRes
 // Get a list of all devices.
 //
 // 
-func (a MobileDevicesApi) GetMobiledevices(pageSize int32, pageNumber int32, sortOrder string) (*Directoryuserdeviceslisting, *APIResponse, error) {
+func (a MobileDevicesApi) GetMobiledevices(pageSize int, pageNumber int, sortOrder string) (*Directoryuserdeviceslisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/mobiledevices"

@@ -15,7 +15,7 @@ type Buschedulelistitem struct {
 
 
 	// WeekCount - The number of weeks spanned by this schedule
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// Description - The description of this schedule

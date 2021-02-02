@@ -6,7 +6,7 @@ import (
 // Trunkmetricsqos
 type Trunkmetricsqos struct { 
 	// MismatchCount - Total number of QoS mismatches over the course of the last 24-hour period (sliding window).
-	MismatchCount *int32 `json:"mismatchCount,omitempty"`
+	MismatchCount *int `json:"mismatchCount,omitempty"`
 
 }
 

@@ -23,7 +23,7 @@ type Team struct {
 
 
 	// MemberCount - Number of members in a team
-	MemberCount *int64 `json:"memberCount,omitempty"`
+	MemberCount *int `json:"memberCount,omitempty"`
 
 
 	// SelfUri - The URI for this object

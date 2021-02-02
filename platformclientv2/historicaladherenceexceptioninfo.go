@@ -6,11 +6,11 @@ import (
 // Historicaladherenceexceptioninfo
 type Historicaladherenceexceptioninfo struct { 
 	// StartOffsetSeconds - Exception start offset in seconds relative to query start time
-	StartOffsetSeconds *int32 `json:"startOffsetSeconds,omitempty"`
+	StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
 
 
 	// EndOffsetSeconds - Exception end offset in seconds relative to query start time
-	EndOffsetSeconds *int32 `json:"endOffsetSeconds,omitempty"`
+	EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
 
 
 	// ScheduledActivityCodeId - The ID of the scheduled activity for this user

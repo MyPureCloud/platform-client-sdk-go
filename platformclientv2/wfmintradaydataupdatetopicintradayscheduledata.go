@@ -6,11 +6,11 @@ import (
 // Wfmintradaydataupdatetopicintradayscheduledata
 type Wfmintradaydataupdatetopicintradayscheduledata struct { 
 	// OnQueueTimeSeconds
-	OnQueueTimeSeconds *int32 `json:"onQueueTimeSeconds,omitempty"`
+	OnQueueTimeSeconds *int `json:"onQueueTimeSeconds,omitempty"`
 
 
 	// ScheduledTimeSeconds
-	ScheduledTimeSeconds *int32 `json:"scheduledTimeSeconds,omitempty"`
+	ScheduledTimeSeconds *int `json:"scheduledTimeSeconds,omitempty"`
 
 }
 

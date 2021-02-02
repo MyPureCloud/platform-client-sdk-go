@@ -23,7 +23,7 @@ type Dialercontactlistconfigchangecontactlist struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ColumnNames
@@ -47,7 +47,7 @@ type Dialercontactlistconfigchangecontactlist struct {
 
 
 	// Size
-	Size *int32 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// AttemptLimits

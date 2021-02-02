@@ -18,27 +18,27 @@ type Annotation struct {
 
 
 	// Location - Offset of annotation in milliseconds.
-	Location *int64 `json:"location,omitempty"`
+	Location *int `json:"location,omitempty"`
 
 
 	// DurationMs - Duration of annotation in milliseconds.
-	DurationMs *int64 `json:"durationMs,omitempty"`
+	DurationMs *int `json:"durationMs,omitempty"`
 
 
 	// AbsoluteLocation - Offset of annotation (milliseconds) from start of recording.
-	AbsoluteLocation *int64 `json:"absoluteLocation,omitempty"`
+	AbsoluteLocation *int `json:"absoluteLocation,omitempty"`
 
 
 	// AbsoluteDurationMs - Duration of annotation (milliseconds).
-	AbsoluteDurationMs *int64 `json:"absoluteDurationMs,omitempty"`
+	AbsoluteDurationMs *int `json:"absoluteDurationMs,omitempty"`
 
 
 	// RecordingLocation - Offset of annotation (milliseconds) from start of recording, adjusted for any recording cuts
-	RecordingLocation *int64 `json:"recordingLocation,omitempty"`
+	RecordingLocation *int `json:"recordingLocation,omitempty"`
 
 
 	// RecordingDurationMs - Duration of annotation (milliseconds), adjusted for any recording cuts.
-	RecordingDurationMs *int64 `json:"recordingDurationMs,omitempty"`
+	RecordingDurationMs *int `json:"recordingDurationMs,omitempty"`
 
 
 	// User - User that created this annotation (if any).

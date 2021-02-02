@@ -14,7 +14,7 @@ type Schedulegenerationresultsummary struct {
 
 
 	// MessageCount - The number of schedule generation messages for this schedule generation run
-	MessageCount *int32 `json:"messageCount,omitempty"`
+	MessageCount *int `json:"messageCount,omitempty"`
 
 }
 

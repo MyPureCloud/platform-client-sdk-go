@@ -6,7 +6,7 @@ import (
 // Selectedcolumns
 type Selectedcolumns struct { 
 	// ColumnOrder - Indicates the order/position of the selected column
-	ColumnOrder *int32 `json:"columnOrder,omitempty"`
+	ColumnOrder *int `json:"columnOrder,omitempty"`
 
 
 	// ColumnName - Indicates enum name of the column from the export view

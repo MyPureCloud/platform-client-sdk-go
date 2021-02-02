@@ -14,7 +14,7 @@ type Bucreateblankschedulerequest struct {
 
 
 	// WeekCount - The number of weeks in the schedule. One extra day is added at the end
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 }
 

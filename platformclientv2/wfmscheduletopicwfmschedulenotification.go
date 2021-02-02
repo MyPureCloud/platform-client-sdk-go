@@ -18,7 +18,7 @@ type Wfmscheduletopicwfmschedulenotification struct {
 
 
 	// PercentComplete
-	PercentComplete *int32 `json:"percentComplete,omitempty"`
+	PercentComplete *int `json:"percentComplete,omitempty"`
 
 
 	// EventType

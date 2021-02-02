@@ -19,7 +19,7 @@ type Userscheduleshift struct {
 
 
 	// LengthInMinutes - Length of this shift in minutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Activities - List of activities in this shift

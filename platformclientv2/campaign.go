@@ -23,7 +23,7 @@ type Campaign struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ContactList - The ContactList for this Campaign to dial.
@@ -87,7 +87,7 @@ type Campaign struct {
 
 
 	// OutboundLineCount - The number of outbound lines to be concurrently dialed. Only applicable to non-preview campaigns; only required for agentless.
-	OutboundLineCount *int32 `json:"outboundLineCount,omitempty"`
+	OutboundLineCount *int `json:"outboundLineCount,omitempty"`
 
 
 	// RuleSets - Rule sets to be applied while this campaign is dialing.
@@ -99,7 +99,7 @@ type Campaign struct {
 
 
 	// PreviewTimeOutSeconds - The number of seconds before a call will be automatically placed on a preview. A value of 0 indicates no automatic placement of calls. Only applicable to preview campaigns.
-	PreviewTimeOutSeconds *int64 `json:"previewTimeOutSeconds,omitempty"`
+	PreviewTimeOutSeconds *int `json:"previewTimeOutSeconds,omitempty"`
 
 
 	// AlwaysRunning - Indicates (when true) that the campaign will remain on after contacts are depleted, allowing additional contacts to be appended/added to the contact list and processed by the still-running campaign. The campaign can still be turned off manually.
@@ -115,7 +115,7 @@ type Campaign struct {
 
 
 	// NoAnswerTimeout - How long to wait before dispositioning a call as 'no-answer'. Default 30 seconds. Only applicable to non-preview campaigns.
-	NoAnswerTimeout *int32 `json:"noAnswerTimeout,omitempty"`
+	NoAnswerTimeout *int `json:"noAnswerTimeout,omitempty"`
 
 
 	// CallAnalysisLanguage - The language the edge will use to analyze the call.
@@ -123,7 +123,7 @@ type Campaign struct {
 
 
 	// Priority - The priority of this campaign relative to other campaigns that are running on the same queue. 5 is the highest priority, 1 the lowest.
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// ContactListFilters - Filter to apply to the contact list before dialing. Currently a campaign can only have one filter applied.

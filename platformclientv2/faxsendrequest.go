@@ -34,7 +34,7 @@ type Faxsendrequest struct {
 
 
 	// TimeZoneOffsetMinutes - Time zone offset minutes from GMT
-	TimeZoneOffsetMinutes *int32 `json:"timeZoneOffsetMinutes,omitempty"`
+	TimeZoneOffsetMinutes *int `json:"timeZoneOffsetMinutes,omitempty"`
 
 
 	// SelfUri - The URI for this object

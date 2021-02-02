@@ -23,7 +23,7 @@ type Wfmbuscheduletopicbumanagementunitschedulesummary struct {
 
 
 	// AgentCount
-	AgentCount *int32 `json:"agentCount,omitempty"`
+	AgentCount *int `json:"agentCount,omitempty"`
 
 }
 

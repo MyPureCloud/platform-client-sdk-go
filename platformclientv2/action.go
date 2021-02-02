@@ -26,7 +26,7 @@ type Action struct {
 
 
 	// Version - Version of this action
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Secure - Indication of whether or not the action is designed to accept sensitive data

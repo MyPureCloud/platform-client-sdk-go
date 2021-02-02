@@ -6,7 +6,7 @@ import (
 // Wfmbushorttermforecastimportcompletetopicmodificationintervaloffsetvalue
 type Wfmbushorttermforecastimportcompletetopicmodificationintervaloffsetvalue struct { 
 	// IntervalIndex
-	IntervalIndex *int32 `json:"intervalIndex,omitempty"`
+	IntervalIndex *int `json:"intervalIndex,omitempty"`
 
 
 	// Value

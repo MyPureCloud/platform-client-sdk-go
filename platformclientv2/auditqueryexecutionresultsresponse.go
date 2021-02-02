@@ -10,7 +10,7 @@ type Auditqueryexecutionresultsresponse struct {
 
 
 	// PageSize - Number of results in a page.
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// Cursor - Optional cursor to indicate where to resume the results.

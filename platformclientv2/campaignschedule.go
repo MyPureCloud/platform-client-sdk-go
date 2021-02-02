@@ -23,7 +23,7 @@ type Campaignschedule struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Intervals - A list of intervals during which to run the associated Campaign.

@@ -35,7 +35,7 @@ type Conversation struct {
 
 
 	// MaxParticipants - If this is a conference conversation, then this field indicates the maximum number of participants allowed to participant in the conference.
-	MaxParticipants *int32 `json:"maxParticipants,omitempty"`
+	MaxParticipants *int `json:"maxParticipants,omitempty"`
 
 
 	// RecordingState - On update, 'paused' initiates a secure pause, 'active' resumes any paused recordings; otherwise indicates state of conversation recording.

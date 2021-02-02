@@ -253,7 +253,7 @@ func (a LocationsApi) GetLocationSublocations(locationId string) (*Locationentit
 // Get a list of all locations.
 //
 // 
-func (a LocationsApi) GetLocations(pageSize int32, pageNumber int32, id []string, sortOrder string) (*Locationentitylisting, *APIResponse, error) {
+func (a LocationsApi) GetLocations(pageSize int, pageNumber int, id []string, sortOrder string) (*Locationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/locations"

@@ -22,7 +22,7 @@ type Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker struct {
 
 
 	// LengthInMinutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Description

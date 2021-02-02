@@ -10,11 +10,11 @@ type Knowledgesearchrequest struct {
 
 
 	// PageSize - Page size of the returned results
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber - Page number of the returned results
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// DocumentType - Document type to be used while searching

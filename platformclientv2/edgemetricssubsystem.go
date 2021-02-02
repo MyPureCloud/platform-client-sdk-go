@@ -6,7 +6,7 @@ import (
 // Edgemetricssubsystem
 type Edgemetricssubsystem struct { 
 	// DelayMs - Delay in milliseconds.
-	DelayMs *int32 `json:"delayMs,omitempty"`
+	DelayMs *int `json:"delayMs,omitempty"`
 
 
 	// ProcessName - Name of the Edge process.

@@ -10,15 +10,15 @@ type Divspermittedentitylisting struct {
 
 
 	// PageSize
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// Total
-	Total *int64 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// AllDivsPermitted
@@ -33,12 +33,12 @@ type Divspermittedentitylisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PreviousUri
@@ -46,7 +46,7 @@ type Divspermittedentitylisting struct {
 
 
 	// PageCount
-	PageCount *int32 `json:"pageCount,omitempty"`
+	PageCount *int `json:"pageCount,omitempty"`
 
 }
 

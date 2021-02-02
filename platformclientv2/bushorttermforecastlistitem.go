@@ -15,7 +15,7 @@ type Bushorttermforecastlistitem struct {
 
 
 	// WeekCount - The number of weeks this forecast covers
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// CreationMethod - The method by which this forecast was created

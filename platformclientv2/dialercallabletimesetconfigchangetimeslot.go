@@ -14,7 +14,7 @@ type Dialercallabletimesetconfigchangetimeslot struct {
 
 
 	// Day
-	Day *int32 `json:"day,omitempty"`
+	Day *int `json:"day,omitempty"`
 
 
 	// AdditionalProperties

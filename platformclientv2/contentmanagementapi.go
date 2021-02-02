@@ -554,7 +554,7 @@ func (a ContentManagementApi) GetContentmanagementDocument(documentId string, ex
 // Get a list of audits for a document.
 //
 // 
-func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId string, pageSize int32, pageNumber int32, transactionFilter string, level string, sortBy string, sortOrder string) (*Documentauditentitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementDocumentAudits(documentId string, pageSize int, pageNumber int, transactionFilter string, level string, sortBy string, sortOrder string) (*Documentauditentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents/{documentId}/audits"
@@ -792,7 +792,7 @@ func (a ContentManagementApi) GetContentmanagementDocumentContent(documentId str
 // Get a list of documents.
 //
 // 
-func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, name string, expand []string, pageSize int32, pageNumber int32, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, name string, expand []string, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/documents"
@@ -946,7 +946,7 @@ func (a ContentManagementApi) GetContentmanagementDocuments(workspaceId string, 
 // Query content
 //
 // 
-func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, pageSize int32, pageNumber int32, sortBy string, sortOrder string, expand []string) (*Queryresults, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementQuery(queryPhrase string, pageSize int, pageNumber int, sortBy string, sortOrder string, expand []string) (*Queryresults, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/query"
@@ -1422,7 +1422,7 @@ func (a ContentManagementApi) GetContentmanagementSharedSharedId(sharedId string
 // Gets a list of shares.  You must specify at least one filter (e.g. entityId).
 //
 // Failing to specify a filter will return 400.
-func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand []string, pageSize int32, pageNumber int32) (*Shareentitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand []string, pageSize int, pageNumber int) (*Shareentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/shares"
@@ -1535,7 +1535,7 @@ func (a ContentManagementApi) GetContentmanagementShares(entityId string, expand
 // Get a list of statuses for pending operations
 //
 // 
-func (a ContentManagementApi) GetContentmanagementStatus(pageSize int32, pageNumber int32) (*Commandstatusentitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementStatus(pageSize int, pageNumber int) (*Commandstatusentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/status"
@@ -1839,7 +1839,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspace(workspaceId string, 
 // Get a list of documents.
 //
 // 
-func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId string, expand []string, pageSize int32, pageNumber int32, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementWorkspaceDocuments(workspaceId string, expand []string, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Documententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/documents"
@@ -2059,7 +2059,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceMember(workspaceId st
 // Get a list workspace members
 //
 // 
-func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId string, pageSize int32, pageNumber int32, expand []string) (*Workspacememberentitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementWorkspaceMembers(workspaceId string, pageSize int, pageNumber int, expand []string) (*Workspacememberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/members"
@@ -2255,7 +2255,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalue(workspaceId 
 // Get a list of workspace tags
 //
 // 
-func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId string, value string, pageSize int32, pageNumber int32, expand []string) (*Tagvalueentitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId string, value string, pageSize int, pageNumber int, expand []string) (*Tagvalueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces/{workspaceId}/tagvalues"
@@ -2374,7 +2374,7 @@ func (a ContentManagementApi) GetContentmanagementWorkspaceTagvalues(workspaceId
 // Get a list of workspaces.
 //
 // Specifying &#39;content&#39; access will return all workspaces the user has document access to, while &#39;admin&#39; access will return all group workspaces the user has administrative rights to.
-func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int32, pageNumber int32, access []string, expand []string) (*Workspaceentitylisting, *APIResponse, error) {
+func (a ContentManagementApi) GetContentmanagementWorkspaces(pageSize int, pageNumber int, access []string, expand []string) (*Workspaceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/contentmanagement/workspaces"

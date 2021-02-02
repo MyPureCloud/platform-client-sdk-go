@@ -10,7 +10,7 @@ type Phonenumber struct {
 
 
 	// Extension
-	Extension *int64 `json:"extension,omitempty"`
+	Extension *int `json:"extension,omitempty"`
 
 
 	// AcceptsSMS

@@ -342,7 +342,7 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 // Gets all grants for a given division.
 //
 // Returns all grants assigned to a given division. Maximum page size is 500.
-func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, pageNumber int32, pageSize int32) (*Authzdivisiongrantentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, pageNumber int, pageSize int) (*Authzdivisiongrantentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/{divisionId}/grants"
@@ -437,7 +437,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 // Retrieve a list of all divisions defined for the organization
 //
 // Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id=5f777167-63be-4c24-ad41-374155d9e28b&amp;id=72e9fb25-c484-488d-9312-7acba82435b3
-func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions"
@@ -673,11 +673,11 @@ func (a AuthorizationApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIR
 // Returns the maximum allowed number of divisions.
 //
 // 
-func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int32, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/limit"
-	defaultReturn := new(int32)
+	defaultReturn := new(int)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -719,7 +719,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionsLimit() (*int32, *APIResponse
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *int32
+	var successPayload *int
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -830,7 +830,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 // Returns which divisions the current user has the given permission in.
 //
 // 
-func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/me"
@@ -936,7 +936,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission s
 // Returns which divisions the specified user has the given permission in.
 //
 // This route is deprecated, use authorization/divisionspermitted/paged/me instead.
-func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/{subjectId}"
@@ -1048,7 +1048,7 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 // Get all permissions.
 //
 // Retrieve a list of all permission defined in the system.
-func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int32, pageNumber int32, queryType string, query string) (*Permissioncollectionentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber int, queryType string, query string) (*Permissioncollectionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/permissions"
@@ -1382,7 +1382,7 @@ func (a AuthorizationApi) GetAuthorizationRoleComparedefaultRightRoleId(leftRole
 // Get the subjects&#39; granted divisions in the specified role.
 //
 // Includes the divisions for which the subject has a grant.
-func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string) (*Subjectdivisiongrantsentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Subjectdivisiongrantsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/subjectgrants"
@@ -1525,7 +1525,7 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 // Get a list of the users in a specified role.
 //
 // Get an array of the UUIDs of the users in the specified role.
-func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int32, pageNumber int32) (*Userentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int, pageNumber int) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles/{roleId}/users"
@@ -1620,7 +1620,7 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int3
 // Retrieve a list of all roles defined for the organization
 //
 // 
-func (a AuthorizationApi) GetAuthorizationRoles(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, name string, permission []string, defaultRoleId []string, userCount bool, id []string) (*Organizationroleentitylisting, *APIResponse, error) {
+func (a AuthorizationApi) GetAuthorizationRoles(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, permission []string, defaultRoleId []string, userCount bool, id []string) (*Organizationroleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/roles"

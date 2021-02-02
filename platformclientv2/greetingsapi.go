@@ -253,7 +253,7 @@ func (a GreetingsApi) GetGreetingMedia(greetingId string, formatId string) (*Gre
 // Gets an Organization&#39;s Greetings
 //
 // 
-func (a GreetingsApi) GetGreetings(pageSize int32, pageNumber int32) (*Domainentitylisting, *APIResponse, error) {
+func (a GreetingsApi) GetGreetings(pageSize int, pageNumber int) (*Domainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/greetings"
@@ -405,7 +405,7 @@ func (a GreetingsApi) GetGreetingsDefaults() (*Defaultgreetinglist, *APIResponse
 // Get a list of the Group&#39;s Greetings
 //
 // 
-func (a GreetingsApi) GetGroupGreetings(groupId string, pageSize int32, pageNumber int32) (*Greetinglisting, *APIResponse, error) {
+func (a GreetingsApi) GetGroupGreetings(groupId string, pageSize int, pageNumber int) (*Greetinglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/groups/{groupId}/greetings"
@@ -569,7 +569,7 @@ func (a GreetingsApi) GetGroupGreetingsDefaults(groupId string) (*Defaultgreetin
 // Get a list of the User&#39;s Greetings
 //
 // 
-func (a GreetingsApi) GetUserGreetings(userId string, pageSize int32, pageNumber int32) (*Domainentitylisting, *APIResponse, error) {
+func (a GreetingsApi) GetUserGreetings(userId string, pageSize int, pageNumber int) (*Domainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/greetings"

@@ -10,15 +10,15 @@ type Importstatus struct {
 
 
 	// TotalRecords - total number of records to be imported
-	TotalRecords *int64 `json:"totalRecords,omitempty"`
+	TotalRecords *int `json:"totalRecords,omitempty"`
 
 
 	// CompletedRecords - number of records finished importing
-	CompletedRecords *int64 `json:"completedRecords,omitempty"`
+	CompletedRecords *int `json:"completedRecords,omitempty"`
 
 
 	// PercentComplete - percentage of records finished importing
-	PercentComplete *int32 `json:"percentComplete,omitempty"`
+	PercentComplete *int `json:"percentComplete,omitempty"`
 
 
 	// FailureReason - if the import has failed, the reason for the failure

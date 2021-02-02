@@ -14,7 +14,7 @@ type Queueconversationemaileventtopicconversationroutingdata struct {
 
 
 	// Priority
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// Skills

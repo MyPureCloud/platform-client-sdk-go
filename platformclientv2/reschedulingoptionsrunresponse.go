@@ -23,7 +23,7 @@ type Reschedulingoptionsrunresponse struct {
 
 
 	// AgentCount - The number of agents to be considered in the reschedule
-	AgentCount *int32 `json:"agentCount,omitempty"`
+	AgentCount *int `json:"agentCount,omitempty"`
 
 
 	// ActivityCodeIds - The IDs of the activity codes being considered for reschedule

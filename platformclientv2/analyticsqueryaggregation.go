@@ -18,7 +18,7 @@ type Analyticsqueryaggregation struct {
 
 
 	// Size - For use with termFrequency aggregations
-	Size *int32 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// Ranges - For use with numericRange aggregations

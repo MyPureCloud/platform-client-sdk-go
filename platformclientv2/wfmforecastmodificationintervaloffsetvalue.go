@@ -6,7 +6,7 @@ import (
 // Wfmforecastmodificationintervaloffsetvalue - Override the value of a single interval in a forecast
 type Wfmforecastmodificationintervaloffsetvalue struct { 
 	// IntervalIndex - The number of 15 minute intervals past referenceStartDate to which to apply this modification
-	IntervalIndex *int32 `json:"intervalIndex,omitempty"`
+	IntervalIndex *int `json:"intervalIndex,omitempty"`
 
 
 	// Value - The value to set for the given interval

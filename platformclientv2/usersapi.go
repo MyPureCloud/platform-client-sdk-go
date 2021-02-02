@@ -659,7 +659,7 @@ func (a UsersApi) GetAnalyticsUsersDetailsJob(jobId string) (*Asyncquerystatus, 
 // Fetch a page of results for an async query
 //
 // 
-func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
+func (a UsersApi) GetAnalyticsUsersDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsuserdetailsasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/users/details/jobs/{jobId}/results"
@@ -911,7 +911,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedMe(permission string, name s
 // Returns which divisions the current user has the given permission in.
 //
 // 
-func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
+func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/me"
@@ -1017,7 +1017,7 @@ func (a UsersApi) GetAuthorizationDivisionspermittedPagedMe(permission string, p
 // Returns which divisions the specified user has the given permission in.
 //
 // This route is deprecated, use authorization/divisionspermitted/paged/me instead.
-func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int32, pageSize int32) (*Divspermittedentitylisting, *APIResponse, error) {
+func (a UsersApi) GetAuthorizationDivisionspermittedPagedSubjectId(subjectId string, permission string, pageNumber int, pageSize int) (*Divspermittedentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisionspermitted/paged/{subjectId}"
@@ -1343,7 +1343,7 @@ func (a UsersApi) GetFieldconfig(varType string) (*Fieldconfig, *APIResponse, er
 // Get a user profile listing
 //
 // This api is deprecated. User /api/v2/users
-func (a UsersApi) GetProfilesUsers(pageSize int32, pageNumber int32, id []string, jid []string, sortOrder string, expand []string, integrationPresenceSource string) (*Userprofileentitylisting, *APIResponse, error) {
+func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, jid []string, sortOrder string, expand []string, integrationPresenceSource string) (*Userprofileentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/profiles/users"
@@ -1903,7 +1903,7 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 // Get favorites
 //
 // 
-func (a UsersApi) GetUserFavorites(userId string, pageSize int32, pageNumber int32, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/favorites"
@@ -2330,7 +2330,7 @@ func (a UsersApi) GetUserProfileskills(userId string) ([]string, *APIResponse, e
 // Get queues for user
 //
 // 
-func (a UsersApi) GetUserQueues(userId string, pageSize int32, pageNumber int32, joined bool, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUserQueues(userId string, pageSize int, pageNumber int, joined bool, divisionId []string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/queues"
@@ -2518,7 +2518,7 @@ func (a UsersApi) GetUserRoles(userId string) (*Userauthorization, *APIResponse,
 // List routing language for user
 //
 // 
-func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int32, pageNumber int32, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int, pageNumber int, sortOrder string) (*Userlanguageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routinglanguages"
@@ -2625,7 +2625,7 @@ func (a UsersApi) GetUserRoutinglanguages(userId string, pageSize int32, pageNum
 // List routing skills for user
 //
 // 
-func (a UsersApi) GetUserRoutingskills(userId string, pageSize int32, pageNumber int32, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUserRoutingskills(userId string, pageSize int, pageNumber int, sortOrder string) (*Userskillentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/routingskills"
@@ -2953,7 +2953,7 @@ func (a UsersApi) GetUserSuperiors(userId string, expand []string) ([]User, *API
 // List the organizations that have authorized/trusted the user.
 //
 // 
-func (a UsersApi) GetUserTrustors(userId string, pageSize int32, pageNumber int32) (*Trustorentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUserTrustors(userId string, pageSize int, pageNumber int) (*Trustorentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/{userId}/trustors"
@@ -3048,7 +3048,7 @@ func (a UsersApi) GetUserTrustors(userId string, pageSize int32, pageNumber int3
 // Get the list of available users.
 //
 // 
-func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabberId []string, sortOrder string, expand []string, integrationPresenceSource string, state string) (*Userentitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsers(pageSize int, pageNumber int, id []string, jabberId []string, sortOrder string, expand []string, integrationPresenceSource string, state string) (*Userentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users"
@@ -3209,7 +3209,7 @@ func (a UsersApi) GetUsers(pageSize int32, pageNumber int32, id []string, jabber
 // Get list of Development Activities
 //
 // Either moduleId or userId is required. Results are filtered based on the applicable permissions.
-func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string, interval string, completionInterval string, overdue string, pageSize int32, pageNumber int32, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/development/activities"
@@ -3406,7 +3406,7 @@ func (a UsersApi) GetUsersDevelopmentActivities(userId []string, moduleId string
 // Get list of Development Activities for current user
 //
 // Results are filtered based on the applicable permissions.
-func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval string, completionInterval string, overdue string, pageSize int32, pageNumber int32, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
+func (a UsersApi) GetUsersDevelopmentActivitiesMe(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, sortOrder string, types []string, statuses []string, relationship []string) (*Developmentactivitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/users/development/activities/me"

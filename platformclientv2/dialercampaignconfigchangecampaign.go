@@ -23,7 +23,7 @@ type Dialercampaignconfigchangecampaign struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ContactList
@@ -83,7 +83,7 @@ type Dialercampaignconfigchangecampaign struct {
 
 
 	// OutboundLineCount
-	OutboundLineCount *int32 `json:"outboundLineCount,omitempty"`
+	OutboundLineCount *int `json:"outboundLineCount,omitempty"`
 
 
 	// Errors
@@ -99,7 +99,7 @@ type Dialercampaignconfigchangecampaign struct {
 
 
 	// PreviewTimeOutSeconds
-	PreviewTimeOutSeconds *int32 `json:"previewTimeOutSeconds,omitempty"`
+	PreviewTimeOutSeconds *int `json:"previewTimeOutSeconds,omitempty"`
 
 
 	// SingleNumberPreview
@@ -115,7 +115,7 @@ type Dialercampaignconfigchangecampaign struct {
 
 
 	// NoAnswerTimeout
-	NoAnswerTimeout *int32 `json:"noAnswerTimeout,omitempty"`
+	NoAnswerTimeout *int `json:"noAnswerTimeout,omitempty"`
 
 
 	// CallAnalysisLanguage
@@ -123,7 +123,7 @@ type Dialercampaignconfigchangecampaign struct {
 
 
 	// Priority
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// ContactListFilters

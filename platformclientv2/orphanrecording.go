@@ -27,7 +27,7 @@ type Orphanrecording struct {
 
 
 	// MediaSizeBytes
-	MediaSizeBytes *int64 `json:"mediaSizeBytes,omitempty"`
+	MediaSizeBytes *int `json:"mediaSizeBytes,omitempty"`
 
 
 	// MediaType

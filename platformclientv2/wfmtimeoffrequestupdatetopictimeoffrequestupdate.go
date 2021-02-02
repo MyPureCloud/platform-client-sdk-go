@@ -38,7 +38,7 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 
 
 	// DailyDurationMinutes
-	DailyDurationMinutes *int32 `json:"dailyDurationMinutes,omitempty"`
+	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
 
 	// Notes

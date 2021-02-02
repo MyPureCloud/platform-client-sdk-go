@@ -43,11 +43,11 @@ type Wfmbushorttermforecastimportcompletetopicbushorttermforecast struct {
 
 
 	// PlanningGroupsVersion
-	PlanningGroupsVersion *int32 `json:"planningGroupsVersion,omitempty"`
+	PlanningGroupsVersion *int `json:"planningGroupsVersion,omitempty"`
 
 
 	// WeekCount
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// Metadata

@@ -79,11 +79,11 @@ type Analyticsconversationsegment struct {
 
 
 	// SipResponseCodes
-	SipResponseCodes *[]int64 `json:"sipResponseCodes,omitempty"`
+	SipResponseCodes *[]int `json:"sipResponseCodes,omitempty"`
 
 
 	// Q850ResponseCodes
-	Q850ResponseCodes *[]int64 `json:"q850ResponseCodes,omitempty"`
+	Q850ResponseCodes *[]int `json:"q850ResponseCodes,omitempty"`
 
 
 	// Conference - Indicates whether the segment was a conference

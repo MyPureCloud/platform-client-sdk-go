@@ -67,7 +67,7 @@ type Queueconversationvideoeventtopiccallback struct {
 
 
 	// TimeoutSeconds
-	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty"`
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 
 	// ConnectedTime

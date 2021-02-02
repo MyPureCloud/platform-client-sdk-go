@@ -23,11 +23,11 @@ type Dialeroutboundsettingsconfigchangeoutboundsettings struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// MaxCallsPerAgent
-	MaxCallsPerAgent *int32 `json:"maxCallsPerAgent,omitempty"`
+	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
 
 	// MaxLineUtilization

@@ -11,7 +11,7 @@ type Weekshifttradematchessummaryresponse struct {
 
 
 	// Count - The number of trades in the Matched state for the given week
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

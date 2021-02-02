@@ -10,7 +10,7 @@ type Acwsettings struct {
 
 
 	// TimeoutMs - The amount of time the agent can stay in ACW (Min: 1 sec, Max: 1 day).  Can only be used when ACW is MANDATORY_TIMEOUT or MANDATORY_FORCED_TIMEOUT.
-	TimeoutMs *int32 `json:"timeoutMs,omitempty"`
+	TimeoutMs *int `json:"timeoutMs,omitempty"`
 
 }
 

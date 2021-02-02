@@ -31,27 +31,27 @@ type Apiusagerow struct {
 
 
 	// Status200 - Number of requests resulting in a 2xx HTTP status code
-	Status200 *int64 `json:"status200,omitempty"`
+	Status200 *int `json:"status200,omitempty"`
 
 
 	// Status300 - Number of requests resulting in a 3xx HTTP status code
-	Status300 *int64 `json:"status300,omitempty"`
+	Status300 *int `json:"status300,omitempty"`
 
 
 	// Status400 - Number of requests resulting in a 4xx HTTP status code
-	Status400 *int64 `json:"status400,omitempty"`
+	Status400 *int `json:"status400,omitempty"`
 
 
 	// Status500 - Number of requests resulting in a 5xx HTTP status code
-	Status500 *int64 `json:"status500,omitempty"`
+	Status500 *int `json:"status500,omitempty"`
 
 
 	// Status429 - Number of requests resulting in a 429 HTTP status code, this is a subset of the count returned with status400
-	Status429 *int64 `json:"status429,omitempty"`
+	Status429 *int `json:"status429,omitempty"`
 
 
 	// Requests - Total number of requests
-	Requests *int64 `json:"requests,omitempty"`
+	Requests *int `json:"requests,omitempty"`
 
 
 	// Date - Date of requests, based on granularity. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

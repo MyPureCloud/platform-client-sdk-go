@@ -39,11 +39,11 @@ type Userrecording struct {
 
 
 	// ContentLength
-	ContentLength *int64 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// DurationMilliseconds
-	DurationMilliseconds *int64 `json:"durationMilliseconds,omitempty"`
+	DurationMilliseconds *int `json:"durationMilliseconds,omitempty"`
 
 
 	// Thumbnails

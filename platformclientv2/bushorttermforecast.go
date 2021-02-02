@@ -15,7 +15,7 @@ type Bushorttermforecast struct {
 
 
 	// WeekCount - The number of weeks this forecast covers
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// CreationMethod - The method by which this forecast was created
@@ -55,7 +55,7 @@ type Bushorttermforecast struct {
 
 
 	// PlanningGroupsVersion - The version of the planning groups that was used for this forecast
-	PlanningGroupsVersion *int32 `json:"planningGroupsVersion,omitempty"`
+	PlanningGroupsVersion *int `json:"planningGroupsVersion,omitempty"`
 
 
 	// PlanningGroups - A snapshot of the planning groups used for this forecast as of the version number indicated

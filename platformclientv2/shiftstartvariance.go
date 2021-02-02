@@ -10,7 +10,7 @@ type Shiftstartvariance struct {
 
 
 	// MaxShiftStartVarianceMinutes - Maximum variance in minutes across shift starts
-	MaxShiftStartVarianceMinutes *int32 `json:"maxShiftStartVarianceMinutes,omitempty"`
+	MaxShiftStartVarianceMinutes *int `json:"maxShiftStartVarianceMinutes,omitempty"`
 
 }
 

@@ -26,7 +26,7 @@ type Createemailrequest struct {
 
 
 	// Priority - The priority to assign to the conversation for routing.
-	Priority *int64 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// Attributes - The list of attributes to associate with the customer participant.

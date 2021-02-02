@@ -46,7 +46,7 @@ type Flowversion struct {
 
 
 	// DateCreated
-	DateCreated *int64 `json:"dateCreated,omitempty"`
+	DateCreated *int `json:"dateCreated,omitempty"`
 
 
 	// GenerationId

@@ -10,15 +10,15 @@ type Dialercontactlistconfigchangeimportstatus struct {
 
 
 	// TotalRecords
-	TotalRecords *int32 `json:"totalRecords,omitempty"`
+	TotalRecords *int `json:"totalRecords,omitempty"`
 
 
 	// CompletedRecords
-	CompletedRecords *int32 `json:"completedRecords,omitempty"`
+	CompletedRecords *int `json:"completedRecords,omitempty"`
 
 
 	// PercentageComplete
-	PercentageComplete *int32 `json:"percentageComplete,omitempty"`
+	PercentageComplete *int `json:"percentageComplete,omitempty"`
 
 
 	// FailureReason

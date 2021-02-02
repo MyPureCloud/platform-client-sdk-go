@@ -10,7 +10,7 @@ type Surveyscoringset struct {
 
 
 	// NpsScore
-	NpsScore *int32 `json:"npsScore,omitempty"`
+	NpsScore *int `json:"npsScore,omitempty"`
 
 
 	// QuestionGroupScores

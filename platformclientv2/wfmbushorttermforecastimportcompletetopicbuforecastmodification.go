@@ -10,11 +10,11 @@ type Wfmbushorttermforecastimportcompletetopicbuforecastmodification struct {
 
 
 	// StartIntervalIndex
-	StartIntervalIndex *int32 `json:"startIntervalIndex,omitempty"`
+	StartIntervalIndex *int `json:"startIntervalIndex,omitempty"`
 
 
 	// EndIntervalIndex
-	EndIntervalIndex *int32 `json:"endIntervalIndex,omitempty"`
+	EndIntervalIndex *int `json:"endIntervalIndex,omitempty"`
 
 
 	// Metric

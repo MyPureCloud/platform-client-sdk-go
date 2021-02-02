@@ -26,15 +26,15 @@ type Workplanvalidationrequest struct {
 
 
 	// WeeklyExactPaidMinutes - Exact weekly paid time in minutes for this work plan. Used if flexibleWeeklyPaidTime == false
-	WeeklyExactPaidMinutes *int32 `json:"weeklyExactPaidMinutes,omitempty"`
+	WeeklyExactPaidMinutes *int `json:"weeklyExactPaidMinutes,omitempty"`
 
 
 	// WeeklyMinimumPaidMinutes - Minimum weekly paid time in minutes for this work plan. Used if flexibleWeeklyPaidTime == true
-	WeeklyMinimumPaidMinutes *int32 `json:"weeklyMinimumPaidMinutes,omitempty"`
+	WeeklyMinimumPaidMinutes *int `json:"weeklyMinimumPaidMinutes,omitempty"`
 
 
 	// WeeklyMaximumPaidMinutes - Maximum weekly paid time in minutes for this work plan. Used if flexibleWeeklyPaidTime == true
-	WeeklyMaximumPaidMinutes *int32 `json:"weeklyMaximumPaidMinutes,omitempty"`
+	WeeklyMaximumPaidMinutes *int `json:"weeklyMaximumPaidMinutes,omitempty"`
 
 
 	// ConstrainPaidTimeGranularity - Whether paid time granularity is constrained for this workplan
@@ -42,7 +42,7 @@ type Workplanvalidationrequest struct {
 
 
 	// PaidTimeGranularityMinutes - Granularity in minutes allowed for shift paid time in this work plan. Used if constrainPaidTimeGranularity == true
-	PaidTimeGranularityMinutes *int32 `json:"paidTimeGranularityMinutes,omitempty"`
+	PaidTimeGranularityMinutes *int `json:"paidTimeGranularityMinutes,omitempty"`
 
 
 	// ConstrainMinimumTimeBetweenShifts - Whether the minimum time between shifts constraint is enabled for this work plan
@@ -50,15 +50,15 @@ type Workplanvalidationrequest struct {
 
 
 	// MinimumTimeBetweenShiftsMinutes - Minimum time between shifts in minutes defined in this work plan. Used if constrainMinimumTimeBetweenShifts == true
-	MinimumTimeBetweenShiftsMinutes *int32 `json:"minimumTimeBetweenShiftsMinutes,omitempty"`
+	MinimumTimeBetweenShiftsMinutes *int `json:"minimumTimeBetweenShiftsMinutes,omitempty"`
 
 
 	// MaximumDays - Maximum number days in a week allowed to be scheduled for this work plan
-	MaximumDays *int32 `json:"maximumDays,omitempty"`
+	MaximumDays *int `json:"maximumDays,omitempty"`
 
 
 	// MinimumWorkingDaysPerWeek - The minimum number of days that agents assigned to a work plan must work per week
-	MinimumWorkingDaysPerWeek *int32 `json:"minimumWorkingDaysPerWeek,omitempty"`
+	MinimumWorkingDaysPerWeek *int `json:"minimumWorkingDaysPerWeek,omitempty"`
 
 
 	// OptionalDays - Optional days to schedule for this work plan

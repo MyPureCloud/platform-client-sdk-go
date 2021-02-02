@@ -43,7 +43,7 @@ type Messagingintegration struct {
 
 
 	// Version - Version number required for updates.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// SelfUri - The URI for this object

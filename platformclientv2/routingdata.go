@@ -14,7 +14,7 @@ type Routingdata struct {
 
 
 	// Priority - The priority for routing
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// SkillIds - A list of skill identifiers to be considered in routing

@@ -18,27 +18,27 @@ type Evaluatoractivity struct {
 
 
 	// NumEvaluationsAssigned
-	NumEvaluationsAssigned *int32 `json:"numEvaluationsAssigned,omitempty"`
+	NumEvaluationsAssigned *int `json:"numEvaluationsAssigned,omitempty"`
 
 
 	// NumEvaluationsStarted
-	NumEvaluationsStarted *int32 `json:"numEvaluationsStarted,omitempty"`
+	NumEvaluationsStarted *int `json:"numEvaluationsStarted,omitempty"`
 
 
 	// NumEvaluationsCompleted
-	NumEvaluationsCompleted *int32 `json:"numEvaluationsCompleted,omitempty"`
+	NumEvaluationsCompleted *int `json:"numEvaluationsCompleted,omitempty"`
 
 
 	// NumCalibrationsAssigned
-	NumCalibrationsAssigned *int32 `json:"numCalibrationsAssigned,omitempty"`
+	NumCalibrationsAssigned *int `json:"numCalibrationsAssigned,omitempty"`
 
 
 	// NumCalibrationsStarted
-	NumCalibrationsStarted *int32 `json:"numCalibrationsStarted,omitempty"`
+	NumCalibrationsStarted *int `json:"numCalibrationsStarted,omitempty"`
 
 
 	// NumCalibrationsCompleted
-	NumCalibrationsCompleted *int32 `json:"numCalibrationsCompleted,omitempty"`
+	NumCalibrationsCompleted *int `json:"numCalibrationsCompleted,omitempty"`
 
 
 	// SelfUri - The URI for this object

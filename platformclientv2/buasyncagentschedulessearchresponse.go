@@ -18,7 +18,7 @@ type Buasyncagentschedulessearchresponse struct {
 
 
 	// Progress - Percent progress for the operation
-	Progress *int32 `json:"progress,omitempty"`
+	Progress *int `json:"progress,omitempty"`
 
 
 	// DownloadUrl - The URL from which to download the result if it is too large to pass directly

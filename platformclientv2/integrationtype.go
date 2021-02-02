@@ -86,7 +86,7 @@ type Integrationtype struct {
 
 
 	// MaxInstances - The maximum number of integration instances allowable for this integration type
-	MaxInstances *int32 `json:"maxInstances,omitempty"`
+	MaxInstances *int `json:"maxInstances,omitempty"`
 
 
 	// UserPermissions - List of permissions required to permit user access to the integration type.

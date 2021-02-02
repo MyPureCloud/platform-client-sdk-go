@@ -30,77 +30,6 @@ func NewSCIMApiWithConfig(config *Configuration) *SCIMApi {
 	}
 }
 
-// DeleteScimGroup invokes DELETE /api/v2/scim/groups/{groupId}
-//
-// Delete a group
-//
-// 
-func (a SCIMApi) DeleteScimGroup(groupId string, ifMatch string) (*APIResponse, error) {
-	var httpMethod = "DELETE"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/scim/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'groupId' is set
-	if &groupId == nil {
-		// 
-		return nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->DeleteScimGroup")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-
-	// header params "If-Match"
-	headerParams["If-Match"] = ifMatch
-
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
-}
-
 // DeleteScimUser invokes DELETE /api/v2/scim/users/{userId}
 //
 // Delete a user
@@ -173,77 +102,6 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
 	return successPayload, response, err
-}
-
-// DeleteScimV2Group invokes DELETE /api/v2/scim/v2/groups/{groupId}
-//
-// Delete a group
-//
-// 
-func (a SCIMApi) DeleteScimV2Group(groupId string, ifMatch string) (*APIResponse, error) {
-	var httpMethod = "DELETE"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups/{groupId}"
-	path = strings.Replace(path, "{groupId}", fmt.Sprintf("%v", groupId), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'groupId' is set
-	if &groupId == nil {
-		// 
-		return nil, errors.New("Missing required parameter 'groupId' when calling SCIMApi->DeleteScimV2Group")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-
-	// header params "If-Match"
-	headerParams["If-Match"] = ifMatch
-
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
 }
 
 // DeleteScimV2User invokes DELETE /api/v2/scim/v2/users/{userId}
@@ -425,7 +283,7 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 // Get a list of groups
 //
 // 
-func (a SCIMApi) GetScimGroups(startIndex int32, count int32, attributes []string, excludedAttributes []string, filter string) (*Scimgrouplistresponse, *APIResponse, error) {
+func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, excludedAttributes []string, filter string) (*Scimgrouplistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/groups"
@@ -1001,7 +859,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 // Get a list of users
 //
 // To return all active users, do not use the filter parameter. To return inactive users, set the filter parameter to \&quot;active eq false\&quot;. By default, returns SCIM attributes \&quot;externalId\&quot;, \&quot;enterprise-user:manager\&quot;, and \&quot;roles\&quot;. To exclude these attributes, set the attributes parameter to \&quot;id,active\&quot; or the excludeAttributes parameter to \&quot;externalId,roles,urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division\&quot;.
-func (a SCIMApi) GetScimUsers(startIndex int32, count int32, attributes []string, excludedAttributes []string, filter string) (*Scimuserlistresponse, *APIResponse, error) {
+func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, excludedAttributes []string, filter string) (*Scimuserlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/users"
@@ -1227,7 +1085,7 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 // Get a list of groups
 //
 // 
-func (a SCIMApi) GetScimV2Groups(filter string, startIndex int32, count int32, attributes []string, excludedAttributes []string) (*Scimgrouplistresponse, *APIResponse, error) {
+func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attributes []string, excludedAttributes []string) (*Scimgrouplistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups"
@@ -1808,7 +1666,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 // Get a list of users
 //
 // To return all active users, do not use the filter parameter. To return inactive users, set the filter parameter to \&quot;active eq false\&quot;. By default, returns SCIM attributes \&quot;externalId\&quot;, \&quot;enterprise-user:manager\&quot;, and \&quot;roles\&quot;. To exclude these attributes, set the attributes parameter to \&quot;id,active\&quot; or the excludeAttributes parameter to \&quot;externalId,roles,urn:ietf:params:scim:schemas:extension:enterprise:2.0:User:division\&quot;.
-func (a SCIMApi) GetScimV2Users(startIndex int32, count int32, attributes []string, excludedAttributes []string, filter string) (*Scimuserlistresponse, *APIResponse, error) {
+func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, excludedAttributes []string, filter string) (*Scimuserlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scim/v2/users"
@@ -2257,78 +2115,6 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 	return successPayload, response, err
 }
 
-// PostScimGroups invokes POST /api/v2/scim/groups
-//
-// Create a group
-//
-// Creates a Genesys Cloud group with group visibility set to \&quot;public\&quot; and rules visibility set to \&quot;true\&quot;. Auto-creates an \&quot;externalId\&quot;. \&quot;externalId\&quot; is used to determine if DELETE /api/v2/scim/groups/{groupId} or DELETE /api/v2/scim/v2/groups/{groupId} is allowed.
-func (a SCIMApi) PostScimGroups(body Scimv2group) (*Scimv2group, *APIResponse, error) {
-	var httpMethod = "POST"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/scim/groups"
-	defaultReturn := new(Scimv2group)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PostScimGroups")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Scimv2group
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
-	}
-	return successPayload, response, err
-}
-
 // PostScimUsers invokes POST /api/v2/scim/users
 //
 // Create a user
@@ -2390,78 +2176,6 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 	postBody = &body
 
 	var successPayload *Scimv2user
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
-	}
-	return successPayload, response, err
-}
-
-// PostScimV2Groups invokes POST /api/v2/scim/v2/groups
-//
-// Create a group
-//
-// Creates an \&quot;official\&quot; Genesys Cloud group with group visibility set to \&quot;public\&quot; and rules visibility set to \&quot;true\&quot;. Auto-creates an \&quot;externalId\&quot;. \&quot;externalId\&quot; is used to determine if DELETE /api/v2/scim/groups/{groupId} or DELETE /api/v2/scim/v2/groups/{groupId} should be allowed.
-func (a SCIMApi) PostScimV2Groups(body Scimv2group) (*Scimv2group, *APIResponse, error) {
-	var httpMethod = "POST"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/scim/v2/groups"
-	defaultReturn := new(Scimv2group)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SCIMApi->PostScimV2Groups")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Scimv2group
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

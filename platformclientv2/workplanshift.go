@@ -18,15 +18,15 @@ type Workplanshift struct {
 
 
 	// ExactStartTimeMinutesFromMidnight - Exact start time of the shift defined as offset minutes from midnight. Used if flexibleStartTime == false
-	ExactStartTimeMinutesFromMidnight *int32 `json:"exactStartTimeMinutesFromMidnight,omitempty"`
+	ExactStartTimeMinutesFromMidnight *int `json:"exactStartTimeMinutesFromMidnight,omitempty"`
 
 
 	// EarliestStartTimeMinutesFromMidnight - Earliest start time of the shift defined as offset minutes from midnight. Used if flexibleStartTime == true
-	EarliestStartTimeMinutesFromMidnight *int32 `json:"earliestStartTimeMinutesFromMidnight,omitempty"`
+	EarliestStartTimeMinutesFromMidnight *int `json:"earliestStartTimeMinutesFromMidnight,omitempty"`
 
 
 	// LatestStartTimeMinutesFromMidnight - Latest start time of the shift defined as offset minutes from midnight. Used if flexibleStartTime == true
-	LatestStartTimeMinutesFromMidnight *int32 `json:"latestStartTimeMinutesFromMidnight,omitempty"`
+	LatestStartTimeMinutesFromMidnight *int `json:"latestStartTimeMinutesFromMidnight,omitempty"`
 
 
 	// ConstrainStopTime - Whether the latest stop time constraint for the shift is enabled.  Deprecated, use constrainLatestStopTime instead
@@ -38,11 +38,11 @@ type Workplanshift struct {
 
 
 	// LatestStopTimeMinutesFromMidnight - Latest stop time of the shift defined as offset minutes from midnight. Used if constrainStopTime == true
-	LatestStopTimeMinutesFromMidnight *int32 `json:"latestStopTimeMinutesFromMidnight,omitempty"`
+	LatestStopTimeMinutesFromMidnight *int `json:"latestStopTimeMinutesFromMidnight,omitempty"`
 
 
 	// StartIncrementMinutes - Increment in offset minutes that would contribute to different possible start times for the shift. Used if flexibleStartTime == true
-	StartIncrementMinutes *int32 `json:"startIncrementMinutes,omitempty"`
+	StartIncrementMinutes *int `json:"startIncrementMinutes,omitempty"`
 
 
 	// FlexiblePaidTime - Whether the paid time setting for the shift is flexible
@@ -50,15 +50,15 @@ type Workplanshift struct {
 
 
 	// ExactPaidTimeMinutes - Exact paid time in minutes configured for the shift. Used if flexiblePaidTime == false
-	ExactPaidTimeMinutes *int32 `json:"exactPaidTimeMinutes,omitempty"`
+	ExactPaidTimeMinutes *int `json:"exactPaidTimeMinutes,omitempty"`
 
 
 	// MinimumPaidTimeMinutes - Minimum paid time in minutes configured for the shift. Used if flexiblePaidTime == true
-	MinimumPaidTimeMinutes *int32 `json:"minimumPaidTimeMinutes,omitempty"`
+	MinimumPaidTimeMinutes *int `json:"minimumPaidTimeMinutes,omitempty"`
 
 
 	// MaximumPaidTimeMinutes - Maximum paid time in minutes configured for the shift. Used if flexiblePaidTime == true
-	MaximumPaidTimeMinutes *int32 `json:"maximumPaidTimeMinutes,omitempty"`
+	MaximumPaidTimeMinutes *int `json:"maximumPaidTimeMinutes,omitempty"`
 
 
 	// ConstrainContiguousWorkTime - Whether the contiguous time constraint for the shift is enabled
@@ -66,11 +66,11 @@ type Workplanshift struct {
 
 
 	// MinimumContiguousWorkTimeMinutes - Minimum contiguous time in minutes configured for the shift. Used if constrainContiguousWorkTime == true
-	MinimumContiguousWorkTimeMinutes *int32 `json:"minimumContiguousWorkTimeMinutes,omitempty"`
+	MinimumContiguousWorkTimeMinutes *int `json:"minimumContiguousWorkTimeMinutes,omitempty"`
 
 
 	// MaximumContiguousWorkTimeMinutes - Maximum contiguous time in minutes configured for the shift. Used if constrainContiguousWorkTime == true
-	MaximumContiguousWorkTimeMinutes *int32 `json:"maximumContiguousWorkTimeMinutes,omitempty"`
+	MaximumContiguousWorkTimeMinutes *int `json:"maximumContiguousWorkTimeMinutes,omitempty"`
 
 
 	// Activities - Activities configured for this shift

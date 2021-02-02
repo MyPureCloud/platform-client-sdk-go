@@ -6,7 +6,7 @@ import (
 // Flowdiagnosticinfo
 type Flowdiagnosticinfo struct { 
 	// LastActionId - The step number of the survey invite flow where the error occurred.
-	LastActionId *int32 `json:"lastActionId,omitempty"`
+	LastActionId *int `json:"lastActionId,omitempty"`
 
 }
 

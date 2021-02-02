@@ -22,11 +22,11 @@ type Voicemailgrouppolicy struct {
 
 
 	// RotateCallsSecs - How many seconds to ring before rotating to the next member in the group
-	RotateCallsSecs *int32 `json:"rotateCallsSecs,omitempty"`
+	RotateCallsSecs *int `json:"rotateCallsSecs,omitempty"`
 
 
 	// StopRingingAfterRotations - How many rotations to go through
-	StopRingingAfterRotations *int32 `json:"stopRingingAfterRotations,omitempty"`
+	StopRingingAfterRotations *int `json:"stopRingingAfterRotations,omitempty"`
 
 
 	// OverflowGroupId -  A fallback group to contact when all of the members in this group did not answer the call.

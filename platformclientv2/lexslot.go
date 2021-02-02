@@ -18,7 +18,7 @@ type Lexslot struct {
 
 
 	// Priority - The priority of the slot
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 }
 

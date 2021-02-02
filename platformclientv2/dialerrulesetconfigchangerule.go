@@ -14,7 +14,7 @@ type Dialerrulesetconfigchangerule struct {
 
 
 	// Order
-	Order *int32 `json:"order,omitempty"`
+	Order *int `json:"order,omitempty"`
 
 
 	// Category

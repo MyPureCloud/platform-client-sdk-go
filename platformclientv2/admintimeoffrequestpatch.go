@@ -27,7 +27,7 @@ type Admintimeoffrequestpatch struct {
 
 
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
-	DailyDurationMinutes *int32 `json:"dailyDurationMinutes,omitempty"`
+	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
 
 	// Metadata - Version metadata for the time off request

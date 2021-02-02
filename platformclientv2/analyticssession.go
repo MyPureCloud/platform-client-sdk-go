@@ -115,7 +115,7 @@ type Analyticssession struct {
 
 
 	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back. 0 disables automatic calling
-	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty"`
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 
 	// CobrowseRole - Describe side of the cobrowse (sharer or viewer)
@@ -211,7 +211,7 @@ type Analyticssession struct {
 
 
 	// MediaCount - Count of any media (images, files, etc) included in this session
-	MediaCount *int32 `json:"mediaCount,omitempty"`
+	MediaCount *int `json:"mediaCount,omitempty"`
 
 
 	// FlowInType - Type of flow in that occurred, e.g. acd, ivr, etc.
@@ -235,7 +235,7 @@ type Analyticssession struct {
 
 
 	// SelectedAgentRank - Selected agent GPR rank
-	SelectedAgentRank *int32 `json:"selectedAgentRank,omitempty"`
+	SelectedAgentRank *int `json:"selectedAgentRank,omitempty"`
 
 
 	// AgentAssistantId - Unique identifier of the active virtual agent assistant

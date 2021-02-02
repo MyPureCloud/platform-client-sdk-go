@@ -22,7 +22,7 @@ type Dnclistdivisionview struct {
 
 
 	// Size - The number of contacts in the ContactList.
-	Size *int64 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// SelfUri - The URI for this object

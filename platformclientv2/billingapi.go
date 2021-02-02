@@ -135,7 +135,7 @@ func (a BillingApi) GetBillingReportsBillableusage(startDate time.Time, endDate 
 // Get the billing overview for an organization that is managed by a partner.
 //
 // Tax Disclaimer: Prices returned by this API do not include applicable taxes. It is the responsibility of the customer to pay all taxes that are appropriate in their jurisdiction. See the PureCloud API Documentation in the Developer Center for more information about this API: https://developer.mypurecloud.com/api/rest/v2/
-func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId string, billingPeriodIndex int32) (*Trusteebillingoverview, *APIResponse, error) {
+func (a BillingApi) GetBillingTrusteebillingoverviewTrustorOrgId(trustorOrgId string, billingPeriodIndex int) (*Trusteebillingoverview, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/billing/trusteebillingoverview/{trustorOrgId}"

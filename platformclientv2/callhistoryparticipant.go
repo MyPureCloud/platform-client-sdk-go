@@ -71,7 +71,7 @@ type Callhistoryparticipant struct {
 
 
 	// SipResponseCodes - Indicates SIP Response codes associated with the participant
-	SipResponseCodes *[]int64 `json:"sipResponseCodes,omitempty"`
+	SipResponseCodes *[]int `json:"sipResponseCodes,omitempty"`
 
 
 	// FlaggedReason - The reason specifying why participant flagged the conversation.

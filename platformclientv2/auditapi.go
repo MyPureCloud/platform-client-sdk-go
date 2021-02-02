@@ -32,7 +32,7 @@ func NewAuditApiWithConfig(config *Configuration) *AuditApi {
 
 // GetAuditsQueryRealtimeServicemapping invokes GET /api/v2/audits/query/realtime/servicemapping
 //
-// Get service mapping information used in audits.
+// Get service mapping information used in realtime audits.
 //
 // 
 func (a AuditApi) GetAuditsQueryRealtimeServicemapping() (*Auditqueryservicemapping, *APIResponse, error) {
@@ -230,7 +230,7 @@ func (a AuditApi) GetAuditsQueryTransactionId(transactionId string) (*Auditquery
 // Get results of audit query
 //
 // 
-func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int32, expand []string) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
+func (a AuditApi) GetAuditsQueryTransactionIdResults(transactionId string, cursor string, pageSize int, expand []string) (*Auditqueryexecutionresultsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/audits/query/{transactionId}/results"

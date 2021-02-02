@@ -31,7 +31,7 @@ type Knowledgebase struct {
 
 
 	// FaqCount - The count representing the number of documents of type FAQ per KnowledgeBase
-	FaqCount *int32 `json:"faqCount,omitempty"`
+	FaqCount *int `json:"faqCount,omitempty"`
 
 
 	// DateDocumentLastModified - The date representing when the last document is modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

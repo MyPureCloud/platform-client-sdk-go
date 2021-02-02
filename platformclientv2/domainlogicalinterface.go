@@ -19,7 +19,7 @@ type Domainlogicalinterface struct {
 
 
 	// Version - The current version of the resource.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -63,7 +63,7 @@ type Domainlogicalinterface struct {
 
 
 	// VlanTagId
-	VlanTagId *int32 `json:"vlanTagId,omitempty"`
+	VlanTagId *int `json:"vlanTagId,omitempty"`
 
 
 	// HardwareAddress - Hardware Address
@@ -140,6 +140,10 @@ type Domainlogicalinterface struct {
 
 	// UseForCloudProxyEdgeCommunication - Site Interconnects using the \"Cloud Proxy\" method will broker the connection between them with a Cloud Proxy. This method is required for connections between one or more Sites using Cloud Media, but can optionally be used between two premises Sites if Direct or Indirect are not an option.
 	UseForCloudProxyEdgeCommunication *bool `json:"useForCloudProxyEdgeCommunication,omitempty"`
+
+
+	// UseForWanInterface - This interface will be used for all communication with the internet.
+	UseForWanInterface *bool `json:"useForWanInterface,omitempty"`
 
 
 	// ExternalTrunkBaseAssignments - External trunk base settings to use for external communication from this interface.

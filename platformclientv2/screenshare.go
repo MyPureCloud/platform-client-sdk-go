@@ -23,7 +23,7 @@ type Screenshare struct {
 
 
 	// PeerCount - The number of peer participants from the perspective of the participant in the conference.
-	PeerCount *int32 `json:"peerCount,omitempty"`
+	PeerCount *int `json:"peerCount,omitempty"`
 
 
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.

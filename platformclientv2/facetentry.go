@@ -14,19 +14,19 @@ type Facetentry struct {
 
 
 	// Other
-	Other *int64 `json:"other,omitempty"`
+	Other *int `json:"other,omitempty"`
 
 
 	// Total
-	Total *int64 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// Missing
-	Missing *int64 `json:"missing,omitempty"`
+	Missing *int `json:"missing,omitempty"`
 
 
 	// TermCount
-	TermCount *int32 `json:"termCount,omitempty"`
+	TermCount *int `json:"termCount,omitempty"`
 
 
 	// TermType

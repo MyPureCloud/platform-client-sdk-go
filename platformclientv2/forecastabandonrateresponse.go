@@ -6,7 +6,7 @@ import (
 // Forecastabandonrateresponse
 type Forecastabandonrateresponse struct { 
 	// Percent - The target percent abandon rate goal
-	Percent *int32 `json:"percent,omitempty"`
+	Percent *int `json:"percent,omitempty"`
 
 }
 

@@ -11,7 +11,7 @@ type Bufulldaytimeoffmarker struct {
 
 
 	// LengthMinutes - The length of the time off marker in minutes
-	LengthMinutes *int32 `json:"lengthMinutes,omitempty"`
+	LengthMinutes *int `json:"lengthMinutes,omitempty"`
 
 
 	// Description - The description of the time off marker

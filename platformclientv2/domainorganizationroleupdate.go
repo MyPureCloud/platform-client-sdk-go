@@ -34,7 +34,7 @@ type Domainorganizationroleupdate struct {
 
 
 	// UserCount
-	UserCount *int32 `json:"userCount,omitempty"`
+	UserCount *int `json:"userCount,omitempty"`
 
 
 	// RoleNeedsUpdate - Optional unless patch operation.

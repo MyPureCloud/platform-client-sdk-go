@@ -18,15 +18,15 @@ type Agentactivity struct {
 
 
 	// NumEvaluations
-	NumEvaluations *int32 `json:"numEvaluations,omitempty"`
+	NumEvaluations *int `json:"numEvaluations,omitempty"`
 
 
 	// AverageEvaluationScore
-	AverageEvaluationScore *int32 `json:"averageEvaluationScore,omitempty"`
+	AverageEvaluationScore *int `json:"averageEvaluationScore,omitempty"`
 
 
 	// NumCriticalEvaluations
-	NumCriticalEvaluations *int32 `json:"numCriticalEvaluations,omitempty"`
+	NumCriticalEvaluations *int `json:"numCriticalEvaluations,omitempty"`
 
 
 	// AverageCriticalScore

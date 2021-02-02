@@ -23,7 +23,7 @@ type Dialersequenceconfigchangecampaignsequence struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Campaigns
@@ -31,7 +31,7 @@ type Dialersequenceconfigchangecampaignsequence struct {
 
 
 	// CurrentCampaign
-	CurrentCampaign *int32 `json:"currentCampaign,omitempty"`
+	CurrentCampaign *int `json:"currentCampaign,omitempty"`
 
 
 	// Status

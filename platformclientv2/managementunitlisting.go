@@ -10,31 +10,31 @@ type Managementunitlisting struct {
 
 
 	// PageSize
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// Total
-	Total *int64 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
+	// PageCount
+	PageCount *int `json:"pageCount,omitempty"`
 
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// PageCount
-	PageCount *int32 `json:"pageCount,omitempty"`
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PreviousUri

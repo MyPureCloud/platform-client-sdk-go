@@ -10,11 +10,11 @@ type Edgemetricsnetwork struct {
 
 
 	// SentBytesPerSec - Number of byes sent per second.
-	SentBytesPerSec *int32 `json:"sentBytesPerSec,omitempty"`
+	SentBytesPerSec *int `json:"sentBytesPerSec,omitempty"`
 
 
 	// ReceivedBytesPerSec - Number of byes received per second.
-	ReceivedBytesPerSec *int32 `json:"receivedBytesPerSec,omitempty"`
+	ReceivedBytesPerSec *int `json:"receivedBytesPerSec,omitempty"`
 
 
 	// BandwidthBitsPerSec - Total bandwidth of the adapter in bits per second.

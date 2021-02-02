@@ -6,15 +6,15 @@ import (
 // Scimuserlistresponse - Defines a response for a list of SCIM users.
 type Scimuserlistresponse struct { 
 	// TotalResults - The total number of results.
-	TotalResults *int64 `json:"totalResults,omitempty"`
+	TotalResults *int `json:"totalResults,omitempty"`
 
 
 	// StartIndex - The 1-based index of the first result returned by this request. Add this to \"itemsPerPage\" when requesting the next page of results.
-	StartIndex *int64 `json:"startIndex,omitempty"`
+	StartIndex *int `json:"startIndex,omitempty"`
 
 
 	// ItemsPerPage - The number of resources returned per page.
-	ItemsPerPage *int64 `json:"itemsPerPage,omitempty"`
+	ItemsPerPage *int `json:"itemsPerPage,omitempty"`
 
 
 	// Resources - The list of requested resources. If \"count\" is 0, then the list will be empty.

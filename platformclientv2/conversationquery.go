@@ -25,6 +25,10 @@ type Conversationquery struct {
 	SurveyFilters *[]Surveydetailqueryfilter `json:"surveyFilters,omitempty"`
 
 
+	// ResolutionFilters - Filters that target resolutions
+	ResolutionFilters *[]Resolutiondetailqueryfilter `json:"resolutionFilters,omitempty"`
+
+
 	// Order - Sort the result set in ascending/descending order. Default is ascending
 	Order *string `json:"order,omitempty"`
 

@@ -23,7 +23,7 @@ type Wfmagentscheduleupdatetopicwfmscheduleshift struct {
 
 
 	// LengthInMinutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Activities

@@ -15,7 +15,7 @@ type Dataschema struct {
 
 
 	// Version - The schema's version, a positive integer. Required for updates.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// AppliesTo - One of \"CONTACT\" or \"EXTERNAL_ORGANIZATION\".  Indicates the built-in entity type to which this schema applies.

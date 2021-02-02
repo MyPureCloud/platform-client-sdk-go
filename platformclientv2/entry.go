@@ -10,7 +10,7 @@ type Entry struct {
 
 
 	// Count - The number of results with this value.
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

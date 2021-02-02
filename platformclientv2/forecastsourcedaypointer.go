@@ -10,7 +10,7 @@ type Forecastsourcedaypointer struct {
 
 
 	// Weight - The relative weight to apply to this source data item for weighted averages
-	Weight *int32 `json:"weight,omitempty"`
+	Weight *int `json:"weight,omitempty"`
 
 
 	// Date - The date this source data represents, in yyyy-MM-dd format

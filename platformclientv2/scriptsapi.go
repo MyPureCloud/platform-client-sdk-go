@@ -276,7 +276,7 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 // Get the list of scripts
 //
 // 
-func (a ScriptsApi) GetScripts(pageSize int32, pageNumber int32, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string) (*Scriptentitylisting, *APIResponse, error) {
+func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts"
@@ -449,7 +449,7 @@ func (a ScriptsApi) GetScripts(pageSize int32, pageNumber int32, expand string, 
 // Get the published scripts.
 //
 // 
-func (a ScriptsApi) GetScriptsPublished(pageSize int32, pageNumber int32, expand string, name string, feature string, flowId string, scriptDataVersion string) (*Scriptentitylisting, *APIResponse, error) {
+func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, scriptDataVersion string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published"

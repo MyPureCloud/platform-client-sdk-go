@@ -6,11 +6,11 @@ import (
 // Groupgreetingeventgreetingaudiofile
 type Groupgreetingeventgreetingaudiofile struct { 
 	// DurationMilliseconds
-	DurationMilliseconds *int32 `json:"durationMilliseconds,omitempty"`
+	DurationMilliseconds *int `json:"durationMilliseconds,omitempty"`
 
 
 	// SizeBytes
-	SizeBytes *int32 `json:"sizeBytes,omitempty"`
+	SizeBytes *int `json:"sizeBytes,omitempty"`
 
 }
 

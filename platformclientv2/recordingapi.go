@@ -999,7 +999,7 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 // Get all of a Conversation&#39;s Recordings.
 //
 // 
-func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int32, formatId string) ([]Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int, formatId string) ([]Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings"
@@ -1318,7 +1318,7 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 // Gets all orphan recordings
 //
 // 
-func (a RecordingApi) GetOrphanrecordings(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, hasConversation bool, media string) (*Orphanrecordinglisting, *APIResponse, error) {
+func (a RecordingApi) GetOrphanrecordings(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, hasConversation bool, media string) (*Orphanrecordinglisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings"
@@ -1548,7 +1548,7 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 // Gets media retention policy list with query options to filter on name and enabled.
 //
 // for a less verbose response, add summary=true to this endpoint
-func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool) (*Policyentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool) (*Policyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/crossplatform/mediaretentionpolicies"
@@ -1871,7 +1871,7 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 // Get the status of all jobs within the user&#39;s organization
 //
 // 
-func (a RecordingApi) GetRecordingJobs(pageSize int32, pageNumber int32, sortBy string, state string, showOnlyMyJobs bool, jobType string) (*Recordingjobentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy string, state string, showOnlyMyJobs bool, jobType string) (*Recordingjobentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs"
@@ -2140,7 +2140,7 @@ func (a RecordingApi) GetRecordingLocalkeysSettings() (*Localencryptionconfigura
 // Gets media retention policy list with query options to filter on name and enabled.
 //
 // for a less verbose response, add summary=true to this endpoint
-func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool) (*Policyentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool) (*Policyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/mediaretentionpolicies"
@@ -2394,7 +2394,7 @@ func (a RecordingApi) GetRecordingMediaretentionpolicy(policyId string) (*Policy
 // Get encryption key list
 //
 // 
-func (a RecordingApi) GetRecordingRecordingkeys(pageSize int32, pageNumber int32) (*Encryptionkeyentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingRecordingkeys(pageSize int, pageNumber int) (*Encryptionkeyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/recordingkeys"
@@ -2623,7 +2623,7 @@ func (a RecordingApi) GetRecordingSettings(createDefault bool) (*Recordingsettin
 // Retrieves a paged listing of screen recording sessions
 //
 // 
-func (a RecordingApi) GetRecordingsScreensessions(pageSize int32, pageNumber int32) (*Screenrecordingsessionlisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingsScreensessions(pageSize int, pageNumber int) (*Screenrecordingsessionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recordings/screensessions"

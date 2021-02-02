@@ -6,11 +6,11 @@ import (
 // Greetingaudiofile
 type Greetingaudiofile struct { 
 	// DurationMilliseconds
-	DurationMilliseconds *int64 `json:"durationMilliseconds,omitempty"`
+	DurationMilliseconds *int `json:"durationMilliseconds,omitempty"`
 
 
 	// SizeBytes
-	SizeBytes *int64 `json:"sizeBytes,omitempty"`
+	SizeBytes *int `json:"sizeBytes,omitempty"`
 
 
 	// SelfUri

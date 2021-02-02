@@ -23,7 +23,7 @@ type Messagingcampaign struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Division - The division this entity belongs to.
@@ -55,7 +55,7 @@ type Messagingcampaign struct {
 
 
 	// MessagesPerMinute - How many messages this messaging campaign will send per minute.
-	MessagesPerMinute *int32 `json:"messagesPerMinute,omitempty"`
+	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 
 
 	// Errors - A list of current error conditions associated with this messaging campaign.

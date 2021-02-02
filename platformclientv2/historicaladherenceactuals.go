@@ -10,11 +10,11 @@ type Historicaladherenceactuals struct {
 
 
 	// StartOffsetSeconds - Actual start offset in seconds relative to query start time
-	StartOffsetSeconds *int32 `json:"startOffsetSeconds,omitempty"`
+	StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
 
 
 	// EndOffsetSeconds - Actual end offset in seconds relative to query start time
-	EndOffsetSeconds *int32 `json:"endOffsetSeconds,omitempty"`
+	EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
 
 }
 

@@ -22,7 +22,7 @@ type Wfmbuscheduleruntopicbuschedulerun struct {
 
 
 	// WeekCount
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// Schedule
@@ -38,7 +38,7 @@ type Wfmbuscheduleruntopicbuschedulerun struct {
 
 
 	// MessageCount
-	MessageCount *int32 `json:"messageCount,omitempty"`
+	MessageCount *int `json:"messageCount,omitempty"`
 
 }
 

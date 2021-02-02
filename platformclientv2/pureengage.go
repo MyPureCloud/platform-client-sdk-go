@@ -13,12 +13,8 @@ type Pureengage struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// AutoProvisionUsers
-	AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
-
-
-	// Certificate
-	Certificate *string `json:"certificate,omitempty"`
+	// Disabled
+	Disabled *bool `json:"disabled,omitempty"`
 
 
 	// IssuerURI
@@ -29,8 +25,16 @@ type Pureengage struct {
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
 
 
-	// Disabled
-	Disabled *bool `json:"disabled,omitempty"`
+	// Certificate
+	Certificate *string `json:"certificate,omitempty"`
+
+
+	// Certificates
+	Certificates *[]string `json:"certificates,omitempty"`
+
+
+	// AutoProvisionUsers
+	AutoProvisionUsers *bool `json:"autoProvisionUsers,omitempty"`
 
 
 	// SelfUri - The URI for this object

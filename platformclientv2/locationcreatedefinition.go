@@ -10,7 +10,7 @@ type Locationcreatedefinition struct {
 
 
 	// Version - Current version of the location
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// State - Current activity status of the location.

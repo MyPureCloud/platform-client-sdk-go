@@ -23,19 +23,19 @@ type Recordingjob struct {
 
 
 	// TotalConversations - Total number of conversations affected.
-	TotalConversations *int32 `json:"totalConversations,omitempty"`
+	TotalConversations *int `json:"totalConversations,omitempty"`
 
 
 	// TotalRecordings - Total number of recordings affected.
-	TotalRecordings *int32 `json:"totalRecordings,omitempty"`
+	TotalRecordings *int `json:"totalRecordings,omitempty"`
 
 
 	// TotalProcessedRecordings - Total number of recordings have been processed.
-	TotalProcessedRecordings *int32 `json:"totalProcessedRecordings,omitempty"`
+	TotalProcessedRecordings *int `json:"totalProcessedRecordings,omitempty"`
 
 
 	// PercentProgress - Progress in percentage based on the number of recordings
-	PercentProgress *int32 `json:"percentProgress,omitempty"`
+	PercentProgress *int `json:"percentProgress,omitempty"`
 
 
 	// ErrorMessage - Error occurred during the job execution

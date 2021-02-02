@@ -6,7 +6,7 @@ import (
 // Activealertcount
 type Activealertcount struct { 
 	// Count - The count of active alerts for a user.
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

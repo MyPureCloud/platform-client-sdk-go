@@ -6,11 +6,11 @@ import (
 // Pagingspec
 type Pagingspec struct { 
 	// PageSize - How many results per page
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber - How many pages in
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 }
 

@@ -18,7 +18,7 @@ type Weekschedulegenerationresult struct {
 
 
 	// AgentWarningCount - Count of warning messages from the schedule run. This will be available only when requesting multiple week schedules
-	AgentWarningCount *int32 `json:"agentWarningCount,omitempty"`
+	AgentWarningCount *int `json:"agentWarningCount,omitempty"`
 
 }
 

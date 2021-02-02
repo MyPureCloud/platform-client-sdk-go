@@ -11,7 +11,7 @@ type Facetterm struct {
 
 
 	// Key
-	Key *int64 `json:"key,omitempty"`
+	Key *int `json:"key,omitempty"`
 
 
 	// Id
@@ -23,7 +23,7 @@ type Facetterm struct {
 
 
 	// Count
-	Count *int64 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 
 	// Time - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

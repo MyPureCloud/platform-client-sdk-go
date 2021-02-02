@@ -23,7 +23,7 @@ type Email struct {
 
 
 	// MessagesSent - The number of email messages sent by this participant.
-	MessagesSent *int32 `json:"messagesSent,omitempty"`
+	MessagesSent *int `json:"messagesSent,omitempty"`
 
 
 	// Segments - The time line of the participant's email, divided into activity segments.

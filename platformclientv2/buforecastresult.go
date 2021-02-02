@@ -15,11 +15,11 @@ type Buforecastresult struct {
 
 
 	// WeekNumber - The week number represented by this response
-	WeekNumber *int32 `json:"weekNumber,omitempty"`
+	WeekNumber *int `json:"weekNumber,omitempty"`
 
 
 	// WeekCount - The number of weeks in this forecast
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 }
 

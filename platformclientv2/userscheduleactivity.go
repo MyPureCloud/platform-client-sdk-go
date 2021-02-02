@@ -15,7 +15,7 @@ type Userscheduleactivity struct {
 
 
 	// LengthInMinutes - Length in minutes for this activity
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Description - Description for this activity

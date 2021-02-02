@@ -22,7 +22,7 @@ type Searchaggregation struct {
 
 
 	// Size - The number aggregations results to return out of the entire result set
-	Size *int32 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// Order - The order in which aggregation results are sorted

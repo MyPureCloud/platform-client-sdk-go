@@ -14,7 +14,7 @@ type Timeslot struct {
 
 
 	// Day - Day for this time slot, Monday = 1 ... Sunday = 7
-	Day *int32 `json:"day,omitempty"`
+	Day *int `json:"day,omitempty"`
 
 }
 

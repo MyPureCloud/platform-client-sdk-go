@@ -198,7 +198,7 @@ func (a ObjectsApi) GetAuthorizationDivision(divisionId string, objectCount bool
 // Retrieve a list of all divisions defined for the organization
 //
 // Request specific divisions by id using a query param \&quot;id\&quot;, e.g.  ?id=5f777167-63be-4c24-ad41-374155d9e28b&amp;id=72e9fb25-c484-488d-9312-7acba82435b3
-func (a ObjectsApi) GetAuthorizationDivisions(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
+func (a ObjectsApi) GetAuthorizationDivisions(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, objectCount bool, id []string, name string) (*Authzdivisionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions"
@@ -434,11 +434,11 @@ func (a ObjectsApi) GetAuthorizationDivisionsHome() (*Authzdivision, *APIRespons
 // Returns the maximum allowed number of divisions.
 //
 // 
-func (a ObjectsApi) GetAuthorizationDivisionsLimit() (*int32, *APIResponse, error) {
+func (a ObjectsApi) GetAuthorizationDivisionsLimit() (*int, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/authorization/divisions/limit"
-	defaultReturn := new(int32)
+	defaultReturn := new(int)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -480,7 +480,7 @@ func (a ObjectsApi) GetAuthorizationDivisionsLimit() (*int32, *APIResponse, erro
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *int32
+	var successPayload *int
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

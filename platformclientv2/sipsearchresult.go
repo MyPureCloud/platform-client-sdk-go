@@ -10,7 +10,7 @@ type Sipsearchresult struct {
 
 
 	// Status - Status of the search request
-	Status *int32 `json:"status,omitempty"`
+	Status *int `json:"status,omitempty"`
 
 
 	// Sid - Session id associated to the search request
@@ -30,7 +30,7 @@ type Sipsearchresult struct {
 
 
 	// Count - Number of records returned
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 
 	// SelfUri - The URI for this object

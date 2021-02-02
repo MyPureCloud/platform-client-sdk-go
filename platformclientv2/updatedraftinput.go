@@ -26,7 +26,7 @@ type Updatedraftinput struct {
 
 
 	// Version - Version of current Draft
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 }
 

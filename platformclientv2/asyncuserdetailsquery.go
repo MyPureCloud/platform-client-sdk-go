@@ -26,7 +26,7 @@ type Asyncuserdetailsquery struct {
 
 
 	// Limit - Specify number of results to be returned
-	Limit *int32 `json:"limit,omitempty"`
+	Limit *int `json:"limit,omitempty"`
 
 }
 

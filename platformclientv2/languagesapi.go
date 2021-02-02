@@ -236,7 +236,7 @@ func (a LanguagesApi) GetLanguage(languageId string) (*Language, *APIResponse, e
 // Get the list of supported languages. (Deprecated)
 //
 // This endpoint is deprecated. It has been moved to /routing/languages
-func (a LanguagesApi) GetLanguages(pageSize int32, pageNumber int32, sortOrder string, name string) (*Languageentitylisting, *APIResponse, error) {
+func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder string, name string) (*Languageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languages"

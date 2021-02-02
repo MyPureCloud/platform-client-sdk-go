@@ -6,7 +6,7 @@ import (
 // Documentupdate
 type Documentupdate struct { 
 	// ChangeNumber
-	ChangeNumber *int32 `json:"changeNumber,omitempty"`
+	ChangeNumber *int `json:"changeNumber,omitempty"`
 
 
 	// Name - The name of the document

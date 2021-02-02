@@ -34,7 +34,7 @@ type Organization struct {
 
 
 	// Version - The current version of the organization.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// State - The current state. Examples are active, inactive, deleted.

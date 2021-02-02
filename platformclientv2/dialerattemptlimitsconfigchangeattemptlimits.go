@@ -23,15 +23,15 @@ type Dialerattemptlimitsconfigchangeattemptlimits struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// MaxAttemptsPerContact
-	MaxAttemptsPerContact *int32 `json:"maxAttemptsPerContact,omitempty"`
+	MaxAttemptsPerContact *int `json:"maxAttemptsPerContact,omitempty"`
 
 
 	// MaxAttemptsPerNumber
-	MaxAttemptsPerNumber *int32 `json:"maxAttemptsPerNumber,omitempty"`
+	MaxAttemptsPerNumber *int `json:"maxAttemptsPerNumber,omitempty"`
 
 
 	// TimeZoneId

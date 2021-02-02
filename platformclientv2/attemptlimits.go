@@ -23,15 +23,15 @@ type Attemptlimits struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// MaxAttemptsPerContact - The maximum number of times a contact can be called within the resetPeriod. Required if maxAttemptsPerNumber is not defined.
-	MaxAttemptsPerContact *int32 `json:"maxAttemptsPerContact,omitempty"`
+	MaxAttemptsPerContact *int `json:"maxAttemptsPerContact,omitempty"`
 
 
 	// MaxAttemptsPerNumber - The maximum number of times a phone number can be called within the resetPeriod. Required if maxAttemptsPerContact is not defined.
-	MaxAttemptsPerNumber *int32 `json:"maxAttemptsPerNumber,omitempty"`
+	MaxAttemptsPerNumber *int `json:"maxAttemptsPerNumber,omitempty"`
 
 
 	// TimeZoneId - If the resetPeriod is TODAY, this specifies the timezone in which TODAY occurs. Required if the resetPeriod is TODAY.

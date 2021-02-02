@@ -18,7 +18,7 @@ type Authzsubject struct {
 
 
 	// Version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// SelfUri - The URI for this object

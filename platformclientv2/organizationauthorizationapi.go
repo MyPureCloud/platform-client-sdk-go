@@ -671,7 +671,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUserRoles(truste
 // The list of trustee users for this organization (i.e. users granted access to this organization).
 //
 // 
-func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrgId string, pageSize int32, pageNumber int32) (*Trustuserentitylisting, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrgId string, pageSize int, pageNumber int) (*Trustuserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/{trusteeOrgId}/users"
@@ -766,7 +766,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrusteeUsers(trusteeOrg
 // The list of trustees for this organization (i.e. organizations granted access to this organization).
 //
 // 
-func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustees(pageSize int32, pageNumber int32) (*Trustentitylisting, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustees(pageSize int, pageNumber int) (*Trustentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees"
@@ -999,7 +999,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUser(trustorOrgI
 // The list of users in the trustor organization (i.e. users granted access).
 //
 // 
-func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrgId string, pageSize int32, pageNumber int32) (*Trustuserentitylisting, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrgId string, pageSize int, pageNumber int) (*Trustuserentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors/{trustorOrgId}/users"
@@ -1094,7 +1094,7 @@ func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustorUsers(trustorOrg
 // The list of organizations that have authorized/trusted your organization.
 //
 // 
-func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustors(pageSize int32, pageNumber int32) (*Trustorentitylisting, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) GetOrgauthorizationTrustors(pageSize int, pageNumber int) (*Trustorentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustors"
@@ -1402,7 +1402,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustees(body Trustcre
 // Get Org Trustee Audits
 //
 // 
-func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Trusteeauditqueryrequest, pageSize int32, pageNumber int32, sortBy string, sortOrder string) (*Auditqueryresponse, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Trusteeauditqueryrequest, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Auditqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustees/audits"
@@ -1523,7 +1523,7 @@ func (a OrganizationAuthorizationApi) PostOrgauthorizationTrusteesAudits(body Tr
 // Get Org Trustor Audits
 //
 // 
-func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Trustorauditqueryrequest, pageSize int32, pageNumber int32, sortBy string, sortOrder string) (*Auditqueryresponse, *APIResponse, error) {
+func (a OrganizationAuthorizationApi) PostOrgauthorizationTrustorAudits(body Trustorauditqueryrequest, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Auditqueryresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orgauthorization/trustor/audits"

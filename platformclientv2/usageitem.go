@@ -10,11 +10,11 @@ type Usageitem struct {
 
 
 	// TotalDocumentByteCount
-	TotalDocumentByteCount *int64 `json:"totalDocumentByteCount,omitempty"`
+	TotalDocumentByteCount *int `json:"totalDocumentByteCount,omitempty"`
 
 
 	// TotalDocumentCount
-	TotalDocumentCount *int64 `json:"totalDocumentCount,omitempty"`
+	TotalDocumentCount *int `json:"totalDocumentCount,omitempty"`
 
 }
 

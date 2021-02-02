@@ -50,7 +50,7 @@ type Updateuser struct {
 
 
 	// Version - This value should be the current version of the user. The current version can be obtained with a GET on the user before doing a PATCH.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ProfileSkills - Profile skills possessed by the user

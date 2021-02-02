@@ -7,7 +7,7 @@ import (
 // Wfmversionedentitymetadata - Metadata to associate with a given entity
 type Wfmversionedentitymetadata struct { 
 	// Version - The version of the associated entity.  Used to prevent conflicts on concurrent edits
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ModifiedBy - The user who last modified the associated entity

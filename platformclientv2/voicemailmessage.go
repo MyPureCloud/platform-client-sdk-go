@@ -19,11 +19,11 @@ type Voicemailmessage struct {
 
 
 	// AudioRecordingDurationSeconds - The voicemail message's audio recording duration in seconds
-	AudioRecordingDurationSeconds *int32 `json:"audioRecordingDurationSeconds,omitempty"`
+	AudioRecordingDurationSeconds *int `json:"audioRecordingDurationSeconds,omitempty"`
 
 
 	// AudioRecordingSizeBytes - The voicemail message's audio recording size in bytes
-	AudioRecordingSizeBytes *int64 `json:"audioRecordingSizeBytes,omitempty"`
+	AudioRecordingSizeBytes *int `json:"audioRecordingSizeBytes,omitempty"`
 
 
 	// CreatedDate - The date the voicemail message was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

@@ -39,7 +39,7 @@ type Faxdocument struct {
 
 
 	// ContentLength
-	ContentLength *int64 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// Filename
@@ -51,7 +51,7 @@ type Faxdocument struct {
 
 
 	// PageCount
-	PageCount *int64 `json:"pageCount,omitempty"`
+	PageCount *int `json:"pageCount,omitempty"`
 
 
 	// CallerAddress

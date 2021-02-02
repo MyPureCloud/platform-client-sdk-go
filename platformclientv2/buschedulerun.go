@@ -23,7 +23,7 @@ type Buschedulerun struct {
 
 
 	// WeekCount - The number of weeks spanned by the schedule
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// PercentComplete - Percent completion of the schedule run
@@ -59,7 +59,7 @@ type Buschedulerun struct {
 
 
 	// MessageCount - The number of schedule generation messages for this schedule generation run
-	MessageCount *int32 `json:"messageCount,omitempty"`
+	MessageCount *int `json:"messageCount,omitempty"`
 
 
 	// ReschedulingOptions - Rescheduling options for this run.  Null unless intradayRescheduling is true

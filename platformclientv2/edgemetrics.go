@@ -15,7 +15,7 @@ type Edgemetrics struct {
 
 
 	// UpTimeMsec
-	UpTimeMsec *int64 `json:"upTimeMsec,omitempty"`
+	UpTimeMsec *int `json:"upTimeMsec,omitempty"`
 
 
 	// Processors

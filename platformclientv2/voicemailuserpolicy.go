@@ -11,7 +11,7 @@ type Voicemailuserpolicy struct {
 
 
 	// AlertTimeoutSeconds - The number of seconds to ring the user's phone before a call is transfered to voicemail
-	AlertTimeoutSeconds *int32 `json:"alertTimeoutSeconds,omitempty"`
+	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
 
 	// Pin - The user's PIN to access their voicemail. This property is only used for updates and never provided otherwise to ensure security

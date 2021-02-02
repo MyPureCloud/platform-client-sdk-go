@@ -14,7 +14,7 @@ type Meteredassignmentbyagent struct {
 
 
 	// MaxNumberEvaluations
-	MaxNumberEvaluations *int32 `json:"maxNumberEvaluations,omitempty"`
+	MaxNumberEvaluations *int `json:"maxNumberEvaluations,omitempty"`
 
 
 	// EvaluationForm

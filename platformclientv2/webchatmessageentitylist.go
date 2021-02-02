@@ -6,7 +6,7 @@ import (
 // Webchatmessageentitylist
 type Webchatmessageentitylist struct { 
 	// PageSize
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// Entities

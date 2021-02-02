@@ -14,7 +14,7 @@ type Createactivitycoderequest struct {
 
 
 	// LengthInMinutes - The default length of the activity in minutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// CountsAsPaidTime - Whether an agent is paid while performing this activity

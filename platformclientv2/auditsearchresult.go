@@ -6,19 +6,19 @@ import (
 // Auditsearchresult
 type Auditsearchresult struct { 
 	// PageNumber - Which page was returned.
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// PageSize - The number of results in a page.
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// Total - The total number of results.
-	Total *int32 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// PageCount - The number of pages of results.
-	PageCount *int32 `json:"pageCount,omitempty"`
+	PageCount *int `json:"pageCount,omitempty"`
 
 
 	// FacetInfo

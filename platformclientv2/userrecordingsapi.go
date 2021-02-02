@@ -267,7 +267,7 @@ func (a UserRecordingsApi) GetUserrecordingMedia(recordingId string, formatId st
 // Get a list of user recordings.
 //
 // 
-func (a UserRecordingsApi) GetUserrecordings(pageSize int32, pageNumber int32, expand []string) (*Userrecordingentitylisting, *APIResponse, error) {
+func (a UserRecordingsApi) GetUserrecordings(pageSize int, pageNumber int, expand []string) (*Userrecordingentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/userrecordings"

@@ -10,7 +10,7 @@ type Groupmembersupdate struct {
 
 
 	// Version - The current group version.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 }
 

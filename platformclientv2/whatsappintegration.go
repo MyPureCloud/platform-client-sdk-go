@@ -43,7 +43,7 @@ type Whatsappintegration struct {
 
 
 	// Version - Version number required for updates.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// ActivationStatusCode - The status code of WhatsApp Integration activation process

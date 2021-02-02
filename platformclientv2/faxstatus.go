@@ -10,31 +10,31 @@ type Faxstatus struct {
 
 
 	// ExpectedPages - Total number of expected pages, if known.
-	ExpectedPages *int64 `json:"expectedPages,omitempty"`
+	ExpectedPages *int `json:"expectedPages,omitempty"`
 
 
 	// ActivePage - Active page of the transmission.
-	ActivePage *int64 `json:"activePage,omitempty"`
+	ActivePage *int `json:"activePage,omitempty"`
 
 
 	// LinesTransmitted - Number of lines that have completed transmission.
-	LinesTransmitted *int64 `json:"linesTransmitted,omitempty"`
+	LinesTransmitted *int `json:"linesTransmitted,omitempty"`
 
 
 	// BytesTransmitted - Number of bytes that have competed transmission.
-	BytesTransmitted *int64 `json:"bytesTransmitted,omitempty"`
+	BytesTransmitted *int `json:"bytesTransmitted,omitempty"`
 
 
 	// BaudRate - Current signaling rate of transmission, baud rate.
-	BaudRate *int64 `json:"baudRate,omitempty"`
+	BaudRate *int `json:"baudRate,omitempty"`
 
 
 	// PageErrors - Number of page errors.
-	PageErrors *int64 `json:"pageErrors,omitempty"`
+	PageErrors *int `json:"pageErrors,omitempty"`
 
 
 	// LineErrors - Number of line errors.
-	LineErrors *int64 `json:"lineErrors,omitempty"`
+	LineErrors *int `json:"lineErrors,omitempty"`
 
 }
 

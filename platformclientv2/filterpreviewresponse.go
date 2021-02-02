@@ -6,11 +6,11 @@ import (
 // Filterpreviewresponse
 type Filterpreviewresponse struct { 
 	// FilteredContacts
-	FilteredContacts *int64 `json:"filteredContacts,omitempty"`
+	FilteredContacts *int `json:"filteredContacts,omitempty"`
 
 
 	// TotalContacts
-	TotalContacts *int64 `json:"totalContacts,omitempty"`
+	TotalContacts *int `json:"totalContacts,omitempty"`
 
 
 	// Preview

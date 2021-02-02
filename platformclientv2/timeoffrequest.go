@@ -39,7 +39,7 @@ type Timeoffrequest struct {
 
 
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
-	DailyDurationMinutes *int32 `json:"dailyDurationMinutes,omitempty"`
+	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
 
 	// Notes - Notes about the time off request

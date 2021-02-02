@@ -43,15 +43,15 @@ type Datatableimportjob struct {
 
 
 	// CountRecordsUpdated - The current count of the number of records processed
-	CountRecordsUpdated *int32 `json:"countRecordsUpdated,omitempty"`
+	CountRecordsUpdated *int `json:"countRecordsUpdated,omitempty"`
 
 
 	// CountRecordsDeleted - The current count of the number of records deleted
-	CountRecordsDeleted *int32 `json:"countRecordsDeleted,omitempty"`
+	CountRecordsDeleted *int `json:"countRecordsDeleted,omitempty"`
 
 
 	// CountRecordsFailed - The current count of the number of records that failed to import
-	CountRecordsFailed *int32 `json:"countRecordsFailed,omitempty"`
+	CountRecordsFailed *int `json:"countRecordsFailed,omitempty"`
 
 
 	// SelfUri - The URI for this object

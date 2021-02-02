@@ -320,7 +320,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotation(appointmentId string, anno
 // Get a list of annotations.
 //
 // You must have the appropriate permission for the type of annotation you are creating. Permission not required if you are related to the appointment (only the creator or facilitator can view private annotations).
-func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pageNumber int32, pageSize int32) (*Coachingannotationlist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pageNumber int, pageSize int) (*Coachingannotationlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/annotations"
@@ -415,7 +415,7 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 // Get the list of status changes for a coaching appointment.
 //
 // Permission not required if you are an attendee, creator or facilitator of the appointment
-func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNumber int32, pageSize int32) (*Coachingappointmentstatusresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNumber int, pageSize int) (*Coachingappointmentstatusresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/{appointmentId}/statuses"
@@ -510,7 +510,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 // Get appointments for users and optional date range
 //
 // 
-func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int32, pageSize int32, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments"
@@ -700,7 +700,7 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 // Get my appointments for a given date range
 //
 // 
-func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int32, pageSize int32, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/me"
@@ -956,7 +956,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 // Retrieve the list of your notifications.
 //
 // 
-func (a CoachingApi) GetCoachingNotifications(pageNumber int32, pageSize int32, expand []string) (*Coachingnotificationlist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingNotifications(pageNumber int, pageSize int, expand []string) (*Coachingnotificationlist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/notifications"

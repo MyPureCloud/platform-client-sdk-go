@@ -23,7 +23,7 @@ type Coachingappointmentresponse struct {
 
 
 	// LengthInMinutes - The duration of coaching appointment in minutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Status - The status of coaching appointment

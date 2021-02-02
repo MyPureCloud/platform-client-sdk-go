@@ -161,7 +161,7 @@ func (a UtilitiesApi) GetIpranges() (*Ipaddressrangelisting, *APIResponse, error
 // Get time zones list
 //
 // 
-func (a UtilitiesApi) GetTimezones(pageSize int32, pageNumber int32) (*Timezoneentitylisting, *APIResponse, error) {
+func (a UtilitiesApi) GetTimezones(pageSize int, pageNumber int) (*Timezoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/timezones"

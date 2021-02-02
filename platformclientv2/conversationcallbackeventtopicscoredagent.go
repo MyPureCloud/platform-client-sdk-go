@@ -10,7 +10,7 @@ type Conversationcallbackeventtopicscoredagent struct {
 
 
 	// Score
-	Score *int32 `json:"score,omitempty"`
+	Score *int `json:"score,omitempty"`
 
 }
 

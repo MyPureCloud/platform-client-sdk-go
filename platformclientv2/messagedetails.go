@@ -19,7 +19,7 @@ type Messagedetails struct {
 
 
 	// MessageSegmentCount - The message segment count, greater than 1 if the message content was split into multiple parts for this message type, e.g. SMS character limits.
-	MessageSegmentCount *int32 `json:"messageSegmentCount,omitempty"`
+	MessageSegmentCount *int `json:"messageSegmentCount,omitempty"`
 
 
 	// MessageTime - The time when the message was sent or received. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

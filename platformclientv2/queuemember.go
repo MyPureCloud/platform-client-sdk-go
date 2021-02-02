@@ -18,7 +18,7 @@ type Queuemember struct {
 
 
 	// RingNumber
-	RingNumber *int32 `json:"ringNumber,omitempty"`
+	RingNumber *int `json:"ringNumber,omitempty"`
 
 
 	// Joined

@@ -6,7 +6,7 @@ import (
 // Coretypelisting
 type Coretypelisting struct { 
 	// Total
-	Total *int64 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// Entities

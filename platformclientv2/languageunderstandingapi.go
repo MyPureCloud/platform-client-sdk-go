@@ -315,7 +315,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomain(domainId string
 // Get all feedback in the given NLU Domain Version.
 //
 // 
-func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, pageNumber int32, pageSize int32, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainId string, intentName string, assessment string, dateStart time.Time, dateEnd time.Time, includeDeleted bool, pageNumber int, pageSize int, enableCursorPagination bool, after string, fields []string) (*Nlufeedbacklisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/feedback"
@@ -759,7 +759,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersionReport(do
 // Get all NLU Domain Versions for a given Domain.
 //
 // 
-func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainId string, includeUtterances bool, pageNumber int32, pageSize int32) (*Nludomainversionlisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainId string, includeUtterances bool, pageNumber int, pageSize int) (*Nludomainversionlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains/{domainId}/versions"
@@ -866,7 +866,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 // Get all NLU Domains.
 //
 // 
-func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int32, pageSize int32) (*Nludomainlisting, *APIResponse, error) {
+func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int, pageSize int) (*Nludomainlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/languageunderstanding/domains"

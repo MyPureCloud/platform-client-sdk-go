@@ -10,7 +10,7 @@ type Journeypattern struct {
 
 
 	// Count - The number of times the pattern must match.
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 
 	// StreamType - The stream type for which this pattern can be matched on.

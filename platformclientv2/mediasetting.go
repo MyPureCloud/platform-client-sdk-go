@@ -6,7 +6,7 @@ import (
 // Mediasetting
 type Mediasetting struct { 
 	// AlertingTimeoutSeconds
-	AlertingTimeoutSeconds *int32 `json:"alertingTimeoutSeconds,omitempty"`
+	AlertingTimeoutSeconds *int `json:"alertingTimeoutSeconds,omitempty"`
 
 
 	// ServiceLevel

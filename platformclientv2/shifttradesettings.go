@@ -18,7 +18,7 @@ type Shifttradesettings struct {
 
 
 	// MinHoursInFuture - The minimum number of hours in the future shift trades are allowed
-	MinHoursInFuture *int32 `json:"minHoursInFuture,omitempty"`
+	MinHoursInFuture *int `json:"minHoursInFuture,omitempty"`
 
 
 	// UnequalPaid - How to handle shift trades which involve unequal paid times

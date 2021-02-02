@@ -10,7 +10,7 @@ type Queueconversationsocialexpressioneventtopicconversation struct {
 
 
 	// MaxParticipants
-	MaxParticipants *int32 `json:"maxParticipants,omitempty"`
+	MaxParticipants *int `json:"maxParticipants,omitempty"`
 
 
 	// Participants

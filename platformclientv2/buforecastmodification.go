@@ -10,11 +10,11 @@ type Buforecastmodification struct {
 
 
 	// StartIntervalIndex - The number of 15 minute intervals past referenceStartDate representing the first interval to which to apply this modification. Must be null if values is populated
-	StartIntervalIndex *int32 `json:"startIntervalIndex,omitempty"`
+	StartIntervalIndex *int `json:"startIntervalIndex,omitempty"`
 
 
 	// EndIntervalIndex - The number of 15 minute intervals past referenceStartDate representing the last interval to which to apply this modification.  Must be null if values is populated
-	EndIntervalIndex *int32 `json:"endIntervalIndex,omitempty"`
+	EndIntervalIndex *int `json:"endIntervalIndex,omitempty"`
 
 
 	// Metric - The metric to which this modification applies

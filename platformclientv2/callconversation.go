@@ -26,7 +26,7 @@ type Callconversation struct {
 
 
 	// MaxParticipants - If this is a conference conversation, then this field indicates the maximum number of participants allowed to participant in the conference.
-	MaxParticipants *int32 `json:"maxParticipants,omitempty"`
+	MaxParticipants *int `json:"maxParticipants,omitempty"`
 
 
 	// SelfUri - The URI for this object

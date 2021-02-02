@@ -22,7 +22,7 @@ type Groupupdate struct {
 
 
 	// Version - Current version for this resource.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Images

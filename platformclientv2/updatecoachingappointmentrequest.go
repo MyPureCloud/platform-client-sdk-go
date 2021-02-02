@@ -19,7 +19,7 @@ type Updatecoachingappointmentrequest struct {
 
 
 	// LengthInMinutes - The duration of coaching appointment in minutes.
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// ConversationIds - IDs of conversations associated with this coaching appointment.

@@ -22,7 +22,7 @@ type Attachment struct {
 
 
 	// ContentLength - The length of the attachment file.
-	ContentLength *int32 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// InlineImage - Whether or not the attachment was attached inline.,

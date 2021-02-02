@@ -6,11 +6,11 @@ import (
 // Connectrate
 type Connectrate struct { 
 	// Attempts - Number of call attempts made
-	Attempts *int64 `json:"attempts,omitempty"`
+	Attempts *int `json:"attempts,omitempty"`
 
 
 	// Connects - Number of calls with a live voice detected
-	Connects *int64 `json:"connects,omitempty"`
+	Connects *int `json:"connects,omitempty"`
 
 
 	// ConnectRatio - Ratio of connects to attempts

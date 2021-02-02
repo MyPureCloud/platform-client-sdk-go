@@ -23,15 +23,15 @@ type Outboundsettings struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on any campaign
-	MaxCallsPerAgent *int32 `json:"maxCallsPerAgent,omitempty"`
+	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
 
 	// MaxConfigurableCallsPerAgent - The maximum number of calls that can be configured to be placed per agent on any campaign
-	MaxConfigurableCallsPerAgent *int32 `json:"maxConfigurableCallsPerAgent,omitempty"`
+	MaxConfigurableCallsPerAgent *int `json:"maxConfigurableCallsPerAgent,omitempty"`
 
 
 	// MaxLineUtilization - The maximum percentage of lines that should be used for Outbound, expressed as a decimal in the range [0.0, 1.0]

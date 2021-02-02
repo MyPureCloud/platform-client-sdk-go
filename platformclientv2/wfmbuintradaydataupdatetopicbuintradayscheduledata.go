@@ -6,7 +6,7 @@ import (
 // Wfmbuintradaydataupdatetopicbuintradayscheduledata
 type Wfmbuintradaydataupdatetopicbuintradayscheduledata struct { 
 	// OnQueueTimeSeconds
-	OnQueueTimeSeconds *int32 `json:"onQueueTimeSeconds,omitempty"`
+	OnQueueTimeSeconds *int `json:"onQueueTimeSeconds,omitempty"`
 
 }
 

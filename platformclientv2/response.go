@@ -15,7 +15,7 @@ type Response struct {
 
 
 	// Version - Version number required for updates.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Libraries - One or more libraries response is associated with.

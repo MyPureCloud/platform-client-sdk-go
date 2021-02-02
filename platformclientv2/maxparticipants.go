@@ -6,7 +6,7 @@ import (
 // Maxparticipants
 type Maxparticipants struct { 
 	// MaxParticipants - The maximum number of participants that are allowed on a conversation.
-	MaxParticipants *int32 `json:"maxParticipants,omitempty"`
+	MaxParticipants *int `json:"maxParticipants,omitempty"`
 
 }
 

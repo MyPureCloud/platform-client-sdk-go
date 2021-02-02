@@ -22,7 +22,7 @@ type Authzdivision struct {
 
 
 	// ObjectCounts - A count of objects in this division, grouped by type.
-	ObjectCounts *map[string]int64 `json:"objectCounts,omitempty"`
+	ObjectCounts *map[string]int `json:"objectCounts,omitempty"`
 
 
 	// SelfUri - The URI for this object

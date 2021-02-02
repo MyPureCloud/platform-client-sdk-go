@@ -10,35 +10,35 @@ type Timezonemappingpreview struct {
 
 
 	// ContactsPerTimeZone - The number of contacts per time zone that mapped to only that time zone
-	ContactsPerTimeZone *map[string]int64 `json:"contactsPerTimeZone,omitempty"`
+	ContactsPerTimeZone *map[string]int `json:"contactsPerTimeZone,omitempty"`
 
 
 	// ContactsMappedUsingZipCode - The number of contacts per time zone that mapped to only that time zone and were mapped using the zip code column
-	ContactsMappedUsingZipCode *map[string]int64 `json:"contactsMappedUsingZipCode,omitempty"`
+	ContactsMappedUsingZipCode *map[string]int `json:"contactsMappedUsingZipCode,omitempty"`
 
 
 	// ContactsMappedToASingleZone - The total number of contacts that mapped to a single time zone
-	ContactsMappedToASingleZone *int64 `json:"contactsMappedToASingleZone,omitempty"`
+	ContactsMappedToASingleZone *int `json:"contactsMappedToASingleZone,omitempty"`
 
 
 	// ContactsMappedToASingleZoneUsingZipCode - The total number of contacts that mapped to a single time zone and were mapped using the zip code column
-	ContactsMappedToASingleZoneUsingZipCode *int64 `json:"contactsMappedToASingleZoneUsingZipCode,omitempty"`
+	ContactsMappedToASingleZoneUsingZipCode *int `json:"contactsMappedToASingleZoneUsingZipCode,omitempty"`
 
 
 	// ContactsMappedToMultipleZones - The total number of contacts that mapped to multiple time zones
-	ContactsMappedToMultipleZones *int64 `json:"contactsMappedToMultipleZones,omitempty"`
+	ContactsMappedToMultipleZones *int `json:"contactsMappedToMultipleZones,omitempty"`
 
 
 	// ContactsMappedToMultipleZonesUsingZipCode - The total number of contacts that mapped to multiple time zones and were mapped using the zip code column
-	ContactsMappedToMultipleZonesUsingZipCode *int64 `json:"contactsMappedToMultipleZonesUsingZipCode,omitempty"`
+	ContactsMappedToMultipleZonesUsingZipCode *int `json:"contactsMappedToMultipleZonesUsingZipCode,omitempty"`
 
 
 	// ContactsInDefaultWindow - The total number of contacts that will be dialed during the default window
-	ContactsInDefaultWindow *int64 `json:"contactsInDefaultWindow,omitempty"`
+	ContactsInDefaultWindow *int `json:"contactsInDefaultWindow,omitempty"`
 
 
 	// ContactListSize - The total number of contacts in the contact list
-	ContactListSize *int64 `json:"contactListSize,omitempty"`
+	ContactListSize *int `json:"contactListSize,omitempty"`
 
 }
 

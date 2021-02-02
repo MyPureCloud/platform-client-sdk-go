@@ -10,7 +10,7 @@ type Servicelevel struct {
 
 
 	// DurationMs - Service Level target in milliseconds.
-	DurationMs *int64 `json:"durationMs,omitempty"`
+	DurationMs *int `json:"durationMs,omitempty"`
 
 }
 

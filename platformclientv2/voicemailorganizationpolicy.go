@@ -11,7 +11,7 @@ type Voicemailorganizationpolicy struct {
 
 
 	// AlertTimeoutSeconds - The organization's default number of seconds to ring a user's phone before a call is transfered to voicemail
-	AlertTimeoutSeconds *int32 `json:"alertTimeoutSeconds,omitempty"`
+	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
 
 	// PinConfiguration - The configuration for user PINs to access their voicemail from a phone

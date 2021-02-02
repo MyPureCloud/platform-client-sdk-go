@@ -6,7 +6,7 @@ import (
 // Recordingsettings
 type Recordingsettings struct { 
 	// MaxSimultaneousStreams
-	MaxSimultaneousStreams *int32 `json:"maxSimultaneousStreams,omitempty"`
+	MaxSimultaneousStreams *int `json:"maxSimultaneousStreams,omitempty"`
 
 }
 

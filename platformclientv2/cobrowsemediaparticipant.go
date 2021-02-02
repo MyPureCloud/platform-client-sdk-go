@@ -87,7 +87,7 @@ type Cobrowsemediaparticipant struct {
 
 
 	// WrapupTimeoutMs - The amount of time the participant has to complete wrap-up.
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// WrapupSkipped - Value is true when the participant has skipped wrap-up.
@@ -95,7 +95,7 @@ type Cobrowsemediaparticipant struct {
 
 
 	// AlertingTimeoutMs - Specifies how long the agent has to answer an interaction before being marked as not responding.
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// Provider - The source provider for the communication.

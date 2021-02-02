@@ -23,7 +23,7 @@ type Trustgroup struct {
 
 
 	// MemberCount - Number of members.
-	MemberCount *int64 `json:"memberCount,omitempty"`
+	MemberCount *int `json:"memberCount,omitempty"`
 
 
 	// State - Active, inactive, or deleted state.
@@ -31,7 +31,7 @@ type Trustgroup struct {
 
 
 	// Version - Current version for this resource.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// VarType - Type of group.

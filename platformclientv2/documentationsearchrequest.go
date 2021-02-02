@@ -14,11 +14,11 @@ type Documentationsearchrequest struct {
 
 
 	// PageSize - The number of results per page
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber - The page of resources you want to retrieve
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// Sort - Multi-value sort order, list of multiple sort values

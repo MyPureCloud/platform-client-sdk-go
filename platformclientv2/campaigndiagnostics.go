@@ -18,11 +18,11 @@ type Campaigndiagnostics struct {
 
 
 	// OutstandingInteractionsCount - Current number of outstanding interactions on the campaign
-	OutstandingInteractionsCount *int32 `json:"outstandingInteractionsCount,omitempty"`
+	OutstandingInteractionsCount *int `json:"outstandingInteractionsCount,omitempty"`
 
 
 	// ScheduledInteractionsCount - Current number of scheduled interactions on the campaign
-	ScheduledInteractionsCount *int32 `json:"scheduledInteractionsCount,omitempty"`
+	ScheduledInteractionsCount *int `json:"scheduledInteractionsCount,omitempty"`
 
 }
 

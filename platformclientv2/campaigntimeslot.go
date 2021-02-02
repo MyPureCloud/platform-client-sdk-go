@@ -14,7 +14,7 @@ type Campaigntimeslot struct {
 
 
 	// Day - The day of the interval. Valid values: [1-7], representing Monday through Sunday
-	Day *int32 `json:"day,omitempty"`
+	Day *int `json:"day,omitempty"`
 
 }
 

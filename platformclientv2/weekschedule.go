@@ -46,7 +46,7 @@ type Weekschedule struct {
 
 
 	// AgentSchedulesVersion - Version of agent schedules in the week schedule
-	AgentSchedulesVersion *int32 `json:"agentSchedulesVersion,omitempty"`
+	AgentSchedulesVersion *int `json:"agentSchedulesVersion,omitempty"`
 
 }
 

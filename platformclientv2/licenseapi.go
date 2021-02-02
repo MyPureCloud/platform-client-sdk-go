@@ -305,7 +305,7 @@ func (a LicenseApi) GetLicenseUser(userId string) (*Licenseuser, *APIResponse, e
 // Get a page of users and their licenses
 //
 // Retrieve a page of users in an organization along with the licenses they possess.
-func (a LicenseApi) GetLicenseUsers(pageSize int32, pageNumber int32) (*Userlicensesentitylisting, *APIResponse, error) {
+func (a LicenseApi) GetLicenseUsers(pageSize int, pageNumber int) (*Userlicensesentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/license/users"

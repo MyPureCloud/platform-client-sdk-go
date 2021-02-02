@@ -10,7 +10,7 @@ type Scimserviceproviderconfigfilterfeature struct {
 
 
 	// MaxResults - The maximum number of results returned from a filtered query.
-	MaxResults *int32 `json:"maxResults,omitempty"`
+	MaxResults *int `json:"maxResults,omitempty"`
 
 }
 

@@ -10,7 +10,7 @@ type Analyticsproposedagent struct {
 
 
 	// AgentRank - Proposed agent rank for this conversation from predictive routing (lower is better)
-	AgentRank *int32 `json:"agentRank,omitempty"`
+	AgentRank *int `json:"agentRank,omitempty"`
 
 }
 

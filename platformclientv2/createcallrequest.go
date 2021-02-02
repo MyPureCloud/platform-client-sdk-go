@@ -30,7 +30,7 @@ type Createcallrequest struct {
 
 
 	// Priority - The priority to assign to this call (if calling a queue).
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// LanguageId - The language skill ID to use for routing this call (if calling a queue).

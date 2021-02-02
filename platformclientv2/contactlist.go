@@ -23,7 +23,7 @@ type Contactlist struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Division - The division this entity belongs to.
@@ -51,7 +51,7 @@ type Contactlist struct {
 
 
 	// Size - The number of contacts in the ContactList.
-	Size *int64 `json:"size,omitempty"`
+	Size *int `json:"size,omitempty"`
 
 
 	// AttemptLimits - AttemptLimits for this ContactList.

@@ -23,7 +23,7 @@ type Userprofile struct {
 
 
 	// Version - The version of the group resource
-	Version *int64 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Expands - User information expansions

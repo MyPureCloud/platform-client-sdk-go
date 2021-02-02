@@ -63,7 +63,7 @@ type Twitterintegration struct {
 
 
 	// Version - Version number required for updates.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// CreateStatus - Status of asynchronous create operation

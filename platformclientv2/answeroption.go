@@ -14,7 +14,7 @@ type Answeroption struct {
 
 
 	// Value
-	Value *int32 `json:"value,omitempty"`
+	Value *int `json:"value,omitempty"`
 
 }
 

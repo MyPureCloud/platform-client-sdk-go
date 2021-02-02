@@ -46,7 +46,7 @@ type Station struct {
 
 
 	// WebRtcMediaDscp - The default or configured value of media dscp for the station. Empty if station type is not inin_webrtc_softphone.
-	WebRtcMediaDscp *int32 `json:"webRtcMediaDscp,omitempty"`
+	WebRtcMediaDscp *int `json:"webRtcMediaDscp,omitempty"`
 
 
 	// WebRtcPersistentEnabled - The default or configured value of persistent connection setting for the station. Empty if station type is not inin_webrtc_softphone.

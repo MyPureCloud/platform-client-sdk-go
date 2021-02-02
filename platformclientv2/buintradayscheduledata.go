@@ -6,7 +6,7 @@ import (
 // Buintradayscheduledata
 type Buintradayscheduledata struct { 
 	// OnQueueTimeSeconds - The total on-queue time in seconds for all agents in this group
-	OnQueueTimeSeconds *int64 `json:"onQueueTimeSeconds,omitempty"`
+	OnQueueTimeSeconds *int `json:"onQueueTimeSeconds,omitempty"`
 
 }
 

@@ -18,7 +18,7 @@ type Domainnetworkaddress struct {
 
 
 	// Family - The address family for this address.
-	Family *int32 `json:"family,omitempty"`
+	Family *int `json:"family,omitempty"`
 
 }
 

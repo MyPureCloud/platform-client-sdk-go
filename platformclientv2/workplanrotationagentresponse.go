@@ -14,7 +14,7 @@ type Workplanrotationagentresponse struct {
 
 
 	// Position - Start position of the work plan in the pattern for this agent in the work plan rotation. Position value starts from 0
-	Position *int32 `json:"position,omitempty"`
+	Position *int `json:"position,omitempty"`
 
 }
 

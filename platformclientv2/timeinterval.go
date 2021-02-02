@@ -6,19 +6,19 @@ import (
 // Timeinterval
 type Timeinterval struct { 
 	// Months
-	Months *int32 `json:"months,omitempty"`
+	Months *int `json:"months,omitempty"`
 
 
 	// Weeks
-	Weeks *int32 `json:"weeks,omitempty"`
+	Weeks *int `json:"weeks,omitempty"`
 
 
 	// Days
-	Days *int32 `json:"days,omitempty"`
+	Days *int `json:"days,omitempty"`
 
 
 	// Hours
-	Hours *int32 `json:"hours,omitempty"`
+	Hours *int `json:"hours,omitempty"`
 
 }
 

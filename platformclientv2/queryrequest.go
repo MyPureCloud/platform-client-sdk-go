@@ -10,11 +10,11 @@ type Queryrequest struct {
 
 
 	// PageNumber
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// PageSize
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// FacetNameRequests

@@ -6,39 +6,39 @@ import (
 // Historicaladherencedaymetrics
 type Historicaladherencedaymetrics struct { 
 	// DayStartOffsetSecs - Start of day offset in seconds relative to query start time
-	DayStartOffsetSecs *int32 `json:"dayStartOffsetSecs,omitempty"`
+	DayStartOffsetSecs *int `json:"dayStartOffsetSecs,omitempty"`
 
 
 	// AdherenceScheduleSecs - Duration of schedule in seconds included for adherence percentage calculation
-	AdherenceScheduleSecs *int32 `json:"adherenceScheduleSecs,omitempty"`
+	AdherenceScheduleSecs *int `json:"adherenceScheduleSecs,omitempty"`
 
 
 	// ConformanceScheduleSecs - Total scheduled duration in seconds for OnQueue activities
-	ConformanceScheduleSecs *int32 `json:"conformanceScheduleSecs,omitempty"`
+	ConformanceScheduleSecs *int `json:"conformanceScheduleSecs,omitempty"`
 
 
 	// ConformanceActualSecs - Total actually worked duration in seconds for OnQueue activities
-	ConformanceActualSecs *int32 `json:"conformanceActualSecs,omitempty"`
+	ConformanceActualSecs *int `json:"conformanceActualSecs,omitempty"`
 
 
 	// ExceptionCount - Total number of adherence exceptions for this user
-	ExceptionCount *int32 `json:"exceptionCount,omitempty"`
+	ExceptionCount *int `json:"exceptionCount,omitempty"`
 
 
 	// ExceptionDurationSecs - Total duration in seconds of adherence exceptions for this user
-	ExceptionDurationSecs *int32 `json:"exceptionDurationSecs,omitempty"`
+	ExceptionDurationSecs *int `json:"exceptionDurationSecs,omitempty"`
 
 
 	// ImpactSeconds - The impact duration in seconds of current adherence state for this user
-	ImpactSeconds *int32 `json:"impactSeconds,omitempty"`
+	ImpactSeconds *int `json:"impactSeconds,omitempty"`
 
 
 	// ScheduleLengthSecs - Total duration in seconds for all scheduled activities
-	ScheduleLengthSecs *int32 `json:"scheduleLengthSecs,omitempty"`
+	ScheduleLengthSecs *int `json:"scheduleLengthSecs,omitempty"`
 
 
 	// ActualLengthSecs - Total duration in seconds for all actually worked activities
-	ActualLengthSecs *int32 `json:"actualLengthSecs,omitempty"`
+	ActualLengthSecs *int `json:"actualLengthSecs,omitempty"`
 
 
 	// AdherencePercentage - Total adherence percentage for this user, in the scale of 0 - 100

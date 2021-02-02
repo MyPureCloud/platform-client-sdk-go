@@ -26,10 +26,10 @@ type testConfig struct {
 }
 
 type testSerializationStruct struct {
-	IntProp          int32     `json:"int,omitempty"`
-	IntPropArr       []int32   `json:"intArr,omitempty"`
-	IntPropPtr       *int32    `json:"intPtr,omitempty"`
-	IntPropArrPtr    *[]int32  `json:"intArrPtr,omitempty"`
+	IntProp          int       `json:"int,omitempty"`
+	IntPropArr       []int     `json:"intArr,omitempty"`
+	IntPropPtr       *int      `json:"intPtr,omitempty"`
+	IntPropArrPtr    *[]int    `json:"intArrPtr,omitempty"`
 	StringProp       string    `json:"string,omitempty"`
 	StringPropArr    []string  `json:"stringArr,omitempty"`
 	StringPropPtr    *string   `json:"stringPtr,omitempty"`
@@ -84,13 +84,14 @@ func TestEnvVars(t *testing.T) {
 
 func TestDefaultValueSerialization(t *testing.T) {
 	expected := `{"intPtr":0,"intArrPtr":[],"stringPtr":"","stringArrPtr":[],"boolPtr":false,"boolArrPtr":[]}`
-	intPropArrPtr := make([]int32, 0)
+	intPropArrPtr := make([]int, 0)
 	stringPropArrPtr := make([]string, 0)
 	boolPropArrPtr := make([]bool, 0)
+	intProp := 0
 	v := testSerializationStruct{
-		IntProp:          0,
-		IntPropArr:       make([]int32, 0),
-		IntPropPtr:       Int32(0),
+		IntProp:          intProp,
+		IntPropArr:       make([]int, 0),
+		IntPropPtr:       &intProp,
 		IntPropArrPtr:    &intPropArrPtr,
 		StringProp:       "",
 		StringPropArr:    make([]string, 0),
@@ -113,13 +114,14 @@ func TestDefaultValueSerialization(t *testing.T) {
 
 func TestValueSerialization(t *testing.T) {
 	expected := `{"int":10,"intArr":[0,0],"intPtr":10,"intArrPtr":[0,0],"string":"asdf","stringArr":["",""],"stringPtr":"asdf","stringArrPtr":["",""],"bool":true,"boolArr":[false,false],"boolPtr":true,"boolArrPtr":[false,false]}`
-	intPropArrPtr := make([]int32, 2)
+	intPropArrPtr := make([]int, 2)
 	stringPropArrPtr := make([]string, 2)
 	boolPropArrPtr := make([]bool, 2)
+	intProp := 10
 	v := testSerializationStruct{
 		IntProp:          10,
-		IntPropArr:       make([]int32, 2),
-		IntPropPtr:       Int32(10),
+		IntPropArr:       make([]int, 2),
+		IntPropPtr:       &intProp,
 		IntPropArrPtr:    &intPropArrPtr,
 		StringProp:       "asdf",
 		StringPropArr:    make([]string, 2),
@@ -174,7 +176,8 @@ func TestCreateUser(t *testing.T) {
 
 func TestUpdateUser(t *testing.T) {
 	// Update user
-	updateUser := Updateuser{Department: &config.userDepartment, Version: Int32(1)}
+	version := 1
+	updateUser := Updateuser{Department: &config.userDepartment, Version: &version}
 
 	user, response, err := config.usersAPI.PatchUser(config.userID, updateUser)
 	if err != nil {

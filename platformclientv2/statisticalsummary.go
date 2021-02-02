@@ -14,15 +14,15 @@ type Statisticalsummary struct {
 
 
 	// Count
-	Count *int64 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 
 	// CountNegative
-	CountNegative *int64 `json:"countNegative,omitempty"`
+	CountNegative *int `json:"countNegative,omitempty"`
 
 
 	// CountPositive
-	CountPositive *int64 `json:"countPositive,omitempty"`
+	CountPositive *int `json:"countPositive,omitempty"`
 
 
 	// Sum

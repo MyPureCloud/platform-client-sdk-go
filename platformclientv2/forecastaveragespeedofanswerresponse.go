@@ -6,7 +6,7 @@ import (
 // Forecastaveragespeedofanswerresponse
 type Forecastaveragespeedofanswerresponse struct { 
 	// Seconds - the average speed of answer goal in seconds
-	Seconds *int32 `json:"seconds,omitempty"`
+	Seconds *int `json:"seconds,omitempty"`
 
 }
 

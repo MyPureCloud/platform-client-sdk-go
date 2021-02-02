@@ -14,7 +14,7 @@ type Predictionresults struct {
 
 
 	// EstimatedWaitTimeSeconds - Estimated wait time in seconds
-	EstimatedWaitTimeSeconds *int32 `json:"estimatedWaitTimeSeconds,omitempty"`
+	EstimatedWaitTimeSeconds *int `json:"estimatedWaitTimeSeconds,omitempty"`
 
 }
 

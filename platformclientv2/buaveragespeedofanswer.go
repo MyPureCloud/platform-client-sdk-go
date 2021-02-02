@@ -10,7 +10,7 @@ type Buaveragespeedofanswer struct {
 
 
 	// Seconds - The target average speed of answer (ASA) in seconds. Required if include == true
-	Seconds *int32 `json:"seconds,omitempty"`
+	Seconds *int `json:"seconds,omitempty"`
 
 }
 

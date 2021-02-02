@@ -11,7 +11,7 @@ type Buagentscheduleactivity struct {
 
 
 	// LengthMinutes - The length of this activity in minutes
-	LengthMinutes *int32 `json:"lengthMinutes,omitempty"`
+	LengthMinutes *int `json:"lengthMinutes,omitempty"`
 
 
 	// Description - The description of this activity

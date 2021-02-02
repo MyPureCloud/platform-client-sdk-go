@@ -10,19 +10,19 @@ type Knowledgesearchresponse struct {
 
 
 	// Total - Total number of records returned
-	Total *int32 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// PageCount - Number of pages returned in the result calculated according to the pageSize and the total
-	PageCount *int32 `json:"pageCount,omitempty"`
+	PageCount *int `json:"pageCount,omitempty"`
 
 
 	// PageSize - Number of records according to the page size
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber - Current page number for the returned records
-	PageNumber *int32 `json:"pageNumber,omitempty"`
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// Results - Results associated to the search response

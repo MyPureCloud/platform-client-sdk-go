@@ -27,7 +27,7 @@ type Observationvalue struct {
 
 
 	// RoutingPriority - Routing priority for the current interaction
-	RoutingPriority *int64 `json:"routingPriority,omitempty"`
+	RoutingPriority *int `json:"routingPriority,omitempty"`
 
 
 	// ParticipantName - A human readable name identifying the participant

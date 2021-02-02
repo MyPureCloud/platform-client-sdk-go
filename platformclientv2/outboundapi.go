@@ -1270,7 +1270,7 @@ func (a OutboundApi) GetOutboundAttemptlimit(attemptLimitsId string) (*Attemptli
 // Query attempt limits list
 //
 // 
-func (a OutboundApi) GetOutboundAttemptlimits(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Attemptlimitsentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundAttemptlimits(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Attemptlimitsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/attemptlimits"
@@ -1488,7 +1488,7 @@ func (a OutboundApi) GetOutboundCallabletimeset(callableTimeSetId string) (*Call
 // Query callable time set list
 //
 // 
-func (a OutboundApi) GetOutboundCallabletimesets(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Callabletimesetentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCallabletimesets(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Callabletimesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callabletimesets"
@@ -1706,7 +1706,7 @@ func (a OutboundApi) GetOutboundCallanalysisresponseset(callAnalysisSetId string
 // Query a list of dialer call analysis response sets.
 //
 // 
-func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Responsesetentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Responsesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/callanalysisresponsesets"
@@ -2269,7 +2269,7 @@ func (a OutboundApi) GetOutboundCampaignrule(campaignRuleId string) (*Campaignru
 // Query Campaign Rule list
 //
 // 
-func (a OutboundApi) GetOutboundCampaignrules(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignruleentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCampaignrules(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignruleentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaignrules"
@@ -2418,7 +2418,7 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int32, pageNumber int32, 
 // Query a list of dialer campaigns.
 //
 // 
-func (a OutboundApi) GetOutboundCampaigns(pageSize int32, pageNumber int32, filterType string, name string, id []string, contactListId string, dncListIds string, distributionQueueId string, edgeGroupId string, callAnalysisResponseSetId string, divisionId []string, sortBy string, sortOrder string) (*Campaignentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCampaigns(pageSize int, pageNumber int, filterType string, name string, id []string, contactListId string, dncListIds string, distributionQueueId string, edgeGroupId string, callAnalysisResponseSetId string, divisionId []string, sortBy string, sortOrder string) (*Campaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns"
@@ -2639,7 +2639,7 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int32, pageNumber int32, filt
 // Query across all types of campaigns by division
 //
 // 
-func (a OutboundApi) GetOutboundCampaignsAll(pageSize int32, pageNumber int32, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaignentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCampaignsAll(pageSize int, pageNumber int, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/all"
@@ -2788,7 +2788,7 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int32, pageNumber int32, i
 // Query across all types of campaigns
 //
 // 
-func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int32, pageNumber int32, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaigndivisionviewentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int, pageNumber int, id []string, name string, divisionId []string, mediaType []string, sortOrder string) (*Commoncampaigndivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/all/divisionviews"
@@ -3006,7 +3006,7 @@ func (a OutboundApi) GetOutboundCampaignsDivisionview(campaignId string) (*Campa
 // Query a list of basic Campaign information objects
 //
 // This returns a simplified version of a Campaign, consisting of name and division.
-func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int32, pageNumber int32, filterType string, name string, id []string, sortBy string, sortOrder string) (*Campaigndivisionviewlisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int, pageNumber int, filterType string, name string, id []string, sortBy string, sortOrder string) (*Campaigndivisionviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/divisionviews"
@@ -3615,7 +3615,7 @@ func (a OutboundApi) GetOutboundContactlistfilter(contactListFilterId string) (*
 // Query Contact list filters
 //
 // 
-func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string, contactListId string) (*Contactlistfilterentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string, contactListId string) (*Contactlistfilterentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlistfilters"
@@ -3776,7 +3776,7 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int32, pageNumber in
 // Query a list of contact lists.
 //
 // 
-func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, id []string, divisionId []string, sortBy string, sortOrder string) (*Contactlistentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, id []string, divisionId []string, sortBy string, sortOrder string) (*Contactlistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists"
@@ -4068,7 +4068,7 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 // Query a list of simplified contact list objects.
 //
 // This return a simplified version of contact lists, consisting of the name, division, column names, phone columns, import status, and size.
-func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, filterType string, name string, id []string, sortBy string, sortOrder string) (*Contactlistdivisionviewlisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, filterType string, name string, id []string, sortBy string, sortOrder string) (*Contactlistdivisionviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/contactlists/divisionviews"
@@ -4488,7 +4488,7 @@ func (a OutboundApi) GetOutboundDnclistImportstatus(dncListId string) (*Importst
 // Query dialer DNC lists
 //
 // 
-func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, dncSourceType string, divisionId []string, sortBy string, sortOrder string) (*Dnclistentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, dncSourceType string, divisionId []string, sortBy string, sortOrder string) (*Dnclistentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists"
@@ -4780,7 +4780,7 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 // Query a list of simplified dnc list objects.
 //
 // This return a simplified version of dnc lists, consisting of the name, division, import status, and size.
-func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, includeSize bool, pageSize int32, pageNumber int32, filterType string, name string, id []string, sortBy string, sortOrder string) (*Dnclistdivisionviewlisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, filterType string, name string, id []string, sortBy string, sortOrder string) (*Dnclistdivisionviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/divisionviews"
@@ -5022,7 +5022,7 @@ func (a OutboundApi) GetOutboundEvent(eventId string) (*Eventlog, *APIResponse, 
 // Query Event Logs
 //
 // 
-func (a OutboundApi) GetOutboundEvents(pageSize int32, pageNumber int32, filterType string, category string, level string, sortBy string, sortOrder string) (*Dialerevententitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundEvents(pageSize int, pageNumber int, filterType string, category string, level string, sortBy string, sortOrder string) (*Dialerevententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/events"
@@ -5309,7 +5309,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignProgress(messagingCampaignId st
 // Query a list of Messaging Campaigns
 //
 // 
-func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int32, pageNumber int32, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string) (*Messagingcampaignentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int, sortBy string, sortOrder string, name string, contactListId string, divisionId []string, varType string, senderSmsPhoneNumber string, id []string) (*Messagingcampaignentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns"
@@ -5563,7 +5563,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 // Query a list of basic Messaging Campaign information objects
 //
 // This returns a listing of simplified Messaging Campaigns, each consisting of id, name, and division.
-func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int32, pageNumber int32, sortOrder string, name string, id []string, senderSmsPhoneNumber string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pageNumber int, sortOrder string, name string, id []string, senderSmsPhoneNumber string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/divisionviews"
@@ -5769,7 +5769,7 @@ func (a OutboundApi) GetOutboundRuleset(ruleSetId string) (*Ruleset, *APIRespons
 // Query a list of Rule Sets.
 //
 // 
-func (a OutboundApi) GetOutboundRulesets(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Rulesetentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundRulesets(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Rulesetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/rulesets"
@@ -6251,7 +6251,7 @@ func (a OutboundApi) GetOutboundSequence(sequenceId string) (*Campaignsequence, 
 // Query a list of dialer campaign sequences.
 //
 // 
-func (a OutboundApi) GetOutboundSequences(pageSize int32, pageNumber int32, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignsequenceentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundSequences(pageSize int, pageNumber int, allowEmptyResult bool, filterType string, name string, sortBy string, sortOrder string) (*Campaignsequenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/sequences"
@@ -6665,7 +6665,7 @@ func (a OutboundApi) PostOutboundAttemptlimits(body Attemptlimits) (*Attemptlimi
 // Retrieves audits for dialer.
 //
 // 
-func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int32, pageNumber int32, sortBy string, sortOrder string, facetsOnly bool) (*Auditsearchresult, *APIResponse, error) {
+func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, pageNumber int, sortBy string, sortOrder string, facetsOnly bool) (*Auditsearchresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/audits"

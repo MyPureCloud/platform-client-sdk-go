@@ -7,19 +7,19 @@ import (
 // Voicemailmailboxinfo
 type Voicemailmailboxinfo struct { 
 	// UsageSizeBytes - The total number of bytes for all voicemail message audio recordings
-	UsageSizeBytes *int64 `json:"usageSizeBytes,omitempty"`
+	UsageSizeBytes *int `json:"usageSizeBytes,omitempty"`
 
 
 	// TotalCount - The total number of voicemail messages
-	TotalCount *int32 `json:"totalCount,omitempty"`
+	TotalCount *int `json:"totalCount,omitempty"`
 
 
 	// UnreadCount - The total number of voicemail messages marked as unread
-	UnreadCount *int32 `json:"unreadCount,omitempty"`
+	UnreadCount *int `json:"unreadCount,omitempty"`
 
 
 	// DeletedCount - The total number of voicemail messages marked as deleted
-	DeletedCount *int32 `json:"deletedCount,omitempty"`
+	DeletedCount *int `json:"deletedCount,omitempty"`
 
 
 	// CreatedDate - The date of the oldest voicemail message. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

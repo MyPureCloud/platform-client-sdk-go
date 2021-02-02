@@ -6,11 +6,11 @@ import (
 // Maxlength
 type Maxlength struct { 
 	// Min - A non-negative integer for a text-based schema field denoting the minimum largest length string the field can contain for a schema instance.
-	Min *int64 `json:"min,omitempty"`
+	Min *int `json:"min,omitempty"`
 
 
 	// Max - A non-negative integer for a text-based schema field denoting the maximum largest string the field can contain for a schema instance.
-	Max *int64 `json:"max,omitempty"`
+	Max *int `json:"max,omitempty"`
 
 }
 

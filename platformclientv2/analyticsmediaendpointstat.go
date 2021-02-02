@@ -18,31 +18,31 @@ type Analyticsmediaendpointstat struct {
 
 
 	// MaxLatencyMs - The maximum latency experienced by any audio stream belonging to this endpoint, in milliseconds
-	MaxLatencyMs *int64 `json:"maxLatencyMs,omitempty"`
+	MaxLatencyMs *int `json:"maxLatencyMs,omitempty"`
 
 
 	// ReceivedPackets - The total number of packets received for all audio streams belonging to this endpoint (includes invalid, duplicate, and discarded packets)
-	ReceivedPackets *int64 `json:"receivedPackets,omitempty"`
+	ReceivedPackets *int `json:"receivedPackets,omitempty"`
 
 
 	// InvalidPackets - The total number of malformed or not RTP packets, unknown payload type, or discarded probation packets for all audio streams belonging to this endpoint
-	InvalidPackets *int64 `json:"invalidPackets,omitempty"`
+	InvalidPackets *int `json:"invalidPackets,omitempty"`
 
 
 	// DiscardedPackets - The total number of packets received too late or too early, jitter queue overrun or underrun, for all audio streams belonging to this endpoint
-	DiscardedPackets *int64 `json:"discardedPackets,omitempty"`
+	DiscardedPackets *int `json:"discardedPackets,omitempty"`
 
 
 	// DuplicatePackets - The total number of packets received with the same sequence number as another one recently received (window of 64 packets), for all audio streams belonging to this endpoint
-	DuplicatePackets *int64 `json:"duplicatePackets,omitempty"`
+	DuplicatePackets *int `json:"duplicatePackets,omitempty"`
 
 
 	// OverrunPackets - The total number of packets for which there was no room in the jitter queue when it was received, for all audio streams belonging to this endpoint (also counted in discarded)
-	OverrunPackets *int64 `json:"overrunPackets,omitempty"`
+	OverrunPackets *int `json:"overrunPackets,omitempty"`
 
 
 	// UnderrunPackets - The total number of packets received after their timestamp/seqnum has been played out, for all audio streams belonging to this endpoint (also counted in discarded)
-	UnderrunPackets *int64 `json:"underrunPackets,omitempty"`
+	UnderrunPackets *int `json:"underrunPackets,omitempty"`
 
 }
 

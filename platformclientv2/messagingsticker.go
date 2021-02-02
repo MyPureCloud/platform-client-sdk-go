@@ -14,11 +14,11 @@ type Messagingsticker struct {
 
 
 	// ProviderStickerId - The sticker Id of the sticker, assigned by the sticker provider.
-	ProviderStickerId *int32 `json:"providerStickerId,omitempty"`
+	ProviderStickerId *int `json:"providerStickerId,omitempty"`
 
 
 	// ProviderPackageId - The package Id of the sticker, assigned by the sticker provider.
-	ProviderPackageId *int32 `json:"providerPackageId,omitempty"`
+	ProviderPackageId *int `json:"providerPackageId,omitempty"`
 
 
 	// PackageName - The package name of the sticker, assigned by the sticker provider.
@@ -34,7 +34,7 @@ type Messagingsticker struct {
 
 
 	// ProviderVersion - The version of the sticker, assigned by the provider.
-	ProviderVersion *int64 `json:"providerVersion,omitempty"`
+	ProviderVersion *int `json:"providerVersion,omitempty"`
 
 
 	// UriLocation

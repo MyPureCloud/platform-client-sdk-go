@@ -13,8 +13,8 @@ type Salesforce struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Certificate
-	Certificate *string `json:"certificate,omitempty"`
+	// Disabled
+	Disabled *bool `json:"disabled,omitempty"`
 
 
 	// IssuerURI
@@ -25,8 +25,12 @@ type Salesforce struct {
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
 
 
-	// Disabled
-	Disabled *bool `json:"disabled,omitempty"`
+	// Certificate
+	Certificate *string `json:"certificate,omitempty"`
+
+
+	// Certificates
+	Certificates *[]string `json:"certificates,omitempty"`
 
 
 	// SelfUri - The URI for this object

@@ -6,11 +6,11 @@ import (
 // Workspacesummary
 type Workspacesummary struct { 
 	// TotalDocumentCount
-	TotalDocumentCount *int64 `json:"totalDocumentCount,omitempty"`
+	TotalDocumentCount *int `json:"totalDocumentCount,omitempty"`
 
 
 	// TotalDocumentByteCount
-	TotalDocumentByteCount *int64 `json:"totalDocumentByteCount,omitempty"`
+	TotalDocumentByteCount *int `json:"totalDocumentByteCount,omitempty"`
 
 }
 

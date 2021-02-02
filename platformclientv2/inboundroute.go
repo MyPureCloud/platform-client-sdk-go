@@ -22,7 +22,7 @@ type Inboundroute struct {
 
 
 	// Priority - The priority to use for routing.
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// Skills - The skills to use for routing.

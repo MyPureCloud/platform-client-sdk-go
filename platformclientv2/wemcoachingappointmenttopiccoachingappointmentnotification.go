@@ -19,7 +19,7 @@ type Wemcoachingappointmenttopiccoachingappointmentnotification struct {
 
 
 	// LengthInMinutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Status
@@ -64,6 +64,10 @@ type Wemcoachingappointmenttopiccoachingappointmentnotification struct {
 
 	// DateCompleted
 	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
+
+
+	// ExternalLinks
+	ExternalLinks *[]Wemcoachingappointmenttopiccoachingappointmentexternallink `json:"externalLinks,omitempty"`
 
 }
 

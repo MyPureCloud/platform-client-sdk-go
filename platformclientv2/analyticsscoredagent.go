@@ -10,7 +10,7 @@ type Analyticsscoredagent struct {
 
 
 	// AgentScore - Assigned agent score for this conversation (0 - 100, higher being better)
-	AgentScore *int32 `json:"agentScore,omitempty"`
+	AgentScore *int `json:"agentScore,omitempty"`
 
 }
 

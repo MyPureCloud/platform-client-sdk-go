@@ -35,15 +35,15 @@ type Calibrationcreate struct {
 
 
 	// AverageScore
-	AverageScore *int32 `json:"averageScore,omitempty"`
+	AverageScore *int `json:"averageScore,omitempty"`
 
 
 	// HighScore
-	HighScore *int32 `json:"highScore,omitempty"`
+	HighScore *int `json:"highScore,omitempty"`
 
 
 	// LowScore
-	LowScore *int32 `json:"lowScore,omitempty"`
+	LowScore *int `json:"lowScore,omitempty"`
 
 
 	// CreatedDate - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

@@ -39,7 +39,7 @@ type Datatableexportjob struct {
 
 
 	// CountRecordsProcessed - The current count of the number of records processed
-	CountRecordsProcessed *int32 `json:"countRecordsProcessed,omitempty"`
+	CountRecordsProcessed *int `json:"countRecordsProcessed,omitempty"`
 
 
 	// SelfUri - The URI for this object

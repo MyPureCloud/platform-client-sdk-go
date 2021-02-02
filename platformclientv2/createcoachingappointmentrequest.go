@@ -19,7 +19,7 @@ type Createcoachingappointmentrequest struct {
 
 
 	// LengthInMinutes - The duration of coaching appointment in minutes.
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// FacilitatorId - The facilitator ID of coaching appointment.

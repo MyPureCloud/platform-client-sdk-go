@@ -14,7 +14,7 @@ type Surveyquestionscore struct {
 
 
 	// Score
-	Score *int32 `json:"score,omitempty"`
+	Score *int `json:"score,omitempty"`
 
 
 	// MarkedNA
@@ -22,7 +22,7 @@ type Surveyquestionscore struct {
 
 
 	// NpsScore
-	NpsScore *int32 `json:"npsScore,omitempty"`
+	NpsScore *int `json:"npsScore,omitempty"`
 
 
 	// NpsTextAnswer

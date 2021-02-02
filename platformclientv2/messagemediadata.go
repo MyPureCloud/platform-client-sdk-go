@@ -22,7 +22,7 @@ type Messagemediadata struct {
 
 
 	// ContentLengthBytes - The optional content length of the the media object, in bytes.
-	ContentLengthBytes *int32 `json:"contentLengthBytes,omitempty"`
+	ContentLengthBytes *int `json:"contentLengthBytes,omitempty"`
 
 
 	// UploadUrl - The URL returned to upload an attachment

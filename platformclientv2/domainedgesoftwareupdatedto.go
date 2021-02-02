@@ -11,7 +11,7 @@ type Domainedgesoftwareupdatedto struct {
 
 
 	// MaxDownloadRate
-	MaxDownloadRate *int32 `json:"maxDownloadRate,omitempty"`
+	MaxDownloadRate *int `json:"maxDownloadRate,omitempty"`
 
 
 	// DownloadStartTime - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -39,7 +39,7 @@ type Domainedgesoftwareupdatedto struct {
 
 
 	// CallDrainingWaitTimeSeconds
-	CallDrainingWaitTimeSeconds *int64 `json:"callDrainingWaitTimeSeconds,omitempty"`
+	CallDrainingWaitTimeSeconds *int `json:"callDrainingWaitTimeSeconds,omitempty"`
 
 
 	// Current

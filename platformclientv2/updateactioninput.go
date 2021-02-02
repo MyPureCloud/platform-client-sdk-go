@@ -18,7 +18,7 @@ type Updateactioninput struct {
 
 
 	// Version - Version of this action
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 }
 

@@ -39,11 +39,11 @@ type Externalorganization struct {
 
 
 	// EmployeeCount
-	EmployeeCount *int64 `json:"employeeCount,omitempty"`
+	EmployeeCount *int `json:"employeeCount,omitempty"`
 
 
 	// Revenue
-	Revenue *int64 `json:"revenue,omitempty"`
+	Revenue *int `json:"revenue,omitempty"`
 
 
 	// Tags

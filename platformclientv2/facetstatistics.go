@@ -7,7 +7,7 @@ import (
 // Facetstatistics
 type Facetstatistics struct { 
 	// Count
-	Count *int64 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 
 	// Min

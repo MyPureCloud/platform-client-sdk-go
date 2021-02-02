@@ -19,7 +19,7 @@ type Conversationemaileventtopicwrapup struct {
 
 
 	// DurationSeconds
-	DurationSeconds *int32 `json:"durationSeconds,omitempty"`
+	DurationSeconds *int `json:"durationSeconds,omitempty"`
 
 
 	// EndTime

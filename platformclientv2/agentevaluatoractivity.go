@@ -22,11 +22,11 @@ type Agentevaluatoractivity struct {
 
 
 	// NumEvaluations
-	NumEvaluations *int32 `json:"numEvaluations,omitempty"`
+	NumEvaluations *int `json:"numEvaluations,omitempty"`
 
 
 	// AverageEvaluationScore
-	AverageEvaluationScore *int32 `json:"averageEvaluationScore,omitempty"`
+	AverageEvaluationScore *int `json:"averageEvaluationScore,omitempty"`
 
 
 	// SelfUri - The URI for this object

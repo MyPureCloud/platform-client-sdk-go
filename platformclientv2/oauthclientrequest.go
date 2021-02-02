@@ -11,7 +11,7 @@ type Oauthclientrequest struct {
 
 
 	// AccessTokenValiditySeconds - The number of seconds, between 5mins and 48hrs, until tokens created with this client expire. If this field is omitted, a default of 24 hours will be applied.
-	AccessTokenValiditySeconds *int64 `json:"accessTokenValiditySeconds,omitempty"`
+	AccessTokenValiditySeconds *int `json:"accessTokenValiditySeconds,omitempty"`
 
 
 	// Description

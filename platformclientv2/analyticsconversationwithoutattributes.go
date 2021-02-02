@@ -38,6 +38,10 @@ type Analyticsconversationwithoutattributes struct {
 	Surveys *[]Analyticssurvey `json:"surveys,omitempty"`
 
 
+	// Resolutions - Resolutions tied to this conversation
+	Resolutions *[]Analyticsresolution `json:"resolutions,omitempty"`
+
+
 	// DivisionIds - Identifiers of divisions associated with this conversation
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 

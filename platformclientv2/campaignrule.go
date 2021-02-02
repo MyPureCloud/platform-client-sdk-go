@@ -23,7 +23,7 @@ type Campaignrule struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// CampaignRuleEntities - The list of entities that this CampaignRule monitors.

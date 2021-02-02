@@ -6,19 +6,19 @@ import (
 // Wfmintradaydataupdatetopicintradayhistoricalqueuedata
 type Wfmintradaydataupdatetopicintradayhistoricalqueuedata struct { 
 	// Offered
-	Offered *int32 `json:"offered,omitempty"`
+	Offered *int `json:"offered,omitempty"`
 
 
 	// Completed
-	Completed *int32 `json:"completed,omitempty"`
+	Completed *int `json:"completed,omitempty"`
 
 
 	// Answered
-	Answered *int32 `json:"answered,omitempty"`
+	Answered *int `json:"answered,omitempty"`
 
 
 	// Abandoned
-	Abandoned *int32 `json:"abandoned,omitempty"`
+	Abandoned *int `json:"abandoned,omitempty"`
 
 
 	// AverageTalkTimeSeconds

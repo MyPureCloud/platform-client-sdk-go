@@ -34,7 +34,7 @@ type Surveyquestion struct {
 
 
 	// MaxResponseCharacters - How many characters are allowed in the text response to this question. Used by NPS and Free Text question types.
-	MaxResponseCharacters *int32 `json:"maxResponseCharacters,omitempty"`
+	MaxResponseCharacters *int `json:"maxResponseCharacters,omitempty"`
 
 
 	// ExplanationPrompt - Prompt for details explaining the chosen NPS score. Used by NPS questions.

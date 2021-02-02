@@ -23,7 +23,7 @@ type Campaignsequence struct {
 
 
 	// Version - Required for updates, must match the version number of the most recent update
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Campaigns - The ordered list of Campaigns that this CampaignSequence will run.
@@ -31,7 +31,7 @@ type Campaignsequence struct {
 
 
 	// CurrentCampaign - A zero-based index indicating which Campaign this CampaignSequence is currently on.
-	CurrentCampaign *int32 `json:"currentCampaign,omitempty"`
+	CurrentCampaign *int `json:"currentCampaign,omitempty"`
 
 
 	// Status - The current status of the CampaignSequence. A CampaignSequence can be turned 'on' or 'off'.

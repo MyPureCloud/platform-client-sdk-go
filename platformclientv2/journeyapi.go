@@ -170,7 +170,7 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 // Retrieve all action targets.
 //
 // 
-func (a JourneyApi) GetJourneyActiontargets(pageNumber int32, pageSize int32) (*Actiontargetlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Actiontargetlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontargets"
@@ -328,7 +328,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 // Retrieve all segments.
 //
 // 
-func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int32, pageNumber int32, isActive bool) (*Segmentlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber int, isActive bool, segmentIds []string) (*Segmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments"
@@ -403,6 +403,18 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int32, pageNumber
 	} else {
 		queryParams["isActive"] = a.Configuration.APIClient.ParameterToString(isActive, collectionFormat)
 	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range segmentIds {
+			queryParams["segmentIds"] = value
+		}
+	} else {
+		queryParams["segmentIds"] = a.Configuration.APIClient.ParameterToString(segmentIds, collectionFormat)
+	}
+	
 	
 	
 

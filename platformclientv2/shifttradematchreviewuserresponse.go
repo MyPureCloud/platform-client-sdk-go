@@ -6,19 +6,19 @@ import (
 // Shifttradematchreviewuserresponse
 type Shifttradematchreviewuserresponse struct { 
 	// WeeklyMinimumPaidMinutes - The minimum weekly paid minutes for this user per the work plan tied to the agent schedule
-	WeeklyMinimumPaidMinutes *int32 `json:"weeklyMinimumPaidMinutes,omitempty"`
+	WeeklyMinimumPaidMinutes *int `json:"weeklyMinimumPaidMinutes,omitempty"`
 
 
 	// WeeklyMaximumPaidMinutes - The maximum weekly paid minutes for this user per the work plan tied to the agent schedule
-	WeeklyMaximumPaidMinutes *int32 `json:"weeklyMaximumPaidMinutes,omitempty"`
+	WeeklyMaximumPaidMinutes *int `json:"weeklyMaximumPaidMinutes,omitempty"`
 
 
 	// PreTradeSchedulePaidMinutes - The paid minutes on the week schedule for this user prior to the shift trade
-	PreTradeSchedulePaidMinutes *int32 `json:"preTradeSchedulePaidMinutes,omitempty"`
+	PreTradeSchedulePaidMinutes *int `json:"preTradeSchedulePaidMinutes,omitempty"`
 
 
 	// PostTradeSchedulePaidMinutes - The paid minutes on the week schedule for this user if the shift trade is approved
-	PostTradeSchedulePaidMinutes *int32 `json:"postTradeSchedulePaidMinutes,omitempty"`
+	PostTradeSchedulePaidMinutes *int `json:"postTradeSchedulePaidMinutes,omitempty"`
 
 
 	// PostTradeNewShift - Preview of what the shift will look like for the opposite side of this trade after the match is approved

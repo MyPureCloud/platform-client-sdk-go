@@ -34,7 +34,7 @@ type Locationdefinition struct {
 
 
 	// Version - Current version of the location entity, value to be supplied should be retrieved by a GET or on create/update response
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Path - A list of ancestor IDs in order

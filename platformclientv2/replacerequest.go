@@ -6,7 +6,7 @@ import (
 // Replacerequest
 type Replacerequest struct { 
 	// ChangeNumber
-	ChangeNumber *int32 `json:"changeNumber,omitempty"`
+	ChangeNumber *int `json:"changeNumber,omitempty"`
 
 
 	// Name

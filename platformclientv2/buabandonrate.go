@@ -10,7 +10,7 @@ type Buabandonrate struct {
 
 
 	// Percent - Abandon rate percent goal. Required if include == true
-	Percent *int32 `json:"percent,omitempty"`
+	Percent *int `json:"percent,omitempty"`
 
 }
 

@@ -14,7 +14,7 @@ type Wfmbuscheduletopicbuschedulegenerationresultsummary struct {
 
 
 	// MessageCount
-	MessageCount *int32 `json:"messageCount,omitempty"`
+	MessageCount *int `json:"messageCount,omitempty"`
 
 }
 

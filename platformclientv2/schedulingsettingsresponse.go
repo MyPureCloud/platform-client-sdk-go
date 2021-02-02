@@ -6,7 +6,7 @@ import (
 // Schedulingsettingsresponse - Scheduling Settings
 type Schedulingsettingsresponse struct { 
 	// MaxOccupancyPercentForDeferredWork - Max occupancy percent for deferred work
-	MaxOccupancyPercentForDeferredWork *int32 `json:"maxOccupancyPercentForDeferredWork,omitempty"`
+	MaxOccupancyPercentForDeferredWork *int `json:"maxOccupancyPercentForDeferredWork,omitempty"`
 
 
 	// DefaultShrinkagePercent - Default shrinkage percent for scheduling

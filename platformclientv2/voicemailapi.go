@@ -230,7 +230,7 @@ func (a VoicemailApi) GetVoicemailGroupMailbox(groupId string) (*Voicemailmailbo
 // List voicemail messages
 //
 // 
-func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int32, pageNumber int32) (*Voicemailmessageentitylisting, *APIResponse, error) {
+func (a VoicemailApi) GetVoicemailGroupMessages(groupId string, pageSize int, pageNumber int) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/groups/{groupId}/messages"
@@ -520,7 +520,7 @@ func (a VoicemailApi) GetVoicemailMeMailbox() (*Voicemailmailboxinfo, *APIRespon
 // List voicemail messages
 //
 // 
-func (a VoicemailApi) GetVoicemailMeMessages(pageSize int32, pageNumber int32) (*Voicemailmessageentitylisting, *APIResponse, error) {
+func (a VoicemailApi) GetVoicemailMeMessages(pageSize int, pageNumber int) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/me/messages"
@@ -990,7 +990,7 @@ func (a VoicemailApi) GetVoicemailPolicy() (*Voicemailorganizationpolicy, *APIRe
 // List voicemail messages
 //
 // 
-func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int32, pageNumber int32) (*Voicemailmessageentitylisting, *APIResponse, error) {
+func (a VoicemailApi) GetVoicemailQueueMessages(queueId string, pageSize int, pageNumber int) (*Voicemailmessageentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/voicemail/queues/{queueId}/messages"

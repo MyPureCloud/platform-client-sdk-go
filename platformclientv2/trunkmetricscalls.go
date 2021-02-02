@@ -6,11 +6,11 @@ import (
 // Trunkmetricscalls
 type Trunkmetricscalls struct { 
 	// InboundCallCount
-	InboundCallCount *int32 `json:"inboundCallCount,omitempty"`
+	InboundCallCount *int `json:"inboundCallCount,omitempty"`
 
 
 	// OutboundCallCount
-	OutboundCallCount *int32 `json:"outboundCallCount,omitempty"`
+	OutboundCallCount *int `json:"outboundCallCount,omitempty"`
 
 }
 

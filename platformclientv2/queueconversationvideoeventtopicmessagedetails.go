@@ -19,7 +19,7 @@ type Queueconversationvideoeventtopicmessagedetails struct {
 
 
 	// MessageSegmentCount
-	MessageSegmentCount *int32 `json:"messageSegmentCount,omitempty"`
+	MessageSegmentCount *int `json:"messageSegmentCount,omitempty"`
 
 
 	// Media

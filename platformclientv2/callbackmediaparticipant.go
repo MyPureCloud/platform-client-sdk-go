@@ -87,7 +87,7 @@ type Callbackmediaparticipant struct {
 
 
 	// WrapupTimeoutMs - The amount of time the participant has to complete wrap-up.
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// WrapupSkipped - Value is true when the participant has skipped wrap-up.
@@ -95,7 +95,7 @@ type Callbackmediaparticipant struct {
 
 
 	// AlertingTimeoutMs - Specifies how long the agent has to answer an interaction before being marked as not responding.
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// Provider - The source provider for the communication.
@@ -163,7 +163,7 @@ type Callbackmediaparticipant struct {
 
 
 	// TimeoutSeconds - Duration in seconds before the callback will be auto-dialed.
-	TimeoutSeconds *int32 `json:"timeoutSeconds,omitempty"`
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 
 	// AutomatedCallbackConfigId - The id of the config for automatically placing the callback (and handling the disposition). If absent, the callback will not be placed automatically but routed to an agent as per normal.

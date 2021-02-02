@@ -22,7 +22,7 @@ type Queueconversationsocialexpressioneventtopicattachment struct {
 
 
 	// ContentLength
-	ContentLength *int32 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// AdditionalProperties

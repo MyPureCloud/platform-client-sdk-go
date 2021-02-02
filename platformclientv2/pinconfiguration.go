@@ -6,11 +6,11 @@ import (
 // Pinconfiguration
 type Pinconfiguration struct { 
 	// MinimumLength
-	MinimumLength *int32 `json:"minimumLength,omitempty"`
+	MinimumLength *int `json:"minimumLength,omitempty"`
 
 
 	// MaximumLength
-	MaximumLength *int32 `json:"maximumLength,omitempty"`
+	MaximumLength *int `json:"maximumLength,omitempty"`
 
 }
 

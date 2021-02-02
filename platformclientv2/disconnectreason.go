@@ -10,7 +10,7 @@ type Disconnectreason struct {
 
 
 	// Code - Protocol specific reason code. See the Q.850 and SIP specs.
-	Code *int32 `json:"code,omitempty"`
+	Code *int `json:"code,omitempty"`
 
 
 	// Phrase - Human readable English description of the disconnect reason.

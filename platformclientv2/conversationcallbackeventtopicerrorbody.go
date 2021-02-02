@@ -6,7 +6,7 @@ import (
 // Conversationcallbackeventtopicerrorbody
 type Conversationcallbackeventtopicerrorbody struct { 
 	// Status
-	Status *int32 `json:"status,omitempty"`
+	Status *int `json:"status,omitempty"`
 
 
 	// Code

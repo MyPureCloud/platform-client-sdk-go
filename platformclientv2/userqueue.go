@@ -39,7 +39,7 @@ type Userqueue struct {
 
 
 	// MemberCount - The number of users in the queue.
-	MemberCount *int32 `json:"memberCount,omitempty"`
+	MemberCount *int `json:"memberCount,omitempty"`
 
 
 	// MediaSettings - The media settings for the queue. Valid key values: CALL, CALLBACK, CHAT, EMAIL, MESSAGE, SOCIAL_EXPRESSION, VIDEO_COMM

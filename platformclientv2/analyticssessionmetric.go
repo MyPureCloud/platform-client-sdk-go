@@ -11,7 +11,7 @@ type Analyticssessionmetric struct {
 
 
 	// Value - The metric value
-	Value *int64 `json:"value,omitempty"`
+	Value *int `json:"value,omitempty"`
 
 
 	// EmitDate - Metric emission date. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

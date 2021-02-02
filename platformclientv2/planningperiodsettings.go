@@ -7,7 +7,7 @@ import (
 // Planningperiodsettings
 type Planningperiodsettings struct { 
 	// WeekCount - Planning period length in weeks
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// StartDate - Start date of the planning period in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd

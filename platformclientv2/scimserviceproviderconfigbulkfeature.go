@@ -10,11 +10,11 @@ type Scimserviceproviderconfigbulkfeature struct {
 
 
 	// MaxOperations - The maximum number of operations for each bulk request.
-	MaxOperations *int32 `json:"maxOperations,omitempty"`
+	MaxOperations *int `json:"maxOperations,omitempty"`
 
 
 	// MaxPayloadSize - The maximum payload size.
-	MaxPayloadSize *int32 `json:"maxPayloadSize,omitempty"`
+	MaxPayloadSize *int `json:"maxPayloadSize,omitempty"`
 
 }
 

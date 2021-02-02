@@ -35,7 +35,7 @@ type Adhocrecordingtopicrecordingdatav2 struct {
 
 
 	// ContentLength
-	ContentLength *int32 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// Filename
@@ -43,7 +43,7 @@ type Adhocrecordingtopicrecordingdatav2 struct {
 
 
 	// ChangeNumber
-	ChangeNumber *int32 `json:"changeNumber,omitempty"`
+	ChangeNumber *int `json:"changeNumber,omitempty"`
 
 
 	// DateUploaded
@@ -63,7 +63,7 @@ type Adhocrecordingtopicrecordingdatav2 struct {
 
 
 	// DurationMillieconds
-	DurationMillieconds *int32 `json:"durationMillieconds,omitempty"`
+	DurationMillieconds *int `json:"durationMillieconds,omitempty"`
 
 
 	// Conversation

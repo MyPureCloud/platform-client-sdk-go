@@ -15,7 +15,7 @@ type Document struct {
 
 
 	// ChangeNumber
-	ChangeNumber *int32 `json:"changeNumber,omitempty"`
+	ChangeNumber *int `json:"changeNumber,omitempty"`
 
 
 	// DateCreated - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -51,7 +51,7 @@ type Document struct {
 
 
 	// ContentLength
-	ContentLength *int64 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// SystemType
@@ -63,7 +63,7 @@ type Document struct {
 
 
 	// PageCount
-	PageCount *int64 `json:"pageCount,omitempty"`
+	PageCount *int `json:"pageCount,omitempty"`
 
 
 	// Read

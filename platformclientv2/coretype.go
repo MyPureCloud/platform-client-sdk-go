@@ -15,7 +15,7 @@ type Coretype struct {
 
 
 	// Version - A positive integer denoting the core type's version
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// DateCreated - The date the core type was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

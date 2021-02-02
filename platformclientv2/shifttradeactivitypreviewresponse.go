@@ -11,7 +11,7 @@ type Shifttradeactivitypreviewresponse struct {
 
 
 	// LengthMinutes - The length in minutes of this activity
-	LengthMinutes *int32 `json:"lengthMinutes,omitempty"`
+	LengthMinutes *int `json:"lengthMinutes,omitempty"`
 
 
 	// ActivityCodeId - The ID of the activity code for this activity

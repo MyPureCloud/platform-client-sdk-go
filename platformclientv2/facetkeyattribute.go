@@ -14,7 +14,7 @@ type Facetkeyattribute struct {
 
 
 	// Count
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

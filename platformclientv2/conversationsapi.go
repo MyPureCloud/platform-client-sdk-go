@@ -877,7 +877,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJob(jobId string) (*As
 // Fetch a page of results for an async query
 //
 // 
-func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int32) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
+func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId string, cursor string, pageSize int) (*Analyticsconversationasyncqueryresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/analytics/conversations/details/jobs/{jobId}/results"
@@ -2093,7 +2093,7 @@ func (a ConversationsApi) GetConversationsCalls() (*Callconversationentitylistin
 // Get call history
 //
 // 
-func (a ConversationsApi) GetConversationsCallsHistory(pageSize int32, pageNumber int32, interval string, expand []string) (*Callhistoryconversationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsCallsHistory(pageSize int, pageNumber int, interval string, expand []string) (*Callhistoryconversationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/calls/history"
@@ -2413,7 +2413,7 @@ func (a ConversationsApi) GetConversationsChatMessage(conversationId string, mes
 // Get the messages of a chat conversation.
 //
 // The current user must be involved with the conversation to get its messages.
-func (a ConversationsApi) GetConversationsChatMessages(conversationId string, after string, before string, sortOrder string, maxResults int32) (*Webchatmessageentitylist, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsChatMessages(conversationId string, after string, before string, sortOrder string, maxResults int) (*Webchatmessageentitylist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/chats/{conversationId}/messages"
@@ -4079,7 +4079,7 @@ func (a ConversationsApi) GetConversationsMessagingFacebookApp() (*Facebookappcr
 // Get a list of Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int32, pageNumber int32) (*Messagingintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pageNumber int) (*Messagingintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations"
@@ -4168,7 +4168,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int32, 
 // Get a list of Facebook Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize int32, pageNumber int32) (*Facebookintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize int, pageNumber int) (*Facebookintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/facebook"
@@ -4326,7 +4326,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrati
 // Get a list of LINE messenger Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int32, pageNumber int32) (*Lineintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int, pageNumber int) (*Lineintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/line"
@@ -4484,7 +4484,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId
 // Get a list of Twitter Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize int32, pageNumber int32) (*Twitterintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize int, pageNumber int) (*Twitterintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/twitter"
@@ -4642,7 +4642,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegratio
 // Get a list of WhatsApp Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize int32, pageNumber int32) (*Whatsappintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize int, pageNumber int) (*Whatsappintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/whatsapp"
@@ -4800,7 +4800,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrati
 // Get a list of Messaging Stickers
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string, pageSize int32, pageNumber int32) (*Messagingstickerentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string, pageSize int, pageNumber int) (*Messagingstickerentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/stickers/{messengerType}"

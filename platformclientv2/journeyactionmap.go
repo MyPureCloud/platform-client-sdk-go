@@ -10,7 +10,7 @@ type Journeyactionmap struct {
 
 
 	// Version - The version number of the actionMap in the Journey System at the time this action was triggered
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 }
 

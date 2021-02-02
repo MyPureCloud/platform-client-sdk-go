@@ -22,7 +22,7 @@ type Dialercampaignprogresseventcampaignprogress struct {
 
 
 	// Percentage
-	Percentage *int32 `json:"percentage,omitempty"`
+	Percentage *int `json:"percentage,omitempty"`
 
 
 	// AdditionalProperties

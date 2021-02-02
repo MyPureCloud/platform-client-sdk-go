@@ -10,7 +10,7 @@ type Wemlearningassignmentruleruntopiclearningassignmentrulerunnotification stru
 
 
 	// Total
-	Total *int32 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 }
 

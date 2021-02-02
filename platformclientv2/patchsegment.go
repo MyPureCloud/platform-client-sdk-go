@@ -19,7 +19,7 @@ type Patchsegment struct {
 
 
 	// Version - The version of the segment.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// Description - A description of the segment.
@@ -40,6 +40,10 @@ type Patchsegment struct {
 
 	// Journey - The pattern of rules defining the segment.
 	Journey *Journey `json:"journey,omitempty"`
+
+
+	// AssignmentExpirationDays - Time, in days, from when the segment is assigned until it is automatically unassigned.
+	AssignmentExpirationDays *int `json:"assignmentExpirationDays,omitempty"`
 
 
 	// SelfUri - The URI for this object

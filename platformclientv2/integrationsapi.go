@@ -302,7 +302,7 @@ func (a IntegrationsApi) DeleteIntegrationsCredential(credentialId string) (*API
 // Get integration.
 //
 // 
-func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string) (*Integration, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}"
@@ -514,7 +514,7 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 // List integrations
 //
 // 
-func (a IntegrationsApi) GetIntegrations(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string) (*Integrationentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations"
@@ -1210,7 +1210,7 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 // Retrieves all actions associated with filters passed in via query param.
 //
 // 
-func (a IntegrationsApi) GetIntegrationsActions(pageSize int32, pageNumber int32, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions"
@@ -1395,7 +1395,7 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int32, pageNumber int32
 // Retrieves all categories of available Actions
 //
 // 
-func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int32, pageNumber int32, nextPage string, previousPage string, sortBy string, sortOrder string, secure string) (*Categoryentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, secure string) (*Categoryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/categories"
@@ -1544,7 +1544,7 @@ func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int32, pageNu
 // Retrieves all action drafts associated with the filters passed in via query param.
 //
 // 
-func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int32, pageNumber int32, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/drafts"
@@ -1729,7 +1729,7 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int32, pageNumber
 // List permitted client app integrations for the logged in user
 //
 // 
-func (a IntegrationsApi) GetIntegrationsClientapps(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string) (*Clientappentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsClientapps(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Clientappentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/clientapps"
@@ -1935,7 +1935,7 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 // List multiple sets of credentials
 //
 // 
-func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int32, pageSize int32) (*Credentialinfolisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int) (*Credentialinfolisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/credentials"
@@ -2087,7 +2087,7 @@ func (a IntegrationsApi) GetIntegrationsCredentialsTypes() (*Credentialtypelisti
 // List all events
 //
 // 
-func (a IntegrationsApi) GetIntegrationsEventlog(pageSize int32, pageNumber int32, sortBy string, sortOrder string, entityId string) (*Integrationevententitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsEventlog(pageSize int, pageNumber int, sortBy string, sortOrder string, entityId string) (*Integrationevententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/eventlog"
@@ -2350,7 +2350,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 // Get a list of Dialogflow agents in the customers&#39; Google accounts
 //
 // 
-func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int32, pageSize int32, name string) (*Dialogflowagentsummaryentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, pageSize int, name string) (*Dialogflowagentsummaryentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/dialogflow/agents"
@@ -2520,7 +2520,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 // Get a list of aliases for a bot in the customer&#39;s AWS accounts
 //
 // 
-func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, pageNumber int32, pageSize int32, status string, name string) (*Lexbotaliasentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, pageNumber int, pageSize int, status string, name string) (*Lexbotaliasentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lex/bot/{botId}/aliases"
@@ -2639,7 +2639,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 // Get a list of Lex bots in the customers&#39; AWS accounts
 //
 // 
-func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int32, pageSize int32, name string) (*Lexbotentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize int, name string) (*Lexbotentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/lex/bots"
@@ -2898,7 +2898,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 // Get a list of voices for a TTS engine
 //
 // 
-func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, pageNumber int32, pageSize int32) (*Ttsvoiceentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, pageNumber int, pageSize int) (*Ttsvoiceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/tts/engines/{engineId}/voices"
@@ -2993,7 +2993,7 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 // Get a list of TTS engines enabled for org
 //
 // 
-func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int32, pageSize int32, includeVoices bool, name string, language string) (*Ttsengineentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int, pageSize int, includeVoices bool, name string, language string) (*Ttsengineentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/speech/tts/engines"
@@ -3325,7 +3325,7 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 // List integration types
 //
 // 
-func (a IntegrationsApi) GetIntegrationsTypes(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string) (*Integrationtypeentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integrationtypeentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/types"
@@ -3462,7 +3462,7 @@ func (a IntegrationsApi) GetIntegrationsTypes(pageSize int32, pageNumber int32, 
 // List permitted user app integrations for the logged in user
 //
 // 
-func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, appHost string) (*Userappentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, appHost string) (*Userappentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/userapps"
@@ -3611,7 +3611,7 @@ func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int32, pageNumber int3
 // Update an integration.
 //
 // 
-func (a IntegrationsApi) PatchIntegration(integrationId string, body Integration, pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string) (*Integration, *APIResponse, error) {
+func (a IntegrationsApi) PatchIntegration(integrationId string, body Integration, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string) (*Integration, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/{integrationId}"

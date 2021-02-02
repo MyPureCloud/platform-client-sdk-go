@@ -18,11 +18,11 @@ type Domainnetworkroute struct {
 
 
 	// Metric - The metric being used for route. Lower values will have a higher priority.
-	Metric *int32 `json:"metric,omitempty"`
+	Metric *int `json:"metric,omitempty"`
 
 
 	// Family - The address family for this route.
-	Family *int32 `json:"family,omitempty"`
+	Family *int `json:"family,omitempty"`
 
 }
 

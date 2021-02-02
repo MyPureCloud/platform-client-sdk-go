@@ -19,7 +19,7 @@ type Numberplan struct {
 
 
 	// Version - The current version of the resource.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -59,7 +59,7 @@ type Numberplan struct {
 
 
 	// Priority
-	Priority *int32 `json:"priority,omitempty"`
+	Priority *int `json:"priority,omitempty"`
 
 
 	// Numbers

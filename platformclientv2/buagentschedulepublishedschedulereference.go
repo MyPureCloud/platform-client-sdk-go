@@ -15,7 +15,7 @@ type Buagentschedulepublishedschedulereference struct {
 
 
 	// WeekCount - The number of weeks encompassed by the schedule
-	WeekCount *int32 `json:"weekCount,omitempty"`
+	WeekCount *int `json:"weekCount,omitempty"`
 
 
 	// SelfUri - The URI for this object

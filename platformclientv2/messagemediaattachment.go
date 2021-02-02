@@ -14,7 +14,7 @@ type Messagemediaattachment struct {
 
 
 	// ContentLength - The optional content length of the the media object, in bytes.
-	ContentLength *int64 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// Name

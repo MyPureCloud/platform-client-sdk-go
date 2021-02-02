@@ -10,7 +10,7 @@ type Scoredagent struct {
 
 
 	// Score - Agent's score for the current conversation, from 0 - 100, higher being better
-	Score *int32 `json:"score,omitempty"`
+	Score *int `json:"score,omitempty"`
 
 }
 

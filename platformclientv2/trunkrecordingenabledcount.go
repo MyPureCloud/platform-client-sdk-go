@@ -6,11 +6,11 @@ import (
 // Trunkrecordingenabledcount
 type Trunkrecordingenabledcount struct { 
 	// EnabledCount - The amount of trunks that have recording enabled
-	EnabledCount *int32 `json:"enabledCount,omitempty"`
+	EnabledCount *int `json:"enabledCount,omitempty"`
 
 
 	// DisabledCount - The amount of trunks that do not have recording enabled
-	DisabledCount *int32 `json:"disabledCount,omitempty"`
+	DisabledCount *int `json:"disabledCount,omitempty"`
 
 }
 

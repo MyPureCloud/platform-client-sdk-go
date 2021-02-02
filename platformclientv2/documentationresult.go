@@ -7,11 +7,11 @@ import (
 // Documentationresult
 type Documentationresult struct { 
 	// Id - The globally unique identifier for the object.
-	Id *int32 `json:"id,omitempty"`
+	Id *int `json:"id,omitempty"`
 
 
 	// Categories - The category of the documentation entity. Will be returned in responses for certain entities.
-	Categories *[]int32 `json:"categories,omitempty"`
+	Categories *[]int `json:"categories,omitempty"`
 
 
 	// Description - The description of the documentation entity. Will be returned in responses for certain entities.
@@ -39,7 +39,7 @@ type Documentationresult struct {
 
 
 	// Service - The service of the documentation entity. Will be returned in responses for certain entities.
-	Service *[]int32 `json:"service,omitempty"`
+	Service *[]int `json:"service,omitempty"`
 
 
 	// Slug - The slug of the documentation entity. Will be returned in responses for certain entities.
@@ -55,35 +55,35 @@ type Documentationresult struct {
 
 
 	// FacetFeature - The facet feature of the documentation entity. Will be returned in responses for certain entities.
-	FacetFeature *[]int32 `json:"facet_feature,omitempty"`
+	FacetFeature *[]int `json:"facet_feature,omitempty"`
 
 
 	// FacetRole - The facet role of the documentation entity. Will be returned in responses for certain entities.
-	FacetRole *[]int32 `json:"facet_role,omitempty"`
+	FacetRole *[]int `json:"facet_role,omitempty"`
 
 
 	// FacetService - The facet service of the documentation entity. Will be returned in responses for certain entities.
-	FacetService *[]int32 `json:"facet_service,omitempty"`
+	FacetService *[]int `json:"facet_service,omitempty"`
 
 
 	// FaqCategories - The faq categories of the documentation entity. Will be returned in responses for certain entities.
-	FaqCategories *[]int32 `json:"faq_categories,omitempty"`
+	FaqCategories *[]int `json:"faq_categories,omitempty"`
 
 
 	// ReleasenoteCategory - The releasenote category of the documentation entity. Will be returned in responses for certain entities.
-	ReleasenoteCategory *[]int32 `json:"releasenote_category,omitempty"`
+	ReleasenoteCategory *[]int `json:"releasenote_category,omitempty"`
 
 
 	// ReleasenoteTag - The releasenote tag of the documentation entity. Will be returned in responses for certain entities.
-	ReleasenoteTag *[]int32 `json:"releasenote_tag,omitempty"`
+	ReleasenoteTag *[]int `json:"releasenote_tag,omitempty"`
 
 
 	// ServiceArea - The service area of the documentation entity. Will be returned in responses for certain entities.
-	ServiceArea *[]int32 `json:"service-area,omitempty"`
+	ServiceArea *[]int `json:"service-area,omitempty"`
 
 
 	// VideoCategories - The video categories of the documentation entity. Will be returned in responses for certain entities.
-	VideoCategories *[]int32 `json:"video_categories,omitempty"`
+	VideoCategories *[]int `json:"video_categories,omitempty"`
 
 }
 

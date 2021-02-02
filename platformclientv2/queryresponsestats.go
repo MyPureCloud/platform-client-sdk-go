@@ -6,7 +6,7 @@ import (
 // Queryresponsestats
 type Queryresponsestats struct { 
 	// Count - The count for this metric
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

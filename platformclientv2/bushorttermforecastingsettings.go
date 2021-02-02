@@ -6,7 +6,7 @@ import (
 // Bushorttermforecastingsettings
 type Bushorttermforecastingsettings struct { 
 	// DefaultHistoryWeeks - The number of historical weeks to consider when creating a forecast. This setting is only used for legacy weighted average forecasts
-	DefaultHistoryWeeks *int32 `json:"defaultHistoryWeeks,omitempty"`
+	DefaultHistoryWeeks *int `json:"defaultHistoryWeeks,omitempty"`
 
 }
 

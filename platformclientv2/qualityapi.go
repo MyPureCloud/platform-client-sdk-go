@@ -556,7 +556,7 @@ func (a QualityApi) DeleteQualityKeywordsets(ids string) (*APIResponse, error) {
 // Gets a list of Agent Activities
 //
 // Including the number of evaluations and average evaluation score
-func (a QualityApi) GetQualityAgentsActivity(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, agentUserId []string, evaluatorUserId string, name string, group string) (*Agentactivityentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, agentUserId []string, evaluatorUserId string, name string, group string) (*Agentactivityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/agents/activity"
@@ -860,7 +860,7 @@ func (a QualityApi) GetQualityCalibration(calibrationId string, calibratorId str
 // Get the list of calibrations
 //
 // 
-func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, startTime time.Time, endTime time.Time) (*Calibrationentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, startTime time.Time, endTime time.Time) (*Calibrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/calibrations"
@@ -1050,7 +1050,7 @@ func (a QualityApi) GetQualityCalibrations(calibratorId string, pageSize int32, 
 // Get audits for conversation or recording
 //
 // Different permissions are required for viewing different resource audit entries.  The quality:evaluation:viewAudit permission is required to view evaluation audits, the recording:recording:viewAudit permission is required to view recording audits, and so on.
-func (a QualityApi) GetQualityConversationAudits(conversationId string, pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, recordingId string, entityType string) (*Qualityauditpage, *APIResponse, error) {
+func (a QualityApi) GetQualityConversationAudits(conversationId string, pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, recordingId string, entityType string) (*Qualityauditpage, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/conversations/{conversationId}/audits"
@@ -1375,7 +1375,7 @@ func (a QualityApi) GetQualityConversationSurveys(conversationId string) ([]Surv
 // Queries Evaluations and returns a paged list
 //
 // Query params must include one of conversationId, evaluatorUserId, or agentUserId
-func (a QualityApi) GetQualityEvaluationsQuery(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, agentUserId string, evaluatorUserId string, queueId string, startTime string, endTime string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int32, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityEvaluationsQuery(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, conversationId string, agentUserId string, evaluatorUserId string, queueId string, startTime string, endTime string, evaluationState []string, isReleased bool, agentHasRead bool, expandAnswerTotalScores bool, maximum int, sortOrder string) (*Evaluationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/evaluations/query"
@@ -1656,7 +1656,7 @@ func (a QualityApi) GetQualityEvaluationsQuery(pageSize int32, pageNumber int32,
 // Get an evaluator activity
 //
 // 
-func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, name string, permission []string, group string) (*Evaluatoractivityentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityEvaluatorsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, name string, permission []string, group string) (*Evaluatoractivityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/evaluators/activity"
@@ -1922,7 +1922,7 @@ func (a QualityApi) GetQualityForm(formId string) (*Evaluationform, *APIResponse
 // Gets all the revisions for a specific evaluation.
 //
 // 
-func (a QualityApi) GetQualityFormVersions(formId string, pageSize int32, pageNumber int32) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormVersions(formId string, pageSize int, pageNumber int) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/{formId}/versions"
@@ -2017,7 +2017,7 @@ func (a QualityApi) GetQualityFormVersions(formId string, pageSize int32, pageNu
 // Get the list of evaluation forms
 //
 // 
-func (a QualityApi) GetQualityForms(pageSize int32, pageNumber int32, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityForms(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms"
@@ -2247,7 +2247,7 @@ func (a QualityApi) GetQualityFormsEvaluation(formId string) (*Evaluationform, *
 // Gets all the revisions for a specific evaluation.
 //
 // 
-func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int32, pageNumber int32, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize int, pageNumber int, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations/{formId}/versions"
@@ -2354,7 +2354,7 @@ func (a QualityApi) GetQualityFormsEvaluationVersions(formId string, pageSize in
 // Get the list of evaluation forms
 //
 // 
-func (a QualityApi) GetQualityFormsEvaluations(pageSize int32, pageNumber int32, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsEvaluations(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/evaluations"
@@ -2584,7 +2584,7 @@ func (a QualityApi) GetQualityFormsSurvey(formId string) (*Surveyform, *APIRespo
 // Gets all the revisions for a specific survey.
 //
 // 
-func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int32, pageNumber int32) (*Surveyformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int, pageNumber int) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/{formId}/versions"
@@ -2679,7 +2679,7 @@ func (a QualityApi) GetQualityFormsSurveyVersions(formId string, pageSize int32,
 // Get the list of survey forms
 //
 // 
-func (a QualityApi) GetQualityFormsSurveys(pageSize int32, pageNumber int32, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Surveyformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsSurveys(pageSize int, pageNumber int, sortBy string, nextPage string, previousPage string, expand string, name string, sortOrder string) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys"
@@ -3085,7 +3085,7 @@ func (a QualityApi) GetQualityKeywordset(keywordSetId string) (*Keywordset, *API
 // Get the list of keyword sets
 //
 // 
-func (a QualityApi) GetQualityKeywordsets(pageSize int32, pageNumber int32, sortBy string, expand []string, nextPage string, previousPage string, name string, queueId string, agentId string, operator string) (*Keywordsetentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityKeywordsets(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, queueId string, agentId string, operator string) (*Keywordsetentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/keywordsets"
@@ -3339,7 +3339,7 @@ func (a QualityApi) GetQualityPublishedform(formId string) (*Evaluationform, *AP
 // Get the published evaluation forms.
 //
 // 
-func (a QualityApi) GetQualityPublishedforms(pageSize int32, pageNumber int32, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedforms(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms"
@@ -3521,7 +3521,7 @@ func (a QualityApi) GetQualityPublishedformsEvaluation(formId string) (*Evaluati
 // Get the published evaluation forms.
 //
 // 
-func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int32, pageNumber int32, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedformsEvaluations(pageSize int, pageNumber int, name string, onlyLatestPerContext bool) (*Evaluationformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/evaluations"
@@ -3703,7 +3703,7 @@ func (a QualityApi) GetQualityPublishedformsSurvey(formId string) (*Surveyform, 
 // Get the published survey forms.
 //
 // 
-func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int32, pageNumber int32, name string, onlyLatestEnabledPerContext bool) (*Surveyformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityPublishedformsSurveys(pageSize int, pageNumber int, name string, onlyLatestEnabledPerContext bool) (*Surveyformentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/publishedforms/surveys"

@@ -10,7 +10,7 @@ type Voicemailretentionpolicy struct {
 
 
 	// NumberOfDays - If retentionPolicyType == RETAIN_WITH_TTL, then this value represents the number of days for the TTL
-	NumberOfDays *int32 `json:"numberOfDays,omitempty"`
+	NumberOfDays *int `json:"numberOfDays,omitempty"`
 
 }
 

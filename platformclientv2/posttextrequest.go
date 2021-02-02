@@ -30,7 +30,7 @@ type Posttextrequest struct {
 
 
 	// BotSessionTimeoutMinutes - Override timeout for the bot session. This should be greater than 10 minutes.
-	BotSessionTimeoutMinutes *int32 `json:"botSessionTimeoutMinutes,omitempty"`
+	BotSessionTimeoutMinutes *int `json:"botSessionTimeoutMinutes,omitempty"`
 
 
 	// BotChannels - The channels this bot is utilizing

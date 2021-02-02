@@ -10,7 +10,7 @@ type Contentreaction struct {
 
 
 	// Count - Number of users that reacted this way to this public message
-	Count *int32 `json:"count,omitempty"`
+	Count *int `json:"count,omitempty"`
 
 }
 

@@ -6,7 +6,7 @@ import (
 // Trunkbaseassignment
 type Trunkbaseassignment struct { 
 	// Family - The address family to use with the trunk base settings. 2=IPv4, 23=IPv6
-	Family *int32 `json:"family,omitempty"`
+	Family *int `json:"family,omitempty"`
 
 
 	// TrunkBase - A trunk base settings reference.

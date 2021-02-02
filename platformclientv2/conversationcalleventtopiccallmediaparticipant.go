@@ -87,7 +87,7 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 
 
 	// WrapupTimeoutMs
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// WrapupSkipped
@@ -95,7 +95,7 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 
 
 	// AlertingTimeoutMs
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// Provider

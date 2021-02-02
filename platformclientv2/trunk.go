@@ -19,7 +19,7 @@ type Trunk struct {
 
 
 	// Version - The current version of the resource.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 
 	// DateCreated - The date the resource was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -107,7 +107,7 @@ type Trunk struct {
 
 
 	// Family - The IP Network Family of the trunk
-	Family *int32 `json:"family,omitempty"`
+	Family *int `json:"family,omitempty"`
 
 
 	// ProxyAddressList - The list of proxy addresses (ports if provided) for the trunk

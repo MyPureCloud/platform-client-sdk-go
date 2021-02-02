@@ -15,11 +15,11 @@ type Wfmintradaydataupdatetopicintradaydataupdate struct {
 
 
 	// IntervalLengthMinutes
-	IntervalLengthMinutes *int32 `json:"intervalLengthMinutes,omitempty"`
+	IntervalLengthMinutes *int `json:"intervalLengthMinutes,omitempty"`
 
 
 	// NumberOfIntervals
-	NumberOfIntervals *int32 `json:"numberOfIntervals,omitempty"`
+	NumberOfIntervals *int `json:"numberOfIntervals,omitempty"`
 
 
 	// Metrics

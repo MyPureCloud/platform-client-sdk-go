@@ -13,12 +13,8 @@ type Adfs struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// RelyingPartyIdentifier
-	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
-
-
-	// Certificate
-	Certificate *string `json:"certificate,omitempty"`
+	// Disabled
+	Disabled *bool `json:"disabled,omitempty"`
 
 
 	// IssuerURI
@@ -29,8 +25,16 @@ type Adfs struct {
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
 
 
-	// Disabled
-	Disabled *bool `json:"disabled,omitempty"`
+	// Certificate
+	Certificate *string `json:"certificate,omitempty"`
+
+
+	// Certificates
+	Certificates *[]string `json:"certificates,omitempty"`
+
+
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 
 
 	// SelfUri - The URI for this object

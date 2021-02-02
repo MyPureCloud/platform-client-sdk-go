@@ -15,7 +15,7 @@ type Wfmbuintradaydataupdatetopicbuintradayresult struct {
 
 
 	// IntervalLengthMinutes
-	IntervalLengthMinutes *int32 `json:"intervalLengthMinutes,omitempty"`
+	IntervalLengthMinutes *int `json:"intervalLengthMinutes,omitempty"`
 
 
 	// IntradayDataGroupings

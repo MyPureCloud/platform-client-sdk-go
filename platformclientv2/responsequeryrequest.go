@@ -10,7 +10,7 @@ type Responsequeryrequest struct {
 
 
 	// PageSize - The maximum number of hits to return. Default: 25, Maximum: 500.
-	PageSize *int32 `json:"pageSize,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// Filters - Filter the query results.

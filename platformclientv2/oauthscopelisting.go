@@ -6,7 +6,7 @@ import (
 // Oauthscopelisting
 type Oauthscopelisting struct { 
 	// Total
-	Total *int64 `json:"total,omitempty"`
+	Total *int `json:"total,omitempty"`
 
 
 	// Entities

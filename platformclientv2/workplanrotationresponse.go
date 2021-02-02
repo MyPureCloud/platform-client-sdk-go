@@ -26,7 +26,7 @@ type Workplanrotationresponse struct {
 
 
 	// AgentCount - Number of agents in this work plan rotation
-	AgentCount *int32 `json:"agentCount,omitempty"`
+	AgentCount *int `json:"agentCount,omitempty"`
 
 
 	// Agents - Agents in this work plan rotation. Populate with expand=agents for GET WorkPlanRotationsList (defaults to empty list)

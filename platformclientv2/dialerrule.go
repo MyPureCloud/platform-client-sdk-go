@@ -14,7 +14,7 @@ type Dialerrule struct {
 
 
 	// Order - The ranked order of the rule. Rules are processed from lowest number to highest.
-	Order *int32 `json:"order,omitempty"`
+	Order *int `json:"order,omitempty"`
 
 
 	// Category - The category of the rule.

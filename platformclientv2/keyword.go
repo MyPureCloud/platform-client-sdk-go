@@ -18,15 +18,15 @@ type Keyword struct {
 
 
 	// Confidence - A sensitivity threshold that can be increased to lower false positives or decreased to reduce false negatives.
-	Confidence *int32 `json:"confidence,omitempty"`
+	Confidence *int `json:"confidence,omitempty"`
 
 
 	// AgentScoreModifier - A modifier to the evaluation score when the phrase is spotted in the agent channel
-	AgentScoreModifier *int32 `json:"agentScoreModifier,omitempty"`
+	AgentScoreModifier *int `json:"agentScoreModifier,omitempty"`
 
 
 	// CustomerScoreModifier - A modifier to the evaluation score when the phrase is spotted in the customer channel
-	CustomerScoreModifier *int32 `json:"customerScoreModifier,omitempty"`
+	CustomerScoreModifier *int `json:"customerScoreModifier,omitempty"`
 
 
 	// AlternateSpellings - Other spellings of the phrase that can be added to reduce missed spots (false negatives).

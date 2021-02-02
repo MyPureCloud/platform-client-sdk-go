@@ -6,7 +6,7 @@ import (
 // Shrinkageoverride
 type Shrinkageoverride struct { 
 	// IntervalIndex - Index of shrinkage override interval. Starting index is 0 and indexes are based on 15 minute intervals for a 7 day week
-	IntervalIndex *int32 `json:"intervalIndex,omitempty"`
+	IntervalIndex *int `json:"intervalIndex,omitempty"`
 
 
 	// ShrinkagePercent - Shrinkage override percent. Setting a null value will reset the interval to the default

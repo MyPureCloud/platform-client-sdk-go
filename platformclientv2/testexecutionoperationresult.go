@@ -6,7 +6,7 @@ import (
 // Testexecutionoperationresult
 type Testexecutionoperationresult struct { 
 	// Step - The step number to indicate the order in which the operation was performed
-	Step *int32 `json:"step,omitempty"`
+	Step *int `json:"step,omitempty"`
 
 
 	// Name - Name of the operation performed

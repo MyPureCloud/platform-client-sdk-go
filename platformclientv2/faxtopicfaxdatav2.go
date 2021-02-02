@@ -35,7 +35,7 @@ type Faxtopicfaxdatav2 struct {
 
 
 	// ContentLength
-	ContentLength *int32 `json:"contentLength,omitempty"`
+	ContentLength *int `json:"contentLength,omitempty"`
 
 
 	// Filename
@@ -43,7 +43,7 @@ type Faxtopicfaxdatav2 struct {
 
 
 	// ChangeNumber
-	ChangeNumber *int32 `json:"changeNumber,omitempty"`
+	ChangeNumber *int `json:"changeNumber,omitempty"`
 
 
 	// DateUploaded

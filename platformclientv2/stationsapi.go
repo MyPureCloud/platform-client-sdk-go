@@ -170,7 +170,7 @@ func (a StationsApi) GetStation(stationId string) (*Station, *APIResponse, error
 // Get the list of available stations.
 //
 // 
-func (a StationsApi) GetStations(pageSize int32, pageNumber int32, sortBy string, name string, userSelectable string, webRtcUserId string, id string, lineAppearanceId string) (*Stationentitylisting, *APIResponse, error) {
+func (a StationsApi) GetStations(pageSize int, pageNumber int, sortBy string, name string, userSelectable string, webRtcUserId string, id string, lineAppearanceId string) (*Stationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/stations"

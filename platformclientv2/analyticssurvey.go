@@ -39,7 +39,7 @@ type Analyticssurvey struct {
 
 
 	// SurveyPromoterScore - Promoter score of the survey
-	SurveyPromoterScore *int32 `json:"surveyPromoterScore,omitempty"`
+	SurveyPromoterScore *int `json:"surveyPromoterScore,omitempty"`
 
 
 	// SurveyCompletedDate - Completion date/time of the survey. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
@@ -47,7 +47,7 @@ type Analyticssurvey struct {
 
 
 	// OSurveyTotalScore
-	OSurveyTotalScore *int64 `json:"oSurveyTotalScore,omitempty"`
+	OSurveyTotalScore *int `json:"oSurveyTotalScore,omitempty"`
 
 }
 

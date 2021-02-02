@@ -6,7 +6,7 @@ import (
 // Publishdraftinput - Draft to be published
 type Publishdraftinput struct { 
 	// Version - The current draft version.
-	Version *int32 `json:"version,omitempty"`
+	Version *int `json:"version,omitempty"`
 
 }
 

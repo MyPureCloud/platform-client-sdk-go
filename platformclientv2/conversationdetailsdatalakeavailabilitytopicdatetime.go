@@ -6,7 +6,7 @@ import (
 // Conversationdetailsdatalakeavailabilitytopicdatetime
 type Conversationdetailsdatalakeavailabilitytopicdatetime struct { 
 	// IMillis
-	IMillis *int32 `json:"iMillis,omitempty"`
+	IMillis *int `json:"iMillis,omitempty"`
 
 
 	// BeforeNow

@@ -18,7 +18,7 @@ type Userschedulefulldaytimeoffmarker struct {
 
 
 	// LengthInMinutes - The length in minutes of this time off marker
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Description - The description associated with the time off request that this marker corresponds to

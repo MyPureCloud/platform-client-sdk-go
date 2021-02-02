@@ -6,15 +6,15 @@ import (
 // Adherencesettings - Schedule Adherence Configuration
 type Adherencesettings struct { 
 	// SevereAlertThresholdMinutes - The threshold in minutes where an alert will be triggered when an agent is considered severely out of adherence
-	SevereAlertThresholdMinutes *int32 `json:"severeAlertThresholdMinutes,omitempty"`
+	SevereAlertThresholdMinutes *int `json:"severeAlertThresholdMinutes,omitempty"`
 
 
 	// AdherenceTargetPercent - Target adherence percentage
-	AdherenceTargetPercent *int32 `json:"adherenceTargetPercent,omitempty"`
+	AdherenceTargetPercent *int `json:"adherenceTargetPercent,omitempty"`
 
 
 	// AdherenceExceptionThresholdSeconds - The threshold in seconds for which agents should not be penalized for being momentarily out of adherence
-	AdherenceExceptionThresholdSeconds *int32 `json:"adherenceExceptionThresholdSeconds,omitempty"`
+	AdherenceExceptionThresholdSeconds *int `json:"adherenceExceptionThresholdSeconds,omitempty"`
 
 
 	// NonOnQueueActivitiesEquivalent - Whether to treat all non-on-queue activities as equivalent for adherence purposes

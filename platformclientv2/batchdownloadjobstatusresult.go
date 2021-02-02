@@ -14,15 +14,15 @@ type Batchdownloadjobstatusresult struct {
 
 
 	// ExpectedResultCount - Number of results expected when job is completed
-	ExpectedResultCount *int32 `json:"expectedResultCount,omitempty"`
+	ExpectedResultCount *int `json:"expectedResultCount,omitempty"`
 
 
 	// ResultCount - Current number of results available
-	ResultCount *int32 `json:"resultCount,omitempty"`
+	ResultCount *int `json:"resultCount,omitempty"`
 
 
 	// ErrorCount - Number of error results produced so far
-	ErrorCount *int32 `json:"errorCount,omitempty"`
+	ErrorCount *int `json:"errorCount,omitempty"`
 
 
 	// Results - Current set of results for the job

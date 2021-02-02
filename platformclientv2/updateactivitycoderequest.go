@@ -14,7 +14,7 @@ type Updateactivitycoderequest struct {
 
 
 	// LengthInMinutes - The default length of the activity in minutes
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// CountsAsPaidTime - Whether an agent is paid while performing this activity
@@ -29,7 +29,7 @@ type Updateactivitycoderequest struct {
 	AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
 
 
-	// Metadata - Version metadata for the associated management unit's list of activity codes
+	// Metadata - Version metadata for the associated business unit's list of activity codes
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
 }

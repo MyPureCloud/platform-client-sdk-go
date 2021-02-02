@@ -18,7 +18,7 @@ type Asyncforecastoperationresult struct {
 
 
 	// Progress - Percent progress for the operation
-	Progress *int32 `json:"progress,omitempty"`
+	Progress *int `json:"progress,omitempty"`
 
 }
 

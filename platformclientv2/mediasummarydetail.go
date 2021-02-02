@@ -6,11 +6,11 @@ import (
 // Mediasummarydetail
 type Mediasummarydetail struct { 
 	// Active
-	Active *int32 `json:"active,omitempty"`
+	Active *int `json:"active,omitempty"`
 
 
 	// Acw
-	Acw *int32 `json:"acw,omitempty"`
+	Acw *int `json:"acw,omitempty"`
 
 }
 

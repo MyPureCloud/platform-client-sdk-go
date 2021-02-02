@@ -87,7 +87,7 @@ type Conversationvideoeventtopicvideomediaparticipant struct {
 
 
 	// WrapupTimeoutMs
-	WrapupTimeoutMs *int32 `json:"wrapupTimeoutMs,omitempty"`
+	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
 	// WrapupSkipped
@@ -95,7 +95,7 @@ type Conversationvideoeventtopicvideomediaparticipant struct {
 
 
 	// AlertingTimeoutMs
-	AlertingTimeoutMs *int32 `json:"alertingTimeoutMs,omitempty"`
+	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
 	// Provider
@@ -155,7 +155,7 @@ type Conversationvideoeventtopicvideomediaparticipant struct {
 
 
 	// PeerCount
-	PeerCount *int32 `json:"peerCount,omitempty"`
+	PeerCount *int `json:"peerCount,omitempty"`
 
 
 	// Context

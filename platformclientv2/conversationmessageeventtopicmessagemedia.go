@@ -14,7 +14,7 @@ type Conversationmessageeventtopicmessagemedia struct {
 
 
 	// ContentLengthBytes
-	ContentLengthBytes *int32 `json:"contentLengthBytes,omitempty"`
+	ContentLengthBytes *int `json:"contentLengthBytes,omitempty"`
 
 
 	// Name

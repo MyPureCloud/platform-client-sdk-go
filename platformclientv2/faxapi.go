@@ -239,7 +239,7 @@ func (a FaxApi) GetFaxDocumentContent(documentId string) (*Downloadresponse, *AP
 // Get a list of fax documents.
 //
 // 
-func (a FaxApi) GetFaxDocuments(pageSize int32, pageNumber int32) (*Faxdocumententitylisting, *APIResponse, error) {
+func (a FaxApi) GetFaxDocuments(pageSize int, pageNumber int) (*Faxdocumententitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/fax/documents"

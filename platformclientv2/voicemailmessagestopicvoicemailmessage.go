@@ -15,11 +15,11 @@ type Voicemailmessagestopicvoicemailmessage struct {
 
 
 	// AudioRecordingDurationSeconds
-	AudioRecordingDurationSeconds *int32 `json:"audioRecordingDurationSeconds,omitempty"`
+	AudioRecordingDurationSeconds *int `json:"audioRecordingDurationSeconds,omitempty"`
 
 
 	// AudioRecordingSizeBytes
-	AudioRecordingSizeBytes *int32 `json:"audioRecordingSizeBytes,omitempty"`
+	AudioRecordingSizeBytes *int `json:"audioRecordingSizeBytes,omitempty"`
 
 
 	// CreatedDate

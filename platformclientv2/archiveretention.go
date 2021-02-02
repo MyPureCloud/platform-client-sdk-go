@@ -6,7 +6,7 @@ import (
 // Archiveretention
 type Archiveretention struct { 
 	// Days
-	Days *int32 `json:"days,omitempty"`
+	Days *int `json:"days,omitempty"`
 
 
 	// StorageMedium

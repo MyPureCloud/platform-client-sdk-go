@@ -10,7 +10,7 @@ type Routingrule struct {
 
 
 	// Threshold - threshold required for routing attempt (generally an agent score).  may be null for operator ANY.
-	Threshold *int32 `json:"threshold,omitempty"`
+	Threshold *int `json:"threshold,omitempty"`
 
 
 	// WaitSeconds - seconds to wait in this rule before moving to the next

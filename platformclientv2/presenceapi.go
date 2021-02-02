@@ -184,7 +184,7 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 // Get an Organization&#39;s list of Presence Definitions
 //
 // 
-func (a PresenceApi) GetPresencedefinitions(pageNumber int32, pageSize int32, deleted string, localeCode string) (*Organizationpresenceentitylisting, *APIResponse, error) {
+func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, deleted string, localeCode string) (*Organizationpresenceentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/presencedefinitions"

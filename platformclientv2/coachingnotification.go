@@ -31,7 +31,7 @@ type Coachingnotification struct {
 
 
 	// LengthInMinutes - The duration of the appointment on this notification
-	LengthInMinutes *int32 `json:"lengthInMinutes,omitempty"`
+	LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
 
 
 	// Status - The status of the appointment for this notification
