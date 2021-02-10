@@ -150,6 +150,9 @@ func (c *APIClient) CallAPI(path string, method string,
 		if err != nil {
 			return nil, err
 		}
+		if headerParams != nil {
+			headerParams["Authorization"] = "Bearer " + c.configuration.AccessToken
+		}
 		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes)
 	}
 
