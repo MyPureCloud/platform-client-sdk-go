@@ -25,12 +25,12 @@ type Managementunitlisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
-
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+
+	// PageCount
+	PageCount *int `json:"pageCount,omitempty"`
 
 
 	// LastUri

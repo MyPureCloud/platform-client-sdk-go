@@ -5,11 +5,11 @@ import (
 
 // Updatedraftinput - Definition of an Action Draft to be created or updated.
 type Updatedraftinput struct { 
-	// Category - Category of action
+	// Category - Category of action, Can be up to 256 characters long
 	Category *string `json:"category,omitempty"`
 
 
-	// Name - Name of action
+	// Name - Name of action, Can be up to 256 characters long
 	Name *string `json:"name,omitempty"`
 
 

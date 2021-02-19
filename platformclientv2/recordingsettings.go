@@ -5,8 +5,12 @@ import (
 
 // Recordingsettings
 type Recordingsettings struct { 
-	// MaxSimultaneousStreams
+	// MaxSimultaneousStreams - Maximum number of simultaneous screen recording streams
 	MaxSimultaneousStreams *int `json:"maxSimultaneousStreams,omitempty"`
+
+
+	// MaxConfigurableScreenRecordingStreams - Upper limit that maxSimultaneousStreams can be configured
+	MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
 
 }
 

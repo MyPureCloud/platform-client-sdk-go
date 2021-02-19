@@ -146,11 +146,11 @@ type Edge struct {
 	EdgeDeploymentType *string `json:"edgeDeploymentType,omitempty"`
 
 
-	// CallDrainingState
+	// CallDrainingState - The current state of the Edge's call draining process before it can be safely rebooted or updated.
 	CallDrainingState *string `json:"callDrainingState,omitempty"`
 
 
-	// ConversationCount
+	// ConversationCount - The remaining number of conversations the Edge has to drain before it can be safely rebooted or updated. When an Edge is not draining conversations, this will be NULL or 0.
 	ConversationCount *int `json:"conversationCount,omitempty"`
 
 

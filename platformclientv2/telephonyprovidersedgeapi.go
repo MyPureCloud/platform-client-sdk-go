@@ -3307,6 +3307,148 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize i
 	return successPayload, response, err
 }
 
+// GetTelephonyProvidersEdgesDidpoolsDids invokes GET /api/v2/telephony/providers/edges/didpools/dids
+//
+// Get a listing of unassigned and/or assigned numbers in a set of DID Pools.
+//
+// 
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varType string, id []string, numberMatch string, pageSize int, pageNumber int, sortOrder string) (*Didnumberentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/didpools/dids"
+	defaultReturn := new(Didnumberentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'varType' is set
+	if &varType == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'varType' when calling TelephonyProvidersEdgeApi->GetTelephonyProvidersEdgesDidpoolsDids")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(varType).(string); ok {
+		if str != "" {
+			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+		}
+	} else {
+		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
+	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range id {
+			queryParams["id"] = value
+		}
+	} else {
+		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
+	}
+	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(numberMatch).(string); ok {
+		if str != "" {
+			queryParams["numberMatch"] = a.Configuration.APIClient.ParameterToString(numberMatch, collectionFormat)
+		}
+	} else {
+		queryParams["numberMatch"] = a.Configuration.APIClient.ParameterToString(numberMatch, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(sortOrder).(string); ok {
+		if str != "" {
+			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+		}
+	} else {
+		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Didnumberentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // GetTelephonyProvidersEdgesDids invokes GET /api/v2/telephony/providers/edges/dids
 //
 // Get a listing of DIDs

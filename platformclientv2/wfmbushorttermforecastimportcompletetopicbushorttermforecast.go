@@ -53,6 +53,10 @@ type Wfmbushorttermforecastimportcompletetopicbushorttermforecast struct {
 	// Metadata
 	Metadata *Wfmbushorttermforecastimportcompletetopicwfmversionedentitymetadata `json:"metadata,omitempty"`
 
+
+	// CanUseForScheduling
+	CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

@@ -376,6 +376,30 @@ type Viewfilter struct {
 	// JourneyActionMapTypes - The journey action map types are used to filter action map data for the associated view
 	JourneyActionMapTypes *[]string `json:"journeyActionMapTypes,omitempty"`
 
+
+	// DevelopmentRoleList - The list of development roles used to filter agent development view
+	DevelopmentRoleList *[]string `json:"developmentRoleList,omitempty"`
+
+
+	// DevelopmentTypeList - The list of development types used to filter agent development view
+	DevelopmentTypeList *[]string `json:"developmentTypeList,omitempty"`
+
+
+	// DevelopmentStatusList - The list of development status used to filter agent development view
+	DevelopmentStatusList *[]string `json:"developmentStatusList,omitempty"`
+
+
+	// DevelopmentModuleIds - The list of development moduleIds used to filter agent development view
+	DevelopmentModuleIds *[]string `json:"developmentModuleIds,omitempty"`
+
+
+	// DevelopmentKeyType - Represents due or completed to filter agent development view
+	DevelopmentKeyType *string `json:"developmentKeyType,omitempty"`
+
+
+	// DevelopmentActivityOverdue - Indicates filtering for development activities
+	DevelopmentActivityOverdue *bool `json:"developmentActivityOverdue,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

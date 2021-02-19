@@ -101,7 +101,7 @@ func (a NotificationsApi) DeleteNotificationsChannelSubscriptions(channelId stri
 // Get available notification topics.
 //
 // 
-func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string) (*Availabletopicentitylisting, *APIResponse, error) {
+func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string, includePreview bool) (*Availabletopicentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/availabletopics"
@@ -140,6 +140,18 @@ func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string) (*Ava
 		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
 	}
 	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(includePreview).(string); ok {
+		if str != "" {
+			queryParams["includePreview"] = a.Configuration.APIClient.ParameterToString(includePreview, collectionFormat)
+		}
+	} else {
+		queryParams["includePreview"] = a.Configuration.APIClient.ParameterToString(includePreview, collectionFormat)
+	}
 	
 	
 

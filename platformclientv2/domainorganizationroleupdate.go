@@ -41,12 +41,12 @@ type Domainorganizationroleupdate struct {
 	RoleNeedsUpdate *bool `json:"roleNeedsUpdate,omitempty"`
 
 
-	// VarDefault
-	VarDefault *bool `json:"default,omitempty"`
-
-
 	// Base
 	Base *bool `json:"base,omitempty"`
+
+
+	// VarDefault
+	VarDefault *bool `json:"default,omitempty"`
 
 
 	// SelfUri - The URI for this object

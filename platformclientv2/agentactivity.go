@@ -53,6 +53,10 @@ type Agentactivity struct {
 	AgentEvaluatorActivityList *[]Agentevaluatoractivity `json:"agentEvaluatorActivityList,omitempty"`
 
 
+	// NumEvaluationsWithoutViewPermission
+	NumEvaluationsWithoutViewPermission *int `json:"numEvaluationsWithoutViewPermission,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

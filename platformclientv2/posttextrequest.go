@@ -52,6 +52,10 @@ type Posttextrequest struct {
 	// GoogleDialogflow
 	GoogleDialogflow *Googledialogflowcustomsettings `json:"googleDialogflow,omitempty"`
 
+
+	// GenesysBotConnector
+	GenesysBotConnector *Genesysbotconnector `json:"genesysBotConnector,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

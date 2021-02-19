@@ -29,6 +29,10 @@ type Agentevaluatoractivity struct {
 	AverageEvaluationScore *int `json:"averageEvaluationScore,omitempty"`
 
 
+	// NumEvaluationsWithoutViewPermission
+	NumEvaluationsWithoutViewPermission *int `json:"numEvaluationsWithoutViewPermission,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

@@ -248,6 +248,78 @@ func (a RoutingApi) DeleteRoutingQueue(queueId string, forceDelete bool) (*APIRe
 	return response, err
 }
 
+// DeleteRoutingQueueMember invokes DELETE /api/v2/routing/queues/{queueId}/members/{memberId}
+//
+// Delete a queue member.
+//
+// 
+func (a RoutingApi) DeleteRoutingQueueMember(queueId string, memberId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members/{memberId}"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->DeleteRoutingQueueMember")
+	}
+	// verify the required parameter 'memberId' is set
+	if &memberId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->DeleteRoutingQueueMember")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteRoutingQueueUser invokes DELETE /api/v2/routing/queues/{queueId}/users/{memberId}
 //
 // DEPRECATED: use DELETE /routing/queues/{queueId}/members/{memberId}.  Delete queue member.
@@ -1874,6 +1946,209 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Estimatedwaittimepredictions
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingQueueMembers invokes GET /api/v2/routing/queues/{queueId}/members
+//
+// Get the members of this queue.
+//
+// 
+func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageSize int, pageNumber int, sortBy string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	defaultReturn := new(Queuememberentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueMembers")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(pageSize).(string); ok {
+		if str != "" {
+			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+		}
+	} else {
+		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(pageNumber).(string); ok {
+		if str != "" {
+			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+		}
+	} else {
+		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(sortBy).(string); ok {
+		if str != "" {
+			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+		}
+	} else {
+		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
+	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range expand {
+			queryParams["expand"] = value
+		}
+	} else {
+		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
+	}
+	
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(joined).(string); ok {
+		if str != "" {
+			queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, collectionFormat)
+		}
+	} else {
+		queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(name).(string); ok {
+		if str != "" {
+			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+		}
+	} else {
+		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
+	}
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range profileSkills {
+			queryParams["profileSkills"] = value
+		}
+	} else {
+		queryParams["profileSkills"] = a.Configuration.APIClient.ParameterToString(profileSkills, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range skills {
+			queryParams["skills"] = value
+		}
+	} else {
+		queryParams["skills"] = a.Configuration.APIClient.ParameterToString(skills, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range languages {
+			queryParams["languages"] = value
+		}
+	} else {
+		queryParams["languages"] = a.Configuration.APIClient.ParameterToString(languages, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range routingStatus {
+			queryParams["routingStatus"] = value
+		}
+	} else {
+		queryParams["routingStatus"] = a.Configuration.APIClient.ParameterToString(routingStatus, collectionFormat)
+	}
+	
+	
+	
+	
+	collectionFormat = "multi"
+	if collectionFormat == "multi" {
+		for _, value := range presence {
+			queryParams["presence"] = value
+		}
+	} else {
+		queryParams["presence"] = a.Configuration.APIClient.ParameterToString(presence, collectionFormat)
+	}
+	
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Queuememberentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -4325,6 +4600,243 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 	return successPayload, response, err
 }
 
+// PatchRoutingEmailDomainValidate invokes PATCH /api/v2/routing/email/domains/{domainId}/validate
+//
+// Validate domain settings
+//
+// 
+func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inbounddomainpatchrequest) (*Inbounddomain, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/email/domains/{domainId}/validate"
+	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
+	defaultReturn := new(Inbounddomain)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'domainId' is set
+	if &domainId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PatchRoutingEmailDomainValidate")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingEmailDomainValidate")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Inbounddomain
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PatchRoutingQueueMember invokes PATCH /api/v2/routing/queues/{queueId}/members/{memberId}
+//
+// Update the ring number OR joined status for a queue member.
+//
+// 
+func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, body Queuemember) (*Queuemember, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members/{memberId}"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
+	defaultReturn := new(Queuemember)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueMember")
+	}
+	// verify the required parameter 'memberId' is set
+	if &memberId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueMember")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueMember")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Queuemember
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PatchRoutingQueueMembers invokes PATCH /api/v2/routing/queues/{queueId}/members
+//
+// Join or unjoin a set of users for a queue
+//
+// 
+func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember) (*Queuememberentitylisting, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	defaultReturn := new(Queuememberentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueMembers")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// true
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueMembers")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Queuememberentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // PatchRoutingQueueUser invokes PATCH /api/v2/routing/queues/{queueId}/users/{memberId}
 //
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members/{memberId}.  Update the ring number OR joined status for a User in a Queue.
@@ -5315,6 +5827,97 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 	postBody = &body
 
 	var successPayload *Language
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingQueueMembers invokes POST /api/v2/routing/queues/{queueId}/members
+//
+// Bulk add or delete up to 100 queue members
+//
+// 
+func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentity, delete bool) (*string, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	defaultReturn := new(string)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueMembers")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// true
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingQueueMembers")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	var collectionFormat string
+	
+	
+	
+	collectionFormat = ""
+	if str, ok := interface{}(delete).(string); ok {
+		if str != "" {
+			queryParams["delete"] = a.Configuration.APIClient.ParameterToString(delete, collectionFormat)
+		}
+	} else {
+		queryParams["delete"] = a.Configuration.APIClient.ParameterToString(delete, collectionFormat)
+	}
+	
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *string
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

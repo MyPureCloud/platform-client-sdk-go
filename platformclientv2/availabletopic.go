@@ -17,6 +17,18 @@ type Availabletopic struct {
 	RequiresPermissions *[]string `json:"requiresPermissions,omitempty"`
 
 
+	// RequiresDivisionPermissions - True if the subscribing user must belong to the same division as the topic object ID
+	RequiresDivisionPermissions *bool `json:"requiresDivisionPermissions,omitempty"`
+
+
+	// Enforced - Whether or not the permissions on this topic are enforced
+	Enforced *bool `json:"enforced,omitempty"`
+
+
+	// Visibility - Visibility of this topic (Public or Preview)
+	Visibility *string `json:"visibility,omitempty"`
+
+
 	// Schema
 	Schema *map[string]interface{} `json:"schema,omitempty"`
 

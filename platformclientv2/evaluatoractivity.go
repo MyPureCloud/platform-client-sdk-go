@@ -41,6 +41,10 @@ type Evaluatoractivity struct {
 	NumCalibrationsCompleted *int `json:"numCalibrationsCompleted,omitempty"`
 
 
+	// NumEvaluationsWithoutViewPermission
+	NumEvaluationsWithoutViewPermission *int `json:"numEvaluationsWithoutViewPermission,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

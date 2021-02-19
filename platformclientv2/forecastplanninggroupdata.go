@@ -5,7 +5,7 @@ import (
 
 // Forecastplanninggroupdata
 type Forecastplanninggroupdata struct { 
-	// PlanningGroupId - The id of the planning group to which this data applies
+	// PlanningGroupId - The ID of the planning group to which this data applies. Note this is a snapshot of the planning group at the time of forecast creation and may not correspond to the current configuration
 	PlanningGroupId *string `json:"planningGroupId,omitempty"`
 
 
