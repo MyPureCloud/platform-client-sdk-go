@@ -9,35 +9,35 @@ type Managementunitlisting struct {
 	Entities *[]Managementunit `json:"entities,omitempty"`
 
 
-	// PageSize
+	// PageSize - Deprecated, paging is not supported
 	PageSize *int `json:"pageSize,omitempty"`
 
 
-	// PageNumber
+	// PageNumber - Deprecated, paging is not supported
 	PageNumber *int `json:"pageNumber,omitempty"`
 
 
-	// Total
+	// Total - Deprecated, paging is not supported
 	Total *int `json:"total,omitempty"`
 
 
-	// FirstUri
+	// FirstUri - Deprecated, paging is not supported
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// NextUri
+	// NextUri - Deprecated, paging is not supported
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// PageCount
+	// PageCount - Deprecated, paging is not supported
 	PageCount *int `json:"pageCount,omitempty"`
 
 
-	// LastUri
+	// LastUri - Deprecated, paging is not supported
 	LastUri *string `json:"lastUri,omitempty"`
 
 
-	// PreviousUri
+	// PreviousUri - Deprecated, paging is not supported
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 

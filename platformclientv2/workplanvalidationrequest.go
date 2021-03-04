@@ -37,7 +37,7 @@ type Workplanvalidationrequest struct {
 	WeeklyMaximumPaidMinutes *int `json:"weeklyMaximumPaidMinutes,omitempty"`
 
 
-	// ConstrainPaidTimeGranularity - Whether paid time granularity is constrained for this workplan
+	// ConstrainPaidTimeGranularity - Whether paid time granularity is constrained for this work plan
 	ConstrainPaidTimeGranularity *bool `json:"constrainPaidTimeGranularity,omitempty"`
 
 
@@ -57,12 +57,56 @@ type Workplanvalidationrequest struct {
 	MaximumDays *int `json:"maximumDays,omitempty"`
 
 
+	// MinimumConsecutiveNonWorkingMinutesPerWeek - Minimum amount of consecutive non working minutes per week that agents who are assigned this work plan are allowed to have off
+	MinimumConsecutiveNonWorkingMinutesPerWeek *int `json:"minimumConsecutiveNonWorkingMinutesPerWeek,omitempty"`
+
+
+	// ConstrainMaximumConsecutiveWorkingWeekends - Whether to constrain the maximum consecutive working weekends
+	ConstrainMaximumConsecutiveWorkingWeekends *bool `json:"constrainMaximumConsecutiveWorkingWeekends,omitempty"`
+
+
+	// MaximumConsecutiveWorkingWeekends - The maximum number of consecutive weekends that agents who are assigned to this work plan are allowed to work
+	MaximumConsecutiveWorkingWeekends *int `json:"maximumConsecutiveWorkingWeekends,omitempty"`
+
+
 	// MinimumWorkingDaysPerWeek - The minimum number of days that agents assigned to a work plan must work per week
 	MinimumWorkingDaysPerWeek *int `json:"minimumWorkingDaysPerWeek,omitempty"`
 
 
+	// ConstrainMaximumConsecutiveWorkingDays - Whether to constrain the maximum consecutive working days
+	ConstrainMaximumConsecutiveWorkingDays *bool `json:"constrainMaximumConsecutiveWorkingDays,omitempty"`
+
+
+	// MaximumConsecutiveWorkingDays - The maximum number of consecutive days that agents assigned to this work plan are allowed to work. Used if constrainMaximumConsecutiveWorkingDays == true
+	MaximumConsecutiveWorkingDays *int `json:"maximumConsecutiveWorkingDays,omitempty"`
+
+
+	// MinimumShiftStartDistanceMinutes - The time period in minutes for the duration between the start times of two consecutive working days
+	MinimumShiftStartDistanceMinutes *int `json:"minimumShiftStartDistanceMinutes,omitempty"`
+
+
+	// MinimumDaysOffPerPlanningPeriod - Minimum days off in the planning period
+	MinimumDaysOffPerPlanningPeriod *int `json:"minimumDaysOffPerPlanningPeriod,omitempty"`
+
+
+	// MaximumDaysOffPerPlanningPeriod - Maximum days off in the planning period
+	MaximumDaysOffPerPlanningPeriod *int `json:"maximumDaysOffPerPlanningPeriod,omitempty"`
+
+
+	// MinimumPaidMinutesPerPlanningPeriod - Minimum paid minutes in the planning period
+	MinimumPaidMinutesPerPlanningPeriod *int `json:"minimumPaidMinutesPerPlanningPeriod,omitempty"`
+
+
+	// MaximumPaidMinutesPerPlanningPeriod - Maximum paid minutes in the planning period
+	MaximumPaidMinutesPerPlanningPeriod *int `json:"maximumPaidMinutesPerPlanningPeriod,omitempty"`
+
+
 	// OptionalDays - Optional days to schedule for this work plan
 	OptionalDays *Setwrapperdayofweek `json:"optionalDays,omitempty"`
+
+
+	// ShiftStartVarianceType - This constraint ensures that an agent starts each workday within a user-defined time threshold
+	ShiftStartVarianceType *string `json:"shiftStartVarianceType,omitempty"`
 
 
 	// ShiftStartVariances - Variance in minutes among start times of shifts in this work plan

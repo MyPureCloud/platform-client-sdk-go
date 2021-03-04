@@ -45,6 +45,10 @@ type Wemlearningassignmenttopiclearningassignmentnotification struct {
 	// DateModified
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+
+	// IsOverdue
+	IsOverdue *bool `json:"isOverdue,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

@@ -13,6 +13,10 @@ type Availabletopic struct {
 	Id *string `json:"id,omitempty"`
 
 
+	// PermissionDetails - Full detailed permissions required to subscribe to the topic
+	PermissionDetails *[]Permissiondetails `json:"permissionDetails,omitempty"`
+
+
 	// RequiresPermissions - Permissions required to subscribe to the topic
 	RequiresPermissions *[]string `json:"requiresPermissions,omitempty"`
 

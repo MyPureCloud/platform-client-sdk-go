@@ -16,6 +16,14 @@ type Schedulingsettingsrequest struct {
 	// ShrinkageOverrides - Shrinkage overrides for scheduling
 	ShrinkageOverrides *Shrinkageoverrides `json:"shrinkageOverrides,omitempty"`
 
+
+	// PlanningPeriod - Planning period settings for scheduling
+	PlanningPeriod *Valuewrapperplanningperiodsettings `json:"planningPeriod,omitempty"`
+
+
+	// StartDayOfWeekend - Start day of weekend for scheduling
+	StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

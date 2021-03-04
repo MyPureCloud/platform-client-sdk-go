@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go/platformclientv2). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 33.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
+Latest version: 34.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)]()
 [![Release Notes Badge](https://developer.mypurecloud.com/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -57,12 +57,39 @@ config := platformclientv2.NewConfiguration()
 usersAPI := platformclientv2.NewUsersApiWithConfig(config)
 ```
 
+#### Retrying and 429 and 5xx response codes and connection errors
+
+By default, the SDK does not retry 429 and 5xx response codes (except 501) and connection errors. To enable retries, create an instance of the `RetryConfiguration` object and set it on the `Configuration` instance.  
+The retry logic will respect the `retry-after` header for all 429 status codes.  
+The `RetryConfiguration` object has 3 properties that determine the retry behaviour and a RequestLogHook which can be used for debugging and tracing retried requests:  
+* `RetryWaitMin` determines the minimum time to wait
+* `RetryWaitMax` determines the maximum time to wait
+* `RetryMax` determines the maximum amount of retries
+* `RequestLogHook` a callback called on each retried request
+
+```go
+config.RetryConfiguration = &platformclientv2.RetryConfiguration{
+    RetryWaitMin: 5 * time.Second,
+    RetryWaitMax: 60 * time.Second,
+    RetryMax:     20,
+    RequestLogHook: func(req *http.Request, retryNumber int) {
+        fmt.Printf("%v %v request failed. Retry count: %v\n", req.Method, req.URL, retryNumber)
+    },
+}
+```
+
 #### Setting the environment
 
 To connect to regional Genesys Cloud instances, provide the Platform API's base path:
 
 ```go
 config.BasePath = "https://api.mypurecloud.jp"
+```
+
+Alternatively, use the enum mapping for Genesys Cloud regions to API base paths:
+
+```go
+config.BasePath = platformclientv2.APNortheast1
 ```
 
 #### Setting the access token

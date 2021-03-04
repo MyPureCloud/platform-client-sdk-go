@@ -2926,7 +2926,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews
 //
 // Get management unit
 //
-// 
+// settings.shortTermForecasting is deprecated and now lives on the business unit
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementUnitId string, expand []string) (*Managementunit, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

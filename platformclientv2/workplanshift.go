@@ -41,6 +41,14 @@ type Workplanshift struct {
 	LatestStopTimeMinutesFromMidnight *int `json:"latestStopTimeMinutesFromMidnight,omitempty"`
 
 
+	// ConstrainEarliestStopTime - Whether the earliest stop time constraint for the shift is enabled
+	ConstrainEarliestStopTime *bool `json:"constrainEarliestStopTime,omitempty"`
+
+
+	// EarliestStopTimeMinutesFromMidnight - This is the earliest time a shift can end
+	EarliestStopTimeMinutesFromMidnight *int `json:"earliestStopTimeMinutesFromMidnight,omitempty"`
+
+
 	// StartIncrementMinutes - Increment in offset minutes that would contribute to different possible start times for the shift. Used if flexibleStartTime == true
 	StartIncrementMinutes *int `json:"startIncrementMinutes,omitempty"`
 

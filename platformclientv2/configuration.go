@@ -4,35 +4,60 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
+	"net/http"
 	"net/url"
 	"regexp"
 	"sync"
+	"time"
 )
 
 // Configuration has settings to configure the SDK
 type Configuration struct {
-	UserName                  string            `json:"userName,omitempty"`
-	Password                  string            `json:"password,omitempty"`
-	APIKeyPrefix              map[string]string `json:"APIKeyPrefix,omitempty"`
-	APIKey                    map[string]string `json:"APIKey,omitempty"`
-	debug                     bool              `json:"debug,omitempty"`
-	DebugFile                 string            `json:"debugFile,omitempty"`
-	OAuthToken                string            `json:"oAuthToken,omitempty"`
-	Timeout                   int               `json:"timeout,omitempty"`
-	BasePath                  string            `json:"basePath,omitempty"`
-	Host                      string            `json:"host,omitempty"`
-	Scheme                    string            `json:"scheme,omitempty"`
-	AccessToken               string            `json:"accessToken,omitempty"`
-	RefreshToken              string            `json:"refreshToken,omitempty"`
-	ClientID                  string            `json:"clientId,omitempty"`
-	ClientSecret              string            `json:"clientSecret,omitempty"`
-	ShouldRefreshAccessToken  bool              `json:"shouldRefreshAccessToken,omitempty"`
-	RefreshInProgress         int64             `json:"refreshInProgress,omitempty"`
-	RefreshTokenWaitTime      int               `json:"refreshTokenWaitTime,omitempty"`
-	DefaultHeader             map[string]string `json:"defaultHeader,omitempty"`
-	UserAgent                 string            `json:"userAgent,omitempty"`
-	APIClient                 APIClient         `json:"APIClient,omitempty"`
+	UserName                  string              `json:"userName,omitempty"`
+	Password                  string              `json:"password,omitempty"`
+	APIKeyPrefix              map[string]string   `json:"APIKeyPrefix,omitempty"`
+	APIKey                    map[string]string   `json:"APIKey,omitempty"`
+	debug                     bool                `json:"debug,omitempty"`
+	DebugFile                 string              `json:"debugFile,omitempty"`
+	OAuthToken                string              `json:"oAuthToken,omitempty"`
+	Timeout                   int                 `json:"timeout,omitempty"`
+	BasePath                  string              `json:"basePath,omitempty"`
+	Host                      string              `json:"host,omitempty"`
+	Scheme                    string              `json:"scheme,omitempty"`
+	AccessToken               string              `json:"accessToken,omitempty"`
+	RefreshToken              string              `json:"refreshToken,omitempty"`
+	ClientID                  string              `json:"clientId,omitempty"`
+	ClientSecret              string              `json:"clientSecret,omitempty"`
+	ShouldRefreshAccessToken  bool                `json:"shouldRefreshAccessToken,omitempty"`
+	RefreshInProgress         int64               `json:"refreshInProgress,omitempty"`
+	RefreshTokenWaitTime      int                 `json:"refreshTokenWaitTime,omitempty"`
+	DefaultHeader             map[string]string   `json:"defaultHeader,omitempty"`
+	UserAgent                 string              `json:"userAgent,omitempty"`
+	APIClient                 APIClient           `json:"APIClient,omitempty"`
+	RetryConfiguration        *RetryConfiguration `json:"retryConfiguration,omitempty"`
 }
+
+const (
+	USEast1      = "https://api.mypurecloud.com"
+	EUWest1      = "https://api.mypurecloud.ie"
+	APSoutheast2 = "https://api.mypurecloud.com.au"
+	APNortheast1 = "https://api.mypurecloud.jp"
+	EUCentral1   = "https://api.mypurecloud.de"
+	USWest2      = "https://api.usw2.pure.cloud"
+	CACentral1   = "https://api.cac1.pure.cloud"
+	APNortheast2 = "https://api.apne2.pure.cloud"
+	EUWest2      = "https://api.euw2.pure.cloud"
+	APSouth1     = "https://api.aps1.pure.cloud"
+)
+
+type RetryConfiguration struct {
+	RetryWaitMin    time.Duration                `json:"retry_wait_min,omitempty"`
+	RetryWaitMax    time.Duration                `json:"retry_wait_max,omitempty"`
+	RetryMax        int                          `json:"retry_max,omitempty"`
+	RequestLogHook	RequestLogHook               `json:"request_log_hook,omitempty"`
+}
+
+type RequestLogHook func(*http.Request, int)
 
 // AuthResponse contains the access token to use in future requests
 type AuthResponse struct {

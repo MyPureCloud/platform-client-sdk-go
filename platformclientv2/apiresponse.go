@@ -40,7 +40,8 @@ func (r *APIResponse) SetError(err *APIError) {
 type APIError struct {
 	Status            int                    `json:"status,omitempty"`
 	Message           string                 `json:"message,omitempty"`
-	MessageWithParams map[string]interface{} `json:"messageWithParams,omitempty"`
+	MessageWithParams string                 `json:"messageWithParams,omitempty"`
+	MessageParams     map[string]interface{} `json:"messageParams,omitempty"`
 	Code              string                 `json:"code,omitempty"`
 	ContextID         string                 `json:"contextId,omitempty"`
 	Details           []string               `json:"details,omitempty"`

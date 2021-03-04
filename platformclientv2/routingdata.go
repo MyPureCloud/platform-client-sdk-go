@@ -24,6 +24,10 @@ type Routingdata struct {
 	// PreferredAgentIds - A list of agents to be preferred in routing
 	PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 
+
+	// ScoredAgents - A list of scored agents for routing decisions
+	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

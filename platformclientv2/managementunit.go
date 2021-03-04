@@ -18,6 +18,10 @@ type Managementunit struct {
 	Division *Division `json:"division,omitempty"`
 
 
+	// BusinessUnit - The business unit to which this management unit belongs
+	BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
+
+
 	// StartDayOfWeek - Start day of week for scheduling and forecasting purposes. Moving to Business Unit
 	StartDayOfWeek *string `json:"startDayOfWeek,omitempty"`
 

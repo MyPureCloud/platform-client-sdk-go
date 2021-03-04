@@ -49,6 +49,14 @@ type Workplanactivity struct {
 	CountsAsContiguousWorkTime *bool `json:"countsAsContiguousWorkTime,omitempty"`
 
 
+	// MinimumLengthFromShiftStartMinutes - The minimum duration between shift start and shift item (e.g., break or meal) start in minutes
+	MinimumLengthFromShiftStartMinutes *int `json:"minimumLengthFromShiftStartMinutes,omitempty"`
+
+
+	// MinimumLengthFromShiftEndMinutes - The minimum duration between shift item (e.g., break or meal) end and shift end in minutes
+	MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
+
+
 	// Id - ID of the activity. This is required only for the case of updating an existing activity
 	Id *string `json:"id,omitempty"`
 

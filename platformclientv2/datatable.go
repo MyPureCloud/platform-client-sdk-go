@@ -13,6 +13,10 @@ type Datatable struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// Division - The division to which this entity belongs.
+	Division *Division `json:"division,omitempty"`
+
+
 	// Description - The description from the JSON schema (equates to the Description field on the JSON schema.)
 	Description *string `json:"description,omitempty"`
 

@@ -48,6 +48,14 @@ type Createworkplanactivity struct {
 	// CountsAsContiguousWorkTime - Whether the activity duration is counted towards contiguous work time
 	CountsAsContiguousWorkTime *bool `json:"countsAsContiguousWorkTime,omitempty"`
 
+
+	// MinimumLengthFromShiftStartMinutes - The minimum duration between shift start and shift item (e.g., break or meal) start in minutes
+	MinimumLengthFromShiftStartMinutes *int `json:"minimumLengthFromShiftStartMinutes,omitempty"`
+
+
+	// MinimumLengthFromShiftEndMinutes - The minimum duration between shift item (e.g., break or meal) end and shift end in minutes
+	MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

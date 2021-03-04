@@ -11,11 +11,13 @@ import (
 	"strings"
 	"sync/atomic"
 	"time"
+
+	"github.com/hashicorp/go-retryablehttp"
 )
 
 // APIClient provides functions for making API requests
 type APIClient struct {
-	client        http.Client
+	client        retryablehttp.Client
 	configuration *Configuration
 }
 
@@ -25,8 +27,13 @@ func NewAPIClient(c *Configuration) APIClient {
 	if err != nil {
 		panic(err)
 	}
+
+	client := retryablehttp.NewClient()
+	client.Logger = nil
+	client.HTTPClient.Timeout = timeout
+
 	return APIClient{
-		client:        http.Client{Timeout: timeout},
+		client:        *client,
 		configuration: c,
 	}
 }
@@ -83,11 +90,14 @@ func (c *APIClient) CallAPI(path string, method string,
 	if err != nil {
 		return nil, err
 	}
-	request := http.Request{
-		URL:    u,
-		Close:  true,
-		Method: strings.ToUpper(method),
-		Header: make(map[string][]string),
+
+	request := retryablehttp.Request{
+		Request: &http.Request{
+			URL:    u,
+			Close:  true,
+			Method: strings.ToUpper(method),
+			Header: make(map[string][]string),
+		},
 	}
 
 	// Set default headers
@@ -136,9 +146,27 @@ func (c *APIClient) CallAPI(path string, method string,
 		c.configuration.Debug(request)
 	}
 
+	if c.configuration.RetryConfiguration == nil {
+		c.client.RetryMax = 0
+		c.client.RetryWaitMax = 0
+	} else {
+		c.client.RetryWaitMax = c.configuration.RetryConfiguration.RetryWaitMax
+		c.client.RetryWaitMin = c.configuration.RetryConfiguration.RetryWaitMin
+		c.client.RetryMax = c.configuration.RetryConfiguration.RetryMax
+		if c.configuration.RetryConfiguration.RequestLogHook != nil {
+			c.client.RequestLogHook = func(_ retryablehttp.Logger, req *http.Request, retryNumber int) {
+				c.configuration.RetryConfiguration.RequestLogHook(req, retryNumber)
+			}
+		}
+	}
+
 	// Execute request
 	reqStart := time.Now()
 	res, err := c.client.Do(&request)
+	if err != nil {
+		return nil, err
+	}
+
 	reqEnd := time.Now()
 	duration := reqEnd.Sub(reqStart)
 
@@ -219,17 +247,15 @@ func (c *APIClient) handleExpiredAccessToken() error {
 		// Wait maximum of RefreshTokenWaitTime seconds for other thread to complete refresh
 		startTime := time.Now().Unix()
 		sleepDuration := time.Millisecond * 200
-		// Check if we've gone over the wait threshhold
+		// Check if we've gone over the wait threshold
 		for time.Now().Unix() - startTime < int64(c.configuration.RefreshTokenWaitTime) {
 			time.Sleep(sleepDuration) // Sleep for 200ms on every iteration
 			if atomic.LoadInt64(&c.configuration.RefreshInProgress) == 0 {
 				return nil
 			}
 		}
-		return fmt.Errorf("Token refresh took longer than %d seconds", c.configuration.RefreshTokenWaitTime)
+		return fmt.Errorf("token refresh took longer than %d seconds", c.configuration.RefreshTokenWaitTime)
 	}
-
-	return nil
 }
 
 // Int32 is an easy way to get a pointer

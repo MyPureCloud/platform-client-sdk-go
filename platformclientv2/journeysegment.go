@@ -46,6 +46,10 @@ type Journeysegment struct {
 	Journey *Journey `json:"journey,omitempty"`
 
 
+	// ExternalSegment - Details of an entity corresponding to this segment in an external system.
+	ExternalSegment *Externalsegment `json:"externalSegment,omitempty"`
+
+
 	// AssignmentExpirationDays - Time, in days, from when the segment is assigned until it is automatically unassigned.
 	AssignmentExpirationDays *int `json:"assignmentExpirationDays,omitempty"`
 

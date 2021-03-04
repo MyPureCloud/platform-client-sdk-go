@@ -5843,25 +5843,24 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 // Bulk add or delete up to 100 queue members
 //
 // 
-func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentity, delete bool) (*string, *APIResponse, error) {
+func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentity, delete bool) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
 	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	defaultReturn := new(string)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueMembers")
+		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueMembers")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// true
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingQueueMembers")
+		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingQueueMembers")
 	}
 
 	headerParams := make(map[string]string)
@@ -5917,16 +5916,14 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 	// body params
 	postBody = &body
 
-	var successPayload *string
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostRoutingQueueUsers invokes POST /api/v2/routing/queues/{queueId}/users
@@ -5934,25 +5931,24 @@ func (a RoutingApi) PostRoutingQueueMembers(queueId string, body []Writableentit
 // DEPRECATED: use POST /routing/queues/{queueId}/members.  Bulk add or delete up to 100 queue members.
 //
 // 
-func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity, delete bool) (*string, *APIResponse, error) {
+func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity, delete bool) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
 	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	defaultReturn := new(string)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueUsers")
+		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PostRoutingQueueUsers")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// true
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingQueueUsers")
+		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PostRoutingQueueUsers")
 	}
 
 	headerParams := make(map[string]string)
@@ -6008,16 +6004,14 @@ func (a RoutingApi) PostRoutingQueueUsers(queueId string, body []Writableentity,
 	// body params
 	postBody = &body
 
-	var successPayload *string
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostRoutingQueueWrapupcodes invokes POST /api/v2/routing/queues/{queueId}/wrapupcodes

@@ -25,7 +25,7 @@ type Createmanagementunitapirequest struct {
 	DivisionId *string `json:"divisionId,omitempty"`
 
 
-	// BusinessUnitId - The id of the business unit to which this management unit belongs.  Required after business unit launch
+	// BusinessUnitId - The id of the business unit to which this management unit belongs
 	BusinessUnitId *string `json:"businessUnitId,omitempty"`
 
 }
