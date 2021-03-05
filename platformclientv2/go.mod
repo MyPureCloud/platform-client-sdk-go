@@ -1,4 +1,4 @@
-module platformclientv2
+module github.com/mypurecloud/platform-client-sdk-go/platformclientv2
 
 go 1.15
 
