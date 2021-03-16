@@ -7379,9 +7379,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequ
 
 // PostWorkforcemanagementManagementunitTimeoffrequestsQuery invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/timeoffrequests/query
 //
-// Gets the lookup ids to fetch the specified set of requests
+// Fetches time off requests matching the conditions specified in the request body
 //
-// 
+// Request body requires one of the following: User ID is specified, statuses == [Pending] or date range to be specified and less than or equal to 33 days.  All other fields are filters
 func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId string, body Timeoffrequestquerybody) (*Timeoffrequestlisting, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

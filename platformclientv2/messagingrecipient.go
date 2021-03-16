@@ -13,6 +13,10 @@ type Messagingrecipient struct {
 	Id *string `json:"id,omitempty"`
 
 
+	// IdType - The recipient identifier type. This is used to indicate the format used by the recipient identifier.
+	IdType *string `json:"idType,omitempty"`
+
+
 	// Image - Avatar image
 	Image *string `json:"image,omitempty"`
 

@@ -103,7 +103,6 @@ func (c *APIClient) CallAPI(path string, method string,
 	// Set default headers
 	if c.configuration.DefaultHeader != nil {
 		for k, v := range c.configuration.DefaultHeader {
-			fmt.Printf("  %v=%v", k, v)
 			request.Header.Set(k, v)
 		}
 	}
