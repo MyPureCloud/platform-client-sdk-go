@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Wfmagent - Workforce management agent data
@@ -53,5 +55,7 @@ type Wfmagent struct {
 // String returns a JSON representation of the model
 func (o *Wfmagent) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

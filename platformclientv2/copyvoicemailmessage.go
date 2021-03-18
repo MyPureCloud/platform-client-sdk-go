@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Copyvoicemailmessage - Used to copy a VoicemailMessage to either a User or a Group
@@ -21,5 +23,7 @@ type Copyvoicemailmessage struct {
 // String returns a JSON representation of the model
 func (o *Copyvoicemailmessage) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

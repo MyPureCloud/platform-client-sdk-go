@@ -73,43 +73,11 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(metricId).(string); ok {
-		if str != "" {
-			queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, collectionFormat)
-		}
-	} else {
-		queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, collectionFormat)
-	}
-	
+	queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, "")
 	
 
 	// to determine the Content-Type header
@@ -194,67 +162,15 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
 	
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterId).(string); ok {
-		if str != "" {
-			queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-		}
-	} else {
-		queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(metricId).(string); ok {
-		if str != "" {
-			queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, collectionFormat)
-		}
-	} else {
-		queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, collectionFormat)
-	}
-	
+	queryParams["metricId"] = a.Configuration.APIClient.ParameterToString(metricId, "")
 	
 
 	// to determine the Content-Type header
@@ -329,31 +245,9 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterId).(string); ok {
-		if str != "" {
-			queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-		}
-	} else {
-		queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-	}
-	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
 	
 
 	// to determine the Content-Type header
@@ -682,19 +576,7 @@ func (a GamificationApi) GetGamificationMetrics(performanceProfileId string) (*G
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(performanceProfileId).(string); ok {
-		if str != "" {
-			queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, collectionFormat)
-		}
-	} else {
-		queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, collectionFormat)
-	}
-	
+	queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, "")
 	
 
 	// to determine the Content-Type header
@@ -896,31 +778,9 @@ func (a GamificationApi) GetGamificationScorecards(workday time.Time, expand []s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(workday).(string); ok {
-		if str != "" {
-			queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-		}
-	} else {
-		queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -995,31 +855,9 @@ func (a GamificationApi) GetGamificationScorecardsAttendance(startWorkday time.T
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
 	// to determine the Content-Type header
@@ -1152,19 +990,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
 	// to determine the Content-Type header
@@ -1234,19 +1060,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Tim
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(workday).(string); ok {
-		if str != "" {
-			queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-		}
-	} else {
-		queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-	}
-	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
 
 	// to determine the Content-Type header
@@ -1321,43 +1135,11 @@ func (a GamificationApi) GetGamificationScorecardsPointsTrends(startWorkday time
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dayOfWeek).(string); ok {
-		if str != "" {
-			queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, collectionFormat)
-		}
-	} else {
-		queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, collectionFormat)
-	}
-	
+	queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, "")
 	
 
 	// to determine the Content-Type header
@@ -1433,31 +1215,9 @@ func (a GamificationApi) GetGamificationScorecardsUser(userId string, workday ti
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(workday).(string); ok {
-		if str != "" {
-			queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-		}
-	} else {
-		queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1538,31 +1298,9 @@ func (a GamificationApi) GetGamificationScorecardsUserAttendance(userId string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
 	// to determine the Content-Type header
@@ -1707,19 +1445,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsAlltime(userId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
 
 	// to determine the Content-Type header
@@ -1800,43 +1526,11 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dayOfWeek).(string); ok {
-		if str != "" {
-			queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, collectionFormat)
-		}
-	} else {
-		queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, collectionFormat)
-	}
-	
+	queryParams["dayOfWeek"] = a.Configuration.APIClient.ParameterToString(dayOfWeek, "")
 	
 
 	// to determine the Content-Type header
@@ -1917,43 +1611,11 @@ func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(timeZone).(string); ok {
-		if str != "" {
-			queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-		}
-	} else {
-		queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-	}
-	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
 	// to determine the Content-Type header
@@ -2033,43 +1695,11 @@ func (a GamificationApi) GetGamificationScorecardsUsersPointsAverage(filterType 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterId).(string); ok {
-		if str != "" {
-			queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-		}
-	} else {
-		queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(workday).(string); ok {
-		if str != "" {
-			queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-		}
-	} else {
-		queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-	}
-	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
 
 	// to determine the Content-Type header
@@ -2149,55 +1779,13 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesAverage(filterType 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
 	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterId).(string); ok {
-		if str != "" {
-			queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-		}
-	} else {
-		queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(workday).(string); ok {
-		if str != "" {
-			queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-		}
-	} else {
-		queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(timeZone).(string); ok {
-		if str != "" {
-			queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-		}
-	} else {
-		queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-	}
-	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
 	// to determine the Content-Type header
@@ -2282,67 +1870,15 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, "")
 	
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterId).(string); ok {
-		if str != "" {
-			queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-		}
-	} else {
-		queryParams["filterId"] = a.Configuration.APIClient.ParameterToString(filterId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(timeZone).(string); ok {
-		if str != "" {
-			queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-		}
-	} else {
-		queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-	}
-	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
 	// to determine the Content-Type header
@@ -2412,31 +1948,9 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(workday).(string); ok {
-		if str != "" {
-			queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-		}
-	} else {
-		queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(timeZone).(string); ok {
-		if str != "" {
-			queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-		}
-	} else {
-		queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-	}
-	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
 	// to determine the Content-Type header
@@ -2511,55 +2025,13 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
+	queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(startWorkday).(string); ok {
-		if str != "" {
-			queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(endWorkday).(string); ok {
-		if str != "" {
-			queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-		}
-	} else {
-		queryParams["endWorkday"] = a.Configuration.APIClient.ParameterToString(endWorkday, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(timeZone).(string); ok {
-		if str != "" {
-			queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-		}
-	} else {
-		queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, collectionFormat)
-	}
-	
+	queryParams["timeZone"] = a.Configuration.APIClient.ParameterToString(timeZone, "")
 	
 
 	// to determine the Content-Type header

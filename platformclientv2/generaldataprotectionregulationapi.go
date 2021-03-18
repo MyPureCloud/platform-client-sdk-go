@@ -131,31 +131,9 @@ func (a GeneralDataProtectionRegulationApi) GetGdprRequests(pageSize int, pageNu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -230,31 +208,9 @@ func (a GeneralDataProtectionRegulationApi) GetGdprSubjects(searchType string, s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["searchType"] = a.Configuration.APIClient.ParameterToString(searchType, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(searchType).(string); ok {
-		if str != "" {
-			queryParams["searchType"] = a.Configuration.APIClient.ParameterToString(searchType, collectionFormat)
-		}
-	} else {
-		queryParams["searchType"] = a.Configuration.APIClient.ParameterToString(searchType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(searchValue).(string); ok {
-		if str != "" {
-			queryParams["searchValue"] = a.Configuration.APIClient.ParameterToString(searchValue, collectionFormat)
-		}
-	} else {
-		queryParams["searchValue"] = a.Configuration.APIClient.ParameterToString(searchValue, collectionFormat)
-	}
-	
+	queryParams["searchValue"] = a.Configuration.APIClient.ParameterToString(searchValue, "")
 	
 
 	// to determine the Content-Type header
@@ -324,19 +280,7 @@ func (a GeneralDataProtectionRegulationApi) PostGdprRequests(body Gdprrequest, d
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(deleteConfirmed).(string); ok {
-		if str != "" {
-			queryParams["deleteConfirmed"] = a.Configuration.APIClient.ParameterToString(deleteConfirmed, collectionFormat)
-		}
-	} else {
-		queryParams["deleteConfirmed"] = a.Configuration.APIClient.ParameterToString(deleteConfirmed, collectionFormat)
-	}
-	
+	queryParams["deleteConfirmed"] = a.Configuration.APIClient.ParameterToString(deleteConfirmed, "")
 	
 
 	// to determine the Content-Type header

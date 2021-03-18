@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Importscriptstatusresponse
@@ -21,5 +23,7 @@ type Importscriptstatusresponse struct {
 // String returns a JSON representation of the model
 func (o *Importscriptstatusresponse) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

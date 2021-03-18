@@ -2,6 +2,8 @@ package platformclientv2
 import (
 	"time"
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Userscheduleshift - Single shift in a user's schedule
@@ -38,5 +40,7 @@ type Userscheduleshift struct {
 // String returns a JSON representation of the model
 func (o *Userscheduleshift) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Userroutinglanguagepost - Represents an organization language assigned to a user. When assigning to a user specify the organization langauge id as the id.
@@ -25,5 +27,7 @@ type Userroutinglanguagepost struct {
 // String returns a JSON representation of the model
 func (o *Userroutinglanguagepost) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

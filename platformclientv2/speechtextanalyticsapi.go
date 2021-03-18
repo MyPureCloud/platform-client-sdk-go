@@ -67,19 +67,7 @@ func (a SpeechTextAnalyticsApi) DeleteSpeechandtextanalyticsProgram(programId st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDelete).(string); ok {
-		if str != "" {
-			queryParams["forceDelete"] = a.Configuration.APIClient.ParameterToString(forceDelete, collectionFormat)
-		}
-	} else {
-		queryParams["forceDelete"] = a.Configuration.APIClient.ParameterToString(forceDelete, collectionFormat)
-	}
-	
+	queryParams["forceDelete"] = a.Configuration.APIClient.ParameterToString(forceDelete, "")
 	
 
 	// to determine the Content-Type header
@@ -484,31 +472,9 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsPrograms(nextPage strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(nextPage).(string); ok {
-		if str != "" {
-			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-		}
-	} else {
-		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -711,31 +677,9 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsProgramsUnpublished(nex
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(nextPage).(string); ok {
-		if str != "" {
-			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-		}
-	} else {
-		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -932,31 +876,9 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(nextPage).(string); ok {
-		if str != "" {
-			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-		}
-	} else {
-		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -1021,19 +943,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopicsGeneral(dialect s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dialect).(string); ok {
-		if str != "" {
-			queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, collectionFormat)
-		}
-	} else {
-		queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, collectionFormat)
-	}
-	
+	queryParams["dialect"] = a.Configuration.APIClient.ParameterToString(dialect, "")
 	
 
 	// to determine the Content-Type header

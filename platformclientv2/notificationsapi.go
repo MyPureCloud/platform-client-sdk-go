@@ -128,31 +128,9 @@ func (a NotificationsApi) GetNotificationsAvailabletopics(expand []string, inclu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includePreview).(string); ok {
-		if str != "" {
-			queryParams["includePreview"] = a.Configuration.APIClient.ParameterToString(includePreview, collectionFormat)
-		}
-	} else {
-		queryParams["includePreview"] = a.Configuration.APIClient.ParameterToString(includePreview, collectionFormat)
-	}
-	
+	queryParams["includePreview"] = a.Configuration.APIClient.ParameterToString(includePreview, "")
 	
 
 	// to determine the Content-Type header
@@ -286,19 +264,7 @@ func (a NotificationsApi) GetNotificationsChannels(includechannels string) (*Cha
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includechannels).(string); ok {
-		if str != "" {
-			queryParams["includechannels"] = a.Configuration.APIClient.ParameterToString(includechannels, collectionFormat)
-		}
-	} else {
-		queryParams["includechannels"] = a.Configuration.APIClient.ParameterToString(includechannels, collectionFormat)
-	}
-	
+	queryParams["includechannels"] = a.Configuration.APIClient.ParameterToString(includechannels, "")
 	
 
 	// to determine the Content-Type header

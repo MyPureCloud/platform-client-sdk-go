@@ -374,67 +374,15 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageCategories(knowledgeBaseI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(before).(string); ok {
-		if str != "" {
-			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-		}
-	} else {
-		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-	}
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(after).(string); ok {
-		if str != "" {
-			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-		}
-	} else {
-		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header
@@ -673,79 +621,17 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(before).(string); ok {
-		if str != "" {
-			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-		}
-	} else {
-		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-	}
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(after).(string); ok {
-		if str != "" {
-			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-		}
-	} else {
-		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(categories).(string); ok {
-		if str != "" {
-			queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, collectionFormat)
-		}
-	} else {
-		queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(title).(string); ok {
-		if str != "" {
-			queryParams["title"] = a.Configuration.APIClient.ParameterToString(title, collectionFormat)
-		}
-	} else {
-		queryParams["title"] = a.Configuration.APIClient.ParameterToString(title, collectionFormat)
-	}
-	
+	queryParams["title"] = a.Configuration.APIClient.ParameterToString(title, "")
 	
 
 	// to determine the Content-Type header
@@ -903,67 +789,15 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(before).(string); ok {
-		if str != "" {
-			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-		}
-	} else {
-		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-	}
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(after).(string); ok {
-		if str != "" {
-			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-		}
-	} else {
-		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(knowledgeDocumentsState).(string); ok {
-		if str != "" {
-			queryParams["knowledgeDocumentsState"] = a.Configuration.APIClient.ParameterToString(knowledgeDocumentsState, collectionFormat)
-		}
-	} else {
-		queryParams["knowledgeDocumentsState"] = a.Configuration.APIClient.ParameterToString(knowledgeDocumentsState, collectionFormat)
-	}
-	
+	queryParams["knowledgeDocumentsState"] = a.Configuration.APIClient.ParameterToString(knowledgeDocumentsState, "")
 	
 
 	// to determine the Content-Type header
@@ -1028,67 +862,15 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(before).(string); ok {
-		if str != "" {
-			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-		}
-	} else {
-		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-	}
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(after).(string); ok {
-		if str != "" {
-			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-		}
-	} else {
-		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header

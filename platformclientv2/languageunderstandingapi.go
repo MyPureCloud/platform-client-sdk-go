@@ -348,127 +348,25 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedback(domainI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["intentName"] = a.Configuration.APIClient.ParameterToString(intentName, "")
 	
+	queryParams["assessment"] = a.Configuration.APIClient.ParameterToString(assessment, "")
 	
+	queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(intentName).(string); ok {
-		if str != "" {
-			queryParams["intentName"] = a.Configuration.APIClient.ParameterToString(intentName, collectionFormat)
-		}
-	} else {
-		queryParams["intentName"] = a.Configuration.APIClient.ParameterToString(intentName, collectionFormat)
-	}
+	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
+	queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(assessment).(string); ok {
-		if str != "" {
-			queryParams["assessment"] = a.Configuration.APIClient.ParameterToString(assessment, collectionFormat)
-		}
-	} else {
-		queryParams["assessment"] = a.Configuration.APIClient.ParameterToString(assessment, collectionFormat)
-	}
+	queryParams["enableCursorPagination"] = a.Configuration.APIClient.ParameterToString(enableCursorPagination, "")
 	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dateStart).(string); ok {
-		if str != "" {
-			queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, collectionFormat)
-		}
-	} else {
-		queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dateEnd).(string); ok {
-		if str != "" {
-			queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, collectionFormat)
-		}
-	} else {
-		queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeDeleted).(string); ok {
-		if str != "" {
-			queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, collectionFormat)
-		}
-	} else {
-		queryParams["includeDeleted"] = a.Configuration.APIClient.ParameterToString(includeDeleted, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(enableCursorPagination).(string); ok {
-		if str != "" {
-			queryParams["enableCursorPagination"] = a.Configuration.APIClient.ParameterToString(enableCursorPagination, collectionFormat)
-		}
-	} else {
-		queryParams["enableCursorPagination"] = a.Configuration.APIClient.ParameterToString(enableCursorPagination, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(after).(string); ok {
-		if str != "" {
-			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-		}
-	} else {
-		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range fields {
-			queryParams["fields"] = value
-		}
-	} else {
-		queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, collectionFormat)
-	}
-	
-	
+	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
 
 	// to determine the Content-Type header
@@ -545,19 +443,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainFeedbackFeedback
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range fields {
-			queryParams["fields"] = value
-		}
-	} else {
-		queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, collectionFormat)
-	}
-	
-	
+	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
 
 	// to determine the Content-Type header
@@ -634,19 +520,7 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersion(domainId
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeUtterances).(string); ok {
-		if str != "" {
-			queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
-		}
-	} else {
-		queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
-	}
-	
+	queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, "")
 	
 
 	// to determine the Content-Type header
@@ -792,43 +666,11 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomainVersions(domainI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeUtterances).(string); ok {
-		if str != "" {
-			queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
-		}
-	} else {
-		queryParams["includeUtterances"] = a.Configuration.APIClient.ParameterToString(includeUtterances, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -893,31 +735,9 @@ func (a LanguageUnderstandingApi) GetLanguageunderstandingDomains(pageNumber int
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header

@@ -73,79 +73,17 @@ func (a TelephonyApi) GetTelephonySiptraces(dateStart time.Time, dateEnd time.Ti
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["callId"] = a.Configuration.APIClient.ParameterToString(callId, "")
 	
+	queryParams["toUser"] = a.Configuration.APIClient.ParameterToString(toUser, "")
 	
+	queryParams["fromUser"] = a.Configuration.APIClient.ParameterToString(fromUser, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(callId).(string); ok {
-		if str != "" {
-			queryParams["callId"] = a.Configuration.APIClient.ParameterToString(callId, collectionFormat)
-		}
-	} else {
-		queryParams["callId"] = a.Configuration.APIClient.ParameterToString(callId, collectionFormat)
-	}
+	queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, "")
 	
+	queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(toUser).(string); ok {
-		if str != "" {
-			queryParams["toUser"] = a.Configuration.APIClient.ParameterToString(toUser, collectionFormat)
-		}
-	} else {
-		queryParams["toUser"] = a.Configuration.APIClient.ParameterToString(toUser, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(fromUser).(string); ok {
-		if str != "" {
-			queryParams["fromUser"] = a.Configuration.APIClient.ParameterToString(fromUser, collectionFormat)
-		}
-	} else {
-		queryParams["fromUser"] = a.Configuration.APIClient.ParameterToString(fromUser, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(conversationId).(string); ok {
-		if str != "" {
-			queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
-		}
-	} else {
-		queryParams["conversationId"] = a.Configuration.APIClient.ParameterToString(conversationId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dateStart).(string); ok {
-		if str != "" {
-			queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, collectionFormat)
-		}
-	} else {
-		queryParams["dateStart"] = a.Configuration.APIClient.ParameterToString(dateStart, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dateEnd).(string); ok {
-		if str != "" {
-			queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, collectionFormat)
-		}
-	} else {
-		queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, collectionFormat)
-	}
-	
+	queryParams["dateEnd"] = a.Configuration.APIClient.ParameterToString(dateEnd, "")
 	
 
 	// to determine the Content-Type header

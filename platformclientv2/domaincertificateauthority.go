@@ -2,6 +2,8 @@ package platformclientv2
 import (
 	"time"
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Domaincertificateauthority - A certificate authority represents an organization that has issued a digital certificate for making secure connections with an edge device.
@@ -74,5 +76,7 @@ type Domaincertificateauthority struct {
 // String returns a JSON representation of the model
 func (o *Domaincertificateauthority) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Journeyactionmap
@@ -17,5 +19,7 @@ type Journeyactionmap struct {
 // String returns a JSON representation of the model
 func (o *Journeyactionmap) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

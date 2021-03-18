@@ -609,19 +609,7 @@ func (a OutboundApi) DeleteOutboundContactlistContacts(contactListId string, con
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range contactIds {
-			queryParams["contactIds"] = value
-		}
-	} else {
-		queryParams["contactIds"] = a.Configuration.APIClient.ParameterToString(contactIds, collectionFormat)
-	}
-	
-	
+	queryParams["contactIds"] = a.Configuration.APIClient.ParameterToString(contactIds, "multi")
 	
 
 	// to determine the Content-Type header
@@ -754,19 +742,7 @@ func (a OutboundApi) DeleteOutboundContactlists(id []string) (*APIResponse, erro
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1297,91 +1273,19 @@ func (a OutboundApi) GetOutboundAttemptlimits(pageSize int, pageNumber int, allo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -1515,91 +1419,19 @@ func (a OutboundApi) GetOutboundCallabletimesets(pageSize int, pageNumber int, a
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -1733,91 +1565,19 @@ func (a OutboundApi) GetOutboundCallanalysisresponsesets(pageSize int, pageNumbe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -2296,91 +2056,19 @@ func (a OutboundApi) GetOutboundCampaignrules(pageSize int, pageNumber int, allo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -2445,163 +2133,31 @@ func (a OutboundApi) GetOutboundCampaigns(pageSize int, pageNumber int, filterTy
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
+	queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, "")
 	
+	queryParams["dncListIds"] = a.Configuration.APIClient.ParameterToString(dncListIds, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["distributionQueueId"] = a.Configuration.APIClient.ParameterToString(distributionQueueId, "")
 	
+	queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, "")
 	
+	queryParams["callAnalysisResponseSetId"] = a.Configuration.APIClient.ParameterToString(callAnalysisResponseSetId, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(contactListId).(string); ok {
-		if str != "" {
-			queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
-		}
-	} else {
-		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dncListIds).(string); ok {
-		if str != "" {
-			queryParams["dncListIds"] = a.Configuration.APIClient.ParameterToString(dncListIds, collectionFormat)
-		}
-	} else {
-		queryParams["dncListIds"] = a.Configuration.APIClient.ParameterToString(dncListIds, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(distributionQueueId).(string); ok {
-		if str != "" {
-			queryParams["distributionQueueId"] = a.Configuration.APIClient.ParameterToString(distributionQueueId, collectionFormat)
-		}
-	} else {
-		queryParams["distributionQueueId"] = a.Configuration.APIClient.ParameterToString(distributionQueueId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(edgeGroupId).(string); ok {
-		if str != "" {
-			queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, collectionFormat)
-		}
-	} else {
-		queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(callAnalysisResponseSetId).(string); ok {
-		if str != "" {
-			queryParams["callAnalysisResponseSetId"] = a.Configuration.APIClient.ParameterToString(callAnalysisResponseSetId, collectionFormat)
-		}
-	} else {
-		queryParams["callAnalysisResponseSetId"] = a.Configuration.APIClient.ParameterToString(callAnalysisResponseSetId, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -2666,91 +2222,19 @@ func (a OutboundApi) GetOutboundCampaignsAll(pageSize int, pageNumber int, id []
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+	queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range mediaType {
-			queryParams["mediaType"] = value
-		}
-	} else {
-		queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -2815,91 +2299,19 @@ func (a OutboundApi) GetOutboundCampaignsAllDivisionviews(pageSize int, pageNumb
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+	queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range mediaType {
-			queryParams["mediaType"] = value
-		}
-	} else {
-		queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -3033,91 +2445,19 @@ func (a OutboundApi) GetOutboundCampaignsDivisionviews(pageSize int, pageNumber 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -3188,31 +2528,9 @@ func (a OutboundApi) GetOutboundContactlist(contactListId string, includeImportS
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
-	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
 
 	// to determine the Content-Type header
@@ -3358,19 +2676,7 @@ func (a OutboundApi) GetOutboundContactlistExport(contactListId string, download
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(download).(string); ok {
-		if str != "" {
-			queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
-		}
-	} else {
-		queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
-	}
-	
+	queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, "")
 	
 
 	// to determine the Content-Type header
@@ -3642,103 +2948,21 @@ func (a OutboundApi) GetOutboundContactlistfilters(pageSize int, pageNumber int,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(contactListId).(string); ok {
-		if str != "" {
-			queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
-		}
-	} else {
-		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
-	}
-	
+	queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, "")
 	
 
 	// to determine the Content-Type header
@@ -3803,139 +3027,27 @@ func (a OutboundApi) GetOutboundContactlists(includeImportStatus bool, includeSi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -4006,31 +3118,9 @@ func (a OutboundApi) GetOutboundContactlistsDivisionview(contactListId string, i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
-	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
 
 	// to determine the Content-Type header
@@ -4095,115 +3185,23 @@ func (a OutboundApi) GetOutboundContactlistsDivisionviews(includeImportStatus bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -4274,31 +3272,9 @@ func (a OutboundApi) GetOutboundDnclist(dncListId string, includeImportStatus bo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
-	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
 
 	// to determine the Content-Type header
@@ -4369,19 +3345,7 @@ func (a OutboundApi) GetOutboundDnclistExport(dncListId string, download string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(download).(string); ok {
-		if str != "" {
-			queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
-		}
-	} else {
-		queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, collectionFormat)
-	}
-	
+	queryParams["download"] = a.Configuration.APIClient.ParameterToString(download, "")
 	
 
 	// to determine the Content-Type header
@@ -4515,139 +3479,27 @@ func (a OutboundApi) GetOutboundDnclists(includeImportStatus bool, includeSize b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
+	queryParams["dncSourceType"] = a.Configuration.APIClient.ParameterToString(dncSourceType, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(dncSourceType).(string); ok {
-		if str != "" {
-			queryParams["dncSourceType"] = a.Configuration.APIClient.ParameterToString(dncSourceType, collectionFormat)
-		}
-	} else {
-		queryParams["dncSourceType"] = a.Configuration.APIClient.ParameterToString(dncSourceType, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -4718,31 +3570,9 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
-	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
 
 	// to determine the Content-Type header
@@ -4807,115 +3637,23 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, "")
 	
+	queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeImportStatus).(string); ok {
-		if str != "" {
-			queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-		}
-	} else {
-		queryParams["includeImportStatus"] = a.Configuration.APIClient.ParameterToString(includeImportStatus, collectionFormat)
-	}
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(includeSize).(string); ok {
-		if str != "" {
-			queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-		}
-	} else {
-		queryParams["includeSize"] = a.Configuration.APIClient.ParameterToString(includeSize, collectionFormat)
-	}
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -5049,91 +3787,19 @@ func (a OutboundApi) GetOutboundEvents(pageSize int, pageNumber int, filterType 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, "")
 	
+	queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(category).(string); ok {
-		if str != "" {
-			queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, collectionFormat)
-		}
-	} else {
-		queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(level).(string); ok {
-		if str != "" {
-			queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, collectionFormat)
-		}
-	} else {
-		queryParams["level"] = a.Configuration.APIClient.ParameterToString(level, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -5336,127 +4002,25 @@ func (a OutboundApi) GetOutboundMessagingcampaigns(pageSize int, pageNumber int,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
+	queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(contactListId).(string); ok {
-		if str != "" {
-			queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
-		}
-	} else {
-		queryParams["contactListId"] = a.Configuration.APIClient.ParameterToString(contactListId, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(varType).(string); ok {
-		if str != "" {
-			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-		}
-	} else {
-		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(senderSmsPhoneNumber).(string); ok {
-		if str != "" {
-			queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
-		}
-	} else {
-		queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -5590,79 +4154,17 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(senderSmsPhoneNumber).(string); ok {
-		if str != "" {
-			queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
-		}
-	} else {
-		queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, collectionFormat)
-	}
-	
+	queryParams["senderSmsPhoneNumber"] = a.Configuration.APIClient.ParameterToString(senderSmsPhoneNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -5796,91 +4298,19 @@ func (a OutboundApi) GetOutboundRulesets(pageSize int, pageNumber int, allowEmpt
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -6278,91 +4708,19 @@ func (a OutboundApi) GetOutboundSequences(pageSize int, pageNumber int, allowEmp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(allowEmptyResult).(string); ok {
-		if str != "" {
-			queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-		}
-	} else {
-		queryParams["allowEmptyResult"] = a.Configuration.APIClient.ParameterToString(allowEmptyResult, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterType).(string); ok {
-		if str != "" {
-			queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-		}
-	} else {
-		queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -6697,67 +5055,15 @@ func (a OutboundApi) PostOutboundAudits(body Dialerauditrequest, pageSize int, p
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(facetsOnly).(string); ok {
-		if str != "" {
-			queryParams["facetsOnly"] = a.Configuration.APIClient.ParameterToString(facetsOnly, collectionFormat)
-		}
-	} else {
-		queryParams["facetsOnly"] = a.Configuration.APIClient.ParameterToString(facetsOnly, collectionFormat)
-	}
-	
+	queryParams["facetsOnly"] = a.Configuration.APIClient.ParameterToString(facetsOnly, "")
 	
 
 	// to determine the Content-Type header
@@ -7334,43 +5640,11 @@ func (a OutboundApi) PostOutboundContactlistContacts(contactListId string, body 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["priority"] = a.Configuration.APIClient.ParameterToString(priority, "")
 	
+	queryParams["clearSystemData"] = a.Configuration.APIClient.ParameterToString(clearSystemData, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(priority).(string); ok {
-		if str != "" {
-			queryParams["priority"] = a.Configuration.APIClient.ParameterToString(priority, collectionFormat)
-		}
-	} else {
-		queryParams["priority"] = a.Configuration.APIClient.ParameterToString(priority, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(clearSystemData).(string); ok {
-		if str != "" {
-			queryParams["clearSystemData"] = a.Configuration.APIClient.ParameterToString(clearSystemData, collectionFormat)
-		}
-	} else {
-		queryParams["clearSystemData"] = a.Configuration.APIClient.ParameterToString(clearSystemData, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(doNotQueue).(string); ok {
-		if str != "" {
-			queryParams["doNotQueue"] = a.Configuration.APIClient.ParameterToString(doNotQueue, collectionFormat)
-		}
-	} else {
-		queryParams["doNotQueue"] = a.Configuration.APIClient.ParameterToString(doNotQueue, collectionFormat)
-	}
-	
+	queryParams["doNotQueue"] = a.Configuration.APIClient.ParameterToString(doNotQueue, "")
 	
 
 	// to determine the Content-Type header

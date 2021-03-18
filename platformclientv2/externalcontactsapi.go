@@ -557,19 +557,7 @@ func (a ExternalContactsApi) GetExternalcontactsContact(contactId string, expand
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -646,19 +634,7 @@ func (a ExternalContactsApi) GetExternalcontactsContactNote(contactId string, no
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -729,55 +705,13 @@ func (a ExternalContactsApi) GetExternalcontactsContactNotes(contactId string, p
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -842,67 +776,15 @@ func (a ExternalContactsApi) GetExternalcontactsContacts(pageSize int, pageNumbe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q).(string); ok {
-		if str != "" {
-			queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
-		}
-	} else {
-		queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1249,31 +1131,9 @@ func (a ExternalContactsApi) GetExternalcontactsOrganization(externalOrganizatio
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeTrustors).(string); ok {
-		if str != "" {
-			queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
-		}
-	} else {
-		queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
-	}
-	
+	queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, "")
 	
 
 	// to determine the Content-Type header
@@ -1344,67 +1204,15 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationContacts(externalOrg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q).(string); ok {
-		if str != "" {
-			queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
-		}
-	} else {
-		queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1481,19 +1289,7 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNote(externalOrganiz
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1564,55 +1360,13 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationNotes(externalOrgani
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1683,55 +1437,13 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizationRelationships(extern
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -1796,91 +1508,19 @@ func (a ExternalContactsApi) GetExternalcontactsOrganizations(pageSize int, page
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["trustorId"] = a.Configuration.APIClient.ParameterToString(trustorId, "multi")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q).(string); ok {
-		if str != "" {
-			queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
-		}
-	} else {
-		queryParams["q"] = a.Configuration.APIClient.ParameterToString(q, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range trustorId {
-			queryParams["trustorId"] = value
-		}
-	} else {
-		queryParams["trustorId"] = a.Configuration.APIClient.ParameterToString(trustorId, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeTrustors).(string); ok {
-		if str != "" {
-			queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
-		}
-	} else {
-		queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, collectionFormat)
-	}
-	
+	queryParams["includeTrustors"] = a.Configuration.APIClient.ParameterToString(includeTrustors, "")
 	
 
 	// to determine the Content-Type header
@@ -2227,19 +1867,7 @@ func (a ExternalContactsApi) GetExternalcontactsRelationship(relationshipId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -2309,31 +1937,9 @@ func (a ExternalContactsApi) GetExternalcontactsReversewhitepageslookup(lookupVa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["lookupVal"] = a.Configuration.APIClient.ParameterToString(lookupVal, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(lookupVal).(string); ok {
-		if str != "" {
-			queryParams["lookupVal"] = a.Configuration.APIClient.ParameterToString(lookupVal, collectionFormat)
-		}
-	} else {
-		queryParams["lookupVal"] = a.Configuration.APIClient.ParameterToString(lookupVal, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2398,31 +2004,9 @@ func (a ExternalContactsApi) GetExternalcontactsScanContacts(limit int, cursor s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(cursor).(string); ok {
-		if str != "" {
-			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-		}
-	} else {
-		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-	}
-	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
 	// to determine the Content-Type header
@@ -2487,31 +2071,9 @@ func (a ExternalContactsApi) GetExternalcontactsScanNotes(limit int, cursor stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(cursor).(string); ok {
-		if str != "" {
-			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-		}
-	} else {
-		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-	}
-	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
 	// to determine the Content-Type header
@@ -2576,31 +2138,9 @@ func (a ExternalContactsApi) GetExternalcontactsScanOrganizations(limit int, cur
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(cursor).(string); ok {
-		if str != "" {
-			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-		}
-	} else {
-		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-	}
-	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
 	// to determine the Content-Type header
@@ -2665,31 +2205,9 @@ func (a ExternalContactsApi) GetExternalcontactsScanRelationships(limit int, cur
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(limit).(string); ok {
-		if str != "" {
-			queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-		}
-	} else {
-		queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(cursor).(string); ok {
-		if str != "" {
-			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-		}
-	} else {
-		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-	}
-	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
 	// to determine the Content-Type header

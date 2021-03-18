@@ -82,7 +82,9 @@ func (c *APIClient) CallAPI(path string, method string,
 	urlString := path + "?"
 	if queryParams != nil {
 		for k, v := range queryParams {
-			urlString += fmt.Sprintf("%v=%v&", url.QueryEscape(strings.TrimSpace(k)), url.QueryEscape(strings.TrimSpace(v)))
+			if v != "" {
+				urlString += fmt.Sprintf("%v=%v&", url.QueryEscape(strings.TrimSpace(k)), url.QueryEscape(strings.TrimSpace(v)))
+			}
 		}
 	}
 	urlString = urlString[:len(urlString)-1]

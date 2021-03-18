@@ -758,19 +758,7 @@ func (a ConversationsApi) GetAnalyticsConversationsDetails(id []string) (*Analyt
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -910,31 +898,9 @@ func (a ConversationsApi) GetAnalyticsConversationsDetailsJobResults(jobId strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(cursor).(string); ok {
-		if str != "" {
-			queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-		}
-	} else {
-		queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -1299,19 +1265,7 @@ func (a ConversationsApi) GetConversationParticipantWrapup(conversationId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -1451,19 +1405,7 @@ func (a ConversationsApi) GetConversations(communicationType string) (*Conversat
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(communicationType).(string); ok {
-		if str != "" {
-			queryParams["communicationType"] = a.Configuration.APIClient.ParameterToString(communicationType, collectionFormat)
-		}
-	} else {
-		queryParams["communicationType"] = a.Configuration.APIClient.ParameterToString(communicationType, collectionFormat)
-	}
-	
+	queryParams["communicationType"] = a.Configuration.APIClient.ParameterToString(communicationType, "")
 	
 
 	// to determine the Content-Type header
@@ -1609,19 +1551,7 @@ func (a ConversationsApi) GetConversationsCallParticipantWrapup(conversationId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -1842,19 +1772,7 @@ func (a ConversationsApi) GetConversationsCallbackParticipantWrapup(conversation
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -2120,55 +2038,13 @@ func (a ConversationsApi) GetConversationsCallsHistory(pageSize int, pageNumber 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(interval).(string); ok {
-		if str != "" {
-			queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
-		}
-	} else {
-		queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2446,55 +2322,13 @@ func (a ConversationsApi) GetConversationsChatMessages(conversationId string, af
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
 	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(after).(string); ok {
-		if str != "" {
-			queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-		}
-	} else {
-		queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(before).(string); ok {
-		if str != "" {
-			queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-		}
-	} else {
-		queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(maxResults).(string); ok {
-		if str != "" {
-			queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, collectionFormat)
-		}
-	} else {
-		queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, collectionFormat)
-	}
-	
+	queryParams["maxResults"] = a.Configuration.APIClient.ParameterToString(maxResults, "")
 	
 
 	// to determine the Content-Type header
@@ -2571,19 +2405,7 @@ func (a ConversationsApi) GetConversationsChatParticipantWrapup(conversationId s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -2867,19 +2689,7 @@ func (a ConversationsApi) GetConversationsCobrowsesessionParticipantWrapup(conve
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -3376,19 +3186,7 @@ func (a ConversationsApi) GetConversationsEmailParticipantWrapup(conversationId 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -3828,19 +3626,7 @@ func (a ConversationsApi) GetConversationsMessageParticipantWrapup(conversationI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(provisional).(string); ok {
-		if str != "" {
-			queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-		}
-	} else {
-		queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, collectionFormat)
-	}
-	
+	queryParams["provisional"] = a.Configuration.APIClient.ParameterToString(provisional, "")
 	
 
 	// to determine the Content-Type header
@@ -4106,31 +3892,9 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -4195,31 +3959,9 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -4353,31 +4095,9 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -4511,31 +4231,9 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -4669,31 +4367,9 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -4833,31 +4509,9 @@ func (a ConversationsApi) GetConversationsMessagingSticker(messengerType string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header

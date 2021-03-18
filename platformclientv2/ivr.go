@@ -2,6 +2,8 @@ package platformclientv2
 import (
 	"time"
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Ivr - Defines the phone numbers, operating hours, and the Architect flows to execute for an IVR.
@@ -78,5 +80,7 @@ type Ivr struct {
 // String returns a JSON representation of the model
 func (o *Ivr) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

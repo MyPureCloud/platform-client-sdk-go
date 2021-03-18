@@ -133,19 +133,7 @@ func (a JourneyApi) DeleteJourneyActiontemplate(actionTemplateId string, hardDel
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(hardDelete).(string); ok {
-		if str != "" {
-			queryParams["hardDelete"] = a.Configuration.APIClient.ParameterToString(hardDelete, collectionFormat)
-		}
-	} else {
-		queryParams["hardDelete"] = a.Configuration.APIClient.ParameterToString(hardDelete, collectionFormat)
-	}
-	
+	queryParams["hardDelete"] = a.Configuration.APIClient.ParameterToString(hardDelete, "")
 	
 
 	// to determine the Content-Type header
@@ -409,79 +397,17 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["filterField"] = a.Configuration.APIClient.ParameterToString(filterField, "")
 	
+	queryParams["filterValue"] = a.Configuration.APIClient.ParameterToString(filterValue, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterField).(string); ok {
-		if str != "" {
-			queryParams["filterField"] = a.Configuration.APIClient.ParameterToString(filterField, collectionFormat)
-		}
-	} else {
-		queryParams["filterField"] = a.Configuration.APIClient.ParameterToString(filterField, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filterValue).(string); ok {
-		if str != "" {
-			queryParams["filterValue"] = a.Configuration.APIClient.ParameterToString(filterValue, collectionFormat)
-		}
-	} else {
-		queryParams["filterValue"] = a.Configuration.APIClient.ParameterToString(filterValue, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range actionMapIds {
-			queryParams["actionMapIds"] = value
-		}
-	} else {
-		queryParams["actionMapIds"] = a.Configuration.APIClient.ParameterToString(actionMapIds, collectionFormat)
-	}
-	
-	
+	queryParams["actionMapIds"] = a.Configuration.APIClient.ParameterToString(actionMapIds, "multi")
 	
 
 	// to determine the Content-Type header
@@ -615,31 +541,9 @@ func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Acti
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -773,67 +677,15 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(mediaType).(string); ok {
-		if str != "" {
-			queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, collectionFormat)
-		}
-	} else {
-		queryParams["mediaType"] = a.Configuration.APIClient.ParameterToString(mediaType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(state).(string); ok {
-		if str != "" {
-			queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
-		}
-	} else {
-		queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, collectionFormat)
-	}
-	
+	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
 
 	// to determine the Content-Type header
@@ -967,55 +819,13 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range outcomeIds {
-			queryParams["outcomeIds"] = value
-		}
-	} else {
-		queryParams["outcomeIds"] = a.Configuration.APIClient.ParameterToString(outcomeIds, collectionFormat)
-	}
-	
-	
+	queryParams["outcomeIds"] = a.Configuration.APIClient.ParameterToString(outcomeIds, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1149,67 +959,15 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
+	queryParams["isActive"] = a.Configuration.APIClient.ParameterToString(isActive, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(isActive).(string); ok {
-		if str != "" {
-			queryParams["isActive"] = a.Configuration.APIClient.ParameterToString(isActive, collectionFormat)
-		}
-	} else {
-		queryParams["isActive"] = a.Configuration.APIClient.ParameterToString(isActive, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range segmentIds {
-			queryParams["segmentIds"] = value
-		}
-	} else {
-		queryParams["segmentIds"] = a.Configuration.APIClient.ParameterToString(segmentIds, collectionFormat)
-	}
-	
-	
+	queryParams["segmentIds"] = a.Configuration.APIClient.ParameterToString(segmentIds, "multi")
 	
 
 	// to determine the Content-Type header

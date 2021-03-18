@@ -353,31 +353,9 @@ func (a CoachingApi) GetCoachingAppointmentAnnotations(appointmentId string, pag
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -448,31 +426,9 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -542,127 +498,25 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["userIds"] = a.Configuration.APIClient.ParameterToString(userIds, "multi")
 	
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
 	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range userIds {
-			queryParams["userIds"] = value
-		}
-	} else {
-		queryParams["userIds"] = a.Configuration.APIClient.ParameterToString(userIds, collectionFormat)
-	}
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
 	
+	queryParams["facilitatorIds"] = a.Configuration.APIClient.ParameterToString(facilitatorIds, "multi")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(interval).(string); ok {
-		if str != "" {
-			queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
-		}
-	} else {
-		queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
-	}
+	queryParams["relationships"] = a.Configuration.APIClient.ParameterToString(relationships, "multi")
 	
+	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range statuses {
-			queryParams["statuses"] = value
-		}
-	} else {
-		queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range facilitatorIds {
-			queryParams["facilitatorIds"] = value
-		}
-	} else {
-		queryParams["facilitatorIds"] = a.Configuration.APIClient.ParameterToString(facilitatorIds, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range relationships {
-			queryParams["relationships"] = value
-		}
-	} else {
-		queryParams["relationships"] = a.Configuration.APIClient.ParameterToString(relationships, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(completionInterval).(string); ok {
-		if str != "" {
-			queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
-		}
-	} else {
-		queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(overdue).(string); ok {
-		if str != "" {
-			queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
-		}
-	} else {
-		queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
-	}
-	
+	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
 	
 
 	// to determine the Content-Type header
@@ -727,115 +581,23 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(interval).(string); ok {
-		if str != "" {
-			queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
-		}
-	} else {
-		queryParams["interval"] = a.Configuration.APIClient.ParameterToString(interval, collectionFormat)
-	}
+	queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, "multi")
 	
+	queryParams["facilitatorIds"] = a.Configuration.APIClient.ParameterToString(facilitatorIds, "multi")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["relationships"] = a.Configuration.APIClient.ParameterToString(relationships, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range statuses {
-			queryParams["statuses"] = value
-		}
-	} else {
-		queryParams["statuses"] = a.Configuration.APIClient.ParameterToString(statuses, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range facilitatorIds {
-			queryParams["facilitatorIds"] = value
-		}
-	} else {
-		queryParams["facilitatorIds"] = a.Configuration.APIClient.ParameterToString(facilitatorIds, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range relationships {
-			queryParams["relationships"] = value
-		}
-	} else {
-		queryParams["relationships"] = a.Configuration.APIClient.ParameterToString(relationships, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(completionInterval).(string); ok {
-		if str != "" {
-			queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
-		}
-	} else {
-		queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(overdue).(string); ok {
-		if str != "" {
-			queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
-		}
-	} else {
-		queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, collectionFormat)
-	}
-	
+	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
 	
 
 	// to determine the Content-Type header
@@ -906,19 +668,7 @@ func (a CoachingApi) GetCoachingNotification(notificationId string, expand []str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -983,43 +733,11 @@ func (a CoachingApi) GetCoachingNotifications(pageNumber int, pageSize int, expa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header

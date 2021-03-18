@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Clientappconfigurationinfo - Configuration information for the integration
@@ -17,5 +19,7 @@ type Clientappconfigurationinfo struct {
 // String returns a JSON representation of the model
 func (o *Clientappconfigurationinfo) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

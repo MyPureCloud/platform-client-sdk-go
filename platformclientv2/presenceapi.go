@@ -134,19 +134,7 @@ func (a PresenceApi) GetPresencedefinition(presenceId string, localeCode string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(localeCode).(string); ok {
-		if str != "" {
-			queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, collectionFormat)
-		}
-	} else {
-		queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, collectionFormat)
-	}
-	
+	queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, "")
 	
 
 	// to determine the Content-Type header
@@ -211,55 +199,13 @@ func (a PresenceApi) GetPresencedefinitions(pageNumber int, pageSize int, delete
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(deleted).(string); ok {
-		if str != "" {
-			queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
-		}
-	} else {
-		queryParams["deleted"] = a.Configuration.APIClient.ParameterToString(deleted, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(localeCode).(string); ok {
-		if str != "" {
-			queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, collectionFormat)
-		}
-	} else {
-		queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, collectionFormat)
-	}
-	
+	queryParams["localeCode"] = a.Configuration.APIClient.ParameterToString(localeCode, "")
 	
 
 	// to determine the Content-Type header

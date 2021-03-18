@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Weekscheduleresponse - Response for query for week schedule for a given week in management unit
@@ -17,5 +19,7 @@ type Weekscheduleresponse struct {
 // String returns a JSON representation of the model
 func (o *Weekscheduleresponse) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

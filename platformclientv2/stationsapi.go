@@ -197,103 +197,21 @@ func (a StationsApi) GetStations(pageSize int, pageNumber int, sortBy string, na
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["userSelectable"] = a.Configuration.APIClient.ParameterToString(userSelectable, "")
 	
+	queryParams["webRtcUserId"] = a.Configuration.APIClient.ParameterToString(webRtcUserId, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(userSelectable).(string); ok {
-		if str != "" {
-			queryParams["userSelectable"] = a.Configuration.APIClient.ParameterToString(userSelectable, collectionFormat)
-		}
-	} else {
-		queryParams["userSelectable"] = a.Configuration.APIClient.ParameterToString(userSelectable, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(webRtcUserId).(string); ok {
-		if str != "" {
-			queryParams["webRtcUserId"] = a.Configuration.APIClient.ParameterToString(webRtcUserId, collectionFormat)
-		}
-	} else {
-		queryParams["webRtcUserId"] = a.Configuration.APIClient.ParameterToString(webRtcUserId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(id).(string); ok {
-		if str != "" {
-			queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(lineAppearanceId).(string); ok {
-		if str != "" {
-			queryParams["lineAppearanceId"] = a.Configuration.APIClient.ParameterToString(lineAppearanceId, collectionFormat)
-		}
-	} else {
-		queryParams["lineAppearanceId"] = a.Configuration.APIClient.ParameterToString(lineAppearanceId, collectionFormat)
-	}
-	
+	queryParams["lineAppearanceId"] = a.Configuration.APIClient.ParameterToString(lineAppearanceId, "")
 	
 
 	// to determine the Content-Type header

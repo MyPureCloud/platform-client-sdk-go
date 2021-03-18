@@ -216,31 +216,9 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
 
 	// to determine the Content-Type header
@@ -310,67 +288,15 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, "")
 	
+	queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, "")
 	
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(startIndex).(string); ok {
-		if str != "" {
-			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-		}
-	} else {
-		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-	}
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(count).(string); ok {
-		if str != "" {
-			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-		}
-	} else {
-		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filter).(string); ok {
-		if str != "" {
-			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-		}
-	} else {
-		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-	}
-	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
@@ -640,19 +566,7 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filter).(string); ok {
-		if str != "" {
-			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-		}
-	} else {
-		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-	}
-	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
@@ -792,31 +706,9 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
 
 	// to determine the Content-Type header
@@ -886,67 +778,15 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, "")
 	
+	queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, "")
 	
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(startIndex).(string); ok {
-		if str != "" {
-			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-		}
-	} else {
-		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-	}
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(count).(string); ok {
-		if str != "" {
-			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-		}
-	} else {
-		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filter).(string); ok {
-		if str != "" {
-			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-		}
-	} else {
-		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-	}
-	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
@@ -1018,31 +858,9 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1117,67 +935,15 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, "")
 	
+	queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, "")
 	
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(startIndex).(string); ok {
-		if str != "" {
-			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-		}
-	} else {
-		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-	}
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(count).(string); ok {
-		if str != "" {
-			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-		}
-	} else {
-		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filter).(string); ok {
-		if str != "" {
-			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-		}
-	} else {
-		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-	}
-	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
@@ -1447,19 +1213,7 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filter).(string); ok {
-		if str != "" {
-			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-		}
-	} else {
-		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-	}
-	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header
@@ -1599,31 +1353,9 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1693,67 +1425,15 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, "")
 	
+	queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, "")
 	
+	queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, "multi")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(startIndex).(string); ok {
-		if str != "" {
-			queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-		}
-	} else {
-		queryParams["startIndex"] = a.Configuration.APIClient.ParameterToString(startIndex, collectionFormat)
-	}
+	queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, "multi")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(count).(string); ok {
-		if str != "" {
-			queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-		}
-	} else {
-		queryParams["count"] = a.Configuration.APIClient.ParameterToString(count, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range attributes {
-			queryParams["attributes"] = value
-		}
-	} else {
-		queryParams["attributes"] = a.Configuration.APIClient.ParameterToString(attributes, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range excludedAttributes {
-			queryParams["excludedAttributes"] = value
-		}
-	} else {
-		queryParams["excludedAttributes"] = a.Configuration.APIClient.ParameterToString(excludedAttributes, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(filter).(string); ok {
-		if str != "" {
-			queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-		}
-	} else {
-		queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, collectionFormat)
-	}
-	
+	queryParams["filter"] = a.Configuration.APIClient.ParameterToString(filter, "")
 	
 
 	// to determine the Content-Type header

@@ -62,19 +62,7 @@ func (a SearchApi) GetDocumentationGknSearch(q64 string) (*Gkndocumentationsearc
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
 
 	// to determine the Content-Type header
@@ -139,19 +127,7 @@ func (a SearchApi) GetDocumentationSearch(q64 string) (*Documentationsearchrespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
 
 	// to determine the Content-Type header
@@ -221,31 +197,9 @@ func (a SearchApi) GetGroupsSearch(q64 string, expand []string) (*Groupssearchre
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -315,31 +269,9 @@ func (a SearchApi) GetLocationsSearch(q64 string, expand []string) (*Locationsse
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -409,43 +341,11 @@ func (a SearchApi) GetSearch(q64 string, expand []string, profile bool) (*Jsonno
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(profile).(string); ok {
-		if str != "" {
-			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-		}
-	} else {
-		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-	}
-	
+	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
 
 	// to determine the Content-Type header
@@ -515,43 +415,11 @@ func (a SearchApi) GetSearchSuggest(q64 string, expand []string, profile bool) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(profile).(string); ok {
-		if str != "" {
-			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-		}
-	} else {
-		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-	}
-	
+	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
 
 	// to determine the Content-Type header
@@ -621,43 +489,11 @@ func (a SearchApi) GetUsersSearch(q64 string, expand []string, integrationPresen
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(integrationPresenceSource).(string); ok {
-		if str != "" {
-			queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
-		}
-	} else {
-		queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, collectionFormat)
-	}
-	
+	queryParams["integrationPresenceSource"] = a.Configuration.APIClient.ParameterToString(integrationPresenceSource, "")
 	
 
 	// to determine the Content-Type header
@@ -727,31 +563,9 @@ func (a SearchApi) GetVoicemailSearch(q64 string, expand []string) (*Voicemailss
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(q64).(string); ok {
-		if str != "" {
-			queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-		}
-	} else {
-		queryParams["q64"] = a.Configuration.APIClient.ParameterToString(q64, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1238,19 +1052,7 @@ func (a SearchApi) PostSearch(body Searchrequest, profile bool) (*Jsonnodesearch
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(profile).(string); ok {
-		if str != "" {
-			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-		}
-	} else {
-		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-	}
-	
+	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
 
 	// to determine the Content-Type header
@@ -1323,19 +1125,7 @@ func (a SearchApi) PostSearchSuggest(body Suggestsearchrequest, profile bool) (*
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(profile).(string); ok {
-		if str != "" {
-			queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-		}
-	} else {
-		queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, collectionFormat)
-	}
-	
+	queryParams["profile"] = a.Configuration.APIClient.ParameterToString(profile, "")
 	
 
 	// to determine the Content-Type header

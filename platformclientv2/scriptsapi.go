@@ -143,19 +143,7 @@ func (a ScriptsApi) GetScriptPage(scriptId string, pageId string, scriptDataVers
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -226,19 +214,7 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -303,115 +279,23 @@ func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
 	
+	queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(feature).(string); ok {
-		if str != "" {
-			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-		}
-	} else {
-		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(flowId).(string); ok {
-		if str != "" {
-			queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, collectionFormat)
-		}
-	} else {
-		queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -476,91 +360,19 @@ func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
 	
+	queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(feature).(string); ok {
-		if str != "" {
-			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-		}
-	} else {
-		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(flowId).(string); ok {
-		if str != "" {
-			queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, collectionFormat)
-		}
-	} else {
-		queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -631,19 +443,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptId(scriptId string, scriptDataVersi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -720,19 +520,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPage(scriptId string, pageId stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -803,19 +591,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -886,55 +662,13 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["input"] = a.Configuration.APIClient.ParameterToString(input, "")
 	
+	queryParams["output"] = a.Configuration.APIClient.ParameterToString(output, "")
 	
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(input).(string); ok {
-		if str != "" {
-			queryParams["input"] = a.Configuration.APIClient.ParameterToString(input, collectionFormat)
-		}
-	} else {
-		queryParams["input"] = a.Configuration.APIClient.ParameterToString(input, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(output).(string); ok {
-		if str != "" {
-			queryParams["output"] = a.Configuration.APIClient.ParameterToString(output, collectionFormat)
-		}
-	} else {
-		queryParams["output"] = a.Configuration.APIClient.ParameterToString(output, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(varType).(string); ok {
-		if str != "" {
-			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-		}
-	} else {
-		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(scriptDataVersion).(string); ok {
-		if str != "" {
-			queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-		}
-	} else {
-		queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, collectionFormat)
-	}
-	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
 
 	// to determine the Content-Type header
@@ -1005,19 +739,7 @@ func (a ScriptsApi) GetScriptsUploadStatus(uploadId string, longPoll bool) (*Imp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(longPoll).(string); ok {
-		if str != "" {
-			queryParams["longPoll"] = a.Configuration.APIClient.ParameterToString(longPoll, collectionFormat)
-		}
-	} else {
-		queryParams["longPoll"] = a.Configuration.APIClient.ParameterToString(longPoll, collectionFormat)
-	}
-	
+	queryParams["longPoll"] = a.Configuration.APIClient.ParameterToString(longPoll, "")
 	
 
 	// to determine the Content-Type header

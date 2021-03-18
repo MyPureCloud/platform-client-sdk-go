@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings
@@ -13,5 +15,7 @@ type Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings struct {
 // String returns a JSON representation of the model
 func (o *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

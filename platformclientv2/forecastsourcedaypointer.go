@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Forecastsourcedaypointer - Pointer to look up source data for a short term forecast
@@ -29,5 +31,7 @@ type Forecastsourcedaypointer struct {
 // String returns a JSON representation of the model
 func (o *Forecastsourcedaypointer) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

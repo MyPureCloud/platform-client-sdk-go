@@ -5,6 +5,8 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"strconv"
+	"strings"
 )
 
 // APIResponse is a friendly interface for a response from the API
@@ -24,7 +26,9 @@ type APIResponse struct {
 // String returns the JSON serialized object
 func (r *APIResponse) String() string {
 	s, _ := json.Marshal(r)
-	return string(s)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(s)), `\\u`, `\u`, -1))
+
+	return str
 }
 
 // SetError returns the JSON serialized object
@@ -50,7 +54,9 @@ type APIError struct {
 // String returns the JSON serialized object
 func (r *APIError) String() string {
 	s, _ := json.Marshal(r)
-	return string(s)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(s)), `\\u`, `\u`, -1))
+
+	return str
 }
 
 // NewAPIResponse creates an APIResponse from a http Response

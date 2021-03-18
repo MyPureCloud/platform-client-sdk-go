@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Queueconversationemaileventtopicerrorbody
@@ -49,5 +51,7 @@ type Queueconversationemaileventtopicerrorbody struct {
 // String returns a JSON representation of the model
 func (o *Queueconversationemaileventtopicerrorbody) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

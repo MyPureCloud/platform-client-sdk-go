@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Queueconversationsocialexpressioneventtopicaddress
@@ -33,5 +35,7 @@ type Queueconversationsocialexpressioneventtopicaddress struct {
 // String returns a JSON representation of the model
 func (o *Queueconversationsocialexpressioneventtopicaddress) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

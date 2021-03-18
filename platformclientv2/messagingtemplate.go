@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Messagingtemplate - The messaging template identifies a structured message templates supported by a messaging channel.
@@ -13,5 +15,7 @@ type Messagingtemplate struct {
 // String returns a JSON representation of the model
 func (o *Messagingtemplate) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

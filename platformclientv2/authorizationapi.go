@@ -67,19 +67,7 @@ func (a AuthorizationApi) DeleteAuthorizationDivision(divisionId string, force b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(force).(string); ok {
-		if str != "" {
-			queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
-		}
-	} else {
-		queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
-	}
-	
+	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
 	
 
 	// to determine the Content-Type header
@@ -292,19 +280,7 @@ func (a AuthorizationApi) GetAuthorizationDivision(divisionId string, objectCoun
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(objectCount).(string); ok {
-		if str != "" {
-			queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, collectionFormat)
-		}
-	} else {
-		queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, collectionFormat)
-	}
-	
+	queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, "")
 	
 
 	// to determine the Content-Type header
@@ -375,31 +351,9 @@ func (a AuthorizationApi) GetAuthorizationDivisionGrants(divisionId string, page
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -464,115 +418,23 @@ func (a AuthorizationApi) GetAuthorizationDivisions(pageSize int, pageNumber int
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
+	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+	queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(nextPage).(string); ok {
-		if str != "" {
-			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-		}
-	} else {
-		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(previousPage).(string); ok {
-		if str != "" {
-			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
-		}
-	} else {
-		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(objectCount).(string); ok {
-		if str != "" {
-			queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, collectionFormat)
-		}
-	} else {
-		queryParams["objectCount"] = a.Configuration.APIClient.ParameterToString(objectCount, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header
@@ -768,31 +630,9 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedMe(permission string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(permission).(string); ok {
-		if str != "" {
-			queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-		}
-	} else {
-		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-	}
-	
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
 	
 
 	// to determine the Content-Type header
@@ -862,43 +702,11 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedMe(permission s
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(permission).(string); ok {
-		if str != "" {
-			queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-		}
-	} else {
-		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -974,43 +782,11 @@ func (a AuthorizationApi) GetAuthorizationDivisionspermittedPagedSubjectId(subje
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(permission).(string); ok {
-		if str != "" {
-			queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-		}
-	} else {
-		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 
 	// to determine the Content-Type header
@@ -1075,55 +851,13 @@ func (a AuthorizationApi) GetAuthorizationPermissions(pageSize int, pageNumber i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["queryType"] = a.Configuration.APIClient.ParameterToString(queryType, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(queryType).(string); ok {
-		if str != "" {
-			queryParams["queryType"] = a.Configuration.APIClient.ParameterToString(queryType, collectionFormat)
-		}
-	} else {
-		queryParams["queryType"] = a.Configuration.APIClient.ParameterToString(queryType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(query).(string); ok {
-		if str != "" {
-			queryParams["query"] = a.Configuration.APIClient.ParameterToString(query, collectionFormat)
-		}
-	} else {
-		queryParams["query"] = a.Configuration.APIClient.ParameterToString(query, collectionFormat)
-	}
-	
+	queryParams["query"] = a.Configuration.APIClient.ParameterToString(query, "")
 	
 
 	// to determine the Content-Type header
@@ -1257,19 +991,7 @@ func (a AuthorizationApi) GetAuthorizationRole(roleId string, expand []string) (
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1415,79 +1137,17 @@ func (a AuthorizationApi) GetAuthorizationRoleSubjectgrants(roleId string, pageS
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(nextPage).(string); ok {
-		if str != "" {
-			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-		}
-	} else {
-		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(previousPage).(string); ok {
-		if str != "" {
-			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
-		}
-	} else {
-		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
-	}
-	
+	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
 
 	// to determine the Content-Type header
@@ -1558,31 +1218,9 @@ func (a AuthorizationApi) GetAuthorizationRoleUsers(roleId string, pageSize int,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -1647,139 +1285,27 @@ func (a AuthorizationApi) GetAuthorizationRoles(pageSize int, pageNumber int, so
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
+	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
+	queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, "multi")
 	
+	queryParams["defaultRoleId"] = a.Configuration.APIClient.ParameterToString(defaultRoleId, "multi")
 	
+	queryParams["userCount"] = a.Configuration.APIClient.ParameterToString(userCount, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(nextPage).(string); ok {
-		if str != "" {
-			queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-		}
-	} else {
-		queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(previousPage).(string); ok {
-		if str != "" {
-			queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
-		}
-	} else {
-		queryParams["previousPage"] = a.Configuration.APIClient.ParameterToString(previousPage, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range permission {
-			queryParams["permission"] = value
-		}
-	} else {
-		queryParams["permission"] = a.Configuration.APIClient.ParameterToString(permission, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range defaultRoleId {
-			queryParams["defaultRoleId"] = value
-		}
-	} else {
-		queryParams["defaultRoleId"] = a.Configuration.APIClient.ParameterToString(defaultRoleId, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(userCount).(string); ok {
-		if str != "" {
-			queryParams["userCount"] = a.Configuration.APIClient.ParameterToString(userCount, collectionFormat)
-		}
-	} else {
-		queryParams["userCount"] = a.Configuration.APIClient.ParameterToString(userCount, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1976,19 +1502,7 @@ func (a AuthorizationApi) GetAuthorizationSubjectsRolecounts(id []string) (*map[
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2360,19 +1874,7 @@ func (a AuthorizationApi) PostAuthorizationRole(roleId string, body Subjectdivis
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(subjectType).(string); ok {
-		if str != "" {
-			queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
-		}
-	} else {
-		queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
-	}
-	
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
 
 	// to determine the Content-Type header
@@ -2592,19 +2094,7 @@ func (a AuthorizationApi) PostAuthorizationRolesDefault(force bool) (*Organizati
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(force).(string); ok {
-		if str != "" {
-			queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
-		}
-	} else {
-		queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, collectionFormat)
-	}
-	
+	queryParams["force"] = a.Configuration.APIClient.ParameterToString(force, "")
 	
 
 	// to determine the Content-Type header
@@ -2679,19 +2169,7 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkadd(subjectId string, body
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(subjectType).(string); ok {
-		if str != "" {
-			queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
-		}
-	} else {
-		queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
-	}
-	
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
 
 	// to determine the Content-Type header
@@ -2848,19 +2326,7 @@ func (a AuthorizationApi) PostAuthorizationSubjectDivisionRole(subjectId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(subjectType).(string); ok {
-		if str != "" {
-			queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
-		}
-	} else {
-		queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, collectionFormat)
-	}
-	
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
 	
 
 	// to determine the Content-Type header

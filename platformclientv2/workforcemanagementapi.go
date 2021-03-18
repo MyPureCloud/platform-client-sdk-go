@@ -791,19 +791,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementAdherence(userId []string)
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range userId {
-			queryParams["userId"] = value
-		}
-	} else {
-		queryParams["userId"] = a.Configuration.APIClient.ParameterToString(userId, collectionFormat)
-	}
-	
-	
+	queryParams["userId"] = a.Configuration.APIClient.ParameterToString(userId, "multi")
 	
 
 	// to determine the Content-Type header
@@ -943,19 +931,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunit(businessUnitI
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1175,19 +1151,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitIntradayPlanni
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(date).(string); ok {
-		if str != "" {
-			queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, collectionFormat)
-		}
-	} else {
-		queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, collectionFormat)
-	}
-	
+	queryParams["date"] = a.Configuration.APIClient.ParameterToString(date, "")
 	
 
 	// to determine the Content-Type header
@@ -1258,31 +1222,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitManagementunit
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(feature).(string); ok {
-		if str != "" {
-			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-		}
-	} else {
-		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(divisionId).(string); ok {
-		if str != "" {
-			queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
 
 	// to determine the Content-Type header
@@ -1588,31 +1530,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitSchedulingRunR
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["managementUnitIds"] = a.Configuration.APIClient.ParameterToString(managementUnitIds, "multi")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range managementUnitIds {
-			queryParams["managementUnitIds"] = value
-		}
-	} else {
-		queryParams["managementUnitIds"] = a.Configuration.APIClient.ParameterToString(managementUnitIds, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1908,19 +1828,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedule(b
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -2084,19 +1992,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownload).(string); ok {
-		if str != "" {
-			queryParams["forceDownload"] = a.Configuration.APIClient.ParameterToString(forceDownload, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownload"] = a.Configuration.APIClient.ParameterToString(forceDownload, collectionFormat)
-	}
-	
+	queryParams["forceDownload"] = a.Configuration.APIClient.ParameterToString(forceDownload, "")
 	
 
 	// to determine the Content-Type header
@@ -2260,31 +2156,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeOnlyPublished).(string); ok {
-		if str != "" {
-			queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
-		}
-	} else {
-		queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -2367,19 +2241,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2462,31 +2324,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["weekNumber"] = a.Configuration.APIClient.ParameterToString(weekNumber, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(weekNumber).(string); ok {
-		if str != "" {
-			queryParams["weekNumber"] = a.Configuration.APIClient.ParameterToString(weekNumber, collectionFormat)
-		}
-	} else {
-		queryParams["weekNumber"] = a.Configuration.APIClient.ParameterToString(weekNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownloadService).(string); ok {
-		if str != "" {
-			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	}
-	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// to determine the Content-Type header
@@ -2788,31 +2628,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunits(feature stri
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(feature).(string); ok {
-		if str != "" {
-			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-		}
-	} else {
-		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(divisionId).(string); ok {
-		if str != "" {
-			queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
 
 	// to determine the Content-Type header
@@ -2877,19 +2695,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2960,19 +2766,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -3112,19 +2906,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAdherence(ma
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownloadService).(string); ok {
-		if str != "" {
-			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	}
-	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// to determine the Content-Type header
@@ -3201,19 +2983,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitAgent(manage
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(excludeCapabilities).(string); ok {
-		if str != "" {
-			queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, collectionFormat)
-		}
-	} else {
-		queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, collectionFormat)
-	}
-	
+	queryParams["excludeCapabilities"] = a.Configuration.APIClient.ParameterToString(excludeCapabilities, "")
 	
 
 	// to determine the Content-Type header
@@ -3584,19 +3354,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitUserTimeoffr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(recentlyReviewed).(string); ok {
-		if str != "" {
-			queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
-		}
-	} else {
-		queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
-	}
-	
+	queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, "")
 	
 
 	// to determine the Content-Type header
@@ -3748,31 +3506,9 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownloadService).(string); ok {
-		if str != "" {
-			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	}
-	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// to determine the Content-Type header
@@ -3849,43 +3585,11 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekSchedule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, "")
 	
+	queryParams["earliestWeekDate"] = a.Configuration.APIClient.ParameterToString(earliestWeekDate, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(includeOnlyPublished).(string); ok {
-		if str != "" {
-			queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
-		}
-	} else {
-		queryParams["includeOnlyPublished"] = a.Configuration.APIClient.ParameterToString(includeOnlyPublished, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(earliestWeekDate).(string); ok {
-		if str != "" {
-			queryParams["earliestWeekDate"] = a.Configuration.APIClient.ParameterToString(earliestWeekDate, collectionFormat)
-		}
-	} else {
-		queryParams["earliestWeekDate"] = a.Configuration.APIClient.ParameterToString(earliestWeekDate, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(latestWeekDate).(string); ok {
-		if str != "" {
-			queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, collectionFormat)
-		}
-	} else {
-		queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, collectionFormat)
-	}
-	
+	queryParams["latestWeekDate"] = a.Configuration.APIClient.ParameterToString(latestWeekDate, "")
 	
 
 	// to determine the Content-Type header
@@ -3962,19 +3666,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWeekShifttra
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(evaluateMatches).(string); ok {
-		if str != "" {
-			queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, collectionFormat)
-		}
-	} else {
-		queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, collectionFormat)
-	}
-	
+	queryParams["evaluateMatches"] = a.Configuration.APIClient.ParameterToString(evaluateMatches, "")
 	
 
 	// to determine the Content-Type header
@@ -4195,19 +3887,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -4278,19 +3958,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(ma
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -4355,67 +4023,15 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunits(pageSize i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(expand).(string); ok {
-		if str != "" {
-			queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(feature).(string); ok {
-		if str != "" {
-			queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-		}
-	} else {
-		queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(divisionId).(string); ok {
-		if str != "" {
-			queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "")
 	
 
 	// to determine the Content-Type header
@@ -4480,19 +4096,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitsDivisionvie
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range divisionId {
-			queryParams["divisionId"] = value
-		}
-	} else {
-		queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, collectionFormat)
-	}
-	
-	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
 	
 
 	// to determine the Content-Type header
@@ -4821,19 +4425,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementTimeoffrequests(recentlyRe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(recentlyReviewed).(string); ok {
-		if str != "" {
-			queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
-		}
-	} else {
-		queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, collectionFormat)
-	}
-	
+	queryParams["recentlyReviewed"] = a.Configuration.APIClient.ParameterToString(recentlyReviewed, "")
 	
 
 	// to determine the Content-Type header
@@ -5536,19 +5128,7 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunitWorkplan(m
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(validationMode).(string); ok {
-		if str != "" {
-			queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
-		}
-	} else {
-		queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
-	}
-	
+	queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, "")
 	
 
 	// to determine the Content-Type header
@@ -5976,31 +5556,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitAgentschedule
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownloadService).(string); ok {
-		if str != "" {
-			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	}
-	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// to determine the Content-Type header
@@ -6074,19 +5632,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitIntraday(busi
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
 
 	// to determine the Content-Type header
@@ -6321,31 +5867,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekScheduleA
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownloadService).(string); ok {
-		if str != "" {
-			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	}
-	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// to determine the Content-Type header
@@ -6780,19 +6304,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
 
 	// to determine the Content-Type header
@@ -6877,19 +6389,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunitWeekShortterm
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
 
 	// to determine the Content-Type header
@@ -7029,31 +6529,9 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitAgentschedu
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceDownloadService).(string); ok {
-		if str != "" {
-			queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-		}
-	} else {
-		queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, collectionFormat)
-	}
-	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
 	
 
 	// to determine the Content-Type header
@@ -7753,19 +7231,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWeekShifttr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(forceAsync).(string); ok {
-		if str != "" {
-			queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-		}
-	} else {
-		queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, collectionFormat)
-	}
-	
+	queryParams["forceAsync"] = a.Configuration.APIClient.ParameterToString(forceAsync, "")
 	
 
 	// to determine the Content-Type header
@@ -7923,19 +7389,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplanVal
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -8159,19 +7613,7 @@ func (a WorkforceManagementApi) PostWorkforcemanagementManagementunitWorkplans(m
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(validationMode).(string); ok {
-		if str != "" {
-			queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
-		}
-	} else {
-		queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, collectionFormat)
-	}
-	
+	queryParams["validationMode"] = a.Configuration.APIClient.ParameterToString(validationMode, "")
 	
 
 	// to determine the Content-Type header

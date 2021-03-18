@@ -263,55 +263,13 @@ func (a LanguagesApi) GetLanguages(pageSize int, pageNumber int, sortOrder strin
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header
@@ -444,19 +402,7 @@ func (a LanguagesApi) GetLanguagesTranslationsBuiltin(language string) (*map[str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(language).(string); ok {
-		if str != "" {
-			queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
-		}
-	} else {
-		queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
-	}
-	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
 	// to determine the Content-Type header
@@ -526,19 +472,7 @@ func (a LanguagesApi) GetLanguagesTranslationsOrganization(language string) (*ma
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(language).(string); ok {
-		if str != "" {
-			queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
-		}
-	} else {
-		queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, collectionFormat)
-	}
-	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
 	// to determine the Content-Type header

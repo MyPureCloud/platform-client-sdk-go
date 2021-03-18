@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Actioncontract - This resource contains all of the schemas needed to define the inputs and outputs, of a single Action.
@@ -17,5 +19,7 @@ type Actioncontract struct {
 // String returns a JSON representation of the model
 func (o *Actioncontract) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

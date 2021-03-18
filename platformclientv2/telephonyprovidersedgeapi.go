@@ -932,31 +932,9 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnext(pageSize in
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -1027,31 +1005,9 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -1128,31 +1084,9 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -1328,19 +1262,7 @@ func (a TelephonyProvidersEdgeApi) GetConfigurationSchemasEdgesVnextSchemaCatego
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(varType).(string); ok {
-		if str != "" {
-			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-		}
-	} else {
-		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-	}
-	
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
 
 	// to determine the Content-Type header
@@ -1411,19 +1333,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdge(edgeId string, expa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1845,31 +1755,9 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLines(edgeId string,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -1946,19 +1834,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterface(edg
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2029,19 +1905,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeLogicalinterfaces(ed
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2607,79 +2471,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgeTrunks(edgeId string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["trunkBaseId"] = a.Configuration.APIClient.ParameterToString(trunkBaseId, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkBaseId).(string); ok {
-		if str != "" {
-			queryParams["trunkBaseId"] = a.Configuration.APIClient.ParameterToString(trunkBaseId, collectionFormat)
-		}
-	} else {
-		queryParams["trunkBaseId"] = a.Configuration.APIClient.ParameterToString(trunkBaseId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkType).(string); ok {
-		if str != "" {
-			queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, collectionFormat)
-		}
-	} else {
-		queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, collectionFormat)
-	}
-	
+	queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, "")
 	
 
 	// to determine the Content-Type header
@@ -2744,91 +2546,19 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdges(pageSize int, page
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, "")
 	
+	queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(siteId).(string); ok {
-		if str != "" {
-			queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, collectionFormat)
-		}
-	} else {
-		queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(edgeGroupId).(string); ok {
-		if str != "" {
-			queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, collectionFormat)
-		}
-	} else {
-		queryParams["edgeGroupId"] = a.Configuration.APIClient.ParameterToString(edgeGroupId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(managed).(string); ok {
-		if str != "" {
-			queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-		}
-	} else {
-		queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-	}
-	
+	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
 	
 
 	// to determine the Content-Type header
@@ -3226,55 +2956,13 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpools(pageSize i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -3344,79 +3032,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDidpoolsDids(varTyp
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
+	queryParams["numberMatch"] = a.Configuration.APIClient.ParameterToString(numberMatch, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(varType).(string); ok {
-		if str != "" {
-			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-		}
-	} else {
-		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-	}
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(numberMatch).(string); ok {
-		if str != "" {
-			queryParams["numberMatch"] = a.Configuration.APIClient.ParameterToString(numberMatch, collectionFormat)
-		}
-	} else {
-		queryParams["numberMatch"] = a.Configuration.APIClient.ParameterToString(numberMatch, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -3481,103 +3107,21 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesDids(pageSize int, 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["phoneNumber"] = a.Configuration.APIClient.ParameterToString(phoneNumber, "")
 	
+	queryParams["ownerId"] = a.Configuration.APIClient.ParameterToString(ownerId, "")
 	
+	queryParams["didPoolId"] = a.Configuration.APIClient.ParameterToString(didPoolId, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(phoneNumber).(string); ok {
-		if str != "" {
-			queryParams["phoneNumber"] = a.Configuration.APIClient.ParameterToString(phoneNumber, collectionFormat)
-		}
-	} else {
-		queryParams["phoneNumber"] = a.Configuration.APIClient.ParameterToString(phoneNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(ownerId).(string); ok {
-		if str != "" {
-			queryParams["ownerId"] = a.Configuration.APIClient.ParameterToString(ownerId, collectionFormat)
-		}
-	} else {
-		queryParams["ownerId"] = a.Configuration.APIClient.ParameterToString(ownerId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(didPoolId).(string); ok {
-		if str != "" {
-			queryParams["didPoolId"] = a.Configuration.APIClient.ParameterToString(didPoolId, collectionFormat)
-		}
-	} else {
-		queryParams["didPoolId"] = a.Configuration.APIClient.ParameterToString(didPoolId, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range id {
-			queryParams["id"] = value
-		}
-	} else {
-		queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, collectionFormat)
-	}
-	
-	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
 
 	// to determine the Content-Type header
@@ -3648,19 +3192,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroup(edgeGroup
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -3800,67 +3332,15 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesEdgegroups(pageSize
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(managed).(string); ok {
-		if str != "" {
-			queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-		}
-	} else {
-		queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-	}
-	
+	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
 	
 
 	// to determine the Content-Type header
@@ -4126,55 +3606,13 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensionpools(page
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(number).(string); ok {
-		if str != "" {
-			queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, collectionFormat)
-		}
-	} else {
-		queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, collectionFormat)
-	}
-	
+	queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, "")
 	
 
 	// to determine the Content-Type header
@@ -4239,67 +3677,15 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesExtensions(pageSize
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(number).(string); ok {
-		if str != "" {
-			queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, collectionFormat)
-		}
-	} else {
-		queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, collectionFormat)
-	}
-	
+	queryParams["number"] = a.Configuration.APIClient.ParameterToString(number, "")
 	
 
 	// to determine the Content-Type header
@@ -4502,55 +3888,13 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pa
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header
@@ -4615,67 +3959,15 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLines(pageSize int,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -4745,19 +4037,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinesTemplate(lineB
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(lineBaseSettingsId).(string); ok {
-		if str != "" {
-			queryParams["lineBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(lineBaseSettingsId, collectionFormat)
-		}
-	} else {
-		queryParams["lineBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(lineBaseSettingsId, collectionFormat)
-	}
-	
+	queryParams["lineBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(lineBaseSettingsId, "")
 	
 
 	// to determine the Content-Type header
@@ -4827,31 +4107,9 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLogicalinterfaces(e
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(edgeIds).(string); ok {
-		if str != "" {
-			queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, collectionFormat)
-		}
-	} else {
-		queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -4921,19 +4179,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds str
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(edgeIds).(string); ok {
-		if str != "" {
-			queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, collectionFormat)
-		}
-	} else {
-		queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, collectionFormat)
-	}
-	
+	queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, "")
 	
 
 	// to determine the Content-Type header
@@ -5067,79 +4313,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroutes(page
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, "")
 	
+	queryParams["externalTrunkBasesIds"] = a.Configuration.APIClient.ParameterToString(externalTrunkBasesIds, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(siteId).(string); ok {
-		if str != "" {
-			queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, collectionFormat)
-		}
-	} else {
-		queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(externalTrunkBasesIds).(string); ok {
-		if str != "" {
-			queryParams["externalTrunkBasesIds"] = a.Configuration.APIClient.ParameterToString(externalTrunkBasesIds, collectionFormat)
-		}
-	} else {
-		queryParams["externalTrunkBasesIds"] = a.Configuration.APIClient.ParameterToString(externalTrunkBasesIds, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 
 	// to determine the Content-Type header
@@ -5342,79 +4526,17 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettings(p
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header
@@ -5479,31 +4601,9 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsAv
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -5573,19 +4673,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(phoneMetabaseId).(string); ok {
-		if str != "" {
-			queryParams["phoneMetabaseId"] = a.Configuration.APIClient.ParameterToString(phoneMetabaseId, collectionFormat)
-		}
-	} else {
-		queryParams["phoneMetabaseId"] = a.Configuration.APIClient.ParameterToString(phoneMetabaseId, collectionFormat)
-	}
-	
+	queryParams["phoneMetabaseId"] = a.Configuration.APIClient.ParameterToString(phoneMetabaseId, "")
 	
 
 	// to determine the Content-Type header
@@ -5650,187 +4738,35 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, "")
 	
+	queryParams["webRtcUserId"] = a.Configuration.APIClient.ParameterToString(webRtcUserId, "")
 	
+	queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["linesLoggedInUserId"] = a.Configuration.APIClient.ParameterToString(linesLoggedInUserId, "")
 	
+	queryParams["linesDefaultForUserId"] = a.Configuration.APIClient.ParameterToString(linesDefaultForUserId, "")
 	
+	queryParams["phoneHardwareId"] = a.Configuration.APIClient.ParameterToString(phoneHardwareId, "")
 	
+	queryParams["linesId"] = a.Configuration.APIClient.ParameterToString(linesId, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
+	queryParams["linesName"] = a.Configuration.APIClient.ParameterToString(linesName, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(siteId).(string); ok {
-		if str != "" {
-			queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, collectionFormat)
-		}
-	} else {
-		queryParams["siteId"] = a.Configuration.APIClient.ParameterToString(siteId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(webRtcUserId).(string); ok {
-		if str != "" {
-			queryParams["webRtcUserId"] = a.Configuration.APIClient.ParameterToString(webRtcUserId, collectionFormat)
-		}
-	} else {
-		queryParams["webRtcUserId"] = a.Configuration.APIClient.ParameterToString(webRtcUserId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(phoneBaseSettingsId).(string); ok {
-		if str != "" {
-			queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, collectionFormat)
-		}
-	} else {
-		queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(linesLoggedInUserId).(string); ok {
-		if str != "" {
-			queryParams["linesLoggedInUserId"] = a.Configuration.APIClient.ParameterToString(linesLoggedInUserId, collectionFormat)
-		}
-	} else {
-		queryParams["linesLoggedInUserId"] = a.Configuration.APIClient.ParameterToString(linesLoggedInUserId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(linesDefaultForUserId).(string); ok {
-		if str != "" {
-			queryParams["linesDefaultForUserId"] = a.Configuration.APIClient.ParameterToString(linesDefaultForUserId, collectionFormat)
-		}
-	} else {
-		queryParams["linesDefaultForUserId"] = a.Configuration.APIClient.ParameterToString(linesDefaultForUserId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(phoneHardwareId).(string); ok {
-		if str != "" {
-			queryParams["phoneHardwareId"] = a.Configuration.APIClient.ParameterToString(phoneHardwareId, collectionFormat)
-		}
-	} else {
-		queryParams["phoneHardwareId"] = a.Configuration.APIClient.ParameterToString(phoneHardwareId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(linesId).(string); ok {
-		if str != "" {
-			queryParams["linesId"] = a.Configuration.APIClient.ParameterToString(linesId, collectionFormat)
-		}
-	} else {
-		queryParams["linesId"] = a.Configuration.APIClient.ParameterToString(linesId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(linesName).(string); ok {
-		if str != "" {
-			queryParams["linesName"] = a.Configuration.APIClient.ParameterToString(linesName, collectionFormat)
-		}
-	} else {
-		queryParams["linesName"] = a.Configuration.APIClient.ParameterToString(linesName, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range fields {
-			queryParams["fields"] = value
-		}
-	} else {
-		queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, collectionFormat)
-	}
-	
-	
+	queryParams["fields"] = a.Configuration.APIClient.ParameterToString(fields, "multi")
 	
 
 	// to determine the Content-Type header
@@ -5900,19 +4836,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonesTemplate(phon
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(phoneBaseSettingsId).(string); ok {
-		if str != "" {
-			queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, collectionFormat)
-		}
-	} else {
-		queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, collectionFormat)
-	}
-	
+	queryParams["phoneBaseSettingsId"] = a.Configuration.APIClient.ParameterToString(phoneBaseSettingsId, "")
 	
 
 	// to determine the Content-Type header
@@ -5982,19 +4906,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhysicalinterfaces(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(edgeIds).(string); ok {
-		if str != "" {
-			queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, collectionFormat)
-		}
-	} else {
-		queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, collectionFormat)
-	}
-	
+	queryParams["edgeIds"] = a.Configuration.APIClient.ParameterToString(edgeIds, "")
 	
 
 	// to determine the Content-Type header
@@ -6278,19 +5190,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteNumberplansClas
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(classification).(string); ok {
-		if str != "" {
-			queryParams["classification"] = a.Configuration.APIClient.ParameterToString(classification, collectionFormat)
-		}
-	} else {
-		queryParams["classification"] = a.Configuration.APIClient.ParameterToString(classification, collectionFormat)
-	}
-	
+	queryParams["classification"] = a.Configuration.APIClient.ParameterToString(classification, "")
 	
 
 	// to determine the Content-Type header
@@ -6436,67 +5336,15 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSiteOutboundroutes(
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["externalTrunkBasesIds"] = a.Configuration.APIClient.ParameterToString(externalTrunkBasesIds, "")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(externalTrunkBasesIds).(string); ok {
-		if str != "" {
-			queryParams["externalTrunkBasesIds"] = a.Configuration.APIClient.ParameterToString(externalTrunkBasesIds, collectionFormat)
-		}
-	} else {
-		queryParams["externalTrunkBasesIds"] = a.Configuration.APIClient.ParameterToString(externalTrunkBasesIds, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 
 	// to determine the Content-Type header
@@ -6561,91 +5409,19 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesSites(pageSize int,
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
+	queryParams["locationId"] = a.Configuration.APIClient.ParameterToString(locationId, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(locationId).(string); ok {
-		if str != "" {
-			queryParams["locationId"] = a.Configuration.APIClient.ParameterToString(locationId, collectionFormat)
-		}
-	} else {
-		queryParams["locationId"] = a.Configuration.APIClient.ParameterToString(locationId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(managed).(string); ok {
-		if str != "" {
-			queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-		}
-	} else {
-		queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-	}
-	
+	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
 	
 
 	// to determine the Content-Type header
@@ -6710,31 +5486,9 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTimezones(pageSize 
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -6943,19 +5697,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesetting(tr
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(ignoreHidden).(string); ok {
-		if str != "" {
-			queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, collectionFormat)
-		}
-	} else {
-		queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, collectionFormat)
-	}
-	
+	queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, "")
 	
 
 	// to determine the Content-Type header
@@ -7020,115 +5762,23 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettings(p
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["recordingEnabled"] = a.Configuration.APIClient.ParameterToString(recordingEnabled, "")
 	
+	queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, "")
 	
+	queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(recordingEnabled).(string); ok {
-		if str != "" {
-			queryParams["recordingEnabled"] = a.Configuration.APIClient.ParameterToString(recordingEnabled, collectionFormat)
-		}
-	} else {
-		queryParams["recordingEnabled"] = a.Configuration.APIClient.ParameterToString(recordingEnabled, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(ignoreHidden).(string); ok {
-		if str != "" {
-			queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, collectionFormat)
-		}
-	} else {
-		queryParams["ignoreHidden"] = a.Configuration.APIClient.ParameterToString(ignoreHidden, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(managed).(string); ok {
-		if str != "" {
-			queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-		}
-	} else {
-		queryParams["managed"] = a.Configuration.APIClient.ParameterToString(managed, collectionFormat)
-	}
-	
-	
-	
-	collectionFormat = "multi"
-	if collectionFormat == "multi" {
-		for _, value := range expand {
-			queryParams["expand"] = value
-		}
-	} else {
-		queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, collectionFormat)
-	}
-	
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(name).(string); ok {
-		if str != "" {
-			queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-		}
-	} else {
-		queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, collectionFormat)
-	}
-	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header
@@ -7193,43 +5843,11 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsAv
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(varType).(string); ok {
-		if str != "" {
-			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-		}
-	} else {
-		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
-	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 
 	// to determine the Content-Type header
@@ -7299,19 +5917,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkbasesettingsTe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkMetabaseId).(string); ok {
-		if str != "" {
-			queryParams["trunkMetabaseId"] = a.Configuration.APIClient.ParameterToString(trunkMetabaseId, collectionFormat)
-		}
-	} else {
-		queryParams["trunkMetabaseId"] = a.Configuration.APIClient.ParameterToString(trunkMetabaseId, collectionFormat)
-	}
-	
+	queryParams["trunkMetabaseId"] = a.Configuration.APIClient.ParameterToString(trunkMetabaseId, "")
 	
 
 	// to determine the Content-Type header
@@ -7376,91 +5982,19 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunks(pageNumber i
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
-	collectionFormat = ""
-	if str, ok := interface{}(pageNumber).(string); ok {
-		if str != "" {
-			queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-		}
-	} else {
-		queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, collectionFormat)
-	}
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
+	queryParams["edgeId"] = a.Configuration.APIClient.ParameterToString(edgeId, "")
 	
+	queryParams["trunkBaseId"] = a.Configuration.APIClient.ParameterToString(trunkBaseId, "")
 	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(pageSize).(string); ok {
-		if str != "" {
-			queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-		}
-	} else {
-		queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortBy).(string); ok {
-		if str != "" {
-			queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-		}
-	} else {
-		queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(sortOrder).(string); ok {
-		if str != "" {
-			queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-		}
-	} else {
-		queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(edgeId).(string); ok {
-		if str != "" {
-			queryParams["edgeId"] = a.Configuration.APIClient.ParameterToString(edgeId, collectionFormat)
-		}
-	} else {
-		queryParams["edgeId"] = a.Configuration.APIClient.ParameterToString(edgeId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkBaseId).(string); ok {
-		if str != "" {
-			queryParams["trunkBaseId"] = a.Configuration.APIClient.ParameterToString(trunkBaseId, collectionFormat)
-		}
-	} else {
-		queryParams["trunkBaseId"] = a.Configuration.APIClient.ParameterToString(trunkBaseId, collectionFormat)
-	}
-	
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkType).(string); ok {
-		if str != "" {
-			queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, collectionFormat)
-		}
-	} else {
-		queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, collectionFormat)
-	}
-	
+	queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, "")
 	
 
 	// to determine the Content-Type header
@@ -7530,19 +6064,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunksMetrics(trunk
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkIds).(string); ok {
-		if str != "" {
-			queryParams["trunkIds"] = a.Configuration.APIClient.ParameterToString(trunkIds, collectionFormat)
-		}
-	} else {
-		queryParams["trunkIds"] = a.Configuration.APIClient.ParameterToString(trunkIds, collectionFormat)
-	}
-	
+	queryParams["trunkIds"] = a.Configuration.APIClient.ParameterToString(trunkIds, "")
 	
 
 	// to determine the Content-Type header
@@ -7607,19 +6129,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkswithrecording
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(trunkType).(string); ok {
-		if str != "" {
-			queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, collectionFormat)
-		}
-	} else {
-		queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, collectionFormat)
-	}
-	
+	queryParams["trunkType"] = a.Configuration.APIClient.ParameterToString(trunkType, "")
 	
 
 	// to determine the Content-Type header

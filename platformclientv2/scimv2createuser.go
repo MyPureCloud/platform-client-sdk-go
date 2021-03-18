@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Scimv2createuser - Defines the creation of a SCIM user.
@@ -61,5 +63,7 @@ type Scimv2createuser struct {
 // String returns a JSON representation of the model
 func (o *Scimv2createuser) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

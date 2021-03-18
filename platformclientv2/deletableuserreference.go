@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Deletableuserreference - User reference with delete flag to remove the user from an associated entity
@@ -21,5 +23,7 @@ type Deletableuserreference struct {
 // String returns a JSON representation of the model
 func (o *Deletableuserreference) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

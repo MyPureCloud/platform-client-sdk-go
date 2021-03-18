@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Valuewrapperplanningperiodsettings - An object to provide context to nullable fields in PATCH requests
@@ -13,5 +15,7 @@ type Valuewrapperplanningperiodsettings struct {
 // String returns a JSON representation of the model
 func (o *Valuewrapperplanningperiodsettings) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

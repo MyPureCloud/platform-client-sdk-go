@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Scimv2schemaattribute - A complex type that defines service provider attributes or subattributes and their qualities.
@@ -57,5 +59,7 @@ type Scimv2schemaattribute struct {
 // String returns a JSON representation of the model
 func (o *Scimv2schemaattribute) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

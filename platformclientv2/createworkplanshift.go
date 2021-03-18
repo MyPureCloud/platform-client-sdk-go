@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Createworkplanshift - Shift in a work plan
@@ -89,5 +91,7 @@ type Createworkplanshift struct {
 // String returns a JSON representation of the model
 func (o *Createworkplanshift) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

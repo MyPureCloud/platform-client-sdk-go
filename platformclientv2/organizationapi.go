@@ -67,19 +67,7 @@ func (a OrganizationApi) GetFieldconfig(varType string) (*Fieldconfig, *APIRespo
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	var collectionFormat string
-	
-	
-	
-	collectionFormat = ""
-	if str, ok := interface{}(varType).(string); ok {
-		if str != "" {
-			queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-		}
-	} else {
-		queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, collectionFormat)
-	}
-	
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
 
 	// to determine the Content-Type header

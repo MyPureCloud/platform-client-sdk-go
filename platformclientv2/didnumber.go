@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Didnumber - Represents an unassigned or assigned DID in a DID Pool.
@@ -41,5 +43,7 @@ type Didnumber struct {
 // String returns a JSON representation of the model
 func (o *Didnumber) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

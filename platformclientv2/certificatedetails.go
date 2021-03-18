@@ -2,6 +2,8 @@ package platformclientv2
 import (
 	"time"
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Certificatedetails - Represents the details of a parsed certificate.
@@ -38,5 +40,7 @@ type Certificatedetails struct {
 // String returns a JSON representation of the model
 func (o *Certificatedetails) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

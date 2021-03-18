@@ -2,6 +2,8 @@ package platformclientv2
 import (
 	"time"
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Callbackmediaparticipant
@@ -178,5 +180,7 @@ type Callbackmediaparticipant struct {
 // String returns a JSON representation of the model
 func (o *Callbackmediaparticipant) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

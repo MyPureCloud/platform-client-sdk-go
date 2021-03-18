@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Contentreaction - User reaction to public message
@@ -17,5 +19,7 @@ type Contentreaction struct {
 // String returns a JSON representation of the model
 func (o *Contentreaction) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }

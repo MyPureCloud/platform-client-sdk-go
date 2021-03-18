@@ -1,6 +1,8 @@
 package platformclientv2
 import (
 	"encoding/json"
+	"strconv"
+	"strings"
 )
 
 // Userroutingskill - Represents an organization skill assigned to a user. When assigning to a user specify the organization skill id as the id.
@@ -33,5 +35,7 @@ type Userroutingskill struct {
 // String returns a JSON representation of the model
 func (o *Userroutingskill) String() string {
 	j, _ := json.Marshal(o)
-	return string(j)
+	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
+
+	return str
 }
