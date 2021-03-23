@@ -19,10 +19,6 @@ type Asyncconversationquery struct {
 	EvaluationFilters *[]Evaluationdetailqueryfilter `json:"evaluationFilters,omitempty"`
 
 
-	// MediaEndpointStatFilters - Filters that target mediaEndpointStats
-	MediaEndpointStatFilters *[]Mediaendpointstatdetailqueryfilter `json:"mediaEndpointStatFilters,omitempty"`
-
-
 	// SurveyFilters - Filters that target surveys
 	SurveyFilters *[]Surveydetailqueryfilter `json:"surveyFilters,omitempty"`
 

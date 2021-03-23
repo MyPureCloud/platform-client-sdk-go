@@ -75,6 +75,10 @@ type Flowversion struct {
 	SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
 
 
+	// CompatibleFlowTypes - Compatible flow types designate which flow types are allowed to embed a flow’s configuration within their own flow configuration.  Currently the only flows that can be embedded are Common Module flows and the embedding flow can invoke them using the Call Common Module action.
+	CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

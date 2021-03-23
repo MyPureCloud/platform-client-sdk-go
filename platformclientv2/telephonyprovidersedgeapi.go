@@ -4711,7 +4711,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhonebasesettingsTe
 // Get a list of Phone Instances
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber int, pageSize int, sortBy string, sortOrder string, siteId string, webRtcUserId string, phoneBaseSettingsId string, linesLoggedInUserId string, linesDefaultForUserId string, phoneHardwareId string, linesId string, linesName string, name string, expand []string, fields []string) (*Phoneentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber int, pageSize int, sortBy string, sortOrder string, siteId string, webRtcUserId string, phoneBaseSettingsId string, linesLoggedInUserId string, linesDefaultForUserId string, phoneHardwareId string, linesId string, linesName string, name string, statusOperationalStatus string, secondaryStatusOperationalStatus string, expand []string, fields []string) (*Phoneentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/phones"
@@ -4763,6 +4763,10 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesPhones(pageNumber i
 	queryParams["linesName"] = a.Configuration.APIClient.ParameterToString(linesName, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["statusOperationalStatus"] = a.Configuration.APIClient.ParameterToString(statusOperationalStatus, "")
+	
+	queryParams["secondaryStatusOperationalStatus"] = a.Configuration.APIClient.ParameterToString(secondaryStatusOperationalStatus, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	

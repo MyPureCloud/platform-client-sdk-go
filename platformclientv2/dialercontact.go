@@ -39,6 +39,10 @@ type Dialercontact struct {
 	ContactColumnTimeZones *map[string]Contactcolumntimezone `json:"contactColumnTimeZones,omitempty"`
 
 
+	// ConfigurationOverrides - the priority property within ConfigurationOverides indicates whether or not the contact to be placed in front of the queue or at the end of the queue
+	ConfigurationOverrides *Configurationoverrides `json:"configurationOverrides,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

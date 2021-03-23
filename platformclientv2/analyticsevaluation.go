@@ -52,12 +52,12 @@ type Analyticsevaluation struct {
 	Deleted *bool `json:"deleted,omitempty"`
 
 
-	// OTotalScore
-	OTotalScore *int `json:"oTotalScore,omitempty"`
-
-
 	// OTotalCriticalScore
 	OTotalCriticalScore *int `json:"oTotalCriticalScore,omitempty"`
+
+
+	// OTotalScore
+	OTotalScore *int `json:"oTotalScore,omitempty"`
 
 }
 
