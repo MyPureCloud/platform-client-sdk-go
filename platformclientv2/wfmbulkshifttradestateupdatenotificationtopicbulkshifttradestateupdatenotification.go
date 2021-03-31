@@ -18,10 +18,6 @@ type Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotif
 	// Result
 	Result *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultlisting `json:"result,omitempty"`
 
-
-	// WeekDate
-	WeekDate *Wfmbulkshifttradestateupdatenotificationtopiclocaldate `json:"weekDate,omitempty"`
-
 }
 
 // String returns a JSON representation of the model

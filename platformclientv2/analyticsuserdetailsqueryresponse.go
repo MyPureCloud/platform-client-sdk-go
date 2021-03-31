@@ -14,6 +14,10 @@ type Analyticsuserdetailsqueryresponse struct {
 	// Aggregations
 	Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
 
+
+	// TotalHits
+	TotalHits *int `json:"totalHits,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

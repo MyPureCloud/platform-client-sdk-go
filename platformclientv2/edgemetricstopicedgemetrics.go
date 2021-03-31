@@ -11,10 +11,6 @@ type Edgemetricstopicedgemetrics struct {
 	Edge *Edgemetricstopicurireference `json:"edge,omitempty"`
 
 
-	// EventTime
-	EventTime *Edgemetricstopicoffsetdatetime `json:"eventTime,omitempty"`
-
-
 	// UpTimeMsec
 	UpTimeMsec *int `json:"upTimeMsec,omitempty"`
 

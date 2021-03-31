@@ -7,12 +7,16 @@ import (
 
 // Conversationvideoeventtopicerrorbody
 type Conversationvideoeventtopicerrorbody struct { 
-	// Status
-	Status *int `json:"status,omitempty"`
+	// Message
+	Message *string `json:"message,omitempty"`
 
 
 	// Code
 	Code *string `json:"code,omitempty"`
+
+
+	// Status
+	Status *int `json:"status,omitempty"`
 
 
 	// EntityId
@@ -21,10 +25,6 @@ type Conversationvideoeventtopicerrorbody struct {
 
 	// EntityName
 	EntityName *string `json:"entityName,omitempty"`
-
-
-	// Message
-	Message *string `json:"message,omitempty"`
 
 
 	// MessageWithParams

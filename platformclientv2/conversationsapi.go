@@ -3865,7 +3865,7 @@ func (a ConversationsApi) GetConversationsMessagingFacebookApp() (*Facebookappcr
 // Get a list of Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pageNumber int) (*Messagingintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pageNumber int, expand string, supportedContentId string) (*Messagingintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations"
@@ -3895,6 +3895,10 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pa
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["supportedContentId"] = a.Configuration.APIClient.ParameterToString(supportedContentId, "")
 	
 
 	// to determine the Content-Type header
@@ -3932,7 +3936,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrations(pageSize int, pa
 // Get a list of Facebook Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize int, pageNumber int) (*Facebookintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize int, pageNumber int, expand string, supportedContentId string) (*Facebookintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/facebook"
@@ -3962,6 +3966,10 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["supportedContentId"] = a.Configuration.APIClient.ParameterToString(supportedContentId, "")
 	
 
 	// to determine the Content-Type header
@@ -3999,7 +4007,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebook(pageSize
 // Get a Facebook messaging integration
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrationId(integrationId string) (*Facebookintegration, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrationId(integrationId string, expand string) (*Facebookintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/facebook/{integrationId}"
@@ -4031,6 +4039,8 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrati
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -4068,7 +4078,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsFacebookIntegrati
 // Get a list of LINE messenger Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int, pageNumber int) (*Lineintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int, pageNumber int, expand string, supportedContentId string) (*Lineintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/line"
@@ -4098,6 +4108,10 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["supportedContentId"] = a.Configuration.APIClient.ParameterToString(supportedContentId, "")
 	
 
 	// to determine the Content-Type header
@@ -4135,7 +4149,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLine(pageSize int
 // Get a LINE messenger integration
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId(integrationId string) (*Lineintegration, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId(integrationId string, expand string) (*Lineintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/line/{integrationId}"
@@ -4167,6 +4181,8 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -4204,7 +4220,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsLineIntegrationId
 // Get a list of Twitter Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize int, pageNumber int) (*Twitterintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize int, pageNumber int, expand string, supportedContentId string) (*Twitterintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/twitter"
@@ -4234,6 +4250,10 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["supportedContentId"] = a.Configuration.APIClient.ParameterToString(supportedContentId, "")
 	
 
 	// to determine the Content-Type header
@@ -4271,7 +4291,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitter(pageSize 
 // Get a Twitter messaging integration
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string) (*Twitterintegration, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegrationId(integrationId string, expand string) (*Twitterintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/twitter/{integrationId}"
@@ -4303,6 +4323,8 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegratio
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header
@@ -4340,7 +4362,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsTwitterIntegratio
 // Get a list of WhatsApp Integrations
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize int, pageNumber int) (*Whatsappintegrationentitylisting, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize int, pageNumber int, expand string, supportedContentId string) (*Whatsappintegrationentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/whatsapp"
@@ -4370,6 +4392,10 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["supportedContentId"] = a.Configuration.APIClient.ParameterToString(supportedContentId, "")
 	
 
 	// to determine the Content-Type header
@@ -4407,7 +4433,7 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsapp(pageSize
 // Get a WhatsApp messaging integration
 //
 // 
-func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId string) (*Whatsappintegration, *APIResponse, error) {
+func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId string, expand string) (*Whatsappintegration, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/messaging/integrations/whatsapp/{integrationId}"
@@ -4439,6 +4465,8 @@ func (a ConversationsApi) GetConversationsMessagingIntegrationsWhatsappIntegrati
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
 	
 
 	// to determine the Content-Type header

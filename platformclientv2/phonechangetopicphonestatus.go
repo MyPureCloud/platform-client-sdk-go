@@ -26,10 +26,6 @@ type Phonechangetopicphonestatus struct {
 	// LineStatuses
 	LineStatuses *[]Phonechangetopiclinestatus `json:"lineStatuses,omitempty"`
 
-
-	// EventCreationTime
-	EventCreationTime *Phonechangetopicoffsetdatetime `json:"eventCreationTime,omitempty"`
-
 }
 
 // String returns a JSON representation of the model

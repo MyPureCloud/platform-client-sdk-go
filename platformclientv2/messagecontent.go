@@ -23,6 +23,10 @@ type Messagecontent struct {
 	QuickReply *Contentquickreply `json:"quickReply,omitempty"`
 
 
+	// ButtonResponse - Button response object
+	ButtonResponse *Contentbuttonresponse `json:"buttonResponse,omitempty"`
+
+
 	// Generic - Generic content object
 	Generic *Contentgeneric `json:"generic,omitempty"`
 

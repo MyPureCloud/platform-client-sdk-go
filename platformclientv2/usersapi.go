@@ -1300,12 +1300,12 @@ func (a UsersApi) GetProfilesUsers(pageSize int, pageNumber int, id []string, ji
 // Get the user&#39;s max utilization settings.  If not configured, the organization-wide default is returned.
 //
 // 
-func (a UsersApi) GetRoutingUserUtilization(userId string) (*Utilization, *APIResponse, error) {
+func (a UsersApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	defaultReturn := new(Utilization)
+	defaultReturn := new(Agentmaxutilization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1352,7 +1352,7 @@ func (a UsersApi) GetRoutingUserUtilization(userId string) (*Utilization, *APIRe
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Utilization
+	var successPayload *Agentmaxutilization
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -4858,12 +4858,12 @@ func (a UsersApi) PostUsersSearch(body Usersearchrequest) (*Userssearchresponse,
 // Update the user&#39;s max utilization settings.  Include only those media types requiring custom configuration.
 //
 // 
-func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*Utilization, *APIResponse, error) {
+func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*Agentmaxutilization, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/users/{userId}/utilization"
 	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
-	defaultReturn := new(Utilization)
+	defaultReturn := new(Agentmaxutilization)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4918,7 +4918,7 @@ func (a UsersApi) PutRoutingUserUtilization(userId string, body Utilization) (*U
 	// body params
 	postBody = &body
 
-	var successPayload *Utilization
+	var successPayload *Agentmaxutilization
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

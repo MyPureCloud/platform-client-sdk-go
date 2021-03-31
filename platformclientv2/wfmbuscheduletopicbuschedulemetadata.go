@@ -11,10 +11,6 @@ type Wfmbuscheduletopicbuschedulemetadata struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// WeekDate
-	WeekDate *Wfmbuscheduletopiclocaldate `json:"weekDate,omitempty"`
-
-
 	// WeekCount
 	WeekCount *int `json:"weekCount,omitempty"`
 

@@ -7,12 +7,16 @@ import (
 
 // Conversationcallbackeventtopicerrorbody
 type Conversationcallbackeventtopicerrorbody struct { 
-	// Status
-	Status *int `json:"status,omitempty"`
+	// Message
+	Message *string `json:"message,omitempty"`
 
 
 	// Code
 	Code *string `json:"code,omitempty"`
+
+
+	// Status
+	Status *int `json:"status,omitempty"`
 
 
 	// EntityId
@@ -21,10 +25,6 @@ type Conversationcallbackeventtopicerrorbody struct {
 
 	// EntityName
 	EntityName *string `json:"entityName,omitempty"`
-
-
-	// Message
-	Message *string `json:"message,omitempty"`
 
 
 	// MessageWithParams

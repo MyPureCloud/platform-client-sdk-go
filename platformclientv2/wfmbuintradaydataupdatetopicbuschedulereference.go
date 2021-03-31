@@ -10,10 +10,6 @@ type Wfmbuintradaydataupdatetopicbuschedulereference struct {
 	// Id
 	Id *string `json:"id,omitempty"`
 
-
-	// WeekDate
-	WeekDate *Wfmbuintradaydataupdatetopiclocaldate `json:"weekDate,omitempty"`
-
 }
 
 // String returns a JSON representation of the model

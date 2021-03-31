@@ -6,11 +6,7 @@ import (
 )
 
 // Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification
-type Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification struct { 
-	// DataAvailabilityDate
-	DataAvailabilityDate *Conversationdetailsdatalakeavailabilitytopicdatetime `json:"dataAvailabilityDate,omitempty"`
-
-}
+type Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification struct { }
 
 // String returns a JSON representation of the model
 func (o *Conversationdetailsdatalakeavailabilitytopicdataavailabilitychangenotification) String() string {

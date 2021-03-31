@@ -14,6 +14,10 @@ type Analyticsconversationqueryresponse struct {
 	// Conversations
 	Conversations *[]Analyticsconversationwithoutattributes `json:"conversations,omitempty"`
 
+
+	// TotalHits
+	TotalHits *int `json:"totalHits,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

@@ -4329,7 +4329,7 @@ func (a ArchitectApi) GetFlowsMilestone(milestoneId string) (*Flowmilestone, *AP
 // Get a pageable list of flow milestones, filtered by query parameters
 //
 // Multiple IDs can be specified, in which case all matching flow milestones will be returned, and no other parameters will be evaluated.
-func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowmilestonelisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, divisionId []string) (*Flowmilestonelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/milestones"
@@ -4372,6 +4372,8 @@ func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy st
 	
 	queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4392,6 +4394,83 @@ func (a ArchitectApi) GetFlowsMilestones(pageNumber int, pageSize int, sortBy st
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Flowmilestonelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetFlowsMilestonesDivisionviews invokes GET /api/v2/flows/milestones/divisionviews
+//
+// Get a pageable list of basic flow milestone information objects filterable by query parameters.
+//
+// This returns flow milestones consisting of name and division. If one or more IDs are specified, the search will fetch flow milestones that match the given ID(s) and not use any additional supplied query parameters in the search.
+func (a ArchitectApi) GetFlowsMilestonesDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Flowmilestonedivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/milestones/divisionviews"
+	defaultReturn := new(Flowmilestonedivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowmilestonedivisionviewentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -4477,7 +4556,7 @@ func (a ArchitectApi) GetFlowsOutcome(flowOutcomeId string) (*Flowoutcome, *APIR
 // Get a pageable list of flow outcomes, filtered by query parameters
 //
 // Multiple IDs can be specified, in which case all matching flow outcomes will be returned, and no other parameters will be evaluated.
-func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string) (*Flowoutcomelisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, description string, nameOrDescription string, divisionId []string) (*Flowoutcomelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/outcomes"
@@ -4520,6 +4599,8 @@ func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy stri
 	
 	queryParams["nameOrDescription"] = a.Configuration.APIClient.ParameterToString(nameOrDescription, "")
 	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -4540,6 +4621,83 @@ func (a ArchitectApi) GetFlowsOutcomes(pageNumber int, pageSize int, sortBy stri
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
 	var successPayload *Flowoutcomelisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetFlowsOutcomesDivisionviews invokes GET /api/v2/flows/outcomes/divisionviews
+//
+// Get a pageable list of basic flow outcome information objects filterable by query parameters.
+//
+// This returns flow outcomes consisting of name and division. If one or more IDs are specified, the search will fetch flow outcomes that match the given ID(s) and not use any additional supplied query parameters in the search.
+func (a ArchitectApi) GetFlowsOutcomesDivisionviews(pageNumber int, pageSize int, sortBy string, sortOrder string, id []string, name string, divisionId []string) (*Flowoutcomedivisionviewentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/flows/outcomes/divisionviews"
+	defaultReturn := new(Flowoutcomedivisionviewentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Flowoutcomedivisionviewentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

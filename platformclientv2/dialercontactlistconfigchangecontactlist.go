@@ -36,6 +36,10 @@ type Dialercontactlistconfigchangecontactlist struct {
 	PhoneColumns *[]Dialercontactlistconfigchangecontactphonenumbercolumn `json:"phoneColumns,omitempty"`
 
 
+	// EmailColumns
+	EmailColumns *[]Dialercontactlistconfigchangeemailcolumn `json:"emailColumns,omitempty"`
+
+
 	// ImportStatus
 	ImportStatus *Dialercontactlistconfigchangeimportstatus `json:"importStatus,omitempty"`
 

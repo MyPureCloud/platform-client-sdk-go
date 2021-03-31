@@ -11,22 +11,6 @@ type Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate 
 	RequestId *string `json:"requestId,omitempty"`
 
 
-	// DateImportStarted
-	DateImportStarted *Wfmhistoricaldatauploadrequeststatustopicdatetime `json:"dateImportStarted,omitempty"`
-
-
-	// DateImportEnded
-	DateImportEnded *Wfmhistoricaldatauploadrequeststatustopicdatetime `json:"dateImportEnded,omitempty"`
-
-
-	// DateCreated
-	DateCreated *Wfmhistoricaldatauploadrequeststatustopicdatetime `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *Wfmhistoricaldatauploadrequeststatustopicdatetime `json:"dateModified,omitempty"`
-
-
 	// Status
 	Status *string `json:"status,omitempty"`
 
@@ -37,6 +21,10 @@ type Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate 
 
 	// Active
 	Active *bool `json:"active,omitempty"`
+
+
+	// VarType
+	VarType *string `json:"type,omitempty"`
 
 }
 

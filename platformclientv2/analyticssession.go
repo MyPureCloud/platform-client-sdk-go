@@ -84,10 +84,6 @@ type Analyticssession struct {
 	RoomId *string `json:"roomId,omitempty"`
 
 
-	// MonitoredSessionId - The sessionID being monitored
-	MonitoredSessionId *string `json:"monitoredSessionId,omitempty"`
-
-
 	// MonitoredParticipantId
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
@@ -254,6 +250,26 @@ type Analyticssession struct {
 
 	// AcwSkipped - Marker for an agent that skipped after call work
 	AcwSkipped *bool `json:"acwSkipped,omitempty"`
+
+
+	// BullseyeRing - Bullseye ring of the conversation
+	BullseyeRing *int `json:"bullseyeRing,omitempty"`
+
+
+	// AgentBullseyeRing - Bullseye ring of the targeted agent
+	AgentBullseyeRing *int `json:"agentBullseyeRing,omitempty"`
+
+
+	// RoutingRule - Routing rule the conversation is in for preferred agent routing
+	RoutingRule *int `json:"routingRule,omitempty"`
+
+
+	// RemovedSkillIds - IDs of skills that have been removed by bullseye routing
+	RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
+
+
+	// ActiveSkillIds - IDs of Skills that are active on the conversation
+	ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 
 }
 

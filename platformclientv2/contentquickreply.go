@@ -19,7 +19,7 @@ type Contentquickreply struct {
 	Payload *string `json:"payload,omitempty"`
 
 
-	// Image - Image associated with quick reply
+	// Image - Path or URI to an image file associated with quick reply
 	Image *string `json:"image,omitempty"`
 
 

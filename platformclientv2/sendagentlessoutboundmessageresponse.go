@@ -16,20 +16,24 @@ type Sendagentlessoutboundmessageresponse struct {
 	ConversationId *string `json:"conversationId,omitempty"`
 
 
-	// FromAddress - The sender of the text message.
+	// FromAddress - The sender of the message.
 	FromAddress *string `json:"fromAddress,omitempty"`
 
 
-	// ToAddress - The recipient of the text message.
+	// ToAddress - The recipient of the message.
 	ToAddress *string `json:"toAddress,omitempty"`
 
 
-	// MessengerType - Type of text messenger.
+	// MessengerType - Type of messenger.
 	MessengerType *string `json:"messengerType,omitempty"`
 
 
 	// TextBody - The body of the text message.
 	TextBody *string `json:"textBody,omitempty"`
+
+
+	// MessagingTemplate - The messaging template sent
+	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
 
 
 	// Timestamp - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

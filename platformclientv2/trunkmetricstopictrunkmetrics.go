@@ -11,10 +11,6 @@ type Trunkmetricstopictrunkmetrics struct {
 	Calls *Trunkmetricstopictrunkmetricscalls `json:"calls,omitempty"`
 
 
-	// EventTime
-	EventTime *Trunkmetricstopicoffsetdatetime `json:"eventTime,omitempty"`
-
-
 	// Qos
 	Qos *Trunkmetricstopictrunkmetricsqos `json:"qos,omitempty"`
 

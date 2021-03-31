@@ -544,72 +544,6 @@ func (a WorkforceManagementApi) DeleteWorkforcemanagementBusinessunitWeekShortte
 	return response, err
 }
 
-// DeleteWorkforcemanagementManagementunit invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}
-//
-// Delete management unit
-//
-// 
-func (a WorkforceManagementApi) DeleteWorkforcemanagementManagementunit(managementUnitId string) (*APIResponse, error) {
-	var httpMethod = "DELETE"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'managementUnitId' is set
-	if &managementUnitId == nil {
-		// 
-		return nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->DeleteWorkforcemanagementManagementunit")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	}
-	return response, err
-}
-
 // DeleteWorkforcemanagementManagementunitWorkplan invokes DELETE /api/v2/workforcemanagement/managementunits/{managementUnitId}/workplans/{workPlanId}
 //
 // Delete a work plan
@@ -2728,26 +2662,20 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitsDivisionviews
 	return successPayload, response, err
 }
 
-// GetWorkforcemanagementManagementunit invokes GET /api/v2/workforcemanagement/managementunits/{managementUnitId}
+// GetWorkforcemanagementHistoricaldataDeletejob invokes GET /api/v2/workforcemanagement/historicaldata/deletejob
 //
-// Get management unit
+// Retrieves delete job status for historical data imports of the organization
 //
-// settings.shortTermForecasting is deprecated and now lives on the business unit
-func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementUnitId string, expand []string) (*Managementunit, *APIResponse, error) {
+// 
+func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataDeletejob() (*Historicalimportdeletejobresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	defaultReturn := new(Managementunit)
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/historicaldata/deletejob"
+	defaultReturn := new(Historicalimportdeletejobresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
-	// verify the required parameter 'managementUnitId' is set
-	if &managementUnitId == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementManagementunit")
-	}
 
 	headerParams := make(map[string]string)
 	queryParams := make(map[string]string)
@@ -2765,8 +2693,6 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
-	
-	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header
@@ -2787,7 +2713,70 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunit(managementU
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Managementunit
+	var successPayload *Historicalimportdeletejobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// GetWorkforcemanagementHistoricaldataImportstatus invokes GET /api/v2/workforcemanagement/historicaldata/importstatus
+//
+// Retrieves status of the historical data imports of the organization
+//
+// 
+func (a WorkforceManagementApi) GetWorkforcemanagementHistoricaldataImportstatus() (*Historicalimportstatuslisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/historicaldata/importstatus"
+	defaultReturn := new(Historicalimportstatuslisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Historicalimportstatuslisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -4839,78 +4828,6 @@ func (a WorkforceManagementApi) PatchWorkforcemanagementBusinessunitServicegoalt
 	return successPayload, response, err
 }
 
-// PatchWorkforcemanagementManagementunit invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}
-//
-// Update the requested management unit
-//
-// 
-func (a WorkforceManagementApi) PatchWorkforcemanagementManagementunit(managementUnitId string, body Updatemanagementunitrequest) (*Managementunit, *APIResponse, error) {
-	var httpMethod = "PATCH"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/managementunits/{managementUnitId}"
-	path = strings.Replace(path, "{managementUnitId}", fmt.Sprintf("%v", managementUnitId), -1)
-	defaultReturn := new(Managementunit)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'managementUnitId' is set
-	if &managementUnitId == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'managementUnitId' when calling WorkforceManagementApi->PatchWorkforcemanagementManagementunit")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Managementunit
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
-	}
-	return successPayload, response, err
-}
-
 // PatchWorkforcemanagementManagementunitUserTimeoffrequest invokes PATCH /api/v2/workforcemanagement/managementunits/{managementUnitId}/users/{userId}/timeoffrequests/{timeOffRequestId}
 //
 // Update a time off request
@@ -6489,6 +6406,132 @@ func (a WorkforceManagementApi) PostWorkforcemanagementBusinessunits(body Create
 		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
 	return successPayload, response, err
+}
+
+// PostWorkforcemanagementHistoricaldataDeletejob invokes POST /api/v2/workforcemanagement/historicaldata/deletejob
+//
+// Delete the entries of the historical data imports in the organization
+//
+// 
+func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataDeletejob() (*Historicalimportdeletejobresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/historicaldata/deletejob"
+	defaultReturn := new(Historicalimportdeletejobresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Historicalimportdeletejobresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostWorkforcemanagementHistoricaldataValidate invokes POST /api/v2/workforcemanagement/historicaldata/validate
+//
+// Trigger validation process for historical import
+//
+// 
+func (a WorkforceManagementApi) PostWorkforcemanagementHistoricaldataValidate(body Validationservicerequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/historicaldata/validate"
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PostWorkforcemanagementManagementunitAgentschedulesSearch invokes POST /api/v2/workforcemanagement/managementunits/{managementUnitId}/agentschedules/search

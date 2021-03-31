@@ -15,6 +15,10 @@ type Flowmilestone struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// Division - The division to which this entity belongs.
+	Division *Writabledivision `json:"division,omitempty"`
+
+
 	// Description - The flow milestone description.
 	Description *string `json:"description,omitempty"`
 

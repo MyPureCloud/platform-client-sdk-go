@@ -27,8 +27,16 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 	ActivityCodeId *string `json:"activityCodeId,omitempty"`
 
 
+	// Paid
+	Paid *bool `json:"paid,omitempty"`
+
+
 	// Status
 	Status *string `json:"status,omitempty"`
+
+
+	// Substatus
+	Substatus *string `json:"substatus,omitempty"`
 
 
 	// PartialDayStartDateTimes

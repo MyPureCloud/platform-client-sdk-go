@@ -19,7 +19,7 @@ type Messagingrecipient struct {
 	IdType *string `json:"idType,omitempty"`
 
 
-	// Image - Avatar image
+	// Image - Path or URI to an image file containing an avatar
 	Image *string `json:"image,omitempty"`
 
 
