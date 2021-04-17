@@ -3430,7 +3430,7 @@ func (a ConversationsApi) GetConversationsMessage(conversationId string) (*Messa
 //
 // Get media
 //
-// 
+// See https://developer.genesys.cloud/api/rest/v2/conversations/messaging-media-upload for example usage.
 func (a ConversationsApi) GetConversationsMessageCommunicationMessagesMediaMediaId(conversationId string, communicationId string, mediaId string) (*Messagemediadata, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -9333,7 +9333,7 @@ func (a ConversationsApi) PostConversationsMessageCommunicationMessages(conversa
 //
 // Create media
 //
-// 
+// See https://developer.genesys.cloud/api/rest/v2/conversations/messaging-media-upload for example usage.
 func (a ConversationsApi) PostConversationsMessageCommunicationMessagesMedia(conversationId string, communicationId string) (*Messagemediadata, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

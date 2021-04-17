@@ -7,12 +7,12 @@ import (
 
 // Analyticsproposedagent
 type Analyticsproposedagent struct { 
-	// ProposedAgentId - Unique identifier of an agent that was proposed by predictive routing
-	ProposedAgentId *string `json:"proposedAgentId,omitempty"`
-
-
 	// AgentRank - Proposed agent rank for this conversation from predictive routing (lower is better)
 	AgentRank *int `json:"agentRank,omitempty"`
+
+
+	// ProposedAgentId - Unique identifier for the agent that was proposed by predictive routing
+	ProposedAgentId *string `json:"proposedAgentId,omitempty"`
 
 }
 

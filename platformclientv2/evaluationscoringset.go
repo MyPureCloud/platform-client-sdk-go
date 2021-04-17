@@ -7,15 +7,15 @@ import (
 
 // Evaluationscoringset
 type Evaluationscoringset struct { 
-	// TotalScore
+	// TotalScore - Score of all questions
 	TotalScore *float32 `json:"totalScore,omitempty"`
 
 
-	// TotalCriticalScore
+	// TotalCriticalScore - Score of only the critical questions
 	TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 
 
-	// TotalNonCriticalScore
+	// TotalNonCriticalScore - Score of only the non-critical questions
 	TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
 
 
@@ -23,15 +23,15 @@ type Evaluationscoringset struct {
 	QuestionGroupScores *[]Evaluationquestiongroupscore `json:"questionGroupScores,omitempty"`
 
 
-	// AnyFailedKillQuestions
+	// AnyFailedKillQuestions - Indicates that at least one fatal question was answered without having the highest score available for the question
 	AnyFailedKillQuestions *bool `json:"anyFailedKillQuestions,omitempty"`
 
 
-	// Comments
+	// Comments - Overall comments from the evaluator
 	Comments *string `json:"comments,omitempty"`
 
 
-	// AgentComments
+	// AgentComments - Comments from the agent while reviewing evaluation results
 	AgentComments *string `json:"agentComments,omitempty"`
 
 }

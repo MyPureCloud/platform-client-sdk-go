@@ -8,24 +8,24 @@ import (
 
 // Analyticsflowoutcome
 type Analyticsflowoutcome struct { 
-	// FlowOutcomeId - Unique identifiers of a flow outcome
+	// FlowOutcome - Combination of unique flow outcome identifier and its value separated by colon
+	FlowOutcome *string `json:"flowOutcome,omitempty"`
+
+
+	// FlowOutcomeEndTimestamp - The outcome ending timestamp in ISO 8601 format. This may be null if the outcome did not succeed.
+	FlowOutcomeEndTimestamp *time.Time `json:"flowOutcomeEndTimestamp,omitempty"`
+
+
+	// FlowOutcomeId - Unique identifier of a flow outcome
 	FlowOutcomeId *string `json:"flowOutcomeId,omitempty"`
+
+
+	// FlowOutcomeStartTimestamp - The outcome starting timestamp in ISO 8601 format
+	FlowOutcomeStartTimestamp *time.Time `json:"flowOutcomeStartTimestamp,omitempty"`
 
 
 	// FlowOutcomeValue - Flow outcome value, e.g. SUCCESS
 	FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
-
-
-	// FlowOutcome - Colon-separated combinations of unique flow outcome identifier and value
-	FlowOutcome *string `json:"flowOutcome,omitempty"`
-
-
-	// FlowOutcomeStartTimestamp - Date/time the outcome started. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	FlowOutcomeStartTimestamp *time.Time `json:"flowOutcomeStartTimestamp,omitempty"`
-
-
-	// FlowOutcomeEndTimestamp - Date/time the outcome ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	FlowOutcomeEndTimestamp *time.Time `json:"flowOutcomeEndTimestamp,omitempty"`
 
 }
 

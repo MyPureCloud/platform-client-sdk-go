@@ -98,7 +98,7 @@ func (a TokensApi) DeleteToken(userId string) (*APIResponse, error) {
 
 // DeleteTokensMe invokes DELETE /api/v2/tokens/me
 //
-// Delete  auth token used to make the request.
+// Delete auth token used to make the request.
 //
 // 
 func (a TokensApi) DeleteTokensMe() (*APIResponse, error) {

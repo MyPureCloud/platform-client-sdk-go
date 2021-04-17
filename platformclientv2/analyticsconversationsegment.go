@@ -8,19 +8,87 @@ import (
 
 // Analyticsconversationsegment
 type Analyticsconversationsegment struct { 
-	// SegmentStart - The timestamp when this segment began. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	SegmentStart *time.Time `json:"segmentStart,omitempty"`
+	// AudioMuted - Flag indicating if audio is muted or not (true/false)
+	AudioMuted *bool `json:"audioMuted,omitempty"`
 
 
-	// SegmentEnd - The timestamp when this segment ended. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	SegmentEnd *time.Time `json:"segmentEnd,omitempty"`
+	// Conference - Indicates whether the segment was a conference
+	Conference *bool `json:"conference,omitempty"`
+
+
+	// DestinationConversationId - The unique identifier of a new conversation when a conversation is ended for a conference
+	DestinationConversationId *string `json:"destinationConversationId,omitempty"`
+
+
+	// DestinationSessionId - The unique identifier of a new session when a session is ended for a conference
+	DestinationSessionId *string `json:"destinationSessionId,omitempty"`
+
+
+	// DisconnectType - The session disconnect type
+	DisconnectType *string `json:"disconnectType,omitempty"`
+
+
+	// ErrorCode - A code corresponding to the error that occurred
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+
+	// GroupId - Unique identifier for a PureCloud group
+	GroupId *string `json:"groupId,omitempty"`
+
+
+	// Q850ResponseCodes - Q.850 response code(s)
+	Q850ResponseCodes *[]int `json:"q850ResponseCodes,omitempty"`
 
 
 	// QueueId - Queue identifier
 	QueueId *string `json:"queueId,omitempty"`
 
 
-	// WrapUpCode - Wrapup Code id
+	// RequestedLanguageId - Unique identifier for the language requested for an interaction
+	RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
+
+
+	// RequestedRoutingSkillIds - Unique identifier(s) for skill(s) requested for an interaction
+	RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
+
+
+	// RequestedRoutingUserIds - Unique identifier(s) for agent(s) requested for an interaction
+	RequestedRoutingUserIds *[]string `json:"requestedRoutingUserIds,omitempty"`
+
+
+	// SegmentEnd - The end time of a segment. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	SegmentEnd *time.Time `json:"segmentEnd,omitempty"`
+
+
+	// SegmentStart - The start time of a segment. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	SegmentStart *time.Time `json:"segmentStart,omitempty"`
+
+
+	// SegmentType - The activity that takes place in the segment, such as hold or interact
+	SegmentType *string `json:"segmentType,omitempty"`
+
+
+	// SipResponseCodes - SIP response code(s)
+	SipResponseCodes *[]int `json:"sipResponseCodes,omitempty"`
+
+
+	// SourceConversationId - The unique identifier of the previous conversation when a new conversation is created for a conference
+	SourceConversationId *string `json:"sourceConversationId,omitempty"`
+
+
+	// SourceSessionId - The unique identifier of the previous session when a new session is created for a conference
+	SourceSessionId *string `json:"sourceSessionId,omitempty"`
+
+
+	// Subject - The subject for the initial email that started this conversation
+	Subject *string `json:"subject,omitempty"`
+
+
+	// VideoMuted - Flag indicating if video is muted/paused or not (true/false)
+	VideoMuted *bool `json:"videoMuted,omitempty"`
+
+
+	// WrapUpCode - Wrap up code
 	WrapUpCode *string `json:"wrapUpCode,omitempty"`
 
 
@@ -28,84 +96,16 @@ type Analyticsconversationsegment struct {
 	WrapUpNote *string `json:"wrapUpNote,omitempty"`
 
 
-	// WrapUpTags
+	// WrapUpTags - Tag(s) assigned during after-call work
 	WrapUpTags *[]string `json:"wrapUpTags,omitempty"`
 
 
-	// ErrorCode
-	ErrorCode *string `json:"errorCode,omitempty"`
-
-
-	// DisconnectType - A description of the event that disconnected the segment
-	DisconnectType *string `json:"disconnectType,omitempty"`
-
-
-	// SegmentType - The activity taking place for the participant in the segment
-	SegmentType *string `json:"segmentType,omitempty"`
-
-
-	// RequestedRoutingUserIds
-	RequestedRoutingUserIds *[]string `json:"requestedRoutingUserIds,omitempty"`
-
-
-	// RequestedRoutingSkillIds
-	RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
-
-
-	// RequestedLanguageId - A unique identifier for the language requested for an interaction.
-	RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
-
-
-	// ScoredAgents
+	// ScoredAgents - Scored agents
 	ScoredAgents *[]Analyticsscoredagent `json:"scoredAgents,omitempty"`
 
 
-	// Properties
+	// Properties - Additional segment properties
 	Properties *[]Analyticsproperty `json:"properties,omitempty"`
-
-
-	// SourceConversationId
-	SourceConversationId *string `json:"sourceConversationId,omitempty"`
-
-
-	// DestinationConversationId
-	DestinationConversationId *string `json:"destinationConversationId,omitempty"`
-
-
-	// SourceSessionId
-	SourceSessionId *string `json:"sourceSessionId,omitempty"`
-
-
-	// DestinationSessionId
-	DestinationSessionId *string `json:"destinationSessionId,omitempty"`
-
-
-	// SipResponseCodes
-	SipResponseCodes *[]int `json:"sipResponseCodes,omitempty"`
-
-
-	// Q850ResponseCodes
-	Q850ResponseCodes *[]int `json:"q850ResponseCodes,omitempty"`
-
-
-	// Conference - Indicates whether the segment was a conference
-	Conference *bool `json:"conference,omitempty"`
-
-
-	// GroupId
-	GroupId *string `json:"groupId,omitempty"`
-
-
-	// Subject
-	Subject *string `json:"subject,omitempty"`
-
-
-	// AudioMuted
-	AudioMuted *bool `json:"audioMuted,omitempty"`
-
-
-	// VideoMuted
-	VideoMuted *bool `json:"videoMuted,omitempty"`
 
 }
 

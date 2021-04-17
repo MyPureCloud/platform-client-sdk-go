@@ -8,48 +8,144 @@ import (
 
 // Analyticssession
 type Analyticssession struct { 
-	// MediaType - The session media type
-	MediaType *string `json:"mediaType,omitempty"`
+	// ActiveSkillIds - ID(s) of Skill(s) that are active on the conversation
+	ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 
 
-	// SessionId - The unique identifier of this session
-	SessionId *string `json:"sessionId,omitempty"`
+	// AcwSkipped - Marker for an agent that skipped after call work
+	AcwSkipped *bool `json:"acwSkipped,omitempty"`
 
 
-	// AddressOther
-	AddressOther *string `json:"addressOther,omitempty"`
-
-
-	// AddressSelf
-	AddressSelf *string `json:"addressSelf,omitempty"`
-
-
-	// AddressFrom
+	// AddressFrom - The address that initiated an action
 	AddressFrom *string `json:"addressFrom,omitempty"`
 
 
-	// AddressTo
+	// AddressOther - The email address for the participant on the other side of the email conversation
+	AddressOther *string `json:"addressOther,omitempty"`
+
+
+	// AddressSelf - The email address for the participant on this side of the email conversation
+	AddressSelf *string `json:"addressSelf,omitempty"`
+
+
+	// AddressTo - The address receiving an action
 	AddressTo *string `json:"addressTo,omitempty"`
 
 
-	// MessageType - Message type for messaging services such as sms
-	MessageType *string `json:"messageType,omitempty"`
+	// AgentAssistantId - Unique identifier of the active virtual agent assistant
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+
+	// AgentBullseyeRing - Bullseye ring of the targeted agent
+	AgentBullseyeRing *int `json:"agentBullseyeRing,omitempty"`
 
 
 	// Ani - Automatic Number Identification (caller's number)
 	Ani *string `json:"ani,omitempty"`
 
 
-	// Direction - Direction
+	// AssignerId - ID of the user that manually assigned a conversation
+	AssignerId *string `json:"assignerId,omitempty"`
+
+
+	// Authenticated - Flag that indicates that the identity of the customer has been asserted as verified by the provider.
+	Authenticated *bool `json:"authenticated,omitempty"`
+
+
+	// CallbackNumbers - Callback phone number(s)
+	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
+
+
+	// CallbackScheduledTime - Scheduled callback date/time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
+
+
+	// CallbackUserName - The name of the user requesting a call back
+	CallbackUserName *string `json:"callbackUserName,omitempty"`
+
+
+	// CobrowseRole - Describes side of the cobrowse (sharer or viewer)
+	CobrowseRole *string `json:"cobrowseRole,omitempty"`
+
+
+	// CobrowseRoomId - A unique identifier for a PureCloud cobrowse room
+	CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
+
+
+	// Direction - The direction of the communication
 	Direction *string `json:"direction,omitempty"`
+
+
+	// DispositionAnalyzer - (Dialer) Analyzer (for example speech.person)
+	DispositionAnalyzer *string `json:"dispositionAnalyzer,omitempty"`
+
+
+	// DispositionName - (Dialer) Result of the analysis (for example disposition.classification.callable.machine)
+	DispositionName *string `json:"dispositionName,omitempty"`
 
 
 	// Dnis - Dialed number identification service (number dialed by the calling party)
 	Dnis *string `json:"dnis,omitempty"`
 
 
-	// SessionDnis - Dialed number for the current session; this can be different from dnis, e.g. if the call was transferred
-	SessionDnis *string `json:"sessionDnis,omitempty"`
+	// EdgeId - Unique identifier of the edge device
+	EdgeId *string `json:"edgeId,omitempty"`
+
+
+	// FlowInType - Type of flow in that occurred when entering ACD.
+	FlowInType *string `json:"flowInType,omitempty"`
+
+
+	// FlowOutType - Type of flow out that occurred when emitting tFlowOut.
+	FlowOutType *string `json:"flowOutType,omitempty"`
+
+
+	// JourneyActionId - Identifier of the journey action.
+	JourneyActionId *string `json:"journeyActionId,omitempty"`
+
+
+	// JourneyActionMapId - Identifier of the journey action map that triggered the action.
+	JourneyActionMapId *string `json:"journeyActionMapId,omitempty"`
+
+
+	// JourneyActionMapVersion - Version of the journey action map that triggered the action.
+	JourneyActionMapVersion *int `json:"journeyActionMapVersion,omitempty"`
+
+
+	// JourneyCustomerId - Primary identifier of the journey customer in the source where the activities originate from.
+	JourneyCustomerId *string `json:"journeyCustomerId,omitempty"`
+
+
+	// JourneyCustomerIdType - Type of primary identifier of the journey customer (e.g. cookie).
+	JourneyCustomerIdType *string `json:"journeyCustomerIdType,omitempty"`
+
+
+	// JourneyCustomerSessionId - Unique identifier of the journey session.
+	JourneyCustomerSessionId *string `json:"journeyCustomerSessionId,omitempty"`
+
+
+	// JourneyCustomerSessionIdType - Type or category of journey sessions (e.g. web, ticket, delivery, atm).
+	JourneyCustomerSessionIdType *string `json:"journeyCustomerSessionIdType,omitempty"`
+
+
+	// MediaBridgeId - Media bridge ID for the conference session consistent across all participants
+	MediaBridgeId *string `json:"mediaBridgeId,omitempty"`
+
+
+	// MediaCount - Count of any media (images, files, etc) included in this session
+	MediaCount *int `json:"mediaCount,omitempty"`
+
+
+	// MediaType - The session media type
+	MediaType *string `json:"mediaType,omitempty"`
+
+
+	// MessageType - Message type for messaging services. E.g.: sms, facebook, twitter, line
+	MessageType *string `json:"messageType,omitempty"`
+
+
+	// MonitoredParticipantId - The participantId being monitored (if someone (e.g. an agent) is being monitored, this would be the ID of the participant that was monitored that would correspond to other participantIds present in the conversation)
+	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
 	// OutboundCampaignId - (Dialer) Unique identifier of the outbound campaign
@@ -64,171 +160,59 @@ type Analyticssession struct {
 	OutboundContactListId *string `json:"outboundContactListId,omitempty"`
 
 
-	// DispositionAnalyzer - (Dialer) Unique identifier of the contact list that this contact belongs to
-	DispositionAnalyzer *string `json:"dispositionAnalyzer,omitempty"`
-
-
-	// DispositionName - (Dialer) Result of the analysis
-	DispositionName *string `json:"dispositionName,omitempty"`
-
-
-	// EdgeId - Unique identifier of the edge device
-	EdgeId *string `json:"edgeId,omitempty"`
-
-
-	// RemoteNameDisplayable
-	RemoteNameDisplayable *string `json:"remoteNameDisplayable,omitempty"`
-
-
-	// RoomId - Unique identifier for the room
-	RoomId *string `json:"roomId,omitempty"`
-
-
-	// MonitoredParticipantId
-	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
-
-
-	// CallbackUserName - The name of the user requesting a call back
-	CallbackUserName *string `json:"callbackUserName,omitempty"`
-
-
-	// CallbackNumbers - List of numbers to callback
-	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
-
-
-	// CallbackScheduledTime - Scheduled callback date/time. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
-
-
-	// ScriptId - A unique identifier for a script
-	ScriptId *string `json:"scriptId,omitempty"`
-
-
-	// PeerId - A unique identifier for a peer
+	// PeerId - This identifies pairs of related sessions on a conversation. E.g. an external session’s peerId will be the session that the call originally connected to, e.g. if an IVR was dialed, the IVR session, which will also have the external session’s ID as its peer. After that point, any transfers of that session to other internal components (acd, agent, etc.) will all spawn new sessions whose peerIds point back to that original external session.
 	PeerId *string `json:"peerId,omitempty"`
-
-
-	// SkipEnabled - (Dialer) Whether the agent can skip the dialer contact
-	SkipEnabled *bool `json:"skipEnabled,omitempty"`
-
-
-	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back. 0 disables automatic calling
-	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
-
-
-	// CobrowseRole - Describe side of the cobrowse (sharer or viewer)
-	CobrowseRole *string `json:"cobrowseRole,omitempty"`
-
-
-	// CobrowseRoomId - A unique identifier for a PureCloud Cobrowse room.
-	CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
-
-
-	// MediaBridgeId
-	MediaBridgeId *string `json:"mediaBridgeId,omitempty"`
-
-
-	// ScreenShareAddressSelf - Direct ScreenShare address
-	ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
-
-
-	// SharingScreen - Flag determining if screenShare is started or not (true/false)
-	SharingScreen *bool `json:"sharingScreen,omitempty"`
-
-
-	// ScreenShareRoomId - A unique identifier for a PureCloud ScreenShare room.
-	ScreenShareRoomId *string `json:"screenShareRoomId,omitempty"`
-
-
-	// VideoRoomId - A unique identifier for a PureCloud video room.
-	VideoRoomId *string `json:"videoRoomId,omitempty"`
-
-
-	// VideoAddressSelf - Direct Video address
-	VideoAddressSelf *string `json:"videoAddressSelf,omitempty"`
-
-
-	// Segments - List of segments for this session
-	Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
-
-
-	// Metrics - List of metrics for this session
-	Metrics *[]Analyticssessionmetric `json:"metrics,omitempty"`
-
-
-	// Flow - IVR flow execution associated with this session
-	Flow *Analyticsflow `json:"flow,omitempty"`
-
-
-	// MediaEndpointStats - Media endpoint stats associated with this session
-	MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
-
-
-	// Recording - Flag determining if an audio recording was started or not
-	Recording *bool `json:"recording,omitempty"`
-
-
-	// JourneyCustomerId - ID of the journey customer
-	JourneyCustomerId *string `json:"journeyCustomerId,omitempty"`
-
-
-	// JourneyCustomerIdType - Type of the journey customer ID
-	JourneyCustomerIdType *string `json:"journeyCustomerIdType,omitempty"`
-
-
-	// JourneyCustomerSessionId - ID of the journey customer session
-	JourneyCustomerSessionId *string `json:"journeyCustomerSessionId,omitempty"`
-
-
-	// JourneyCustomerSessionIdType - Type of the journey customer session ID
-	JourneyCustomerSessionIdType *string `json:"journeyCustomerSessionIdType,omitempty"`
-
-
-	// JourneyActionId - Journey action ID
-	JourneyActionId *string `json:"journeyActionId,omitempty"`
-
-
-	// JourneyActionMapId - Journey action map ID
-	JourneyActionMapId *string `json:"journeyActionMapId,omitempty"`
-
-
-	// JourneyActionMapVersion - Journey action map version
-	JourneyActionMapVersion *string `json:"journeyActionMapVersion,omitempty"`
 
 
 	// ProtocolCallId - The original voice protocol call ID, e.g. a SIP call ID
 	ProtocolCallId *string `json:"protocolCallId,omitempty"`
 
 
-	// Provider - The source provider for the communication
+	// Provider - The source provider for the communication.
 	Provider *string `json:"provider,omitempty"`
+
+
+	// Recording - Flag determining if an audio recording was started or not
+	Recording *bool `json:"recording,omitempty"`
 
 
 	// Remote - Name, phone number, or email address of the remote party.
 	Remote *string `json:"remote,omitempty"`
 
 
-	// MediaCount - Count of any media (images, files, etc) included in this session
-	MediaCount *int `json:"mediaCount,omitempty"`
+	// RemoteNameDisplayable - Unique identifier for the remote party
+	RemoteNameDisplayable *string `json:"remoteNameDisplayable,omitempty"`
 
 
-	// FlowInType - Type of flow in that occurred, e.g. acd, ivr, etc.
-	FlowInType *string `json:"flowInType,omitempty"`
+	// RemovedSkillIds - ID(s) of Skill(s) that have been removed by bullseye routing
+	RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
 
 
-	// FlowOutType - Type of flow out that occurred, e.g. voicemail, callback, or acd
-	FlowOutType *string `json:"flowOutType,omitempty"`
-
-
-	// RequestedRoutings - All routing types for requested/attempted routing methods.
+	// RequestedRoutings - Routing type(s) for requested/attempted routing methods.
 	RequestedRoutings *[]string `json:"requestedRoutings,omitempty"`
 
 
-	// UsedRouting - Complete routing method
-	UsedRouting *string `json:"usedRouting,omitempty"`
+	// RoomId - Unique identifier for the room
+	RoomId *string `json:"roomId,omitempty"`
 
 
-	// SelectedAgentId - Selected agent id
+	// RoutingRing - Routing ring for bullseye or preferred agent routing
+	RoutingRing *int `json:"routingRing,omitempty"`
+
+
+	// ScreenShareAddressSelf - Direct ScreenShare address
+	ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
+
+
+	// ScreenShareRoomId - A unique identifier for a PureCloud ScreenShare room
+	ScreenShareRoomId *string `json:"screenShareRoomId,omitempty"`
+
+
+	// ScriptId - A unique identifier for a script
+	ScriptId *string `json:"scriptId,omitempty"`
+
+
+	// SelectedAgentId - Selected agent ID
 	SelectedAgentId *string `json:"selectedAgentId,omitempty"`
 
 
@@ -236,40 +220,56 @@ type Analyticssession struct {
 	SelectedAgentRank *int `json:"selectedAgentRank,omitempty"`
 
 
-	// AgentAssistantId - Unique identifier of the active virtual agent assistant
-	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+	// SessionDnis - Dialed number for the current session; this can be different from dnis, e.g. if the call was transferred
+	SessionDnis *string `json:"sessionDnis,omitempty"`
+
+
+	// SessionId - The unique identifier of this session
+	SessionId *string `json:"sessionId,omitempty"`
+
+
+	// SharingScreen - Flag determining if screenShare is started or not (true/false)
+	SharingScreen *bool `json:"sharingScreen,omitempty"`
+
+
+	// SkipEnabled - (Dialer) Whether the agent can skip the dialer contact
+	SkipEnabled *bool `json:"skipEnabled,omitempty"`
+
+
+	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back (0 disables automatic calling)
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+
+
+	// UsedRouting - Complete routing method
+	UsedRouting *string `json:"usedRouting,omitempty"`
+
+
+	// VideoAddressSelf - Direct Video address
+	VideoAddressSelf *string `json:"videoAddressSelf,omitempty"`
+
+
+	// VideoRoomId - A unique identifier for a PureCloud video room
+	VideoRoomId *string `json:"videoRoomId,omitempty"`
 
 
 	// ProposedAgents - Proposed agents
 	ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
 
 
-	// AssignerId - ID of the user that manually assigned a conversation
-	AssignerId *string `json:"assignerId,omitempty"`
+	// MediaEndpointStats - MediaEndpointStats associated with this session
+	MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
 
 
-	// AcwSkipped - Marker for an agent that skipped after call work
-	AcwSkipped *bool `json:"acwSkipped,omitempty"`
+	// Flow - IVR flow execution associated with this session
+	Flow *Analyticsflow `json:"flow,omitempty"`
 
 
-	// BullseyeRing - Bullseye ring of the conversation
-	BullseyeRing *int `json:"bullseyeRing,omitempty"`
+	// Metrics - List of metrics for this session
+	Metrics *[]Analyticssessionmetric `json:"metrics,omitempty"`
 
 
-	// AgentBullseyeRing - Bullseye ring of the targeted agent
-	AgentBullseyeRing *int `json:"agentBullseyeRing,omitempty"`
-
-
-	// RoutingRule - Routing rule the conversation is in for preferred agent routing
-	RoutingRule *int `json:"routingRule,omitempty"`
-
-
-	// RemovedSkillIds - IDs of skills that have been removed by bullseye routing
-	RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
-
-
-	// ActiveSkillIds - IDs of Skills that are active on the conversation
-	ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
+	// Segments - List of segments for this session
+	Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
 
 }
 

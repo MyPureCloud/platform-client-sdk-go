@@ -16,10 +16,6 @@ type Managementunit struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Division - The division to which this entity belongs.
-	Division *Division `json:"division,omitempty"`
-
-
 	// BusinessUnit - The business unit to which this management unit belongs
 	BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 
@@ -38,6 +34,10 @@ type Managementunit struct {
 
 	// Metadata - Version info metadata for this management unit. Deprecated, use settings.metadata
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+
+
+	// Division - The division to which this entity belongs.
+	Division *Divisionreference `json:"division,omitempty"`
 
 
 	// Version - The version of the underlying entity.  Deprecated, use field from settings.metadata instead

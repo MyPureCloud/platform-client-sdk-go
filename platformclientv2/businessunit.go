@@ -15,12 +15,12 @@ type Businessunit struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// Division - The division to which this entity belongs.
-	Division *Division `json:"division,omitempty"`
-
-
 	// Settings - Settings for this business unit
 	Settings *Businessunitsettings `json:"settings,omitempty"`
+
+
+	// Division - The division to which this entity belongs.
+	Division *Divisionreference `json:"division,omitempty"`
 
 
 	// SelfUri - The URI for this object

@@ -11,11 +11,11 @@ type Surveyquestiongroupscore struct {
 	QuestionGroupId *string `json:"questionGroupId,omitempty"`
 
 
-	// TotalScore
+	// TotalScore - Score of all questions in the group
 	TotalScore *float32 `json:"totalScore,omitempty"`
 
 
-	// MaxTotalScore
+	// MaxTotalScore - Maximum possible score of all questions in the group
 	MaxTotalScore *float32 `json:"maxTotalScore,omitempty"`
 
 

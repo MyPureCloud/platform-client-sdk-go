@@ -582,7 +582,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 // Get documents
 //
 // 
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, categories string, title string) (*Documentlisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, categories string, title string, documentIds []string) (*Documentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents"
@@ -632,6 +632,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 	queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, "")
 	
 	queryParams["title"] = a.Configuration.APIClient.ParameterToString(title, "")
+	
+	queryParams["documentIds"] = a.Configuration.APIClient.ParameterToString(documentIds, "multi")
 	
 
 	// to determine the Content-Type header

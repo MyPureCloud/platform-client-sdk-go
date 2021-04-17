@@ -120,12 +120,12 @@ type Document struct {
 	SharingStatus *string `json:"sharingStatus,omitempty"`
 
 
-	// SharingUri
-	SharingUri *string `json:"sharingUri,omitempty"`
-
-
 	// DownloadSharingUri
 	DownloadSharingUri *string `json:"downloadSharingUri,omitempty"`
+
+
+	// SharingUri
+	SharingUri *string `json:"sharingUri,omitempty"`
 
 
 	// SelfUri - The URI for this object

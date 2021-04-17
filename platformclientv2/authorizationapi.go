@@ -2277,6 +2277,82 @@ func (a AuthorizationApi) PostAuthorizationSubjectBulkremove(subjectId string, b
 	return response, err
 }
 
+// PostAuthorizationSubjectBulkreplace invokes POST /api/v2/authorization/subjects/{subjectId}/bulkreplace
+//
+// Replace subject&#39;s roles and divisions with the exact list supplied in the request.
+//
+// This operation will not remove grants that are inherited from group membership. It will only set the grants directly applied to the subject.
+func (a AuthorizationApi) PostAuthorizationSubjectBulkreplace(subjectId string, body Roledivisiongrants, subjectType string) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/authorization/subjects/{subjectId}/bulkreplace"
+	path = strings.Replace(path, "{subjectId}", fmt.Sprintf("%v", subjectId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'subjectId' is set
+	if &subjectId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'subjectId' when calling AuthorizationApi->PostAuthorizationSubjectBulkreplace")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'body' when calling AuthorizationApi->PostAuthorizationSubjectBulkreplace")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["subjectType"] = a.Configuration.APIClient.ParameterToString(subjectType, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // PostAuthorizationSubjectDivisionRole invokes POST /api/v2/authorization/subjects/{subjectId}/divisions/{divisionId}/roles/{roleId}
 //
 // Make a grant of a role in a division

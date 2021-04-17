@@ -38,6 +38,10 @@ type Posttextresponse struct {
 	// GenesysDialogEngine - Raw data response from Genesys' Dialogengine (if called)
 	GenesysDialogEngine *map[string]interface{} `json:"genesysDialogEngine,omitempty"`
 
+
+	// GenesysBotConnector - Raw data response from Genesys' BotConnector (if called)
+	GenesysBotConnector *map[string]interface{} `json:"genesysBotConnector,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

@@ -8,44 +8,44 @@ import (
 
 // Analyticssurvey
 type Analyticssurvey struct { 
-	// SurveyId - Unique identifier for the survey
-	SurveyId *string `json:"surveyId,omitempty"`
+	// EventTime - Specifies when an event occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	EventTime *time.Time `json:"eventTime,omitempty"`
 
 
-	// SurveyFormId - Unique identifier for the survey form
-	SurveyFormId *string `json:"surveyFormId,omitempty"`
+	// QueueId - The ID of the associated queue
+	QueueId *string `json:"queueId,omitempty"`
 
 
-	// SurveyFormName - Name of the survey form
-	SurveyFormName *string `json:"surveyFormName,omitempty"`
+	// SurveyCompletedDate - Completion datetime of the survey in ISO 8601 format
+	SurveyCompletedDate *time.Time `json:"surveyCompletedDate,omitempty"`
 
 
 	// SurveyFormContextId - Unique identifier for the survey form, regardless of version
 	SurveyFormContextId *string `json:"surveyFormContextId,omitempty"`
 
 
-	// EventTime - Specifies when a survey occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	EventTime *time.Time `json:"eventTime,omitempty"`
+	// SurveyFormId - ID of the survey form used
+	SurveyFormId *string `json:"surveyFormId,omitempty"`
 
 
-	// UserId - A unique identifier of the PureCloud user
-	UserId *string `json:"userId,omitempty"`
+	// SurveyFormName - Name of the survey form used
+	SurveyFormName *string `json:"surveyFormName,omitempty"`
 
 
-	// QueueId - Unique identifier for the queue the conversation was on
-	QueueId *string `json:"queueId,omitempty"`
+	// SurveyId - ID of the survey
+	SurveyId *string `json:"surveyId,omitempty"`
 
 
-	// SurveyStatus - Survey status
-	SurveyStatus *string `json:"surveyStatus,omitempty"`
-
-
-	// SurveyPromoterScore - Promoter score of the survey
+	// SurveyPromoterScore - Score of the survey used with NPS
 	SurveyPromoterScore *int `json:"surveyPromoterScore,omitempty"`
 
 
-	// SurveyCompletedDate - Completion date/time of the survey. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	SurveyCompletedDate *time.Time `json:"surveyCompletedDate,omitempty"`
+	// SurveyStatus - The status of the survey
+	SurveyStatus *string `json:"surveyStatus,omitempty"`
+
+
+	// UserId - ID of the agent the survey was performed against
+	UserId *string `json:"userId,omitempty"`
 
 
 	// OSurveyTotalScore

@@ -11,11 +11,7 @@ type Relationship struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// User - The user associated with the external organization
+	// User - The user associated with the external organization. When creating or updating a relationship, only User.id is required. User object is fully populated when expanding a note.
 	User *User `json:"user,omitempty"`
 
 

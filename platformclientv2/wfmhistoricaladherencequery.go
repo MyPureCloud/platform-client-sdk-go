@@ -27,10 +27,6 @@ type Wfmhistoricaladherencequery struct {
 	// IncludeExceptions - Whether user exceptions should be returned as part of the results
 	IncludeExceptions *bool `json:"includeExceptions,omitempty"`
 
-
-	// TeamIds - The teamIds to report on. If null or not set, adherence will be computed for requested users if applicable or otherwise all users in the management unit. Note: If teamIds is also specified, only adherence for users in the requested teams will be returned
-	TeamIds *[]string `json:"teamIds,omitempty"`
-
 }
 
 // String returns a JSON representation of the model

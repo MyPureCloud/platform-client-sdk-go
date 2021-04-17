@@ -7,7 +7,7 @@ import (
 
 // Trustcreate
 type Trustcreate struct { 
-	// PairingId - The pairing Id created by the trustee. This is required to prove that the trustee agrees to the relationship.
+	// PairingId - The pairing Id created by the trustee. This is required to prove that the trustee agrees to the relationship.  Not required when creating a default pairing with Customer Care.
 	PairingId *string `json:"pairingId,omitempty"`
 
 

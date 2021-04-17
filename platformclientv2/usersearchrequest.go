@@ -39,7 +39,7 @@ type Usersearchrequest struct {
 	IntegrationPresenceSource *string `json:"integrationPresenceSource,omitempty"`
 
 
-	// EnforcePermissions - When set to true add additional search criteria to filter users by directory:user:view
+	// EnforcePermissions - This property only applies to api/v2/user/search; when set to true add additional search criteria to filter users by: directory:user:view
 	EnforcePermissions *bool `json:"enforcePermissions,omitempty"`
 
 }

@@ -31,6 +31,10 @@ type Gdprsubject struct {
 	SocialHandle *Socialhandle `json:"socialHandle,omitempty"`
 
 
+	// ExternalId
+	ExternalId *string `json:"externalId,omitempty"`
+
+
 	// Addresses
 	Addresses *[]string `json:"addresses,omitempty"`
 

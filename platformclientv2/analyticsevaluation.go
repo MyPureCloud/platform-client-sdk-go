@@ -8,48 +8,48 @@ import (
 
 // Analyticsevaluation
 type Analyticsevaluation struct { 
-	// EvaluationId - Unique identifier for the evaluation
-	EvaluationId *string `json:"evaluationId,omitempty"`
-
-
-	// EvaluatorId - A unique identifier of the PureCloud user who evaluated the interaction
-	EvaluatorId *string `json:"evaluatorId,omitempty"`
-
-
-	// UserId - Unique identifier for the user being evaluated
-	UserId *string `json:"userId,omitempty"`
-
-
-	// EventTime - Specifies when an evaluation occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
-	EventTime *time.Time `json:"eventTime,omitempty"`
-
-
-	// QueueId - Unique identifier for the queue the conversation was on
-	QueueId *string `json:"queueId,omitempty"`
-
-
-	// FormId - Unique identifier for the form used to evaluate the conversation/agent
-	FormId *string `json:"formId,omitempty"`
+	// CalibrationId - The calibration ID used for the purpose of training evaluators
+	CalibrationId *string `json:"calibrationId,omitempty"`
 
 
 	// ContextId - A unique identifier for an evaluation form, regardless of version
 	ContextId *string `json:"contextId,omitempty"`
 
 
-	// FormName - Name of the evaluation form
+	// Deleted - Whether the evaluation has been deleted
+	Deleted *bool `json:"deleted,omitempty"`
+
+
+	// EvaluationId - Unique identifier for the evaluation
+	EvaluationId *string `json:"evaluationId,omitempty"`
+
+
+	// EvaluatorId - A unique identifier of the user who evaluated the interaction
+	EvaluatorId *string `json:"evaluatorId,omitempty"`
+
+
+	// EventTime - Specifies when an evaluation occurred. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	EventTime *time.Time `json:"eventTime,omitempty"`
+
+
+	// FormId - ID of the evaluation form used
+	FormId *string `json:"formId,omitempty"`
+
+
+	// FormName - Name of the evaluation form used
 	FormName *string `json:"formName,omitempty"`
 
 
-	// CalibrationId - The calibration id used for the purpose of training evaluators
-	CalibrationId *string `json:"calibrationId,omitempty"`
+	// QueueId - The ID of the associated queue
+	QueueId *string `json:"queueId,omitempty"`
 
 
-	// Rescored - Whether this evaluation has ever been rescored
+	// Rescored - Whether the evaluation has been rescored at least once
 	Rescored *bool `json:"rescored,omitempty"`
 
 
-	// Deleted - Whether this evaluation has been deleted
-	Deleted *bool `json:"deleted,omitempty"`
+	// UserId - ID of the agent the evaluation was performed against
+	UserId *string `json:"userId,omitempty"`
 
 
 	// OTotalCriticalScore

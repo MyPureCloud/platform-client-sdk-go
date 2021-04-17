@@ -15,7 +15,7 @@ type Evaluationquestionscore struct {
 	AnswerId *string `json:"answerId,omitempty"`
 
 
-	// Score
+	// Score - Unweighted score of the question
 	Score *int `json:"score,omitempty"`
 
 
@@ -23,11 +23,11 @@ type Evaluationquestionscore struct {
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
 
-	// FailedKillQuestion
+	// FailedKillQuestion - Applicable only on fatal questions. Indicates that the answer selected was not the highest score available for the question
 	FailedKillQuestion *bool `json:"failedKillQuestion,omitempty"`
 
 
-	// Comments
+	// Comments - Comments from the evaluator specific to this question
 	Comments *string `json:"comments,omitempty"`
 
 }

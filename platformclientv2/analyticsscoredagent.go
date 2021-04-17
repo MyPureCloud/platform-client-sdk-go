@@ -7,12 +7,12 @@ import (
 
 // Analyticsscoredagent
 type Analyticsscoredagent struct { 
-	// ScoredAgentId - Unique identifier of an agent that was scored for this conversation
-	ScoredAgentId *string `json:"scoredAgentId,omitempty"`
-
-
 	// AgentScore - Assigned agent score for this conversation (0 - 100, higher being better)
 	AgentScore *int `json:"agentScore,omitempty"`
+
+
+	// ScoredAgentId - Unique identifier for the agent that was scored for this conversation
+	ScoredAgentId *string `json:"scoredAgentId,omitempty"`
 
 }
 

@@ -395,12 +395,24 @@ type Viewfilter struct {
 	DevelopmentModuleIds *[]string `json:"developmentModuleIds,omitempty"`
 
 
-	// DevelopmentKeyType - Represents due or completed to filter agent development view
-	DevelopmentKeyType *string `json:"developmentKeyType,omitempty"`
-
-
 	// DevelopmentActivityOverdue - Indicates filtering for development activities
 	DevelopmentActivityOverdue *bool `json:"developmentActivityOverdue,omitempty"`
+
+
+	// CustomerSentimentScore - The customer sentiment score used to filter the view
+	CustomerSentimentScore *Numericrange `json:"customerSentimentScore,omitempty"`
+
+
+	// CustomerSentimentTrend - The customer sentiment trend used to filter the view
+	CustomerSentimentTrend *Numericrange `json:"customerSentimentTrend,omitempty"`
+
+
+	// FlowTransferTargets - The list of transfer targets used to filter flow data
+	FlowTransferTargets *[]string `json:"flowTransferTargets,omitempty"`
+
+
+	// DevelopmentName - Filter for development name
+	DevelopmentName *string `json:"developmentName,omitempty"`
 
 }
 

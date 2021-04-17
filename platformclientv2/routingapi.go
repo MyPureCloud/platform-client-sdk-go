@@ -3799,31 +3799,30 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 // Update the ring number OR joined status for a queue member.
 //
 // 
-func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, body Queuemember) (*Queuemember, *APIResponse, error) {
+func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, body Queuemember) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members/{memberId}"
 	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
 	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
-	defaultReturn := new(Queuemember)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueMember")
+		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueMember")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueMember")
+		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueMember")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueMember")
+		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueMember")
 	}
 
 	headerParams := make(map[string]string)
@@ -3865,16 +3864,14 @@ func (a RoutingApi) PatchRoutingQueueMember(queueId string, memberId string, bod
 	// body params
 	postBody = &body
 
-	var successPayload *Queuemember
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchRoutingQueueMembers invokes PATCH /api/v2/routing/queues/{queueId}/members
@@ -3959,31 +3956,30 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members/{memberId}.  Update the ring number OR joined status for a User in a Queue.
 //
 // 
-func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body Queuemember) (*Queuemember, *APIResponse, error) {
+func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body Queuemember) (*APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users/{memberId}"
 	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
 	path = strings.Replace(path, "{memberId}", fmt.Sprintf("%v", memberId), -1)
-	defaultReturn := new(Queuemember)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'queueId' is set
 	if &queueId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueUser")
+		return nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->PatchRoutingQueueUser")
 	}
 	// verify the required parameter 'memberId' is set
 	if &memberId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueUser")
+		return nil, errors.New("Missing required parameter 'memberId' when calling RoutingApi->PatchRoutingQueueUser")
 	}
 	// verify the required parameter 'body' is set
 	if &body == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueUser")
+		return nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingQueueUser")
 	}
 
 	headerParams := make(map[string]string)
@@ -4025,16 +4021,14 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 	// body params
 	postBody = &body
 
-	var successPayload *Queuemember
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PatchRoutingQueueUsers invokes PATCH /api/v2/routing/queues/{queueId}/users

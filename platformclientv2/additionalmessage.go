@@ -11,7 +11,7 @@ type Additionalmessage struct {
 	TextBody *string `json:"textBody,omitempty"`
 
 
-	// MediaIds - The media ids associated with the text message.
+	// MediaIds - The media ids associated with the text message. See https://developer.genesys.cloud/api/rest/v2/conversations/messaging-media-upload for example usage.
 	MediaIds *[]string `json:"mediaIds,omitempty"`
 
 

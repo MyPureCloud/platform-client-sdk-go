@@ -15,7 +15,7 @@ type Surveyquestionscore struct {
 	AnswerId *string `json:"answerId,omitempty"`
 
 
-	// Score
+	// Score - Unweighted score of the question
 	Score *int `json:"score,omitempty"`
 
 

@@ -6176,7 +6176,7 @@ func (a OutboundApi) PostOutboundDnclistExport(dncListId string) (*Domainentityr
 
 // PostOutboundDnclistPhonenumbers invokes POST /api/v2/outbound/dnclists/{dncListId}/phonenumbers
 //
-// Add phone numbers to a Dialer DNC list.
+// Add phone numbers to a DNC list.
 //
 // Only Internal DNC lists may be appended to
 func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []string) (*APIResponse, error) {

@@ -11,11 +11,11 @@ type Evaluationquestiongroupscore struct {
 	QuestionGroupId *string `json:"questionGroupId,omitempty"`
 
 
-	// TotalScore
+	// TotalScore - Score of all questions in the group
 	TotalScore *float32 `json:"totalScore,omitempty"`
 
 
-	// MaxTotalScore
+	// MaxTotalScore - Maximum possible score of all questions in the group
 	MaxTotalScore *float32 `json:"maxTotalScore,omitempty"`
 
 
@@ -23,43 +23,43 @@ type Evaluationquestiongroupscore struct {
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
 
-	// TotalCriticalScore
+	// TotalCriticalScore - Score of only the critical questions in the group
 	TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
 
 
-	// MaxTotalCriticalScore
+	// MaxTotalCriticalScore - Maximum possible score of only the critical questions in the group
 	MaxTotalCriticalScore *float32 `json:"maxTotalCriticalScore,omitempty"`
 
 
-	// TotalNonCriticalScore
+	// TotalNonCriticalScore - Score of only the non critical questions in the group
 	TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
 
 
-	// MaxTotalNonCriticalScore
+	// MaxTotalNonCriticalScore - Maximum possible score of only the non critical questions in the group
 	MaxTotalNonCriticalScore *float32 `json:"maxTotalNonCriticalScore,omitempty"`
 
 
-	// TotalScoreUnweighted
+	// TotalScoreUnweighted - Unweighted score of all questions in the group
 	TotalScoreUnweighted *float32 `json:"totalScoreUnweighted,omitempty"`
 
 
-	// MaxTotalScoreUnweighted
+	// MaxTotalScoreUnweighted - Maximum possible unweighted score of all questions in the group
 	MaxTotalScoreUnweighted *float32 `json:"maxTotalScoreUnweighted,omitempty"`
 
 
-	// TotalCriticalScoreUnweighted
+	// TotalCriticalScoreUnweighted - Unweighted score of only the critical questions in the group
 	TotalCriticalScoreUnweighted *float32 `json:"totalCriticalScoreUnweighted,omitempty"`
 
 
-	// MaxTotalCriticalScoreUnweighted
+	// MaxTotalCriticalScoreUnweighted - Maximum possible unweighted score of only the critical questions in the group
 	MaxTotalCriticalScoreUnweighted *float32 `json:"maxTotalCriticalScoreUnweighted,omitempty"`
 
 
-	// TotalNonCriticalScoreUnweighted
+	// TotalNonCriticalScoreUnweighted - Unweighted score of only the non critical questions in the group
 	TotalNonCriticalScoreUnweighted *float32 `json:"totalNonCriticalScoreUnweighted,omitempty"`
 
 
-	// MaxTotalNonCriticalScoreUnweighted
+	// MaxTotalNonCriticalScoreUnweighted - Maximum possible unweighted score of only the non critical questions in the group
 	MaxTotalNonCriticalScoreUnweighted *float32 `json:"maxTotalNonCriticalScoreUnweighted,omitempty"`
 
 

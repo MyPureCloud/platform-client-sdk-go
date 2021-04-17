@@ -7,12 +7,12 @@ import (
 
 // Analyticsproperty
 type Analyticsproperty struct { 
-	// PropertyType - Indicates what the data type is (e.g. integer vs string) and therefore how to evaluate what would constitute a match
-	PropertyType *string `json:"propertyType,omitempty"`
-
-
 	// Property - User-defined rather than intrinsic system-observed values. These are tagged onto segments by other components within PureCloud or by API users directly.  This is the name of the user-defined property.
 	Property *string `json:"property,omitempty"`
+
+
+	// PropertyType - Indicates what the data type is (e.g. integer vs string) and therefore how to evaluate what would constitute a match
+	PropertyType *string `json:"propertyType,omitempty"`
 
 
 	// Value - What property value to match against

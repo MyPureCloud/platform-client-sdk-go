@@ -5,22 +5,10 @@ import (
 	"strings"
 )
 
-// Businessunitlistitem
-type Businessunitlistitem struct { 
+// Divisionreference
+type Divisionreference struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// Authorized - Whether the user has authorization to interact with this business unit
-	Authorized *bool `json:"authorized,omitempty"`
-
-
-	// Division - The division to which this entity belongs.
-	Division *Divisionreference `json:"division,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -29,7 +17,7 @@ type Businessunitlistitem struct {
 }
 
 // String returns a JSON representation of the model
-func (o *Businessunitlistitem) String() string {
+func (o *Divisionreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

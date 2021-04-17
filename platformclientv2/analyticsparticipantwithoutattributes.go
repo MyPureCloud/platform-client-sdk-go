@@ -7,6 +7,18 @@ import (
 
 // Analyticsparticipantwithoutattributes
 type Analyticsparticipantwithoutattributes struct { 
+	// ExternalContactId - External contact identifier
+	ExternalContactId *string `json:"externalContactId,omitempty"`
+
+
+	// ExternalOrganizationId - External organization identifier
+	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
+
+
+	// FlaggedReason - Reason for which participant flagged conversation
+	FlaggedReason *string `json:"flaggedReason,omitempty"`
+
+
 	// ParticipantId - Unique identifier for the participant
 	ParticipantId *string `json:"participantId,omitempty"`
 
@@ -15,28 +27,16 @@ type Analyticsparticipantwithoutattributes struct {
 	ParticipantName *string `json:"participantName,omitempty"`
 
 
-	// UserId - If a user, then this will be the unique identifier for the user
-	UserId *string `json:"userId,omitempty"`
-
-
 	// Purpose - The participant's purpose
 	Purpose *string `json:"purpose,omitempty"`
 
 
-	// ExternalContactId - External Contact Identifier
-	ExternalContactId *string `json:"externalContactId,omitempty"`
-
-
-	// ExternalOrganizationId - External Organization Identifier
-	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
-
-
-	// FlaggedReason - Reason for which participant flagged conversation
-	FlaggedReason *string `json:"flaggedReason,omitempty"`
-
-
-	// TeamId - The team id the user is a member of
+	// TeamId - The team ID the user is a member of
 	TeamId *string `json:"teamId,omitempty"`
+
+
+	// UserId - Unique identifier for the user
+	UserId *string `json:"userId,omitempty"`
 
 
 	// Sessions - List of sessions associated to this participant
