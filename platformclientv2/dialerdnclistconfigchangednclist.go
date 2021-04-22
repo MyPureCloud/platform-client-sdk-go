@@ -52,6 +52,10 @@ type Dialerdnclistconfigchangednclist struct {
 	LicenseId *string `json:"licenseId,omitempty"`
 
 
+	// ContactMethod
+	ContactMethod *string `json:"contactMethod,omitempty"`
+
+
 	// Division
 	Division *Dialerdnclistconfigchangeurireference `json:"division,omitempty"`
 

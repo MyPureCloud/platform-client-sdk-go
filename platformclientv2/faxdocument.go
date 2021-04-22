@@ -68,12 +68,12 @@ type Faxdocument struct {
 	Thumbnails *[]Documentthumbnail `json:"thumbnails,omitempty"`
 
 
-	// DownloadSharingUri
-	DownloadSharingUri *string `json:"downloadSharingUri,omitempty"`
-
-
 	// SharingUri
 	SharingUri *string `json:"sharingUri,omitempty"`
+
+
+	// DownloadSharingUri
+	DownloadSharingUri *string `json:"downloadSharingUri,omitempty"`
 
 
 	// SelfUri - The URI for this object

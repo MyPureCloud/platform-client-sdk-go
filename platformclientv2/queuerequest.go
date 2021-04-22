@@ -40,8 +40,12 @@ type Queuerequest struct {
 	CreatedBy *string `json:"createdBy,omitempty"`
 
 
-	// MemberCount - The number of users in the queue.
+	// MemberCount - The total number of members (joined or unjoined) in the queue.
 	MemberCount *int `json:"memberCount,omitempty"`
+
+
+	// JoinedMemberCount - The number of joined members in the queue.
+	JoinedMemberCount *int `json:"joinedMemberCount,omitempty"`
 
 
 	// MediaSettings - The media settings for the queue. Valid key values: CALL, CALLBACK, CHAT, EMAIL, MESSAGE, SOCIAL_EXPRESSION, VIDEO_COMM

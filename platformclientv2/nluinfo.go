@@ -7,6 +7,10 @@ import (
 
 // Nluinfo
 type Nluinfo struct { 
+	// Domain
+	Domain *Addressableentityref `json:"domain,omitempty"`
+
+
 	// Intents
 	Intents *[]Intent `json:"intents,omitempty"`
 

@@ -19,12 +19,12 @@ type Webchatmessageentitylist struct {
 	PreviousPage *string `json:"previousPage,omitempty"`
 
 
-	// SelfUri
-	SelfUri *string `json:"selfUri,omitempty"`
-
-
 	// Next
 	Next *string `json:"next,omitempty"`
+
+
+	// SelfUri
+	SelfUri *string `json:"selfUri,omitempty"`
 
 }
 

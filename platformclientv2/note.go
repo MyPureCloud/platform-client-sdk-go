@@ -12,8 +12,12 @@ type Note struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
-	Name *string `json:"name,omitempty"`
+	// EntityId - The id of the contact or organization to which this note refers. This only needs to be set for input when using the Bulk APIs.
+	EntityId *string `json:"entityId,omitempty"`
+
+
+	// EntityType - This is only need to be set when using Bulk API. Using any other value than contact or organization will result in null being used.
+	EntityType *string `json:"entityType,omitempty"`
 
 
 	// NoteText
@@ -28,7 +32,7 @@ type Note struct {
 	CreateDate *time.Time `json:"createDate,omitempty"`
 
 
-	// CreatedBy - The author of this note
+	// CreatedBy - When creating or updating a note, only User.id is required. User object is fully populated when expanding a note.
 	CreatedBy *User `json:"createdBy,omitempty"`
 
 

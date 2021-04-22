@@ -26,6 +26,10 @@ type Queueconversationsocialexpressioneventtopicconversation struct {
 	// Address
 	Address *string `json:"address,omitempty"`
 
+
+	// ExternalTag
+	ExternalTag *string `json:"externalTag,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

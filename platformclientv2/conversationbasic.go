@@ -16,6 +16,10 @@ type Conversationbasic struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// ExternalTag - The external tag associated with the conversation.
+	ExternalTag *string `json:"externalTag,omitempty"`
+
+
 	// StartTime - The time when the conversation started. This will be the time when the first participant joined the conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
