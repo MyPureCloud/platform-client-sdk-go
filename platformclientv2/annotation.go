@@ -51,46 +51,6 @@ type Annotation struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// KeywordName - The word or phrase which is being looked for with speech recognition.
-	KeywordName *string `json:"keywordName,omitempty"`
-
-
-	// Confidence - Actual confidence that this is an accurate match.
-	Confidence *float32 `json:"confidence,omitempty"`
-
-
-	// KeywordSetId - A unique identifier for the keyword set to which this spotted keyword belongs.
-	KeywordSetId *string `json:"keywordSetId,omitempty"`
-
-
-	// KeywordSetName - The keyword set to which this spotted keyword belongs.
-	KeywordSetName *string `json:"keywordSetName,omitempty"`
-
-
-	// Utterance - The phonetic spellings for the phrase and alternate spellings.
-	Utterance *string `json:"utterance,omitempty"`
-
-
-	// TimeBegin - Beginning time offset of the keyword spot match.
-	TimeBegin *string `json:"timeBegin,omitempty"`
-
-
-	// TimeEnd - Ending time offset of the keyword spot match.
-	TimeEnd *string `json:"timeEnd,omitempty"`
-
-
-	// KeywordConfidenceThreshold - Configured sensitivity threshold that can be increased to lower false positives or decreased to reduce false negatives.
-	KeywordConfidenceThreshold *string `json:"keywordConfidenceThreshold,omitempty"`
-
-
-	// AgentScoreModifier - A modifier to the evaluation score when the phrase is spotted in the agent channel.
-	AgentScoreModifier *string `json:"agentScoreModifier,omitempty"`
-
-
-	// CustomerScoreModifier - A modifier to the evaluation score when the phrase is spotted in the customer channel.
-	CustomerScoreModifier *string `json:"customerScoreModifier,omitempty"`
-
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

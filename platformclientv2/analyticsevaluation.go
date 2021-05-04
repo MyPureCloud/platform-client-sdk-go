@@ -52,12 +52,12 @@ type Analyticsevaluation struct {
 	UserId *string `json:"userId,omitempty"`
 
 
-	// OTotalCriticalScore
-	OTotalCriticalScore *int `json:"oTotalCriticalScore,omitempty"`
+	// GetoTotalCriticalScore - Total critical score of the evaluation
+	GetoTotalCriticalScore *int `json:"getoTotalCriticalScore,omitempty"`
 
 
-	// OTotalScore
-	OTotalScore *int `json:"oTotalScore,omitempty"`
+	// GetoTotalScore - Total score of the evaluation
+	GetoTotalScore *int `json:"getoTotalScore,omitempty"`
 
 }
 

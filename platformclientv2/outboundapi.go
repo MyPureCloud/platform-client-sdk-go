@@ -1679,6 +1679,75 @@ func (a OutboundApi) GetOutboundCampaign(campaignId string) (*Campaign, *APIResp
 	return successPayload, response, err
 }
 
+// GetOutboundCampaignAgentownedmappingpreviewResults invokes GET /api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview/results
+//
+// Get a preview of how agents will be mapped to this campaign&#39;s contact list.
+//
+// 
+func (a OutboundApi) GetOutboundCampaignAgentownedmappingpreviewResults(campaignId string) (*Agentownedmappingpreviewlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview/results"
+	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	defaultReturn := new(Agentownedmappingpreviewlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'campaignId' is set
+	if &campaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->GetOutboundCampaignAgentownedmappingpreviewResults")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Agentownedmappingpreviewlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
 // GetOutboundCampaignDiagnostics invokes GET /api/v2/outbound/campaigns/{campaignId}/diagnostics
 //
 // Get campaign diagnostics
@@ -5230,6 +5299,75 @@ func (a OutboundApi) PostOutboundCallanalysisresponsesets(body Responseset) (*Re
 	postBody = &body
 
 	var successPayload *Responseset
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostOutboundCampaignAgentownedmappingpreview invokes POST /api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview
+//
+// Initiate request for a preview of how agents will be mapped to this campaign&#39;s contact list.
+//
+// 
+func (a OutboundApi) PostOutboundCampaignAgentownedmappingpreview(campaignId string) (*Empty, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/campaigns/{campaignId}/agentownedmappingpreview"
+	path = strings.Replace(path, "{campaignId}", fmt.Sprintf("%v", campaignId), -1)
+	defaultReturn := new(Empty)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'campaignId' is set
+	if &campaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'campaignId' when calling OutboundApi->PostOutboundCampaignAgentownedmappingpreview")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Empty
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

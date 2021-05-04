@@ -118,14 +118,14 @@ func (c *APIClient) CallAPI(path string, method string,
 		// }
 
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		request.Body = ioutil.NopCloser(strings.NewReader(formParams.Encode()))
+		request.SetBody(ioutil.NopCloser(strings.NewReader(formParams.Encode())))
 	}
 
 	// Set post body
 	if postBody != nil {
 		request.Header.Set("Content-Type", "application/json")
 		j, _ := json.Marshal(postBody)
-		request.Body = ioutil.NopCloser(bytes.NewReader(j))
+		request.SetBody(ioutil.NopCloser(bytes.NewReader(j)))
 	}
 
 	// Set provided headers

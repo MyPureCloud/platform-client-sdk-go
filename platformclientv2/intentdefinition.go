@@ -11,8 +11,12 @@ type Intentdefinition struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// EntityTypeBindings - The bindings for the named entity types used in this intent.
+	// EntityTypeBindings - The bindings for the named entity types used in this intent.This field is mutually exclusive with entityNameReferences and entities
 	EntityTypeBindings *[]Namedentitytypebinding `json:"entityTypeBindings,omitempty"`
+
+
+	// EntityNameReferences - The references for the named entity used in this intent.This field is mutually exclusive with entityTypeBindings
+	EntityNameReferences *[]string `json:"entityNameReferences,omitempty"`
 
 
 	// Utterances - The utterances that act as training phrases for the intent.

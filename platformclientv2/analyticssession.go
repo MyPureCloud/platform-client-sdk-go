@@ -236,10 +236,6 @@ type Analyticssession struct {
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
 
-	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back (0 disables automatic calling)
-	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
-
-
 	// UsedRouting - Complete routing method
 	UsedRouting *string `json:"usedRouting,omitempty"`
 
@@ -270,6 +266,10 @@ type Analyticssession struct {
 
 	// Segments - List of segments for this session
 	Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
+
+
+	// TimeoutSeconds - The number of seconds before PureCloud begins the call for a call back (0 disables automatic calling)
+	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 }
 

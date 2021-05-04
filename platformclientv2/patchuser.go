@@ -14,18 +14,6 @@ type Patchuser struct {
 	// AcdAutoAnswer - The value that denotes if acdAutoAnswer is set on the user
 	AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
 
-
-	// Certifications
-	Certifications *[]string `json:"certifications,omitempty"`
-
-
-	// Biography
-	Biography *Biography `json:"biography,omitempty"`
-
-
-	// EmployerInfo
-	EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
-
 }
 
 // String returns a JSON representation of the model

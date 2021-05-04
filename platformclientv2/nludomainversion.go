@@ -60,6 +60,10 @@ type Nludomainversion struct {
 	EntityTypes *[]Namedentitytypedefinition `json:"entityTypes,omitempty"`
 
 
+	// Entities - The entities defined for this NLU domain version.This field is mutually exclusive with entityTypeBindings
+	Entities *[]Namedentitydefinition `json:"entities,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
