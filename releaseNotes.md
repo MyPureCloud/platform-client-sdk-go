@@ -1,7 +1,7 @@
 Platform API version: 4658
 
 
-Changes to logging and SDK configuration. See https://developer.genesys.cloud/api/rest/client-libraries/ for more information
+Fixing a bug where generic objects were given the wrong type
 
 # Major Changes (0 changes)
 
