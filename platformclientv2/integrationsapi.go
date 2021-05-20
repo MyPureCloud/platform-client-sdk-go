@@ -15,8 +15,8 @@ type IntegrationsApi struct {
 
 // NewIntegrationsApi creates an API instance using the default configuration
 func NewIntegrationsApi() *IntegrationsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating IntegrationsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &IntegrationsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewIntegrationsApi() *IntegrationsApi {
 
 // NewIntegrationsApiWithConfig creates an API instance using the provided configuration
 func NewIntegrationsApiWithConfig(config *Configuration) *IntegrationsApi {
-	config.Debugf("Creating IntegrationsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &IntegrationsApi{
 		Configuration: config,
 	}
@@ -3155,7 +3154,7 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 // Test the execution of a draft. Responses will show execution steps broken out with intermediate results to help in debugging.
 //
 // 
-func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body map[string]interface{}) (*Testexecutionresult, *APIResponse, error) {
+func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body interface{}) (*Testexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/draft/test"
@@ -3232,12 +3231,12 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body m
 // Execute Action and return response from 3rd party.  Responses will follow the schemas defined on the Action for success and error.
 //
 // 
-func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body map[string]interface{}) (*map[string]interface{}, *APIResponse, error) {
+func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body interface{}) (*interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/execute"
 	path = strings.Replace(path, "{actionId}", fmt.Sprintf("%v", actionId), -1)
-	defaultReturn := new(map[string]interface{})
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3292,7 +3291,7 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body map
 	// body params
 	postBody = &body
 
-	var successPayload *map[string]interface{}
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -3309,7 +3308,7 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body map
 // Test the execution of an action. Responses will show execution steps broken out with intermediate results to help in debugging.
 //
 // 
-func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body map[string]interface{}) (*Testexecutionresult, *APIResponse, error) {
+func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interface{}) (*Testexecutionresult, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/{actionId}/test"

@@ -15,8 +15,8 @@ type UsersApi struct {
 
 // NewUsersApi creates an API instance using the default configuration
 func NewUsersApi() *UsersApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating UsersApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &UsersApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewUsersApi() *UsersApi {
 
 // NewUsersApiWithConfig creates an API instance using the provided configuration
 func NewUsersApiWithConfig(config *Configuration) *UsersApi {
-	config.Debugf("Creating UsersApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &UsersApi{
 		Configuration: config,
 	}
@@ -1652,7 +1651,7 @@ func (a UsersApi) GetUserDirectreports(userId string, expand []string) ([]User, 
 
 // GetUserFavorites invokes GET /api/v2/users/{userId}/favorites
 //
-// Get favorites
+// Deprecated; will be revived with new contract
 //
 // 
 func (a UsersApi) GetUserFavorites(userId string, pageSize int, pageNumber int, sortOrder string, expand []string) (*Userentitylisting, *APIResponse, error) {

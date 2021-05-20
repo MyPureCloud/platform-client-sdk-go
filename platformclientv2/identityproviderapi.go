@@ -15,8 +15,8 @@ type IdentityProviderApi struct {
 
 // NewIdentityProviderApi creates an API instance using the default configuration
 func NewIdentityProviderApi() *IdentityProviderApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating IdentityProviderApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &IdentityProviderApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewIdentityProviderApi() *IdentityProviderApi {
 
 // NewIdentityProviderApiWithConfig creates an API instance using the provided configuration
 func NewIdentityProviderApiWithConfig(config *Configuration) *IdentityProviderApi {
-	config.Debugf("Creating IdentityProviderApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &IdentityProviderApi{
 		Configuration: config,
 	}

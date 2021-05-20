@@ -15,8 +15,8 @@ type DataExtensionsApi struct {
 
 // NewDataExtensionsApi creates an API instance using the default configuration
 func NewDataExtensionsApi() *DataExtensionsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating DataExtensionsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &DataExtensionsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewDataExtensionsApi() *DataExtensionsApi {
 
 // NewDataExtensionsApiWithConfig creates an API instance using the provided configuration
 func NewDataExtensionsApiWithConfig(config *Configuration) *DataExtensionsApi {
-	config.Debugf("Creating DataExtensionsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &DataExtensionsApi{
 		Configuration: config,
 	}

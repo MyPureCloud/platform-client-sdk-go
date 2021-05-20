@@ -15,8 +15,8 @@ type AnalyticsApi struct {
 
 // NewAnalyticsApi creates an API instance using the default configuration
 func NewAnalyticsApi() *AnalyticsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating AnalyticsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &AnalyticsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewAnalyticsApi() *AnalyticsApi {
 
 // NewAnalyticsApiWithConfig creates an API instance using the provided configuration
 func NewAnalyticsApiWithConfig(config *Configuration) *AnalyticsApi {
-	config.Debugf("Creating AnalyticsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &AnalyticsApi{
 		Configuration: config,
 	}

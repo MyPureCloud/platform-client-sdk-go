@@ -15,8 +15,8 @@ type JourneyApi struct {
 
 // NewJourneyApi creates an API instance using the default configuration
 func NewJourneyApi() *JourneyApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating JourneyApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &JourneyApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewJourneyApi() *JourneyApi {
 
 // NewJourneyApiWithConfig creates an API instance using the provided configuration
 func NewJourneyApiWithConfig(config *Configuration) *JourneyApi {
-	config.Debugf("Creating JourneyApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &JourneyApi{
 		Configuration: config,
 	}

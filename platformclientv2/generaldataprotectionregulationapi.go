@@ -15,8 +15,8 @@ type GeneralDataProtectionRegulationApi struct {
 
 // NewGeneralDataProtectionRegulationApi creates an API instance using the default configuration
 func NewGeneralDataProtectionRegulationApi() *GeneralDataProtectionRegulationApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating GeneralDataProtectionRegulationApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &GeneralDataProtectionRegulationApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewGeneralDataProtectionRegulationApi() *GeneralDataProtectionRegulationApi
 
 // NewGeneralDataProtectionRegulationApiWithConfig creates an API instance using the provided configuration
 func NewGeneralDataProtectionRegulationApiWithConfig(config *Configuration) *GeneralDataProtectionRegulationApi {
-	config.Debugf("Creating GeneralDataProtectionRegulationApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &GeneralDataProtectionRegulationApi{
 		Configuration: config,
 	}

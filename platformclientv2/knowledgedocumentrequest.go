@@ -22,6 +22,10 @@ type Knowledgedocumentrequest struct {
 	// Categories - Document categories
 	Categories *[]Documentcategoryinput `json:"categories,omitempty"`
 
+
+	// Article - Article details
+	Article *Documentarticle `json:"article,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

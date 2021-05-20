@@ -15,8 +15,8 @@ type UserRecordingsApi struct {
 
 // NewUserRecordingsApi creates an API instance using the default configuration
 func NewUserRecordingsApi() *UserRecordingsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating UserRecordingsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &UserRecordingsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewUserRecordingsApi() *UserRecordingsApi {
 
 // NewUserRecordingsApiWithConfig creates an API instance using the provided configuration
 func NewUserRecordingsApiWithConfig(config *Configuration) *UserRecordingsApi {
-	config.Debugf("Creating UserRecordingsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &UserRecordingsApi{
 		Configuration: config,
 	}

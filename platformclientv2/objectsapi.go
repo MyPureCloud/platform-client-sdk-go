@@ -15,8 +15,8 @@ type ObjectsApi struct {
 
 // NewObjectsApi creates an API instance using the default configuration
 func NewObjectsApi() *ObjectsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating ObjectsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &ObjectsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewObjectsApi() *ObjectsApi {
 
 // NewObjectsApiWithConfig creates an API instance using the provided configuration
 func NewObjectsApiWithConfig(config *Configuration) *ObjectsApi {
-	config.Debugf("Creating ObjectsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &ObjectsApi{
 		Configuration: config,
 	}

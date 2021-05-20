@@ -111,12 +111,6 @@ func (c *APIClient) CallAPI(path string, method string,
 
 	// Set form data
 	if formParams != nil {
-		// request.Form = make(map[string][]string)
-		// request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
-		// for k, v := range formParams {
-		// 	request.Form.Set(k, v)
-		// }
-
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		request.SetBody(ioutil.NopCloser(strings.NewReader(formParams.Encode())))
 	}
@@ -135,18 +129,6 @@ func (c *APIClient) CallAPI(path string, method string,
 		}
 	}
 
-	// Debug request
-	if c.configuration.GetDebug() {
-		c.configuration.Debugf("======== %v\n", time.Now())
-		c.configuration.Debugf("%v %v\n", request.Method, u.Path)
-		c.configuration.Debugf("HOST: %v:%v\n", u.Host, u.Port())
-		c.configuration.Debug("HEADERS:")
-		for k, v := range request.Header {
-			c.configuration.Debugf("  %v=%v\n", k, v)
-		}
-		c.configuration.Debug(request)
-	}
-
 	if c.configuration.RetryConfiguration == nil {
 		c.client.RetryMax = 0
 		c.client.RetryWaitMax = 0
@@ -161,18 +143,22 @@ func (c *APIClient) CallAPI(path string, method string,
 		}
 	}
 
+	var requestBody []byte
+	if request.Body != nil {
+		requestBody, _ = ioutil.ReadAll(request.Body)
+	}
+	request.Body = ioutil.NopCloser(bytes.NewReader(requestBody))
+
 	// Execute request
-	reqStart := time.Now()
 	res, err := c.client.Do(&request)
 	if err != nil {
 		return nil, err
 	}
 
-	reqEnd := time.Now()
-	duration := reqEnd.Sub(reqStart)
-
 	// Read body
 	body, _ := ioutil.ReadAll(res.Body)
+	c.configuration.LoggingConfiguration.trace(method, urlString, requestBody, res.StatusCode, request.Header, res.Header)
+	c.configuration.LoggingConfiguration.debug(method, urlString, requestBody, res.StatusCode, request.Header)
 
 	if res.StatusCode == http.StatusUnauthorized && c.configuration.ShouldRefreshAccessToken && c.configuration.RefreshToken != "" {
 		err := c.handleExpiredAccessToken()
@@ -182,21 +168,12 @@ func (c *APIClient) CallAPI(path string, method string,
 		if headerParams != nil {
 			headerParams["Authorization"] = "Bearer " + c.configuration.AccessToken
 		}
+
 		return c.CallAPI(path, method, postBody, headerParams, queryParams, formParams, fileName, fileBytes)
 	}
 
-	// Debug response
-	if c.configuration.GetDebug() {
-		c.configuration.Debugf("==== RESPONSE %v (%v) ====\n", reqEnd, duration)
-		c.configuration.Debugf("STATUS: %v\n", res.Status)
-		c.configuration.Debug("HEADERS:")
-		for k, v := range res.Header {
-			c.configuration.Debugf("  %v=%v\n", k, v)
-		}
-		if body != nil {
-			c.configuration.Debugf("BODY:\n%v\n", string(body))
-		}
-		c.configuration.Debug("========")
+	if res.StatusCode < http.StatusOK || res.StatusCode >= http.StatusMultipleChoices {
+		c.configuration.LoggingConfiguration.error(method, urlString, requestBody, body, res.StatusCode, request.Header, res.Header)
 	}
 
 	return NewAPIResponse(res, body)

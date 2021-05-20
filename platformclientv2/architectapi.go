@@ -15,8 +15,8 @@ type ArchitectApi struct {
 
 // NewArchitectApi creates an API instance using the default configuration
 func NewArchitectApi() *ArchitectApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating ArchitectApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &ArchitectApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewArchitectApi() *ArchitectApi {
 
 // NewArchitectApiWithConfig creates an API instance using the provided configuration
 func NewArchitectApiWithConfig(config *Configuration) *ArchitectApi {
-	config.Debugf("Creating ArchitectApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &ArchitectApi{
 		Configuration: config,
 	}
@@ -3182,12 +3181,12 @@ func (a ArchitectApi) GetFlowHistoryHistoryId(flowId string, historyId string, p
 // Get the latest configuration for flow
 //
 // 
-func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*map[string]interface{}, *APIResponse, error) {
+func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/latestconfiguration"
 	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
-	defaultReturn := new(map[string]interface{})
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3236,7 +3235,7 @@ func (a ArchitectApi) GetFlowLatestconfiguration(flowId string, deleted bool) (*
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *map[string]interface{}
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -3330,13 +3329,13 @@ func (a ArchitectApi) GetFlowVersion(flowId string, versionId string, deleted st
 // Create flow version configuration
 //
 // 
-func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId string, deleted string) (*map[string]interface{}, *APIResponse, error) {
+func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId string, deleted string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions/{versionId}/configuration"
 	path = strings.Replace(path, "{flowId}", fmt.Sprintf("%v", flowId), -1)
 	path = strings.Replace(path, "{versionId}", fmt.Sprintf("%v", versionId), -1)
-	defaultReturn := new(map[string]interface{})
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3390,7 +3389,7 @@ func (a ArchitectApi) GetFlowVersionConfiguration(flowId string, versionId strin
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *map[string]interface{}
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -5421,7 +5420,7 @@ func (a ArchitectApi) PostArchitectSystempromptResources(promptId string, body S
 // Create flow version
 //
 // 
-func (a ArchitectApi) PostFlowVersions(flowId string, body map[string]interface{}) (*Flowversion, *APIResponse, error) {
+func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowversion, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/{flowId}/versions"
@@ -6137,7 +6136,7 @@ func (a ArchitectApi) PostFlowsDatatableImportJobs(datatableId string, body Data
 // Create a new row entry for the datatable.
 //
 // Will add the passed in row entry to the datatable with the given datatableId after verifying it against the schema.  The DataTableRow should be a json-ized&#39; stream of key -&gt; value pairs {      \&quot;Field1\&quot;: \&quot;XYZZY\&quot;,      \&quot;Field2\&quot;: false,      \&quot;KEY\&quot;: \&quot;27272\&quot;  }
-func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow map[string]interface{}) (*map[string]interface{}, *APIResponse, error) {
+func (a ArchitectApi) PostFlowsDatatableRows(datatableId string, dataTableRow interface{}) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows"
@@ -7190,7 +7189,7 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, expand string, body 
 // Update a row entry
 //
 // Updates a row with the given rowId (the value of the key field) to the new values.  The DataTableRow should be a json-ized&#39; stream of key -&gt; value pairs {     \&quot;Field1\&quot;: \&quot;XYZZY\&quot;,     \&quot;Field2\&quot;: false,     \&quot;KEY\&quot;: \&quot;27272\&quot; }
-func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, body map[string]interface{}) (*map[string]interface{}, *APIResponse, error) {
+func (a ArchitectApi) PutFlowsDatatableRow(datatableId string, rowId string, body interface{}) (*map[string]interface{}, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/rows/{rowId}"

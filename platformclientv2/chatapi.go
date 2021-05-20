@@ -15,8 +15,8 @@ type ChatApi struct {
 
 // NewChatApi creates an API instance using the default configuration
 func NewChatApi() *ChatApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating ChatApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &ChatApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewChatApi() *ChatApi {
 
 // NewChatApiWithConfig creates an API instance using the provided configuration
 func NewChatApiWithConfig(config *Configuration) *ChatApi {
-	config.Debugf("Creating ChatApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &ChatApi{
 		Configuration: config,
 	}

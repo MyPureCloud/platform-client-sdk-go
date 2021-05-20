@@ -45,15 +45,15 @@ type Script struct {
 
 
 	// Features
-	Features *map[string]interface{} `json:"features,omitempty"`
+	Features *interface{} `json:"features,omitempty"`
 
 
 	// Variables
-	Variables *map[string]interface{} `json:"variables,omitempty"`
+	Variables *interface{} `json:"variables,omitempty"`
 
 
 	// CustomActions
-	CustomActions *map[string]interface{} `json:"customActions,omitempty"`
+	CustomActions *interface{} `json:"customActions,omitempty"`
 
 
 	// Pages

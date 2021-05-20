@@ -15,8 +15,8 @@ type NotificationsApi struct {
 
 // NewNotificationsApi creates an API instance using the default configuration
 func NewNotificationsApi() *NotificationsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating NotificationsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &NotificationsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewNotificationsApi() *NotificationsApi {
 
 // NewNotificationsApiWithConfig creates an API instance using the provided configuration
 func NewNotificationsApiWithConfig(config *Configuration) *NotificationsApi {
-	config.Debugf("Creating NotificationsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &NotificationsApi{
 		Configuration: config,
 	}

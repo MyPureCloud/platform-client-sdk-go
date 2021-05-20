@@ -16,8 +16,8 @@ type WorkforceManagementApi struct {
 
 // NewWorkforceManagementApi creates an API instance using the default configuration
 func NewWorkforceManagementApi() *WorkforceManagementApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating WorkforceManagementApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &WorkforceManagementApi{
 		Configuration: config,
 	}
@@ -25,7 +25,6 @@ func NewWorkforceManagementApi() *WorkforceManagementApi {
 
 // NewWorkforceManagementApiWithConfig creates an API instance using the provided configuration
 func NewWorkforceManagementApiWithConfig(config *Configuration) *WorkforceManagementApi {
-	config.Debugf("Creating WorkforceManagementApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &WorkforceManagementApi{
 		Configuration: config,
 	}

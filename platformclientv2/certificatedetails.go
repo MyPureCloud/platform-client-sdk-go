@@ -28,12 +28,12 @@ type Certificatedetails struct {
 	Expired *bool `json:"expired,omitempty"`
 
 
-	// SignatureValid
-	SignatureValid *bool `json:"signatureValid,omitempty"`
-
-
 	// Valid
 	Valid *bool `json:"valid,omitempty"`
+
+
+	// SignatureValid
+	SignatureValid *bool `json:"signatureValid,omitempty"`
 
 }
 

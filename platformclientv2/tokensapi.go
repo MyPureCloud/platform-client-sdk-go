@@ -15,8 +15,8 @@ type TokensApi struct {
 
 // NewTokensApi creates an API instance using the default configuration
 func NewTokensApi() *TokensApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating TokensApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &TokensApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewTokensApi() *TokensApi {
 
 // NewTokensApiWithConfig creates an API instance using the provided configuration
 func NewTokensApiWithConfig(config *Configuration) *TokensApi {
-	config.Debugf("Creating TokensApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &TokensApi{
 		Configuration: config,
 	}

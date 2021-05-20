@@ -15,8 +15,8 @@ type OutboundApi struct {
 
 // NewOutboundApi creates an API instance using the default configuration
 func NewOutboundApi() *OutboundApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating OutboundApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &OutboundApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewOutboundApi() *OutboundApi {
 
 // NewOutboundApiWithConfig creates an API instance using the provided configuration
 func NewOutboundApiWithConfig(config *Configuration) *OutboundApi {
-	config.Debugf("Creating OutboundApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &OutboundApi{
 		Configuration: config,
 	}
@@ -3679,7 +3678,7 @@ func (a OutboundApi) GetOutboundDnclistsDivisionview(dncListId string, includeIm
 // Query a list of simplified dnc list objects.
 //
 // This return a simplified version of dnc lists, consisting of the name, division, import status, and size.
-func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, filterType string, name string, id []string, sortBy string, sortOrder string) (*Dnclistdivisionviewlisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, includeSize bool, pageSize int, pageNumber int, filterType string, name string, dncSourceType string, id []string, sortBy string, sortOrder string) (*Dnclistdivisionviewlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/divisionviews"
@@ -3717,6 +3716,8 @@ func (a OutboundApi) GetOutboundDnclistsDivisionviews(includeImportStatus bool, 
 	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["dncSourceType"] = a.Configuration.APIClient.ParameterToString(dncSourceType, "")
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	

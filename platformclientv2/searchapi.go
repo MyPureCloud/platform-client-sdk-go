@@ -15,8 +15,8 @@ type SearchApi struct {
 
 // NewSearchApi creates an API instance using the default configuration
 func NewSearchApi() *SearchApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating SearchApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &SearchApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewSearchApi() *SearchApi {
 
 // NewSearchApiWithConfig creates an API instance using the provided configuration
 func NewSearchApiWithConfig(config *Configuration) *SearchApi {
-	config.Debugf("Creating SearchApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &SearchApi{
 		Configuration: config,
 	}

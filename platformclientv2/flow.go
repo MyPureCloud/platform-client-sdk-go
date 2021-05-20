@@ -56,11 +56,11 @@ type Flow struct {
 
 
 	// InputSchema - json schema describing the inputs for the flow
-	InputSchema *map[string]interface{} `json:"inputSchema,omitempty"`
+	InputSchema *interface{} `json:"inputSchema,omitempty"`
 
 
 	// OutputSchema - json schema describing the outputs for the flow
-	OutputSchema *map[string]interface{} `json:"outputSchema,omitempty"`
+	OutputSchema *interface{} `json:"outputSchema,omitempty"`
 
 
 	// CheckedInVersion

@@ -15,8 +15,8 @@ type LocationsApi struct {
 
 // NewLocationsApi creates an API instance using the default configuration
 func NewLocationsApi() *LocationsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating LocationsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &LocationsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewLocationsApi() *LocationsApi {
 
 // NewLocationsApiWithConfig creates an API instance using the provided configuration
 func NewLocationsApiWithConfig(config *Configuration) *LocationsApi {
-	config.Debugf("Creating LocationsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &LocationsApi{
 		Configuration: config,
 	}

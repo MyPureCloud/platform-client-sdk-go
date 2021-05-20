@@ -15,8 +15,8 @@ type WebChatApi struct {
 
 // NewWebChatApi creates an API instance using the default configuration
 func NewWebChatApi() *WebChatApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating WebChatApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &WebChatApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewWebChatApi() *WebChatApi {
 
 // NewWebChatApiWithConfig creates an API instance using the provided configuration
 func NewWebChatApiWithConfig(config *Configuration) *WebChatApi {
-	config.Debugf("Creating WebChatApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &WebChatApi{
 		Configuration: config,
 	}

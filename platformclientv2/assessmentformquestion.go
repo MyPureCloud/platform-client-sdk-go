@@ -15,7 +15,7 @@ type Assessmentformquestion struct {
 	VarType *string `json:"type,omitempty"`
 
 
-	// Text
+	// Text - The question text
 	Text *string `json:"text,omitempty"`
 
 

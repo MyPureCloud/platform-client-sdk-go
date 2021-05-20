@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -21,6 +22,10 @@ type Trustcreate struct {
 
 	// Groups - The list of groups and their roles to which access will be granted. The groups are from the trustee and the roles are from the trustor. If no groups are specified, at least one user is required.
 	Groups *[]Trustmembercreate `json:"groups,omitempty"`
+
+
+	// DateExpired - The expiration date of the trust. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateExpired *time.Time `json:"dateExpired,omitempty"`
 
 }
 

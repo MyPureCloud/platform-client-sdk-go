@@ -16,8 +16,8 @@ type BillingApi struct {
 
 // NewBillingApi creates an API instance using the default configuration
 func NewBillingApi() *BillingApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating BillingApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &BillingApi{
 		Configuration: config,
 	}
@@ -25,7 +25,6 @@ func NewBillingApi() *BillingApi {
 
 // NewBillingApiWithConfig creates an API instance using the provided configuration
 func NewBillingApiWithConfig(config *Configuration) *BillingApi {
-	config.Debugf("Creating BillingApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &BillingApi{
 		Configuration: config,
 	}

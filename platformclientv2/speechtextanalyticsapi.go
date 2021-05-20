@@ -15,8 +15,8 @@ type SpeechTextAnalyticsApi struct {
 
 // NewSpeechTextAnalyticsApi creates an API instance using the default configuration
 func NewSpeechTextAnalyticsApi() *SpeechTextAnalyticsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating SpeechTextAnalyticsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &SpeechTextAnalyticsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewSpeechTextAnalyticsApi() *SpeechTextAnalyticsApi {
 
 // NewSpeechTextAnalyticsApiWithConfig creates an API instance using the provided configuration
 func NewSpeechTextAnalyticsApiWithConfig(config *Configuration) *SpeechTextAnalyticsApi {
-	config.Debugf("Creating SpeechTextAnalyticsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &SpeechTextAnalyticsApi{
 		Configuration: config,
 	}
@@ -313,11 +312,11 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 // Get list of supported Speech &amp; Text Analytics dialects
 //
 // 
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDialects() ([]map[string]interface{}, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDialects() ([]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/dialects"
-	defaultReturn := make([]map[string]interface{}, 0)
+	defaultReturn := make([]interface{}, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -359,7 +358,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDialects() ([]map[strin
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload []map[string]interface{}
+	var successPayload []interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
@@ -1608,6 +1607,77 @@ func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsProgram(programId strin
 	postBody = &body
 
 	var successPayload *Program
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PutSpeechandtextanalyticsSettings invokes PUT /api/v2/speechandtextanalytics/settings
+//
+// Update Speech And Text Analytics Settings
+//
+// 
+func (a SpeechTextAnalyticsApi) PutSpeechandtextanalyticsSettings(body Speechtextanalyticssettingsrequest) (*Speechtextanalyticssettingsresponse, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/settings"
+	defaultReturn := new(Speechtextanalyticssettingsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling SpeechTextAnalyticsApi->PutSpeechandtextanalyticsSettings")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Speechtextanalyticssettingsresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

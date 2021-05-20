@@ -15,8 +15,8 @@ type GroupsApi struct {
 
 // NewGroupsApi creates an API instance using the default configuration
 func NewGroupsApi() *GroupsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating GroupsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &GroupsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewGroupsApi() *GroupsApi {
 
 // NewGroupsApiWithConfig creates an API instance using the provided configuration
 func NewGroupsApiWithConfig(config *Configuration) *GroupsApi {
-	config.Debugf("Creating GroupsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &GroupsApi{
 		Configuration: config,
 	}

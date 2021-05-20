@@ -15,8 +15,8 @@ type LearningApi struct {
 
 // NewLearningApi creates an API instance using the default configuration
 func NewLearningApi() *LearningApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating LearningApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &LearningApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewLearningApi() *LearningApi {
 
 // NewLearningApiWithConfig creates an API instance using the provided configuration
 func NewLearningApiWithConfig(config *Configuration) *LearningApi {
-	config.Debugf("Creating LearningApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &LearningApi{
 		Configuration: config,
 	}
@@ -828,6 +827,77 @@ func (a LearningApi) PostLearningAssignments(body Learningassignmentcreate) (*Le
 	postBody = &body
 
 	var successPayload *Learningassignment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+	}
+	return successPayload, response, err
+}
+
+// PostLearningAssignmentsAggregatesQuery invokes POST /api/v2/learning/assignments/aggregates/query
+//
+// Retrieve aggregated assignment data
+//
+// 
+func (a LearningApi) PostLearningAssignmentsAggregatesQuery(body Learningassignmentaggregateparam) (*Learningassignmentaggregateresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/learning/assignments/aggregates/query"
+	defaultReturn := new(Learningassignmentaggregateresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningAssignmentsAggregatesQuery")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Learningassignmentaggregateresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

@@ -8,7 +8,7 @@ import (
 func ExampleUsersApi_GetUsers() {
 	// Use the default config instance and retrieve settings from env vars
 	config := GetDefaultConfiguration()
-	config.SetDebug(false)
+	config.LoggingConfiguration.LogLevel = LNone
 	config.BasePath = "https://api." + os.Getenv("PURECLOUD_ENVIRONMENT") // e.g. PURECLOUD_ENVIRONMENT=mypurecloud.com
 	clientID := os.Getenv("PURECLOUD_CLIENT_ID")
 	clientSecret := os.Getenv("PURECLOUD_CLIENT_SECRET")

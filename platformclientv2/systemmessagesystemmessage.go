@@ -40,7 +40,7 @@ type Systemmessagesystemmessage struct {
 
 
 	// Data
-	Data *map[string]interface{} `json:"data,omitempty"`
+	Data *interface{} `json:"data,omitempty"`
 
 }
 

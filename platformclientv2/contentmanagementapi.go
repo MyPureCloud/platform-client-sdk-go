@@ -15,8 +15,8 @@ type ContentManagementApi struct {
 
 // NewContentManagementApi creates an API instance using the default configuration
 func NewContentManagementApi() *ContentManagementApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating ContentManagementApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &ContentManagementApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewContentManagementApi() *ContentManagementApi {
 
 // NewContentManagementApiWithConfig creates an API instance using the provided configuration
 func NewContentManagementApiWithConfig(config *Configuration) *ContentManagementApi {
-	config.Debugf("Creating ContentManagementApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &ContentManagementApi{
 		Configuration: config,
 	}

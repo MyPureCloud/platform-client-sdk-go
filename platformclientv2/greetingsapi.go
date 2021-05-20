@@ -15,8 +15,8 @@ type GreetingsApi struct {
 
 // NewGreetingsApi creates an API instance using the default configuration
 func NewGreetingsApi() *GreetingsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating GreetingsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &GreetingsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewGreetingsApi() *GreetingsApi {
 
 // NewGreetingsApiWithConfig creates an API instance using the provided configuration
 func NewGreetingsApiWithConfig(config *Configuration) *GreetingsApi {
-	config.Debugf("Creating GreetingsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &GreetingsApi{
 		Configuration: config,
 	}

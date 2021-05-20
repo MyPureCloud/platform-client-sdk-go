@@ -12,7 +12,7 @@ type Visibilitycondition struct {
 
 
 	// Predicates - A list of strings, each representing the location in the form of the Answer Option to depend on. In the format of \"/form/questionGroup/{questionGroupIndex}/question/{questionIndex}/answer/{answerIndex}\" or, to assume the current question group, \"../question/{questionIndex}/answer/{answerIndex}\". Note: Indexes are zero-based
-	Predicates *[]map[string]interface{} `json:"predicates,omitempty"`
+	Predicates *[]interface{} `json:"predicates,omitempty"`
 
 }
 

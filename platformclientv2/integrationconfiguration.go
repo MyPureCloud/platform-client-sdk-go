@@ -20,11 +20,11 @@ type Integrationconfiguration struct {
 
 
 	// Properties - Key-value configuration settings described by the schema in the propertiesSchemaUri field.
-	Properties *map[string]interface{} `json:"properties,omitempty"`
+	Properties *interface{} `json:"properties,omitempty"`
 
 
 	// Advanced - Advanced configuration described by the schema in the advancedSchemaUri field.
-	Advanced *map[string]interface{} `json:"advanced,omitempty"`
+	Advanced *interface{} `json:"advanced,omitempty"`
 
 
 	// Notes - Notes about the integration.

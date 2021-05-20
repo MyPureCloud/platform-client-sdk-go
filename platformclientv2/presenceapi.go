@@ -15,8 +15,8 @@ type PresenceApi struct {
 
 // NewPresenceApi creates an API instance using the default configuration
 func NewPresenceApi() *PresenceApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating PresenceApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &PresenceApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewPresenceApi() *PresenceApi {
 
 // NewPresenceApiWithConfig creates an API instance using the provided configuration
 func NewPresenceApiWithConfig(config *Configuration) *PresenceApi {
-	config.Debugf("Creating PresenceApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &PresenceApi{
 		Configuration: config,
 	}

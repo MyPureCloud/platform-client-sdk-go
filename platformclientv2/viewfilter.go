@@ -414,6 +414,14 @@ type Viewfilter struct {
 	// DevelopmentName - Filter for development name
 	DevelopmentName *string `json:"developmentName,omitempty"`
 
+
+	// TopicIds - Represents the topics detected in the transcript
+	TopicIds *[]string `json:"topicIds,omitempty"`
+
+
+	// ExternalTags - The list of external Tags used to filter conversation data
+	ExternalTags *[]string `json:"externalTags,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

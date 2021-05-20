@@ -15,8 +15,8 @@ type FlowsApi struct {
 
 // NewFlowsApi creates an API instance using the default configuration
 func NewFlowsApi() *FlowsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating FlowsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &FlowsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewFlowsApi() *FlowsApi {
 
 // NewFlowsApiWithConfig creates an API instance using the provided configuration
 func NewFlowsApiWithConfig(config *Configuration) *FlowsApi {
-	config.Debugf("Creating FlowsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &FlowsApi{
 		Configuration: config,
 	}

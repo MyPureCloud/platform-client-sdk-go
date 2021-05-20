@@ -13,7 +13,7 @@ type Policyerrormessage struct {
 
 
 	// UserMessage
-	UserMessage *map[string]interface{} `json:"userMessage,omitempty"`
+	UserMessage *interface{} `json:"userMessage,omitempty"`
 
 
 	// UserParamsMessage

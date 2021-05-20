@@ -16,7 +16,7 @@ type Testexecutionresult struct {
 
 
 	// FinalResult - The final result of the test. This is the response that would be returned during normal action execution
-	FinalResult *map[string]interface{} `json:"finalResult,omitempty"`
+	FinalResult *interface{} `json:"finalResult,omitempty"`
 
 
 	// Success - Indicates whether or not the test was a success

@@ -16,7 +16,7 @@ type Credentialtype struct {
 
 
 	// Properties - Properties describing credentials of this type.
-	Properties *map[string]interface{} `json:"properties,omitempty"`
+	Properties *interface{} `json:"properties,omitempty"`
 
 
 	// DisplayOrder - Order in which properties should be displayed in the UI.

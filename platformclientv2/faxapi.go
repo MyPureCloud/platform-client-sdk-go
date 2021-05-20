@@ -15,8 +15,8 @@ type FaxApi struct {
 
 // NewFaxApi creates an API instance using the default configuration
 func NewFaxApi() *FaxApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating FaxApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &FaxApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewFaxApi() *FaxApi {
 
 // NewFaxApiWithConfig creates an API instance using the provided configuration
 func NewFaxApiWithConfig(config *Configuration) *FaxApi {
-	config.Debugf("Creating FaxApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &FaxApi{
 		Configuration: config,
 	}

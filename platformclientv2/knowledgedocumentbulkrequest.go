@@ -23,6 +23,10 @@ type Knowledgedocumentbulkrequest struct {
 	Categories *[]Documentcategoryinput `json:"categories,omitempty"`
 
 
+	// Article - Article details
+	Article *Documentarticle `json:"article,omitempty"`
+
+
 	// Id - Identifier of document for update. Omit for create new Document.
 	Id *string `json:"id,omitempty"`
 

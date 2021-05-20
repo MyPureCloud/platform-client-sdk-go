@@ -20,7 +20,7 @@ type Testexecutionoperationresult struct {
 
 
 	// Result - The result of the operation
-	Result *map[string]interface{} `json:"result,omitempty"`
+	Result *interface{} `json:"result,omitempty"`
 
 
 	// VarError - Error that occurred during the operation

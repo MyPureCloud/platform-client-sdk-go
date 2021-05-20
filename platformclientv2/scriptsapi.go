@@ -15,8 +15,8 @@ type ScriptsApi struct {
 
 // NewScriptsApi creates an API instance using the default configuration
 func NewScriptsApi() *ScriptsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating ScriptsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &ScriptsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewScriptsApi() *ScriptsApi {
 
 // NewScriptsApiWithConfig creates an API instance using the provided configuration
 func NewScriptsApiWithConfig(config *Configuration) *ScriptsApi {
-	config.Debugf("Creating ScriptsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &ScriptsApi{
 		Configuration: config,
 	}
@@ -629,12 +628,12 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdPages(scriptId string, scriptData
 // Get the published variables
 //
 // 
-func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input string, output string, varType string, scriptDataVersion string) (*map[string]interface{}, *APIResponse, error) {
+func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input string, output string, varType string, scriptDataVersion string) (*interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published/{scriptId}/variables"
 	path = strings.Replace(path, "{scriptId}", fmt.Sprintf("%v", scriptId), -1)
-	defaultReturn := new(map[string]interface{})
+	defaultReturn := new(interface{})
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -689,7 +688,7 @@ func (a ScriptsApi) GetScriptsPublishedScriptIdVariables(scriptId string, input 
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *map[string]interface{}
+	var successPayload *interface{}
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response

@@ -48,6 +48,10 @@ type Knowledgesearchdocument struct {
 	ExternalUrl *string `json:"externalUrl,omitempty"`
 
 
+	// Article - Article
+	Article *Documentarticle `json:"article,omitempty"`
+
+
 	// Confidence - The confidence associated with a document with respect to a search query
 	Confidence *float64 `json:"confidence,omitempty"`
 

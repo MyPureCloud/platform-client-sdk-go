@@ -15,8 +15,8 @@ type TelephonyProvidersEdgeApi struct {
 
 // NewTelephonyProvidersEdgeApi creates an API instance using the default configuration
 func NewTelephonyProvidersEdgeApi() *TelephonyProvidersEdgeApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating TelephonyProvidersEdgeApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &TelephonyProvidersEdgeApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewTelephonyProvidersEdgeApi() *TelephonyProvidersEdgeApi {
 
 // NewTelephonyProvidersEdgeApiWithConfig creates an API instance using the provided configuration
 func NewTelephonyProvidersEdgeApiWithConfig(config *Configuration) *TelephonyProvidersEdgeApi {
-	config.Debugf("Creating TelephonyProvidersEdgeApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &TelephonyProvidersEdgeApi{
 		Configuration: config,
 	}

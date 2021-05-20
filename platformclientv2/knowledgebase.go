@@ -32,12 +32,16 @@ type Knowledgebase struct {
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 
-	// FaqCount - The count representing the number of documents of type FAQ per KnowledgeBase
+	// FaqCount - The count representing the number of documents of type FAQ in the KnowledgeBase
 	FaqCount *int `json:"faqCount,omitempty"`
 
 
 	// DateDocumentLastModified - The date representing when the last document is modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateDocumentLastModified *time.Time `json:"dateDocumentLastModified,omitempty"`
+
+
+	// ArticleCount - The count representing the number of documents of type Article in the KnowledgeBase
+	ArticleCount *int `json:"articleCount,omitempty"`
 
 
 	// SelfUri - The URI for this object

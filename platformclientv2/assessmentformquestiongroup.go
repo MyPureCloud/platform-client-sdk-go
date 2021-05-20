@@ -11,11 +11,11 @@ type Assessmentformquestiongroup struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The question group name
 	Name *string `json:"name,omitempty"`
 
 
-	// VarType
+	// VarType - The question group type
 	VarType *string `json:"type,omitempty"`
 
 
@@ -39,7 +39,7 @@ type Assessmentformquestiongroup struct {
 	ManualWeight *bool `json:"manualWeight,omitempty"`
 
 
-	// Questions
+	// Questions - The list of questions for this question group
 	Questions *[]Assessmentformquestion `json:"questions,omitempty"`
 
 

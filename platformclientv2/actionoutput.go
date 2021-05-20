@@ -28,7 +28,7 @@ type Actionoutput struct {
 
 
 	// ErrorSchemaFlattened - JSON schema that defines the body of response when request is not successful. The schema is transformed based on Architect's flattened format. If the 'flatten' query parameter is supplied as true, this field will be returned. Either errorSchema or errorSchemaFlattened will be returned, not both.
-	ErrorSchemaFlattened *map[string]interface{} `json:"errorSchemaFlattened,omitempty"`
+	ErrorSchemaFlattened *interface{} `json:"errorSchemaFlattened,omitempty"`
 
 }
 

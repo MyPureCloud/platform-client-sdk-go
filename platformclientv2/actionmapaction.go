@@ -18,6 +18,10 @@ type Actionmapaction struct {
 	// ArchitectFlowFields - Architect Flow Id and input contract.
 	ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
 
+
+	// WebMessagingOfferFields - Admin-configurable fields of a web messaging offer action.
+	WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

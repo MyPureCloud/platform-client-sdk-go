@@ -15,8 +15,8 @@ type SuggestApi struct {
 
 // NewSuggestApi creates an API instance using the default configuration
 func NewSuggestApi() *SuggestApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating SuggestApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &SuggestApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewSuggestApi() *SuggestApi {
 
 // NewSuggestApiWithConfig creates an API instance using the provided configuration
 func NewSuggestApiWithConfig(config *Configuration) *SuggestApi {
-	config.Debugf("Creating SuggestApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &SuggestApi{
 		Configuration: config,
 	}

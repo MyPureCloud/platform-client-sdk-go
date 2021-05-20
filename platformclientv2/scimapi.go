@@ -15,8 +15,8 @@ type SCIMApi struct {
 
 // NewSCIMApi creates an API instance using the default configuration
 func NewSCIMApi() *SCIMApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating SCIMApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &SCIMApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewSCIMApi() *SCIMApi {
 
 // NewSCIMApiWithConfig creates an API instance using the provided configuration
 func NewSCIMApiWithConfig(config *Configuration) *SCIMApi {
-	config.Debugf("Creating SCIMApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &SCIMApi{
 		Configuration: config,
 	}

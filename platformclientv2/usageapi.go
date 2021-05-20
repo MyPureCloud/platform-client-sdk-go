@@ -15,8 +15,8 @@ type UsageApi struct {
 
 // NewUsageApi creates an API instance using the default configuration
 func NewUsageApi() *UsageApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating UsageApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &UsageApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewUsageApi() *UsageApi {
 
 // NewUsageApiWithConfig creates an API instance using the provided configuration
 func NewUsageApiWithConfig(config *Configuration) *UsageApi {
-	config.Debugf("Creating UsageApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &UsageApi{
 		Configuration: config,
 	}

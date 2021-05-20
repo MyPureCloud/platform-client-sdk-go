@@ -23,7 +23,7 @@ type Dnclistdivisionview struct {
 	ImportStatus *Importstatus `json:"importStatus,omitempty"`
 
 
-	// Size - The number of contacts in the ContactList.
+	// Size - The number of contacts in the DncList.
 	Size *int `json:"size,omitempty"`
 
 

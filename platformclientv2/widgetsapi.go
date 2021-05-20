@@ -15,8 +15,8 @@ type WidgetsApi struct {
 
 // NewWidgetsApi creates an API instance using the default configuration
 func NewWidgetsApi() *WidgetsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating WidgetsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &WidgetsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewWidgetsApi() *WidgetsApi {
 
 // NewWidgetsApiWithConfig creates an API instance using the provided configuration
 func NewWidgetsApiWithConfig(config *Configuration) *WidgetsApi {
-	config.Debugf("Creating WidgetsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &WidgetsApi{
 		Configuration: config,
 	}

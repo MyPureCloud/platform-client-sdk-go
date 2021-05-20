@@ -15,8 +15,8 @@ type KnowledgeApi struct {
 
 // NewKnowledgeApi creates an API instance using the default configuration
 func NewKnowledgeApi() *KnowledgeApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating KnowledgeApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &KnowledgeApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewKnowledgeApi() *KnowledgeApi {
 
 // NewKnowledgeApiWithConfig creates an API instance using the provided configuration
 func NewKnowledgeApiWithConfig(config *Configuration) *KnowledgeApi {
-	config.Debugf("Creating KnowledgeApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &KnowledgeApi{
 		Configuration: config,
 	}

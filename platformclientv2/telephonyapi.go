@@ -16,8 +16,8 @@ type TelephonyApi struct {
 
 // NewTelephonyApi creates an API instance using the default configuration
 func NewTelephonyApi() *TelephonyApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating TelephonyApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &TelephonyApi{
 		Configuration: config,
 	}
@@ -25,7 +25,6 @@ func NewTelephonyApi() *TelephonyApi {
 
 // NewTelephonyApiWithConfig creates an API instance using the provided configuration
 func NewTelephonyApiWithConfig(config *Configuration) *TelephonyApi {
-	config.Debugf("Creating TelephonyApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &TelephonyApi{
 		Configuration: config,
 	}

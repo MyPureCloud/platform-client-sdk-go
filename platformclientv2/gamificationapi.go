@@ -16,8 +16,8 @@ type GamificationApi struct {
 
 // NewGamificationApi creates an API instance using the default configuration
 func NewGamificationApi() *GamificationApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating GamificationApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &GamificationApi{
 		Configuration: config,
 	}
@@ -25,7 +25,6 @@ func NewGamificationApi() *GamificationApi {
 
 // NewGamificationApiWithConfig creates an API instance using the provided configuration
 func NewGamificationApiWithConfig(config *Configuration) *GamificationApi {
-	config.Debugf("Creating GamificationApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &GamificationApi{
 		Configuration: config,
 	}

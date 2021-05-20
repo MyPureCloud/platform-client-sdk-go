@@ -15,8 +15,8 @@ type UtilitiesApi struct {
 
 // NewUtilitiesApi creates an API instance using the default configuration
 func NewUtilitiesApi() *UtilitiesApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating UtilitiesApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &UtilitiesApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewUtilitiesApi() *UtilitiesApi {
 
 // NewUtilitiesApiWithConfig creates an API instance using the provided configuration
 func NewUtilitiesApiWithConfig(config *Configuration) *UtilitiesApi {
-	config.Debugf("Creating UtilitiesApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &UtilitiesApi{
 		Configuration: config,
 	}

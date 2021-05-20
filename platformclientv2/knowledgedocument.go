@@ -48,6 +48,10 @@ type Knowledgedocument struct {
 	ExternalUrl *string `json:"externalUrl,omitempty"`
 
 
+	// Article - Article
+	Article *Documentarticle `json:"article,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

@@ -4,7 +4,7 @@ title: Platform API Client SDK - Go
 
 A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go/platformclientv2). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 41.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+Latest version: 43.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
 [![Release Notes Badge](https://developer.mypurecloud.com/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
@@ -57,11 +57,11 @@ config := platformclientv2.NewConfiguration()
 usersAPI := platformclientv2.NewUsersApiWithConfig(config)
 ```
 
-#### Retrying and 429 and 5xx response codes and connection errors
+#### Retrying 429 and 5xx response codes and connection errors
 
 By default, the SDK does not retry 429 and 5xx response codes (except 501) and connection errors. To enable retries, create an instance of the `RetryConfiguration` object and set it on the `Configuration` instance.  
 The retry logic will respect the `retry-after` header for all 429 status codes.  
-The `RetryConfiguration` object has 3 properties that determine the retry behaviour and a RequestLogHook which can be used for debugging and tracing retried requests:  
+The `RetryConfiguration` object has 3 properties that determine the retry behavior and a RequestLogHook which can be used for debugging and tracing retried requests:  
 * `RetryWaitMin` determines the minimum time to wait
 * `RetryWaitMax` determines the maximum time to wait
 * `RetryMax` determines the maximum amount of retries
@@ -69,12 +69,97 @@ The `RetryConfiguration` object has 3 properties that determine the retry behavi
 
 ```go
 config.RetryConfiguration = &platformclientv2.RetryConfiguration{
-    RetryWaitMin: 5 * time.Second,
-    RetryWaitMax: 60 * time.Second,
-    RetryMax:     20,
+    RetryWaitMin:   5 * time.Second,
+    RetryWaitMax:   60 * time.Second,
+    RetryMax:       20,
     RequestLogHook: func(req *http.Request, retryNumber int) {
         fmt.Printf("%v %v request failed. Retry count: %v\n", req.Method, req.URL, retryNumber)
     },
+}
+```
+
+#### SDK Logging
+
+Logging of API requests and responses can be controlled by several parameters on the `Configuration`'s `LoggingConfiguration` instance.
+
+`LogLevel` values:
+1. platformclientv2.LTrace (HTTP Method, URL, Request Body, HTTP Status Code, Request Headers, Response Headers)
+2. platformclientv2.LDebug (HTTP Method, URL, Request Body, HTTP Status Code, Request Headers)
+3. platformclientv2.LError (HTTP Method, URL, Request Body, Response Body, HTTP Status Code, Request Headers, Response Headers)
+4. platformclientv2.LNone - default
+
+`LogFormat` values:
+1. platformclientv2.JSON
+2. platformclientv2.Text - default
+
+By default, the request and response bodies are not logged because these can contain PII. Be mindful of this data if choosing to log it.  
+To log to a file, provide a file path with the `SetLogFilePath` function. SDK users are responsible for the rotation of the log file.
+
+Example logging configuration:
+```go
+config.LoggingConfiguration.LogLevel = platformclientv2.LTrace
+config.LoggingConfiguration.LogRequestBody = true
+config.LoggingConfiguration.LogResponseBody = true
+config.LoggingConfiguration.SetLogFormat(platformclientv2.JSON)
+config.LoggingConfiguration.SetLogToConsole(true)
+config.LoggingConfiguration.SetLogFilePath("/var/log/golangsdk.log")
+```
+
+#### Configuration file
+
+A number of configuration parameters can be applied using a configuration file. There are two sources for this file:
+
+1. The SDK will look for `%USERPROFILE%\.genesyscloudgo\config` on Windows, or `$HOME/.genesyscloudgo/config` on Unix.
+2. Use the `GetDefaultConfigurationWithConfigFile(filePath, autoReload)` or `NewConfigurationWithConfigFile(filePath, autoReload)` functions to build the configuration object.
+
+The SDK will take an event-driven approach to monitor for config file changes and will apply changes in near real-time, regardless of whether a config file was present at start-up. To disable this behavior, set `config.AutoReloadConfig` to false, or provide `autoReload` as false to one of the above-mentioned builder functions.  
+INI and JSON formats are supported. See below for examples of configuration values in both formats:
+
+INI:
+```ini
+[logging]
+log_level = trace
+log_format = text
+log_to_console = false
+log_file_path = /var/log/golangsdk.log
+log_response_body = false
+log_request_body = false
+[retry]
+retry_wait_min = 3
+retry_wait_max = 10
+retry_max = 5
+[reauthentication]
+refresh_access_token = true
+refresh_token_wait_max = 10
+[general]
+live_reload_config = true
+host = https://api.mypurecloud.com
+```
+
+JSON:
+```json
+{
+    "logging": {
+        "log_level": "trace",
+        "log_format": "text",
+        "log_to_console": false,
+        "log_file_path": "/var/log/golangsdk.log",
+        "log_response_body": false,
+        "log_request_body": false
+    },
+    "retry": {
+        "retry_wait_min": 3,
+        "retry_wait_max": 10,
+        "retry_max": 5
+    },
+    "reauthentication": {
+        "refresh_access_token": true,
+        "refresh_token_wait_max": 10
+    },
+    "general": {
+        "live_reload_config": true,
+        "host": "https://api.mypurecloud.com"
+    }
 }
 ```
 
@@ -98,14 +183,6 @@ If using a grant other than client credentials and code authorization, the acces
 
 ```go
 config.AccessToken = "anaccesstokenobtainedmanuallyfromanoauthgrant"
-```
-
-#### Enable debug logging
-
-Enabling debug logging will trace out information about all requests and responses:
-
-```go
-config.SetDebug(false)
 ```
 
 ### Authorization
@@ -136,7 +213,7 @@ if err != nil {
 }
 ```
 
-By default the SDK will transparently request a new access token when it expires. If multiple threads are running 1 thread will request a new token, other threads will wait a maximum of 10 seconds for the token refresh to complete, this time can be overriden with the _RefreshTokenWaitTime_ field of the _Configuration_ struct.  
+By default, the SDK will transparently request a new access token when it expires. If multiple threads are running 1 thread will request a new token, other threads will wait a maximum of 10 seconds for the token refresh to complete. This time can be overriden with the _RefreshTokenWaitTime_ field of the _Configuration_ struct.  
 If you wish to apply the refresh logic yourself, set `ShouldRefreshAccessToken` to false and store the refresh token. The `ExpiresIn` member of the `authData` struct can be used to preemptively request a new token. Use `RefreshAuthorizationCodeGrant` to request a new token when necessary
 
 ```go

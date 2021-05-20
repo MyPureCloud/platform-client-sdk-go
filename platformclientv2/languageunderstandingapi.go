@@ -16,8 +16,8 @@ type LanguageUnderstandingApi struct {
 
 // NewLanguageUnderstandingApi creates an API instance using the default configuration
 func NewLanguageUnderstandingApi() *LanguageUnderstandingApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating LanguageUnderstandingApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &LanguageUnderstandingApi{
 		Configuration: config,
 	}
@@ -25,7 +25,6 @@ func NewLanguageUnderstandingApi() *LanguageUnderstandingApi {
 
 // NewLanguageUnderstandingApiWithConfig creates an API instance using the provided configuration
 func NewLanguageUnderstandingApiWithConfig(config *Configuration) *LanguageUnderstandingApi {
-	config.Debugf("Creating LanguageUnderstandingApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &LanguageUnderstandingApi{
 		Configuration: config,
 	}

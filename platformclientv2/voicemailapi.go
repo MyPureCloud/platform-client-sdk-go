@@ -15,8 +15,8 @@ type VoicemailApi struct {
 
 // NewVoicemailApi creates an API instance using the default configuration
 func NewVoicemailApi() *VoicemailApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating VoicemailApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &VoicemailApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewVoicemailApi() *VoicemailApi {
 
 // NewVoicemailApiWithConfig creates an API instance using the provided configuration
 func NewVoicemailApiWithConfig(config *Configuration) *VoicemailApi {
-	config.Debugf("Creating VoicemailApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &VoicemailApi{
 		Configuration: config,
 	}

@@ -15,8 +15,8 @@ type OrganizationAuthorizationApi struct {
 
 // NewOrganizationAuthorizationApi creates an API instance using the default configuration
 func NewOrganizationAuthorizationApi() *OrganizationAuthorizationApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating OrganizationAuthorizationApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &OrganizationAuthorizationApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewOrganizationAuthorizationApi() *OrganizationAuthorizationApi {
 
 // NewOrganizationAuthorizationApiWithConfig creates an API instance using the provided configuration
 func NewOrganizationAuthorizationApiWithConfig(config *Configuration) *OrganizationAuthorizationApi {
-	config.Debugf("Creating OrganizationAuthorizationApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &OrganizationAuthorizationApi{
 		Configuration: config,
 	}

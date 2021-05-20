@@ -15,8 +15,8 @@ type AuditApi struct {
 
 // NewAuditApi creates an API instance using the default configuration
 func NewAuditApi() *AuditApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating AuditApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &AuditApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewAuditApi() *AuditApi {
 
 // NewAuditApiWithConfig creates an API instance using the provided configuration
 func NewAuditApiWithConfig(config *Configuration) *AuditApi {
-	config.Debugf("Creating AuditApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &AuditApi{
 		Configuration: config,
 	}

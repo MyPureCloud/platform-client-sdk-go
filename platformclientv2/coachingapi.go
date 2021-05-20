@@ -15,8 +15,8 @@ type CoachingApi struct {
 
 // NewCoachingApi creates an API instance using the default configuration
 func NewCoachingApi() *CoachingApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating CoachingApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &CoachingApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewCoachingApi() *CoachingApi {
 
 // NewCoachingApiWithConfig creates an API instance using the provided configuration
 func NewCoachingApiWithConfig(config *Configuration) *CoachingApi {
-	config.Debugf("Creating CoachingApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &CoachingApi{
 		Configuration: config,
 	}

@@ -15,8 +15,8 @@ type TextbotsApi struct {
 
 // NewTextbotsApi creates an API instance using the default configuration
 func NewTextbotsApi() *TextbotsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating TextbotsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &TextbotsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewTextbotsApi() *TextbotsApi {
 
 // NewTextbotsApiWithConfig creates an API instance using the provided configuration
 func NewTextbotsApiWithConfig(config *Configuration) *TextbotsApi {
-	config.Debugf("Creating TextbotsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &TextbotsApi{
 		Configuration: config,
 	}

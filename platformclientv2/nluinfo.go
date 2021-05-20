@@ -11,6 +11,10 @@ type Nluinfo struct {
 	Domain *Addressableentityref `json:"domain,omitempty"`
 
 
+	// Version
+	Version *Addressableentityref `json:"version,omitempty"`
+
+
 	// Intents
 	Intents *[]Intent `json:"intents,omitempty"`
 

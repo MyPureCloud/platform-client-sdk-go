@@ -24,6 +24,10 @@ type Trustee struct {
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
+	// DateExpired - The expiration date of the trust. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateExpired *time.Time `json:"dateExpired,omitempty"`
+
+
 	// CreatedBy - User that created trust.
 	CreatedBy *Orguser `json:"createdBy,omitempty"`
 

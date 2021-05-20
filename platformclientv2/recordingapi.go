@@ -15,8 +15,8 @@ type RecordingApi struct {
 
 // NewRecordingApi creates an API instance using the default configuration
 func NewRecordingApi() *RecordingApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating RecordingApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &RecordingApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewRecordingApi() *RecordingApi {
 
 // NewRecordingApiWithConfig creates an API instance using the provided configuration
 func NewRecordingApiWithConfig(config *Configuration) *RecordingApi {
-	config.Debugf("Creating RecordingApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &RecordingApi{
 		Configuration: config,
 	}
@@ -2977,6 +2976,142 @@ func (a RecordingApi) PostRecordingsDeletionprotection(body Conversationdeletion
 		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
 	return successPayload, response, err
+}
+
+// PostRecordingsScreensessionsAcknowledge invokes POST /api/v2/recordings/screensessions/acknowledge
+//
+// Acknowledge a screen recording.
+//
+// 
+func (a RecordingApi) PostRecordingsScreensessionsAcknowledge(body Acknowledgescreenrecordingrequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/recordings/screensessions/acknowledge"
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingsScreensessionsAcknowledge")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// PostRecordingsScreensessionsMetadata invokes POST /api/v2/recordings/screensessions/metadata
+//
+// Provide meta-data a screen recording.
+//
+// 
+func (a RecordingApi) PostRecordingsScreensessionsMetadata(body Screenrecordingmetadatarequest) (*APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/recordings/screensessions/metadata"
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'body' when calling RecordingApi->PostRecordingsScreensessionsMetadata")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
 }
 
 // PutConversationRecording invokes PUT /api/v2/conversations/{conversationId}/recordings/{recordingId}

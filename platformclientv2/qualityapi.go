@@ -16,8 +16,8 @@ type QualityApi struct {
 
 // NewQualityApi creates an API instance using the default configuration
 func NewQualityApi() *QualityApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating QualityApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &QualityApi{
 		Configuration: config,
 	}
@@ -25,7 +25,6 @@ func NewQualityApi() *QualityApi {
 
 // NewQualityApiWithConfig creates an API instance using the provided configuration
 func NewQualityApiWithConfig(config *Configuration) *QualityApi {
-	config.Debugf("Creating QualityApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &QualityApi{
 		Configuration: config,
 	}
@@ -3756,6 +3755,11 @@ func (a QualityApi) PutQualitySurveysScorable(body Scorablesurvey, customerSurve
 	if &body == nil {
 		// 
 		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling QualityApi->PutQualitySurveysScorable")
+	}
+	// verify the required parameter 'customerSurveyUrl' is set
+	if &customerSurveyUrl == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'customerSurveyUrl' when calling QualityApi->PutQualitySurveysScorable")
 	}
 
 	headerParams := make(map[string]string)

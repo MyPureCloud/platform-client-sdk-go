@@ -15,8 +15,8 @@ type OAuthApi struct {
 
 // NewOAuthApi creates an API instance using the default configuration
 func NewOAuthApi() *OAuthApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating OAuthApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &OAuthApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewOAuthApi() *OAuthApi {
 
 // NewOAuthApiWithConfig creates an API instance using the provided configuration
 func NewOAuthApiWithConfig(config *Configuration) *OAuthApi {
-	config.Debugf("Creating OAuthApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &OAuthApi{
 		Configuration: config,
 	}

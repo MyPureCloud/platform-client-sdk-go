@@ -15,8 +15,8 @@ type AlertingApi struct {
 
 // NewAlertingApi creates an API instance using the default configuration
 func NewAlertingApi() *AlertingApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating AlertingApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &AlertingApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewAlertingApi() *AlertingApi {
 
 // NewAlertingApiWithConfig creates an API instance using the provided configuration
 func NewAlertingApiWithConfig(config *Configuration) *AlertingApi {
-	config.Debugf("Creating AlertingApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &AlertingApi{
 		Configuration: config,
 	}

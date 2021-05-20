@@ -15,8 +15,8 @@ type MobileDevicesApi struct {
 
 // NewMobileDevicesApi creates an API instance using the default configuration
 func NewMobileDevicesApi() *MobileDevicesApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating MobileDevicesApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &MobileDevicesApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewMobileDevicesApi() *MobileDevicesApi {
 
 // NewMobileDevicesApiWithConfig creates an API instance using the provided configuration
 func NewMobileDevicesApiWithConfig(config *Configuration) *MobileDevicesApi {
-	config.Debugf("Creating MobileDevicesApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &MobileDevicesApi{
 		Configuration: config,
 	}

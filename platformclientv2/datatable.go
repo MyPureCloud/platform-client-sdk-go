@@ -16,7 +16,7 @@ type Datatable struct {
 
 
 	// Division - The division to which this entity belongs.
-	Division *Division `json:"division,omitempty"`
+	Division *Writabledivision `json:"division,omitempty"`
 
 
 	// Description - The description from the JSON schema (equates to the Description field on the JSON schema.)

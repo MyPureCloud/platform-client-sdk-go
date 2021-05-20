@@ -15,8 +15,8 @@ type RoutingApi struct {
 
 // NewRoutingApi creates an API instance using the default configuration
 func NewRoutingApi() *RoutingApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating RoutingApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &RoutingApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewRoutingApi() *RoutingApi {
 
 // NewRoutingApiWithConfig creates an API instance using the provided configuration
 func NewRoutingApiWithConfig(config *Configuration) *RoutingApi {
-	config.Debugf("Creating RoutingApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &RoutingApi{
 		Configuration: config,
 	}

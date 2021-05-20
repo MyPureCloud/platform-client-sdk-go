@@ -15,8 +15,8 @@ type LicenseApi struct {
 
 // NewLicenseApi creates an API instance using the default configuration
 func NewLicenseApi() *LicenseApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating LicenseApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &LicenseApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewLicenseApi() *LicenseApi {
 
 // NewLicenseApiWithConfig creates an API instance using the provided configuration
 func NewLicenseApiWithConfig(config *Configuration) *LicenseApi {
-	config.Debugf("Creating LicenseApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &LicenseApi{
 		Configuration: config,
 	}

@@ -16,7 +16,7 @@ type Queueconversationvideoeventtopicphonenumbercolumn struct {
 
 
 	// AdditionalProperties
-	AdditionalProperties *map[string]interface{} `json:"additionalProperties,omitempty"`
+	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 

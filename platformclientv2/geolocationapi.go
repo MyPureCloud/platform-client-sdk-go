@@ -15,8 +15,8 @@ type GeolocationApi struct {
 
 // NewGeolocationApi creates an API instance using the default configuration
 func NewGeolocationApi() *GeolocationApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating GeolocationApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &GeolocationApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewGeolocationApi() *GeolocationApi {
 
 // NewGeolocationApiWithConfig creates an API instance using the provided configuration
 func NewGeolocationApiWithConfig(config *Configuration) *GeolocationApi {
-	config.Debugf("Creating GeolocationApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &GeolocationApi{
 		Configuration: config,
 	}

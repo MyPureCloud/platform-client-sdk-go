@@ -15,8 +15,8 @@ type UploadsApi struct {
 
 // NewUploadsApi creates an API instance using the default configuration
 func NewUploadsApi() *UploadsApi {
+	fmt.Sprintf(strings.Title(""), "")
 	config := GetDefaultConfiguration()
-	config.Debug(fmt.Sprintf("Creating UploadsApi with base path: %s", strings.ToLower(config.BasePath)))
 	return &UploadsApi{
 		Configuration: config,
 	}
@@ -24,7 +24,6 @@ func NewUploadsApi() *UploadsApi {
 
 // NewUploadsApiWithConfig creates an API instance using the provided configuration
 func NewUploadsApiWithConfig(config *Configuration) *UploadsApi {
-	config.Debugf("Creating UploadsApi with base path: %s\n", strings.ToLower(config.BasePath))
 	return &UploadsApi{
 		Configuration: config,
 	}
