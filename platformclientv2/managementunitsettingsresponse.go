@@ -19,7 +19,7 @@ type Managementunitsettingsresponse struct {
 	TimeOff *Timeoffrequestsettings `json:"timeOff,omitempty"`
 
 
-	// Scheduling - Scheduling settings for this management unit
+	// Scheduling - Scheduling settings for this management unit. These settings are only available if you have the permission wfm:managementUnit:view
 	Scheduling *Schedulingsettingsresponse `json:"scheduling,omitempty"`
 
 

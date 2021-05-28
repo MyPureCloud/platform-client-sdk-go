@@ -5,17 +5,17 @@ import (
 	"strings"
 )
 
-// Contentpostback - The postback object result of a user clicking in a button
+// Contentpostback - Postback response object representing the click of a rich media button (Deprecated).
 type Contentpostback struct { 
-	// Id - An ID assigned to the postback reply. Each object inside the content array has a unique ID.
+	// Id - An ID assigned to the button response.
 	Id *string `json:"id,omitempty"`
 
 
-	// Text - The text inside the button clicked (in the structured message template)
+	// Text - The response text from the button click.
 	Text *string `json:"text,omitempty"`
 
 
-	// Payload - Content of the textback payload after clicking a quick reply
+	// Payload - The response payload associated with the clicked button.
 	Payload *string `json:"payload,omitempty"`
 
 }

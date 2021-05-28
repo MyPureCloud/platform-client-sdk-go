@@ -3912,7 +3912,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplanrota
 //
 // Get work plans
 //
-// 
+// \&quot;expand=details\&quot; is deprecated
 func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitWorkplans(managementUnitId string, expand []string) (*Workplanlistresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

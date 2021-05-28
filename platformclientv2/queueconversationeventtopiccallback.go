@@ -100,6 +100,14 @@ type Queueconversationeventtopiccallback struct {
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
 
+	// CallerId
+	CallerId *string `json:"callerId,omitempty"`
+
+
+	// CallerIdName
+	CallerIdName *string `json:"callerIdName,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 

@@ -3860,7 +3860,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesetting(lin
 // Get a listing of line base settings objects
 //
 // 
-func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pageNumber int, pageSize int, sortBy string, sortOrder string) (*Linebaseentitylisting, *APIResponse, error) {
+func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pageNumber int, pageSize int, sortBy string, sortOrder string, expand []string) (*Linebaseentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/linebasesettings"
@@ -3894,6 +3894,8 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesLinebasesettings(pa
 	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
 
 	// to determine the Content-Type header

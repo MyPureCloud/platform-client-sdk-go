@@ -5,9 +5,9 @@ import (
 	"strings"
 )
 
-// Contentquickreply - Quick reply object
+// Contentquickreply - Quick reply object.
 type Contentquickreply struct { 
-	// Id - An ID assigned to the quick reply. Each object inside the content array has a unique ID.
+	// Id - A unique ID assigned to the quick reply (Deprecated).
 	Id *string `json:"id,omitempty"`
 
 
@@ -15,15 +15,15 @@ type Contentquickreply struct {
 	Text *string `json:"text,omitempty"`
 
 
-	// Payload - Content of the textback payload after clicking a quick reply
+	// Payload - Content of the payload included in the quick reply response. Could be an ID identifying the quick reply response.
 	Payload *string `json:"payload,omitempty"`
 
 
-	// Image - Path or URI to an image file associated with quick reply
+	// Image - URL of an image associated with the quick reply.
 	Image *string `json:"image,omitempty"`
 
 
-	// Action - Specifies the type of action that is triggered upon clicking the quick reply. Currently, the only supported action is \"Message\" which sends a message using the quick reply text.
+	// Action - Specifies the type of action that is triggered upon clicking the quick reply.
 	Action *string `json:"action,omitempty"`
 
 }

@@ -5,25 +5,25 @@ import (
 	"strings"
 )
 
-// Contentnotificationtemplate - Template notification object
+// Contentnotificationtemplate - Template notification object.
 type Contentnotificationtemplate struct { 
-	// Id - The messaging channel template id. For WhatsApp, 'namespace@name'
+	// Id - The messaging provider template ID. For WhatsApp, 'namespace@name'.
 	Id *string `json:"id,omitempty"`
 
 
-	// Language - Template language
+	// Language - Template language.
 	Language *string `json:"language,omitempty"`
 
 
-	// Header - Template header object
+	// Header - The template header.
 	Header *Notificationtemplateheader `json:"header,omitempty"`
 
 
-	// Body - Template body object
+	// Body - The template body.
 	Body *Notificationtemplatebody `json:"body,omitempty"`
 
 
-	// Footer - Template footer object
+	// Footer - The template footer.
 	Footer *Notificationtemplatefooter `json:"footer,omitempty"`
 
 }

@@ -48,8 +48,8 @@ type Analyticssurvey struct {
 	UserId *string `json:"userId,omitempty"`
 
 
-	// GetoSurveyTotalScore - Total score of the survey
-	GetoSurveyTotalScore *int `json:"getoSurveyTotalScore,omitempty"`
+	// OSurveyTotalScore
+	OSurveyTotalScore *int `json:"oSurveyTotalScore,omitempty"`
 
 }
 

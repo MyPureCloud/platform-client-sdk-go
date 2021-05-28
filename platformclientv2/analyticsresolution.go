@@ -20,8 +20,8 @@ type Analyticsresolution struct {
 	UserId *string `json:"userId,omitempty"`
 
 
-	// GetnNextContactAvoided - The number of interactions for which next contact was avoided.
-	GetnNextContactAvoided *int `json:"getnNextContactAvoided,omitempty"`
+	// NNextContactAvoided
+	NNextContactAvoided *int `json:"nNextContactAvoided,omitempty"`
 
 }
 

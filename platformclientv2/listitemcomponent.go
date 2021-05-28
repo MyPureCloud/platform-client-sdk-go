@@ -5,33 +5,33 @@ import (
 	"strings"
 )
 
-// Listitemcomponent - An entry in List template
+// Listitemcomponent - An entry in a List template.
 type Listitemcomponent struct { 
-	// Id - An ID assigned to this component
+	// Id - An ID assigned to this list item.
 	Id *string `json:"id,omitempty"`
 
 
-	// Rmid - An ID of the rich message instance
+	// Rmid - An ID of the rich message instance.
 	Rmid *string `json:"rmid,omitempty"`
 
 
-	// VarType - The type of component to render
+	// VarType - The type of list item to render.
 	VarType *string `json:"type,omitempty"`
 
 
-	// Image - Path or URI to an image file
+	// Image - URL of an image.
 	Image *string `json:"image,omitempty"`
 
 
-	// Title - The main headline of the list item
+	// Title - The main headline of the list item.
 	Title *string `json:"title,omitempty"`
 
 
-	// Description - Text to show in the description row
+	// Description - Text to show in the list item description.
 	Description *string `json:"description,omitempty"`
 
 
-	// Actions - User actions available on the content. All actions are optional and all actions are executed simultaneously.
+	// Actions - The list item actions.
 	Actions *Contentactions `json:"actions,omitempty"`
 
 }

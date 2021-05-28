@@ -5,13 +5,13 @@ import (
 	"strings"
 )
 
-// Contentreaction - User reaction to public message
+// Contentreaction - User reaction to public message.
 type Contentreaction struct { 
-	// ReactionType - Type of reaction
+	// ReactionType - Type of reaction.
 	ReactionType *string `json:"reactionType,omitempty"`
 
 
-	// Count - Number of users that reacted this way to this public message
+	// Count - Number of users that reacted this way to the message.
 	Count *int `json:"count,omitempty"`
 
 }

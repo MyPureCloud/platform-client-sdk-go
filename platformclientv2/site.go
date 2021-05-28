@@ -100,8 +100,12 @@ type Site struct {
 	MediaModel *string `json:"mediaModel,omitempty"`
 
 
-	// CoreSite - The core site
+	// CoreSite - Is this site a core site
 	CoreSite *bool `json:"coreSite,omitempty"`
+
+
+	// SiteConnections - The site connections
+	SiteConnections *[]Siteconnection `json:"siteConnections,omitempty"`
 
 
 	// SelfUri - The URI for this object

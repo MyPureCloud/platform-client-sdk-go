@@ -5,33 +5,33 @@ import (
 	"strings"
 )
 
-// Messagingrecipient - This is used to identify who the message is sent to, as well as who it was sent from. This information is channel specific - depends on capabilities to describe party by the platform
+// Messagingrecipient - Information about the recipient the message is sent to or received from.
 type Messagingrecipient struct { 
-	// Nickname - Nickname/user name
+	// Nickname - Nickname or display name of the recipient.
 	Nickname *string `json:"nickname,omitempty"`
 
 
-	// Id - The recipient identifier specific for particular channel/integration. This is required when sending a message.
+	// Id - The recipient ID specific to the provider.
 	Id *string `json:"id,omitempty"`
 
 
-	// IdType - The recipient identifier type. This is used to indicate the format used by the recipient identifier.
+	// IdType - The recipient ID type. This is used to indicate the format used for the ID.
 	IdType *string `json:"idType,omitempty"`
 
 
-	// Image - Path or URI to an image file containing an avatar
+	// Image - URL of an image that represents the recipient.
 	Image *string `json:"image,omitempty"`
 
 
-	// FirstName - Sender's first name
+	// FirstName - First name of the recipient.
 	FirstName *string `json:"firstName,omitempty"`
 
 
-	// LastName - Sender's last name
+	// LastName - Last name of the recipient.
 	LastName *string `json:"lastName,omitempty"`
 
 
-	// Email - Sender's email address
+	// Email - E-mail address of the recipient.
 	Email *string `json:"email,omitempty"`
 
 }

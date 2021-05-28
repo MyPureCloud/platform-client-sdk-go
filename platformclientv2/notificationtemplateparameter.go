@@ -5,13 +5,13 @@ import (
 	"strings"
 )
 
-// Notificationtemplateparameter - Parameters for placeholders in template
+// Notificationtemplateparameter - Template parameters for placeholders in template.
 type Notificationtemplateparameter struct { 
-	// Name - Parameter name
+	// Name - Parameter name.
 	Name *string `json:"name,omitempty"`
 
 
-	// Text - Parameter text value
+	// Text - Parameter text value.
 	Text *string `json:"text,omitempty"`
 
 }

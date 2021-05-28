@@ -5,21 +5,21 @@ import (
 	"strings"
 )
 
-// Buttoncomponent - Structured template button object
+// Buttoncomponent - Structured template button object.
 type Buttoncomponent struct { 
-	// Id - An ID assigned to this component
+	// Id - The ID of this component.
 	Id *string `json:"id,omitempty"`
 
 
-	// Text - Deprecated - Use title instead
+	// Text - Deprecated - Use title instead.
 	Text *string `json:"text,omitempty"`
 
 
-	// Title - Text to show inside the button
+	// Title - Text to show inside the button.
 	Title *string `json:"title,omitempty"`
 
 
-	// Actions - User actions available on the content. All actions are optional and all actions are executed simultaneously.
+	// Actions - The button actions.
 	Actions *Contentactions `json:"actions,omitempty"`
 
 }

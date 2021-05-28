@@ -107,6 +107,14 @@ type Callback struct {
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+
+	// CallerId - The phone number displayed to recipients of the phone call. The value should conform to the E164 format.
+	CallerId *string `json:"callerId,omitempty"`
+
+
+	// CallerIdName - The name displayed to recipients of the phone call.
+	CallerIdName *string `json:"callerIdName,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

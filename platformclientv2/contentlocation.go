@@ -5,25 +5,25 @@ import (
 	"strings"
 )
 
-// Contentlocation - Location object
+// Contentlocation - Location object.
 type Contentlocation struct { 
-	// Url - Location map url
+	// Url - URL of the Location.
 	Url *string `json:"url,omitempty"`
 
 
-	// Address - Location postal address
+	// Address - Location postal address.
 	Address *string `json:"address,omitempty"`
 
 
-	// Text - Location name
+	// Text - Location name.
 	Text *string `json:"text,omitempty"`
 
 
-	// Latitude - Latitude of the location
+	// Latitude - Latitude of the location.
 	Latitude *float64 `json:"latitude,omitempty"`
 
 
-	// Longitude - Longitude of the location
+	// Longitude - Longitude of the location.
 	Longitude *float64 `json:"longitude,omitempty"`
 
 }

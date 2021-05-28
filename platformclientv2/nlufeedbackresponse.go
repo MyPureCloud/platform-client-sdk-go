@@ -21,7 +21,7 @@ type Nlufeedbackresponse struct {
 
 
 	// Version - The domain version of the feedback.
-	Version **Nludomainversion `json:"version,omitempty"`
+	Version *Nludomainversion `json:"version,omitempty"`
 
 
 	// DateCreated - The date when the feedback was created. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z

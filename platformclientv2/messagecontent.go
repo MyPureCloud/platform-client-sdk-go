@@ -5,49 +5,49 @@ import (
 	"strings"
 )
 
-// Messagecontent - Message content element
+// Messagecontent - Message content element.
 type Messagecontent struct { 
 	// ContentType - Type of this content element. If contentType = \"Attachment\" only one item is allowed.
 	ContentType *string `json:"contentType,omitempty"`
 
 
-	// Location - Location object
+	// Location - Location content.
 	Location *Contentlocation `json:"location,omitempty"`
 
 
-	// Attachment - Attachment object
+	// Attachment - Attachment content.
 	Attachment *Contentattachment `json:"attachment,omitempty"`
 
 
-	// QuickReply - Quick reply object
+	// QuickReply - Quick reply content.
 	QuickReply *Contentquickreply `json:"quickReply,omitempty"`
 
 
-	// ButtonResponse - Button response object
+	// ButtonResponse - Button response content.
 	ButtonResponse *Contentbuttonresponse `json:"buttonResponse,omitempty"`
 
 
-	// Generic - Generic content object
+	// Generic - Generic content.
 	Generic *Contentgeneric `json:"generic,omitempty"`
 
 
-	// List - List content object
+	// List - List content.
 	List *Contentlist `json:"list,omitempty"`
 
 
-	// Template - Template notification object
+	// Template - Template notification content.
 	Template *Contentnotificationtemplate `json:"template,omitempty"`
 
 
-	// Reactions - A list of reactions
+	// Reactions - A set of reactions to a message.
 	Reactions *[]Contentreaction `json:"reactions,omitempty"`
 
 
-	// Mention - This is used to identify who the message is sent to, as well as who it was sent from. This information is channel specific - depends on capabilities to describe party by the platform
+	// Mention - Mention content.
 	Mention *Messagingrecipient `json:"mention,omitempty"`
 
 
-	// Postback - The postback object result of a user clicking in a button
+	// Postback - Structured message postback (Deprecated).
 	Postback *Contentpostback `json:"postback,omitempty"`
 
 }

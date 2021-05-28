@@ -57,6 +57,7 @@ const (
 	APNortheast2 = "https://api.apne2.pure.cloud"
 	EUWest2      = "https://api.euw2.pure.cloud"
 	APSouth1     = "https://api.aps1.pure.cloud"
+	USEast2     = "https://api.use2.us-gov-pure.cloud"
 )
 
 // RetryConfiguration has settings to configure the SDK retry logic

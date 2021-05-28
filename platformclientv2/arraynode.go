@@ -27,14 +27,6 @@ type Arraynode struct {
 	Object *bool `json:"object,omitempty"`
 
 
-	// ValueNode
-	ValueNode *bool `json:"valueNode,omitempty"`
-
-
-	// ContainerNode
-	ContainerNode *bool `json:"containerNode,omitempty"`
-
-
 	// FloatingPointNumber
 	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
 
@@ -77,6 +69,14 @@ type Arraynode struct {
 
 	// Binary
 	Binary *bool `json:"binary,omitempty"`
+
+
+	// ContainerNode
+	ContainerNode *bool `json:"containerNode,omitempty"`
+
+
+	// ValueNode
+	ValueNode *bool `json:"valueNode,omitempty"`
 
 
 	// MissingNode

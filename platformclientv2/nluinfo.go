@@ -12,7 +12,7 @@ type Nluinfo struct {
 
 
 	// Version
-	Version *Addressableentityref `json:"version,omitempty"`
+	Version **Nludomainversion `json:"version,omitempty"`
 
 
 	// Intents

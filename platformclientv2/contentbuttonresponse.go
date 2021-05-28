@@ -5,21 +5,21 @@ import (
 	"strings"
 )
 
-// Contentbuttonresponse - Button response object
+// Contentbuttonresponse - Button response object representing the click of a structured message button, such as a quick reply.
 type Contentbuttonresponse struct { 
-	// Id - An ID assigned to the button response. Each object inside the content array has a unique ID.
+	// Id - An ID assigned to the button response (Deprecated).
 	Id *string `json:"id,omitempty"`
 
 
-	// VarType - Button response type that captures Button and QuickReply type responses
+	// VarType - Describes the button that resulted in the Button Response.
 	VarType *string `json:"type,omitempty"`
 
 
-	// Text - Text to show inside the Button reply. This is also used as the response text after clicking on the Button.
+	// Text - The response text from the button click.
 	Text *string `json:"text,omitempty"`
 
 
-	// Payload - Content of the textback payload after clicking a button
+	// Payload - The response payload associated with the clicked button.
 	Payload *string `json:"payload,omitempty"`
 
 }

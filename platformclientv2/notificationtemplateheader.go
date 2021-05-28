@@ -5,21 +5,21 @@ import (
 	"strings"
 )
 
-// Notificationtemplateheader - Template header object
+// Notificationtemplateheader - Template header object.
 type Notificationtemplateheader struct { 
-	// VarType - Template header type
+	// VarType - Template header type.
 	VarType *string `json:"type,omitempty"`
 
 
-	// Text - Header text. For WhatsApp, ignored
+	// Text - Header text. For WhatsApp, ignored.
 	Text *string `json:"text,omitempty"`
 
 
-	// Media - Attachment object
+	// Media - Media template header image.
 	Media *Contentattachment `json:"media,omitempty"`
 
 
-	// Parameters - Template parameters for placeholders in template
+	// Parameters - Template parameters for placeholders in template.
 	Parameters *[]Notificationtemplateparameter `json:"parameters,omitempty"`
 
 }

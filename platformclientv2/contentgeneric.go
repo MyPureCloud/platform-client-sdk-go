@@ -5,33 +5,33 @@ import (
 	"strings"
 )
 
-// Contentgeneric - Generic content object
+// Contentgeneric - Generic content object.
 type Contentgeneric struct { 
-	// Id - An ID assigned to this rich message content. Each instance inside the content array has a unique ID.
+	// Id - A unique ID assigned to this rich message content.
 	Id *string `json:"id,omitempty"`
 
 
-	// Title - Text to show in the title row
+	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
 
 
-	// Description - Text to show in the description row. This is immediately below the title
+	// Description - Text to show in the description.
 	Description *string `json:"description,omitempty"`
 
 
-	// Image - Path or URI to an image file
+	// Image - URL of an image.
 	Image *string `json:"image,omitempty"`
 
 
-	// Video - Path or URI to a video file
+	// Video - URL of a video.
 	Video *string `json:"video,omitempty"`
 
 
-	// Actions - User actions available on the content. All actions are optional and all actions are executed simultaneously.
+	// Actions - Actions to be taken.
 	Actions *Contentactions `json:"actions,omitempty"`
 
 
-	// Components - An array of component objects
+	// Components - An array of component objects.
 	Components *[]Buttoncomponent `json:"components,omitempty"`
 
 }

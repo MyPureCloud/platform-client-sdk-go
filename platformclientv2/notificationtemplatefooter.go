@@ -5,9 +5,9 @@ import (
 	"strings"
 )
 
-// Notificationtemplatefooter - Template footer object
+// Notificationtemplatefooter - Template footer object.
 type Notificationtemplatefooter struct { 
-	// Text - Footer text. For WhatsApp, ignored
+	// Text - Footer text. For WhatsApp, ignored.
 	Text *string `json:"text,omitempty"`
 
 }
