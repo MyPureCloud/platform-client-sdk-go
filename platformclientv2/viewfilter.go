@@ -422,6 +422,14 @@ type Viewfilter struct {
 	// ExternalTags - The list of external Tags used to filter conversation data
 	ExternalTags *[]string `json:"externalTags,omitempty"`
 
+
+	// IsNotResponding - Indicates filtering for not responding users
+	IsNotResponding *bool `json:"isNotResponding,omitempty"`
+
+
+	// IsAuthenticated - Indicates filtering for the authenticated chat
+	IsAuthenticated *bool `json:"isAuthenticated,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

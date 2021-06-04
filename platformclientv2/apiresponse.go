@@ -48,7 +48,7 @@ type APIError struct {
 	MessageParams     map[string]interface{} `json:"messageParams,omitempty"`
 	Code              string                 `json:"code,omitempty"`
 	ContextID         string                 `json:"contextId,omitempty"`
-	Details           []string               `json:"details,omitempty"`
+	Details           []Detail               `json:"details,omitempty"`
 }
 
 // String returns the JSON serialized object

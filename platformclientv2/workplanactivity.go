@@ -66,6 +66,10 @@ type Workplanactivity struct {
 	// Delete - If marked true for updating an existing activity, the activity will be permanently deleted
 	Delete *bool `json:"delete,omitempty"`
 
+
+	// ValidationId - ID of the activity in the context of work plan validation
+	ValidationId *string `json:"validationId,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

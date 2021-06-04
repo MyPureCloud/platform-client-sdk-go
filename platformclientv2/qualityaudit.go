@@ -31,12 +31,12 @@ type Qualityaudit struct {
 	Entity *Auditentity `json:"entity,omitempty"`
 
 
-	// Timestamp
-	Timestamp *string `json:"timestamp,omitempty"`
-
-
 	// Action
 	Action *string `json:"action,omitempty"`
+
+
+	// Timestamp
+	Timestamp *string `json:"timestamp,omitempty"`
 
 
 	// Status

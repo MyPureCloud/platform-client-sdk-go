@@ -94,6 +94,10 @@ type Workplanshift struct {
 	// Delete - If marked true for updating an existing shift, the shift will be permanently deleted
 	Delete *bool `json:"delete,omitempty"`
 
+
+	// ValidationId - ID of shift in the context of work plan validation
+	ValidationId *string `json:"validationId,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

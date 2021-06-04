@@ -2,10 +2,10 @@
 title: Platform API Client SDK - Go
 ---
 
-A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go/platformclientv2). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
+A Go package to interface with the Genesys Cloud Platform API. View the documentation on the [pkg.go.dev](https://pkg.go.dev/github.com/MyPureCloud/platform-client-sdk-go). Browse the source code on [Github](https://github.com/MyPureCloud/platform-client-sdk-go).
 
-Latest version: 44.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
-[![Release Notes Badge](https://developer.mypurecloud.com/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
+Latest version: 45.0.0 [![GitHub release](https://img.shields.io/github/release/mypurecloud/platform-client-sdk-go.svg)](https://github.com/MyPureCloud/platform-client-sdk-go)
+[![Release Notes Badge](https://developer-content.genesys.cloud/images/sdk-release-notes.png)](https://github.com/MyPureCloud/platform-client-sdk-go/blob/master/releaseNotes.md)
 
 ## Golang Version Dependency
 
@@ -18,7 +18,7 @@ Some macOS users encounter the error "argument list too long" when building or i
 Retrieve the package from https://github.com/MyPureCloud/platform-client-sdk-go using `go get`:
 
 ```go
-go get github.com/mypurecloud/platform-client-sdk-go/v44/platformclientv2
+go get github.com/mypurecloud/platform-client-sdk-go/v45/platformclientv2
 ```
 
 ## Using the SDK
@@ -27,7 +27,7 @@ go get github.com/mypurecloud/platform-client-sdk-go/v44/platformclientv2
 
 ```go
 import (
-	"github.com/MyPureCloud/platform-client-sdk-go/v44/platformclientv2"
+	"github.com/mypurecloud/platform-client-sdk-go/v45/platformclientv2"
 )
 ```
 
@@ -237,7 +237,7 @@ Once the SDK is authorized, API requests can be made. Each function on the API i
 userID := "asdf1234-5678-90ab-cde1-123456789012"
 usersAPI := platformclientv2.NewUsersApi()
 
-user, response, err := usersAPI.GetUser(userID, make([]string, 0), "")
+user, response, err := usersAPI.GetUser(userID, make([]string, 0), "", "")
 fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
 if err != nil {
     fmt.Printf("Error calling GetUser: %v\n", err)

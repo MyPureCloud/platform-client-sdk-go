@@ -19,6 +19,10 @@ type Workplanlistitemresponse struct {
 	Enabled *bool `json:"enabled,omitempty"`
 
 
+	// Valid - Whether the work plan is valid or not
+	Valid *bool `json:"valid,omitempty"`
+
+
 	// ConstrainWeeklyPaidTime - Whether the weekly paid time constraint is enabled for this work plan
 	ConstrainWeeklyPaidTime *bool `json:"constrainWeeklyPaidTime,omitempty"`
 

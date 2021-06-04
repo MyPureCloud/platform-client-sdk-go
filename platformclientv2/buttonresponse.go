@@ -7,10 +7,6 @@ import (
 
 // Buttonresponse
 type Buttonresponse struct { 
-	// Id - An ID assigned to the button response.
-	Id *string `json:"id,omitempty"`
-
-
 	// VarType - Button response type that captures Button and QuickReply type responses
 	VarType *string `json:"type,omitempty"`
 

@@ -980,12 +980,13 @@ func (a LearningApi) PostLearningAssignmentsBulkadd(body []Learningassignmentite
 // Remove multiple Learning Assignments
 //
 // 
-func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*APIResponse, error) {
+func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*Learningassignmentbulkremoveresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/bulkremove"
+	defaultReturn := new(Learningassignmentbulkremoveresponse)
 	if true == false {
-		return nil, errors.New("This message brought to you by the laws of physics being broken")
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 
@@ -1028,14 +1029,16 @@ func (a LearningApi) PostLearningAssignmentsBulkremove(body []string) (*APIRespo
 	// body params
 	postBody = &body
 
-
+	var successPayload *Learningassignmentbulkremoveresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
+	} else {
+		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
 	}
-	return response, err
+	return successPayload, response, err
 }
 
 // PostLearningModulePublish invokes POST /api/v2/learning/modules/{moduleId}/publish

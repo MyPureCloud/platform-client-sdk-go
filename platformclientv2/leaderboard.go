@@ -27,6 +27,10 @@ type Leaderboard struct {
 	// Leaders - The list of leaders generated.
 	Leaders *[]Leaderboarditem `json:"leaders,omitempty"`
 
+
+	// UserRank - The requesting user's rank
+	UserRank *Leaderboarditem `json:"userRank,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

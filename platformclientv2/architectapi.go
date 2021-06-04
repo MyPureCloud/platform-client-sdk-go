@@ -5566,7 +5566,7 @@ func (a ArchitectApi) PostFlowVersions(flowId string, body interface{}) (*Flowve
 // Create flow
 //
 // 
-func (a ArchitectApi) PostFlows(body Flow) (*Flow, *APIResponse, error) {
+func (a ArchitectApi) PostFlows(body Flow, language string) (*Flow, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows"
@@ -5597,6 +5597,8 @@ func (a ArchitectApi) PostFlows(body Flow) (*Flow, *APIResponse, error) {
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
 	// to determine the Content-Type header

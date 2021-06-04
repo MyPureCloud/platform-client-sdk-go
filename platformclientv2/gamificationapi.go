@@ -32,7 +32,7 @@ func NewGamificationApiWithConfig(config *Configuration) *GamificationApi {
 
 // GetGamificationLeaderboard invokes GET /api/v2/gamification/leaderboard
 //
-// Leaderboard of the requesting user&#39;s division
+// Leaderboard of the requesting user&#39;s division or performance profile
 //
 // 
 func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endWorkday time.Time, metricId string) (*Leaderboard, *APIResponse, error) {
@@ -111,7 +111,7 @@ func (a GamificationApi) GetGamificationLeaderboard(startWorkday time.Time, endW
 
 // GetGamificationLeaderboardAll invokes GET /api/v2/gamification/leaderboard/all
 //
-// Leaderboard by division
+// Leaderboard by filter type
 //
 // 
 func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filterId string, startWorkday time.Time, endWorkday time.Time, metricId string) (*Leaderboard, *APIResponse, error) {
@@ -347,7 +347,7 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 // Gamified metric by id
 //
 // 
-func (a GamificationApi) GetGamificationMetric(metricId string) (*Metric, *APIResponse, error) {
+func (a GamificationApi) GetGamificationMetric(metricId string, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metrics/{metricId}"
@@ -379,6 +379,8 @@ func (a GamificationApi) GetGamificationMetric(metricId string) (*Metric, *APIRe
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, "")
 	
 
 	// to determine the Content-Type header
@@ -2334,7 +2336,7 @@ func (a GamificationApi) PostGamificationMetrics(body Metric) (*Metric, *APIResp
 // Updates a metric
 //
 // 
-func (a GamificationApi) PutGamificationMetric(metricId string, body Metric) (*Metric, *APIResponse, error) {
+func (a GamificationApi) PutGamificationMetric(metricId string, body Metric, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metrics/{metricId}"
@@ -2371,6 +2373,8 @@ func (a GamificationApi) PutGamificationMetric(metricId string, body Metric) (*M
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, "")
 	
 
 	// to determine the Content-Type header

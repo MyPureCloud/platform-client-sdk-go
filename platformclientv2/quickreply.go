@@ -7,10 +7,6 @@ import (
 
 // Quickreply
 type Quickreply struct { 
-	// Id - An ID assigned to the quick reply.
-	Id *string `json:"id,omitempty"`
-
-
 	// Text - Text to show inside the quick reply. This is also used as the response text after clicking on the quick reply.
 	Text *string `json:"text,omitempty"`
 
