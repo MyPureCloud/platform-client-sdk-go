@@ -87,7 +87,11 @@ func (a ChatApi) GetChatSettings() (*Chatsettings, *APIResponse, error) {
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Chatsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -158,7 +162,11 @@ func (a ChatApi) PatchChatSettings(body Chatsettings) (*Chatsettings, *APIRespon
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Chatsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -229,7 +237,11 @@ func (a ChatApi) PutChatSettings(body Chatsettings) (*Chatsettings, *APIResponse
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Chatsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }

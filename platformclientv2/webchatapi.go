@@ -290,7 +290,11 @@ func (a WebChatApi) GetWebchatDeployment(deploymentId string) (*Webchatdeploymen
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatdeployment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -353,7 +357,11 @@ func (a WebChatApi) GetWebchatDeployments() (*Webchatdeploymententitylisting, *A
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatdeploymententitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -427,7 +435,11 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequest(conversationId strin
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatguestmediarequest" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -495,7 +507,11 @@ func (a WebChatApi) GetWebchatGuestConversationMediarequests(conversationId stri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatguestmediarequestentitylist" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -569,7 +585,11 @@ func (a WebChatApi) GetWebchatGuestConversationMember(conversationId string, mem
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatmemberinfo" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -643,7 +663,11 @@ func (a WebChatApi) GetWebchatGuestConversationMembers(conversationId string, pa
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatmemberinfoentitylist" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -717,7 +741,11 @@ func (a WebChatApi) GetWebchatGuestConversationMessage(conversationId string, me
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatmessage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -793,7 +821,11 @@ func (a WebChatApi) GetWebchatGuestConversationMessages(conversationId string, a
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatmessageentitylist" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -856,7 +888,11 @@ func (a WebChatApi) GetWebchatSettings() (*Webchatsettings, *APIResponse, error)
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -938,7 +974,11 @@ func (a WebChatApi) PatchWebchatGuestConversationMediarequest(conversationId str
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatguestmediarequest" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1009,7 +1049,11 @@ func (a WebChatApi) PostWebchatDeployments(body Webchatdeployment) (*Webchatdepl
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatdeployment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1091,7 +1135,11 @@ func (a WebChatApi) PostWebchatGuestConversationMemberMessages(conversationId st
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatmessage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1165,7 +1213,11 @@ func (a WebChatApi) PostWebchatGuestConversationMemberTyping(conversationId stri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchattyping" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1231,7 +1283,11 @@ func (a WebChatApi) PostWebchatGuestConversations(body Createwebchatconversation
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Createwebchatconversationresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1308,7 +1364,11 @@ func (a WebChatApi) PutWebchatDeployment(deploymentId string, body Webchatdeploy
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatdeployment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1379,7 +1439,11 @@ func (a WebChatApi) PutWebchatSettings(body Webchatsettings) (*Webchatsettings, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Webchatsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }

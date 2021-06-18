@@ -93,7 +93,11 @@ func (a IntegrationsApi) DeleteIntegration(integrationId string) (*Integration, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -372,7 +376,11 @@ func (a IntegrationsApi) GetIntegration(integrationId string, pageSize int, page
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -441,7 +449,11 @@ func (a IntegrationsApi) GetIntegrationConfigCurrent(integrationId string) (*Int
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationconfiguration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -516,7 +528,11 @@ func (a IntegrationsApi) GetIntegrations(pageSize int, pageNumber int, sortBy st
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -589,7 +605,11 @@ func (a IntegrationsApi) GetIntegrationsAction(actionId string, expand string, i
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -662,7 +682,11 @@ func (a IntegrationsApi) GetIntegrationsActionDraft(actionId string, expand stri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -737,7 +761,11 @@ func (a IntegrationsApi) GetIntegrationsActionDraftSchema(actionId string, fileN
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Jsonschemadocument" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -812,7 +840,11 @@ func (a IntegrationsApi) GetIntegrationsActionDraftTemplate(actionId string, fil
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "string" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -881,7 +913,11 @@ func (a IntegrationsApi) GetIntegrationsActionDraftValidation(actionId string) (
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Draftvalidationresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -956,7 +992,11 @@ func (a IntegrationsApi) GetIntegrationsActionSchema(actionId string, fileName s
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Jsonschemadocument" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1031,7 +1071,11 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "string" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1114,7 +1158,11 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, ne
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actionentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1191,7 +1239,11 @@ func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumb
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Categoryentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1274,7 +1326,11 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actionentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1349,7 +1405,11 @@ func (a IntegrationsApi) GetIntegrationsClientapps(pageSize int, pageNumber int,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Clientappentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1418,7 +1478,11 @@ func (a IntegrationsApi) GetIntegrationsCredential(credentialId string) (*Creden
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Credential" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1485,7 +1549,11 @@ func (a IntegrationsApi) GetIntegrationsCredentials(pageNumber int, pageSize int
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Credentialinfolisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1548,7 +1616,11 @@ func (a IntegrationsApi) GetIntegrationsCredentialsTypes() (*Credentialtypelisti
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Credentialtypelisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1621,7 +1693,11 @@ func (a IntegrationsApi) GetIntegrationsEventlog(pageSize int, pageNumber int, s
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationevententitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1690,7 +1766,11 @@ func (a IntegrationsApi) GetIntegrationsEventlogEventId(eventId string) (*Integr
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationevent" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1759,7 +1839,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgent(agentId string) (*
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Dialogflowagent" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1828,7 +1912,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechDialogflowAgents(pageNumber int, p
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Dialogflowagentsummaryentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1897,7 +1985,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotAlias(aliasId string) (*Lexb
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Lexbotalias" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1974,7 +2066,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBotBotIdAliases(botId string, p
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Lexbotaliasentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2043,7 +2139,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechLexBots(pageNumber int, pageSize i
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Lexbotentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2114,7 +2214,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngine(engineId string, include
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Ttsengineentity" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2189,7 +2293,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoice(engineId string, vo
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Ttsvoiceentity" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2262,7 +2370,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngineVoices(engineId string, p
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Ttsvoiceentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2335,7 +2447,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsEngines(pageNumber int, pageSiz
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Ttsengineentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2398,7 +2514,11 @@ func (a IntegrationsApi) GetIntegrationsSpeechTtsSettings() (*Ttssettings, *APIR
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Ttssettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2467,7 +2587,11 @@ func (a IntegrationsApi) GetIntegrationsType(typeId string) (*Integrationtype, *
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationtype" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2542,7 +2666,11 @@ func (a IntegrationsApi) GetIntegrationsTypeConfigschema(typeId string, configTy
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Jsonschemadocument" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2617,7 +2745,11 @@ func (a IntegrationsApi) GetIntegrationsTypes(pageSize int, pageNumber int, sort
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationtypeentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2694,7 +2826,11 @@ func (a IntegrationsApi) GetIntegrationsUserapps(pageSize int, pageNumber int, s
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userappentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2778,7 +2914,11 @@ func (a IntegrationsApi) PatchIntegration(integrationId string, body Integration
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2855,7 +2995,11 @@ func (a IntegrationsApi) PatchIntegrationsAction(actionId string, body Updateact
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2932,7 +3076,11 @@ func (a IntegrationsApi) PatchIntegrationsActionDraft(actionId string, body Upda
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2998,7 +3146,11 @@ func (a IntegrationsApi) PostIntegrations(body Createintegrationrequest) (*Integ
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3067,7 +3219,11 @@ func (a IntegrationsApi) PostIntegrationsActionDraft(actionId string) (*Action, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3144,7 +3300,11 @@ func (a IntegrationsApi) PostIntegrationsActionDraftPublish(actionId string, bod
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3221,7 +3381,11 @@ func (a IntegrationsApi) PostIntegrationsActionDraftTest(actionId string, body i
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Testexecutionresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3298,7 +3462,11 @@ func (a IntegrationsApi) PostIntegrationsActionExecute(actionId string, body int
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "interface{}" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3375,7 +3543,11 @@ func (a IntegrationsApi) PostIntegrationsActionTest(actionId string, body interf
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Testexecutionresult" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3446,7 +3618,11 @@ func (a IntegrationsApi) PostIntegrationsActions(body Postactioninput) (*Action,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3517,7 +3693,11 @@ func (a IntegrationsApi) PostIntegrationsActionsDrafts(body Postactioninput) (*A
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Action" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3583,7 +3763,11 @@ func (a IntegrationsApi) PostIntegrationsCredentials(body Credential) (*Credenti
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Credentialinfo" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3649,7 +3833,11 @@ func (a IntegrationsApi) PostIntegrationsWorkforcemanagementVendorconnection(bod
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Useractioncategoryentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3721,7 +3909,11 @@ func (a IntegrationsApi) PutIntegrationConfigCurrent(integrationId string, body 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Integrationconfiguration" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3793,7 +3985,11 @@ func (a IntegrationsApi) PutIntegrationsCredential(credentialId string, body Cre
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Credentialinfo" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3864,7 +4060,11 @@ func (a IntegrationsApi) PutIntegrationsSpeechTtsSettings(body Ttssettings) (*Tt
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Ttssettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }

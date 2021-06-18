@@ -98,7 +98,11 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Empty" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -172,7 +176,11 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIRe
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Empty" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -250,7 +258,11 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2group" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -324,7 +336,11 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimgrouplistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -394,7 +410,11 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimconfigresourcetype" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -458,7 +478,11 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimconfigresourcetypeslistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -528,7 +552,11 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2schemadefinition" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -594,7 +622,11 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2schemalistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -662,7 +694,11 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimserviceproviderconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -740,7 +776,11 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -814,7 +854,11 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimuserlistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -892,7 +936,11 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2group" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -971,7 +1019,11 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimgrouplistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1041,7 +1093,11 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimconfigresourcetype" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1105,7 +1161,11 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimconfigresourcetypeslistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1175,7 +1235,11 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2schemadefinition" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1241,7 +1305,11 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2schemalistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1309,7 +1377,11 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimserviceproviderconfig" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1387,7 +1459,11 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1461,7 +1537,11 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimuserlistresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1543,7 +1623,11 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2group" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1625,7 +1709,11 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1707,7 +1795,11 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2group" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1789,7 +1881,11 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1861,7 +1957,11 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1933,7 +2033,11 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2015,7 +2119,11 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2group" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2097,7 +2205,11 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2179,7 +2291,11 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2group" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2261,7 +2377,11 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Scimv2user" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }

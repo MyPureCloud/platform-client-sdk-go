@@ -29,6 +29,72 @@ func NewRoutingApiWithConfig(config *Configuration) *RoutingApi {
 	}
 }
 
+// DeleteRoutingAssessment invokes DELETE /api/v2/routing/assessments/{assessmentId}
+//
+// Delete single benefit assessment.
+//
+// 
+func (a RoutingApi) DeleteRoutingAssessment(assessmentId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments/{assessmentId}"
+	path = strings.Replace(path, "{assessmentId}", fmt.Sprintf("%v", assessmentId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'assessmentId' is set
+	if &assessmentId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'assessmentId' when calling RoutingApi->DeleteRoutingAssessment")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteRoutingEmailDomain invokes DELETE /api/v2/routing/email/domains/{domainId}
 //
 // Delete a domain
@@ -119,6 +185,72 @@ func (a RoutingApi) DeleteRoutingEmailDomainRoute(domainName string, routeId str
 	if &routeId == nil {
 		// 
 		return nil, errors.New("Missing required parameter 'routeId' when calling RoutingApi->DeleteRoutingEmailDomainRoute")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// DeleteRoutingPredictor invokes DELETE /api/v2/routing/predictors/{predictorId}
+//
+// Delete single predictor.
+//
+// 
+func (a RoutingApi) DeleteRoutingPredictor(predictorId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}"
+	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'predictorId' is set
+	if &predictorId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'predictorId' when calling RoutingApi->DeleteRoutingPredictor")
 	}
 
 	headerParams := make(map[string]string)
@@ -1045,6 +1177,298 @@ func (a RoutingApi) DeleteUserRoutingskill(userId string, skillId string) (*APIR
 	return response, err
 }
 
+// GetRoutingAssessment invokes GET /api/v2/routing/assessments/{assessmentId}
+//
+// Retrieve a single benefit assessment.
+//
+// 
+func (a RoutingApi) GetRoutingAssessment(assessmentId string) (*Benefitassessment, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments/{assessmentId}"
+	path = strings.Replace(path, "{assessmentId}", fmt.Sprintf("%v", assessmentId), -1)
+	defaultReturn := new(Benefitassessment)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'assessmentId' is set
+	if &assessmentId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'assessmentId' when calling RoutingApi->GetRoutingAssessment")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Benefitassessment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Benefitassessment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingAssessments invokes GET /api/v2/routing/assessments
+//
+// Retrieve all benefit assessments.
+//
+// 
+func (a RoutingApi) GetRoutingAssessments(before string, after string, limit string, pageSize string, queueId []string) (*Assessmentlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments"
+	defaultReturn := new(Assessmentlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, "multi")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Assessmentlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Assessmentlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingAssessmentsJob invokes GET /api/v2/routing/assessments/jobs/{jobId}
+//
+// Retrieve a single benefit assessments job.
+//
+// 
+func (a RoutingApi) GetRoutingAssessmentsJob(jobId string) (*Benefitassessmentjob, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments/jobs/{jobId}"
+	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
+	defaultReturn := new(Benefitassessmentjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'jobId' is set
+	if &jobId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'jobId' when calling RoutingApi->GetRoutingAssessmentsJob")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Benefitassessmentjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Benefitassessmentjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingAssessmentsJobs invokes GET /api/v2/routing/assessments/jobs
+//
+// Retrieve all benefit assessment jobs.
+//
+// 
+func (a RoutingApi) GetRoutingAssessmentsJobs(divisionId []string) (*Assessmentjoblisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments/jobs"
+	defaultReturn := new(Assessmentjoblisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Assessmentjoblisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Assessmentjoblisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetRoutingEmailDomain invokes GET /api/v2/routing/email/domains/{domainId}
 //
 // Get domain
@@ -1109,7 +1533,11 @@ func (a RoutingApi) GetRoutingEmailDomain(domainId string) (*Inbounddomain, *API
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inbounddomain" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1184,7 +1612,11 @@ func (a RoutingApi) GetRoutingEmailDomainRoute(domainName string, routeId string
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inboundroute" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1259,7 +1691,11 @@ func (a RoutingApi) GetRoutingEmailDomainRoutes(domainName string, pageSize int,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inboundrouteentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1322,7 +1758,11 @@ func (a RoutingApi) GetRoutingEmailDomains() (*Inbounddomainentitylisting, *APIR
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inbounddomainentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1385,7 +1825,11 @@ func (a RoutingApi) GetRoutingEmailSetup() (*Emailsetup, *APIResponse, error) {
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Emailsetup" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1458,7 +1902,11 @@ func (a RoutingApi) GetRoutingLanguages(pageSize int, pageNumber int, sortOrder 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Languageentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1527,7 +1975,11 @@ func (a RoutingApi) GetRoutingMessageRecipient(recipientId string) (*Recipient, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Recipient" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1596,7 +2048,228 @@ func (a RoutingApi) GetRoutingMessageRecipients(messengerType string, pageSize i
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Recipientlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingPredictor invokes GET /api/v2/routing/predictors/{predictorId}
+//
+// Retrieve a single predictor.
+//
+// 
+func (a RoutingApi) GetRoutingPredictor(predictorId string) (*Predictor, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}"
+	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	defaultReturn := new(Predictor)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'predictorId' is set
+	if &predictorId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'predictorId' when calling RoutingApi->GetRoutingPredictor")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Predictor
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Predictor" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingPredictors invokes GET /api/v2/routing/predictors
+//
+// Retrieve all predictors.
+//
+// 
+func (a RoutingApi) GetRoutingPredictors(before string, after string, limit string, pageSize string, queueId []string) (*Predictorlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/predictors"
+	defaultReturn := new(Predictorlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["before"] = a.Configuration.APIClient.ParameterToString(before, "")
+	
+	queryParams["after"] = a.Configuration.APIClient.ParameterToString(after, "")
+	
+	queryParams["limit"] = a.Configuration.APIClient.ParameterToString(limit, "")
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["queueId"] = a.Configuration.APIClient.ParameterToString(queueId, "multi")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Predictorlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Predictorlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingPredictorsKeyperformanceindicators invokes GET /api/v2/routing/predictors/keyperformanceindicators
+//
+// Get a list of Key Performance Indicators available for the predictors.
+//
+// 
+func (a RoutingApi) GetRoutingPredictorsKeyperformanceindicators() ([]Keyperformanceindicator, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/predictors/keyperformanceindicators"
+	defaultReturn := make([]Keyperformanceindicator, 0)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload []Keyperformanceindicator
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "[]Keyperformanceindicator" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1665,7 +2338,163 @@ func (a RoutingApi) GetRoutingQueue(queueId string) (*Queue, *APIResponse, error
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queue" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingQueueComparisonperiod invokes GET /api/v2/routing/queues/{queueId}/comparisonperiods/{comparisonPeriodId}
+//
+// Get a Comparison Period.
+//
+// 
+func (a RoutingApi) GetRoutingQueueComparisonperiod(queueId string, comparisonPeriodId string) (*Comparisonperiod, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/comparisonperiods/{comparisonPeriodId}"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	path = strings.Replace(path, "{comparisonPeriodId}", fmt.Sprintf("%v", comparisonPeriodId), -1)
+	defaultReturn := new(Comparisonperiod)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueComparisonperiod")
+	}
+	// verify the required parameter 'comparisonPeriodId' is set
+	if &comparisonPeriodId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'comparisonPeriodId' when calling RoutingApi->GetRoutingQueueComparisonperiod")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Comparisonperiod
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Comparisonperiod" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetRoutingQueueComparisonperiods invokes GET /api/v2/routing/queues/{queueId}/comparisonperiods
+//
+// Get list of comparison periods
+//
+// 
+func (a RoutingApi) GetRoutingQueueComparisonperiods(queueId string) (*Comparisonperiodlisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/comparisonperiods"
+	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
+	defaultReturn := new(Comparisonperiodlisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'queueId' is set
+	if &queueId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'queueId' when calling RoutingApi->GetRoutingQueueComparisonperiods")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Comparisonperiodlisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Comparisonperiodlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1736,7 +2565,11 @@ func (a RoutingApi) GetRoutingQueueEstimatedwaittime(queueId string, conversatio
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Estimatedwaittimepredictions" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1811,7 +2644,11 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Estimatedwaittimepredictions" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1902,7 +2739,11 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageSize int, pageNum
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queuememberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1993,7 +2834,11 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageSize int, pageNumbe
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queuememberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2066,7 +2911,11 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Wrapupcodeentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2141,7 +2990,11 @@ func (a RoutingApi) GetRoutingQueues(pageSize int, pageNumber int, sortBy string
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queueentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2218,7 +3071,11 @@ func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int, pageNumber int, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queueentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2289,7 +3146,11 @@ func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber in
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queueentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2362,7 +3223,11 @@ func (a RoutingApi) GetRoutingQueuesMe(joined bool, pageSize int, pageNumber int
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userqueueentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2425,7 +3290,11 @@ func (a RoutingApi) GetRoutingSettings() (*Routingsettings, *APIResponse, error)
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Routingsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2488,7 +3357,11 @@ func (a RoutingApi) GetRoutingSettingsContactcenter() (*Contactcentersettings, *
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Contactcentersettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2551,7 +3424,11 @@ func (a RoutingApi) GetRoutingSettingsTranscription() (*Transcriptionsettings, *
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Transcriptionsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2620,7 +3497,11 @@ func (a RoutingApi) GetRoutingSkill(skillId string) (*Routingskill, *APIResponse
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Routingskill" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2691,7 +3572,11 @@ func (a RoutingApi) GetRoutingSkills(pageSize int, pageNumber int, name string, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Skillentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2760,7 +3645,11 @@ func (a RoutingApi) GetRoutingSmsAddress(addressId string) (*Smsaddress, *APIRes
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsaddress" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2827,7 +3716,11 @@ func (a RoutingApi) GetRoutingSmsAddresses(pageSize int, pageNumber int) (*Smsad
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsaddressentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2914,7 +3807,11 @@ func (a RoutingApi) GetRoutingSmsAvailablephonenumbers(countryCode string, phone
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsavailablephonenumberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -2983,7 +3880,11 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsphonenumber" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3056,7 +3957,11 @@ func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberTyp
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsphonenumberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3125,7 +4030,11 @@ func (a RoutingApi) GetRoutingUserUtilization(userId string) (*Agentmaxutilizati
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Agentmaxutilization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3188,7 +4097,11 @@ func (a RoutingApi) GetRoutingUtilization() (*Utilization, *APIResponse, error) 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Utilization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3257,7 +4170,11 @@ func (a RoutingApi) GetRoutingWrapupcode(codeId string) (*Wrapupcode, *APIRespon
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Wrapupcode" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3330,7 +4247,11 @@ func (a RoutingApi) GetRoutingWrapupcodes(pageSize int, pageNumber int, sortBy s
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Wrapupcodeentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3407,7 +4328,11 @@ func (a RoutingApi) GetUserQueues(userId string, pageSize int, pageNumber int, j
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userqueueentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3482,7 +4407,11 @@ func (a RoutingApi) GetUserRoutinglanguages(userId string, pageSize int, pageNum
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userlanguageentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3557,7 +4486,11 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userskillentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3634,7 +4567,11 @@ func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routing
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Routingconversationattributes" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3711,7 +4648,11 @@ func (a RoutingApi) PatchRoutingEmailDomain(domainId string, body Inbounddomainp
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inbounddomain" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3788,7 +4729,87 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inbounddomain" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PatchRoutingPredictor invokes PATCH /api/v2/routing/predictors/{predictorId}
+//
+// Update single predictor.
+//
+// 
+func (a RoutingApi) PatchRoutingPredictor(predictorId string, body Patchpredictorrequest) (*Predictor, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/predictors/{predictorId}"
+	path = strings.Replace(path, "{predictorId}", fmt.Sprintf("%v", predictorId), -1)
+	defaultReturn := new(Predictor)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'predictorId' is set
+	if &predictorId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'predictorId' when calling RoutingApi->PatchRoutingPredictor")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Predictor
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Predictor" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -3945,7 +4966,11 @@ func (a RoutingApi) PatchRoutingQueueMembers(queueId string, body []Queuemember)
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queuememberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4102,7 +5127,11 @@ func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queuememberentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4253,7 +5282,11 @@ func (a RoutingApi) PatchUserQueue(queueId string, userId string, body Userqueue
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userqueue" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4332,7 +5365,11 @@ func (a RoutingApi) PatchUserQueues(userId string, body []Userqueue, divisionId 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userqueueentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4415,7 +5452,11 @@ func (a RoutingApi) PatchUserRoutinglanguage(userId string, languageId string, b
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userroutinglanguage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4492,7 +5533,11 @@ func (a RoutingApi) PatchUserRoutinglanguagesBulk(userId string, body []Userrout
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userlanguageentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4569,7 +5614,11 @@ func (a RoutingApi) PatchUserRoutingskillsBulk(userId string, body []Userrouting
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userskillentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4640,7 +5689,151 @@ func (a RoutingApi) PostAnalyticsQueuesObservationsQuery(body Queueobservationqu
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queueobservationqueryresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingAssessments invokes POST /api/v2/routing/assessments
+//
+// Create a benefit assessment.
+//
+// 
+func (a RoutingApi) PostRoutingAssessments(body Createbenefitassessmentrequest) (*Benefitassessment, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments"
+	defaultReturn := new(Benefitassessment)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Benefitassessment
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Benefitassessment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingAssessmentsJobs invokes POST /api/v2/routing/assessments/jobs
+//
+// Create a benefit assessment job.
+//
+// 
+func (a RoutingApi) PostRoutingAssessmentsJobs(body Createbenefitassessmentjobrequest) (*Benefitassessmentjob, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/assessments/jobs"
+	defaultReturn := new(Benefitassessmentjob)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Benefitassessmentjob
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Benefitassessmentjob" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4717,7 +5910,11 @@ func (a RoutingApi) PostRoutingEmailDomainRoutes(domainName string, body Inbound
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inboundroute" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4789,7 +5986,11 @@ func (a RoutingApi) PostRoutingEmailDomainTestconnection(domainId string, body T
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Testmessage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4860,7 +6061,11 @@ func (a RoutingApi) PostRoutingEmailDomains(body Inbounddomain) (*Inbounddomain,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inbounddomain" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -4931,7 +6136,81 @@ func (a RoutingApi) PostRoutingLanguages(body Language) (*Language, *APIResponse
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Language" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostRoutingPredictors invokes POST /api/v2/routing/predictors
+//
+// Create a predictor.
+//
+// 
+func (a RoutingApi) PostRoutingPredictors(body Createpredictorrequest) (*Predictor, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/routing/predictors"
+	defaultReturn := new(Predictor)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Predictor
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Predictor" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5160,7 +6439,11 @@ func (a RoutingApi) PostRoutingQueueWrapupcodes(queueId string, body []Wrapupcod
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "[]Wrapupcode" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5231,7 +6514,11 @@ func (a RoutingApi) PostRoutingQueues(body Createqueuerequest) (*Queue, *APIResp
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queue" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5302,7 +6589,11 @@ func (a RoutingApi) PostRoutingSkills(body Routingskill) (*Routingskill, *APIRes
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Routingskill" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5373,7 +6664,11 @@ func (a RoutingApi) PostRoutingSmsAddresses(body Smsaddressprovision) (*Smsaddre
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsaddress" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5444,7 +6739,11 @@ func (a RoutingApi) PostRoutingSmsPhonenumbers(body Smsphonenumberprovision) (*S
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsphonenumber" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5515,7 +6814,11 @@ func (a RoutingApi) PostRoutingWrapupcodes(body Wrapupcode) (*Wrapupcode, *APIRe
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Wrapupcode" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5592,7 +6895,11 @@ func (a RoutingApi) PostUserRoutinglanguages(userId string, body Userroutinglang
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userroutinglanguage" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5669,7 +6976,11 @@ func (a RoutingApi) PostUserRoutingskills(userId string, body Userroutingskillpo
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userroutingskill" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5752,7 +7063,11 @@ func (a RoutingApi) PutRoutingEmailDomainRoute(domainName string, routeId string
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Inboundroute" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5829,7 +7144,11 @@ func (a RoutingApi) PutRoutingMessageRecipient(recipientId string, body Recipien
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Recipient" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5906,7 +7225,11 @@ func (a RoutingApi) PutRoutingQueue(queueId string, body Queuerequest) (*Queue, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Queue" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -5977,7 +7300,11 @@ func (a RoutingApi) PutRoutingSettings(body Routingsettings) (*Routingsettings, 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Routingsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6048,7 +7375,11 @@ func (a RoutingApi) PutRoutingSettingsTranscription(body Transcriptionsettings) 
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Transcriptionsettings" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6125,7 +7456,11 @@ func (a RoutingApi) PutRoutingSmsPhonenumber(addressId string, body Smsphonenumb
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Smsphonenumber" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6202,7 +7537,11 @@ func (a RoutingApi) PutRoutingUserUtilization(userId string, body Utilization) (
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Agentmaxutilization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6273,7 +7612,11 @@ func (a RoutingApi) PutRoutingUtilization(body Utilization) (*Utilization, *APIR
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Utilization" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6350,7 +7693,11 @@ func (a RoutingApi) PutRoutingWrapupcode(codeId string, body Wrapupcode) (*Wrapu
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Wrapupcode" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6433,7 +7780,11 @@ func (a RoutingApi) PutUserRoutingskill(userId string, skillId string, body User
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userroutingskill" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -6510,7 +7861,11 @@ func (a RoutingApi) PutUserRoutingskillsBulk(userId string, body []Userroutingsk
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Userskillentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }

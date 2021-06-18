@@ -251,3 +251,9 @@ func String(v string) *string {
 func Bool(v bool) *bool {
 	return &v
 }
+
+func copy(data []byte, v interface{}) {
+	dataS := string(data)
+
+	reflect.ValueOf(v).Elem().Set(reflect.ValueOf(&dataS))
+}

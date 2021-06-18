@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-// Transcriptionstopictranscriptresult
-type Transcriptionstopictranscriptresult struct { 
+// Transcriptiontopictranscriptresult
+type Transcriptiontopictranscriptresult struct { 
 	// UtteranceId
 	UtteranceId *string `json:"utteranceId,omitempty"`
 
@@ -20,7 +20,7 @@ type Transcriptionstopictranscriptresult struct {
 
 
 	// Alternatives
-	Alternatives *[]Transcriptionstopictranscriptalternative `json:"alternatives,omitempty"`
+	Alternatives *[]Transcriptiontopictranscriptalternative `json:"alternatives,omitempty"`
 
 
 	// AgentAssistantId
@@ -39,18 +39,6 @@ type Transcriptionstopictranscriptresult struct {
 	SpeechTextAnalyticsProgramId *string `json:"speechTextAnalyticsProgramId,omitempty"`
 
 
-	// StartTimeMs
-	StartTimeMs *int `json:"startTimeMs,omitempty"`
-
-
-	// OffsetMs
-	OffsetMs *int `json:"offsetMs,omitempty"`
-
-
-	// DurationMs
-	DurationMs *int `json:"durationMs,omitempty"`
-
-
 	// AgentAssistEnabled
 	AgentAssistEnabled *bool `json:"agentAssistEnabled,omitempty"`
 
@@ -61,7 +49,7 @@ type Transcriptionstopictranscriptresult struct {
 }
 
 // String returns a JSON representation of the model
-func (o *Transcriptionstopictranscriptresult) String() string {
+func (o *Transcriptiontopictranscriptresult) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

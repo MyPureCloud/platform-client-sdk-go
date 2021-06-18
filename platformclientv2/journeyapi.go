@@ -359,7 +359,11 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actionmap" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -369,7 +373,7 @@ func (a JourneyApi) GetJourneyActionmap(actionMapId string) (*Actionmap, *APIRes
 // Retrieve all action maps.
 //
 // 
-func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy string, filterField string, filterValue string, actionMapIds []string) (*Actionmaplisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy string, filterField string, filterValue string, actionMapIds []string, queryFields []string, queryValue string) (*Actionmaplisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actionmaps"
@@ -408,6 +412,10 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 	
 	queryParams["actionMapIds"] = a.Configuration.APIClient.ParameterToString(actionMapIds, "multi")
 	
+	queryParams["queryFields"] = a.Configuration.APIClient.ParameterToString(queryFields, "multi")
+	
+	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -434,7 +442,11 @@ func (a JourneyApi) GetJourneyActionmaps(pageNumber int, pageSize int, sortBy st
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actionmaplisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -503,7 +515,11 @@ func (a JourneyApi) GetJourneyActiontarget(actionTargetId string) (*Actiontarget
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontarget" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -570,7 +586,11 @@ func (a JourneyApi) GetJourneyActiontargets(pageNumber int, pageSize int) (*Acti
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontargetlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -639,7 +659,11 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontemplate" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -649,7 +673,7 @@ func (a JourneyApi) GetJourneyActiontemplate(actionTemplateId string) (*Actionte
 // Retrieve all action templates.
 //
 // 
-func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sortBy string, mediaType string, state string) (*Actiontemplatelisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sortBy string, mediaType string, state string, queryFields []string, queryValue string) (*Actiontemplatelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/actiontemplates"
@@ -686,6 +710,10 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 	
 	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
 	
+	queryParams["queryFields"] = a.Configuration.APIClient.ParameterToString(queryFields, "multi")
+	
+	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -712,7 +740,11 @@ func (a JourneyApi) GetJourneyActiontemplates(pageNumber int, pageSize int, sort
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontemplatelisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -781,7 +813,11 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Outcome" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -791,7 +827,7 @@ func (a JourneyApi) GetJourneyOutcome(outcomeId string) (*Outcome, *APIResponse,
 // Retrieve all outcomes.
 //
 // 
-func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy string, outcomeIds []string) (*Outcomelisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy string, outcomeIds []string, queryFields []string, queryValue string) (*Outcomelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/outcomes"
@@ -826,6 +862,10 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 	
 	queryParams["outcomeIds"] = a.Configuration.APIClient.ParameterToString(outcomeIds, "multi")
 	
+	queryParams["queryFields"] = a.Configuration.APIClient.ParameterToString(queryFields, "multi")
+	
+	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -852,7 +892,11 @@ func (a JourneyApi) GetJourneyOutcomes(pageNumber int, pageSize int, sortBy stri
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Outcomelisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -921,7 +965,11 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Journeysegment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -931,7 +979,7 @@ func (a JourneyApi) GetJourneySegment(segmentId string) (*Journeysegment, *APIRe
 // Retrieve all segments.
 //
 // 
-func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber int, isActive bool, segmentIds []string) (*Segmentlisting, *APIResponse, error) {
+func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber int, isActive bool, segmentIds []string, queryFields []string, queryValue string) (*Segmentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/journey/segments"
@@ -968,6 +1016,10 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 	
 	queryParams["segmentIds"] = a.Configuration.APIClient.ParameterToString(segmentIds, "multi")
 	
+	queryParams["queryFields"] = a.Configuration.APIClient.ParameterToString(queryFields, "multi")
+	
+	queryParams["queryValue"] = a.Configuration.APIClient.ParameterToString(queryValue, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -994,7 +1046,11 @@ func (a JourneyApi) GetJourneySegments(sortBy string, pageSize int, pageNumber i
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Segmentlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1066,7 +1122,11 @@ func (a JourneyApi) PatchJourneyActionmap(actionMapId string, body Patchactionma
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actionmap" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1138,7 +1198,11 @@ func (a JourneyApi) PatchJourneyActiontarget(actionTargetId string, body Patchac
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontarget" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1210,7 +1274,11 @@ func (a JourneyApi) PatchJourneyActiontemplate(actionTemplateId string, body Pat
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontemplate" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1282,7 +1350,11 @@ func (a JourneyApi) PatchJourneyOutcome(outcomeId string, body Patchoutcome) (*O
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Outcome" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1354,7 +1426,11 @@ func (a JourneyApi) PatchJourneySegment(segmentId string, body Patchsegment) (*J
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Journeysegment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1425,7 +1501,11 @@ func (a JourneyApi) PostAnalyticsJourneysAggregatesQuery(body Journeyaggregation
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Journeyaggregatequeryresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1491,7 +1571,11 @@ func (a JourneyApi) PostJourneyActionmaps(body Actionmap) (*Actionmap, *APIRespo
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actionmap" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1557,7 +1641,11 @@ func (a JourneyApi) PostJourneyActiontemplates(body Actiontemplate) (*Actiontemp
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Actiontemplate" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1623,7 +1711,11 @@ func (a JourneyApi) PostJourneyOutcomes(body Outcome) (*Outcome, *APIResponse, e
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Outcome" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }
@@ -1689,7 +1781,11 @@ func (a JourneyApi) PostJourneySegments(body Journeysegment) (*Journeysegment, *
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		err = json.Unmarshal([]byte(response.RawBody), &successPayload)
+		if "Journeysegment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
 	}
 	return successPayload, response, err
 }

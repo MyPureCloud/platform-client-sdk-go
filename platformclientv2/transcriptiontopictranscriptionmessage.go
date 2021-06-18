@@ -6,14 +6,10 @@ import (
 	"strings"
 )
 
-// Transcriptionstopictranscriptionmessage
-type Transcriptionstopictranscriptionmessage struct { 
+// Transcriptiontopictranscriptionmessage
+type Transcriptiontopictranscriptionmessage struct { 
 	// EventTime
 	EventTime *time.Time `json:"eventTime,omitempty"`
-
-
-	// BatchIntervalMs
-	BatchIntervalMs *int `json:"batchIntervalMs,omitempty"`
 
 
 	// OrganizationId
@@ -28,17 +24,25 @@ type Transcriptionstopictranscriptionmessage struct {
 	CommunicationId *string `json:"communicationId,omitempty"`
 
 
-	// SessionId
-	SessionId *string `json:"sessionId,omitempty"`
+	// SessionStartTimeMs
+	SessionStartTimeMs *int `json:"sessionStartTimeMs,omitempty"`
+
+
+	// TranscriptionStartTimeMs
+	TranscriptionStartTimeMs *int `json:"transcriptionStartTimeMs,omitempty"`
 
 
 	// Transcripts
-	Transcripts *[]Transcriptionstopictranscriptresult `json:"transcripts,omitempty"`
+	Transcripts *[]Transcriptiontopictranscriptresult `json:"transcripts,omitempty"`
+
+
+	// Status
+	Status *Transcriptiontopictranscriptionrequeststatus `json:"status,omitempty"`
 
 }
 
 // String returns a JSON representation of the model
-func (o *Transcriptionstopictranscriptionmessage) String() string {
+func (o *Transcriptiontopictranscriptionmessage) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

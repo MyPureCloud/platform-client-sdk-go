@@ -91,6 +91,10 @@ type Evaluationqualityv2topicevaluationv2 struct {
 	// MediaType
 	MediaType *[]string `json:"mediaType,omitempty"`
 
+
+	// Calibration
+	Calibration *Evaluationqualityv2topiccalibration `json:"calibration,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

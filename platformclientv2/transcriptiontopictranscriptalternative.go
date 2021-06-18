@@ -5,10 +5,18 @@ import (
 	"strings"
 )
 
-// Transcriptionstopictranscriptalternative
-type Transcriptionstopictranscriptalternative struct { 
+// Transcriptiontopictranscriptalternative
+type Transcriptiontopictranscriptalternative struct { 
 	// Confidence
 	Confidence *float32 `json:"confidence,omitempty"`
+
+
+	// OffsetMs
+	OffsetMs *int `json:"offsetMs,omitempty"`
+
+
+	// DurationMs
+	DurationMs *int `json:"durationMs,omitempty"`
 
 
 	// Transcript
@@ -16,12 +24,12 @@ type Transcriptionstopictranscriptalternative struct {
 
 
 	// Words
-	Words *[]Transcriptionstopictranscriptword `json:"words,omitempty"`
+	Words *[]Transcriptiontopictranscriptword `json:"words,omitempty"`
 
 }
 
 // String returns a JSON representation of the model
-func (o *Transcriptionstopictranscriptalternative) String() string {
+func (o *Transcriptiontopictranscriptalternative) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

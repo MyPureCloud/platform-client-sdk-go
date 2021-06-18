@@ -16,6 +16,10 @@ type Team struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// Division - The division to which this entity belongs.
+	Division *Division `json:"division,omitempty"`
+
+
 	// Description - Team information.
 	Description *string `json:"description,omitempty"`
 

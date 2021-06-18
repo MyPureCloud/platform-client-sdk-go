@@ -5,8 +5,8 @@ import (
 	"strings"
 )
 
-// Transcriptionstopictranscriptword
-type Transcriptionstopictranscriptword struct { 
+// Transcriptiontopictranscriptword
+type Transcriptiontopictranscriptword struct { 
 	// Confidence
 	Confidence *float32 `json:"confidence,omitempty"`
 
@@ -29,7 +29,7 @@ type Transcriptionstopictranscriptword struct {
 }
 
 // String returns a JSON representation of the model
-func (o *Transcriptionstopictranscriptword) String() string {
+func (o *Transcriptiontopictranscriptword) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

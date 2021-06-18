@@ -6,7 +6,7 @@ import (
 	"encoding/hex"
 	"encoding/json"
 	"fmt"
-	"github.com/rjeczalik/notify"
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 	"io/ioutil"
 	"net/http"
@@ -280,39 +280,45 @@ func getConfigInt(section, key string) int {
 }
 
 func (c *Configuration) periodicConfigUpdater() {
-	notificationChannel := make(chan notify.EventInfo, 1)
-	// Set up a watchpoint listening on events within the parent directory of the config file.
-	watchedDirectory := filepath.Dir(c.ConfigFilePath)
-	err := notify.Watch(watchedDirectory+ "/...", notificationChannel, notify.Write)
-	// If an error is returned and the error indicates that the directory doesn't exist
-	// enter a loop and try to watch subsequent parent directories until an unrecoverable error is returned or no error is returned
+	watcher, err := fsnotify.NewWatcher()
 	if err != nil {
-		for ok := true; ok; ok = err != nil {
-			errorType := strings.Split(err.Error(), " ")[0]
-			// This error indicates the directory doesn't exist
-			if errorType == "lstat" {
-				watchedDirectory = filepath.Dir(watchedDirectory)
-			} else {
-				return
-			}
-			err = notify.Watch(watchedDirectory+ "/...", notificationChannel, notify.Write)
-		}
+		return
 	}
-	defer notify.Stop(notificationChannel)
-	
-	// Wait for events
-	for {
-		select {
-		case event := <-notificationChannel:
-			if !c.AutoReloadConfig {
-				return
-			}
-			// Only act on updates to the config file.
-			if event.Path() == c.ConfigFilePath {
-				_ = c.updateConfigFromFile()
+	defer watcher.Close()
+
+	done := make(chan bool)
+	go func() {
+		for {
+			select {
+			case event, ok := <-watcher.Events:
+				if !ok {
+					return
+				}
+				if event.Op&fsnotify.Write == fsnotify.Write ||
+					event.Op&fsnotify.Create == fsnotify.Create {
+						if !c.AutoReloadConfig {
+							return
+						}
+						// Only act on updates to the config file.
+						if event.Name == c.ConfigFilePath {
+							_ = c.updateConfigFromFile()
+						}
+				}
+			case _, ok := <-watcher.Errors:
+				if !ok {
+					return
+				}
 			}
 		}
+	}()
+
+	watchedDirectory := filepath.Dir(c.ConfigFilePath)
+	err = watcher.Add(watchedDirectory)
+	if err != nil {
+		return
 	}
+
+	<-done
 }
 
 func getFileHash(filePath string) (string, error) {

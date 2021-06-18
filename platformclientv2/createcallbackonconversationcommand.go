@@ -43,6 +43,14 @@ type Createcallbackonconversationcommand struct {
 	// Data - A map of key-value pairs containing additional data that can be associated to the callback. These values will appear in the attributes property on the conversation participant. Example: { \"notes\": \"ready to close the deal!\", \"customerPreferredName\": \"Doc\" }
 	Data *map[string]string `json:"data,omitempty"`
 
+
+	// CallerId - The phone number displayed to recipients when a phone call is placed as part of the callback. Must conform to the E.164 format. May be overridden by other settings in the system such as external trunk settings. Telco support for \"callerId\" varies.
+	CallerId *string `json:"callerId,omitempty"`
+
+
+	// CallerIdName - The name displayed to recipients when a phone call is placed as part of the callback. May be overridden by other settings in the system such as external trunk settings. Telco support for \"callerIdName\" varies.
+	CallerIdName *string `json:"callerIdName,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

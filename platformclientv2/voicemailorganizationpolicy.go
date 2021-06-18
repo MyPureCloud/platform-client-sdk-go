@@ -32,6 +32,10 @@ type Voicemailorganizationpolicy struct {
 	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 
 
+	// DisableEmailPii - Removes any PII from emails. This overrides any analogous group configuration value. This is always true if HIPAA is enabled or unknown for an organization.
+	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
+
+
 	// ModifiedDate - The date the policy was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 

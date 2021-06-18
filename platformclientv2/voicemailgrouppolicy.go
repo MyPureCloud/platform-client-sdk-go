@@ -23,6 +23,10 @@ type Voicemailgrouppolicy struct {
 	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 
 
+	// DisableEmailPii - Removes any PII from group emails. This is overridden by the analogous organization configuration value. This is always true if HIPAA is enabled or unknown for an organization.
+	DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
+
+
 	// RotateCallsSecs - How many seconds to ring before rotating to the next member in the group
 	RotateCallsSecs *int `json:"rotateCallsSecs,omitempty"`
 

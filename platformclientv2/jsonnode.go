@@ -7,12 +7,12 @@ import (
 
 // Jsonnode
 type Jsonnode struct { 
-	// NodeType
-	NodeType *string `json:"nodeType,omitempty"`
-
-
 	// Float
 	Float *bool `json:"float,omitempty"`
+
+
+	// NodeType
+	NodeType *string `json:"nodeType,omitempty"`
 
 
 	// Number
