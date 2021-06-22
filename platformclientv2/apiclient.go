@@ -143,11 +143,7 @@ func (c *APIClient) CallAPI(path string, method string,
 		}
 	}
 
-	var requestBody []byte
-	if request.Body != nil {
-		requestBody, _ = ioutil.ReadAll(request.Body)
-	}
-	request.Body = ioutil.NopCloser(bytes.NewReader(requestBody))
+	requestBody, _ := request.BodyBytes()
 
 	// Execute request
 	res, err := c.client.Do(&request)
