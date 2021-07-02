@@ -44,6 +44,10 @@ type Knowledgebase struct {
 	ArticleCount *int `json:"articleCount,omitempty"`
 
 
+	// Published - Flag that indicates the knowledge base is published
+	Published *bool `json:"published,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

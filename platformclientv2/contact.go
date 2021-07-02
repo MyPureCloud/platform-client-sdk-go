@@ -30,6 +30,10 @@ type Contact struct {
 	// CountryCode
 	CountryCode *string `json:"countryCode,omitempty"`
 
+
+	// Integration - Integration tag value if this number is associated with an external integration.
+	Integration *string `json:"integration,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

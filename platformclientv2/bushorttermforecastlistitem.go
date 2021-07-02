@@ -36,6 +36,10 @@ type Bushorttermforecastlistitem struct {
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
 
+	// CanUseForScheduling - Whether this forecast can be used for scheduling
+	CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

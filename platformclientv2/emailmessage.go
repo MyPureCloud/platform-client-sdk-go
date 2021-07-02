@@ -32,6 +32,10 @@ type Emailmessage struct {
 	From *Emailaddress `json:"from,omitempty"`
 
 
+	// ReplyTo - The receiver of the reply email message.
+	ReplyTo *Emailaddress `json:"replyTo,omitempty"`
+
+
 	// Subject - The subject of the email message.
 	Subject *string `json:"subject,omitempty"`
 

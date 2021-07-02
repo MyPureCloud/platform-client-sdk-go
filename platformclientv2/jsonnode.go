@@ -23,12 +23,12 @@ type Jsonnode struct {
 	ValueNode *bool `json:"valueNode,omitempty"`
 
 
-	// FloatingPointNumber
-	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
-
-
 	// ContainerNode
 	ContainerNode *bool `json:"containerNode,omitempty"`
+
+
+	// FloatingPointNumber
+	FloatingPointNumber *bool `json:"floatingPointNumber,omitempty"`
 
 
 	// MissingNode

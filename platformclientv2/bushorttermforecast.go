@@ -36,6 +36,10 @@ type Bushorttermforecast struct {
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
 
+	// CanUseForScheduling - Whether this forecast can be used for scheduling
+	CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
+
+
 	// ReferenceStartDate - The reference start date for interval-based data for this forecast. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ReferenceStartDate *time.Time `json:"referenceStartDate,omitempty"`
 

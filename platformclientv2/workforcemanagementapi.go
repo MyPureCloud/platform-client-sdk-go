@@ -2671,6 +2671,93 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 	return successPayload, response, err
 }
 
+// GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/longtermforecastdata
+//
+// Get the result of a long term forecast calculation
+//
+// Includes modifications unless you pass the doNotApplyModifications query parameter
+func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata(businessUnitId string, weekDateId time.Time, forecastId string, forceDownloadService bool) (*Longtermforecastresultresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/longtermforecastdata"
+	path = strings.Replace(path, "{businessUnitId}", fmt.Sprintf("%v", businessUnitId), -1)
+	path = strings.Replace(path, "{weekDateId}", fmt.Sprintf("%v", weekDateId), -1)
+	path = strings.Replace(path, "{forecastId}", fmt.Sprintf("%v", forecastId), -1)
+	defaultReturn := new(Longtermforecastresultresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'businessUnitId' is set
+	if &businessUnitId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'businessUnitId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata")
+	}
+	// verify the required parameter 'weekDateId' is set
+	if &weekDateId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'weekDateId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata")
+	}
+	// verify the required parameter 'forecastId' is set
+	if &forecastId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'forecastId' when calling WorkforceManagementApi->GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["forceDownloadService"] = a.Configuration.APIClient.ParameterToString(forceDownloadService, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Longtermforecastresultresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Longtermforecastresultresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups invokes GET /api/v2/workforcemanagement/businessunits/{businessUnitId}/weeks/{weekDateId}/shorttermforecasts/{forecastId}/planninggroups
 //
 // Gets the forecast planning group snapshot

@@ -14,6 +14,10 @@ type Generatebuforecastrequest struct {
 	// WeekCount - The number of weeks this forecast covers
 	WeekCount *int `json:"weekCount,omitempty"`
 
+
+	// CanUseForScheduling - Whether this forecast can be used for scheduling
+	CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

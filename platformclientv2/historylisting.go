@@ -72,16 +72,16 @@ type Historylisting struct {
 	Entities *[]Historyentry `json:"entities,omitempty"`
 
 
-	// PageNumber
-	PageNumber *int `json:"pageNumber,omitempty"`
-
-
 	// Total
 	Total *int `json:"total,omitempty"`
 
 
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
+
+
+	// PageNumber
+	PageNumber *int `json:"pageNumber,omitempty"`
 
 
 	// PageCount

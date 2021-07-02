@@ -14,6 +14,10 @@ type Buforecasttimeseriesresult struct {
 	// ForecastingMethod - The forecasting method that was used for this metric
 	ForecastingMethod *string `json:"forecastingMethod,omitempty"`
 
+
+	// ForecastType - The forecasting type in this forecast result
+	ForecastType *string `json:"forecastType,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

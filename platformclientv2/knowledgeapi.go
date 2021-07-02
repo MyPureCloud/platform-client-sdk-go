@@ -876,7 +876,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // Get knowledge bases
 //
 // 
-func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string, name string, coreLanguage string) (*Knowledgebaselisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string, name string, coreLanguage string, published bool) (*Knowledgebaselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases"
@@ -914,6 +914,8 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 	queryParams["coreLanguage"] = a.Configuration.APIClient.ParameterToString(coreLanguage, "")
+	
+	queryParams["published"] = a.Configuration.APIClient.ParameterToString(published, "")
 	
 
 	// to determine the Content-Type header

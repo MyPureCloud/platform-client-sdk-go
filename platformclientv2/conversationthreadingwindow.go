@@ -14,6 +14,10 @@ type Conversationthreadingwindow struct {
 	// Settings - The conversation threading window timeout (Minutes) for each messaging type
 	Settings *[]Conversationthreadingwindowsetting `json:"settings,omitempty"`
 
+
+	// DefaultTimeoutMinutes - The default conversation threading window timeout (Minutes)
+	DefaultTimeoutMinutes *int `json:"defaultTimeoutMinutes,omitempty"`
+
 }
 
 // String returns a JSON representation of the model
