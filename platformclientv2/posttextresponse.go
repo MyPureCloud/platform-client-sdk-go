@@ -42,6 +42,10 @@ type Posttextresponse struct {
 	// GenesysBotConnector - Raw data response from Genesys' BotConnector (if called)
 	GenesysBotConnector *map[string]interface{} `json:"genesysBotConnector,omitempty"`
 
+
+	// NuanceMixDlg - Raw data response from Nuance Mix Dlg (if called)
+	NuanceMixDlg *map[string]interface{} `json:"nuanceMixDlg,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

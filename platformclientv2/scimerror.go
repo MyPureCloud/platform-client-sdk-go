@@ -7,6 +7,10 @@ import (
 
 // Scimerror - Defines a SCIM error.
 type Scimerror struct { 
+	// Schemas - The list of schemas for the SCIM error.
+	Schemas *[]string `json:"schemas,omitempty"`
+
+
 	// Status - The HTTP status code returned for the SCIM error.
 	Status *string `json:"status,omitempty"`
 
@@ -17,10 +21,6 @@ type Scimerror struct {
 
 	// Detail - The detailed description of the SCIM error.
 	Detail *string `json:"detail,omitempty"`
-
-
-	// Schemas - The list of schemas for the SCIM error.
-	Schemas *[]string `json:"schemas,omitempty"`
 
 }
 

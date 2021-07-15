@@ -69,7 +69,7 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -78,8 +78,8 @@ func (a SCIMApi) DeleteScimUser(userId string, ifMatch string) (*Empty, *APIResp
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -147,7 +147,7 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIRe
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -156,8 +156,8 @@ func (a SCIMApi) DeleteScimV2User(userId string, ifMatch string) (*Empty, *APIRe
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -229,7 +229,7 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -238,8 +238,8 @@ func (a SCIMApi) GetScimGroup(groupId string, attributes []string, excludedAttri
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -311,7 +311,7 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -320,8 +320,8 @@ func (a SCIMApi) GetScimGroups(startIndex int, count int, attributes []string, e
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -385,7 +385,7 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -394,8 +394,8 @@ func (a SCIMApi) GetScimResourcetype(resourceType string) (*Scimconfigresourcety
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -453,7 +453,7 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -462,8 +462,8 @@ func (a SCIMApi) GetScimResourcetypes() (*Scimconfigresourcetypeslistresponse, *
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -527,7 +527,7 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -536,8 +536,8 @@ func (a SCIMApi) GetScimSchema(schemaId string) (*Scimv2schemadefinition, *APIRe
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -597,7 +597,7 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -606,8 +606,8 @@ func (a SCIMApi) GetScimSchemas(filter string) (*Scimv2schemalistresponse, *APIR
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -665,7 +665,7 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -674,8 +674,8 @@ func (a SCIMApi) GetScimServiceproviderconfig(ifNoneMatch string) (*Scimservicep
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -747,7 +747,7 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -756,8 +756,8 @@ func (a SCIMApi) GetScimUser(userId string, attributes []string, excludedAttribu
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -829,7 +829,7 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -838,8 +838,8 @@ func (a SCIMApi) GetScimUsers(startIndex int, count int, attributes []string, ex
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -907,7 +907,7 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -916,8 +916,8 @@ func (a SCIMApi) GetScimV2Group(groupId string, attributes []string, excludedAtt
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -994,7 +994,7 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1003,8 +1003,8 @@ func (a SCIMApi) GetScimV2Groups(filter string, startIndex int, count int, attri
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1068,7 +1068,7 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1077,8 +1077,8 @@ func (a SCIMApi) GetScimV2Resourcetype(resourceType string) (*Scimconfigresource
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1136,7 +1136,7 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1145,8 +1145,8 @@ func (a SCIMApi) GetScimV2Resourcetypes() (*Scimconfigresourcetypeslistresponse,
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1210,7 +1210,7 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1219,8 +1219,8 @@ func (a SCIMApi) GetScimV2Schema(schemaId string) (*Scimv2schemadefinition, *API
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1280,7 +1280,7 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1289,8 +1289,8 @@ func (a SCIMApi) GetScimV2Schemas(filter string) (*Scimv2schemalistresponse, *AP
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1348,7 +1348,7 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1357,8 +1357,8 @@ func (a SCIMApi) GetScimV2Serviceproviderconfig(ifNoneMatch string) (*Scimservic
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1430,7 +1430,7 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1439,8 +1439,8 @@ func (a SCIMApi) GetScimV2User(userId string, attributes []string, excludedAttri
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1512,7 +1512,7 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1521,8 +1521,8 @@ func (a SCIMApi) GetScimV2Users(startIndex int, count int, attributes []string, 
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1591,7 +1591,7 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1600,8 +1600,8 @@ func (a SCIMApi) PatchScimGroup(groupId string, body Scimv2patchrequest, ifMatch
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1677,7 +1677,7 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1686,8 +1686,8 @@ func (a SCIMApi) PatchScimUser(userId string, body Scimv2patchrequest, ifMatch s
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1763,7 +1763,7 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1772,8 +1772,8 @@ func (a SCIMApi) PatchScimV2Group(groupId string, body Scimv2patchrequest, ifMat
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1849,7 +1849,7 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1858,8 +1858,8 @@ func (a SCIMApi) PatchScimV2User(userId string, body Scimv2patchrequest, ifMatch
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -1929,7 +1929,7 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -1938,8 +1938,8 @@ func (a SCIMApi) PostScimUsers(body Scimv2createuser) (*Scimv2user, *APIResponse
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -2005,7 +2005,7 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2014,8 +2014,8 @@ func (a SCIMApi) PostScimV2Users(body Scimv2createuser) (*Scimv2user, *APIRespon
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -2087,7 +2087,7 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2096,8 +2096,8 @@ func (a SCIMApi) PutScimGroup(groupId string, body Scimv2group, ifMatch string) 
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -2173,7 +2173,7 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2182,8 +2182,8 @@ func (a SCIMApi) PutScimUser(userId string, body Scimv2user, ifMatch string) (*S
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -2259,7 +2259,7 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2268,8 +2268,8 @@ func (a SCIMApi) PutScimV2Group(groupId string, body Scimv2group, ifMatch string
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header
@@ -2345,7 +2345,7 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 	
 
 	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json", "application/scim+json",  }
+	localVarHttpContentTypes := []string{ "application/scim+json", "application/json",  }
 
 	// set Content-Type header
 	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
@@ -2354,8 +2354,8 @@ func (a SCIMApi) PutScimV2User(userId string, body Scimv2user, ifMatch string) (
 	}
 	// to determine the Accept header
 	localVarHttpHeaderAccepts := []string{
-		"application/json",
-"application/scim+json",
+		"application/scim+json",
+"application/json",
 	}
 
 	// set Accept header

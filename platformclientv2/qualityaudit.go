@@ -27,12 +27,12 @@ type Qualityaudit struct {
 	Action *string `json:"action,omitempty"`
 
 
-	// Level
-	Level *string `json:"level,omitempty"`
-
-
 	// Entity
 	Entity *Auditentity `json:"entity,omitempty"`
+
+
+	// Level
+	Level *string `json:"level,omitempty"`
 
 
 	// Timestamp

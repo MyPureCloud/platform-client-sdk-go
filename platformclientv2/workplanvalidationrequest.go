@@ -127,6 +127,10 @@ type Workplanvalidationrequest struct {
 	Agents *[]Deletableuserreference `json:"agents,omitempty"`
 
 
+	// AgentCount - Number of agents in this work plan
+	AgentCount *int `json:"agentCount,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

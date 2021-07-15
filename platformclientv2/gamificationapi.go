@@ -363,7 +363,7 @@ func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoi
 // Gamified metric by id
 //
 // 
-func (a GamificationApi) GetGamificationMetric(metricId string, performanceProfileId string) (*Metric, *APIResponse, error) {
+func (a GamificationApi) GetGamificationMetric(metricId string, workday time.Time, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metrics/{metricId}"
@@ -395,6 +395,8 @@ func (a GamificationApi) GetGamificationMetric(metricId string, performanceProfi
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
 	queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, "")
 	
@@ -578,7 +580,7 @@ func (a GamificationApi) GetGamificationMetricdefinitions() (*Getmetricdefinitio
 // All gamified metrics for a given profile
 //
 // 
-func (a GamificationApi) GetGamificationMetrics(performanceProfileId string) (*Getmetricsresponse, *APIResponse, error) {
+func (a GamificationApi) GetGamificationMetrics(performanceProfileId string, workday time.Time) (*Getmetricsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metrics"
@@ -606,6 +608,8 @@ func (a GamificationApi) GetGamificationMetrics(performanceProfileId string) (*G
 	}
 	
 	queryParams["performanceProfileId"] = a.Configuration.APIClient.ParameterToString(performanceProfileId, "")
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
 	
 
 	// to determine the Content-Type header

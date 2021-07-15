@@ -127,6 +127,10 @@ type Workplan struct {
 	Agents *[]Deletableuserreference `json:"agents,omitempty"`
 
 
+	// AgentCount - Number of agents in this work plan
+	AgentCount *int `json:"agentCount,omitempty"`
+
+
 	// Metadata - Version metadata for this work plan
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 

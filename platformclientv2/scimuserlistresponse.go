@@ -7,6 +7,10 @@ import (
 
 // Scimuserlistresponse - Defines a response for a list of SCIM users.
 type Scimuserlistresponse struct { 
+	// Schemas - The list of supported schemas.
+	Schemas *[]string `json:"schemas,omitempty"`
+
+
 	// TotalResults - The total number of results.
 	TotalResults *int `json:"totalResults,omitempty"`
 
@@ -21,10 +25,6 @@ type Scimuserlistresponse struct {
 
 	// Resources - The list of requested resources. If \"count\" is 0, then the list will be empty.
 	Resources *[]Scimv2user `json:"Resources,omitempty"`
-
-
-	// Schemas - The list of supported schemas.
-	Schemas *[]string `json:"schemas,omitempty"`
 
 }
 

@@ -430,6 +430,46 @@ type Viewfilter struct {
 	// IsAuthenticated - Indicates filtering for the authenticated chat
 	IsAuthenticated *bool `json:"isAuthenticated,omitempty"`
 
+
+	// BotIds - The list of bot IDs used to filter bot views
+	BotIds *[]string `json:"botIds,omitempty"`
+
+
+	// BotVersions - The list of bot versions used to filter bot views
+	BotVersions *[]string `json:"botVersions,omitempty"`
+
+
+	// BotMessageTypes - The list of bot message types used to filter bot views
+	BotMessageTypes *[]string `json:"botMessageTypes,omitempty"`
+
+
+	// BotProviderList - The list of bot providers used to filter bot views
+	BotProviderList *[]string `json:"botProviderList,omitempty"`
+
+
+	// BotProductList - The list of bot products used to filter bot views
+	BotProductList *[]string `json:"botProductList,omitempty"`
+
+
+	// BotRecognitionFailureReasonList - The list of bot recognition failure reasons used to filter bot views
+	BotRecognitionFailureReasonList *[]string `json:"botRecognitionFailureReasonList,omitempty"`
+
+
+	// BotIntentList - The list of bot intents used to filter bot views
+	BotIntentList *[]string `json:"botIntentList,omitempty"`
+
+
+	// BotFinalIntentList - The list of bot final intents used to filter bot views
+	BotFinalIntentList *[]string `json:"botFinalIntentList,omitempty"`
+
+
+	// BotSlotList - The list of bot slots used to filter bot views
+	BotSlotList *[]string `json:"botSlotList,omitempty"`
+
+
+	// BotResultList - The list of bot results used to filter bot views
+	BotResultList *[]string `json:"botResultList,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

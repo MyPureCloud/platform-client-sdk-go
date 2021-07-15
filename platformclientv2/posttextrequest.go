@@ -47,16 +47,20 @@ type Posttextrequest struct {
 	MessagingPlatformType *string `json:"messagingPlatformType,omitempty"`
 
 
-	// AmazonLexRequest
+	// AmazonLexRequest - Provider specific settings, if any
 	AmazonLexRequest *Amazonlexrequest `json:"amazonLexRequest,omitempty"`
 
 
-	// GoogleDialogflow
+	// GoogleDialogflow - Provider specific settings, if any
 	GoogleDialogflow *Googledialogflowcustomsettings `json:"googleDialogflow,omitempty"`
 
 
-	// GenesysBotConnector
+	// GenesysBotConnector - Provider specific settings, if any
 	GenesysBotConnector *Genesysbotconnector `json:"genesysBotConnector,omitempty"`
+
+
+	// NuanceMixDlg - Provider specific settings, if any
+	NuanceMixDlg *Nuancemixdlgsettings `json:"nuanceMixDlg,omitempty"`
 
 }
 

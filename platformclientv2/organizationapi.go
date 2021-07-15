@@ -527,16 +527,89 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespace(namespaceName string) (
 	return successPayload, response, err
 }
 
+// GetOrganizationsLimitsNamespaceDefaults invokes GET /api/v2/organizations/limits/namespaces/{namespaceName}/defaults
+//
+// Get the default limits in a namespace for an organization
+//
+// 
+func (a OrganizationApi) GetOrganizationsLimitsNamespaceDefaults(namespaceName string) (*Limitsentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/organizations/limits/namespaces/{namespaceName}/defaults"
+	path = strings.Replace(path, "{namespaceName}", fmt.Sprintf("%v", namespaceName), -1)
+	defaultReturn := new(Limitsentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'namespaceName' is set
+	if &namespaceName == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'namespaceName' when calling OrganizationApi->GetOrganizationsLimitsNamespaceDefaults")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Limitsentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Limitsentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetOrganizationsLimitsNamespaces invokes GET /api/v2/organizations/limits/namespaces
 //
 // Get the available limit namespaces
 //
 // 
-func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumber int) (*Limitsentitylisting, *APIResponse, error) {
+func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumber int) (*Pagednamespacelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/organizations/limits/namespaces"
-	defaultReturn := new(Limitsentitylisting)
+	defaultReturn := new(Pagednamespacelisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -582,14 +655,14 @@ func (a OrganizationApi) GetOrganizationsLimitsNamespaces(pageSize int, pageNumb
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Limitsentitylisting
+	var successPayload *Pagednamespacelisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Limitsentitylisting" == "string" {
+		if "Pagednamespacelisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

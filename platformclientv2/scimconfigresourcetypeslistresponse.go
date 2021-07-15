@@ -7,6 +7,10 @@ import (
 
 // Scimconfigresourcetypeslistresponse - Defines a response for a list of SCIM resource types.
 type Scimconfigresourcetypeslistresponse struct { 
+	// Schemas - The list of supported schemas.
+	Schemas *[]string `json:"schemas,omitempty"`
+
+
 	// TotalResults - The total number of results.
 	TotalResults *int `json:"totalResults,omitempty"`
 
@@ -21,10 +25,6 @@ type Scimconfigresourcetypeslistresponse struct {
 
 	// Resources - The list of requested resources.
 	Resources *[]Scimconfigresourcetype `json:"Resources,omitempty"`
-
-
-	// Schemas - The list of supported schemas.
-	Schemas *[]string `json:"schemas,omitempty"`
 
 }
 

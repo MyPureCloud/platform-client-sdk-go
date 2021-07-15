@@ -13,7 +13,7 @@ type Leaderboard struct {
 
 
 	// Metric - The metric id if the leaderboard is about a specific metric
-	Metric *Metric `json:"metric,omitempty"`
+	Metric *Addressableentityref `json:"metric,omitempty"`
 
 
 	// DateStartWorkday - Start workday used as the date range. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd

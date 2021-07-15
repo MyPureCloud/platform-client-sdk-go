@@ -39,12 +39,12 @@ type Learningassignmentuserlisting struct {
 	NextUri *string `json:"nextUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// PageCount

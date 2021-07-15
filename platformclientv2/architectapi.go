@@ -3967,12 +3967,12 @@ func (a ArchitectApi) GetFlowsDatatableImportJob(datatableId string, importJobId
 // Get all recent import jobs
 //
 // Get all recent import jobs
-func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber int, pageSize int) (*Entitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber int, pageSize int) (*Datatableimportentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}/import/jobs"
 	path = strings.Replace(path, "{datatableId}", fmt.Sprintf("%v", datatableId), -1)
-	defaultReturn := new(Entitylisting)
+	defaultReturn := new(Datatableimportentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4023,14 +4023,14 @@ func (a ArchitectApi) GetFlowsDatatableImportJobs(datatableId string, pageNumber
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Entitylisting
+	var successPayload *Datatableimportentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Entitylisting" == "string" {
+		if "Datatableimportentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

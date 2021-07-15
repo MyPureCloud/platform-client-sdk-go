@@ -48,6 +48,10 @@ type Outboundsettings struct {
 	ComplianceAbandonRateDenominator *string `json:"complianceAbandonRateDenominator,omitempty"`
 
 
+	// AutomaticTimeZoneMapping - The settings for automatic time zone mapping. Note that changing these settings will change them for both voice and messaging campaigns.
+	AutomaticTimeZoneMapping *Automatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

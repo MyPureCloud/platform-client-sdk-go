@@ -7,6 +7,10 @@ import (
 
 // Scimv2schemalistresponse - Defines the list response for SCIM resource types.
 type Scimv2schemalistresponse struct { 
+	// Schemas - The list of supported schemas.
+	Schemas *[]string `json:"schemas,omitempty"`
+
+
 	// TotalResults - The total number of results.
 	TotalResults *int `json:"totalResults,omitempty"`
 
@@ -21,10 +25,6 @@ type Scimv2schemalistresponse struct {
 
 	// Resources - The list of requested resources.
 	Resources *[]Scimv2schemadefinition `json:"Resources,omitempty"`
-
-
-	// Schemas - The list of supported schemas.
-	Schemas *[]string `json:"schemas,omitempty"`
 
 }
 

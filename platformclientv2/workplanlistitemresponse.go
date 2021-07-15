@@ -127,12 +127,12 @@ type Workplanlistitemresponse struct {
 	Agents *[]Deletableuserreference `json:"agents,omitempty"`
 
 
-	// Metadata - Version metadata for this work plan
-	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
-
-
 	// AgentCount - Number of agents in this work plan.  Populate with expand=agentCount
 	AgentCount *int `json:"agentCount,omitempty"`
+
+
+	// Metadata - Version metadata for this work plan
+	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
 
 	// SelfUri - The URI for this object

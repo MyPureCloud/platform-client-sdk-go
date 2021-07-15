@@ -19,23 +19,23 @@ type Streetaddress struct {
 	A3 *string `json:"A3,omitempty"`
 
 
-	// RD
+	// RD - Number and street
 	RD *string `json:"RD,omitempty"`
 
 
-	// HNO
+	// HNO - House Number
 	HNO *string `json:"HNO,omitempty"`
 
 
-	// LOC
+	// LOC - extra location info like suite 300
 	LOC *string `json:"LOC,omitempty"`
 
 
-	// NAM
+	// NAM - Name of the customer
 	NAM *string `json:"NAM,omitempty"`
 
 
-	// PC
+	// PC - Postal code
 	PC *string `json:"PC,omitempty"`
 
 }

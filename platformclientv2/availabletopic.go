@@ -27,6 +27,10 @@ type Availabletopic struct {
 	RequiresDivisionPermissions *bool `json:"requiresDivisionPermissions,omitempty"`
 
 
+	// RequiresAnyValidator - If multiple permissions are required for this topic, such as both requiresCurrentUser and requiresDivisionPermissions, then true here indicates that meeting any one condition will satisfy the requirements; false indicates all conditions must be met.
+	RequiresAnyValidator *bool `json:"requiresAnyValidator,omitempty"`
+
+
 	// Enforced - Whether or not the permissions on this topic are enforced
 	Enforced *bool `json:"enforced,omitempty"`
 

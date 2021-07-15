@@ -2601,7 +2601,7 @@ func (a RecordingApi) PostRecordingBatchrequests(body Batchdownloadjobsubmission
 //
 // Create media retention policy
 //
-// 
+// Policy does not work retroactively
 func (a RecordingApi) PostRecordingCrossplatformMediaretentionpolicies(body Crossplatformpolicycreate) (*Crossplatformpolicy, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -2901,7 +2901,7 @@ func (a RecordingApi) PostRecordingLocalkeysSettings(body Localencryptionconfigu
 //
 // Create media retention policy
 //
-// 
+// Policy does not work retroactively
 func (a RecordingApi) PostRecordingMediaretentionpolicies(body Policycreate) (*Policy, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -3510,7 +3510,7 @@ func (a RecordingApi) PutOrphanrecording(orphanId string, body Orphanupdatereque
 //
 // Update a media retention policy
 //
-// 
+// Policy does not work retroactively
 func (a RecordingApi) PutRecordingCrossplatformMediaretentionpolicy(policyId string, body Crossplatformpolicy) (*Crossplatformpolicy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
@@ -3753,7 +3753,7 @@ func (a RecordingApi) PutRecordingLocalkeysSetting(settingsId string, body Local
 //
 // Update a media retention policy
 //
-// 
+// Policy does not work retroactively
 func (a RecordingApi) PutRecordingMediaretentionpolicy(policyId string, body Policy) (*Policy, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
