@@ -36,6 +36,10 @@ type Nludomain struct {
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 
+	// EngineVersion - The version of the NLU engine to use.
+	EngineVersion *string `json:"engineVersion,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

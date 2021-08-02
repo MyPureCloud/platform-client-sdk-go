@@ -68,6 +68,10 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 	SmsConfig *Outboundmessagingmessagingcampaignconfigchangesmsconfig `json:"smsConfig,omitempty"`
 
 
+	// EmailConfig
+	EmailConfig *Outboundmessagingmessagingcampaignconfigchangeemailconfig `json:"emailConfig,omitempty"`
+
+
 	// Errors
 	Errors *[]Outboundmessagingmessagingcampaignconfigchangeerrordetail `json:"errors,omitempty"`
 

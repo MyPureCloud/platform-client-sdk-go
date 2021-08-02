@@ -7,10 +7,6 @@ import (
 
 // Contentgeneric - Generic content object.
 type Contentgeneric struct { 
-	// Id - A unique ID assigned to this rich message content.
-	Id *string `json:"id,omitempty"`
-
-
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
 

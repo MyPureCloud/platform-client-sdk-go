@@ -76,6 +76,14 @@ type Analyticssession struct {
 	CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
 
 
+	// DeliveryStatus - The email delivery status
+	DeliveryStatus *string `json:"deliveryStatus,omitempty"`
+
+
+	// DeliveryStatusChangeDate - Date and time of the most recent delivery status change. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DeliveryStatusChangeDate *time.Time `json:"deliveryStatusChangeDate,omitempty"`
+
+
 	// Direction - The direction of the communication
 	Direction *string `json:"direction,omitempty"`
 
@@ -94,6 +102,10 @@ type Analyticssession struct {
 
 	// EdgeId - Unique identifier of the edge device
 	EdgeId *string `json:"edgeId,omitempty"`
+
+
+	// EligibleAgentCounts - Number of eligible agents for each predictive routing attempt
+	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
 
 	// FlowInType - Type of flow in that occurred when entering ACD.
@@ -254,6 +266,10 @@ type Analyticssession struct {
 
 	// VideoRoomId - A unique identifier for a PureCloud video room
 	VideoRoomId *string `json:"videoRoomId,omitempty"`
+
+
+	// WaitingInteractionCounts - Number of waiting interactions for each predictive routing attempt
+	WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
 
 
 	// ProposedAgents - Proposed agents

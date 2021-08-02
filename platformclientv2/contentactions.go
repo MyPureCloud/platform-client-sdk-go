@@ -18,14 +18,6 @@ type Contentactions struct {
 	// Textback - Text to be sent back in reply when the item is selected.
 	Textback *string `json:"textback,omitempty"`
 
-
-	// CommandName - Execute an organization's specific command.
-	CommandName *string `json:"commandName,omitempty"`
-
-
-	// Context - Additional context for the command.
-	Context *map[string]interface{} `json:"context,omitempty"`
-
 }
 
 // String returns a JSON representation of the model

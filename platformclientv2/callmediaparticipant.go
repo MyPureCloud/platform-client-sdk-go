@@ -180,6 +180,10 @@ type Callmediaparticipant struct {
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
+	// CoachedParticipantId - The ID of the participant being coached when performing a call coach.
+	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+
+
 	// ConsultParticipantId - The ID of the consult transfer target participant when performing a consult transfer.
 	ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 

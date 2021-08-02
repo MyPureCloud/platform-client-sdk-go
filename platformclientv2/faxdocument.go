@@ -36,6 +36,10 @@ type Faxdocument struct {
 	CreatedBy *Domainentityref `json:"createdBy,omitempty"`
 
 
+	// SharingUri
+	SharingUri *string `json:"sharingUri,omitempty"`
+
+
 	// ContentType
 	ContentType *string `json:"contentType,omitempty"`
 
@@ -66,10 +70,6 @@ type Faxdocument struct {
 
 	// Thumbnails
 	Thumbnails *[]Documentthumbnail `json:"thumbnails,omitempty"`
-
-
-	// SharingUri
-	SharingUri *string `json:"sharingUri,omitempty"`
 
 
 	// DownloadSharingUri

@@ -56,6 +56,10 @@ type Response struct {
 	MessagingTemplate *Messagingtemplate `json:"messagingTemplate,omitempty"`
 
 
+	// Assets - Assets used in the response
+	Assets *[]Addressableentityref `json:"assets,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

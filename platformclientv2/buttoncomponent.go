@@ -7,14 +7,6 @@ import (
 
 // Buttoncomponent - Structured template button object.
 type Buttoncomponent struct { 
-	// Id - The ID of this component.
-	Id *string `json:"id,omitempty"`
-
-
-	// Text - Deprecated - Use title instead.
-	Text *string `json:"text,omitempty"`
-
-
 	// Title - Text to show inside the button.
 	Title *string `json:"title,omitempty"`
 

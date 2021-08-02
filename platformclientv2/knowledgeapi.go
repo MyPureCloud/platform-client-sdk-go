@@ -272,6 +272,84 @@ func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocument(documentId st
 	return successPayload, response, err
 }
 
+// DeleteKnowledgeKnowledgebaseLanguageDocumentsImport invokes DELETE /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
+//
+// Delete import operation
+//
+// 
+func (a KnowledgeApi) DeleteKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}"
+	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{importId}", fmt.Sprintf("%v", importId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'knowledgeBaseId' is set
+	if &knowledgeBaseId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'languageCode' is set
+	if &languageCode == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'importId' is set
+	if &importId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'importId' when calling KnowledgeApi->DeleteKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // GetKnowledgeKnowledgebase invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}
 //
 // Get knowledge base
@@ -689,6 +767,91 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Documentlisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetKnowledgeKnowledgebaseLanguageDocumentsImport invokes GET /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
+//
+// Get import operation report
+//
+// 
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string) (*Knowledgeimport, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}"
+	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{importId}", fmt.Sprintf("%v", importId), -1)
+	defaultReturn := new(Knowledgeimport)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'knowledgeBaseId' is set
+	if &knowledgeBaseId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'languageCode' is set
+	if &languageCode == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'importId' is set
+	if &importId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'importId' when calling KnowledgeApi->GetKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Knowledgeimport
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Knowledgeimport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1306,6 +1469,174 @@ func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocuments(knowledgeBase
 	return successPayload, response, err
 }
 
+// PatchKnowledgeKnowledgebaseLanguageDocumentsImport invokes PATCH /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}
+//
+// Start import operation
+//
+// 
+func (a KnowledgeApi) PatchKnowledgeKnowledgebaseLanguageDocumentsImport(knowledgeBaseId string, languageCode string, importId string, body Importstatusrequest) (*Knowledgeimport, *APIResponse, error) {
+	var httpMethod = "PATCH"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports/{importId}"
+	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	path = strings.Replace(path, "{importId}", fmt.Sprintf("%v", importId), -1)
+	defaultReturn := new(Knowledgeimport)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'knowledgeBaseId' is set
+	if &knowledgeBaseId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'languageCode' is set
+	if &languageCode == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'importId' is set
+	if &importId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'importId' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PatchKnowledgeKnowledgebaseLanguageDocumentsImport")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Knowledgeimport
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Knowledgeimport" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostKnowledgeDocumentuploads invokes POST /api/v2/knowledge/documentuploads
+//
+// Creates a presigned URL for uploading a knowledge import file with a set of documents
+//
+// 
+func (a KnowledgeApi) PostKnowledgeDocumentuploads(body Uploadurlrequest) (*Uploadurlresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/documentuploads"
+	defaultReturn := new(Uploadurlresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeDocumentuploads")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Uploadurlresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Uploadurlresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PostKnowledgeKnowledgebaseLanguageCategories invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/categories
 //
 // Create new category
@@ -1472,6 +1803,93 @@ func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseI
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Knowledgedocument" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostKnowledgeKnowledgebaseLanguageDocumentsImports invokes POST /api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports
+//
+// Create import operation
+//
+// 
+func (a KnowledgeApi) PostKnowledgeKnowledgebaseLanguageDocumentsImports(knowledgeBaseId string, languageCode string, body Knowledgeimport) (*Knowledgeimport, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents/imports"
+	path = strings.Replace(path, "{knowledgeBaseId}", fmt.Sprintf("%v", knowledgeBaseId), -1)
+	path = strings.Replace(path, "{languageCode}", fmt.Sprintf("%v", languageCode), -1)
+	defaultReturn := new(Knowledgeimport)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'knowledgeBaseId' is set
+	if &knowledgeBaseId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'knowledgeBaseId' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocumentsImports")
+	}
+	// verify the required parameter 'languageCode' is set
+	if &languageCode == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'languageCode' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocumentsImports")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling KnowledgeApi->PostKnowledgeKnowledgebaseLanguageDocumentsImports")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Knowledgeimport
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Knowledgeimport" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

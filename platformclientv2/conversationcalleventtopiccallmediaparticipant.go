@@ -180,6 +180,10 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
+	// CoachedParticipantId
+	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+
+
 	// ConsultParticipantId
 	ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 

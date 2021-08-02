@@ -27,6 +27,14 @@ type Salesforce struct {
 	SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
 
 
+	// SloURI
+	SloURI *string `json:"sloURI,omitempty"`
+
+
+	// SloBinding
+	SloBinding *string `json:"sloBinding,omitempty"`
+
+
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 

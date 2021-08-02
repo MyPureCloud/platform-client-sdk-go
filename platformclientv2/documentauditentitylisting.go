@@ -27,6 +27,10 @@ type Documentauditentitylisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -37,10 +41,6 @@ type Documentauditentitylisting struct {
 
 	// LastUri
 	LastUri *string `json:"lastUri,omitempty"`
-
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// PageCount

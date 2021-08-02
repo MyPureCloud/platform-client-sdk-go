@@ -4204,7 +4204,7 @@ func (a ArchitectApi) GetFlowsDatatableRows(datatableId string, pageNumber int, 
 // Retrieve a list of datatables for the org
 //
 // Returns a metadata list of the datatables associated with this org, including datatableId, name and description.
-func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int, pageSize int, sortBy string, sortOrder string, divisionId []string) (*Datatablesdomainentitylisting, *APIResponse, error) {
+func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int, pageSize int, sortBy string, sortOrder string, divisionId []string, name string) (*Datatablesdomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables"
@@ -4242,6 +4242,8 @@ func (a ArchitectApi) GetFlowsDatatables(expand string, pageNumber int, pageSize
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["divisionId"] = a.Configuration.APIClient.ParameterToString(divisionId, "multi")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
 
 	// to determine the Content-Type header

@@ -470,6 +470,10 @@ type Viewfilter struct {
 	// BotResultList - The list of bot results used to filter bot views
 	BotResultList *[]string `json:"botResultList,omitempty"`
 
+
+	// BlockedReasons - The list of blocked reason used to filter action map constraints views
+	BlockedReasons *[]string `json:"blockedReasons,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

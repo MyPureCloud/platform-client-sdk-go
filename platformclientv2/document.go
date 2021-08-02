@@ -48,6 +48,10 @@ type Document struct {
 	UploadedBy *Domainentityref `json:"uploadedBy,omitempty"`
 
 
+	// SharingUri
+	SharingUri *string `json:"sharingUri,omitempty"`
+
+
 	// ContentType
 	ContentType *string `json:"contentType,omitempty"`
 
@@ -118,10 +122,6 @@ type Document struct {
 
 	// SharingStatus
 	SharingStatus *string `json:"sharingStatus,omitempty"`
-
-
-	// SharingUri
-	SharingUri *string `json:"sharingUri,omitempty"`
 
 
 	// DownloadSharingUri
