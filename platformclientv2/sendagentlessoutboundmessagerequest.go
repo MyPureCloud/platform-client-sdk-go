@@ -15,7 +15,7 @@ type Sendagentlessoutboundmessagerequest struct {
 	ToAddress *string `json:"toAddress,omitempty"`
 
 
-	// ToAddressMessengerType - The recipient messaging address messenger type. Currently SMS is the only one supported. WhatsApp will be supported in a future release.
+	// ToAddressMessengerType - The recipient messaging address messenger type. Currently SMS and Open are the only supported types. WhatsApp will be supported in a future release
 	ToAddressMessengerType *string `json:"toAddressMessengerType,omitempty"`
 
 

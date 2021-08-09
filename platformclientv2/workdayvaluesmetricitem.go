@@ -8,7 +8,7 @@ import (
 // Workdayvaluesmetricitem
 type Workdayvaluesmetricitem struct { 
 	// MetricDefinition - Gamification metric for the average and the trend
-	MetricDefinition *Metricdefinition `json:"metricDefinition,omitempty"`
+	MetricDefinition *Domainentityref `json:"metricDefinition,omitempty"`
 
 
 	// Average - The average value of the metric

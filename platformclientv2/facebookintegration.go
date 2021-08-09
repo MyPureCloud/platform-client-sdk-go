@@ -24,6 +24,14 @@ type Facebookintegration struct {
 	PageId *string `json:"pageId,omitempty"`
 
 
+	// PageName - The name of the Facebook page
+	PageName *string `json:"pageName,omitempty"`
+
+
+	// PageProfileImageUrl - The url of the profile image of the Facebook page
+	PageProfileImageUrl *string `json:"pageProfileImageUrl,omitempty"`
+
+
 	// Status - The status of the Facebook Integration
 	Status *string `json:"status,omitempty"`
 

@@ -2658,7 +2658,7 @@ func (a RoutingApi) GetRoutingQueueMediatypeEstimatedwaittime(queueId string, me
 // Get the members of this queue.
 //
 // 
-func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageSize int, pageNumber int, sortBy string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string, memberBy string, joined bool) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/members"
@@ -2691,15 +2691,13 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageSize int, pageNum
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
-	
-	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
@@ -2712,6 +2710,10 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageSize int, pageNum
 	queryParams["routingStatus"] = a.Configuration.APIClient.ParameterToString(routingStatus, "multi")
 	
 	queryParams["presence"] = a.Configuration.APIClient.ParameterToString(presence, "multi")
+	
+	queryParams["memberBy"] = a.Configuration.APIClient.ParameterToString(memberBy, "")
+	
+	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
 	
 
 	// to determine the Content-Type header
@@ -2753,7 +2755,7 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageSize int, pageNum
 // DEPRECATED: use GET /routing/queues/{queueId}/members.  Get the members of this queue.
 //
 // 
-func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageSize int, pageNumber int, sortBy string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
@@ -2786,11 +2788,11 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageSize int, pageNumbe
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
 	
@@ -2925,7 +2927,7 @@ func (a RoutingApi) GetRoutingQueueWrapupcodes(queueId string, pageSize int, pag
 // Get list of queues.
 //
 // 
-func (a RoutingApi) GetRoutingQueues(pageSize int, pageNumber int, sortBy string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueues(pageNumber int, pageSize int, sortOrder string, name string, id []string, divisionId []string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues"
@@ -2952,11 +2954,11 @@ func (a RoutingApi) GetRoutingQueues(pageSize int, pageNumber int, sortBy string
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
-	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
 	
@@ -3160,7 +3162,7 @@ func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber in
 // Get a paged listing of queues the user is a member of.
 //
 // 
-func (a RoutingApi) GetRoutingQueuesMe(joined bool, pageSize int, pageNumber int, sortBy string, sortOrder string) (*Userqueueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueuesMe(pageNumber int, pageSize int, joined bool, sortOrder string) (*Userqueueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/me"
@@ -3187,13 +3189,11 @@ func (a RoutingApi) GetRoutingQueuesMe(joined bool, pageSize int, pageNumber int
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
 	
-	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
-	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	queryParams["joined"] = a.Configuration.APIClient.ParameterToString(joined, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
@@ -4499,13 +4499,13 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 //
 // Update attributes of an in-queue conversation
 //
-// Returns an object indicating the updated values of all settable attributes.  Supported attributes: priority (each point of priority is equivalent to one minute of time in queue).
-func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routingconversationattributes) (*Routingconversationattributes, *APIResponse, error) {
+// Returns an object indicating the updated values of all settable attributes. Supported attributes: priority (each point of priority is equivalent to one minute of time in queue), skillIds and languageId.
+func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routingconversationattributesrequest) (*Routingconversationattributesresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/conversations/{conversationId}"
 	path = strings.Replace(path, "{conversationId}", fmt.Sprintf("%v", conversationId), -1)
-	defaultReturn := new(Routingconversationattributes)
+	defaultReturn := new(Routingconversationattributesresponse)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -4560,14 +4560,14 @@ func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routing
 	// body params
 	postBody = &body
 
-	var successPayload *Routingconversationattributes
+	var successPayload *Routingconversationattributesresponse
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Routingconversationattributes" == "string" {
+		if "Routingconversationattributesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -4730,87 +4730,6 @@ func (a RoutingApi) PatchRoutingEmailDomainValidate(domainId string, body Inboun
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Inbounddomain" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
-// PatchRoutingEmailOutboundDomain invokes PATCH /api/v2/routing/email/outbound/domains/{domainId}
-//
-// Request an update of the emails from /replyTo of an outbound domain
-//
-// 
-func (a RoutingApi) PatchRoutingEmailOutboundDomain(domainId string, body Outbounddomain) (*Outbounddomain, *APIResponse, error) {
-	var httpMethod = "PATCH"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/routing/email/outbound/domains/{domainId}"
-	path = strings.Replace(path, "{domainId}", fmt.Sprintf("%v", domainId), -1)
-	defaultReturn := new(Outbounddomain)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'domainId' is set
-	if &domainId == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'domainId' when calling RoutingApi->PatchRoutingEmailOutboundDomain")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling RoutingApi->PatchRoutingEmailOutboundDomain")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Outbounddomain
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else {
-		if "Outbounddomain" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

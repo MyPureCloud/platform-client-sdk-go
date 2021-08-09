@@ -23,10 +23,6 @@ type Qualityaudit struct {
 	JobId *string `json:"jobId,omitempty"`
 
 
-	// Action
-	Action *string `json:"action,omitempty"`
-
-
 	// Level
 	Level *string `json:"level,omitempty"`
 
@@ -35,8 +31,8 @@ type Qualityaudit struct {
 	Entity *Auditentity `json:"entity,omitempty"`
 
 
-	// Changes
-	Changes *[]Change `json:"changes,omitempty"`
+	// Action
+	Action *string `json:"action,omitempty"`
 
 
 	// Timestamp
@@ -45,6 +41,10 @@ type Qualityaudit struct {
 
 	// Status
 	Status *string `json:"status,omitempty"`
+
+
+	// Changes
+	Changes *[]Change `json:"changes,omitempty"`
 
 
 	// EntityType

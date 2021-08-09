@@ -27,16 +27,16 @@ type Managementunitlisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// PreviousUri - Deprecated, paging is not supported
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// NextUri - Deprecated, paging is not supported
 	NextUri *string `json:"nextUri,omitempty"`
 
 
 	// PageCount - Deprecated, paging is not supported
 	PageCount *int `json:"pageCount,omitempty"`
+
+
+	// PreviousUri - Deprecated, paging is not supported
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// LastUri - Deprecated, paging is not supported

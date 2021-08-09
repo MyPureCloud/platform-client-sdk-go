@@ -15,6 +15,10 @@ type Gamificationstatus struct {
 	// DateStart - Gamification start date. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
+
+	// AutomaticUserAssignment - Automatic assignment of users to the default profile
+	AutomaticUserAssignment *bool `json:"automaticUserAssignment,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

@@ -1032,7 +1032,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopic(topicId string) (
 // Get the list of Speech &amp; Text Analytics topics
 //
 // 
-func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string, pageSize int) (*Topicsentitylisting, *APIResponse, error) {
+func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string, pageSize int, state string, name string, ids []string) (*Topicsentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/speechandtextanalytics/topics"
@@ -1062,6 +1062,12 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsTopics(nextPage string,
 	queryParams["nextPage"] = a.Configuration.APIClient.ParameterToString(nextPage, "")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["state"] = a.Configuration.APIClient.ParameterToString(state, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "multi")
 	
 
 	// to determine the Content-Type header

@@ -392,7 +392,7 @@ func (a AuditApi) PostAuditsQuery(body Auditqueryrequest) (*Auditqueryexecutions
 
 // PostAuditsQueryRealtime invokes POST /api/v2/audits/query/realtime
 //
-// This endpoint will only retrieve 7 days worth of audits for certain services. Please use /query to get a full list and older audits.
+// This endpoint will only retrieve 14 days worth of audits for certain services. Please use /query to get a full list and older audits.
 //
 // 
 func (a AuditApi) PostAuditsQueryRealtime(body Auditrealtimequeryrequest, expand []string) (*Auditrealtimequeryresultsresponse, *APIResponse, error) {

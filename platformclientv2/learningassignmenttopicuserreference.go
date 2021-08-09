@@ -5,15 +5,15 @@ import (
 	"strings"
 )
 
-// Routingconversationattributes
-type Routingconversationattributes struct { 
-	// Priority
-	Priority *int `json:"priority,omitempty"`
+// Learningassignmenttopicuserreference
+type Learningassignmenttopicuserreference struct { 
+	// Id
+	Id *string `json:"id,omitempty"`
 
 }
 
 // String returns a JSON representation of the model
-func (o *Routingconversationattributes) String() string {
+func (o *Learningassignmenttopicuserreference) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

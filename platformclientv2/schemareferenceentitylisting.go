@@ -27,16 +27,16 @@ type Schemareferenceentitylisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// LastUri

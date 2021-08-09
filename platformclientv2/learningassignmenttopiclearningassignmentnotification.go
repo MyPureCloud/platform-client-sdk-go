@@ -6,18 +6,18 @@ import (
 	"strings"
 )
 
-// Wemlearningassignmenttopiclearningassignmentnotification
-type Wemlearningassignmenttopiclearningassignmentnotification struct { 
+// Learningassignmenttopiclearningassignmentnotification
+type Learningassignmenttopiclearningassignmentnotification struct { 
 	// Id
 	Id *string `json:"id,omitempty"`
 
 
 	// User
-	User *Wemlearningassignmenttopicuserreference `json:"user,omitempty"`
+	User *Learningassignmenttopicuserreference `json:"user,omitempty"`
 
 
 	// Module
-	Module *Wemlearningassignmenttopiclearningmodulereference `json:"module,omitempty"`
+	Module *Learningassignmenttopiclearningmodulereference `json:"module,omitempty"`
 
 
 	// Version
@@ -33,7 +33,7 @@ type Wemlearningassignmenttopiclearningassignmentnotification struct {
 
 
 	// CreatedBy
-	CreatedBy *Wemlearningassignmenttopicuserreference `json:"createdBy,omitempty"`
+	CreatedBy *Learningassignmenttopicuserreference `json:"createdBy,omitempty"`
 
 
 	// DateCreated
@@ -41,7 +41,7 @@ type Wemlearningassignmenttopiclearningassignmentnotification struct {
 
 
 	// ModifiedBy
-	ModifiedBy *Wemlearningassignmenttopicuserreference `json:"modifiedBy,omitempty"`
+	ModifiedBy *Learningassignmenttopicuserreference `json:"modifiedBy,omitempty"`
 
 
 	// DateModified
@@ -54,7 +54,7 @@ type Wemlearningassignmenttopiclearningassignmentnotification struct {
 }
 
 // String returns a JSON representation of the model
-func (o *Wemlearningassignmenttopiclearningassignmentnotification) String() string {
+func (o *Learningassignmenttopiclearningassignmentnotification) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

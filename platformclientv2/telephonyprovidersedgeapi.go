@@ -501,7 +501,7 @@ func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesExtensionpool(ex
 //
 // Delete Outbound Route
 //
-// 
+// This route is deprecated, use /telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId} instead.
 func (a TelephonyProvidersEdgeApi) DeleteTelephonyProvidersEdgesOutboundroute(outboundRouteId string) (*APIResponse, error) {
 	var httpMethod = "DELETE"
 	// create path and map variables
@@ -4401,7 +4401,7 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesMetrics(edgeIds str
 //
 // Get outbound route
 //
-// 
+// This route is deprecated, use /telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId} instead.
 func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesOutboundroute(outboundRouteId string) (*Outboundroute, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -6459,87 +6459,6 @@ func (a TelephonyProvidersEdgeApi) GetTelephonyProvidersEdgesTrunkswithrecording
 	return successPayload, response, err
 }
 
-// PatchTelephonyProvidersEdgesAutoscalinggroupCapacity invokes PATCH /api/v2/telephony/providers/edges/autoscalinggroups/{asgId}/capacity
-//
-// Scales the ASG to match the desired capacity
-//
-// 
-func (a TelephonyProvidersEdgeApi) PatchTelephonyProvidersEdgesAutoscalinggroupCapacity(asgId string, body Asgscalerequest) (*Scaleasgresponse, *APIResponse, error) {
-	var httpMethod = "PATCH"
-	// create path and map variables
-	path := a.Configuration.BasePath + "/api/v2/telephony/providers/edges/autoscalinggroups/{asgId}/capacity"
-	path = strings.Replace(path, "{asgId}", fmt.Sprintf("%v", asgId), -1)
-	defaultReturn := new(Scaleasgresponse)
-	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
-	}
-
-	// verify the required parameter 'asgId' is set
-	if &asgId == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'asgId' when calling TelephonyProvidersEdgeApi->PatchTelephonyProvidersEdgesAutoscalinggroupCapacity")
-	}
-	// verify the required parameter 'body' is set
-	if &body == nil {
-		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling TelephonyProvidersEdgeApi->PatchTelephonyProvidersEdgesAutoscalinggroupCapacity")
-	}
-
-	headerParams := make(map[string]string)
-	queryParams := make(map[string]string)
-	formParams := url.Values{}
-	var postBody interface{}
-	var postFileName string
-	var fileBytes []byte
-	// authentication (PureCloud OAuth) required
-
-	// oauth required
-	if a.Configuration.AccessToken != ""{
-		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
-	}
-	// add default headers if any
-	for key := range a.Configuration.DefaultHeader {
-		headerParams[key] = a.Configuration.DefaultHeader[key]
-	}
-	
-
-	// to determine the Content-Type header
-	localVarHttpContentTypes := []string{ "application/json",  }
-
-	// set Content-Type header
-	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
-	if localVarHttpContentType != "" {
-		headerParams["Content-Type"] = localVarHttpContentType
-	}
-	// to determine the Accept header
-	localVarHttpHeaderAccepts := []string{
-		"application/json",
-	}
-
-	// set Accept header
-	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
-	if localVarHttpHeaderAccept != "" {
-		headerParams["Accept"] = localVarHttpHeaderAccept
-	}
-	// body params
-	postBody = &body
-
-	var successPayload *Scaleasgresponse
-	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
-	if err != nil {
-		// Nothing special to do here, but do avoid processing the response
-	} else if err == nil && response.Error != nil {
-		err = errors.New(response.ErrorMessage)
-	} else {
-		if "Scaleasgresponse" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
-	}
-	return successPayload, response, err
-}
-
 // PostTelephonyProvidersEdgeDiagnosticNslookup invokes POST /api/v2/telephony/providers/edges/{edgeId}/diagnostic/nslookup
 //
 // Nslookup request command to collect networking-related information from an Edge for a target IP or host.
@@ -7866,7 +7785,7 @@ func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesExtensionpools(bod
 //
 // Create outbound rule
 //
-// 
+// This route is deprecated, use /telephony/providers/edges/sites/{siteId}/outboundroutes instead.
 func (a TelephonyProvidersEdgeApi) PostTelephonyProvidersEdgesOutboundroutes(body Outboundroute) (*Outboundroute, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
@@ -9350,7 +9269,7 @@ func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesExtensionpool(exten
 //
 // Update outbound route
 //
-// 
+// This route is deprecated, use /telephony/providers/edges/sites/{siteId}/outboundroutes/{outboundRouteId} instead.
 func (a TelephonyProvidersEdgeApi) PutTelephonyProvidersEdgesOutboundroute(outboundRouteId string, body Outboundroute) (*Outboundroute, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
