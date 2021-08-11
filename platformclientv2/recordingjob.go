@@ -44,6 +44,10 @@ type Recordingjob struct {
 	ErrorMessage *string `json:"errorMessage,omitempty"`
 
 
+	// FailedRecordings - Get IDs of recordings that the bulk job failed for
+	FailedRecordings *string `json:"failedRecordings,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

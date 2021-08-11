@@ -120,6 +120,10 @@ type Recording struct {
 	RecordingFileRole *string `json:"recordingFileRole,omitempty"`
 
 
+	// RecordingErrorStatus - Status of a recording that cannot be returned because of an error
+	RecordingErrorStatus *string `json:"recordingErrorStatus,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 

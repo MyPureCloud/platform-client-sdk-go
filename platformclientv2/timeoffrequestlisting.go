@@ -7,7 +7,7 @@ import (
 
 // Timeoffrequestlisting
 type Timeoffrequestlisting struct { 
-	// Entities - List of time off request look up objects
+	// Entities - List of time off requests
 	Entities *[]Timeoffrequest `json:"entities,omitempty"`
 
 }

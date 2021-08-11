@@ -68,8 +68,20 @@ type Learningmodule struct {
 	CompletionTimeInDays *int `json:"completionTimeInDays,omitempty"`
 
 
+	// VarType - The type for the learning module
+	VarType *string `json:"type,omitempty"`
+
+
 	// InformSteps - The list of inform steps in a learning module
 	InformSteps *[]Learningmoduleinformstep `json:"informSteps,omitempty"`
+
+
+	// AssessmentForm - The assessment form for learning module
+	AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
+
+
+	// SummaryData - The learning module summary data
+	SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 
 }
 

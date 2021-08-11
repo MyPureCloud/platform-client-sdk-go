@@ -241,7 +241,7 @@ func (a LearningApi) GetLearningAssignment(assignmentId string, expand []string)
 // List of Learning module Assignments
 //
 // Either moduleId or user value is required
-func (a LearningApi) GetLearningAssignments(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, sortOrder string, sortBy string, userId []string, types []string, states []string, expand []string) (*Learningassignmentsdomainentity, *APIResponse, error) {
+func (a LearningApi) GetLearningAssignments(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, pass string, minPercentageScore float32, maxPercentageScore float32, sortOrder string, sortBy string, userId []string, types []string, states []string, expand []string) (*Learningassignmentsdomainentity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments"
@@ -279,6 +279,12 @@ func (a LearningApi) GetLearningAssignments(moduleId string, interval string, co
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
+	
+	queryParams["minPercentageScore"] = a.Configuration.APIClient.ParameterToString(minPercentageScore, "")
+	
+	queryParams["maxPercentageScore"] = a.Configuration.APIClient.ParameterToString(maxPercentageScore, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
@@ -332,7 +338,7 @@ func (a LearningApi) GetLearningAssignments(moduleId string, interval string, co
 // List of Learning Assignments assigned to current user
 //
 // 
-func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, sortOrder string, sortBy string, types []string, states []string, expand []string) (*Learningassignmentsdomainentity, *APIResponse, error) {
+func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, completionInterval string, overdue string, pageSize int, pageNumber int, pass string, minPercentageScore float32, maxPercentageScore float32, sortOrder string, sortBy string, types []string, states []string, expand []string) (*Learningassignmentsdomainentity, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/assignments/me"
@@ -370,6 +376,12 @@ func (a LearningApi) GetLearningAssignmentsMe(moduleId string, interval string, 
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["pass"] = a.Configuration.APIClient.ParameterToString(pass, "")
+	
+	queryParams["minPercentageScore"] = a.Configuration.APIClient.ParameterToString(minPercentageScore, "")
+	
+	queryParams["maxPercentageScore"] = a.Configuration.APIClient.ParameterToString(maxPercentageScore, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
@@ -650,7 +662,7 @@ func (a LearningApi) GetLearningModuleVersion(moduleId string, versionId string,
 // Get all learning modules of an organization
 //
 // 
-func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
+func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSize int, pageNumber int, sortOrder string, sortBy string, searchTerm string, expand []string, isPublished string) (*Learningmodulesdomainentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/learning/modules"
@@ -692,6 +704,8 @@ func (a LearningApi) GetLearningModules(isArchived bool, types []string, pageSiz
 	queryParams["searchTerm"] = a.Configuration.APIClient.ParameterToString(searchTerm, "")
 	
 	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["isPublished"] = a.Configuration.APIClient.ParameterToString(isPublished, "")
 	
 
 	// to determine the Content-Type header
@@ -796,6 +810,81 @@ func (a LearningApi) PatchLearningAssignment(assignmentId string, body Learninga
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Learningassignment" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostLearningAssessmentsScoring invokes POST /api/v2/learning/assessments/scoring
+//
+// Score learning assessment for preview
+//
+// 
+func (a LearningApi) PostLearningAssessmentsScoring(body Learningassessmentscoringrequest) (*Assessmentscoringset, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/learning/assessments/scoring"
+	defaultReturn := new(Assessmentscoringset)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling LearningApi->PostLearningAssessmentsScoring")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Assessmentscoringset
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Assessmentscoringset" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

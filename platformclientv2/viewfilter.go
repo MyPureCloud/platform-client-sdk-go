@@ -474,6 +474,18 @@ type Viewfilter struct {
 	// BlockedReasons - The list of blocked reason used to filter action map constraints views
 	BlockedReasons *[]string `json:"blockedReasons,omitempty"`
 
+
+	// IsRecorded - Indicates filtering for recorded
+	IsRecorded *bool `json:"isRecorded,omitempty"`
+
+
+	// HasEvaluation - Indicates filtering for evaluation
+	HasEvaluation *bool `json:"hasEvaluation,omitempty"`
+
+
+	// HasScoredEvaluation - Indicates filtering for scored evaluation
+	HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
+
 }
 
 // String returns a JSON representation of the model

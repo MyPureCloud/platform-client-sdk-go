@@ -4369,7 +4369,7 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionview(messagingCampaign
 // Query a list of basic Messaging Campaign information objects
 //
 // This returns a listing of simplified Messaging Campaigns, each consisting of id, name, and division.
-func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pageNumber int, sortOrder string, name string, id []string, senderSmsPhoneNumber string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
+func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pageNumber int, sortOrder string, name string, varType string, id []string, senderSmsPhoneNumber string) (*Messagingcampaigndivisionviewentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/divisionviews"
@@ -4403,6 +4403,8 @@ func (a OutboundApi) GetOutboundMessagingcampaignsDivisionviews(pageSize int, pa
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["varType"] = a.Configuration.APIClient.ParameterToString(varType, "")
 	
 	queryParams["id"] = a.Configuration.APIClient.ParameterToString(id, "multi")
 	
