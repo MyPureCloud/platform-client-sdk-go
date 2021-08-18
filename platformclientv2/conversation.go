@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,86 @@ type Conversation struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Conversation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversation
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ExternalTag *string `json:"externalTag,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		Address *string `json:"address,omitempty"`
+		
+		Participants *[]Participant `json:"participants,omitempty"`
+		
+		ConversationIds *[]string `json:"conversationIds,omitempty"`
+		
+		MaxParticipants *int `json:"maxParticipants,omitempty"`
+		
+		RecordingState *string `json:"recordingState,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ExternalTag: u.ExternalTag,
+		
+		StartTime: StartTime,
+		
+		EndTime: EndTime,
+		
+		Address: u.Address,
+		
+		Participants: u.Participants,
+		
+		ConversationIds: u.ConversationIds,
+		
+		MaxParticipants: u.MaxParticipants,
+		
+		RecordingState: u.RecordingState,
+		
+		State: u.State,
+		
+		Divisions: u.Divisions,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

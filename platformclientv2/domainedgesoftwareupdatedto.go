@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,82 @@ type Domainedgesoftwareupdatedto struct {
 	// Current
 	Current *bool `json:"current,omitempty"`
 
+}
+
+func (u *Domainedgesoftwareupdatedto) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainedgesoftwareupdatedto
+
+	
+	DownloadStartTime := new(string)
+	if u.DownloadStartTime != nil {
+		
+		*DownloadStartTime = timeutil.Strftime(u.DownloadStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DownloadStartTime = nil
+	}
+	
+	ExecuteStartTime := new(string)
+	if u.ExecuteStartTime != nil {
+		
+		*ExecuteStartTime = timeutil.Strftime(u.ExecuteStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExecuteStartTime = nil
+	}
+	
+	ExecuteStopTime := new(string)
+	if u.ExecuteStopTime != nil {
+		
+		*ExecuteStopTime = timeutil.Strftime(u.ExecuteStopTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExecuteStopTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Version *Domainedgesoftwareversiondto `json:"version,omitempty"`
+		
+		MaxDownloadRate *int `json:"maxDownloadRate,omitempty"`
+		
+		DownloadStartTime *string `json:"downloadStartTime,omitempty"`
+		
+		ExecuteStartTime *string `json:"executeStartTime,omitempty"`
+		
+		ExecuteStopTime *string `json:"executeStopTime,omitempty"`
+		
+		ExecuteOnIdle *bool `json:"executeOnIdle,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		EdgeUri *string `json:"edgeUri,omitempty"`
+		
+		CallDrainingWaitTimeSeconds *int `json:"callDrainingWaitTimeSeconds,omitempty"`
+		
+		Current *bool `json:"current,omitempty"`
+		*Alias
+	}{ 
+		Version: u.Version,
+		
+		MaxDownloadRate: u.MaxDownloadRate,
+		
+		DownloadStartTime: DownloadStartTime,
+		
+		ExecuteStartTime: ExecuteStartTime,
+		
+		ExecuteStopTime: ExecuteStopTime,
+		
+		ExecuteOnIdle: u.ExecuteOnIdle,
+		
+		Status: u.Status,
+		
+		EdgeUri: u.EdgeUri,
+		
+		CallDrainingWaitTimeSeconds: u.CallDrainingWaitTimeSeconds,
+		
+		Current: u.Current,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

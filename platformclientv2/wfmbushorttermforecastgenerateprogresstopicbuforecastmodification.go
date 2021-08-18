@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification struct {
 	// PlanningGroupIds
 	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 
+}
+
+func (u *Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		StartIntervalIndex *int `json:"startIntervalIndex,omitempty"`
+		
+		EndIntervalIndex *int `json:"endIntervalIndex,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		LegacyMetric *string `json:"legacyMetric,omitempty"`
+		
+		Value *float32 `json:"value,omitempty"`
+		
+		Values *[]Wfmbushorttermforecastgenerateprogresstopicmodificationintervaloffsetvalue `json:"values,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		Granularity *string `json:"granularity,omitempty"`
+		
+		DisplayGranularity *string `json:"displayGranularity,omitempty"`
+		
+		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		StartIntervalIndex: u.StartIntervalIndex,
+		
+		EndIntervalIndex: u.EndIntervalIndex,
+		
+		Metric: u.Metric,
+		
+		LegacyMetric: u.LegacyMetric,
+		
+		Value: u.Value,
+		
+		Values: u.Values,
+		
+		Enabled: u.Enabled,
+		
+		Granularity: u.Granularity,
+		
+		DisplayGranularity: u.DisplayGranularity,
+		
+		PlanningGroupIds: u.PlanningGroupIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

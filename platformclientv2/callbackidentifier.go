@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Callbackidentifier struct {
 	// Id - The identifier of the callback
 	Id *string `json:"id,omitempty"`
 
+}
+
+func (u *Callbackidentifier) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Callbackidentifier
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Id: u.Id,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

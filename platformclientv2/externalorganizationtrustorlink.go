@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Externalorganizationtrustorlink struct {
 	// ExternalOrganizationUri - The URI for the External Organization that is linked to the trustor org
 	ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
 
+}
+
+func (u *Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Externalorganizationtrustorlink
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
+		
+		TrustorOrgId *string `json:"trustorOrgId,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
+		*Alias
+	}{ 
+		ExternalOrganizationId: u.ExternalOrganizationId,
+		
+		TrustorOrgId: u.TrustorOrgId,
+		
+		DateCreated: DateCreated,
+		
+		ExternalOrganizationUri: u.ExternalOrganizationUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

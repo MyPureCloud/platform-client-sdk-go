@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Asyncqueryresponse struct {
 	// JobId - Unique identifier for the async query execution. Can be used to check the status of the query and retrieve results.
 	JobId *string `json:"jobId,omitempty"`
 
+}
+
+func (u *Asyncqueryresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Asyncqueryresponse
+
+	
+
+	return json.Marshal(&struct { 
+		JobId *string `json:"jobId,omitempty"`
+		*Alias
+	}{ 
+		JobId: u.JobId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Forecastservicegoaltemplateresponse struct {
 	// AbandonRate - The abandon rate goal for this forecast
 	AbandonRate *Forecastabandonrateresponse `json:"abandonRate,omitempty"`
 
+}
+
+func (u *Forecastservicegoaltemplateresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Forecastservicegoaltemplateresponse
+
+	
+
+	return json.Marshal(&struct { 
+		ServiceLevel *Forecastservicelevelresponse `json:"serviceLevel,omitempty"`
+		
+		AverageSpeedOfAnswer *Forecastaveragespeedofanswerresponse `json:"averageSpeedOfAnswer,omitempty"`
+		
+		AbandonRate *Forecastabandonrateresponse `json:"abandonRate,omitempty"`
+		*Alias
+	}{ 
+		ServiceLevel: u.ServiceLevel,
+		
+		AverageSpeedOfAnswer: u.AverageSpeedOfAnswer,
+		
+		AbandonRate: u.AbandonRate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

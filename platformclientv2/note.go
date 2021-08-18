@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,70 @@ type Note struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Note) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Note
+
+	
+	ModifyDate := new(string)
+	if u.ModifyDate != nil {
+		
+		*ModifyDate = timeutil.Strftime(u.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifyDate = nil
+	}
+	
+	CreateDate := new(string)
+	if u.CreateDate != nil {
+		
+		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreateDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		EntityId *string `json:"entityId,omitempty"`
+		
+		EntityType *string `json:"entityType,omitempty"`
+		
+		NoteText *string `json:"noteText,omitempty"`
+		
+		ModifyDate *string `json:"modifyDate,omitempty"`
+		
+		CreateDate *string `json:"createDate,omitempty"`
+		
+		CreatedBy *User `json:"createdBy,omitempty"`
+		
+		ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		EntityId: u.EntityId,
+		
+		EntityType: u.EntityType,
+		
+		NoteText: u.NoteText,
+		
+		ModifyDate: ModifyDate,
+		
+		CreateDate: CreateDate,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ExternalDataSources: u.ExternalDataSources,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

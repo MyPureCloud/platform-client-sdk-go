@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Scimv2memberreference struct {
 	// Ref - The reference URI of the SCIM resource.
 	Ref *string `json:"$ref,omitempty"`
 
+}
+
+func (u *Scimv2memberreference) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2memberreference
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		Ref *string `json:"$ref,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Value: u.Value,
+		
+		Ref: u.Ref,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

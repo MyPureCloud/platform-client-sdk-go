@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Qmauditqueryrequest struct {
 	// Sort - Sort parameter for the query.
 	Sort *[]Auditquerysort `json:"sort,omitempty"`
 
+}
+
+func (u *Qmauditqueryrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Qmauditqueryrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		Filters *[]Qualityauditqueryfilter `json:"filters,omitempty"`
+		
+		Sort *[]Auditquerysort `json:"sort,omitempty"`
+		*Alias
+	}{ 
+		Interval: u.Interval,
+		
+		Filters: u.Filters,
+		
+		Sort: u.Sort,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Trunkbaseassignment struct {
 	// TrunkBase - A trunk base settings reference.
 	TrunkBase *Trunkbase `json:"trunkBase,omitempty"`
 
+}
+
+func (u *Trunkbaseassignment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trunkbaseassignment
+
+	
+
+	return json.Marshal(&struct { 
+		Family *int `json:"family,omitempty"`
+		
+		TrunkBase *Trunkbase `json:"trunkBase,omitempty"`
+		*Alias
+	}{ 
+		Family: u.Family,
+		
+		TrunkBase: u.TrunkBase,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

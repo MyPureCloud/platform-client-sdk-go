@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -67,6 +68,94 @@ type Queueconversationsocialexpressioneventtopicscreenshare struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Queueconversationsocialexpressioneventtopicscreenshare) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queueconversationsocialexpressioneventtopicscreenshare
+
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	DisconnectedTime := new(string)
+	if u.DisconnectedTime != nil {
+		
+		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DisconnectedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		Self *Queueconversationsocialexpressioneventtopicaddress `json:"self,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Context *string `json:"context,omitempty"`
+		
+		Sharing *bool `json:"sharing,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
+		
+		Wrapup *Queueconversationsocialexpressioneventtopicwrapup `json:"wrapup,omitempty"`
+		
+		AfterCallWork *Queueconversationsocialexpressioneventtopicaftercallwork `json:"afterCallWork,omitempty"`
+		
+		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		Self: u.Self,
+		
+		Id: u.Id,
+		
+		Context: u.Context,
+		
+		Sharing: u.Sharing,
+		
+		Provider: u.Provider,
+		
+		ScriptId: u.ScriptId,
+		
+		PeerId: u.PeerId,
+		
+		DisconnectType: u.DisconnectType,
+		
+		ConnectedTime: ConnectedTime,
+		
+		DisconnectedTime: DisconnectedTime,
+		
+		Wrapup: u.Wrapup,
+		
+		AfterCallWork: u.AfterCallWork,
+		
+		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Contentlist struct {
 	// Components - An array of component objects.
 	Components *[]Listitemcomponent `json:"components,omitempty"`
 
+}
+
+func (u *Contentlist) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contentlist
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		ListType *string `json:"listType,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		SubmitLabel *string `json:"submitLabel,omitempty"`
+		
+		Actions *Contentactions `json:"actions,omitempty"`
+		
+		Components *[]Listitemcomponent `json:"components,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		ListType: u.ListType,
+		
+		Title: u.Title,
+		
+		Description: u.Description,
+		
+		SubmitLabel: u.SubmitLabel,
+		
+		Actions: u.Actions,
+		
+		Components: u.Components,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

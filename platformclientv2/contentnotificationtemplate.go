@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Contentnotificationtemplate struct {
 	// Footer - The template footer.
 	Footer *Notificationtemplatefooter `json:"footer,omitempty"`
 
+}
+
+func (u *Contentnotificationtemplate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contentnotificationtemplate
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
+		
+		Header *Notificationtemplateheader `json:"header,omitempty"`
+		
+		Body *Notificationtemplatebody `json:"body,omitempty"`
+		
+		Footer *Notificationtemplatefooter `json:"footer,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Language: u.Language,
+		
+		Header: u.Header,
+		
+		Body: u.Body,
+		
+		Footer: u.Footer,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,50 @@ type Statuschange struct {
 	// RejectReason - The reason for rejecting the limit override request
 	RejectReason *string `json:"rejectReason,omitempty"`
 
+}
+
+func (u *Statuschange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Statuschange
+
+	
+	DateStatusChanged := new(string)
+	if u.DateStatusChanged != nil {
+		
+		*DateStatusChanged = timeutil.Strftime(u.DateStatusChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStatusChanged = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateStatusChanged *string `json:"dateStatusChanged,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		PreviousStatus *string `json:"previousStatus,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
+		
+		ChangedBy *string `json:"changedBy,omitempty"`
+		
+		RejectReason *string `json:"rejectReason,omitempty"`
+		*Alias
+	}{ 
+		DateStatusChanged: DateStatusChanged,
+		
+		Status: u.Status,
+		
+		PreviousStatus: u.PreviousStatus,
+		
+		Message: u.Message,
+		
+		ChangedBy: u.ChangedBy,
+		
+		RejectReason: u.RejectReason,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

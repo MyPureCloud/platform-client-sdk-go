@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Ctabuttonstyleproperties struct {
 	// BackgroundColor - Background color of the CTA button. (eg. #FF0000)
 	BackgroundColor *string `json:"backgroundColor,omitempty"`
 
+}
+
+func (u *Ctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Ctabuttonstyleproperties
+
+	
+
+	return json.Marshal(&struct { 
+		Color *string `json:"color,omitempty"`
+		
+		Font *string `json:"font,omitempty"`
+		
+		FontSize *string `json:"fontSize,omitempty"`
+		
+		TextAlign *string `json:"textAlign,omitempty"`
+		
+		BackgroundColor *string `json:"backgroundColor,omitempty"`
+		*Alias
+	}{ 
+		Color: u.Color,
+		
+		Font: u.Font,
+		
+		FontSize: u.FontSize,
+		
+		TextAlign: u.TextAlign,
+		
+		BackgroundColor: u.BackgroundColor,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

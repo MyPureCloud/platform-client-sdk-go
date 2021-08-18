@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -211,6 +212,230 @@ type Homerrecord struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Homerrecord) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Homerrecord
+
+	
+	Date := new(string)
+	if u.Date != nil {
+		
+		*Date = timeutil.Strftime(u.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Date = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Date *string `json:"date,omitempty"`
+		
+		MilliTs *string `json:"milliTs,omitempty"`
+		
+		MicroTs *string `json:"microTs,omitempty"`
+		
+		Method *string `json:"method,omitempty"`
+		
+		ReplyReason *string `json:"replyReason,omitempty"`
+		
+		Ruri *string `json:"ruri,omitempty"`
+		
+		RuriUser *string `json:"ruriUser,omitempty"`
+		
+		RuriDomain *string `json:"ruriDomain,omitempty"`
+		
+		FromUser *string `json:"fromUser,omitempty"`
+		
+		FromDomain *string `json:"fromDomain,omitempty"`
+		
+		FromTag *string `json:"fromTag,omitempty"`
+		
+		ToUser *string `json:"toUser,omitempty"`
+		
+		ToDomain *string `json:"toDomain,omitempty"`
+		
+		ToTag *string `json:"toTag,omitempty"`
+		
+		PidUser *string `json:"pidUser,omitempty"`
+		
+		ContactUser *string `json:"contactUser,omitempty"`
+		
+		AuthUser *string `json:"authUser,omitempty"`
+		
+		Callid *string `json:"callid,omitempty"`
+		
+		CallidAleg *string `json:"callidAleg,omitempty"`
+		
+		Via1 *string `json:"via1,omitempty"`
+		
+		Via1Branch *string `json:"via1Branch,omitempty"`
+		
+		Cseq *string `json:"cseq,omitempty"`
+		
+		Diversion *string `json:"diversion,omitempty"`
+		
+		Reason *string `json:"reason,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		
+		Auth *string `json:"auth,omitempty"`
+		
+		UserAgent *string `json:"userAgent,omitempty"`
+		
+		SourceIp *string `json:"sourceIp,omitempty"`
+		
+		SourcePort *string `json:"sourcePort,omitempty"`
+		
+		DestinationIp *string `json:"destinationIp,omitempty"`
+		
+		DestinationPort *string `json:"destinationPort,omitempty"`
+		
+		ContactIp *string `json:"contactIp,omitempty"`
+		
+		ContactPort *string `json:"contactPort,omitempty"`
+		
+		OriginatorIp *string `json:"originatorIp,omitempty"`
+		
+		OriginatorPort *string `json:"originatorPort,omitempty"`
+		
+		CorrelationId *string `json:"correlationId,omitempty"`
+		
+		Proto *string `json:"proto,omitempty"`
+		
+		Family *string `json:"family,omitempty"`
+		
+		RtpStat *string `json:"rtpStat,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Node *string `json:"node,omitempty"`
+		
+		Trans *string `json:"trans,omitempty"`
+		
+		Dbnode *string `json:"dbnode,omitempty"`
+		
+		Msg *string `json:"msg,omitempty"`
+		
+		SourceAlias *string `json:"sourceAlias,omitempty"`
+		
+		DestinationAlias *string `json:"destinationAlias,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		ParticipantId *string `json:"participantId,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Date: Date,
+		
+		MilliTs: u.MilliTs,
+		
+		MicroTs: u.MicroTs,
+		
+		Method: u.Method,
+		
+		ReplyReason: u.ReplyReason,
+		
+		Ruri: u.Ruri,
+		
+		RuriUser: u.RuriUser,
+		
+		RuriDomain: u.RuriDomain,
+		
+		FromUser: u.FromUser,
+		
+		FromDomain: u.FromDomain,
+		
+		FromTag: u.FromTag,
+		
+		ToUser: u.ToUser,
+		
+		ToDomain: u.ToDomain,
+		
+		ToTag: u.ToTag,
+		
+		PidUser: u.PidUser,
+		
+		ContactUser: u.ContactUser,
+		
+		AuthUser: u.AuthUser,
+		
+		Callid: u.Callid,
+		
+		CallidAleg: u.CallidAleg,
+		
+		Via1: u.Via1,
+		
+		Via1Branch: u.Via1Branch,
+		
+		Cseq: u.Cseq,
+		
+		Diversion: u.Diversion,
+		
+		Reason: u.Reason,
+		
+		ContentType: u.ContentType,
+		
+		Auth: u.Auth,
+		
+		UserAgent: u.UserAgent,
+		
+		SourceIp: u.SourceIp,
+		
+		SourcePort: u.SourcePort,
+		
+		DestinationIp: u.DestinationIp,
+		
+		DestinationPort: u.DestinationPort,
+		
+		ContactIp: u.ContactIp,
+		
+		ContactPort: u.ContactPort,
+		
+		OriginatorIp: u.OriginatorIp,
+		
+		OriginatorPort: u.OriginatorPort,
+		
+		CorrelationId: u.CorrelationId,
+		
+		Proto: u.Proto,
+		
+		Family: u.Family,
+		
+		RtpStat: u.RtpStat,
+		
+		VarType: u.VarType,
+		
+		Node: u.Node,
+		
+		Trans: u.Trans,
+		
+		Dbnode: u.Dbnode,
+		
+		Msg: u.Msg,
+		
+		SourceAlias: u.SourceAlias,
+		
+		DestinationAlias: u.DestinationAlias,
+		
+		ConversationId: u.ConversationId,
+		
+		ParticipantId: u.ParticipantId,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

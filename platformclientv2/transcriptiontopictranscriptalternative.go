@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Transcriptiontopictranscriptalternative struct {
 	// Words
 	Words *[]Transcriptiontopictranscriptword `json:"words,omitempty"`
 
+}
+
+func (u *Transcriptiontopictranscriptalternative) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Transcriptiontopictranscriptalternative
+
+	
+
+	return json.Marshal(&struct { 
+		Confidence *float32 `json:"confidence,omitempty"`
+		
+		OffsetMs *int `json:"offsetMs,omitempty"`
+		
+		DurationMs *int `json:"durationMs,omitempty"`
+		
+		Transcript *string `json:"transcript,omitempty"`
+		
+		Words *[]Transcriptiontopictranscriptword `json:"words,omitempty"`
+		*Alias
+	}{ 
+		Confidence: u.Confidence,
+		
+		OffsetMs: u.OffsetMs,
+		
+		DurationMs: u.DurationMs,
+		
+		Transcript: u.Transcript,
+		
+		Words: u.Words,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

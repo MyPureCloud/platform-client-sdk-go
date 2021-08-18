@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Phonenumber struct {
 	// CountryCode
 	CountryCode *string `json:"countryCode,omitempty"`
 
+}
+
+func (u *Phonenumber) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Phonenumber
+
+	
+
+	return json.Marshal(&struct { 
+		Display *string `json:"display,omitempty"`
+		
+		Extension *int `json:"extension,omitempty"`
+		
+		AcceptsSMS *bool `json:"acceptsSMS,omitempty"`
+		
+		UserInput *string `json:"userInput,omitempty"`
+		
+		E164 *string `json:"e164,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		*Alias
+	}{ 
+		Display: u.Display,
+		
+		Extension: u.Extension,
+		
+		AcceptsSMS: u.AcceptsSMS,
+		
+		UserInput: u.UserInput,
+		
+		E164: u.E164,
+		
+		CountryCode: u.CountryCode,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

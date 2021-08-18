@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Meteredevaluationassignment struct {
 	// TimeInterval
 	TimeInterval *Timeinterval `json:"timeInterval,omitempty"`
 
+}
+
+func (u *Meteredevaluationassignment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Meteredevaluationassignment
+
+	
+
+	return json.Marshal(&struct { 
+		EvaluationContextId *string `json:"evaluationContextId,omitempty"`
+		
+		Evaluators *[]User `json:"evaluators,omitempty"`
+		
+		MaxNumberEvaluations *int `json:"maxNumberEvaluations,omitempty"`
+		
+		EvaluationForm *Evaluationform `json:"evaluationForm,omitempty"`
+		
+		AssignToActiveUser *bool `json:"assignToActiveUser,omitempty"`
+		
+		TimeInterval *Timeinterval `json:"timeInterval,omitempty"`
+		*Alias
+	}{ 
+		EvaluationContextId: u.EvaluationContextId,
+		
+		Evaluators: u.Evaluators,
+		
+		MaxNumberEvaluations: u.MaxNumberEvaluations,
+		
+		EvaluationForm: u.EvaluationForm,
+		
+		AssignToActiveUser: u.AssignToActiveUser,
+		
+		TimeInterval: u.TimeInterval,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

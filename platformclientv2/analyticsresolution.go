@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Analyticsresolution struct {
 	// NNextContactAvoided
 	NNextContactAvoided *int `json:"nNextContactAvoided,omitempty"`
 
+}
+
+func (u *Analyticsresolution) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsresolution
+
+	
+	EventTime := new(string)
+	if u.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		EventTime *string `json:"eventTime,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		NNextContactAvoided *int `json:"nNextContactAvoided,omitempty"`
+		*Alias
+	}{ 
+		EventTime: EventTime,
+		
+		QueueId: u.QueueId,
+		
+		UserId: u.UserId,
+		
+		NNextContactAvoided: u.NNextContactAvoided,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

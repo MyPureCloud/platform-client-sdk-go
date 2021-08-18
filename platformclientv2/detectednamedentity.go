@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Detectednamedentity struct {
 	// Value - The value of the detected named entity.
 	Value *Detectednamedentityvalue `json:"value,omitempty"`
 
+}
+
+func (u *Detectednamedentity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Detectednamedentity
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		EntityType *string `json:"entityType,omitempty"`
+		
+		Probability *float64 `json:"probability,omitempty"`
+		
+		Value *Detectednamedentityvalue `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		EntityType: u.EntityType,
+		
+		Probability: u.Probability,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Articlecontentbody struct {
 	// LocationUrl - Presigned URL to retrieve the document content.
 	LocationUrl *string `json:"locationUrl,omitempty"`
 
+}
+
+func (u *Articlecontentbody) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Articlecontentbody
+
+	
+
+	return json.Marshal(&struct { 
+		LocationUrl *string `json:"locationUrl,omitempty"`
+		*Alias
+	}{ 
+		LocationUrl: u.LocationUrl,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

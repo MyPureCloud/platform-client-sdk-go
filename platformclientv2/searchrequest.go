@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Searchrequest struct {
 	// Aggregations - Aggregation criteria
 	Aggregations *[]Searchaggregation `json:"aggregations,omitempty"`
 
+}
+
+func (u *Searchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Searchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		SortOrder *string `json:"sortOrder,omitempty"`
+		
+		SortBy *string `json:"sortBy,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Sort *[]Searchsort `json:"sort,omitempty"`
+		
+		ReturnFields *[]string `json:"returnFields,omitempty"`
+		
+		Expand *[]string `json:"expand,omitempty"`
+		
+		Types *[]string `json:"types,omitempty"`
+		
+		Query *[]Searchcriteria `json:"query,omitempty"`
+		
+		Aggregations *[]Searchaggregation `json:"aggregations,omitempty"`
+		*Alias
+	}{ 
+		SortOrder: u.SortOrder,
+		
+		SortBy: u.SortBy,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		Sort: u.Sort,
+		
+		ReturnFields: u.ReturnFields,
+		
+		Expand: u.Expand,
+		
+		Types: u.Types,
+		
+		Query: u.Query,
+		
+		Aggregations: u.Aggregations,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

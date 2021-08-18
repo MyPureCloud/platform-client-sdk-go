@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Shifttradematchreviewuserresponse struct {
 	// PostTradeNewShift - Preview of what the shift will look like for the opposite side of this trade after the match is approved
 	PostTradeNewShift *Shifttradepreviewresponse `json:"postTradeNewShift,omitempty"`
 
+}
+
+func (u *Shifttradematchreviewuserresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shifttradematchreviewuserresponse
+
+	
+
+	return json.Marshal(&struct { 
+		WeeklyMinimumPaidMinutes *int `json:"weeklyMinimumPaidMinutes,omitempty"`
+		
+		WeeklyMaximumPaidMinutes *int `json:"weeklyMaximumPaidMinutes,omitempty"`
+		
+		PreTradeSchedulePaidMinutes *int `json:"preTradeSchedulePaidMinutes,omitempty"`
+		
+		PostTradeSchedulePaidMinutes *int `json:"postTradeSchedulePaidMinutes,omitempty"`
+		
+		PostTradeNewShift *Shifttradepreviewresponse `json:"postTradeNewShift,omitempty"`
+		*Alias
+	}{ 
+		WeeklyMinimumPaidMinutes: u.WeeklyMinimumPaidMinutes,
+		
+		WeeklyMaximumPaidMinutes: u.WeeklyMaximumPaidMinutes,
+		
+		PreTradeSchedulePaidMinutes: u.PreTradeSchedulePaidMinutes,
+		
+		PostTradeSchedulePaidMinutes: u.PostTradeSchedulePaidMinutes,
+		
+		PostTradeNewShift: u.PostTradeNewShift,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

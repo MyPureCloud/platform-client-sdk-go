@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Copyvoicemailmessage struct {
 	// GroupId - The id of the Group to copy the VoicemailMessage to
 	GroupId *string `json:"groupId,omitempty"`
 
+}
+
+func (u *Copyvoicemailmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Copyvoicemailmessage
+
+	
+
+	return json.Marshal(&struct { 
+		VoicemailMessageId *string `json:"voicemailMessageId,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		GroupId *string `json:"groupId,omitempty"`
+		*Alias
+	}{ 
+		VoicemailMessageId: u.VoicemailMessageId,
+		
+		UserId: u.UserId,
+		
+		GroupId: u.GroupId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Architectdependencytrackingbuildnotificationhomeorganization struct {
 	// ThirdPartyOrgName
 	ThirdPartyOrgName *string `json:"thirdPartyOrgName,omitempty"`
 
+}
+
+func (u *Architectdependencytrackingbuildnotificationhomeorganization) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Architectdependencytrackingbuildnotificationhomeorganization
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ThirdPartyOrgName *string `json:"thirdPartyOrgName,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ThirdPartyOrgName: u.ThirdPartyOrgName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

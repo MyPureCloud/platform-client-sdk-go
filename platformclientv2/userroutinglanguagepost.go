@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Userroutinglanguagepost struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Userroutinglanguagepost) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userroutinglanguagepost
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Proficiency *float64 `json:"proficiency,omitempty"`
+		
+		LanguageUri *string `json:"languageUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Proficiency: u.Proficiency,
+		
+		LanguageUri: u.LanguageUri,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

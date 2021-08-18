@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Lexintent struct {
 	// Version - The intent version
 	Version *string `json:"version,omitempty"`
 
+}
+
+func (u *Lexintent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Lexintent
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Slots *map[string]Lexslot `json:"slots,omitempty"`
+		
+		Version *string `json:"version,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Slots: u.Slots,
+		
+		Version: u.Version,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

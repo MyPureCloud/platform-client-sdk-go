@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -87,6 +88,130 @@ type Socialexpression struct {
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+}
+
+func (u *Socialexpression) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Socialexpression
+
+	
+	StartHoldTime := new(string)
+	if u.StartHoldTime != nil {
+		
+		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartHoldTime = nil
+	}
+	
+	StartAlertingTime := new(string)
+	if u.StartAlertingTime != nil {
+		
+		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAlertingTime = nil
+	}
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	DisconnectedTime := new(string)
+	if u.DisconnectedTime != nil {
+		
+		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DisconnectedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		SocialMediaId *string `json:"socialMediaId,omitempty"`
+		
+		SocialMediaHub *string `json:"socialMediaHub,omitempty"`
+		
+		SocialUserName *string `json:"socialUserName,omitempty"`
+		
+		PreviewText *string `json:"previewText,omitempty"`
+		
+		RecordingId *string `json:"recordingId,omitempty"`
+		
+		Segments *[]Segment `json:"segments,omitempty"`
+		
+		Held *bool `json:"held,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		StartHoldTime *string `json:"startHoldTime,omitempty"`
+		
+		StartAlertingTime *string `json:"startAlertingTime,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		Wrapup *Wrapup `json:"wrapup,omitempty"`
+		
+		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
+		
+		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		Id: u.Id,
+		
+		SocialMediaId: u.SocialMediaId,
+		
+		SocialMediaHub: u.SocialMediaHub,
+		
+		SocialUserName: u.SocialUserName,
+		
+		PreviewText: u.PreviewText,
+		
+		RecordingId: u.RecordingId,
+		
+		Segments: u.Segments,
+		
+		Held: u.Held,
+		
+		DisconnectType: u.DisconnectType,
+		
+		StartHoldTime: StartHoldTime,
+		
+		StartAlertingTime: StartAlertingTime,
+		
+		ConnectedTime: ConnectedTime,
+		
+		DisconnectedTime: DisconnectedTime,
+		
+		Provider: u.Provider,
+		
+		ScriptId: u.ScriptId,
+		
+		PeerId: u.PeerId,
+		
+		Wrapup: u.Wrapup,
+		
+		AfterCallWork: u.AfterCallWork,
+		
+		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

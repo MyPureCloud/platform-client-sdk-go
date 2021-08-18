@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,34 @@ type Userroutingstatusroutingstatus struct {
 	// StartTime
 	StartTime *time.Time `json:"startTime,omitempty"`
 
+}
+
+func (u *Userroutingstatusroutingstatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userroutingstatusroutingstatus
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Status *string `json:"status,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		*Alias
+	}{ 
+		Status: u.Status,
+		
+		StartTime: StartTime,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,41 @@ type Wfmschedulereference struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Wfmschedulereference) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmschedulereference
+
+	
+	WeekDate := new(string)
+	if u.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	} else {
+		WeekDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		BusinessUnit *Wfmbusinessunitreference `json:"businessUnit,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		BusinessUnit: u.BusinessUnit,
+		
+		WeekDate: WeekDate,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

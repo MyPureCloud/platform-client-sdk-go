@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Shrinkageoverride struct {
 	// ShrinkagePercent - Shrinkage override percent. Setting a null value will reset the interval to the default
 	ShrinkagePercent *float64 `json:"shrinkagePercent,omitempty"`
 
+}
+
+func (u *Shrinkageoverride) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shrinkageoverride
+
+	
+
+	return json.Marshal(&struct { 
+		IntervalIndex *int `json:"intervalIndex,omitempty"`
+		
+		ShrinkagePercent *float64 `json:"shrinkagePercent,omitempty"`
+		*Alias
+	}{ 
+		IntervalIndex: u.IntervalIndex,
+		
+		ShrinkagePercent: u.ShrinkagePercent,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

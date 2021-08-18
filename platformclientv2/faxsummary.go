@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Faxsummary struct {
 	// TotalCount
 	TotalCount *int `json:"totalCount,omitempty"`
 
+}
+
+func (u *Faxsummary) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Faxsummary
+
+	
+
+	return json.Marshal(&struct { 
+		ReadCount *int `json:"readCount,omitempty"`
+		
+		UnreadCount *int `json:"unreadCount,omitempty"`
+		
+		TotalCount *int `json:"totalCount,omitempty"`
+		*Alias
+	}{ 
+		ReadCount: u.ReadCount,
+		
+		UnreadCount: u.UnreadCount,
+		
+		TotalCount: u.TotalCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

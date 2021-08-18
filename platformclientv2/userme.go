@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -202,6 +203,214 @@ type Userme struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Userme) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userme
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Division *Division `json:"division,omitempty"`
+		
+		Chat *Chat `json:"chat,omitempty"`
+		
+		Department *string `json:"department,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
+		
+		PrimaryContactInfo *[]Contact `json:"primaryContactInfo,omitempty"`
+		
+		Addresses *[]Contact `json:"addresses,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Username *string `json:"username,omitempty"`
+		
+		Manager *User `json:"manager,omitempty"`
+		
+		Images *[]Userimage `json:"images,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		Certifications *[]string `json:"certifications,omitempty"`
+		
+		Biography *Biography `json:"biography,omitempty"`
+		
+		EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
+		
+		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
+		
+		Presence *Userpresence `json:"presence,omitempty"`
+		
+		ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
+		
+		OutOfOffice *Outofoffice `json:"outOfOffice,omitempty"`
+		
+		Geolocation *Geolocation `json:"geolocation,omitempty"`
+		
+		Station *Userstations `json:"station,omitempty"`
+		
+		Authorization *Userauthorization `json:"authorization,omitempty"`
+		
+		ProfileSkills *[]string `json:"profileSkills,omitempty"`
+		
+		Locations *[]Location `json:"locations,omitempty"`
+		
+		Groups *[]Group `json:"groups,omitempty"`
+		
+		Team *Team `json:"team,omitempty"`
+		
+		Skills *[]Userroutingskill `json:"skills,omitempty"`
+		
+		Languages *[]Userroutinglanguage `json:"languages,omitempty"`
+		
+		AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
+		
+		LanguagePreference *string `json:"languagePreference,omitempty"`
+		
+		LastTokenIssued *Oauthlasttokenissued `json:"lastTokenIssued,omitempty"`
+		
+		Date *Serverdate `json:"date,omitempty"`
+		
+		GeolocationSettings *Geolocationsettings `json:"geolocationSettings,omitempty"`
+		
+		Organization *Organization `json:"organization,omitempty"`
+		
+		PresenceDefinitions *[]Organizationpresence `json:"presenceDefinitions,omitempty"`
+		
+		LocationDefinitions *[]Locationdefinition `json:"locationDefinitions,omitempty"`
+		
+		OrgAuthorization *[]Domainorganizationrole `json:"orgAuthorization,omitempty"`
+		
+		Favorites *[]User `json:"favorites,omitempty"`
+		
+		Superiors *[]User `json:"superiors,omitempty"`
+		
+		DirectReports *[]User `json:"directReports,omitempty"`
+		
+		Adjacents *Adjacents `json:"adjacents,omitempty"`
+		
+		RoutingSkills *[]Routingskill `json:"routingSkills,omitempty"`
+		
+		FieldConfigs *Fieldconfigs `json:"fieldConfigs,omitempty"`
+		
+		Token *Tokeninfo `json:"token,omitempty"`
+		
+		Trustors *[]Trustor `json:"trustors,omitempty"`
+		
+		OrgProducts *[]Domainorganizationproduct `json:"orgProducts,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Division: u.Division,
+		
+		Chat: u.Chat,
+		
+		Department: u.Department,
+		
+		Email: u.Email,
+		
+		PrimaryContactInfo: u.PrimaryContactInfo,
+		
+		Addresses: u.Addresses,
+		
+		State: u.State,
+		
+		Title: u.Title,
+		
+		Username: u.Username,
+		
+		Manager: u.Manager,
+		
+		Images: u.Images,
+		
+		Version: u.Version,
+		
+		Certifications: u.Certifications,
+		
+		Biography: u.Biography,
+		
+		EmployerInfo: u.EmployerInfo,
+		
+		RoutingStatus: u.RoutingStatus,
+		
+		Presence: u.Presence,
+		
+		ConversationSummary: u.ConversationSummary,
+		
+		OutOfOffice: u.OutOfOffice,
+		
+		Geolocation: u.Geolocation,
+		
+		Station: u.Station,
+		
+		Authorization: u.Authorization,
+		
+		ProfileSkills: u.ProfileSkills,
+		
+		Locations: u.Locations,
+		
+		Groups: u.Groups,
+		
+		Team: u.Team,
+		
+		Skills: u.Skills,
+		
+		Languages: u.Languages,
+		
+		AcdAutoAnswer: u.AcdAutoAnswer,
+		
+		LanguagePreference: u.LanguagePreference,
+		
+		LastTokenIssued: u.LastTokenIssued,
+		
+		Date: u.Date,
+		
+		GeolocationSettings: u.GeolocationSettings,
+		
+		Organization: u.Organization,
+		
+		PresenceDefinitions: u.PresenceDefinitions,
+		
+		LocationDefinitions: u.LocationDefinitions,
+		
+		OrgAuthorization: u.OrgAuthorization,
+		
+		Favorites: u.Favorites,
+		
+		Superiors: u.Superiors,
+		
+		DirectReports: u.DirectReports,
+		
+		Adjacents: u.Adjacents,
+		
+		RoutingSkills: u.RoutingSkills,
+		
+		FieldConfigs: u.FieldConfigs,
+		
+		Token: u.Token,
+		
+		Trustors: u.Trustors,
+		
+		OrgProducts: u.OrgProducts,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

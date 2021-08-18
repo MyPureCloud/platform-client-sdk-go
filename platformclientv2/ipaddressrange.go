@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Ipaddressrange struct {
 	// Region
 	Region *string `json:"region,omitempty"`
 
+}
+
+func (u *Ipaddressrange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Ipaddressrange
+
+	
+
+	return json.Marshal(&struct { 
+		Cidr *string `json:"cidr,omitempty"`
+		
+		Service *string `json:"service,omitempty"`
+		
+		Region *string `json:"region,omitempty"`
+		*Alias
+	}{ 
+		Cidr: u.Cidr,
+		
+		Service: u.Service,
+		
+		Region: u.Region,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

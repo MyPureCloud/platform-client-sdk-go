@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Evententity struct {
 	// Id - ID of the entity the event pertains to.
 	Id *string `json:"id,omitempty"`
 
+}
+
+func (u *Evententity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evententity
+
+	
+
+	return json.Marshal(&struct { 
+		EntityType *string `json:"entityType,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		*Alias
+	}{ 
+		EntityType: u.EntityType,
+		
+		Id: u.Id,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

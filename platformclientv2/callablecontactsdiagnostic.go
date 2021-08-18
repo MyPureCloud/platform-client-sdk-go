@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Callablecontactsdiagnostic struct {
 	// RuleSets - Rule sets for the campaign
 	RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
 
+}
+
+func (u *Callablecontactsdiagnostic) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Callablecontactsdiagnostic
+
+	
+
+	return json.Marshal(&struct { 
+		AttemptLimits *Domainentityref `json:"attemptLimits,omitempty"`
+		
+		DncLists *[]Domainentityref `json:"dncLists,omitempty"`
+		
+		CallableTimeSet *Domainentityref `json:"callableTimeSet,omitempty"`
+		
+		RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
+		*Alias
+	}{ 
+		AttemptLimits: u.AttemptLimits,
+		
+		DncLists: u.DncLists,
+		
+		CallableTimeSet: u.CallableTimeSet,
+		
+		RuleSets: u.RuleSets,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Exportscriptrequest struct {
 	// VersionId - The UUID version of the script to be exported.  Defaults to the current editable version.
 	VersionId *string `json:"versionId,omitempty"`
 
+}
+
+func (u *Exportscriptrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Exportscriptrequest
+
+	
+
+	return json.Marshal(&struct { 
+		FileName *string `json:"fileName,omitempty"`
+		
+		VersionId *string `json:"versionId,omitempty"`
+		*Alias
+	}{ 
+		FileName: u.FileName,
+		
+		VersionId: u.VersionId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

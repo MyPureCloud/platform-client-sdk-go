@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Domainnetworkaddress struct {
 	// Family - The address family for this address.
 	Family *int `json:"family,omitempty"`
 
+}
+
+func (u *Domainnetworkaddress) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainnetworkaddress
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Address *string `json:"address,omitempty"`
+		
+		Persistent *bool `json:"persistent,omitempty"`
+		
+		Family *int `json:"family,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Address: u.Address,
+		
+		Persistent: u.Persistent,
+		
+		Family: u.Family,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

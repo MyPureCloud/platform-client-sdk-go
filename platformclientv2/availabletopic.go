@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -58,6 +59,70 @@ type Availabletopic struct {
 	// PublicApiTemplateUriPaths
 	PublicApiTemplateUriPaths *[]string `json:"publicApiTemplateUriPaths,omitempty"`
 
+}
+
+func (u *Availabletopic) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Availabletopic
+
+	
+
+	return json.Marshal(&struct { 
+		Description *string `json:"description,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		PermissionDetails *[]Permissiondetails `json:"permissionDetails,omitempty"`
+		
+		RequiresPermissions *[]string `json:"requiresPermissions,omitempty"`
+		
+		RequiresDivisionPermissions *bool `json:"requiresDivisionPermissions,omitempty"`
+		
+		RequiresAnyValidator *bool `json:"requiresAnyValidator,omitempty"`
+		
+		Enforced *bool `json:"enforced,omitempty"`
+		
+		Visibility *string `json:"visibility,omitempty"`
+		
+		Schema *map[string]interface{} `json:"schema,omitempty"`
+		
+		RequiresCurrentUser *bool `json:"requiresCurrentUser,omitempty"`
+		
+		RequiresCurrentUserOrPermission *bool `json:"requiresCurrentUserOrPermission,omitempty"`
+		
+		Transports *[]string `json:"transports,omitempty"`
+		
+		PublicApiTemplateUriPaths *[]string `json:"publicApiTemplateUriPaths,omitempty"`
+		*Alias
+	}{ 
+		Description: u.Description,
+		
+		Id: u.Id,
+		
+		PermissionDetails: u.PermissionDetails,
+		
+		RequiresPermissions: u.RequiresPermissions,
+		
+		RequiresDivisionPermissions: u.RequiresDivisionPermissions,
+		
+		RequiresAnyValidator: u.RequiresAnyValidator,
+		
+		Enforced: u.Enforced,
+		
+		Visibility: u.Visibility,
+		
+		Schema: u.Schema,
+		
+		RequiresCurrentUser: u.RequiresCurrentUser,
+		
+		RequiresCurrentUserOrPermission: u.RequiresCurrentUserOrPermission,
+		
+		Transports: u.Transports,
+		
+		PublicApiTemplateUriPaths: u.PublicApiTemplateUriPaths,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

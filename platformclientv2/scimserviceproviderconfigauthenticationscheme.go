@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Scimserviceproviderconfigauthenticationscheme struct {
 	// Primary - Indicates whether this authentication scheme is the primary method of authentication.
 	Primary *bool `json:"primary,omitempty"`
 
+}
+
+func (u *Scimserviceproviderconfigauthenticationscheme) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimserviceproviderconfigauthenticationscheme
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		SpecUri *string `json:"specUri,omitempty"`
+		
+		DocumentationUri *string `json:"documentationUri,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Primary *bool `json:"primary,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		SpecUri: u.SpecUri,
+		
+		DocumentationUri: u.DocumentationUri,
+		
+		VarType: u.VarType,
+		
+		Primary: u.Primary,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

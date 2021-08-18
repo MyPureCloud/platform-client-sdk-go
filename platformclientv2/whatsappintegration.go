@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -67,6 +68,94 @@ type Whatsappintegration struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Whatsappintegration) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Whatsappintegration
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Recipient *Domainentityref `json:"recipient,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
+		
+		ModifiedBy *Domainentityref `json:"modifiedBy,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		ActivationStatusCode *string `json:"activationStatusCode,omitempty"`
+		
+		ActivationErrorInfo *Errorbody `json:"activationErrorInfo,omitempty"`
+		
+		CreateStatus *string `json:"createStatus,omitempty"`
+		
+		CreateError *Errorbody `json:"createError,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		Status: u.Status,
+		
+		Recipient: u.Recipient,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		Version: u.Version,
+		
+		ActivationStatusCode: u.ActivationStatusCode,
+		
+		ActivationErrorInfo: u.ActivationErrorInfo,
+		
+		CreateStatus: u.CreateStatus,
+		
+		CreateError: u.CreateError,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

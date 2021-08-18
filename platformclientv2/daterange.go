@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Daterange struct {
 	// EndDate - The inclusive end of a date range in yyyy-MM-dd format. Should be interpreted in the management unit's configured time zone.
 	EndDate *string `json:"endDate,omitempty"`
 
+}
+
+func (u *Daterange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Daterange
+
+	
+
+	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		*Alias
+	}{ 
+		StartDate: u.StartDate,
+		
+		EndDate: u.EndDate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

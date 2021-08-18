@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -19,6 +20,38 @@ type Routingstatus struct {
 	// StartTime - The timestamp when the agent went into this state. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartTime *time.Time `json:"startTime,omitempty"`
 
+}
+
+func (u *Routingstatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Routingstatus
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		UserId *string `json:"userId,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		*Alias
+	}{ 
+		UserId: u.UserId,
+		
+		Status: u.Status,
+		
+		StartTime: StartTime,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

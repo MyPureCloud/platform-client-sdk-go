@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -75,6 +76,102 @@ type Interactionstatsalert struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Interactionstatsalert) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Interactionstatsalert
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Dimension *string `json:"dimension,omitempty"`
+		
+		DimensionValue *string `json:"dimensionValue,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		NumericRange *string `json:"numericRange,omitempty"`
+		
+		Statistic *string `json:"statistic,omitempty"`
+		
+		Value *float64 `json:"value,omitempty"`
+		
+		RuleId *string `json:"ruleId,omitempty"`
+		
+		Unread *bool `json:"unread,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		NotificationUsers *[]User `json:"notificationUsers,omitempty"`
+		
+		AlertTypes *[]string `json:"alertTypes,omitempty"`
+		
+		RuleUri *string `json:"ruleUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Dimension: u.Dimension,
+		
+		DimensionValue: u.DimensionValue,
+		
+		Metric: u.Metric,
+		
+		MediaType: u.MediaType,
+		
+		NumericRange: u.NumericRange,
+		
+		Statistic: u.Statistic,
+		
+		Value: u.Value,
+		
+		RuleId: u.RuleId,
+		
+		Unread: u.Unread,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		NotificationUsers: u.NotificationUsers,
+		
+		AlertTypes: u.AlertTypes,
+		
+		RuleUri: u.RuleUri,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

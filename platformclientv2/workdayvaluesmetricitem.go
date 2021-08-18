@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Workdayvaluesmetricitem struct {
 	// Trend - The metric value trend
 	Trend *[]Workdayvaluestrenditem `json:"trend,omitempty"`
 
+}
+
+func (u *Workdayvaluesmetricitem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Workdayvaluesmetricitem
+
+	
+
+	return json.Marshal(&struct { 
+		MetricDefinition *Domainentityref `json:"metricDefinition,omitempty"`
+		
+		Average *float64 `json:"average,omitempty"`
+		
+		UnitType *string `json:"unitType,omitempty"`
+		
+		Trend *[]Workdayvaluestrenditem `json:"trend,omitempty"`
+		*Alias
+	}{ 
+		MetricDefinition: u.MetricDefinition,
+		
+		Average: u.Average,
+		
+		UnitType: u.UnitType,
+		
+		Trend: u.Trend,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

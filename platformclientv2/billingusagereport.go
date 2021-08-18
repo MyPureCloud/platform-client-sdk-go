@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,62 @@ type Billingusagereport struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Billingusagereport) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Billingusagereport
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Usages *[]Billingusage `json:"usages,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		Status: u.Status,
+		
+		Usages: u.Usages,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

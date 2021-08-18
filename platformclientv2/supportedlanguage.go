@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Supportedlanguage struct {
 	// IsDefault - Whether or not this language is the default language
 	IsDefault *bool `json:"isDefault,omitempty"`
 
+}
+
+func (u *Supportedlanguage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Supportedlanguage
+
+	
+
+	return json.Marshal(&struct { 
+		Language *string `json:"language,omitempty"`
+		
+		IsDefault *bool `json:"isDefault,omitempty"`
+		*Alias
+	}{ 
+		Language: u.Language,
+		
+		IsDefault: u.IsDefault,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

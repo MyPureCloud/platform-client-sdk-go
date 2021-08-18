@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,66 @@ type Recordingemailmessage struct {
 	// Time - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Time *time.Time `json:"time,omitempty"`
 
+}
+
+func (u *Recordingemailmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recordingemailmessage
+
+	
+	Time := new(string)
+	if u.Time != nil {
+		
+		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Time = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		HtmlBody *string `json:"htmlBody,omitempty"`
+		
+		TextBody *string `json:"textBody,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		To *[]Emailaddress `json:"to,omitempty"`
+		
+		Cc *[]Emailaddress `json:"cc,omitempty"`
+		
+		Bcc *[]Emailaddress `json:"bcc,omitempty"`
+		
+		From *Emailaddress `json:"from,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		
+		Attachments *[]Emailattachment `json:"attachments,omitempty"`
+		
+		Time *string `json:"time,omitempty"`
+		*Alias
+	}{ 
+		HtmlBody: u.HtmlBody,
+		
+		TextBody: u.TextBody,
+		
+		Id: u.Id,
+		
+		To: u.To,
+		
+		Cc: u.Cc,
+		
+		Bcc: u.Bcc,
+		
+		From: u.From,
+		
+		Subject: u.Subject,
+		
+		Attachments: u.Attachments,
+		
+		Time: Time,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

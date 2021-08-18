@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,26 @@ type Buagentscheduleupdate struct {
 	// ShiftStartDates - The start date for the affected shifts
 	ShiftStartDates *[]time.Time `json:"shiftStartDates,omitempty"`
 
+}
+
+func (u *Buagentscheduleupdate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentscheduleupdate
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		ShiftStartDates *[]time.Time `json:"shiftStartDates,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		ShiftStartDates: u.ShiftStartDates,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

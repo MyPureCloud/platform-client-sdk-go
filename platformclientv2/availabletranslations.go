@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Availabletranslations struct {
 	// Builtin
 	Builtin *[]string `json:"builtin,omitempty"`
 
+}
+
+func (u *Availabletranslations) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Availabletranslations
+
+	
+
+	return json.Marshal(&struct { 
+		OrgSpecific *[]string `json:"orgSpecific,omitempty"`
+		
+		Builtin *[]string `json:"builtin,omitempty"`
+		*Alias
+	}{ 
+		OrgSpecific: u.OrgSpecific,
+		
+		Builtin: u.Builtin,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

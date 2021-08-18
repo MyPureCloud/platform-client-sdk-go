@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Architectflowfields struct {
 	// FlowRequestMappings - Collection of Architect Flow Request Mappings to use.
 	FlowRequestMappings *[]Requestmapping `json:"flowRequestMappings,omitempty"`
 
+}
+
+func (u *Architectflowfields) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Architectflowfields
+
+	
+
+	return json.Marshal(&struct { 
+		ArchitectFlow *Addressableentityref `json:"architectFlow,omitempty"`
+		
+		FlowRequestMappings *[]Requestmapping `json:"flowRequestMappings,omitempty"`
+		*Alias
+	}{ 
+		ArchitectFlow: u.ArchitectFlow,
+		
+		FlowRequestMappings: u.FlowRequestMappings,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

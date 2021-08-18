@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -83,6 +84,110 @@ type Learningmodule struct {
 	// SummaryData - The learning module summary data
 	SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 
+}
+
+func (u *Learningmodule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningmodule
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		CreatedBy *Userreference `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		ExternalId *string `json:"externalId,omitempty"`
+		
+		Source *string `json:"source,omitempty"`
+		
+		Rule *Learningmodulerule `json:"rule,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		IsArchived *bool `json:"isArchived,omitempty"`
+		
+		IsPublished *bool `json:"isPublished,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		CompletionTimeInDays *int `json:"completionTimeInDays,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		InformSteps *[]Learningmoduleinformstep `json:"informSteps,omitempty"`
+		
+		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
+		
+		SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		CreatedBy: u.CreatedBy,
+		
+		DateCreated: DateCreated,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		DateModified: DateModified,
+		
+		Version: u.Version,
+		
+		ExternalId: u.ExternalId,
+		
+		Source: u.Source,
+		
+		Rule: u.Rule,
+		
+		SelfUri: u.SelfUri,
+		
+		IsArchived: u.IsArchived,
+		
+		IsPublished: u.IsPublished,
+		
+		Description: u.Description,
+		
+		CompletionTimeInDays: u.CompletionTimeInDays,
+		
+		VarType: u.VarType,
+		
+		InformSteps: u.InformSteps,
+		
+		AssessmentForm: u.AssessmentForm,
+		
+		SummaryData: u.SummaryData,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

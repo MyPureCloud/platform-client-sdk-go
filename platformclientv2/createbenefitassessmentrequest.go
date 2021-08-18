@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Createbenefitassessmentrequest struct {
 	// QueueIds - The list of queue ids that are to be assessed for Predictive Routing benefit.
 	QueueIds *[]string `json:"queueIds,omitempty"`
 
+}
+
+func (u *Createbenefitassessmentrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createbenefitassessmentrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueueIds *[]string `json:"queueIds,omitempty"`
+		*Alias
+	}{ 
+		QueueIds: u.QueueIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

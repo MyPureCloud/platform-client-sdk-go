@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Crossplatformcallmediapolicy struct {
 	// Conditions - Conditions for when actions should be applied
 	Conditions *Callmediapolicyconditions `json:"conditions,omitempty"`
 
+}
+
+func (u *Crossplatformcallmediapolicy) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Crossplatformcallmediapolicy
+
+	
+
+	return json.Marshal(&struct { 
+		Actions *Crossplatformpolicyactions `json:"actions,omitempty"`
+		
+		Conditions *Callmediapolicyconditions `json:"conditions,omitempty"`
+		*Alias
+	}{ 
+		Actions: u.Actions,
+		
+		Conditions: u.Conditions,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

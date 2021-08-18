@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Wrapup struct {
 	// Provisional - Indicates if this is a pending save and should not require a code to be specified.  This allows someone to save some temporary wrapup that will be used later.
 	Provisional *bool `json:"provisional,omitempty"`
 
+}
+
+func (u *Wrapup) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wrapup
+
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Code *string `json:"code,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		Tags *[]string `json:"tags,omitempty"`
+		
+		DurationSeconds *int `json:"durationSeconds,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		Provisional *bool `json:"provisional,omitempty"`
+		*Alias
+	}{ 
+		Code: u.Code,
+		
+		Name: u.Name,
+		
+		Notes: u.Notes,
+		
+		Tags: u.Tags,
+		
+		DurationSeconds: u.DurationSeconds,
+		
+		EndTime: EndTime,
+		
+		Provisional: u.Provisional,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

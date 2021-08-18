@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Trunkinstancetopictrunkmetricsnetworktypeip struct {
 	// ErrorInfo
 	ErrorInfo *Trunkinstancetopictrunkerrorinfo `json:"errorInfo,omitempty"`
 
+}
+
+func (u *Trunkinstancetopictrunkmetricsnetworktypeip) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trunkinstancetopictrunkmetricsnetworktypeip
+
+	
+
+	return json.Marshal(&struct { 
+		Address *string `json:"address,omitempty"`
+		
+		ErrorInfo *Trunkinstancetopictrunkerrorinfo `json:"errorInfo,omitempty"`
+		*Alias
+	}{ 
+		Address: u.Address,
+		
+		ErrorInfo: u.ErrorInfo,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

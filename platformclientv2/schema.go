@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Schema struct {
 	// Pattern - For the \"date\" and \"datetime\" core types, denotes the regex prescribing the allowable date/datetime format
 	Pattern *string `json:"pattern,omitempty"`
 
+}
+
+func (u *Schema) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schema
+
+	
+
+	return json.Marshal(&struct { 
+		Title *string `json:"title,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		VarType *[]string `json:"type,omitempty"`
+		
+		Items *Items `json:"items,omitempty"`
+		
+		Pattern *string `json:"pattern,omitempty"`
+		*Alias
+	}{ 
+		Title: u.Title,
+		
+		Description: u.Description,
+		
+		VarType: u.VarType,
+		
+		Items: u.Items,
+		
+		Pattern: u.Pattern,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

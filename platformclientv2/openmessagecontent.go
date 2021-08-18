@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Openmessagecontent struct {
 	// Attachment - Attachment content.
 	Attachment *Contentattachment `json:"attachment,omitempty"`
 
+}
+
+func (u *Openmessagecontent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Openmessagecontent
+
+	
+
+	return json.Marshal(&struct { 
+		ContentType *string `json:"contentType,omitempty"`
+		
+		Attachment *Contentattachment `json:"attachment,omitempty"`
+		*Alias
+	}{ 
+		ContentType: u.ContentType,
+		
+		Attachment: u.Attachment,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

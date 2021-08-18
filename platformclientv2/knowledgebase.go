@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,86 @@ type Knowledgebase struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Knowledgebase) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Knowledgebase
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	DateDocumentLastModified := new(string)
+	if u.DateDocumentLastModified != nil {
+		
+		*DateDocumentLastModified = timeutil.Strftime(u.DateDocumentLastModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateDocumentLastModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		CoreLanguage *string `json:"coreLanguage,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		FaqCount *int `json:"faqCount,omitempty"`
+		
+		DateDocumentLastModified *string `json:"dateDocumentLastModified,omitempty"`
+		
+		ArticleCount *int `json:"articleCount,omitempty"`
+		
+		Published *bool `json:"published,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		CoreLanguage: u.CoreLanguage,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		FaqCount: u.FaqCount,
+		
+		DateDocumentLastModified: DateDocumentLastModified,
+		
+		ArticleCount: u.ArticleCount,
+		
+		Published: u.Published,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

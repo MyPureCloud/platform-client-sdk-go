@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Schedulegenerationresultsummary struct {
 	// MessageCount - The number of schedule generation messages for this schedule generation run
 	MessageCount *int `json:"messageCount,omitempty"`
 
+}
+
+func (u *Schedulegenerationresultsummary) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedulegenerationresultsummary
+
+	
+
+	return json.Marshal(&struct { 
+		Failed *bool `json:"failed,omitempty"`
+		
+		RunId *string `json:"runId,omitempty"`
+		
+		MessageCount *int `json:"messageCount,omitempty"`
+		*Alias
+	}{ 
+		Failed: u.Failed,
+		
+		RunId: u.RunId,
+		
+		MessageCount: u.MessageCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

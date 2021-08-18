@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,66 @@ type Performanceprofile struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Performanceprofile) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Performanceprofile
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Division *Division `json:"division,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		MetricOrders *[]string `json:"metricOrders,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		ReportingIntervals *[]Reportinginterval `json:"reportingIntervals,omitempty"`
+		
+		Active *bool `json:"active,omitempty"`
+		
+		MaxLeaderboardRankSize *int `json:"maxLeaderboardRankSize,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Division: u.Division,
+		
+		Description: u.Description,
+		
+		MetricOrders: u.MetricOrders,
+		
+		DateCreated: DateCreated,
+		
+		ReportingIntervals: u.ReportingIntervals,
+		
+		Active: u.Active,
+		
+		MaxLeaderboardRankSize: u.MaxLeaderboardRankSize,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

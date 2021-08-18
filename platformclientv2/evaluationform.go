@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Evaluationform struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Evaluationform) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evaluationform
+
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		Published *bool `json:"published,omitempty"`
+		
+		ContextId *string `json:"contextId,omitempty"`
+		
+		QuestionGroups *[]Evaluationquestiongroup `json:"questionGroups,omitempty"`
+		
+		PublishedVersions *Domainentitylistingevaluationform `json:"publishedVersions,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ModifiedDate: ModifiedDate,
+		
+		Published: u.Published,
+		
+		ContextId: u.ContextId,
+		
+		QuestionGroups: u.QuestionGroups,
+		
+		PublishedVersions: u.PublishedVersions,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

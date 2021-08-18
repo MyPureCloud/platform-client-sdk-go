@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Importreport struct {
 	// TotalDocuments
 	TotalDocuments *int `json:"totalDocuments,omitempty"`
 
+}
+
+func (u *Importreport) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Importreport
+
+	
+
+	return json.Marshal(&struct { 
+		Errors *[]Importerror `json:"errors,omitempty"`
+		
+		Validated *Resultcounters `json:"validated,omitempty"`
+		
+		Imported *Resultcounters `json:"imported,omitempty"`
+		
+		TotalDocuments *int `json:"totalDocuments,omitempty"`
+		*Alias
+	}{ 
+		Errors: u.Errors,
+		
+		Validated: u.Validated,
+		
+		Imported: u.Imported,
+		
+		TotalDocuments: u.TotalDocuments,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

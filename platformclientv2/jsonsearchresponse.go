@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Jsonsearchresponse struct {
 	// Aggregations
 	Aggregations *Arraynode `json:"aggregations,omitempty"`
 
+}
+
+func (u *Jsonsearchresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Jsonsearchresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Total *int `json:"total,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Types *[]string `json:"types,omitempty"`
+		
+		Results *Arraynode `json:"results,omitempty"`
+		
+		Aggregations *Arraynode `json:"aggregations,omitempty"`
+		*Alias
+	}{ 
+		Total: u.Total,
+		
+		PageCount: u.PageCount,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		Types: u.Types,
+		
+		Results: u.Results,
+		
+		Aggregations: u.Aggregations,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

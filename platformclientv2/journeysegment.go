@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -67,6 +68,94 @@ type Journeysegment struct {
 	// ModifiedDate - Timestamp indicating when the the segment was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
+}
+
+func (u *Journeysegment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Journeysegment
+
+	
+	CreatedDate := new(string)
+	if u.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		IsActive *bool `json:"isActive,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Color *string `json:"color,omitempty"`
+		
+		Scope *string `json:"scope,omitempty"`
+		
+		ShouldDisplayToAgent *bool `json:"shouldDisplayToAgent,omitempty"`
+		
+		Context *Context `json:"context,omitempty"`
+		
+		Journey *Journey `json:"journey,omitempty"`
+		
+		ExternalSegment *Externalsegment `json:"externalSegment,omitempty"`
+		
+		AssignmentExpirationDays *int `json:"assignmentExpirationDays,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		IsActive: u.IsActive,
+		
+		DisplayName: u.DisplayName,
+		
+		Version: u.Version,
+		
+		Description: u.Description,
+		
+		Color: u.Color,
+		
+		Scope: u.Scope,
+		
+		ShouldDisplayToAgent: u.ShouldDisplayToAgent,
+		
+		Context: u.Context,
+		
+		Journey: u.Journey,
+		
+		ExternalSegment: u.ExternalSegment,
+		
+		AssignmentExpirationDays: u.AssignmentExpirationDays,
+		
+		SelfUri: u.SelfUri,
+		
+		CreatedDate: CreatedDate,
+		
+		ModifiedDate: ModifiedDate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

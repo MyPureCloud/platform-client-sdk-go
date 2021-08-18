@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,74 @@ type Learningassessment struct {
 	// DateSubmitted - Date the assessment was submitted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateSubmitted *time.Time `json:"dateSubmitted,omitempty"`
 
+}
+
+func (u *Learningassessment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningassessment
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	DateSubmitted := new(string)
+	if u.DateSubmitted != nil {
+		
+		*DateSubmitted = timeutil.Strftime(u.DateSubmitted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateSubmitted = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		AssessmentId *string `json:"assessmentId,omitempty"`
+		
+		ContextId *string `json:"contextId,omitempty"`
+		
+		AssessmentFormId *string `json:"assessmentFormId,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Answers *Assessmentscoringset `json:"answers,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		DateSubmitted *string `json:"dateSubmitted,omitempty"`
+		*Alias
+	}{ 
+		AssessmentId: u.AssessmentId,
+		
+		ContextId: u.ContextId,
+		
+		AssessmentFormId: u.AssessmentFormId,
+		
+		Status: u.Status,
+		
+		Answers: u.Answers,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		DateSubmitted: DateSubmitted,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

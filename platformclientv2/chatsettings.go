@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Chatsettings struct {
 	// MessageRetentionPeriodDays - Retention time for messages in days
 	MessageRetentionPeriodDays *int `json:"messageRetentionPeriodDays,omitempty"`
 
+}
+
+func (u *Chatsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Chatsettings
+
+	
+
+	return json.Marshal(&struct { 
+		MessageRetentionPeriodDays *int `json:"messageRetentionPeriodDays,omitempty"`
+		*Alias
+	}{ 
+		MessageRetentionPeriodDays: u.MessageRetentionPeriodDays,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

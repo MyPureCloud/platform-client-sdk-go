@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Patchactionproperties struct {
 	// WebchatSurvey - Survey provided to the user, used for webchat type action.
 	WebchatSurvey *Patchactionsurvey `json:"webchatSurvey,omitempty"`
 
+}
+
+func (u *Patchactionproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchactionproperties
+
+	
+
+	return json.Marshal(&struct { 
+		WebchatPrompt *string `json:"webchatPrompt,omitempty"`
+		
+		WebchatTitleText *string `json:"webchatTitleText,omitempty"`
+		
+		WebchatAcceptText *string `json:"webchatAcceptText,omitempty"`
+		
+		WebchatDeclineText *string `json:"webchatDeclineText,omitempty"`
+		
+		WebchatSurvey *Patchactionsurvey `json:"webchatSurvey,omitempty"`
+		*Alias
+	}{ 
+		WebchatPrompt: u.WebchatPrompt,
+		
+		WebchatTitleText: u.WebchatTitleText,
+		
+		WebchatAcceptText: u.WebchatAcceptText,
+		
+		WebchatDeclineText: u.WebchatDeclineText,
+		
+		WebchatSurvey: u.WebchatSurvey,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Whatsappid struct {
 	// DisplayName - The displayName of this person's account in WhatsApp
 	DisplayName *string `json:"displayName,omitempty"`
 
+}
+
+func (u *Whatsappid) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Whatsappid
+
+	
+
+	return json.Marshal(&struct { 
+		PhoneNumber *Phonenumber `json:"phoneNumber,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		*Alias
+	}{ 
+		PhoneNumber: u.PhoneNumber,
+		
+		DisplayName: u.DisplayName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

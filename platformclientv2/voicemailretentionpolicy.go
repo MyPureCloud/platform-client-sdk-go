@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Voicemailretentionpolicy struct {
 	// NumberOfDays - If retentionPolicyType == RETAIN_WITH_TTL, then this value represents the number of days for the TTL
 	NumberOfDays *int `json:"numberOfDays,omitempty"`
 
+}
+
+func (u *Voicemailretentionpolicy) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Voicemailretentionpolicy
+
+	
+
+	return json.Marshal(&struct { 
+		VoicemailRetentionPolicyType *string `json:"voicemailRetentionPolicyType,omitempty"`
+		
+		NumberOfDays *int `json:"numberOfDays,omitempty"`
+		*Alias
+	}{ 
+		VoicemailRetentionPolicyType: u.VoicemailRetentionPolicyType,
+		
+		NumberOfDays: u.NumberOfDays,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

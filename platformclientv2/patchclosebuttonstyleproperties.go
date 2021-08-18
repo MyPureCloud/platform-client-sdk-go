@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Patchclosebuttonstyleproperties struct {
 	// Opacity - Opacity of button.
 	Opacity *float32 `json:"opacity,omitempty"`
 
+}
+
+func (u *Patchclosebuttonstyleproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchclosebuttonstyleproperties
+
+	
+
+	return json.Marshal(&struct { 
+		Color *string `json:"color,omitempty"`
+		
+		Opacity *float32 `json:"opacity,omitempty"`
+		*Alias
+	}{ 
+		Color: u.Color,
+		
+		Opacity: u.Opacity,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

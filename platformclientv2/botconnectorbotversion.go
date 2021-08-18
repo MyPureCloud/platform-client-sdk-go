@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Botconnectorbotversion struct {
 	// Intents - A list of potential intents this bot will return, limit of 50
 	Intents *[]Botintent `json:"intents,omitempty"`
 
+}
+
+func (u *Botconnectorbotversion) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Botconnectorbotversion
+
+	
+
+	return json.Marshal(&struct { 
+		Version *string `json:"version,omitempty"`
+		
+		SupportedLanguages *[]string `json:"supportedLanguages,omitempty"`
+		
+		Intents *[]Botintent `json:"intents,omitempty"`
+		*Alias
+	}{ 
+		Version: u.Version,
+		
+		SupportedLanguages: u.SupportedLanguages,
+		
+		Intents: u.Intents,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

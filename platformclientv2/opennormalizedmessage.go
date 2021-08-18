@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Opennormalizedmessage struct {
 	// Direction - The direction of the message.
 	Direction *string `json:"direction,omitempty"`
 
+}
+
+func (u *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Opennormalizedmessage
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Channel *Openmessagingchannel `json:"channel,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Text *string `json:"text,omitempty"`
+		
+		Content *[]Openmessagecontent `json:"content,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Channel: u.Channel,
+		
+		VarType: u.VarType,
+		
+		Text: u.Text,
+		
+		Content: u.Content,
+		
+		Direction: u.Direction,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

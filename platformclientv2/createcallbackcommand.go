@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,70 @@ type Createcallbackcommand struct {
 	// CallerIdName - The name displayed to recipients when a phone call is placed as part of the callback. May be overridden by other settings in the system such as external trunk settings. Telco support for \"callerIdName\" varies.
 	CallerIdName *string `json:"callerIdName,omitempty"`
 
+}
+
+func (u *Createcallbackcommand) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createcallbackcommand
+
+	
+	CallbackScheduledTime := new(string)
+	if u.CallbackScheduledTime != nil {
+		
+		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CallbackScheduledTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
+		
+		RoutingData *Routingdata `json:"routingData,omitempty"`
+		
+		CallbackUserName *string `json:"callbackUserName,omitempty"`
+		
+		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
+		
+		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		
+		ValidateCallbackNumbers *bool `json:"validateCallbackNumbers,omitempty"`
+		
+		Data *map[string]string `json:"data,omitempty"`
+		
+		CallerId *string `json:"callerId,omitempty"`
+		
+		CallerIdName *string `json:"callerIdName,omitempty"`
+		*Alias
+	}{ 
+		ScriptId: u.ScriptId,
+		
+		QueueId: u.QueueId,
+		
+		RoutingData: u.RoutingData,
+		
+		CallbackUserName: u.CallbackUserName,
+		
+		CallbackNumbers: u.CallbackNumbers,
+		
+		CallbackScheduledTime: CallbackScheduledTime,
+		
+		CountryCode: u.CountryCode,
+		
+		ValidateCallbackNumbers: u.ValidateCallbackNumbers,
+		
+		Data: u.Data,
+		
+		CallerId: u.CallerId,
+		
+		CallerIdName: u.CallerIdName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

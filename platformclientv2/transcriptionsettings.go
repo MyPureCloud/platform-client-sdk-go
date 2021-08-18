@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Transcriptionsettings struct {
 	// ContentSearchEnabled - Setting to enable/disable content search
 	ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
 
+}
+
+func (u *Transcriptionsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Transcriptionsettings
+
+	
+
+	return json.Marshal(&struct { 
+		Transcription *string `json:"transcription,omitempty"`
+		
+		TranscriptionConfidenceThreshold *int `json:"transcriptionConfidenceThreshold,omitempty"`
+		
+		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
+		*Alias
+	}{ 
+		Transcription: u.Transcription,
+		
+		TranscriptionConfidenceThreshold: u.TranscriptionConfidenceThreshold,
+		
+		ContentSearchEnabled: u.ContentSearchEnabled,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

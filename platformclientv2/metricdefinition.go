@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Metricdefinition struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Metricdefinition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Metricdefinition
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		UnitType *string `json:"unitType,omitempty"`
+		
+		ShortName *string `json:"shortName,omitempty"`
+		
+		DividendMetrics *[]string `json:"dividendMetrics,omitempty"`
+		
+		DivisorMetrics *[]string `json:"divisorMetrics,omitempty"`
+		
+		DefaultObjective *Defaultobjective `json:"defaultObjective,omitempty"`
+		
+		LockTemplateId *string `json:"lockTemplateId,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		UnitType: u.UnitType,
+		
+		ShortName: u.ShortName,
+		
+		DividendMetrics: u.DividendMetrics,
+		
+		DivisorMetrics: u.DivisorMetrics,
+		
+		DefaultObjective: u.DefaultObjective,
+		
+		LockTemplateId: u.LockTemplateId,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Edgemetricsnetwork struct {
 	// UtilizationPct - Percent utilization of the network adapter.
 	UtilizationPct *float64 `json:"utilizationPct,omitempty"`
 
+}
+
+func (u *Edgemetricsnetwork) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgemetricsnetwork
+
+	
+
+	return json.Marshal(&struct { 
+		Ifname *string `json:"ifname,omitempty"`
+		
+		SentBytesPerSec *int `json:"sentBytesPerSec,omitempty"`
+		
+		ReceivedBytesPerSec *int `json:"receivedBytesPerSec,omitempty"`
+		
+		BandwidthBitsPerSec *float64 `json:"bandwidthBitsPerSec,omitempty"`
+		
+		UtilizationPct *float64 `json:"utilizationPct,omitempty"`
+		*Alias
+	}{ 
+		Ifname: u.Ifname,
+		
+		SentBytesPerSec: u.SentBytesPerSec,
+		
+		ReceivedBytesPerSec: u.ReceivedBytesPerSec,
+		
+		BandwidthBitsPerSec: u.BandwidthBitsPerSec,
+		
+		UtilizationPct: u.UtilizationPct,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

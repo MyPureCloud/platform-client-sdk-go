@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -107,6 +108,134 @@ type Phone struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Phone) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Phone
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
+		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		ModifiedByApp *string `json:"modifiedByApp,omitempty"`
+		
+		CreatedByApp *string `json:"createdByApp,omitempty"`
+		
+		Site *Domainentityref `json:"site,omitempty"`
+		
+		PhoneBaseSettings *Domainentityref `json:"phoneBaseSettings,omitempty"`
+		
+		LineBaseSettings *Domainentityref `json:"lineBaseSettings,omitempty"`
+		
+		PhoneMetaBase *Domainentityref `json:"phoneMetaBase,omitempty"`
+		
+		Lines *[]Line `json:"lines,omitempty"`
+		
+		Status *Phonestatus `json:"status,omitempty"`
+		
+		SecondaryStatus *Phonestatus `json:"secondaryStatus,omitempty"`
+		
+		UserAgentInfo *Useragentinfo `json:"userAgentInfo,omitempty"`
+		
+		Properties *map[string]interface{} `json:"properties,omitempty"`
+		
+		Capabilities *Phonecapabilities `json:"capabilities,omitempty"`
+		
+		WebRtcUser *Domainentityref `json:"webRtcUser,omitempty"`
+		
+		PrimaryEdge *Edge `json:"primaryEdge,omitempty"`
+		
+		SecondaryEdge *Edge `json:"secondaryEdge,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Version: u.Version,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		CreatedBy: u.CreatedBy,
+		
+		State: u.State,
+		
+		ModifiedByApp: u.ModifiedByApp,
+		
+		CreatedByApp: u.CreatedByApp,
+		
+		Site: u.Site,
+		
+		PhoneBaseSettings: u.PhoneBaseSettings,
+		
+		LineBaseSettings: u.LineBaseSettings,
+		
+		PhoneMetaBase: u.PhoneMetaBase,
+		
+		Lines: u.Lines,
+		
+		Status: u.Status,
+		
+		SecondaryStatus: u.SecondaryStatus,
+		
+		UserAgentInfo: u.UserAgentInfo,
+		
+		Properties: u.Properties,
+		
+		Capabilities: u.Capabilities,
+		
+		WebRtcUser: u.WebRtcUser,
+		
+		PrimaryEdge: u.PrimaryEdge,
+		
+		SecondaryEdge: u.SecondaryEdge,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

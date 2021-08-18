@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -54,6 +55,66 @@ type Subscriptionoverviewusage struct {
 	// IsThirdParty - A charge from a third party entity
 	IsThirdParty *bool `json:"isThirdParty,omitempty"`
 
+}
+
+func (u *Subscriptionoverviewusage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Subscriptionoverviewusage
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		PartNumber *string `json:"partNumber,omitempty"`
+		
+		Grouping *string `json:"grouping,omitempty"`
+		
+		UnitOfMeasureType *string `json:"unitOfMeasureType,omitempty"`
+		
+		UsageQuantity *string `json:"usageQuantity,omitempty"`
+		
+		OveragePrice *string `json:"overagePrice,omitempty"`
+		
+		PrepayQuantity *string `json:"prepayQuantity,omitempty"`
+		
+		PrepayPrice *string `json:"prepayPrice,omitempty"`
+		
+		UsageNotes *string `json:"usageNotes,omitempty"`
+		
+		IsCancellable *bool `json:"isCancellable,omitempty"`
+		
+		BundleQuantity *string `json:"bundleQuantity,omitempty"`
+		
+		IsThirdParty *bool `json:"isThirdParty,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		PartNumber: u.PartNumber,
+		
+		Grouping: u.Grouping,
+		
+		UnitOfMeasureType: u.UnitOfMeasureType,
+		
+		UsageQuantity: u.UsageQuantity,
+		
+		OveragePrice: u.OveragePrice,
+		
+		PrepayQuantity: u.PrepayQuantity,
+		
+		PrepayPrice: u.PrepayPrice,
+		
+		UsageNotes: u.UsageNotes,
+		
+		IsCancellable: u.IsCancellable,
+		
+		BundleQuantity: u.BundleQuantity,
+		
+		IsThirdParty: u.IsThirdParty,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

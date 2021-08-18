@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Forecastplanninggroupresponse struct {
 	// ServiceGoalTemplate - Service goals for this planning group
 	ServiceGoalTemplate *Forecastservicegoaltemplateresponse `json:"serviceGoalTemplate,omitempty"`
 
+}
+
+func (u *Forecastplanninggroupresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Forecastplanninggroupresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		RoutePaths *[]Routepathresponse `json:"routePaths,omitempty"`
+		
+		ServiceGoalTemplate *Forecastservicegoaltemplateresponse `json:"serviceGoalTemplate,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		RoutePaths: u.RoutePaths,
+		
+		ServiceGoalTemplate: u.ServiceGoalTemplate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

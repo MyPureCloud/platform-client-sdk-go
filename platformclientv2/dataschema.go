@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,62 @@ type Dataschema struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Dataschema) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dataschema
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		AppliesTo *[]string `json:"appliesTo,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		JsonSchema *Jsonschemadocument `json:"jsonSchema,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Version: u.Version,
+		
+		AppliesTo: u.AppliesTo,
+		
+		Enabled: u.Enabled,
+		
+		CreatedBy: u.CreatedBy,
+		
+		DateCreated: DateCreated,
+		
+		JsonSchema: u.JsonSchema,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

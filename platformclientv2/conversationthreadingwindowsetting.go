@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Conversationthreadingwindowsetting struct {
 	// TimeoutInMinutes - The conversation threading window timeout (Minutes) of specified messenger type
 	TimeoutInMinutes *int `json:"timeoutInMinutes,omitempty"`
 
+}
+
+func (u *Conversationthreadingwindowsetting) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationthreadingwindowsetting
+
+	
+
+	return json.Marshal(&struct { 
+		MessengerType *string `json:"messengerType,omitempty"`
+		
+		TimeoutInMinutes *int `json:"timeoutInMinutes,omitempty"`
+		*Alias
+	}{ 
+		MessengerType: u.MessengerType,
+		
+		TimeoutInMinutes: u.TimeoutInMinutes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

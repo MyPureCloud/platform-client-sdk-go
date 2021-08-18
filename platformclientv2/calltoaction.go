@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Calltoaction struct {
 	// Target - Where the URL should be opened when the user clicks on the call to action button.
 	Target *string `json:"target,omitempty"`
 
+}
+
+func (u *Calltoaction) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Calltoaction
+
+	
+
+	return json.Marshal(&struct { 
+		Text *string `json:"text,omitempty"`
+		
+		Url *string `json:"url,omitempty"`
+		
+		Target *string `json:"target,omitempty"`
+		*Alias
+	}{ 
+		Text: u.Text,
+		
+		Url: u.Url,
+		
+		Target: u.Target,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

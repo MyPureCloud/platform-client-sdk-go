@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -54,6 +55,66 @@ type Createcallrequest struct {
 	// UuiData - User to User Information (UUI) data managed by SIP session application.
 	UuiData *string `json:"uuiData,omitempty"`
 
+}
+
+func (u *Createcallrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createcallrequest
+
+	
+
+	return json.Marshal(&struct { 
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		CallerId *string `json:"callerId,omitempty"`
+		
+		CallerIdName *string `json:"callerIdName,omitempty"`
+		
+		CallFromQueueId *string `json:"callFromQueueId,omitempty"`
+		
+		CallQueueId *string `json:"callQueueId,omitempty"`
+		
+		CallUserId *string `json:"callUserId,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		
+		LanguageId *string `json:"languageId,omitempty"`
+		
+		RoutingSkillsIds *[]string `json:"routingSkillsIds,omitempty"`
+		
+		ConversationIds *[]string `json:"conversationIds,omitempty"`
+		
+		Participants *[]Destination `json:"participants,omitempty"`
+		
+		UuiData *string `json:"uuiData,omitempty"`
+		*Alias
+	}{ 
+		PhoneNumber: u.PhoneNumber,
+		
+		CallerId: u.CallerId,
+		
+		CallerIdName: u.CallerIdName,
+		
+		CallFromQueueId: u.CallFromQueueId,
+		
+		CallQueueId: u.CallQueueId,
+		
+		CallUserId: u.CallUserId,
+		
+		Priority: u.Priority,
+		
+		LanguageId: u.LanguageId,
+		
+		RoutingSkillsIds: u.RoutingSkillsIds,
+		
+		ConversationIds: u.ConversationIds,
+		
+		Participants: u.Participants,
+		
+		UuiData: u.UuiData,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

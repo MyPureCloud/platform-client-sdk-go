@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Permissiondetails struct {
 	// Enforced - Whether or not this permission requirement is enforced
 	Enforced *bool `json:"enforced,omitempty"`
 
+}
+
+func (u *Permissiondetails) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Permissiondetails
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Permissions *[]string `json:"permissions,omitempty"`
+		
+		AllowsCurrentUser *bool `json:"allowsCurrentUser,omitempty"`
+		
+		Enforced *bool `json:"enforced,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Permissions: u.Permissions,
+		
+		AllowsCurrentUser: u.AllowsCurrentUser,
+		
+		Enforced: u.Enforced,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

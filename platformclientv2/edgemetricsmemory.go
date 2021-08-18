@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Edgemetricsmemory struct {
 	// TotalBytes - Total memory in bytes.
 	TotalBytes *float64 `json:"totalBytes,omitempty"`
 
+}
+
+func (u *Edgemetricsmemory) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgemetricsmemory
+
+	
+
+	return json.Marshal(&struct { 
+		AvailableBytes *float64 `json:"availableBytes,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		TotalBytes *float64 `json:"totalBytes,omitempty"`
+		*Alias
+	}{ 
+		AvailableBytes: u.AvailableBytes,
+		
+		VarType: u.VarType,
+		
+		TotalBytes: u.TotalBytes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

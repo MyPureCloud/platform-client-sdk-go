@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,49 @@ type Bufulldaytimeoffmarker struct {
 	// TimeOffRequestId - The ID of the time off request
 	TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 
+}
+
+func (u *Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Bufulldaytimeoffmarker
+
+	
+	BusinessUnitDate := new(string)
+	if u.BusinessUnitDate != nil {
+		*BusinessUnitDate = timeutil.Strftime(u.BusinessUnitDate, "%Y-%m-%d")
+	} else {
+		BusinessUnitDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		BusinessUnitDate *string `json:"businessUnitDate,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		Paid *bool `json:"paid,omitempty"`
+		
+		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+		*Alias
+	}{ 
+		BusinessUnitDate: BusinessUnitDate,
+		
+		LengthMinutes: u.LengthMinutes,
+		
+		Description: u.Description,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		Paid: u.Paid,
+		
+		TimeOffRequestId: u.TimeOffRequestId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

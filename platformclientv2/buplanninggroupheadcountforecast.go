@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Buplanninggroupheadcountforecast struct {
 	// RequiredWithoutShrinkagePerInterval - Required headcount per interval without accounting for shrinkage, referenced against the reference start date
 	RequiredWithoutShrinkagePerInterval *[]float64 `json:"requiredWithoutShrinkagePerInterval,omitempty"`
 
+}
+
+func (u *Buplanninggroupheadcountforecast) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buplanninggroupheadcountforecast
+
+	
+
+	return json.Marshal(&struct { 
+		PlanningGroup *Planninggroupreference `json:"planningGroup,omitempty"`
+		
+		RequiredPerInterval *[]float64 `json:"requiredPerInterval,omitempty"`
+		
+		RequiredWithoutShrinkagePerInterval *[]float64 `json:"requiredWithoutShrinkagePerInterval,omitempty"`
+		*Alias
+	}{ 
+		PlanningGroup: u.PlanningGroup,
+		
+		RequiredPerInterval: u.RequiredPerInterval,
+		
+		RequiredWithoutShrinkagePerInterval: u.RequiredWithoutShrinkagePerInterval,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

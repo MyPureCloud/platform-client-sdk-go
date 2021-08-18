@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Schedulingsettingsresponse struct {
 	// StartDayOfWeekend - Start day of weekend for scheduling
 	StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
 
+}
+
+func (u *Schedulingsettingsresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedulingsettingsresponse
+
+	
+
+	return json.Marshal(&struct { 
+		MaxOccupancyPercentForDeferredWork *int `json:"maxOccupancyPercentForDeferredWork,omitempty"`
+		
+		DefaultShrinkagePercent *float64 `json:"defaultShrinkagePercent,omitempty"`
+		
+		ShrinkageOverrides *Shrinkageoverrides `json:"shrinkageOverrides,omitempty"`
+		
+		PlanningPeriod *Planningperiodsettings `json:"planningPeriod,omitempty"`
+		
+		StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
+		*Alias
+	}{ 
+		MaxOccupancyPercentForDeferredWork: u.MaxOccupancyPercentForDeferredWork,
+		
+		DefaultShrinkagePercent: u.DefaultShrinkagePercent,
+		
+		ShrinkageOverrides: u.ShrinkageOverrides,
+		
+		PlanningPeriod: u.PlanningPeriod,
+		
+		StartDayOfWeekend: u.StartDayOfWeekend,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

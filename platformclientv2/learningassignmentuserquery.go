@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Learningassignmentuserquery struct {
 	// SearchTerm - The user name to be searched for
 	SearchTerm *string `json:"searchTerm,omitempty"`
 
+}
+
+func (u *Learningassignmentuserquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningassignmentuserquery
+
+	
+
+	return json.Marshal(&struct { 
+		Rule *Learningmodulerule `json:"rule,omitempty"`
+		
+		SearchTerm *string `json:"searchTerm,omitempty"`
+		*Alias
+	}{ 
+		Rule: u.Rule,
+		
+		SearchTerm: u.SearchTerm,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

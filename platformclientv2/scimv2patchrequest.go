@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Scimv2patchrequest struct {
 	// Operations - The list of operations to perform for the PATCH request.
 	Operations *[]Scimv2patchoperation `json:"Operations,omitempty"`
 
+}
+
+func (u *Scimv2patchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2patchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Schemas *[]string `json:"schemas,omitempty"`
+		
+		Operations *[]Scimv2patchoperation `json:"Operations,omitempty"`
+		*Alias
+	}{ 
+		Schemas: u.Schemas,
+		
+		Operations: u.Operations,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

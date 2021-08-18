@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings struct {
 	// CallableWindows
 	CallableWindows *[]Dialeroutboundsettingsconfigchangecallablewindow `json:"callableWindows,omitempty"`
 
+}
+
+func (u *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings
+
+	
+
+	return json.Marshal(&struct { 
+		CallableWindows *[]Dialeroutboundsettingsconfigchangecallablewindow `json:"callableWindows,omitempty"`
+		*Alias
+	}{ 
+		CallableWindows: u.CallableWindows,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

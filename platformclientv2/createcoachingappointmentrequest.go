@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Createcoachingappointmentrequest struct {
 	// DocumentIds - IDs of documents associated with this coaching appointment.
 	DocumentIds *[]string `json:"documentIds,omitempty"`
 
+}
+
+func (u *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createcoachingappointmentrequest
+
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		FacilitatorId *string `json:"facilitatorId,omitempty"`
+		
+		AttendeeIds *[]string `json:"attendeeIds,omitempty"`
+		
+		ConversationIds *[]string `json:"conversationIds,omitempty"`
+		
+		DocumentIds *[]string `json:"documentIds,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		DateStart: DateStart,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		FacilitatorId: u.FacilitatorId,
+		
+		AttendeeIds: u.AttendeeIds,
+		
+		ConversationIds: u.ConversationIds,
+		
+		DocumentIds: u.DocumentIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

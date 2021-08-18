@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -71,6 +72,128 @@ type Miner struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Miner) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Miner
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	ConversationsDateRangeStart := new(string)
+	if u.ConversationsDateRangeStart != nil {
+		*ConversationsDateRangeStart = timeutil.Strftime(u.ConversationsDateRangeStart, "%Y-%m-%d")
+	} else {
+		ConversationsDateRangeStart = nil
+	}
+	
+	ConversationsDateRangeEnd := new(string)
+	if u.ConversationsDateRangeEnd != nil {
+		*ConversationsDateRangeEnd = timeutil.Strftime(u.ConversationsDateRangeEnd, "%Y-%m-%d")
+	} else {
+		ConversationsDateRangeEnd = nil
+	}
+	
+	DateCompleted := new(string)
+	if u.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
+	DateTriggered := new(string)
+	if u.DateTriggered != nil {
+		
+		*DateTriggered = timeutil.Strftime(u.DateTriggered, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateTriggered = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		ConversationsDateRangeStart *string `json:"conversationsDateRangeStart,omitempty"`
+		
+		ConversationsDateRangeEnd *string `json:"conversationsDateRangeEnd,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
+		
+		ConversationDataUploaded *bool `json:"conversationDataUploaded,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		QueueIds *[]string `json:"queueIds,omitempty"`
+		
+		DateTriggered *string `json:"dateTriggered,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		LatestDraftVersion **Draft `json:"latestDraftVersion,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Language: u.Language,
+		
+		DateCreated: DateCreated,
+		
+		Status: u.Status,
+		
+		ConversationsDateRangeStart: ConversationsDateRangeStart,
+		
+		ConversationsDateRangeEnd: ConversationsDateRangeEnd,
+		
+		DateCompleted: DateCompleted,
+		
+		Message: u.Message,
+		
+		ConversationDataUploaded: u.ConversationDataUploaded,
+		
+		MediaType: u.MediaType,
+		
+		QueueIds: u.QueueIds,
+		
+		DateTriggered: DateTriggered,
+		
+		DateModified: DateModified,
+		
+		LatestDraftVersion: u.LatestDraftVersion,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

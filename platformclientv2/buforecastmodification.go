@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Buforecastmodification struct {
 	// PlanningGroupIds - The IDs of the planning groups to which this forecast modification applies.  Leave empty to apply to all
 	PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 
+}
+
+func (u *Buforecastmodification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buforecastmodification
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		StartIntervalIndex *int `json:"startIntervalIndex,omitempty"`
+		
+		EndIntervalIndex *int `json:"endIntervalIndex,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		LegacyMetric *string `json:"legacyMetric,omitempty"`
+		
+		Value *float64 `json:"value,omitempty"`
+		
+		Values *[]Wfmforecastmodificationintervaloffsetvalue `json:"values,omitempty"`
+		
+		DisplayGranularity *string `json:"displayGranularity,omitempty"`
+		
+		Granularity *string `json:"granularity,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		StartIntervalIndex: u.StartIntervalIndex,
+		
+		EndIntervalIndex: u.EndIntervalIndex,
+		
+		Metric: u.Metric,
+		
+		LegacyMetric: u.LegacyMetric,
+		
+		Value: u.Value,
+		
+		Values: u.Values,
+		
+		DisplayGranularity: u.DisplayGranularity,
+		
+		Granularity: u.Granularity,
+		
+		Enabled: u.Enabled,
+		
+		PlanningGroupIds: u.PlanningGroupIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

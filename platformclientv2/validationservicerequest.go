@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,34 @@ type Validationservicerequest struct {
 	// FileUrl - Path to the file in the storage including the file name
 	FileUrl *string `json:"fileUrl,omitempty"`
 
+}
+
+func (u *Validationservicerequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Validationservicerequest
+
+	
+	DateImportEnded := new(string)
+	if u.DateImportEnded != nil {
+		
+		*DateImportEnded = timeutil.Strftime(u.DateImportEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateImportEnded = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateImportEnded *string `json:"dateImportEnded,omitempty"`
+		
+		FileUrl *string `json:"fileUrl,omitempty"`
+		*Alias
+	}{ 
+		DateImportEnded: DateImportEnded,
+		
+		FileUrl: u.FileUrl,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

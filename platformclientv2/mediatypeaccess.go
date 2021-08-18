@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Mediatypeaccess struct {
 	// Outbound - List of media types allowed for outbound messages to customers. If an outbound message is sent that contains media that is not in this list, the message will not be sent.
 	Outbound *[]Mediatype `json:"outbound,omitempty"`
 
+}
+
+func (u *Mediatypeaccess) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Mediatypeaccess
+
+	
+
+	return json.Marshal(&struct { 
+		Inbound *[]Mediatype `json:"inbound,omitempty"`
+		
+		Outbound *[]Mediatype `json:"outbound,omitempty"`
+		*Alias
+	}{ 
+		Inbound: u.Inbound,
+		
+		Outbound: u.Outbound,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

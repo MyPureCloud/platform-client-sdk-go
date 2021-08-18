@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Userscheduleshift struct {
 	// ManuallyEdited - Whether the shift was set as manually edited
 	ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 
+}
+
+func (u *Userscheduleshift) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userscheduleshift
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		WeekSchedule *Weekschedulereference `json:"weekSchedule,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		Activities *[]Userscheduleactivity `json:"activities,omitempty"`
+		
+		Delete *bool `json:"delete,omitempty"`
+		
+		ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
+		*Alias
+	}{ 
+		WeekSchedule: u.WeekSchedule,
+		
+		Id: u.Id,
+		
+		StartDate: StartDate,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		Activities: u.Activities,
+		
+		Delete: u.Delete,
+		
+		ManuallyEdited: u.ManuallyEdited,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Apiusagequeryresult struct {
 	// QueryStatus - Query status
 	QueryStatus *string `json:"queryStatus,omitempty"`
 
+}
+
+func (u *Apiusagequeryresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Apiusagequeryresult
+
+	
+
+	return json.Marshal(&struct { 
+		Results *[]Apiusagerow `json:"results,omitempty"`
+		
+		QueryStatus *string `json:"queryStatus,omitempty"`
+		*Alias
+	}{ 
+		Results: u.Results,
+		
+		QueryStatus: u.QueryStatus,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

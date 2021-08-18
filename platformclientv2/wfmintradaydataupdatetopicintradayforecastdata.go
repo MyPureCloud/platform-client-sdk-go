@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Wfmintradaydataupdatetopicintradayforecastdata struct {
 	// AverageAfterCallWorkSeconds
 	AverageAfterCallWorkSeconds *float32 `json:"averageAfterCallWorkSeconds,omitempty"`
 
+}
+
+func (u *Wfmintradaydataupdatetopicintradayforecastdata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmintradaydataupdatetopicintradayforecastdata
+
+	
+
+	return json.Marshal(&struct { 
+		Offered *float32 `json:"offered,omitempty"`
+		
+		AverageTalkTimeSeconds *float32 `json:"averageTalkTimeSeconds,omitempty"`
+		
+		AverageAfterCallWorkSeconds *float32 `json:"averageAfterCallWorkSeconds,omitempty"`
+		*Alias
+	}{ 
+		Offered: u.Offered,
+		
+		AverageTalkTimeSeconds: u.AverageTalkTimeSeconds,
+		
+		AverageAfterCallWorkSeconds: u.AverageAfterCallWorkSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

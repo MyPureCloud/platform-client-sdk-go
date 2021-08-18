@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -63,6 +64,82 @@ type Messagedata struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Messagedata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagedata
+
+	
+	Timestamp := new(string)
+	if u.Timestamp != nil {
+		
+		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Timestamp = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ProviderMessageId *string `json:"providerMessageId,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
+		
+		FromAddress *string `json:"fromAddress,omitempty"`
+		
+		ToAddress *string `json:"toAddress,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		MessengerType *string `json:"messengerType,omitempty"`
+		
+		TextBody *string `json:"textBody,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Media *[]Messagemedia `json:"media,omitempty"`
+		
+		Stickers *[]Messagesticker `json:"stickers,omitempty"`
+		
+		CreatedBy *User `json:"createdBy,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ProviderMessageId: u.ProviderMessageId,
+		
+		Timestamp: Timestamp,
+		
+		FromAddress: u.FromAddress,
+		
+		ToAddress: u.ToAddress,
+		
+		Direction: u.Direction,
+		
+		MessengerType: u.MessengerType,
+		
+		TextBody: u.TextBody,
+		
+		Status: u.Status,
+		
+		Media: u.Media,
+		
+		Stickers: u.Stickers,
+		
+		CreatedBy: u.CreatedBy,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

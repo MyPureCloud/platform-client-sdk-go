@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Posttextresponse struct {
 	// NuanceMixDlg - Raw data response from Nuance Mix Dlg (if called)
 	NuanceMixDlg *map[string]interface{} `json:"nuanceMixDlg,omitempty"`
 
+}
+
+func (u *Posttextresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Posttextresponse
+
+	
+
+	return json.Marshal(&struct { 
+		BotState *string `json:"botState,omitempty"`
+		
+		ReplyMessages *[]Posttextmessage `json:"replyMessages,omitempty"`
+		
+		IntentName *string `json:"intentName,omitempty"`
+		
+		Slots *map[string]string `json:"slots,omitempty"`
+		
+		BotCorrelationId *string `json:"botCorrelationId,omitempty"`
+		
+		AmazonLex *map[string]interface{} `json:"amazonLex,omitempty"`
+		
+		GoogleDialogFlow *map[string]interface{} `json:"googleDialogFlow,omitempty"`
+		
+		GenesysDialogEngine *map[string]interface{} `json:"genesysDialogEngine,omitempty"`
+		
+		GenesysBotConnector *map[string]interface{} `json:"genesysBotConnector,omitempty"`
+		
+		NuanceMixDlg *map[string]interface{} `json:"nuanceMixDlg,omitempty"`
+		*Alias
+	}{ 
+		BotState: u.BotState,
+		
+		ReplyMessages: u.ReplyMessages,
+		
+		IntentName: u.IntentName,
+		
+		Slots: u.Slots,
+		
+		BotCorrelationId: u.BotCorrelationId,
+		
+		AmazonLex: u.AmazonLex,
+		
+		GoogleDialogFlow: u.GoogleDialogFlow,
+		
+		GenesysDialogEngine: u.GenesysDialogEngine,
+		
+		GenesysBotConnector: u.GenesysBotConnector,
+		
+		NuanceMixDlg: u.NuanceMixDlg,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

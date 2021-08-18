@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -70,6 +71,82 @@ type Locationdefinition struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Locationdefinition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Locationdefinition
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ContactUser *Addressableentityref `json:"contactUser,omitempty"`
+		
+		EmergencyNumber *Locationemergencynumber `json:"emergencyNumber,omitempty"`
+		
+		Address *Locationaddress `json:"address,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		Path *[]string `json:"path,omitempty"`
+		
+		ProfileImage *[]Locationimage `json:"profileImage,omitempty"`
+		
+		FloorplanImage *[]Locationimage `json:"floorplanImage,omitempty"`
+		
+		AddressVerificationDetails *Locationaddressverificationdetails `json:"addressVerificationDetails,omitempty"`
+		
+		AddressVerified *bool `json:"addressVerified,omitempty"`
+		
+		AddressStored *bool `json:"addressStored,omitempty"`
+		
+		Images *string `json:"images,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ContactUser: u.ContactUser,
+		
+		EmergencyNumber: u.EmergencyNumber,
+		
+		Address: u.Address,
+		
+		State: u.State,
+		
+		Notes: u.Notes,
+		
+		Version: u.Version,
+		
+		Path: u.Path,
+		
+		ProfileImage: u.ProfileImage,
+		
+		FloorplanImage: u.FloorplanImage,
+		
+		AddressVerificationDetails: u.AddressVerificationDetails,
+		
+		AddressVerified: u.AddressVerified,
+		
+		AddressStored: u.AddressStored,
+		
+		Images: u.Images,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

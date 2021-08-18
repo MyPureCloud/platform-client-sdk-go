@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Dialercampaignruleconfigchangecampaignrulecondition struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialercampaignruleconfigchangecampaignrulecondition
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Parameters *map[string]string `json:"parameters,omitempty"`
+		
+		ConditionType *string `json:"conditionType,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Parameters: u.Parameters,
+		
+		ConditionType: u.ConditionType,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Textbotchannel struct {
 	// UserAgent - Information about the end user agent calling the bot flow.
 	UserAgent *Textbotuseragent `json:"userAgent,omitempty"`
 
+}
+
+func (u *Textbotchannel) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotchannel
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		InputModes *[]string `json:"inputModes,omitempty"`
+		
+		OutputModes *[]string `json:"outputModes,omitempty"`
+		
+		UserAgent *Textbotuseragent `json:"userAgent,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		InputModes: u.InputModes,
+		
+		OutputModes: u.OutputModes,
+		
+		UserAgent: u.UserAgent,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

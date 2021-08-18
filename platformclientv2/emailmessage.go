@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -63,6 +64,82 @@ type Emailmessage struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Emailmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Emailmessage
+
+	
+	Time := new(string)
+	if u.Time != nil {
+		
+		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Time = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		To *[]Emailaddress `json:"to,omitempty"`
+		
+		Cc *[]Emailaddress `json:"cc,omitempty"`
+		
+		Bcc *[]Emailaddress `json:"bcc,omitempty"`
+		
+		From *Emailaddress `json:"from,omitempty"`
+		
+		ReplyTo *Emailaddress `json:"replyTo,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		
+		Attachments *[]Attachment `json:"attachments,omitempty"`
+		
+		TextBody *string `json:"textBody,omitempty"`
+		
+		HtmlBody *string `json:"htmlBody,omitempty"`
+		
+		Time *string `json:"time,omitempty"`
+		
+		HistoryIncluded *bool `json:"historyIncluded,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		To: u.To,
+		
+		Cc: u.Cc,
+		
+		Bcc: u.Bcc,
+		
+		From: u.From,
+		
+		ReplyTo: u.ReplyTo,
+		
+		Subject: u.Subject,
+		
+		Attachments: u.Attachments,
+		
+		TextBody: u.TextBody,
+		
+		HtmlBody: u.HtmlBody,
+		
+		Time: Time,
+		
+		HistoryIncluded: u.HistoryIncluded,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

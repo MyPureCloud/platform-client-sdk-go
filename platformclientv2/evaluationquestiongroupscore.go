@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -66,6 +67,78 @@ type Evaluationquestiongroupscore struct {
 	// QuestionScores
 	QuestionScores *[]Evaluationquestionscore `json:"questionScores,omitempty"`
 
+}
+
+func (u *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evaluationquestiongroupscore
+
+	
+
+	return json.Marshal(&struct { 
+		QuestionGroupId *string `json:"questionGroupId,omitempty"`
+		
+		TotalScore *float32 `json:"totalScore,omitempty"`
+		
+		MaxTotalScore *float32 `json:"maxTotalScore,omitempty"`
+		
+		MarkedNA *bool `json:"markedNA,omitempty"`
+		
+		TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
+		
+		MaxTotalCriticalScore *float32 `json:"maxTotalCriticalScore,omitempty"`
+		
+		TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
+		
+		MaxTotalNonCriticalScore *float32 `json:"maxTotalNonCriticalScore,omitempty"`
+		
+		TotalScoreUnweighted *float32 `json:"totalScoreUnweighted,omitempty"`
+		
+		MaxTotalScoreUnweighted *float32 `json:"maxTotalScoreUnweighted,omitempty"`
+		
+		TotalCriticalScoreUnweighted *float32 `json:"totalCriticalScoreUnweighted,omitempty"`
+		
+		MaxTotalCriticalScoreUnweighted *float32 `json:"maxTotalCriticalScoreUnweighted,omitempty"`
+		
+		TotalNonCriticalScoreUnweighted *float32 `json:"totalNonCriticalScoreUnweighted,omitempty"`
+		
+		MaxTotalNonCriticalScoreUnweighted *float32 `json:"maxTotalNonCriticalScoreUnweighted,omitempty"`
+		
+		QuestionScores *[]Evaluationquestionscore `json:"questionScores,omitempty"`
+		*Alias
+	}{ 
+		QuestionGroupId: u.QuestionGroupId,
+		
+		TotalScore: u.TotalScore,
+		
+		MaxTotalScore: u.MaxTotalScore,
+		
+		MarkedNA: u.MarkedNA,
+		
+		TotalCriticalScore: u.TotalCriticalScore,
+		
+		MaxTotalCriticalScore: u.MaxTotalCriticalScore,
+		
+		TotalNonCriticalScore: u.TotalNonCriticalScore,
+		
+		MaxTotalNonCriticalScore: u.MaxTotalNonCriticalScore,
+		
+		TotalScoreUnweighted: u.TotalScoreUnweighted,
+		
+		MaxTotalScoreUnweighted: u.MaxTotalScoreUnweighted,
+		
+		TotalCriticalScoreUnweighted: u.TotalCriticalScoreUnweighted,
+		
+		MaxTotalCriticalScoreUnweighted: u.MaxTotalCriticalScoreUnweighted,
+		
+		TotalNonCriticalScoreUnweighted: u.TotalNonCriticalScoreUnweighted,
+		
+		MaxTotalNonCriticalScoreUnweighted: u.MaxTotalNonCriticalScoreUnweighted,
+		
+		QuestionScores: u.QuestionScores,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

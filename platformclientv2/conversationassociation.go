@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Conversationassociation struct {
 	// MediaType - Media type
 	MediaType *string `json:"mediaType,omitempty"`
 
+}
+
+func (u *Conversationassociation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationassociation
+
+	
+
+	return json.Marshal(&struct { 
+		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		CommunicationId *string `json:"communicationId,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		*Alias
+	}{ 
+		ExternalContactId: u.ExternalContactId,
+		
+		ConversationId: u.ConversationId,
+		
+		CommunicationId: u.CommunicationId,
+		
+		MediaType: u.MediaType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

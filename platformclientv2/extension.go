@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -71,6 +72,98 @@ type Extension struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Extension) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Extension
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
+		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		ModifiedByApp *string `json:"modifiedByApp,omitempty"`
+		
+		CreatedByApp *string `json:"createdByApp,omitempty"`
+		
+		Number *string `json:"number,omitempty"`
+		
+		Owner *Domainentityref `json:"owner,omitempty"`
+		
+		ExtensionPool *Domainentityref `json:"extensionPool,omitempty"`
+		
+		OwnerType *string `json:"ownerType,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Version: u.Version,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		CreatedBy: u.CreatedBy,
+		
+		State: u.State,
+		
+		ModifiedByApp: u.ModifiedByApp,
+		
+		CreatedByApp: u.CreatedByApp,
+		
+		Number: u.Number,
+		
+		Owner: u.Owner,
+		
+		ExtensionPool: u.ExtensionPool,
+		
+		OwnerType: u.OwnerType,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

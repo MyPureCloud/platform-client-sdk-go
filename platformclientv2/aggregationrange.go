@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Aggregationrange struct {
 	// Lt - Less than
 	Lt *float32 `json:"lt,omitempty"`
 
+}
+
+func (u *Aggregationrange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Aggregationrange
+
+	
+
+	return json.Marshal(&struct { 
+		Gte *float32 `json:"gte,omitempty"`
+		
+		Lt *float32 `json:"lt,omitempty"`
+		*Alias
+	}{ 
+		Gte: u.Gte,
+		
+		Lt: u.Lt,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

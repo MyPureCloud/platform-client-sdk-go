@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -7,6 +8,18 @@ import (
 
 // Dataactionconditionpredicate
 type Dataactionconditionpredicate struct { }
+
+func (u *Dataactionconditionpredicate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dataactionconditionpredicate
+
+	
+
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(u),
+	})
+}
 
 // String returns a JSON representation of the model
 func (o *Dataactionconditionpredicate) String() string {

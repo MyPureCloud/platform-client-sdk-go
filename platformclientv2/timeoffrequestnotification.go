@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,42 @@ type Timeoffrequestnotification struct {
 	// FullDayManagementUnitDates - A set of dates in yyyy-MM-dd format.  Should be interpreted in the management unit's configured time zone.  Will be not empty if isFullDayRequest == true
 	FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 
+}
+
+func (u *Timeoffrequestnotification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Timeoffrequestnotification
+
+	
+
+	return json.Marshal(&struct { 
+		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+		
+		User *Userreference `json:"user,omitempty"`
+		
+		IsFullDayRequest *bool `json:"isFullDayRequest,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
+		
+		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
+		*Alias
+	}{ 
+		TimeOffRequestId: u.TimeOffRequestId,
+		
+		User: u.User,
+		
+		IsFullDayRequest: u.IsFullDayRequest,
+		
+		Status: u.Status,
+		
+		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		
+		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

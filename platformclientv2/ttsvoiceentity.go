@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Ttsvoiceentity struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Ttsvoiceentity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Ttsvoiceentity
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Gender *string `json:"gender,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
+		
+		Engine *Ttsengineentity `json:"engine,omitempty"`
+		
+		IsDefault *bool `json:"isDefault,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Gender: u.Gender,
+		
+		Language: u.Language,
+		
+		Engine: u.Engine,
+		
+		IsDefault: u.IsDefault,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

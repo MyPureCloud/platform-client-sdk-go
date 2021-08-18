@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Eventcondition struct {
 	// EventName - The name of the event for which this condition can be satisfied.
 	EventName *string `json:"eventName,omitempty"`
 
+}
+
+func (u *Eventcondition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Eventcondition
+
+	
+
+	return json.Marshal(&struct { 
+		Key *string `json:"key,omitempty"`
+		
+		Values *[]string `json:"values,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		StreamType *string `json:"streamType,omitempty"`
+		
+		SessionType *string `json:"sessionType,omitempty"`
+		
+		EventName *string `json:"eventName,omitempty"`
+		*Alias
+	}{ 
+		Key: u.Key,
+		
+		Values: u.Values,
+		
+		Operator: u.Operator,
+		
+		StreamType: u.StreamType,
+		
+		SessionType: u.SessionType,
+		
+		EventName: u.EventName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

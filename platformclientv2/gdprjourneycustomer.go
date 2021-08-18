@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Gdprjourneycustomer struct {
 	// Id - An ID of a customer within the Journey System at a point-in-time. Required if `type` is defined.
 	Id *string `json:"id,omitempty"`
 
+}
+
+func (u *Gdprjourneycustomer) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Gdprjourneycustomer
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Id: u.Id,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Bulkupdateshifttradestateresponse struct {
 	// Result - The result of the operation.  Null unless status == Complete
 	Result *Bulkupdateshifttradestateresult `json:"result,omitempty"`
 
+}
+
+func (u *Bulkupdateshifttradestateresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Bulkupdateshifttradestateresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Status *string `json:"status,omitempty"`
+		
+		OperationId *string `json:"operationId,omitempty"`
+		
+		Result *Bulkupdateshifttradestateresult `json:"result,omitempty"`
+		*Alias
+	}{ 
+		Status: u.Status,
+		
+		OperationId: u.OperationId,
+		
+		Result: u.Result,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

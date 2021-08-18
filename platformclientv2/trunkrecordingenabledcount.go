@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Trunkrecordingenabledcount struct {
 	// DisabledCount - The amount of trunks that do not have recording enabled
 	DisabledCount *int `json:"disabledCount,omitempty"`
 
+}
+
+func (u *Trunkrecordingenabledcount) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trunkrecordingenabledcount
+
+	
+
+	return json.Marshal(&struct { 
+		EnabledCount *int `json:"enabledCount,omitempty"`
+		
+		DisabledCount *int `json:"disabledCount,omitempty"`
+		*Alias
+	}{ 
+		EnabledCount: u.EnabledCount,
+		
+		DisabledCount: u.DisabledCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

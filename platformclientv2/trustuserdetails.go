@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,34 @@ type Trustuserdetails struct {
 	// CreatedBy - User that added trusted user.
 	CreatedBy *Orguser `json:"createdBy,omitempty"`
 
+}
+
+func (u *Trustuserdetails) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trustuserdetails
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		CreatedBy *Orguser `json:"createdBy,omitempty"`
+		*Alias
+	}{ 
+		DateCreated: DateCreated,
+		
+		CreatedBy: u.CreatedBy,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

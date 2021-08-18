@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,62 @@ type Callforwarding struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Callforwarding) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Callforwarding
+
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		Calls *[]Callroute `json:"calls,omitempty"`
+		
+		Voicemail *string `json:"voicemail,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		User: u.User,
+		
+		Enabled: u.Enabled,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		Calls: u.Calls,
+		
+		Voicemail: u.Voicemail,
+		
+		ModifiedDate: ModifiedDate,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

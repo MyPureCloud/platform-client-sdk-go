@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Contactcolumntimezone struct {
 	// ColumnType - Column Type will be either PHONE or ZIP
 	ColumnType *string `json:"columnType,omitempty"`
 
+}
+
+func (u *Contactcolumntimezone) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contactcolumntimezone
+
+	
+
+	return json.Marshal(&struct { 
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		ColumnType *string `json:"columnType,omitempty"`
+		*Alias
+	}{ 
+		TimeZone: u.TimeZone,
+		
+		ColumnType: u.ColumnType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Textbotflowturnrequest struct {
 	// InputEventError - The data for the input event of this turn if it is an error event. Only one inputEvent may be set.
 	InputEventError *Textboterrorinputevent `json:"inputEventError,omitempty"`
 
+}
+
+func (u *Textbotflowturnrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotflowturnrequest
+
+	
+
+	return json.Marshal(&struct { 
+		PreviousTurn *Textbotturnreference `json:"previousTurn,omitempty"`
+		
+		InputEventType *string `json:"inputEventType,omitempty"`
+		
+		InputEventUserInput *Textbotuserinputevent `json:"inputEventUserInput,omitempty"`
+		
+		InputEventError *Textboterrorinputevent `json:"inputEventError,omitempty"`
+		*Alias
+	}{ 
+		PreviousTurn: u.PreviousTurn,
+		
+		InputEventType: u.InputEventType,
+		
+		InputEventUserInput: u.InputEventUserInput,
+		
+		InputEventError: u.InputEventError,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

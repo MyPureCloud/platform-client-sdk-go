@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -62,6 +63,74 @@ type Posttextrequest struct {
 	// NuanceMixDlg - Provider specific settings, if any
 	NuanceMixDlg *Nuancemixdlgsettings `json:"nuanceMixDlg,omitempty"`
 
+}
+
+func (u *Posttextrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Posttextrequest
+
+	
+
+	return json.Marshal(&struct { 
+		BotId *string `json:"botId,omitempty"`
+		
+		BotAlias *string `json:"botAlias,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		BotSessionId *string `json:"botSessionId,omitempty"`
+		
+		PostTextMessage *Posttextmessage `json:"postTextMessage,omitempty"`
+		
+		LanguageCode *string `json:"languageCode,omitempty"`
+		
+		BotSessionTimeoutMinutes *int `json:"botSessionTimeoutMinutes,omitempty"`
+		
+		BotChannels *[]string `json:"botChannels,omitempty"`
+		
+		BotCorrelationId *string `json:"botCorrelationId,omitempty"`
+		
+		MessagingPlatformType *string `json:"messagingPlatformType,omitempty"`
+		
+		AmazonLexRequest *Amazonlexrequest `json:"amazonLexRequest,omitempty"`
+		
+		GoogleDialogflow *Googledialogflowcustomsettings `json:"googleDialogflow,omitempty"`
+		
+		GenesysBotConnector *Genesysbotconnector `json:"genesysBotConnector,omitempty"`
+		
+		NuanceMixDlg *Nuancemixdlgsettings `json:"nuanceMixDlg,omitempty"`
+		*Alias
+	}{ 
+		BotId: u.BotId,
+		
+		BotAlias: u.BotAlias,
+		
+		IntegrationId: u.IntegrationId,
+		
+		BotSessionId: u.BotSessionId,
+		
+		PostTextMessage: u.PostTextMessage,
+		
+		LanguageCode: u.LanguageCode,
+		
+		BotSessionTimeoutMinutes: u.BotSessionTimeoutMinutes,
+		
+		BotChannels: u.BotChannels,
+		
+		BotCorrelationId: u.BotCorrelationId,
+		
+		MessagingPlatformType: u.MessagingPlatformType,
+		
+		AmazonLexRequest: u.AmazonLexRequest,
+		
+		GoogleDialogflow: u.GoogleDialogflow,
+		
+		GenesysBotConnector: u.GenesysBotConnector,
+		
+		NuanceMixDlg: u.NuanceMixDlg,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

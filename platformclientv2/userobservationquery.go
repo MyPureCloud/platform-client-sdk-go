@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Userobservationquery struct {
 	// DetailMetrics - Metrics for which to include additional detailed observations
 	DetailMetrics *[]string `json:"detailMetrics,omitempty"`
 
+}
+
+func (u *Userobservationquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userobservationquery
+
+	
+
+	return json.Marshal(&struct { 
+		Filter *Userobservationqueryfilter `json:"filter,omitempty"`
+		
+		Metrics *[]string `json:"metrics,omitempty"`
+		
+		DetailMetrics *[]string `json:"detailMetrics,omitempty"`
+		*Alias
+	}{ 
+		Filter: u.Filter,
+		
+		Metrics: u.Metrics,
+		
+		DetailMetrics: u.DetailMetrics,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

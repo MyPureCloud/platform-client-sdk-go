@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Auditfilter struct {
 	// Values - The values to make the filter comparison against.
 	Values *[]string `json:"values,omitempty"`
 
+}
+
+func (u *Auditfilter) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Auditfilter
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Values *[]string `json:"values,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		VarType: u.VarType,
+		
+		Operator: u.Operator,
+		
+		Values: u.Values,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Buasyncagentschedulessearchresponse struct {
 	// DownloadUrl - The URL from which to download the result if it is too large to pass directly
 	DownloadUrl *string `json:"downloadUrl,omitempty"`
 
+}
+
+func (u *Buasyncagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buasyncagentschedulessearchresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Status *string `json:"status,omitempty"`
+		
+		OperationId *string `json:"operationId,omitempty"`
+		
+		Result *Buagentschedulessearchresponse `json:"result,omitempty"`
+		
+		Progress *int `json:"progress,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
+		*Alias
+	}{ 
+		Status: u.Status,
+		
+		OperationId: u.OperationId,
+		
+		Result: u.Result,
+		
+		Progress: u.Progress,
+		
+		DownloadUrl: u.DownloadUrl,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

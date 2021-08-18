@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -58,6 +59,70 @@ type Createworkplanactivity struct {
 	// MinimumLengthFromShiftEndMinutes - The minimum duration between shift item (e.g., break or meal) end and shift end in minutes
 	MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
 
+}
+
+func (u *Createworkplanactivity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createworkplanactivity
+
+	
+
+	return json.Marshal(&struct { 
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		StartTimeIsRelativeToShiftStart *bool `json:"startTimeIsRelativeToShiftStart,omitempty"`
+		
+		FlexibleStartTime *bool `json:"flexibleStartTime,omitempty"`
+		
+		EarliestStartTimeMinutes *int `json:"earliestStartTimeMinutes,omitempty"`
+		
+		LatestStartTimeMinutes *int `json:"latestStartTimeMinutes,omitempty"`
+		
+		ExactStartTimeMinutes *int `json:"exactStartTimeMinutes,omitempty"`
+		
+		StartTimeIncrementMinutes *int `json:"startTimeIncrementMinutes,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		CountsAsContiguousWorkTime *bool `json:"countsAsContiguousWorkTime,omitempty"`
+		
+		MinimumLengthFromShiftStartMinutes *int `json:"minimumLengthFromShiftStartMinutes,omitempty"`
+		
+		MinimumLengthFromShiftEndMinutes *int `json:"minimumLengthFromShiftEndMinutes,omitempty"`
+		*Alias
+	}{ 
+		ActivityCodeId: u.ActivityCodeId,
+		
+		Description: u.Description,
+		
+		LengthMinutes: u.LengthMinutes,
+		
+		StartTimeIsRelativeToShiftStart: u.StartTimeIsRelativeToShiftStart,
+		
+		FlexibleStartTime: u.FlexibleStartTime,
+		
+		EarliestStartTimeMinutes: u.EarliestStartTimeMinutes,
+		
+		LatestStartTimeMinutes: u.LatestStartTimeMinutes,
+		
+		ExactStartTimeMinutes: u.ExactStartTimeMinutes,
+		
+		StartTimeIncrementMinutes: u.StartTimeIncrementMinutes,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		
+		CountsAsContiguousWorkTime: u.CountsAsContiguousWorkTime,
+		
+		MinimumLengthFromShiftStartMinutes: u.MinimumLengthFromShiftStartMinutes,
+		
+		MinimumLengthFromShiftEndMinutes: u.MinimumLengthFromShiftEndMinutes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

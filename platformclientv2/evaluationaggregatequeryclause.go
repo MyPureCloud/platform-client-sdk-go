@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Evaluationaggregatequeryclause struct {
 	// Predicates - Like a three-word sentence: (attribute-name) (operator) (target-value).
 	Predicates *[]Evaluationaggregatequerypredicate `json:"predicates,omitempty"`
 
+}
+
+func (u *Evaluationaggregatequeryclause) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evaluationaggregatequeryclause
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Predicates *[]Evaluationaggregatequerypredicate `json:"predicates,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Predicates: u.Predicates,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

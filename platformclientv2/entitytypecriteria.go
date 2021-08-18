@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Entitytypecriteria struct {
 	// EntityType - The entity to match the pattern against.
 	EntityType *string `json:"entityType,omitempty"`
 
+}
+
+func (u *Entitytypecriteria) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Entitytypecriteria
+
+	
+
+	return json.Marshal(&struct { 
+		Key *string `json:"key,omitempty"`
+		
+		Values *[]string `json:"values,omitempty"`
+		
+		ShouldIgnoreCase *bool `json:"shouldIgnoreCase,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		EntityType *string `json:"entityType,omitempty"`
+		*Alias
+	}{ 
+		Key: u.Key,
+		
+		Values: u.Values,
+		
+		ShouldIgnoreCase: u.ShouldIgnoreCase,
+		
+		Operator: u.Operator,
+		
+		EntityType: u.EntityType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

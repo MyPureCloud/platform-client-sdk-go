@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Testmessage struct {
 	// Time - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Time *time.Time `json:"time,omitempty"`
 
+}
+
+func (u *Testmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Testmessage
+
+	
+	Time := new(string)
+	if u.Time != nil {
+		
+		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Time = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		To *[]Emailaddress `json:"to,omitempty"`
+		
+		From *Emailaddress `json:"from,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		
+		TextBody *string `json:"textBody,omitempty"`
+		
+		HtmlBody *string `json:"htmlBody,omitempty"`
+		
+		Time *string `json:"time,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		To: u.To,
+		
+		From: u.From,
+		
+		Subject: u.Subject,
+		
+		TextBody: u.TextBody,
+		
+		HtmlBody: u.HtmlBody,
+		
+		Time: Time,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

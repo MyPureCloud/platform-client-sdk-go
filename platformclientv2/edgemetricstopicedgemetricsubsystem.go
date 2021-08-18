@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Edgemetricstopicedgemetricsubsystem struct {
 	// MediaSubsystem
 	MediaSubsystem *Edgemetricstopicedgemetricsubsystemmedia `json:"mediaSubsystem,omitempty"`
 
+}
+
+func (u *Edgemetricstopicedgemetricsubsystem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgemetricstopicedgemetricsubsystem
+
+	
+
+	return json.Marshal(&struct { 
+		ProcessName *string `json:"processName,omitempty"`
+		
+		DelayMs *int `json:"delayMs,omitempty"`
+		
+		MediaSubsystem *Edgemetricstopicedgemetricsubsystemmedia `json:"mediaSubsystem,omitempty"`
+		*Alias
+	}{ 
+		ProcessName: u.ProcessName,
+		
+		DelayMs: u.DelayMs,
+		
+		MediaSubsystem: u.MediaSubsystem,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

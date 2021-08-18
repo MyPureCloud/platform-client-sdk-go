@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Lineintegrationrequest struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Lineintegrationrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Lineintegrationrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ChannelId *string `json:"channelId,omitempty"`
+		
+		ChannelSecret *string `json:"channelSecret,omitempty"`
+		
+		SwitcherSecret *string `json:"switcherSecret,omitempty"`
+		
+		ServiceCode *string `json:"serviceCode,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ChannelId: u.ChannelId,
+		
+		ChannelSecret: u.ChannelSecret,
+		
+		SwitcherSecret: u.SwitcherSecret,
+		
+		ServiceCode: u.ServiceCode,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

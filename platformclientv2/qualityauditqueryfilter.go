@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Qualityauditqueryfilter struct {
 	// Value - Value of the property to filter.
 	Value *string `json:"value,omitempty"`
 
+}
+
+func (u *Qualityauditqueryfilter) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Qualityauditqueryfilter
+
+	
+
+	return json.Marshal(&struct { 
+		Property *string `json:"property,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Property: u.Property,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

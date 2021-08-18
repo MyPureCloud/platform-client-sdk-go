@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Botversionsummary struct {
 	// Version - The name of the version.
 	Version *string `json:"version,omitempty"`
 
+}
+
+func (u *Botversionsummary) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Botversionsummary
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		BotCompositeTag *string `json:"botCompositeTag,omitempty"`
+		
+		Version *string `json:"version,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Id: u.Id,
+		
+		Description: u.Description,
+		
+		BotCompositeTag: u.BotCompositeTag,
+		
+		Version: u.Version,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

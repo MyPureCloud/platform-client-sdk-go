@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Agenttimeoffrequestpatch struct {
 	// Notes - Notes about the time off request. Can only be edited while the request is still pending
 	Notes *string `json:"notes,omitempty"`
 
+}
+
+func (u *Agenttimeoffrequestpatch) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Agenttimeoffrequestpatch
+
+	
+
+	return json.Marshal(&struct { 
+		MarkedAsRead *bool `json:"markedAsRead,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		*Alias
+	}{ 
+		MarkedAsRead: u.MarkedAsRead,
+		
+		Status: u.Status,
+		
+		Notes: u.Notes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

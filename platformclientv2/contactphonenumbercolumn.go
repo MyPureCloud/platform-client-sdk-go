@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Contactphonenumbercolumn struct {
 	// CallableTimeColumn - A column that indicates the timezone to use for a given contact when checking callable times. Not allowed if 'automaticTimeZoneMapping' is set to true.
 	CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
 
+}
+
+func (u *Contactphonenumbercolumn) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contactphonenumbercolumn
+
+	
+
+	return json.Marshal(&struct { 
+		ColumnName *string `json:"columnName,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
+		*Alias
+	}{ 
+		ColumnName: u.ColumnName,
+		
+		VarType: u.VarType,
+		
+		CallableTimeColumn: u.CallableTimeColumn,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

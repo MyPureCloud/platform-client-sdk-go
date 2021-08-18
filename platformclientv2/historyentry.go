@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Historyentry struct {
 	// Secure
 	Secure *bool `json:"secure,omitempty"`
 
+}
+
+func (u *Historyentry) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Historyentry
+
+	
+	Timestamp := new(string)
+	if u.Timestamp != nil {
+		
+		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Timestamp = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Action *string `json:"action,omitempty"`
+		
+		Resource *string `json:"resource,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		
+		Client *Domainentityref `json:"client,omitempty"`
+		
+		Version *string `json:"version,omitempty"`
+		
+		Secure *bool `json:"secure,omitempty"`
+		*Alias
+	}{ 
+		Action: u.Action,
+		
+		Resource: u.Resource,
+		
+		Timestamp: Timestamp,
+		
+		User: u.User,
+		
+		Client: u.Client,
+		
+		Version: u.Version,
+		
+		Secure: u.Secure,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

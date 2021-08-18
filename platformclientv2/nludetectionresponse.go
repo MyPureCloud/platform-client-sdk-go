@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Nludetectionresponse struct {
 	// Input
 	Input *Nludetectioninput `json:"input,omitempty"`
 
+}
+
+func (u *Nludetectionresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Nludetectionresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Version *Nludomainversion `json:"version,omitempty"`
+		
+		Output *Nludetectionoutput `json:"output,omitempty"`
+		
+		Input *Nludetectioninput `json:"input,omitempty"`
+		*Alias
+	}{ 
+		Version: u.Version,
+		
+		Output: u.Output,
+		
+		Input: u.Input,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

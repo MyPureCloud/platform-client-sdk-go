@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Historicaladherenceexceptioninfo struct {
 	// SecondaryPresenceLookupId - The lookup ID used to retrieve secondary status from map of lookup ID to corresponding secondary presence ID
 	SecondaryPresenceLookupId *string `json:"secondaryPresenceLookupId,omitempty"`
 
+}
+
+func (u *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Historicaladherenceexceptioninfo
+
+	
+
+	return json.Marshal(&struct { 
+		StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
+		
+		EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
+		
+		ScheduledActivityCodeId *string `json:"scheduledActivityCodeId,omitempty"`
+		
+		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
+		
+		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
+		
+		SystemPresence *string `json:"systemPresence,omitempty"`
+		
+		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
+		
+		Impact *string `json:"impact,omitempty"`
+		
+		SecondaryPresenceLookupId *string `json:"secondaryPresenceLookupId,omitempty"`
+		*Alias
+	}{ 
+		StartOffsetSeconds: u.StartOffsetSeconds,
+		
+		EndOffsetSeconds: u.EndOffsetSeconds,
+		
+		ScheduledActivityCodeId: u.ScheduledActivityCodeId,
+		
+		ScheduledActivityCategory: u.ScheduledActivityCategory,
+		
+		ActualActivityCategory: u.ActualActivityCategory,
+		
+		SystemPresence: u.SystemPresence,
+		
+		RoutingStatus: u.RoutingStatus,
+		
+		Impact: u.Impact,
+		
+		SecondaryPresenceLookupId: u.SecondaryPresenceLookupId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

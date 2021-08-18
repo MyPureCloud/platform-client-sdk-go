@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -75,6 +76,117 @@ type Buschedulerun struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Buschedulerun) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buschedulerun
+
+	
+	TargetWeek := new(string)
+	if u.TargetWeek != nil {
+		*TargetWeek = timeutil.Strftime(u.TargetWeek, "%Y-%m-%d")
+	} else {
+		TargetWeek = nil
+	}
+	
+	SchedulingStartTime := new(string)
+	if u.SchedulingStartTime != nil {
+		
+		*SchedulingStartTime = timeutil.Strftime(u.SchedulingStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SchedulingStartTime = nil
+	}
+	
+	SchedulingCompletedTime := new(string)
+	if u.SchedulingCompletedTime != nil {
+		
+		*SchedulingCompletedTime = timeutil.Strftime(u.SchedulingCompletedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SchedulingCompletedTime = nil
+	}
+	
+	ReschedulingResultExpiration := new(string)
+	if u.ReschedulingResultExpiration != nil {
+		
+		*ReschedulingResultExpiration = timeutil.Strftime(u.ReschedulingResultExpiration, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReschedulingResultExpiration = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		SchedulerRunId *string `json:"schedulerRunId,omitempty"`
+		
+		IntradayRescheduling *bool `json:"intradayRescheduling,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		WeekCount *int `json:"weekCount,omitempty"`
+		
+		PercentComplete *float64 `json:"percentComplete,omitempty"`
+		
+		TargetWeek *string `json:"targetWeek,omitempty"`
+		
+		Schedule *Buschedulereference `json:"schedule,omitempty"`
+		
+		ScheduleDescription *string `json:"scheduleDescription,omitempty"`
+		
+		SchedulingStartTime *string `json:"schedulingStartTime,omitempty"`
+		
+		SchedulingStartedBy *Userreference `json:"schedulingStartedBy,omitempty"`
+		
+		SchedulingCanceledBy *Userreference `json:"schedulingCanceledBy,omitempty"`
+		
+		SchedulingCompletedTime *string `json:"schedulingCompletedTime,omitempty"`
+		
+		MessageCount *int `json:"messageCount,omitempty"`
+		
+		ReschedulingOptions *Reschedulingoptionsrunresponse `json:"reschedulingOptions,omitempty"`
+		
+		ReschedulingResultExpiration *string `json:"reschedulingResultExpiration,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		SchedulerRunId: u.SchedulerRunId,
+		
+		IntradayRescheduling: u.IntradayRescheduling,
+		
+		State: u.State,
+		
+		WeekCount: u.WeekCount,
+		
+		PercentComplete: u.PercentComplete,
+		
+		TargetWeek: TargetWeek,
+		
+		Schedule: u.Schedule,
+		
+		ScheduleDescription: u.ScheduleDescription,
+		
+		SchedulingStartTime: SchedulingStartTime,
+		
+		SchedulingStartedBy: u.SchedulingStartedBy,
+		
+		SchedulingCanceledBy: u.SchedulingCanceledBy,
+		
+		SchedulingCompletedTime: SchedulingCompletedTime,
+		
+		MessageCount: u.MessageCount,
+		
+		ReschedulingOptions: u.ReschedulingOptions,
+		
+		ReschedulingResultExpiration: ReschedulingResultExpiration,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

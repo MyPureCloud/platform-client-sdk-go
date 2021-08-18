@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Nludomainversionqualityreport struct {
 	// Summary - The quality report summary for the Domain Version
 	Summary *Nluqualityreportsummary `json:"summary,omitempty"`
 
+}
+
+func (u *Nludomainversionqualityreport) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Nludomainversionqualityreport
+
+	
+
+	return json.Marshal(&struct { 
+		Version *Nludomainversion `json:"version,omitempty"`
+		
+		ConfusionMatrix *[]Nluconfusionmatrixrow `json:"confusionMatrix,omitempty"`
+		
+		Summary *Nluqualityreportsummary `json:"summary,omitempty"`
+		*Alias
+	}{ 
+		Version: u.Version,
+		
+		ConfusionMatrix: u.ConfusionMatrix,
+		
+		Summary: u.Summary,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

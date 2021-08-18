@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Callcommand struct {
 	// PhoneColumn - For a dialer preview or scheduled callback, the phone column associated with the phone number
 	PhoneColumn *string `json:"phoneColumn,omitempty"`
 
+}
+
+func (u *Callcommand) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Callcommand
+
+	
+
+	return json.Marshal(&struct { 
+		CallNumber *string `json:"callNumber,omitempty"`
+		
+		PhoneColumn *string `json:"phoneColumn,omitempty"`
+		*Alias
+	}{ 
+		CallNumber: u.CallNumber,
+		
+		PhoneColumn: u.PhoneColumn,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

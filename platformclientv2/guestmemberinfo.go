@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Guestmemberinfo struct {
 	// CustomFields - Any custom fields of information, in key-value format, to attach to the guest member in the conversation.
 	CustomFields *map[string]string `json:"customFields,omitempty"`
 
+}
+
+func (u *Guestmemberinfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Guestmemberinfo
+
+	
+
+	return json.Marshal(&struct { 
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		FirstName *string `json:"firstName,omitempty"`
+		
+		LastName *string `json:"lastName,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
+		
+		CustomFields *map[string]string `json:"customFields,omitempty"`
+		*Alias
+	}{ 
+		DisplayName: u.DisplayName,
+		
+		FirstName: u.FirstName,
+		
+		LastName: u.LastName,
+		
+		Email: u.Email,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		AvatarImageUrl: u.AvatarImageUrl,
+		
+		CustomFields: u.CustomFields,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

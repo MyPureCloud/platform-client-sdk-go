@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Effectiveconfiguration struct {
 	// Credentials - Credentials required by the integration. The required keys are indicated in the credentials property of the Integration Type
 	Credentials *map[string]Credentialinfo `json:"credentials,omitempty"`
 
+}
+
+func (u *Effectiveconfiguration) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Effectiveconfiguration
+
+	
+
+	return json.Marshal(&struct { 
+		Properties *map[string]interface{} `json:"properties,omitempty"`
+		
+		Advanced *map[string]interface{} `json:"advanced,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		Credentials *map[string]Credentialinfo `json:"credentials,omitempty"`
+		*Alias
+	}{ 
+		Properties: u.Properties,
+		
+		Advanced: u.Advanced,
+		
+		Name: u.Name,
+		
+		Notes: u.Notes,
+		
+		Credentials: u.Credentials,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

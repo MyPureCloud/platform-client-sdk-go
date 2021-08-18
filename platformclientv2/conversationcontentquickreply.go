@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Conversationcontentquickreply struct {
 	// Action - Specifies the type of action that is triggered upon clicking the quick reply.
 	Action *string `json:"action,omitempty"`
 
+}
+
+func (u *Conversationcontentquickreply) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationcontentquickreply
+
+	
+
+	return json.Marshal(&struct { 
+		Text *string `json:"text,omitempty"`
+		
+		Payload *string `json:"payload,omitempty"`
+		
+		Image *string `json:"image,omitempty"`
+		
+		Action *string `json:"action,omitempty"`
+		*Alias
+	}{ 
+		Text: u.Text,
+		
+		Payload: u.Payload,
+		
+		Image: u.Image,
+		
+		Action: u.Action,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

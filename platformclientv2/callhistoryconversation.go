@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,78 @@ type Callhistoryconversation struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Callhistoryconversation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Callhistoryconversation
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Participants *[]Callhistoryparticipant `json:"participants,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		WentToVoicemail *bool `json:"wentToVoicemail,omitempty"`
+		
+		MissedCall *bool `json:"missedCall,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		
+		WasConference *bool `json:"wasConference,omitempty"`
+		
+		WasCallback *bool `json:"wasCallback,omitempty"`
+		
+		HadScreenShare *bool `json:"hadScreenShare,omitempty"`
+		
+		HadCobrowse *bool `json:"hadCobrowse,omitempty"`
+		
+		WasOutboundCampaign *bool `json:"wasOutboundCampaign,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Participants: u.Participants,
+		
+		Direction: u.Direction,
+		
+		WentToVoicemail: u.WentToVoicemail,
+		
+		MissedCall: u.MissedCall,
+		
+		StartTime: StartTime,
+		
+		WasConference: u.WasConference,
+		
+		WasCallback: u.WasCallback,
+		
+		HadScreenShare: u.HadScreenShare,
+		
+		HadCobrowse: u.HadCobrowse,
+		
+		WasOutboundCampaign: u.WasOutboundCampaign,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Scimserviceproviderconfigfilterfeature struct {
 	// MaxResults - The maximum number of results returned from a filtered query.
 	MaxResults *int `json:"maxResults,omitempty"`
 
+}
+
+func (u *Scimserviceproviderconfigfilterfeature) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimserviceproviderconfigfilterfeature
+
+	
+
+	return json.Marshal(&struct { 
+		Supported *bool `json:"supported,omitempty"`
+		
+		MaxResults *int `json:"maxResults,omitempty"`
+		*Alias
+	}{ 
+		Supported: u.Supported,
+		
+		MaxResults: u.MaxResults,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

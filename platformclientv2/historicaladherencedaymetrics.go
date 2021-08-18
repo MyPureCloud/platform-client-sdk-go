@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Historicaladherencedaymetrics struct {
 	// ConformancePercentage - Total conformance percentage for this user, in the scale of 0 - 100. Conformance percentage can be greater than 100 when the actual on queue time is greater than the scheduled on queue time for the same period.
 	ConformancePercentage *float64 `json:"conformancePercentage,omitempty"`
 
+}
+
+func (u *Historicaladherencedaymetrics) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Historicaladherencedaymetrics
+
+	
+
+	return json.Marshal(&struct { 
+		DayStartOffsetSecs *int `json:"dayStartOffsetSecs,omitempty"`
+		
+		AdherenceScheduleSecs *int `json:"adherenceScheduleSecs,omitempty"`
+		
+		ConformanceScheduleSecs *int `json:"conformanceScheduleSecs,omitempty"`
+		
+		ConformanceActualSecs *int `json:"conformanceActualSecs,omitempty"`
+		
+		ExceptionCount *int `json:"exceptionCount,omitempty"`
+		
+		ExceptionDurationSecs *int `json:"exceptionDurationSecs,omitempty"`
+		
+		ImpactSeconds *int `json:"impactSeconds,omitempty"`
+		
+		ScheduleLengthSecs *int `json:"scheduleLengthSecs,omitempty"`
+		
+		ActualLengthSecs *int `json:"actualLengthSecs,omitempty"`
+		
+		AdherencePercentage *float64 `json:"adherencePercentage,omitempty"`
+		
+		ConformancePercentage *float64 `json:"conformancePercentage,omitempty"`
+		*Alias
+	}{ 
+		DayStartOffsetSecs: u.DayStartOffsetSecs,
+		
+		AdherenceScheduleSecs: u.AdherenceScheduleSecs,
+		
+		ConformanceScheduleSecs: u.ConformanceScheduleSecs,
+		
+		ConformanceActualSecs: u.ConformanceActualSecs,
+		
+		ExceptionCount: u.ExceptionCount,
+		
+		ExceptionDurationSecs: u.ExceptionDurationSecs,
+		
+		ImpactSeconds: u.ImpactSeconds,
+		
+		ScheduleLengthSecs: u.ScheduleLengthSecs,
+		
+		ActualLengthSecs: u.ActualLengthSecs,
+		
+		AdherencePercentage: u.AdherencePercentage,
+		
+		ConformancePercentage: u.ConformancePercentage,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

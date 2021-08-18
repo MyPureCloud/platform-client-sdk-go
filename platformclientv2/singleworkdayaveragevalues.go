@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,45 @@ type Singleworkdayaveragevalues struct {
 	// Results - The metric value averages
 	Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
 
+}
+
+func (u *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Singleworkdayaveragevalues
+
+	
+	DateWorkday := new(string)
+	if u.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	} else {
+		DateWorkday = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateWorkday *string `json:"dateWorkday,omitempty"`
+		
+		Division *Division `json:"division,omitempty"`
+		
+		User *Userreference `json:"user,omitempty"`
+		
+		Timezone *string `json:"timezone,omitempty"`
+		
+		Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
+		*Alias
+	}{ 
+		DateWorkday: DateWorkday,
+		
+		Division: u.Division,
+		
+		User: u.User,
+		
+		Timezone: u.Timezone,
+		
+		Results: u.Results,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

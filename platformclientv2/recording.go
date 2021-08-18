@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -127,6 +128,178 @@ type Recording struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Recording) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recording
+
+	
+	RestoreExpirationTime := new(string)
+	if u.RestoreExpirationTime != nil {
+		
+		*RestoreExpirationTime = timeutil.Strftime(u.RestoreExpirationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RestoreExpirationTime = nil
+	}
+	
+	ArchiveDate := new(string)
+	if u.ArchiveDate != nil {
+		
+		*ArchiveDate = timeutil.Strftime(u.ArchiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ArchiveDate = nil
+	}
+	
+	DeleteDate := new(string)
+	if u.DeleteDate != nil {
+		
+		*DeleteDate = timeutil.Strftime(u.DeleteDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DeleteDate = nil
+	}
+	
+	ExportDate := new(string)
+	if u.ExportDate != nil {
+		
+		*ExportDate = timeutil.Strftime(u.ExportDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExportDate = nil
+	}
+	
+	ExportedDate := new(string)
+	if u.ExportedDate != nil {
+		
+		*ExportedDate = timeutil.Strftime(u.ExportedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExportedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		Path *string `json:"path,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		Media *string `json:"media,omitempty"`
+		
+		Annotations *[]Annotation `json:"annotations,omitempty"`
+		
+		Transcript *[]Chatmessage `json:"transcript,omitempty"`
+		
+		EmailTranscript *[]Recordingemailmessage `json:"emailTranscript,omitempty"`
+		
+		MessagingTranscript *[]Recordingmessagingmessage `json:"messagingTranscript,omitempty"`
+		
+		FileState *string `json:"fileState,omitempty"`
+		
+		RestoreExpirationTime *string `json:"restoreExpirationTime,omitempty"`
+		
+		MediaUris *map[string]Mediaresult `json:"mediaUris,omitempty"`
+		
+		EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
+		
+		ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
+		
+		ArchiveDate *string `json:"archiveDate,omitempty"`
+		
+		ArchiveMedium *string `json:"archiveMedium,omitempty"`
+		
+		DeleteDate *string `json:"deleteDate,omitempty"`
+		
+		ExportDate *string `json:"exportDate,omitempty"`
+		
+		ExportedDate *string `json:"exportedDate,omitempty"`
+		
+		OutputDurationMs *int `json:"outputDurationMs,omitempty"`
+		
+		OutputSizeInBytes *int `json:"outputSizeInBytes,omitempty"`
+		
+		MaxAllowedRestorationsForOrg *int `json:"maxAllowedRestorationsForOrg,omitempty"`
+		
+		RemainingRestorationsAllowedForOrg *int `json:"remainingRestorationsAllowedForOrg,omitempty"`
+		
+		SessionId *string `json:"sessionId,omitempty"`
+		
+		Users *[]User `json:"users,omitempty"`
+		
+		RecordingFileRole *string `json:"recordingFileRole,omitempty"`
+		
+		RecordingErrorStatus *string `json:"recordingErrorStatus,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ConversationId: u.ConversationId,
+		
+		Path: u.Path,
+		
+		StartTime: u.StartTime,
+		
+		EndTime: u.EndTime,
+		
+		Media: u.Media,
+		
+		Annotations: u.Annotations,
+		
+		Transcript: u.Transcript,
+		
+		EmailTranscript: u.EmailTranscript,
+		
+		MessagingTranscript: u.MessagingTranscript,
+		
+		FileState: u.FileState,
+		
+		RestoreExpirationTime: RestoreExpirationTime,
+		
+		MediaUris: u.MediaUris,
+		
+		EstimatedTranscodeTimeMs: u.EstimatedTranscodeTimeMs,
+		
+		ActualTranscodeTimeMs: u.ActualTranscodeTimeMs,
+		
+		ArchiveDate: ArchiveDate,
+		
+		ArchiveMedium: u.ArchiveMedium,
+		
+		DeleteDate: DeleteDate,
+		
+		ExportDate: ExportDate,
+		
+		ExportedDate: ExportedDate,
+		
+		OutputDurationMs: u.OutputDurationMs,
+		
+		OutputSizeInBytes: u.OutputSizeInBytes,
+		
+		MaxAllowedRestorationsForOrg: u.MaxAllowedRestorationsForOrg,
+		
+		RemainingRestorationsAllowedForOrg: u.RemainingRestorationsAllowedForOrg,
+		
+		SessionId: u.SessionId,
+		
+		Users: u.Users,
+		
+		RecordingFileRole: u.RecordingFileRole,
+		
+		RecordingErrorStatus: u.RecordingErrorStatus,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

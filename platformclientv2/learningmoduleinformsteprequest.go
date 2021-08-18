@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Learningmoduleinformsteprequest struct {
 	// Order - The order of inform step in a learning module
 	Order *int `json:"order,omitempty"`
 
+}
+
+func (u *Learningmoduleinformsteprequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningmoduleinformsteprequest
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		SharingUri *string `json:"sharingUri,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		
+		Order *int `json:"order,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Name: u.Name,
+		
+		Value: u.Value,
+		
+		SharingUri: u.SharingUri,
+		
+		ContentType: u.ContentType,
+		
+		Order: u.Order,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

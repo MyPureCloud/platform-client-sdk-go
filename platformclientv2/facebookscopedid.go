@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Facebookscopedid struct {
 	// ScopedId - The unique page/app-specific scopedId for the user
 	ScopedId *string `json:"scopedId,omitempty"`
 
+}
+
+func (u *Facebookscopedid) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Facebookscopedid
+
+	
+
+	return json.Marshal(&struct { 
+		ScopedId *string `json:"scopedId,omitempty"`
+		*Alias
+	}{ 
+		ScopedId: u.ScopedId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

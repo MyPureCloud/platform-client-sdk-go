@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Journeypattern struct {
 	// EventName - The name of the event for which this pattern can be matched on.
 	EventName *string `json:"eventName,omitempty"`
 
+}
+
+func (u *Journeypattern) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Journeypattern
+
+	
+
+	return json.Marshal(&struct { 
+		Criteria *[]Criteria `json:"criteria,omitempty"`
+		
+		Count *int `json:"count,omitempty"`
+		
+		StreamType *string `json:"streamType,omitempty"`
+		
+		SessionType *string `json:"sessionType,omitempty"`
+		
+		EventName *string `json:"eventName,omitempty"`
+		*Alias
+	}{ 
+		Criteria: u.Criteria,
+		
+		Count: u.Count,
+		
+		StreamType: u.StreamType,
+		
+		SessionType: u.SessionType,
+		
+		EventName: u.EventName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

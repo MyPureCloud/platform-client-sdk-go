@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Additionalmessage struct {
 	// MessagingTemplate - The messaging template use to send a predefined canned response with the message
 	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
 
+}
+
+func (u *Additionalmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Additionalmessage
+
+	
+
+	return json.Marshal(&struct { 
+		TextBody *string `json:"textBody,omitempty"`
+		
+		MediaIds *[]string `json:"mediaIds,omitempty"`
+		
+		StickerIds *[]string `json:"stickerIds,omitempty"`
+		
+		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+		*Alias
+	}{ 
+		TextBody: u.TextBody,
+		
+		MediaIds: u.MediaIds,
+		
+		StickerIds: u.StickerIds,
+		
+		MessagingTemplate: u.MessagingTemplate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Buabandonrate struct {
 	// Percent - Abandon rate percent goal. Required if include == true
 	Percent *int `json:"percent,omitempty"`
 
+}
+
+func (u *Buabandonrate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buabandonrate
+
+	
+
+	return json.Marshal(&struct { 
+		Include *bool `json:"include,omitempty"`
+		
+		Percent *int `json:"percent,omitempty"`
+		*Alias
+	}{ 
+		Include: u.Include,
+		
+		Percent: u.Percent,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

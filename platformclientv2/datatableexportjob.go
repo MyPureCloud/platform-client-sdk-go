@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,74 @@ type Datatableexportjob struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Datatableexportjob) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Datatableexportjob
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateCompleted := new(string)
+	if u.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Owner *Addressableentityref `json:"owner,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		DownloadURI *string `json:"downloadURI,omitempty"`
+		
+		ErrorInformation *Errorbody `json:"errorInformation,omitempty"`
+		
+		CountRecordsProcessed *int `json:"countRecordsProcessed,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Owner: u.Owner,
+		
+		Status: u.Status,
+		
+		DateCreated: DateCreated,
+		
+		DateCompleted: DateCompleted,
+		
+		DownloadURI: u.DownloadURI,
+		
+		ErrorInformation: u.ErrorInformation,
+		
+		CountRecordsProcessed: u.CountRecordsProcessed,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Routingconversationattributesrequest struct {
 	// LanguageId - Language required on the in-queue conversation.
 	LanguageId *string `json:"languageId,omitempty"`
 
+}
+
+func (u *Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Routingconversationattributesrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Priority *int `json:"priority,omitempty"`
+		
+		SkillIds *[]string `json:"skillIds,omitempty"`
+		
+		LanguageId *string `json:"languageId,omitempty"`
+		*Alias
+	}{ 
+		Priority: u.Priority,
+		
+		SkillIds: u.SkillIds,
+		
+		LanguageId: u.LanguageId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

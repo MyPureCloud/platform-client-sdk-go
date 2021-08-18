@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -71,6 +72,90 @@ type Qualityauditlogmessage struct {
 	// Context - Additional context for this message.
 	Context *map[string]string `json:"context,omitempty"`
 
+}
+
+func (u *Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Qualityauditlogmessage
+
+	
+	EventDate := new(string)
+	if u.EventDate != nil {
+		
+		*EventDate = timeutil.Strftime(u.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		UserHomeOrgId *string `json:"userHomeOrgId,omitempty"`
+		
+		UserTrusteeOrgId *string `json:"userTrusteeOrgId,omitempty"`
+		
+		User *Domainentityref `json:"user,omitempty"`
+		
+		Client *Addressableentityref `json:"client,omitempty"`
+		
+		RemoteIps *[]string `json:"remoteIps,omitempty"`
+		
+		ServiceName *string `json:"serviceName,omitempty"`
+		
+		Level *string `json:"level,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		EventDate *string `json:"eventDate,omitempty"`
+		
+		MessageInfo *Messageinfo `json:"messageInfo,omitempty"`
+		
+		Action *string `json:"action,omitempty"`
+		
+		Entity *Domainentityref `json:"entity,omitempty"`
+		
+		EntityType *string `json:"entityType,omitempty"`
+		
+		PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
+		
+		Context *map[string]string `json:"context,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		UserHomeOrgId: u.UserHomeOrgId,
+		
+		UserTrusteeOrgId: u.UserTrusteeOrgId,
+		
+		User: u.User,
+		
+		Client: u.Client,
+		
+		RemoteIps: u.RemoteIps,
+		
+		ServiceName: u.ServiceName,
+		
+		Level: u.Level,
+		
+		Status: u.Status,
+		
+		EventDate: EventDate,
+		
+		MessageInfo: u.MessageInfo,
+		
+		Action: u.Action,
+		
+		Entity: u.Entity,
+		
+		EntityType: u.EntityType,
+		
+		PropertyChanges: u.PropertyChanges,
+		
+		Context: u.Context,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

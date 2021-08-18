@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Businessunitsettings struct {
 	// Metadata - Version metadata for this business unit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Businessunitsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Businessunitsettings
+
+	
+
+	return json.Marshal(&struct { 
+		StartDayOfWeek *string `json:"startDayOfWeek,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		ShortTermForecasting *Bushorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		StartDayOfWeek: u.StartDayOfWeek,
+		
+		TimeZone: u.TimeZone,
+		
+		ShortTermForecasting: u.ShortTermForecasting,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,50 @@ type Edgeautoupdateconfig struct {
 	// End - Date time is represented as an ISO-8601 string without a timezone. For example: yyyy-MM-ddTHH:mm:ss.SSS
 	End *time.Time `json:"end,omitempty"`
 
+}
+
+func (u *Edgeautoupdateconfig) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgeautoupdateconfig
+
+	
+	Start := new(string)
+	if u.Start != nil {
+		*Start = timeutil.Strftime(u.Start, "%Y-%m-%dT%H:%M:%S.%f")
+		
+	} else {
+		Start = nil
+	}
+	
+	End := new(string)
+	if u.End != nil {
+		*End = timeutil.Strftime(u.End, "%Y-%m-%dT%H:%M:%S.%f")
+		
+	} else {
+		End = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		Rrule *string `json:"rrule,omitempty"`
+		
+		Start *string `json:"start,omitempty"`
+		
+		End *string `json:"end,omitempty"`
+		*Alias
+	}{ 
+		TimeZone: u.TimeZone,
+		
+		Rrule: u.Rrule,
+		
+		Start: Start,
+		
+		End: End,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

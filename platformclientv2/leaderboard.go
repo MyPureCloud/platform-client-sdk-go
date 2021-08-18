@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,56 @@ type Leaderboard struct {
 	// UserRank - The requesting user's rank
 	UserRank *Leaderboarditem `json:"userRank,omitempty"`
 
+}
+
+func (u *Leaderboard) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Leaderboard
+
+	
+	DateStartWorkday := new(string)
+	if u.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	} else {
+		DateStartWorkday = nil
+	}
+	
+	DateEndWorkday := new(string)
+	if u.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	} else {
+		DateEndWorkday = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Division *Division `json:"division,omitempty"`
+		
+		Metric *Addressableentityref `json:"metric,omitempty"`
+		
+		DateStartWorkday *string `json:"dateStartWorkday,omitempty"`
+		
+		DateEndWorkday *string `json:"dateEndWorkday,omitempty"`
+		
+		Leaders *[]Leaderboarditem `json:"leaders,omitempty"`
+		
+		UserRank *Leaderboarditem `json:"userRank,omitempty"`
+		*Alias
+	}{ 
+		Division: u.Division,
+		
+		Metric: u.Metric,
+		
+		DateStartWorkday: DateStartWorkday,
+		
+		DateEndWorkday: DateEndWorkday,
+		
+		Leaders: u.Leaders,
+		
+		UserRank: u.UserRank,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Formstracktrigger struct {
 	// CaptureDataOnFormSubmit - Whether to capture the form data in the form submitted event.
 	CaptureDataOnFormSubmit *bool `json:"captureDataOnFormSubmit,omitempty"`
 
+}
+
+func (u *Formstracktrigger) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Formstracktrigger
+
+	
+
+	return json.Marshal(&struct { 
+		Selector *string `json:"selector,omitempty"`
+		
+		FormName *string `json:"formName,omitempty"`
+		
+		CaptureDataOnFormAbandon *bool `json:"captureDataOnFormAbandon,omitempty"`
+		
+		CaptureDataOnFormSubmit *bool `json:"captureDataOnFormSubmit,omitempty"`
+		*Alias
+	}{ 
+		Selector: u.Selector,
+		
+		FormName: u.FormName,
+		
+		CaptureDataOnFormAbandon: u.CaptureDataOnFormAbandon,
+		
+		CaptureDataOnFormSubmit: u.CaptureDataOnFormSubmit,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

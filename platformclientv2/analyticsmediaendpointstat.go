@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,70 @@ type Analyticsmediaendpointstat struct {
 	// UnderrunPackets - The total number of packets received after their timestamp/seqnum has been played out, for all audio streams belonging to this endpoint (also counted in discarded)
 	UnderrunPackets *int `json:"underrunPackets,omitempty"`
 
+}
+
+func (u *Analyticsmediaendpointstat) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsmediaendpointstat
+
+	
+	EventTime := new(string)
+	if u.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Codecs *[]string `json:"codecs,omitempty"`
+		
+		DiscardedPackets *int `json:"discardedPackets,omitempty"`
+		
+		DuplicatePackets *int `json:"duplicatePackets,omitempty"`
+		
+		EventTime *string `json:"eventTime,omitempty"`
+		
+		InvalidPackets *int `json:"invalidPackets,omitempty"`
+		
+		MaxLatencyMs *int `json:"maxLatencyMs,omitempty"`
+		
+		MinMos *float64 `json:"minMos,omitempty"`
+		
+		MinRFactor *float64 `json:"minRFactor,omitempty"`
+		
+		OverrunPackets *int `json:"overrunPackets,omitempty"`
+		
+		ReceivedPackets *int `json:"receivedPackets,omitempty"`
+		
+		UnderrunPackets *int `json:"underrunPackets,omitempty"`
+		*Alias
+	}{ 
+		Codecs: u.Codecs,
+		
+		DiscardedPackets: u.DiscardedPackets,
+		
+		DuplicatePackets: u.DuplicatePackets,
+		
+		EventTime: EventTime,
+		
+		InvalidPackets: u.InvalidPackets,
+		
+		MaxLatencyMs: u.MaxLatencyMs,
+		
+		MinMos: u.MinMos,
+		
+		MinRFactor: u.MinRFactor,
+		
+		OverrunPackets: u.OverrunPackets,
+		
+		ReceivedPackets: u.ReceivedPackets,
+		
+		UnderrunPackets: u.UnderrunPackets,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

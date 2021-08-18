@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Fileuploadmode struct {
 	// MaxFileSizeKB - The maximum file size for file uploads in kilobytes. Default is 10240 (10 MB)
 	MaxFileSizeKB *int `json:"maxFileSizeKB,omitempty"`
 
+}
+
+func (u *Fileuploadmode) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Fileuploadmode
+
+	
+
+	return json.Marshal(&struct { 
+		FileTypes *[]string `json:"fileTypes,omitempty"`
+		
+		MaxFileSizeKB *int `json:"maxFileSizeKB,omitempty"`
+		*Alias
+	}{ 
+		FileTypes: u.FileTypes,
+		
+		MaxFileSizeKB: u.MaxFileSizeKB,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

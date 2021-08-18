@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,46 @@ type Voicemailuserpolicy struct {
 	// SendEmailNotifications - Whether email notifications are sent to the user when a new voicemail is received
 	SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 
+}
+
+func (u *Voicemailuserpolicy) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Voicemailuserpolicy
+
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
+		
+		Pin *string `json:"pin,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
+		*Alias
+	}{ 
+		Enabled: u.Enabled,
+		
+		AlertTimeoutSeconds: u.AlertTimeoutSeconds,
+		
+		Pin: u.Pin,
+		
+		ModifiedDate: ModifiedDate,
+		
+		SendEmailNotifications: u.SendEmailNotifications,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

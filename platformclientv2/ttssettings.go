@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Ttssettings struct {
 	// LanguageOverrides - The list of default overrides for specific languages
 	LanguageOverrides *[]Languageoverride `json:"languageOverrides,omitempty"`
 
+}
+
+func (u *Ttssettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Ttssettings
+
+	
+
+	return json.Marshal(&struct { 
+		DefaultEngine *string `json:"defaultEngine,omitempty"`
+		
+		LanguageOverrides *[]Languageoverride `json:"languageOverrides,omitempty"`
+		*Alias
+	}{ 
+		DefaultEngine: u.DefaultEngine,
+		
+		LanguageOverrides: u.LanguageOverrides,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

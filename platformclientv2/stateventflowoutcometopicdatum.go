@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Stateventflowoutcometopicdatum struct {
 	// Metrics
 	Metrics *[]Stateventflowoutcometopicmetric `json:"metrics,omitempty"`
 
+}
+
+func (u *Stateventflowoutcometopicdatum) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Stateventflowoutcometopicdatum
+
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		Metrics *[]Stateventflowoutcometopicmetric `json:"metrics,omitempty"`
+		*Alias
+	}{ 
+		Interval: u.Interval,
+		
+		Metrics: u.Metrics,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

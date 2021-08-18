@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Campaignruleactionentities struct {
 	// UseTriggeringEntity - If true, the CampaignRuleAction will apply to the same entity that triggered the CampaignRuleCondition.
 	UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
 
+}
+
+func (u *Campaignruleactionentities) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaignruleactionentities
+
+	
+
+	return json.Marshal(&struct { 
+		Campaigns *[]Domainentityref `json:"campaigns,omitempty"`
+		
+		Sequences *[]Domainentityref `json:"sequences,omitempty"`
+		
+		UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
+		*Alias
+	}{ 
+		Campaigns: u.Campaigns,
+		
+		Sequences: u.Sequences,
+		
+		UseTriggeringEntity: u.UseTriggeringEntity,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

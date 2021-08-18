@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Surveyassignment struct {
 	// SendingDomain - Validated email domain, required
 	SendingDomain *string `json:"sendingDomain,omitempty"`
 
+}
+
+func (u *Surveyassignment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Surveyassignment
+
+	
+
+	return json.Marshal(&struct { 
+		SurveyForm *Publishedsurveyformreference `json:"surveyForm,omitempty"`
+		
+		Flow *Domainentityref `json:"flow,omitempty"`
+		
+		InviteTimeInterval *string `json:"inviteTimeInterval,omitempty"`
+		
+		SendingUser *string `json:"sendingUser,omitempty"`
+		
+		SendingDomain *string `json:"sendingDomain,omitempty"`
+		*Alias
+	}{ 
+		SurveyForm: u.SurveyForm,
+		
+		Flow: u.Flow,
+		
+		InviteTimeInterval: u.InviteTimeInterval,
+		
+		SendingUser: u.SendingUser,
+		
+		SendingDomain: u.SendingDomain,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

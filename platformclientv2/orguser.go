@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -142,6 +143,154 @@ type Orguser struct {
 	// Organization
 	Organization *Organization `json:"organization,omitempty"`
 
+}
+
+func (u *Orguser) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Orguser
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Division *Division `json:"division,omitempty"`
+		
+		Chat *Chat `json:"chat,omitempty"`
+		
+		Department *string `json:"department,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
+		
+		PrimaryContactInfo *[]Contact `json:"primaryContactInfo,omitempty"`
+		
+		Addresses *[]Contact `json:"addresses,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Username *string `json:"username,omitempty"`
+		
+		Manager **User `json:"manager,omitempty"`
+		
+		Images *[]Userimage `json:"images,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		Certifications *[]string `json:"certifications,omitempty"`
+		
+		Biography *Biography `json:"biography,omitempty"`
+		
+		EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
+		
+		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
+		
+		Presence *Userpresence `json:"presence,omitempty"`
+		
+		ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
+		
+		OutOfOffice *Outofoffice `json:"outOfOffice,omitempty"`
+		
+		Geolocation *Geolocation `json:"geolocation,omitempty"`
+		
+		Station *Userstations `json:"station,omitempty"`
+		
+		Authorization *Userauthorization `json:"authorization,omitempty"`
+		
+		ProfileSkills *[]string `json:"profileSkills,omitempty"`
+		
+		Locations *[]Location `json:"locations,omitempty"`
+		
+		Groups *[]Group `json:"groups,omitempty"`
+		
+		Team *Team `json:"team,omitempty"`
+		
+		Skills *[]Userroutingskill `json:"skills,omitempty"`
+		
+		Languages *[]Userroutinglanguage `json:"languages,omitempty"`
+		
+		AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
+		
+		LanguagePreference *string `json:"languagePreference,omitempty"`
+		
+		LastTokenIssued *Oauthlasttokenissued `json:"lastTokenIssued,omitempty"`
+		
+		Organization *Organization `json:"organization,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Division: u.Division,
+		
+		Chat: u.Chat,
+		
+		Department: u.Department,
+		
+		Email: u.Email,
+		
+		PrimaryContactInfo: u.PrimaryContactInfo,
+		
+		Addresses: u.Addresses,
+		
+		State: u.State,
+		
+		Title: u.Title,
+		
+		Username: u.Username,
+		
+		Manager: u.Manager,
+		
+		Images: u.Images,
+		
+		Version: u.Version,
+		
+		Certifications: u.Certifications,
+		
+		Biography: u.Biography,
+		
+		EmployerInfo: u.EmployerInfo,
+		
+		RoutingStatus: u.RoutingStatus,
+		
+		Presence: u.Presence,
+		
+		ConversationSummary: u.ConversationSummary,
+		
+		OutOfOffice: u.OutOfOffice,
+		
+		Geolocation: u.Geolocation,
+		
+		Station: u.Station,
+		
+		Authorization: u.Authorization,
+		
+		ProfileSkills: u.ProfileSkills,
+		
+		Locations: u.Locations,
+		
+		Groups: u.Groups,
+		
+		Team: u.Team,
+		
+		Skills: u.Skills,
+		
+		Languages: u.Languages,
+		
+		AcdAutoAnswer: u.AcdAutoAnswer,
+		
+		LanguagePreference: u.LanguagePreference,
+		
+		LastTokenIssued: u.LastTokenIssued,
+		
+		Organization: u.Organization,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

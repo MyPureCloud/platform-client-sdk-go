@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Timeslot struct {
 	// Day - Day for this time slot, Monday = 1 ... Sunday = 7
 	Day *int `json:"day,omitempty"`
 
+}
+
+func (u *Timeslot) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Timeslot
+
+	
+
+	return json.Marshal(&struct { 
+		StartTime *string `json:"startTime,omitempty"`
+		
+		StopTime *string `json:"stopTime,omitempty"`
+		
+		Day *int `json:"day,omitempty"`
+		*Alias
+	}{ 
+		StartTime: u.StartTime,
+		
+		StopTime: u.StopTime,
+		
+		Day: u.Day,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

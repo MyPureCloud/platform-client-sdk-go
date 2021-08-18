@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,62 @@ type Wfmusernotification struct {
 	// OtherNotificationIdsInGroup - Other notification IDs in group.  This field is only populated in real-time notifications
 	OtherNotificationIdsInGroup *[]string `json:"otherNotificationIdsInGroup,omitempty"`
 
+}
+
+func (u *Wfmusernotification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmusernotification
+
+	
+	Timestamp := new(string)
+	if u.Timestamp != nil {
+		
+		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Timestamp = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		MutableGroupId *string `json:"mutableGroupId,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		ShiftTrade *Shifttradenotification `json:"shiftTrade,omitempty"`
+		
+		TimeOffRequest *Timeoffrequestnotification `json:"timeOffRequest,omitempty"`
+		
+		MarkedAsRead *bool `json:"markedAsRead,omitempty"`
+		
+		AgentNotification *bool `json:"agentNotification,omitempty"`
+		
+		OtherNotificationIdsInGroup *[]string `json:"otherNotificationIdsInGroup,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		MutableGroupId: u.MutableGroupId,
+		
+		Timestamp: Timestamp,
+		
+		VarType: u.VarType,
+		
+		ShiftTrade: u.ShiftTrade,
+		
+		TimeOffRequest: u.TimeOffRequest,
+		
+		MarkedAsRead: u.MarkedAsRead,
+		
+		AgentNotification: u.AgentNotification,
+		
+		OtherNotificationIdsInGroup: u.OtherNotificationIdsInGroup,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Siteconnection struct {
 	// SecondaryCoreSites - List of site ids names and selfUris for the secondary core sites
 	SecondaryCoreSites *[]Domainentityref `json:"secondaryCoreSites,omitempty"`
 
+}
+
+func (u *Siteconnection) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Siteconnection
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Managed *bool `json:"managed,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		MediaModel *string `json:"mediaModel,omitempty"`
+		
+		EdgeList *[]Connectededge `json:"edgeList,omitempty"`
+		
+		CoreSite *bool `json:"coreSite,omitempty"`
+		
+		PrimaryCoreSites *[]Domainentityref `json:"primaryCoreSites,omitempty"`
+		
+		SecondaryCoreSites *[]Domainentityref `json:"secondaryCoreSites,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		SelfUri: u.SelfUri,
+		
+		Managed: u.Managed,
+		
+		VarType: u.VarType,
+		
+		Enabled: u.Enabled,
+		
+		MediaModel: u.MediaModel,
+		
+		EdgeList: u.EdgeList,
+		
+		CoreSite: u.CoreSite,
+		
+		PrimaryCoreSites: u.PrimaryCoreSites,
+		
+		SecondaryCoreSites: u.SecondaryCoreSites,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

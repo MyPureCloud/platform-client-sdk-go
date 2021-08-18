@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Scimuserextensions struct {
 	// ExternalIds - The list of external identifiers assigned to user. Always includes an immutable SCIM authority prefixed with \"x-pc:scimv2:v1\".
 	ExternalIds *[]Scimgenesysuserexternalid `json:"externalIds,omitempty"`
 
+}
+
+func (u *Scimuserextensions) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimuserextensions
+
+	
+
+	return json.Marshal(&struct { 
+		RoutingSkills *[]Scimuserroutingskill `json:"routingSkills,omitempty"`
+		
+		RoutingLanguages *[]Scimuserroutinglanguage `json:"routingLanguages,omitempty"`
+		
+		ExternalIds *[]Scimgenesysuserexternalid `json:"externalIds,omitempty"`
+		*Alias
+	}{ 
+		RoutingSkills: u.RoutingSkills,
+		
+		RoutingLanguages: u.RoutingLanguages,
+		
+		ExternalIds: u.ExternalIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

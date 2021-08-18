@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Gkndocumentationsearchresponse struct {
 	// Results - Search results
 	Results *[]Gkndocumentationresult `json:"results,omitempty"`
 
+}
+
+func (u *Gkndocumentationsearchresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Gkndocumentationsearchresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Total *int `json:"total,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		PreviousPage *string `json:"previousPage,omitempty"`
+		
+		CurrentPage *string `json:"currentPage,omitempty"`
+		
+		NextPage *string `json:"nextPage,omitempty"`
+		
+		Types *[]string `json:"types,omitempty"`
+		
+		Results *[]Gkndocumentationresult `json:"results,omitempty"`
+		*Alias
+	}{ 
+		Total: u.Total,
+		
+		PageCount: u.PageCount,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		PreviousPage: u.PreviousPage,
+		
+		CurrentPage: u.CurrentPage,
+		
+		NextPage: u.NextPage,
+		
+		Types: u.Types,
+		
+		Results: u.Results,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

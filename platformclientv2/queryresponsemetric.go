@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Queryresponsemetric struct {
 	// Stats - The aggregated values for this metric
 	Stats *Queryresponsestats `json:"stats,omitempty"`
 
+}
+
+func (u *Queryresponsemetric) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queryresponsemetric
+
+	
+
+	return json.Marshal(&struct { 
+		Metric *string `json:"metric,omitempty"`
+		
+		Stats *Queryresponsestats `json:"stats,omitempty"`
+		*Alias
+	}{ 
+		Metric: u.Metric,
+		
+		Stats: u.Stats,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

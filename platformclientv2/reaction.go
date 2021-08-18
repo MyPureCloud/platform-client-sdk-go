@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Reaction struct {
 	// ReactionType - The reaction to take for a given call analysis result.
 	ReactionType *string `json:"reactionType,omitempty"`
 
+}
+
+func (u *Reaction) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reaction
+
+	
+
+	return json.Marshal(&struct { 
+		Data *string `json:"data,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ReactionType *string `json:"reactionType,omitempty"`
+		*Alias
+	}{ 
+		Data: u.Data,
+		
+		Name: u.Name,
+		
+		ReactionType: u.ReactionType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

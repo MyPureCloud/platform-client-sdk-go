@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Shiftstartvariance struct {
 	// MaxShiftStartVarianceMinutes - Maximum variance in minutes across shift starts
 	MaxShiftStartVarianceMinutes *int `json:"maxShiftStartVarianceMinutes,omitempty"`
 
+}
+
+func (u *Shiftstartvariance) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shiftstartvariance
+
+	
+
+	return json.Marshal(&struct { 
+		ApplicableDays *[]string `json:"applicableDays,omitempty"`
+		
+		MaxShiftStartVarianceMinutes *int `json:"maxShiftStartVarianceMinutes,omitempty"`
+		*Alias
+	}{ 
+		ApplicableDays: u.ApplicableDays,
+		
+		MaxShiftStartVarianceMinutes: u.MaxShiftStartVarianceMinutes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

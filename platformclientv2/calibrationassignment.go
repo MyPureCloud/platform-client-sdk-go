@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Calibrationassignment struct {
 	// ExpertEvaluator
 	ExpertEvaluator *User `json:"expertEvaluator,omitempty"`
 
+}
+
+func (u *Calibrationassignment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Calibrationassignment
+
+	
+
+	return json.Marshal(&struct { 
+		Calibrator *User `json:"calibrator,omitempty"`
+		
+		Evaluators *[]User `json:"evaluators,omitempty"`
+		
+		EvaluationForm *Evaluationform `json:"evaluationForm,omitempty"`
+		
+		ExpertEvaluator *User `json:"expertEvaluator,omitempty"`
+		*Alias
+	}{ 
+		Calibrator: u.Calibrator,
+		
+		Evaluators: u.Evaluators,
+		
+		EvaluationForm: u.EvaluationForm,
+		
+		ExpertEvaluator: u.ExpertEvaluator,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

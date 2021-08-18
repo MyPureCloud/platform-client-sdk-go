@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Searchshifttraderesponse struct {
 	// Preview - A preview of what the shift trade would look like if matched
 	Preview *Shifttradepreviewresponse `json:"preview,omitempty"`
 
+}
+
+func (u *Searchshifttraderesponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Searchshifttraderesponse
+
+	
+
+	return json.Marshal(&struct { 
+		Trade *Shifttraderesponse `json:"trade,omitempty"`
+		
+		MatchingReceivingShiftIds *[]string `json:"matchingReceivingShiftIds,omitempty"`
+		
+		Preview *Shifttradepreviewresponse `json:"preview,omitempty"`
+		*Alias
+	}{ 
+		Trade: u.Trade,
+		
+		MatchingReceivingShiftIds: u.MatchingReceivingShiftIds,
+		
+		Preview: u.Preview,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

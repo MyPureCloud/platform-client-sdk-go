@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Updateservicegoaltemplate struct {
 	// Metadata - Version metadata for the service goal template
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Updateservicegoaltemplate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updateservicegoaltemplate
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		ServiceLevel *Buservicelevel `json:"serviceLevel,omitempty"`
+		
+		AverageSpeedOfAnswer *Buaveragespeedofanswer `json:"averageSpeedOfAnswer,omitempty"`
+		
+		AbandonRate *Buabandonrate `json:"abandonRate,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		ServiceLevel: u.ServiceLevel,
+		
+		AverageSpeedOfAnswer: u.AverageSpeedOfAnswer,
+		
+		AbandonRate: u.AbandonRate,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Messagedetails struct {
 	// Stickers - One or more stickers associated with this message, if any
 	Stickers *[]Messagesticker `json:"stickers,omitempty"`
 
+}
+
+func (u *Messagedetails) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagedetails
+
+	
+	MessageTime := new(string)
+	if u.MessageTime != nil {
+		
+		*MessageTime = timeutil.Strftime(u.MessageTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		MessageTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		MessageId *string `json:"messageId,omitempty"`
+		
+		MessageURI *string `json:"messageURI,omitempty"`
+		
+		MessageStatus *string `json:"messageStatus,omitempty"`
+		
+		MessageSegmentCount *int `json:"messageSegmentCount,omitempty"`
+		
+		MessageTime *string `json:"messageTime,omitempty"`
+		
+		Media *[]Messagemedia `json:"media,omitempty"`
+		
+		Stickers *[]Messagesticker `json:"stickers,omitempty"`
+		*Alias
+	}{ 
+		MessageId: u.MessageId,
+		
+		MessageURI: u.MessageURI,
+		
+		MessageStatus: u.MessageStatus,
+		
+		MessageSegmentCount: u.MessageSegmentCount,
+		
+		MessageTime: MessageTime,
+		
+		Media: u.Media,
+		
+		Stickers: u.Stickers,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

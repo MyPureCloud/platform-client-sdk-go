@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Condition struct {
 	// PropertyType - The type of the property associated with this Condition. Required for a contactPropertyCondition.
 	PropertyType *string `json:"propertyType,omitempty"`
 
+}
+
+func (u *Condition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Condition
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Inverted *bool `json:"inverted,omitempty"`
+		
+		AttributeName *string `json:"attributeName,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		ValueType *string `json:"valueType,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Codes *[]string `json:"codes,omitempty"`
+		
+		Property *string `json:"property,omitempty"`
+		
+		PropertyType *string `json:"propertyType,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Inverted: u.Inverted,
+		
+		AttributeName: u.AttributeName,
+		
+		Value: u.Value,
+		
+		ValueType: u.ValueType,
+		
+		Operator: u.Operator,
+		
+		Codes: u.Codes,
+		
+		Property: u.Property,
+		
+		PropertyType: u.PropertyType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

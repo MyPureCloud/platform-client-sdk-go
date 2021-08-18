@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Contentlocation struct {
 	// Longitude - Longitude of the location.
 	Longitude *float64 `json:"longitude,omitempty"`
 
+}
+
+func (u *Contentlocation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contentlocation
+
+	
+
+	return json.Marshal(&struct { 
+		Url *string `json:"url,omitempty"`
+		
+		Address *string `json:"address,omitempty"`
+		
+		Text *string `json:"text,omitempty"`
+		
+		Latitude *float64 `json:"latitude,omitempty"`
+		
+		Longitude *float64 `json:"longitude,omitempty"`
+		*Alias
+	}{ 
+		Url: u.Url,
+		
+		Address: u.Address,
+		
+		Text: u.Text,
+		
+		Latitude: u.Latitude,
+		
+		Longitude: u.Longitude,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

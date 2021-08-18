@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Validateaddressresponse struct {
 	// Response - Subscriber schema
 	Response *Subscriberresponse `json:"response,omitempty"`
 
+}
+
+func (u *Validateaddressresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Validateaddressresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Valid *bool `json:"valid,omitempty"`
+		
+		Response *Subscriberresponse `json:"response,omitempty"`
+		*Alias
+	}{ 
+		Valid: u.Valid,
+		
+		Response: u.Response,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

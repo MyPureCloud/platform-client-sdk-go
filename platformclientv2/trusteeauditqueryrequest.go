@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,62 @@ type Trusteeauditqueryrequest struct {
 	// Filters - Additional custom filters to be applied to the query.
 	Filters *[]Filter `json:"filters,omitempty"`
 
+}
+
+func (u *Trusteeauditqueryrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trusteeauditqueryrequest
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		TrusteeOrganizationIds *[]string `json:"trusteeOrganizationIds,omitempty"`
+		
+		TrusteeUserIds *[]string `json:"trusteeUserIds,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		QueryPhrase *string `json:"queryPhrase,omitempty"`
+		
+		Facets *[]Facet `json:"facets,omitempty"`
+		
+		Filters *[]Filter `json:"filters,omitempty"`
+		*Alias
+	}{ 
+		TrusteeOrganizationIds: u.TrusteeOrganizationIds,
+		
+		TrusteeUserIds: u.TrusteeUserIds,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		QueryPhrase: u.QueryPhrase,
+		
+		Facets: u.Facets,
+		
+		Filters: u.Filters,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

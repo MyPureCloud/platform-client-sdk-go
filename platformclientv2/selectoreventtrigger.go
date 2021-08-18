@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Selectoreventtrigger struct {
 	// EventName - Name of event triggered when element matching selector is interacted with.
 	EventName *string `json:"eventName,omitempty"`
 
+}
+
+func (u *Selectoreventtrigger) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Selectoreventtrigger
+
+	
+
+	return json.Marshal(&struct { 
+		Selector *string `json:"selector,omitempty"`
+		
+		EventName *string `json:"eventName,omitempty"`
+		*Alias
+	}{ 
+		Selector: u.Selector,
+		
+		EventName: u.EventName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

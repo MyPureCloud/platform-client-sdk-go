@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Coversheet struct {
 	// Locale - Locale, e.g. = en-US
 	Locale *string `json:"locale,omitempty"`
 
+}
+
+func (u *Coversheet) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Coversheet
+
+	
+
+	return json.Marshal(&struct { 
+		Notes *string `json:"notes,omitempty"`
+		
+		Locale *string `json:"locale,omitempty"`
+		*Alias
+	}{ 
+		Notes: u.Notes,
+		
+		Locale: u.Locale,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

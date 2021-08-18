@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Integrationactionfields struct {
 	// RequestMappings - Collection of Request Mappings to use
 	RequestMappings *[]Requestmapping `json:"requestMappings,omitempty"`
 
+}
+
+func (u *Integrationactionfields) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Integrationactionfields
+
+	
+
+	return json.Marshal(&struct { 
+		IntegrationAction *Integrationaction `json:"integrationAction,omitempty"`
+		
+		RequestMappings *[]Requestmapping `json:"requestMappings,omitempty"`
+		*Alias
+	}{ 
+		IntegrationAction: u.IntegrationAction,
+		
+		RequestMappings: u.RequestMappings,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

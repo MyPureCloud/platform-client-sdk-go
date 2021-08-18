@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,66 @@ type Buintradayresponse struct {
 	// IntradayDataGroupings - Intraday data grouped by a single media type and set of planning group IDs
 	IntradayDataGroupings *[]Buintradaydatagroup `json:"intradayDataGroupings,omitempty"`
 
+}
+
+func (u *Buintradayresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buintradayresponse
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		IntervalLengthMinutes *int `json:"intervalLengthMinutes,omitempty"`
+		
+		NoDataReason *string `json:"noDataReason,omitempty"`
+		
+		Categories *[]string `json:"categories,omitempty"`
+		
+		ShortTermForecast *Bushorttermforecastreference `json:"shortTermForecast,omitempty"`
+		
+		Schedule *Buschedulereference `json:"schedule,omitempty"`
+		
+		IntradayDataGroupings *[]Buintradaydatagroup `json:"intradayDataGroupings,omitempty"`
+		*Alias
+	}{ 
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		IntervalLengthMinutes: u.IntervalLengthMinutes,
+		
+		NoDataReason: u.NoDataReason,
+		
+		Categories: u.Categories,
+		
+		ShortTermForecast: u.ShortTermForecast,
+		
+		Schedule: u.Schedule,
+		
+		IntradayDataGroupings: u.IntradayDataGroupings,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

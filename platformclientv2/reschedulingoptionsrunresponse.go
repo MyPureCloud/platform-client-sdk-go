@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,74 @@ type Reschedulingoptionsrunresponse struct {
 	// DoNotChangeManuallyEditedShifts - Whether manually edited shifts are allowed to be changed
 	DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
 
+}
+
+func (u *Reschedulingoptionsrunresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reschedulingoptionsrunresponse
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ExistingSchedule *Buschedulereference `json:"existingSchedule,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		ManagementUnits *[]Reschedulingmanagementunitresponse `json:"managementUnits,omitempty"`
+		
+		AgentCount *int `json:"agentCount,omitempty"`
+		
+		ActivityCodeIds *[]string `json:"activityCodeIds,omitempty"`
+		
+		DoNotChangeWeeklyPaidTime *bool `json:"doNotChangeWeeklyPaidTime,omitempty"`
+		
+		DoNotChangeDailyPaidTime *bool `json:"doNotChangeDailyPaidTime,omitempty"`
+		
+		DoNotChangeShiftStartTimes *bool `json:"doNotChangeShiftStartTimes,omitempty"`
+		
+		DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
+		*Alias
+	}{ 
+		ExistingSchedule: u.ExistingSchedule,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		ManagementUnits: u.ManagementUnits,
+		
+		AgentCount: u.AgentCount,
+		
+		ActivityCodeIds: u.ActivityCodeIds,
+		
+		DoNotChangeWeeklyPaidTime: u.DoNotChangeWeeklyPaidTime,
+		
+		DoNotChangeDailyPaidTime: u.DoNotChangeDailyPaidTime,
+		
+		DoNotChangeShiftStartTimes: u.DoNotChangeShiftStartTimes,
+		
+		DoNotChangeManuallyEditedShifts: u.DoNotChangeManuallyEditedShifts,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

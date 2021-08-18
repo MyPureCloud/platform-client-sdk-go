@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Schedulegenerationwarning struct {
 	// ShiftsTooCloseTogether - Whether the schedule did not meet the minimum time between shifts defined in the agent work plan
 	ShiftsTooCloseTogether *bool `json:"shiftsTooCloseTogether,omitempty"`
 
+}
+
+func (u *Schedulegenerationwarning) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedulegenerationwarning
+
+	
+
+	return json.Marshal(&struct { 
+		UserId *string `json:"userId,omitempty"`
+		
+		UserNotLicensed *bool `json:"userNotLicensed,omitempty"`
+		
+		UnableToMeetMaxDays *bool `json:"unableToMeetMaxDays,omitempty"`
+		
+		UnableToScheduleRequiredDays *[]string `json:"unableToScheduleRequiredDays,omitempty"`
+		
+		UnableToMeetMinPaidForTheWeek *bool `json:"unableToMeetMinPaidForTheWeek,omitempty"`
+		
+		UnableToMeetMaxPaidForTheWeek *bool `json:"unableToMeetMaxPaidForTheWeek,omitempty"`
+		
+		NoNeedDays *[]string `json:"noNeedDays,omitempty"`
+		
+		ShiftsTooCloseTogether *bool `json:"shiftsTooCloseTogether,omitempty"`
+		*Alias
+	}{ 
+		UserId: u.UserId,
+		
+		UserNotLicensed: u.UserNotLicensed,
+		
+		UnableToMeetMaxDays: u.UnableToMeetMaxDays,
+		
+		UnableToScheduleRequiredDays: u.UnableToScheduleRequiredDays,
+		
+		UnableToMeetMinPaidForTheWeek: u.UnableToMeetMinPaidForTheWeek,
+		
+		UnableToMeetMaxPaidForTheWeek: u.UnableToMeetMaxPaidForTheWeek,
+		
+		NoNeedDays: u.NoNeedDays,
+		
+		ShiftsTooCloseTogether: u.ShiftsTooCloseTogether,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

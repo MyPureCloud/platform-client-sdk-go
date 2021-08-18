@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Conversationmessagingtorecipient struct {
 	// Email - E-mail address of the recipient.
 	Email *string `json:"email,omitempty"`
 
+}
+
+func (u *Conversationmessagingtorecipient) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationmessagingtorecipient
+
+	
+
+	return json.Marshal(&struct { 
+		Nickname *string `json:"nickname,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		IdType *string `json:"idType,omitempty"`
+		
+		Image *string `json:"image,omitempty"`
+		
+		FirstName *string `json:"firstName,omitempty"`
+		
+		LastName *string `json:"lastName,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
+		*Alias
+	}{ 
+		Nickname: u.Nickname,
+		
+		Id: u.Id,
+		
+		IdType: u.IdType,
+		
+		Image: u.Image,
+		
+		FirstName: u.FirstName,
+		
+		LastName: u.LastName,
+		
+		Email: u.Email,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

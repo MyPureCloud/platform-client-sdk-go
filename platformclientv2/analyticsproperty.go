@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Analyticsproperty struct {
 	// Value - What property value to match against
 	Value *string `json:"value,omitempty"`
 
+}
+
+func (u *Analyticsproperty) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsproperty
+
+	
+
+	return json.Marshal(&struct { 
+		Property *string `json:"property,omitempty"`
+		
+		PropertyType *string `json:"propertyType,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Property: u.Property,
+		
+		PropertyType: u.PropertyType,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

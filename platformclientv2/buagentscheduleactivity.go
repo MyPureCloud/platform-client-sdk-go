@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Buagentscheduleactivity struct {
 	// ExternalActivityType - The type of the external activity associated with this activity, if applicable
 	ExternalActivityType *string `json:"externalActivityType,omitempty"`
 
+}
+
+func (u *Buagentscheduleactivity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentscheduleactivity
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		Paid *bool `json:"paid,omitempty"`
+		
+		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+		
+		ExternalActivityId *string `json:"externalActivityId,omitempty"`
+		
+		ExternalActivityType *string `json:"externalActivityType,omitempty"`
+		*Alias
+	}{ 
+		StartDate: StartDate,
+		
+		LengthMinutes: u.LengthMinutes,
+		
+		Description: u.Description,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		Paid: u.Paid,
+		
+		TimeOffRequestId: u.TimeOffRequestId,
+		
+		ExternalActivityId: u.ExternalActivityId,
+		
+		ExternalActivityType: u.ExternalActivityType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

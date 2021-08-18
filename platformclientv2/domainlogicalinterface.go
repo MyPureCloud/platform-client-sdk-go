@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -171,6 +172,214 @@ type Domainlogicalinterface struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Domainlogicalinterface) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainlogicalinterface
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
+		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		ModifiedByApp *string `json:"modifiedByApp,omitempty"`
+		
+		CreatedByApp *string `json:"createdByApp,omitempty"`
+		
+		EdgeUri *string `json:"edgeUri,omitempty"`
+		
+		EdgeAssignedId *string `json:"edgeAssignedId,omitempty"`
+		
+		FriendlyName *string `json:"friendlyName,omitempty"`
+		
+		VlanTagId *int `json:"vlanTagId,omitempty"`
+		
+		HardwareAddress *string `json:"hardwareAddress,omitempty"`
+		
+		PhysicalAdapterId *string `json:"physicalAdapterId,omitempty"`
+		
+		IfStatus *string `json:"ifStatus,omitempty"`
+		
+		InterfaceType *string `json:"interfaceType,omitempty"`
+		
+		PublicNatAddressIpV4 *string `json:"publicNatAddressIpV4,omitempty"`
+		
+		PublicNatAddressIpV6 *string `json:"publicNatAddressIpV6,omitempty"`
+		
+		Routes *[]Domainnetworkroute `json:"routes,omitempty"`
+		
+		Addresses *[]Domainnetworkaddress `json:"addresses,omitempty"`
+		
+		Ipv4Capabilities *Domaincapabilities `json:"ipv4Capabilities,omitempty"`
+		
+		Ipv6Capabilities *Domaincapabilities `json:"ipv6Capabilities,omitempty"`
+		
+		CurrentState *string `json:"currentState,omitempty"`
+		
+		LastModifiedUserId *string `json:"lastModifiedUserId,omitempty"`
+		
+		LastModifiedCorrelationId *string `json:"lastModifiedCorrelationId,omitempty"`
+		
+		CommandResponses *[]Domainnetworkcommandresponse `json:"commandResponses,omitempty"`
+		
+		InheritPhoneTrunkBasesIPv4 *bool `json:"inheritPhoneTrunkBasesIPv4,omitempty"`
+		
+		InheritPhoneTrunkBasesIPv6 *bool `json:"inheritPhoneTrunkBasesIPv6,omitempty"`
+		
+		UseForInternalEdgeCommunication *bool `json:"useForInternalEdgeCommunication,omitempty"`
+		
+		UseForIndirectEdgeCommunication *bool `json:"useForIndirectEdgeCommunication,omitempty"`
+		
+		UseForCloudProxyEdgeCommunication *bool `json:"useForCloudProxyEdgeCommunication,omitempty"`
+		
+		UseForWanInterface *bool `json:"useForWanInterface,omitempty"`
+		
+		ExternalTrunkBaseAssignments *[]Trunkbaseassignment `json:"externalTrunkBaseAssignments,omitempty"`
+		
+		PhoneTrunkBaseAssignments *[]Trunkbaseassignment `json:"phoneTrunkBaseAssignments,omitempty"`
+		
+		TraceEnabled *bool `json:"traceEnabled,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Version: u.Version,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		CreatedBy: u.CreatedBy,
+		
+		State: u.State,
+		
+		ModifiedByApp: u.ModifiedByApp,
+		
+		CreatedByApp: u.CreatedByApp,
+		
+		EdgeUri: u.EdgeUri,
+		
+		EdgeAssignedId: u.EdgeAssignedId,
+		
+		FriendlyName: u.FriendlyName,
+		
+		VlanTagId: u.VlanTagId,
+		
+		HardwareAddress: u.HardwareAddress,
+		
+		PhysicalAdapterId: u.PhysicalAdapterId,
+		
+		IfStatus: u.IfStatus,
+		
+		InterfaceType: u.InterfaceType,
+		
+		PublicNatAddressIpV4: u.PublicNatAddressIpV4,
+		
+		PublicNatAddressIpV6: u.PublicNatAddressIpV6,
+		
+		Routes: u.Routes,
+		
+		Addresses: u.Addresses,
+		
+		Ipv4Capabilities: u.Ipv4Capabilities,
+		
+		Ipv6Capabilities: u.Ipv6Capabilities,
+		
+		CurrentState: u.CurrentState,
+		
+		LastModifiedUserId: u.LastModifiedUserId,
+		
+		LastModifiedCorrelationId: u.LastModifiedCorrelationId,
+		
+		CommandResponses: u.CommandResponses,
+		
+		InheritPhoneTrunkBasesIPv4: u.InheritPhoneTrunkBasesIPv4,
+		
+		InheritPhoneTrunkBasesIPv6: u.InheritPhoneTrunkBasesIPv6,
+		
+		UseForInternalEdgeCommunication: u.UseForInternalEdgeCommunication,
+		
+		UseForIndirectEdgeCommunication: u.UseForIndirectEdgeCommunication,
+		
+		UseForCloudProxyEdgeCommunication: u.UseForCloudProxyEdgeCommunication,
+		
+		UseForWanInterface: u.UseForWanInterface,
+		
+		ExternalTrunkBaseAssignments: u.ExternalTrunkBaseAssignments,
+		
+		PhoneTrunkBaseAssignments: u.PhoneTrunkBaseAssignments,
+		
+		TraceEnabled: u.TraceEnabled,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

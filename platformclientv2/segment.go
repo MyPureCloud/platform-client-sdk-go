@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,54 @@ type Segment struct {
 	// DisconnectType - A description of the event that disconnected the segment
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
+}
+
+func (u *Segment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Segment
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		HowEnded *string `json:"howEnded,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		*Alias
+	}{ 
+		StartTime: StartTime,
+		
+		EndTime: EndTime,
+		
+		VarType: u.VarType,
+		
+		HowEnded: u.HowEnded,
+		
+		DisconnectType: u.DisconnectType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -58,6 +59,70 @@ type Scimv2createuser struct {
 	// UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User - The URI of the schema for the Genesys Cloud user.
 	UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User *Scimuserextensions `json:"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User,omitempty"`
 
+}
+
+func (u *Scimv2createuser) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2createuser
+
+	
+
+	return json.Marshal(&struct { 
+		Schemas *[]string `json:"schemas,omitempty"`
+		
+		Active *bool `json:"active,omitempty"`
+		
+		UserName *string `json:"userName,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		Password *string `json:"password,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		PhoneNumbers *[]Scimphonenumber `json:"phoneNumbers,omitempty"`
+		
+		Emails *[]Scimemail `json:"emails,omitempty"`
+		
+		ExternalId *string `json:"externalId,omitempty"`
+		
+		Groups *[]Scimv2groupreference `json:"groups,omitempty"`
+		
+		Roles *[]Scimuserrole `json:"roles,omitempty"`
+		
+		UrnIetfParamsScimSchemasExtensionEnterprise20User *Scimv2enterpriseuser `json:"urn:ietf:params:scim:schemas:extension:enterprise:2.0:User,omitempty"`
+		
+		UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User *Scimuserextensions `json:"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User,omitempty"`
+		*Alias
+	}{ 
+		Schemas: u.Schemas,
+		
+		Active: u.Active,
+		
+		UserName: u.UserName,
+		
+		DisplayName: u.DisplayName,
+		
+		Password: u.Password,
+		
+		Title: u.Title,
+		
+		PhoneNumbers: u.PhoneNumbers,
+		
+		Emails: u.Emails,
+		
+		ExternalId: u.ExternalId,
+		
+		Groups: u.Groups,
+		
+		Roles: u.Roles,
+		
+		UrnIetfParamsScimSchemasExtensionEnterprise20User: u.UrnIetfParamsScimSchemasExtensionEnterprise20User,
+		
+		UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User: u.UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Updatenotificationsrequest struct {
 	// Entities - The notifications to update
 	Entities *[]Wfmusernotification `json:"entities,omitempty"`
 
+}
+
+func (u *Updatenotificationsrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updatenotificationsrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Entities *[]Wfmusernotification `json:"entities,omitempty"`
+		*Alias
+	}{ 
+		Entities: u.Entities,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Dialercampaignruleconfigchangecampaignruleentities struct {
 	// Sequences
 	Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
 
+}
+
+func (u *Dialercampaignruleconfigchangecampaignruleentities) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialercampaignruleconfigchangecampaignruleentities
+
+	
+
+	return json.Marshal(&struct { 
+		Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
+		
+		Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
+		*Alias
+	}{ 
+		Campaigns: u.Campaigns,
+		
+		Sequences: u.Sequences,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

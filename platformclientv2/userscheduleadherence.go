@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -83,6 +84,118 @@ type Userscheduleadherence struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Userscheduleadherence) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userscheduleadherence
+
+	
+	TimeOfAdherenceChange := new(string)
+	if u.TimeOfAdherenceChange != nil {
+		
+		*TimeOfAdherenceChange = timeutil.Strftime(u.TimeOfAdherenceChange, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		TimeOfAdherenceChange = nil
+	}
+	
+	PresenceUpdateTime := new(string)
+	if u.PresenceUpdateTime != nil {
+		
+		*PresenceUpdateTime = timeutil.Strftime(u.PresenceUpdateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		PresenceUpdateTime = nil
+	}
+	
+	ActiveQueuesModifiedTime := new(string)
+	if u.ActiveQueuesModifiedTime != nil {
+		
+		*ActiveQueuesModifiedTime = timeutil.Strftime(u.ActiveQueuesModifiedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ActiveQueuesModifiedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		User *Userreference `json:"user,omitempty"`
+		
+		ManagementUnit *Managementunit `json:"managementUnit,omitempty"`
+		
+		Team *Team `json:"team,omitempty"`
+		
+		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
+		
+		SystemPresence *string `json:"systemPresence,omitempty"`
+		
+		OrganizationSecondaryPresenceId *string `json:"organizationSecondaryPresenceId,omitempty"`
+		
+		RoutingStatus *string `json:"routingStatus,omitempty"`
+		
+		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
+		
+		IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
+		
+		AdherenceState *string `json:"adherenceState,omitempty"`
+		
+		Impact *string `json:"impact,omitempty"`
+		
+		TimeOfAdherenceChange *string `json:"timeOfAdherenceChange,omitempty"`
+		
+		PresenceUpdateTime *string `json:"presenceUpdateTime,omitempty"`
+		
+		ActiveQueues *[]Queuereference `json:"activeQueues,omitempty"`
+		
+		ActiveQueuesModifiedTime *string `json:"activeQueuesModifiedTime,omitempty"`
+		
+		RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		User: u.User,
+		
+		ManagementUnit: u.ManagementUnit,
+		
+		Team: u.Team,
+		
+		ScheduledActivityCategory: u.ScheduledActivityCategory,
+		
+		SystemPresence: u.SystemPresence,
+		
+		OrganizationSecondaryPresenceId: u.OrganizationSecondaryPresenceId,
+		
+		RoutingStatus: u.RoutingStatus,
+		
+		ActualActivityCategory: u.ActualActivityCategory,
+		
+		IsOutOfOffice: u.IsOutOfOffice,
+		
+		AdherenceState: u.AdherenceState,
+		
+		Impact: u.Impact,
+		
+		TimeOfAdherenceChange: TimeOfAdherenceChange,
+		
+		PresenceUpdateTime: PresenceUpdateTime,
+		
+		ActiveQueues: u.ActiveQueues,
+		
+		ActiveQueuesModifiedTime: ActiveQueuesModifiedTime,
+		
+		RemovedFromManagementUnit: u.RemovedFromManagementUnit,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

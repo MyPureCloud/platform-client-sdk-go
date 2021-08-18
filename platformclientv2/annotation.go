@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -54,6 +55,66 @@ type Annotation struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Annotation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Annotation
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Location *int `json:"location,omitempty"`
+		
+		DurationMs *int `json:"durationMs,omitempty"`
+		
+		AbsoluteLocation *int `json:"absoluteLocation,omitempty"`
+		
+		AbsoluteDurationMs *int `json:"absoluteDurationMs,omitempty"`
+		
+		RecordingLocation *int `json:"recordingLocation,omitempty"`
+		
+		RecordingDurationMs *int `json:"recordingDurationMs,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		VarType: u.VarType,
+		
+		Location: u.Location,
+		
+		DurationMs: u.DurationMs,
+		
+		AbsoluteLocation: u.AbsoluteLocation,
+		
+		AbsoluteDurationMs: u.AbsoluteDurationMs,
+		
+		RecordingLocation: u.RecordingLocation,
+		
+		RecordingDurationMs: u.RecordingDurationMs,
+		
+		User: u.User,
+		
+		Description: u.Description,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

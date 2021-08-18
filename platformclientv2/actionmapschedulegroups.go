@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Actionmapschedulegroups struct {
 	// EmergencyActionMapScheduleGroup - The action map's associated emergency schedule group.
 	EmergencyActionMapScheduleGroup *Actionmapschedulegroup `json:"emergencyActionMapScheduleGroup,omitempty"`
 
+}
+
+func (u *Actionmapschedulegroups) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Actionmapschedulegroups
+
+	
+
+	return json.Marshal(&struct { 
+		ActionMapScheduleGroup *Actionmapschedulegroup `json:"actionMapScheduleGroup,omitempty"`
+		
+		EmergencyActionMapScheduleGroup *Actionmapschedulegroup `json:"emergencyActionMapScheduleGroup,omitempty"`
+		*Alias
+	}{ 
+		ActionMapScheduleGroup: u.ActionMapScheduleGroup,
+		
+		EmergencyActionMapScheduleGroup: u.EmergencyActionMapScheduleGroup,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Businessunitactivitycode struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Businessunitactivitycode) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Businessunitactivitycode
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Active *bool `json:"active,omitempty"`
+		
+		DefaultCode *bool `json:"defaultCode,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		CountsAsWorkTime *bool `json:"countsAsWorkTime,omitempty"`
+		
+		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Active: u.Active,
+		
+		DefaultCode: u.DefaultCode,
+		
+		Category: u.Category,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		
+		CountsAsWorkTime: u.CountsAsWorkTime,
+		
+		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		
+		Metadata: u.Metadata,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

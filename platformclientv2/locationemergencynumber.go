@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Locationemergencynumber struct {
 	// VarType - The type of emergency number.
 	VarType *string `json:"type,omitempty"`
 
+}
+
+func (u *Locationemergencynumber) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Locationemergencynumber
+
+	
+
+	return json.Marshal(&struct { 
+		E164 *string `json:"e164,omitempty"`
+		
+		Number *string `json:"number,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		*Alias
+	}{ 
+		E164: u.E164,
+		
+		Number: u.Number,
+		
+		VarType: u.VarType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

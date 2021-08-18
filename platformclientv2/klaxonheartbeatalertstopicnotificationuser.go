@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Klaxonheartbeatalertstopicnotificationuser struct {
 	// DisplayName
 	DisplayName *string `json:"displayName,omitempty"`
 
+}
+
+func (u *Klaxonheartbeatalertstopicnotificationuser) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Klaxonheartbeatalertstopicnotificationuser
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		DisplayName: u.DisplayName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

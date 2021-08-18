@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Tokeninfocloneduser struct {
 	// Organization - Organization of the original native user
 	Organization *Entity `json:"organization,omitempty"`
 
+}
+
+func (u *Tokeninfocloneduser) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Tokeninfocloneduser
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Organization *Entity `json:"organization,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Organization: u.Organization,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

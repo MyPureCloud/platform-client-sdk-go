@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Learningmodulesummary struct {
 	// CompletedSum - The sum of assignment scores for a learning module
 	CompletedSum *float32 `json:"completedSum,omitempty"`
 
+}
+
+func (u *Learningmodulesummary) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningmodulesummary
+
+	
+
+	return json.Marshal(&struct { 
+		AssignedCount *int `json:"assignedCount,omitempty"`
+		
+		CompletedCount *int `json:"completedCount,omitempty"`
+		
+		PassedCount *int `json:"passedCount,omitempty"`
+		
+		CompletedSum *float32 `json:"completedSum,omitempty"`
+		*Alias
+	}{ 
+		AssignedCount: u.AssignedCount,
+		
+		CompletedCount: u.CompletedCount,
+		
+		PassedCount: u.PassedCount,
+		
+		CompletedSum: u.CompletedSum,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

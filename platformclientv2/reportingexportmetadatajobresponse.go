@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Reportingexportmetadatajobresponse struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Reportingexportmetadatajobresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reportingexportmetadatajobresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ViewType *string `json:"viewType,omitempty"`
+		
+		DateLimitations *string `json:"dateLimitations,omitempty"`
+		
+		RequiredFilters *[]string `json:"requiredFilters,omitempty"`
+		
+		SupportedFilters *[]string `json:"supportedFilters,omitempty"`
+		
+		RequiredColumnIds *[]string `json:"requiredColumnIds,omitempty"`
+		
+		DependentColumnIds *map[string][]string `json:"dependentColumnIds,omitempty"`
+		
+		AvailableColumnIds *[]string `json:"availableColumnIds,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ViewType: u.ViewType,
+		
+		DateLimitations: u.DateLimitations,
+		
+		RequiredFilters: u.RequiredFilters,
+		
+		SupportedFilters: u.SupportedFilters,
+		
+		RequiredColumnIds: u.RequiredColumnIds,
+		
+		DependentColumnIds: u.DependentColumnIds,
+		
+		AvailableColumnIds: u.AvailableColumnIds,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

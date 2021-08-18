@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -90,6 +91,102 @@ type Updateuser struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Updateuser) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updateuser
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Chat *Chat `json:"chat,omitempty"`
+		
+		Department *string `json:"department,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
+		
+		PrimaryContactInfo *[]Contact `json:"primaryContactInfo,omitempty"`
+		
+		Addresses *[]Contact `json:"addresses,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Username *string `json:"username,omitempty"`
+		
+		Manager *string `json:"manager,omitempty"`
+		
+		Images *[]Userimage `json:"images,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		ProfileSkills *[]string `json:"profileSkills,omitempty"`
+		
+		Locations *[]Location `json:"locations,omitempty"`
+		
+		Groups *[]Group `json:"groups,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
+		
+		Certifications *[]string `json:"certifications,omitempty"`
+		
+		Biography *Biography `json:"biography,omitempty"`
+		
+		EmployerInfo *Employerinfo `json:"employerInfo,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Chat: u.Chat,
+		
+		Department: u.Department,
+		
+		Email: u.Email,
+		
+		PrimaryContactInfo: u.PrimaryContactInfo,
+		
+		Addresses: u.Addresses,
+		
+		Title: u.Title,
+		
+		Username: u.Username,
+		
+		Manager: u.Manager,
+		
+		Images: u.Images,
+		
+		Version: u.Version,
+		
+		ProfileSkills: u.ProfileSkills,
+		
+		Locations: u.Locations,
+		
+		Groups: u.Groups,
+		
+		State: u.State,
+		
+		AcdAutoAnswer: u.AcdAutoAnswer,
+		
+		Certifications: u.Certifications,
+		
+		Biography: u.Biography,
+		
+		EmployerInfo: u.EmployerInfo,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

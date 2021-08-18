@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Bulkupdateshifttradestaterequestitem struct {
 	// Metadata - Version metadata for the shift trade
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Bulkupdateshifttradestaterequestitem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Bulkupdateshifttradestaterequestitem
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		State: u.State,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Activation struct {
 	// DelayInSeconds - Activation delay time amount.
 	DelayInSeconds *int `json:"delayInSeconds,omitempty"`
 
+}
+
+func (u *Activation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Activation
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		DelayInSeconds *int `json:"delayInSeconds,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		DelayInSeconds: u.DelayInSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

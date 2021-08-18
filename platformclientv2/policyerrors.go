@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Policyerrors struct {
 	// PolicyErrorMessages
 	PolicyErrorMessages *[]Policyerrormessage `json:"policyErrorMessages,omitempty"`
 
+}
+
+func (u *Policyerrors) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Policyerrors
+
+	
+
+	return json.Marshal(&struct { 
+		PolicyErrorMessages *[]Policyerrormessage `json:"policyErrorMessages,omitempty"`
+		*Alias
+	}{ 
+		PolicyErrorMessages: u.PolicyErrorMessages,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

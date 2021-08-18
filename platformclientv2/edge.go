@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -171,6 +172,198 @@ type Edge struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Edge) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edge
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
+		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		ModifiedByApp *string `json:"modifiedByApp,omitempty"`
+		
+		CreatedByApp *string `json:"createdByApp,omitempty"`
+		
+		Interfaces *[]Edgeinterface `json:"interfaces,omitempty"`
+		
+		Make *string `json:"make,omitempty"`
+		
+		Model *string `json:"model,omitempty"`
+		
+		ApiVersion *string `json:"apiVersion,omitempty"`
+		
+		SoftwareVersion *string `json:"softwareVersion,omitempty"`
+		
+		SoftwareVersionTimestamp *string `json:"softwareVersionTimestamp,omitempty"`
+		
+		SoftwareVersionPlatform *string `json:"softwareVersionPlatform,omitempty"`
+		
+		SoftwareVersionConfiguration *string `json:"softwareVersionConfiguration,omitempty"`
+		
+		FullSoftwareVersion *string `json:"fullSoftwareVersion,omitempty"`
+		
+		PairingId *string `json:"pairingId,omitempty"`
+		
+		Fingerprint *string `json:"fingerprint,omitempty"`
+		
+		FingerprintHint *string `json:"fingerprintHint,omitempty"`
+		
+		CurrentVersion *string `json:"currentVersion,omitempty"`
+		
+		StagedVersion *string `json:"stagedVersion,omitempty"`
+		
+		Patch *string `json:"patch,omitempty"`
+		
+		StatusCode *string `json:"statusCode,omitempty"`
+		
+		EdgeGroup *Edgegroup `json:"edgeGroup,omitempty"`
+		
+		Site *Site `json:"site,omitempty"`
+		
+		SoftwareStatus *Domainedgesoftwareupdatedto `json:"softwareStatus,omitempty"`
+		
+		OnlineStatus *string `json:"onlineStatus,omitempty"`
+		
+		SerialNumber *string `json:"serialNumber,omitempty"`
+		
+		PhysicalEdge *bool `json:"physicalEdge,omitempty"`
+		
+		Managed *bool `json:"managed,omitempty"`
+		
+		EdgeDeploymentType *string `json:"edgeDeploymentType,omitempty"`
+		
+		CallDrainingState *string `json:"callDrainingState,omitempty"`
+		
+		ConversationCount *int `json:"conversationCount,omitempty"`
+		
+		Proxy *string `json:"proxy,omitempty"`
+		
+		OfflineConfigCalled *bool `json:"offlineConfigCalled,omitempty"`
+		
+		OsName *string `json:"osName,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Version: u.Version,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		CreatedBy: u.CreatedBy,
+		
+		State: u.State,
+		
+		ModifiedByApp: u.ModifiedByApp,
+		
+		CreatedByApp: u.CreatedByApp,
+		
+		Interfaces: u.Interfaces,
+		
+		Make: u.Make,
+		
+		Model: u.Model,
+		
+		ApiVersion: u.ApiVersion,
+		
+		SoftwareVersion: u.SoftwareVersion,
+		
+		SoftwareVersionTimestamp: u.SoftwareVersionTimestamp,
+		
+		SoftwareVersionPlatform: u.SoftwareVersionPlatform,
+		
+		SoftwareVersionConfiguration: u.SoftwareVersionConfiguration,
+		
+		FullSoftwareVersion: u.FullSoftwareVersion,
+		
+		PairingId: u.PairingId,
+		
+		Fingerprint: u.Fingerprint,
+		
+		FingerprintHint: u.FingerprintHint,
+		
+		CurrentVersion: u.CurrentVersion,
+		
+		StagedVersion: u.StagedVersion,
+		
+		Patch: u.Patch,
+		
+		StatusCode: u.StatusCode,
+		
+		EdgeGroup: u.EdgeGroup,
+		
+		Site: u.Site,
+		
+		SoftwareStatus: u.SoftwareStatus,
+		
+		OnlineStatus: u.OnlineStatus,
+		
+		SerialNumber: u.SerialNumber,
+		
+		PhysicalEdge: u.PhysicalEdge,
+		
+		Managed: u.Managed,
+		
+		EdgeDeploymentType: u.EdgeDeploymentType,
+		
+		CallDrainingState: u.CallDrainingState,
+		
+		ConversationCount: u.ConversationCount,
+		
+		Proxy: u.Proxy,
+		
+		OfflineConfigCalled: u.OfflineConfigCalled,
+		
+		OsName: u.OsName,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

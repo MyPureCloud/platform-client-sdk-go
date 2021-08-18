@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -83,6 +84,118 @@ type Conversationeventtopiccobrowse struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Conversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationeventtopiccobrowse
+
+	
+	ProviderEventTime := new(string)
+	if u.ProviderEventTime != nil {
+		
+		*ProviderEventTime = timeutil.Strftime(u.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ProviderEventTime = nil
+	}
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	DisconnectedTime := new(string)
+	if u.DisconnectedTime != nil {
+		
+		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DisconnectedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Self *Conversationeventtopicaddress `json:"self,omitempty"`
+		
+		RoomId *string `json:"roomId,omitempty"`
+		
+		CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
+		
+		CobrowseRole *string `json:"cobrowseRole,omitempty"`
+		
+		Controlling *[]string `json:"controlling,omitempty"`
+		
+		ViewerUrl *string `json:"viewerUrl,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		ProviderEventTime *string `json:"providerEventTime,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
+		
+		Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
+		
+		AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
+		
+		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		DisconnectType: u.DisconnectType,
+		
+		Id: u.Id,
+		
+		Self: u.Self,
+		
+		RoomId: u.RoomId,
+		
+		CobrowseSessionId: u.CobrowseSessionId,
+		
+		CobrowseRole: u.CobrowseRole,
+		
+		Controlling: u.Controlling,
+		
+		ViewerUrl: u.ViewerUrl,
+		
+		Provider: u.Provider,
+		
+		ScriptId: u.ScriptId,
+		
+		PeerId: u.PeerId,
+		
+		ProviderEventTime: ProviderEventTime,
+		
+		ConnectedTime: ConnectedTime,
+		
+		DisconnectedTime: DisconnectedTime,
+		
+		Wrapup: u.Wrapup,
+		
+		AfterCallWork: u.AfterCallWork,
+		
+		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

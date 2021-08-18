@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Assessmentform struct {
 	// QuestionGroups - A list of question groups
 	QuestionGroups *[]Assessmentformquestiongroup `json:"questionGroups,omitempty"`
 
+}
+
+func (u *Assessmentform) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Assessmentform
+
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ContextId *string `json:"contextId,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Published *bool `json:"published,omitempty"`
+		
+		PassPercent *int `json:"passPercent,omitempty"`
+		
+		QuestionGroups *[]Assessmentformquestiongroup `json:"questionGroups,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		DateModified: DateModified,
+		
+		ContextId: u.ContextId,
+		
+		SelfUri: u.SelfUri,
+		
+		Published: u.Published,
+		
+		PassPercent: u.PassPercent,
+		
+		QuestionGroups: u.QuestionGroups,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

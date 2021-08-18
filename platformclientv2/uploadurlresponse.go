@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Uploadurlresponse struct {
 	// Headers - Required headers when uploading a file through PUT request to the URL
 	Headers *map[string]string `json:"headers,omitempty"`
 
+}
+
+func (u *Uploadurlresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Uploadurlresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Url *string `json:"url,omitempty"`
+		
+		UploadKey *string `json:"uploadKey,omitempty"`
+		
+		Headers *map[string]string `json:"headers,omitempty"`
+		*Alias
+	}{ 
+		Url: u.Url,
+		
+		UploadKey: u.UploadKey,
+		
+		Headers: u.Headers,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

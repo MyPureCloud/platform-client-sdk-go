@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Domainphysicalcapabilities struct {
 	// Team
 	Team *bool `json:"team,omitempty"`
 
+}
+
+func (u *Domainphysicalcapabilities) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainphysicalcapabilities
+
+	
+
+	return json.Marshal(&struct { 
+		Vlan *bool `json:"vlan,omitempty"`
+		
+		Team *bool `json:"team,omitempty"`
+		*Alias
+	}{ 
+		Vlan: u.Vlan,
+		
+		Team: u.Team,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

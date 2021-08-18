@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Conversationreason struct {
 	// Message - Description of the reason for the failed message receipt.
 	Message *string `json:"message,omitempty"`
 
+}
+
+func (u *Conversationreason) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationreason
+
+	
+
+	return json.Marshal(&struct { 
+		Code *string `json:"code,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
+		*Alias
+	}{ 
+		Code: u.Code,
+		
+		Message: u.Message,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

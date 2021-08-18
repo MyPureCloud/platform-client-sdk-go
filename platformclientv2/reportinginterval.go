@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Reportinginterval struct {
 	// IntervalValue - The value of the reporting interval period for a given interval type
 	IntervalValue *int `json:"intervalValue,omitempty"`
 
+}
+
+func (u *Reportinginterval) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reportinginterval
+
+	
+
+	return json.Marshal(&struct { 
+		IntervalType *string `json:"intervalType,omitempty"`
+		
+		IntervalValue *int `json:"intervalValue,omitempty"`
+		*Alias
+	}{ 
+		IntervalType: u.IntervalType,
+		
+		IntervalValue: u.IntervalValue,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

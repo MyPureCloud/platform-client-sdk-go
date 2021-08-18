@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Createwebchatconversationrequest struct {
 	// JourneyContext - A subset of the Journey System's data relevant to this conversation/session request (for external linkage and internal usage/context).
 	JourneyContext *Journeycontext `json:"journeyContext,omitempty"`
 
+}
+
+func (u *Createwebchatconversationrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createwebchatconversationrequest
+
+	
+
+	return json.Marshal(&struct { 
+		OrganizationId *string `json:"organizationId,omitempty"`
+		
+		DeploymentId *string `json:"deploymentId,omitempty"`
+		
+		RoutingTarget *Webchatroutingtarget `json:"routingTarget,omitempty"`
+		
+		MemberInfo *Guestmemberinfo `json:"memberInfo,omitempty"`
+		
+		MemberAuthToken *string `json:"memberAuthToken,omitempty"`
+		
+		JourneyContext *Journeycontext `json:"journeyContext,omitempty"`
+		*Alias
+	}{ 
+		OrganizationId: u.OrganizationId,
+		
+		DeploymentId: u.DeploymentId,
+		
+		RoutingTarget: u.RoutingTarget,
+		
+		MemberInfo: u.MemberInfo,
+		
+		MemberAuthToken: u.MemberAuthToken,
+		
+		JourneyContext: u.JourneyContext,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -19,6 +20,37 @@ type Longtermforecastresult struct {
 	// WeekCount - The number of weeks in this forecast
 	WeekCount *int `json:"weekCount,omitempty"`
 
+}
+
+func (u *Longtermforecastresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Longtermforecastresult
+
+	
+	ReferenceStartDate := new(string)
+	if u.ReferenceStartDate != nil {
+		*ReferenceStartDate = timeutil.Strftime(u.ReferenceStartDate, "%Y-%m-%d")
+	} else {
+		ReferenceStartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		PlanningGroups *[]Longtermforecastplanninggroupdata `json:"planningGroups,omitempty"`
+		
+		ReferenceStartDate *string `json:"referenceStartDate,omitempty"`
+		
+		WeekCount *int `json:"weekCount,omitempty"`
+		*Alias
+	}{ 
+		PlanningGroups: u.PlanningGroups,
+		
+		ReferenceStartDate: ReferenceStartDate,
+		
+		WeekCount: u.WeekCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

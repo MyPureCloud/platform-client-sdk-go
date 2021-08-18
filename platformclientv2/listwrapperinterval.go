@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Listwrapperinterval struct {
 	// Values
 	Values *[]string `json:"values,omitempty"`
 
+}
+
+func (u *Listwrapperinterval) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Listwrapperinterval
+
+	
+
+	return json.Marshal(&struct { 
+		Values *[]string `json:"values,omitempty"`
+		*Alias
+	}{ 
+		Values: u.Values,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

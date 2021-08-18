@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Messagingsticker struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Messagingsticker) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagingsticker
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ProviderStickerId *int `json:"providerStickerId,omitempty"`
+		
+		ProviderPackageId *int `json:"providerPackageId,omitempty"`
+		
+		PackageName *string `json:"packageName,omitempty"`
+		
+		MessengerType *string `json:"messengerType,omitempty"`
+		
+		StickerType *string `json:"stickerType,omitempty"`
+		
+		ProviderVersion *int `json:"providerVersion,omitempty"`
+		
+		UriLocation *string `json:"uriLocation,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ProviderStickerId: u.ProviderStickerId,
+		
+		ProviderPackageId: u.ProviderPackageId,
+		
+		PackageName: u.PackageName,
+		
+		MessengerType: u.MessengerType,
+		
+		StickerType: u.StickerType,
+		
+		ProviderVersion: u.ProviderVersion,
+		
+		UriLocation: u.UriLocation,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Generalprogramjobrequest struct {
 	// Mode - The mode to use for the general program job, default value is Skip
 	Mode *string `json:"mode,omitempty"`
 
+}
+
+func (u *Generalprogramjobrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Generalprogramjobrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Dialect *string `json:"dialect,omitempty"`
+		
+		Mode *string `json:"mode,omitempty"`
+		*Alias
+	}{ 
+		Dialect: u.Dialect,
+		
+		Mode: u.Mode,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

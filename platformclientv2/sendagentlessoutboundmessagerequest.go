@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Sendagentlessoutboundmessagerequest struct {
 	// MessagingTemplate - The messaging template to use in the case of WhatsApp messenger type. This field is required when using WhatsApp messenger type
 	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
 
+}
+
+func (u *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Sendagentlessoutboundmessagerequest
+
+	
+
+	return json.Marshal(&struct { 
+		FromAddress *string `json:"fromAddress,omitempty"`
+		
+		ToAddress *string `json:"toAddress,omitempty"`
+		
+		ToAddressMessengerType *string `json:"toAddressMessengerType,omitempty"`
+		
+		TextBody *string `json:"textBody,omitempty"`
+		
+		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+		*Alias
+	}{ 
+		FromAddress: u.FromAddress,
+		
+		ToAddress: u.ToAddress,
+		
+		ToAddressMessengerType: u.ToAddressMessengerType,
+		
+		TextBody: u.TextBody,
+		
+		MessagingTemplate: u.MessagingTemplate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

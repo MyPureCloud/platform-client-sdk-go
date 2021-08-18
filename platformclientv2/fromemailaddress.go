@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Fromemailaddress struct {
 	// LocalPart - The local part of the email address.
 	LocalPart *string `json:"localPart,omitempty"`
 
+}
+
+func (u *Fromemailaddress) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Fromemailaddress
+
+	
+
+	return json.Marshal(&struct { 
+		Domain *Domainentityref `json:"domain,omitempty"`
+		
+		FriendlyName *string `json:"friendlyName,omitempty"`
+		
+		LocalPart *string `json:"localPart,omitempty"`
+		*Alias
+	}{ 
+		Domain: u.Domain,
+		
+		FriendlyName: u.FriendlyName,
+		
+		LocalPart: u.LocalPart,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

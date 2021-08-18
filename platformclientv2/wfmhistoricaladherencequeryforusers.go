@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,54 @@ type Wfmhistoricaladherencequeryforusers struct {
 	// IncludeExceptions - Whether user exceptions should be returned as part of the results
 	IncludeExceptions *bool `json:"includeExceptions,omitempty"`
 
+}
+
+func (u *Wfmhistoricaladherencequeryforusers) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmhistoricaladherencequeryforusers
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		UserIds *[]string `json:"userIds,omitempty"`
+		
+		IncludeExceptions *bool `json:"includeExceptions,omitempty"`
+		*Alias
+	}{ 
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		TimeZone: u.TimeZone,
+		
+		UserIds: u.UserIds,
+		
+		IncludeExceptions: u.IncludeExceptions,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Learningmoduleruleparts struct {
 	// Order - The order of rules in learning module rule
 	Order *int `json:"order,omitempty"`
 
+}
+
+func (u *Learningmoduleruleparts) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningmoduleruleparts
+
+	
+
+	return json.Marshal(&struct { 
+		Operation *string `json:"operation,omitempty"`
+		
+		Selector *string `json:"selector,omitempty"`
+		
+		Value *[]string `json:"value,omitempty"`
+		
+		Order *int `json:"order,omitempty"`
+		*Alias
+	}{ 
+		Operation: u.Operation,
+		
+		Selector: u.Selector,
+		
+		Value: u.Value,
+		
+		Order: u.Order,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

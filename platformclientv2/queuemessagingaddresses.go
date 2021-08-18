@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Queuemessagingaddresses struct {
 	// SmsAddress
 	SmsAddress *Domainentityref `json:"smsAddress,omitempty"`
 
+}
+
+func (u *Queuemessagingaddresses) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queuemessagingaddresses
+
+	
+
+	return json.Marshal(&struct { 
+		SmsAddress *Domainentityref `json:"smsAddress,omitempty"`
+		*Alias
+	}{ 
+		SmsAddress: u.SmsAddress,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

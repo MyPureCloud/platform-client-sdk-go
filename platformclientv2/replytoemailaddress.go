@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Replytoemailaddress struct {
 	// Route - The InboundRoute used for the email address.
 	Route *Domainentityref `json:"route,omitempty"`
 
+}
+
+func (u *Replytoemailaddress) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Replytoemailaddress
+
+	
+
+	return json.Marshal(&struct { 
+		Domain *Domainentityref `json:"domain,omitempty"`
+		
+		Route *Domainentityref `json:"route,omitempty"`
+		*Alias
+	}{ 
+		Domain: u.Domain,
+		
+		Route: u.Route,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -102,6 +103,114 @@ type Integrationtype struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Integrationtype) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Integrationtype
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		Images *[]Userimage `json:"images,omitempty"`
+		
+		ConfigPropertiesSchemaUri *string `json:"configPropertiesSchemaUri,omitempty"`
+		
+		ConfigAdvancedSchemaUri *string `json:"configAdvancedSchemaUri,omitempty"`
+		
+		HelpUri *string `json:"helpUri,omitempty"`
+		
+		TermsOfServiceUri *string `json:"termsOfServiceUri,omitempty"`
+		
+		VendorName *string `json:"vendorName,omitempty"`
+		
+		VendorWebsiteUri *string `json:"vendorWebsiteUri,omitempty"`
+		
+		MarketplaceUri *string `json:"marketplaceUri,omitempty"`
+		
+		FaqUri *string `json:"faqUri,omitempty"`
+		
+		PrivacyPolicyUri *string `json:"privacyPolicyUri,omitempty"`
+		
+		SupportContactUri *string `json:"supportContactUri,omitempty"`
+		
+		SalesContactUri *string `json:"salesContactUri,omitempty"`
+		
+		HelpLinks *[]Helplink `json:"helpLinks,omitempty"`
+		
+		Credentials *map[string]Credentialspecification `json:"credentials,omitempty"`
+		
+		NonInstallable *bool `json:"nonInstallable,omitempty"`
+		
+		MaxInstances *int `json:"maxInstances,omitempty"`
+		
+		UserPermissions *[]string `json:"userPermissions,omitempty"`
+		
+		VendorOAuthClientIds *[]string `json:"vendorOAuthClientIds,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Provider: u.Provider,
+		
+		Category: u.Category,
+		
+		Images: u.Images,
+		
+		ConfigPropertiesSchemaUri: u.ConfigPropertiesSchemaUri,
+		
+		ConfigAdvancedSchemaUri: u.ConfigAdvancedSchemaUri,
+		
+		HelpUri: u.HelpUri,
+		
+		TermsOfServiceUri: u.TermsOfServiceUri,
+		
+		VendorName: u.VendorName,
+		
+		VendorWebsiteUri: u.VendorWebsiteUri,
+		
+		MarketplaceUri: u.MarketplaceUri,
+		
+		FaqUri: u.FaqUri,
+		
+		PrivacyPolicyUri: u.PrivacyPolicyUri,
+		
+		SupportContactUri: u.SupportContactUri,
+		
+		SalesContactUri: u.SalesContactUri,
+		
+		HelpLinks: u.HelpLinks,
+		
+		Credentials: u.Credentials,
+		
+		NonInstallable: u.NonInstallable,
+		
+		MaxInstances: u.MaxInstances,
+		
+		UserPermissions: u.UserPermissions,
+		
+		VendorOAuthClientIds: u.VendorOAuthClientIds,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

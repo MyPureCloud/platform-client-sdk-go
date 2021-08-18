@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -55,6 +56,82 @@ type Outboundsettings struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Outboundsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Outboundsettings
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
+		
+		MaxConfigurableCallsPerAgent *int `json:"maxConfigurableCallsPerAgent,omitempty"`
+		
+		MaxLineUtilization *float64 `json:"maxLineUtilization,omitempty"`
+		
+		AbandonSeconds *float64 `json:"abandonSeconds,omitempty"`
+		
+		ComplianceAbandonRateDenominator *string `json:"complianceAbandonRateDenominator,omitempty"`
+		
+		AutomaticTimeZoneMapping *Automatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: u.Version,
+		
+		MaxCallsPerAgent: u.MaxCallsPerAgent,
+		
+		MaxConfigurableCallsPerAgent: u.MaxConfigurableCallsPerAgent,
+		
+		MaxLineUtilization: u.MaxLineUtilization,
+		
+		AbandonSeconds: u.AbandonSeconds,
+		
+		ComplianceAbandonRateDenominator: u.ComplianceAbandonRateDenominator,
+		
+		AutomaticTimeZoneMapping: u.AutomaticTimeZoneMapping,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

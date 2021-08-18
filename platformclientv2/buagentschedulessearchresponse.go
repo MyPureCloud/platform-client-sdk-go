@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Buagentschedulessearchresponse struct {
 	// PublishedSchedules - References to all published week schedules overlapping the start/end date query parameters
 	PublishedSchedules *[]Buagentschedulepublishedschedulereference `json:"publishedSchedules,omitempty"`
 
+}
+
+func (u *Buagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulessearchresponse
+
+	
+
+	return json.Marshal(&struct { 
+		AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
+		
+		BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
+		
+		PublishedSchedules *[]Buagentschedulepublishedschedulereference `json:"publishedSchedules,omitempty"`
+		*Alias
+	}{ 
+		AgentSchedules: u.AgentSchedules,
+		
+		BusinessUnitTimeZone: u.BusinessUnitTimeZone,
+		
+		PublishedSchedules: u.PublishedSchedules,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

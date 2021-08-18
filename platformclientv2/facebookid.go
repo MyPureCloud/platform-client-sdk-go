@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Facebookid struct {
 	// DisplayName - The displayName of this person's Facebook account. Roughly translates to user.first_name + ' ' + user.last_name in the Facebook API.
 	DisplayName *string `json:"displayName,omitempty"`
 
+}
+
+func (u *Facebookid) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Facebookid
+
+	
+
+	return json.Marshal(&struct { 
+		Ids *[]Facebookscopedid `json:"ids,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		*Alias
+	}{ 
+		Ids: u.Ids,
+		
+		DisplayName: u.DisplayName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

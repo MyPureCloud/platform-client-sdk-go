@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Coachingslotsresponse struct {
 	// FacilitatorSchedules - Periods of availability for facilitators to schedule coaching appointment
 	FacilitatorSchedules *[]Useravailabletimes `json:"facilitatorSchedules,omitempty"`
 
+}
+
+func (u *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Coachingslotsresponse
+
+	
+
+	return json.Marshal(&struct { 
+		SuggestedSlots *[]Coachingslot `json:"suggestedSlots,omitempty"`
+		
+		AttendeeSchedules *[]Useravailabletimes `json:"attendeeSchedules,omitempty"`
+		
+		FacilitatorSchedules *[]Useravailabletimes `json:"facilitatorSchedules,omitempty"`
+		*Alias
+	}{ 
+		SuggestedSlots: u.SuggestedSlots,
+		
+		AttendeeSchedules: u.AttendeeSchedules,
+		
+		FacilitatorSchedules: u.FacilitatorSchedules,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

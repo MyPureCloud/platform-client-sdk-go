@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Patchshifttraderequest struct {
 	// Metadata - Version metadata
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Patchshifttraderequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchshifttraderequest
+
+	
+
+	return json.Marshal(&struct { 
+		ReceivingUserId *Valuewrapperstring `json:"receivingUserId,omitempty"`
+		
+		Expiration *Valuewrapperdate `json:"expiration,omitempty"`
+		
+		AcceptableIntervals *Listwrapperinterval `json:"acceptableIntervals,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		ReceivingUserId: u.ReceivingUserId,
+		
+		Expiration: u.Expiration,
+		
+		AcceptableIntervals: u.AcceptableIntervals,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

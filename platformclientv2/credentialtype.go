@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Credentialtype struct {
 	// Required - Properties that are required fields.
 	Required *[]string `json:"required,omitempty"`
 
+}
+
+func (u *Credentialtype) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Credentialtype
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Properties *interface{} `json:"properties,omitempty"`
+		
+		DisplayOrder *[]string `json:"displayOrder,omitempty"`
+		
+		Required *[]string `json:"required,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Properties: u.Properties,
+		
+		DisplayOrder: u.DisplayOrder,
+		
+		Required: u.Required,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

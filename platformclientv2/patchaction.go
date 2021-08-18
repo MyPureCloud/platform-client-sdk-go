@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Patchaction struct {
 	// WebMessagingOfferFields - Admin-configurable fields of a web messaging offer action.
 	WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
 
+}
+
+func (u *Patchaction) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchaction
+
+	
+
+	return json.Marshal(&struct { 
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		ActionTemplate *Actionmapactiontemplate `json:"actionTemplate,omitempty"`
+		
+		ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
+		
+		WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
+		*Alias
+	}{ 
+		MediaType: u.MediaType,
+		
+		ActionTemplate: u.ActionTemplate,
+		
+		ArchitectFlowFields: u.ArchitectFlowFields,
+		
+		WebMessagingOfferFields: u.WebMessagingOfferFields,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

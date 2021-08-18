@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Buintradayforecastdata struct {
 	// AverageHandleTimeSeconds - The average handle time in seconds an agent spent handling interactions
 	AverageHandleTimeSeconds *float64 `json:"averageHandleTimeSeconds,omitempty"`
 
+}
+
+func (u *Buintradayforecastdata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buintradayforecastdata
+
+	
+
+	return json.Marshal(&struct { 
+		Offered *float64 `json:"offered,omitempty"`
+		
+		AverageHandleTimeSeconds *float64 `json:"averageHandleTimeSeconds,omitempty"`
+		*Alias
+	}{ 
+		Offered: u.Offered,
+		
+		AverageHandleTimeSeconds: u.AverageHandleTimeSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

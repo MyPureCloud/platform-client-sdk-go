@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue stru
 	// Value
 	Value *float32 `json:"value,omitempty"`
 
+}
+
+func (u *Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmbushorttermforecastcopycompletetopicmodificationintervaloffsetvalue
+
+	
+
+	return json.Marshal(&struct { 
+		IntervalIndex *int `json:"intervalIndex,omitempty"`
+		
+		Value *float32 `json:"value,omitempty"`
+		*Alias
+	}{ 
+		IntervalIndex: u.IntervalIndex,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

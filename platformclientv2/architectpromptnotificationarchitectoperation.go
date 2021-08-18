@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Architectpromptnotificationarchitectoperation struct {
 	// ErrorDetails
 	ErrorDetails *[]Architectpromptnotificationerrordetail `json:"errorDetails,omitempty"`
 
+}
+
+func (u *Architectpromptnotificationarchitectoperation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Architectpromptnotificationarchitectoperation
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Complete *bool `json:"complete,omitempty"`
+		
+		User *Architectpromptnotificationuser `json:"user,omitempty"`
+		
+		Client *Architectpromptnotificationclient `json:"client,omitempty"`
+		
+		ActionName *string `json:"actionName,omitempty"`
+		
+		ActionStatus *string `json:"actionStatus,omitempty"`
+		
+		ErrorMessage *string `json:"errorMessage,omitempty"`
+		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
+		ErrorMessageParams *Architectpromptnotificationerrormessageparams `json:"errorMessageParams,omitempty"`
+		
+		ErrorDetails *[]Architectpromptnotificationerrordetail `json:"errorDetails,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Complete: u.Complete,
+		
+		User: u.User,
+		
+		Client: u.Client,
+		
+		ActionName: u.ActionName,
+		
+		ActionStatus: u.ActionStatus,
+		
+		ErrorMessage: u.ErrorMessage,
+		
+		ErrorCode: u.ErrorCode,
+		
+		ErrorMessageParams: u.ErrorMessageParams,
+		
+		ErrorDetails: u.ErrorDetails,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

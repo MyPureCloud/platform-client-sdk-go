@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -486,6 +487,498 @@ type Viewfilter struct {
 	// HasScoredEvaluation - Indicates filtering for scored evaluation
 	HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
 
+}
+
+func (u *Viewfilter) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Viewfilter
+
+	
+
+	return json.Marshal(&struct { 
+		MediaTypes *[]string `json:"mediaTypes,omitempty"`
+		
+		QueueIds *[]string `json:"queueIds,omitempty"`
+		
+		SkillIds *[]string `json:"skillIds,omitempty"`
+		
+		SkillGroups *[]string `json:"skillGroups,omitempty"`
+		
+		LanguageIds *[]string `json:"languageIds,omitempty"`
+		
+		LanguageGroups *[]string `json:"languageGroups,omitempty"`
+		
+		Directions *[]string `json:"directions,omitempty"`
+		
+		OriginatingDirections *[]string `json:"originatingDirections,omitempty"`
+		
+		WrapUpCodes *[]string `json:"wrapUpCodes,omitempty"`
+		
+		DnisList *[]string `json:"dnisList,omitempty"`
+		
+		SessionDnisList *[]string `json:"sessionDnisList,omitempty"`
+		
+		FilterQueuesByUserIds *[]string `json:"filterQueuesByUserIds,omitempty"`
+		
+		FilterUsersByQueueIds *[]string `json:"filterUsersByQueueIds,omitempty"`
+		
+		UserIds *[]string `json:"userIds,omitempty"`
+		
+		AddressTos *[]string `json:"addressTos,omitempty"`
+		
+		AddressFroms *[]string `json:"addressFroms,omitempty"`
+		
+		OutboundCampaignIds *[]string `json:"outboundCampaignIds,omitempty"`
+		
+		OutboundContactListIds *[]string `json:"outboundContactListIds,omitempty"`
+		
+		ContactIds *[]string `json:"contactIds,omitempty"`
+		
+		ExternalContactIds *[]string `json:"externalContactIds,omitempty"`
+		
+		ExternalOrgIds *[]string `json:"externalOrgIds,omitempty"`
+		
+		AniList *[]string `json:"aniList,omitempty"`
+		
+		DurationsMilliseconds *[]Numericrange `json:"durationsMilliseconds,omitempty"`
+		
+		AcdDurationsMilliseconds *[]Numericrange `json:"acdDurationsMilliseconds,omitempty"`
+		
+		TalkDurationsMilliseconds *[]Numericrange `json:"talkDurationsMilliseconds,omitempty"`
+		
+		AcwDurationsMilliseconds *[]Numericrange `json:"acwDurationsMilliseconds,omitempty"`
+		
+		HandleDurationsMilliseconds *[]Numericrange `json:"handleDurationsMilliseconds,omitempty"`
+		
+		HoldDurationsMilliseconds *[]Numericrange `json:"holdDurationsMilliseconds,omitempty"`
+		
+		AbandonDurationsMilliseconds *[]Numericrange `json:"abandonDurationsMilliseconds,omitempty"`
+		
+		EvaluationScore *Numericrange `json:"evaluationScore,omitempty"`
+		
+		EvaluationCriticalScore *Numericrange `json:"evaluationCriticalScore,omitempty"`
+		
+		EvaluationFormIds *[]string `json:"evaluationFormIds,omitempty"`
+		
+		EvaluatedAgentIds *[]string `json:"evaluatedAgentIds,omitempty"`
+		
+		EvaluatorIds *[]string `json:"evaluatorIds,omitempty"`
+		
+		Transferred *bool `json:"transferred,omitempty"`
+		
+		Abandoned *bool `json:"abandoned,omitempty"`
+		
+		Answered *bool `json:"answered,omitempty"`
+		
+		MessageTypes *[]string `json:"messageTypes,omitempty"`
+		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
+		SurveyFormIds *[]string `json:"surveyFormIds,omitempty"`
+		
+		SurveyTotalScore *Numericrange `json:"surveyTotalScore,omitempty"`
+		
+		SurveyNpsScore *Numericrange `json:"surveyNpsScore,omitempty"`
+		
+		Mos *Numericrange `json:"mos,omitempty"`
+		
+		SurveyQuestionGroupScore *Numericrange `json:"surveyQuestionGroupScore,omitempty"`
+		
+		SurveyPromoterScore *Numericrange `json:"surveyPromoterScore,omitempty"`
+		
+		SurveyFormContextIds *[]string `json:"surveyFormContextIds,omitempty"`
+		
+		ConversationIds *[]string `json:"conversationIds,omitempty"`
+		
+		SipCallIds *[]string `json:"sipCallIds,omitempty"`
+		
+		IsEnded *bool `json:"isEnded,omitempty"`
+		
+		IsSurveyed *bool `json:"isSurveyed,omitempty"`
+		
+		SurveyScores *[]Numericrange `json:"surveyScores,omitempty"`
+		
+		PromoterScores *[]Numericrange `json:"promoterScores,omitempty"`
+		
+		IsCampaign *bool `json:"isCampaign,omitempty"`
+		
+		SurveyStatuses *[]string `json:"surveyStatuses,omitempty"`
+		
+		ConversationProperties *Conversationproperties `json:"conversationProperties,omitempty"`
+		
+		IsBlindTransferred *bool `json:"isBlindTransferred,omitempty"`
+		
+		IsConsulted *bool `json:"isConsulted,omitempty"`
+		
+		IsConsultTransferred *bool `json:"isConsultTransferred,omitempty"`
+		
+		RemoteParticipants *[]string `json:"remoteParticipants,omitempty"`
+		
+		FlowIds *[]string `json:"flowIds,omitempty"`
+		
+		FlowOutcomeIds *[]string `json:"flowOutcomeIds,omitempty"`
+		
+		FlowOutcomeValues *[]string `json:"flowOutcomeValues,omitempty"`
+		
+		FlowDestinationTypes *[]string `json:"flowDestinationTypes,omitempty"`
+		
+		FlowDisconnectReasons *[]string `json:"flowDisconnectReasons,omitempty"`
+		
+		FlowTypes *[]string `json:"flowTypes,omitempty"`
+		
+		FlowEntryTypes *[]string `json:"flowEntryTypes,omitempty"`
+		
+		FlowEntryReasons *[]string `json:"flowEntryReasons,omitempty"`
+		
+		FlowVersions *[]string `json:"flowVersions,omitempty"`
+		
+		GroupIds *[]string `json:"groupIds,omitempty"`
+		
+		HasJourneyCustomerId *bool `json:"hasJourneyCustomerId,omitempty"`
+		
+		HasJourneyActionMapId *bool `json:"hasJourneyActionMapId,omitempty"`
+		
+		HasJourneyVisitId *bool `json:"hasJourneyVisitId,omitempty"`
+		
+		HasMedia *bool `json:"hasMedia,omitempty"`
+		
+		RoleIds *[]string `json:"roleIds,omitempty"`
+		
+		ReportsTos *[]string `json:"reportsTos,omitempty"`
+		
+		LocationIds *[]string `json:"locationIds,omitempty"`
+		
+		FlowOutTypes *[]string `json:"flowOutTypes,omitempty"`
+		
+		ProviderList *[]string `json:"providerList,omitempty"`
+		
+		CallbackNumberList *[]string `json:"callbackNumberList,omitempty"`
+		
+		CallbackInterval *string `json:"callbackInterval,omitempty"`
+		
+		UsedRoutingTypes *[]string `json:"usedRoutingTypes,omitempty"`
+		
+		RequestedRoutingTypes *[]string `json:"requestedRoutingTypes,omitempty"`
+		
+		HasAgentAssistId *bool `json:"hasAgentAssistId,omitempty"`
+		
+		Transcripts *[]Transcripts `json:"transcripts,omitempty"`
+		
+		TranscriptLanguages *[]string `json:"transcriptLanguages,omitempty"`
+		
+		ParticipantPurposes *[]string `json:"participantPurposes,omitempty"`
+		
+		ShowFirstQueue *bool `json:"showFirstQueue,omitempty"`
+		
+		TeamIds *[]string `json:"teamIds,omitempty"`
+		
+		FilterUsersByTeamIds *[]string `json:"filterUsersByTeamIds,omitempty"`
+		
+		JourneyActionMapIds *[]string `json:"journeyActionMapIds,omitempty"`
+		
+		JourneyOutcomeIds *[]string `json:"journeyOutcomeIds,omitempty"`
+		
+		JourneySegmentIds *[]string `json:"journeySegmentIds,omitempty"`
+		
+		JourneyActionMapTypes *[]string `json:"journeyActionMapTypes,omitempty"`
+		
+		DevelopmentRoleList *[]string `json:"developmentRoleList,omitempty"`
+		
+		DevelopmentTypeList *[]string `json:"developmentTypeList,omitempty"`
+		
+		DevelopmentStatusList *[]string `json:"developmentStatusList,omitempty"`
+		
+		DevelopmentModuleIds *[]string `json:"developmentModuleIds,omitempty"`
+		
+		DevelopmentActivityOverdue *bool `json:"developmentActivityOverdue,omitempty"`
+		
+		CustomerSentimentScore *Numericrange `json:"customerSentimentScore,omitempty"`
+		
+		CustomerSentimentTrend *Numericrange `json:"customerSentimentTrend,omitempty"`
+		
+		FlowTransferTargets *[]string `json:"flowTransferTargets,omitempty"`
+		
+		DevelopmentName *string `json:"developmentName,omitempty"`
+		
+		TopicIds *[]string `json:"topicIds,omitempty"`
+		
+		ExternalTags *[]string `json:"externalTags,omitempty"`
+		
+		IsNotResponding *bool `json:"isNotResponding,omitempty"`
+		
+		IsAuthenticated *bool `json:"isAuthenticated,omitempty"`
+		
+		BotIds *[]string `json:"botIds,omitempty"`
+		
+		BotVersions *[]string `json:"botVersions,omitempty"`
+		
+		BotMessageTypes *[]string `json:"botMessageTypes,omitempty"`
+		
+		BotProviderList *[]string `json:"botProviderList,omitempty"`
+		
+		BotProductList *[]string `json:"botProductList,omitempty"`
+		
+		BotRecognitionFailureReasonList *[]string `json:"botRecognitionFailureReasonList,omitempty"`
+		
+		BotIntentList *[]string `json:"botIntentList,omitempty"`
+		
+		BotFinalIntentList *[]string `json:"botFinalIntentList,omitempty"`
+		
+		BotSlotList *[]string `json:"botSlotList,omitempty"`
+		
+		BotResultList *[]string `json:"botResultList,omitempty"`
+		
+		BlockedReasons *[]string `json:"blockedReasons,omitempty"`
+		
+		IsRecorded *bool `json:"isRecorded,omitempty"`
+		
+		HasEvaluation *bool `json:"hasEvaluation,omitempty"`
+		
+		HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
+		*Alias
+	}{ 
+		MediaTypes: u.MediaTypes,
+		
+		QueueIds: u.QueueIds,
+		
+		SkillIds: u.SkillIds,
+		
+		SkillGroups: u.SkillGroups,
+		
+		LanguageIds: u.LanguageIds,
+		
+		LanguageGroups: u.LanguageGroups,
+		
+		Directions: u.Directions,
+		
+		OriginatingDirections: u.OriginatingDirections,
+		
+		WrapUpCodes: u.WrapUpCodes,
+		
+		DnisList: u.DnisList,
+		
+		SessionDnisList: u.SessionDnisList,
+		
+		FilterQueuesByUserIds: u.FilterQueuesByUserIds,
+		
+		FilterUsersByQueueIds: u.FilterUsersByQueueIds,
+		
+		UserIds: u.UserIds,
+		
+		AddressTos: u.AddressTos,
+		
+		AddressFroms: u.AddressFroms,
+		
+		OutboundCampaignIds: u.OutboundCampaignIds,
+		
+		OutboundContactListIds: u.OutboundContactListIds,
+		
+		ContactIds: u.ContactIds,
+		
+		ExternalContactIds: u.ExternalContactIds,
+		
+		ExternalOrgIds: u.ExternalOrgIds,
+		
+		AniList: u.AniList,
+		
+		DurationsMilliseconds: u.DurationsMilliseconds,
+		
+		AcdDurationsMilliseconds: u.AcdDurationsMilliseconds,
+		
+		TalkDurationsMilliseconds: u.TalkDurationsMilliseconds,
+		
+		AcwDurationsMilliseconds: u.AcwDurationsMilliseconds,
+		
+		HandleDurationsMilliseconds: u.HandleDurationsMilliseconds,
+		
+		HoldDurationsMilliseconds: u.HoldDurationsMilliseconds,
+		
+		AbandonDurationsMilliseconds: u.AbandonDurationsMilliseconds,
+		
+		EvaluationScore: u.EvaluationScore,
+		
+		EvaluationCriticalScore: u.EvaluationCriticalScore,
+		
+		EvaluationFormIds: u.EvaluationFormIds,
+		
+		EvaluatedAgentIds: u.EvaluatedAgentIds,
+		
+		EvaluatorIds: u.EvaluatorIds,
+		
+		Transferred: u.Transferred,
+		
+		Abandoned: u.Abandoned,
+		
+		Answered: u.Answered,
+		
+		MessageTypes: u.MessageTypes,
+		
+		DivisionIds: u.DivisionIds,
+		
+		SurveyFormIds: u.SurveyFormIds,
+		
+		SurveyTotalScore: u.SurveyTotalScore,
+		
+		SurveyNpsScore: u.SurveyNpsScore,
+		
+		Mos: u.Mos,
+		
+		SurveyQuestionGroupScore: u.SurveyQuestionGroupScore,
+		
+		SurveyPromoterScore: u.SurveyPromoterScore,
+		
+		SurveyFormContextIds: u.SurveyFormContextIds,
+		
+		ConversationIds: u.ConversationIds,
+		
+		SipCallIds: u.SipCallIds,
+		
+		IsEnded: u.IsEnded,
+		
+		IsSurveyed: u.IsSurveyed,
+		
+		SurveyScores: u.SurveyScores,
+		
+		PromoterScores: u.PromoterScores,
+		
+		IsCampaign: u.IsCampaign,
+		
+		SurveyStatuses: u.SurveyStatuses,
+		
+		ConversationProperties: u.ConversationProperties,
+		
+		IsBlindTransferred: u.IsBlindTransferred,
+		
+		IsConsulted: u.IsConsulted,
+		
+		IsConsultTransferred: u.IsConsultTransferred,
+		
+		RemoteParticipants: u.RemoteParticipants,
+		
+		FlowIds: u.FlowIds,
+		
+		FlowOutcomeIds: u.FlowOutcomeIds,
+		
+		FlowOutcomeValues: u.FlowOutcomeValues,
+		
+		FlowDestinationTypes: u.FlowDestinationTypes,
+		
+		FlowDisconnectReasons: u.FlowDisconnectReasons,
+		
+		FlowTypes: u.FlowTypes,
+		
+		FlowEntryTypes: u.FlowEntryTypes,
+		
+		FlowEntryReasons: u.FlowEntryReasons,
+		
+		FlowVersions: u.FlowVersions,
+		
+		GroupIds: u.GroupIds,
+		
+		HasJourneyCustomerId: u.HasJourneyCustomerId,
+		
+		HasJourneyActionMapId: u.HasJourneyActionMapId,
+		
+		HasJourneyVisitId: u.HasJourneyVisitId,
+		
+		HasMedia: u.HasMedia,
+		
+		RoleIds: u.RoleIds,
+		
+		ReportsTos: u.ReportsTos,
+		
+		LocationIds: u.LocationIds,
+		
+		FlowOutTypes: u.FlowOutTypes,
+		
+		ProviderList: u.ProviderList,
+		
+		CallbackNumberList: u.CallbackNumberList,
+		
+		CallbackInterval: u.CallbackInterval,
+		
+		UsedRoutingTypes: u.UsedRoutingTypes,
+		
+		RequestedRoutingTypes: u.RequestedRoutingTypes,
+		
+		HasAgentAssistId: u.HasAgentAssistId,
+		
+		Transcripts: u.Transcripts,
+		
+		TranscriptLanguages: u.TranscriptLanguages,
+		
+		ParticipantPurposes: u.ParticipantPurposes,
+		
+		ShowFirstQueue: u.ShowFirstQueue,
+		
+		TeamIds: u.TeamIds,
+		
+		FilterUsersByTeamIds: u.FilterUsersByTeamIds,
+		
+		JourneyActionMapIds: u.JourneyActionMapIds,
+		
+		JourneyOutcomeIds: u.JourneyOutcomeIds,
+		
+		JourneySegmentIds: u.JourneySegmentIds,
+		
+		JourneyActionMapTypes: u.JourneyActionMapTypes,
+		
+		DevelopmentRoleList: u.DevelopmentRoleList,
+		
+		DevelopmentTypeList: u.DevelopmentTypeList,
+		
+		DevelopmentStatusList: u.DevelopmentStatusList,
+		
+		DevelopmentModuleIds: u.DevelopmentModuleIds,
+		
+		DevelopmentActivityOverdue: u.DevelopmentActivityOverdue,
+		
+		CustomerSentimentScore: u.CustomerSentimentScore,
+		
+		CustomerSentimentTrend: u.CustomerSentimentTrend,
+		
+		FlowTransferTargets: u.FlowTransferTargets,
+		
+		DevelopmentName: u.DevelopmentName,
+		
+		TopicIds: u.TopicIds,
+		
+		ExternalTags: u.ExternalTags,
+		
+		IsNotResponding: u.IsNotResponding,
+		
+		IsAuthenticated: u.IsAuthenticated,
+		
+		BotIds: u.BotIds,
+		
+		BotVersions: u.BotVersions,
+		
+		BotMessageTypes: u.BotMessageTypes,
+		
+		BotProviderList: u.BotProviderList,
+		
+		BotProductList: u.BotProductList,
+		
+		BotRecognitionFailureReasonList: u.BotRecognitionFailureReasonList,
+		
+		BotIntentList: u.BotIntentList,
+		
+		BotFinalIntentList: u.BotFinalIntentList,
+		
+		BotSlotList: u.BotSlotList,
+		
+		BotResultList: u.BotResultList,
+		
+		BlockedReasons: u.BlockedReasons,
+		
+		IsRecorded: u.IsRecorded,
+		
+		HasEvaluation: u.HasEvaluation,
+		
+		HasScoredEvaluation: u.HasScoredEvaluation,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

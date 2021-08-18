@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Vendorconnectionrequest struct {
 	// Name - Name of the integration or connector instance that registered the new connection. Example, my-wfm
 	Name *string `json:"name,omitempty"`
 
+}
+
+func (u *Vendorconnectionrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Vendorconnectionrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Publisher *string `json:"publisher,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		*Alias
+	}{ 
+		Publisher: u.Publisher,
+		
+		VarType: u.VarType,
+		
+		Name: u.Name,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Publishdraftinput struct {
 	// Version - The current draft version.
 	Version *int `json:"version,omitempty"`
 
+}
+
+func (u *Publishdraftinput) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Publishdraftinput
+
+	
+
+	return json.Marshal(&struct { 
+		Version *int `json:"version,omitempty"`
+		*Alias
+	}{ 
+		Version: u.Version,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

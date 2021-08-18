@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Groupsearchcriteria struct {
 	// VarType - Search Type
 	VarType *string `json:"type,omitempty"`
 
+}
+
+func (u *Groupsearchcriteria) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Groupsearchcriteria
+
+	
+
+	return json.Marshal(&struct { 
+		EndValue *string `json:"endValue,omitempty"`
+		
+		Values *[]string `json:"values,omitempty"`
+		
+		StartValue *string `json:"startValue,omitempty"`
+		
+		Fields *[]string `json:"fields,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Group *[]Groupsearchcriteria `json:"group,omitempty"`
+		
+		DateFormat *string `json:"dateFormat,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		*Alias
+	}{ 
+		EndValue: u.EndValue,
+		
+		Values: u.Values,
+		
+		StartValue: u.StartValue,
+		
+		Fields: u.Fields,
+		
+		Value: u.Value,
+		
+		Operator: u.Operator,
+		
+		Group: u.Group,
+		
+		DateFormat: u.DateFormat,
+		
+		VarType: u.VarType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

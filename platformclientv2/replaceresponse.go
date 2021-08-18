@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Replaceresponse struct {
 	// UploadMethod
 	UploadMethod *string `json:"uploadMethod,omitempty"`
 
+}
+
+func (u *Replaceresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Replaceresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ChangeNumber *int `json:"changeNumber,omitempty"`
+		
+		UploadStatus *Domainentityref `json:"uploadStatus,omitempty"`
+		
+		UploadDestinationUri *string `json:"uploadDestinationUri,omitempty"`
+		
+		UploadMethod *string `json:"uploadMethod,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ChangeNumber: u.ChangeNumber,
+		
+		UploadStatus: u.UploadStatus,
+		
+		UploadDestinationUri: u.UploadDestinationUri,
+		
+		UploadMethod: u.UploadMethod,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

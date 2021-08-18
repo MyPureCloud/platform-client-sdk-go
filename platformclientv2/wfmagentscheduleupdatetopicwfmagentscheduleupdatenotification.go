@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,58 @@ type Wfmagentscheduleupdatetopicwfmagentscheduleupdatenotification struct {
 	// Updates
 	Updates *[]Wfmagentscheduleupdatetopicwfmagentscheduleupdate `json:"updates,omitempty"`
 
+}
+
+func (u *Wfmagentscheduleupdatetopicwfmagentscheduleupdatenotification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmagentscheduleupdatetopicwfmagentscheduleupdatenotification
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		User *Wfmagentscheduleupdatetopicuserreference `json:"user,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		Shifts *[]Wfmagentscheduleupdatetopicwfmscheduleshift `json:"shifts,omitempty"`
+		
+		FullDayTimeOffMarkers *[]Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		
+		Updates *[]Wfmagentscheduleupdatetopicwfmagentscheduleupdate `json:"updates,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		Shifts: u.Shifts,
+		
+		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		
+		Updates: u.Updates,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

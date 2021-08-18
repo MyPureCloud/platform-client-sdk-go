@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Resolutiondetailquerypredicate struct {
 	// VarRange - Right hand side for metric predicates
 	VarRange *Numericrange `json:"range,omitempty"`
 
+}
+
+func (u *Resolutiondetailquerypredicate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Resolutiondetailquerypredicate
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		VarRange *Numericrange `json:"range,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Metric: u.Metric,
+		
+		Operator: u.Operator,
+		
+		Value: u.Value,
+		
+		VarRange: u.VarRange,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

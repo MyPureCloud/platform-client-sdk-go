@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Atzmtimeslot struct {
 	// LatestCallableTime - The latest time to dial a contact. Valid format is HH:mm
 	LatestCallableTime *string `json:"latestCallableTime,omitempty"`
 
+}
+
+func (u *Atzmtimeslot) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Atzmtimeslot
+
+	
+
+	return json.Marshal(&struct { 
+		EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
+		
+		LatestCallableTime *string `json:"latestCallableTime,omitempty"`
+		*Alias
+	}{ 
+		EarliestCallableTime: u.EarliestCallableTime,
+		
+		LatestCallableTime: u.LatestCallableTime,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Wfmbuintradaydataupdatetopicbuintradaydatagroup struct {
 	// PerformancePredictionDataPerInterval
 	PerformancePredictionDataPerInterval *[]Wfmbuintradaydataupdatetopicintradayperformancepredictiondata `json:"performancePredictionDataPerInterval,omitempty"`
 
+}
+
+func (u *Wfmbuintradaydataupdatetopicbuintradaydatagroup) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmbuintradaydataupdatetopicbuintradaydatagroup
+
+	
+
+	return json.Marshal(&struct { 
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		ForecastDataSummary *Wfmbuintradaydataupdatetopicbuintradayforecastdata `json:"forecastDataSummary,omitempty"`
+		
+		ForecastDataPerInterval *[]Wfmbuintradaydataupdatetopicbuintradayforecastdata `json:"forecastDataPerInterval,omitempty"`
+		
+		ScheduleDataSummary *Wfmbuintradaydataupdatetopicbuintradayscheduledata `json:"scheduleDataSummary,omitempty"`
+		
+		ScheduleDataPerInterval *[]Wfmbuintradaydataupdatetopicbuintradayscheduledata `json:"scheduleDataPerInterval,omitempty"`
+		
+		PerformancePredictionDataSummary *Wfmbuintradaydataupdatetopicintradayperformancepredictiondata `json:"performancePredictionDataSummary,omitempty"`
+		
+		PerformancePredictionDataPerInterval *[]Wfmbuintradaydataupdatetopicintradayperformancepredictiondata `json:"performancePredictionDataPerInterval,omitempty"`
+		*Alias
+	}{ 
+		MediaType: u.MediaType,
+		
+		ForecastDataSummary: u.ForecastDataSummary,
+		
+		ForecastDataPerInterval: u.ForecastDataPerInterval,
+		
+		ScheduleDataSummary: u.ScheduleDataSummary,
+		
+		ScheduleDataPerInterval: u.ScheduleDataPerInterval,
+		
+		PerformancePredictionDataSummary: u.PerformancePredictionDataSummary,
+		
+		PerformancePredictionDataPerInterval: u.PerformancePredictionDataPerInterval,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

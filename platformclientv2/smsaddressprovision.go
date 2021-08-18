@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Smsaddressprovision struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Smsaddressprovision) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Smsaddressprovision
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Street *string `json:"street,omitempty"`
+		
+		City *string `json:"city,omitempty"`
+		
+		Region *string `json:"region,omitempty"`
+		
+		PostalCode *string `json:"postalCode,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		
+		AutoCorrectAddress *bool `json:"autoCorrectAddress,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Street: u.Street,
+		
+		City: u.City,
+		
+		Region: u.Region,
+		
+		PostalCode: u.PostalCode,
+		
+		CountryCode: u.CountryCode,
+		
+		AutoCorrectAddress: u.AutoCorrectAddress,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

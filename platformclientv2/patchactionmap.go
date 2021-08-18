@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -79,6 +80,122 @@ type Patchactionmap struct {
 	// EndDate - Timestamp at which the action map is scheduled to stop firing. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndDate *time.Time `json:"endDate,omitempty"`
 
+}
+
+func (u *Patchactionmap) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchactionmap
+
+	
+	CreatedDate := new(string)
+	if u.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		IsActive *bool `json:"isActive,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		TriggerWithSegments *[]string `json:"triggerWithSegments,omitempty"`
+		
+		TriggerWithEventConditions *[]Eventcondition `json:"triggerWithEventConditions,omitempty"`
+		
+		TriggerWithOutcomeProbabilityConditions *[]Outcomeprobabilitycondition `json:"triggerWithOutcomeProbabilityConditions,omitempty"`
+		
+		PageUrlConditions *[]Urlcondition `json:"pageUrlConditions,omitempty"`
+		
+		Activation *Activation `json:"activation,omitempty"`
+		
+		Weight *int `json:"weight,omitempty"`
+		
+		Action *Patchaction `json:"action,omitempty"`
+		
+		ActionMapScheduleGroups *Patchactionmapschedulegroups `json:"actionMapScheduleGroups,omitempty"`
+		
+		IgnoreFrequencyCap *bool `json:"ignoreFrequencyCap,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Version: u.Version,
+		
+		IsActive: u.IsActive,
+		
+		DisplayName: u.DisplayName,
+		
+		TriggerWithSegments: u.TriggerWithSegments,
+		
+		TriggerWithEventConditions: u.TriggerWithEventConditions,
+		
+		TriggerWithOutcomeProbabilityConditions: u.TriggerWithOutcomeProbabilityConditions,
+		
+		PageUrlConditions: u.PageUrlConditions,
+		
+		Activation: u.Activation,
+		
+		Weight: u.Weight,
+		
+		Action: u.Action,
+		
+		ActionMapScheduleGroups: u.ActionMapScheduleGroups,
+		
+		IgnoreFrequencyCap: u.IgnoreFrequencyCap,
+		
+		SelfUri: u.SelfUri,
+		
+		CreatedDate: CreatedDate,
+		
+		ModifiedDate: ModifiedDate,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

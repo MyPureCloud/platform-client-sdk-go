@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -138,6 +139,150 @@ type Workplanlistitemresponse struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Workplanlistitemresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Workplanlistitemresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		Valid *bool `json:"valid,omitempty"`
+		
+		ConstrainWeeklyPaidTime *bool `json:"constrainWeeklyPaidTime,omitempty"`
+		
+		FlexibleWeeklyPaidTime *bool `json:"flexibleWeeklyPaidTime,omitempty"`
+		
+		WeeklyExactPaidMinutes *int `json:"weeklyExactPaidMinutes,omitempty"`
+		
+		WeeklyMinimumPaidMinutes *int `json:"weeklyMinimumPaidMinutes,omitempty"`
+		
+		WeeklyMaximumPaidMinutes *int `json:"weeklyMaximumPaidMinutes,omitempty"`
+		
+		ConstrainPaidTimeGranularity *bool `json:"constrainPaidTimeGranularity,omitempty"`
+		
+		PaidTimeGranularityMinutes *int `json:"paidTimeGranularityMinutes,omitempty"`
+		
+		ConstrainMinimumTimeBetweenShifts *bool `json:"constrainMinimumTimeBetweenShifts,omitempty"`
+		
+		MinimumTimeBetweenShiftsMinutes *int `json:"minimumTimeBetweenShiftsMinutes,omitempty"`
+		
+		MaximumDays *int `json:"maximumDays,omitempty"`
+		
+		MinimumConsecutiveNonWorkingMinutesPerWeek *int `json:"minimumConsecutiveNonWorkingMinutesPerWeek,omitempty"`
+		
+		ConstrainMaximumConsecutiveWorkingWeekends *bool `json:"constrainMaximumConsecutiveWorkingWeekends,omitempty"`
+		
+		MaximumConsecutiveWorkingWeekends *int `json:"maximumConsecutiveWorkingWeekends,omitempty"`
+		
+		MinimumWorkingDaysPerWeek *int `json:"minimumWorkingDaysPerWeek,omitempty"`
+		
+		ConstrainMaximumConsecutiveWorkingDays *bool `json:"constrainMaximumConsecutiveWorkingDays,omitempty"`
+		
+		MaximumConsecutiveWorkingDays *int `json:"maximumConsecutiveWorkingDays,omitempty"`
+		
+		MinimumShiftStartDistanceMinutes *int `json:"minimumShiftStartDistanceMinutes,omitempty"`
+		
+		MinimumDaysOffPerPlanningPeriod *int `json:"minimumDaysOffPerPlanningPeriod,omitempty"`
+		
+		MaximumDaysOffPerPlanningPeriod *int `json:"maximumDaysOffPerPlanningPeriod,omitempty"`
+		
+		MinimumPaidMinutesPerPlanningPeriod *int `json:"minimumPaidMinutesPerPlanningPeriod,omitempty"`
+		
+		MaximumPaidMinutesPerPlanningPeriod *int `json:"maximumPaidMinutesPerPlanningPeriod,omitempty"`
+		
+		OptionalDays *Setwrapperdayofweek `json:"optionalDays,omitempty"`
+		
+		ShiftStartVarianceType *string `json:"shiftStartVarianceType,omitempty"`
+		
+		ShiftStartVariances *Listwrappershiftstartvariance `json:"shiftStartVariances,omitempty"`
+		
+		Shifts *[]Workplanshift `json:"shifts,omitempty"`
+		
+		Agents *[]Deletableuserreference `json:"agents,omitempty"`
+		
+		AgentCount *int `json:"agentCount,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Enabled: u.Enabled,
+		
+		Valid: u.Valid,
+		
+		ConstrainWeeklyPaidTime: u.ConstrainWeeklyPaidTime,
+		
+		FlexibleWeeklyPaidTime: u.FlexibleWeeklyPaidTime,
+		
+		WeeklyExactPaidMinutes: u.WeeklyExactPaidMinutes,
+		
+		WeeklyMinimumPaidMinutes: u.WeeklyMinimumPaidMinutes,
+		
+		WeeklyMaximumPaidMinutes: u.WeeklyMaximumPaidMinutes,
+		
+		ConstrainPaidTimeGranularity: u.ConstrainPaidTimeGranularity,
+		
+		PaidTimeGranularityMinutes: u.PaidTimeGranularityMinutes,
+		
+		ConstrainMinimumTimeBetweenShifts: u.ConstrainMinimumTimeBetweenShifts,
+		
+		MinimumTimeBetweenShiftsMinutes: u.MinimumTimeBetweenShiftsMinutes,
+		
+		MaximumDays: u.MaximumDays,
+		
+		MinimumConsecutiveNonWorkingMinutesPerWeek: u.MinimumConsecutiveNonWorkingMinutesPerWeek,
+		
+		ConstrainMaximumConsecutiveWorkingWeekends: u.ConstrainMaximumConsecutiveWorkingWeekends,
+		
+		MaximumConsecutiveWorkingWeekends: u.MaximumConsecutiveWorkingWeekends,
+		
+		MinimumWorkingDaysPerWeek: u.MinimumWorkingDaysPerWeek,
+		
+		ConstrainMaximumConsecutiveWorkingDays: u.ConstrainMaximumConsecutiveWorkingDays,
+		
+		MaximumConsecutiveWorkingDays: u.MaximumConsecutiveWorkingDays,
+		
+		MinimumShiftStartDistanceMinutes: u.MinimumShiftStartDistanceMinutes,
+		
+		MinimumDaysOffPerPlanningPeriod: u.MinimumDaysOffPerPlanningPeriod,
+		
+		MaximumDaysOffPerPlanningPeriod: u.MaximumDaysOffPerPlanningPeriod,
+		
+		MinimumPaidMinutesPerPlanningPeriod: u.MinimumPaidMinutesPerPlanningPeriod,
+		
+		MaximumPaidMinutesPerPlanningPeriod: u.MaximumPaidMinutesPerPlanningPeriod,
+		
+		OptionalDays: u.OptionalDays,
+		
+		ShiftStartVarianceType: u.ShiftStartVarianceType,
+		
+		ShiftStartVariances: u.ShiftStartVariances,
+		
+		Shifts: u.Shifts,
+		
+		Agents: u.Agents,
+		
+		AgentCount: u.AgentCount,
+		
+		Metadata: u.Metadata,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Contactsort struct {
 	// Numeric - Whether or not the column contains numeric data.
 	Numeric *bool `json:"numeric,omitempty"`
 
+}
+
+func (u *Contactsort) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contactsort
+
+	
+
+	return json.Marshal(&struct { 
+		FieldName *string `json:"fieldName,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		Numeric *bool `json:"numeric,omitempty"`
+		*Alias
+	}{ 
+		FieldName: u.FieldName,
+		
+		Direction: u.Direction,
+		
+		Numeric: u.Numeric,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

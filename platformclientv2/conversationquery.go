@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Conversationquery struct {
 	// Paging - Page size and number to control iterating through large result sets. Default page size is 25
 	Paging *Pagingspec `json:"paging,omitempty"`
 
+}
+
+func (u *Conversationquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationquery
+
+	
+
+	return json.Marshal(&struct { 
+		ConversationFilters *[]Conversationdetailqueryfilter `json:"conversationFilters,omitempty"`
+		
+		SegmentFilters *[]Segmentdetailqueryfilter `json:"segmentFilters,omitempty"`
+		
+		EvaluationFilters *[]Evaluationdetailqueryfilter `json:"evaluationFilters,omitempty"`
+		
+		SurveyFilters *[]Surveydetailqueryfilter `json:"surveyFilters,omitempty"`
+		
+		ResolutionFilters *[]Resolutiondetailqueryfilter `json:"resolutionFilters,omitempty"`
+		
+		Order *string `json:"order,omitempty"`
+		
+		OrderBy *string `json:"orderBy,omitempty"`
+		
+		Interval *string `json:"interval,omitempty"`
+		
+		Aggregations *[]Analyticsqueryaggregation `json:"aggregations,omitempty"`
+		
+		Paging *Pagingspec `json:"paging,omitempty"`
+		*Alias
+	}{ 
+		ConversationFilters: u.ConversationFilters,
+		
+		SegmentFilters: u.SegmentFilters,
+		
+		EvaluationFilters: u.EvaluationFilters,
+		
+		SurveyFilters: u.SurveyFilters,
+		
+		ResolutionFilters: u.ResolutionFilters,
+		
+		Order: u.Order,
+		
+		OrderBy: u.OrderBy,
+		
+		Interval: u.Interval,
+		
+		Aggregations: u.Aggregations,
+		
+		Paging: u.Paging,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

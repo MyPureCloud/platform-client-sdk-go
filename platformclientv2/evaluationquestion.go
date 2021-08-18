@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Evaluationquestion struct {
 	// IsCritical
 	IsCritical *bool `json:"isCritical,omitempty"`
 
+}
+
+func (u *Evaluationquestion) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evaluationquestion
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Text *string `json:"text,omitempty"`
+		
+		HelpText *string `json:"helpText,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		NaEnabled *bool `json:"naEnabled,omitempty"`
+		
+		CommentsRequired *bool `json:"commentsRequired,omitempty"`
+		
+		VisibilityCondition *Visibilitycondition `json:"visibilityCondition,omitempty"`
+		
+		AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
+		
+		IsKill *bool `json:"isKill,omitempty"`
+		
+		IsCritical *bool `json:"isCritical,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Text: u.Text,
+		
+		HelpText: u.HelpText,
+		
+		VarType: u.VarType,
+		
+		NaEnabled: u.NaEnabled,
+		
+		CommentsRequired: u.CommentsRequired,
+		
+		VisibilityCondition: u.VisibilityCondition,
+		
+		AnswerOptions: u.AnswerOptions,
+		
+		IsKill: u.IsKill,
+		
+		IsCritical: u.IsCritical,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

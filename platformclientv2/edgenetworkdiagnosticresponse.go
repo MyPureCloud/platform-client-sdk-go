@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Edgenetworkdiagnosticresponse struct {
 	// Diagnostics - Response string of executed command from edge
 	Diagnostics *string `json:"diagnostics,omitempty"`
 
+}
+
+func (u *Edgenetworkdiagnosticresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgenetworkdiagnosticresponse
+
+	
+
+	return json.Marshal(&struct { 
+		CommandCorrelationId *string `json:"commandCorrelationId,omitempty"`
+		
+		Diagnostics *string `json:"diagnostics,omitempty"`
+		*Alias
+	}{ 
+		CommandCorrelationId: u.CommandCorrelationId,
+		
+		Diagnostics: u.Diagnostics,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

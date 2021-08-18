@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Shifttradeactivityrule struct {
 	// ActivityCodeIdReplacement - The activity code ID with which to replace activities belonging to the original category if applicable (required if action == Replace, must be a default activity code ID)
 	ActivityCodeIdReplacement *string `json:"activityCodeIdReplacement,omitempty"`
 
+}
+
+func (u *Shifttradeactivityrule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shifttradeactivityrule
+
+	
+
+	return json.Marshal(&struct { 
+		ActivityCategory *string `json:"activityCategory,omitempty"`
+		
+		Action *string `json:"action,omitempty"`
+		
+		ActivityCodeIdReplacement *string `json:"activityCodeIdReplacement,omitempty"`
+		*Alias
+	}{ 
+		ActivityCategory: u.ActivityCategory,
+		
+		Action: u.Action,
+		
+		ActivityCodeIdReplacement: u.ActivityCodeIdReplacement,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

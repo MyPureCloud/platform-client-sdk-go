@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,70 @@ type Reportrunentry struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Reportrunentry) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reportrunentry
+
+	
+	RunTime := new(string)
+	if u.RunTime != nil {
+		
+		*RunTime = timeutil.Strftime(u.RunTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RunTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ReportId *string `json:"reportId,omitempty"`
+		
+		RunTime *string `json:"runTime,omitempty"`
+		
+		RunStatus *string `json:"runStatus,omitempty"`
+		
+		ErrorMessage *string `json:"errorMessage,omitempty"`
+		
+		RunDurationMsec *int `json:"runDurationMsec,omitempty"`
+		
+		ReportUrl *string `json:"reportUrl,omitempty"`
+		
+		ReportFormat *string `json:"reportFormat,omitempty"`
+		
+		ScheduleUri *string `json:"scheduleUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ReportId: u.ReportId,
+		
+		RunTime: RunTime,
+		
+		RunStatus: u.RunStatus,
+		
+		ErrorMessage: u.ErrorMessage,
+		
+		RunDurationMsec: u.RunDurationMsec,
+		
+		ReportUrl: u.ReportUrl,
+		
+		ReportFormat: u.ReportFormat,
+		
+		ScheduleUri: u.ScheduleUri,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

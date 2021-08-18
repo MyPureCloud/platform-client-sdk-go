@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Vmpairinginfo struct {
 	// OrgId
 	OrgId *string `json:"org-id,omitempty"`
 
+}
+
+func (u *Vmpairinginfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Vmpairinginfo
+
+	
+
+	return json.Marshal(&struct { 
+		MetaData *Metadata `json:"meta-data,omitempty"`
+		
+		EdgeId *string `json:"edge-id,omitempty"`
+		
+		AuthToken *string `json:"auth-token,omitempty"`
+		
+		OrgId *string `json:"org-id,omitempty"`
+		*Alias
+	}{ 
+		MetaData: u.MetaData,
+		
+		EdgeId: u.EdgeId,
+		
+		AuthToken: u.AuthToken,
+		
+		OrgId: u.OrgId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

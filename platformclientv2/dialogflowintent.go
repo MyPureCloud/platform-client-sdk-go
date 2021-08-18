@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Dialogflowintent struct {
 	// Parameters - An object mapping parameter names to Parameter objects
 	Parameters *map[string]Dialogflowparameter `json:"parameters,omitempty"`
 
+}
+
+func (u *Dialogflowintent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialogflowintent
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Parameters *map[string]Dialogflowparameter `json:"parameters,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Parameters: u.Parameters,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

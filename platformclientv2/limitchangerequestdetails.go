@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -67,6 +68,94 @@ type Limitchangerequestdetails struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Limitchangerequestdetails
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateCompleted := new(string)
+	if u.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Key *string `json:"key,omitempty"`
+		
+		Namespace *string `json:"namespace,omitempty"`
+		
+		RequestedValue *float64 `json:"requestedValue,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		SupportCaseUrl *string `json:"supportCaseUrl,omitempty"`
+		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		CurrentValue *float64 `json:"currentValue,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		StatusHistory *[]Statuschange `json:"statusHistory,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		LastChangedBy *string `json:"lastChangedBy,omitempty"`
+		
+		RejectReason *string `json:"rejectReason,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Key: u.Key,
+		
+		Namespace: u.Namespace,
+		
+		RequestedValue: u.RequestedValue,
+		
+		Description: u.Description,
+		
+		SupportCaseUrl: u.SupportCaseUrl,
+		
+		CreatedBy: u.CreatedBy,
+		
+		Status: u.Status,
+		
+		CurrentValue: u.CurrentValue,
+		
+		DateCreated: DateCreated,
+		
+		StatusHistory: u.StatusHistory,
+		
+		DateCompleted: DateCompleted,
+		
+		LastChangedBy: u.LastChangedBy,
+		
+		RejectReason: u.RejectReason,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

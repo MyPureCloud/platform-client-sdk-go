@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Actioncontractinput struct {
 	// Output - Execution output contract
 	Output *Postoutputcontract `json:"output,omitempty"`
 
+}
+
+func (u *Actioncontractinput) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Actioncontractinput
+
+	
+
+	return json.Marshal(&struct { 
+		Input *Postinputcontract `json:"input,omitempty"`
+		
+		Output *Postoutputcontract `json:"output,omitempty"`
+		*Alias
+	}{ 
+		Input: u.Input,
+		
+		Output: u.Output,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

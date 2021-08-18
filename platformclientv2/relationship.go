@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Relationship struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Relationship) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Relationship
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		
+		ExternalOrganization *Externalorganization `json:"externalOrganization,omitempty"`
+		
+		Relationship *string `json:"relationship,omitempty"`
+		
+		ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		User: u.User,
+		
+		ExternalOrganization: u.ExternalOrganization,
+		
+		Relationship: u.Relationship,
+		
+		ExternalDataSources: u.ExternalDataSources,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

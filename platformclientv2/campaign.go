@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -139,6 +140,166 @@ type Campaign struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Campaign) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaign
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		ContactList *Domainentityref `json:"contactList,omitempty"`
+		
+		Queue *Domainentityref `json:"queue,omitempty"`
+		
+		DialingMode *string `json:"dialingMode,omitempty"`
+		
+		Script *Domainentityref `json:"script,omitempty"`
+		
+		EdgeGroup *Domainentityref `json:"edgeGroup,omitempty"`
+		
+		Site *Domainentityref `json:"site,omitempty"`
+		
+		CampaignStatus *string `json:"campaignStatus,omitempty"`
+		
+		PhoneColumns *[]Phonecolumn `json:"phoneColumns,omitempty"`
+		
+		AbandonRate *float64 `json:"abandonRate,omitempty"`
+		
+		DncLists *[]Domainentityref `json:"dncLists,omitempty"`
+		
+		CallableTimeSet *Domainentityref `json:"callableTimeSet,omitempty"`
+		
+		CallAnalysisResponseSet *Domainentityref `json:"callAnalysisResponseSet,omitempty"`
+		
+		Errors *[]Resterrordetail `json:"errors,omitempty"`
+		
+		CallerName *string `json:"callerName,omitempty"`
+		
+		CallerAddress *string `json:"callerAddress,omitempty"`
+		
+		OutboundLineCount *int `json:"outboundLineCount,omitempty"`
+		
+		RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
+		
+		SkipPreviewDisabled *bool `json:"skipPreviewDisabled,omitempty"`
+		
+		PreviewTimeOutSeconds *int `json:"previewTimeOutSeconds,omitempty"`
+		
+		AlwaysRunning *bool `json:"alwaysRunning,omitempty"`
+		
+		ContactSort *Contactsort `json:"contactSort,omitempty"`
+		
+		ContactSorts *[]Contactsort `json:"contactSorts,omitempty"`
+		
+		NoAnswerTimeout *int `json:"noAnswerTimeout,omitempty"`
+		
+		CallAnalysisLanguage *string `json:"callAnalysisLanguage,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		
+		ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
+		
+		Division *Domainentityref `json:"division,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: u.Version,
+		
+		ContactList: u.ContactList,
+		
+		Queue: u.Queue,
+		
+		DialingMode: u.DialingMode,
+		
+		Script: u.Script,
+		
+		EdgeGroup: u.EdgeGroup,
+		
+		Site: u.Site,
+		
+		CampaignStatus: u.CampaignStatus,
+		
+		PhoneColumns: u.PhoneColumns,
+		
+		AbandonRate: u.AbandonRate,
+		
+		DncLists: u.DncLists,
+		
+		CallableTimeSet: u.CallableTimeSet,
+		
+		CallAnalysisResponseSet: u.CallAnalysisResponseSet,
+		
+		Errors: u.Errors,
+		
+		CallerName: u.CallerName,
+		
+		CallerAddress: u.CallerAddress,
+		
+		OutboundLineCount: u.OutboundLineCount,
+		
+		RuleSets: u.RuleSets,
+		
+		SkipPreviewDisabled: u.SkipPreviewDisabled,
+		
+		PreviewTimeOutSeconds: u.PreviewTimeOutSeconds,
+		
+		AlwaysRunning: u.AlwaysRunning,
+		
+		ContactSort: u.ContactSort,
+		
+		ContactSorts: u.ContactSorts,
+		
+		NoAnswerTimeout: u.NoAnswerTimeout,
+		
+		CallAnalysisLanguage: u.CallAnalysisLanguage,
+		
+		Priority: u.Priority,
+		
+		ContactListFilters: u.ContactListFilters,
+		
+		Division: u.Division,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

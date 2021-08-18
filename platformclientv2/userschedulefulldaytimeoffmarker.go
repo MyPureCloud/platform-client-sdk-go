@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Userschedulefulldaytimeoffmarker struct {
 	// Delete - If marked true for updating an existing full day time off marker, it will be deleted
 	Delete *bool `json:"delete,omitempty"`
 
+}
+
+func (u *Userschedulefulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userschedulefulldaytimeoffmarker
+
+	
+
+	return json.Marshal(&struct { 
+		ManagementUnitDate *string `json:"managementUnitDate,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		IsPaid *bool `json:"isPaid,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Delete *bool `json:"delete,omitempty"`
+		*Alias
+	}{ 
+		ManagementUnitDate: u.ManagementUnitDate,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		IsPaid: u.IsPaid,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		Description: u.Description,
+		
+		Delete: u.Delete,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Subjectdivisions struct {
 	// DivisionIds - A collection of division IDs to associate with the given subjects
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
+}
+
+func (u *Subjectdivisions) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Subjectdivisions
+
+	
+
+	return json.Marshal(&struct { 
+		SubjectIds *[]string `json:"subjectIds,omitempty"`
+		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		*Alias
+	}{ 
+		SubjectIds: u.SubjectIds,
+		
+		DivisionIds: u.DivisionIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

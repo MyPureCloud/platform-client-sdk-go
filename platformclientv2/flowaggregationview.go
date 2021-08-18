@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Flowaggregationview struct {
 	// VarRange - Range of numbers for slicing up data
 	VarRange *Aggregationrange `json:"range,omitempty"`
 
+}
+
+func (u *Flowaggregationview) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Flowaggregationview
+
+	
+
+	return json.Marshal(&struct { 
+		Target *string `json:"target,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Function *string `json:"function,omitempty"`
+		
+		VarRange *Aggregationrange `json:"range,omitempty"`
+		*Alias
+	}{ 
+		Target: u.Target,
+		
+		Name: u.Name,
+		
+		Function: u.Function,
+		
+		VarRange: u.VarRange,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

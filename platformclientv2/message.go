@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -107,6 +108,150 @@ type Message struct {
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+}
+
+func (u *Message) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Message
+
+	
+	StartHoldTime := new(string)
+	if u.StartHoldTime != nil {
+		
+		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartHoldTime = nil
+	}
+	
+	StartAlertingTime := new(string)
+	if u.StartAlertingTime != nil {
+		
+		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAlertingTime = nil
+	}
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	DisconnectedTime := new(string)
+	if u.DisconnectedTime != nil {
+		
+		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DisconnectedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Held *bool `json:"held,omitempty"`
+		
+		Segments *[]Segment `json:"segments,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		RecordingId *string `json:"recordingId,omitempty"`
+		
+		ErrorInfo *Errorbody `json:"errorInfo,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		StartHoldTime *string `json:"startHoldTime,omitempty"`
+		
+		StartAlertingTime *string `json:"startAlertingTime,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		RecipientCountry *string `json:"recipientCountry,omitempty"`
+		
+		RecipientType *string `json:"recipientType,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		ToAddress *Address `json:"toAddress,omitempty"`
+		
+		FromAddress *Address `json:"fromAddress,omitempty"`
+		
+		Messages *[]Messagedetails `json:"messages,omitempty"`
+		
+		JourneyContext *Journeycontext `json:"journeyContext,omitempty"`
+		
+		Wrapup *Wrapup `json:"wrapup,omitempty"`
+		
+		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
+		
+		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		Id: u.Id,
+		
+		Held: u.Held,
+		
+		Segments: u.Segments,
+		
+		Direction: u.Direction,
+		
+		RecordingId: u.RecordingId,
+		
+		ErrorInfo: u.ErrorInfo,
+		
+		DisconnectType: u.DisconnectType,
+		
+		StartHoldTime: StartHoldTime,
+		
+		StartAlertingTime: StartAlertingTime,
+		
+		ConnectedTime: ConnectedTime,
+		
+		DisconnectedTime: DisconnectedTime,
+		
+		Provider: u.Provider,
+		
+		VarType: u.VarType,
+		
+		RecipientCountry: u.RecipientCountry,
+		
+		RecipientType: u.RecipientType,
+		
+		ScriptId: u.ScriptId,
+		
+		PeerId: u.PeerId,
+		
+		ToAddress: u.ToAddress,
+		
+		FromAddress: u.FromAddress,
+		
+		Messages: u.Messages,
+		
+		JourneyContext: u.JourneyContext,
+		
+		Wrapup: u.Wrapup,
+		
+		AfterCallWork: u.AfterCallWork,
+		
+		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Phonechangetopicphonestatus struct {
 	// LineStatuses
 	LineStatuses *[]Phonechangetopiclinestatus `json:"lineStatuses,omitempty"`
 
+}
+
+func (u *Phonechangetopicphonestatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Phonechangetopicphonestatus
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		OperationalStatus *string `json:"operationalStatus,omitempty"`
+		
+		Edge *Phonechangetopicedgereference `json:"edge,omitempty"`
+		
+		Provision *Phonechangetopicprovisioninfo `json:"provision,omitempty"`
+		
+		LineStatuses *[]Phonechangetopiclinestatus `json:"lineStatuses,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		OperationalStatus: u.OperationalStatus,
+		
+		Edge: u.Edge,
+		
+		Provision: u.Provision,
+		
+		LineStatuses: u.LineStatuses,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

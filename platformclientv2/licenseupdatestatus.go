@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Licenseupdatestatus struct {
 	// Result
 	Result *string `json:"result,omitempty"`
 
+}
+
+func (u *Licenseupdatestatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Licenseupdatestatus
+
+	
+
+	return json.Marshal(&struct { 
+		UserId *string `json:"userId,omitempty"`
+		
+		LicenseId *string `json:"licenseId,omitempty"`
+		
+		Result *string `json:"result,omitempty"`
+		*Alias
+	}{ 
+		UserId: u.UserId,
+		
+		LicenseId: u.LicenseId,
+		
+		Result: u.Result,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

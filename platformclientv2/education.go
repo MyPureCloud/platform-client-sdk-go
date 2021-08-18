@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,52 @@ type Education struct {
 	// DateEnd - Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	DateEnd *time.Time `json:"dateEnd,omitempty"`
 
+}
+
+func (u *Education) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Education
+
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%d")
+	} else {
+		DateStart = nil
+	}
+	
+	DateEnd := new(string)
+	if u.DateEnd != nil {
+		*DateEnd = timeutil.Strftime(u.DateEnd, "%Y-%m-%d")
+	} else {
+		DateEnd = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		School *string `json:"school,omitempty"`
+		
+		FieldOfStudy *string `json:"fieldOfStudy,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		DateEnd *string `json:"dateEnd,omitempty"`
+		*Alias
+	}{ 
+		School: u.School,
+		
+		FieldOfStudy: u.FieldOfStudy,
+		
+		Notes: u.Notes,
+		
+		DateStart: DateStart,
+		
+		DateEnd: DateEnd,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

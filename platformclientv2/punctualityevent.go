@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,74 @@ type Punctualityevent struct {
 	// Bullseye
 	Bullseye *bool `json:"bullseye,omitempty"`
 
+}
+
+func (u *Punctualityevent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Punctualityevent
+
+	
+	DateScheduleStart := new(string)
+	if u.DateScheduleStart != nil {
+		
+		*DateScheduleStart = timeutil.Strftime(u.DateScheduleStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateScheduleStart = nil
+	}
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateScheduleStart *string `json:"dateScheduleStart,omitempty"`
+		
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		ActivityCode *string `json:"activityCode,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		Points *int `json:"points,omitempty"`
+		
+		Delta *float64 `json:"delta,omitempty"`
+		
+		Bullseye *bool `json:"bullseye,omitempty"`
+		*Alias
+	}{ 
+		DateScheduleStart: DateScheduleStart,
+		
+		DateStart: DateStart,
+		
+		LengthMinutes: u.LengthMinutes,
+		
+		Description: u.Description,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		ActivityCode: u.ActivityCode,
+		
+		Category: u.Category,
+		
+		Points: u.Points,
+		
+		Delta: u.Delta,
+		
+		Bullseye: u.Bullseye,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Dialerpreview struct {
 	// PhoneNumberColumns - The phone number columns associated with this campaign
 	PhoneNumberColumns *[]Phonenumbercolumn `json:"phoneNumberColumns,omitempty"`
 
+}
+
+func (u *Dialerpreview) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialerpreview
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		ContactId *string `json:"contactId,omitempty"`
+		
+		ContactListId *string `json:"contactListId,omitempty"`
+		
+		CampaignId *string `json:"campaignId,omitempty"`
+		
+		PhoneNumberColumns *[]Phonenumbercolumn `json:"phoneNumberColumns,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		ContactId: u.ContactId,
+		
+		ContactListId: u.ContactListId,
+		
+		CampaignId: u.CampaignId,
+		
+		PhoneNumberColumns: u.PhoneNumberColumns,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

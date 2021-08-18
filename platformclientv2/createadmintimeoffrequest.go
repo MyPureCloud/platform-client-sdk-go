@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,46 @@ type Createadmintimeoffrequest struct {
 	// DailyDurationMinutes - The daily duration of this time off request in minutes
 	DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 
+}
+
+func (u *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createadmintimeoffrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Status *string `json:"status,omitempty"`
+		
+		Users *[]Userreference `json:"users,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
+		
+		PartialDayStartDateTimes *[]time.Time `json:"partialDayStartDateTimes,omitempty"`
+		
+		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
+		*Alias
+	}{ 
+		Status: u.Status,
+		
+		Users: u.Users,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		Notes: u.Notes,
+		
+		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		
+		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		
+		DailyDurationMinutes: u.DailyDurationMinutes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

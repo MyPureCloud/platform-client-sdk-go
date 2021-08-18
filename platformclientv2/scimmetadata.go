@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Scimmetadata struct {
 	// Version - The version of the resource. Matches the ETag HTTP response header. Not included with \"Schema\" and \"ResourceType\" resources.
 	Version *string `json:"version,omitempty"`
 
+}
+
+func (u *Scimmetadata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimmetadata
+
+	
+	LastModified := new(string)
+	if u.LastModified != nil {
+		
+		*LastModified = timeutil.Strftime(u.LastModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		LastModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ResourceType *string `json:"resourceType,omitempty"`
+		
+		LastModified *string `json:"lastModified,omitempty"`
+		
+		Location *string `json:"location,omitempty"`
+		
+		Version *string `json:"version,omitempty"`
+		*Alias
+	}{ 
+		ResourceType: u.ResourceType,
+		
+		LastModified: LastModified,
+		
+		Location: u.Location,
+		
+		Version: u.Version,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

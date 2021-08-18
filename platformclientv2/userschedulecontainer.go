@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Userschedulecontainer struct {
 	// UserSchedules - Map of user id to user schedule
 	UserSchedules *map[string]Userschedule `json:"userSchedules,omitempty"`
 
+}
+
+func (u *Userschedulecontainer) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userschedulecontainer
+
+	
+
+	return json.Marshal(&struct { 
+		ManagementUnitTimeZone *string `json:"managementUnitTimeZone,omitempty"`
+		
+		PublishedSchedules *[]Weekschedulereference `json:"publishedSchedules,omitempty"`
+		
+		UserSchedules *map[string]Userschedule `json:"userSchedules,omitempty"`
+		*Alias
+	}{ 
+		ManagementUnitTimeZone: u.ManagementUnitTimeZone,
+		
+		PublishedSchedules: u.PublishedSchedules,
+		
+		UserSchedules: u.UserSchedules,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

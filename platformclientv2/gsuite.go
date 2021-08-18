@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Gsuite struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Gsuite) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Gsuite
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Disabled *bool `json:"disabled,omitempty"`
+		
+		IssuerURI *string `json:"issuerURI,omitempty"`
+		
+		SsoTargetURI *string `json:"ssoTargetURI,omitempty"`
+		
+		SloURI *string `json:"sloURI,omitempty"`
+		
+		SloBinding *string `json:"sloBinding,omitempty"`
+		
+		Certificate *string `json:"certificate,omitempty"`
+		
+		Certificates *[]string `json:"certificates,omitempty"`
+		
+		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Disabled: u.Disabled,
+		
+		IssuerURI: u.IssuerURI,
+		
+		SsoTargetURI: u.SsoTargetURI,
+		
+		SloURI: u.SloURI,
+		
+		SloBinding: u.SloBinding,
+		
+		Certificate: u.Certificate,
+		
+		Certificates: u.Certificates,
+		
+		RelyingPartyIdentifier: u.RelyingPartyIdentifier,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

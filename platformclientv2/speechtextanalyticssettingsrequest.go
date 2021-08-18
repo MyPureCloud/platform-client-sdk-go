@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Speechtextanalyticssettingsrequest struct {
 	// ExpectedDialects - Setting to choose expected dialects
 	ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
 
+}
+
+func (u *Speechtextanalyticssettingsrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Speechtextanalyticssettingsrequest
+
+	
+
+	return json.Marshal(&struct { 
+		DefaultProgramId *string `json:"defaultProgramId,omitempty"`
+		
+		ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
+		*Alias
+	}{ 
+		DefaultProgramId: u.DefaultProgramId,
+		
+		ExpectedDialects: u.ExpectedDialects,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

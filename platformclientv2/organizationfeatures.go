@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -58,6 +59,70 @@ type Organizationfeatures struct {
 	// Custserv
 	Custserv *bool `json:"custserv,omitempty"`
 
+}
+
+func (u *Organizationfeatures) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Organizationfeatures
+
+	
+
+	return json.Marshal(&struct { 
+		RealtimeCIC *bool `json:"realtimeCIC,omitempty"`
+		
+		Purecloud *bool `json:"purecloud,omitempty"`
+		
+		Hipaa *bool `json:"hipaa,omitempty"`
+		
+		UcEnabled *bool `json:"ucEnabled,omitempty"`
+		
+		Pci *bool `json:"pci,omitempty"`
+		
+		PurecloudVoice *bool `json:"purecloudVoice,omitempty"`
+		
+		XmppFederation *bool `json:"xmppFederation,omitempty"`
+		
+		Chat *bool `json:"chat,omitempty"`
+		
+		InformalPhotos *bool `json:"informalPhotos,omitempty"`
+		
+		Directory *bool `json:"directory,omitempty"`
+		
+		ContactCenter *bool `json:"contactCenter,omitempty"`
+		
+		UnifiedCommunications *bool `json:"unifiedCommunications,omitempty"`
+		
+		Custserv *bool `json:"custserv,omitempty"`
+		*Alias
+	}{ 
+		RealtimeCIC: u.RealtimeCIC,
+		
+		Purecloud: u.Purecloud,
+		
+		Hipaa: u.Hipaa,
+		
+		UcEnabled: u.UcEnabled,
+		
+		Pci: u.Pci,
+		
+		PurecloudVoice: u.PurecloudVoice,
+		
+		XmppFederation: u.XmppFederation,
+		
+		Chat: u.Chat,
+		
+		InformalPhotos: u.InformalPhotos,
+		
+		Directory: u.Directory,
+		
+		ContactCenter: u.ContactCenter,
+		
+		UnifiedCommunications: u.UnifiedCommunications,
+		
+		Custserv: u.Custserv,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

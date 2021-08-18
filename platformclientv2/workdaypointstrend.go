@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,56 @@ type Workdaypointstrend struct {
 	// Trend - Daily points trends
 	Trend *[]Workdaypointstrenditem `json:"trend,omitempty"`
 
+}
+
+func (u *Workdaypointstrend) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Workdaypointstrend
+
+	
+	DateStartWorkday := new(string)
+	if u.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	} else {
+		DateStartWorkday = nil
+	}
+	
+	DateEndWorkday := new(string)
+	if u.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	} else {
+		DateEndWorkday = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateStartWorkday *string `json:"dateStartWorkday,omitempty"`
+		
+		DateEndWorkday *string `json:"dateEndWorkday,omitempty"`
+		
+		User *Userreference `json:"user,omitempty"`
+		
+		DayOfWeek *string `json:"dayOfWeek,omitempty"`
+		
+		AveragePoints *float64 `json:"averagePoints,omitempty"`
+		
+		Trend *[]Workdaypointstrenditem `json:"trend,omitempty"`
+		*Alias
+	}{ 
+		DateStartWorkday: DateStartWorkday,
+		
+		DateEndWorkday: DateEndWorkday,
+		
+		User: u.User,
+		
+		DayOfWeek: u.DayOfWeek,
+		
+		AveragePoints: u.AveragePoints,
+		
+		Trend: u.Trend,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

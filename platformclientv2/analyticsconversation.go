@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -55,6 +56,82 @@ type Analyticsconversation struct {
 	// Participants - Participants in the conversation
 	Participants *[]Analyticsparticipant `json:"participants,omitempty"`
 
+}
+
+func (u *Analyticsconversation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsconversation
+
+	
+	ConversationEnd := new(string)
+	if u.ConversationEnd != nil {
+		
+		*ConversationEnd = timeutil.Strftime(u.ConversationEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConversationEnd = nil
+	}
+	
+	ConversationStart := new(string)
+	if u.ConversationStart != nil {
+		
+		*ConversationStart = timeutil.Strftime(u.ConversationStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConversationStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ConversationEnd *string `json:"conversationEnd,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		ConversationStart *string `json:"conversationStart,omitempty"`
+		
+		DivisionIds *[]string `json:"divisionIds,omitempty"`
+		
+		ExternalTag *string `json:"externalTag,omitempty"`
+		
+		MediaStatsMinConversationMos *float64 `json:"mediaStatsMinConversationMos,omitempty"`
+		
+		MediaStatsMinConversationRFactor *float64 `json:"mediaStatsMinConversationRFactor,omitempty"`
+		
+		OriginatingDirection *string `json:"originatingDirection,omitempty"`
+		
+		Evaluations *[]Analyticsevaluation `json:"evaluations,omitempty"`
+		
+		Surveys *[]Analyticssurvey `json:"surveys,omitempty"`
+		
+		Resolutions *[]Analyticsresolution `json:"resolutions,omitempty"`
+		
+		Participants *[]Analyticsparticipant `json:"participants,omitempty"`
+		*Alias
+	}{ 
+		ConversationEnd: ConversationEnd,
+		
+		ConversationId: u.ConversationId,
+		
+		ConversationStart: ConversationStart,
+		
+		DivisionIds: u.DivisionIds,
+		
+		ExternalTag: u.ExternalTag,
+		
+		MediaStatsMinConversationMos: u.MediaStatsMinConversationMos,
+		
+		MediaStatsMinConversationRFactor: u.MediaStatsMinConversationRFactor,
+		
+		OriginatingDirection: u.OriginatingDirection,
+		
+		Evaluations: u.Evaluations,
+		
+		Surveys: u.Surveys,
+		
+		Resolutions: u.Resolutions,
+		
+		Participants: u.Participants,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,66 @@ type Trustee struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Trustee) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trustee
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateExpired := new(string)
+	if u.DateExpired != nil {
+		
+		*DateExpired = timeutil.Strftime(u.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateExpired = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		UsesDefaultRole *bool `json:"usesDefaultRole,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateExpired *string `json:"dateExpired,omitempty"`
+		
+		CreatedBy *Orguser `json:"createdBy,omitempty"`
+		
+		Organization *Organization `json:"organization,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Enabled: u.Enabled,
+		
+		UsesDefaultRole: u.UsesDefaultRole,
+		
+		DateCreated: DateCreated,
+		
+		DateExpired: DateExpired,
+		
+		CreatedBy: u.CreatedBy,
+		
+		Organization: u.Organization,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

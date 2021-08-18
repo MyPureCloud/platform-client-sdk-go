@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -55,6 +56,90 @@ type Developmentactivity struct {
 	// IsOverdue - Indicates if the activity is overdue
 	IsOverdue *bool `json:"isOverdue,omitempty"`
 
+}
+
+func (u *Developmentactivity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Developmentactivity
+
+	
+	DateCompleted := new(string)
+	if u.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateDue := new(string)
+	if u.DateDue != nil {
+		
+		*DateDue = timeutil.Strftime(u.DateDue, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateDue = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		CreatedBy *Userreference `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		DateDue *string `json:"dateDue,omitempty"`
+		
+		Facilitator *Userreference `json:"facilitator,omitempty"`
+		
+		Attendees *[]Userreference `json:"attendees,omitempty"`
+		
+		IsOverdue *bool `json:"isOverdue,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		DateCompleted: DateCompleted,
+		
+		CreatedBy: u.CreatedBy,
+		
+		DateCreated: DateCreated,
+		
+		SelfUri: u.SelfUri,
+		
+		Name: u.Name,
+		
+		VarType: u.VarType,
+		
+		Status: u.Status,
+		
+		DateDue: DateDue,
+		
+		Facilitator: u.Facilitator,
+		
+		Attendees: u.Attendees,
+		
+		IsOverdue: u.IsOverdue,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

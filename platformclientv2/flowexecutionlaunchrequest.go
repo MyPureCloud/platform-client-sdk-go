@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Flowexecutionlaunchrequest struct {
 	// Name - A displayable name to assign to the new flow execution
 	Name *string `json:"name,omitempty"`
 
+}
+
+func (u *Flowexecutionlaunchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Flowexecutionlaunchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		FlowId *string `json:"flowId,omitempty"`
+		
+		FlowVersion *string `json:"flowVersion,omitempty"`
+		
+		InputData *map[string]interface{} `json:"inputData,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		*Alias
+	}{ 
+		FlowId: u.FlowId,
+		
+		FlowVersion: u.FlowVersion,
+		
+		InputData: u.InputData,
+		
+		Name: u.Name,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

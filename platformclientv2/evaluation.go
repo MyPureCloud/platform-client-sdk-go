@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -103,6 +104,154 @@ type Evaluation struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Evaluation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evaluation
+
+	
+	ReleaseDate := new(string)
+	if u.ReleaseDate != nil {
+		
+		*ReleaseDate = timeutil.Strftime(u.ReleaseDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReleaseDate = nil
+	}
+	
+	AssignedDate := new(string)
+	if u.AssignedDate != nil {
+		
+		*AssignedDate = timeutil.Strftime(u.AssignedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		AssignedDate = nil
+	}
+	
+	ChangedDate := new(string)
+	if u.ChangedDate != nil {
+		
+		*ChangedDate = timeutil.Strftime(u.ChangedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ChangedDate = nil
+	}
+	
+	ConversationDate := new(string)
+	if u.ConversationDate != nil {
+		
+		*ConversationDate = timeutil.Strftime(u.ConversationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConversationDate = nil
+	}
+	
+	ConversationEndDate := new(string)
+	if u.ConversationEndDate != nil {
+		
+		*ConversationEndDate = timeutil.Strftime(u.ConversationEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConversationEndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Conversation *Conversation `json:"conversation,omitempty"`
+		
+		EvaluationForm *Evaluationform `json:"evaluationForm,omitempty"`
+		
+		Evaluator *User `json:"evaluator,omitempty"`
+		
+		Agent *User `json:"agent,omitempty"`
+		
+		Calibration *Calibration `json:"calibration,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Answers *Evaluationscoringset `json:"answers,omitempty"`
+		
+		AgentHasRead *bool `json:"agentHasRead,omitempty"`
+		
+		ReleaseDate *string `json:"releaseDate,omitempty"`
+		
+		AssignedDate *string `json:"assignedDate,omitempty"`
+		
+		ChangedDate *string `json:"changedDate,omitempty"`
+		
+		Queue *Queue `json:"queue,omitempty"`
+		
+		MediaType *[]string `json:"mediaType,omitempty"`
+		
+		Rescore *bool `json:"rescore,omitempty"`
+		
+		ConversationDate *string `json:"conversationDate,omitempty"`
+		
+		ConversationEndDate *string `json:"conversationEndDate,omitempty"`
+		
+		NeverRelease *bool `json:"neverRelease,omitempty"`
+		
+		ResourceId *string `json:"resourceId,omitempty"`
+		
+		ResourceType *string `json:"resourceType,omitempty"`
+		
+		Redacted *bool `json:"redacted,omitempty"`
+		
+		IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Conversation: u.Conversation,
+		
+		EvaluationForm: u.EvaluationForm,
+		
+		Evaluator: u.Evaluator,
+		
+		Agent: u.Agent,
+		
+		Calibration: u.Calibration,
+		
+		Status: u.Status,
+		
+		Answers: u.Answers,
+		
+		AgentHasRead: u.AgentHasRead,
+		
+		ReleaseDate: ReleaseDate,
+		
+		AssignedDate: AssignedDate,
+		
+		ChangedDate: ChangedDate,
+		
+		Queue: u.Queue,
+		
+		MediaType: u.MediaType,
+		
+		Rescore: u.Rescore,
+		
+		ConversationDate: ConversationDate,
+		
+		ConversationEndDate: ConversationEndDate,
+		
+		NeverRelease: u.NeverRelease,
+		
+		ResourceId: u.ResourceId,
+		
+		ResourceType: u.ResourceType,
+		
+		Redacted: u.Redacted,
+		
+		IsScoringIndex: u.IsScoringIndex,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

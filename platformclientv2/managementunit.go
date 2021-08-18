@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -55,6 +56,74 @@ type Managementunit struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Managementunit) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Managementunit
+
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
+		
+		StartDayOfWeek *string `json:"startDayOfWeek,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		Settings *Managementunitsettingsresponse `json:"settings,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		Division *Divisionreference `json:"division,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		BusinessUnit: u.BusinessUnit,
+		
+		StartDayOfWeek: u.StartDayOfWeek,
+		
+		TimeZone: u.TimeZone,
+		
+		Settings: u.Settings,
+		
+		Metadata: u.Metadata,
+		
+		Division: u.Division,
+		
+		Version: u.Version,
+		
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

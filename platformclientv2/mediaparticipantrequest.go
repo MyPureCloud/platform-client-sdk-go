@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Mediaparticipantrequest struct {
 	// WrapupSkipped - True to skip wrap-up for this participant.
 	WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
 
+}
+
+func (u *Mediaparticipantrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Mediaparticipantrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Wrapup *Wrapup `json:"wrapup,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Recording *bool `json:"recording,omitempty"`
+		
+		Muted *bool `json:"muted,omitempty"`
+		
+		Confined *bool `json:"confined,omitempty"`
+		
+		Held *bool `json:"held,omitempty"`
+		
+		WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
+		*Alias
+	}{ 
+		Wrapup: u.Wrapup,
+		
+		State: u.State,
+		
+		Recording: u.Recording,
+		
+		Muted: u.Muted,
+		
+		Confined: u.Confined,
+		
+		Held: u.Held,
+		
+		WrapupSkipped: u.WrapupSkipped,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

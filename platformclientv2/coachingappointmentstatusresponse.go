@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Coachingappointmentstatusresponse struct {
 	// Status - The status of the coaching appointment
 	Status *string `json:"status,omitempty"`
 
+}
+
+func (u *Coachingappointmentstatusresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Coachingappointmentstatusresponse
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Appointment *Coachingappointmentreference `json:"appointment,omitempty"`
+		
+		CreatedBy *Userreference `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		*Alias
+	}{ 
+		Appointment: u.Appointment,
+		
+		CreatedBy: u.CreatedBy,
+		
+		DateCreated: DateCreated,
+		
+		Status: u.Status,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

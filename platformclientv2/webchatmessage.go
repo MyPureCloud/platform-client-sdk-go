@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Webchatmessage struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Webchatmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Webchatmessage
+
+	
+	Timestamp := new(string)
+	if u.Timestamp != nil {
+		
+		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Timestamp = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Conversation *Webchatconversation `json:"conversation,omitempty"`
+		
+		Sender *Webchatmemberinfo `json:"sender,omitempty"`
+		
+		Body *string `json:"body,omitempty"`
+		
+		BodyType *string `json:"bodyType,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Conversation: u.Conversation,
+		
+		Sender: u.Sender,
+		
+		Body: u.Body,
+		
+		BodyType: u.BodyType,
+		
+		Timestamp: Timestamp,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

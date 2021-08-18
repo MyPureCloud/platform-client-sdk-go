@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -95,6 +96,122 @@ type Externalorganization struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Externalorganization) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Externalorganization
+
+	
+	ModifyDate := new(string)
+	if u.ModifyDate != nil {
+		
+		*ModifyDate = timeutil.Strftime(u.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifyDate = nil
+	}
+	
+	CreateDate := new(string)
+	if u.CreateDate != nil {
+		
+		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreateDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		CompanyType *string `json:"companyType,omitempty"`
+		
+		Industry *string `json:"industry,omitempty"`
+		
+		PrimaryContactId *string `json:"primaryContactId,omitempty"`
+		
+		Address *Contactaddress `json:"address,omitempty"`
+		
+		PhoneNumber *Phonenumber `json:"phoneNumber,omitempty"`
+		
+		FaxNumber *Phonenumber `json:"faxNumber,omitempty"`
+		
+		EmployeeCount *int `json:"employeeCount,omitempty"`
+		
+		Revenue *int `json:"revenue,omitempty"`
+		
+		Tags *[]string `json:"tags,omitempty"`
+		
+		Websites *[]string `json:"websites,omitempty"`
+		
+		Tickers *[]Ticker `json:"tickers,omitempty"`
+		
+		TwitterId *Twitterid `json:"twitterId,omitempty"`
+		
+		ExternalSystemUrl *string `json:"externalSystemUrl,omitempty"`
+		
+		ModifyDate *string `json:"modifyDate,omitempty"`
+		
+		CreateDate *string `json:"createDate,omitempty"`
+		
+		Trustor *Trustor `json:"trustor,omitempty"`
+		
+		Schema *Dataschema `json:"schema,omitempty"`
+		
+		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+		
+		ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		CompanyType: u.CompanyType,
+		
+		Industry: u.Industry,
+		
+		PrimaryContactId: u.PrimaryContactId,
+		
+		Address: u.Address,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		FaxNumber: u.FaxNumber,
+		
+		EmployeeCount: u.EmployeeCount,
+		
+		Revenue: u.Revenue,
+		
+		Tags: u.Tags,
+		
+		Websites: u.Websites,
+		
+		Tickers: u.Tickers,
+		
+		TwitterId: u.TwitterId,
+		
+		ExternalSystemUrl: u.ExternalSystemUrl,
+		
+		ModifyDate: ModifyDate,
+		
+		CreateDate: CreateDate,
+		
+		Trustor: u.Trustor,
+		
+		Schema: u.Schema,
+		
+		CustomFields: u.CustomFields,
+		
+		ExternalDataSources: u.ExternalDataSources,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -94,6 +95,106 @@ type Flow struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Flow) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Flow
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Division *Writabledivision `json:"division,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		LockedUser *User `json:"lockedUser,omitempty"`
+		
+		LockedClient *Domainentityref `json:"lockedClient,omitempty"`
+		
+		Active *bool `json:"active,omitempty"`
+		
+		System *bool `json:"system,omitempty"`
+		
+		Deleted *bool `json:"deleted,omitempty"`
+		
+		PublishedVersion *Flowversion `json:"publishedVersion,omitempty"`
+		
+		SavedVersion *Flowversion `json:"savedVersion,omitempty"`
+		
+		InputSchema *interface{} `json:"inputSchema,omitempty"`
+		
+		OutputSchema *interface{} `json:"outputSchema,omitempty"`
+		
+		CheckedInVersion *Flowversion `json:"checkedInVersion,omitempty"`
+		
+		DebugVersion *Flowversion `json:"debugVersion,omitempty"`
+		
+		PublishedBy *User `json:"publishedBy,omitempty"`
+		
+		CurrentOperation *Operation `json:"currentOperation,omitempty"`
+		
+		NluInfo *Nluinfo `json:"nluInfo,omitempty"`
+		
+		SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
+		
+		CompatibleFlowTypes *[]string `json:"compatibleFlowTypes,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Division: u.Division,
+		
+		Description: u.Description,
+		
+		VarType: u.VarType,
+		
+		LockedUser: u.LockedUser,
+		
+		LockedClient: u.LockedClient,
+		
+		Active: u.Active,
+		
+		System: u.System,
+		
+		Deleted: u.Deleted,
+		
+		PublishedVersion: u.PublishedVersion,
+		
+		SavedVersion: u.SavedVersion,
+		
+		InputSchema: u.InputSchema,
+		
+		OutputSchema: u.OutputSchema,
+		
+		CheckedInVersion: u.CheckedInVersion,
+		
+		DebugVersion: u.DebugVersion,
+		
+		PublishedBy: u.PublishedBy,
+		
+		CurrentOperation: u.CurrentOperation,
+		
+		NluInfo: u.NluInfo,
+		
+		SupportedLanguages: u.SupportedLanguages,
+		
+		CompatibleFlowTypes: u.CompatibleFlowTypes,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Learningassignmentupdate struct {
 	// Assessment - An updated Assessment
 	Assessment *Learningassessment `json:"assessment,omitempty"`
 
+}
+
+func (u *Learningassignmentupdate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningassignmentupdate
+
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		Assessment *Learningassessment `json:"assessment,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		Assessment: u.Assessment,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

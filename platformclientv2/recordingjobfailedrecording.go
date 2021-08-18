@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Recordingjobfailedrecording struct {
 	// Recording - Recording
 	Recording *Addressableentityref `json:"recording,omitempty"`
 
+}
+
+func (u *Recordingjobfailedrecording) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recordingjobfailedrecording
+
+	
+
+	return json.Marshal(&struct { 
+		Conversation *Addressableentityref `json:"conversation,omitempty"`
+		
+		Recording *Addressableentityref `json:"recording,omitempty"`
+		*Alias
+	}{ 
+		Conversation: u.Conversation,
+		
+		Recording: u.Recording,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

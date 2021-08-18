@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Mediatranscription struct {
 	// IntegrationId
 	IntegrationId *string `json:"integrationId,omitempty"`
 
+}
+
+func (u *Mediatranscription) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Mediatranscription
+
+	
+
+	return json.Marshal(&struct { 
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		TranscriptionProvider *string `json:"transcriptionProvider,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		*Alias
+	}{ 
+		DisplayName: u.DisplayName,
+		
+		TranscriptionProvider: u.TranscriptionProvider,
+		
+		IntegrationId: u.IntegrationId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

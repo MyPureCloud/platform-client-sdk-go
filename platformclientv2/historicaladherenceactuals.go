@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Historicaladherenceactuals struct {
 	// EndOffsetSeconds - Actual end offset in seconds relative to query start time
 	EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
 
+}
+
+func (u *Historicaladherenceactuals) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Historicaladherenceactuals
+
+	
+
+	return json.Marshal(&struct { 
+		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
+		
+		StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
+		
+		EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
+		*Alias
+	}{ 
+		ActualActivityCategory: u.ActualActivityCategory,
+		
+		StartOffsetSeconds: u.StartOffsetSeconds,
+		
+		EndOffsetSeconds: u.EndOffsetSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

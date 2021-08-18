@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Textbotflowlaunchrequest struct {
 	// Channel - Channel information relevant to the bot flow.
 	Channel *Textbotchannel `json:"channel,omitempty"`
 
+}
+
+func (u *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotflowlaunchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Flow *Textbotflow `json:"flow,omitempty"`
+		
+		ExternalSessionId *string `json:"externalSessionId,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		InputData *Textbotinputoutputdata `json:"inputData,omitempty"`
+		
+		Channel *Textbotchannel `json:"channel,omitempty"`
+		*Alias
+	}{ 
+		Flow: u.Flow,
+		
+		ExternalSessionId: u.ExternalSessionId,
+		
+		ConversationId: u.ConversationId,
+		
+		InputData: u.InputData,
+		
+		Channel: u.Channel,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

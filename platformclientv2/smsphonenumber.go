@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -87,6 +88,138 @@ type Smsphonenumber struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Smsphonenumber) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Smsphonenumber
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	PurchaseDate := new(string)
+	if u.PurchaseDate != nil {
+		
+		*PurchaseDate = timeutil.Strftime(u.PurchaseDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		PurchaseDate = nil
+	}
+	
+	CancellationDate := new(string)
+	if u.CancellationDate != nil {
+		
+		*CancellationDate = timeutil.Strftime(u.CancellationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CancellationDate = nil
+	}
+	
+	RenewalDate := new(string)
+	if u.RenewalDate != nil {
+		
+		*RenewalDate = timeutil.Strftime(u.RenewalDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RenewalDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		PhoneNumberType *string `json:"phoneNumberType,omitempty"`
+		
+		ProvisionedThroughPureCloud *bool `json:"provisionedThroughPureCloud,omitempty"`
+		
+		PhoneNumberStatus *string `json:"phoneNumberStatus,omitempty"`
+		
+		Capabilities *[]string `json:"capabilities,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		CreatedBy *User `json:"createdBy,omitempty"`
+		
+		ModifiedBy *User `json:"modifiedBy,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		PurchaseDate *string `json:"purchaseDate,omitempty"`
+		
+		CancellationDate *string `json:"cancellationDate,omitempty"`
+		
+		RenewalDate *string `json:"renewalDate,omitempty"`
+		
+		AutoRenewable *string `json:"autoRenewable,omitempty"`
+		
+		AddressId *Smsaddress `json:"addressId,omitempty"`
+		
+		ShortCodeBillingType *string `json:"shortCodeBillingType,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		PhoneNumberType: u.PhoneNumberType,
+		
+		ProvisionedThroughPureCloud: u.ProvisionedThroughPureCloud,
+		
+		PhoneNumberStatus: u.PhoneNumberStatus,
+		
+		Capabilities: u.Capabilities,
+		
+		CountryCode: u.CountryCode,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		Version: u.Version,
+		
+		PurchaseDate: PurchaseDate,
+		
+		CancellationDate: CancellationDate,
+		
+		RenewalDate: RenewalDate,
+		
+		AutoRenewable: u.AutoRenewable,
+		
+		AddressId: u.AddressId,
+		
+		ShortCodeBillingType: u.ShortCodeBillingType,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Programmappingsrequest struct {
 	// FlowIds - The program flows
 	FlowIds *[]string `json:"flowIds,omitempty"`
 
+}
+
+func (u *Programmappingsrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Programmappingsrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueueIds *[]string `json:"queueIds,omitempty"`
+		
+		FlowIds *[]string `json:"flowIds,omitempty"`
+		*Alias
+	}{ 
+		QueueIds: u.QueueIds,
+		
+		FlowIds: u.FlowIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

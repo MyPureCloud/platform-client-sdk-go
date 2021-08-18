@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Actionoutput struct {
 	// ErrorSchemaFlattened - JSON schema that defines the body of response when request is not successful. The schema is transformed based on Architect's flattened format. If the 'flatten' query parameter is supplied as true, this field will be returned. Either errorSchema or errorSchemaFlattened will be returned, not both.
 	ErrorSchemaFlattened *interface{} `json:"errorSchemaFlattened,omitempty"`
 
+}
+
+func (u *Actionoutput) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Actionoutput
+
+	
+
+	return json.Marshal(&struct { 
+		SuccessSchema *Jsonschemadocument `json:"successSchema,omitempty"`
+		
+		SuccessSchemaUri *string `json:"successSchemaUri,omitempty"`
+		
+		ErrorSchema *Jsonschemadocument `json:"errorSchema,omitempty"`
+		
+		ErrorSchemaUri *string `json:"errorSchemaUri,omitempty"`
+		
+		SuccessSchemaFlattened *Jsonschemadocument `json:"successSchemaFlattened,omitempty"`
+		
+		ErrorSchemaFlattened *interface{} `json:"errorSchemaFlattened,omitempty"`
+		*Alias
+	}{ 
+		SuccessSchema: u.SuccessSchema,
+		
+		SuccessSchemaUri: u.SuccessSchemaUri,
+		
+		ErrorSchema: u.ErrorSchema,
+		
+		ErrorSchemaUri: u.ErrorSchemaUri,
+		
+		SuccessSchemaFlattened: u.SuccessSchemaFlattened,
+		
+		ErrorSchemaFlattened: u.ErrorSchemaFlattened,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Workdaymetric struct {
 	// PunctualityEvents - List of schedule activity events for punctuality metrics
 	PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
 
+}
+
+func (u *Workdaymetric) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Workdaymetric
+
+	
+
+	return json.Marshal(&struct { 
+		Metric *Metric `json:"metric,omitempty"`
+		
+		Objective *Objective `json:"objective,omitempty"`
+		
+		Points *int `json:"points,omitempty"`
+		
+		Value *float64 `json:"value,omitempty"`
+		
+		PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
+		*Alias
+	}{ 
+		Metric: u.Metric,
+		
+		Objective: u.Objective,
+		
+		Points: u.Points,
+		
+		Value: u.Value,
+		
+		PunctualityEvents: u.PunctualityEvents,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

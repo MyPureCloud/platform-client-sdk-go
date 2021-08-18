@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Forecastservicelevelresponse struct {
 	// Seconds - The number of seconds to define for the percent of calls to be answered
 	Seconds *int `json:"seconds,omitempty"`
 
+}
+
+func (u *Forecastservicelevelresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Forecastservicelevelresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Percent *int `json:"percent,omitempty"`
+		
+		Seconds *int `json:"seconds,omitempty"`
+		*Alias
+	}{ 
+		Percent: u.Percent,
+		
+		Seconds: u.Seconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

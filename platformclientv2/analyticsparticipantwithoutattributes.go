@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Analyticsparticipantwithoutattributes struct {
 	// Sessions - List of sessions associated to this participant
 	Sessions *[]Analyticssession `json:"sessions,omitempty"`
 
+}
+
+func (u *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsparticipantwithoutattributes
+
+	
+
+	return json.Marshal(&struct { 
+		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
+		
+		FlaggedReason *string `json:"flaggedReason,omitempty"`
+		
+		ParticipantId *string `json:"participantId,omitempty"`
+		
+		ParticipantName *string `json:"participantName,omitempty"`
+		
+		Purpose *string `json:"purpose,omitempty"`
+		
+		TeamId *string `json:"teamId,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		Sessions *[]Analyticssession `json:"sessions,omitempty"`
+		*Alias
+	}{ 
+		ExternalContactId: u.ExternalContactId,
+		
+		ExternalOrganizationId: u.ExternalOrganizationId,
+		
+		FlaggedReason: u.FlaggedReason,
+		
+		ParticipantId: u.ParticipantId,
+		
+		ParticipantName: u.ParticipantName,
+		
+		Purpose: u.Purpose,
+		
+		TeamId: u.TeamId,
+		
+		UserId: u.UserId,
+		
+		Sessions: u.Sessions,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

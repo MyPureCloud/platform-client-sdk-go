@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,46 @@ type Availabletime struct {
 	// WfmSchedule - Workforce Management schedule information associated with the available time
 	WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
 
+}
+
+func (u *Availabletime) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Availabletime
+
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		IsPaid *bool `json:"isPaid,omitempty"`
+		
+		ActivityCategory *string `json:"activityCategory,omitempty"`
+		
+		WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+		*Alias
+	}{ 
+		DateStart: DateStart,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		IsPaid: u.IsPaid,
+		
+		ActivityCategory: u.ActivityCategory,
+		
+		WfmSchedule: u.WfmSchedule,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

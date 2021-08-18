@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Trunkmetricsoptions struct {
 	// ErrorInfo
 	ErrorInfo *Trunkerrorinfo `json:"errorInfo,omitempty"`
 
+}
+
+func (u *Trunkmetricsoptions) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trunkmetricsoptions
+
+	
+	OptionStateTime := new(string)
+	if u.OptionStateTime != nil {
+		
+		*OptionStateTime = timeutil.Strftime(u.OptionStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		OptionStateTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ProxyAddress *string `json:"proxyAddress,omitempty"`
+		
+		OptionState *bool `json:"optionState,omitempty"`
+		
+		OptionStateTime *string `json:"optionStateTime,omitempty"`
+		
+		ErrorInfo *Trunkerrorinfo `json:"errorInfo,omitempty"`
+		*Alias
+	}{ 
+		ProxyAddress: u.ProxyAddress,
+		
+		OptionState: u.OptionState,
+		
+		OptionStateTime: OptionStateTime,
+		
+		ErrorInfo: u.ErrorInfo,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Weekschedulegenerationresult struct {
 	// AgentWarningCount - Count of warning messages from the schedule run. This will be available only when requesting multiple week schedules
 	AgentWarningCount *int `json:"agentWarningCount,omitempty"`
 
+}
+
+func (u *Weekschedulegenerationresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Weekschedulegenerationresult
+
+	
+
+	return json.Marshal(&struct { 
+		Failed *bool `json:"failed,omitempty"`
+		
+		RunId *string `json:"runId,omitempty"`
+		
+		AgentWarnings *[]Schedulegenerationwarning `json:"agentWarnings,omitempty"`
+		
+		AgentWarningCount *int `json:"agentWarningCount,omitempty"`
+		*Alias
+	}{ 
+		Failed: u.Failed,
+		
+		RunId: u.RunId,
+		
+		AgentWarnings: u.AgentWarnings,
+		
+		AgentWarningCount: u.AgentWarningCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

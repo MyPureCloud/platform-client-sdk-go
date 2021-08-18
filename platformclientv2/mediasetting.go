@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Mediasetting struct {
 	// ServiceLevel
 	ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
 
+}
+
+func (u *Mediasetting) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Mediasetting
+
+	
+
+	return json.Marshal(&struct { 
+		AlertingTimeoutSeconds *int `json:"alertingTimeoutSeconds,omitempty"`
+		
+		ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
+		*Alias
+	}{ 
+		AlertingTimeoutSeconds: u.AlertingTimeoutSeconds,
+		
+		ServiceLevel: u.ServiceLevel,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

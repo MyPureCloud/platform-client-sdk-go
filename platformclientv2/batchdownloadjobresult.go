@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Batchdownloadjobresult struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Batchdownloadjobresult
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		RecordingId *string `json:"recordingId,omitempty"`
+		
+		ResultUrl *string `json:"resultUrl,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		
+		ErrorMsg *string `json:"errorMsg,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ConversationId: u.ConversationId,
+		
+		RecordingId: u.RecordingId,
+		
+		ResultUrl: u.ResultUrl,
+		
+		ContentType: u.ContentType,
+		
+		ErrorMsg: u.ErrorMsg,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

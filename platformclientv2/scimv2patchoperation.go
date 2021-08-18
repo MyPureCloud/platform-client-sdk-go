@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Scimv2patchoperation struct {
 	// Value - The value to set in the path.
 	Value *Jsonnode `json:"value,omitempty"`
 
+}
+
+func (u *Scimv2patchoperation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2patchoperation
+
+	
+
+	return json.Marshal(&struct { 
+		Op *string `json:"op,omitempty"`
+		
+		Path *string `json:"path,omitempty"`
+		
+		Value *Jsonnode `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Op: u.Op,
+		
+		Path: u.Path,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -11,6 +12,30 @@ type Valuewrapperdate struct {
 	// Value - The value for the associated field. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Value *time.Time `json:"value,omitempty"`
 
+}
+
+func (u *Valuewrapperdate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Valuewrapperdate
+
+	
+	Value := new(string)
+	if u.Value != nil {
+		
+		*Value = timeutil.Strftime(u.Value, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Value = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Value *string `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Value: Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

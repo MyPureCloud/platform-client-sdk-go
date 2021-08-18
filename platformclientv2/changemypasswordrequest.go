@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Changemypasswordrequest struct {
 	// OldPassword - Your current password
 	OldPassword *string `json:"oldPassword,omitempty"`
 
+}
+
+func (u *Changemypasswordrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Changemypasswordrequest
+
+	
+
+	return json.Marshal(&struct { 
+		NewPassword *string `json:"newPassword,omitempty"`
+		
+		OldPassword *string `json:"oldPassword,omitempty"`
+		*Alias
+	}{ 
+		NewPassword: u.NewPassword,
+		
+		OldPassword: u.OldPassword,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

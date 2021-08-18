@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,78 @@ type Analyticsevaluation struct {
 	// OTotalScore
 	OTotalScore *int `json:"oTotalScore,omitempty"`
 
+}
+
+func (u *Analyticsevaluation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsevaluation
+
+	
+	EventTime := new(string)
+	if u.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		CalibrationId *string `json:"calibrationId,omitempty"`
+		
+		ContextId *string `json:"contextId,omitempty"`
+		
+		Deleted *bool `json:"deleted,omitempty"`
+		
+		EvaluationId *string `json:"evaluationId,omitempty"`
+		
+		EvaluatorId *string `json:"evaluatorId,omitempty"`
+		
+		EventTime *string `json:"eventTime,omitempty"`
+		
+		FormId *string `json:"formId,omitempty"`
+		
+		FormName *string `json:"formName,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
+		
+		Rescored *bool `json:"rescored,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		OTotalCriticalScore *int `json:"oTotalCriticalScore,omitempty"`
+		
+		OTotalScore *int `json:"oTotalScore,omitempty"`
+		*Alias
+	}{ 
+		CalibrationId: u.CalibrationId,
+		
+		ContextId: u.ContextId,
+		
+		Deleted: u.Deleted,
+		
+		EvaluationId: u.EvaluationId,
+		
+		EvaluatorId: u.EvaluatorId,
+		
+		EventTime: EventTime,
+		
+		FormId: u.FormId,
+		
+		FormName: u.FormName,
+		
+		QueueId: u.QueueId,
+		
+		Rescored: u.Rescored,
+		
+		UserId: u.UserId,
+		
+		OTotalCriticalScore: u.OTotalCriticalScore,
+		
+		OTotalScore: u.OTotalScore,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

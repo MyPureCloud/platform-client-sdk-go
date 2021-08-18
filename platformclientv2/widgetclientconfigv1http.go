@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Widgetclientconfigv1http struct {
 	// AuthenticationUrl
 	AuthenticationUrl *string `json:"authenticationUrl,omitempty"`
 
+}
+
+func (u *Widgetclientconfigv1http) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Widgetclientconfigv1http
+
+	
+
+	return json.Marshal(&struct { 
+		WebChatSkin *string `json:"webChatSkin,omitempty"`
+		
+		AuthenticationUrl *string `json:"authenticationUrl,omitempty"`
+		*Alias
+	}{ 
+		WebChatSkin: u.WebChatSkin,
+		
+		AuthenticationUrl: u.AuthenticationUrl,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

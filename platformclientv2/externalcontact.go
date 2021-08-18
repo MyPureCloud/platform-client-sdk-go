@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -115,6 +116,142 @@ type Externalcontact struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Externalcontact) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Externalcontact
+
+	
+	ModifyDate := new(string)
+	if u.ModifyDate != nil {
+		
+		*ModifyDate = timeutil.Strftime(u.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifyDate = nil
+	}
+	
+	CreateDate := new(string)
+	if u.CreateDate != nil {
+		
+		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreateDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		FirstName *string `json:"firstName,omitempty"`
+		
+		MiddleName *string `json:"middleName,omitempty"`
+		
+		LastName *string `json:"lastName,omitempty"`
+		
+		Salutation *string `json:"salutation,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		WorkPhone *Phonenumber `json:"workPhone,omitempty"`
+		
+		CellPhone *Phonenumber `json:"cellPhone,omitempty"`
+		
+		HomePhone *Phonenumber `json:"homePhone,omitempty"`
+		
+		OtherPhone *Phonenumber `json:"otherPhone,omitempty"`
+		
+		WorkEmail *string `json:"workEmail,omitempty"`
+		
+		PersonalEmail *string `json:"personalEmail,omitempty"`
+		
+		OtherEmail *string `json:"otherEmail,omitempty"`
+		
+		Address *Contactaddress `json:"address,omitempty"`
+		
+		TwitterId *Twitterid `json:"twitterId,omitempty"`
+		
+		LineId *Lineid `json:"lineId,omitempty"`
+		
+		WhatsAppId *Whatsappid `json:"whatsAppId,omitempty"`
+		
+		FacebookId *Facebookid `json:"facebookId,omitempty"`
+		
+		ModifyDate *string `json:"modifyDate,omitempty"`
+		
+		CreateDate *string `json:"createDate,omitempty"`
+		
+		ExternalOrganization *Externalorganization `json:"externalOrganization,omitempty"`
+		
+		SurveyOptOut *bool `json:"surveyOptOut,omitempty"`
+		
+		ExternalSystemUrl *string `json:"externalSystemUrl,omitempty"`
+		
+		Schema *Dataschema `json:"schema,omitempty"`
+		
+		CustomFields *map[string]interface{} `json:"customFields,omitempty"`
+		
+		ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		FirstName: u.FirstName,
+		
+		MiddleName: u.MiddleName,
+		
+		LastName: u.LastName,
+		
+		Salutation: u.Salutation,
+		
+		Title: u.Title,
+		
+		WorkPhone: u.WorkPhone,
+		
+		CellPhone: u.CellPhone,
+		
+		HomePhone: u.HomePhone,
+		
+		OtherPhone: u.OtherPhone,
+		
+		WorkEmail: u.WorkEmail,
+		
+		PersonalEmail: u.PersonalEmail,
+		
+		OtherEmail: u.OtherEmail,
+		
+		Address: u.Address,
+		
+		TwitterId: u.TwitterId,
+		
+		LineId: u.LineId,
+		
+		WhatsAppId: u.WhatsAppId,
+		
+		FacebookId: u.FacebookId,
+		
+		ModifyDate: ModifyDate,
+		
+		CreateDate: CreateDate,
+		
+		ExternalOrganization: u.ExternalOrganization,
+		
+		SurveyOptOut: u.SurveyOptOut,
+		
+		ExternalSystemUrl: u.ExternalSystemUrl,
+		
+		Schema: u.Schema,
+		
+		CustomFields: u.CustomFields,
+		
+		ExternalDataSources: u.ExternalDataSources,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

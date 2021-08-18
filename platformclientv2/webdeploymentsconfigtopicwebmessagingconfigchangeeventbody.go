@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody struct {
 	// Status
 	Status *string `json:"status,omitempty"`
 
+}
+
+func (u *Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Version *string `json:"version,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Version: u.Version,
+		
+		Status: u.Status,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

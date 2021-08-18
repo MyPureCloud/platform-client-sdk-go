@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Campaignruleentities struct {
 	// Sequences - The list of sequences for a CampaignRule to monitor. Required if the CampaignRule has any conditions that run on a sequence.
 	Sequences *[]Domainentityref `json:"sequences,omitempty"`
 
+}
+
+func (u *Campaignruleentities) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaignruleentities
+
+	
+
+	return json.Marshal(&struct { 
+		Campaigns *[]Domainentityref `json:"campaigns,omitempty"`
+		
+		Sequences *[]Domainentityref `json:"sequences,omitempty"`
+		*Alias
+	}{ 
+		Campaigns: u.Campaigns,
+		
+		Sequences: u.Sequences,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

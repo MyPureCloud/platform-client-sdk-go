@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Qualityauditqueryexecutionresultsresponse struct {
 	// Entities - List of audit messages.
 	Entities *[]Qualityauditlogmessage `json:"entities,omitempty"`
 
+}
+
+func (u *Qualityauditqueryexecutionresultsresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Qualityauditqueryexecutionresultsresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		Cursor *string `json:"cursor,omitempty"`
+		
+		Entities *[]Qualityauditlogmessage `json:"entities,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		PageSize: u.PageSize,
+		
+		Cursor: u.Cursor,
+		
+		Entities: u.Entities,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

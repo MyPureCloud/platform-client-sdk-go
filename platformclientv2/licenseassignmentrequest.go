@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Licenseassignmentrequest struct {
 	// UserIdsRemove - The ids of users to unassign this license from.
 	UserIdsRemove *[]string `json:"userIdsRemove,omitempty"`
 
+}
+
+func (u *Licenseassignmentrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Licenseassignmentrequest
+
+	
+
+	return json.Marshal(&struct { 
+		LicenseId *string `json:"licenseId,omitempty"`
+		
+		UserIdsAdd *[]string `json:"userIdsAdd,omitempty"`
+		
+		UserIdsRemove *[]string `json:"userIdsRemove,omitempty"`
+		*Alias
+	}{ 
+		LicenseId: u.LicenseId,
+		
+		UserIdsAdd: u.UserIdsAdd,
+		
+		UserIdsRemove: u.UserIdsRemove,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

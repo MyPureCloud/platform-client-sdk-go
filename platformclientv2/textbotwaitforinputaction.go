@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Textbotwaitforinputaction struct {
 	// ModeConstraints - The mode constraints for the user input.
 	ModeConstraints *Textbotmodeconstraints `json:"modeConstraints,omitempty"`
 
+}
+
+func (u *Textbotwaitforinputaction) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotwaitforinputaction
+
+	
+
+	return json.Marshal(&struct { 
+		ModeConstraints *Textbotmodeconstraints `json:"modeConstraints,omitempty"`
+		*Alias
+	}{ 
+		ModeConstraints: u.ModeConstraints,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

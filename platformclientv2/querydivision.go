@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -7,6 +8,18 @@ import (
 
 // Querydivision
 type Querydivision struct { }
+
+func (u *Querydivision) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Querydivision
+
+	
+
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(u),
+	})
+}
 
 // String returns a JSON representation of the model
 func (o *Querydivision) String() string {

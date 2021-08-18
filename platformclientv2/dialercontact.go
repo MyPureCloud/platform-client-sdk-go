@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Dialercontact struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Dialercontact) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialercontact
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ContactListId *string `json:"contactListId,omitempty"`
+		
+		Data *map[string]interface{} `json:"data,omitempty"`
+		
+		CallRecords *map[string]Callrecord `json:"callRecords,omitempty"`
+		
+		Callable *bool `json:"callable,omitempty"`
+		
+		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
+		
+		ContactColumnTimeZones *map[string]Contactcolumntimezone `json:"contactColumnTimeZones,omitempty"`
+		
+		ConfigurationOverrides *Configurationoverrides `json:"configurationOverrides,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ContactListId: u.ContactListId,
+		
+		Data: u.Data,
+		
+		CallRecords: u.CallRecords,
+		
+		Callable: u.Callable,
+		
+		PhoneNumberStatus: u.PhoneNumberStatus,
+		
+		ContactColumnTimeZones: u.ContactColumnTimeZones,
+		
+		ConfigurationOverrides: u.ConfigurationOverrides,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

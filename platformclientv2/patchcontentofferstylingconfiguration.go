@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Patchcontentofferstylingconfiguration struct {
 	// Body - Properties for customizing the appearance of the body text.
 	Body *Patchtextstyleproperties `json:"body,omitempty"`
 
+}
+
+func (u *Patchcontentofferstylingconfiguration) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchcontentofferstylingconfiguration
+
+	
+
+	return json.Marshal(&struct { 
+		Position *Patchcontentpositionproperties `json:"position,omitempty"`
+		
+		Offer *Patchcontentofferstyleproperties `json:"offer,omitempty"`
+		
+		CloseButton *Patchclosebuttonstyleproperties `json:"closeButton,omitempty"`
+		
+		CtaButton *Patchctabuttonstyleproperties `json:"ctaButton,omitempty"`
+		
+		Title *Patchtextstyleproperties `json:"title,omitempty"`
+		
+		Headline *Patchtextstyleproperties `json:"headline,omitempty"`
+		
+		Body *Patchtextstyleproperties `json:"body,omitempty"`
+		*Alias
+	}{ 
+		Position: u.Position,
+		
+		Offer: u.Offer,
+		
+		CloseButton: u.CloseButton,
+		
+		CtaButton: u.CtaButton,
+		
+		Title: u.Title,
+		
+		Headline: u.Headline,
+		
+		Body: u.Body,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

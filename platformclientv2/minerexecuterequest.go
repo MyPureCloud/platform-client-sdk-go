@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,52 @@ type Minerexecuterequest struct {
 	// QueueIds - List of queue IDs for filtering conversations.
 	QueueIds *[]string `json:"queueIds,omitempty"`
 
+}
+
+func (u *Minerexecuterequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Minerexecuterequest
+
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%d")
+	} else {
+		DateStart = nil
+	}
+	
+	DateEnd := new(string)
+	if u.DateEnd != nil {
+		*DateEnd = timeutil.Strftime(u.DateEnd, "%Y-%m-%d")
+	} else {
+		DateEnd = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		DateEnd *string `json:"dateEnd,omitempty"`
+		
+		UploadKey *string `json:"uploadKey,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		QueueIds *[]string `json:"queueIds,omitempty"`
+		*Alias
+	}{ 
+		DateStart: DateStart,
+		
+		DateEnd: DateEnd,
+		
+		UploadKey: u.UploadKey,
+		
+		MediaType: u.MediaType,
+		
+		QueueIds: u.QueueIds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

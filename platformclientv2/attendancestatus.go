@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,33 @@ type Attendancestatus struct {
 	// AttendanceStatusType - the attendance status
 	AttendanceStatusType *string `json:"attendanceStatusType,omitempty"`
 
+}
+
+func (u *Attendancestatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Attendancestatus
+
+	
+	DateWorkday := new(string)
+	if u.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	} else {
+		DateWorkday = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateWorkday *string `json:"dateWorkday,omitempty"`
+		
+		AttendanceStatusType *string `json:"attendanceStatusType,omitempty"`
+		*Alias
+	}{ 
+		DateWorkday: DateWorkday,
+		
+		AttendanceStatusType: u.AttendanceStatusType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

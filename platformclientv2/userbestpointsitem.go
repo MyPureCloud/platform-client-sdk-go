@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,52 @@ type Userbestpointsitem struct {
 	// Rank - The rank of this user
 	Rank *int `json:"rank,omitempty"`
 
+}
+
+func (u *Userbestpointsitem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userbestpointsitem
+
+	
+	DateStartWorkday := new(string)
+	if u.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	} else {
+		DateStartWorkday = nil
+	}
+	
+	DateEndWorkday := new(string)
+	if u.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	} else {
+		DateEndWorkday = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		GranularityType *string `json:"granularityType,omitempty"`
+		
+		Points *int `json:"points,omitempty"`
+		
+		DateStartWorkday *string `json:"dateStartWorkday,omitempty"`
+		
+		DateEndWorkday *string `json:"dateEndWorkday,omitempty"`
+		
+		Rank *int `json:"rank,omitempty"`
+		*Alias
+	}{ 
+		GranularityType: u.GranularityType,
+		
+		Points: u.Points,
+		
+		DateStartWorkday: DateStartWorkday,
+		
+		DateEndWorkday: DateEndWorkday,
+		
+		Rank: u.Rank,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

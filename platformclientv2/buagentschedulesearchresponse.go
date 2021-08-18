@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Buagentschedulesearchresponse struct {
 	// FullDayTimeOffMarkers - Full day time off markers which apply to this agent schedule
 	FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 
+}
+
+func (u *Buagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulesearchresponse
+
+	
+
+	return json.Marshal(&struct { 
+		User *Userreference `json:"user,omitempty"`
+		
+		Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
+		
+		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		Shifts: u.Shifts,
+		
+		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

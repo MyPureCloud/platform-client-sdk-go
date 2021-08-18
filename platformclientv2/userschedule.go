@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Userschedule struct {
 	// WorkPlanId - ID of the work plan associated with the user during schedule creation
 	WorkPlanId *string `json:"workPlanId,omitempty"`
 
+}
+
+func (u *Userschedule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userschedule
+
+	
+
+	return json.Marshal(&struct { 
+		Shifts *[]Userscheduleshift `json:"shifts,omitempty"`
+		
+		FullDayTimeOffMarkers *[]Userschedulefulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		
+		Delete *bool `json:"delete,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		WorkPlanId *string `json:"workPlanId,omitempty"`
+		*Alias
+	}{ 
+		Shifts: u.Shifts,
+		
+		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		
+		Delete: u.Delete,
+		
+		Metadata: u.Metadata,
+		
+		WorkPlanId: u.WorkPlanId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

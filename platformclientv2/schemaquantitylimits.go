@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -62,6 +63,74 @@ type Schemaquantitylimits struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Schemaquantitylimits) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schemaquantitylimits
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		MinFieldNameCharacters *int `json:"minFieldNameCharacters,omitempty"`
+		
+		MaxFieldNameCharacters *int `json:"maxFieldNameCharacters,omitempty"`
+		
+		MinFieldDescriptionCharacters *int `json:"minFieldDescriptionCharacters,omitempty"`
+		
+		MaxFieldDescriptionCharacters *int `json:"maxFieldDescriptionCharacters,omitempty"`
+		
+		MinSchemaNameCharacters *int `json:"minSchemaNameCharacters,omitempty"`
+		
+		MaxSchemaNameCharacters *int `json:"maxSchemaNameCharacters,omitempty"`
+		
+		MinSchemaDescriptionCharacters *int `json:"minSchemaDescriptionCharacters,omitempty"`
+		
+		MaxSchemaDescriptionCharacters *int `json:"maxSchemaDescriptionCharacters,omitempty"`
+		
+		MaxNumberOfSchemasPerOrg *int `json:"maxNumberOfSchemasPerOrg,omitempty"`
+		
+		MaxNumberOfFieldsPerSchema *int `json:"maxNumberOfFieldsPerSchema,omitempty"`
+		
+		MaxNumberOfFieldsPerOrg *int `json:"maxNumberOfFieldsPerOrg,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		MinFieldNameCharacters: u.MinFieldNameCharacters,
+		
+		MaxFieldNameCharacters: u.MaxFieldNameCharacters,
+		
+		MinFieldDescriptionCharacters: u.MinFieldDescriptionCharacters,
+		
+		MaxFieldDescriptionCharacters: u.MaxFieldDescriptionCharacters,
+		
+		MinSchemaNameCharacters: u.MinSchemaNameCharacters,
+		
+		MaxSchemaNameCharacters: u.MaxSchemaNameCharacters,
+		
+		MinSchemaDescriptionCharacters: u.MinSchemaDescriptionCharacters,
+		
+		MaxSchemaDescriptionCharacters: u.MaxSchemaDescriptionCharacters,
+		
+		MaxNumberOfSchemasPerOrg: u.MaxNumberOfSchemasPerOrg,
+		
+		MaxNumberOfFieldsPerSchema: u.MaxNumberOfFieldsPerSchema,
+		
+		MaxNumberOfFieldsPerOrg: u.MaxNumberOfFieldsPerOrg,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

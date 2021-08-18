@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Buintradaydatagroup struct {
 	// PerformancePredictionDataPerInterval - Performance prediction data per interval for this date range
 	PerformancePredictionDataPerInterval *[]Intradayperformancepredictiondata `json:"performancePredictionDataPerInterval,omitempty"`
 
+}
+
+func (u *Buintradaydatagroup) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buintradaydatagroup
+
+	
+
+	return json.Marshal(&struct { 
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		ForecastDataSummary *Buintradayforecastdata `json:"forecastDataSummary,omitempty"`
+		
+		ForecastDataPerInterval *[]Buintradayforecastdata `json:"forecastDataPerInterval,omitempty"`
+		
+		ScheduleDataSummary *Buintradayscheduledata `json:"scheduleDataSummary,omitempty"`
+		
+		ScheduleDataPerInterval *[]Buintradayscheduledata `json:"scheduleDataPerInterval,omitempty"`
+		
+		PerformancePredictionDataSummary *Intradayperformancepredictiondata `json:"performancePredictionDataSummary,omitempty"`
+		
+		PerformancePredictionDataPerInterval *[]Intradayperformancepredictiondata `json:"performancePredictionDataPerInterval,omitempty"`
+		*Alias
+	}{ 
+		MediaType: u.MediaType,
+		
+		ForecastDataSummary: u.ForecastDataSummary,
+		
+		ForecastDataPerInterval: u.ForecastDataPerInterval,
+		
+		ScheduleDataSummary: u.ScheduleDataSummary,
+		
+		ScheduleDataPerInterval: u.ScheduleDataPerInterval,
+		
+		PerformancePredictionDataSummary: u.PerformancePredictionDataSummary,
+		
+		PerformancePredictionDataPerInterval: u.PerformancePredictionDataPerInterval,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

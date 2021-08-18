@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Intentfeedback struct {
 	// Assessment - The assessment on the detection for feedback text.
 	Assessment *string `json:"assessment,omitempty"`
 
+}
+
+func (u *Intentfeedback) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Intentfeedback
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Probability *float64 `json:"probability,omitempty"`
+		
+		Entities *[]Detectednamedentity `json:"entities,omitempty"`
+		
+		Assessment *string `json:"assessment,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Probability: u.Probability,
+		
+		Entities: u.Entities,
+		
+		Assessment: u.Assessment,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

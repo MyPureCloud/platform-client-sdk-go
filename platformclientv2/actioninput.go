@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Actioninput struct {
 	// InputSchemaUri - The URI of the input schema
 	InputSchemaUri *string `json:"inputSchemaUri,omitempty"`
 
+}
+
+func (u *Actioninput) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Actioninput
+
+	
+
+	return json.Marshal(&struct { 
+		InputSchema *Jsonschemadocument `json:"inputSchema,omitempty"`
+		
+		InputSchemaFlattened *Jsonschemadocument `json:"inputSchemaFlattened,omitempty"`
+		
+		InputSchemaUri *string `json:"inputSchemaUri,omitempty"`
+		*Alias
+	}{ 
+		InputSchema: u.InputSchema,
+		
+		InputSchemaFlattened: u.InputSchemaFlattened,
+		
+		InputSchemaUri: u.InputSchemaUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Scimphonenumber struct {
 	// Primary - Indicates whether the phone number is the primary phone number.
 	Primary *bool `json:"primary,omitempty"`
 
+}
+
+func (u *Scimphonenumber) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimphonenumber
+
+	
+
+	return json.Marshal(&struct { 
+		Value *string `json:"value,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Primary *bool `json:"primary,omitempty"`
+		*Alias
+	}{ 
+		Value: u.Value,
+		
+		VarType: u.VarType,
+		
+		Primary: u.Primary,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

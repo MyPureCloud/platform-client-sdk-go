@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -58,6 +59,70 @@ type Shifttradesettings struct {
 	// ActivityCategoryRules - Rules that specify what to do with activity categories that are part of a shift defined in a trade
 	ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
 
+}
+
+func (u *Shifttradesettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shifttradesettings
+
+	
+
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		AutoReview *bool `json:"autoReview,omitempty"`
+		
+		AllowDirectTrades *bool `json:"allowDirectTrades,omitempty"`
+		
+		MinHoursInFuture *int `json:"minHoursInFuture,omitempty"`
+		
+		UnequalPaid *string `json:"unequalPaid,omitempty"`
+		
+		OneSided *string `json:"oneSided,omitempty"`
+		
+		WeeklyMinPaidViolations *string `json:"weeklyMinPaidViolations,omitempty"`
+		
+		WeeklyMaxPaidViolations *string `json:"weeklyMaxPaidViolations,omitempty"`
+		
+		RequiresMatchingQueues *bool `json:"requiresMatchingQueues,omitempty"`
+		
+		RequiresMatchingLanguages *bool `json:"requiresMatchingLanguages,omitempty"`
+		
+		RequiresMatchingSkills *bool `json:"requiresMatchingSkills,omitempty"`
+		
+		RequiresMatchingPlanningGroups *bool `json:"requiresMatchingPlanningGroups,omitempty"`
+		
+		ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
+		*Alias
+	}{ 
+		Enabled: u.Enabled,
+		
+		AutoReview: u.AutoReview,
+		
+		AllowDirectTrades: u.AllowDirectTrades,
+		
+		MinHoursInFuture: u.MinHoursInFuture,
+		
+		UnequalPaid: u.UnequalPaid,
+		
+		OneSided: u.OneSided,
+		
+		WeeklyMinPaidViolations: u.WeeklyMinPaidViolations,
+		
+		WeeklyMaxPaidViolations: u.WeeklyMaxPaidViolations,
+		
+		RequiresMatchingQueues: u.RequiresMatchingQueues,
+		
+		RequiresMatchingLanguages: u.RequiresMatchingLanguages,
+		
+		RequiresMatchingSkills: u.RequiresMatchingSkills,
+		
+		RequiresMatchingPlanningGroups: u.RequiresMatchingPlanningGroups,
+		
+		ActivityCategoryRules: u.ActivityCategoryRules,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Tagqueryrequest struct {
 	// PageSize
 	PageSize *int `json:"pageSize,omitempty"`
 
+}
+
+func (u *Tagqueryrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Tagqueryrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Query *string `json:"query,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		*Alias
+	}{ 
+		Query: u.Query,
+		
+		PageNumber: u.PageNumber,
+		
+		PageSize: u.PageSize,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

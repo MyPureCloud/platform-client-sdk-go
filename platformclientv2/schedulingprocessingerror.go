@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Schedulingprocessingerror struct {
 	// Description - A text description of the error
 	Description *string `json:"description,omitempty"`
 
+}
+
+func (u *Schedulingprocessingerror) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedulingprocessingerror
+
+	
+
+	return json.Marshal(&struct { 
+		InternalErrorCode *string `json:"internalErrorCode,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		*Alias
+	}{ 
+		InternalErrorCode: u.InternalErrorCode,
+		
+		Description: u.Description,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

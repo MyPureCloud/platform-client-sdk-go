@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -83,6 +84,134 @@ type Recordingmetadata struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Recordingmetadata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recordingmetadata
+
+	
+	RestoreExpirationTime := new(string)
+	if u.RestoreExpirationTime != nil {
+		
+		*RestoreExpirationTime = timeutil.Strftime(u.RestoreExpirationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RestoreExpirationTime = nil
+	}
+	
+	ArchiveDate := new(string)
+	if u.ArchiveDate != nil {
+		
+		*ArchiveDate = timeutil.Strftime(u.ArchiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ArchiveDate = nil
+	}
+	
+	DeleteDate := new(string)
+	if u.DeleteDate != nil {
+		
+		*DeleteDate = timeutil.Strftime(u.DeleteDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DeleteDate = nil
+	}
+	
+	ExportDate := new(string)
+	if u.ExportDate != nil {
+		
+		*ExportDate = timeutil.Strftime(u.ExportDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExportDate = nil
+	}
+	
+	ExportedDate := new(string)
+	if u.ExportedDate != nil {
+		
+		*ExportedDate = timeutil.Strftime(u.ExportedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExportedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		Path *string `json:"path,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		Media *string `json:"media,omitempty"`
+		
+		Annotations *[]Annotation `json:"annotations,omitempty"`
+		
+		FileState *string `json:"fileState,omitempty"`
+		
+		RestoreExpirationTime *string `json:"restoreExpirationTime,omitempty"`
+		
+		ArchiveDate *string `json:"archiveDate,omitempty"`
+		
+		ArchiveMedium *string `json:"archiveMedium,omitempty"`
+		
+		DeleteDate *string `json:"deleteDate,omitempty"`
+		
+		ExportDate *string `json:"exportDate,omitempty"`
+		
+		ExportedDate *string `json:"exportedDate,omitempty"`
+		
+		MaxAllowedRestorationsForOrg *int `json:"maxAllowedRestorationsForOrg,omitempty"`
+		
+		RemainingRestorationsAllowedForOrg *int `json:"remainingRestorationsAllowedForOrg,omitempty"`
+		
+		SessionId *string `json:"sessionId,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ConversationId: u.ConversationId,
+		
+		Path: u.Path,
+		
+		StartTime: u.StartTime,
+		
+		EndTime: u.EndTime,
+		
+		Media: u.Media,
+		
+		Annotations: u.Annotations,
+		
+		FileState: u.FileState,
+		
+		RestoreExpirationTime: RestoreExpirationTime,
+		
+		ArchiveDate: ArchiveDate,
+		
+		ArchiveMedium: u.ArchiveMedium,
+		
+		DeleteDate: DeleteDate,
+		
+		ExportDate: ExportDate,
+		
+		ExportedDate: ExportedDate,
+		
+		MaxAllowedRestorationsForOrg: u.MaxAllowedRestorationsForOrg,
+		
+		RemainingRestorationsAllowedForOrg: u.RemainingRestorationsAllowedForOrg,
+		
+		SessionId: u.SessionId,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -87,6 +88,106 @@ type Documentationresult struct {
 	// VideoCategories - The video categories of the documentation entity. Will be returned in responses for certain entities.
 	VideoCategories *[]int `json:"video_categories,omitempty"`
 
+}
+
+func (u *Documentationresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Documentationresult
+
+	
+	Modified := new(string)
+	if u.Modified != nil {
+		
+		*Modified = timeutil.Strftime(u.Modified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Modified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *int `json:"id,omitempty"`
+		
+		Categories *[]int `json:"categories,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Content *string `json:"content,omitempty"`
+		
+		Excerpt *string `json:"excerpt,omitempty"`
+		
+		Link *string `json:"link,omitempty"`
+		
+		Modified *string `json:"modified,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Service *[]int `json:"service,omitempty"`
+		
+		Slug *string `json:"slug,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		GetType *string `json:"get_type,omitempty"`
+		
+		FacetFeature *[]int `json:"facet_feature,omitempty"`
+		
+		FacetRole *[]int `json:"facet_role,omitempty"`
+		
+		FacetService *[]int `json:"facet_service,omitempty"`
+		
+		FaqCategories *[]int `json:"faq_categories,omitempty"`
+		
+		ReleasenoteCategory *[]int `json:"releasenote_category,omitempty"`
+		
+		ReleasenoteTag *[]int `json:"releasenote_tag,omitempty"`
+		
+		ServiceArea *[]int `json:"service-area,omitempty"`
+		
+		VideoCategories *[]int `json:"video_categories,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Categories: u.Categories,
+		
+		Description: u.Description,
+		
+		Content: u.Content,
+		
+		Excerpt: u.Excerpt,
+		
+		Link: u.Link,
+		
+		Modified: Modified,
+		
+		Name: u.Name,
+		
+		Service: u.Service,
+		
+		Slug: u.Slug,
+		
+		Title: u.Title,
+		
+		GetType: u.GetType,
+		
+		FacetFeature: u.FacetFeature,
+		
+		FacetRole: u.FacetRole,
+		
+		FacetService: u.FacetService,
+		
+		FaqCategories: u.FaqCategories,
+		
+		ReleasenoteCategory: u.ReleasenoteCategory,
+		
+		ReleasenoteTag: u.ReleasenoteTag,
+		
+		ServiceArea: u.ServiceArea,
+		
+		VideoCategories: u.VideoCategories,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

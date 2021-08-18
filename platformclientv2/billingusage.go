@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Billingusage struct {
 	// Resources - The resources for which usage was observed (e.g. license users, devices).
 	Resources *[]Billingusageresource `json:"resources,omitempty"`
 
+}
+
+func (u *Billingusage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Billingusage
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		TotalUsage *string `json:"totalUsage,omitempty"`
+		
+		Resources *[]Billingusageresource `json:"resources,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		TotalUsage: u.TotalUsage,
+		
+		Resources: u.Resources,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

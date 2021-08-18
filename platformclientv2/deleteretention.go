@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Deleteretention struct {
 	// Days
 	Days *int `json:"days,omitempty"`
 
+}
+
+func (u *Deleteretention) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Deleteretention
+
+	
+
+	return json.Marshal(&struct { 
+		Days *int `json:"days,omitempty"`
+		*Alias
+	}{ 
+		Days: u.Days,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,66 @@ type Gdprrequest struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Gdprrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Gdprrequest
+
+	
+	CreatedDate := new(string)
+	if u.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
+		
+		ReplacementTerms *[]Replacementterm `json:"replacementTerms,omitempty"`
+		
+		RequestType *string `json:"requestType,omitempty"`
+		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Subject *Gdprsubject `json:"subject,omitempty"`
+		
+		ResultsUrl *string `json:"resultsUrl,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ReplacementTerms: u.ReplacementTerms,
+		
+		RequestType: u.RequestType,
+		
+		CreatedDate: CreatedDate,
+		
+		Status: u.Status,
+		
+		Subject: u.Subject,
+		
+		ResultsUrl: u.ResultsUrl,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

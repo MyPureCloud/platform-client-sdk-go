@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Edgelogsjobrequest struct {
 	// Recurse - Boolean whether or not to recurse into directories.
 	Recurse *bool `json:"recurse,omitempty"`
 
+}
+
+func (u *Edgelogsjobrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgelogsjobrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Path *string `json:"path,omitempty"`
+		
+		Query *string `json:"query,omitempty"`
+		
+		Recurse *bool `json:"recurse,omitempty"`
+		*Alias
+	}{ 
+		Path: u.Path,
+		
+		Query: u.Query,
+		
+		Recurse: u.Recurse,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

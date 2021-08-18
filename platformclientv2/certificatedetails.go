@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,62 @@ type Certificatedetails struct {
 	// Valid
 	Valid *bool `json:"valid,omitempty"`
 
+}
+
+func (u *Certificatedetails) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Certificatedetails
+
+	
+	ExpirationDate := new(string)
+	if u.ExpirationDate != nil {
+		
+		*ExpirationDate = timeutil.Strftime(u.ExpirationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExpirationDate = nil
+	}
+	
+	IssueDate := new(string)
+	if u.IssueDate != nil {
+		
+		*IssueDate = timeutil.Strftime(u.IssueDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		IssueDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Issuer *string `json:"issuer,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		
+		ExpirationDate *string `json:"expirationDate,omitempty"`
+		
+		IssueDate *string `json:"issueDate,omitempty"`
+		
+		Expired *bool `json:"expired,omitempty"`
+		
+		SignatureValid *bool `json:"signatureValid,omitempty"`
+		
+		Valid *bool `json:"valid,omitempty"`
+		*Alias
+	}{ 
+		Issuer: u.Issuer,
+		
+		Subject: u.Subject,
+		
+		ExpirationDate: ExpirationDate,
+		
+		IssueDate: IssueDate,
+		
+		Expired: u.Expired,
+		
+		SignatureValid: u.SignatureValid,
+		
+		Valid: u.Valid,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

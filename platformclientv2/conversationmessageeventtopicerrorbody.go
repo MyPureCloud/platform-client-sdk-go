@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Conversationmessageeventtopicerrorbody struct {
 	// Errors
 	Errors *[]Conversationmessageeventtopicerrorbody `json:"errors,omitempty"`
 
+}
+
+func (u *Conversationmessageeventtopicerrorbody) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationmessageeventtopicerrorbody
+
+	
+
+	return json.Marshal(&struct { 
+		Message *string `json:"message,omitempty"`
+		
+		Code *string `json:"code,omitempty"`
+		
+		Status *int `json:"status,omitempty"`
+		
+		EntityId *string `json:"entityId,omitempty"`
+		
+		EntityName *string `json:"entityName,omitempty"`
+		
+		MessageWithParams *string `json:"messageWithParams,omitempty"`
+		
+		MessageParams *map[string]string `json:"messageParams,omitempty"`
+		
+		ContextId *string `json:"contextId,omitempty"`
+		
+		Details *[]Conversationmessageeventtopicdetail `json:"details,omitempty"`
+		
+		Errors *[]Conversationmessageeventtopicerrorbody `json:"errors,omitempty"`
+		*Alias
+	}{ 
+		Message: u.Message,
+		
+		Code: u.Code,
+		
+		Status: u.Status,
+		
+		EntityId: u.EntityId,
+		
+		EntityName: u.EntityName,
+		
+		MessageWithParams: u.MessageWithParams,
+		
+		MessageParams: u.MessageParams,
+		
+		ContextId: u.ContextId,
+		
+		Details: u.Details,
+		
+		Errors: u.Errors,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -66,6 +67,78 @@ type Organization struct {
 	// Features - The state of features available for the organization.
 	Features *map[string]bool `json:"features,omitempty"`
 
+}
+
+func (u *Organization) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Organization
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DefaultLanguage *string `json:"defaultLanguage,omitempty"`
+		
+		DefaultCountryCode *string `json:"defaultCountryCode,omitempty"`
+		
+		ThirdPartyOrgName *string `json:"thirdPartyOrgName,omitempty"`
+		
+		ThirdPartyURI *string `json:"thirdPartyURI,omitempty"`
+		
+		Domain *string `json:"domain,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		DefaultSiteId *string `json:"defaultSiteId,omitempty"`
+		
+		SupportURI *string `json:"supportURI,omitempty"`
+		
+		VoicemailEnabled *bool `json:"voicemailEnabled,omitempty"`
+		
+		ProductPlatform *string `json:"productPlatform,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Features *map[string]bool `json:"features,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		DefaultLanguage: u.DefaultLanguage,
+		
+		DefaultCountryCode: u.DefaultCountryCode,
+		
+		ThirdPartyOrgName: u.ThirdPartyOrgName,
+		
+		ThirdPartyURI: u.ThirdPartyURI,
+		
+		Domain: u.Domain,
+		
+		Version: u.Version,
+		
+		State: u.State,
+		
+		DefaultSiteId: u.DefaultSiteId,
+		
+		SupportURI: u.SupportURI,
+		
+		VoicemailEnabled: u.VoicemailEnabled,
+		
+		ProductPlatform: u.ProductPlatform,
+		
+		SelfUri: u.SelfUri,
+		
+		Features: u.Features,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

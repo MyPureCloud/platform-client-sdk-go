@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Architectsystempromptresourcenotificationsystempromptresourcenotification s
 	// DurationSeconds
 	DurationSeconds *float32 `json:"durationSeconds,omitempty"`
 
+}
+
+func (u *Architectsystempromptresourcenotificationsystempromptresourcenotification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Architectsystempromptresourcenotificationsystempromptresourcenotification
+
+	
+
+	return json.Marshal(&struct { 
+		PromptId *string `json:"promptId,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
+		
+		MediaUri *string `json:"mediaUri,omitempty"`
+		
+		UploadStatus *string `json:"uploadStatus,omitempty"`
+		
+		DurationSeconds *float32 `json:"durationSeconds,omitempty"`
+		*Alias
+	}{ 
+		PromptId: u.PromptId,
+		
+		Id: u.Id,
+		
+		Language: u.Language,
+		
+		MediaUri: u.MediaUri,
+		
+		UploadStatus: u.UploadStatus,
+		
+		DurationSeconds: u.DurationSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Modelingstatusresponse struct {
 	// ModelingResultUri - The uri of the modeling result. It has a value if the status is either 'Success', 'PartialFailure', or 'Failed'.
 	ModelingResultUri *string `json:"modelingResultUri,omitempty"`
 
+}
+
+func (u *Modelingstatusresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Modelingstatusresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		ErrorDetails *[]Modelingprocessingerror `json:"errorDetails,omitempty"`
+		
+		ModelingResultUri *string `json:"modelingResultUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Status: u.Status,
+		
+		ErrorDetails: u.ErrorDetails,
+		
+		ModelingResultUri: u.ModelingResultUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

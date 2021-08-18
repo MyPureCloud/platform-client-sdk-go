@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Textbotexitaction struct {
 	// OutputData - The output data for the bot flow.
 	OutputData *Textbotinputoutputdata `json:"outputData,omitempty"`
 
+}
+
+func (u *Textbotexitaction) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotexitaction
+
+	
+
+	return json.Marshal(&struct { 
+		Reason *string `json:"reason,omitempty"`
+		
+		ReasonExtendedInfo *string `json:"reasonExtendedInfo,omitempty"`
+		
+		ActiveIntent *string `json:"activeIntent,omitempty"`
+		
+		FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
+		
+		OutputData *Textbotinputoutputdata `json:"outputData,omitempty"`
+		*Alias
+	}{ 
+		Reason: u.Reason,
+		
+		ReasonExtendedInfo: u.ReasonExtendedInfo,
+		
+		ActiveIntent: u.ActiveIntent,
+		
+		FlowLocation: u.FlowLocation,
+		
+		OutputData: u.OutputData,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,78 @@ type Flowruntimeexecution struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Flowruntimeexecution) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Flowruntimeexecution
+
+	
+	DateLaunched := new(string)
+	if u.DateLaunched != nil {
+		
+		*DateLaunched = timeutil.Strftime(u.DateLaunched, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateLaunched = nil
+	}
+	
+	DateCompleted := new(string)
+	if u.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		FlowVersion *Flowversion `json:"flowVersion,omitempty"`
+		
+		DateLaunched *string `json:"dateLaunched,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		CompletionReason *string `json:"completionReason,omitempty"`
+		
+		FlowErrorInfo *Errorbody `json:"flowErrorInfo,omitempty"`
+		
+		OutputData *map[string]interface{} `json:"outputData,omitempty"`
+		
+		Conversation *Domainentityref `json:"conversation,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		FlowVersion: u.FlowVersion,
+		
+		DateLaunched: DateLaunched,
+		
+		Status: u.Status,
+		
+		DateCompleted: DateCompleted,
+		
+		CompletionReason: u.CompletionReason,
+		
+		FlowErrorInfo: u.FlowErrorInfo,
+		
+		OutputData: u.OutputData,
+		
+		Conversation: u.Conversation,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

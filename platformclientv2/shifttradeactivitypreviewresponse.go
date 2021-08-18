@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Shifttradeactivitypreviewresponse struct {
 	// CountsAsPaidTime - Whether this activity counts as paid time
 	CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
 
+}
+
+func (u *Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shifttradeactivitypreviewresponse
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		*Alias
+	}{ 
+		StartDate: StartDate,
+		
+		LengthMinutes: u.LengthMinutes,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

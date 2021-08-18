@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Contactlistfilterpredicate struct {
 	// Inverted - Inverts the result of the predicate (i.e., if the predicate returns true, inverting it will return false).
 	Inverted *bool `json:"inverted,omitempty"`
 
+}
+
+func (u *Contactlistfilterpredicate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contactlistfilterpredicate
+
+	
+
+	return json.Marshal(&struct { 
+		Column *string `json:"column,omitempty"`
+		
+		ColumnType *string `json:"columnType,omitempty"`
+		
+		Operator *string `json:"operator,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		VarRange *Contactlistfilterrange `json:"range,omitempty"`
+		
+		Inverted *bool `json:"inverted,omitempty"`
+		*Alias
+	}{ 
+		Column: u.Column,
+		
+		ColumnType: u.ColumnType,
+		
+		Operator: u.Operator,
+		
+		Value: u.Value,
+		
+		VarRange: u.VarRange,
+		
+		Inverted: u.Inverted,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

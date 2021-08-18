@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Notificationtemplatefooter struct {
 	// Text - Footer text. For WhatsApp, ignored.
 	Text *string `json:"text,omitempty"`
 
+}
+
+func (u *Notificationtemplatefooter) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Notificationtemplatefooter
+
+	
+
+	return json.Marshal(&struct { 
+		Text *string `json:"text,omitempty"`
+		*Alias
+	}{ 
+		Text: u.Text,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

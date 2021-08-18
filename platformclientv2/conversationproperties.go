@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Conversationproperties struct {
 	// MatchAll - Indicates comparison operation, TRUE indicates filters will use AND logic, FALSE indicates OR logic
 	MatchAll *bool `json:"matchAll,omitempty"`
 
+}
+
+func (u *Conversationproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationproperties
+
+	
+
+	return json.Marshal(&struct { 
+		IsWaiting *bool `json:"isWaiting,omitempty"`
+		
+		IsActive *bool `json:"isActive,omitempty"`
+		
+		IsAcd *bool `json:"isAcd,omitempty"`
+		
+		IsPreferred *bool `json:"isPreferred,omitempty"`
+		
+		IsScreenshare *bool `json:"isScreenshare,omitempty"`
+		
+		IsCobrowse *bool `json:"isCobrowse,omitempty"`
+		
+		IsVoicemail *bool `json:"isVoicemail,omitempty"`
+		
+		IsFlagged *bool `json:"isFlagged,omitempty"`
+		
+		IsMonitored *bool `json:"isMonitored,omitempty"`
+		
+		FilterWrapUpNotes *bool `json:"filterWrapUpNotes,omitempty"`
+		
+		MatchAll *bool `json:"matchAll,omitempty"`
+		*Alias
+	}{ 
+		IsWaiting: u.IsWaiting,
+		
+		IsActive: u.IsActive,
+		
+		IsAcd: u.IsAcd,
+		
+		IsPreferred: u.IsPreferred,
+		
+		IsScreenshare: u.IsScreenshare,
+		
+		IsCobrowse: u.IsCobrowse,
+		
+		IsVoicemail: u.IsVoicemail,
+		
+		IsFlagged: u.IsFlagged,
+		
+		IsMonitored: u.IsMonitored,
+		
+		FilterWrapUpNotes: u.FilterWrapUpNotes,
+		
+		MatchAll: u.MatchAll,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

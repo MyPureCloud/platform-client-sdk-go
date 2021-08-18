@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,86 @@ type Webchatmemberinfo struct {
 	// State - The connection state of this member.
 	State *string `json:"state,omitempty"`
 
+}
+
+func (u *Webchatmemberinfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Webchatmemberinfo
+
+	
+	JoinDate := new(string)
+	if u.JoinDate != nil {
+		
+		*JoinDate = timeutil.Strftime(u.JoinDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		JoinDate = nil
+	}
+	
+	LeaveDate := new(string)
+	if u.LeaveDate != nil {
+		
+		*LeaveDate = timeutil.Strftime(u.LeaveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		LeaveDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		FirstName *string `json:"firstName,omitempty"`
+		
+		LastName *string `json:"lastName,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		AvatarImageUrl *string `json:"avatarImageUrl,omitempty"`
+		
+		Role *string `json:"role,omitempty"`
+		
+		JoinDate *string `json:"joinDate,omitempty"`
+		
+		LeaveDate *string `json:"leaveDate,omitempty"`
+		
+		AuthenticatedGuest *bool `json:"authenticatedGuest,omitempty"`
+		
+		CustomFields *map[string]string `json:"customFields,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		DisplayName: u.DisplayName,
+		
+		FirstName: u.FirstName,
+		
+		LastName: u.LastName,
+		
+		Email: u.Email,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		AvatarImageUrl: u.AvatarImageUrl,
+		
+		Role: u.Role,
+		
+		JoinDate: JoinDate,
+		
+		LeaveDate: LeaveDate,
+		
+		AuthenticatedGuest: u.AuthenticatedGuest,
+		
+		CustomFields: u.CustomFields,
+		
+		State: u.State,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

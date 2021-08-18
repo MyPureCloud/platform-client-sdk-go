@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Sipdownloadresponse struct {
 	// DocumentId - Document id of pcap file
 	DocumentId *string `json:"documentId,omitempty"`
 
+}
+
+func (u *Sipdownloadresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Sipdownloadresponse
+
+	
+
+	return json.Marshal(&struct { 
+		DownloadId *string `json:"downloadId,omitempty"`
+		
+		DocumentId *string `json:"documentId,omitempty"`
+		*Alias
+	}{ 
+		DownloadId: u.DownloadId,
+		
+		DocumentId: u.DocumentId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

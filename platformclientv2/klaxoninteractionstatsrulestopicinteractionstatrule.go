@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -62,6 +63,74 @@ type Klaxoninteractionstatsrulestopicinteractionstatrule struct {
 	// AlertTypes
 	AlertTypes *[]string `json:"alertTypes,omitempty"`
 
+}
+
+func (u *Klaxoninteractionstatsrulestopicinteractionstatrule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Klaxoninteractionstatsrulestopicinteractionstatrule
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Dimension *string `json:"dimension,omitempty"`
+		
+		DimensionValue *string `json:"dimensionValue,omitempty"`
+		
+		DimensionValueName *string `json:"dimensionValueName,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		NumericRange *string `json:"numericRange,omitempty"`
+		
+		Statistic *string `json:"statistic,omitempty"`
+		
+		Value *float32 `json:"value,omitempty"`
+		
+		InAlarm *bool `json:"inAlarm,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		NotificationUsers *[]Klaxoninteractionstatsrulestopicnotificationuser `json:"notificationUsers,omitempty"`
+		
+		AlertTypes *[]string `json:"alertTypes,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Dimension: u.Dimension,
+		
+		DimensionValue: u.DimensionValue,
+		
+		DimensionValueName: u.DimensionValueName,
+		
+		Metric: u.Metric,
+		
+		MediaType: u.MediaType,
+		
+		NumericRange: u.NumericRange,
+		
+		Statistic: u.Statistic,
+		
+		Value: u.Value,
+		
+		InAlarm: u.InAlarm,
+		
+		Enabled: u.Enabled,
+		
+		NotificationUsers: u.NotificationUsers,
+		
+		AlertTypes: u.AlertTypes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,74 @@ type Predictor struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Predictor) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Predictor
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Queues *[]Addressableentityref `json:"queues,omitempty"`
+		
+		Kpi *string `json:"kpi,omitempty"`
+		
+		RoutingTimeoutSeconds *int `json:"routingTimeoutSeconds,omitempty"`
+		
+		Schedule *Predictorschedule `json:"schedule,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Queues: u.Queues,
+		
+		Kpi: u.Kpi,
+		
+		RoutingTimeoutSeconds: u.RoutingTimeoutSeconds,
+		
+		Schedule: u.Schedule,
+		
+		State: u.State,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		WorkloadBalancingConfig: u.WorkloadBalancingConfig,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

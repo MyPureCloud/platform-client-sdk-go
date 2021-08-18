@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,34 @@ type Headcountinterval struct {
 	// Value - Headcount value for this interval
 	Value *float64 `json:"value,omitempty"`
 
+}
+
+func (u *Headcountinterval) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Headcountinterval
+
+	
+	Interval := new(string)
+	if u.Interval != nil {
+		
+		*Interval = timeutil.Strftime(u.Interval, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Interval = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		Value *float64 `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Interval: Interval,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

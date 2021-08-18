@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Amazonlexrequest struct {
 	// SessionAttributes - AttributeName/AttributeValue pairs of Session Attributes to be sent to the amazon bot. See - https://docs.aws.amazon.com/lex/latest/dg/context-mgmt.html#context-mgmt-session-attribs
 	SessionAttributes *map[string]string `json:"sessionAttributes,omitempty"`
 
+}
+
+func (u *Amazonlexrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Amazonlexrequest
+
+	
+
+	return json.Marshal(&struct { 
+		RequestAttributes *map[string]string `json:"requestAttributes,omitempty"`
+		
+		SessionAttributes *map[string]string `json:"sessionAttributes,omitempty"`
+		*Alias
+	}{ 
+		RequestAttributes: u.RequestAttributes,
+		
+		SessionAttributes: u.SessionAttributes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

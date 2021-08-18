@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Callabletime struct {
 	// TimeZoneId - The time zone for the time slots; for example, Africa/Abidjan
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 
+}
+
+func (u *Callabletime) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Callabletime
+
+	
+
+	return json.Marshal(&struct { 
+		TimeSlots *[]Campaigntimeslot `json:"timeSlots,omitempty"`
+		
+		TimeZoneId *string `json:"timeZoneId,omitempty"`
+		*Alias
+	}{ 
+		TimeSlots: u.TimeSlots,
+		
+		TimeZoneId: u.TimeZoneId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

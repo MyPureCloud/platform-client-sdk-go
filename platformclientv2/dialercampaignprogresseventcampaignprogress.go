@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Dialercampaignprogresseventcampaignprogress struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialercampaignprogresseventcampaignprogress
+
+	
+
+	return json.Marshal(&struct { 
+		Campaign *Dialercampaignprogresseventurireference `json:"campaign,omitempty"`
+		
+		NumberOfContactsCalled *float32 `json:"numberOfContactsCalled,omitempty"`
+		
+		NumberOfContactsMessaged *float32 `json:"numberOfContactsMessaged,omitempty"`
+		
+		TotalNumberOfContacts *float32 `json:"totalNumberOfContacts,omitempty"`
+		
+		Percentage *int `json:"percentage,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		Campaign: u.Campaign,
+		
+		NumberOfContactsCalled: u.NumberOfContactsCalled,
+		
+		NumberOfContactsMessaged: u.NumberOfContactsMessaged,
+		
+		TotalNumberOfContacts: u.TotalNumberOfContacts,
+		
+		Percentage: u.Percentage,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -127,6 +128,154 @@ type Reportingexportjobresponse struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reportingexportjobresponse
+
+	
+	CreatedDateTime := new(string)
+	if u.CreatedDateTime != nil {
+		
+		*CreatedDateTime = timeutil.Strftime(u.CreatedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDateTime = nil
+	}
+	
+	ModifiedDateTime := new(string)
+	if u.ModifiedDateTime != nil {
+		
+		*ModifiedDateTime = timeutil.Strftime(u.ModifiedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDateTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		RunId *string `json:"runId,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		ExportFormat *string `json:"exportFormat,omitempty"`
+		
+		Interval *string `json:"interval,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
+		
+		ViewType *string `json:"viewType,omitempty"`
+		
+		ExportErrorMessagesType *string `json:"exportErrorMessagesType,omitempty"`
+		
+		Period *string `json:"period,omitempty"`
+		
+		Filter *Viewfilter `json:"filter,omitempty"`
+		
+		Read *bool `json:"read,omitempty"`
+		
+		CreatedDateTime *string `json:"createdDateTime,omitempty"`
+		
+		ModifiedDateTime *string `json:"modifiedDateTime,omitempty"`
+		
+		Locale *string `json:"locale,omitempty"`
+		
+		PercentageComplete *float64 `json:"percentageComplete,omitempty"`
+		
+		HasFormatDurations *bool `json:"hasFormatDurations,omitempty"`
+		
+		HasSplitFilters *bool `json:"hasSplitFilters,omitempty"`
+		
+		ExcludeEmptyRows *bool `json:"excludeEmptyRows,omitempty"`
+		
+		HasSplitByMedia *bool `json:"hasSplitByMedia,omitempty"`
+		
+		HasSummaryRow *bool `json:"hasSummaryRow,omitempty"`
+		
+		CsvDelimiter *string `json:"csvDelimiter,omitempty"`
+		
+		SelectedColumns *[]Selectedcolumns `json:"selectedColumns,omitempty"`
+		
+		HasCustomParticipantAttributes *bool `json:"hasCustomParticipantAttributes,omitempty"`
+		
+		RecipientEmails *[]string `json:"recipientEmails,omitempty"`
+		
+		EmailStatuses *map[string]string `json:"emailStatuses,omitempty"`
+		
+		EmailErrorDescription *string `json:"emailErrorDescription,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		RunId: u.RunId,
+		
+		Status: u.Status,
+		
+		TimeZone: u.TimeZone,
+		
+		ExportFormat: u.ExportFormat,
+		
+		Interval: u.Interval,
+		
+		DownloadUrl: u.DownloadUrl,
+		
+		ViewType: u.ViewType,
+		
+		ExportErrorMessagesType: u.ExportErrorMessagesType,
+		
+		Period: u.Period,
+		
+		Filter: u.Filter,
+		
+		Read: u.Read,
+		
+		CreatedDateTime: CreatedDateTime,
+		
+		ModifiedDateTime: ModifiedDateTime,
+		
+		Locale: u.Locale,
+		
+		PercentageComplete: u.PercentageComplete,
+		
+		HasFormatDurations: u.HasFormatDurations,
+		
+		HasSplitFilters: u.HasSplitFilters,
+		
+		ExcludeEmptyRows: u.ExcludeEmptyRows,
+		
+		HasSplitByMedia: u.HasSplitByMedia,
+		
+		HasSummaryRow: u.HasSummaryRow,
+		
+		CsvDelimiter: u.CsvDelimiter,
+		
+		SelectedColumns: u.SelectedColumns,
+		
+		HasCustomParticipantAttributes: u.HasCustomParticipantAttributes,
+		
+		RecipientEmails: u.RecipientEmails,
+		
+		EmailStatuses: u.EmailStatuses,
+		
+		EmailErrorDescription: u.EmailErrorDescription,
+		
+		Enabled: u.Enabled,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

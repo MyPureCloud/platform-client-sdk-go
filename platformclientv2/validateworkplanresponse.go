@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Validateworkplanresponse struct {
 	// Messages - Validation messages for this work plan
 	Messages *Validateworkplanmessages `json:"messages,omitempty"`
 
+}
+
+func (u *Validateworkplanresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Validateworkplanresponse
+
+	
+
+	return json.Marshal(&struct { 
+		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
+		
+		Valid *bool `json:"valid,omitempty"`
+		
+		Messages *Validateworkplanmessages `json:"messages,omitempty"`
+		*Alias
+	}{ 
+		WorkPlan: u.WorkPlan,
+		
+		Valid: u.Valid,
+		
+		Messages: u.Messages,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

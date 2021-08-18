@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Wfmhistoricaladherenceresponse struct {
 	// QueryState - The state of the adherence query
 	QueryState *string `json:"queryState,omitempty"`
 
+}
+
+func (u *Wfmhistoricaladherenceresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmhistoricaladherenceresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		DownloadUrl *string `json:"downloadUrl,omitempty"`
+		
+		DownloadResult *Wfmhistoricaladherenceresultwrapper `json:"downloadResult,omitempty"`
+		
+		DownloadUrls *[]string `json:"downloadUrls,omitempty"`
+		
+		QueryState *string `json:"queryState,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		DownloadUrl: u.DownloadUrl,
+		
+		DownloadResult: u.DownloadResult,
+		
+		DownloadUrls: u.DownloadUrls,
+		
+		QueryState: u.QueryState,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

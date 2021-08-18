@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Campaigndiagnostics struct {
 	// ScheduledInteractionsCount - Current number of scheduled interactions on the campaign
 	ScheduledInteractionsCount *int `json:"scheduledInteractionsCount,omitempty"`
 
+}
+
+func (u *Campaigndiagnostics) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaigndiagnostics
+
+	
+
+	return json.Marshal(&struct { 
+		CallableContacts *Callablecontactsdiagnostic `json:"callableContacts,omitempty"`
+		
+		QueueUtilizationDiagnostic *Queueutilizationdiagnostic `json:"queueUtilizationDiagnostic,omitempty"`
+		
+		RuleSetDiagnostics *[]Rulesetdiagnostic `json:"ruleSetDiagnostics,omitempty"`
+		
+		OutstandingInteractionsCount *int `json:"outstandingInteractionsCount,omitempty"`
+		
+		ScheduledInteractionsCount *int `json:"scheduledInteractionsCount,omitempty"`
+		*Alias
+	}{ 
+		CallableContacts: u.CallableContacts,
+		
+		QueueUtilizationDiagnostic: u.QueueUtilizationDiagnostic,
+		
+		RuleSetDiagnostics: u.RuleSetDiagnostics,
+		
+		OutstandingInteractionsCount: u.OutstandingInteractionsCount,
+		
+		ScheduledInteractionsCount: u.ScheduledInteractionsCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

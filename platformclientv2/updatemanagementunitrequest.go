@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Updatemanagementunitrequest struct {
 	// Settings - Updated settings for the management unit
 	Settings *Managementunitsettingsrequest `json:"settings,omitempty"`
 
+}
+
+func (u *Updatemanagementunitrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updatemanagementunitrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		DivisionId *string `json:"divisionId,omitempty"`
+		
+		Settings *Managementunitsettingsrequest `json:"settings,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		DivisionId: u.DivisionId,
+		
+		Settings: u.Settings,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

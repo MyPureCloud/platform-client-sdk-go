@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Domainnetworkcommandresponse struct {
 	// ErrorInfo
 	ErrorInfo **Errordetails `json:"errorInfo,omitempty"`
 
+}
+
+func (u *Domainnetworkcommandresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainnetworkcommandresponse
+
+	
+
+	return json.Marshal(&struct { 
+		CorrelationId *string `json:"correlationId,omitempty"`
+		
+		CommandName *string `json:"commandName,omitempty"`
+		
+		Acknowledged *bool `json:"acknowledged,omitempty"`
+		
+		ErrorInfo **Errordetails `json:"errorInfo,omitempty"`
+		*Alias
+	}{ 
+		CorrelationId: u.CorrelationId,
+		
+		CommandName: u.CommandName,
+		
+		Acknowledged: u.Acknowledged,
+		
+		ErrorInfo: u.ErrorInfo,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

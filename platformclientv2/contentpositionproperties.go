@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Contentpositionproperties struct {
 	// Right - Right positioning offset.
 	Right *string `json:"right,omitempty"`
 
+}
+
+func (u *Contentpositionproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contentpositionproperties
+
+	
+
+	return json.Marshal(&struct { 
+		Top *string `json:"top,omitempty"`
+		
+		Bottom *string `json:"bottom,omitempty"`
+		
+		Left *string `json:"left,omitempty"`
+		
+		Right *string `json:"right,omitempty"`
+		*Alias
+	}{ 
+		Top: u.Top,
+		
+		Bottom: u.Bottom,
+		
+		Left: u.Left,
+		
+		Right: u.Right,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Ipaddressauthentication struct {
 	// NetworkWhitelist
 	NetworkWhitelist *[]string `json:"networkWhitelist,omitempty"`
 
+}
+
+func (u *Ipaddressauthentication) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Ipaddressauthentication
+
+	
+
+	return json.Marshal(&struct { 
+		NetworkWhitelist *[]string `json:"networkWhitelist,omitempty"`
+		*Alias
+	}{ 
+		NetworkWhitelist: u.NetworkWhitelist,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

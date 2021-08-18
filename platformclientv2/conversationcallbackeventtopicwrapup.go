@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,50 @@ type Conversationcallbackeventtopicwrapup struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Conversationcallbackeventtopicwrapup) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationcallbackeventtopicwrapup
+
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Code *string `json:"code,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		Tags *[]string `json:"tags,omitempty"`
+		
+		DurationSeconds *int `json:"durationSeconds,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		Code: u.Code,
+		
+		Notes: u.Notes,
+		
+		Tags: u.Tags,
+		
+		DurationSeconds: u.DurationSeconds,
+		
+		EndTime: EndTime,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

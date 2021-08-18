@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Journeysurveyquestion struct {
 	// IsMandatory - Whether answering this question is mandatory.
 	IsMandatory *bool `json:"isMandatory,omitempty"`
 
+}
+
+func (u *Journeysurveyquestion) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Journeysurveyquestion
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Label *string `json:"label,omitempty"`
+		
+		CustomerProperty *string `json:"customerProperty,omitempty"`
+		
+		Choices *[]string `json:"choices,omitempty"`
+		
+		IsMandatory *bool `json:"isMandatory,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Label: u.Label,
+		
+		CustomerProperty: u.CustomerProperty,
+		
+		Choices: u.Choices,
+		
+		IsMandatory: u.IsMandatory,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

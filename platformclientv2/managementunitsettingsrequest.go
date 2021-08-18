@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Managementunitsettingsrequest struct {
 	// Metadata - Version info metadata for the associated management unit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Managementunitsettingsrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Managementunitsettingsrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Adherence *Adherencesettings `json:"adherence,omitempty"`
+		
+		ShortTermForecasting *Shorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
+		
+		TimeOff *Timeoffrequestsettings `json:"timeOff,omitempty"`
+		
+		Scheduling *Schedulingsettingsrequest `json:"scheduling,omitempty"`
+		
+		ShiftTrading *Shifttradesettings `json:"shiftTrading,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Adherence: u.Adherence,
+		
+		ShortTermForecasting: u.ShortTermForecasting,
+		
+		TimeOff: u.TimeOff,
+		
+		Scheduling: u.Scheduling,
+		
+		ShiftTrading: u.ShiftTrading,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

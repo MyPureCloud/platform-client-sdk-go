@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Forecastplanninggroupdata struct {
 	// AverageHandleTimeSecondsPerInterval - Forecast average handle time per interval in seconds
 	AverageHandleTimeSecondsPerInterval *[]float64 `json:"averageHandleTimeSecondsPerInterval,omitempty"`
 
+}
+
+func (u *Forecastplanninggroupdata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Forecastplanninggroupdata
+
+	
+
+	return json.Marshal(&struct { 
+		PlanningGroupId *string `json:"planningGroupId,omitempty"`
+		
+		OfferedPerInterval *[]float64 `json:"offeredPerInterval,omitempty"`
+		
+		AverageHandleTimeSecondsPerInterval *[]float64 `json:"averageHandleTimeSecondsPerInterval,omitempty"`
+		*Alias
+	}{ 
+		PlanningGroupId: u.PlanningGroupId,
+		
+		OfferedPerInterval: u.OfferedPerInterval,
+		
+		AverageHandleTimeSecondsPerInterval: u.AverageHandleTimeSecondsPerInterval,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

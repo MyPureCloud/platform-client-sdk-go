@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,70 @@ type Coretype struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Coretype) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Coretype
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		Schema *Schema `json:"schema,omitempty"`
+		
+		Current *bool `json:"current,omitempty"`
+		
+		ValidationFields *[]string `json:"validationFields,omitempty"`
+		
+		ValidationLimits *Validationlimits `json:"validationLimits,omitempty"`
+		
+		ItemValidationFields *[]string `json:"itemValidationFields,omitempty"`
+		
+		ItemValidationLimits *Itemvalidationlimits `json:"itemValidationLimits,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Version: u.Version,
+		
+		DateCreated: DateCreated,
+		
+		Schema: u.Schema,
+		
+		Current: u.Current,
+		
+		ValidationFields: u.ValidationFields,
+		
+		ValidationLimits: u.ValidationLimits,
+		
+		ItemValidationFields: u.ItemValidationFields,
+		
+		ItemValidationLimits: u.ItemValidationLimits,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

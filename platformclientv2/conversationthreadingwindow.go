@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Conversationthreadingwindow struct {
 	// DefaultTimeoutMinutes - The default conversation threading window timeout (Minutes)
 	DefaultTimeoutMinutes *int `json:"defaultTimeoutMinutes,omitempty"`
 
+}
+
+func (u *Conversationthreadingwindow) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationthreadingwindow
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Settings *[]Conversationthreadingwindowsetting `json:"settings,omitempty"`
+		
+		DefaultTimeoutMinutes *int `json:"defaultTimeoutMinutes,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Settings: u.Settings,
+		
+		DefaultTimeoutMinutes: u.DefaultTimeoutMinutes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

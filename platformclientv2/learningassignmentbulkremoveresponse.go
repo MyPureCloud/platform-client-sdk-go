@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Learningassignmentbulkremoveresponse struct {
 	// DisallowedEntities - The learning assignments that were not removed due to missing permissions
 	DisallowedEntities *[]Disallowedentitylearningassignmentreference `json:"disallowedEntities,omitempty"`
 
+}
+
+func (u *Learningassignmentbulkremoveresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Learningassignmentbulkremoveresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Entities *[]Learningassignmententity `json:"entities,omitempty"`
+		
+		DisallowedEntities *[]Disallowedentitylearningassignmentreference `json:"disallowedEntities,omitempty"`
+		*Alias
+	}{ 
+		Entities: u.Entities,
+		
+		DisallowedEntities: u.DisallowedEntities,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

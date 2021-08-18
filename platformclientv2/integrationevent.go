@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,70 @@ type Integrationevent struct {
 	// User - User that took an action that resulted in the event.
 	User *User `json:"user,omitempty"`
 
+}
+
+func (u *Integrationevent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Integrationevent
+
+	
+	Timestamp := new(string)
+	if u.Timestamp != nil {
+		
+		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Timestamp = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		CorrelationId *string `json:"correlationId,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
+		
+		Level *string `json:"level,omitempty"`
+		
+		EventCode *string `json:"eventCode,omitempty"`
+		
+		Message *Messageinfo `json:"message,omitempty"`
+		
+		Entities *[]Evententity `json:"entities,omitempty"`
+		
+		ContextAttributes *map[string]string `json:"contextAttributes,omitempty"`
+		
+		DetailMessage *Messageinfo `json:"detailMessage,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		SelfUri: u.SelfUri,
+		
+		CorrelationId: u.CorrelationId,
+		
+		Timestamp: Timestamp,
+		
+		Level: u.Level,
+		
+		EventCode: u.EventCode,
+		
+		Message: u.Message,
+		
+		Entities: u.Entities,
+		
+		ContextAttributes: u.ContextAttributes,
+		
+		DetailMessage: u.DetailMessage,
+		
+		User: u.User,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

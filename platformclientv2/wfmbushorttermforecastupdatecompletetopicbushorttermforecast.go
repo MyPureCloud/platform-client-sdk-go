@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,78 @@ type Wfmbushorttermforecastupdatecompletetopicbushorttermforecast struct {
 	// CanUseForScheduling
 	CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
 
+}
+
+func (u *Wfmbushorttermforecastupdatecompletetopicbushorttermforecast) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmbushorttermforecastupdatecompletetopicbushorttermforecast
+
+	
+	ReferenceStartDate := new(string)
+	if u.ReferenceStartDate != nil {
+		
+		*ReferenceStartDate = timeutil.Strftime(u.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReferenceStartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
+		
+		CreationMethod *string `json:"creationMethod,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Legacy *bool `json:"legacy,omitempty"`
+		
+		ReferenceStartDate *string `json:"referenceStartDate,omitempty"`
+		
+		SourceDays *[]Wfmbushorttermforecastupdatecompletetopicforecastsourcedaypointer `json:"sourceDays,omitempty"`
+		
+		Modifications *[]Wfmbushorttermforecastupdatecompletetopicbuforecastmodification `json:"modifications,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		PlanningGroupsVersion *int `json:"planningGroupsVersion,omitempty"`
+		
+		WeekCount *int `json:"weekCount,omitempty"`
+		
+		Metadata *Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		WeekDate: u.WeekDate,
+		
+		CreationMethod: u.CreationMethod,
+		
+		Description: u.Description,
+		
+		Legacy: u.Legacy,
+		
+		ReferenceStartDate: ReferenceStartDate,
+		
+		SourceDays: u.SourceDays,
+		
+		Modifications: u.Modifications,
+		
+		TimeZone: u.TimeZone,
+		
+		PlanningGroupsVersion: u.PlanningGroupsVersion,
+		
+		WeekCount: u.WeekCount,
+		
+		Metadata: u.Metadata,
+		
+		CanUseForScheduling: u.CanUseForScheduling,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Messagemediadata struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Messagemediadata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagemediadata
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Url *string `json:"url,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		ContentLengthBytes *int `json:"contentLengthBytes,omitempty"`
+		
+		UploadUrl *string `json:"uploadUrl,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Url: u.Url,
+		
+		MediaType: u.MediaType,
+		
+		ContentLengthBytes: u.ContentLengthBytes,
+		
+		UploadUrl: u.UploadUrl,
+		
+		Status: u.Status,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Mediautilization struct {
 	// IncludeNonAcd - If true, then track non-ACD conversations against utilization
 	IncludeNonAcd *bool `json:"includeNonAcd,omitempty"`
 
+}
+
+func (u *Mediautilization) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Mediautilization
+
+	
+
+	return json.Marshal(&struct { 
+		MaximumCapacity *int `json:"maximumCapacity,omitempty"`
+		
+		InterruptableMediaTypes *[]string `json:"interruptableMediaTypes,omitempty"`
+		
+		IncludeNonAcd *bool `json:"includeNonAcd,omitempty"`
+		*Alias
+	}{ 
+		MaximumCapacity: u.MaximumCapacity,
+		
+		InterruptableMediaTypes: u.InterruptableMediaTypes,
+		
+		IncludeNonAcd: u.IncludeNonAcd,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,61 @@ type Buschedulelistitem struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Buschedulelistitem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buschedulelistitem
+
+	
+	WeekDate := new(string)
+	if u.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	} else {
+		WeekDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
+		
+		WeekCount *int `json:"weekCount,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Published *bool `json:"published,omitempty"`
+		
+		ShortTermForecast *Bushorttermforecastreference `json:"shortTermForecast,omitempty"`
+		
+		GenerationResults *Schedulegenerationresultsummary `json:"generationResults,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		WeekDate: WeekDate,
+		
+		WeekCount: u.WeekCount,
+		
+		Description: u.Description,
+		
+		Published: u.Published,
+		
+		ShortTermForecast: u.ShortTermForecast,
+		
+		GenerationResults: u.GenerationResults,
+		
+		Metadata: u.Metadata,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

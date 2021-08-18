@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Forecastaveragespeedofanswerresponse struct {
 	// Seconds - the average speed of answer goal in seconds
 	Seconds *int `json:"seconds,omitempty"`
 
+}
+
+func (u *Forecastaveragespeedofanswerresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Forecastaveragespeedofanswerresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Seconds *int `json:"seconds,omitempty"`
+		*Alias
+	}{ 
+		Seconds: u.Seconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

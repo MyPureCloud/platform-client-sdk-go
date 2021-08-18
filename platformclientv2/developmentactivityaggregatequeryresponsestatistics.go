@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Developmentactivityaggregatequeryresponsestatistics struct {
 	// Sum - The total of the values for this metric
 	Sum *int `json:"sum,omitempty"`
 
+}
+
+func (u *Developmentactivityaggregatequeryresponsestatistics) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Developmentactivityaggregatequeryresponsestatistics
+
+	
+
+	return json.Marshal(&struct { 
+		Count *int `json:"count,omitempty"`
+		
+		Min *int `json:"min,omitempty"`
+		
+		Max *int `json:"max,omitempty"`
+		
+		Sum *int `json:"sum,omitempty"`
+		*Alias
+	}{ 
+		Count: u.Count,
+		
+		Min: u.Min,
+		
+		Max: u.Max,
+		
+		Sum: u.Sum,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Weekschedulereference struct {
 	// WeekDate - First day of this week schedule in yyyy-MM-dd format
 	WeekDate *string `json:"weekDate,omitempty"`
 
+}
+
+func (u *Weekschedulereference) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Weekschedulereference
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		SelfUri: u.SelfUri,
+		
+		WeekDate: u.WeekDate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

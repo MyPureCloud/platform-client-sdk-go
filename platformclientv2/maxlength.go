@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Maxlength struct {
 	// Max - A non-negative integer for a text-based schema field denoting the maximum largest string the field can contain for a schema instance.
 	Max *int `json:"max,omitempty"`
 
+}
+
+func (u *Maxlength) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Maxlength
+
+	
+
+	return json.Marshal(&struct { 
+		Min *int `json:"min,omitempty"`
+		
+		Max *int `json:"max,omitempty"`
+		*Alias
+	}{ 
+		Min: u.Min,
+		
+		Max: u.Max,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

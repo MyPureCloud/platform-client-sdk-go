@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Userdetailsquery struct {
 	// Paging - Page size and number to control iterating through large result sets. Default page size is 25
 	Paging *Pagingspec `json:"paging,omitempty"`
 
+}
+
+func (u *Userdetailsquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userdetailsquery
+
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		UserFilters *[]Userdetailqueryfilter `json:"userFilters,omitempty"`
+		
+		PresenceFilters *[]Presencedetailqueryfilter `json:"presenceFilters,omitempty"`
+		
+		RoutingStatusFilters *[]Routingstatusdetailqueryfilter `json:"routingStatusFilters,omitempty"`
+		
+		Order *string `json:"order,omitempty"`
+		
+		PresenceAggregations *[]Analyticsqueryaggregation `json:"presenceAggregations,omitempty"`
+		
+		RoutingStatusAggregations *[]Analyticsqueryaggregation `json:"routingStatusAggregations,omitempty"`
+		
+		Paging *Pagingspec `json:"paging,omitempty"`
+		*Alias
+	}{ 
+		Interval: u.Interval,
+		
+		UserFilters: u.UserFilters,
+		
+		PresenceFilters: u.PresenceFilters,
+		
+		RoutingStatusFilters: u.RoutingStatusFilters,
+		
+		Order: u.Order,
+		
+		PresenceAggregations: u.PresenceAggregations,
+		
+		RoutingStatusAggregations: u.RoutingStatusAggregations,
+		
+		Paging: u.Paging,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Scimv2enterpriseuser struct {
 	// EmployeeNumber - The user's employee number.
 	EmployeeNumber *string `json:"employeeNumber,omitempty"`
 
+}
+
+func (u *Scimv2enterpriseuser) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2enterpriseuser
+
+	
+
+	return json.Marshal(&struct { 
+		Division *string `json:"division,omitempty"`
+		
+		Department *string `json:"department,omitempty"`
+		
+		Manager *Manager `json:"manager,omitempty"`
+		
+		EmployeeNumber *string `json:"employeeNumber,omitempty"`
+		*Alias
+	}{ 
+		Division: u.Division,
+		
+		Department: u.Department,
+		
+		Manager: u.Manager,
+		
+		EmployeeNumber: u.EmployeeNumber,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

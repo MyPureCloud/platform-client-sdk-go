@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Edgeinterface struct {
 	// AddressFamilyId
 	AddressFamilyId *string `json:"addressFamilyId,omitempty"`
 
+}
+
+func (u *Edgeinterface) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgeinterface
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		IpAddress *string `json:"ipAddress,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		MacAddress *string `json:"macAddress,omitempty"`
+		
+		IfName *string `json:"ifName,omitempty"`
+		
+		Endpoints *[]Domainentityref `json:"endpoints,omitempty"`
+		
+		LineTypes *[]string `json:"lineTypes,omitempty"`
+		
+		AddressFamilyId *string `json:"addressFamilyId,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		IpAddress: u.IpAddress,
+		
+		Name: u.Name,
+		
+		MacAddress: u.MacAddress,
+		
+		IfName: u.IfName,
+		
+		Endpoints: u.Endpoints,
+		
+		LineTypes: u.LineTypes,
+		
+		AddressFamilyId: u.AddressFamilyId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

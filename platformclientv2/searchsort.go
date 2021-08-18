@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Searchsort struct {
 	// SortBy - The field in the resource that you want to sort the results by
 	SortBy *string `json:"sortBy,omitempty"`
 
+}
+
+func (u *Searchsort) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Searchsort
+
+	
+
+	return json.Marshal(&struct { 
+		SortOrder *string `json:"sortOrder,omitempty"`
+		
+		SortBy *string `json:"sortBy,omitempty"`
+		*Alias
+	}{ 
+		SortOrder: u.SortOrder,
+		
+		SortBy: u.SortBy,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Dialerrule struct {
 	// Actions - The list of actions to be taken if the conditions are true.
 	Actions *[]Dialeraction `json:"actions,omitempty"`
 
+}
+
+func (u *Dialerrule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialerrule
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Order *int `json:"order,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		Conditions *[]Condition `json:"conditions,omitempty"`
+		
+		Actions *[]Dialeraction `json:"actions,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Order: u.Order,
+		
+		Category: u.Category,
+		
+		Conditions: u.Conditions,
+		
+		Actions: u.Actions,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

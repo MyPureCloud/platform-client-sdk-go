@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -19,6 +20,38 @@ type Analyticssessionmetric struct {
 	// Value - The metric value
 	Value *int `json:"value,omitempty"`
 
+}
+
+func (u *Analyticssessionmetric) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticssessionmetric
+
+	
+	EmitDate := new(string)
+	if u.EmitDate != nil {
+		
+		*EmitDate = timeutil.Strftime(u.EmitDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EmitDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		EmitDate *string `json:"emitDate,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Value *int `json:"value,omitempty"`
+		*Alias
+	}{ 
+		EmitDate: EmitDate,
+		
+		Name: u.Name,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

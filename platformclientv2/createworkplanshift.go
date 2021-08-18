@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -86,6 +87,98 @@ type Createworkplanshift struct {
 	// Activities - Activities configured for this shift
 	Activities *[]Createworkplanactivity `json:"activities,omitempty"`
 
+}
+
+func (u *Createworkplanshift) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createworkplanshift
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Days *Setwrapperdayofweek `json:"days,omitempty"`
+		
+		FlexibleStartTime *bool `json:"flexibleStartTime,omitempty"`
+		
+		ExactStartTimeMinutesFromMidnight *int `json:"exactStartTimeMinutesFromMidnight,omitempty"`
+		
+		EarliestStartTimeMinutesFromMidnight *int `json:"earliestStartTimeMinutesFromMidnight,omitempty"`
+		
+		LatestStartTimeMinutesFromMidnight *int `json:"latestStartTimeMinutesFromMidnight,omitempty"`
+		
+		ConstrainStopTime *bool `json:"constrainStopTime,omitempty"`
+		
+		ConstrainLatestStopTime *bool `json:"constrainLatestStopTime,omitempty"`
+		
+		LatestStopTimeMinutesFromMidnight *int `json:"latestStopTimeMinutesFromMidnight,omitempty"`
+		
+		ConstrainEarliestStopTime *bool `json:"constrainEarliestStopTime,omitempty"`
+		
+		EarliestStopTimeMinutesFromMidnight *int `json:"earliestStopTimeMinutesFromMidnight,omitempty"`
+		
+		StartIncrementMinutes *int `json:"startIncrementMinutes,omitempty"`
+		
+		FlexiblePaidTime *bool `json:"flexiblePaidTime,omitempty"`
+		
+		ExactPaidTimeMinutes *int `json:"exactPaidTimeMinutes,omitempty"`
+		
+		MinimumPaidTimeMinutes *int `json:"minimumPaidTimeMinutes,omitempty"`
+		
+		MaximumPaidTimeMinutes *int `json:"maximumPaidTimeMinutes,omitempty"`
+		
+		ConstrainContiguousWorkTime *bool `json:"constrainContiguousWorkTime,omitempty"`
+		
+		MinimumContiguousWorkTimeMinutes *int `json:"minimumContiguousWorkTimeMinutes,omitempty"`
+		
+		MaximumContiguousWorkTimeMinutes *int `json:"maximumContiguousWorkTimeMinutes,omitempty"`
+		
+		Activities *[]Createworkplanactivity `json:"activities,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Days: u.Days,
+		
+		FlexibleStartTime: u.FlexibleStartTime,
+		
+		ExactStartTimeMinutesFromMidnight: u.ExactStartTimeMinutesFromMidnight,
+		
+		EarliestStartTimeMinutesFromMidnight: u.EarliestStartTimeMinutesFromMidnight,
+		
+		LatestStartTimeMinutesFromMidnight: u.LatestStartTimeMinutesFromMidnight,
+		
+		ConstrainStopTime: u.ConstrainStopTime,
+		
+		ConstrainLatestStopTime: u.ConstrainLatestStopTime,
+		
+		LatestStopTimeMinutesFromMidnight: u.LatestStopTimeMinutesFromMidnight,
+		
+		ConstrainEarliestStopTime: u.ConstrainEarliestStopTime,
+		
+		EarliestStopTimeMinutesFromMidnight: u.EarliestStopTimeMinutesFromMidnight,
+		
+		StartIncrementMinutes: u.StartIncrementMinutes,
+		
+		FlexiblePaidTime: u.FlexiblePaidTime,
+		
+		ExactPaidTimeMinutes: u.ExactPaidTimeMinutes,
+		
+		MinimumPaidTimeMinutes: u.MinimumPaidTimeMinutes,
+		
+		MaximumPaidTimeMinutes: u.MaximumPaidTimeMinutes,
+		
+		ConstrainContiguousWorkTime: u.ConstrainContiguousWorkTime,
+		
+		MinimumContiguousWorkTimeMinutes: u.MinimumContiguousWorkTimeMinutes,
+		
+		MaximumContiguousWorkTimeMinutes: u.MaximumContiguousWorkTimeMinutes,
+		
+		Activities: u.Activities,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

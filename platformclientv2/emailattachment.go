@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Emailattachment struct {
 	// ContentLength
 	ContentLength *int `json:"contentLength,omitempty"`
 
+}
+
+func (u *Emailattachment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Emailattachment
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		ContentPath *string `json:"contentPath,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		
+		AttachmentId *string `json:"attachmentId,omitempty"`
+		
+		ContentLength *int `json:"contentLength,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		ContentPath: u.ContentPath,
+		
+		ContentType: u.ContentType,
+		
+		AttachmentId: u.AttachmentId,
+		
+		ContentLength: u.ContentLength,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

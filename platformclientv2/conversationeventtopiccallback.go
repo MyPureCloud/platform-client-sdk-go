@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -111,6 +112,154 @@ type Conversationeventtopiccallback struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Conversationeventtopiccallback) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationeventtopiccallback
+
+	
+	StartHoldTime := new(string)
+	if u.StartHoldTime != nil {
+		
+		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartHoldTime = nil
+	}
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	DisconnectedTime := new(string)
+	if u.DisconnectedTime != nil {
+		
+		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DisconnectedTime = nil
+	}
+	
+	CallbackScheduledTime := new(string)
+	if u.CallbackScheduledTime != nil {
+		
+		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CallbackScheduledTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		Held *bool `json:"held,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		StartHoldTime *string `json:"startHoldTime,omitempty"`
+		
+		DialerPreview *Conversationeventtopicdialerpreview `json:"dialerPreview,omitempty"`
+		
+		Voicemail *Conversationeventtopicvoicemail `json:"voicemail,omitempty"`
+		
+		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
+		
+		CallbackUserName *string `json:"callbackUserName,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		ExternalCampaign *bool `json:"externalCampaign,omitempty"`
+		
+		SkipEnabled *bool `json:"skipEnabled,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
+		
+		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
+		
+		AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
+		
+		Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
+		
+		AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
+		
+		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		CallerId *string `json:"callerId,omitempty"`
+		
+		CallerIdName *string `json:"callerIdName,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		Id: u.Id,
+		
+		Direction: u.Direction,
+		
+		Held: u.Held,
+		
+		DisconnectType: u.DisconnectType,
+		
+		StartHoldTime: StartHoldTime,
+		
+		DialerPreview: u.DialerPreview,
+		
+		Voicemail: u.Voicemail,
+		
+		CallbackNumbers: u.CallbackNumbers,
+		
+		CallbackUserName: u.CallbackUserName,
+		
+		ScriptId: u.ScriptId,
+		
+		PeerId: u.PeerId,
+		
+		ExternalCampaign: u.ExternalCampaign,
+		
+		SkipEnabled: u.SkipEnabled,
+		
+		Provider: u.Provider,
+		
+		TimeoutSeconds: u.TimeoutSeconds,
+		
+		ConnectedTime: ConnectedTime,
+		
+		DisconnectedTime: DisconnectedTime,
+		
+		CallbackScheduledTime: CallbackScheduledTime,
+		
+		AutomatedCallbackConfigId: u.AutomatedCallbackConfigId,
+		
+		Wrapup: u.Wrapup,
+		
+		AfterCallWork: u.AfterCallWork,
+		
+		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		
+		CallerId: u.CallerId,
+		
+		CallerIdName: u.CallerIdName,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

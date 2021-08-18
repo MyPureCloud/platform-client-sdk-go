@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Updateactivitycoderequest struct {
 	// Metadata - Version metadata for the associated business unit's list of activity codes
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updateactivitycoderequest
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		CountsAsWorkTime *bool `json:"countsAsWorkTime,omitempty"`
+		
+		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Category: u.Category,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		
+		CountsAsWorkTime: u.CountsAsWorkTime,
+		
+		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

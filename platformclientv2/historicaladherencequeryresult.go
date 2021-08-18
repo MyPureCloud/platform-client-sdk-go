@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,70 @@ type Historicaladherencequeryresult struct {
 	// Actuals - List of actual activity with offset for this user
 	Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
 
+}
+
+func (u *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Historicaladherencequeryresult
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		UserId *string `json:"userId,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		AdherencePercentage *float64 `json:"adherencePercentage,omitempty"`
+		
+		ConformancePercentage *float64 `json:"conformancePercentage,omitempty"`
+		
+		Impact *string `json:"impact,omitempty"`
+		
+		ExceptionInfo *[]Historicaladherenceexceptioninfo `json:"exceptionInfo,omitempty"`
+		
+		DayMetrics *[]Historicaladherencedaymetrics `json:"dayMetrics,omitempty"`
+		
+		Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
+		*Alias
+	}{ 
+		UserId: u.UserId,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		AdherencePercentage: u.AdherencePercentage,
+		
+		ConformancePercentage: u.ConformancePercentage,
+		
+		Impact: u.Impact,
+		
+		ExceptionInfo: u.ExceptionInfo,
+		
+		DayMetrics: u.DayMetrics,
+		
+		Actuals: u.Actuals,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

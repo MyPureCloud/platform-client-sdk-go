@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Bulkdeleteresponse struct {
 	// ErrorIndexes
 	ErrorIndexes *[]int `json:"errorIndexes,omitempty"`
 
+}
+
+func (u *Bulkdeleteresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Bulkdeleteresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Results *[]Bulkresponseresultvoidentity `json:"results,omitempty"`
+		
+		ErrorCount *int `json:"errorCount,omitempty"`
+		
+		ErrorIndexes *[]int `json:"errorIndexes,omitempty"`
+		*Alias
+	}{ 
+		Results: u.Results,
+		
+		ErrorCount: u.ErrorCount,
+		
+		ErrorIndexes: u.ErrorIndexes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

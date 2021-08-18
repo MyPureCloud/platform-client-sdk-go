@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Dialerauditrequest struct {
 	// Filters - The fields to filter on.
 	Filters *[]Auditfilter `json:"filters,omitempty"`
 
+}
+
+func (u *Dialerauditrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialerauditrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueryPhrase *string `json:"queryPhrase,omitempty"`
+		
+		QueryFields *[]string `json:"queryFields,omitempty"`
+		
+		Facets *[]Auditfacet `json:"facets,omitempty"`
+		
+		Filters *[]Auditfilter `json:"filters,omitempty"`
+		*Alias
+	}{ 
+		QueryPhrase: u.QueryPhrase,
+		
+		QueryFields: u.QueryFields,
+		
+		Facets: u.Facets,
+		
+		Filters: u.Filters,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

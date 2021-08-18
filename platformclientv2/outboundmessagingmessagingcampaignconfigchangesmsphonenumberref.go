@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref struct {
 	// PhoneNumber
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 
+}
+
+func (u *Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref
+
+	
+
+	return json.Marshal(&struct { 
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		*Alias
+	}{ 
+		PhoneNumber: u.PhoneNumber,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

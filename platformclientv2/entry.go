@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Entry struct {
 	// Count - The number of results with this value.
 	Count *int `json:"count,omitempty"`
 
+}
+
+func (u *Entry) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Entry
+
+	
+
+	return json.Marshal(&struct { 
+		Value *string `json:"value,omitempty"`
+		
+		Count *int `json:"count,omitempty"`
+		*Alias
+	}{ 
+		Value: u.Value,
+		
+		Count: u.Count,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

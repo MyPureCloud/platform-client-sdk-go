@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,74 @@ type Klaxonheartbeatalertstopicheartbeatalert struct {
 	// RuleType
 	RuleType *string `json:"ruleType,omitempty"`
 
+}
+
+func (u *Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Klaxonheartbeatalertstopicheartbeatalert
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		SenderId *string `json:"senderId,omitempty"`
+		
+		HeartBeatTimeoutInMinutes *float32 `json:"heartBeatTimeoutInMinutes,omitempty"`
+		
+		RuleId *string `json:"ruleId,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		NotificationUsers *[]Klaxonheartbeatalertstopicnotificationuser `json:"notificationUsers,omitempty"`
+		
+		AlertTypes *[]string `json:"alertTypes,omitempty"`
+		
+		RuleType *string `json:"ruleType,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		SenderId: u.SenderId,
+		
+		HeartBeatTimeoutInMinutes: u.HeartBeatTimeoutInMinutes,
+		
+		RuleId: u.RuleId,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		NotificationUsers: u.NotificationUsers,
+		
+		AlertTypes: u.AlertTypes,
+		
+		RuleType: u.RuleType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

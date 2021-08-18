@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Namedentitytypebinding struct {
 	// EntityName - The name that this named entity type is bound to.
 	EntityName *string `json:"entityName,omitempty"`
 
+}
+
+func (u *Namedentitytypebinding) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Namedentitytypebinding
+
+	
+
+	return json.Marshal(&struct { 
+		EntityType *string `json:"entityType,omitempty"`
+		
+		EntityName *string `json:"entityName,omitempty"`
+		*Alias
+	}{ 
+		EntityType: u.EntityType,
+		
+		EntityName: u.EntityName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

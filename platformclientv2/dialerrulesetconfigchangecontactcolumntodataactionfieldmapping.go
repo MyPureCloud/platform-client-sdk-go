@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping
+
+	
+
+	return json.Marshal(&struct { 
+		ContactColumnName *string `json:"contactColumnName,omitempty"`
+		
+		DataActionField *string `json:"dataActionField,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		ContactColumnName: u.ContactColumnName,
+		
+		DataActionField: u.DataActionField,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

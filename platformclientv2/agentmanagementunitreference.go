@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Agentmanagementunitreference struct {
 	// BusinessUnit - The business unit to which the user (agent) belongs. Populate with expand=businessUnit
 	BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 
+}
+
+func (u *Agentmanagementunitreference) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Agentmanagementunitreference
+
+	
+
+	return json.Marshal(&struct { 
+		User *Userreference `json:"user,omitempty"`
+		
+		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
+		
+		BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		ManagementUnit: u.ManagementUnit,
+		
+		BusinessUnit: u.BusinessUnit,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Twitterid struct {
 	// ProfileUrl - url of user's twitter profile
 	ProfileUrl *string `json:"profileUrl,omitempty"`
 
+}
+
+func (u *Twitterid) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Twitterid
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ScreenName *string `json:"screenName,omitempty"`
+		
+		Verified *bool `json:"verified,omitempty"`
+		
+		ProfileUrl *string `json:"profileUrl,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ScreenName: u.ScreenName,
+		
+		Verified: u.Verified,
+		
+		ProfileUrl: u.ProfileUrl,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

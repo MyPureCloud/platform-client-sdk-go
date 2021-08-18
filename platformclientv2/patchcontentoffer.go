@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Patchcontentoffer struct {
 	// Style - Properties customizing the styling of the content offer.
 	Style *Patchcontentofferstylingconfiguration `json:"style,omitempty"`
 
+}
+
+func (u *Patchcontentoffer) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchcontentoffer
+
+	
+
+	return json.Marshal(&struct { 
+		ImageUrl *string `json:"imageUrl,omitempty"`
+		
+		DisplayMode *string `json:"displayMode,omitempty"`
+		
+		LayoutMode *string `json:"layoutMode,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Headline *string `json:"headline,omitempty"`
+		
+		Body *string `json:"body,omitempty"`
+		
+		CallToAction *Patchcalltoaction `json:"callToAction,omitempty"`
+		
+		Style *Patchcontentofferstylingconfiguration `json:"style,omitempty"`
+		*Alias
+	}{ 
+		ImageUrl: u.ImageUrl,
+		
+		DisplayMode: u.DisplayMode,
+		
+		LayoutMode: u.LayoutMode,
+		
+		Title: u.Title,
+		
+		Headline: u.Headline,
+		
+		Body: u.Body,
+		
+		CallToAction: u.CallToAction,
+		
+		Style: u.Style,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

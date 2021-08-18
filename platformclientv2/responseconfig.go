@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Responseconfig struct {
 	// SuccessTemplateUri - URI to retrieve success template.
 	SuccessTemplateUri *string `json:"successTemplateUri,omitempty"`
 
+}
+
+func (u *Responseconfig) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Responseconfig
+
+	
+
+	return json.Marshal(&struct { 
+		TranslationMap *map[string]string `json:"translationMap,omitempty"`
+		
+		TranslationMapDefaults *map[string]string `json:"translationMapDefaults,omitempty"`
+		
+		SuccessTemplate *string `json:"successTemplate,omitempty"`
+		
+		SuccessTemplateUri *string `json:"successTemplateUri,omitempty"`
+		*Alias
+	}{ 
+		TranslationMap: u.TranslationMap,
+		
+		TranslationMapDefaults: u.TranslationMapDefaults,
+		
+		SuccessTemplate: u.SuccessTemplate,
+		
+		SuccessTemplateUri: u.SuccessTemplateUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

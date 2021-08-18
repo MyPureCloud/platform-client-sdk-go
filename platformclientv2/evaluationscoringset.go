@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Evaluationscoringset struct {
 	// AgentComments - Comments from the agent while reviewing evaluation results
 	AgentComments *string `json:"agentComments,omitempty"`
 
+}
+
+func (u *Evaluationscoringset) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Evaluationscoringset
+
+	
+
+	return json.Marshal(&struct { 
+		TotalScore *float32 `json:"totalScore,omitempty"`
+		
+		TotalCriticalScore *float32 `json:"totalCriticalScore,omitempty"`
+		
+		TotalNonCriticalScore *float32 `json:"totalNonCriticalScore,omitempty"`
+		
+		QuestionGroupScores *[]Evaluationquestiongroupscore `json:"questionGroupScores,omitempty"`
+		
+		AnyFailedKillQuestions *bool `json:"anyFailedKillQuestions,omitempty"`
+		
+		Comments *string `json:"comments,omitempty"`
+		
+		AgentComments *string `json:"agentComments,omitempty"`
+		*Alias
+	}{ 
+		TotalScore: u.TotalScore,
+		
+		TotalCriticalScore: u.TotalCriticalScore,
+		
+		TotalNonCriticalScore: u.TotalNonCriticalScore,
+		
+		QuestionGroupScores: u.QuestionGroupScores,
+		
+		AnyFailedKillQuestions: u.AnyFailedKillQuestions,
+		
+		Comments: u.Comments,
+		
+		AgentComments: u.AgentComments,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

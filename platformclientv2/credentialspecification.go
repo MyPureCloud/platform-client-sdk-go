@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Credentialspecification struct {
 	// CredentialTypes - List of acceptable credential types that can be provided for this credential.
 	CredentialTypes *[]string `json:"credentialTypes,omitempty"`
 
+}
+
+func (u *Credentialspecification) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Credentialspecification
+
+	
+
+	return json.Marshal(&struct { 
+		Required *bool `json:"required,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		CredentialTypes *[]string `json:"credentialTypes,omitempty"`
+		*Alias
+	}{ 
+		Required: u.Required,
+		
+		Title: u.Title,
+		
+		CredentialTypes: u.CredentialTypes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

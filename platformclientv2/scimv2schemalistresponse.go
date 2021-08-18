@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Scimv2schemalistresponse struct {
 	// Resources - The list of requested resources.
 	Resources *[]Scimv2schemadefinition `json:"Resources,omitempty"`
 
+}
+
+func (u *Scimv2schemalistresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2schemalistresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Schemas *[]string `json:"schemas,omitempty"`
+		
+		TotalResults *int `json:"totalResults,omitempty"`
+		
+		StartIndex *int `json:"startIndex,omitempty"`
+		
+		ItemsPerPage *int `json:"itemsPerPage,omitempty"`
+		
+		Resources *[]Scimv2schemadefinition `json:"Resources,omitempty"`
+		*Alias
+	}{ 
+		Schemas: u.Schemas,
+		
+		TotalResults: u.TotalResults,
+		
+		StartIndex: u.StartIndex,
+		
+		ItemsPerPage: u.ItemsPerPage,
+		
+		Resources: u.Resources,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

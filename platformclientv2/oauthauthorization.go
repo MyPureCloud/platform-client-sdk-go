@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -43,6 +44,70 @@ type Oauthauthorization struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Oauthauthorization) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Oauthauthorization
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Client *Oauthclient `json:"client,omitempty"`
+		
+		Scope *[]string `json:"scope,omitempty"`
+		
+		ResourceOwner *Domainentityref `json:"resourceOwner,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
+		
+		ModifiedBy *Domainentityref `json:"modifiedBy,omitempty"`
+		
+		Pending *bool `json:"pending,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Client: u.Client,
+		
+		Scope: u.Scope,
+		
+		ResourceOwner: u.ResourceOwner,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		Pending: u.Pending,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Documentlisting struct {
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
+}
+
+func (u *Documentlisting) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Documentlisting
+
+	
+
+	return json.Marshal(&struct { 
+		Entities *[]Knowledgedocument `json:"entities,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		*Alias
+	}{ 
+		Entities: u.Entities,
+		
+		NextUri: u.NextUri,
+		
+		SelfUri: u.SelfUri,
+		
+		PreviousUri: u.PreviousUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

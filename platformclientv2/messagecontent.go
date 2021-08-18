@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Messagecontent struct {
 	// Postback - Structured message postback (Deprecated).
 	Postback *Contentpostback `json:"postback,omitempty"`
 
+}
+
+func (u *Messagecontent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagecontent
+
+	
+
+	return json.Marshal(&struct { 
+		ContentType *string `json:"contentType,omitempty"`
+		
+		Location *Contentlocation `json:"location,omitempty"`
+		
+		Attachment *Contentattachment `json:"attachment,omitempty"`
+		
+		QuickReply *Contentquickreply `json:"quickReply,omitempty"`
+		
+		ButtonResponse *Contentbuttonresponse `json:"buttonResponse,omitempty"`
+		
+		Generic *Contentgeneric `json:"generic,omitempty"`
+		
+		List *Contentlist `json:"list,omitempty"`
+		
+		Template *Contentnotificationtemplate `json:"template,omitempty"`
+		
+		Reactions *[]Contentreaction `json:"reactions,omitempty"`
+		
+		Mention *Messagingrecipient `json:"mention,omitempty"`
+		
+		Postback *Contentpostback `json:"postback,omitempty"`
+		*Alias
+	}{ 
+		ContentType: u.ContentType,
+		
+		Location: u.Location,
+		
+		Attachment: u.Attachment,
+		
+		QuickReply: u.QuickReply,
+		
+		ButtonResponse: u.ButtonResponse,
+		
+		Generic: u.Generic,
+		
+		List: u.List,
+		
+		Template: u.Template,
+		
+		Reactions: u.Reactions,
+		
+		Mention: u.Mention,
+		
+		Postback: u.Postback,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

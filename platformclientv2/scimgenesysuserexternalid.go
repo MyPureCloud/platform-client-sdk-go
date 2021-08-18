@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Scimgenesysuserexternalid struct {
 	// Value - Identifier of the user in an external system.
 	Value *string `json:"value,omitempty"`
 
+}
+
+func (u *Scimgenesysuserexternalid) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimgenesysuserexternalid
+
+	
+
+	return json.Marshal(&struct { 
+		Authority *string `json:"authority,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		*Alias
+	}{ 
+		Authority: u.Authority,
+		
+		Value: u.Value,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

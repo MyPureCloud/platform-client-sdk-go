@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Createsharerequest struct {
 	// Members
 	Members *[]Createsharerequestmember `json:"members,omitempty"`
 
+}
+
+func (u *Createsharerequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createsharerequest
+
+	
+
+	return json.Marshal(&struct { 
+		SharedEntityType *string `json:"sharedEntityType,omitempty"`
+		
+		SharedEntity *Sharedentity `json:"sharedEntity,omitempty"`
+		
+		MemberType *string `json:"memberType,omitempty"`
+		
+		Member *Sharedentity `json:"member,omitempty"`
+		
+		Members *[]Createsharerequestmember `json:"members,omitempty"`
+		*Alias
+	}{ 
+		SharedEntityType: u.SharedEntityType,
+		
+		SharedEntity: u.SharedEntity,
+		
+		MemberType: u.MemberType,
+		
+		Member: u.Member,
+		
+		Members: u.Members,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

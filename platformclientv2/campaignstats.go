@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Campaignstats struct {
 	// ScheduledCalls - Number of campaign calls currently scheduled
 	ScheduledCalls *int `json:"scheduledCalls,omitempty"`
 
+}
+
+func (u *Campaignstats) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaignstats
+
+	
+
+	return json.Marshal(&struct { 
+		ContactRate *Connectrate `json:"contactRate,omitempty"`
+		
+		IdleAgents *int `json:"idleAgents,omitempty"`
+		
+		EffectiveIdleAgents *float64 `json:"effectiveIdleAgents,omitempty"`
+		
+		AdjustedCallsPerAgent *float64 `json:"adjustedCallsPerAgent,omitempty"`
+		
+		OutstandingCalls *int `json:"outstandingCalls,omitempty"`
+		
+		ScheduledCalls *int `json:"scheduledCalls,omitempty"`
+		*Alias
+	}{ 
+		ContactRate: u.ContactRate,
+		
+		IdleAgents: u.IdleAgents,
+		
+		EffectiveIdleAgents: u.EffectiveIdleAgents,
+		
+		AdjustedCallsPerAgent: u.AdjustedCallsPerAgent,
+		
+		OutstandingCalls: u.OutstandingCalls,
+		
+		ScheduledCalls: u.ScheduledCalls,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

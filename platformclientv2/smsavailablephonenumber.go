@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Smsavailablephonenumber struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Smsavailablephonenumber) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Smsavailablephonenumber
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		
+		Region *string `json:"region,omitempty"`
+		
+		City *string `json:"city,omitempty"`
+		
+		Capabilities *[]string `json:"capabilities,omitempty"`
+		
+		PhoneNumberType *string `json:"phoneNumberType,omitempty"`
+		
+		AddressRequirement *string `json:"addressRequirement,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		PhoneNumber: u.PhoneNumber,
+		
+		CountryCode: u.CountryCode,
+		
+		Region: u.Region,
+		
+		City: u.City,
+		
+		Capabilities: u.Capabilities,
+		
+		PhoneNumberType: u.PhoneNumberType,
+		
+		AddressRequirement: u.AddressRequirement,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

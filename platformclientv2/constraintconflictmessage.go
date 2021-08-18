@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Constraintconflictmessage struct {
 	// ConflictedConstraintMessages - Messages for the set of conflicted work plan constraints. Each element indicates the message of a work plan constraint that is conflicted in the set
 	ConflictedConstraintMessages *[]Workplanconstraintmessage `json:"conflictedConstraintMessages,omitempty"`
 
+}
+
+func (u *Constraintconflictmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Constraintconflictmessage
+
+	
+
+	return json.Marshal(&struct { 
+		Message *Workplanconstraintconflictmessage `json:"message,omitempty"`
+		
+		ConflictedConstraintMessages *[]Workplanconstraintmessage `json:"conflictedConstraintMessages,omitempty"`
+		*Alias
+	}{ 
+		Message: u.Message,
+		
+		ConflictedConstraintMessages: u.ConflictedConstraintMessages,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

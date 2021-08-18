@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Knowledgedocumentrequest struct {
 	// Article - Article details
 	Article *Documentarticle `json:"article,omitempty"`
 
+}
+
+func (u *Knowledgedocumentrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Knowledgedocumentrequest
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		ExternalUrl *string `json:"externalUrl,omitempty"`
+		
+		Faq *Documentfaq `json:"faq,omitempty"`
+		
+		Categories *[]Documentcategoryinput `json:"categories,omitempty"`
+		
+		Article *Documentarticle `json:"article,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		ExternalUrl: u.ExternalUrl,
+		
+		Faq: u.Faq,
+		
+		Categories: u.Categories,
+		
+		Article: u.Article,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

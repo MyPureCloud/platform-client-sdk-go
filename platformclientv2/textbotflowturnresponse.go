@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Textbotflowturnresponse struct {
 	// NextActionExit - The next action directive for this turn if it is an Exit type.
 	NextActionExit *Textbotexitaction `json:"nextActionExit,omitempty"`
 
+}
+
+func (u *Textbotflowturnresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotflowturnresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		PreviousTurn *Textbotturnreference `json:"previousTurn,omitempty"`
+		
+		Prompts *Textbotoutputprompts `json:"prompts,omitempty"`
+		
+		NextActionType *string `json:"nextActionType,omitempty"`
+		
+		NextActionDisconnect *Textbotdisconnectaction `json:"nextActionDisconnect,omitempty"`
+		
+		NextActionWaitForInput *Textbotwaitforinputaction `json:"nextActionWaitForInput,omitempty"`
+		
+		NextActionExit *Textbotexitaction `json:"nextActionExit,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		PreviousTurn: u.PreviousTurn,
+		
+		Prompts: u.Prompts,
+		
+		NextActionType: u.NextActionType,
+		
+		NextActionDisconnect: u.NextActionDisconnect,
+		
+		NextActionWaitForInput: u.NextActionWaitForInput,
+		
+		NextActionExit: u.NextActionExit,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

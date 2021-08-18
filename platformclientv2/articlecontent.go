@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Articlecontent struct {
 	// Body - Body of the article content.
 	Body *Articlecontentbody `json:"body,omitempty"`
 
+}
+
+func (u *Articlecontent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Articlecontent
+
+	
+
+	return json.Marshal(&struct { 
+		Body *Articlecontentbody `json:"body,omitempty"`
+		*Alias
+	}{ 
+		Body: u.Body,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

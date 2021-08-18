@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -79,6 +80,122 @@ type Cobrowsesession struct {
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
+}
+
+func (u *Cobrowsesession) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Cobrowsesession
+
+	
+	ProviderEventTime := new(string)
+	if u.ProviderEventTime != nil {
+		
+		*ProviderEventTime = timeutil.Strftime(u.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ProviderEventTime = nil
+	}
+	
+	StartAlertingTime := new(string)
+	if u.StartAlertingTime != nil {
+		
+		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAlertingTime = nil
+	}
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	DisconnectedTime := new(string)
+	if u.DisconnectedTime != nil {
+		
+		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DisconnectedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		Self *Address `json:"self,omitempty"`
+		
+		CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
+		
+		CobrowseRole *string `json:"cobrowseRole,omitempty"`
+		
+		Controlling *[]string `json:"controlling,omitempty"`
+		
+		ViewerUrl *string `json:"viewerUrl,omitempty"`
+		
+		ProviderEventTime *string `json:"providerEventTime,omitempty"`
+		
+		StartAlertingTime *string `json:"startAlertingTime,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		DisconnectedTime *string `json:"disconnectedTime,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		Segments *[]Segment `json:"segments,omitempty"`
+		
+		Wrapup *Wrapup `json:"wrapup,omitempty"`
+		
+		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
+		
+		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		Id: u.Id,
+		
+		DisconnectType: u.DisconnectType,
+		
+		Self: u.Self,
+		
+		CobrowseSessionId: u.CobrowseSessionId,
+		
+		CobrowseRole: u.CobrowseRole,
+		
+		Controlling: u.Controlling,
+		
+		ViewerUrl: u.ViewerUrl,
+		
+		ProviderEventTime: ProviderEventTime,
+		
+		StartAlertingTime: StartAlertingTime,
+		
+		ConnectedTime: ConnectedTime,
+		
+		DisconnectedTime: DisconnectedTime,
+		
+		Provider: u.Provider,
+		
+		PeerId: u.PeerId,
+		
+		Segments: u.Segments,
+		
+		Wrapup: u.Wrapup,
+		
+		AfterCallWork: u.AfterCallWork,
+		
+		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

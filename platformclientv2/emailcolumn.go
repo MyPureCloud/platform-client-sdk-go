@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Emailcolumn struct {
 	// VarType - Indicates the type of the email column. For example, 'work' or 'personal'.
 	VarType *string `json:"type,omitempty"`
 
+}
+
+func (u *Emailcolumn) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Emailcolumn
+
+	
+
+	return json.Marshal(&struct { 
+		ColumnName *string `json:"columnName,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		*Alias
+	}{ 
+		ColumnName: u.ColumnName,
+		
+		VarType: u.VarType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

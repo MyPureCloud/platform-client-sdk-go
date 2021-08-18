@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Journeyaggregationquery struct {
 	// AlternateTimeDimension - Dimension to use as the alternative timestamp for data in the aggregate.  Choosing \"eventTime\" uses the actual time of the data event.
 	AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
 
+}
+
+func (u *Journeyaggregationquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Journeyaggregationquery
+
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		Granularity *string `json:"granularity,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		GroupBy *[]string `json:"groupBy,omitempty"`
+		
+		Filter *Journeyaggregatequeryfilter `json:"filter,omitempty"`
+		
+		Metrics *[]string `json:"metrics,omitempty"`
+		
+		FlattenMultivaluedDimensions *bool `json:"flattenMultivaluedDimensions,omitempty"`
+		
+		Views *[]Journeyaggregationview `json:"views,omitempty"`
+		
+		AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
+		*Alias
+	}{ 
+		Interval: u.Interval,
+		
+		Granularity: u.Granularity,
+		
+		TimeZone: u.TimeZone,
+		
+		GroupBy: u.GroupBy,
+		
+		Filter: u.Filter,
+		
+		Metrics: u.Metrics,
+		
+		FlattenMultivaluedDimensions: u.FlattenMultivaluedDimensions,
+		
+		Views: u.Views,
+		
+		AlternateTimeDimension: u.AlternateTimeDimension,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

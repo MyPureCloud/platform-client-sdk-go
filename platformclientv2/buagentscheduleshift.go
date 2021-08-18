@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,50 @@ type Buagentscheduleshift struct {
 	// Schedule - The schedule to which this shift belongs
 	Schedule *Buschedulereference `json:"schedule,omitempty"`
 
+}
+
+func (u *Buagentscheduleshift) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentscheduleshift
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		LengthMinutes *int `json:"lengthMinutes,omitempty"`
+		
+		Activities *[]Buagentscheduleactivity `json:"activities,omitempty"`
+		
+		ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
+		
+		Schedule *Buschedulereference `json:"schedule,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		StartDate: StartDate,
+		
+		LengthMinutes: u.LengthMinutes,
+		
+		Activities: u.Activities,
+		
+		ManuallyEdited: u.ManuallyEdited,
+		
+		Schedule: u.Schedule,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

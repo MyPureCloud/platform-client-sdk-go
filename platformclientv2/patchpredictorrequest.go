@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Patchpredictorrequest struct {
 	// WorkloadBalancingConfig - The predictor balancing configuration to enable workload balancing
 	WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
 
+}
+
+func (u *Patchpredictorrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchpredictorrequest
+
+	
+
+	return json.Marshal(&struct { 
+		RoutingTimeoutSeconds *int `json:"routingTimeoutSeconds,omitempty"`
+		
+		Schedule *Predictorschedule `json:"schedule,omitempty"`
+		
+		WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
+		*Alias
+	}{ 
+		RoutingTimeoutSeconds: u.RoutingTimeoutSeconds,
+		
+		Schedule: u.Schedule,
+		
+		WorkloadBalancingConfig: u.WorkloadBalancingConfig,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

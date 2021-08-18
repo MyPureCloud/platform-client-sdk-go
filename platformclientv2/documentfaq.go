@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Documentfaq struct {
 	// Alternatives - List of Alternative questions related to the answer which helps in improving the likelihood of a match to user query
 	Alternatives *[]string `json:"alternatives,omitempty"`
 
+}
+
+func (u *Documentfaq) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Documentfaq
+
+	
+
+	return json.Marshal(&struct { 
+		Question *string `json:"question,omitempty"`
+		
+		Answer *string `json:"answer,omitempty"`
+		
+		Alternatives *[]string `json:"alternatives,omitempty"`
+		*Alias
+	}{ 
+		Question: u.Question,
+		
+		Answer: u.Answer,
+		
+		Alternatives: u.Alternatives,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

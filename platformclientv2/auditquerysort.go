@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Auditquerysort struct {
 	// SortOrder - Sort Order
 	SortOrder *string `json:"sortOrder,omitempty"`
 
+}
+
+func (u *Auditquerysort) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Auditquerysort
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		SortOrder *string `json:"sortOrder,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		SortOrder: u.SortOrder,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

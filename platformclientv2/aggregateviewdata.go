@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Aggregateviewdata struct {
 	// Stats
 	Stats *Statisticalsummary `json:"stats,omitempty"`
 
+}
+
+func (u *Aggregateviewdata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Aggregateviewdata
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Stats *Statisticalsummary `json:"stats,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Stats: u.Stats,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

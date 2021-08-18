@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -63,6 +64,106 @@ type Script struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Script) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Script
+
+	
+	CreatedDate := new(string)
+	if u.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+	PublishedDate := new(string)
+	if u.PublishedDate != nil {
+		
+		*PublishedDate = timeutil.Strftime(u.PublishedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		PublishedDate = nil
+	}
+	
+	VersionDate := new(string)
+	if u.VersionDate != nil {
+		
+		*VersionDate = timeutil.Strftime(u.VersionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		VersionDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		VersionId *string `json:"versionId,omitempty"`
+		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		PublishedDate *string `json:"publishedDate,omitempty"`
+		
+		VersionDate *string `json:"versionDate,omitempty"`
+		
+		StartPageId *string `json:"startPageId,omitempty"`
+		
+		StartPageName *string `json:"startPageName,omitempty"`
+		
+		Features *interface{} `json:"features,omitempty"`
+		
+		Variables *interface{} `json:"variables,omitempty"`
+		
+		CustomActions *interface{} `json:"customActions,omitempty"`
+		
+		Pages *[]Page `json:"pages,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		VersionId: u.VersionId,
+		
+		CreatedDate: CreatedDate,
+		
+		ModifiedDate: ModifiedDate,
+		
+		PublishedDate: PublishedDate,
+		
+		VersionDate: VersionDate,
+		
+		StartPageId: u.StartPageId,
+		
+		StartPageName: u.StartPageName,
+		
+		Features: u.Features,
+		
+		Variables: u.Variables,
+		
+		CustomActions: u.CustomActions,
+		
+		Pages: u.Pages,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

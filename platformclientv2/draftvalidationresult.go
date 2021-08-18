@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Draftvalidationresult struct {
 	// Errors - List of errors causing validation failure
 	Errors *[]Errorbody `json:"errors,omitempty"`
 
+}
+
+func (u *Draftvalidationresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Draftvalidationresult
+
+	
+
+	return json.Marshal(&struct { 
+		Valid *bool `json:"valid,omitempty"`
+		
+		Errors *[]Errorbody `json:"errors,omitempty"`
+		*Alias
+	}{ 
+		Valid: u.Valid,
+		
+		Errors: u.Errors,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

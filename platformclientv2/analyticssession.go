@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -291,6 +292,318 @@ type Analyticssession struct {
 	// Segments - List of segments for this session
 	Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
 
+}
+
+func (u *Analyticssession) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticssession
+
+	
+	CallbackScheduledTime := new(string)
+	if u.CallbackScheduledTime != nil {
+		
+		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CallbackScheduledTime = nil
+	}
+	
+	DeliveryStatusChangeDate := new(string)
+	if u.DeliveryStatusChangeDate != nil {
+		
+		*DeliveryStatusChangeDate = timeutil.Strftime(u.DeliveryStatusChangeDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DeliveryStatusChangeDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
+		
+		AcwSkipped *bool `json:"acwSkipped,omitempty"`
+		
+		AddressFrom *string `json:"addressFrom,omitempty"`
+		
+		AddressOther *string `json:"addressOther,omitempty"`
+		
+		AddressSelf *string `json:"addressSelf,omitempty"`
+		
+		AddressTo *string `json:"addressTo,omitempty"`
+		
+		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
+		AgentBullseyeRing *int `json:"agentBullseyeRing,omitempty"`
+		
+		AgentOwned *bool `json:"agentOwned,omitempty"`
+		
+		Ani *string `json:"ani,omitempty"`
+		
+		AssignerId *string `json:"assignerId,omitempty"`
+		
+		Authenticated *bool `json:"authenticated,omitempty"`
+		
+		CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
+		
+		CallbackScheduledTime *string `json:"callbackScheduledTime,omitempty"`
+		
+		CallbackUserName *string `json:"callbackUserName,omitempty"`
+		
+		CobrowseRole *string `json:"cobrowseRole,omitempty"`
+		
+		CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
+		
+		DeliveryStatus *string `json:"deliveryStatus,omitempty"`
+		
+		DeliveryStatusChangeDate *string `json:"deliveryStatusChangeDate,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		DispositionAnalyzer *string `json:"dispositionAnalyzer,omitempty"`
+		
+		DispositionName *string `json:"dispositionName,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
+		EdgeId *string `json:"edgeId,omitempty"`
+		
+		EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
+		
+		FlowInType *string `json:"flowInType,omitempty"`
+		
+		FlowOutType *string `json:"flowOutType,omitempty"`
+		
+		JourneyActionId *string `json:"journeyActionId,omitempty"`
+		
+		JourneyActionMapId *string `json:"journeyActionMapId,omitempty"`
+		
+		JourneyActionMapVersion *int `json:"journeyActionMapVersion,omitempty"`
+		
+		JourneyCustomerId *string `json:"journeyCustomerId,omitempty"`
+		
+		JourneyCustomerIdType *string `json:"journeyCustomerIdType,omitempty"`
+		
+		JourneyCustomerSessionId *string `json:"journeyCustomerSessionId,omitempty"`
+		
+		JourneyCustomerSessionIdType *string `json:"journeyCustomerSessionIdType,omitempty"`
+		
+		MediaBridgeId *string `json:"mediaBridgeId,omitempty"`
+		
+		MediaCount *int `json:"mediaCount,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		MessageType *string `json:"messageType,omitempty"`
+		
+		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
+		
+		OutboundCampaignId *string `json:"outboundCampaignId,omitempty"`
+		
+		OutboundContactId *string `json:"outboundContactId,omitempty"`
+		
+		OutboundContactListId *string `json:"outboundContactListId,omitempty"`
+		
+		PeerId *string `json:"peerId,omitempty"`
+		
+		ProtocolCallId *string `json:"protocolCallId,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		Recording *bool `json:"recording,omitempty"`
+		
+		Remote *string `json:"remote,omitempty"`
+		
+		RemoteNameDisplayable *string `json:"remoteNameDisplayable,omitempty"`
+		
+		RemovedSkillIds *[]string `json:"removedSkillIds,omitempty"`
+		
+		RequestedRoutings *[]string `json:"requestedRoutings,omitempty"`
+		
+		RoomId *string `json:"roomId,omitempty"`
+		
+		RoutingRing *int `json:"routingRing,omitempty"`
+		
+		ScreenShareAddressSelf *string `json:"screenShareAddressSelf,omitempty"`
+		
+		ScreenShareRoomId *string `json:"screenShareRoomId,omitempty"`
+		
+		ScriptId *string `json:"scriptId,omitempty"`
+		
+		SelectedAgentId *string `json:"selectedAgentId,omitempty"`
+		
+		SelectedAgentRank *int `json:"selectedAgentRank,omitempty"`
+		
+		SessionDnis *string `json:"sessionDnis,omitempty"`
+		
+		SessionId *string `json:"sessionId,omitempty"`
+		
+		SharingScreen *bool `json:"sharingScreen,omitempty"`
+		
+		SkipEnabled *bool `json:"skipEnabled,omitempty"`
+		
+		TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
+		
+		UsedRouting *string `json:"usedRouting,omitempty"`
+		
+		VideoAddressSelf *string `json:"videoAddressSelf,omitempty"`
+		
+		VideoRoomId *string `json:"videoRoomId,omitempty"`
+		
+		WaitingInteractionCounts *[]int `json:"waitingInteractionCounts,omitempty"`
+		
+		ProposedAgents *[]Analyticsproposedagent `json:"proposedAgents,omitempty"`
+		
+		MediaEndpointStats *[]Analyticsmediaendpointstat `json:"mediaEndpointStats,omitempty"`
+		
+		Flow *Analyticsflow `json:"flow,omitempty"`
+		
+		Metrics *[]Analyticssessionmetric `json:"metrics,omitempty"`
+		
+		Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
+		*Alias
+	}{ 
+		ActiveSkillIds: u.ActiveSkillIds,
+		
+		AcwSkipped: u.AcwSkipped,
+		
+		AddressFrom: u.AddressFrom,
+		
+		AddressOther: u.AddressOther,
+		
+		AddressSelf: u.AddressSelf,
+		
+		AddressTo: u.AddressTo,
+		
+		AgentAssistantId: u.AgentAssistantId,
+		
+		AgentBullseyeRing: u.AgentBullseyeRing,
+		
+		AgentOwned: u.AgentOwned,
+		
+		Ani: u.Ani,
+		
+		AssignerId: u.AssignerId,
+		
+		Authenticated: u.Authenticated,
+		
+		CallbackNumbers: u.CallbackNumbers,
+		
+		CallbackScheduledTime: CallbackScheduledTime,
+		
+		CallbackUserName: u.CallbackUserName,
+		
+		CobrowseRole: u.CobrowseRole,
+		
+		CobrowseRoomId: u.CobrowseRoomId,
+		
+		DeliveryStatus: u.DeliveryStatus,
+		
+		DeliveryStatusChangeDate: DeliveryStatusChangeDate,
+		
+		Direction: u.Direction,
+		
+		DispositionAnalyzer: u.DispositionAnalyzer,
+		
+		DispositionName: u.DispositionName,
+		
+		Dnis: u.Dnis,
+		
+		EdgeId: u.EdgeId,
+		
+		EligibleAgentCounts: u.EligibleAgentCounts,
+		
+		FlowInType: u.FlowInType,
+		
+		FlowOutType: u.FlowOutType,
+		
+		JourneyActionId: u.JourneyActionId,
+		
+		JourneyActionMapId: u.JourneyActionMapId,
+		
+		JourneyActionMapVersion: u.JourneyActionMapVersion,
+		
+		JourneyCustomerId: u.JourneyCustomerId,
+		
+		JourneyCustomerIdType: u.JourneyCustomerIdType,
+		
+		JourneyCustomerSessionId: u.JourneyCustomerSessionId,
+		
+		JourneyCustomerSessionIdType: u.JourneyCustomerSessionIdType,
+		
+		MediaBridgeId: u.MediaBridgeId,
+		
+		MediaCount: u.MediaCount,
+		
+		MediaType: u.MediaType,
+		
+		MessageType: u.MessageType,
+		
+		MonitoredParticipantId: u.MonitoredParticipantId,
+		
+		OutboundCampaignId: u.OutboundCampaignId,
+		
+		OutboundContactId: u.OutboundContactId,
+		
+		OutboundContactListId: u.OutboundContactListId,
+		
+		PeerId: u.PeerId,
+		
+		ProtocolCallId: u.ProtocolCallId,
+		
+		Provider: u.Provider,
+		
+		Recording: u.Recording,
+		
+		Remote: u.Remote,
+		
+		RemoteNameDisplayable: u.RemoteNameDisplayable,
+		
+		RemovedSkillIds: u.RemovedSkillIds,
+		
+		RequestedRoutings: u.RequestedRoutings,
+		
+		RoomId: u.RoomId,
+		
+		RoutingRing: u.RoutingRing,
+		
+		ScreenShareAddressSelf: u.ScreenShareAddressSelf,
+		
+		ScreenShareRoomId: u.ScreenShareRoomId,
+		
+		ScriptId: u.ScriptId,
+		
+		SelectedAgentId: u.SelectedAgentId,
+		
+		SelectedAgentRank: u.SelectedAgentRank,
+		
+		SessionDnis: u.SessionDnis,
+		
+		SessionId: u.SessionId,
+		
+		SharingScreen: u.SharingScreen,
+		
+		SkipEnabled: u.SkipEnabled,
+		
+		TimeoutSeconds: u.TimeoutSeconds,
+		
+		UsedRouting: u.UsedRouting,
+		
+		VideoAddressSelf: u.VideoAddressSelf,
+		
+		VideoRoomId: u.VideoRoomId,
+		
+		WaitingInteractionCounts: u.WaitingInteractionCounts,
+		
+		ProposedAgents: u.ProposedAgents,
+		
+		MediaEndpointStats: u.MediaEndpointStats,
+		
+		Flow: u.Flow,
+		
+		Metrics: u.Metrics,
+		
+		Segments: u.Segments,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

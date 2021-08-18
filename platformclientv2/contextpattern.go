@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Contextpattern struct {
 	// Criteria - A list of one or more criteria to satisfy.
 	Criteria *[]Entitytypecriteria `json:"criteria,omitempty"`
 
+}
+
+func (u *Contextpattern) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contextpattern
+
+	
+
+	return json.Marshal(&struct { 
+		Criteria *[]Entitytypecriteria `json:"criteria,omitempty"`
+		*Alias
+	}{ 
+		Criteria: u.Criteria,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

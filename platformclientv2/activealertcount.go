@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Activealertcount struct {
 	// Count - The count of active alerts for a user.
 	Count *int `json:"count,omitempty"`
 
+}
+
+func (u *Activealertcount) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Activealertcount
+
+	
+
+	return json.Marshal(&struct { 
+		Count *int `json:"count,omitempty"`
+		*Alias
+	}{ 
+		Count: u.Count,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

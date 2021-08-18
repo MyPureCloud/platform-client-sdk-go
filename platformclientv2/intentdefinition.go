@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Intentdefinition struct {
 	// Utterances - The utterances that act as training phrases for the intent.
 	Utterances *[]Nluutterance `json:"utterances,omitempty"`
 
+}
+
+func (u *Intentdefinition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Intentdefinition
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		EntityTypeBindings *[]Namedentitytypebinding `json:"entityTypeBindings,omitempty"`
+		
+		EntityNameReferences *[]string `json:"entityNameReferences,omitempty"`
+		
+		Utterances *[]Nluutterance `json:"utterances,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		EntityTypeBindings: u.EntityTypeBindings,
+		
+		EntityNameReferences: u.EntityNameReferences,
+		
+		Utterances: u.Utterances,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

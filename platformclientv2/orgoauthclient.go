@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -55,6 +56,90 @@ type Orgoauthclient struct {
 	// Organization - The  oauth client's organization.
 	Organization *Namedentity `json:"organization,omitempty"`
 
+}
+
+func (u *Orgoauthclient) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Orgoauthclient
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	DateToDelete := new(string)
+	if u.DateToDelete != nil {
+		
+		*DateToDelete = timeutil.Strftime(u.DateToDelete, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateToDelete = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
+		
+		ModifiedBy *Domainentityref `json:"modifiedBy,omitempty"`
+		
+		AuthorizedGrantType *string `json:"authorizedGrantType,omitempty"`
+		
+		Scope *[]string `json:"scope,omitempty"`
+		
+		RoleDivisions *[]Roledivision `json:"roleDivisions,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		DateToDelete *string `json:"dateToDelete,omitempty"`
+		
+		Organization *Namedentity `json:"organization,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		AuthorizedGrantType: u.AuthorizedGrantType,
+		
+		Scope: u.Scope,
+		
+		RoleDivisions: u.RoleDivisions,
+		
+		State: u.State,
+		
+		DateToDelete: DateToDelete,
+		
+		Organization: u.Organization,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

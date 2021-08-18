@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Contentpostback struct {
 	// Payload - The response payload associated with the clicked button.
 	Payload *string `json:"payload,omitempty"`
 
+}
+
+func (u *Contentpostback) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contentpostback
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Text *string `json:"text,omitempty"`
+		
+		Payload *string `json:"payload,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Text: u.Text,
+		
+		Payload: u.Payload,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

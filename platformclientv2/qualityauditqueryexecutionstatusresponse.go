@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -31,6 +32,50 @@ type Qualityauditqueryexecutionstatusresponse struct {
 	// Sort - Sort parameter for the audit query.
 	Sort *[]Auditquerysort `json:"sort,omitempty"`
 
+}
+
+func (u *Qualityauditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Qualityauditqueryexecutionstatusresponse
+
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		Interval *string `json:"interval,omitempty"`
+		
+		Filters *[]Qualityauditqueryfilter `json:"filters,omitempty"`
+		
+		Sort *[]Auditquerysort `json:"sort,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		State: u.State,
+		
+		DateStart: DateStart,
+		
+		Interval: u.Interval,
+		
+		Filters: u.Filters,
+		
+		Sort: u.Sort,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

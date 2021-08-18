@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,54 @@ type Analyticsflowoutcome struct {
 	// FlowOutcomeValue - Flow outcome value, e.g. SUCCESS
 	FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
 
+}
+
+func (u *Analyticsflowoutcome) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsflowoutcome
+
+	
+	FlowOutcomeEndTimestamp := new(string)
+	if u.FlowOutcomeEndTimestamp != nil {
+		
+		*FlowOutcomeEndTimestamp = timeutil.Strftime(u.FlowOutcomeEndTimestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		FlowOutcomeEndTimestamp = nil
+	}
+	
+	FlowOutcomeStartTimestamp := new(string)
+	if u.FlowOutcomeStartTimestamp != nil {
+		
+		*FlowOutcomeStartTimestamp = timeutil.Strftime(u.FlowOutcomeStartTimestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		FlowOutcomeStartTimestamp = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		FlowOutcome *string `json:"flowOutcome,omitempty"`
+		
+		FlowOutcomeEndTimestamp *string `json:"flowOutcomeEndTimestamp,omitempty"`
+		
+		FlowOutcomeId *string `json:"flowOutcomeId,omitempty"`
+		
+		FlowOutcomeStartTimestamp *string `json:"flowOutcomeStartTimestamp,omitempty"`
+		
+		FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
+		*Alias
+	}{ 
+		FlowOutcome: u.FlowOutcome,
+		
+		FlowOutcomeEndTimestamp: FlowOutcomeEndTimestamp,
+		
+		FlowOutcomeId: u.FlowOutcomeId,
+		
+		FlowOutcomeStartTimestamp: FlowOutcomeStartTimestamp,
+		
+		FlowOutcomeValue: u.FlowOutcomeValue,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

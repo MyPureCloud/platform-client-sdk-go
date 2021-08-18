@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Propertychange struct {
 	// NewValues - New values for the property.
 	NewValues *[]string `json:"newValues,omitempty"`
 
+}
+
+func (u *Propertychange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Propertychange
+
+	
+
+	return json.Marshal(&struct { 
+		Property *string `json:"property,omitempty"`
+		
+		OldValues *[]string `json:"oldValues,omitempty"`
+		
+		NewValues *[]string `json:"newValues,omitempty"`
+		*Alias
+	}{ 
+		Property: u.Property,
+		
+		OldValues: u.OldValues,
+		
+		NewValues: u.NewValues,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

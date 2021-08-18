@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Routepathresponse struct {
 	// Skills - The set of skills associated with the route path
 	Skills *[]Routingskillreference `json:"skills,omitempty"`
 
+}
+
+func (u *Routepathresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Routepathresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Queue *Queuereference `json:"queue,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		Language *Languagereference `json:"language,omitempty"`
+		
+		Skills *[]Routingskillreference `json:"skills,omitempty"`
+		*Alias
+	}{ 
+		Queue: u.Queue,
+		
+		MediaType: u.MediaType,
+		
+		Language: u.Language,
+		
+		Skills: u.Skills,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

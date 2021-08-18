@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Schedulingstatusresponse struct {
 	// PercentComplete - The percentage of the job that is complete.
 	PercentComplete *int `json:"percentComplete,omitempty"`
 
+}
+
+func (u *Schedulingstatusresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedulingstatusresponse
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		ErrorDetails *[]Schedulingprocessingerror `json:"errorDetails,omitempty"`
+		
+		SchedulingResultUri *string `json:"schedulingResultUri,omitempty"`
+		
+		PercentComplete *int `json:"percentComplete,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Status: u.Status,
+		
+		ErrorDetails: u.ErrorDetails,
+		
+		SchedulingResultUri: u.SchedulingResultUri,
+		
+		PercentComplete: u.PercentComplete,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

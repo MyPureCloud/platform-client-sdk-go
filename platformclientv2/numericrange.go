@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Numericrange struct {
 	// Lte - Less than or equal to
 	Lte *float32 `json:"lte,omitempty"`
 
+}
+
+func (u *Numericrange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Numericrange
+
+	
+
+	return json.Marshal(&struct { 
+		Gt *float32 `json:"gt,omitempty"`
+		
+		Gte *float32 `json:"gte,omitempty"`
+		
+		Lt *float32 `json:"lt,omitempty"`
+		
+		Lte *float32 `json:"lte,omitempty"`
+		*Alias
+	}{ 
+		Gt: u.Gt,
+		
+		Gte: u.Gte,
+		
+		Lt: u.Lt,
+		
+		Lte: u.Lte,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

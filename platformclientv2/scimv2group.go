@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Scimv2group struct {
 	// Meta - The metadata of the SCIM resource.
 	Meta *Scimmetadata `json:"meta,omitempty"`
 
+}
+
+func (u *Scimv2group) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2group
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Schemas *[]string `json:"schemas,omitempty"`
+		
+		DisplayName *string `json:"displayName,omitempty"`
+		
+		ExternalId *string `json:"externalId,omitempty"`
+		
+		Members *[]Scimv2memberreference `json:"members,omitempty"`
+		
+		Meta *Scimmetadata `json:"meta,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Schemas: u.Schemas,
+		
+		DisplayName: u.DisplayName,
+		
+		ExternalId: u.ExternalId,
+		
+		Members: u.Members,
+		
+		Meta: u.Meta,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

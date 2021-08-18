@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Buagentschedulehistorychange struct {
 	// Deletes - The deleted shifts, full day time off markers, or the entire agent schedule
 	Deletes *Buagentschedulehistorydeletedchange `json:"deletes,omitempty"`
 
+}
+
+func (u *Buagentschedulehistorychange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulehistorychange
+
+	
+
+	return json.Marshal(&struct { 
+		Metadata *Buagentschedulehistorychangemetadata `json:"metadata,omitempty"`
+		
+		Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
+		
+		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		
+		Deletes *Buagentschedulehistorydeletedchange `json:"deletes,omitempty"`
+		*Alias
+	}{ 
+		Metadata: u.Metadata,
+		
+		Shifts: u.Shifts,
+		
+		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		
+		Deletes: u.Deletes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

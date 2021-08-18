@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Useraggregatequeryresponse struct {
 	// Results
 	Results *[]Useraggregatedatacontainer `json:"results,omitempty"`
 
+}
+
+func (u *Useraggregatequeryresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Useraggregatequeryresponse
+
+	
+
+	return json.Marshal(&struct { 
+		SystemToOrganizationMappings *map[string][]string `json:"systemToOrganizationMappings,omitempty"`
+		
+		Results *[]Useraggregatedatacontainer `json:"results,omitempty"`
+		*Alias
+	}{ 
+		SystemToOrganizationMappings: u.SystemToOrganizationMappings,
+		
+		Results: u.Results,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

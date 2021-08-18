@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Surveyquestiongroupscore struct {
 	// QuestionScores
 	QuestionScores *[]Surveyquestionscore `json:"questionScores,omitempty"`
 
+}
+
+func (u *Surveyquestiongroupscore) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Surveyquestiongroupscore
+
+	
+
+	return json.Marshal(&struct { 
+		QuestionGroupId *string `json:"questionGroupId,omitempty"`
+		
+		TotalScore *float32 `json:"totalScore,omitempty"`
+		
+		MaxTotalScore *float32 `json:"maxTotalScore,omitempty"`
+		
+		MarkedNA *bool `json:"markedNA,omitempty"`
+		
+		QuestionScores *[]Surveyquestionscore `json:"questionScores,omitempty"`
+		*Alias
+	}{ 
+		QuestionGroupId: u.QuestionGroupId,
+		
+		TotalScore: u.TotalScore,
+		
+		MaxTotalScore: u.MaxTotalScore,
+		
+		MarkedNA: u.MarkedNA,
+		
+		QuestionScores: u.QuestionScores,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

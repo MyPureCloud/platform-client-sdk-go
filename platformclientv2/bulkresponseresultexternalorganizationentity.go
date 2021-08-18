@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Bulkresponseresultexternalorganizationentity struct {
 	// VarError
 	VarError *Bulkerrorentity `json:"error,omitempty"`
 
+}
+
+func (u *Bulkresponseresultexternalorganizationentity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Bulkresponseresultexternalorganizationentity
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Success *bool `json:"success,omitempty"`
+		
+		Entity *Externalorganization `json:"entity,omitempty"`
+		
+		VarError *Bulkerrorentity `json:"error,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Success: u.Success,
+		
+		Entity: u.Entity,
+		
+		VarError: u.VarError,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Testexecutionresult struct {
 	// Success - Indicates whether or not the test was a success
 	Success *bool `json:"success,omitempty"`
 
+}
+
+func (u *Testexecutionresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Testexecutionresult
+
+	
+
+	return json.Marshal(&struct { 
+		Operations *[]Testexecutionoperationresult `json:"operations,omitempty"`
+		
+		VarError *Errorbody `json:"error,omitempty"`
+		
+		FinalResult *interface{} `json:"finalResult,omitempty"`
+		
+		Success *bool `json:"success,omitempty"`
+		*Alias
+	}{ 
+		Operations: u.Operations,
+		
+		VarError: u.VarError,
+		
+		FinalResult: u.FinalResult,
+		
+		Success: u.Success,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

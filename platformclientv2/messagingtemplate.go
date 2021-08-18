@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Messagingtemplate struct {
 	// WhatsApp - Defines a messaging template for a WhatsApp messaging channel
 	WhatsApp *Whatsappdefinition `json:"whatsApp,omitempty"`
 
+}
+
+func (u *Messagingtemplate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagingtemplate
+
+	
+
+	return json.Marshal(&struct { 
+		WhatsApp *Whatsappdefinition `json:"whatsApp,omitempty"`
+		*Alias
+	}{ 
+		WhatsApp: u.WhatsApp,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

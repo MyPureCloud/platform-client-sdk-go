@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Publishform struct {
 	// Id - Unique Id for this version of this form
 	Id *string `json:"id,omitempty"`
 
+}
+
+func (u *Publishform) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Publishform
+
+	
+
+	return json.Marshal(&struct { 
+		Published *bool `json:"published,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		*Alias
+	}{ 
+		Published: u.Published,
+		
+		Id: u.Id,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

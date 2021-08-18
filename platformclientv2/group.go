@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -63,6 +64,82 @@ type Group struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Group) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Group
+
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		MemberCount *int `json:"memberCount,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Images *[]Userimage `json:"images,omitempty"`
+		
+		Addresses *[]Groupcontact `json:"addresses,omitempty"`
+		
+		RulesVisible *bool `json:"rulesVisible,omitempty"`
+		
+		Visibility *string `json:"visibility,omitempty"`
+		
+		Owners *[]User `json:"owners,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		DateModified: DateModified,
+		
+		MemberCount: u.MemberCount,
+		
+		State: u.State,
+		
+		Version: u.Version,
+		
+		VarType: u.VarType,
+		
+		Images: u.Images,
+		
+		Addresses: u.Addresses,
+		
+		RulesVisible: u.RulesVisible,
+		
+		Visibility: u.Visibility,
+		
+		Owners: u.Owners,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Sipsearchresult struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Sipsearchresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Sipsearchresult
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Status *int `json:"status,omitempty"`
+		
+		Sid *string `json:"sid,omitempty"`
+		
+		Auth *string `json:"auth,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
+		
+		Data *[]Homerrecord `json:"data,omitempty"`
+		
+		Count *int `json:"count,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Status: u.Status,
+		
+		Sid: u.Sid,
+		
+		Auth: u.Auth,
+		
+		Message: u.Message,
+		
+		Data: u.Data,
+		
+		Count: u.Count,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

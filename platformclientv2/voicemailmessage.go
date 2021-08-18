@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -87,6 +88,122 @@ type Voicemailmessage struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Voicemailmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Voicemailmessage
+
+	
+	CreatedDate := new(string)
+	if u.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+	DeletedDate := new(string)
+	if u.DeletedDate != nil {
+		
+		*DeletedDate = timeutil.Strftime(u.DeletedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DeletedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Conversation *Conversation `json:"conversation,omitempty"`
+		
+		Read *bool `json:"read,omitempty"`
+		
+		AudioRecordingDurationSeconds *int `json:"audioRecordingDurationSeconds,omitempty"`
+		
+		AudioRecordingSizeBytes *int `json:"audioRecordingSizeBytes,omitempty"`
+		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		DeletedDate *string `json:"deletedDate,omitempty"`
+		
+		CallerAddress *string `json:"callerAddress,omitempty"`
+		
+		CallerName *string `json:"callerName,omitempty"`
+		
+		CallerUser *User `json:"callerUser,omitempty"`
+		
+		Deleted *bool `json:"deleted,omitempty"`
+		
+		Note *string `json:"note,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		
+		Group *Group `json:"group,omitempty"`
+		
+		Queue *Queue `json:"queue,omitempty"`
+		
+		CopiedFrom *Voicemailcopyrecord `json:"copiedFrom,omitempty"`
+		
+		CopiedTo *[]Voicemailcopyrecord `json:"copiedTo,omitempty"`
+		
+		DeleteRetentionPolicy *Voicemailretentionpolicy `json:"deleteRetentionPolicy,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Conversation: u.Conversation,
+		
+		Read: u.Read,
+		
+		AudioRecordingDurationSeconds: u.AudioRecordingDurationSeconds,
+		
+		AudioRecordingSizeBytes: u.AudioRecordingSizeBytes,
+		
+		CreatedDate: CreatedDate,
+		
+		ModifiedDate: ModifiedDate,
+		
+		DeletedDate: DeletedDate,
+		
+		CallerAddress: u.CallerAddress,
+		
+		CallerName: u.CallerName,
+		
+		CallerUser: u.CallerUser,
+		
+		Deleted: u.Deleted,
+		
+		Note: u.Note,
+		
+		User: u.User,
+		
+		Group: u.Group,
+		
+		Queue: u.Queue,
+		
+		CopiedFrom: u.CopiedFrom,
+		
+		CopiedTo: u.CopiedTo,
+		
+		DeleteRetentionPolicy: u.DeleteRetentionPolicy,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

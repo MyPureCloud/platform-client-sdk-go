@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Voicemailorganizationpolicy struct {
 	// ModifiedDate - The date the policy was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ModifiedDate *time.Time `json:"modifiedDate,omitempty"`
 
+}
+
+func (u *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Voicemailorganizationpolicy
+
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
+		
+		PinConfiguration *Pinconfiguration `json:"pinConfiguration,omitempty"`
+		
+		VoicemailExtension *string `json:"voicemailExtension,omitempty"`
+		
+		PinRequired *bool `json:"pinRequired,omitempty"`
+		
+		SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
+		
+		DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		*Alias
+	}{ 
+		Enabled: u.Enabled,
+		
+		AlertTimeoutSeconds: u.AlertTimeoutSeconds,
+		
+		PinConfiguration: u.PinConfiguration,
+		
+		VoicemailExtension: u.VoicemailExtension,
+		
+		PinRequired: u.PinRequired,
+		
+		SendEmailNotifications: u.SendEmailNotifications,
+		
+		DisableEmailPii: u.DisableEmailPii,
+		
+		ModifiedDate: ModifiedDate,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

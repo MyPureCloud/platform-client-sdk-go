@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Contactlistdivisionview struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Contactlistdivisionview) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contactlistdivisionview
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Division *Division `json:"division,omitempty"`
+		
+		ColumnNames *[]string `json:"columnNames,omitempty"`
+		
+		PhoneColumns *[]Contactphonenumbercolumn `json:"phoneColumns,omitempty"`
+		
+		ImportStatus *Importstatus `json:"importStatus,omitempty"`
+		
+		Size *int `json:"size,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Division: u.Division,
+		
+		ColumnNames: u.ColumnNames,
+		
+		PhoneColumns: u.PhoneColumns,
+		
+		ImportStatus: u.ImportStatus,
+		
+		Size: u.Size,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

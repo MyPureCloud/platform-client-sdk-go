@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -83,6 +84,102 @@ type Observationvalue struct {
 	// ScoredAgents
 	ScoredAgents *[]Analyticsscoredagent `json:"scoredAgents,omitempty"`
 
+}
+
+func (u *Observationvalue) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Observationvalue
+
+	
+	ObservationDate := new(string)
+	if u.ObservationDate != nil {
+		
+		*ObservationDate = timeutil.Strftime(u.ObservationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ObservationDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ObservationDate *string `json:"observationDate,omitempty"`
+		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
+		SessionId *string `json:"sessionId,omitempty"`
+		
+		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
+		
+		RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
+		
+		RoutingPriority *int `json:"routingPriority,omitempty"`
+		
+		ParticipantName *string `json:"participantName,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		Direction *string `json:"direction,omitempty"`
+		
+		ConvertedFrom *string `json:"convertedFrom,omitempty"`
+		
+		ConvertedTo *string `json:"convertedTo,omitempty"`
+		
+		AddressFrom *string `json:"addressFrom,omitempty"`
+		
+		AddressTo *string `json:"addressTo,omitempty"`
+		
+		Ani *string `json:"ani,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
+		TeamId *string `json:"teamId,omitempty"`
+		
+		RequestedRoutings *[]string `json:"requestedRoutings,omitempty"`
+		
+		UsedRouting *string `json:"usedRouting,omitempty"`
+		
+		ScoredAgents *[]Analyticsscoredagent `json:"scoredAgents,omitempty"`
+		*Alias
+	}{ 
+		ObservationDate: ObservationDate,
+		
+		ConversationId: u.ConversationId,
+		
+		SessionId: u.SessionId,
+		
+		RequestedRoutingSkillIds: u.RequestedRoutingSkillIds,
+		
+		RequestedLanguageId: u.RequestedLanguageId,
+		
+		RoutingPriority: u.RoutingPriority,
+		
+		ParticipantName: u.ParticipantName,
+		
+		UserId: u.UserId,
+		
+		Direction: u.Direction,
+		
+		ConvertedFrom: u.ConvertedFrom,
+		
+		ConvertedTo: u.ConvertedTo,
+		
+		AddressFrom: u.AddressFrom,
+		
+		AddressTo: u.AddressTo,
+		
+		Ani: u.Ani,
+		
+		Dnis: u.Dnis,
+		
+		TeamId: u.TeamId,
+		
+		RequestedRoutings: u.RequestedRoutings,
+		
+		UsedRouting: u.UsedRouting,
+		
+		ScoredAgents: u.ScoredAgents,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

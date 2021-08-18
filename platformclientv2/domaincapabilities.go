@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Domaincapabilities struct {
 	// PingEnabled - Set to true to enable this address family on this interface to respond to ping requests.
 	PingEnabled *bool `json:"pingEnabled,omitempty"`
 
+}
+
+func (u *Domaincapabilities) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domaincapabilities
+
+	
+
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		Dhcp *bool `json:"dhcp,omitempty"`
+		
+		Metric *int `json:"metric,omitempty"`
+		
+		AutoMetric *bool `json:"autoMetric,omitempty"`
+		
+		SupportsMetric *bool `json:"supportsMetric,omitempty"`
+		
+		PingEnabled *bool `json:"pingEnabled,omitempty"`
+		*Alias
+	}{ 
+		Enabled: u.Enabled,
+		
+		Dhcp: u.Dhcp,
+		
+		Metric: u.Metric,
+		
+		AutoMetric: u.AutoMetric,
+		
+		SupportsMetric: u.SupportsMetric,
+		
+		PingEnabled: u.PingEnabled,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

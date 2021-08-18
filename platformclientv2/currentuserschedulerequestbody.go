@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -19,6 +20,46 @@ type Currentuserschedulerequestbody struct {
 	// LoadFullWeeks - Whether to load the full week's schedule (for the current user) of any week overlapping the start/end date query parameters, defaults to false
 	LoadFullWeeks *bool `json:"loadFullWeeks,omitempty"`
 
+}
+
+func (u *Currentuserschedulerequestbody) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Currentuserschedulerequestbody
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		LoadFullWeeks *bool `json:"loadFullWeeks,omitempty"`
+		*Alias
+	}{ 
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		LoadFullWeeks: u.LoadFullWeeks,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Screenrecordingmetadatarequest struct {
 	// MetaData
 	MetaData *[]Screenrecordingmetadata `json:"metaData,omitempty"`
 
+}
+
+func (u *Screenrecordingmetadatarequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Screenrecordingmetadatarequest
+
+	
+
+	return json.Marshal(&struct { 
+		ParticipantJid *string `json:"participantJid,omitempty"`
+		
+		RoomId *string `json:"roomId,omitempty"`
+		
+		MetaData *[]Screenrecordingmetadata `json:"metaData,omitempty"`
+		*Alias
+	}{ 
+		ParticipantJid: u.ParticipantJid,
+		
+		RoomId: u.RoomId,
+		
+		MetaData: u.MetaData,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

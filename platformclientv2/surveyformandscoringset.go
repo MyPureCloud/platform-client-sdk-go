@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Surveyformandscoringset struct {
 	// Answers
 	Answers *Surveyscoringset `json:"answers,omitempty"`
 
+}
+
+func (u *Surveyformandscoringset) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Surveyformandscoringset
+
+	
+
+	return json.Marshal(&struct { 
+		SurveyForm *Surveyform `json:"surveyForm,omitempty"`
+		
+		Answers *Surveyscoringset `json:"answers,omitempty"`
+		*Alias
+	}{ 
+		SurveyForm: u.SurveyForm,
+		
+		Answers: u.Answers,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

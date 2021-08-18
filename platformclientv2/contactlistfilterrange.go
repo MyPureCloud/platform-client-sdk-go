@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Contactlistfilterrange struct {
 	// InSet - A set of values that the contact data should be in. Required for the IN operator.
 	InSet *[]string `json:"inSet,omitempty"`
 
+}
+
+func (u *Contactlistfilterrange) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contactlistfilterrange
+
+	
+
+	return json.Marshal(&struct { 
+		Min *string `json:"min,omitempty"`
+		
+		Max *string `json:"max,omitempty"`
+		
+		MinInclusive *bool `json:"minInclusive,omitempty"`
+		
+		MaxInclusive *bool `json:"maxInclusive,omitempty"`
+		
+		InSet *[]string `json:"inSet,omitempty"`
+		*Alias
+	}{ 
+		Min: u.Min,
+		
+		Max: u.Max,
+		
+		MinInclusive: u.MinInclusive,
+		
+		MaxInclusive: u.MaxInclusive,
+		
+		InSet: u.InSet,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

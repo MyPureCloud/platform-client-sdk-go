@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Nluinfo struct {
 	// Intents
 	Intents *[]Intent `json:"intents,omitempty"`
 
+}
+
+func (u *Nluinfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Nluinfo
+
+	
+
+	return json.Marshal(&struct { 
+		Domain *Addressableentityref `json:"domain,omitempty"`
+		
+		Version **Nludomainversion `json:"version,omitempty"`
+		
+		Intents *[]Intent `json:"intents,omitempty"`
+		*Alias
+	}{ 
+		Domain: u.Domain,
+		
+		Version: u.Version,
+		
+		Intents: u.Intents,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

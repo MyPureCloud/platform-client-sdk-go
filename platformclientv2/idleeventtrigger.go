@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Idleeventtrigger struct {
 	// IdleAfterSeconds - Number of seconds of inactivity before an event is triggered.
 	IdleAfterSeconds *int `json:"idleAfterSeconds,omitempty"`
 
+}
+
+func (u *Idleeventtrigger) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Idleeventtrigger
+
+	
+
+	return json.Marshal(&struct { 
+		EventName *string `json:"eventName,omitempty"`
+		
+		IdleAfterSeconds *int `json:"idleAfterSeconds,omitempty"`
+		*Alias
+	}{ 
+		EventName: u.EventName,
+		
+		IdleAfterSeconds: u.IdleAfterSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

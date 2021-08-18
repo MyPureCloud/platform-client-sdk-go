@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Resultcounters struct {
 	// Failure
 	Failure *int `json:"failure,omitempty"`
 
+}
+
+func (u *Resultcounters) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Resultcounters
+
+	
+
+	return json.Marshal(&struct { 
+		Success *int `json:"success,omitempty"`
+		
+		Failure *int `json:"failure,omitempty"`
+		*Alias
+	}{ 
+		Success: u.Success,
+		
+		Failure: u.Failure,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

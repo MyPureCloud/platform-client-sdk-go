@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -66,6 +67,78 @@ type Analyticsflow struct {
 	// Outcomes - Flow outcomes
 	Outcomes *[]Analyticsflowoutcome `json:"outcomes,omitempty"`
 
+}
+
+func (u *Analyticsflow) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsflow
+
+	
+
+	return json.Marshal(&struct { 
+		EndingLanguage *string `json:"endingLanguage,omitempty"`
+		
+		EntryReason *string `json:"entryReason,omitempty"`
+		
+		EntryType *string `json:"entryType,omitempty"`
+		
+		ExitReason *string `json:"exitReason,omitempty"`
+		
+		FlowId *string `json:"flowId,omitempty"`
+		
+		FlowName *string `json:"flowName,omitempty"`
+		
+		FlowType *string `json:"flowType,omitempty"`
+		
+		FlowVersion *string `json:"flowVersion,omitempty"`
+		
+		IssuedCallback *bool `json:"issuedCallback,omitempty"`
+		
+		RecognitionFailureReason *string `json:"recognitionFailureReason,omitempty"`
+		
+		StartingLanguage *string `json:"startingLanguage,omitempty"`
+		
+		TransferTargetAddress *string `json:"transferTargetAddress,omitempty"`
+		
+		TransferTargetName *string `json:"transferTargetName,omitempty"`
+		
+		TransferType *string `json:"transferType,omitempty"`
+		
+		Outcomes *[]Analyticsflowoutcome `json:"outcomes,omitempty"`
+		*Alias
+	}{ 
+		EndingLanguage: u.EndingLanguage,
+		
+		EntryReason: u.EntryReason,
+		
+		EntryType: u.EntryType,
+		
+		ExitReason: u.ExitReason,
+		
+		FlowId: u.FlowId,
+		
+		FlowName: u.FlowName,
+		
+		FlowType: u.FlowType,
+		
+		FlowVersion: u.FlowVersion,
+		
+		IssuedCallback: u.IssuedCallback,
+		
+		RecognitionFailureReason: u.RecognitionFailureReason,
+		
+		StartingLanguage: u.StartingLanguage,
+		
+		TransferTargetAddress: u.TransferTargetAddress,
+		
+		TransferTargetName: u.TransferTargetName,
+		
+		TransferType: u.TransferType,
+		
+		Outcomes: u.Outcomes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

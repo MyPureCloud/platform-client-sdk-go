@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Flowdivisionview struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Flowdivisionview) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Flowdivisionview
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Division *Writabledivision `json:"division,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		InputSchema *Jsonschemadocument `json:"inputSchema,omitempty"`
+		
+		OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
+		
+		PublishedVersion *Flowversion `json:"publishedVersion,omitempty"`
+		
+		DebugVersion *Flowversion `json:"debugVersion,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Division: u.Division,
+		
+		VarType: u.VarType,
+		
+		InputSchema: u.InputSchema,
+		
+		OutputSchema: u.OutputSchema,
+		
+		PublishedVersion: u.PublishedVersion,
+		
+		DebugVersion: u.DebugVersion,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

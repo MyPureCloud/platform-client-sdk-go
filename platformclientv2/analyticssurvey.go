@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -51,6 +52,78 @@ type Analyticssurvey struct {
 	// OSurveyTotalScore
 	OSurveyTotalScore *int `json:"oSurveyTotalScore,omitempty"`
 
+}
+
+func (u *Analyticssurvey) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticssurvey
+
+	
+	EventTime := new(string)
+	if u.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
+	SurveyCompletedDate := new(string)
+	if u.SurveyCompletedDate != nil {
+		
+		*SurveyCompletedDate = timeutil.Strftime(u.SurveyCompletedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SurveyCompletedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		EventTime *string `json:"eventTime,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
+		
+		SurveyCompletedDate *string `json:"surveyCompletedDate,omitempty"`
+		
+		SurveyFormContextId *string `json:"surveyFormContextId,omitempty"`
+		
+		SurveyFormId *string `json:"surveyFormId,omitempty"`
+		
+		SurveyFormName *string `json:"surveyFormName,omitempty"`
+		
+		SurveyId *string `json:"surveyId,omitempty"`
+		
+		SurveyPromoterScore *int `json:"surveyPromoterScore,omitempty"`
+		
+		SurveyStatus *string `json:"surveyStatus,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		OSurveyTotalScore *int `json:"oSurveyTotalScore,omitempty"`
+		*Alias
+	}{ 
+		EventTime: EventTime,
+		
+		QueueId: u.QueueId,
+		
+		SurveyCompletedDate: SurveyCompletedDate,
+		
+		SurveyFormContextId: u.SurveyFormContextId,
+		
+		SurveyFormId: u.SurveyFormId,
+		
+		SurveyFormName: u.SurveyFormName,
+		
+		SurveyId: u.SurveyId,
+		
+		SurveyPromoterScore: u.SurveyPromoterScore,
+		
+		SurveyStatus: u.SurveyStatus,
+		
+		UserId: u.UserId,
+		
+		OSurveyTotalScore: u.OSurveyTotalScore,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Trustmembercreate struct {
 	// RoleDivisions - The list of trustor organization roles granting this user or group access paired with the divisions for those roles.
 	RoleDivisions *Roledivisiongrants `json:"roleDivisions,omitempty"`
 
+}
+
+func (u *Trustmembercreate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trustmembercreate
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		RoleIds *[]string `json:"roleIds,omitempty"`
+		
+		RoleDivisions *Roledivisiongrants `json:"roleDivisions,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		RoleIds: u.RoleIds,
+		
+		RoleDivisions: u.RoleDivisions,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

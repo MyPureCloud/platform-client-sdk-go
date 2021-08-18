@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Messagesticker struct {
 	// Id - The unique id of the the sticker object.
 	Id *string `json:"id,omitempty"`
 
+}
+
+func (u *Messagesticker) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagesticker
+
+	
+
+	return json.Marshal(&struct { 
+		Url *string `json:"url,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		*Alias
+	}{ 
+		Url: u.Url,
+		
+		Id: u.Id,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

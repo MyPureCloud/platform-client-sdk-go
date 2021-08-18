@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -62,6 +63,74 @@ type Inboundroute struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Inboundroute) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Inboundroute
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Pattern *string `json:"pattern,omitempty"`
+		
+		Queue *Domainentityref `json:"queue,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		
+		Skills *[]Domainentityref `json:"skills,omitempty"`
+		
+		Language *Domainentityref `json:"language,omitempty"`
+		
+		FromName *string `json:"fromName,omitempty"`
+		
+		FromEmail *string `json:"fromEmail,omitempty"`
+		
+		Flow *Domainentityref `json:"flow,omitempty"`
+		
+		ReplyEmailAddress **Queueemailaddress `json:"replyEmailAddress,omitempty"`
+		
+		AutoBcc *[]Emailaddress `json:"autoBcc,omitempty"`
+		
+		SpamFlow *Domainentityref `json:"spamFlow,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Pattern: u.Pattern,
+		
+		Queue: u.Queue,
+		
+		Priority: u.Priority,
+		
+		Skills: u.Skills,
+		
+		Language: u.Language,
+		
+		FromName: u.FromName,
+		
+		FromEmail: u.FromEmail,
+		
+		Flow: u.Flow,
+		
+		ReplyEmailAddress: u.ReplyEmailAddress,
+		
+		AutoBcc: u.AutoBcc,
+		
+		SpamFlow: u.SpamFlow,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

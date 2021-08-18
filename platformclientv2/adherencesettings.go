@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Adherencesettings struct {
 	// IgnoredActivityCategories - Activity categories that should be ignored for adherence purposes
 	IgnoredActivityCategories *Ignoredactivitycategories `json:"ignoredActivityCategories,omitempty"`
 
+}
+
+func (u *Adherencesettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Adherencesettings
+
+	
+
+	return json.Marshal(&struct { 
+		SevereAlertThresholdMinutes *int `json:"severeAlertThresholdMinutes,omitempty"`
+		
+		AdherenceTargetPercent *int `json:"adherenceTargetPercent,omitempty"`
+		
+		AdherenceExceptionThresholdSeconds *int `json:"adherenceExceptionThresholdSeconds,omitempty"`
+		
+		NonOnQueueActivitiesEquivalent *bool `json:"nonOnQueueActivitiesEquivalent,omitempty"`
+		
+		TrackOnQueueActivity *bool `json:"trackOnQueueActivity,omitempty"`
+		
+		IgnoredActivityCategories *Ignoredactivitycategories `json:"ignoredActivityCategories,omitempty"`
+		*Alias
+	}{ 
+		SevereAlertThresholdMinutes: u.SevereAlertThresholdMinutes,
+		
+		AdherenceTargetPercent: u.AdherenceTargetPercent,
+		
+		AdherenceExceptionThresholdSeconds: u.AdherenceExceptionThresholdSeconds,
+		
+		NonOnQueueActivitiesEquivalent: u.NonOnQueueActivitiesEquivalent,
+		
+		TrackOnQueueActivity: u.TrackOnQueueActivity,
+		
+		IgnoredActivityCategories: u.IgnoredActivityCategories,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

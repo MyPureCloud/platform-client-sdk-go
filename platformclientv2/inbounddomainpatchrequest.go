@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Inbounddomainpatchrequest struct {
 	// CustomSMTPServer - The custom SMTP server integration to use when sending outbound emails from this domain.
 	CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
 
+}
+
+func (u *Inbounddomainpatchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Inbounddomainpatchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		MailFromSettings *Mailfromresult `json:"mailFromSettings,omitempty"`
+		
+		CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
+		*Alias
+	}{ 
+		MailFromSettings: u.MailFromSettings,
+		
+		CustomSMTPServer: u.CustomSMTPServer,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

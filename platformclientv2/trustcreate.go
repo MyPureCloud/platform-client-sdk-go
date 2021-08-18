@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,46 @@ type Trustcreate struct {
 	// DateExpired - The expiration date of the trust. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateExpired *time.Time `json:"dateExpired,omitempty"`
 
+}
+
+func (u *Trustcreate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trustcreate
+
+	
+	DateExpired := new(string)
+	if u.DateExpired != nil {
+		
+		*DateExpired = timeutil.Strftime(u.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateExpired = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		PairingId *string `json:"pairingId,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		Users *[]Trustmembercreate `json:"users,omitempty"`
+		
+		Groups *[]Trustmembercreate `json:"groups,omitempty"`
+		
+		DateExpired *string `json:"dateExpired,omitempty"`
+		*Alias
+	}{ 
+		PairingId: u.PairingId,
+		
+		Enabled: u.Enabled,
+		
+		Users: u.Users,
+		
+		Groups: u.Groups,
+		
+		DateExpired: DateExpired,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

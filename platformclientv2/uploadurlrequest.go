@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Uploadurlrequest struct {
 	// ServerSideEncryption
 	ServerSideEncryption *string `json:"serverSideEncryption,omitempty"`
 
+}
+
+func (u *Uploadurlrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Uploadurlrequest
+
+	
+
+	return json.Marshal(&struct { 
+		FileName *string `json:"fileName,omitempty"`
+		
+		ContentMd5 *string `json:"contentMd5,omitempty"`
+		
+		SignedUrlTimeoutSeconds *int `json:"signedUrlTimeoutSeconds,omitempty"`
+		
+		ServerSideEncryption *string `json:"serverSideEncryption,omitempty"`
+		*Alias
+	}{ 
+		FileName: u.FileName,
+		
+		ContentMd5: u.ContentMd5,
+		
+		SignedUrlTimeoutSeconds: u.SignedUrlTimeoutSeconds,
+		
+		ServerSideEncryption: u.ServerSideEncryption,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

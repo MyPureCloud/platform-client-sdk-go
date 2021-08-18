@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Errordetails struct {
 	// Details
 	Details *string `json:"details,omitempty"`
 
+}
+
+func (u *Errordetails) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Errordetails
+
+	
+
+	return json.Marshal(&struct { 
+		Status *int `json:"status,omitempty"`
+		
+		Message *string `json:"message,omitempty"`
+		
+		MessageWithParams *string `json:"messageWithParams,omitempty"`
+		
+		MessageParams *map[string]string `json:"messageParams,omitempty"`
+		
+		Code *string `json:"code,omitempty"`
+		
+		ContextId *string `json:"contextId,omitempty"`
+		
+		Nested **Errordetails `json:"nested,omitempty"`
+		
+		Details *string `json:"details,omitempty"`
+		*Alias
+	}{ 
+		Status: u.Status,
+		
+		Message: u.Message,
+		
+		MessageWithParams: u.MessageWithParams,
+		
+		MessageParams: u.MessageParams,
+		
+		Code: u.Code,
+		
+		ContextId: u.ContextId,
+		
+		Nested: u.Nested,
+		
+		Details: u.Details,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

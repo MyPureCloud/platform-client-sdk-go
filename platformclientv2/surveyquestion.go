@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Surveyquestion struct {
 	// ExplanationPrompt - Prompt for details explaining the chosen NPS score. Used by NPS questions.
 	ExplanationPrompt *string `json:"explanationPrompt,omitempty"`
 
+}
+
+func (u *Surveyquestion) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Surveyquestion
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Text *string `json:"text,omitempty"`
+		
+		HelpText *string `json:"helpText,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		NaEnabled *bool `json:"naEnabled,omitempty"`
+		
+		VisibilityCondition *Visibilitycondition `json:"visibilityCondition,omitempty"`
+		
+		AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
+		
+		MaxResponseCharacters *int `json:"maxResponseCharacters,omitempty"`
+		
+		ExplanationPrompt *string `json:"explanationPrompt,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Text: u.Text,
+		
+		HelpText: u.HelpText,
+		
+		VarType: u.VarType,
+		
+		NaEnabled: u.NaEnabled,
+		
+		VisibilityCondition: u.VisibilityCondition,
+		
+		AnswerOptions: u.AnswerOptions,
+		
+		MaxResponseCharacters: u.MaxResponseCharacters,
+		
+		ExplanationPrompt: u.ExplanationPrompt,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

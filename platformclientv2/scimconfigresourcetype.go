@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Scimconfigresourcetype struct {
 	// Meta - The metadata of the SCIM resource. Only \"location\" and \"resourceType\" are set for \"ResourceType\" resources.
 	Meta *Scimmetadata `json:"meta,omitempty"`
 
+}
+
+func (u *Scimconfigresourcetype) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimconfigresourcetype
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Schemas *[]string `json:"schemas,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Schema *string `json:"schema,omitempty"`
+		
+		SchemaExtensions *[]Scimconfigresourcetypeschemaextension `json:"schemaExtensions,omitempty"`
+		
+		Endpoint *string `json:"endpoint,omitempty"`
+		
+		Meta *Scimmetadata `json:"meta,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Schemas: u.Schemas,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Schema: u.Schema,
+		
+		SchemaExtensions: u.SchemaExtensions,
+		
+		Endpoint: u.Endpoint,
+		
+		Meta: u.Meta,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

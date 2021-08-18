@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Createwebchatrequest struct {
 	// CustomerName - The name of the customer participating in the web chat.
 	CustomerName *string `json:"customerName,omitempty"`
 
+}
+
+func (u *Createwebchatrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createwebchatrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueueId *string `json:"queueId,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		SkillIds *[]string `json:"skillIds,omitempty"`
+		
+		LanguageId *string `json:"languageId,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		
+		Attributes *map[string]string `json:"attributes,omitempty"`
+		
+		CustomerName *string `json:"customerName,omitempty"`
+		*Alias
+	}{ 
+		QueueId: u.QueueId,
+		
+		Provider: u.Provider,
+		
+		SkillIds: u.SkillIds,
+		
+		LanguageId: u.LanguageId,
+		
+		Priority: u.Priority,
+		
+		Attributes: u.Attributes,
+		
+		CustomerName: u.CustomerName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Shrinkageoverrides struct {
 	// Values - List of interval shrinkage overrides
 	Values *[]Shrinkageoverride `json:"values,omitempty"`
 
+}
+
+func (u *Shrinkageoverrides) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shrinkageoverrides
+
+	
+
+	return json.Marshal(&struct { 
+		Clear *bool `json:"clear,omitempty"`
+		
+		Values *[]Shrinkageoverride `json:"values,omitempty"`
+		*Alias
+	}{ 
+		Clear: u.Clear,
+		
+		Values: u.Values,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

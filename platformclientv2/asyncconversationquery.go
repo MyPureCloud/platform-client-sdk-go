@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Asyncconversationquery struct {
 	// StartOfDayIntervalMatching - Add a filter to only include conversations that started after the beginning of the interval start date (UTC)
 	StartOfDayIntervalMatching *bool `json:"startOfDayIntervalMatching,omitempty"`
 
+}
+
+func (u *Asyncconversationquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Asyncconversationquery
+
+	
+
+	return json.Marshal(&struct { 
+		ConversationFilters *[]Conversationdetailqueryfilter `json:"conversationFilters,omitempty"`
+		
+		SegmentFilters *[]Segmentdetailqueryfilter `json:"segmentFilters,omitempty"`
+		
+		EvaluationFilters *[]Evaluationdetailqueryfilter `json:"evaluationFilters,omitempty"`
+		
+		SurveyFilters *[]Surveydetailqueryfilter `json:"surveyFilters,omitempty"`
+		
+		ResolutionFilters *[]Resolutiondetailqueryfilter `json:"resolutionFilters,omitempty"`
+		
+		Order *string `json:"order,omitempty"`
+		
+		OrderBy *string `json:"orderBy,omitempty"`
+		
+		Interval *string `json:"interval,omitempty"`
+		
+		Limit *int `json:"limit,omitempty"`
+		
+		StartOfDayIntervalMatching *bool `json:"startOfDayIntervalMatching,omitempty"`
+		*Alias
+	}{ 
+		ConversationFilters: u.ConversationFilters,
+		
+		SegmentFilters: u.SegmentFilters,
+		
+		EvaluationFilters: u.EvaluationFilters,
+		
+		SurveyFilters: u.SurveyFilters,
+		
+		ResolutionFilters: u.ResolutionFilters,
+		
+		Order: u.Order,
+		
+		OrderBy: u.OrderBy,
+		
+		Interval: u.Interval,
+		
+		Limit: u.Limit,
+		
+		StartOfDayIntervalMatching: u.StartOfDayIntervalMatching,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

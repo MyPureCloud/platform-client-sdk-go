@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -62,6 +63,74 @@ type Interactionstatsrule struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Interactionstatsrule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Interactionstatsrule
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Dimension *string `json:"dimension,omitempty"`
+		
+		DimensionValue *string `json:"dimensionValue,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		NumericRange *string `json:"numericRange,omitempty"`
+		
+		Statistic *string `json:"statistic,omitempty"`
+		
+		Value *float64 `json:"value,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		InAlarm *bool `json:"inAlarm,omitempty"`
+		
+		NotificationUsers *[]User `json:"notificationUsers,omitempty"`
+		
+		AlertTypes *[]string `json:"alertTypes,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Dimension: u.Dimension,
+		
+		DimensionValue: u.DimensionValue,
+		
+		Metric: u.Metric,
+		
+		MediaType: u.MediaType,
+		
+		NumericRange: u.NumericRange,
+		
+		Statistic: u.Statistic,
+		
+		Value: u.Value,
+		
+		Enabled: u.Enabled,
+		
+		InAlarm: u.InAlarm,
+		
+		NotificationUsers: u.NotificationUsers,
+		
+		AlertTypes: u.AlertTypes,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

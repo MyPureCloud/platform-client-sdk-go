@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Domainedgesoftwareversiondto struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Domainedgesoftwareversiondto) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainedgesoftwareversiondto
+
+	
+	PublishDate := new(string)
+	if u.PublishDate != nil {
+		
+		*PublishDate = timeutil.Strftime(u.PublishDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		PublishDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		EdgeVersion *string `json:"edgeVersion,omitempty"`
+		
+		PublishDate *string `json:"publishDate,omitempty"`
+		
+		EdgeUri *string `json:"edgeUri,omitempty"`
+		
+		LatestRelease *bool `json:"latestRelease,omitempty"`
+		
+		Current *bool `json:"current,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		EdgeVersion: u.EdgeVersion,
+		
+		PublishDate: PublishDate,
+		
+		EdgeUri: u.EdgeUri,
+		
+		LatestRelease: u.LatestRelease,
+		
+		Current: u.Current,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

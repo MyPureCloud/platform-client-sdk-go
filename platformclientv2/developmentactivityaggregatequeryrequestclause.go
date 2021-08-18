@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Developmentactivityaggregatequeryrequestclause struct {
 	// Predicates - The list of predicates used to filter the data
 	Predicates *[]Developmentactivityaggregatequeryrequestpredicate `json:"predicates,omitempty"`
 
+}
+
+func (u *Developmentactivityaggregatequeryrequestclause) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Developmentactivityaggregatequeryrequestclause
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Predicates *[]Developmentactivityaggregatequeryrequestpredicate `json:"predicates,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Predicates: u.Predicates,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

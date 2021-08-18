@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Updateworkplanrotationrequest struct {
 	// Metadata - Version metadata for this work plan rotation
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Updateworkplanrotationrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updateworkplanrotationrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		DateRange *Daterangewithoptionalend `json:"dateRange,omitempty"`
+		
+		Agents *[]Updateworkplanrotationagentrequest `json:"agents,omitempty"`
+		
+		Pattern *Workplanpatternrequest `json:"pattern,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Enabled: u.Enabled,
+		
+		DateRange: u.DateRange,
+		
+		Agents: u.Agents,
+		
+		Pattern: u.Pattern,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

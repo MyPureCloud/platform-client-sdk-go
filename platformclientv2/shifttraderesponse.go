@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -79,6 +80,145 @@ type Shifttraderesponse struct {
 	// Metadata - Version data for this trade
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Shifttraderesponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Shifttraderesponse
+
+	
+	WeekDate := new(string)
+	if u.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	} else {
+		WeekDate = nil
+	}
+	
+	InitiatingShiftStart := new(string)
+	if u.InitiatingShiftStart != nil {
+		
+		*InitiatingShiftStart = timeutil.Strftime(u.InitiatingShiftStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InitiatingShiftStart = nil
+	}
+	
+	InitiatingShiftEnd := new(string)
+	if u.InitiatingShiftEnd != nil {
+		
+		*InitiatingShiftEnd = timeutil.Strftime(u.InitiatingShiftEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		InitiatingShiftEnd = nil
+	}
+	
+	ReceivingShiftStart := new(string)
+	if u.ReceivingShiftStart != nil {
+		
+		*ReceivingShiftStart = timeutil.Strftime(u.ReceivingShiftStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReceivingShiftStart = nil
+	}
+	
+	ReceivingShiftEnd := new(string)
+	if u.ReceivingShiftEnd != nil {
+		
+		*ReceivingShiftEnd = timeutil.Strftime(u.ReceivingShiftEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReceivingShiftEnd = nil
+	}
+	
+	Expiration := new(string)
+	if u.Expiration != nil {
+		
+		*Expiration = timeutil.Strftime(u.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Expiration = nil
+	}
+	
+	ReviewedDate := new(string)
+	if u.ReviewedDate != nil {
+		
+		*ReviewedDate = timeutil.Strftime(u.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ReviewedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
+		
+		Schedule *Buschedulereferenceformuroute `json:"schedule,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		InitiatingUser *Userreference `json:"initiatingUser,omitempty"`
+		
+		InitiatingShiftId *string `json:"initiatingShiftId,omitempty"`
+		
+		InitiatingShiftStart *string `json:"initiatingShiftStart,omitempty"`
+		
+		InitiatingShiftEnd *string `json:"initiatingShiftEnd,omitempty"`
+		
+		ReceivingUser *Userreference `json:"receivingUser,omitempty"`
+		
+		ReceivingShiftId *string `json:"receivingShiftId,omitempty"`
+		
+		ReceivingShiftStart *string `json:"receivingShiftStart,omitempty"`
+		
+		ReceivingShiftEnd *string `json:"receivingShiftEnd,omitempty"`
+		
+		Expiration *string `json:"expiration,omitempty"`
+		
+		OneSided *bool `json:"oneSided,omitempty"`
+		
+		AcceptableIntervals *[]string `json:"acceptableIntervals,omitempty"`
+		
+		ReviewedBy *Userreference `json:"reviewedBy,omitempty"`
+		
+		ReviewedDate *string `json:"reviewedDate,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		WeekDate: WeekDate,
+		
+		Schedule: u.Schedule,
+		
+		State: u.State,
+		
+		InitiatingUser: u.InitiatingUser,
+		
+		InitiatingShiftId: u.InitiatingShiftId,
+		
+		InitiatingShiftStart: InitiatingShiftStart,
+		
+		InitiatingShiftEnd: InitiatingShiftEnd,
+		
+		ReceivingUser: u.ReceivingUser,
+		
+		ReceivingShiftId: u.ReceivingShiftId,
+		
+		ReceivingShiftStart: ReceivingShiftStart,
+		
+		ReceivingShiftEnd: ReceivingShiftEnd,
+		
+		Expiration: Expiration,
+		
+		OneSided: u.OneSided,
+		
+		AcceptableIntervals: u.AcceptableIntervals,
+		
+		ReviewedBy: u.ReviewedBy,
+		
+		ReviewedDate: ReviewedDate,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

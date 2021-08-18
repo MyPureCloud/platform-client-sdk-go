@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Edgemetricsprocessor struct {
 	// UserTimePct - Percent time processor spent in user mode.
 	UserTimePct *float64 `json:"userTimePct,omitempty"`
 
+}
+
+func (u *Edgemetricsprocessor) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgemetricsprocessor
+
+	
+
+	return json.Marshal(&struct { 
+		ActiveTimePct *float64 `json:"activeTimePct,omitempty"`
+		
+		CpuId *string `json:"cpuId,omitempty"`
+		
+		IdleTimePct *float64 `json:"idleTimePct,omitempty"`
+		
+		PrivilegedTimePct *float64 `json:"privilegedTimePct,omitempty"`
+		
+		UserTimePct *float64 `json:"userTimePct,omitempty"`
+		*Alias
+	}{ 
+		ActiveTimePct: u.ActiveTimePct,
+		
+		CpuId: u.CpuId,
+		
+		IdleTimePct: u.IdleTimePct,
+		
+		PrivilegedTimePct: u.PrivilegedTimePct,
+		
+		UserTimePct: u.UserTimePct,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

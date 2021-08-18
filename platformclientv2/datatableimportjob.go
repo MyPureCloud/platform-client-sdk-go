@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,86 @@ type Datatableimportjob struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Datatableimportjob) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Datatableimportjob
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateCompleted := new(string)
+	if u.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Owner *Addressableentityref `json:"owner,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		UploadURI *string `json:"uploadURI,omitempty"`
+		
+		ImportMode *string `json:"importMode,omitempty"`
+		
+		ErrorInformation *Errorbody `json:"errorInformation,omitempty"`
+		
+		CountRecordsUpdated *int `json:"countRecordsUpdated,omitempty"`
+		
+		CountRecordsDeleted *int `json:"countRecordsDeleted,omitempty"`
+		
+		CountRecordsFailed *int `json:"countRecordsFailed,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Owner: u.Owner,
+		
+		Status: u.Status,
+		
+		DateCreated: DateCreated,
+		
+		DateCompleted: DateCompleted,
+		
+		UploadURI: u.UploadURI,
+		
+		ImportMode: u.ImportMode,
+		
+		ErrorInformation: u.ErrorInformation,
+		
+		CountRecordsUpdated: u.CountRecordsUpdated,
+		
+		CountRecordsDeleted: u.CountRecordsDeleted,
+		
+		CountRecordsFailed: u.CountRecordsFailed,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

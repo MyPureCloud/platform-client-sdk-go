@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Forecastsourcedaypointer struct {
 	// DataKey - The key to look up the forecast source data for this source day
 	DataKey *string `json:"dataKey,omitempty"`
 
+}
+
+func (u *Forecastsourcedaypointer) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Forecastsourcedaypointer
+
+	
+
+	return json.Marshal(&struct { 
+		DayOfWeek *string `json:"dayOfWeek,omitempty"`
+		
+		Weight *int `json:"weight,omitempty"`
+		
+		Date *string `json:"date,omitempty"`
+		
+		FileName *string `json:"fileName,omitempty"`
+		
+		DataKey *string `json:"dataKey,omitempty"`
+		*Alias
+	}{ 
+		DayOfWeek: u.DayOfWeek,
+		
+		Weight: u.Weight,
+		
+		Date: u.Date,
+		
+		FileName: u.FileName,
+		
+		DataKey: u.DataKey,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

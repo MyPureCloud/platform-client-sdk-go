@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Buagentschedulerescheduleresponse struct {
 	// WorkPlansPerWeek - The work plans per week for this user from the work plan rotation. Null values in the list denotes that user is not part of any work plan for that week
 	WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
 
+}
+
+func (u *Buagentschedulerescheduleresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulerescheduleresponse
+
+	
+
+	return json.Marshal(&struct { 
+		User *Userreference `json:"user,omitempty"`
+		
+		Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
+		
+		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		
+		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
+		
+		WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		Shifts: u.Shifts,
+		
+		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		
+		WorkPlan: u.WorkPlan,
+		
+		WorkPlansPerWeek: u.WorkPlansPerWeek,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

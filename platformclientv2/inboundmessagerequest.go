@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -54,6 +55,66 @@ type Inboundmessagerequest struct {
 	// Subject - The subject of the email
 	Subject *string `json:"subject,omitempty"`
 
+}
+
+func (u *Inboundmessagerequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Inboundmessagerequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueueId *string `json:"queueId,omitempty"`
+		
+		FlowId *string `json:"flowId,omitempty"`
+		
+		Provider *string `json:"provider,omitempty"`
+		
+		SkillIds *[]string `json:"skillIds,omitempty"`
+		
+		LanguageId *string `json:"languageId,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		
+		Attributes *map[string]string `json:"attributes,omitempty"`
+		
+		ToAddress *string `json:"toAddress,omitempty"`
+		
+		ToName *string `json:"toName,omitempty"`
+		
+		FromAddress *string `json:"fromAddress,omitempty"`
+		
+		FromName *string `json:"fromName,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		*Alias
+	}{ 
+		QueueId: u.QueueId,
+		
+		FlowId: u.FlowId,
+		
+		Provider: u.Provider,
+		
+		SkillIds: u.SkillIds,
+		
+		LanguageId: u.LanguageId,
+		
+		Priority: u.Priority,
+		
+		Attributes: u.Attributes,
+		
+		ToAddress: u.ToAddress,
+		
+		ToName: u.ToName,
+		
+		FromAddress: u.FromAddress,
+		
+		FromName: u.FromName,
+		
+		Subject: u.Subject,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

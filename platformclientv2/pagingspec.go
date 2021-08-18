@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Pagingspec struct {
 	// PageNumber - How many pages in
 	PageNumber *int `json:"pageNumber,omitempty"`
 
+}
+
+func (u *Pagingspec) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Pagingspec
+
+	
+
+	return json.Marshal(&struct { 
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		*Alias
+	}{ 
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

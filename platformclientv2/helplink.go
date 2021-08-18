@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Helplink struct {
 	// Description - Description of the document or resource
 	Description *string `json:"description,omitempty"`
 
+}
+
+func (u *Helplink) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Helplink
+
+	
+
+	return json.Marshal(&struct { 
+		Uri *string `json:"uri,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		*Alias
+	}{ 
+		Uri: u.Uri,
+		
+		Title: u.Title,
+		
+		Description: u.Description,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

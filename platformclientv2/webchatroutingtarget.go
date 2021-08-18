@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Webchatroutingtarget struct {
 	// Priority - The priority to assign to the conversation for routing.
 	Priority *int `json:"priority,omitempty"`
 
+}
+
+func (u *Webchatroutingtarget) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Webchatroutingtarget
+
+	
+
+	return json.Marshal(&struct { 
+		TargetType *string `json:"targetType,omitempty"`
+		
+		TargetAddress *string `json:"targetAddress,omitempty"`
+		
+		Skills *[]string `json:"skills,omitempty"`
+		
+		Language *string `json:"language,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		*Alias
+	}{ 
+		TargetType: u.TargetType,
+		
+		TargetAddress: u.TargetAddress,
+		
+		Skills: u.Skills,
+		
+		Language: u.Language,
+		
+		Priority: u.Priority,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

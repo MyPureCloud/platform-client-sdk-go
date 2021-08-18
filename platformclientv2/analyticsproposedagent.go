@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Analyticsproposedagent struct {
 	// ProposedAgentId - Unique identifier for the agent that was proposed by predictive routing
 	ProposedAgentId *string `json:"proposedAgentId,omitempty"`
 
+}
+
+func (u *Analyticsproposedagent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsproposedagent
+
+	
+
+	return json.Marshal(&struct { 
+		AgentRank *int `json:"agentRank,omitempty"`
+		
+		ProposedAgentId *string `json:"proposedAgentId,omitempty"`
+		*Alias
+	}{ 
+		AgentRank: u.AgentRank,
+		
+		ProposedAgentId: u.ProposedAgentId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

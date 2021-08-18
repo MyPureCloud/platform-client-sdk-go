@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Executerecordingjobsquery struct {
 	// State - The desired state for the job to be set to.
 	State *string `json:"state,omitempty"`
 
+}
+
+func (u *Executerecordingjobsquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Executerecordingjobsquery
+
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

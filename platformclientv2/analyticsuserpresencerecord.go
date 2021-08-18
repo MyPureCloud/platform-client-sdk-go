@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,50 @@ type Analyticsuserpresencerecord struct {
 	// OrganizationPresenceId - The identifier for the user's organization presence
 	OrganizationPresenceId *string `json:"organizationPresenceId,omitempty"`
 
+}
+
+func (u *Analyticsuserpresencerecord) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsuserpresencerecord
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		SystemPresence *string `json:"systemPresence,omitempty"`
+		
+		OrganizationPresenceId *string `json:"organizationPresenceId,omitempty"`
+		*Alias
+	}{ 
+		StartTime: StartTime,
+		
+		EndTime: EndTime,
+		
+		SystemPresence: u.SystemPresence,
+		
+		OrganizationPresenceId: u.OrganizationPresenceId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

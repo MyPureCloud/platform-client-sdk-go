@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,58 @@ type Edgemetrics struct {
 	// Networks
 	Networks *[]Edgemetricsnetwork `json:"networks,omitempty"`
 
+}
+
+func (u *Edgemetrics) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Edgemetrics
+
+	
+	EventTime := new(string)
+	if u.EventTime != nil {
+		
+		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Edge *Domainentityref `json:"edge,omitempty"`
+		
+		EventTime *string `json:"eventTime,omitempty"`
+		
+		UpTimeMsec *int `json:"upTimeMsec,omitempty"`
+		
+		Processors *[]Edgemetricsprocessor `json:"processors,omitempty"`
+		
+		Memory *[]Edgemetricsmemory `json:"memory,omitempty"`
+		
+		Disks *[]Edgemetricsdisk `json:"disks,omitempty"`
+		
+		Subsystems *[]Edgemetricssubsystem `json:"subsystems,omitempty"`
+		
+		Networks *[]Edgemetricsnetwork `json:"networks,omitempty"`
+		*Alias
+	}{ 
+		Edge: u.Edge,
+		
+		EventTime: EventTime,
+		
+		UpTimeMsec: u.UpTimeMsec,
+		
+		Processors: u.Processors,
+		
+		Memory: u.Memory,
+		
+		Disks: u.Disks,
+		
+		Subsystems: u.Subsystems,
+		
+		Networks: u.Networks,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

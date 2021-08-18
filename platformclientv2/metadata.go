@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Metadata struct {
 	// PairingUrl
 	PairingUrl *string `json:"pairing-url,omitempty"`
 
+}
+
+func (u *Metadata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Metadata
+
+	
+
+	return json.Marshal(&struct { 
+		PairingToken *string `json:"pairing-token,omitempty"`
+		
+		PairingTrust *[]string `json:"pairing-trust,omitempty"`
+		
+		PairingUrl *string `json:"pairing-url,omitempty"`
+		*Alias
+	}{ 
+		PairingToken: u.PairingToken,
+		
+		PairingTrust: u.PairingTrust,
+		
+		PairingUrl: u.PairingUrl,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

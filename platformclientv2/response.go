@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -63,6 +64,82 @@ type Response struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Response) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Response
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		Libraries *[]Domainentityref `json:"libraries,omitempty"`
+		
+		Texts *[]Responsetext `json:"texts,omitempty"`
+		
+		CreatedBy *User `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		InteractionType *string `json:"interactionType,omitempty"`
+		
+		Substitutions *[]Responsesubstitution `json:"substitutions,omitempty"`
+		
+		SubstitutionsSchema *Jsonschemadocument `json:"substitutionsSchema,omitempty"`
+		
+		ResponseType *string `json:"responseType,omitempty"`
+		
+		MessagingTemplate *Messagingtemplate `json:"messagingTemplate,omitempty"`
+		
+		Assets *[]Addressableentityref `json:"assets,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Version: u.Version,
+		
+		Libraries: u.Libraries,
+		
+		Texts: u.Texts,
+		
+		CreatedBy: u.CreatedBy,
+		
+		DateCreated: DateCreated,
+		
+		InteractionType: u.InteractionType,
+		
+		Substitutions: u.Substitutions,
+		
+		SubstitutionsSchema: u.SubstitutionsSchema,
+		
+		ResponseType: u.ResponseType,
+		
+		MessagingTemplate: u.MessagingTemplate,
+		
+		Assets: u.Assets,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

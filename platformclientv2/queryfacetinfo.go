@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Queryfacetinfo struct {
 	// Facets
 	Facets *[]Facetentry `json:"facets,omitempty"`
 
+}
+
+func (u *Queryfacetinfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queryfacetinfo
+
+	
+
+	return json.Marshal(&struct { 
+		Attributes *[]Facetkeyattribute `json:"attributes,omitempty"`
+		
+		Facets *[]Facetentry `json:"facets,omitempty"`
+		*Alias
+	}{ 
+		Attributes: u.Attributes,
+		
+		Facets: u.Facets,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

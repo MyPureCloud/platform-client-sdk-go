@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Metrics struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Metrics) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Metrics
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Order *int `json:"order,omitempty"`
+		
+		MetricDefinitionName *string `json:"metricDefinitionName,omitempty"`
+		
+		MetricDefinitionId *string `json:"metricDefinitionId,omitempty"`
+		
+		UnitType *string `json:"unitType,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		TemplateName *string `json:"templateName,omitempty"`
+		
+		MaxPoints *int `json:"maxPoints,omitempty"`
+		
+		PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Order: u.Order,
+		
+		MetricDefinitionName: u.MetricDefinitionName,
+		
+		MetricDefinitionId: u.MetricDefinitionId,
+		
+		UnitType: u.UnitType,
+		
+		Enabled: u.Enabled,
+		
+		TemplateName: u.TemplateName,
+		
+		MaxPoints: u.MaxPoints,
+		
+		PerformanceProfileId: u.PerformanceProfileId,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -71,6 +72,106 @@ type Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate struct {
 	// RemovedFromManagementUnit
 	RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
 
+}
+
+func (u *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate
+
+	
+	AdherenceChangeTime := new(string)
+	if u.AdherenceChangeTime != nil {
+		
+		*AdherenceChangeTime = timeutil.Strftime(u.AdherenceChangeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		AdherenceChangeTime = nil
+	}
+	
+	PresenceUpdateTime := new(string)
+	if u.PresenceUpdateTime != nil {
+		
+		*PresenceUpdateTime = timeutil.Strftime(u.PresenceUpdateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		PresenceUpdateTime = nil
+	}
+	
+	ActiveQueuesModifiedTime := new(string)
+	if u.ActiveQueuesModifiedTime != nil {
+		
+		*ActiveQueuesModifiedTime = timeutil.Strftime(u.ActiveQueuesModifiedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ActiveQueuesModifiedTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		User *Wfmuserscheduleadherenceupdatedtopicuserreference `json:"user,omitempty"`
+		
+		ManagementUnitId *string `json:"managementUnitId,omitempty"`
+		
+		Team *Wfmuserscheduleadherenceupdatedtopicurireference `json:"team,omitempty"`
+		
+		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
+		
+		SystemPresence *string `json:"systemPresence,omitempty"`
+		
+		OrganizationSecondaryPresenceId *string `json:"organizationSecondaryPresenceId,omitempty"`
+		
+		RoutingStatus *string `json:"routingStatus,omitempty"`
+		
+		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
+		
+		IsOutOfOffice *bool `json:"isOutOfOffice,omitempty"`
+		
+		AdherenceState *string `json:"adherenceState,omitempty"`
+		
+		Impact *string `json:"impact,omitempty"`
+		
+		AdherenceChangeTime *string `json:"adherenceChangeTime,omitempty"`
+		
+		PresenceUpdateTime *string `json:"presenceUpdateTime,omitempty"`
+		
+		ActiveQueues *[]Wfmuserscheduleadherenceupdatedtopicqueuereference `json:"activeQueues,omitempty"`
+		
+		ActiveQueuesModifiedTime *string `json:"activeQueuesModifiedTime,omitempty"`
+		
+		RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		ManagementUnitId: u.ManagementUnitId,
+		
+		Team: u.Team,
+		
+		ScheduledActivityCategory: u.ScheduledActivityCategory,
+		
+		SystemPresence: u.SystemPresence,
+		
+		OrganizationSecondaryPresenceId: u.OrganizationSecondaryPresenceId,
+		
+		RoutingStatus: u.RoutingStatus,
+		
+		ActualActivityCategory: u.ActualActivityCategory,
+		
+		IsOutOfOffice: u.IsOutOfOffice,
+		
+		AdherenceState: u.AdherenceState,
+		
+		Impact: u.Impact,
+		
+		AdherenceChangeTime: AdherenceChangeTime,
+		
+		PresenceUpdateTime: PresenceUpdateTime,
+		
+		ActiveQueues: u.ActiveQueues,
+		
+		ActiveQueuesModifiedTime: ActiveQueuesModifiedTime,
+		
+		RemovedFromManagementUnit: u.RemovedFromManagementUnit,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

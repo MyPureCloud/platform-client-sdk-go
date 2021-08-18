@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Messengersettings struct {
 	// FileUpload - The file upload settings for messenger
 	FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
 
+}
+
+func (u *Messengersettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messengersettings
+
+	
+
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		Styles *Messengerstyles `json:"styles,omitempty"`
+		
+		LauncherButton *Launcherbuttonsettings `json:"launcherButton,omitempty"`
+		
+		FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
+		*Alias
+	}{ 
+		Enabled: u.Enabled,
+		
+		Styles: u.Styles,
+		
+		LauncherButton: u.LauncherButton,
+		
+		FileUpload: u.FileUpload,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

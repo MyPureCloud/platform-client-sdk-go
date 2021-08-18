@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -54,6 +55,66 @@ type Scimv2schemaattribute struct {
 	// ReferenceTypes - The list of SCIM resource types that may be referenced. Only applies when \"type\" is set to \"reference\".
 	ReferenceTypes *[]string `json:"referenceTypes,omitempty"`
 
+}
+
+func (u *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimv2schemaattribute
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		SubAttributes *[]Scimv2schemaattribute `json:"subAttributes,omitempty"`
+		
+		MultiValued *bool `json:"multiValued,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Required *bool `json:"required,omitempty"`
+		
+		CanonicalValues *[]string `json:"canonicalValues,omitempty"`
+		
+		CaseExact *bool `json:"caseExact,omitempty"`
+		
+		Mutability *string `json:"mutability,omitempty"`
+		
+		Returned *string `json:"returned,omitempty"`
+		
+		Uniqueness *string `json:"uniqueness,omitempty"`
+		
+		ReferenceTypes *[]string `json:"referenceTypes,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		VarType: u.VarType,
+		
+		SubAttributes: u.SubAttributes,
+		
+		MultiValued: u.MultiValued,
+		
+		Description: u.Description,
+		
+		Required: u.Required,
+		
+		CanonicalValues: u.CanonicalValues,
+		
+		CaseExact: u.CaseExact,
+		
+		Mutability: u.Mutability,
+		
+		Returned: u.Returned,
+		
+		Uniqueness: u.Uniqueness,
+		
+		ReferenceTypes: u.ReferenceTypes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

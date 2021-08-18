@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Queueconversationcalleventtopicfaxstatus struct {
 	// LineErrors
 	LineErrors *int `json:"lineErrors,omitempty"`
 
+}
+
+func (u *Queueconversationcalleventtopicfaxstatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queueconversationcalleventtopicfaxstatus
+
+	
+
+	return json.Marshal(&struct { 
+		Direction *string `json:"direction,omitempty"`
+		
+		ExpectedPages *int `json:"expectedPages,omitempty"`
+		
+		ActivePage *int `json:"activePage,omitempty"`
+		
+		LinesTransmitted *int `json:"linesTransmitted,omitempty"`
+		
+		BytesTransmitted *int `json:"bytesTransmitted,omitempty"`
+		
+		DataRate *int `json:"dataRate,omitempty"`
+		
+		PageErrors *int `json:"pageErrors,omitempty"`
+		
+		LineErrors *int `json:"lineErrors,omitempty"`
+		*Alias
+	}{ 
+		Direction: u.Direction,
+		
+		ExpectedPages: u.ExpectedPages,
+		
+		ActivePage: u.ActivePage,
+		
+		LinesTransmitted: u.LinesTransmitted,
+		
+		BytesTransmitted: u.BytesTransmitted,
+		
+		DataRate: u.DataRate,
+		
+		PageErrors: u.PageErrors,
+		
+		LineErrors: u.LineErrors,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -87,6 +88,114 @@ type Historylisting struct {
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
 
+}
+
+func (u *Historylisting) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Historylisting
+
+	
+	Started := new(string)
+	if u.Started != nil {
+		
+		*Started = timeutil.Strftime(u.Started, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Started = nil
+	}
+	
+	Completed := new(string)
+	if u.Completed != nil {
+		
+		*Completed = timeutil.Strftime(u.Completed, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		Completed = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Complete *bool `json:"complete,omitempty"`
+		
+		User *User `json:"user,omitempty"`
+		
+		Client *Domainentityref `json:"client,omitempty"`
+		
+		ErrorMessage *string `json:"errorMessage,omitempty"`
+		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
+		ErrorDetails *[]Detail `json:"errorDetails,omitempty"`
+		
+		ErrorMessageParams *map[string]string `json:"errorMessageParams,omitempty"`
+		
+		ActionName *string `json:"actionName,omitempty"`
+		
+		ActionStatus *string `json:"actionStatus,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		System *bool `json:"system,omitempty"`
+		
+		Started *string `json:"started,omitempty"`
+		
+		Completed *string `json:"completed,omitempty"`
+		
+		Entities *[]Historyentry `json:"entities,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Complete: u.Complete,
+		
+		User: u.User,
+		
+		Client: u.Client,
+		
+		ErrorMessage: u.ErrorMessage,
+		
+		ErrorCode: u.ErrorCode,
+		
+		ErrorDetails: u.ErrorDetails,
+		
+		ErrorMessageParams: u.ErrorMessageParams,
+		
+		ActionName: u.ActionName,
+		
+		ActionStatus: u.ActionStatus,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		System: u.System,
+		
+		Started: Started,
+		
+		Completed: Completed,
+		
+		Entities: u.Entities,
+		
+		Total: u.Total,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		PageCount: u.PageCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Weekschedule struct {
 	// AgentSchedulesVersion - Version of agent schedules in the week schedule
 	AgentSchedulesVersion *int `json:"agentSchedulesVersion,omitempty"`
 
+}
+
+func (u *Weekschedule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Weekschedule
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		WeekDate *string `json:"weekDate,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Published *bool `json:"published,omitempty"`
+		
+		GenerationResults *Weekschedulegenerationresult `json:"generationResults,omitempty"`
+		
+		ShortTermForecast *Shorttermforecastreference `json:"shortTermForecast,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		
+		UserSchedules *map[string]Userschedule `json:"userSchedules,omitempty"`
+		
+		HeadcountForecast *Headcountforecast `json:"headcountForecast,omitempty"`
+		
+		AgentSchedulesVersion *int `json:"agentSchedulesVersion,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		SelfUri: u.SelfUri,
+		
+		WeekDate: u.WeekDate,
+		
+		Description: u.Description,
+		
+		Published: u.Published,
+		
+		GenerationResults: u.GenerationResults,
+		
+		ShortTermForecast: u.ShortTermForecast,
+		
+		Metadata: u.Metadata,
+		
+		UserSchedules: u.UserSchedules,
+		
+		HeadcountForecast: u.HeadcountForecast,
+		
+		AgentSchedulesVersion: u.AgentSchedulesVersion,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

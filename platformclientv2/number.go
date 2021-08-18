@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Number struct {
 	// End
 	End *string `json:"end,omitempty"`
 
+}
+
+func (u *Number) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Number
+
+	
+
+	return json.Marshal(&struct { 
+		Start *string `json:"start,omitempty"`
+		
+		End *string `json:"end,omitempty"`
+		*Alias
+	}{ 
+		Start: u.Start,
+		
+		End: u.End,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

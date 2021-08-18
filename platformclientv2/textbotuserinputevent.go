@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Textbotuserinputevent struct {
 	// Alternatives - The input alternatives.
 	Alternatives *[]Textbotuserinputalternative `json:"alternatives,omitempty"`
 
+}
+
+func (u *Textbotuserinputevent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotuserinputevent
+
+	
+
+	return json.Marshal(&struct { 
+		Mode *string `json:"mode,omitempty"`
+		
+		Alternatives *[]Textbotuserinputalternative `json:"alternatives,omitempty"`
+		*Alias
+	}{ 
+		Mode: u.Mode,
+		
+		Alternatives: u.Alternatives,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

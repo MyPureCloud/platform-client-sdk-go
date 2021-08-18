@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Patchcontentofferstyleproperties struct {
 	// BackgroundColor - Background color of the offer. (eg. #000000)
 	BackgroundColor *string `json:"backgroundColor,omitempty"`
 
+}
+
+func (u *Patchcontentofferstyleproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Patchcontentofferstyleproperties
+
+	
+
+	return json.Marshal(&struct { 
+		Padding *string `json:"padding,omitempty"`
+		
+		Color *string `json:"color,omitempty"`
+		
+		BackgroundColor *string `json:"backgroundColor,omitempty"`
+		*Alias
+	}{ 
+		Padding: u.Padding,
+		
+		Color: u.Color,
+		
+		BackgroundColor: u.BackgroundColor,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

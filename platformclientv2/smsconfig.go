@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Smsconfig struct {
 	// SenderSmsPhoneNumber - A reference to the SMS Phone Number that will be used as the sender of a message.
 	SenderSmsPhoneNumber *Smsphonenumberref `json:"senderSmsPhoneNumber,omitempty"`
 
+}
+
+func (u *Smsconfig) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Smsconfig
+
+	
+
+	return json.Marshal(&struct { 
+		MessageColumn *string `json:"messageColumn,omitempty"`
+		
+		PhoneColumn *string `json:"phoneColumn,omitempty"`
+		
+		SenderSmsPhoneNumber *Smsphonenumberref `json:"senderSmsPhoneNumber,omitempty"`
+		*Alias
+	}{ 
+		MessageColumn: u.MessageColumn,
+		
+		PhoneColumn: u.PhoneColumn,
+		
+		SenderSmsPhoneNumber: u.SenderSmsPhoneNumber,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

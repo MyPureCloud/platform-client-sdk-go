@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -59,6 +60,78 @@ type Auditlogmessage struct {
 	// Context - Additional context for this message.
 	Context *map[string]string `json:"context,omitempty"`
 
+}
+
+func (u *Auditlogmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Auditlogmessage
+
+	
+	EventDate := new(string)
+	if u.EventDate != nil {
+		
+		*EventDate = timeutil.Strftime(u.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EventDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		UserHomeOrgId *string `json:"userHomeOrgId,omitempty"`
+		
+		User *Domainentityref `json:"user,omitempty"`
+		
+		Client *Addressableentityref `json:"client,omitempty"`
+		
+		RemoteIp *[]string `json:"remoteIp,omitempty"`
+		
+		ServiceName *string `json:"serviceName,omitempty"`
+		
+		EventDate *string `json:"eventDate,omitempty"`
+		
+		Message *Messageinfo `json:"message,omitempty"`
+		
+		Action *string `json:"action,omitempty"`
+		
+		Entity *Domainentityref `json:"entity,omitempty"`
+		
+		EntityType *string `json:"entityType,omitempty"`
+		
+		PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
+		
+		Context *map[string]string `json:"context,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		UserHomeOrgId: u.UserHomeOrgId,
+		
+		User: u.User,
+		
+		Client: u.Client,
+		
+		RemoteIp: u.RemoteIp,
+		
+		ServiceName: u.ServiceName,
+		
+		EventDate: EventDate,
+		
+		Message: u.Message,
+		
+		Action: u.Action,
+		
+		Entity: u.Entity,
+		
+		EntityType: u.EntityType,
+		
+		PropertyChanges: u.PropertyChanges,
+		
+		Context: u.Context,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

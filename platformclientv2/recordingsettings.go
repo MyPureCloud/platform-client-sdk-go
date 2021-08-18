@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Recordingsettings struct {
 	// MaxConfigurableScreenRecordingStreams - Upper limit that maxSimultaneousStreams can be configured
 	MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
 
+}
+
+func (u *Recordingsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recordingsettings
+
+	
+
+	return json.Marshal(&struct { 
+		MaxSimultaneousStreams *int `json:"maxSimultaneousStreams,omitempty"`
+		
+		MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
+		*Alias
+	}{ 
+		MaxSimultaneousStreams: u.MaxSimultaneousStreams,
+		
+		MaxConfigurableScreenRecordingStreams: u.MaxConfigurableScreenRecordingStreams,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

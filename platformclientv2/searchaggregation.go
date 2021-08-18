@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Searchaggregation struct {
 	// Order - The order in which aggregation results are sorted
 	Order *[]string `json:"order,omitempty"`
 
+}
+
+func (u *Searchaggregation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Searchaggregation
+
+	
+
+	return json.Marshal(&struct { 
+		Field *string `json:"field,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		Size *int `json:"size,omitempty"`
+		
+		Order *[]string `json:"order,omitempty"`
+		*Alias
+	}{ 
+		Field: u.Field,
+		
+		Name: u.Name,
+		
+		VarType: u.VarType,
+		
+		Value: u.Value,
+		
+		Size: u.Size,
+		
+		Order: u.Order,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

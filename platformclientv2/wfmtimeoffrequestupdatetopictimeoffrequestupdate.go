@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -78,6 +79,90 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 	// ModifiedBy
 	ModifiedBy *string `json:"modifiedBy,omitempty"`
 
+}
+
+func (u *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmtimeoffrequestupdatetopictimeoffrequestupdate
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		User *Wfmtimeoffrequestupdatetopicuserreference `json:"user,omitempty"`
+		
+		IsFullDayRequest *bool `json:"isFullDayRequest,omitempty"`
+		
+		MarkedAsRead *bool `json:"markedAsRead,omitempty"`
+		
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		Paid *bool `json:"paid,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Substatus *string `json:"substatus,omitempty"`
+		
+		PartialDayStartDateTimes *[]string `json:"partialDayStartDateTimes,omitempty"`
+		
+		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
+		
+		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		ReviewedDate *string `json:"reviewedDate,omitempty"`
+		
+		ReviewedBy *string `json:"reviewedBy,omitempty"`
+		
+		SubmittedDate *string `json:"submittedDate,omitempty"`
+		
+		SubmittedBy *string `json:"submittedBy,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		User: u.User,
+		
+		IsFullDayRequest: u.IsFullDayRequest,
+		
+		MarkedAsRead: u.MarkedAsRead,
+		
+		ActivityCodeId: u.ActivityCodeId,
+		
+		Paid: u.Paid,
+		
+		Status: u.Status,
+		
+		Substatus: u.Substatus,
+		
+		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		
+		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		
+		DailyDurationMinutes: u.DailyDurationMinutes,
+		
+		Notes: u.Notes,
+		
+		ReviewedDate: u.ReviewedDate,
+		
+		ReviewedBy: u.ReviewedBy,
+		
+		SubmittedDate: u.SubmittedDate,
+		
+		SubmittedBy: u.SubmittedBy,
+		
+		ModifiedDate: u.ModifiedDate,
+		
+		ModifiedBy: u.ModifiedBy,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

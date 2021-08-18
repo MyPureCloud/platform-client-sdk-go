@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Domainresourceconditionvalue struct {
 	// VarType
 	VarType *string `json:"type,omitempty"`
 
+}
+
+func (u *Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Domainresourceconditionvalue
+
+	
+
+	return json.Marshal(&struct { 
+		User *User `json:"user,omitempty"`
+		
+		Queue *Queue `json:"queue,omitempty"`
+		
+		Value *string `json:"value,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		Queue: u.Queue,
+		
+		Value: u.Value,
+		
+		VarType: u.VarType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

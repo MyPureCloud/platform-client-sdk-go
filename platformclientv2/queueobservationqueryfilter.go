@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Queueobservationqueryfilter struct {
 	// Predicates - Like a three-word sentence: (attribute-name) (operator) (target-value).
 	Predicates *[]Queueobservationquerypredicate `json:"predicates,omitempty"`
 
+}
+
+func (u *Queueobservationqueryfilter) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queueobservationqueryfilter
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Clauses *[]Queueobservationqueryclause `json:"clauses,omitempty"`
+		
+		Predicates *[]Queueobservationquerypredicate `json:"predicates,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Clauses: u.Clauses,
+		
+		Predicates: u.Predicates,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

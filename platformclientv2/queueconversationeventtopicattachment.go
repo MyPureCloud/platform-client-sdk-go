@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Queueconversationeventtopicattachment struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Queueconversationeventtopicattachment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queueconversationeventtopicattachment
+
+	
+
+	return json.Marshal(&struct { 
+		AttachmentId *string `json:"attachmentId,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ContentUri *string `json:"contentUri,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		
+		ContentLength *int `json:"contentLength,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		AttachmentId: u.AttachmentId,
+		
+		Name: u.Name,
+		
+		ContentUri: u.ContentUri,
+		
+		ContentType: u.ContentType,
+		
+		ContentLength: u.ContentLength,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

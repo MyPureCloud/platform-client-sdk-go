@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Chat struct {
 	// JabberId
 	JabberId *string `json:"jabberId,omitempty"`
 
+}
+
+func (u *Chat) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Chat
+
+	
+
+	return json.Marshal(&struct { 
+		JabberId *string `json:"jabberId,omitempty"`
+		*Alias
+	}{ 
+		JabberId: u.JabberId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

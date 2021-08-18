@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -42,6 +43,54 @@ type Documentupdate struct {
 	// RemoveAttributes
 	RemoveAttributes *[]string `json:"removeAttributes,omitempty"`
 
+}
+
+func (u *Documentupdate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Documentupdate
+
+	
+
+	return json.Marshal(&struct { 
+		ChangeNumber *int `json:"changeNumber,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Read *bool `json:"read,omitempty"`
+		
+		AddTags *[]string `json:"addTags,omitempty"`
+		
+		RemoveTags *[]string `json:"removeTags,omitempty"`
+		
+		AddTagIds *[]string `json:"addTagIds,omitempty"`
+		
+		RemoveTagIds *[]string `json:"removeTagIds,omitempty"`
+		
+		UpdateAttributes *[]Documentattribute `json:"updateAttributes,omitempty"`
+		
+		RemoveAttributes *[]string `json:"removeAttributes,omitempty"`
+		*Alias
+	}{ 
+		ChangeNumber: u.ChangeNumber,
+		
+		Name: u.Name,
+		
+		Read: u.Read,
+		
+		AddTags: u.AddTags,
+		
+		RemoveTags: u.RemoveTags,
+		
+		AddTagIds: u.AddTagIds,
+		
+		RemoveTagIds: u.RemoveTagIds,
+		
+		UpdateAttributes: u.UpdateAttributes,
+		
+		RemoveAttributes: u.RemoveAttributes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

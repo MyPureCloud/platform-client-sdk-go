@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Knowledgesearchrequest struct {
 	// SearchOnDraftDocuments - If true the search query will be executed on draft documents, else it will be on active documents
 	SearchOnDraftDocuments *bool `json:"searchOnDraftDocuments,omitempty"`
 
+}
+
+func (u *Knowledgesearchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Knowledgesearchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Query *string `json:"query,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		DocumentType *string `json:"documentType,omitempty"`
+		
+		LanguageCode *string `json:"languageCode,omitempty"`
+		
+		SearchOnDraftDocuments *bool `json:"searchOnDraftDocuments,omitempty"`
+		*Alias
+	}{ 
+		Query: u.Query,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		DocumentType: u.DocumentType,
+		
+		LanguageCode: u.LanguageCode,
+		
+		SearchOnDraftDocuments: u.SearchOnDraftDocuments,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Textbotdisconnectaction struct {
 	// FlowLocation - Describes where in the Bot Flow the user was when the disconnect occurred.
 	FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
 
+}
+
+func (u *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotdisconnectaction
+
+	
+
+	return json.Marshal(&struct { 
+		Reason *string `json:"reason,omitempty"`
+		
+		ReasonExtendedInfo *string `json:"reasonExtendedInfo,omitempty"`
+		
+		FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
+		*Alias
+	}{ 
+		Reason: u.Reason,
+		
+		ReasonExtendedInfo: u.ReasonExtendedInfo,
+		
+		FlowLocation: u.FlowLocation,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Updateworkplanrotationagentrequest struct {
 	// Delete - If marked true for this agent when updating, then this agent will be removed from this work plan rotation
 	Delete *bool `json:"delete,omitempty"`
 
+}
+
+func (u *Updateworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Updateworkplanrotationagentrequest
+
+	
+
+	return json.Marshal(&struct { 
+		UserId *string `json:"userId,omitempty"`
+		
+		DateRange *Daterangewithoptionalend `json:"dateRange,omitempty"`
+		
+		Position *int `json:"position,omitempty"`
+		
+		Delete *bool `json:"delete,omitempty"`
+		*Alias
+	}{ 
+		UserId: u.UserId,
+		
+		DateRange: u.DateRange,
+		
+		Position: u.Position,
+		
+		Delete: u.Delete,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

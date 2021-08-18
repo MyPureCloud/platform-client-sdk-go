@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Queryrequest struct {
 	// IncludeShares
 	IncludeShares *bool `json:"includeShares,omitempty"`
 
+}
+
+func (u *Queryrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queryrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueryPhrase *string `json:"queryPhrase,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		FacetNameRequests *[]string `json:"facetNameRequests,omitempty"`
+		
+		Sort *[]Sortitem `json:"sort,omitempty"`
+		
+		Filters *[]Contentfilteritem `json:"filters,omitempty"`
+		
+		AttributeFilters *[]Attributefilteritem `json:"attributeFilters,omitempty"`
+		
+		IncludeShares *bool `json:"includeShares,omitempty"`
+		*Alias
+	}{ 
+		QueryPhrase: u.QueryPhrase,
+		
+		PageNumber: u.PageNumber,
+		
+		PageSize: u.PageSize,
+		
+		FacetNameRequests: u.FacetNameRequests,
+		
+		Sort: u.Sort,
+		
+		Filters: u.Filters,
+		
+		AttributeFilters: u.AttributeFilters,
+		
+		IncludeShares: u.IncludeShares,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

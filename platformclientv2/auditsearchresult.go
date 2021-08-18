@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Auditsearchresult struct {
 	// AuditMessages
 	AuditMessages *[]Auditmessage `json:"auditMessages,omitempty"`
 
+}
+
+func (u *Auditsearchresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Auditsearchresult
+
+	
+
+	return json.Marshal(&struct { 
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
+		
+		FacetInfo *[]Facetinfo `json:"facetInfo,omitempty"`
+		
+		AuditMessages *[]Auditmessage `json:"auditMessages,omitempty"`
+		*Alias
+	}{ 
+		PageNumber: u.PageNumber,
+		
+		PageSize: u.PageSize,
+		
+		Total: u.Total,
+		
+		PageCount: u.PageCount,
+		
+		FacetInfo: u.FacetInfo,
+		
+		AuditMessages: u.AuditMessages,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Textstyleproperties struct {
 	// TextAlign - Text alignment.
 	TextAlign *string `json:"textAlign,omitempty"`
 
+}
+
+func (u *Textstyleproperties) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textstyleproperties
+
+	
+
+	return json.Marshal(&struct { 
+		Color *string `json:"color,omitempty"`
+		
+		Font *string `json:"font,omitempty"`
+		
+		FontSize *string `json:"fontSize,omitempty"`
+		
+		TextAlign *string `json:"textAlign,omitempty"`
+		*Alias
+	}{ 
+		Color: u.Color,
+		
+		Font: u.Font,
+		
+		FontSize: u.FontSize,
+		
+		TextAlign: u.TextAlign,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

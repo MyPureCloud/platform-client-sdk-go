@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -75,6 +76,142 @@ type Trusteebillingoverview struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Trusteebillingoverview) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trusteebillingoverview
+
+	
+	RampPeriodStartDate := new(string)
+	if u.RampPeriodStartDate != nil {
+		
+		*RampPeriodStartDate = timeutil.Strftime(u.RampPeriodStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RampPeriodStartDate = nil
+	}
+	
+	RampPeriodEndDate := new(string)
+	if u.RampPeriodEndDate != nil {
+		
+		*RampPeriodEndDate = timeutil.Strftime(u.RampPeriodEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		RampPeriodEndDate = nil
+	}
+	
+	BillingPeriodStartDate := new(string)
+	if u.BillingPeriodStartDate != nil {
+		
+		*BillingPeriodStartDate = timeutil.Strftime(u.BillingPeriodStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		BillingPeriodStartDate = nil
+	}
+	
+	BillingPeriodEndDate := new(string)
+	if u.BillingPeriodEndDate != nil {
+		
+		*BillingPeriodEndDate = timeutil.Strftime(u.BillingPeriodEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		BillingPeriodEndDate = nil
+	}
+	
+	ContractAmendmentDate := new(string)
+	if u.ContractAmendmentDate != nil {
+		
+		*ContractAmendmentDate = timeutil.Strftime(u.ContractAmendmentDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ContractAmendmentDate = nil
+	}
+	
+	ContractEffectiveDate := new(string)
+	if u.ContractEffectiveDate != nil {
+		
+		*ContractEffectiveDate = timeutil.Strftime(u.ContractEffectiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ContractEffectiveDate = nil
+	}
+	
+	ContractEndDate := new(string)
+	if u.ContractEndDate != nil {
+		
+		*ContractEndDate = timeutil.Strftime(u.ContractEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ContractEndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Organization *Namedentity `json:"organization,omitempty"`
+		
+		Currency *string `json:"currency,omitempty"`
+		
+		EnabledProducts *[]string `json:"enabledProducts,omitempty"`
+		
+		SubscriptionType *string `json:"subscriptionType,omitempty"`
+		
+		RampPeriodStartDate *string `json:"rampPeriodStartDate,omitempty"`
+		
+		RampPeriodEndDate *string `json:"rampPeriodEndDate,omitempty"`
+		
+		BillingPeriodStartDate *string `json:"billingPeriodStartDate,omitempty"`
+		
+		BillingPeriodEndDate *string `json:"billingPeriodEndDate,omitempty"`
+		
+		Usages *[]Subscriptionoverviewusage `json:"usages,omitempty"`
+		
+		ContractAmendmentDate *string `json:"contractAmendmentDate,omitempty"`
+		
+		ContractEffectiveDate *string `json:"contractEffectiveDate,omitempty"`
+		
+		ContractEndDate *string `json:"contractEndDate,omitempty"`
+		
+		MinimumMonthlyAmount *string `json:"minimumMonthlyAmount,omitempty"`
+		
+		InRampPeriod *bool `json:"inRampPeriod,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Organization: u.Organization,
+		
+		Currency: u.Currency,
+		
+		EnabledProducts: u.EnabledProducts,
+		
+		SubscriptionType: u.SubscriptionType,
+		
+		RampPeriodStartDate: RampPeriodStartDate,
+		
+		RampPeriodEndDate: RampPeriodEndDate,
+		
+		BillingPeriodStartDate: BillingPeriodStartDate,
+		
+		BillingPeriodEndDate: BillingPeriodEndDate,
+		
+		Usages: u.Usages,
+		
+		ContractAmendmentDate: ContractAmendmentDate,
+		
+		ContractEffectiveDate: ContractEffectiveDate,
+		
+		ContractEndDate: ContractEndDate,
+		
+		MinimumMonthlyAmount: u.MinimumMonthlyAmount,
+		
+		InRampPeriod: u.InRampPeriod,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

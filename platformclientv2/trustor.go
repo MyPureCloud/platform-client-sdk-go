@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Trustor struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Trustor) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trustor
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		CreatedBy *Orguser `json:"createdBy,omitempty"`
+		
+		Organization *Organization `json:"organization,omitempty"`
+		
+		Authorization *Trusteeauthorization `json:"authorization,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Enabled: u.Enabled,
+		
+		DateCreated: DateCreated,
+		
+		CreatedBy: u.CreatedBy,
+		
+		Organization: u.Organization,
+		
+		Authorization: u.Authorization,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

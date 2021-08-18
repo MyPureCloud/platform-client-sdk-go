@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -19,6 +20,38 @@ type Propertyindexrequest struct {
 	// Properties - The list of properties to index
 	Properties *[]Analyticsproperty `json:"properties,omitempty"`
 
+}
+
+func (u *Propertyindexrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Propertyindexrequest
+
+	
+	TargetDate := new(string)
+	if u.TargetDate != nil {
+		
+		*TargetDate = timeutil.Strftime(u.TargetDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		TargetDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		SessionId *string `json:"sessionId,omitempty"`
+		
+		TargetDate *string `json:"targetDate,omitempty"`
+		
+		Properties *[]Analyticsproperty `json:"properties,omitempty"`
+		*Alias
+	}{ 
+		SessionId: u.SessionId,
+		
+		TargetDate: TargetDate,
+		
+		Properties: u.Properties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

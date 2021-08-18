@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -39,6 +40,66 @@ type Conversationbasic struct {
 	// Participants
 	Participants *[]Participantbasic `json:"participants,omitempty"`
 
+}
+
+func (u *Conversationbasic) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Conversationbasic
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ExternalTag *string `json:"externalTag,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		Divisions *[]Conversationdivisionmembership `json:"divisions,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Participants *[]Participantbasic `json:"participants,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ExternalTag: u.ExternalTag,
+		
+		StartTime: StartTime,
+		
+		EndTime: EndTime,
+		
+		Divisions: u.Divisions,
+		
+		SelfUri: u.SelfUri,
+		
+		Participants: u.Participants,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

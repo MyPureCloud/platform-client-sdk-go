@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Messagingtemplaterequest struct {
 	// Parameters - A list of Response Management response substitutions for the response's messaging template
 	Parameters *[]Templateparameter `json:"parameters,omitempty"`
 
+}
+
+func (u *Messagingtemplaterequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Messagingtemplaterequest
+
+	
+
+	return json.Marshal(&struct { 
+		ResponseId *string `json:"responseId,omitempty"`
+		
+		Parameters *[]Templateparameter `json:"parameters,omitempty"`
+		*Alias
+	}{ 
+		ResponseId: u.ResponseId,
+		
+		Parameters: u.Parameters,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

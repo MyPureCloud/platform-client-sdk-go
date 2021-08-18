@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Recallentry struct {
 	// MinutesBetweenAttempts
 	MinutesBetweenAttempts *int `json:"minutesBetweenAttempts,omitempty"`
 
+}
+
+func (u *Recallentry) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recallentry
+
+	
+
+	return json.Marshal(&struct { 
+		NbrAttempts *int `json:"nbrAttempts,omitempty"`
+		
+		MinutesBetweenAttempts *int `json:"minutesBetweenAttempts,omitempty"`
+		*Alias
+	}{ 
+		NbrAttempts: u.NbrAttempts,
+		
+		MinutesBetweenAttempts: u.MinutesBetweenAttempts,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

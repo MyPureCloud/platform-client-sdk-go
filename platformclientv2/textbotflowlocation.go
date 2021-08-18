@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Textbotflowlocation struct {
 	// SequenceName - The name of the state or task which was active when the event of interest happened.
 	SequenceName *string `json:"sequenceName,omitempty"`
 
+}
+
+func (u *Textbotflowlocation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Textbotflowlocation
+
+	
+
+	return json.Marshal(&struct { 
+		ActionName *string `json:"actionName,omitempty"`
+		
+		ActionNumber *int `json:"actionNumber,omitempty"`
+		
+		SequenceName *string `json:"sequenceName,omitempty"`
+		*Alias
+	}{ 
+		ActionName: u.ActionName,
+		
+		ActionNumber: u.ActionNumber,
+		
+		SequenceName: u.SequenceName,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

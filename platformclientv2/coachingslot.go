@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,46 @@ type Coachingslot struct {
 	// WfmSchedule - Workforce Management schedule information associated with the slot
 	WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
 
+}
+
+func (u *Coachingslot) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Coachingslot
+
+	
+	DateStart := new(string)
+	if u.DateStart != nil {
+		
+		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateStart *string `json:"dateStart,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		StaffingDifference *float64 `json:"staffingDifference,omitempty"`
+		
+		DifferenceRating *string `json:"differenceRating,omitempty"`
+		
+		WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+		*Alias
+	}{ 
+		DateStart: DateStart,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		StaffingDifference: u.StaffingDifference,
+		
+		DifferenceRating: u.DifferenceRating,
+		
+		WfmSchedule: u.WfmSchedule,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

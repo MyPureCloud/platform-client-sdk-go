@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,54 @@ type Bumanagementunitschedulesummary struct {
 	// Agents - The agents in the management unit who are part of this schedule, or in schedule change notifications, the agents that were changed. Note this will come back as an empty list unless the appropriate expand query parameter is passed
 	Agents *[]Userreference `json:"agents,omitempty"`
 
+}
+
+func (u *Bumanagementunitschedulesummary) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Bumanagementunitschedulesummary
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+	EndDate := new(string)
+	if u.EndDate != nil {
+		
+		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
+		
+		AgentCount *int `json:"agentCount,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		EndDate *string `json:"endDate,omitempty"`
+		
+		Agents *[]Userreference `json:"agents,omitempty"`
+		*Alias
+	}{ 
+		ManagementUnit: u.ManagementUnit,
+		
+		AgentCount: u.AgentCount,
+		
+		StartDate: StartDate,
+		
+		EndDate: EndDate,
+		
+		Agents: u.Agents,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Suggestsearchrequest struct {
 	// Query - Suggest query
 	Query *[]Suggestsearchcriteria `json:"query,omitempty"`
 
+}
+
+func (u *Suggestsearchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Suggestsearchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Expand *[]string `json:"expand,omitempty"`
+		
+		Types *[]string `json:"types,omitempty"`
+		
+		Query *[]Suggestsearchcriteria `json:"query,omitempty"`
+		*Alias
+	}{ 
+		Expand: u.Expand,
+		
+		Types: u.Types,
+		
+		Query: u.Query,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

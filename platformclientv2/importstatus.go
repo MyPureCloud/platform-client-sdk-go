@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Importstatus struct {
 	// FailureReason - if the import has failed, the reason for the failure
 	FailureReason *string `json:"failureReason,omitempty"`
 
+}
+
+func (u *Importstatus) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Importstatus
+
+	
+
+	return json.Marshal(&struct { 
+		State *string `json:"state,omitempty"`
+		
+		TotalRecords *int `json:"totalRecords,omitempty"`
+		
+		CompletedRecords *int `json:"completedRecords,omitempty"`
+		
+		PercentComplete *int `json:"percentComplete,omitempty"`
+		
+		FailureReason *string `json:"failureReason,omitempty"`
+		*Alias
+	}{ 
+		State: u.State,
+		
+		TotalRecords: u.TotalRecords,
+		
+		CompletedRecords: u.CompletedRecords,
+		
+		PercentComplete: u.PercentComplete,
+		
+		FailureReason: u.FailureReason,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

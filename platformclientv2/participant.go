@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -187,6 +188,238 @@ type Participant struct {
 	// EndAcwTime - The timestamp when this participant ended after-call work. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+}
+
+func (u *Participant) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Participant
+
+	
+	StartTime := new(string)
+	if u.StartTime != nil {
+		
+		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartTime = nil
+	}
+	
+	EndTime := new(string)
+	if u.EndTime != nil {
+		
+		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndTime = nil
+	}
+	
+	ConnectedTime := new(string)
+	if u.ConnectedTime != nil {
+		
+		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ConnectedTime = nil
+	}
+	
+	StartAcwTime := new(string)
+	if u.StartAcwTime != nil {
+		
+		*StartAcwTime = timeutil.Strftime(u.StartAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartAcwTime = nil
+	}
+	
+	EndAcwTime := new(string)
+	if u.EndAcwTime != nil {
+		
+		*EndAcwTime = timeutil.Strftime(u.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		EndAcwTime = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		StartTime *string `json:"startTime,omitempty"`
+		
+		EndTime *string `json:"endTime,omitempty"`
+		
+		ConnectedTime *string `json:"connectedTime,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		UserUri *string `json:"userUri,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
+		
+		GroupId *string `json:"groupId,omitempty"`
+		
+		TeamId *string `json:"teamId,omitempty"`
+		
+		QueueName *string `json:"queueName,omitempty"`
+		
+		Purpose *string `json:"purpose,omitempty"`
+		
+		ParticipantType *string `json:"participantType,omitempty"`
+		
+		ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
+		
+		Address *string `json:"address,omitempty"`
+		
+		Ani *string `json:"ani,omitempty"`
+		
+		AniName *string `json:"aniName,omitempty"`
+		
+		Dnis *string `json:"dnis,omitempty"`
+		
+		Locale *string `json:"locale,omitempty"`
+		
+		WrapupRequired *bool `json:"wrapupRequired,omitempty"`
+		
+		WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
+		
+		WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
+		
+		WrapupSkipped *bool `json:"wrapupSkipped,omitempty"`
+		
+		Wrapup *Wrapup `json:"wrapup,omitempty"`
+		
+		ConversationRoutingData *Conversationroutingdata `json:"conversationRoutingData,omitempty"`
+		
+		AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
+		
+		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
+		
+		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+		
+		Attributes *map[string]string `json:"attributes,omitempty"`
+		
+		Calls *[]Call `json:"calls,omitempty"`
+		
+		Callbacks *[]Callback `json:"callbacks,omitempty"`
+		
+		Chats *[]Conversationchat `json:"chats,omitempty"`
+		
+		Cobrowsesessions *[]Cobrowsesession `json:"cobrowsesessions,omitempty"`
+		
+		Emails *[]Email `json:"emails,omitempty"`
+		
+		Messages *[]Message `json:"messages,omitempty"`
+		
+		Screenshares *[]Screenshare `json:"screenshares,omitempty"`
+		
+		SocialExpressions *[]Socialexpression `json:"socialExpressions,omitempty"`
+		
+		Videos *[]Video `json:"videos,omitempty"`
+		
+		Evaluations *[]Evaluation `json:"evaluations,omitempty"`
+		
+		ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
+		
+		FlaggedReason *string `json:"flaggedReason,omitempty"`
+		
+		StartAcwTime *string `json:"startAcwTime,omitempty"`
+		
+		EndAcwTime *string `json:"endAcwTime,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		StartTime: StartTime,
+		
+		EndTime: EndTime,
+		
+		ConnectedTime: ConnectedTime,
+		
+		Name: u.Name,
+		
+		UserUri: u.UserUri,
+		
+		UserId: u.UserId,
+		
+		ExternalContactId: u.ExternalContactId,
+		
+		ExternalOrganizationId: u.ExternalOrganizationId,
+		
+		QueueId: u.QueueId,
+		
+		GroupId: u.GroupId,
+		
+		TeamId: u.TeamId,
+		
+		QueueName: u.QueueName,
+		
+		Purpose: u.Purpose,
+		
+		ParticipantType: u.ParticipantType,
+		
+		ConsultParticipantId: u.ConsultParticipantId,
+		
+		Address: u.Address,
+		
+		Ani: u.Ani,
+		
+		AniName: u.AniName,
+		
+		Dnis: u.Dnis,
+		
+		Locale: u.Locale,
+		
+		WrapupRequired: u.WrapupRequired,
+		
+		WrapupPrompt: u.WrapupPrompt,
+		
+		WrapupTimeoutMs: u.WrapupTimeoutMs,
+		
+		WrapupSkipped: u.WrapupSkipped,
+		
+		Wrapup: u.Wrapup,
+		
+		ConversationRoutingData: u.ConversationRoutingData,
+		
+		AlertingTimeoutMs: u.AlertingTimeoutMs,
+		
+		MonitoredParticipantId: u.MonitoredParticipantId,
+		
+		CoachedParticipantId: u.CoachedParticipantId,
+		
+		Attributes: u.Attributes,
+		
+		Calls: u.Calls,
+		
+		Callbacks: u.Callbacks,
+		
+		Chats: u.Chats,
+		
+		Cobrowsesessions: u.Cobrowsesessions,
+		
+		Emails: u.Emails,
+		
+		Messages: u.Messages,
+		
+		Screenshares: u.Screenshares,
+		
+		SocialExpressions: u.SocialExpressions,
+		
+		Videos: u.Videos,
+		
+		Evaluations: u.Evaluations,
+		
+		ScreenRecordingState: u.ScreenRecordingState,
+		
+		FlaggedReason: u.FlaggedReason,
+		
+		StartAcwTime: StartAcwTime,
+		
+		EndAcwTime: EndAcwTime,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Servicelevel struct {
 	// DurationMs - Service Level target in milliseconds.
 	DurationMs *int `json:"durationMs,omitempty"`
 
+}
+
+func (u *Servicelevel) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Servicelevel
+
+	
+
+	return json.Marshal(&struct { 
+		Percentage *float64 `json:"percentage,omitempty"`
+		
+		DurationMs *int `json:"durationMs,omitempty"`
+		*Alias
+	}{ 
+		Percentage: u.Percentage,
+		
+		DurationMs: u.DurationMs,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

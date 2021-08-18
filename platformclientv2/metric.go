@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,73 @@ type Metric struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Metric) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Metric
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateUnlinked := new(string)
+	if u.DateUnlinked != nil {
+		*DateUnlinked = timeutil.Strftime(u.DateUnlinked, "%Y-%m-%d")
+	} else {
+		DateUnlinked = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		MetricDefinitionId *string `json:"metricDefinitionId,omitempty"`
+		
+		Objective *Objective `json:"objective,omitempty"`
+		
+		PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
+		
+		LinkedMetric *Addressableentityref `json:"linkedMetric,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateUnlinked *string `json:"dateUnlinked,omitempty"`
+		
+		SourcePerformanceProfile *Performanceprofile `json:"sourcePerformanceProfile,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		MetricDefinitionId: u.MetricDefinitionId,
+		
+		Objective: u.Objective,
+		
+		PerformanceProfileId: u.PerformanceProfileId,
+		
+		LinkedMetric: u.LinkedMetric,
+		
+		DateCreated: DateCreated,
+		
+		DateUnlinked: DateUnlinked,
+		
+		SourcePerformanceProfile: u.SourcePerformanceProfile,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -63,6 +64,90 @@ type Openintegration struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Openintegration) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Openintegration
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		OutboundNotificationWebhookUrl *string `json:"outboundNotificationWebhookUrl,omitempty"`
+		
+		OutboundNotificationWebhookSignatureSecretToken *string `json:"outboundNotificationWebhookSignatureSecretToken,omitempty"`
+		
+		WebhookHeaders *map[string]string `json:"webhookHeaders,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		Recipient *Domainentityref `json:"recipient,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		CreatedBy *Domainentityref `json:"createdBy,omitempty"`
+		
+		ModifiedBy *Domainentityref `json:"modifiedBy,omitempty"`
+		
+		CreateStatus *string `json:"createStatus,omitempty"`
+		
+		CreateError *Errorbody `json:"createError,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		OutboundNotificationWebhookUrl: u.OutboundNotificationWebhookUrl,
+		
+		OutboundNotificationWebhookSignatureSecretToken: u.OutboundNotificationWebhookSignatureSecretToken,
+		
+		WebhookHeaders: u.WebhookHeaders,
+		
+		Status: u.Status,
+		
+		Recipient: u.Recipient,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		CreatedBy: u.CreatedBy,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		CreateStatus: u.CreateStatus,
+		
+		CreateError: u.CreateError,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

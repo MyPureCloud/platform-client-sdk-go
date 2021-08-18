@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Createoutboundmessagingconversationrequest struct {
 	// ExternalOrganizationId - The external organization Id of the recipient of the message.
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
+}
+
+func (u *Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createoutboundmessagingconversationrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueueId *string `json:"queueId,omitempty"`
+		
+		ToAddress *string `json:"toAddress,omitempty"`
+		
+		ToAddressMessengerType *string `json:"toAddressMessengerType,omitempty"`
+		
+		UseExistingConversation *bool `json:"useExistingConversation,omitempty"`
+		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
+		
+		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
+		*Alias
+	}{ 
+		QueueId: u.QueueId,
+		
+		ToAddress: u.ToAddress,
+		
+		ToAddressMessengerType: u.ToAddressMessengerType,
+		
+		UseExistingConversation: u.UseExistingConversation,
+		
+		ExternalContactId: u.ExternalContactId,
+		
+		ExternalOrganizationId: u.ExternalOrganizationId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

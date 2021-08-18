@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -47,6 +48,66 @@ type Oauthclientrequest struct {
 	// DateToDelete - The time at which this client will be deleted. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateToDelete *time.Time `json:"dateToDelete,omitempty"`
 
+}
+
+func (u *Oauthclientrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Oauthclientrequest
+
+	
+	DateToDelete := new(string)
+	if u.DateToDelete != nil {
+		
+		*DateToDelete = timeutil.Strftime(u.DateToDelete, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateToDelete = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		AccessTokenValiditySeconds *int `json:"accessTokenValiditySeconds,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		RegisteredRedirectUri *[]string `json:"registeredRedirectUri,omitempty"`
+		
+		RoleIds *[]string `json:"roleIds,omitempty"`
+		
+		AuthorizedGrantType *string `json:"authorizedGrantType,omitempty"`
+		
+		Scope *[]string `json:"scope,omitempty"`
+		
+		RoleDivisions *[]Roledivision `json:"roleDivisions,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		DateToDelete *string `json:"dateToDelete,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		AccessTokenValiditySeconds: u.AccessTokenValiditySeconds,
+		
+		Description: u.Description,
+		
+		RegisteredRedirectUri: u.RegisteredRedirectUri,
+		
+		RoleIds: u.RoleIds,
+		
+		AuthorizedGrantType: u.AuthorizedGrantType,
+		
+		Scope: u.Scope,
+		
+		RoleDivisions: u.RoleDivisions,
+		
+		State: u.State,
+		
+		DateToDelete: DateToDelete,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

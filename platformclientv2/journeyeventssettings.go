@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Journeyeventssettings struct {
 	// ScrollDepthEvents - Tracks when a visitor scrolls to a specific percentage of a webpage.
 	ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
 
+}
+
+func (u *Journeyeventssettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Journeyeventssettings
+
+	
+
+	return json.Marshal(&struct { 
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		ExcludedQueryParameters *[]string `json:"excludedQueryParameters,omitempty"`
+		
+		ShouldKeepUrlFragment *bool `json:"shouldKeepUrlFragment,omitempty"`
+		
+		SearchQueryParameters *[]string `json:"searchQueryParameters,omitempty"`
+		
+		PageviewConfig *string `json:"pageviewConfig,omitempty"`
+		
+		ClickEvents *[]Selectoreventtrigger `json:"clickEvents,omitempty"`
+		
+		FormsTrackEvents *[]Formstracktrigger `json:"formsTrackEvents,omitempty"`
+		
+		IdleEvents *[]Idleeventtrigger `json:"idleEvents,omitempty"`
+		
+		InViewportEvents *[]Selectoreventtrigger `json:"inViewportEvents,omitempty"`
+		
+		ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
+		*Alias
+	}{ 
+		Enabled: u.Enabled,
+		
+		ExcludedQueryParameters: u.ExcludedQueryParameters,
+		
+		ShouldKeepUrlFragment: u.ShouldKeepUrlFragment,
+		
+		SearchQueryParameters: u.SearchQueryParameters,
+		
+		PageviewConfig: u.PageviewConfig,
+		
+		ClickEvents: u.ClickEvents,
+		
+		FormsTrackEvents: u.FormsTrackEvents,
+		
+		IdleEvents: u.IdleEvents,
+		
+		InViewportEvents: u.InViewportEvents,
+		
+		ScrollDepthEvents: u.ScrollDepthEvents,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

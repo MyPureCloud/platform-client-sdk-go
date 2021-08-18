@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -67,6 +68,110 @@ type Schedule struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Schedule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedule
+
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	Start := new(string)
+	if u.Start != nil {
+		*Start = timeutil.Strftime(u.Start, "%Y-%m-%dT%H:%M:%S.%f")
+		
+	} else {
+		Start = nil
+	}
+	
+	End := new(string)
+	if u.End != nil {
+		*End = timeutil.Strftime(u.End, "%Y-%m-%dT%H:%M:%S.%f")
+		
+	} else {
+		End = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *string `json:"modifiedBy,omitempty"`
+		
+		CreatedBy *string `json:"createdBy,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		ModifiedByApp *string `json:"modifiedByApp,omitempty"`
+		
+		CreatedByApp *string `json:"createdByApp,omitempty"`
+		
+		Start *string `json:"start,omitempty"`
+		
+		End *string `json:"end,omitempty"`
+		
+		Rrule *string `json:"rrule,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Version: u.Version,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		
+		CreatedBy: u.CreatedBy,
+		
+		State: u.State,
+		
+		ModifiedByApp: u.ModifiedByApp,
+		
+		CreatedByApp: u.CreatedByApp,
+		
+		Start: Start,
+		
+		End: End,
+		
+		Rrule: u.Rrule,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Responsetext struct {
 	// ContentType - Response text content type.
 	ContentType *string `json:"contentType,omitempty"`
 
+}
+
+func (u *Responsetext) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Responsetext
+
+	
+
+	return json.Marshal(&struct { 
+		Content *string `json:"content,omitempty"`
+		
+		ContentType *string `json:"contentType,omitempty"`
+		*Alias
+	}{ 
+		Content: u.Content,
+		
+		ContentType: u.ContentType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

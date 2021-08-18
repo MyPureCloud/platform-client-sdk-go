@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Supportedcontentreference struct {
 	// MediaTypes - Media types definition for the supported content
 	MediaTypes *Mediatypes `json:"mediaTypes,omitempty"`
 
+}
+
+func (u *Supportedcontentreference) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Supportedcontentreference
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		MediaTypes *Mediatypes `json:"mediaTypes,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		SelfUri: u.SelfUri,
+		
+		MediaTypes: u.MediaTypes,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

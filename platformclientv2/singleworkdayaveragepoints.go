@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -19,6 +20,37 @@ type Singleworkdayaveragepoints struct {
 	// AveragePoints - The average points per agent earned within the division
 	AveragePoints *float64 `json:"averagePoints,omitempty"`
 
+}
+
+func (u *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Singleworkdayaveragepoints
+
+	
+	DateWorkday := new(string)
+	if u.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	} else {
+		DateWorkday = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateWorkday *string `json:"dateWorkday,omitempty"`
+		
+		Division *Division `json:"division,omitempty"`
+		
+		AveragePoints *float64 `json:"averagePoints,omitempty"`
+		*Alias
+	}{ 
+		DateWorkday: DateWorkday,
+		
+		Division: u.Division,
+		
+		AveragePoints: u.AveragePoints,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

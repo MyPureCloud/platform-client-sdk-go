@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Campaignrulecondition struct {
 	// ConditionType - The type of condition to evaluate.
 	ConditionType *string `json:"conditionType,omitempty"`
 
+}
+
+func (u *Campaignrulecondition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaignrulecondition
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Parameters *Campaignruleparameters `json:"parameters,omitempty"`
+		
+		ConditionType *string `json:"conditionType,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Parameters: u.Parameters,
+		
+		ConditionType: u.ConditionType,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

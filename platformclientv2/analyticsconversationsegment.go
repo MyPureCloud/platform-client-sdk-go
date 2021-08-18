@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -107,6 +108,134 @@ type Analyticsconversationsegment struct {
 	// Properties - Additional segment properties
 	Properties *[]Analyticsproperty `json:"properties,omitempty"`
 
+}
+
+func (u *Analyticsconversationsegment) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Analyticsconversationsegment
+
+	
+	SegmentEnd := new(string)
+	if u.SegmentEnd != nil {
+		
+		*SegmentEnd = timeutil.Strftime(u.SegmentEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SegmentEnd = nil
+	}
+	
+	SegmentStart := new(string)
+	if u.SegmentStart != nil {
+		
+		*SegmentStart = timeutil.Strftime(u.SegmentStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		SegmentStart = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		AudioMuted *bool `json:"audioMuted,omitempty"`
+		
+		Conference *bool `json:"conference,omitempty"`
+		
+		DestinationConversationId *string `json:"destinationConversationId,omitempty"`
+		
+		DestinationSessionId *string `json:"destinationSessionId,omitempty"`
+		
+		DisconnectType *string `json:"disconnectType,omitempty"`
+		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
+		GroupId *string `json:"groupId,omitempty"`
+		
+		Q850ResponseCodes *[]int `json:"q850ResponseCodes,omitempty"`
+		
+		QueueId *string `json:"queueId,omitempty"`
+		
+		RequestedLanguageId *string `json:"requestedLanguageId,omitempty"`
+		
+		RequestedRoutingSkillIds *[]string `json:"requestedRoutingSkillIds,omitempty"`
+		
+		RequestedRoutingUserIds *[]string `json:"requestedRoutingUserIds,omitempty"`
+		
+		SegmentEnd *string `json:"segmentEnd,omitempty"`
+		
+		SegmentStart *string `json:"segmentStart,omitempty"`
+		
+		SegmentType *string `json:"segmentType,omitempty"`
+		
+		SipResponseCodes *[]int `json:"sipResponseCodes,omitempty"`
+		
+		SourceConversationId *string `json:"sourceConversationId,omitempty"`
+		
+		SourceSessionId *string `json:"sourceSessionId,omitempty"`
+		
+		Subject *string `json:"subject,omitempty"`
+		
+		VideoMuted *bool `json:"videoMuted,omitempty"`
+		
+		WrapUpCode *string `json:"wrapUpCode,omitempty"`
+		
+		WrapUpNote *string `json:"wrapUpNote,omitempty"`
+		
+		WrapUpTags *[]string `json:"wrapUpTags,omitempty"`
+		
+		ScoredAgents *[]Analyticsscoredagent `json:"scoredAgents,omitempty"`
+		
+		Properties *[]Analyticsproperty `json:"properties,omitempty"`
+		*Alias
+	}{ 
+		AudioMuted: u.AudioMuted,
+		
+		Conference: u.Conference,
+		
+		DestinationConversationId: u.DestinationConversationId,
+		
+		DestinationSessionId: u.DestinationSessionId,
+		
+		DisconnectType: u.DisconnectType,
+		
+		ErrorCode: u.ErrorCode,
+		
+		GroupId: u.GroupId,
+		
+		Q850ResponseCodes: u.Q850ResponseCodes,
+		
+		QueueId: u.QueueId,
+		
+		RequestedLanguageId: u.RequestedLanguageId,
+		
+		RequestedRoutingSkillIds: u.RequestedRoutingSkillIds,
+		
+		RequestedRoutingUserIds: u.RequestedRoutingUserIds,
+		
+		SegmentEnd: SegmentEnd,
+		
+		SegmentStart: SegmentStart,
+		
+		SegmentType: u.SegmentType,
+		
+		SipResponseCodes: u.SipResponseCodes,
+		
+		SourceConversationId: u.SourceConversationId,
+		
+		SourceSessionId: u.SourceSessionId,
+		
+		Subject: u.Subject,
+		
+		VideoMuted: u.VideoMuted,
+		
+		WrapUpCode: u.WrapUpCode,
+		
+		WrapUpNote: u.WrapUpNote,
+		
+		WrapUpTags: u.WrapUpTags,
+		
+		ScoredAgents: u.ScoredAgents,
+		
+		Properties: u.Properties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

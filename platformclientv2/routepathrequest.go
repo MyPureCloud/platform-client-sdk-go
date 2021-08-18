@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Routepathrequest struct {
 	// SourcePlanningGroup - The planning group from which to copy route paths
 	SourcePlanningGroup *Sourceplanninggrouprequest `json:"sourcePlanningGroup,omitempty"`
 
+}
+
+func (u *Routepathrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Routepathrequest
+
+	
+
+	return json.Marshal(&struct { 
+		QueueId *string `json:"queueId,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		LanguageId *string `json:"languageId,omitempty"`
+		
+		SkillIds *[]string `json:"skillIds,omitempty"`
+		
+		SourcePlanningGroup *Sourceplanninggrouprequest `json:"sourcePlanningGroup,omitempty"`
+		*Alias
+	}{ 
+		QueueId: u.QueueId,
+		
+		MediaType: u.MediaType,
+		
+		LanguageId: u.LanguageId,
+		
+		SkillIds: u.SkillIds,
+		
+		SourcePlanningGroup: u.SourcePlanningGroup,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

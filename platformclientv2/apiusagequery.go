@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Apiusagequery struct {
 	// Metrics - Behaves like a SQL SELECT clause. Enables retrieving only named metrics. If omitted, all metrics that are available will be returned (like SELECT *).
 	Metrics *[]string `json:"metrics,omitempty"`
 
+}
+
+func (u *Apiusagequery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Apiusagequery
+
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		Granularity *string `json:"granularity,omitempty"`
+		
+		GroupBy *[]string `json:"groupBy,omitempty"`
+		
+		Metrics *[]string `json:"metrics,omitempty"`
+		*Alias
+	}{ 
+		Interval: u.Interval,
+		
+		Granularity: u.Granularity,
+		
+		GroupBy: u.GroupBy,
+		
+		Metrics: u.Metrics,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

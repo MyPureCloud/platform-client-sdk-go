@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Nluconfusionmatrixrow struct {
 	// Columns - The columns of confusion matrix for the intent
 	Columns *[]Nluconfusionmatrixcolumn `json:"columns,omitempty"`
 
+}
+
+func (u *Nluconfusionmatrixrow) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Nluconfusionmatrixrow
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Columns *[]Nluconfusionmatrixcolumn `json:"columns,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Columns: u.Columns,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

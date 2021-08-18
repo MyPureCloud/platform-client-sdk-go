@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Postactioninput struct {
 	// Secure - Indication of whether or not the action is designed to accept sensitive data
 	Secure *bool `json:"secure,omitempty"`
 
+}
+
+func (u *Postactioninput) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Postactioninput
+
+	
+
+	return json.Marshal(&struct { 
+		Category *string `json:"category,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		Config *Actionconfig `json:"config,omitempty"`
+		
+		Contract *Actioncontractinput `json:"contract,omitempty"`
+		
+		Secure *bool `json:"secure,omitempty"`
+		*Alias
+	}{ 
+		Category: u.Category,
+		
+		Name: u.Name,
+		
+		IntegrationId: u.IntegrationId,
+		
+		Config: u.Config,
+		
+		Contract: u.Contract,
+		
+		Secure: u.Secure,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -78,6 +79,90 @@ type Reportingexportjobrequest struct {
 	// RecipientEmails - The list of email recipients for the exports
 	RecipientEmails *[]string `json:"recipientEmails,omitempty"`
 
+}
+
+func (u *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Reportingexportjobrequest
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		ExportFormat *string `json:"exportFormat,omitempty"`
+		
+		Interval *string `json:"interval,omitempty"`
+		
+		Period *string `json:"period,omitempty"`
+		
+		ViewType *string `json:"viewType,omitempty"`
+		
+		Filter *Viewfilter `json:"filter,omitempty"`
+		
+		Read *bool `json:"read,omitempty"`
+		
+		Locale *string `json:"locale,omitempty"`
+		
+		HasFormatDurations *bool `json:"hasFormatDurations,omitempty"`
+		
+		HasSplitFilters *bool `json:"hasSplitFilters,omitempty"`
+		
+		ExcludeEmptyRows *bool `json:"excludeEmptyRows,omitempty"`
+		
+		HasSplitByMedia *bool `json:"hasSplitByMedia,omitempty"`
+		
+		HasSummaryRow *bool `json:"hasSummaryRow,omitempty"`
+		
+		CsvDelimiter *string `json:"csvDelimiter,omitempty"`
+		
+		SelectedColumns *[]Selectedcolumns `json:"selectedColumns,omitempty"`
+		
+		HasCustomParticipantAttributes *bool `json:"hasCustomParticipantAttributes,omitempty"`
+		
+		RecipientEmails *[]string `json:"recipientEmails,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		TimeZone: u.TimeZone,
+		
+		ExportFormat: u.ExportFormat,
+		
+		Interval: u.Interval,
+		
+		Period: u.Period,
+		
+		ViewType: u.ViewType,
+		
+		Filter: u.Filter,
+		
+		Read: u.Read,
+		
+		Locale: u.Locale,
+		
+		HasFormatDurations: u.HasFormatDurations,
+		
+		HasSplitFilters: u.HasSplitFilters,
+		
+		ExcludeEmptyRows: u.ExcludeEmptyRows,
+		
+		HasSplitByMedia: u.HasSplitByMedia,
+		
+		HasSummaryRow: u.HasSummaryRow,
+		
+		CsvDelimiter: u.CsvDelimiter,
+		
+		SelectedColumns: u.SelectedColumns,
+		
+		HasCustomParticipantAttributes: u.HasCustomParticipantAttributes,
+		
+		RecipientEmails: u.RecipientEmails,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

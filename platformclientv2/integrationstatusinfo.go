@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -23,6 +24,42 @@ type Integrationstatusinfo struct {
 	// LastUpdated - Date and time (in UTC) when the integration status (i.e. the code field) was last updated. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	LastUpdated *time.Time `json:"lastUpdated,omitempty"`
 
+}
+
+func (u *Integrationstatusinfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Integrationstatusinfo
+
+	
+	LastUpdated := new(string)
+	if u.LastUpdated != nil {
+		
+		*LastUpdated = timeutil.Strftime(u.LastUpdated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		LastUpdated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Code *string `json:"code,omitempty"`
+		
+		Effective *string `json:"effective,omitempty"`
+		
+		Detail *Messageinfo `json:"detail,omitempty"`
+		
+		LastUpdated *string `json:"lastUpdated,omitempty"`
+		*Alias
+	}{ 
+		Code: u.Code,
+		
+		Effective: u.Effective,
+		
+		Detail: u.Detail,
+		
+		LastUpdated: LastUpdated,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

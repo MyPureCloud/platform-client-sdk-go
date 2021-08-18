@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Createactivitycoderequest struct {
 	// AgentTimeOffSelectable - Whether an agent can select this activity code when creating or editing a time off request
 	AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
 
+}
+
+func (u *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Createactivitycoderequest
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		CountsAsWorkTime *bool `json:"countsAsWorkTime,omitempty"`
+		
+		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Category: u.Category,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		
+		CountsAsWorkTime: u.CountsAsWorkTime,
+		
+		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

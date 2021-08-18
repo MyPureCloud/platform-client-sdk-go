@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Outboundmessagingmessagingcampaignconfigchangeemailconfig struct {
 	// ReplyToAddress
 	ReplyToAddress *Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress `json:"replyToAddress,omitempty"`
 
+}
+
+func (u *Outboundmessagingmessagingcampaignconfigchangeemailconfig) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Outboundmessagingmessagingcampaignconfigchangeemailconfig
+
+	
+
+	return json.Marshal(&struct { 
+		EmailColumns *[]string `json:"emailColumns,omitempty"`
+		
+		ContentTemplate *Outboundmessagingmessagingcampaignconfigchangeresponseref `json:"contentTemplate,omitempty"`
+		
+		FromAddress *Outboundmessagingmessagingcampaignconfigchangefromemailaddress `json:"fromAddress,omitempty"`
+		
+		ReplyToAddress *Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress `json:"replyToAddress,omitempty"`
+		*Alias
+	}{ 
+		EmailColumns: u.EmailColumns,
+		
+		ContentTemplate: u.ContentTemplate,
+		
+		FromAddress: u.FromAddress,
+		
+		ReplyToAddress: u.ReplyToAddress,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

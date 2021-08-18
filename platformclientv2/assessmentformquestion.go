@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Assessmentformquestion struct {
 	// IsCritical - Does this question contribute to the critical score. Only used by Multiple Choice type questions.
 	IsCritical *bool `json:"isCritical,omitempty"`
 
+}
+
+func (u *Assessmentformquestion) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Assessmentformquestion
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Text *string `json:"text,omitempty"`
+		
+		HelpText *string `json:"helpText,omitempty"`
+		
+		NaEnabled *bool `json:"naEnabled,omitempty"`
+		
+		CommentsRequired *bool `json:"commentsRequired,omitempty"`
+		
+		VisibilityCondition *Visibilitycondition `json:"visibilityCondition,omitempty"`
+		
+		AnswerOptions *[]Answeroption `json:"answerOptions,omitempty"`
+		
+		MaxResponseCharacters *int `json:"maxResponseCharacters,omitempty"`
+		
+		IsKill *bool `json:"isKill,omitempty"`
+		
+		IsCritical *bool `json:"isCritical,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		VarType: u.VarType,
+		
+		Text: u.Text,
+		
+		HelpText: u.HelpText,
+		
+		NaEnabled: u.NaEnabled,
+		
+		CommentsRequired: u.CommentsRequired,
+		
+		VisibilityCondition: u.VisibilityCondition,
+		
+		AnswerOptions: u.AnswerOptions,
+		
+		MaxResponseCharacters: u.MaxResponseCharacters,
+		
+		IsKill: u.IsKill,
+		
+		IsCritical: u.IsCritical,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

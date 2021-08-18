@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Headcountforecast struct {
 	// RequiredWithoutShrinkage - Headcount information without shrinkage
 	RequiredWithoutShrinkage *[]Headcountinterval `json:"requiredWithoutShrinkage,omitempty"`
 
+}
+
+func (u *Headcountforecast) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Headcountforecast
+
+	
+
+	return json.Marshal(&struct { 
+		Required *[]Headcountinterval `json:"required,omitempty"`
+		
+		RequiredWithoutShrinkage *[]Headcountinterval `json:"requiredWithoutShrinkage,omitempty"`
+		*Alias
+	}{ 
+		Required: u.Required,
+		
+		RequiredWithoutShrinkage: u.RequiredWithoutShrinkage,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

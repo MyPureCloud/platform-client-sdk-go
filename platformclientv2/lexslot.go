@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Lexslot struct {
 	// Priority - The priority of the slot
 	Priority *int `json:"priority,omitempty"`
 
+}
+
+func (u *Lexslot) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Lexslot
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Priority *int `json:"priority,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		VarType: u.VarType,
+		
+		Priority: u.Priority,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

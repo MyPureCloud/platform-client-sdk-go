@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Schedulegenerationresult struct {
 	// Messages - User facing messages related to the schedule generation run
 	Messages *[]Schedulegenerationmessage `json:"messages,omitempty"`
 
+}
+
+func (u *Schedulegenerationresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Schedulegenerationresult
+
+	
+
+	return json.Marshal(&struct { 
+		Failed *bool `json:"failed,omitempty"`
+		
+		RunId *string `json:"runId,omitempty"`
+		
+		MessageCount *int `json:"messageCount,omitempty"`
+		
+		Messages *[]Schedulegenerationmessage `json:"messages,omitempty"`
+		*Alias
+	}{ 
+		Failed: u.Failed,
+		
+		RunId: u.RunId,
+		
+		MessageCount: u.MessageCount,
+		
+		Messages: u.Messages,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

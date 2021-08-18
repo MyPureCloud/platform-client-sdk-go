@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -46,6 +47,58 @@ type Credentialtypelisting struct {
 	// PageCount
 	PageCount *int `json:"pageCount,omitempty"`
 
+}
+
+func (u *Credentialtypelisting) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Credentialtypelisting
+
+	
+
+	return json.Marshal(&struct { 
+		Entities *[]Credentialtype `json:"entities,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
+		
+		FirstUri *string `json:"firstUri,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
+		
+		PageCount *int `json:"pageCount,omitempty"`
+		*Alias
+	}{ 
+		Entities: u.Entities,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		Total: u.Total,
+		
+		FirstUri: u.FirstUri,
+		
+		SelfUri: u.SelfUri,
+		
+		NextUri: u.NextUri,
+		
+		PreviousUri: u.PreviousUri,
+		
+		LastUri: u.LastUri,
+		
+		PageCount: u.PageCount,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

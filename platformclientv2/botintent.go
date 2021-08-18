@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Botintent struct {
 	// Slots - Optional returned data values associated with this intent, limit of 50.
 	Slots *map[string]Botslot `json:"slots,omitempty"`
 
+}
+
+func (u *Botintent) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Botintent
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Slots *map[string]Botslot `json:"slots,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Slots: u.Slots,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

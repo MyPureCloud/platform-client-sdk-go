@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Locationsearchrequest struct {
 	// Query
 	Query *[]Locationsearchcriteria `json:"query,omitempty"`
 
+}
+
+func (u *Locationsearchrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Locationsearchrequest
+
+	
+
+	return json.Marshal(&struct { 
+		SortOrder *string `json:"sortOrder,omitempty"`
+		
+		SortBy *string `json:"sortBy,omitempty"`
+		
+		PageSize *int `json:"pageSize,omitempty"`
+		
+		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Sort *[]Searchsort `json:"sort,omitempty"`
+		
+		Expand *[]string `json:"expand,omitempty"`
+		
+		Query *[]Locationsearchcriteria `json:"query,omitempty"`
+		*Alias
+	}{ 
+		SortOrder: u.SortOrder,
+		
+		SortBy: u.SortBy,
+		
+		PageSize: u.PageSize,
+		
+		PageNumber: u.PageNumber,
+		
+		Sort: u.Sort,
+		
+		Expand: u.Expand,
+		
+		Query: u.Query,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

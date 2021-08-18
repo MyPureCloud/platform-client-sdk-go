@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Sortitem struct {
 	// Ascending
 	Ascending *bool `json:"ascending,omitempty"`
 
+}
+
+func (u *Sortitem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Sortitem
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Ascending *bool `json:"ascending,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Ascending: u.Ascending,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

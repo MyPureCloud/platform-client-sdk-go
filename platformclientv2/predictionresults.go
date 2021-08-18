@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Predictionresults struct {
 	// EstimatedWaitTimeSeconds - Estimated wait time in seconds
 	EstimatedWaitTimeSeconds *int `json:"estimatedWaitTimeSeconds,omitempty"`
 
+}
+
+func (u *Predictionresults) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Predictionresults
+
+	
+
+	return json.Marshal(&struct { 
+		Intent *string `json:"intent,omitempty"`
+		
+		Formula *string `json:"formula,omitempty"`
+		
+		EstimatedWaitTimeSeconds *int `json:"estimatedWaitTimeSeconds,omitempty"`
+		*Alias
+	}{ 
+		Intent: u.Intent,
+		
+		Formula: u.Formula,
+		
+		EstimatedWaitTimeSeconds: u.EstimatedWaitTimeSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

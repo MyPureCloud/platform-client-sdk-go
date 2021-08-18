@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -35,6 +36,54 @@ type Userscheduleactivity struct {
 	// TimeOffRequestId - Time off request id of this activity
 	TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 
+}
+
+func (u *Userscheduleactivity) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userscheduleactivity
+
+	
+	StartDate := new(string)
+	if u.StartDate != nil {
+		
+		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		StartDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		ActivityCodeId *string `json:"activityCodeId,omitempty"`
+		
+		StartDate *string `json:"startDate,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		IsDstFallback *bool `json:"isDstFallback,omitempty"`
+		
+		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
+		*Alias
+	}{ 
+		ActivityCodeId: u.ActivityCodeId,
+		
+		StartDate: StartDate,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		Description: u.Description,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		
+		IsDstFallback: u.IsDstFallback,
+		
+		TimeOffRequestId: u.TimeOffRequestId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

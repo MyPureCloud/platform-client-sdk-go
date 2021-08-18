@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -67,6 +68,94 @@ type Trustgroup struct {
 	// CreatedBy - The user that added trusted group.
 	CreatedBy *Orguser `json:"createdBy,omitempty"`
 
+}
+
+func (u *Trustgroup) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Trustgroup
+
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+	DateCreated := new(string)
+	if u.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		MemberCount *int `json:"memberCount,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Images *[]Userimage `json:"images,omitempty"`
+		
+		Addresses *[]Groupcontact `json:"addresses,omitempty"`
+		
+		RulesVisible *bool `json:"rulesVisible,omitempty"`
+		
+		Visibility *string `json:"visibility,omitempty"`
+		
+		Owners *[]User `json:"owners,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		CreatedBy *Orguser `json:"createdBy,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		DateModified: DateModified,
+		
+		MemberCount: u.MemberCount,
+		
+		State: u.State,
+		
+		Version: u.Version,
+		
+		VarType: u.VarType,
+		
+		Images: u.Images,
+		
+		Addresses: u.Addresses,
+		
+		RulesVisible: u.RulesVisible,
+		
+		Visibility: u.Visibility,
+		
+		Owners: u.Owners,
+		
+		DateCreated: DateCreated,
+		
+		CreatedBy: u.CreatedBy,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

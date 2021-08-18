@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Asyncforecastoperationresult struct {
 	// Progress - Percent progress for the operation
 	Progress *int `json:"progress,omitempty"`
 
+}
+
+func (u *Asyncforecastoperationresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Asyncforecastoperationresult
+
+	
+
+	return json.Marshal(&struct { 
+		Status *string `json:"status,omitempty"`
+		
+		OperationId *string `json:"operationId,omitempty"`
+		
+		Result *Bushorttermforecast `json:"result,omitempty"`
+		
+		Progress *int `json:"progress,omitempty"`
+		*Alias
+	}{ 
+		Status: u.Status,
+		
+		OperationId: u.OperationId,
+		
+		Result: u.Result,
+		
+		Progress: u.Progress,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

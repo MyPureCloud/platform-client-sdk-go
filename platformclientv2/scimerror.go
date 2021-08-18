@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Scimerror struct {
 	// Detail - The detailed description of the SCIM error.
 	Detail *string `json:"detail,omitempty"`
 
+}
+
+func (u *Scimerror) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Scimerror
+
+	
+
+	return json.Marshal(&struct { 
+		Schemas *[]string `json:"schemas,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		ScimType *string `json:"scimType,omitempty"`
+		
+		Detail *string `json:"detail,omitempty"`
+		*Alias
+	}{ 
+		Schemas: u.Schemas,
+		
+		Status: u.Status,
+		
+		ScimType: u.ScimType,
+		
+		Detail: u.Detail,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

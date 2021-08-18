@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -34,6 +35,46 @@ type Contact struct {
 	// Integration - Integration tag value if this number is associated with an external integration.
 	Integration *string `json:"integration,omitempty"`
 
+}
+
+func (u *Contact) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contact
+
+	
+
+	return json.Marshal(&struct { 
+		Address *string `json:"address,omitempty"`
+		
+		Display *string `json:"display,omitempty"`
+		
+		MediaType *string `json:"mediaType,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Extension *string `json:"extension,omitempty"`
+		
+		CountryCode *string `json:"countryCode,omitempty"`
+		
+		Integration *string `json:"integration,omitempty"`
+		*Alias
+	}{ 
+		Address: u.Address,
+		
+		Display: u.Display,
+		
+		MediaType: u.MediaType,
+		
+		VarType: u.VarType,
+		
+		Extension: u.Extension,
+		
+		CountryCode: u.CountryCode,
+		
+		Integration: u.Integration,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,33 @@ type Weekshifttradematchessummaryresponse struct {
 	// Count - The number of trades in the Matched state for the given week
 	Count *int `json:"count,omitempty"`
 
+}
+
+func (u *Weekshifttradematchessummaryresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Weekshifttradematchessummaryresponse
+
+	
+	WeekDate := new(string)
+	if u.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	} else {
+		WeekDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		WeekDate *string `json:"weekDate,omitempty"`
+		
+		Count *int `json:"count,omitempty"`
+		*Alias
+	}{ 
+		WeekDate: WeekDate,
+		
+		Count: u.Count,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

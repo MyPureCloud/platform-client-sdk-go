@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Fieldconfigs struct {
 	// ExternalContact
 	ExternalContact *Fieldconfig `json:"externalContact,omitempty"`
 
+}
+
+func (u *Fieldconfigs) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Fieldconfigs
+
+	
+
+	return json.Marshal(&struct { 
+		Org *Fieldconfig `json:"org,omitempty"`
+		
+		Person *Fieldconfig `json:"person,omitempty"`
+		
+		Group *Fieldconfig `json:"group,omitempty"`
+		
+		ExternalContact *Fieldconfig `json:"externalContact,omitempty"`
+		*Alias
+	}{ 
+		Org: u.Org,
+		
+		Person: u.Person,
+		
+		Group: u.Group,
+		
+		ExternalContact: u.ExternalContact,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

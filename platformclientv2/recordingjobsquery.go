@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -27,6 +28,46 @@ type Recordingjobsquery struct {
 	// ConversationQuery - Conversation Query. Note: After the recording is created, it might take up to 48 hours for the recording to be included in the submitted job query.
 	ConversationQuery *Asyncconversationquery `json:"conversationQuery,omitempty"`
 
+}
+
+func (u *Recordingjobsquery) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Recordingjobsquery
+
+	
+	ActionDate := new(string)
+	if u.ActionDate != nil {
+		
+		*ActionDate = timeutil.Strftime(u.ActionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ActionDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Action *string `json:"action,omitempty"`
+		
+		ActionDate *string `json:"actionDate,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
+		
+		IncludeScreenRecordings *bool `json:"includeScreenRecordings,omitempty"`
+		
+		ConversationQuery *Asyncconversationquery `json:"conversationQuery,omitempty"`
+		*Alias
+	}{ 
+		Action: u.Action,
+		
+		ActionDate: ActionDate,
+		
+		IntegrationId: u.IntegrationId,
+		
+		IncludeScreenRecordings: u.IncludeScreenRecordings,
+		
+		ConversationQuery: u.ConversationQuery,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

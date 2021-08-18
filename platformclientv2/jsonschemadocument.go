@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Jsonschemadocument struct {
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
+}
+
+func (u *Jsonschemadocument) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Jsonschemadocument
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Schema *string `json:"$schema,omitempty"`
+		
+		Title *string `json:"title,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		Required *[]string `json:"required,omitempty"`
+		
+		Properties *map[string]interface{} `json:"properties,omitempty"`
+		
+		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Schema: u.Schema,
+		
+		Title: u.Title,
+		
+		Description: u.Description,
+		
+		VarType: u.VarType,
+		
+		Required: u.Required,
+		
+		Properties: u.Properties,
+		
+		AdditionalProperties: u.AdditionalProperties,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Buagentschedulequeryresponse struct {
 	// Metadata - Versioned entity metadata for this agent schedule
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Buagentschedulequeryresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulequeryresponse
+
+	
+
+	return json.Marshal(&struct { 
+		User *Userreference `json:"user,omitempty"`
+		
+		Shifts *[]Buagentscheduleshift `json:"shifts,omitempty"`
+		
+		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
+		
+		WorkPlan *Workplanreference `json:"workPlan,omitempty"`
+		
+		WorkPlansPerWeek *[]Workplanreference `json:"workPlansPerWeek,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		Shifts: u.Shifts,
+		
+		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		
+		WorkPlan: u.WorkPlan,
+		
+		WorkPlansPerWeek: u.WorkPlansPerWeek,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

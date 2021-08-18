@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -38,6 +39,50 @@ type Locationcreatedefinition struct {
 	// Address - Address of the location
 	Address *Locationaddress `json:"address,omitempty"`
 
+}
+
+func (u *Locationcreatedefinition) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Locationcreatedefinition
+
+	
+
+	return json.Marshal(&struct { 
+		Name *string `json:"name,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
+		
+		State *string `json:"state,omitempty"`
+		
+		Path *[]string `json:"path,omitempty"`
+		
+		Notes *string `json:"notes,omitempty"`
+		
+		ContactUser *string `json:"contactUser,omitempty"`
+		
+		EmergencyNumber *Locationemergencynumber `json:"emergencyNumber,omitempty"`
+		
+		Address *Locationaddress `json:"address,omitempty"`
+		*Alias
+	}{ 
+		Name: u.Name,
+		
+		Version: u.Version,
+		
+		State: u.State,
+		
+		Path: u.Path,
+		
+		Notes: u.Notes,
+		
+		ContactUser: u.ContactUser,
+		
+		EmergencyNumber: u.EmergencyNumber,
+		
+		Address: u.Address,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

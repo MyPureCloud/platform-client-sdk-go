@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Leaderboarditem struct {
 	// Points - The points collected by the user
 	Points *int `json:"points,omitempty"`
 
+}
+
+func (u *Leaderboarditem) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Leaderboarditem
+
+	
+
+	return json.Marshal(&struct { 
+		User *Userreference `json:"user,omitempty"`
+		
+		Rank *int `json:"rank,omitempty"`
+		
+		Points *int `json:"points,omitempty"`
+		*Alias
+	}{ 
+		User: u.User,
+		
+		Rank: u.Rank,
+		
+		Points: u.Points,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

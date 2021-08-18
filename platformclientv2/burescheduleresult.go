@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Burescheduleresult struct {
 	// AgentSchedules - List of download links for agent schedules produced by the rescheduling run
 	AgentSchedules *[]Burescheduleagentscheduleresult `json:"agentSchedules,omitempty"`
 
+}
+
+func (u *Burescheduleresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Burescheduleresult
+
+	
+
+	return json.Marshal(&struct { 
+		GenerationResults *Schedulegenerationresult `json:"generationResults,omitempty"`
+		
+		GenerationResultsDownloadUrl *string `json:"generationResultsDownloadUrl,omitempty"`
+		
+		HeadcountForecast *Buheadcountforecast `json:"headcountForecast,omitempty"`
+		
+		HeadcountForecastDownloadUrl *string `json:"headcountForecastDownloadUrl,omitempty"`
+		
+		AgentSchedules *[]Burescheduleagentscheduleresult `json:"agentSchedules,omitempty"`
+		*Alias
+	}{ 
+		GenerationResults: u.GenerationResults,
+		
+		GenerationResultsDownloadUrl: u.GenerationResultsDownloadUrl,
+		
+		HeadcountForecast: u.HeadcountForecast,
+		
+		HeadcountForecastDownloadUrl: u.HeadcountForecastDownloadUrl,
+		
+		AgentSchedules: u.AgentSchedules,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

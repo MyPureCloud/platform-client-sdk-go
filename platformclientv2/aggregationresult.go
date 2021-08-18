@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -26,6 +27,38 @@ type Aggregationresult struct {
 	// Results
 	Results *[]Aggregationresultentry `json:"results,omitempty"`
 
+}
+
+func (u *Aggregationresult) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Aggregationresult
+
+	
+
+	return json.Marshal(&struct { 
+		VarType *string `json:"type,omitempty"`
+		
+		Dimension *string `json:"dimension,omitempty"`
+		
+		Metric *string `json:"metric,omitempty"`
+		
+		Count *int `json:"count,omitempty"`
+		
+		Results *[]Aggregationresultentry `json:"results,omitempty"`
+		*Alias
+	}{ 
+		VarType: u.VarType,
+		
+		Dimension: u.Dimension,
+		
+		Metric: u.Metric,
+		
+		Count: u.Count,
+		
+		Results: u.Results,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

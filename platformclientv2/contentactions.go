@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Contentactions struct {
 	// Textback - Text to be sent back in reply when the item is selected.
 	Textback *string `json:"textback,omitempty"`
 
+}
+
+func (u *Contentactions) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Contentactions
+
+	
+
+	return json.Marshal(&struct { 
+		Url *string `json:"url,omitempty"`
+		
+		UrlTarget *string `json:"urlTarget,omitempty"`
+		
+		Textback *string `json:"textback,omitempty"`
+		*Alias
+	}{ 
+		Url: u.Url,
+		
+		UrlTarget: u.UrlTarget,
+		
+		Textback: u.Textback,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

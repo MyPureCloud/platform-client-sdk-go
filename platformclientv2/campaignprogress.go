@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -30,6 +31,42 @@ type Campaignprogress struct {
 	// Percentage - Percentage of contacts processed during the campaign
 	Percentage *int `json:"percentage,omitempty"`
 
+}
+
+func (u *Campaignprogress) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Campaignprogress
+
+	
+
+	return json.Marshal(&struct { 
+		Campaign *Domainentityref `json:"campaign,omitempty"`
+		
+		ContactList *Domainentityref `json:"contactList,omitempty"`
+		
+		NumberOfContactsCalled *int `json:"numberOfContactsCalled,omitempty"`
+		
+		NumberOfContactsMessaged *int `json:"numberOfContactsMessaged,omitempty"`
+		
+		TotalNumberOfContacts *int `json:"totalNumberOfContacts,omitempty"`
+		
+		Percentage *int `json:"percentage,omitempty"`
+		*Alias
+	}{ 
+		Campaign: u.Campaign,
+		
+		ContactList: u.ContactList,
+		
+		NumberOfContactsCalled: u.NumberOfContactsCalled,
+		
+		NumberOfContactsMessaged: u.NumberOfContactsMessaged,
+		
+		TotalNumberOfContacts: u.TotalNumberOfContacts,
+		
+		Percentage: u.Percentage,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

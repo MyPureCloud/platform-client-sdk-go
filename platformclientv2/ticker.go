@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Ticker struct {
 	// Exchange - The exchange for this ticker symbol. Examples: NYSE, FTSE, NASDAQ, etc.
 	Exchange *string `json:"exchange,omitempty"`
 
+}
+
+func (u *Ticker) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Ticker
+
+	
+
+	return json.Marshal(&struct { 
+		Symbol *string `json:"symbol,omitempty"`
+		
+		Exchange *string `json:"exchange,omitempty"`
+		*Alias
+	}{ 
+		Symbol: u.Symbol,
+		
+		Exchange: u.Exchange,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

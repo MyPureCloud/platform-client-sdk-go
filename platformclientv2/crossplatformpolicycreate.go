@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -55,6 +56,82 @@ type Crossplatformpolicycreate struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Crossplatformpolicycreate) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Crossplatformpolicycreate
+
+	
+	ModifiedDate := new(string)
+	if u.ModifiedDate != nil {
+		
+		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ModifiedDate = nil
+	}
+	
+	CreatedDate := new(string)
+	if u.CreatedDate != nil {
+		
+		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreatedDate = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		ModifiedDate *string `json:"modifiedDate,omitempty"`
+		
+		CreatedDate *string `json:"createdDate,omitempty"`
+		
+		Order *int `json:"order,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Enabled *bool `json:"enabled,omitempty"`
+		
+		MediaPolicies *Crossplatformmediapolicies `json:"mediaPolicies,omitempty"`
+		
+		Conditions *Policyconditions `json:"conditions,omitempty"`
+		
+		Actions *Crossplatformpolicyactions `json:"actions,omitempty"`
+		
+		PolicyErrors *Policyerrors `json:"policyErrors,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		ModifiedDate: ModifiedDate,
+		
+		CreatedDate: CreatedDate,
+		
+		Order: u.Order,
+		
+		Description: u.Description,
+		
+		Enabled: u.Enabled,
+		
+		MediaPolicies: u.MediaPolicies,
+		
+		Conditions: u.Conditions,
+		
+		Actions: u.Actions,
+		
+		PolicyErrors: u.PolicyErrors,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

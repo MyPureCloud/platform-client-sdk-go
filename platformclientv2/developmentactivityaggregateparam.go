@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -22,6 +23,34 @@ type Developmentactivityaggregateparam struct {
 	// Filter - The filter applied to the data. This is ANDed with the interval parameter.
 	Filter *Developmentactivityaggregatequeryrequestfilter `json:"filter,omitempty"`
 
+}
+
+func (u *Developmentactivityaggregateparam) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Developmentactivityaggregateparam
+
+	
+
+	return json.Marshal(&struct { 
+		Interval *string `json:"interval,omitempty"`
+		
+		Metrics *[]string `json:"metrics,omitempty"`
+		
+		GroupBy *[]string `json:"groupBy,omitempty"`
+		
+		Filter *Developmentactivityaggregatequeryrequestfilter `json:"filter,omitempty"`
+		*Alias
+	}{ 
+		Interval: u.Interval,
+		
+		Metrics: u.Metrics,
+		
+		GroupBy: u.GroupBy,
+		
+		Filter: u.Filter,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

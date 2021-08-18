@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Validateworkplanmessages struct {
 	// ConstraintConflictMessage - This field is not null when there is a set of work plan constraints that conflict thus agent schedules cannot be generated
 	ConstraintConflictMessage *Constraintconflictmessage `json:"constraintConflictMessage,omitempty"`
 
+}
+
+func (u *Validateworkplanmessages) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Validateworkplanmessages
+
+	
+
+	return json.Marshal(&struct { 
+		ViolationMessages *[]Workplanconfigurationviolationmessage `json:"violationMessages,omitempty"`
+		
+		ConstraintConflictMessage *Constraintconflictmessage `json:"constraintConflictMessage,omitempty"`
+		*Alias
+	}{ 
+		ViolationMessages: u.ViolationMessages,
+		
+		ConstraintConflictMessage: u.ConstraintConflictMessage,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

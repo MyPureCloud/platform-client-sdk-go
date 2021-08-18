@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -10,6 +11,22 @@ type Integrationconfigurationinfo struct {
 	// Current - The current, active configuration for the integration.
 	Current *Integrationconfiguration `json:"current,omitempty"`
 
+}
+
+func (u *Integrationconfigurationinfo) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Integrationconfigurationinfo
+
+	
+
+	return json.Marshal(&struct { 
+		Current *Integrationconfiguration `json:"current,omitempty"`
+		*Alias
+	}{ 
+		Current: u.Current,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

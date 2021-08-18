@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -50,6 +51,62 @@ type Activitycode struct {
 	// Metadata - Version metadata for the associated management unit's list of activity codes
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
+}
+
+func (u *Activitycode) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Activitycode
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		IsActive *bool `json:"isActive,omitempty"`
+		
+		IsDefault *bool `json:"isDefault,omitempty"`
+		
+		Category *string `json:"category,omitempty"`
+		
+		LengthInMinutes *int `json:"lengthInMinutes,omitempty"`
+		
+		CountsAsPaidTime *bool `json:"countsAsPaidTime,omitempty"`
+		
+		CountsAsWorkTime *bool `json:"countsAsWorkTime,omitempty"`
+		
+		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
+		
+		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		SelfUri: u.SelfUri,
+		
+		Name: u.Name,
+		
+		IsActive: u.IsActive,
+		
+		IsDefault: u.IsDefault,
+		
+		Category: u.Category,
+		
+		LengthInMinutes: u.LengthInMinutes,
+		
+		CountsAsPaidTime: u.CountsAsPaidTime,
+		
+		CountsAsWorkTime: u.CountsAsWorkTime,
+		
+		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		
+		Metadata: u.Metadata,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

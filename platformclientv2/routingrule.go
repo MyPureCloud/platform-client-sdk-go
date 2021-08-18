@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Routingrule struct {
 	// WaitSeconds - seconds to wait in this rule before moving to the next
 	WaitSeconds *float64 `json:"waitSeconds,omitempty"`
 
+}
+
+func (u *Routingrule) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Routingrule
+
+	
+
+	return json.Marshal(&struct { 
+		Operator *string `json:"operator,omitempty"`
+		
+		Threshold *int `json:"threshold,omitempty"`
+		
+		WaitSeconds *float64 `json:"waitSeconds,omitempty"`
+		*Alias
+	}{ 
+		Operator: u.Operator,
+		
+		Threshold: u.Threshold,
+		
+		WaitSeconds: u.WaitSeconds,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

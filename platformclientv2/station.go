@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -62,6 +63,74 @@ type Station struct {
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
+}
+
+func (u *Station) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Station
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		Description *string `json:"description,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		UserId *string `json:"userId,omitempty"`
+		
+		WebRtcUserId *string `json:"webRtcUserId,omitempty"`
+		
+		PrimaryEdge *Domainentityref `json:"primaryEdge,omitempty"`
+		
+		SecondaryEdge *Domainentityref `json:"secondaryEdge,omitempty"`
+		
+		VarType *string `json:"type,omitempty"`
+		
+		LineAppearanceId *string `json:"lineAppearanceId,omitempty"`
+		
+		WebRtcMediaDscp *int `json:"webRtcMediaDscp,omitempty"`
+		
+		WebRtcPersistentEnabled *bool `json:"webRtcPersistentEnabled,omitempty"`
+		
+		WebRtcForceTurn *bool `json:"webRtcForceTurn,omitempty"`
+		
+		SelfUri *string `json:"selfUri,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		Name: u.Name,
+		
+		Description: u.Description,
+		
+		Status: u.Status,
+		
+		UserId: u.UserId,
+		
+		WebRtcUserId: u.WebRtcUserId,
+		
+		PrimaryEdge: u.PrimaryEdge,
+		
+		SecondaryEdge: u.SecondaryEdge,
+		
+		VarType: u.VarType,
+		
+		LineAppearanceId: u.LineAppearanceId,
+		
+		WebRtcMediaDscp: u.WebRtcMediaDscp,
+		
+		WebRtcPersistentEnabled: u.WebRtcPersistentEnabled,
+		
+		WebRtcForceTurn: u.WebRtcForceTurn,
+		
+		SelfUri: u.SelfUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

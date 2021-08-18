@@ -1,6 +1,7 @@
 package platformclientv2
 import (
 	"time"
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -15,6 +16,34 @@ type Buagentschedulehistorychangemetadata struct {
 	// ModifiedBy - The user that made the schedule change
 	ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 
+}
+
+func (u *Buagentschedulehistorychangemetadata) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulehistorychangemetadata
+
+	
+	DateModified := new(string)
+	if u.DateModified != nil {
+		
+		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateModified = nil
+	}
+	
+
+	return json.Marshal(&struct { 
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
+		*Alias
+	}{ 
+		DateModified: DateModified,
+		
+		ModifiedBy: u.ModifiedBy,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

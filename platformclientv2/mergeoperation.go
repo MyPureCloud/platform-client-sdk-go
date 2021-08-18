@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Mergeoperation struct {
 	// ResultingContact - The contact created as a result of the merge operation
 	ResultingContact *Addressableentityref `json:"resultingContact,omitempty"`
 
+}
+
+func (u *Mergeoperation) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Mergeoperation
+
+	
+
+	return json.Marshal(&struct { 
+		SourceContact *Addressableentityref `json:"sourceContact,omitempty"`
+		
+		TargetContact *Addressableentityref `json:"targetContact,omitempty"`
+		
+		ResultingContact *Addressableentityref `json:"resultingContact,omitempty"`
+		*Alias
+	}{ 
+		SourceContact: u.SourceContact,
+		
+		TargetContact: u.TargetContact,
+		
+		ResultingContact: u.ResultingContact,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

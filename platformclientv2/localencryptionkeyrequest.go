@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Localencryptionkeyrequest struct {
 	// KeypairId - The key pair id from the local service.
 	KeypairId *string `json:"keypairId,omitempty"`
 
+}
+
+func (u *Localencryptionkeyrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Localencryptionkeyrequest
+
+	
+
+	return json.Marshal(&struct { 
+		ConfigId *string `json:"configId,omitempty"`
+		
+		PublicKey *string `json:"publicKey,omitempty"`
+		
+		KeypairId *string `json:"keypairId,omitempty"`
+		*Alias
+	}{ 
+		ConfigId: u.ConfigId,
+		
+		PublicKey: u.PublicKey,
+		
+		KeypairId: u.KeypairId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

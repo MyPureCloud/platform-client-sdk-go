@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Copyattachmentsrequest struct {
 	// Attachments - A list of attachments that will be copied from the source message to the current draft
 	Attachments *[]Attachment `json:"attachments,omitempty"`
 
+}
+
+func (u *Copyattachmentsrequest) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Copyattachmentsrequest
+
+	
+
+	return json.Marshal(&struct { 
+		SourceMessage *Domainentityref `json:"sourceMessage,omitempty"`
+		
+		Attachments *[]Attachment `json:"attachments,omitempty"`
+		*Alias
+	}{ 
+		SourceMessage: u.SourceMessage,
+		
+		Attachments: u.Attachments,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

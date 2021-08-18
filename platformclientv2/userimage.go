@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Userimage struct {
 	// ImageUri
 	ImageUri *string `json:"imageUri,omitempty"`
 
+}
+
+func (u *Userimage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Userimage
+
+	
+
+	return json.Marshal(&struct { 
+		Resolution *string `json:"resolution,omitempty"`
+		
+		ImageUri *string `json:"imageUri,omitempty"`
+		*Alias
+	}{ 
+		Resolution: u.Resolution,
+		
+		ImageUri: u.ImageUri,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

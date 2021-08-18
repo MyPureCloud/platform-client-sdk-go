@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Phonesreboot struct {
 	// SiteId - ID of the site for which to reboot all phones at that site. no.active.edge and phone.cannot.resolve errors are ignored.
 	SiteId *string `json:"siteId,omitempty"`
 
+}
+
+func (u *Phonesreboot) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Phonesreboot
+
+	
+
+	return json.Marshal(&struct { 
+		PhoneIds *[]string `json:"phoneIds,omitempty"`
+		
+		SiteId *string `json:"siteId,omitempty"`
+		*Alias
+	}{ 
+		PhoneIds: u.PhoneIds,
+		
+		SiteId: u.SiteId,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

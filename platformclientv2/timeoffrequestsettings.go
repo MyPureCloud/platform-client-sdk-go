@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Timeoffrequestsettings struct {
 	// SubmissionLatestDaysFromNow - The latest number of days from now for which an agent can submit a time off request
 	SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
 
+}
+
+func (u *Timeoffrequestsettings) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Timeoffrequestsettings
+
+	
+
+	return json.Marshal(&struct { 
+		SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
+		
+		SubmissionEarliestDaysFromNow *int `json:"submissionEarliestDaysFromNow,omitempty"`
+		
+		SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
+		*Alias
+	}{ 
+		SubmissionRangeEnforced: u.SubmissionRangeEnforced,
+		
+		SubmissionEarliestDaysFromNow: u.SubmissionEarliestDaysFromNow,
+		
+		SubmissionLatestDaysFromNow: u.SubmissionLatestDaysFromNow,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -70,6 +71,82 @@ type Auditmessage struct {
 	// ServiceContext - The service-specific context associated with this AuditMessage.
 	ServiceContext *Servicecontext `json:"serviceContext,omitempty"`
 
+}
+
+func (u *Auditmessage) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Auditmessage
+
+	
+
+	return json.Marshal(&struct { 
+		Id *string `json:"id,omitempty"`
+		
+		User *Audituser `json:"user,omitempty"`
+		
+		CorrelationId *string `json:"correlationId,omitempty"`
+		
+		TransactionId *string `json:"transactionId,omitempty"`
+		
+		TransactionInitiator *bool `json:"transactionInitiator,omitempty"`
+		
+		Application *string `json:"application,omitempty"`
+		
+		ServiceName *string `json:"serviceName,omitempty"`
+		
+		Level *string `json:"level,omitempty"`
+		
+		Timestamp *string `json:"timestamp,omitempty"`
+		
+		ReceivedTimestamp *string `json:"receivedTimestamp,omitempty"`
+		
+		Status *string `json:"status,omitempty"`
+		
+		ActionContext *string `json:"actionContext,omitempty"`
+		
+		Action *string `json:"action,omitempty"`
+		
+		Changes *[]Change `json:"changes,omitempty"`
+		
+		Entity *Auditentity `json:"entity,omitempty"`
+		
+		ServiceContext *Servicecontext `json:"serviceContext,omitempty"`
+		*Alias
+	}{ 
+		Id: u.Id,
+		
+		User: u.User,
+		
+		CorrelationId: u.CorrelationId,
+		
+		TransactionId: u.TransactionId,
+		
+		TransactionInitiator: u.TransactionInitiator,
+		
+		Application: u.Application,
+		
+		ServiceName: u.ServiceName,
+		
+		Level: u.Level,
+		
+		Timestamp: u.Timestamp,
+		
+		ReceivedTimestamp: u.ReceivedTimestamp,
+		
+		Status: u.Status,
+		
+		ActionContext: u.ActionContext,
+		
+		Action: u.Action,
+		
+		Changes: u.Changes,
+		
+		Entity: u.Entity,
+		
+		ServiceContext: u.ServiceContext,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

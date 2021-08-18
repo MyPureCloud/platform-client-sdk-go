@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Wfmmoveagentscompletetopicwfmmoveagentscomplete struct {
 	// Results
 	Results *[]Wfmmoveagentscompletetopicwfmmoveagentdata `json:"results,omitempty"`
 
+}
+
+func (u *Wfmmoveagentscompletetopicwfmmoveagentscomplete) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Wfmmoveagentscompletetopicwfmmoveagentscomplete
+
+	
+
+	return json.Marshal(&struct { 
+		RequestingUser *Wfmmoveagentscompletetopicuserreference `json:"requestingUser,omitempty"`
+		
+		DestinationManagementUnit *Wfmmoveagentscompletetopicmanagementunit `json:"destinationManagementUnit,omitempty"`
+		
+		Results *[]Wfmmoveagentscompletetopicwfmmoveagentdata `json:"results,omitempty"`
+		*Alias
+	}{ 
+		RequestingUser: u.RequestingUser,
+		
+		DestinationManagementUnit: u.DestinationManagementUnit,
+		
+		Results: u.Results,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -14,6 +15,26 @@ type Buagentschedulesqueryresponse struct {
 	// BusinessUnitTimeZone - The time zone configured for the business unit to which these schedules apply
 	BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
 
+}
+
+func (u *Buagentschedulesqueryresponse) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Buagentschedulesqueryresponse
+
+	
+
+	return json.Marshal(&struct { 
+		AgentSchedules *[]Buagentschedulequeryresponse `json:"agentSchedules,omitempty"`
+		
+		BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
+		*Alias
+	}{ 
+		AgentSchedules: u.AgentSchedules,
+		
+		BusinessUnitTimeZone: u.BusinessUnitTimeZone,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model

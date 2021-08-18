@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
 	"strings"
@@ -18,6 +19,30 @@ type Queueconversationeventtopicjourneycontext struct {
 	// TriggeringAction
 	TriggeringAction *Queueconversationeventtopicjourneyaction `json:"triggeringAction,omitempty"`
 
+}
+
+func (u *Queueconversationeventtopicjourneycontext) MarshalJSON() ([]byte, error) {
+	// Redundant initialization to avoid unused import errors for models with no Time values
+	_  = timeutil.Timedelta{}
+	type Alias Queueconversationeventtopicjourneycontext
+
+	
+
+	return json.Marshal(&struct { 
+		Customer *Queueconversationeventtopicjourneycustomer `json:"customer,omitempty"`
+		
+		CustomerSession *Queueconversationeventtopicjourneycustomersession `json:"customerSession,omitempty"`
+		
+		TriggeringAction *Queueconversationeventtopicjourneyaction `json:"triggeringAction,omitempty"`
+		*Alias
+	}{ 
+		Customer: u.Customer,
+		
+		CustomerSession: u.CustomerSession,
+		
+		TriggeringAction: u.TriggeringAction,
+		Alias:    (*Alias)(u),
+	})
 }
 
 // String returns a JSON representation of the model
