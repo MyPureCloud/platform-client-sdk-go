@@ -45,6 +45,10 @@ type Analyticsevaluation struct {
 	QueueId *string `json:"queueId,omitempty"`
 
 
+	// Released - Whether the evaluation has been released
+	Released *bool `json:"released,omitempty"`
+
+
 	// Rescored - Whether the evaluation has been rescored at least once
 	Rescored *bool `json:"rescored,omitempty"`
 
@@ -96,6 +100,8 @@ func (u *Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		
 		QueueId *string `json:"queueId,omitempty"`
 		
+		Released *bool `json:"released,omitempty"`
+		
 		Rescored *bool `json:"rescored,omitempty"`
 		
 		UserId *string `json:"userId,omitempty"`
@@ -122,6 +128,8 @@ func (u *Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		FormName: u.FormName,
 		
 		QueueId: u.QueueId,
+		
+		Released: u.Released,
 		
 		Rescored: u.Rescored,
 		

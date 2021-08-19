@@ -2391,7 +2391,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekScheduleHi
 //
 // Get the list of week schedules for the specified week
 //
-// Use \&quot;recent\&quot; for the `weekId` path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any schedule which spans the specified week
+// Use \&quot;recent\&quot; (without quotes) for the `weekId` path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any schedule which spans the specified week
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekSchedules(businessUnitId string, weekId string, includeOnlyPublished bool, expand string) (*Buschedulelisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
@@ -2907,7 +2907,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermf
 //
 // Get short term forecasts
 //
-// Use \&quot;recent\&quot; for the `weekDateId` path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any forecast which spans the specified week
+// Use \&quot;recent\&quot; (without quotes) for the `weekDateId` path parameter to fetch all forecasts for +/- 26 weeks from the current date. Response will include any forecast which spans the specified week
 func (a WorkforceManagementApi) GetWorkforcemanagementBusinessunitWeekShorttermforecasts(businessUnitId string, weekDateId string) (*Bushorttermforecastlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

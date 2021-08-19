@@ -27,6 +27,10 @@ type Conversationmessagecontent struct {
 	// ButtonResponse - Button response content.
 	ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 
+
+	// Generic - Generic Template Object
+	Generic *Contentgeneric `json:"generic,omitempty"`
+
 }
 
 func (u *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
@@ -46,6 +50,8 @@ func (u *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Template *Conversationcontentnotificationtemplate `json:"template,omitempty"`
 		
 		ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
+		
+		Generic *Contentgeneric `json:"generic,omitempty"`
 		*Alias
 	}{ 
 		ContentType: u.ContentType,
@@ -57,6 +63,8 @@ func (u *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Template: u.Template,
 		
 		ButtonResponse: u.ButtonResponse,
+		
+		Generic: u.Generic,
 		Alias:    (*Alias)(u),
 	})
 }

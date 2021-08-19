@@ -917,7 +917,7 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 
 // DeleteOutboundRuleset invokes DELETE /api/v2/outbound/rulesets/{ruleSetId}
 //
-// Delete a Rule set.
+// Delete a Rule Set.
 //
 // 
 func (a OutboundApi) DeleteOutboundRuleset(ruleSetId string) (*APIResponse, error) {
@@ -6896,7 +6896,7 @@ func (a OutboundApi) PostOutboundMessagingcampaignsProgress(body []string) ([]Ca
 
 // PostOutboundRulesets invokes POST /api/v2/outbound/rulesets
 //
-// Create a Dialer Call Analysis Response Set.
+// Create a Rule Set.
 //
 // 
 func (a OutboundApi) PostOutboundRulesets(body Ruleset) (*Ruleset, *APIResponse, error) {
@@ -7949,7 +7949,7 @@ func (a OutboundApi) PutOutboundMessagingcampaign(messagingCampaignId string, bo
 
 // PutOutboundRuleset invokes PUT /api/v2/outbound/rulesets/{ruleSetId}
 //
-// Update a RuleSet.
+// Update a Rule Set.
 //
 // 
 func (a OutboundApi) PutOutboundRuleset(ruleSetId string, body Ruleset) (*Ruleset, *APIResponse, error) {

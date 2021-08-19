@@ -33,6 +33,14 @@ type Recordingjob struct {
 	TotalRecordings *int `json:"totalRecordings,omitempty"`
 
 
+	// TotalSkippedRecordings - Total number of recordings that have been skipped.
+	TotalSkippedRecordings *int `json:"totalSkippedRecordings,omitempty"`
+
+
+	// TotalFailedRecordings - Total number of recordings that the bulk job failed to process.
+	TotalFailedRecordings *int `json:"totalFailedRecordings,omitempty"`
+
+
 	// TotalProcessedRecordings - Total number of recordings have been processed.
 	TotalProcessedRecordings *int `json:"totalProcessedRecordings,omitempty"`
 
@@ -86,6 +94,10 @@ func (u *Recordingjob) MarshalJSON() ([]byte, error) {
 		
 		TotalRecordings *int `json:"totalRecordings,omitempty"`
 		
+		TotalSkippedRecordings *int `json:"totalSkippedRecordings,omitempty"`
+		
+		TotalFailedRecordings *int `json:"totalFailedRecordings,omitempty"`
+		
 		TotalProcessedRecordings *int `json:"totalProcessedRecordings,omitempty"`
 		
 		PercentProgress *int `json:"percentProgress,omitempty"`
@@ -110,6 +122,10 @@ func (u *Recordingjob) MarshalJSON() ([]byte, error) {
 		TotalConversations: u.TotalConversations,
 		
 		TotalRecordings: u.TotalRecordings,
+		
+		TotalSkippedRecordings: u.TotalSkippedRecordings,
+		
+		TotalFailedRecordings: u.TotalFailedRecordings,
 		
 		TotalProcessedRecordings: u.TotalProcessedRecordings,
 		

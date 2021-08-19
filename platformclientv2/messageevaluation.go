@@ -9,19 +9,23 @@ import (
 
 // Messageevaluation
 type Messageevaluation struct { 
-	// ContactColumn
+	// ContactColumn - The name of the contact column that was wrapped up
 	ContactColumn *string `json:"contactColumn,omitempty"`
 
 
-	// ContactAddress
+	// ContactAddress - The address (phone or email) that was wrapped up
 	ContactAddress *string `json:"contactAddress,omitempty"`
 
 
-	// WrapupCodeId
+	// MessageType - The type of message sent
+	MessageType *string `json:"messageType,omitempty"`
+
+
+	// WrapupCodeId - The id of the wrap-up code
 	WrapupCodeId *string `json:"wrapupCodeId,omitempty"`
 
 
-	// Timestamp - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// Timestamp - The time that the wrap-up was applied. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
 }
@@ -46,6 +50,8 @@ func (u *Messageevaluation) MarshalJSON() ([]byte, error) {
 		
 		ContactAddress *string `json:"contactAddress,omitempty"`
 		
+		MessageType *string `json:"messageType,omitempty"`
+		
 		WrapupCodeId *string `json:"wrapupCodeId,omitempty"`
 		
 		Timestamp *string `json:"timestamp,omitempty"`
@@ -54,6 +60,8 @@ func (u *Messageevaluation) MarshalJSON() ([]byte, error) {
 		ContactColumn: u.ContactColumn,
 		
 		ContactAddress: u.ContactAddress,
+		
+		MessageType: u.MessageType,
 		
 		WrapupCodeId: u.WrapupCodeId,
 		

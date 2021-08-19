@@ -20,6 +20,10 @@ type Writabledialercontact struct {
 	Data *map[string]interface{} `json:"data,omitempty"`
 
 
+	// LatestSmsEvaluations - A map of SMS records for the contact phone columns.
+	LatestSmsEvaluations *map[string]Messageevaluation `json:"latestSmsEvaluations,omitempty"`
+
+
 	// Callable - Indicates whether or not the contact can be called.
 	Callable *bool `json:"callable,omitempty"`
 
@@ -43,6 +47,8 @@ func (u *Writabledialercontact) MarshalJSON() ([]byte, error) {
 		
 		Data *map[string]interface{} `json:"data,omitempty"`
 		
+		LatestSmsEvaluations *map[string]Messageevaluation `json:"latestSmsEvaluations,omitempty"`
+		
 		Callable *bool `json:"callable,omitempty"`
 		
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
@@ -53,6 +59,8 @@ func (u *Writabledialercontact) MarshalJSON() ([]byte, error) {
 		ContactListId: u.ContactListId,
 		
 		Data: u.Data,
+		
+		LatestSmsEvaluations: u.LatestSmsEvaluations,
 		
 		Callable: u.Callable,
 		

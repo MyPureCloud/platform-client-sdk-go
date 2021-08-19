@@ -69,6 +69,10 @@ type Analyticssession struct {
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
 
 
+	// CoachedParticipantId - The participantId being coached (if someone (e.g. an agent) is being coached, this would correspond to one of the other participantIds present in the conversation)
+	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+
+
 	// CobrowseRole - Describes side of the cobrowse (sharer or viewer)
 	CobrowseRole *string `json:"cobrowseRole,omitempty"`
 
@@ -161,7 +165,7 @@ type Analyticssession struct {
 	MessageType *string `json:"messageType,omitempty"`
 
 
-	// MonitoredParticipantId - The participantId being monitored (if someone (e.g. an agent) is being monitored, this would be the ID of the participant that was monitored that would correspond to other participantIds present in the conversation)
+	// MonitoredParticipantId - The participantId being monitored (if someone (e.g. an agent) is being monitored, this would correspond to one of the other participantIds present in the conversation)
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
@@ -348,6 +352,8 @@ func (u *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		CallbackUserName *string `json:"callbackUserName,omitempty"`
 		
+		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+		
 		CobrowseRole *string `json:"cobrowseRole,omitempty"`
 		
 		CobrowseRoomId *string `json:"cobrowseRoomId,omitempty"`
@@ -490,6 +496,8 @@ func (u *Analyticssession) MarshalJSON() ([]byte, error) {
 		CallbackScheduledTime: CallbackScheduledTime,
 		
 		CallbackUserName: u.CallbackUserName,
+		
+		CoachedParticipantId: u.CoachedParticipantId,
 		
 		CobrowseRole: u.CobrowseRole,
 		

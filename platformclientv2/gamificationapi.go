@@ -212,7 +212,7 @@ func (a GamificationApi) GetGamificationLeaderboardAll(filterType string, filter
 
 // GetGamificationLeaderboardAllBestpoints invokes GET /api/v2/gamification/leaderboard/all/bestpoints
 //
-// Best Points by division
+// Best Points by division or performance profile
 //
 // 
 func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType string, filterId string) (*Overallbestpoints, *APIResponse, error) {
@@ -293,7 +293,7 @@ func (a GamificationApi) GetGamificationLeaderboardAllBestpoints(filterType stri
 
 // GetGamificationLeaderboardBestpoints invokes GET /api/v2/gamification/leaderboard/bestpoints
 //
-// Best Points of the requesting user&#39;s division
+// Best Points of the requesting user&#39;s current performance profile or division
 //
 // 
 func (a GamificationApi) GetGamificationLeaderboardBestpoints() (*Overallbestpoints, *APIResponse, error) {
@@ -719,6 +719,239 @@ func (a GamificationApi) GetGamificationProfile(performanceProfileId string) (*P
 	return successPayload, response, err
 }
 
+// GetGamificationProfileMetric invokes GET /api/v2/gamification/profiles/{profileId}/metrics/{metricId}
+//
+// Performance profile gamified metric by id
+//
+// 
+func (a GamificationApi) GetGamificationProfileMetric(profileId string, metricId string, workday time.Time) (*Metric, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/{metricId}"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	defaultReturn := new(Metric)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMetric")
+	}
+	// verify the required parameter 'metricId' is set
+	if &metricId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->GetGamificationProfileMetric")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Metric
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Metric" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetGamificationProfileMetrics invokes GET /api/v2/gamification/profiles/{profileId}/metrics
+//
+// All gamified metrics for a given performance profile
+//
+// 
+func (a GamificationApi) GetGamificationProfileMetrics(profileId string, expand []string, workday time.Time) (*Getmetricresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	defaultReturn := new(Getmetricresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMetrics")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "multi")
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Getmetricresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Getmetricresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetGamificationProfileMetricsObjectivedetails invokes GET /api/v2/gamification/profiles/{profileId}/metrics/objectivedetails
+//
+// All metrics for a given performance profile with objective details such as order and maxPoints
+//
+// 
+func (a GamificationApi) GetGamificationProfileMetricsObjectivedetails(profileId string, workday time.Time) (*Getmetricsresponse, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/objectivedetails"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	defaultReturn := new(Getmetricsresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->GetGamificationProfileMetricsObjectivedetails")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Getmetricsresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Getmetricsresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetGamificationProfiles invokes GET /api/v2/gamification/profiles
 //
 // All performance profiles
@@ -778,6 +1011,150 @@ func (a GamificationApi) GetGamificationProfiles() (*Getprofilesresponse, *APIRe
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Getprofilesresponse" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetGamificationProfilesUser invokes GET /api/v2/gamification/profiles/users/{userId}
+//
+// Performance profile of a user
+//
+// 
+func (a GamificationApi) GetGamificationProfilesUser(userId string, workday time.Time) (*Performanceprofile, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/users/{userId}"
+	path = strings.Replace(path, "{userId}", fmt.Sprintf("%v", userId), -1)
+	defaultReturn := new(Performanceprofile)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'userId' is set
+	if &userId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'userId' when calling GamificationApi->GetGamificationProfilesUser")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Performanceprofile
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Performanceprofile" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetGamificationProfilesUsersMe invokes GET /api/v2/gamification/profiles/users/me
+//
+// Performance profile of the requesting user
+//
+// 
+func (a GamificationApi) GetGamificationProfilesUsersMe(workday time.Time) (*Performanceprofile, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/users/me"
+	defaultReturn := new(Performanceprofile)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["workday"] = a.Configuration.APIClient.ParameterToString(workday, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Performanceprofile
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -2605,6 +2982,87 @@ func (a GamificationApi) PostGamificationProfileDeactivate(performanceProfileId 
 	return successPayload, response, err
 }
 
+// PostGamificationProfileMetrics invokes POST /api/v2/gamification/profiles/{profileId}/metrics
+//
+// Creates a gamified metric with a given metric definition and metric objective under in a performance profile
+//
+// 
+func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body Metric) (*Metric, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	defaultReturn := new(Metric)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PostGamificationProfileMetrics")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfileMetrics")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Metric
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Metric" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // PutGamificationMetric invokes PUT /api/v2/gamification/metrics/{metricId}
 //
 // Updates a metric
@@ -2756,6 +3214,93 @@ func (a GamificationApi) PutGamificationProfile(performanceProfileId string, bod
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Performanceprofile" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutGamificationProfileMetric invokes PUT /api/v2/gamification/profiles/{profileId}/metrics/{metricId}
+//
+// Updates a metric in performance profile
+//
+// 
+func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId string, body Metric) (*Metric, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/{metricId}"
+	path = strings.Replace(path, "{profileId}", fmt.Sprintf("%v", profileId), -1)
+	path = strings.Replace(path, "{metricId}", fmt.Sprintf("%v", metricId), -1)
+	defaultReturn := new(Metric)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'profileId' is set
+	if &profileId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'profileId' when calling GamificationApi->PutGamificationProfileMetric")
+	}
+	// verify the required parameter 'metricId' is set
+	if &metricId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'metricId' when calling GamificationApi->PutGamificationProfileMetric")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PutGamificationProfileMetric")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Metric
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Metric" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

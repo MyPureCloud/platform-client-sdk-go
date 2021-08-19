@@ -28,6 +28,10 @@ type Dialercontact struct {
 	CallRecords *map[string]Callrecord `json:"callRecords,omitempty"`
 
 
+	// LatestSmsEvaluations - A map of SMS records for the contact phone columns.
+	LatestSmsEvaluations *map[string]Messageevaluation `json:"latestSmsEvaluations,omitempty"`
+
+
 	// Callable - Indicates whether or not the contact can be called.
 	Callable *bool `json:"callable,omitempty"`
 
@@ -67,6 +71,8 @@ func (u *Dialercontact) MarshalJSON() ([]byte, error) {
 		
 		CallRecords *map[string]Callrecord `json:"callRecords,omitempty"`
 		
+		LatestSmsEvaluations *map[string]Messageevaluation `json:"latestSmsEvaluations,omitempty"`
+		
 		Callable *bool `json:"callable,omitempty"`
 		
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
@@ -87,6 +93,8 @@ func (u *Dialercontact) MarshalJSON() ([]byte, error) {
 		Data: u.Data,
 		
 		CallRecords: u.CallRecords,
+		
+		LatestSmsEvaluations: u.LatestSmsEvaluations,
 		
 		Callable: u.Callable,
 		
