@@ -21,6 +21,10 @@ type Metric struct {
 	MetricDefinitionId *string `json:"metricDefinitionId,omitempty"`
 
 
+	// ExternalMetricDefinitionId - The id of associated external metric definition
+	ExternalMetricDefinitionId *string `json:"externalMetricDefinitionId,omitempty"`
+
+
 	// Objective - Associated objective for this metric
 	Objective *Objective `json:"objective,omitempty"`
 
@@ -79,6 +83,8 @@ func (u *Metric) MarshalJSON() ([]byte, error) {
 		
 		MetricDefinitionId *string `json:"metricDefinitionId,omitempty"`
 		
+		ExternalMetricDefinitionId *string `json:"externalMetricDefinitionId,omitempty"`
+		
 		Objective *Objective `json:"objective,omitempty"`
 		
 		PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
@@ -99,6 +105,8 @@ func (u *Metric) MarshalJSON() ([]byte, error) {
 		Name: u.Name,
 		
 		MetricDefinitionId: u.MetricDefinitionId,
+		
+		ExternalMetricDefinitionId: u.ExternalMetricDefinitionId,
 		
 		Objective: u.Objective,
 		

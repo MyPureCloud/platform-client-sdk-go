@@ -101,6 +101,10 @@ type Evaluation struct {
 	IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
 
 
+	// AuthorizedActions - List of user authorized actions on evaluation. Possible values: edit, editScore, editAgentSignoff, delete, viewAudit
+	AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -200,6 +204,8 @@ func (u *Evaluation) MarshalJSON() ([]byte, error) {
 		
 		IsScoringIndex *bool `json:"isScoringIndex,omitempty"`
 		
+		AuthorizedActions *[]string `json:"authorizedActions,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -248,6 +254,8 @@ func (u *Evaluation) MarshalJSON() ([]byte, error) {
 		Redacted: u.Redacted,
 		
 		IsScoringIndex: u.IsScoringIndex,
+		
+		AuthorizedActions: u.AuthorizedActions,
 		
 		SelfUri: u.SelfUri,
 		Alias:    (*Alias)(u),

@@ -29,12 +29,12 @@ type Certificatedetails struct {
 	Expired *bool `json:"expired,omitempty"`
 
 
-	// SignatureValid
-	SignatureValid *bool `json:"signatureValid,omitempty"`
-
-
 	// Valid
 	Valid *bool `json:"valid,omitempty"`
+
+
+	// SignatureValid
+	SignatureValid *bool `json:"signatureValid,omitempty"`
 
 }
 
@@ -72,9 +72,9 @@ func (u *Certificatedetails) MarshalJSON() ([]byte, error) {
 		
 		Expired *bool `json:"expired,omitempty"`
 		
-		SignatureValid *bool `json:"signatureValid,omitempty"`
-		
 		Valid *bool `json:"valid,omitempty"`
+		
+		SignatureValid *bool `json:"signatureValid,omitempty"`
 		*Alias
 	}{ 
 		Issuer: u.Issuer,
@@ -87,9 +87,9 @@ func (u *Certificatedetails) MarshalJSON() ([]byte, error) {
 		
 		Expired: u.Expired,
 		
-		SignatureValid: u.SignatureValid,
-		
 		Valid: u.Valid,
+		
+		SignatureValid: u.SignatureValid,
 		Alias:    (*Alias)(u),
 	})
 }

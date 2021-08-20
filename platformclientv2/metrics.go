@@ -28,6 +28,10 @@ type Metrics struct {
 	MetricDefinitionId *string `json:"metricDefinitionId,omitempty"`
 
 
+	// ExternalMetricDefinitionId - The id of associated external metric definition
+	ExternalMetricDefinitionId *string `json:"externalMetricDefinitionId,omitempty"`
+
+
 	// UnitType - Corresponding unit type for this metric
 	UnitType *string `json:"unitType,omitempty"`
 
@@ -46,6 +50,14 @@ type Metrics struct {
 
 	// PerformanceProfileId - Performance profile id of this metric
 	PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
+
+
+	// UnitDefinition - Unit definition of linked external metric
+	UnitDefinition *string `json:"unitDefinition,omitempty"`
+
+
+	// Precision - Precision of linked external metric
+	Precision *int `json:"precision,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -71,6 +83,8 @@ func (u *Metrics) MarshalJSON() ([]byte, error) {
 		
 		MetricDefinitionId *string `json:"metricDefinitionId,omitempty"`
 		
+		ExternalMetricDefinitionId *string `json:"externalMetricDefinitionId,omitempty"`
+		
 		UnitType *string `json:"unitType,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
@@ -80,6 +94,10 @@ func (u *Metrics) MarshalJSON() ([]byte, error) {
 		MaxPoints *int `json:"maxPoints,omitempty"`
 		
 		PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
+		
+		UnitDefinition *string `json:"unitDefinition,omitempty"`
+		
+		Precision *int `json:"precision,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
@@ -94,6 +112,8 @@ func (u *Metrics) MarshalJSON() ([]byte, error) {
 		
 		MetricDefinitionId: u.MetricDefinitionId,
 		
+		ExternalMetricDefinitionId: u.ExternalMetricDefinitionId,
+		
 		UnitType: u.UnitType,
 		
 		Enabled: u.Enabled,
@@ -103,6 +123,10 @@ func (u *Metrics) MarshalJSON() ([]byte, error) {
 		MaxPoints: u.MaxPoints,
 		
 		PerformanceProfileId: u.PerformanceProfileId,
+		
+		UnitDefinition: u.UnitDefinition,
+		
+		Precision: u.Precision,
 		
 		SelfUri: u.SelfUri,
 		Alias:    (*Alias)(u),
