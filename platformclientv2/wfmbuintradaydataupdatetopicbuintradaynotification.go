@@ -17,24 +17,42 @@ type Wfmbuintradaydataupdatetopicbuintradaynotification struct {
 
 }
 
-func (u *Wfmbuintradaydataupdatetopicbuintradaynotification) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuintradaydataupdatetopicbuintradaynotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuintradaydataupdatetopicbuintradaynotification
-
 	
-
 	return json.Marshal(&struct { 
 		OperationId *string `json:"operationId,omitempty"`
 		
 		Result *Wfmbuintradaydataupdatetopicbuintradayresult `json:"result,omitempty"`
 		*Alias
 	}{ 
-		OperationId: u.OperationId,
+		OperationId: o.OperationId,
 		
-		Result: u.Result,
-		Alias:    (*Alias)(u),
+		Result: o.Result,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuintradaydataupdatetopicbuintradaynotification) UnmarshalJSON(b []byte) error {
+	var WfmbuintradaydataupdatetopicbuintradaynotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuintradaydataupdatetopicbuintradaynotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if OperationId, ok := WfmbuintradaydataupdatetopicbuintradaynotificationMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+	if Result, ok := WfmbuintradaydataupdatetopicbuintradaynotificationMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

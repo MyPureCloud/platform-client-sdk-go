@@ -21,13 +21,11 @@ type Phonechangetopicedgereference struct {
 
 }
 
-func (u *Phonechangetopicedgereference) MarshalJSON() ([]byte, error) {
+func (o *Phonechangetopicedgereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonechangetopicedgereference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Phonechangetopicedgereference) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonechangetopicedgereference) UnmarshalJSON(b []byte) error {
+	var PhonechangetopicedgereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonechangetopicedgereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PhonechangetopicedgereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PhonechangetopicedgereferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := PhonechangetopicedgereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

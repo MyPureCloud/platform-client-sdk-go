@@ -62,29 +62,27 @@ type Knowledgesearchdocument struct {
 
 }
 
-func (u *Knowledgesearchdocument) MarshalJSON() ([]byte, error) {
+func (o *Knowledgesearchdocument) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgesearchdocument
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,102 @@ func (u *Knowledgesearchdocument) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		LanguageCode: u.LanguageCode,
+		LanguageCode: o.LanguageCode,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Faq: u.Faq,
+		Faq: o.Faq,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Categories: u.Categories,
+		Categories: o.Categories,
 		
-		KnowledgeBase: u.KnowledgeBase,
+		KnowledgeBase: o.KnowledgeBase,
 		
-		ExternalUrl: u.ExternalUrl,
+		ExternalUrl: o.ExternalUrl,
 		
-		Article: u.Article,
+		Article: o.Article,
 		
-		Confidence: u.Confidence,
+		Confidence: o.Confidence,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgesearchdocument) UnmarshalJSON(b []byte) error {
+	var KnowledgesearchdocumentMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgesearchdocumentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KnowledgesearchdocumentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KnowledgesearchdocumentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if LanguageCode, ok := KnowledgesearchdocumentMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
+	}
+	
+	if VarType, ok := KnowledgesearchdocumentMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Faq, ok := KnowledgesearchdocumentMap["faq"].(map[string]interface{}); ok {
+		FaqString, _ := json.Marshal(Faq)
+		json.Unmarshal(FaqString, &o.Faq)
+	}
+	
+	if dateCreatedString, ok := KnowledgesearchdocumentMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := KnowledgesearchdocumentMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Categories, ok := KnowledgesearchdocumentMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
+	if KnowledgeBase, ok := KnowledgesearchdocumentMap["knowledgeBase"].(map[string]interface{}); ok {
+		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
+		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if ExternalUrl, ok := KnowledgesearchdocumentMap["externalUrl"].(string); ok {
+		o.ExternalUrl = &ExternalUrl
+	}
+	
+	if Article, ok := KnowledgesearchdocumentMap["article"].(map[string]interface{}); ok {
+		ArticleString, _ := json.Marshal(Article)
+		json.Unmarshal(ArticleString, &o.Article)
+	}
+	
+	if Confidence, ok := KnowledgesearchdocumentMap["confidence"].(float64); ok {
+		o.Confidence = &Confidence
+	}
+	
+	if SelfUri, ok := KnowledgesearchdocumentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

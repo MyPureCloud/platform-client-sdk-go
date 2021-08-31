@@ -17,24 +17,42 @@ type Conversationdetailqueryclause struct {
 
 }
 
-func (u *Conversationdetailqueryclause) MarshalJSON() ([]byte, error) {
+func (o *Conversationdetailqueryclause) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationdetailqueryclause
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Predicates *[]Conversationdetailquerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationdetailqueryclause) UnmarshalJSON(b []byte) error {
+	var ConversationdetailqueryclauseMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationdetailqueryclauseMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ConversationdetailqueryclauseMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Predicates, ok := ConversationdetailqueryclauseMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -22,29 +22,27 @@ type Conversationeventtopicaftercallwork struct {
 
 }
 
-func (u *Conversationeventtopicaftercallwork) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicaftercallwork) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicaftercallwork
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -53,13 +51,38 @@ func (u *Conversationeventtopicaftercallwork) MarshalJSON() ([]byte, error) {
 		EndTime *string `json:"endTime,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
 		StartTime: StartTime,
 		
 		EndTime: EndTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicaftercallwork) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicaftercallworkMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicaftercallworkMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := ConversationeventtopicaftercallworkMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if startTimeString, ok := ConversationeventtopicaftercallworkMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := ConversationeventtopicaftercallworkMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Phonechangetopicphone struct {
 
 }
 
-func (u *Phonechangetopicphone) MarshalJSON() ([]byte, error) {
+func (o *Phonechangetopicphone) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonechangetopicphone
-
 	
-
 	return json.Marshal(&struct { 
 		UserAgentInfo *Phonechangetopicuseragentinfo `json:"userAgentInfo,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Phonechangetopicphone) MarshalJSON() ([]byte, error) {
 		SecondaryStatus *Phonechangetopicphonestatus `json:"secondaryStatus,omitempty"`
 		*Alias
 	}{ 
-		UserAgentInfo: u.UserAgentInfo,
+		UserAgentInfo: o.UserAgentInfo,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		SecondaryStatus: u.SecondaryStatus,
-		Alias:    (*Alias)(u),
+		SecondaryStatus: o.SecondaryStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonechangetopicphone) UnmarshalJSON(b []byte) error {
+	var PhonechangetopicphoneMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonechangetopicphoneMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserAgentInfo, ok := PhonechangetopicphoneMap["userAgentInfo"].(map[string]interface{}); ok {
+		UserAgentInfoString, _ := json.Marshal(UserAgentInfo)
+		json.Unmarshal(UserAgentInfoString, &o.UserAgentInfo)
+	}
+	
+	if Id, ok := PhonechangetopicphoneMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Status, ok := PhonechangetopicphoneMap["status"].(map[string]interface{}); ok {
+		StatusString, _ := json.Marshal(Status)
+		json.Unmarshal(StatusString, &o.Status)
+	}
+	
+	if SecondaryStatus, ok := PhonechangetopicphoneMap["secondaryStatus"].(map[string]interface{}); ok {
+		SecondaryStatusString, _ := json.Marshal(SecondaryStatus)
+		json.Unmarshal(SecondaryStatusString, &o.SecondaryStatus)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

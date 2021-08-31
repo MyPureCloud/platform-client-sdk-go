@@ -46,29 +46,27 @@ type Sequenceschedule struct {
 
 }
 
-func (u *Sequenceschedule) MarshalJSON() ([]byte, error) {
+func (o *Sequenceschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sequenceschedule
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,77 @@ func (u *Sequenceschedule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Intervals: u.Intervals,
+		Intervals: o.Intervals,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		Sequence: u.Sequence,
+		Sequence: o.Sequence,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sequenceschedule) UnmarshalJSON(b []byte) error {
+	var SequencescheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &SequencescheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SequencescheduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SequencescheduleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := SequencescheduleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := SequencescheduleMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := SequencescheduleMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Intervals, ok := SequencescheduleMap["intervals"].([]interface{}); ok {
+		IntervalsString, _ := json.Marshal(Intervals)
+		json.Unmarshal(IntervalsString, &o.Intervals)
+	}
+	
+	if TimeZone, ok := SequencescheduleMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if Sequence, ok := SequencescheduleMap["sequence"].(map[string]interface{}); ok {
+		SequenceString, _ := json.Marshal(Sequence)
+		json.Unmarshal(SequenceString, &o.Sequence)
+	}
+	
+	if SelfUri, ok := SequencescheduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Userobservationdatacontainer struct {
 
 }
 
-func (u *Userobservationdatacontainer) MarshalJSON() ([]byte, error) {
+func (o *Userobservationdatacontainer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userobservationdatacontainer
-
 	
-
 	return json.Marshal(&struct { 
 		Group *map[string]string `json:"group,omitempty"`
 		
 		Data *[]Observationmetricdata `json:"data,omitempty"`
 		*Alias
 	}{ 
-		Group: u.Group,
+		Group: o.Group,
 		
-		Data: u.Data,
-		Alias:    (*Alias)(u),
+		Data: o.Data,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userobservationdatacontainer) UnmarshalJSON(b []byte) error {
+	var UserobservationdatacontainerMap map[string]interface{}
+	err := json.Unmarshal(b, &UserobservationdatacontainerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Group, ok := UserobservationdatacontainerMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if Data, ok := UserobservationdatacontainerMap["data"].([]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

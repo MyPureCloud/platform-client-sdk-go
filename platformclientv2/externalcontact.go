@@ -118,29 +118,27 @@ type Externalcontact struct {
 
 }
 
-func (u *Externalcontact) MarshalJSON() ([]byte, error) {
+func (o *Externalcontact) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Externalcontact
-
 	
 	ModifyDate := new(string)
-	if u.ModifyDate != nil {
+	if o.ModifyDate != nil {
 		
-		*ModifyDate = timeutil.Strftime(u.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifyDate = timeutil.Strftime(o.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifyDate = nil
 	}
 	
 	CreateDate := new(string)
-	if u.CreateDate != nil {
+	if o.CreateDate != nil {
 		
-		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreateDate = timeutil.Strftime(o.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreateDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -197,61 +195,195 @@ func (u *Externalcontact) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		FirstName: u.FirstName,
+		FirstName: o.FirstName,
 		
-		MiddleName: u.MiddleName,
+		MiddleName: o.MiddleName,
 		
-		LastName: u.LastName,
+		LastName: o.LastName,
 		
-		Salutation: u.Salutation,
+		Salutation: o.Salutation,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		WorkPhone: u.WorkPhone,
+		WorkPhone: o.WorkPhone,
 		
-		CellPhone: u.CellPhone,
+		CellPhone: o.CellPhone,
 		
-		HomePhone: u.HomePhone,
+		HomePhone: o.HomePhone,
 		
-		OtherPhone: u.OtherPhone,
+		OtherPhone: o.OtherPhone,
 		
-		WorkEmail: u.WorkEmail,
+		WorkEmail: o.WorkEmail,
 		
-		PersonalEmail: u.PersonalEmail,
+		PersonalEmail: o.PersonalEmail,
 		
-		OtherEmail: u.OtherEmail,
+		OtherEmail: o.OtherEmail,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		TwitterId: u.TwitterId,
+		TwitterId: o.TwitterId,
 		
-		LineId: u.LineId,
+		LineId: o.LineId,
 		
-		WhatsAppId: u.WhatsAppId,
+		WhatsAppId: o.WhatsAppId,
 		
-		FacebookId: u.FacebookId,
+		FacebookId: o.FacebookId,
 		
 		ModifyDate: ModifyDate,
 		
 		CreateDate: CreateDate,
 		
-		ExternalOrganization: u.ExternalOrganization,
+		ExternalOrganization: o.ExternalOrganization,
 		
-		SurveyOptOut: u.SurveyOptOut,
+		SurveyOptOut: o.SurveyOptOut,
 		
-		ExternalSystemUrl: u.ExternalSystemUrl,
+		ExternalSystemUrl: o.ExternalSystemUrl,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		CustomFields: u.CustomFields,
+		CustomFields: o.CustomFields,
 		
-		ExternalDataSources: u.ExternalDataSources,
+		ExternalDataSources: o.ExternalDataSources,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Externalcontact) UnmarshalJSON(b []byte) error {
+	var ExternalcontactMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternalcontactMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ExternalcontactMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if FirstName, ok := ExternalcontactMap["firstName"].(string); ok {
+		o.FirstName = &FirstName
+	}
+	
+	if MiddleName, ok := ExternalcontactMap["middleName"].(string); ok {
+		o.MiddleName = &MiddleName
+	}
+	
+	if LastName, ok := ExternalcontactMap["lastName"].(string); ok {
+		o.LastName = &LastName
+	}
+	
+	if Salutation, ok := ExternalcontactMap["salutation"].(string); ok {
+		o.Salutation = &Salutation
+	}
+	
+	if Title, ok := ExternalcontactMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if WorkPhone, ok := ExternalcontactMap["workPhone"].(map[string]interface{}); ok {
+		WorkPhoneString, _ := json.Marshal(WorkPhone)
+		json.Unmarshal(WorkPhoneString, &o.WorkPhone)
+	}
+	
+	if CellPhone, ok := ExternalcontactMap["cellPhone"].(map[string]interface{}); ok {
+		CellPhoneString, _ := json.Marshal(CellPhone)
+		json.Unmarshal(CellPhoneString, &o.CellPhone)
+	}
+	
+	if HomePhone, ok := ExternalcontactMap["homePhone"].(map[string]interface{}); ok {
+		HomePhoneString, _ := json.Marshal(HomePhone)
+		json.Unmarshal(HomePhoneString, &o.HomePhone)
+	}
+	
+	if OtherPhone, ok := ExternalcontactMap["otherPhone"].(map[string]interface{}); ok {
+		OtherPhoneString, _ := json.Marshal(OtherPhone)
+		json.Unmarshal(OtherPhoneString, &o.OtherPhone)
+	}
+	
+	if WorkEmail, ok := ExternalcontactMap["workEmail"].(string); ok {
+		o.WorkEmail = &WorkEmail
+	}
+	
+	if PersonalEmail, ok := ExternalcontactMap["personalEmail"].(string); ok {
+		o.PersonalEmail = &PersonalEmail
+	}
+	
+	if OtherEmail, ok := ExternalcontactMap["otherEmail"].(string); ok {
+		o.OtherEmail = &OtherEmail
+	}
+	
+	if Address, ok := ExternalcontactMap["address"].(map[string]interface{}); ok {
+		AddressString, _ := json.Marshal(Address)
+		json.Unmarshal(AddressString, &o.Address)
+	}
+	
+	if TwitterId, ok := ExternalcontactMap["twitterId"].(map[string]interface{}); ok {
+		TwitterIdString, _ := json.Marshal(TwitterId)
+		json.Unmarshal(TwitterIdString, &o.TwitterId)
+	}
+	
+	if LineId, ok := ExternalcontactMap["lineId"].(map[string]interface{}); ok {
+		LineIdString, _ := json.Marshal(LineId)
+		json.Unmarshal(LineIdString, &o.LineId)
+	}
+	
+	if WhatsAppId, ok := ExternalcontactMap["whatsAppId"].(map[string]interface{}); ok {
+		WhatsAppIdString, _ := json.Marshal(WhatsAppId)
+		json.Unmarshal(WhatsAppIdString, &o.WhatsAppId)
+	}
+	
+	if FacebookId, ok := ExternalcontactMap["facebookId"].(map[string]interface{}); ok {
+		FacebookIdString, _ := json.Marshal(FacebookId)
+		json.Unmarshal(FacebookIdString, &o.FacebookId)
+	}
+	
+	if modifyDateString, ok := ExternalcontactMap["modifyDate"].(string); ok {
+		ModifyDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifyDateString)
+		o.ModifyDate = &ModifyDate
+	}
+	
+	if createDateString, ok := ExternalcontactMap["createDate"].(string); ok {
+		CreateDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createDateString)
+		o.CreateDate = &CreateDate
+	}
+	
+	if ExternalOrganization, ok := ExternalcontactMap["externalOrganization"].(map[string]interface{}); ok {
+		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
+		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
+	}
+	
+	if SurveyOptOut, ok := ExternalcontactMap["surveyOptOut"].(bool); ok {
+		o.SurveyOptOut = &SurveyOptOut
+	}
+	
+	if ExternalSystemUrl, ok := ExternalcontactMap["externalSystemUrl"].(string); ok {
+		o.ExternalSystemUrl = &ExternalSystemUrl
+	}
+	
+	if Schema, ok := ExternalcontactMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if CustomFields, ok := ExternalcontactMap["customFields"].(map[string]interface{}); ok {
+		CustomFieldsString, _ := json.Marshal(CustomFields)
+		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if ExternalDataSources, ok := ExternalcontactMap["externalDataSources"].([]interface{}); ok {
+		ExternalDataSourcesString, _ := json.Marshal(ExternalDataSources)
+		json.Unmarshal(ExternalDataSourcesString, &o.ExternalDataSources)
+	}
+	
+	if SelfUri, ok := ExternalcontactMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

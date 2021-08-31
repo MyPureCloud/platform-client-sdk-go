@@ -33,13 +33,11 @@ type Campaignprogress struct {
 
 }
 
-func (u *Campaignprogress) MarshalJSON() ([]byte, error) {
+func (o *Campaignprogress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaignprogress
-
 	
-
 	return json.Marshal(&struct { 
 		Campaign *Domainentityref `json:"campaign,omitempty"`
 		
@@ -54,19 +52,60 @@ func (u *Campaignprogress) MarshalJSON() ([]byte, error) {
 		Percentage *int `json:"percentage,omitempty"`
 		*Alias
 	}{ 
-		Campaign: u.Campaign,
+		Campaign: o.Campaign,
 		
-		ContactList: u.ContactList,
+		ContactList: o.ContactList,
 		
-		NumberOfContactsCalled: u.NumberOfContactsCalled,
+		NumberOfContactsCalled: o.NumberOfContactsCalled,
 		
-		NumberOfContactsMessaged: u.NumberOfContactsMessaged,
+		NumberOfContactsMessaged: o.NumberOfContactsMessaged,
 		
-		TotalNumberOfContacts: u.TotalNumberOfContacts,
+		TotalNumberOfContacts: o.TotalNumberOfContacts,
 		
-		Percentage: u.Percentage,
-		Alias:    (*Alias)(u),
+		Percentage: o.Percentage,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaignprogress) UnmarshalJSON(b []byte) error {
+	var CampaignprogressMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignprogressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Campaign, ok := CampaignprogressMap["campaign"].(map[string]interface{}); ok {
+		CampaignString, _ := json.Marshal(Campaign)
+		json.Unmarshal(CampaignString, &o.Campaign)
+	}
+	
+	if ContactList, ok := CampaignprogressMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if NumberOfContactsCalled, ok := CampaignprogressMap["numberOfContactsCalled"].(float64); ok {
+		NumberOfContactsCalledInt := int(NumberOfContactsCalled)
+		o.NumberOfContactsCalled = &NumberOfContactsCalledInt
+	}
+	
+	if NumberOfContactsMessaged, ok := CampaignprogressMap["numberOfContactsMessaged"].(float64); ok {
+		NumberOfContactsMessagedInt := int(NumberOfContactsMessaged)
+		o.NumberOfContactsMessaged = &NumberOfContactsMessagedInt
+	}
+	
+	if TotalNumberOfContacts, ok := CampaignprogressMap["totalNumberOfContacts"].(float64); ok {
+		TotalNumberOfContactsInt := int(TotalNumberOfContacts)
+		o.TotalNumberOfContacts = &TotalNumberOfContactsInt
+	}
+	
+	if Percentage, ok := CampaignprogressMap["percentage"].(float64); ok {
+		PercentageInt := int(Percentage)
+		o.Percentage = &PercentageInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

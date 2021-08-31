@@ -13,20 +13,33 @@ type Namedentityannotation struct {
 
 }
 
-func (u *Namedentityannotation) MarshalJSON() ([]byte, error) {
+func (o *Namedentityannotation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Namedentityannotation
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Namedentityannotation) UnmarshalJSON(b []byte) error {
+	var NamedentityannotationMap map[string]interface{}
+	err := json.Unmarshal(b, &NamedentityannotationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := NamedentityannotationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

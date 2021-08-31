@@ -29,13 +29,11 @@ type Systemprompt struct {
 
 }
 
-func (u *Systemprompt) MarshalJSON() ([]byte, error) {
+func (o *Systemprompt) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Systemprompt
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Systemprompt) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Resources: u.Resources,
+		Resources: o.Resources,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Systemprompt) UnmarshalJSON(b []byte) error {
+	var SystempromptMap map[string]interface{}
+	err := json.Unmarshal(b, &SystempromptMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SystempromptMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SystempromptMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := SystempromptMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Resources, ok := SystempromptMap["resources"].([]interface{}); ok {
+		ResourcesString, _ := json.Marshal(Resources)
+		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+	if SelfUri, ok := SystempromptMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

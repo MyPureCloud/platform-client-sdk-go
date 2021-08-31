@@ -26,13 +26,11 @@ type Buagentschedulehistorydroppedchange struct {
 
 }
 
-func (u *Buagentschedulehistorydroppedchange) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulehistorydroppedchange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulehistorydroppedchange
-
 	
-
 	return json.Marshal(&struct { 
 		Metadata *Buagentschedulehistorychangemetadata `json:"metadata,omitempty"`
 		
@@ -43,15 +41,46 @@ func (u *Buagentschedulehistorydroppedchange) MarshalJSON() ([]byte, error) {
 		Deletes *Buagentschedulehistorydeletedchange `json:"deletes,omitempty"`
 		*Alias
 	}{ 
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		ShiftIds: u.ShiftIds,
+		ShiftIds: o.ShiftIds,
 		
-		FullDayTimeOffMarkerDates: u.FullDayTimeOffMarkerDates,
+		FullDayTimeOffMarkerDates: o.FullDayTimeOffMarkerDates,
 		
-		Deletes: u.Deletes,
-		Alias:    (*Alias)(u),
+		Deletes: o.Deletes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulehistorydroppedchange) UnmarshalJSON(b []byte) error {
+	var BuagentschedulehistorydroppedchangeMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulehistorydroppedchangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metadata, ok := BuagentschedulehistorydroppedchangeMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if ShiftIds, ok := BuagentschedulehistorydroppedchangeMap["shiftIds"].([]interface{}); ok {
+		ShiftIdsString, _ := json.Marshal(ShiftIds)
+		json.Unmarshal(ShiftIdsString, &o.ShiftIds)
+	}
+	
+	if FullDayTimeOffMarkerDates, ok := BuagentschedulehistorydroppedchangeMap["fullDayTimeOffMarkerDates"].([]interface{}); ok {
+		FullDayTimeOffMarkerDatesString, _ := json.Marshal(FullDayTimeOffMarkerDates)
+		json.Unmarshal(FullDayTimeOffMarkerDatesString, &o.FullDayTimeOffMarkerDates)
+	}
+	
+	if Deletes, ok := BuagentschedulehistorydroppedchangeMap["deletes"].(map[string]interface{}); ok {
+		DeletesString, _ := json.Marshal(Deletes)
+		json.Unmarshal(DeletesString, &o.Deletes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

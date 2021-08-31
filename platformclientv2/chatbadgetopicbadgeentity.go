@@ -13,20 +13,33 @@ type Chatbadgetopicbadgeentity struct {
 
 }
 
-func (u *Chatbadgetopicbadgeentity) MarshalJSON() ([]byte, error) {
+func (o *Chatbadgetopicbadgeentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Chatbadgetopicbadgeentity
-
 	
-
 	return json.Marshal(&struct { 
 		JabberId *string `json:"jabberId,omitempty"`
 		*Alias
 	}{ 
-		JabberId: u.JabberId,
-		Alias:    (*Alias)(u),
+		JabberId: o.JabberId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Chatbadgetopicbadgeentity) UnmarshalJSON(b []byte) error {
+	var ChatbadgetopicbadgeentityMap map[string]interface{}
+	err := json.Unmarshal(b, &ChatbadgetopicbadgeentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if JabberId, ok := ChatbadgetopicbadgeentityMap["jabberId"].(string); ok {
+		o.JabberId = &JabberId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

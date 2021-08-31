@@ -21,13 +21,11 @@ type Metadata struct {
 
 }
 
-func (u *Metadata) MarshalJSON() ([]byte, error) {
+func (o *Metadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Metadata
-
 	
-
 	return json.Marshal(&struct { 
 		PairingToken *string `json:"pairing-token,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Metadata) MarshalJSON() ([]byte, error) {
 		PairingUrl *string `json:"pairing-url,omitempty"`
 		*Alias
 	}{ 
-		PairingToken: u.PairingToken,
+		PairingToken: o.PairingToken,
 		
-		PairingTrust: u.PairingTrust,
+		PairingTrust: o.PairingTrust,
 		
-		PairingUrl: u.PairingUrl,
-		Alias:    (*Alias)(u),
+		PairingUrl: o.PairingUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Metadata) UnmarshalJSON(b []byte) error {
+	var MetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &MetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if PairingToken, ok := MetadataMap["pairing-token"].(string); ok {
+		o.PairingToken = &PairingToken
+	}
+	
+	if PairingTrust, ok := MetadataMap["pairing-trust"].([]interface{}); ok {
+		PairingTrustString, _ := json.Marshal(PairingTrust)
+		json.Unmarshal(PairingTrustString, &o.PairingTrust)
+	}
+	
+	if PairingUrl, ok := MetadataMap["pairing-url"].(string); ok {
+		o.PairingUrl = &PairingUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

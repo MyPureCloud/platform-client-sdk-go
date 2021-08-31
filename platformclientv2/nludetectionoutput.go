@@ -17,24 +17,43 @@ type Nludetectionoutput struct {
 
 }
 
-func (u *Nludetectionoutput) MarshalJSON() ([]byte, error) {
+func (o *Nludetectionoutput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nludetectionoutput
-
 	
-
 	return json.Marshal(&struct { 
 		Intents *[]Detectedintent `json:"intents,omitempty"`
 		
 		DialogActs *[]Detecteddialogact `json:"dialogActs,omitempty"`
 		*Alias
 	}{ 
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
-		DialogActs: u.DialogActs,
-		Alias:    (*Alias)(u),
+		DialogActs: o.DialogActs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nludetectionoutput) UnmarshalJSON(b []byte) error {
+	var NludetectionoutputMap map[string]interface{}
+	err := json.Unmarshal(b, &NludetectionoutputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Intents, ok := NludetectionoutputMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if DialogActs, ok := NludetectionoutputMap["dialogActs"].([]interface{}); ok {
+		DialogActsString, _ := json.Marshal(DialogActs)
+		json.Unmarshal(DialogActsString, &o.DialogActs)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

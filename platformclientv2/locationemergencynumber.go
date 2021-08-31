@@ -21,13 +21,11 @@ type Locationemergencynumber struct {
 
 }
 
-func (u *Locationemergencynumber) MarshalJSON() ([]byte, error) {
+func (o *Locationemergencynumber) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationemergencynumber
-
 	
-
 	return json.Marshal(&struct { 
 		E164 *string `json:"e164,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Locationemergencynumber) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		E164: u.E164,
+		E164: o.E164,
 		
-		Number: u.Number,
+		Number: o.Number,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationemergencynumber) UnmarshalJSON(b []byte) error {
+	var LocationemergencynumberMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationemergencynumberMap)
+	if err != nil {
+		return err
+	}
+	
+	if E164, ok := LocationemergencynumberMap["e164"].(string); ok {
+		o.E164 = &E164
+	}
+	
+	if Number, ok := LocationemergencynumberMap["number"].(string); ok {
+		o.Number = &Number
+	}
+	
+	if VarType, ok := LocationemergencynumberMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

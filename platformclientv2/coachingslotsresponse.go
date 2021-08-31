@@ -21,13 +21,11 @@ type Coachingslotsresponse struct {
 
 }
 
-func (u *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
+func (o *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingslotsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		SuggestedSlots *[]Coachingslot `json:"suggestedSlots,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
 		FacilitatorSchedules *[]Useravailabletimes `json:"facilitatorSchedules,omitempty"`
 		*Alias
 	}{ 
-		SuggestedSlots: u.SuggestedSlots,
+		SuggestedSlots: o.SuggestedSlots,
 		
-		AttendeeSchedules: u.AttendeeSchedules,
+		AttendeeSchedules: o.AttendeeSchedules,
 		
-		FacilitatorSchedules: u.FacilitatorSchedules,
-		Alias:    (*Alias)(u),
+		FacilitatorSchedules: o.FacilitatorSchedules,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingslotsresponse) UnmarshalJSON(b []byte) error {
+	var CoachingslotsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingslotsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if SuggestedSlots, ok := CoachingslotsresponseMap["suggestedSlots"].([]interface{}); ok {
+		SuggestedSlotsString, _ := json.Marshal(SuggestedSlots)
+		json.Unmarshal(SuggestedSlotsString, &o.SuggestedSlots)
+	}
+	
+	if AttendeeSchedules, ok := CoachingslotsresponseMap["attendeeSchedules"].([]interface{}); ok {
+		AttendeeSchedulesString, _ := json.Marshal(AttendeeSchedules)
+		json.Unmarshal(AttendeeSchedulesString, &o.AttendeeSchedules)
+	}
+	
+	if FacilitatorSchedules, ok := CoachingslotsresponseMap["facilitatorSchedules"].([]interface{}); ok {
+		FacilitatorSchedulesString, _ := json.Marshal(FacilitatorSchedules)
+		json.Unmarshal(FacilitatorSchedulesString, &o.FacilitatorSchedules)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

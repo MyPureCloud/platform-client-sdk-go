@@ -62,29 +62,27 @@ type Datatableimportjob struct {
 
 }
 
-func (u *Datatableimportjob) MarshalJSON() ([]byte, error) {
+func (o *Datatableimportjob) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Datatableimportjob
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,103 @@ func (u *Datatableimportjob) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Owner: u.Owner,
+		Owner: o.Owner,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		DateCreated: DateCreated,
 		
 		DateCompleted: DateCompleted,
 		
-		UploadURI: u.UploadURI,
+		UploadURI: o.UploadURI,
 		
-		ImportMode: u.ImportMode,
+		ImportMode: o.ImportMode,
 		
-		ErrorInformation: u.ErrorInformation,
+		ErrorInformation: o.ErrorInformation,
 		
-		CountRecordsUpdated: u.CountRecordsUpdated,
+		CountRecordsUpdated: o.CountRecordsUpdated,
 		
-		CountRecordsDeleted: u.CountRecordsDeleted,
+		CountRecordsDeleted: o.CountRecordsDeleted,
 		
-		CountRecordsFailed: u.CountRecordsFailed,
+		CountRecordsFailed: o.CountRecordsFailed,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Datatableimportjob) UnmarshalJSON(b []byte) error {
+	var DatatableimportjobMap map[string]interface{}
+	err := json.Unmarshal(b, &DatatableimportjobMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DatatableimportjobMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DatatableimportjobMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Owner, ok := DatatableimportjobMap["owner"].(map[string]interface{}); ok {
+		OwnerString, _ := json.Marshal(Owner)
+		json.Unmarshal(OwnerString, &o.Owner)
+	}
+	
+	if Status, ok := DatatableimportjobMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if dateCreatedString, ok := DatatableimportjobMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateCompletedString, ok := DatatableimportjobMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if UploadURI, ok := DatatableimportjobMap["uploadURI"].(string); ok {
+		o.UploadURI = &UploadURI
+	}
+	
+	if ImportMode, ok := DatatableimportjobMap["importMode"].(string); ok {
+		o.ImportMode = &ImportMode
+	}
+	
+	if ErrorInformation, ok := DatatableimportjobMap["errorInformation"].(map[string]interface{}); ok {
+		ErrorInformationString, _ := json.Marshal(ErrorInformation)
+		json.Unmarshal(ErrorInformationString, &o.ErrorInformation)
+	}
+	
+	if CountRecordsUpdated, ok := DatatableimportjobMap["countRecordsUpdated"].(float64); ok {
+		CountRecordsUpdatedInt := int(CountRecordsUpdated)
+		o.CountRecordsUpdated = &CountRecordsUpdatedInt
+	}
+	
+	if CountRecordsDeleted, ok := DatatableimportjobMap["countRecordsDeleted"].(float64); ok {
+		CountRecordsDeletedInt := int(CountRecordsDeleted)
+		o.CountRecordsDeleted = &CountRecordsDeletedInt
+	}
+	
+	if CountRecordsFailed, ok := DatatableimportjobMap["countRecordsFailed"].(float64); ok {
+		CountRecordsFailedInt := int(CountRecordsFailed)
+		o.CountRecordsFailed = &CountRecordsFailedInt
+	}
+	
+	if SelfUri, ok := DatatableimportjobMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

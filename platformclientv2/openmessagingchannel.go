@@ -38,21 +38,19 @@ type Openmessagingchannel struct {
 
 }
 
-func (u *Openmessagingchannel) MarshalJSON() ([]byte, error) {
+func (o *Openmessagingchannel) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Openmessagingchannel
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Openmessagingchannel) MarshalJSON() ([]byte, error) {
 		Time *string `json:"time,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Platform: u.Platform,
+		Platform: o.Platform,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		MessageId: u.MessageId,
+		MessageId: o.MessageId,
 		
-		To: u.To,
+		To: o.To,
 		
-		From: u.From,
+		From: o.From,
 		
 		Time: Time,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Openmessagingchannel) UnmarshalJSON(b []byte) error {
+	var OpenmessagingchannelMap map[string]interface{}
+	err := json.Unmarshal(b, &OpenmessagingchannelMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OpenmessagingchannelMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Platform, ok := OpenmessagingchannelMap["platform"].(string); ok {
+		o.Platform = &Platform
+	}
+	
+	if VarType, ok := OpenmessagingchannelMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if MessageId, ok := OpenmessagingchannelMap["messageId"].(string); ok {
+		o.MessageId = &MessageId
+	}
+	
+	if To, ok := OpenmessagingchannelMap["to"].(map[string]interface{}); ok {
+		ToString, _ := json.Marshal(To)
+		json.Unmarshal(ToString, &o.To)
+	}
+	
+	if From, ok := OpenmessagingchannelMap["from"].(map[string]interface{}); ok {
+		FromString, _ := json.Marshal(From)
+		json.Unmarshal(FromString, &o.From)
+	}
+	
+	if timeString, ok := OpenmessagingchannelMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -46,21 +46,19 @@ type Callforwarding struct {
 
 }
 
-func (u *Callforwarding) MarshalJSON() ([]byte, error) {
+func (o *Callforwarding) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callforwarding
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -81,25 +79,75 @@ func (u *Callforwarding) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		User: u.User,
+		User: o.User,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		Calls: u.Calls,
+		Calls: o.Calls,
 		
-		Voicemail: u.Voicemail,
+		Voicemail: o.Voicemail,
 		
 		ModifiedDate: ModifiedDate,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callforwarding) UnmarshalJSON(b []byte) error {
+	var CallforwardingMap map[string]interface{}
+	err := json.Unmarshal(b, &CallforwardingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CallforwardingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CallforwardingMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if User, ok := CallforwardingMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Enabled, ok := CallforwardingMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if PhoneNumber, ok := CallforwardingMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if Calls, ok := CallforwardingMap["calls"].([]interface{}); ok {
+		CallsString, _ := json.Marshal(Calls)
+		json.Unmarshal(CallsString, &o.Calls)
+	}
+	
+	if Voicemail, ok := CallforwardingMap["voicemail"].(string); ok {
+		o.Voicemail = &Voicemail
+	}
+	
+	if modifiedDateString, ok := CallforwardingMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if SelfUri, ok := CallforwardingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

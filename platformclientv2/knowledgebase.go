@@ -54,37 +54,35 @@ type Knowledgebase struct {
 
 }
 
-func (u *Knowledgebase) MarshalJSON() ([]byte, error) {
+func (o *Knowledgebase) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgebase
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateDocumentLastModified := new(string)
-	if u.DateDocumentLastModified != nil {
+	if o.DateDocumentLastModified != nil {
 		
-		*DateDocumentLastModified = timeutil.Strftime(u.DateDocumentLastModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateDocumentLastModified = timeutil.Strftime(o.DateDocumentLastModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateDocumentLastModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -109,29 +107,89 @@ func (u *Knowledgebase) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		CoreLanguage: u.CoreLanguage,
+		CoreLanguage: o.CoreLanguage,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		FaqCount: u.FaqCount,
+		FaqCount: o.FaqCount,
 		
 		DateDocumentLastModified: DateDocumentLastModified,
 		
-		ArticleCount: u.ArticleCount,
+		ArticleCount: o.ArticleCount,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgebase) UnmarshalJSON(b []byte) error {
+	var KnowledgebaseMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgebaseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KnowledgebaseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KnowledgebaseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := KnowledgebaseMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if CoreLanguage, ok := KnowledgebaseMap["coreLanguage"].(string); ok {
+		o.CoreLanguage = &CoreLanguage
+	}
+	
+	if dateCreatedString, ok := KnowledgebaseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := KnowledgebaseMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if FaqCount, ok := KnowledgebaseMap["faqCount"].(float64); ok {
+		FaqCountInt := int(FaqCount)
+		o.FaqCount = &FaqCountInt
+	}
+	
+	if dateDocumentLastModifiedString, ok := KnowledgebaseMap["dateDocumentLastModified"].(string); ok {
+		DateDocumentLastModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDocumentLastModifiedString)
+		o.DateDocumentLastModified = &DateDocumentLastModified
+	}
+	
+	if ArticleCount, ok := KnowledgebaseMap["articleCount"].(float64); ok {
+		ArticleCountInt := int(ArticleCount)
+		o.ArticleCount = &ArticleCountInt
+	}
+	
+	if Published, ok := KnowledgebaseMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if SelfUri, ok := KnowledgebaseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

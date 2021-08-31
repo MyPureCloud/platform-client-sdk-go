@@ -25,13 +25,11 @@ type Learningmoduleruleparts struct {
 
 }
 
-func (u *Learningmoduleruleparts) MarshalJSON() ([]byte, error) {
+func (o *Learningmoduleruleparts) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmoduleruleparts
-
 	
-
 	return json.Marshal(&struct { 
 		Operation *string `json:"operation,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Learningmoduleruleparts) MarshalJSON() ([]byte, error) {
 		Order *int `json:"order,omitempty"`
 		*Alias
 	}{ 
-		Operation: u.Operation,
+		Operation: o.Operation,
 		
-		Selector: u.Selector,
+		Selector: o.Selector,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Order: u.Order,
-		Alias:    (*Alias)(u),
+		Order: o.Order,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmoduleruleparts) UnmarshalJSON(b []byte) error {
+	var LearningmodulerulepartsMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmodulerulepartsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Operation, ok := LearningmodulerulepartsMap["operation"].(string); ok {
+		o.Operation = &Operation
+	}
+	
+	if Selector, ok := LearningmodulerulepartsMap["selector"].(string); ok {
+		o.Selector = &Selector
+	}
+	
+	if Value, ok := LearningmodulerulepartsMap["value"].([]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
+	}
+	
+	if Order, ok := LearningmodulerulepartsMap["order"].(float64); ok {
+		OrderInt := int(Order)
+		o.Order = &OrderInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

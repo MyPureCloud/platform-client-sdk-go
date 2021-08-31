@@ -17,24 +17,43 @@ type Validateworkplanmessages struct {
 
 }
 
-func (u *Validateworkplanmessages) MarshalJSON() ([]byte, error) {
+func (o *Validateworkplanmessages) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Validateworkplanmessages
-
 	
-
 	return json.Marshal(&struct { 
 		ViolationMessages *[]Workplanconfigurationviolationmessage `json:"violationMessages,omitempty"`
 		
 		ConstraintConflictMessage *Constraintconflictmessage `json:"constraintConflictMessage,omitempty"`
 		*Alias
 	}{ 
-		ViolationMessages: u.ViolationMessages,
+		ViolationMessages: o.ViolationMessages,
 		
-		ConstraintConflictMessage: u.ConstraintConflictMessage,
-		Alias:    (*Alias)(u),
+		ConstraintConflictMessage: o.ConstraintConflictMessage,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Validateworkplanmessages) UnmarshalJSON(b []byte) error {
+	var ValidateworkplanmessagesMap map[string]interface{}
+	err := json.Unmarshal(b, &ValidateworkplanmessagesMap)
+	if err != nil {
+		return err
+	}
+	
+	if ViolationMessages, ok := ValidateworkplanmessagesMap["violationMessages"].([]interface{}); ok {
+		ViolationMessagesString, _ := json.Marshal(ViolationMessages)
+		json.Unmarshal(ViolationMessagesString, &o.ViolationMessages)
+	}
+	
+	if ConstraintConflictMessage, ok := ValidateworkplanmessagesMap["constraintConflictMessage"].(map[string]interface{}); ok {
+		ConstraintConflictMessageString, _ := json.Marshal(ConstraintConflictMessage)
+		json.Unmarshal(ConstraintConflictMessageString, &o.ConstraintConflictMessage)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

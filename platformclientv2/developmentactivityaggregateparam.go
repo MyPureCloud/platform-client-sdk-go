@@ -25,13 +25,11 @@ type Developmentactivityaggregateparam struct {
 
 }
 
-func (u *Developmentactivityaggregateparam) MarshalJSON() ([]byte, error) {
+func (o *Developmentactivityaggregateparam) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Developmentactivityaggregateparam
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Developmentactivityaggregateparam) MarshalJSON() ([]byte, error) {
 		Filter *Developmentactivityaggregatequeryrequestfilter `json:"filter,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		GroupBy: u.GroupBy,
+		GroupBy: o.GroupBy,
 		
-		Filter: u.Filter,
-		Alias:    (*Alias)(u),
+		Filter: o.Filter,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Developmentactivityaggregateparam) UnmarshalJSON(b []byte) error {
+	var DevelopmentactivityaggregateparamMap map[string]interface{}
+	err := json.Unmarshal(b, &DevelopmentactivityaggregateparamMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := DevelopmentactivityaggregateparamMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Metrics, ok := DevelopmentactivityaggregateparamMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if GroupBy, ok := DevelopmentactivityaggregateparamMap["groupBy"].([]interface{}); ok {
+		GroupByString, _ := json.Marshal(GroupBy)
+		json.Unmarshal(GroupByString, &o.GroupBy)
+	}
+	
+	if Filter, ok := DevelopmentactivityaggregateparamMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

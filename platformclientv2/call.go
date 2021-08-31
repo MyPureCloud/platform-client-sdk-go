@@ -126,45 +126,43 @@ type Call struct {
 
 }
 
-func (u *Call) MarshalJSON() ([]byte, error) {
+func (o *Call) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Call
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -225,33 +223,33 @@ func (u *Call) MarshalJSON() ([]byte, error) {
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Recording: u.Recording,
+		Recording: o.Recording,
 		
-		RecordingState: u.RecordingState,
+		RecordingState: o.RecordingState,
 		
-		Muted: u.Muted,
+		Muted: o.Muted,
 		
-		Confined: u.Confined,
+		Confined: o.Confined,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		RecordingId: u.RecordingId,
+		RecordingId: o.RecordingId,
 		
-		Segments: u.Segments,
+		Segments: o.Segments,
 		
-		ErrorInfo: u.ErrorInfo,
+		ErrorInfo: o.ErrorInfo,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
-		DocumentId: u.DocumentId,
+		DocumentId: o.DocumentId,
 		
 		StartAlertingTime: StartAlertingTime,
 		
@@ -259,31 +257,170 @@ func (u *Call) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		DisconnectReasons: u.DisconnectReasons,
+		DisconnectReasons: o.DisconnectReasons,
 		
-		FaxStatus: u.FaxStatus,
+		FaxStatus: o.FaxStatus,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		UuiData: u.UuiData,
+		UuiData: o.UuiData,
 		
-		Self: u.Self,
+		Self: o.Self,
 		
-		Other: u.Other,
+		Other: o.Other,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		AgentAssistantId: u.AgentAssistantId,
-		Alias:    (*Alias)(u),
+		AgentAssistantId: o.AgentAssistantId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Call) UnmarshalJSON(b []byte) error {
+	var CallMap map[string]interface{}
+	err := json.Unmarshal(b, &CallMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := CallMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := CallMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Direction, ok := CallMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Recording, ok := CallMap["recording"].(bool); ok {
+		o.Recording = &Recording
+	}
+	
+	if RecordingState, ok := CallMap["recordingState"].(string); ok {
+		o.RecordingState = &RecordingState
+	}
+	
+	if Muted, ok := CallMap["muted"].(bool); ok {
+		o.Muted = &Muted
+	}
+	
+	if Confined, ok := CallMap["confined"].(bool); ok {
+		o.Confined = &Confined
+	}
+	
+	if Held, ok := CallMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if RecordingId, ok := CallMap["recordingId"].(string); ok {
+		o.RecordingId = &RecordingId
+	}
+	
+	if Segments, ok := CallMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+	if ErrorInfo, ok := CallMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if DisconnectType, ok := CallMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := CallMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if DocumentId, ok := CallMap["documentId"].(string); ok {
+		o.DocumentId = &DocumentId
+	}
+	
+	if startAlertingTimeString, ok := CallMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := CallMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := CallMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if DisconnectReasons, ok := CallMap["disconnectReasons"].([]interface{}); ok {
+		DisconnectReasonsString, _ := json.Marshal(DisconnectReasons)
+		json.Unmarshal(DisconnectReasonsString, &o.DisconnectReasons)
+	}
+	
+	if FaxStatus, ok := CallMap["faxStatus"].(map[string]interface{}); ok {
+		FaxStatusString, _ := json.Marshal(FaxStatus)
+		json.Unmarshal(FaxStatusString, &o.FaxStatus)
+	}
+	
+	if Provider, ok := CallMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := CallMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := CallMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if UuiData, ok := CallMap["uuiData"].(string); ok {
+		o.UuiData = &UuiData
+	}
+	
+	if Self, ok := CallMap["self"].(map[string]interface{}); ok {
+		SelfString, _ := json.Marshal(Self)
+		json.Unmarshal(SelfString, &o.Self)
+	}
+	
+	if Other, ok := CallMap["other"].(map[string]interface{}); ok {
+		OtherString, _ := json.Marshal(Other)
+		json.Unmarshal(OtherString, &o.Other)
+	}
+	
+	if Wrapup, ok := CallMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := CallMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := CallMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AgentAssistantId, ok := CallMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Evaluationquestion struct {
 
 }
 
-func (u *Evaluationquestion) MarshalJSON() ([]byte, error) {
+func (o *Evaluationquestion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationquestion
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,80 @@ func (u *Evaluationquestion) MarshalJSON() ([]byte, error) {
 		IsCritical *bool `json:"isCritical,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		HelpText: u.HelpText,
+		HelpText: o.HelpText,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		NaEnabled: u.NaEnabled,
+		NaEnabled: o.NaEnabled,
 		
-		CommentsRequired: u.CommentsRequired,
+		CommentsRequired: o.CommentsRequired,
 		
-		VisibilityCondition: u.VisibilityCondition,
+		VisibilityCondition: o.VisibilityCondition,
 		
-		AnswerOptions: u.AnswerOptions,
+		AnswerOptions: o.AnswerOptions,
 		
-		IsKill: u.IsKill,
+		IsKill: o.IsKill,
 		
-		IsCritical: u.IsCritical,
-		Alias:    (*Alias)(u),
+		IsCritical: o.IsCritical,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationquestion) UnmarshalJSON(b []byte) error {
+	var EvaluationquestionMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationquestionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EvaluationquestionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Text, ok := EvaluationquestionMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if HelpText, ok := EvaluationquestionMap["helpText"].(string); ok {
+		o.HelpText = &HelpText
+	}
+	
+	if VarType, ok := EvaluationquestionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if NaEnabled, ok := EvaluationquestionMap["naEnabled"].(bool); ok {
+		o.NaEnabled = &NaEnabled
+	}
+	
+	if CommentsRequired, ok := EvaluationquestionMap["commentsRequired"].(bool); ok {
+		o.CommentsRequired = &CommentsRequired
+	}
+	
+	if VisibilityCondition, ok := EvaluationquestionMap["visibilityCondition"].(map[string]interface{}); ok {
+		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
+		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
+	}
+	
+	if AnswerOptions, ok := EvaluationquestionMap["answerOptions"].([]interface{}); ok {
+		AnswerOptionsString, _ := json.Marshal(AnswerOptions)
+		json.Unmarshal(AnswerOptionsString, &o.AnswerOptions)
+	}
+	
+	if IsKill, ok := EvaluationquestionMap["isKill"].(bool); ok {
+		o.IsKill = &IsKill
+	}
+	
+	if IsCritical, ok := EvaluationquestionMap["isCritical"].(bool); ok {
+		o.IsCritical = &IsCritical
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

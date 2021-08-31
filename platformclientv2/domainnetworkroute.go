@@ -29,13 +29,11 @@ type Domainnetworkroute struct {
 
 }
 
-func (u *Domainnetworkroute) MarshalJSON() ([]byte, error) {
+func (o *Domainnetworkroute) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainnetworkroute
-
 	
-
 	return json.Marshal(&struct { 
 		Prefix *string `json:"prefix,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Domainnetworkroute) MarshalJSON() ([]byte, error) {
 		Family *int `json:"family,omitempty"`
 		*Alias
 	}{ 
-		Prefix: u.Prefix,
+		Prefix: o.Prefix,
 		
-		Nexthop: u.Nexthop,
+		Nexthop: o.Nexthop,
 		
-		Persistent: u.Persistent,
+		Persistent: o.Persistent,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Family: u.Family,
-		Alias:    (*Alias)(u),
+		Family: o.Family,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainnetworkroute) UnmarshalJSON(b []byte) error {
+	var DomainnetworkrouteMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainnetworkrouteMap)
+	if err != nil {
+		return err
+	}
+	
+	if Prefix, ok := DomainnetworkrouteMap["prefix"].(string); ok {
+		o.Prefix = &Prefix
+	}
+	
+	if Nexthop, ok := DomainnetworkrouteMap["nexthop"].(string); ok {
+		o.Nexthop = &Nexthop
+	}
+	
+	if Persistent, ok := DomainnetworkrouteMap["persistent"].(bool); ok {
+		o.Persistent = &Persistent
+	}
+	
+	if Metric, ok := DomainnetworkrouteMap["metric"].(float64); ok {
+		MetricInt := int(Metric)
+		o.Metric = &MetricInt
+	}
+	
+	if Family, ok := DomainnetworkrouteMap["family"].(float64); ok {
+		FamilyInt := int(Family)
+		o.Family = &FamilyInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

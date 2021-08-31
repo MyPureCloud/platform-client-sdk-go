@@ -17,24 +17,41 @@ type Evententity struct {
 
 }
 
-func (u *Evententity) MarshalJSON() ([]byte, error) {
+func (o *Evententity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evententity
-
 	
-
 	return json.Marshal(&struct { 
 		EntityType *string `json:"entityType,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evententity) UnmarshalJSON(b []byte) error {
+	var EvententityMap map[string]interface{}
+	err := json.Unmarshal(b, &EvententityMap)
+	if err != nil {
+		return err
+	}
+	
+	if EntityType, ok := EvententityMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if Id, ok := EvententityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -62,29 +62,27 @@ type Dnclist struct {
 
 }
 
-func (u *Dnclist) MarshalJSON() ([]byte, error) {
+func (o *Dnclist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dnclist
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,103 @@ func (u *Dnclist) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ImportStatus: u.ImportStatus,
+		ImportStatus: o.ImportStatus,
 		
-		Size: u.Size,
+		Size: o.Size,
 		
-		DncSourceType: u.DncSourceType,
+		DncSourceType: o.DncSourceType,
 		
-		LoginId: u.LoginId,
+		LoginId: o.LoginId,
 		
-		DncCodes: u.DncCodes,
+		DncCodes: o.DncCodes,
 		
-		LicenseId: u.LicenseId,
+		LicenseId: o.LicenseId,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dnclist) UnmarshalJSON(b []byte) error {
+	var DnclistMap map[string]interface{}
+	err := json.Unmarshal(b, &DnclistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DnclistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DnclistMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DnclistMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DnclistMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DnclistMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ImportStatus, ok := DnclistMap["importStatus"].(map[string]interface{}); ok {
+		ImportStatusString, _ := json.Marshal(ImportStatus)
+		json.Unmarshal(ImportStatusString, &o.ImportStatus)
+	}
+	
+	if Size, ok := DnclistMap["size"].(float64); ok {
+		SizeInt := int(Size)
+		o.Size = &SizeInt
+	}
+	
+	if DncSourceType, ok := DnclistMap["dncSourceType"].(string); ok {
+		o.DncSourceType = &DncSourceType
+	}
+	
+	if LoginId, ok := DnclistMap["loginId"].(string); ok {
+		o.LoginId = &LoginId
+	}
+	
+	if DncCodes, ok := DnclistMap["dncCodes"].([]interface{}); ok {
+		DncCodesString, _ := json.Marshal(DncCodes)
+		json.Unmarshal(DncCodesString, &o.DncCodes)
+	}
+	
+	if LicenseId, ok := DnclistMap["licenseId"].(string); ok {
+		o.LicenseId = &LicenseId
+	}
+	
+	if Division, ok := DnclistMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if SelfUri, ok := DnclistMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

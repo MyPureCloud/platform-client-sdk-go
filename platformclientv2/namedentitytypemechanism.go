@@ -21,13 +21,11 @@ type Namedentitytypemechanism struct {
 
 }
 
-func (u *Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
+func (o *Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Namedentitytypemechanism
-
 	
-
 	return json.Marshal(&struct { 
 		Items *[]Namedentitytypeitem `json:"items,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Namedentitytypemechanism) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		Items: u.Items,
+		Items: o.Items,
 		
-		Restricted: u.Restricted,
+		Restricted: o.Restricted,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Namedentitytypemechanism) UnmarshalJSON(b []byte) error {
+	var NamedentitytypemechanismMap map[string]interface{}
+	err := json.Unmarshal(b, &NamedentitytypemechanismMap)
+	if err != nil {
+		return err
+	}
+	
+	if Items, ok := NamedentitytypemechanismMap["items"].([]interface{}); ok {
+		ItemsString, _ := json.Marshal(Items)
+		json.Unmarshal(ItemsString, &o.Items)
+	}
+	
+	if Restricted, ok := NamedentitytypemechanismMap["restricted"].(bool); ok {
+		o.Restricted = &Restricted
+	}
+	
+	if VarType, ok := NamedentitytypemechanismMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

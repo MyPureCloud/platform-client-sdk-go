@@ -78,29 +78,27 @@ type Interactionstatsalert struct {
 
 }
 
-func (u *Interactionstatsalert) MarshalJSON() ([]byte, error) {
+func (o *Interactionstatsalert) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Interactionstatsalert
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -137,41 +135,124 @@ func (u *Interactionstatsalert) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		DimensionValue: u.DimensionValue,
+		DimensionValue: o.DimensionValue,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		NumericRange: u.NumericRange,
+		NumericRange: o.NumericRange,
 		
-		Statistic: u.Statistic,
+		Statistic: o.Statistic,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		RuleId: u.RuleId,
+		RuleId: o.RuleId,
 		
-		Unread: u.Unread,
+		Unread: o.Unread,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		NotificationUsers: u.NotificationUsers,
+		NotificationUsers: o.NotificationUsers,
 		
-		AlertTypes: u.AlertTypes,
+		AlertTypes: o.AlertTypes,
 		
-		RuleUri: u.RuleUri,
+		RuleUri: o.RuleUri,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Interactionstatsalert) UnmarshalJSON(b []byte) error {
+	var InteractionstatsalertMap map[string]interface{}
+	err := json.Unmarshal(b, &InteractionstatsalertMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := InteractionstatsalertMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := InteractionstatsalertMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Dimension, ok := InteractionstatsalertMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if DimensionValue, ok := InteractionstatsalertMap["dimensionValue"].(string); ok {
+		o.DimensionValue = &DimensionValue
+	}
+	
+	if Metric, ok := InteractionstatsalertMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if MediaType, ok := InteractionstatsalertMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if NumericRange, ok := InteractionstatsalertMap["numericRange"].(string); ok {
+		o.NumericRange = &NumericRange
+	}
+	
+	if Statistic, ok := InteractionstatsalertMap["statistic"].(string); ok {
+		o.Statistic = &Statistic
+	}
+	
+	if Value, ok := InteractionstatsalertMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+	if RuleId, ok := InteractionstatsalertMap["ruleId"].(string); ok {
+		o.RuleId = &RuleId
+	}
+	
+	if Unread, ok := InteractionstatsalertMap["unread"].(bool); ok {
+		o.Unread = &Unread
+	}
+	
+	if startDateString, ok := InteractionstatsalertMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := InteractionstatsalertMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if NotificationUsers, ok := InteractionstatsalertMap["notificationUsers"].([]interface{}); ok {
+		NotificationUsersString, _ := json.Marshal(NotificationUsers)
+		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
+	}
+	
+	if AlertTypes, ok := InteractionstatsalertMap["alertTypes"].([]interface{}); ok {
+		AlertTypesString, _ := json.Marshal(AlertTypes)
+		json.Unmarshal(AlertTypesString, &o.AlertTypes)
+	}
+	
+	if RuleUri, ok := InteractionstatsalertMap["ruleUri"].(string); ok {
+		o.RuleUri = &RuleUri
+	}
+	
+	if SelfUri, ok := InteractionstatsalertMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

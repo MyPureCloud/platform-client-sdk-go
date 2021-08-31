@@ -29,13 +29,11 @@ type Conversationcalleventtopicconversationroutingdata struct {
 
 }
 
-func (u *Conversationcalleventtopicconversationroutingdata) MarshalJSON() ([]byte, error) {
+func (o *Conversationcalleventtopicconversationroutingdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcalleventtopicconversationroutingdata
-
 	
-
 	return json.Marshal(&struct { 
 		Queue *Conversationcalleventtopicurireference `json:"queue,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Conversationcalleventtopicconversationroutingdata) MarshalJSON() ([]byt
 		ScoredAgents *[]Conversationcalleventtopicscoredagent `json:"scoredAgents,omitempty"`
 		*Alias
 	}{ 
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		ScoredAgents: u.ScoredAgents,
-		Alias:    (*Alias)(u),
+		ScoredAgents: o.ScoredAgents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcalleventtopicconversationroutingdata) UnmarshalJSON(b []byte) error {
+	var ConversationcalleventtopicconversationroutingdataMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcalleventtopicconversationroutingdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Queue, ok := ConversationcalleventtopicconversationroutingdataMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Language, ok := ConversationcalleventtopicconversationroutingdataMap["language"].(map[string]interface{}); ok {
+		LanguageString, _ := json.Marshal(Language)
+		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if Priority, ok := ConversationcalleventtopicconversationroutingdataMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Skills, ok := ConversationcalleventtopicconversationroutingdataMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if ScoredAgents, ok := ConversationcalleventtopicconversationroutingdataMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

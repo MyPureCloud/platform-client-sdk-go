@@ -46,29 +46,27 @@ type Comparisonperiod struct {
 
 }
 
-func (u *Comparisonperiod) MarshalJSON() ([]byte, error) {
+func (o *Comparisonperiod) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Comparisonperiod
-
 	
 	DateStarted := new(string)
-	if u.DateStarted != nil {
+	if o.DateStarted != nil {
 		
-		*DateStarted = timeutil.Strftime(u.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStarted = timeutil.Strftime(o.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStarted = nil
 	}
 	
 	DateEnded := new(string)
-	if u.DateEnded != nil {
+	if o.DateEnded != nil {
 		
-		*DateEnded = timeutil.Strftime(u.DateEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateEnded = timeutil.Strftime(o.DateEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateEnded = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,78 @@ func (u *Comparisonperiod) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Kpi: u.Kpi,
+		Kpi: o.Kpi,
 		
 		DateStarted: DateStarted,
 		
 		DateEnded: DateEnded,
 		
-		KpiTotalOn: u.KpiTotalOn,
+		KpiTotalOn: o.KpiTotalOn,
 		
-		KpiTotalOff: u.KpiTotalOff,
+		KpiTotalOff: o.KpiTotalOff,
 		
-		InteractionCountOn: u.InteractionCountOn,
+		InteractionCountOn: o.InteractionCountOn,
 		
-		InteractionCountOff: u.InteractionCountOff,
+		InteractionCountOff: o.InteractionCountOff,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Comparisonperiod) UnmarshalJSON(b []byte) error {
+	var ComparisonperiodMap map[string]interface{}
+	err := json.Unmarshal(b, &ComparisonperiodMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ComparisonperiodMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Kpi, ok := ComparisonperiodMap["kpi"].(string); ok {
+		o.Kpi = &Kpi
+	}
+	
+	if dateStartedString, ok := ComparisonperiodMap["dateStarted"].(string); ok {
+		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
+		o.DateStarted = &DateStarted
+	}
+	
+	if dateEndedString, ok := ComparisonperiodMap["dateEnded"].(string); ok {
+		DateEnded, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateEndedString)
+		o.DateEnded = &DateEnded
+	}
+	
+	if KpiTotalOn, ok := ComparisonperiodMap["kpiTotalOn"].(float64); ok {
+		KpiTotalOnInt := int(KpiTotalOn)
+		o.KpiTotalOn = &KpiTotalOnInt
+	}
+	
+	if KpiTotalOff, ok := ComparisonperiodMap["kpiTotalOff"].(float64); ok {
+		KpiTotalOffInt := int(KpiTotalOff)
+		o.KpiTotalOff = &KpiTotalOffInt
+	}
+	
+	if InteractionCountOn, ok := ComparisonperiodMap["interactionCountOn"].(float64); ok {
+		InteractionCountOnInt := int(InteractionCountOn)
+		o.InteractionCountOn = &InteractionCountOnInt
+	}
+	
+	if InteractionCountOff, ok := ComparisonperiodMap["interactionCountOff"].(float64); ok {
+		InteractionCountOffInt := int(InteractionCountOff)
+		o.InteractionCountOff = &InteractionCountOffInt
+	}
+	
+	if SelfUri, ok := ComparisonperiodMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

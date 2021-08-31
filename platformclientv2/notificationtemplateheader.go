@@ -25,13 +25,11 @@ type Notificationtemplateheader struct {
 
 }
 
-func (u *Notificationtemplateheader) MarshalJSON() ([]byte, error) {
+func (o *Notificationtemplateheader) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Notificationtemplateheader
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Notificationtemplateheader) MarshalJSON() ([]byte, error) {
 		Parameters *[]Notificationtemplateparameter `json:"parameters,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Media: u.Media,
+		Media: o.Media,
 		
-		Parameters: u.Parameters,
-		Alias:    (*Alias)(u),
+		Parameters: o.Parameters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Notificationtemplateheader) UnmarshalJSON(b []byte) error {
+	var NotificationtemplateheaderMap map[string]interface{}
+	err := json.Unmarshal(b, &NotificationtemplateheaderMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := NotificationtemplateheaderMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Text, ok := NotificationtemplateheaderMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Media, ok := NotificationtemplateheaderMap["media"].(map[string]interface{}); ok {
+		MediaString, _ := json.Marshal(Media)
+		json.Unmarshal(MediaString, &o.Media)
+	}
+	
+	if Parameters, ok := NotificationtemplateheaderMap["parameters"].([]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

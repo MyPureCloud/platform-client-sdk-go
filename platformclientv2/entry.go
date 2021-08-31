@@ -17,24 +17,42 @@ type Entry struct {
 
 }
 
-func (u *Entry) MarshalJSON() ([]byte, error) {
+func (o *Entry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Entry
-
 	
-
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
 		*Alias
 	}{ 
-		Value: u.Value,
+		Value: o.Value,
 		
-		Count: u.Count,
-		Alias:    (*Alias)(u),
+		Count: o.Count,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Entry) UnmarshalJSON(b []byte) error {
+	var EntryMap map[string]interface{}
+	err := json.Unmarshal(b, &EntryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Value, ok := EntryMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Count, ok := EntryMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

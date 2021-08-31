@@ -21,13 +21,11 @@ type Presencedefinition struct {
 
 }
 
-func (u *Presencedefinition) MarshalJSON() ([]byte, error) {
+func (o *Presencedefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Presencedefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Presencedefinition) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SystemPresence: u.SystemPresence,
+		SystemPresence: o.SystemPresence,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Presencedefinition) UnmarshalJSON(b []byte) error {
+	var PresencedefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &PresencedefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PresencedefinitionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SystemPresence, ok := PresencedefinitionMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+	
+	if SelfUri, ok := PresencedefinitionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

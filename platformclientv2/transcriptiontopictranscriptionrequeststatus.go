@@ -17,24 +17,42 @@ type Transcriptiontopictranscriptionrequeststatus struct {
 
 }
 
-func (u *Transcriptiontopictranscriptionrequeststatus) MarshalJSON() ([]byte, error) {
+func (o *Transcriptiontopictranscriptionrequeststatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptiontopictranscriptionrequeststatus
-
 	
-
 	return json.Marshal(&struct { 
 		OffsetMs *int `json:"offsetMs,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		OffsetMs: u.OffsetMs,
+		OffsetMs: o.OffsetMs,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptiontopictranscriptionrequeststatus) UnmarshalJSON(b []byte) error {
+	var TranscriptiontopictranscriptionrequeststatusMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptiontopictranscriptionrequeststatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if OffsetMs, ok := TranscriptiontopictranscriptionrequeststatusMap["offsetMs"].(float64); ok {
+		OffsetMsInt := int(OffsetMs)
+		o.OffsetMs = &OffsetMsInt
+	}
+	
+	if Status, ok := TranscriptiontopictranscriptionrequeststatusMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

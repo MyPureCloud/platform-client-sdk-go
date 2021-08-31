@@ -50,29 +50,27 @@ type Defaultgreetinglist struct {
 
 }
 
-func (u *Defaultgreetinglist) MarshalJSON() ([]byte, error) {
+func (o *Defaultgreetinglist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Defaultgreetinglist
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,82 @@ func (u *Defaultgreetinglist) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Owner: u.Owner,
+		Owner: o.Owner,
 		
-		OwnerType: u.OwnerType,
+		OwnerType: o.OwnerType,
 		
-		Greetings: u.Greetings,
+		Greetings: o.Greetings,
 		
 		CreatedDate: CreatedDate,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		ModifiedDate: ModifiedDate,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Defaultgreetinglist) UnmarshalJSON(b []byte) error {
+	var DefaultgreetinglistMap map[string]interface{}
+	err := json.Unmarshal(b, &DefaultgreetinglistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DefaultgreetinglistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DefaultgreetinglistMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Owner, ok := DefaultgreetinglistMap["owner"].(map[string]interface{}); ok {
+		OwnerString, _ := json.Marshal(Owner)
+		json.Unmarshal(OwnerString, &o.Owner)
+	}
+	
+	if OwnerType, ok := DefaultgreetinglistMap["ownerType"].(string); ok {
+		o.OwnerType = &OwnerType
+	}
+	
+	if Greetings, ok := DefaultgreetinglistMap["greetings"].(map[string]interface{}); ok {
+		GreetingsString, _ := json.Marshal(Greetings)
+		json.Unmarshal(GreetingsString, &o.Greetings)
+	}
+	
+	if createdDateString, ok := DefaultgreetinglistMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if CreatedBy, ok := DefaultgreetinglistMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if modifiedDateString, ok := DefaultgreetinglistMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if ModifiedBy, ok := DefaultgreetinglistMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if SelfUri, ok := DefaultgreetinglistMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

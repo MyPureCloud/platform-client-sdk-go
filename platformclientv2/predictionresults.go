@@ -21,13 +21,11 @@ type Predictionresults struct {
 
 }
 
-func (u *Predictionresults) MarshalJSON() ([]byte, error) {
+func (o *Predictionresults) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Predictionresults
-
 	
-
 	return json.Marshal(&struct { 
 		Intent *string `json:"intent,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Predictionresults) MarshalJSON() ([]byte, error) {
 		EstimatedWaitTimeSeconds *int `json:"estimatedWaitTimeSeconds,omitempty"`
 		*Alias
 	}{ 
-		Intent: u.Intent,
+		Intent: o.Intent,
 		
-		Formula: u.Formula,
+		Formula: o.Formula,
 		
-		EstimatedWaitTimeSeconds: u.EstimatedWaitTimeSeconds,
-		Alias:    (*Alias)(u),
+		EstimatedWaitTimeSeconds: o.EstimatedWaitTimeSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Predictionresults) UnmarshalJSON(b []byte) error {
+	var PredictionresultsMap map[string]interface{}
+	err := json.Unmarshal(b, &PredictionresultsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Intent, ok := PredictionresultsMap["intent"].(string); ok {
+		o.Intent = &Intent
+	}
+	
+	if Formula, ok := PredictionresultsMap["formula"].(string); ok {
+		o.Formula = &Formula
+	}
+	
+	if EstimatedWaitTimeSeconds, ok := PredictionresultsMap["estimatedWaitTimeSeconds"].(float64); ok {
+		EstimatedWaitTimeSecondsInt := int(EstimatedWaitTimeSeconds)
+		o.EstimatedWaitTimeSeconds = &EstimatedWaitTimeSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

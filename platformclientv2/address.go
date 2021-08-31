@@ -29,13 +29,11 @@ type Address struct {
 
 }
 
-func (u *Address) MarshalJSON() ([]byte, error) {
+func (o *Address) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Address
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Address) MarshalJSON() ([]byte, error) {
 		AddressDisplayable *string `json:"addressDisplayable,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		NameRaw: u.NameRaw,
+		NameRaw: o.NameRaw,
 		
-		AddressNormalized: u.AddressNormalized,
+		AddressNormalized: o.AddressNormalized,
 		
-		AddressRaw: u.AddressRaw,
+		AddressRaw: o.AddressRaw,
 		
-		AddressDisplayable: u.AddressDisplayable,
-		Alias:    (*Alias)(u),
+		AddressDisplayable: o.AddressDisplayable,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Address) UnmarshalJSON(b []byte) error {
+	var AddressMap map[string]interface{}
+	err := json.Unmarshal(b, &AddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := AddressMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if NameRaw, ok := AddressMap["nameRaw"].(string); ok {
+		o.NameRaw = &NameRaw
+	}
+	
+	if AddressNormalized, ok := AddressMap["addressNormalized"].(string); ok {
+		o.AddressNormalized = &AddressNormalized
+	}
+	
+	if AddressRaw, ok := AddressMap["addressRaw"].(string); ok {
+		o.AddressRaw = &AddressRaw
+	}
+	
+	if AddressDisplayable, ok := AddressMap["addressDisplayable"].(string); ok {
+		o.AddressDisplayable = &AddressDisplayable
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

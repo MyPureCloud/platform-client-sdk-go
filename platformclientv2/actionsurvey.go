@@ -13,20 +13,34 @@ type Actionsurvey struct {
 
 }
 
-func (u *Actionsurvey) MarshalJSON() ([]byte, error) {
+func (o *Actionsurvey) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actionsurvey
-
 	
-
 	return json.Marshal(&struct { 
 		Questions *[]Journeysurveyquestion `json:"questions,omitempty"`
 		*Alias
 	}{ 
-		Questions: u.Questions,
-		Alias:    (*Alias)(u),
+		Questions: o.Questions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actionsurvey) UnmarshalJSON(b []byte) error {
+	var ActionsurveyMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionsurveyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Questions, ok := ActionsurveyMap["questions"].([]interface{}); ok {
+		QuestionsString, _ := json.Marshal(Questions)
+		json.Unmarshal(QuestionsString, &o.Questions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

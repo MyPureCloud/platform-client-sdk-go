@@ -17,24 +17,41 @@ type Auditfacet struct {
 
 }
 
-func (u *Auditfacet) MarshalJSON() ([]byte, error) {
+func (o *Auditfacet) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditfacet
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditfacet) UnmarshalJSON(b []byte) error {
+	var AuditfacetMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditfacetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := AuditfacetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := AuditfacetMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

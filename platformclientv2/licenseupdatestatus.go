@@ -21,13 +21,11 @@ type Licenseupdatestatus struct {
 
 }
 
-func (u *Licenseupdatestatus) MarshalJSON() ([]byte, error) {
+func (o *Licenseupdatestatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Licenseupdatestatus
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Licenseupdatestatus) MarshalJSON() ([]byte, error) {
 		Result *string `json:"result,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		LicenseId: u.LicenseId,
+		LicenseId: o.LicenseId,
 		
-		Result: u.Result,
-		Alias:    (*Alias)(u),
+		Result: o.Result,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Licenseupdatestatus) UnmarshalJSON(b []byte) error {
+	var LicenseupdatestatusMap map[string]interface{}
+	err := json.Unmarshal(b, &LicenseupdatestatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := LicenseupdatestatusMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if LicenseId, ok := LicenseupdatestatusMap["licenseId"].(string); ok {
+		o.LicenseId = &LicenseId
+	}
+	
+	if Result, ok := LicenseupdatestatusMap["result"].(string); ok {
+		o.Result = &Result
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

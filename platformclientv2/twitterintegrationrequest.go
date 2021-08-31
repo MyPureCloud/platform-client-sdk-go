@@ -45,13 +45,11 @@ type Twitterintegrationrequest struct {
 
 }
 
-func (u *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
+func (o *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Twitterintegrationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,72 @@ func (u *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		AccessTokenKey: u.AccessTokenKey,
+		AccessTokenKey: o.AccessTokenKey,
 		
-		AccessTokenSecret: u.AccessTokenSecret,
+		AccessTokenSecret: o.AccessTokenSecret,
 		
-		ConsumerKey: u.ConsumerKey,
+		ConsumerKey: o.ConsumerKey,
 		
-		ConsumerSecret: u.ConsumerSecret,
+		ConsumerSecret: o.ConsumerSecret,
 		
-		Tier: u.Tier,
+		Tier: o.Tier,
 		
-		EnvName: u.EnvName,
+		EnvName: o.EnvName,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Twitterintegrationrequest) UnmarshalJSON(b []byte) error {
+	var TwitterintegrationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TwitterintegrationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TwitterintegrationrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TwitterintegrationrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if AccessTokenKey, ok := TwitterintegrationrequestMap["accessTokenKey"].(string); ok {
+		o.AccessTokenKey = &AccessTokenKey
+	}
+	
+	if AccessTokenSecret, ok := TwitterintegrationrequestMap["accessTokenSecret"].(string); ok {
+		o.AccessTokenSecret = &AccessTokenSecret
+	}
+	
+	if ConsumerKey, ok := TwitterintegrationrequestMap["consumerKey"].(string); ok {
+		o.ConsumerKey = &ConsumerKey
+	}
+	
+	if ConsumerSecret, ok := TwitterintegrationrequestMap["consumerSecret"].(string); ok {
+		o.ConsumerSecret = &ConsumerSecret
+	}
+	
+	if Tier, ok := TwitterintegrationrequestMap["tier"].(string); ok {
+		o.Tier = &Tier
+	}
+	
+	if EnvName, ok := TwitterintegrationrequestMap["envName"].(string); ok {
+		o.EnvName = &EnvName
+	}
+	
+	if SelfUri, ok := TwitterintegrationrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

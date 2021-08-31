@@ -49,13 +49,11 @@ type Messagingsticker struct {
 
 }
 
-func (u *Messagingsticker) MarshalJSON() ([]byte, error) {
+func (o *Messagingsticker) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagingsticker
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,81 @@ func (u *Messagingsticker) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ProviderStickerId: u.ProviderStickerId,
+		ProviderStickerId: o.ProviderStickerId,
 		
-		ProviderPackageId: u.ProviderPackageId,
+		ProviderPackageId: o.ProviderPackageId,
 		
-		PackageName: u.PackageName,
+		PackageName: o.PackageName,
 		
-		MessengerType: u.MessengerType,
+		MessengerType: o.MessengerType,
 		
-		StickerType: u.StickerType,
+		StickerType: o.StickerType,
 		
-		ProviderVersion: u.ProviderVersion,
+		ProviderVersion: o.ProviderVersion,
 		
-		UriLocation: u.UriLocation,
+		UriLocation: o.UriLocation,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagingsticker) UnmarshalJSON(b []byte) error {
+	var MessagingstickerMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagingstickerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MessagingstickerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MessagingstickerMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ProviderStickerId, ok := MessagingstickerMap["providerStickerId"].(float64); ok {
+		ProviderStickerIdInt := int(ProviderStickerId)
+		o.ProviderStickerId = &ProviderStickerIdInt
+	}
+	
+	if ProviderPackageId, ok := MessagingstickerMap["providerPackageId"].(float64); ok {
+		ProviderPackageIdInt := int(ProviderPackageId)
+		o.ProviderPackageId = &ProviderPackageIdInt
+	}
+	
+	if PackageName, ok := MessagingstickerMap["packageName"].(string); ok {
+		o.PackageName = &PackageName
+	}
+	
+	if MessengerType, ok := MessagingstickerMap["messengerType"].(string); ok {
+		o.MessengerType = &MessengerType
+	}
+	
+	if StickerType, ok := MessagingstickerMap["stickerType"].(string); ok {
+		o.StickerType = &StickerType
+	}
+	
+	if ProviderVersion, ok := MessagingstickerMap["providerVersion"].(float64); ok {
+		ProviderVersionInt := int(ProviderVersion)
+		o.ProviderVersion = &ProviderVersionInt
+	}
+	
+	if UriLocation, ok := MessagingstickerMap["uriLocation"].(string); ok {
+		o.UriLocation = &UriLocation
+	}
+	
+	if SelfUri, ok := MessagingstickerMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

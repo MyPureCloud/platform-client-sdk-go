@@ -37,13 +37,11 @@ type Buintradaydatagroup struct {
 
 }
 
-func (u *Buintradaydatagroup) MarshalJSON() ([]byte, error) {
+func (o *Buintradaydatagroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buintradaydatagroup
-
 	
-
 	return json.Marshal(&struct { 
 		MediaType *string `json:"mediaType,omitempty"`
 		
@@ -60,21 +58,66 @@ func (u *Buintradaydatagroup) MarshalJSON() ([]byte, error) {
 		PerformancePredictionDataPerInterval *[]Intradayperformancepredictiondata `json:"performancePredictionDataPerInterval,omitempty"`
 		*Alias
 	}{ 
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ForecastDataSummary: u.ForecastDataSummary,
+		ForecastDataSummary: o.ForecastDataSummary,
 		
-		ForecastDataPerInterval: u.ForecastDataPerInterval,
+		ForecastDataPerInterval: o.ForecastDataPerInterval,
 		
-		ScheduleDataSummary: u.ScheduleDataSummary,
+		ScheduleDataSummary: o.ScheduleDataSummary,
 		
-		ScheduleDataPerInterval: u.ScheduleDataPerInterval,
+		ScheduleDataPerInterval: o.ScheduleDataPerInterval,
 		
-		PerformancePredictionDataSummary: u.PerformancePredictionDataSummary,
+		PerformancePredictionDataSummary: o.PerformancePredictionDataSummary,
 		
-		PerformancePredictionDataPerInterval: u.PerformancePredictionDataPerInterval,
-		Alias:    (*Alias)(u),
+		PerformancePredictionDataPerInterval: o.PerformancePredictionDataPerInterval,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buintradaydatagroup) UnmarshalJSON(b []byte) error {
+	var BuintradaydatagroupMap map[string]interface{}
+	err := json.Unmarshal(b, &BuintradaydatagroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if MediaType, ok := BuintradaydatagroupMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ForecastDataSummary, ok := BuintradaydatagroupMap["forecastDataSummary"].(map[string]interface{}); ok {
+		ForecastDataSummaryString, _ := json.Marshal(ForecastDataSummary)
+		json.Unmarshal(ForecastDataSummaryString, &o.ForecastDataSummary)
+	}
+	
+	if ForecastDataPerInterval, ok := BuintradaydatagroupMap["forecastDataPerInterval"].([]interface{}); ok {
+		ForecastDataPerIntervalString, _ := json.Marshal(ForecastDataPerInterval)
+		json.Unmarshal(ForecastDataPerIntervalString, &o.ForecastDataPerInterval)
+	}
+	
+	if ScheduleDataSummary, ok := BuintradaydatagroupMap["scheduleDataSummary"].(map[string]interface{}); ok {
+		ScheduleDataSummaryString, _ := json.Marshal(ScheduleDataSummary)
+		json.Unmarshal(ScheduleDataSummaryString, &o.ScheduleDataSummary)
+	}
+	
+	if ScheduleDataPerInterval, ok := BuintradaydatagroupMap["scheduleDataPerInterval"].([]interface{}); ok {
+		ScheduleDataPerIntervalString, _ := json.Marshal(ScheduleDataPerInterval)
+		json.Unmarshal(ScheduleDataPerIntervalString, &o.ScheduleDataPerInterval)
+	}
+	
+	if PerformancePredictionDataSummary, ok := BuintradaydatagroupMap["performancePredictionDataSummary"].(map[string]interface{}); ok {
+		PerformancePredictionDataSummaryString, _ := json.Marshal(PerformancePredictionDataSummary)
+		json.Unmarshal(PerformancePredictionDataSummaryString, &o.PerformancePredictionDataSummary)
+	}
+	
+	if PerformancePredictionDataPerInterval, ok := BuintradaydatagroupMap["performancePredictionDataPerInterval"].([]interface{}); ok {
+		PerformancePredictionDataPerIntervalString, _ := json.Marshal(PerformancePredictionDataPerInterval)
+		json.Unmarshal(PerformancePredictionDataPerIntervalString, &o.PerformancePredictionDataPerInterval)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,33 @@ type Valuewrapperstring struct {
 
 }
 
-func (u *Valuewrapperstring) MarshalJSON() ([]byte, error) {
+func (o *Valuewrapperstring) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Valuewrapperstring
-
 	
-
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Valuewrapperstring) UnmarshalJSON(b []byte) error {
+	var ValuewrapperstringMap map[string]interface{}
+	err := json.Unmarshal(b, &ValuewrapperstringMap)
+	if err != nil {
+		return err
+	}
+	
+	if Value, ok := ValuewrapperstringMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

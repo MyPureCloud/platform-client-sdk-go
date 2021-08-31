@@ -30,21 +30,19 @@ type Callforwardingeventcallforwarding struct {
 
 }
 
-func (u *Callforwardingeventcallforwarding) MarshalJSON() ([]byte, error) {
+func (o *Callforwardingeventcallforwarding) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callforwardingeventcallforwarding
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		User *Callforwardingeventuser `json:"user,omitempty"`
 		
@@ -57,17 +55,51 @@ func (u *Callforwardingeventcallforwarding) MarshalJSON() ([]byte, error) {
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Calls: u.Calls,
+		Calls: o.Calls,
 		
-		Voicemail: u.Voicemail,
+		Voicemail: o.Voicemail,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callforwardingeventcallforwarding) UnmarshalJSON(b []byte) error {
+	var CallforwardingeventcallforwardingMap map[string]interface{}
+	err := json.Unmarshal(b, &CallforwardingeventcallforwardingMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := CallforwardingeventcallforwardingMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Enabled, ok := CallforwardingeventcallforwardingMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Calls, ok := CallforwardingeventcallforwardingMap["calls"].([]interface{}); ok {
+		CallsString, _ := json.Marshal(Calls)
+		json.Unmarshal(CallsString, &o.Calls)
+	}
+	
+	if Voicemail, ok := CallforwardingeventcallforwardingMap["voicemail"].(string); ok {
+		o.Voicemail = &Voicemail
+	}
+	
+	if modifiedDateString, ok := CallforwardingeventcallforwardingMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

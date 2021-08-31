@@ -21,13 +21,11 @@ type Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata
-
 	
-
 	return json.Marshal(&struct { 
 		ServiceLevelPercent *float32 `json:"serviceLevelPercent,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata) Marsh
 		NumberOfInteractions *float32 `json:"numberOfInteractions,omitempty"`
 		*Alias
 	}{ 
-		ServiceLevelPercent: u.ServiceLevelPercent,
+		ServiceLevelPercent: o.ServiceLevelPercent,
 		
-		AverageSpeedOfAnswerSeconds: u.AverageSpeedOfAnswerSeconds,
+		AverageSpeedOfAnswerSeconds: o.AverageSpeedOfAnswerSeconds,
 		
-		NumberOfInteractions: u.NumberOfInteractions,
-		Alias:    (*Alias)(u),
+		NumberOfInteractions: o.NumberOfInteractions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradayperformancepredictionqueuedata) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap)
+	if err != nil {
+		return err
+	}
+	
+	if ServiceLevelPercent, ok := WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap["serviceLevelPercent"].(float64); ok {
+		ServiceLevelPercentFloat32 := float32(ServiceLevelPercent)
+		o.ServiceLevelPercent = &ServiceLevelPercentFloat32
+	}
+	
+	if AverageSpeedOfAnswerSeconds, ok := WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
+		AverageSpeedOfAnswerSecondsFloat32 := float32(AverageSpeedOfAnswerSeconds)
+		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSecondsFloat32
+	}
+	
+	if NumberOfInteractions, ok := WfmintradaydataupdatetopicintradayperformancepredictionqueuedataMap["numberOfInteractions"].(float64); ok {
+		NumberOfInteractionsFloat32 := float32(NumberOfInteractions)
+		o.NumberOfInteractions = &NumberOfInteractionsFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

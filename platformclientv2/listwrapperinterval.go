@@ -13,20 +13,34 @@ type Listwrapperinterval struct {
 
 }
 
-func (u *Listwrapperinterval) MarshalJSON() ([]byte, error) {
+func (o *Listwrapperinterval) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Listwrapperinterval
-
 	
-
 	return json.Marshal(&struct { 
 		Values *[]string `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Listwrapperinterval) UnmarshalJSON(b []byte) error {
+	var ListwrapperintervalMap map[string]interface{}
+	err := json.Unmarshal(b, &ListwrapperintervalMap)
+	if err != nil {
+		return err
+	}
+	
+	if Values, ok := ListwrapperintervalMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -62,29 +62,27 @@ type Webchatmemberinfo struct {
 
 }
 
-func (u *Webchatmemberinfo) MarshalJSON() ([]byte, error) {
+func (o *Webchatmemberinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatmemberinfo
-
 	
 	JoinDate := new(string)
-	if u.JoinDate != nil {
+	if o.JoinDate != nil {
 		
-		*JoinDate = timeutil.Strftime(u.JoinDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*JoinDate = timeutil.Strftime(o.JoinDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		JoinDate = nil
 	}
 	
 	LeaveDate := new(string)
-	if u.LeaveDate != nil {
+	if o.LeaveDate != nil {
 		
-		*LeaveDate = timeutil.Strftime(u.LeaveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*LeaveDate = timeutil.Strftime(o.LeaveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		LeaveDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,99 @@ func (u *Webchatmemberinfo) MarshalJSON() ([]byte, error) {
 		State *string `json:"state,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		FirstName: u.FirstName,
+		FirstName: o.FirstName,
 		
-		LastName: u.LastName,
+		LastName: o.LastName,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		AvatarImageUrl: u.AvatarImageUrl,
+		AvatarImageUrl: o.AvatarImageUrl,
 		
-		Role: u.Role,
+		Role: o.Role,
 		
 		JoinDate: JoinDate,
 		
 		LeaveDate: LeaveDate,
 		
-		AuthenticatedGuest: u.AuthenticatedGuest,
+		AuthenticatedGuest: o.AuthenticatedGuest,
 		
-		CustomFields: u.CustomFields,
+		CustomFields: o.CustomFields,
 		
-		State: u.State,
-		Alias:    (*Alias)(u),
+		State: o.State,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatmemberinfo) UnmarshalJSON(b []byte) error {
+	var WebchatmemberinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatmemberinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebchatmemberinfoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DisplayName, ok := WebchatmemberinfoMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if FirstName, ok := WebchatmemberinfoMap["firstName"].(string); ok {
+		o.FirstName = &FirstName
+	}
+	
+	if LastName, ok := WebchatmemberinfoMap["lastName"].(string); ok {
+		o.LastName = &LastName
+	}
+	
+	if Email, ok := WebchatmemberinfoMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+	if PhoneNumber, ok := WebchatmemberinfoMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if AvatarImageUrl, ok := WebchatmemberinfoMap["avatarImageUrl"].(string); ok {
+		o.AvatarImageUrl = &AvatarImageUrl
+	}
+	
+	if Role, ok := WebchatmemberinfoMap["role"].(string); ok {
+		o.Role = &Role
+	}
+	
+	if joinDateString, ok := WebchatmemberinfoMap["joinDate"].(string); ok {
+		JoinDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", joinDateString)
+		o.JoinDate = &JoinDate
+	}
+	
+	if leaveDateString, ok := WebchatmemberinfoMap["leaveDate"].(string); ok {
+		LeaveDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", leaveDateString)
+		o.LeaveDate = &LeaveDate
+	}
+	
+	if AuthenticatedGuest, ok := WebchatmemberinfoMap["authenticatedGuest"].(bool); ok {
+		o.AuthenticatedGuest = &AuthenticatedGuest
+	}
+	
+	if CustomFields, ok := WebchatmemberinfoMap["customFields"].(map[string]interface{}); ok {
+		CustomFieldsString, _ := json.Marshal(CustomFields)
+		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if State, ok := WebchatmemberinfoMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

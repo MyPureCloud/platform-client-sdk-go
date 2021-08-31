@@ -17,24 +17,41 @@ type Expansioncriterium struct {
 
 }
 
-func (u *Expansioncriterium) MarshalJSON() ([]byte, error) {
+func (o *Expansioncriterium) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Expansioncriterium
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Threshold *float64 `json:"threshold,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Threshold: u.Threshold,
-		Alias:    (*Alias)(u),
+		Threshold: o.Threshold,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Expansioncriterium) UnmarshalJSON(b []byte) error {
+	var ExpansioncriteriumMap map[string]interface{}
+	err := json.Unmarshal(b, &ExpansioncriteriumMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ExpansioncriteriumMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Threshold, ok := ExpansioncriteriumMap["threshold"].(float64); ok {
+		o.Threshold = &Threshold
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

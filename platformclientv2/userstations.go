@@ -25,13 +25,11 @@ type Userstations struct {
 
 }
 
-func (u *Userstations) MarshalJSON() ([]byte, error) {
+func (o *Userstations) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userstations
-
 	
-
 	return json.Marshal(&struct { 
 		AssociatedStation *Userstation `json:"associatedStation,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Userstations) MarshalJSON() ([]byte, error) {
 		LastAssociatedStation *Userstation `json:"lastAssociatedStation,omitempty"`
 		*Alias
 	}{ 
-		AssociatedStation: u.AssociatedStation,
+		AssociatedStation: o.AssociatedStation,
 		
-		EffectiveStation: u.EffectiveStation,
+		EffectiveStation: o.EffectiveStation,
 		
-		DefaultStation: u.DefaultStation,
+		DefaultStation: o.DefaultStation,
 		
-		LastAssociatedStation: u.LastAssociatedStation,
-		Alias:    (*Alias)(u),
+		LastAssociatedStation: o.LastAssociatedStation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userstations) UnmarshalJSON(b []byte) error {
+	var UserstationsMap map[string]interface{}
+	err := json.Unmarshal(b, &UserstationsMap)
+	if err != nil {
+		return err
+	}
+	
+	if AssociatedStation, ok := UserstationsMap["associatedStation"].(map[string]interface{}); ok {
+		AssociatedStationString, _ := json.Marshal(AssociatedStation)
+		json.Unmarshal(AssociatedStationString, &o.AssociatedStation)
+	}
+	
+	if EffectiveStation, ok := UserstationsMap["effectiveStation"].(map[string]interface{}); ok {
+		EffectiveStationString, _ := json.Marshal(EffectiveStation)
+		json.Unmarshal(EffectiveStationString, &o.EffectiveStation)
+	}
+	
+	if DefaultStation, ok := UserstationsMap["defaultStation"].(map[string]interface{}); ok {
+		DefaultStationString, _ := json.Marshal(DefaultStation)
+		json.Unmarshal(DefaultStationString, &o.DefaultStation)
+	}
+	
+	if LastAssociatedStation, ok := UserstationsMap["lastAssociatedStation"].(map[string]interface{}); ok {
+		LastAssociatedStationString, _ := json.Marshal(LastAssociatedStation)
+		json.Unmarshal(LastAssociatedStationString, &o.LastAssociatedStation)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

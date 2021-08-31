@@ -114,29 +114,27 @@ type Site struct {
 
 }
 
-func (u *Site) MarshalJSON() ([]byte, error) {
+func (o *Site) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Site
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -191,59 +189,187 @@ func (u *Site) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		PrimarySites: u.PrimarySites,
+		PrimarySites: o.PrimarySites,
 		
-		SecondarySites: u.SecondarySites,
+		SecondarySites: o.SecondarySites,
 		
-		PrimaryEdges: u.PrimaryEdges,
+		PrimaryEdges: o.PrimaryEdges,
 		
-		SecondaryEdges: u.SecondaryEdges,
+		SecondaryEdges: o.SecondaryEdges,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		Edges: u.Edges,
+		Edges: o.Edges,
 		
-		EdgeAutoUpdateConfig: u.EdgeAutoUpdateConfig,
+		EdgeAutoUpdateConfig: o.EdgeAutoUpdateConfig,
 		
-		MediaRegionsUseLatencyBased: u.MediaRegionsUseLatencyBased,
+		MediaRegionsUseLatencyBased: o.MediaRegionsUseLatencyBased,
 		
-		Location: u.Location,
+		Location: o.Location,
 		
-		Managed: u.Managed,
+		Managed: o.Managed,
 		
-		NtpSettings: u.NtpSettings,
+		NtpSettings: o.NtpSettings,
 		
-		MediaModel: u.MediaModel,
+		MediaModel: o.MediaModel,
 		
-		CoreSite: u.CoreSite,
+		CoreSite: o.CoreSite,
 		
-		SiteConnections: u.SiteConnections,
+		SiteConnections: o.SiteConnections,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Site) UnmarshalJSON(b []byte) error {
+	var SiteMap map[string]interface{}
+	err := json.Unmarshal(b, &SiteMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SiteMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SiteMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := SiteMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := SiteMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := SiteMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := SiteMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := SiteMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := SiteMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := SiteMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := SiteMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := SiteMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if PrimarySites, ok := SiteMap["primarySites"].([]interface{}); ok {
+		PrimarySitesString, _ := json.Marshal(PrimarySites)
+		json.Unmarshal(PrimarySitesString, &o.PrimarySites)
+	}
+	
+	if SecondarySites, ok := SiteMap["secondarySites"].([]interface{}); ok {
+		SecondarySitesString, _ := json.Marshal(SecondarySites)
+		json.Unmarshal(SecondarySitesString, &o.SecondarySites)
+	}
+	
+	if PrimaryEdges, ok := SiteMap["primaryEdges"].([]interface{}); ok {
+		PrimaryEdgesString, _ := json.Marshal(PrimaryEdges)
+		json.Unmarshal(PrimaryEdgesString, &o.PrimaryEdges)
+	}
+	
+	if SecondaryEdges, ok := SiteMap["secondaryEdges"].([]interface{}); ok {
+		SecondaryEdgesString, _ := json.Marshal(SecondaryEdges)
+		json.Unmarshal(SecondaryEdgesString, &o.SecondaryEdges)
+	}
+	
+	if Addresses, ok := SiteMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if Edges, ok := SiteMap["edges"].([]interface{}); ok {
+		EdgesString, _ := json.Marshal(Edges)
+		json.Unmarshal(EdgesString, &o.Edges)
+	}
+	
+	if EdgeAutoUpdateConfig, ok := SiteMap["edgeAutoUpdateConfig"].(map[string]interface{}); ok {
+		EdgeAutoUpdateConfigString, _ := json.Marshal(EdgeAutoUpdateConfig)
+		json.Unmarshal(EdgeAutoUpdateConfigString, &o.EdgeAutoUpdateConfig)
+	}
+	
+	if MediaRegionsUseLatencyBased, ok := SiteMap["mediaRegionsUseLatencyBased"].(bool); ok {
+		o.MediaRegionsUseLatencyBased = &MediaRegionsUseLatencyBased
+	}
+	
+	if Location, ok := SiteMap["location"].(map[string]interface{}); ok {
+		LocationString, _ := json.Marshal(Location)
+		json.Unmarshal(LocationString, &o.Location)
+	}
+	
+	if Managed, ok := SiteMap["managed"].(bool); ok {
+		o.Managed = &Managed
+	}
+	
+	if NtpSettings, ok := SiteMap["ntpSettings"].(map[string]interface{}); ok {
+		NtpSettingsString, _ := json.Marshal(NtpSettings)
+		json.Unmarshal(NtpSettingsString, &o.NtpSettings)
+	}
+	
+	if MediaModel, ok := SiteMap["mediaModel"].(string); ok {
+		o.MediaModel = &MediaModel
+	}
+	
+	if CoreSite, ok := SiteMap["coreSite"].(bool); ok {
+		o.CoreSite = &CoreSite
+	}
+	
+	if SiteConnections, ok := SiteMap["siteConnections"].([]interface{}); ok {
+		SiteConnectionsString, _ := json.Marshal(SiteConnections)
+		json.Unmarshal(SiteConnectionsString, &o.SiteConnections)
+	}
+	
+	if SelfUri, ok := SiteMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Nludomainversionlisting struct {
 
 }
 
-func (u *Nludomainversionlisting) MarshalJSON() ([]byte, error) {
+func (o *Nludomainversionlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nludomainversionlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Nludomainversion `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Nludomainversionlisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nludomainversionlisting) UnmarshalJSON(b []byte) error {
+	var NludomainversionlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &NludomainversionlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := NludomainversionlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := NludomainversionlistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := NludomainversionlistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := NludomainversionlistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := NludomainversionlistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if SelfUri, ok := NludomainversionlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if NextUri, ok := NludomainversionlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := NludomainversionlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := NludomainversionlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if PageCount, ok := NludomainversionlistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

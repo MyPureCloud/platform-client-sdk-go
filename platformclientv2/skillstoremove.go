@@ -21,13 +21,11 @@ type Skillstoremove struct {
 
 }
 
-func (u *Skillstoremove) MarshalJSON() ([]byte, error) {
+func (o *Skillstoremove) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Skillstoremove
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Skillstoremove) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Skillstoremove) UnmarshalJSON(b []byte) error {
+	var SkillstoremoveMap map[string]interface{}
+	err := json.Unmarshal(b, &SkillstoremoveMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := SkillstoremoveMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Id, ok := SkillstoremoveMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := SkillstoremoveMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

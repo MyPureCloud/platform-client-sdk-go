@@ -82,37 +82,35 @@ type Video struct {
 
 }
 
-func (u *Video) MarshalJSON() ([]byte, error) {
+func (o *Video) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Video
-
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -151,21 +149,21 @@ func (u *Video) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Context: u.Context,
+		Context: o.Context,
 		
-		AudioMuted: u.AudioMuted,
+		AudioMuted: o.AudioMuted,
 		
-		VideoMuted: u.VideoMuted,
+		VideoMuted: o.VideoMuted,
 		
-		SharingScreen: u.SharingScreen,
+		SharingScreen: o.SharingScreen,
 		
-		PeerCount: u.PeerCount,
+		PeerCount: o.PeerCount,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartAlertingTime: StartAlertingTime,
 		
@@ -173,21 +171,112 @@ func (u *Video) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		Msids: u.Msids,
+		Msids: o.Msids,
 		
-		Self: u.Self,
+		Self: o.Self,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
-		Alias:    (*Alias)(u),
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Video) UnmarshalJSON(b []byte) error {
+	var VideoMap map[string]interface{}
+	err := json.Unmarshal(b, &VideoMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := VideoMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := VideoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Context, ok := VideoMap["context"].(string); ok {
+		o.Context = &Context
+	}
+	
+	if AudioMuted, ok := VideoMap["audioMuted"].(bool); ok {
+		o.AudioMuted = &AudioMuted
+	}
+	
+	if VideoMuted, ok := VideoMap["videoMuted"].(bool); ok {
+		o.VideoMuted = &VideoMuted
+	}
+	
+	if SharingScreen, ok := VideoMap["sharingScreen"].(bool); ok {
+		o.SharingScreen = &SharingScreen
+	}
+	
+	if PeerCount, ok := VideoMap["peerCount"].(float64); ok {
+		PeerCountInt := int(PeerCount)
+		o.PeerCount = &PeerCountInt
+	}
+	
+	if DisconnectType, ok := VideoMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startAlertingTimeString, ok := VideoMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := VideoMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := VideoMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Provider, ok := VideoMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if PeerId, ok := VideoMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if Msids, ok := VideoMap["msids"].([]interface{}); ok {
+		MsidsString, _ := json.Marshal(Msids)
+		json.Unmarshal(MsidsString, &o.Msids)
+	}
+	
+	if Self, ok := VideoMap["self"].(map[string]interface{}); ok {
+		SelfString, _ := json.Marshal(Self)
+		json.Unmarshal(SelfString, &o.Self)
+	}
+	
+	if Wrapup, ok := VideoMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := VideoMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := VideoMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

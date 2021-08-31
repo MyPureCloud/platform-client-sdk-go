@@ -21,13 +21,11 @@ type Licenseassignmentrequest struct {
 
 }
 
-func (u *Licenseassignmentrequest) MarshalJSON() ([]byte, error) {
+func (o *Licenseassignmentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Licenseassignmentrequest
-
 	
-
 	return json.Marshal(&struct { 
 		LicenseId *string `json:"licenseId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Licenseassignmentrequest) MarshalJSON() ([]byte, error) {
 		UserIdsRemove *[]string `json:"userIdsRemove,omitempty"`
 		*Alias
 	}{ 
-		LicenseId: u.LicenseId,
+		LicenseId: o.LicenseId,
 		
-		UserIdsAdd: u.UserIdsAdd,
+		UserIdsAdd: o.UserIdsAdd,
 		
-		UserIdsRemove: u.UserIdsRemove,
-		Alias:    (*Alias)(u),
+		UserIdsRemove: o.UserIdsRemove,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Licenseassignmentrequest) UnmarshalJSON(b []byte) error {
+	var LicenseassignmentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &LicenseassignmentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if LicenseId, ok := LicenseassignmentrequestMap["licenseId"].(string); ok {
+		o.LicenseId = &LicenseId
+	}
+	
+	if UserIdsAdd, ok := LicenseassignmentrequestMap["userIdsAdd"].([]interface{}); ok {
+		UserIdsAddString, _ := json.Marshal(UserIdsAdd)
+		json.Unmarshal(UserIdsAddString, &o.UserIdsAdd)
+	}
+	
+	if UserIdsRemove, ok := LicenseassignmentrequestMap["userIdsRemove"].([]interface{}); ok {
+		UserIdsRemoveString, _ := json.Marshal(UserIdsRemove)
+		json.Unmarshal(UserIdsRemoveString, &o.UserIdsRemove)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

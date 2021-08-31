@@ -37,13 +37,11 @@ type Updateactivitycoderequest struct {
 
 }
 
-func (u *Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
+func (o *Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updateactivitycoderequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Updateactivitycoderequest) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
+		CountsAsPaidTime: o.CountsAsPaidTime,
 		
-		CountsAsWorkTime: u.CountsAsWorkTime,
+		CountsAsWorkTime: o.CountsAsWorkTime,
 		
-		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		AgentTimeOffSelectable: o.AgentTimeOffSelectable,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updateactivitycoderequest) UnmarshalJSON(b []byte) error {
+	var UpdateactivitycoderequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdateactivitycoderequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := UpdateactivitycoderequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Category, ok := UpdateactivitycoderequestMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if LengthInMinutes, ok := UpdateactivitycoderequestMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if CountsAsPaidTime, ok := UpdateactivitycoderequestMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+	if CountsAsWorkTime, ok := UpdateactivitycoderequestMap["countsAsWorkTime"].(bool); ok {
+		o.CountsAsWorkTime = &CountsAsWorkTime
+	}
+	
+	if AgentTimeOffSelectable, ok := UpdateactivitycoderequestMap["agentTimeOffSelectable"].(bool); ok {
+		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
+	}
+	
+	if Metadata, ok := UpdateactivitycoderequestMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Dialerrule struct {
 
 }
 
-func (u *Dialerrule) MarshalJSON() ([]byte, error) {
+func (o *Dialerrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerrule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Dialerrule) MarshalJSON() ([]byte, error) {
 		Actions *[]Dialeraction `json:"actions,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		Conditions: u.Conditions,
+		Conditions: o.Conditions,
 		
-		Actions: u.Actions,
-		Alias:    (*Alias)(u),
+		Actions: o.Actions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerrule) UnmarshalJSON(b []byte) error {
+	var DialerruleMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialerruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialerruleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Order, ok := DialerruleMap["order"].(float64); ok {
+		OrderInt := int(Order)
+		o.Order = &OrderInt
+	}
+	
+	if Category, ok := DialerruleMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Conditions, ok := DialerruleMap["conditions"].([]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+	if Actions, ok := DialerruleMap["actions"].([]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Createwebchatconversationresponse struct {
 
 }
 
-func (u *Createwebchatconversationresponse) MarshalJSON() ([]byte, error) {
+func (o *Createwebchatconversationresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createwebchatconversationresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Createwebchatconversationresponse) MarshalJSON() ([]byte, error) {
 		Member *Webchatmemberinfo `json:"member,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Jwt: u.Jwt,
+		Jwt: o.Jwt,
 		
-		EventStreamUri: u.EventStreamUri,
+		EventStreamUri: o.EventStreamUri,
 		
-		Member: u.Member,
-		Alias:    (*Alias)(u),
+		Member: o.Member,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createwebchatconversationresponse) UnmarshalJSON(b []byte) error {
+	var CreatewebchatconversationresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatewebchatconversationresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CreatewebchatconversationresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Jwt, ok := CreatewebchatconversationresponseMap["jwt"].(string); ok {
+		o.Jwt = &Jwt
+	}
+	
+	if EventStreamUri, ok := CreatewebchatconversationresponseMap["eventStreamUri"].(string); ok {
+		o.EventStreamUri = &EventStreamUri
+	}
+	
+	if Member, ok := CreatewebchatconversationresponseMap["member"].(map[string]interface{}); ok {
+		MemberString, _ := json.Marshal(Member)
+		json.Unmarshal(MemberString, &o.Member)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

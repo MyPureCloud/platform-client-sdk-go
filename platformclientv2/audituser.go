@@ -21,13 +21,11 @@ type Audituser struct {
 
 }
 
-func (u *Audituser) MarshalJSON() ([]byte, error) {
+func (o *Audituser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Audituser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Audituser) MarshalJSON() ([]byte, error) {
 		Display *string `json:"display,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Display: u.Display,
-		Alias:    (*Alias)(u),
+		Display: o.Display,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Audituser) UnmarshalJSON(b []byte) error {
+	var AudituserMap map[string]interface{}
+	err := json.Unmarshal(b, &AudituserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AudituserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AudituserMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Display, ok := AudituserMap["display"].(string); ok {
+		o.Display = &Display
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

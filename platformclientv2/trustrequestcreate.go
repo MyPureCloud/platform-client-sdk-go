@@ -17,24 +17,43 @@ type Trustrequestcreate struct {
 
 }
 
-func (u *Trustrequestcreate) MarshalJSON() ([]byte, error) {
+func (o *Trustrequestcreate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustrequestcreate
-
 	
-
 	return json.Marshal(&struct { 
 		UserIds *[]string `json:"userIds,omitempty"`
 		
 		GroupIds *[]string `json:"groupIds,omitempty"`
 		*Alias
 	}{ 
-		UserIds: u.UserIds,
+		UserIds: o.UserIds,
 		
-		GroupIds: u.GroupIds,
-		Alias:    (*Alias)(u),
+		GroupIds: o.GroupIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustrequestcreate) UnmarshalJSON(b []byte) error {
+	var TrustrequestcreateMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustrequestcreateMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserIds, ok := TrustrequestcreateMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if GroupIds, ok := TrustrequestcreateMap["groupIds"].([]interface{}); ok {
+		GroupIdsString, _ := json.Marshal(GroupIds)
+		json.Unmarshal(GroupIdsString, &o.GroupIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

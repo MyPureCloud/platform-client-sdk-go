@@ -25,13 +25,11 @@ type Evaluationaggregationview struct {
 
 }
 
-func (u *Evaluationaggregationview) MarshalJSON() ([]byte, error) {
+func (o *Evaluationaggregationview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationaggregationview
-
 	
-
 	return json.Marshal(&struct { 
 		Target *string `json:"target,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Evaluationaggregationview) MarshalJSON() ([]byte, error) {
 		VarRange *Aggregationrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		Target: u.Target,
+		Target: o.Target,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Function: u.Function,
+		Function: o.Function,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationaggregationview) UnmarshalJSON(b []byte) error {
+	var EvaluationaggregationviewMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationaggregationviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Target, ok := EvaluationaggregationviewMap["target"].(string); ok {
+		o.Target = &Target
+	}
+	
+	if Name, ok := EvaluationaggregationviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Function, ok := EvaluationaggregationviewMap["function"].(string); ok {
+		o.Function = &Function
+	}
+	
+	if VarRange, ok := EvaluationaggregationviewMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

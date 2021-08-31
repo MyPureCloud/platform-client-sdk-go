@@ -21,13 +21,11 @@ type Evaluationaggregatequeryfilter struct {
 
 }
 
-func (u *Evaluationaggregatequeryfilter) MarshalJSON() ([]byte, error) {
+func (o *Evaluationaggregatequeryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationaggregatequeryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Evaluationaggregatequeryfilter) MarshalJSON() ([]byte, error) {
 		Predicates *[]Evaluationaggregatequerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
+		Clauses: o.Clauses,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationaggregatequeryfilter) UnmarshalJSON(b []byte) error {
+	var EvaluationaggregatequeryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationaggregatequeryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := EvaluationaggregatequeryfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := EvaluationaggregatequeryfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if Predicates, ok := EvaluationaggregatequeryfilterMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

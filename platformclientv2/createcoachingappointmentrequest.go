@@ -42,21 +42,19 @@ type Createcoachingappointmentrequest struct {
 
 }
 
-func (u *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
+func (o *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createcoachingappointmentrequest
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -75,23 +73,71 @@ func (u *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		DocumentIds *[]string `json:"documentIds,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
 		DateStart: DateStart,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		FacilitatorId: u.FacilitatorId,
+		FacilitatorId: o.FacilitatorId,
 		
-		AttendeeIds: u.AttendeeIds,
+		AttendeeIds: o.AttendeeIds,
 		
-		ConversationIds: u.ConversationIds,
+		ConversationIds: o.ConversationIds,
 		
-		DocumentIds: u.DocumentIds,
-		Alias:    (*Alias)(u),
+		DocumentIds: o.DocumentIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createcoachingappointmentrequest) UnmarshalJSON(b []byte) error {
+	var CreatecoachingappointmentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatecoachingappointmentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := CreatecoachingappointmentrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := CreatecoachingappointmentrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if dateStartString, ok := CreatecoachingappointmentrequestMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if LengthInMinutes, ok := CreatecoachingappointmentrequestMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if FacilitatorId, ok := CreatecoachingappointmentrequestMap["facilitatorId"].(string); ok {
+		o.FacilitatorId = &FacilitatorId
+	}
+	
+	if AttendeeIds, ok := CreatecoachingappointmentrequestMap["attendeeIds"].([]interface{}); ok {
+		AttendeeIdsString, _ := json.Marshal(AttendeeIds)
+		json.Unmarshal(AttendeeIdsString, &o.AttendeeIds)
+	}
+	
+	if ConversationIds, ok := CreatecoachingappointmentrequestMap["conversationIds"].([]interface{}); ok {
+		ConversationIdsString, _ := json.Marshal(ConversationIds)
+		json.Unmarshal(ConversationIdsString, &o.ConversationIds)
+	}
+	
+	if DocumentIds, ok := CreatecoachingappointmentrequestMap["documentIds"].([]interface{}); ok {
+		DocumentIdsString, _ := json.Marshal(DocumentIds)
+		json.Unmarshal(DocumentIdsString, &o.DocumentIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Copyattachmentsrequest struct {
 
 }
 
-func (u *Copyattachmentsrequest) MarshalJSON() ([]byte, error) {
+func (o *Copyattachmentsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Copyattachmentsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		SourceMessage *Domainentityref `json:"sourceMessage,omitempty"`
 		
 		Attachments *[]Attachment `json:"attachments,omitempty"`
 		*Alias
 	}{ 
-		SourceMessage: u.SourceMessage,
+		SourceMessage: o.SourceMessage,
 		
-		Attachments: u.Attachments,
-		Alias:    (*Alias)(u),
+		Attachments: o.Attachments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Copyattachmentsrequest) UnmarshalJSON(b []byte) error {
+	var CopyattachmentsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CopyattachmentsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SourceMessage, ok := CopyattachmentsrequestMap["sourceMessage"].(map[string]interface{}); ok {
+		SourceMessageString, _ := json.Marshal(SourceMessage)
+		json.Unmarshal(SourceMessageString, &o.SourceMessage)
+	}
+	
+	if Attachments, ok := CopyattachmentsrequestMap["attachments"].([]interface{}); ok {
+		AttachmentsString, _ := json.Marshal(Attachments)
+		json.Unmarshal(AttachmentsString, &o.Attachments)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

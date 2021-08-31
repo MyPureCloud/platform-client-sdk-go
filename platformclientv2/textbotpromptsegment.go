@@ -21,13 +21,11 @@ type Textbotpromptsegment struct {
 
 }
 
-func (u *Textbotpromptsegment) MarshalJSON() ([]byte, error) {
+func (o *Textbotpromptsegment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotpromptsegment
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Textbotpromptsegment) MarshalJSON() ([]byte, error) {
 		Format *Format `json:"format,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Format: u.Format,
-		Alias:    (*Alias)(u),
+		Format: o.Format,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotpromptsegment) UnmarshalJSON(b []byte) error {
+	var TextbotpromptsegmentMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotpromptsegmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := TextbotpromptsegmentMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if VarType, ok := TextbotpromptsegmentMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Format, ok := TextbotpromptsegmentMap["format"].(map[string]interface{}); ok {
+		FormatString, _ := json.Marshal(Format)
+		json.Unmarshal(FormatString, &o.Format)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

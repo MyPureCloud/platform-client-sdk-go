@@ -14,28 +14,42 @@ type Oauthlasttokenissued struct {
 
 }
 
-func (u *Oauthlasttokenissued) MarshalJSON() ([]byte, error) {
+func (o *Oauthlasttokenissued) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Oauthlasttokenissued
-
 	
 	DateIssued := new(string)
-	if u.DateIssued != nil {
+	if o.DateIssued != nil {
 		
-		*DateIssued = timeutil.Strftime(u.DateIssued, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateIssued = timeutil.Strftime(o.DateIssued, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateIssued = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateIssued *string `json:"dateIssued,omitempty"`
 		*Alias
 	}{ 
 		DateIssued: DateIssued,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Oauthlasttokenissued) UnmarshalJSON(b []byte) error {
+	var OauthlasttokenissuedMap map[string]interface{}
+	err := json.Unmarshal(b, &OauthlasttokenissuedMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateIssuedString, ok := OauthlasttokenissuedMap["dateIssued"].(string); ok {
+		DateIssued, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateIssuedString)
+		o.DateIssued = &DateIssued
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

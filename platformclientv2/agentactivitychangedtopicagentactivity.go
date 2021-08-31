@@ -34,21 +34,19 @@ type Agentactivitychangedtopicagentactivity struct {
 
 }
 
-func (u *Agentactivitychangedtopicagentactivity) MarshalJSON() ([]byte, error) {
+func (o *Agentactivitychangedtopicagentactivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentactivitychangedtopicagentactivity
-
 	
 	DateActiveQueuesChanged := new(string)
-	if u.DateActiveQueuesChanged != nil {
+	if o.DateActiveQueuesChanged != nil {
 		
-		*DateActiveQueuesChanged = timeutil.Strftime(u.DateActiveQueuesChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateActiveQueuesChanged = timeutil.Strftime(o.DateActiveQueuesChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateActiveQueuesChanged = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,19 +61,59 @@ func (u *Agentactivitychangedtopicagentactivity) MarshalJSON() ([]byte, error) {
 		DateActiveQueuesChanged *string `json:"dateActiveQueuesChanged,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		Presence: u.Presence,
+		Presence: o.Presence,
 		
-		OutOfOffice: u.OutOfOffice,
+		OutOfOffice: o.OutOfOffice,
 		
-		ActiveQueueIds: u.ActiveQueueIds,
+		ActiveQueueIds: o.ActiveQueueIds,
 		
 		DateActiveQueuesChanged: DateActiveQueuesChanged,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agentactivitychangedtopicagentactivity) UnmarshalJSON(b []byte) error {
+	var AgentactivitychangedtopicagentactivityMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentactivitychangedtopicagentactivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AgentactivitychangedtopicagentactivityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if RoutingStatus, ok := AgentactivitychangedtopicagentactivityMap["routingStatus"].(map[string]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+	if Presence, ok := AgentactivitychangedtopicagentactivityMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if OutOfOffice, ok := AgentactivitychangedtopicagentactivityMap["outOfOffice"].(map[string]interface{}); ok {
+		OutOfOfficeString, _ := json.Marshal(OutOfOffice)
+		json.Unmarshal(OutOfOfficeString, &o.OutOfOffice)
+	}
+	
+	if ActiveQueueIds, ok := AgentactivitychangedtopicagentactivityMap["activeQueueIds"].([]interface{}); ok {
+		ActiveQueueIdsString, _ := json.Marshal(ActiveQueueIds)
+		json.Unmarshal(ActiveQueueIdsString, &o.ActiveQueueIds)
+	}
+	
+	if dateActiveQueuesChangedString, ok := AgentactivitychangedtopicagentactivityMap["dateActiveQueuesChanged"].(string); ok {
+		DateActiveQueuesChanged, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateActiveQueuesChangedString)
+		o.DateActiveQueuesChanged = &DateActiveQueuesChanged
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

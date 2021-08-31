@@ -33,13 +33,11 @@ type Eventcondition struct {
 
 }
 
-func (u *Eventcondition) MarshalJSON() ([]byte, error) {
+func (o *Eventcondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Eventcondition
-
 	
-
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Eventcondition) MarshalJSON() ([]byte, error) {
 		EventName *string `json:"eventName,omitempty"`
 		*Alias
 	}{ 
-		Key: u.Key,
+		Key: o.Key,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		StreamType: u.StreamType,
+		StreamType: o.StreamType,
 		
-		SessionType: u.SessionType,
+		SessionType: o.SessionType,
 		
-		EventName: u.EventName,
-		Alias:    (*Alias)(u),
+		EventName: o.EventName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Eventcondition) UnmarshalJSON(b []byte) error {
+	var EventconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &EventconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Key, ok := EventconditionMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Values, ok := EventconditionMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if Operator, ok := EventconditionMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if StreamType, ok := EventconditionMap["streamType"].(string); ok {
+		o.StreamType = &StreamType
+	}
+	
+	if SessionType, ok := EventconditionMap["sessionType"].(string); ok {
+		o.SessionType = &SessionType
+	}
+	
+	if EventName, ok := EventconditionMap["eventName"].(string); ok {
+		o.EventName = &EventName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

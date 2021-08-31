@@ -29,13 +29,11 @@ type Queueconversationvideoeventtopicconversationroutingdata struct {
 
 }
 
-func (u *Queueconversationvideoeventtopicconversationroutingdata) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationvideoeventtopicconversationroutingdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopicconversationroutingdata
-
 	
-
 	return json.Marshal(&struct { 
 		Queue *Queueconversationvideoeventtopicurireference `json:"queue,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Queueconversationvideoeventtopicconversationroutingdata) MarshalJSON() 
 		ScoredAgents *[]Queueconversationvideoeventtopicscoredagent `json:"scoredAgents,omitempty"`
 		*Alias
 	}{ 
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		ScoredAgents: u.ScoredAgents,
-		Alias:    (*Alias)(u),
+		ScoredAgents: o.ScoredAgents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationvideoeventtopicconversationroutingdata) UnmarshalJSON(b []byte) error {
+	var QueueconversationvideoeventtopicconversationroutingdataMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationvideoeventtopicconversationroutingdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Queue, ok := QueueconversationvideoeventtopicconversationroutingdataMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Language, ok := QueueconversationvideoeventtopicconversationroutingdataMap["language"].(map[string]interface{}); ok {
+		LanguageString, _ := json.Marshal(Language)
+		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if Priority, ok := QueueconversationvideoeventtopicconversationroutingdataMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Skills, ok := QueueconversationvideoeventtopicconversationroutingdataMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if ScoredAgents, ok := QueueconversationvideoeventtopicconversationroutingdataMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

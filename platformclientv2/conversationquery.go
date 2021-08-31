@@ -49,13 +49,11 @@ type Conversationquery struct {
 
 }
 
-func (u *Conversationquery) MarshalJSON() ([]byte, error) {
+func (o *Conversationquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationquery
-
 	
-
 	return json.Marshal(&struct { 
 		ConversationFilters *[]Conversationdetailqueryfilter `json:"conversationFilters,omitempty"`
 		
@@ -78,27 +76,85 @@ func (u *Conversationquery) MarshalJSON() ([]byte, error) {
 		Paging *Pagingspec `json:"paging,omitempty"`
 		*Alias
 	}{ 
-		ConversationFilters: u.ConversationFilters,
+		ConversationFilters: o.ConversationFilters,
 		
-		SegmentFilters: u.SegmentFilters,
+		SegmentFilters: o.SegmentFilters,
 		
-		EvaluationFilters: u.EvaluationFilters,
+		EvaluationFilters: o.EvaluationFilters,
 		
-		SurveyFilters: u.SurveyFilters,
+		SurveyFilters: o.SurveyFilters,
 		
-		ResolutionFilters: u.ResolutionFilters,
+		ResolutionFilters: o.ResolutionFilters,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		OrderBy: u.OrderBy,
+		OrderBy: o.OrderBy,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Aggregations: u.Aggregations,
+		Aggregations: o.Aggregations,
 		
-		Paging: u.Paging,
-		Alias:    (*Alias)(u),
+		Paging: o.Paging,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationquery) UnmarshalJSON(b []byte) error {
+	var ConversationqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if ConversationFilters, ok := ConversationqueryMap["conversationFilters"].([]interface{}); ok {
+		ConversationFiltersString, _ := json.Marshal(ConversationFilters)
+		json.Unmarshal(ConversationFiltersString, &o.ConversationFilters)
+	}
+	
+	if SegmentFilters, ok := ConversationqueryMap["segmentFilters"].([]interface{}); ok {
+		SegmentFiltersString, _ := json.Marshal(SegmentFilters)
+		json.Unmarshal(SegmentFiltersString, &o.SegmentFilters)
+	}
+	
+	if EvaluationFilters, ok := ConversationqueryMap["evaluationFilters"].([]interface{}); ok {
+		EvaluationFiltersString, _ := json.Marshal(EvaluationFilters)
+		json.Unmarshal(EvaluationFiltersString, &o.EvaluationFilters)
+	}
+	
+	if SurveyFilters, ok := ConversationqueryMap["surveyFilters"].([]interface{}); ok {
+		SurveyFiltersString, _ := json.Marshal(SurveyFilters)
+		json.Unmarshal(SurveyFiltersString, &o.SurveyFilters)
+	}
+	
+	if ResolutionFilters, ok := ConversationqueryMap["resolutionFilters"].([]interface{}); ok {
+		ResolutionFiltersString, _ := json.Marshal(ResolutionFilters)
+		json.Unmarshal(ResolutionFiltersString, &o.ResolutionFilters)
+	}
+	
+	if Order, ok := ConversationqueryMap["order"].(string); ok {
+		o.Order = &Order
+	}
+	
+	if OrderBy, ok := ConversationqueryMap["orderBy"].(string); ok {
+		o.OrderBy = &OrderBy
+	}
+	
+	if Interval, ok := ConversationqueryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Aggregations, ok := ConversationqueryMap["aggregations"].([]interface{}); ok {
+		AggregationsString, _ := json.Marshal(Aggregations)
+		json.Unmarshal(AggregationsString, &o.Aggregations)
+	}
+	
+	if Paging, ok := ConversationqueryMap["paging"].(map[string]interface{}); ok {
+		PagingString, _ := json.Marshal(Paging)
+		json.Unmarshal(PagingString, &o.Paging)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

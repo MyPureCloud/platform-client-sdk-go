@@ -49,13 +49,11 @@ type Skillentitylisting struct {
 
 }
 
-func (u *Skillentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Skillentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Skillentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Routingskill `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Skillentitylisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Skillentitylisting) UnmarshalJSON(b []byte) error {
+	var SkillentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &SkillentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := SkillentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := SkillentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := SkillentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := SkillentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := SkillentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if SelfUri, ok := SkillentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if NextUri, ok := SkillentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := SkillentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := SkillentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if PageCount, ok := SkillentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

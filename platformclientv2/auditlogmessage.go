@@ -62,21 +62,19 @@ type Auditlogmessage struct {
 
 }
 
-func (u *Auditlogmessage) MarshalJSON() ([]byte, error) {
+func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditlogmessage
-
 	
 	EventDate := new(string)
-	if u.EventDate != nil {
+	if o.EventDate != nil {
 		
-		*EventDate = timeutil.Strftime(u.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventDate = timeutil.Strftime(o.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -105,33 +103,104 @@ func (u *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		Context *map[string]string `json:"context,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		UserHomeOrgId: u.UserHomeOrgId,
+		UserHomeOrgId: o.UserHomeOrgId,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		RemoteIp: u.RemoteIp,
+		RemoteIp: o.RemoteIp,
 		
-		ServiceName: u.ServiceName,
+		ServiceName: o.ServiceName,
 		
 		EventDate: EventDate,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		PropertyChanges: u.PropertyChanges,
+		PropertyChanges: o.PropertyChanges,
 		
-		Context: u.Context,
-		Alias:    (*Alias)(u),
+		Context: o.Context,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
+	var AuditlogmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditlogmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AuditlogmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if UserHomeOrgId, ok := AuditlogmessageMap["userHomeOrgId"].(string); ok {
+		o.UserHomeOrgId = &UserHomeOrgId
+	}
+	
+	if User, ok := AuditlogmessageMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := AuditlogmessageMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if RemoteIp, ok := AuditlogmessageMap["remoteIp"].([]interface{}); ok {
+		RemoteIpString, _ := json.Marshal(RemoteIp)
+		json.Unmarshal(RemoteIpString, &o.RemoteIp)
+	}
+	
+	if ServiceName, ok := AuditlogmessageMap["serviceName"].(string); ok {
+		o.ServiceName = &ServiceName
+	}
+	
+	if eventDateString, ok := AuditlogmessageMap["eventDate"].(string); ok {
+		EventDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventDateString)
+		o.EventDate = &EventDate
+	}
+	
+	if Message, ok := AuditlogmessageMap["message"].(map[string]interface{}); ok {
+		MessageString, _ := json.Marshal(Message)
+		json.Unmarshal(MessageString, &o.Message)
+	}
+	
+	if Action, ok := AuditlogmessageMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Entity, ok := AuditlogmessageMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if EntityType, ok := AuditlogmessageMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if PropertyChanges, ok := AuditlogmessageMap["propertyChanges"].([]interface{}); ok {
+		PropertyChangesString, _ := json.Marshal(PropertyChanges)
+		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)
+	}
+	
+	if Context, ok := AuditlogmessageMap["context"].(map[string]interface{}); ok {
+		ContextString, _ := json.Marshal(Context)
+		json.Unmarshal(ContextString, &o.Context)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

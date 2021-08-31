@@ -21,13 +21,11 @@ type Createplanninggrouprequest struct {
 
 }
 
-func (u *Createplanninggrouprequest) MarshalJSON() ([]byte, error) {
+func (o *Createplanninggrouprequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createplanninggrouprequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Createplanninggrouprequest) MarshalJSON() ([]byte, error) {
 		ServiceGoalTemplateId *string `json:"serviceGoalTemplateId,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		RoutePaths: u.RoutePaths,
+		RoutePaths: o.RoutePaths,
 		
-		ServiceGoalTemplateId: u.ServiceGoalTemplateId,
-		Alias:    (*Alias)(u),
+		ServiceGoalTemplateId: o.ServiceGoalTemplateId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createplanninggrouprequest) UnmarshalJSON(b []byte) error {
+	var CreateplanninggrouprequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateplanninggrouprequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := CreateplanninggrouprequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if RoutePaths, ok := CreateplanninggrouprequestMap["routePaths"].([]interface{}); ok {
+		RoutePathsString, _ := json.Marshal(RoutePaths)
+		json.Unmarshal(RoutePathsString, &o.RoutePaths)
+	}
+	
+	if ServiceGoalTemplateId, ok := CreateplanninggrouprequestMap["serviceGoalTemplateId"].(string); ok {
+		o.ServiceGoalTemplateId = &ServiceGoalTemplateId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

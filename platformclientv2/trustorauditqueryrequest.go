@@ -38,29 +38,27 @@ type Trustorauditqueryrequest struct {
 
 }
 
-func (u *Trustorauditqueryrequest) MarshalJSON() ([]byte, error) {
+func (o *Trustorauditqueryrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustorauditqueryrequest
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		TrustorOrganizationId *string `json:"trustorOrganizationId,omitempty"`
 		
@@ -77,21 +75,65 @@ func (u *Trustorauditqueryrequest) MarshalJSON() ([]byte, error) {
 		Filters *[]Filter `json:"filters,omitempty"`
 		*Alias
 	}{ 
-		TrustorOrganizationId: u.TrustorOrganizationId,
+		TrustorOrganizationId: o.TrustorOrganizationId,
 		
-		TrusteeUserIds: u.TrusteeUserIds,
+		TrusteeUserIds: o.TrusteeUserIds,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		QueryPhrase: u.QueryPhrase,
+		QueryPhrase: o.QueryPhrase,
 		
-		Facets: u.Facets,
+		Facets: o.Facets,
 		
-		Filters: u.Filters,
-		Alias:    (*Alias)(u),
+		Filters: o.Filters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustorauditqueryrequest) UnmarshalJSON(b []byte) error {
+	var TrustorauditqueryrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustorauditqueryrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if TrustorOrganizationId, ok := TrustorauditqueryrequestMap["trustorOrganizationId"].(string); ok {
+		o.TrustorOrganizationId = &TrustorOrganizationId
+	}
+	
+	if TrusteeUserIds, ok := TrustorauditqueryrequestMap["trusteeUserIds"].([]interface{}); ok {
+		TrusteeUserIdsString, _ := json.Marshal(TrusteeUserIds)
+		json.Unmarshal(TrusteeUserIdsString, &o.TrusteeUserIds)
+	}
+	
+	if startDateString, ok := TrustorauditqueryrequestMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := TrustorauditqueryrequestMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if QueryPhrase, ok := TrustorauditqueryrequestMap["queryPhrase"].(string); ok {
+		o.QueryPhrase = &QueryPhrase
+	}
+	
+	if Facets, ok := TrustorauditqueryrequestMap["facets"].([]interface{}); ok {
+		FacetsString, _ := json.Marshal(Facets)
+		json.Unmarshal(FacetsString, &o.Facets)
+	}
+	
+	if Filters, ok := TrustorauditqueryrequestMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Responsesubstitution struct {
 
 }
 
-func (u *Responsesubstitution) MarshalJSON() ([]byte, error) {
+func (o *Responsesubstitution) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Responsesubstitution
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Responsesubstitution) MarshalJSON() ([]byte, error) {
 		DefaultValue *string `json:"defaultValue,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		DefaultValue: u.DefaultValue,
-		Alias:    (*Alias)(u),
+		DefaultValue: o.DefaultValue,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Responsesubstitution) UnmarshalJSON(b []byte) error {
+	var ResponsesubstitutionMap map[string]interface{}
+	err := json.Unmarshal(b, &ResponsesubstitutionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ResponsesubstitutionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Description, ok := ResponsesubstitutionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if DefaultValue, ok := ResponsesubstitutionMap["defaultValue"].(string); ok {
+		o.DefaultValue = &DefaultValue
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

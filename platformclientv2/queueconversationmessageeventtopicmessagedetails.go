@@ -34,21 +34,19 @@ type Queueconversationmessageeventtopicmessagedetails struct {
 
 }
 
-func (u *Queueconversationmessageeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationmessageeventtopicmessagedetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationmessageeventtopicmessagedetails
-
 	
 	MessageTime := new(string)
-	if u.MessageTime != nil {
+	if o.MessageTime != nil {
 		
-		*MessageTime = timeutil.Strftime(u.MessageTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*MessageTime = timeutil.Strftime(o.MessageTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		MessageTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Message *Queueconversationmessageeventtopicurireference `json:"message,omitempty"`
 		
@@ -63,19 +61,59 @@ func (u *Queueconversationmessageeventtopicmessagedetails) MarshalJSON() ([]byte
 		Stickers *[]Queueconversationmessageeventtopicmessagesticker `json:"stickers,omitempty"`
 		*Alias
 	}{ 
-		Message: u.Message,
+		Message: o.Message,
 		
 		MessageTime: MessageTime,
 		
-		MessageSegmentCount: u.MessageSegmentCount,
+		MessageSegmentCount: o.MessageSegmentCount,
 		
-		MessageStatus: u.MessageStatus,
+		MessageStatus: o.MessageStatus,
 		
-		Media: u.Media,
+		Media: o.Media,
 		
-		Stickers: u.Stickers,
-		Alias:    (*Alias)(u),
+		Stickers: o.Stickers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationmessageeventtopicmessagedetails) UnmarshalJSON(b []byte) error {
+	var QueueconversationmessageeventtopicmessagedetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationmessageeventtopicmessagedetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Message, ok := QueueconversationmessageeventtopicmessagedetailsMap["message"].(map[string]interface{}); ok {
+		MessageString, _ := json.Marshal(Message)
+		json.Unmarshal(MessageString, &o.Message)
+	}
+	
+	if messageTimeString, ok := QueueconversationmessageeventtopicmessagedetailsMap["messageTime"].(string); ok {
+		MessageTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", messageTimeString)
+		o.MessageTime = &MessageTime
+	}
+	
+	if MessageSegmentCount, ok := QueueconversationmessageeventtopicmessagedetailsMap["messageSegmentCount"].(float64); ok {
+		MessageSegmentCountInt := int(MessageSegmentCount)
+		o.MessageSegmentCount = &MessageSegmentCountInt
+	}
+	
+	if MessageStatus, ok := QueueconversationmessageeventtopicmessagedetailsMap["messageStatus"].(string); ok {
+		o.MessageStatus = &MessageStatus
+	}
+	
+	if Media, ok := QueueconversationmessageeventtopicmessagedetailsMap["media"].([]interface{}); ok {
+		MediaString, _ := json.Marshal(Media)
+		json.Unmarshal(MediaString, &o.Media)
+	}
+	
+	if Stickers, ok := QueueconversationmessageeventtopicmessagedetailsMap["stickers"].([]interface{}); ok {
+		StickersString, _ := json.Marshal(Stickers)
+		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

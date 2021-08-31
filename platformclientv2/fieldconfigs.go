@@ -25,13 +25,11 @@ type Fieldconfigs struct {
 
 }
 
-func (u *Fieldconfigs) MarshalJSON() ([]byte, error) {
+func (o *Fieldconfigs) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Fieldconfigs
-
 	
-
 	return json.Marshal(&struct { 
 		Org *Fieldconfig `json:"org,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Fieldconfigs) MarshalJSON() ([]byte, error) {
 		ExternalContact *Fieldconfig `json:"externalContact,omitempty"`
 		*Alias
 	}{ 
-		Org: u.Org,
+		Org: o.Org,
 		
-		Person: u.Person,
+		Person: o.Person,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		ExternalContact: u.ExternalContact,
-		Alias:    (*Alias)(u),
+		ExternalContact: o.ExternalContact,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Fieldconfigs) UnmarshalJSON(b []byte) error {
+	var FieldconfigsMap map[string]interface{}
+	err := json.Unmarshal(b, &FieldconfigsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Org, ok := FieldconfigsMap["org"].(map[string]interface{}); ok {
+		OrgString, _ := json.Marshal(Org)
+		json.Unmarshal(OrgString, &o.Org)
+	}
+	
+	if Person, ok := FieldconfigsMap["person"].(map[string]interface{}); ok {
+		PersonString, _ := json.Marshal(Person)
+		json.Unmarshal(PersonString, &o.Person)
+	}
+	
+	if Group, ok := FieldconfigsMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if ExternalContact, ok := FieldconfigsMap["externalContact"].(map[string]interface{}); ok {
+		ExternalContactString, _ := json.Marshal(ExternalContact)
+		json.Unmarshal(ExternalContactString, &o.ExternalContact)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Voicemailssearchresponse struct {
 
 }
 
-func (u *Voicemailssearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Voicemailssearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailssearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -72,25 +70,78 @@ func (u *Voicemailssearchresponse) MarshalJSON() ([]byte, error) {
 		Results *[]Voicemailmessage `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PreviousPage: u.PreviousPage,
+		PreviousPage: o.PreviousPage,
 		
-		CurrentPage: u.CurrentPage,
+		CurrentPage: o.CurrentPage,
 		
-		NextPage: u.NextPage,
+		NextPage: o.NextPage,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailssearchresponse) UnmarshalJSON(b []byte) error {
+	var VoicemailssearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailssearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := VoicemailssearchresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := VoicemailssearchresponseMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if PageSize, ok := VoicemailssearchresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := VoicemailssearchresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PreviousPage, ok := VoicemailssearchresponseMap["previousPage"].(string); ok {
+		o.PreviousPage = &PreviousPage
+	}
+	
+	if CurrentPage, ok := VoicemailssearchresponseMap["currentPage"].(string); ok {
+		o.CurrentPage = &CurrentPage
+	}
+	
+	if NextPage, ok := VoicemailssearchresponseMap["nextPage"].(string); ok {
+		o.NextPage = &NextPage
+	}
+	
+	if Types, ok := VoicemailssearchresponseMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if Results, ok := VoicemailssearchresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

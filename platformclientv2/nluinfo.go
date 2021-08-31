@@ -21,13 +21,11 @@ type Nluinfo struct {
 
 }
 
-func (u *Nluinfo) MarshalJSON() ([]byte, error) {
+func (o *Nluinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nluinfo
-
 	
-
 	return json.Marshal(&struct { 
 		Domain *Addressableentityref `json:"domain,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Nluinfo) MarshalJSON() ([]byte, error) {
 		Intents *[]Intent `json:"intents,omitempty"`
 		*Alias
 	}{ 
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Intents: u.Intents,
-		Alias:    (*Alias)(u),
+		Intents: o.Intents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nluinfo) UnmarshalJSON(b []byte) error {
+	var NluinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &NluinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Domain, ok := NluinfoMap["domain"].(map[string]interface{}); ok {
+		DomainString, _ := json.Marshal(Domain)
+		json.Unmarshal(DomainString, &o.Domain)
+	}
+	
+	if Version, ok := NluinfoMap["version"].(map[string]interface{}); ok {
+		VersionString, _ := json.Marshal(Version)
+		json.Unmarshal(VersionString, &o.Version)
+	}
+	
+	if Intents, ok := NluinfoMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

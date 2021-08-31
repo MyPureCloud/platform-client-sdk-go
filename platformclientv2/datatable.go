@@ -33,13 +33,11 @@ type Datatable struct {
 
 }
 
-func (u *Datatable) MarshalJSON() ([]byte, error) {
+func (o *Datatable) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Datatable
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Datatable) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Datatable) UnmarshalJSON(b []byte) error {
+	var DatatableMap map[string]interface{}
+	err := json.Unmarshal(b, &DatatableMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DatatableMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DatatableMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := DatatableMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Description, ok := DatatableMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Schema, ok := DatatableMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if SelfUri, ok := DatatableMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

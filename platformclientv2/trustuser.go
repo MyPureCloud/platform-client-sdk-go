@@ -145,13 +145,11 @@ type Trustuser struct {
 
 }
 
-func (u *Trustuser) MarshalJSON() ([]byte, error) {
+func (o *Trustuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -222,75 +220,247 @@ func (u *Trustuser) MarshalJSON() ([]byte, error) {
 		TrustUserDetails *Trustuserdetails `json:"trustUserDetails,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Chat: u.Chat,
+		Chat: o.Chat,
 		
-		Department: u.Department,
+		Department: o.Department,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		PrimaryContactInfo: u.PrimaryContactInfo,
+		PrimaryContactInfo: o.PrimaryContactInfo,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		State: u.State,
+		State: o.State,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Username: u.Username,
+		Username: o.Username,
 		
-		Manager: u.Manager,
+		Manager: o.Manager,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Certifications: u.Certifications,
+		Certifications: o.Certifications,
 		
-		Biography: u.Biography,
+		Biography: o.Biography,
 		
-		EmployerInfo: u.EmployerInfo,
+		EmployerInfo: o.EmployerInfo,
 		
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		Presence: u.Presence,
+		Presence: o.Presence,
 		
-		ConversationSummary: u.ConversationSummary,
+		ConversationSummary: o.ConversationSummary,
 		
-		OutOfOffice: u.OutOfOffice,
+		OutOfOffice: o.OutOfOffice,
 		
-		Geolocation: u.Geolocation,
+		Geolocation: o.Geolocation,
 		
-		Station: u.Station,
+		Station: o.Station,
 		
-		Authorization: u.Authorization,
+		Authorization: o.Authorization,
 		
-		ProfileSkills: u.ProfileSkills,
+		ProfileSkills: o.ProfileSkills,
 		
-		Locations: u.Locations,
+		Locations: o.Locations,
 		
-		Groups: u.Groups,
+		Groups: o.Groups,
 		
-		Team: u.Team,
+		Team: o.Team,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		AcdAutoAnswer: u.AcdAutoAnswer,
+		AcdAutoAnswer: o.AcdAutoAnswer,
 		
-		LanguagePreference: u.LanguagePreference,
+		LanguagePreference: o.LanguagePreference,
 		
-		LastTokenIssued: u.LastTokenIssued,
+		LastTokenIssued: o.LastTokenIssued,
 		
-		TrustUserDetails: u.TrustUserDetails,
-		Alias:    (*Alias)(u),
+		TrustUserDetails: o.TrustUserDetails,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustuser) UnmarshalJSON(b []byte) error {
+	var TrustuserMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrustuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TrustuserMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := TrustuserMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Chat, ok := TrustuserMap["chat"].(map[string]interface{}); ok {
+		ChatString, _ := json.Marshal(Chat)
+		json.Unmarshal(ChatString, &o.Chat)
+	}
+	
+	if Department, ok := TrustuserMap["department"].(string); ok {
+		o.Department = &Department
+	}
+	
+	if Email, ok := TrustuserMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+	if PrimaryContactInfo, ok := TrustuserMap["primaryContactInfo"].([]interface{}); ok {
+		PrimaryContactInfoString, _ := json.Marshal(PrimaryContactInfo)
+		json.Unmarshal(PrimaryContactInfoString, &o.PrimaryContactInfo)
+	}
+	
+	if Addresses, ok := TrustuserMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if State, ok := TrustuserMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Title, ok := TrustuserMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Username, ok := TrustuserMap["username"].(string); ok {
+		o.Username = &Username
+	}
+	
+	if Manager, ok := TrustuserMap["manager"].(map[string]interface{}); ok {
+		ManagerString, _ := json.Marshal(Manager)
+		json.Unmarshal(ManagerString, &o.Manager)
+	}
+	
+	if Images, ok := TrustuserMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
+	}
+	
+	if Version, ok := TrustuserMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Certifications, ok := TrustuserMap["certifications"].([]interface{}); ok {
+		CertificationsString, _ := json.Marshal(Certifications)
+		json.Unmarshal(CertificationsString, &o.Certifications)
+	}
+	
+	if Biography, ok := TrustuserMap["biography"].(map[string]interface{}); ok {
+		BiographyString, _ := json.Marshal(Biography)
+		json.Unmarshal(BiographyString, &o.Biography)
+	}
+	
+	if EmployerInfo, ok := TrustuserMap["employerInfo"].(map[string]interface{}); ok {
+		EmployerInfoString, _ := json.Marshal(EmployerInfo)
+		json.Unmarshal(EmployerInfoString, &o.EmployerInfo)
+	}
+	
+	if RoutingStatus, ok := TrustuserMap["routingStatus"].(map[string]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+	if Presence, ok := TrustuserMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if ConversationSummary, ok := TrustuserMap["conversationSummary"].(map[string]interface{}); ok {
+		ConversationSummaryString, _ := json.Marshal(ConversationSummary)
+		json.Unmarshal(ConversationSummaryString, &o.ConversationSummary)
+	}
+	
+	if OutOfOffice, ok := TrustuserMap["outOfOffice"].(map[string]interface{}); ok {
+		OutOfOfficeString, _ := json.Marshal(OutOfOffice)
+		json.Unmarshal(OutOfOfficeString, &o.OutOfOffice)
+	}
+	
+	if Geolocation, ok := TrustuserMap["geolocation"].(map[string]interface{}); ok {
+		GeolocationString, _ := json.Marshal(Geolocation)
+		json.Unmarshal(GeolocationString, &o.Geolocation)
+	}
+	
+	if Station, ok := TrustuserMap["station"].(map[string]interface{}); ok {
+		StationString, _ := json.Marshal(Station)
+		json.Unmarshal(StationString, &o.Station)
+	}
+	
+	if Authorization, ok := TrustuserMap["authorization"].(map[string]interface{}); ok {
+		AuthorizationString, _ := json.Marshal(Authorization)
+		json.Unmarshal(AuthorizationString, &o.Authorization)
+	}
+	
+	if ProfileSkills, ok := TrustuserMap["profileSkills"].([]interface{}); ok {
+		ProfileSkillsString, _ := json.Marshal(ProfileSkills)
+		json.Unmarshal(ProfileSkillsString, &o.ProfileSkills)
+	}
+	
+	if Locations, ok := TrustuserMap["locations"].([]interface{}); ok {
+		LocationsString, _ := json.Marshal(Locations)
+		json.Unmarshal(LocationsString, &o.Locations)
+	}
+	
+	if Groups, ok := TrustuserMap["groups"].([]interface{}); ok {
+		GroupsString, _ := json.Marshal(Groups)
+		json.Unmarshal(GroupsString, &o.Groups)
+	}
+	
+	if Team, ok := TrustuserMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
+	}
+	
+	if Skills, ok := TrustuserMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if Languages, ok := TrustuserMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if AcdAutoAnswer, ok := TrustuserMap["acdAutoAnswer"].(bool); ok {
+		o.AcdAutoAnswer = &AcdAutoAnswer
+	}
+	
+	if LanguagePreference, ok := TrustuserMap["languagePreference"].(string); ok {
+		o.LanguagePreference = &LanguagePreference
+	}
+	
+	if LastTokenIssued, ok := TrustuserMap["lastTokenIssued"].(map[string]interface{}); ok {
+		LastTokenIssuedString, _ := json.Marshal(LastTokenIssued)
+		json.Unmarshal(LastTokenIssuedString, &o.LastTokenIssued)
+	}
+	
+	if TrustUserDetails, ok := TrustuserMap["trustUserDetails"].(map[string]interface{}); ok {
+		TrustUserDetailsString, _ := json.Marshal(TrustUserDetails)
+		json.Unmarshal(TrustUserDetailsString, &o.TrustUserDetails)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

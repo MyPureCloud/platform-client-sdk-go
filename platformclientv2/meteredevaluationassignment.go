@@ -33,13 +33,11 @@ type Meteredevaluationassignment struct {
 
 }
 
-func (u *Meteredevaluationassignment) MarshalJSON() ([]byte, error) {
+func (o *Meteredevaluationassignment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Meteredevaluationassignment
-
 	
-
 	return json.Marshal(&struct { 
 		EvaluationContextId *string `json:"evaluationContextId,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Meteredevaluationassignment) MarshalJSON() ([]byte, error) {
 		TimeInterval *Timeinterval `json:"timeInterval,omitempty"`
 		*Alias
 	}{ 
-		EvaluationContextId: u.EvaluationContextId,
+		EvaluationContextId: o.EvaluationContextId,
 		
-		Evaluators: u.Evaluators,
+		Evaluators: o.Evaluators,
 		
-		MaxNumberEvaluations: u.MaxNumberEvaluations,
+		MaxNumberEvaluations: o.MaxNumberEvaluations,
 		
-		EvaluationForm: u.EvaluationForm,
+		EvaluationForm: o.EvaluationForm,
 		
-		AssignToActiveUser: u.AssignToActiveUser,
+		AssignToActiveUser: o.AssignToActiveUser,
 		
-		TimeInterval: u.TimeInterval,
-		Alias:    (*Alias)(u),
+		TimeInterval: o.TimeInterval,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Meteredevaluationassignment) UnmarshalJSON(b []byte) error {
+	var MeteredevaluationassignmentMap map[string]interface{}
+	err := json.Unmarshal(b, &MeteredevaluationassignmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if EvaluationContextId, ok := MeteredevaluationassignmentMap["evaluationContextId"].(string); ok {
+		o.EvaluationContextId = &EvaluationContextId
+	}
+	
+	if Evaluators, ok := MeteredevaluationassignmentMap["evaluators"].([]interface{}); ok {
+		EvaluatorsString, _ := json.Marshal(Evaluators)
+		json.Unmarshal(EvaluatorsString, &o.Evaluators)
+	}
+	
+	if MaxNumberEvaluations, ok := MeteredevaluationassignmentMap["maxNumberEvaluations"].(float64); ok {
+		MaxNumberEvaluationsInt := int(MaxNumberEvaluations)
+		o.MaxNumberEvaluations = &MaxNumberEvaluationsInt
+	}
+	
+	if EvaluationForm, ok := MeteredevaluationassignmentMap["evaluationForm"].(map[string]interface{}); ok {
+		EvaluationFormString, _ := json.Marshal(EvaluationForm)
+		json.Unmarshal(EvaluationFormString, &o.EvaluationForm)
+	}
+	
+	if AssignToActiveUser, ok := MeteredevaluationassignmentMap["assignToActiveUser"].(bool); ok {
+		o.AssignToActiveUser = &AssignToActiveUser
+	}
+	
+	if TimeInterval, ok := MeteredevaluationassignmentMap["timeInterval"].(map[string]interface{}); ok {
+		TimeIntervalString, _ := json.Marshal(TimeInterval)
+		json.Unmarshal(TimeIntervalString, &o.TimeInterval)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Programrequest struct {
 
 }
 
-func (u *Programrequest) MarshalJSON() ([]byte, error) {
+func (o *Programrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Programrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Programrequest) MarshalJSON() ([]byte, error) {
 		Tags *[]string `json:"tags,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		TopicIds: u.TopicIds,
+		TopicIds: o.TopicIds,
 		
-		Tags: u.Tags,
-		Alias:    (*Alias)(u),
+		Tags: o.Tags,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Programrequest) UnmarshalJSON(b []byte) error {
+	var ProgramrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ProgramrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ProgramrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ProgramrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if TopicIds, ok := ProgramrequestMap["topicIds"].([]interface{}); ok {
+		TopicIdsString, _ := json.Marshal(TopicIds)
+		json.Unmarshal(TopicIdsString, &o.TopicIds)
+	}
+	
+	if Tags, ok := ProgramrequestMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Domainrole struct {
 
 }
 
-func (u *Domainrole) MarshalJSON() ([]byte, error) {
+func (o *Domainrole) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainrole
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainrole) UnmarshalJSON(b []byte) error {
+	var DomainroleMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainroleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainroleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainroleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

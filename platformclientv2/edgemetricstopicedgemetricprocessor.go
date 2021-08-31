@@ -29,13 +29,11 @@ type Edgemetricstopicedgemetricprocessor struct {
 
 }
 
-func (u *Edgemetricstopicedgemetricprocessor) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricstopicedgemetricprocessor) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricstopicedgemetricprocessor
-
 	
-
 	return json.Marshal(&struct { 
 		CpuId *string `json:"cpuId,omitempty"`
 		
@@ -48,17 +46,52 @@ func (u *Edgemetricstopicedgemetricprocessor) MarshalJSON() ([]byte, error) {
 		UserTimePct *int `json:"userTimePct,omitempty"`
 		*Alias
 	}{ 
-		CpuId: u.CpuId,
+		CpuId: o.CpuId,
 		
-		IdleTimePct: u.IdleTimePct,
+		IdleTimePct: o.IdleTimePct,
 		
-		ActiveTimePct: u.ActiveTimePct,
+		ActiveTimePct: o.ActiveTimePct,
 		
-		PrivilegedTimePct: u.PrivilegedTimePct,
+		PrivilegedTimePct: o.PrivilegedTimePct,
 		
-		UserTimePct: u.UserTimePct,
-		Alias:    (*Alias)(u),
+		UserTimePct: o.UserTimePct,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricstopicedgemetricprocessor) UnmarshalJSON(b []byte) error {
+	var EdgemetricstopicedgemetricprocessorMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricstopicedgemetricprocessorMap)
+	if err != nil {
+		return err
+	}
+	
+	if CpuId, ok := EdgemetricstopicedgemetricprocessorMap["cpuId"].(string); ok {
+		o.CpuId = &CpuId
+	}
+	
+	if IdleTimePct, ok := EdgemetricstopicedgemetricprocessorMap["idleTimePct"].(float64); ok {
+		IdleTimePctInt := int(IdleTimePct)
+		o.IdleTimePct = &IdleTimePctInt
+	}
+	
+	if ActiveTimePct, ok := EdgemetricstopicedgemetricprocessorMap["activeTimePct"].(float64); ok {
+		ActiveTimePctInt := int(ActiveTimePct)
+		o.ActiveTimePct = &ActiveTimePctInt
+	}
+	
+	if PrivilegedTimePct, ok := EdgemetricstopicedgemetricprocessorMap["privilegedTimePct"].(float64); ok {
+		PrivilegedTimePctInt := int(PrivilegedTimePct)
+		o.PrivilegedTimePct = &PrivilegedTimePctInt
+	}
+	
+	if UserTimePct, ok := EdgemetricstopicedgemetricprocessorMap["userTimePct"].(float64); ok {
+		UserTimePctInt := int(UserTimePct)
+		o.UserTimePct = &UserTimePctInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

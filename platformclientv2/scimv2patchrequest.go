@@ -17,24 +17,43 @@ type Scimv2patchrequest struct {
 
 }
 
-func (u *Scimv2patchrequest) MarshalJSON() ([]byte, error) {
+func (o *Scimv2patchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2patchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
 		Operations *[]Scimv2patchoperation `json:"Operations,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		Operations: u.Operations,
-		Alias:    (*Alias)(u),
+		Operations: o.Operations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2patchrequest) UnmarshalJSON(b []byte) error {
+	var Scimv2patchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2patchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := Scimv2patchrequestMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if Operations, ok := Scimv2patchrequestMap["Operations"].([]interface{}); ok {
+		OperationsString, _ := json.Marshal(Operations)
+		json.Unmarshal(OperationsString, &o.Operations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

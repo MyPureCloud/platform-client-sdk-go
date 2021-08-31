@@ -17,24 +17,42 @@ type Shrinkageoverrides struct {
 
 }
 
-func (u *Shrinkageoverrides) MarshalJSON() ([]byte, error) {
+func (o *Shrinkageoverrides) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shrinkageoverrides
-
 	
-
 	return json.Marshal(&struct { 
 		Clear *bool `json:"clear,omitempty"`
 		
 		Values *[]Shrinkageoverride `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Clear: u.Clear,
+		Clear: o.Clear,
 		
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shrinkageoverrides) UnmarshalJSON(b []byte) error {
+	var ShrinkageoverridesMap map[string]interface{}
+	err := json.Unmarshal(b, &ShrinkageoverridesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Clear, ok := ShrinkageoverridesMap["clear"].(bool); ok {
+		o.Clear = &Clear
+	}
+	
+	if Values, ok := ShrinkageoverridesMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

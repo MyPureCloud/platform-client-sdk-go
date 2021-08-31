@@ -17,24 +17,41 @@ type Scimconfigresourcetypeschemaextension struct {
 
 }
 
-func (u *Scimconfigresourcetypeschemaextension) MarshalJSON() ([]byte, error) {
+func (o *Scimconfigresourcetypeschemaextension) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimconfigresourcetypeschemaextension
-
 	
-
 	return json.Marshal(&struct { 
 		Schema *string `json:"schema,omitempty"`
 		
 		Required *bool `json:"required,omitempty"`
 		*Alias
 	}{ 
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		Required: u.Required,
-		Alias:    (*Alias)(u),
+		Required: o.Required,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimconfigresourcetypeschemaextension) UnmarshalJSON(b []byte) error {
+	var ScimconfigresourcetypeschemaextensionMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimconfigresourcetypeschemaextensionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schema, ok := ScimconfigresourcetypeschemaextensionMap["schema"].(string); ok {
+		o.Schema = &Schema
+	}
+	
+	if Required, ok := ScimconfigresourcetypeschemaextensionMap["required"].(bool); ok {
+		o.Required = &Required
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

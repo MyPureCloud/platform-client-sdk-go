@@ -13,20 +13,34 @@ type Agentownedmappingpreviewlisting struct {
 
 }
 
-func (u *Agentownedmappingpreviewlisting) MarshalJSON() ([]byte, error) {
+func (o *Agentownedmappingpreviewlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentownedmappingpreviewlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Agentownedmappingpreview `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agentownedmappingpreviewlisting) UnmarshalJSON(b []byte) error {
+	var AgentownedmappingpreviewlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentownedmappingpreviewlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := AgentownedmappingpreviewlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

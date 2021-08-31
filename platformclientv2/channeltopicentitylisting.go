@@ -13,20 +13,34 @@ type Channeltopicentitylisting struct {
 
 }
 
-func (u *Channeltopicentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Channeltopicentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Channeltopicentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Channeltopic `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Channeltopicentitylisting) UnmarshalJSON(b []byte) error {
+	var ChanneltopicentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &ChanneltopicentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := ChanneltopicentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Schema struct {
 
 }
 
-func (u *Schema) MarshalJSON() ([]byte, error) {
+func (o *Schema) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schema
-
 	
-
 	return json.Marshal(&struct { 
 		Title *string `json:"title,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Schema) MarshalJSON() ([]byte, error) {
 		Pattern *string `json:"pattern,omitempty"`
 		*Alias
 	}{ 
-		Title: u.Title,
+		Title: o.Title,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Items: u.Items,
+		Items: o.Items,
 		
-		Pattern: u.Pattern,
-		Alias:    (*Alias)(u),
+		Pattern: o.Pattern,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schema) UnmarshalJSON(b []byte) error {
+	var SchemaMap map[string]interface{}
+	err := json.Unmarshal(b, &SchemaMap)
+	if err != nil {
+		return err
+	}
+	
+	if Title, ok := SchemaMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Description, ok := SchemaMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if VarType, ok := SchemaMap["type"].([]interface{}); ok {
+		VarTypeString, _ := json.Marshal(VarType)
+		json.Unmarshal(VarTypeString, &o.VarType)
+	}
+	
+	if Items, ok := SchemaMap["items"].(map[string]interface{}); ok {
+		ItemsString, _ := json.Marshal(Items)
+		json.Unmarshal(ItemsString, &o.Items)
+	}
+	
+	if Pattern, ok := SchemaMap["pattern"].(string); ok {
+		o.Pattern = &Pattern
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

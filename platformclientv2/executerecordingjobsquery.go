@@ -13,20 +13,33 @@ type Executerecordingjobsquery struct {
 
 }
 
-func (u *Executerecordingjobsquery) MarshalJSON() ([]byte, error) {
+func (o *Executerecordingjobsquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Executerecordingjobsquery
-
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
-		Alias:    (*Alias)(u),
+		State: o.State,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Executerecordingjobsquery) UnmarshalJSON(b []byte) error {
+	var ExecuterecordingjobsqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &ExecuterecordingjobsqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := ExecuterecordingjobsqueryMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

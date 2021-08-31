@@ -17,24 +17,43 @@ type Addconversationresponse struct {
 
 }
 
-func (u *Addconversationresponse) MarshalJSON() ([]byte, error) {
+func (o *Addconversationresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Addconversationresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Conversation *Conversationreference `json:"conversation,omitempty"`
 		
 		Appointment *Coachingappointmentreference `json:"appointment,omitempty"`
 		*Alias
 	}{ 
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		Appointment: u.Appointment,
-		Alias:    (*Alias)(u),
+		Appointment: o.Appointment,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Addconversationresponse) UnmarshalJSON(b []byte) error {
+	var AddconversationresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AddconversationresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Conversation, ok := AddconversationresponseMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if Appointment, ok := AddconversationresponseMap["appointment"].(map[string]interface{}); ok {
+		AppointmentString, _ := json.Marshal(Appointment)
+		json.Unmarshal(AppointmentString, &o.Appointment)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

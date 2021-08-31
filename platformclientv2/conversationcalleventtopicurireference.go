@@ -17,24 +17,41 @@ type Conversationcalleventtopicurireference struct {
 
 }
 
-func (u *Conversationcalleventtopicurireference) MarshalJSON() ([]byte, error) {
+func (o *Conversationcalleventtopicurireference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcalleventtopicurireference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcalleventtopicurireference) UnmarshalJSON(b []byte) error {
+	var ConversationcalleventtopicurireferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcalleventtopicurireferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationcalleventtopicurireferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationcalleventtopicurireferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

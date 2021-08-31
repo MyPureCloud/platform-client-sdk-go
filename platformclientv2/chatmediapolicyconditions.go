@@ -37,13 +37,11 @@ type Chatmediapolicyconditions struct {
 
 }
 
-func (u *Chatmediapolicyconditions) MarshalJSON() ([]byte, error) {
+func (o *Chatmediapolicyconditions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Chatmediapolicyconditions
-
 	
-
 	return json.Marshal(&struct { 
 		ForUsers *[]User `json:"forUsers,omitempty"`
 		
@@ -60,21 +58,67 @@ func (u *Chatmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		Duration *Durationcondition `json:"duration,omitempty"`
 		*Alias
 	}{ 
-		ForUsers: u.ForUsers,
+		ForUsers: o.ForUsers,
 		
-		DateRanges: u.DateRanges,
+		DateRanges: o.DateRanges,
 		
-		ForQueues: u.ForQueues,
+		ForQueues: o.ForQueues,
 		
-		WrapupCodes: u.WrapupCodes,
+		WrapupCodes: o.WrapupCodes,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		TimeAllowed: u.TimeAllowed,
+		TimeAllowed: o.TimeAllowed,
 		
-		Duration: u.Duration,
-		Alias:    (*Alias)(u),
+		Duration: o.Duration,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Chatmediapolicyconditions) UnmarshalJSON(b []byte) error {
+	var ChatmediapolicyconditionsMap map[string]interface{}
+	err := json.Unmarshal(b, &ChatmediapolicyconditionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ForUsers, ok := ChatmediapolicyconditionsMap["forUsers"].([]interface{}); ok {
+		ForUsersString, _ := json.Marshal(ForUsers)
+		json.Unmarshal(ForUsersString, &o.ForUsers)
+	}
+	
+	if DateRanges, ok := ChatmediapolicyconditionsMap["dateRanges"].([]interface{}); ok {
+		DateRangesString, _ := json.Marshal(DateRanges)
+		json.Unmarshal(DateRangesString, &o.DateRanges)
+	}
+	
+	if ForQueues, ok := ChatmediapolicyconditionsMap["forQueues"].([]interface{}); ok {
+		ForQueuesString, _ := json.Marshal(ForQueues)
+		json.Unmarshal(ForQueuesString, &o.ForQueues)
+	}
+	
+	if WrapupCodes, ok := ChatmediapolicyconditionsMap["wrapupCodes"].([]interface{}); ok {
+		WrapupCodesString, _ := json.Marshal(WrapupCodes)
+		json.Unmarshal(WrapupCodesString, &o.WrapupCodes)
+	}
+	
+	if Languages, ok := ChatmediapolicyconditionsMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if TimeAllowed, ok := ChatmediapolicyconditionsMap["timeAllowed"].(map[string]interface{}); ok {
+		TimeAllowedString, _ := json.Marshal(TimeAllowed)
+		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
+	}
+	
+	if Duration, ok := ChatmediapolicyconditionsMap["duration"].(map[string]interface{}); ok {
+		DurationString, _ := json.Marshal(Duration)
+		json.Unmarshal(DurationString, &o.Duration)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

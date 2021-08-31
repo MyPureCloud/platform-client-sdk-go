@@ -13,20 +13,34 @@ type Valuewrapperplanningperiodsettings struct {
 
 }
 
-func (u *Valuewrapperplanningperiodsettings) MarshalJSON() ([]byte, error) {
+func (o *Valuewrapperplanningperiodsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Valuewrapperplanningperiodsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Value *Planningperiodsettings `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Valuewrapperplanningperiodsettings) UnmarshalJSON(b []byte) error {
+	var ValuewrapperplanningperiodsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &ValuewrapperplanningperiodsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Value, ok := ValuewrapperplanningperiodsettingsMap["value"].(map[string]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

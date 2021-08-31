@@ -21,13 +21,11 @@ type Audittopicdomainentityref struct {
 
 }
 
-func (u *Audittopicdomainentityref) MarshalJSON() ([]byte, error) {
+func (o *Audittopicdomainentityref) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Audittopicdomainentityref
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Audittopicdomainentityref) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Audittopicdomainentityref) UnmarshalJSON(b []byte) error {
+	var AudittopicdomainentityrefMap map[string]interface{}
+	err := json.Unmarshal(b, &AudittopicdomainentityrefMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AudittopicdomainentityrefMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AudittopicdomainentityrefMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := AudittopicdomainentityrefMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

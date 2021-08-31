@@ -74,29 +74,27 @@ type Trunkbase struct {
 
 }
 
-func (u *Trunkbase) MarshalJSON() ([]byte, error) {
+func (o *Trunkbase) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkbase
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -131,39 +129,119 @@ func (u *Trunkbase) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		TrunkMetabase: u.TrunkMetabase,
+		TrunkMetabase: o.TrunkMetabase,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		TrunkType: u.TrunkType,
+		TrunkType: o.TrunkType,
 		
-		Managed: u.Managed,
+		Managed: o.Managed,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkbase) UnmarshalJSON(b []byte) error {
+	var TrunkbaseMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkbaseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrunkbaseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TrunkbaseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := TrunkbaseMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := TrunkbaseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := TrunkbaseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := TrunkbaseMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := TrunkbaseMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := TrunkbaseMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := TrunkbaseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := TrunkbaseMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := TrunkbaseMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if TrunkMetabase, ok := TrunkbaseMap["trunkMetabase"].(map[string]interface{}); ok {
+		TrunkMetabaseString, _ := json.Marshal(TrunkMetabase)
+		json.Unmarshal(TrunkMetabaseString, &o.TrunkMetabase)
+	}
+	
+	if Properties, ok := TrunkbaseMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if TrunkType, ok := TrunkbaseMap["trunkType"].(string); ok {
+		o.TrunkType = &TrunkType
+	}
+	
+	if Managed, ok := TrunkbaseMap["managed"].(bool); ok {
+		o.Managed = &Managed
+	}
+	
+	if SelfUri, ok := TrunkbaseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

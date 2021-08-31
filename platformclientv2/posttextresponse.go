@@ -49,13 +49,11 @@ type Posttextresponse struct {
 
 }
 
-func (u *Posttextresponse) MarshalJSON() ([]byte, error) {
+func (o *Posttextresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Posttextresponse
-
 	
-
 	return json.Marshal(&struct { 
 		BotState *string `json:"botState,omitempty"`
 		
@@ -78,27 +76,85 @@ func (u *Posttextresponse) MarshalJSON() ([]byte, error) {
 		NuanceMixDlg *map[string]interface{} `json:"nuanceMixDlg,omitempty"`
 		*Alias
 	}{ 
-		BotState: u.BotState,
+		BotState: o.BotState,
 		
-		ReplyMessages: u.ReplyMessages,
+		ReplyMessages: o.ReplyMessages,
 		
-		IntentName: u.IntentName,
+		IntentName: o.IntentName,
 		
-		Slots: u.Slots,
+		Slots: o.Slots,
 		
-		BotCorrelationId: u.BotCorrelationId,
+		BotCorrelationId: o.BotCorrelationId,
 		
-		AmazonLex: u.AmazonLex,
+		AmazonLex: o.AmazonLex,
 		
-		GoogleDialogFlow: u.GoogleDialogFlow,
+		GoogleDialogFlow: o.GoogleDialogFlow,
 		
-		GenesysDialogEngine: u.GenesysDialogEngine,
+		GenesysDialogEngine: o.GenesysDialogEngine,
 		
-		GenesysBotConnector: u.GenesysBotConnector,
+		GenesysBotConnector: o.GenesysBotConnector,
 		
-		NuanceMixDlg: u.NuanceMixDlg,
-		Alias:    (*Alias)(u),
+		NuanceMixDlg: o.NuanceMixDlg,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Posttextresponse) UnmarshalJSON(b []byte) error {
+	var PosttextresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &PosttextresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if BotState, ok := PosttextresponseMap["botState"].(string); ok {
+		o.BotState = &BotState
+	}
+	
+	if ReplyMessages, ok := PosttextresponseMap["replyMessages"].([]interface{}); ok {
+		ReplyMessagesString, _ := json.Marshal(ReplyMessages)
+		json.Unmarshal(ReplyMessagesString, &o.ReplyMessages)
+	}
+	
+	if IntentName, ok := PosttextresponseMap["intentName"].(string); ok {
+		o.IntentName = &IntentName
+	}
+	
+	if Slots, ok := PosttextresponseMap["slots"].(map[string]interface{}); ok {
+		SlotsString, _ := json.Marshal(Slots)
+		json.Unmarshal(SlotsString, &o.Slots)
+	}
+	
+	if BotCorrelationId, ok := PosttextresponseMap["botCorrelationId"].(string); ok {
+		o.BotCorrelationId = &BotCorrelationId
+	}
+	
+	if AmazonLex, ok := PosttextresponseMap["amazonLex"].(map[string]interface{}); ok {
+		AmazonLexString, _ := json.Marshal(AmazonLex)
+		json.Unmarshal(AmazonLexString, &o.AmazonLex)
+	}
+	
+	if GoogleDialogFlow, ok := PosttextresponseMap["googleDialogFlow"].(map[string]interface{}); ok {
+		GoogleDialogFlowString, _ := json.Marshal(GoogleDialogFlow)
+		json.Unmarshal(GoogleDialogFlowString, &o.GoogleDialogFlow)
+	}
+	
+	if GenesysDialogEngine, ok := PosttextresponseMap["genesysDialogEngine"].(map[string]interface{}); ok {
+		GenesysDialogEngineString, _ := json.Marshal(GenesysDialogEngine)
+		json.Unmarshal(GenesysDialogEngineString, &o.GenesysDialogEngine)
+	}
+	
+	if GenesysBotConnector, ok := PosttextresponseMap["genesysBotConnector"].(map[string]interface{}); ok {
+		GenesysBotConnectorString, _ := json.Marshal(GenesysBotConnector)
+		json.Unmarshal(GenesysBotConnectorString, &o.GenesysBotConnector)
+	}
+	
+	if NuanceMixDlg, ok := PosttextresponseMap["nuanceMixDlg"].(map[string]interface{}); ok {
+		NuanceMixDlgString, _ := json.Marshal(NuanceMixDlg)
+		json.Unmarshal(NuanceMixDlgString, &o.NuanceMixDlg)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

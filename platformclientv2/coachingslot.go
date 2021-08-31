@@ -30,21 +30,19 @@ type Coachingslot struct {
 
 }
 
-func (u *Coachingslot) MarshalJSON() ([]byte, error) {
+func (o *Coachingslot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingslot
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateStart *string `json:"dateStart,omitempty"`
 		
@@ -59,15 +57,49 @@ func (u *Coachingslot) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateStart: DateStart,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		StaffingDifference: u.StaffingDifference,
+		StaffingDifference: o.StaffingDifference,
 		
-		DifferenceRating: u.DifferenceRating,
+		DifferenceRating: o.DifferenceRating,
 		
-		WfmSchedule: u.WfmSchedule,
-		Alias:    (*Alias)(u),
+		WfmSchedule: o.WfmSchedule,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingslot) UnmarshalJSON(b []byte) error {
+	var CoachingslotMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingslotMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateStartString, ok := CoachingslotMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if LengthInMinutes, ok := CoachingslotMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if StaffingDifference, ok := CoachingslotMap["staffingDifference"].(float64); ok {
+		o.StaffingDifference = &StaffingDifference
+	}
+	
+	if DifferenceRating, ok := CoachingslotMap["differenceRating"].(string); ok {
+		o.DifferenceRating = &DifferenceRating
+	}
+	
+	if WfmSchedule, ok := CoachingslotMap["wfmSchedule"].(map[string]interface{}); ok {
+		WfmScheduleString, _ := json.Marshal(WfmSchedule)
+		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -66,29 +66,27 @@ type Lineintegration struct {
 
 }
 
-func (u *Lineintegration) MarshalJSON() ([]byte, error) {
+func (o *Lineintegration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lineintegration
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,35 +117,109 @@ func (u *Lineintegration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ChannelId: u.ChannelId,
+		ChannelId: o.ChannelId,
 		
-		WebhookUri: u.WebhookUri,
+		WebhookUri: o.WebhookUri,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Recipient: u.Recipient,
+		Recipient: o.Recipient,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		CreateStatus: u.CreateStatus,
+		CreateStatus: o.CreateStatus,
 		
-		CreateError: u.CreateError,
+		CreateError: o.CreateError,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lineintegration) UnmarshalJSON(b []byte) error {
+	var LineintegrationMap map[string]interface{}
+	err := json.Unmarshal(b, &LineintegrationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LineintegrationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LineintegrationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ChannelId, ok := LineintegrationMap["channelId"].(string); ok {
+		o.ChannelId = &ChannelId
+	}
+	
+	if WebhookUri, ok := LineintegrationMap["webhookUri"].(string); ok {
+		o.WebhookUri = &WebhookUri
+	}
+	
+	if Status, ok := LineintegrationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Recipient, ok := LineintegrationMap["recipient"].(map[string]interface{}); ok {
+		RecipientString, _ := json.Marshal(Recipient)
+		json.Unmarshal(RecipientString, &o.Recipient)
+	}
+	
+	if dateCreatedString, ok := LineintegrationMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := LineintegrationMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := LineintegrationMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ModifiedBy, ok := LineintegrationMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if Version, ok := LineintegrationMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if CreateStatus, ok := LineintegrationMap["createStatus"].(string); ok {
+		o.CreateStatus = &CreateStatus
+	}
+	
+	if CreateError, ok := LineintegrationMap["createError"].(map[string]interface{}); ok {
+		CreateErrorString, _ := json.Marshal(CreateError)
+		json.Unmarshal(CreateErrorString, &o.CreateError)
+	}
+	
+	if SelfUri, ok := LineintegrationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

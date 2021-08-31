@@ -38,21 +38,19 @@ type Wrapup struct {
 
 }
 
-func (u *Wrapup) MarshalJSON() ([]byte, error) {
+func (o *Wrapup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wrapup
-
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Wrapup) MarshalJSON() ([]byte, error) {
 		Provisional *bool `json:"provisional,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		DurationSeconds: u.DurationSeconds,
+		DurationSeconds: o.DurationSeconds,
 		
 		EndTime: EndTime,
 		
-		Provisional: u.Provisional,
-		Alias:    (*Alias)(u),
+		Provisional: o.Provisional,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wrapup) UnmarshalJSON(b []byte) error {
+	var WrapupMap map[string]interface{}
+	err := json.Unmarshal(b, &WrapupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := WrapupMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Name, ok := WrapupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Notes, ok := WrapupMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if Tags, ok := WrapupMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if DurationSeconds, ok := WrapupMap["durationSeconds"].(float64); ok {
+		DurationSecondsInt := int(DurationSeconds)
+		o.DurationSeconds = &DurationSecondsInt
+	}
+	
+	if endTimeString, ok := WrapupMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if Provisional, ok := WrapupMap["provisional"].(bool); ok {
+		o.Provisional = &Provisional
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

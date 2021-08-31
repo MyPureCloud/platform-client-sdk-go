@@ -17,24 +17,41 @@ type Dialeroutboundsettingsconfigchangeatzmtimeslot struct {
 
 }
 
-func (u *Dialeroutboundsettingsconfigchangeatzmtimeslot) MarshalJSON() ([]byte, error) {
+func (o *Dialeroutboundsettingsconfigchangeatzmtimeslot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeroutboundsettingsconfigchangeatzmtimeslot
-
 	
-
 	return json.Marshal(&struct { 
 		EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
 		
 		LatestCallableTime *string `json:"latestCallableTime,omitempty"`
 		*Alias
 	}{ 
-		EarliestCallableTime: u.EarliestCallableTime,
+		EarliestCallableTime: o.EarliestCallableTime,
 		
-		LatestCallableTime: u.LatestCallableTime,
-		Alias:    (*Alias)(u),
+		LatestCallableTime: o.LatestCallableTime,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialeroutboundsettingsconfigchangeatzmtimeslot) UnmarshalJSON(b []byte) error {
+	var DialeroutboundsettingsconfigchangeatzmtimeslotMap map[string]interface{}
+	err := json.Unmarshal(b, &DialeroutboundsettingsconfigchangeatzmtimeslotMap)
+	if err != nil {
+		return err
+	}
+	
+	if EarliestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotMap["earliestCallableTime"].(string); ok {
+		o.EarliestCallableTime = &EarliestCallableTime
+	}
+	
+	if LatestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotMap["latestCallableTime"].(string); ok {
+		o.LatestCallableTime = &LatestCallableTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

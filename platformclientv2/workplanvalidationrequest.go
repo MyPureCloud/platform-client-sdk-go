@@ -137,13 +137,11 @@ type Workplanvalidationrequest struct {
 
 }
 
-func (u *Workplanvalidationrequest) MarshalJSON() ([]byte, error) {
+func (o *Workplanvalidationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanvalidationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -210,71 +208,230 @@ func (u *Workplanvalidationrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Valid: u.Valid,
+		Valid: o.Valid,
 		
-		ConstrainWeeklyPaidTime: u.ConstrainWeeklyPaidTime,
+		ConstrainWeeklyPaidTime: o.ConstrainWeeklyPaidTime,
 		
-		FlexibleWeeklyPaidTime: u.FlexibleWeeklyPaidTime,
+		FlexibleWeeklyPaidTime: o.FlexibleWeeklyPaidTime,
 		
-		WeeklyExactPaidMinutes: u.WeeklyExactPaidMinutes,
+		WeeklyExactPaidMinutes: o.WeeklyExactPaidMinutes,
 		
-		WeeklyMinimumPaidMinutes: u.WeeklyMinimumPaidMinutes,
+		WeeklyMinimumPaidMinutes: o.WeeklyMinimumPaidMinutes,
 		
-		WeeklyMaximumPaidMinutes: u.WeeklyMaximumPaidMinutes,
+		WeeklyMaximumPaidMinutes: o.WeeklyMaximumPaidMinutes,
 		
-		ConstrainPaidTimeGranularity: u.ConstrainPaidTimeGranularity,
+		ConstrainPaidTimeGranularity: o.ConstrainPaidTimeGranularity,
 		
-		PaidTimeGranularityMinutes: u.PaidTimeGranularityMinutes,
+		PaidTimeGranularityMinutes: o.PaidTimeGranularityMinutes,
 		
-		ConstrainMinimumTimeBetweenShifts: u.ConstrainMinimumTimeBetweenShifts,
+		ConstrainMinimumTimeBetweenShifts: o.ConstrainMinimumTimeBetweenShifts,
 		
-		MinimumTimeBetweenShiftsMinutes: u.MinimumTimeBetweenShiftsMinutes,
+		MinimumTimeBetweenShiftsMinutes: o.MinimumTimeBetweenShiftsMinutes,
 		
-		MaximumDays: u.MaximumDays,
+		MaximumDays: o.MaximumDays,
 		
-		MinimumConsecutiveNonWorkingMinutesPerWeek: u.MinimumConsecutiveNonWorkingMinutesPerWeek,
+		MinimumConsecutiveNonWorkingMinutesPerWeek: o.MinimumConsecutiveNonWorkingMinutesPerWeek,
 		
-		ConstrainMaximumConsecutiveWorkingWeekends: u.ConstrainMaximumConsecutiveWorkingWeekends,
+		ConstrainMaximumConsecutiveWorkingWeekends: o.ConstrainMaximumConsecutiveWorkingWeekends,
 		
-		MaximumConsecutiveWorkingWeekends: u.MaximumConsecutiveWorkingWeekends,
+		MaximumConsecutiveWorkingWeekends: o.MaximumConsecutiveWorkingWeekends,
 		
-		MinimumWorkingDaysPerWeek: u.MinimumWorkingDaysPerWeek,
+		MinimumWorkingDaysPerWeek: o.MinimumWorkingDaysPerWeek,
 		
-		ConstrainMaximumConsecutiveWorkingDays: u.ConstrainMaximumConsecutiveWorkingDays,
+		ConstrainMaximumConsecutiveWorkingDays: o.ConstrainMaximumConsecutiveWorkingDays,
 		
-		MaximumConsecutiveWorkingDays: u.MaximumConsecutiveWorkingDays,
+		MaximumConsecutiveWorkingDays: o.MaximumConsecutiveWorkingDays,
 		
-		MinimumShiftStartDistanceMinutes: u.MinimumShiftStartDistanceMinutes,
+		MinimumShiftStartDistanceMinutes: o.MinimumShiftStartDistanceMinutes,
 		
-		MinimumDaysOffPerPlanningPeriod: u.MinimumDaysOffPerPlanningPeriod,
+		MinimumDaysOffPerPlanningPeriod: o.MinimumDaysOffPerPlanningPeriod,
 		
-		MaximumDaysOffPerPlanningPeriod: u.MaximumDaysOffPerPlanningPeriod,
+		MaximumDaysOffPerPlanningPeriod: o.MaximumDaysOffPerPlanningPeriod,
 		
-		MinimumPaidMinutesPerPlanningPeriod: u.MinimumPaidMinutesPerPlanningPeriod,
+		MinimumPaidMinutesPerPlanningPeriod: o.MinimumPaidMinutesPerPlanningPeriod,
 		
-		MaximumPaidMinutesPerPlanningPeriod: u.MaximumPaidMinutesPerPlanningPeriod,
+		MaximumPaidMinutesPerPlanningPeriod: o.MaximumPaidMinutesPerPlanningPeriod,
 		
-		OptionalDays: u.OptionalDays,
+		OptionalDays: o.OptionalDays,
 		
-		ShiftStartVarianceType: u.ShiftStartVarianceType,
+		ShiftStartVarianceType: o.ShiftStartVarianceType,
 		
-		ShiftStartVariances: u.ShiftStartVariances,
+		ShiftStartVariances: o.ShiftStartVariances,
 		
-		Shifts: u.Shifts,
+		Shifts: o.Shifts,
 		
-		Agents: u.Agents,
+		Agents: o.Agents,
 		
-		AgentCount: u.AgentCount,
+		AgentCount: o.AgentCount,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanvalidationrequest) UnmarshalJSON(b []byte) error {
+	var WorkplanvalidationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanvalidationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WorkplanvalidationrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WorkplanvalidationrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Enabled, ok := WorkplanvalidationrequestMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Valid, ok := WorkplanvalidationrequestMap["valid"].(bool); ok {
+		o.Valid = &Valid
+	}
+	
+	if ConstrainWeeklyPaidTime, ok := WorkplanvalidationrequestMap["constrainWeeklyPaidTime"].(bool); ok {
+		o.ConstrainWeeklyPaidTime = &ConstrainWeeklyPaidTime
+	}
+	
+	if FlexibleWeeklyPaidTime, ok := WorkplanvalidationrequestMap["flexibleWeeklyPaidTime"].(bool); ok {
+		o.FlexibleWeeklyPaidTime = &FlexibleWeeklyPaidTime
+	}
+	
+	if WeeklyExactPaidMinutes, ok := WorkplanvalidationrequestMap["weeklyExactPaidMinutes"].(float64); ok {
+		WeeklyExactPaidMinutesInt := int(WeeklyExactPaidMinutes)
+		o.WeeklyExactPaidMinutes = &WeeklyExactPaidMinutesInt
+	}
+	
+	if WeeklyMinimumPaidMinutes, ok := WorkplanvalidationrequestMap["weeklyMinimumPaidMinutes"].(float64); ok {
+		WeeklyMinimumPaidMinutesInt := int(WeeklyMinimumPaidMinutes)
+		o.WeeklyMinimumPaidMinutes = &WeeklyMinimumPaidMinutesInt
+	}
+	
+	if WeeklyMaximumPaidMinutes, ok := WorkplanvalidationrequestMap["weeklyMaximumPaidMinutes"].(float64); ok {
+		WeeklyMaximumPaidMinutesInt := int(WeeklyMaximumPaidMinutes)
+		o.WeeklyMaximumPaidMinutes = &WeeklyMaximumPaidMinutesInt
+	}
+	
+	if ConstrainPaidTimeGranularity, ok := WorkplanvalidationrequestMap["constrainPaidTimeGranularity"].(bool); ok {
+		o.ConstrainPaidTimeGranularity = &ConstrainPaidTimeGranularity
+	}
+	
+	if PaidTimeGranularityMinutes, ok := WorkplanvalidationrequestMap["paidTimeGranularityMinutes"].(float64); ok {
+		PaidTimeGranularityMinutesInt := int(PaidTimeGranularityMinutes)
+		o.PaidTimeGranularityMinutes = &PaidTimeGranularityMinutesInt
+	}
+	
+	if ConstrainMinimumTimeBetweenShifts, ok := WorkplanvalidationrequestMap["constrainMinimumTimeBetweenShifts"].(bool); ok {
+		o.ConstrainMinimumTimeBetweenShifts = &ConstrainMinimumTimeBetweenShifts
+	}
+	
+	if MinimumTimeBetweenShiftsMinutes, ok := WorkplanvalidationrequestMap["minimumTimeBetweenShiftsMinutes"].(float64); ok {
+		MinimumTimeBetweenShiftsMinutesInt := int(MinimumTimeBetweenShiftsMinutes)
+		o.MinimumTimeBetweenShiftsMinutes = &MinimumTimeBetweenShiftsMinutesInt
+	}
+	
+	if MaximumDays, ok := WorkplanvalidationrequestMap["maximumDays"].(float64); ok {
+		MaximumDaysInt := int(MaximumDays)
+		o.MaximumDays = &MaximumDaysInt
+	}
+	
+	if MinimumConsecutiveNonWorkingMinutesPerWeek, ok := WorkplanvalidationrequestMap["minimumConsecutiveNonWorkingMinutesPerWeek"].(float64); ok {
+		MinimumConsecutiveNonWorkingMinutesPerWeekInt := int(MinimumConsecutiveNonWorkingMinutesPerWeek)
+		o.MinimumConsecutiveNonWorkingMinutesPerWeek = &MinimumConsecutiveNonWorkingMinutesPerWeekInt
+	}
+	
+	if ConstrainMaximumConsecutiveWorkingWeekends, ok := WorkplanvalidationrequestMap["constrainMaximumConsecutiveWorkingWeekends"].(bool); ok {
+		o.ConstrainMaximumConsecutiveWorkingWeekends = &ConstrainMaximumConsecutiveWorkingWeekends
+	}
+	
+	if MaximumConsecutiveWorkingWeekends, ok := WorkplanvalidationrequestMap["maximumConsecutiveWorkingWeekends"].(float64); ok {
+		MaximumConsecutiveWorkingWeekendsInt := int(MaximumConsecutiveWorkingWeekends)
+		o.MaximumConsecutiveWorkingWeekends = &MaximumConsecutiveWorkingWeekendsInt
+	}
+	
+	if MinimumWorkingDaysPerWeek, ok := WorkplanvalidationrequestMap["minimumWorkingDaysPerWeek"].(float64); ok {
+		MinimumWorkingDaysPerWeekInt := int(MinimumWorkingDaysPerWeek)
+		o.MinimumWorkingDaysPerWeek = &MinimumWorkingDaysPerWeekInt
+	}
+	
+	if ConstrainMaximumConsecutiveWorkingDays, ok := WorkplanvalidationrequestMap["constrainMaximumConsecutiveWorkingDays"].(bool); ok {
+		o.ConstrainMaximumConsecutiveWorkingDays = &ConstrainMaximumConsecutiveWorkingDays
+	}
+	
+	if MaximumConsecutiveWorkingDays, ok := WorkplanvalidationrequestMap["maximumConsecutiveWorkingDays"].(float64); ok {
+		MaximumConsecutiveWorkingDaysInt := int(MaximumConsecutiveWorkingDays)
+		o.MaximumConsecutiveWorkingDays = &MaximumConsecutiveWorkingDaysInt
+	}
+	
+	if MinimumShiftStartDistanceMinutes, ok := WorkplanvalidationrequestMap["minimumShiftStartDistanceMinutes"].(float64); ok {
+		MinimumShiftStartDistanceMinutesInt := int(MinimumShiftStartDistanceMinutes)
+		o.MinimumShiftStartDistanceMinutes = &MinimumShiftStartDistanceMinutesInt
+	}
+	
+	if MinimumDaysOffPerPlanningPeriod, ok := WorkplanvalidationrequestMap["minimumDaysOffPerPlanningPeriod"].(float64); ok {
+		MinimumDaysOffPerPlanningPeriodInt := int(MinimumDaysOffPerPlanningPeriod)
+		o.MinimumDaysOffPerPlanningPeriod = &MinimumDaysOffPerPlanningPeriodInt
+	}
+	
+	if MaximumDaysOffPerPlanningPeriod, ok := WorkplanvalidationrequestMap["maximumDaysOffPerPlanningPeriod"].(float64); ok {
+		MaximumDaysOffPerPlanningPeriodInt := int(MaximumDaysOffPerPlanningPeriod)
+		o.MaximumDaysOffPerPlanningPeriod = &MaximumDaysOffPerPlanningPeriodInt
+	}
+	
+	if MinimumPaidMinutesPerPlanningPeriod, ok := WorkplanvalidationrequestMap["minimumPaidMinutesPerPlanningPeriod"].(float64); ok {
+		MinimumPaidMinutesPerPlanningPeriodInt := int(MinimumPaidMinutesPerPlanningPeriod)
+		o.MinimumPaidMinutesPerPlanningPeriod = &MinimumPaidMinutesPerPlanningPeriodInt
+	}
+	
+	if MaximumPaidMinutesPerPlanningPeriod, ok := WorkplanvalidationrequestMap["maximumPaidMinutesPerPlanningPeriod"].(float64); ok {
+		MaximumPaidMinutesPerPlanningPeriodInt := int(MaximumPaidMinutesPerPlanningPeriod)
+		o.MaximumPaidMinutesPerPlanningPeriod = &MaximumPaidMinutesPerPlanningPeriodInt
+	}
+	
+	if OptionalDays, ok := WorkplanvalidationrequestMap["optionalDays"].(map[string]interface{}); ok {
+		OptionalDaysString, _ := json.Marshal(OptionalDays)
+		json.Unmarshal(OptionalDaysString, &o.OptionalDays)
+	}
+	
+	if ShiftStartVarianceType, ok := WorkplanvalidationrequestMap["shiftStartVarianceType"].(string); ok {
+		o.ShiftStartVarianceType = &ShiftStartVarianceType
+	}
+	
+	if ShiftStartVariances, ok := WorkplanvalidationrequestMap["shiftStartVariances"].(map[string]interface{}); ok {
+		ShiftStartVariancesString, _ := json.Marshal(ShiftStartVariances)
+		json.Unmarshal(ShiftStartVariancesString, &o.ShiftStartVariances)
+	}
+	
+	if Shifts, ok := WorkplanvalidationrequestMap["shifts"].([]interface{}); ok {
+		ShiftsString, _ := json.Marshal(Shifts)
+		json.Unmarshal(ShiftsString, &o.Shifts)
+	}
+	
+	if Agents, ok := WorkplanvalidationrequestMap["agents"].([]interface{}); ok {
+		AgentsString, _ := json.Marshal(Agents)
+		json.Unmarshal(AgentsString, &o.Agents)
+	}
+	
+	if AgentCount, ok := WorkplanvalidationrequestMap["agentCount"].(float64); ok {
+		AgentCountInt := int(AgentCount)
+		o.AgentCount = &AgentCountInt
+	}
+	
+	if SelfUri, ok := WorkplanvalidationrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

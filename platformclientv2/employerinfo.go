@@ -25,13 +25,11 @@ type Employerinfo struct {
 
 }
 
-func (u *Employerinfo) MarshalJSON() ([]byte, error) {
+func (o *Employerinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Employerinfo
-
 	
-
 	return json.Marshal(&struct { 
 		OfficialName *string `json:"officialName,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Employerinfo) MarshalJSON() ([]byte, error) {
 		DateHire *string `json:"dateHire,omitempty"`
 		*Alias
 	}{ 
-		OfficialName: u.OfficialName,
+		OfficialName: o.OfficialName,
 		
-		EmployeeId: u.EmployeeId,
+		EmployeeId: o.EmployeeId,
 		
-		EmployeeType: u.EmployeeType,
+		EmployeeType: o.EmployeeType,
 		
-		DateHire: u.DateHire,
-		Alias:    (*Alias)(u),
+		DateHire: o.DateHire,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Employerinfo) UnmarshalJSON(b []byte) error {
+	var EmployerinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &EmployerinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if OfficialName, ok := EmployerinfoMap["officialName"].(string); ok {
+		o.OfficialName = &OfficialName
+	}
+	
+	if EmployeeId, ok := EmployerinfoMap["employeeId"].(string); ok {
+		o.EmployeeId = &EmployeeId
+	}
+	
+	if EmployeeType, ok := EmployerinfoMap["employeeType"].(string); ok {
+		o.EmployeeType = &EmployeeType
+	}
+	
+	if DateHire, ok := EmployerinfoMap["dateHire"].(string); ok {
+		o.DateHire = &DateHire
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

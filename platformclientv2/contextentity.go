@@ -13,20 +13,33 @@ type Contextentity struct {
 
 }
 
-func (u *Contextentity) MarshalJSON() ([]byte, error) {
+func (o *Contextentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contextentity
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contextentity) UnmarshalJSON(b []byte) error {
+	var ContextentityMap map[string]interface{}
+	err := json.Unmarshal(b, &ContextentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ContextentityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

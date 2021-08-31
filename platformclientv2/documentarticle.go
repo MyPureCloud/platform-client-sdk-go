@@ -21,13 +21,11 @@ type Documentarticle struct {
 
 }
 
-func (u *Documentarticle) MarshalJSON() ([]byte, error) {
+func (o *Documentarticle) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentarticle
-
 	
-
 	return json.Marshal(&struct { 
 		Title *string `json:"title,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Documentarticle) MarshalJSON() ([]byte, error) {
 		Alternatives *[]string `json:"alternatives,omitempty"`
 		*Alias
 	}{ 
-		Title: u.Title,
+		Title: o.Title,
 		
-		Content: u.Content,
+		Content: o.Content,
 		
-		Alternatives: u.Alternatives,
-		Alias:    (*Alias)(u),
+		Alternatives: o.Alternatives,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentarticle) UnmarshalJSON(b []byte) error {
+	var DocumentarticleMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentarticleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Title, ok := DocumentarticleMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Content, ok := DocumentarticleMap["content"].(map[string]interface{}); ok {
+		ContentString, _ := json.Marshal(Content)
+		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+	if Alternatives, ok := DocumentarticleMap["alternatives"].([]interface{}); ok {
+		AlternativesString, _ := json.Marshal(Alternatives)
+		json.Unmarshal(AlternativesString, &o.Alternatives)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

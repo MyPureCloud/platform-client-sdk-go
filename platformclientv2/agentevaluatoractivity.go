@@ -41,13 +41,11 @@ type Agentevaluatoractivity struct {
 
 }
 
-func (u *Agentevaluatoractivity) MarshalJSON() ([]byte, error) {
+func (o *Agentevaluatoractivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentevaluatoractivity
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,71 @@ func (u *Agentevaluatoractivity) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Agent: u.Agent,
+		Agent: o.Agent,
 		
-		Evaluator: u.Evaluator,
+		Evaluator: o.Evaluator,
 		
-		NumEvaluations: u.NumEvaluations,
+		NumEvaluations: o.NumEvaluations,
 		
-		AverageEvaluationScore: u.AverageEvaluationScore,
+		AverageEvaluationScore: o.AverageEvaluationScore,
 		
-		NumEvaluationsWithoutViewPermission: u.NumEvaluationsWithoutViewPermission,
+		NumEvaluationsWithoutViewPermission: o.NumEvaluationsWithoutViewPermission,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agentevaluatoractivity) UnmarshalJSON(b []byte) error {
+	var AgentevaluatoractivityMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentevaluatoractivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AgentevaluatoractivityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AgentevaluatoractivityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Agent, ok := AgentevaluatoractivityMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Evaluator, ok := AgentevaluatoractivityMap["evaluator"].(map[string]interface{}); ok {
+		EvaluatorString, _ := json.Marshal(Evaluator)
+		json.Unmarshal(EvaluatorString, &o.Evaluator)
+	}
+	
+	if NumEvaluations, ok := AgentevaluatoractivityMap["numEvaluations"].(float64); ok {
+		NumEvaluationsInt := int(NumEvaluations)
+		o.NumEvaluations = &NumEvaluationsInt
+	}
+	
+	if AverageEvaluationScore, ok := AgentevaluatoractivityMap["averageEvaluationScore"].(float64); ok {
+		AverageEvaluationScoreInt := int(AverageEvaluationScore)
+		o.AverageEvaluationScore = &AverageEvaluationScoreInt
+	}
+	
+	if NumEvaluationsWithoutViewPermission, ok := AgentevaluatoractivityMap["numEvaluationsWithoutViewPermission"].(float64); ok {
+		NumEvaluationsWithoutViewPermissionInt := int(NumEvaluationsWithoutViewPermission)
+		o.NumEvaluationsWithoutViewPermission = &NumEvaluationsWithoutViewPermissionInt
+	}
+	
+	if SelfUri, ok := AgentevaluatoractivityMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

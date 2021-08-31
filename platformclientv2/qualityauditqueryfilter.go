@@ -17,24 +17,41 @@ type Qualityauditqueryfilter struct {
 
 }
 
-func (u *Qualityauditqueryfilter) MarshalJSON() ([]byte, error) {
+func (o *Qualityauditqueryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Qualityauditqueryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		Property *string `json:"property,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Property: u.Property,
+		Property: o.Property,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Qualityauditqueryfilter) UnmarshalJSON(b []byte) error {
+	var QualityauditqueryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &QualityauditqueryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Property, ok := QualityauditqueryfilterMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if Value, ok := QualityauditqueryfilterMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

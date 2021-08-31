@@ -74,29 +74,27 @@ type Klaxoninteractionstatsalertstopicinteractionstatalert struct {
 
 }
 
-func (u *Klaxoninteractionstatsalertstopicinteractionstatalert) MarshalJSON() ([]byte, error) {
+func (o *Klaxoninteractionstatsalertstopicinteractionstatalert) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Klaxoninteractionstatsalertstopicinteractionstatalert
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -131,39 +129,119 @@ func (u *Klaxoninteractionstatsalertstopicinteractionstatalert) MarshalJSON() ([
 		AlertTypes *[]string `json:"alertTypes,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		RuleId: u.RuleId,
+		RuleId: o.RuleId,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		DimensionValue: u.DimensionValue,
+		DimensionValue: o.DimensionValue,
 		
-		DimensionValueName: u.DimensionValueName,
+		DimensionValueName: o.DimensionValueName,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		NumericRange: u.NumericRange,
+		NumericRange: o.NumericRange,
 		
-		Statistic: u.Statistic,
+		Statistic: o.Statistic,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Unread: u.Unread,
+		Unread: o.Unread,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		NotificationUsers: u.NotificationUsers,
+		NotificationUsers: o.NotificationUsers,
 		
-		AlertTypes: u.AlertTypes,
-		Alias:    (*Alias)(u),
+		AlertTypes: o.AlertTypes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Klaxoninteractionstatsalertstopicinteractionstatalert) UnmarshalJSON(b []byte) error {
+	var KlaxoninteractionstatsalertstopicinteractionstatalertMap map[string]interface{}
+	err := json.Unmarshal(b, &KlaxoninteractionstatsalertstopicinteractionstatalertMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if RuleId, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["ruleId"].(string); ok {
+		o.RuleId = &RuleId
+	}
+	
+	if Dimension, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if DimensionValue, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["dimensionValue"].(string); ok {
+		o.DimensionValue = &DimensionValue
+	}
+	
+	if DimensionValueName, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["dimensionValueName"].(string); ok {
+		o.DimensionValueName = &DimensionValueName
+	}
+	
+	if Metric, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if MediaType, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if NumericRange, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["numericRange"].(string); ok {
+		o.NumericRange = &NumericRange
+	}
+	
+	if Statistic, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["statistic"].(string); ok {
+		o.Statistic = &Statistic
+	}
+	
+	if Value, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["value"].(float64); ok {
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
+	}
+	
+	if Unread, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["unread"].(bool); ok {
+		o.Unread = &Unread
+	}
+	
+	if startDateString, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if NotificationUsers, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["notificationUsers"].([]interface{}); ok {
+		NotificationUsersString, _ := json.Marshal(NotificationUsers)
+		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
+	}
+	
+	if AlertTypes, ok := KlaxoninteractionstatsalertstopicinteractionstatalertMap["alertTypes"].([]interface{}); ok {
+		AlertTypesString, _ := json.Marshal(AlertTypes)
+		json.Unmarshal(AlertTypesString, &o.AlertTypes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

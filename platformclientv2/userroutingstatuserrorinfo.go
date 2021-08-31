@@ -33,13 +33,11 @@ type Userroutingstatuserrorinfo struct {
 
 }
 
-func (u *Userroutingstatuserrorinfo) MarshalJSON() ([]byte, error) {
+func (o *Userroutingstatuserrorinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userroutingstatuserrorinfo
-
 	
-
 	return json.Marshal(&struct { 
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Userroutingstatuserrorinfo) MarshalJSON() ([]byte, error) {
 		UserParams *[]Userroutingstatususerparam `json:"userParams,omitempty"`
 		*Alias
 	}{ 
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		UserMessage: u.UserMessage,
+		UserMessage: o.UserMessage,
 		
-		UserParamsMessage: u.UserParamsMessage,
+		UserParamsMessage: o.UserParamsMessage,
 		
-		UserParams: u.UserParams,
-		Alias:    (*Alias)(u),
+		UserParams: o.UserParams,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userroutingstatuserrorinfo) UnmarshalJSON(b []byte) error {
+	var UserroutingstatuserrorinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &UserroutingstatuserrorinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if ErrorCode, ok := UserroutingstatuserrorinfoMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if Status, ok := UserroutingstatuserrorinfoMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if CorrelationId, ok := UserroutingstatuserrorinfoMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if UserMessage, ok := UserroutingstatuserrorinfoMap["userMessage"].(string); ok {
+		o.UserMessage = &UserMessage
+	}
+	
+	if UserParamsMessage, ok := UserroutingstatuserrorinfoMap["userParamsMessage"].(string); ok {
+		o.UserParamsMessage = &UserParamsMessage
+	}
+	
+	if UserParams, ok := UserroutingstatuserrorinfoMap["userParams"].([]interface{}); ok {
+		UserParamsString, _ := json.Marshal(UserParams)
+		json.Unmarshal(UserParamsString, &o.UserParams)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

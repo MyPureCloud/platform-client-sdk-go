@@ -46,29 +46,27 @@ type Nludomain struct {
 
 }
 
-func (u *Nludomain) MarshalJSON() ([]byte, error) {
+func (o *Nludomain) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nludomain
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,76 @@ func (u *Nludomain) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		DraftVersion: u.DraftVersion,
+		DraftVersion: o.DraftVersion,
 		
-		LastPublishedVersion: u.LastPublishedVersion,
+		LastPublishedVersion: o.LastPublishedVersion,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		EngineVersion: u.EngineVersion,
+		EngineVersion: o.EngineVersion,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nludomain) UnmarshalJSON(b []byte) error {
+	var NludomainMap map[string]interface{}
+	err := json.Unmarshal(b, &NludomainMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := NludomainMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := NludomainMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Language, ok := NludomainMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if DraftVersion, ok := NludomainMap["draftVersion"].(map[string]interface{}); ok {
+		DraftVersionString, _ := json.Marshal(DraftVersion)
+		json.Unmarshal(DraftVersionString, &o.DraftVersion)
+	}
+	
+	if LastPublishedVersion, ok := NludomainMap["lastPublishedVersion"].(map[string]interface{}); ok {
+		LastPublishedVersionString, _ := json.Marshal(LastPublishedVersion)
+		json.Unmarshal(LastPublishedVersionString, &o.LastPublishedVersion)
+	}
+	
+	if dateCreatedString, ok := NludomainMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := NludomainMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if EngineVersion, ok := NludomainMap["engineVersion"].(string); ok {
+		o.EngineVersion = &EngineVersion
+	}
+	
+	if SelfUri, ok := NludomainMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

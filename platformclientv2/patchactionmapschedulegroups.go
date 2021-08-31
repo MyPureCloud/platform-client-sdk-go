@@ -17,24 +17,43 @@ type Patchactionmapschedulegroups struct {
 
 }
 
-func (u *Patchactionmapschedulegroups) MarshalJSON() ([]byte, error) {
+func (o *Patchactionmapschedulegroups) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchactionmapschedulegroups
-
 	
-
 	return json.Marshal(&struct { 
 		ActionMapScheduleGroup *Actionmapschedulegroup `json:"actionMapScheduleGroup,omitempty"`
 		
 		EmergencyActionMapScheduleGroup *Actionmapschedulegroup `json:"emergencyActionMapScheduleGroup,omitempty"`
 		*Alias
 	}{ 
-		ActionMapScheduleGroup: u.ActionMapScheduleGroup,
+		ActionMapScheduleGroup: o.ActionMapScheduleGroup,
 		
-		EmergencyActionMapScheduleGroup: u.EmergencyActionMapScheduleGroup,
-		Alias:    (*Alias)(u),
+		EmergencyActionMapScheduleGroup: o.EmergencyActionMapScheduleGroup,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchactionmapschedulegroups) UnmarshalJSON(b []byte) error {
+	var PatchactionmapschedulegroupsMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchactionmapschedulegroupsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActionMapScheduleGroup, ok := PatchactionmapschedulegroupsMap["actionMapScheduleGroup"].(map[string]interface{}); ok {
+		ActionMapScheduleGroupString, _ := json.Marshal(ActionMapScheduleGroup)
+		json.Unmarshal(ActionMapScheduleGroupString, &o.ActionMapScheduleGroup)
+	}
+	
+	if EmergencyActionMapScheduleGroup, ok := PatchactionmapschedulegroupsMap["emergencyActionMapScheduleGroup"].(map[string]interface{}); ok {
+		EmergencyActionMapScheduleGroupString, _ := json.Marshal(EmergencyActionMapScheduleGroup)
+		json.Unmarshal(EmergencyActionMapScheduleGroupString, &o.EmergencyActionMapScheduleGroup)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

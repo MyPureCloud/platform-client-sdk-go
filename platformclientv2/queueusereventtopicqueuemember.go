@@ -29,13 +29,11 @@ type Queueusereventtopicqueuemember struct {
 
 }
 
-func (u *Queueusereventtopicqueuemember) MarshalJSON() ([]byte, error) {
+func (o *Queueusereventtopicqueuemember) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueusereventtopicqueuemember
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Queueusereventtopicqueuemember) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		User: u.User,
+		User: o.User,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		Joined: u.Joined,
+		Joined: o.Joined,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueusereventtopicqueuemember) UnmarshalJSON(b []byte) error {
+	var QueueusereventtopicqueuememberMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueusereventtopicqueuememberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueusereventtopicqueuememberMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if User, ok := QueueusereventtopicqueuememberMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if QueueId, ok := QueueusereventtopicqueuememberMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if Joined, ok := QueueusereventtopicqueuememberMap["joined"].(bool); ok {
+		o.Joined = &Joined
+	}
+	
+	if AdditionalProperties, ok := QueueusereventtopicqueuememberMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

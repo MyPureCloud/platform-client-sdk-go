@@ -49,13 +49,11 @@ type Onelogin struct {
 
 }
 
-func (u *Onelogin) MarshalJSON() ([]byte, error) {
+func (o *Onelogin) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Onelogin
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,79 @@ func (u *Onelogin) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		IssuerURI: u.IssuerURI,
+		IssuerURI: o.IssuerURI,
 		
-		SsoTargetURI: u.SsoTargetURI,
+		SsoTargetURI: o.SsoTargetURI,
 		
-		SloURI: u.SloURI,
+		SloURI: o.SloURI,
 		
-		SloBinding: u.SloBinding,
+		SloBinding: o.SloBinding,
 		
-		Certificate: u.Certificate,
+		Certificate: o.Certificate,
 		
-		Certificates: u.Certificates,
+		Certificates: o.Certificates,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Onelogin) UnmarshalJSON(b []byte) error {
+	var OneloginMap map[string]interface{}
+	err := json.Unmarshal(b, &OneloginMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OneloginMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OneloginMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := OneloginMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if IssuerURI, ok := OneloginMap["issuerURI"].(string); ok {
+		o.IssuerURI = &IssuerURI
+	}
+	
+	if SsoTargetURI, ok := OneloginMap["ssoTargetURI"].(string); ok {
+		o.SsoTargetURI = &SsoTargetURI
+	}
+	
+	if SloURI, ok := OneloginMap["sloURI"].(string); ok {
+		o.SloURI = &SloURI
+	}
+	
+	if SloBinding, ok := OneloginMap["sloBinding"].(string); ok {
+		o.SloBinding = &SloBinding
+	}
+	
+	if Certificate, ok := OneloginMap["certificate"].(string); ok {
+		o.Certificate = &Certificate
+	}
+	
+	if Certificates, ok := OneloginMap["certificates"].([]interface{}); ok {
+		CertificatesString, _ := json.Marshal(Certificates)
+		json.Unmarshal(CertificatesString, &o.Certificates)
+	}
+	
+	if SelfUri, ok := OneloginMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

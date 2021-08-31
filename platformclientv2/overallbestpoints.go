@@ -17,24 +17,43 @@ type Overallbestpoints struct {
 
 }
 
-func (u *Overallbestpoints) MarshalJSON() ([]byte, error) {
+func (o *Overallbestpoints) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Overallbestpoints
-
 	
-
 	return json.Marshal(&struct { 
 		Division *Division `json:"division,omitempty"`
 		
 		BestPoints *[]Overallbestpointsitem `json:"bestPoints,omitempty"`
 		*Alias
 	}{ 
-		Division: u.Division,
+		Division: o.Division,
 		
-		BestPoints: u.BestPoints,
-		Alias:    (*Alias)(u),
+		BestPoints: o.BestPoints,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Overallbestpoints) UnmarshalJSON(b []byte) error {
+	var OverallbestpointsMap map[string]interface{}
+	err := json.Unmarshal(b, &OverallbestpointsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Division, ok := OverallbestpointsMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if BestPoints, ok := OverallbestpointsMap["bestPoints"].([]interface{}); ok {
+		BestPointsString, _ := json.Marshal(BestPoints)
+		json.Unmarshal(BestPointsString, &o.BestPoints)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

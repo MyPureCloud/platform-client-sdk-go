@@ -38,21 +38,19 @@ type Library struct {
 
 }
 
-func (u *Library) MarshalJSON() ([]byte, error) {
+func (o *Library) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Library
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Library) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		ResponseType: u.ResponseType,
+		ResponseType: o.ResponseType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Library) UnmarshalJSON(b []byte) error {
+	var LibraryMap map[string]interface{}
+	err := json.Unmarshal(b, &LibraryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LibraryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LibraryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := LibraryMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if CreatedBy, ok := LibraryMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := LibraryMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ResponseType, ok := LibraryMap["responseType"].(string); ok {
+		o.ResponseType = &ResponseType
+	}
+	
+	if SelfUri, ok := LibraryMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

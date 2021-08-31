@@ -21,13 +21,11 @@ type Userstationchangetopicuserstation struct {
 
 }
 
-func (u *Userstationchangetopicuserstation) MarshalJSON() ([]byte, error) {
+func (o *Userstationchangetopicuserstation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userstationchangetopicuserstation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Userstationchangetopicuserstation) MarshalJSON() ([]byte, error) {
 		AssociatedUser *Userstationchangetopicuser `json:"associatedUser,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		AssociatedUser: u.AssociatedUser,
-		Alias:    (*Alias)(u),
+		AssociatedUser: o.AssociatedUser,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userstationchangetopicuserstation) UnmarshalJSON(b []byte) error {
+	var UserstationchangetopicuserstationMap map[string]interface{}
+	err := json.Unmarshal(b, &UserstationchangetopicuserstationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserstationchangetopicuserstationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserstationchangetopicuserstationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if AssociatedUser, ok := UserstationchangetopicuserstationMap["associatedUser"].(map[string]interface{}); ok {
+		AssociatedUserString, _ := json.Marshal(AssociatedUser)
+		json.Unmarshal(AssociatedUserString, &o.AssociatedUser)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

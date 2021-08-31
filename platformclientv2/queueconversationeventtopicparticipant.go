@@ -158,45 +158,43 @@ type Queueconversationeventtopicparticipant struct {
 
 }
 
-func (u *Queueconversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopicparticipant
-
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
 	StartAcwTime := new(string)
-	if u.StartAcwTime != nil {
+	if o.StartAcwTime != nil {
 		
-		*StartAcwTime = timeutil.Strftime(u.StartAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAcwTime = timeutil.Strftime(o.StartAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAcwTime = nil
 	}
 	
 	EndAcwTime := new(string)
-	if u.EndAcwTime != nil {
+	if o.EndAcwTime != nil {
 		
-		*EndAcwTime = timeutil.Strftime(u.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndAcwTime = timeutil.Strftime(o.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndAcwTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -273,81 +271,259 @@ func (u *Queueconversationeventtopicparticipant) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		ConnectedTime: ConnectedTime,
 		
 		EndTime: EndTime,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		ExternalContactId: u.ExternalContactId,
+		ExternalContactId: o.ExternalContactId,
 		
-		ExternalOrganizationId: u.ExternalOrganizationId,
+		ExternalOrganizationId: o.ExternalOrganizationId,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		GroupId: u.GroupId,
+		GroupId: o.GroupId,
 		
-		TeamId: u.TeamId,
+		TeamId: o.TeamId,
 		
-		Purpose: u.Purpose,
+		Purpose: o.Purpose,
 		
-		ConsultParticipantId: u.ConsultParticipantId,
+		ConsultParticipantId: o.ConsultParticipantId,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		WrapupRequired: u.WrapupRequired,
+		WrapupRequired: o.WrapupRequired,
 		
-		WrapupExpected: u.WrapupExpected,
+		WrapupExpected: o.WrapupExpected,
 		
-		WrapupPrompt: u.WrapupPrompt,
+		WrapupPrompt: o.WrapupPrompt,
 		
-		WrapupTimeoutMs: u.WrapupTimeoutMs,
+		WrapupTimeoutMs: o.WrapupTimeoutMs,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
 		
-		ConversationRoutingData: u.ConversationRoutingData,
+		ConversationRoutingData: o.ConversationRoutingData,
 		
-		AlertingTimeoutMs: u.AlertingTimeoutMs,
+		AlertingTimeoutMs: o.AlertingTimeoutMs,
 		
-		MonitoredParticipantId: u.MonitoredParticipantId,
+		MonitoredParticipantId: o.MonitoredParticipantId,
 		
-		CoachedParticipantId: u.CoachedParticipantId,
+		CoachedParticipantId: o.CoachedParticipantId,
 		
-		ScreenRecordingState: u.ScreenRecordingState,
+		ScreenRecordingState: o.ScreenRecordingState,
 		
-		FlaggedReason: u.FlaggedReason,
+		FlaggedReason: o.FlaggedReason,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		Calls: u.Calls,
+		Calls: o.Calls,
 		
-		Callbacks: u.Callbacks,
+		Callbacks: o.Callbacks,
 		
-		Chats: u.Chats,
+		Chats: o.Chats,
 		
-		Cobrowsesessions: u.Cobrowsesessions,
+		Cobrowsesessions: o.Cobrowsesessions,
 		
-		Emails: u.Emails,
+		Emails: o.Emails,
 		
-		Messages: u.Messages,
+		Messages: o.Messages,
 		
-		Screenshares: u.Screenshares,
+		Screenshares: o.Screenshares,
 		
-		SocialExpressions: u.SocialExpressions,
+		SocialExpressions: o.SocialExpressions,
 		
-		Videos: u.Videos,
+		Videos: o.Videos,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationeventtopicparticipant) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopicparticipantMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopicparticipantMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationeventtopicparticipantMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if connectedTimeString, ok := QueueconversationeventtopicparticipantMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if endTimeString, ok := QueueconversationeventtopicparticipantMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if UserId, ok := QueueconversationeventtopicparticipantMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if ExternalContactId, ok := QueueconversationeventtopicparticipantMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
+	}
+	
+	if ExternalOrganizationId, ok := QueueconversationeventtopicparticipantMap["externalOrganizationId"].(string); ok {
+		o.ExternalOrganizationId = &ExternalOrganizationId
+	}
+	
+	if Name, ok := QueueconversationeventtopicparticipantMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if QueueId, ok := QueueconversationeventtopicparticipantMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if GroupId, ok := QueueconversationeventtopicparticipantMap["groupId"].(string); ok {
+		o.GroupId = &GroupId
+	}
+	
+	if TeamId, ok := QueueconversationeventtopicparticipantMap["teamId"].(string); ok {
+		o.TeamId = &TeamId
+	}
+	
+	if Purpose, ok := QueueconversationeventtopicparticipantMap["purpose"].(string); ok {
+		o.Purpose = &Purpose
+	}
+	
+	if ConsultParticipantId, ok := QueueconversationeventtopicparticipantMap["consultParticipantId"].(string); ok {
+		o.ConsultParticipantId = &ConsultParticipantId
+	}
+	
+	if Address, ok := QueueconversationeventtopicparticipantMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if WrapupRequired, ok := QueueconversationeventtopicparticipantMap["wrapupRequired"].(bool); ok {
+		o.WrapupRequired = &WrapupRequired
+	}
+	
+	if WrapupExpected, ok := QueueconversationeventtopicparticipantMap["wrapupExpected"].(bool); ok {
+		o.WrapupExpected = &WrapupExpected
+	}
+	
+	if WrapupPrompt, ok := QueueconversationeventtopicparticipantMap["wrapupPrompt"].(string); ok {
+		o.WrapupPrompt = &WrapupPrompt
+	}
+	
+	if WrapupTimeoutMs, ok := QueueconversationeventtopicparticipantMap["wrapupTimeoutMs"].(float64); ok {
+		WrapupTimeoutMsInt := int(WrapupTimeoutMs)
+		o.WrapupTimeoutMs = &WrapupTimeoutMsInt
+	}
+	
+	if Wrapup, ok := QueueconversationeventtopicparticipantMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if startAcwTimeString, ok := QueueconversationeventtopicparticipantMap["startAcwTime"].(string); ok {
+		StartAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAcwTimeString)
+		o.StartAcwTime = &StartAcwTime
+	}
+	
+	if endAcwTimeString, ok := QueueconversationeventtopicparticipantMap["endAcwTime"].(string); ok {
+		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
+		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if ConversationRoutingData, ok := QueueconversationeventtopicparticipantMap["conversationRoutingData"].(map[string]interface{}); ok {
+		ConversationRoutingDataString, _ := json.Marshal(ConversationRoutingData)
+		json.Unmarshal(ConversationRoutingDataString, &o.ConversationRoutingData)
+	}
+	
+	if AlertingTimeoutMs, ok := QueueconversationeventtopicparticipantMap["alertingTimeoutMs"].(float64); ok {
+		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
+		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
+	}
+	
+	if MonitoredParticipantId, ok := QueueconversationeventtopicparticipantMap["monitoredParticipantId"].(string); ok {
+		o.MonitoredParticipantId = &MonitoredParticipantId
+	}
+	
+	if CoachedParticipantId, ok := QueueconversationeventtopicparticipantMap["coachedParticipantId"].(string); ok {
+		o.CoachedParticipantId = &CoachedParticipantId
+	}
+	
+	if ScreenRecordingState, ok := QueueconversationeventtopicparticipantMap["screenRecordingState"].(string); ok {
+		o.ScreenRecordingState = &ScreenRecordingState
+	}
+	
+	if FlaggedReason, ok := QueueconversationeventtopicparticipantMap["flaggedReason"].(string); ok {
+		o.FlaggedReason = &FlaggedReason
+	}
+	
+	if Attributes, ok := QueueconversationeventtopicparticipantMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if Calls, ok := QueueconversationeventtopicparticipantMap["calls"].([]interface{}); ok {
+		CallsString, _ := json.Marshal(Calls)
+		json.Unmarshal(CallsString, &o.Calls)
+	}
+	
+	if Callbacks, ok := QueueconversationeventtopicparticipantMap["callbacks"].([]interface{}); ok {
+		CallbacksString, _ := json.Marshal(Callbacks)
+		json.Unmarshal(CallbacksString, &o.Callbacks)
+	}
+	
+	if Chats, ok := QueueconversationeventtopicparticipantMap["chats"].([]interface{}); ok {
+		ChatsString, _ := json.Marshal(Chats)
+		json.Unmarshal(ChatsString, &o.Chats)
+	}
+	
+	if Cobrowsesessions, ok := QueueconversationeventtopicparticipantMap["cobrowsesessions"].([]interface{}); ok {
+		CobrowsesessionsString, _ := json.Marshal(Cobrowsesessions)
+		json.Unmarshal(CobrowsesessionsString, &o.Cobrowsesessions)
+	}
+	
+	if Emails, ok := QueueconversationeventtopicparticipantMap["emails"].([]interface{}); ok {
+		EmailsString, _ := json.Marshal(Emails)
+		json.Unmarshal(EmailsString, &o.Emails)
+	}
+	
+	if Messages, ok := QueueconversationeventtopicparticipantMap["messages"].([]interface{}); ok {
+		MessagesString, _ := json.Marshal(Messages)
+		json.Unmarshal(MessagesString, &o.Messages)
+	}
+	
+	if Screenshares, ok := QueueconversationeventtopicparticipantMap["screenshares"].([]interface{}); ok {
+		ScreensharesString, _ := json.Marshal(Screenshares)
+		json.Unmarshal(ScreensharesString, &o.Screenshares)
+	}
+	
+	if SocialExpressions, ok := QueueconversationeventtopicparticipantMap["socialExpressions"].([]interface{}); ok {
+		SocialExpressionsString, _ := json.Marshal(SocialExpressions)
+		json.Unmarshal(SocialExpressionsString, &o.SocialExpressions)
+	}
+	
+	if Videos, ok := QueueconversationeventtopicparticipantMap["videos"].([]interface{}); ok {
+		VideosString, _ := json.Marshal(Videos)
+		json.Unmarshal(VideosString, &o.Videos)
+	}
+	
+	if AdditionalProperties, ok := QueueconversationeventtopicparticipantMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -37,13 +37,11 @@ type Guestmemberinfo struct {
 
 }
 
-func (u *Guestmemberinfo) MarshalJSON() ([]byte, error) {
+func (o *Guestmemberinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Guestmemberinfo
-
 	
-
 	return json.Marshal(&struct { 
 		DisplayName *string `json:"displayName,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Guestmemberinfo) MarshalJSON() ([]byte, error) {
 		CustomFields *map[string]string `json:"customFields,omitempty"`
 		*Alias
 	}{ 
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		FirstName: u.FirstName,
+		FirstName: o.FirstName,
 		
-		LastName: u.LastName,
+		LastName: o.LastName,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		AvatarImageUrl: u.AvatarImageUrl,
+		AvatarImageUrl: o.AvatarImageUrl,
 		
-		CustomFields: u.CustomFields,
-		Alias:    (*Alias)(u),
+		CustomFields: o.CustomFields,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Guestmemberinfo) UnmarshalJSON(b []byte) error {
+	var GuestmemberinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &GuestmemberinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if DisplayName, ok := GuestmemberinfoMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if FirstName, ok := GuestmemberinfoMap["firstName"].(string); ok {
+		o.FirstName = &FirstName
+	}
+	
+	if LastName, ok := GuestmemberinfoMap["lastName"].(string); ok {
+		o.LastName = &LastName
+	}
+	
+	if Email, ok := GuestmemberinfoMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+	if PhoneNumber, ok := GuestmemberinfoMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if AvatarImageUrl, ok := GuestmemberinfoMap["avatarImageUrl"].(string); ok {
+		o.AvatarImageUrl = &AvatarImageUrl
+	}
+	
+	if CustomFields, ok := GuestmemberinfoMap["customFields"].(map[string]interface{}); ok {
+		CustomFieldsString, _ := json.Marshal(CustomFields)
+		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

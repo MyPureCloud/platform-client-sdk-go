@@ -49,13 +49,11 @@ type Learningmodulesdomainentitylisting struct {
 
 }
 
-func (u *Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmodulesdomainentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Learningmodule `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Learningmodulesdomainentitylisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmodulesdomainentitylisting) UnmarshalJSON(b []byte) error {
+	var LearningmodulesdomainentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmodulesdomainentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := LearningmodulesdomainentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := LearningmodulesdomainentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := LearningmodulesdomainentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := LearningmodulesdomainentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := LearningmodulesdomainentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if SelfUri, ok := LearningmodulesdomainentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if NextUri, ok := LearningmodulesdomainentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := LearningmodulesdomainentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := LearningmodulesdomainentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if PageCount, ok := LearningmodulesdomainentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

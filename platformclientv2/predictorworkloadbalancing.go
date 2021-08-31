@@ -13,20 +13,33 @@ type Predictorworkloadbalancing struct {
 
 }
 
-func (u *Predictorworkloadbalancing) MarshalJSON() ([]byte, error) {
+func (o *Predictorworkloadbalancing) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Predictorworkloadbalancing
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
-		Alias:    (*Alias)(u),
+		Enabled: o.Enabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Predictorworkloadbalancing) UnmarshalJSON(b []byte) error {
+	var PredictorworkloadbalancingMap map[string]interface{}
+	err := json.Unmarshal(b, &PredictorworkloadbalancingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := PredictorworkloadbalancingMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

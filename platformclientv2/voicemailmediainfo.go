@@ -25,13 +25,11 @@ type Voicemailmediainfo struct {
 
 }
 
-func (u *Voicemailmediainfo) MarshalJSON() ([]byte, error) {
+func (o *Voicemailmediainfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmediainfo
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Voicemailmediainfo) MarshalJSON() ([]byte, error) {
 		WaveformData *[]float32 `json:"waveformData,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		MediaFileUri: u.MediaFileUri,
+		MediaFileUri: o.MediaFileUri,
 		
-		MediaImageUri: u.MediaImageUri,
+		MediaImageUri: o.MediaImageUri,
 		
-		WaveformData: u.WaveformData,
-		Alias:    (*Alias)(u),
+		WaveformData: o.WaveformData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailmediainfo) UnmarshalJSON(b []byte) error {
+	var VoicemailmediainfoMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailmediainfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := VoicemailmediainfoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if MediaFileUri, ok := VoicemailmediainfoMap["mediaFileUri"].(string); ok {
+		o.MediaFileUri = &MediaFileUri
+	}
+	
+	if MediaImageUri, ok := VoicemailmediainfoMap["mediaImageUri"].(string); ok {
+		o.MediaImageUri = &MediaImageUri
+	}
+	
+	if WaveformData, ok := VoicemailmediainfoMap["waveformData"].([]interface{}); ok {
+		WaveformDataString, _ := json.Marshal(WaveformData)
+		json.Unmarshal(WaveformDataString, &o.WaveformData)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

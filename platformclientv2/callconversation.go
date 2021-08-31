@@ -37,13 +37,11 @@ type Callconversation struct {
 
 }
 
-func (u *Callconversation) MarshalJSON() ([]byte, error) {
+func (o *Callconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,63 @@ func (u *Callconversation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
+		OtherMediaUris: o.OtherMediaUris,
 		
-		RecordingState: u.RecordingState,
+		RecordingState: o.RecordingState,
 		
-		MaxParticipants: u.MaxParticipants,
+		MaxParticipants: o.MaxParticipants,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callconversation) UnmarshalJSON(b []byte) error {
+	var CallconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &CallconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CallconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CallconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := CallconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := CallconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+	if RecordingState, ok := CallconversationMap["recordingState"].(string); ok {
+		o.RecordingState = &RecordingState
+	}
+	
+	if MaxParticipants, ok := CallconversationMap["maxParticipants"].(float64); ok {
+		MaxParticipantsInt := int(MaxParticipants)
+		o.MaxParticipants = &MaxParticipantsInt
+	}
+	
+	if SelfUri, ok := CallconversationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Streetaddress struct {
 
 }
 
-func (u *Streetaddress) MarshalJSON() ([]byte, error) {
+func (o *Streetaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Streetaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Country *string `json:"country,omitempty"`
 		
@@ -66,23 +64,66 @@ func (u *Streetaddress) MarshalJSON() ([]byte, error) {
 		PC *string `json:"PC,omitempty"`
 		*Alias
 	}{ 
-		Country: u.Country,
+		Country: o.Country,
 		
-		A1: u.A1,
+		A1: o.A1,
 		
-		A3: u.A3,
+		A3: o.A3,
 		
-		RD: u.RD,
+		RD: o.RD,
 		
-		HNO: u.HNO,
+		HNO: o.HNO,
 		
-		LOC: u.LOC,
+		LOC: o.LOC,
 		
-		NAM: u.NAM,
+		NAM: o.NAM,
 		
-		PC: u.PC,
-		Alias:    (*Alias)(u),
+		PC: o.PC,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Streetaddress) UnmarshalJSON(b []byte) error {
+	var StreetaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &StreetaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Country, ok := StreetaddressMap["country"].(string); ok {
+		o.Country = &Country
+	}
+	
+	if A1, ok := StreetaddressMap["A1"].(string); ok {
+		o.A1 = &A1
+	}
+	
+	if A3, ok := StreetaddressMap["A3"].(string); ok {
+		o.A3 = &A3
+	}
+	
+	if RD, ok := StreetaddressMap["RD"].(string); ok {
+		o.RD = &RD
+	}
+	
+	if HNO, ok := StreetaddressMap["HNO"].(string); ok {
+		o.HNO = &HNO
+	}
+	
+	if LOC, ok := StreetaddressMap["LOC"].(string); ok {
+		o.LOC = &LOC
+	}
+	
+	if NAM, ok := StreetaddressMap["NAM"].(string); ok {
+		o.NAM = &NAM
+	}
+	
+	if PC, ok := StreetaddressMap["PC"].(string); ok {
+		o.PC = &PC
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

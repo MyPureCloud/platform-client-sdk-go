@@ -29,13 +29,11 @@ type Observationmetricdata struct {
 
 }
 
-func (u *Observationmetricdata) MarshalJSON() ([]byte, error) {
+func (o *Observationmetricdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Observationmetricdata
-
 	
-
 	return json.Marshal(&struct { 
 		Metric *string `json:"metric,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Observationmetricdata) MarshalJSON() ([]byte, error) {
 		Observations *[]Observationvalue `json:"observations,omitempty"`
 		*Alias
 	}{ 
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Qualifier: u.Qualifier,
+		Qualifier: o.Qualifier,
 		
-		Stats: u.Stats,
+		Stats: o.Stats,
 		
-		Truncated: u.Truncated,
+		Truncated: o.Truncated,
 		
-		Observations: u.Observations,
-		Alias:    (*Alias)(u),
+		Observations: o.Observations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Observationmetricdata) UnmarshalJSON(b []byte) error {
+	var ObservationmetricdataMap map[string]interface{}
+	err := json.Unmarshal(b, &ObservationmetricdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metric, ok := ObservationmetricdataMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Qualifier, ok := ObservationmetricdataMap["qualifier"].(string); ok {
+		o.Qualifier = &Qualifier
+	}
+	
+	if Stats, ok := ObservationmetricdataMap["stats"].(map[string]interface{}); ok {
+		StatsString, _ := json.Marshal(Stats)
+		json.Unmarshal(StatsString, &o.Stats)
+	}
+	
+	if Truncated, ok := ObservationmetricdataMap["truncated"].(bool); ok {
+		o.Truncated = &Truncated
+	}
+	
+	if Observations, ok := ObservationmetricdataMap["observations"].([]interface{}); ok {
+		ObservationsString, _ := json.Marshal(Observations)
+		json.Unmarshal(ObservationsString, &o.Observations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

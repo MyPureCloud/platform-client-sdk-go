@@ -17,24 +17,42 @@ type Searchshifttradesrequest struct {
 
 }
 
-func (u *Searchshifttradesrequest) MarshalJSON() ([]byte, error) {
+func (o *Searchshifttradesrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Searchshifttradesrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ReceivingScheduleId *string `json:"receivingScheduleId,omitempty"`
 		
 		ReceivingShiftIds *[]string `json:"receivingShiftIds,omitempty"`
 		*Alias
 	}{ 
-		ReceivingScheduleId: u.ReceivingScheduleId,
+		ReceivingScheduleId: o.ReceivingScheduleId,
 		
-		ReceivingShiftIds: u.ReceivingShiftIds,
-		Alias:    (*Alias)(u),
+		ReceivingShiftIds: o.ReceivingShiftIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Searchshifttradesrequest) UnmarshalJSON(b []byte) error {
+	var SearchshifttradesrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SearchshifttradesrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ReceivingScheduleId, ok := SearchshifttradesrequestMap["receivingScheduleId"].(string); ok {
+		o.ReceivingScheduleId = &ReceivingScheduleId
+	}
+	
+	if ReceivingShiftIds, ok := SearchshifttradesrequestMap["receivingShiftIds"].([]interface{}); ok {
+		ReceivingShiftIdsString, _ := json.Marshal(ReceivingShiftIds)
+		json.Unmarshal(ReceivingShiftIdsString, &o.ReceivingShiftIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

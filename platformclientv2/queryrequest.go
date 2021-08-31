@@ -41,13 +41,11 @@ type Queryrequest struct {
 
 }
 
-func (u *Queryrequest) MarshalJSON() ([]byte, error) {
+func (o *Queryrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queryrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueryPhrase *string `json:"queryPhrase,omitempty"`
 		
@@ -66,23 +64,72 @@ func (u *Queryrequest) MarshalJSON() ([]byte, error) {
 		IncludeShares *bool `json:"includeShares,omitempty"`
 		*Alias
 	}{ 
-		QueryPhrase: u.QueryPhrase,
+		QueryPhrase: o.QueryPhrase,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		FacetNameRequests: u.FacetNameRequests,
+		FacetNameRequests: o.FacetNameRequests,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		Filters: u.Filters,
+		Filters: o.Filters,
 		
-		AttributeFilters: u.AttributeFilters,
+		AttributeFilters: o.AttributeFilters,
 		
-		IncludeShares: u.IncludeShares,
-		Alias:    (*Alias)(u),
+		IncludeShares: o.IncludeShares,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queryrequest) UnmarshalJSON(b []byte) error {
+	var QueryrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &QueryrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueryPhrase, ok := QueryrequestMap["queryPhrase"].(string); ok {
+		o.QueryPhrase = &QueryPhrase
+	}
+	
+	if PageNumber, ok := QueryrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PageSize, ok := QueryrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if FacetNameRequests, ok := QueryrequestMap["facetNameRequests"].([]interface{}); ok {
+		FacetNameRequestsString, _ := json.Marshal(FacetNameRequests)
+		json.Unmarshal(FacetNameRequestsString, &o.FacetNameRequests)
+	}
+	
+	if Sort, ok := QueryrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if Filters, ok := QueryrequestMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if AttributeFilters, ok := QueryrequestMap["attributeFilters"].([]interface{}); ok {
+		AttributeFiltersString, _ := json.Marshal(AttributeFilters)
+		json.Unmarshal(AttributeFiltersString, &o.AttributeFilters)
+	}
+	
+	if IncludeShares, ok := QueryrequestMap["includeShares"].(bool); ok {
+		o.IncludeShares = &IncludeShares
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Trunkbaseassignment struct {
 
 }
 
-func (u *Trunkbaseassignment) MarshalJSON() ([]byte, error) {
+func (o *Trunkbaseassignment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkbaseassignment
-
 	
-
 	return json.Marshal(&struct { 
 		Family *int `json:"family,omitempty"`
 		
 		TrunkBase *Trunkbase `json:"trunkBase,omitempty"`
 		*Alias
 	}{ 
-		Family: u.Family,
+		Family: o.Family,
 		
-		TrunkBase: u.TrunkBase,
-		Alias:    (*Alias)(u),
+		TrunkBase: o.TrunkBase,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkbaseassignment) UnmarshalJSON(b []byte) error {
+	var TrunkbaseassignmentMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkbaseassignmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Family, ok := TrunkbaseassignmentMap["family"].(float64); ok {
+		FamilyInt := int(Family)
+		o.Family = &FamilyInt
+	}
+	
+	if TrunkBase, ok := TrunkbaseassignmentMap["trunkBase"].(map[string]interface{}); ok {
+		TrunkBaseString, _ := json.Marshal(TrunkBase)
+		json.Unmarshal(TrunkBaseString, &o.TrunkBase)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

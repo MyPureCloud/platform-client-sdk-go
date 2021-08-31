@@ -21,13 +21,11 @@ type Agentmanagementunitreference struct {
 
 }
 
-func (u *Agentmanagementunitreference) MarshalJSON() ([]byte, error) {
+func (o *Agentmanagementunitreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentmanagementunitreference
-
 	
-
 	return json.Marshal(&struct { 
 		User *Userreference `json:"user,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Agentmanagementunitreference) MarshalJSON() ([]byte, error) {
 		BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		ManagementUnit: u.ManagementUnit,
+		ManagementUnit: o.ManagementUnit,
 		
-		BusinessUnit: u.BusinessUnit,
-		Alias:    (*Alias)(u),
+		BusinessUnit: o.BusinessUnit,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agentmanagementunitreference) UnmarshalJSON(b []byte) error {
+	var AgentmanagementunitreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentmanagementunitreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := AgentmanagementunitreferenceMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if ManagementUnit, ok := AgentmanagementunitreferenceMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if BusinessUnit, ok := AgentmanagementunitreferenceMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

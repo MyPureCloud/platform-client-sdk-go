@@ -50,29 +50,27 @@ type Datatableexportjob struct {
 
 }
 
-func (u *Datatableexportjob) MarshalJSON() ([]byte, error) {
+func (o *Datatableexportjob) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Datatableexportjob
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,83 @@ func (u *Datatableexportjob) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Owner: u.Owner,
+		Owner: o.Owner,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		DateCreated: DateCreated,
 		
 		DateCompleted: DateCompleted,
 		
-		DownloadURI: u.DownloadURI,
+		DownloadURI: o.DownloadURI,
 		
-		ErrorInformation: u.ErrorInformation,
+		ErrorInformation: o.ErrorInformation,
 		
-		CountRecordsProcessed: u.CountRecordsProcessed,
+		CountRecordsProcessed: o.CountRecordsProcessed,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Datatableexportjob) UnmarshalJSON(b []byte) error {
+	var DatatableexportjobMap map[string]interface{}
+	err := json.Unmarshal(b, &DatatableexportjobMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DatatableexportjobMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DatatableexportjobMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Owner, ok := DatatableexportjobMap["owner"].(map[string]interface{}); ok {
+		OwnerString, _ := json.Marshal(Owner)
+		json.Unmarshal(OwnerString, &o.Owner)
+	}
+	
+	if Status, ok := DatatableexportjobMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if dateCreatedString, ok := DatatableexportjobMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateCompletedString, ok := DatatableexportjobMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if DownloadURI, ok := DatatableexportjobMap["downloadURI"].(string); ok {
+		o.DownloadURI = &DownloadURI
+	}
+	
+	if ErrorInformation, ok := DatatableexportjobMap["errorInformation"].(map[string]interface{}); ok {
+		ErrorInformationString, _ := json.Marshal(ErrorInformation)
+		json.Unmarshal(ErrorInformationString, &o.ErrorInformation)
+	}
+	
+	if CountRecordsProcessed, ok := DatatableexportjobMap["countRecordsProcessed"].(float64); ok {
+		CountRecordsProcessedInt := int(CountRecordsProcessed)
+		o.CountRecordsProcessed = &CountRecordsProcessedInt
+	}
+	
+	if SelfUri, ok := DatatableexportjobMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

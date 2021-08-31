@@ -25,13 +25,11 @@ type Criteria struct {
 
 }
 
-func (u *Criteria) MarshalJSON() ([]byte, error) {
+func (o *Criteria) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Criteria
-
 	
-
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Criteria) MarshalJSON() ([]byte, error) {
 		Operator *string `json:"operator,omitempty"`
 		*Alias
 	}{ 
-		Key: u.Key,
+		Key: o.Key,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		ShouldIgnoreCase: u.ShouldIgnoreCase,
+		ShouldIgnoreCase: o.ShouldIgnoreCase,
 		
-		Operator: u.Operator,
-		Alias:    (*Alias)(u),
+		Operator: o.Operator,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Criteria) UnmarshalJSON(b []byte) error {
+	var CriteriaMap map[string]interface{}
+	err := json.Unmarshal(b, &CriteriaMap)
+	if err != nil {
+		return err
+	}
+	
+	if Key, ok := CriteriaMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Values, ok := CriteriaMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if ShouldIgnoreCase, ok := CriteriaMap["shouldIgnoreCase"].(bool); ok {
+		o.ShouldIgnoreCase = &ShouldIgnoreCase
+	}
+	
+	if Operator, ok := CriteriaMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

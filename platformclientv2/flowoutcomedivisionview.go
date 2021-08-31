@@ -25,13 +25,11 @@ type Flowoutcomedivisionview struct {
 
 }
 
-func (u *Flowoutcomedivisionview) MarshalJSON() ([]byte, error) {
+func (o *Flowoutcomedivisionview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowoutcomedivisionview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Flowoutcomedivisionview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowoutcomedivisionview) UnmarshalJSON(b []byte) error {
+	var FlowoutcomedivisionviewMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowoutcomedivisionviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FlowoutcomedivisionviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FlowoutcomedivisionviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := FlowoutcomedivisionviewMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if SelfUri, ok := FlowoutcomedivisionviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

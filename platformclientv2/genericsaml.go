@@ -65,13 +65,11 @@ type Genericsaml struct {
 
 }
 
-func (u *Genericsaml) MarshalJSON() ([]byte, error) {
+func (o *Genericsaml) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Genericsaml
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,103 @@ func (u *Genericsaml) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		IssuerURI: u.IssuerURI,
+		IssuerURI: o.IssuerURI,
 		
-		SsoTargetURI: u.SsoTargetURI,
+		SsoTargetURI: o.SsoTargetURI,
 		
-		SloURI: u.SloURI,
+		SloURI: o.SloURI,
 		
-		SloBinding: u.SloBinding,
+		SloBinding: o.SloBinding,
 		
-		Certificate: u.Certificate,
+		Certificate: o.Certificate,
 		
-		Certificates: u.Certificates,
+		Certificates: o.Certificates,
 		
-		RelyingPartyIdentifier: u.RelyingPartyIdentifier,
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
-		LogoImageData: u.LogoImageData,
+		LogoImageData: o.LogoImageData,
 		
-		EndpointCompression: u.EndpointCompression,
+		EndpointCompression: o.EndpointCompression,
 		
-		NameIdentifierFormat: u.NameIdentifierFormat,
+		NameIdentifierFormat: o.NameIdentifierFormat,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Genericsaml) UnmarshalJSON(b []byte) error {
+	var GenericsamlMap map[string]interface{}
+	err := json.Unmarshal(b, &GenericsamlMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GenericsamlMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := GenericsamlMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := GenericsamlMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if IssuerURI, ok := GenericsamlMap["issuerURI"].(string); ok {
+		o.IssuerURI = &IssuerURI
+	}
+	
+	if SsoTargetURI, ok := GenericsamlMap["ssoTargetURI"].(string); ok {
+		o.SsoTargetURI = &SsoTargetURI
+	}
+	
+	if SloURI, ok := GenericsamlMap["sloURI"].(string); ok {
+		o.SloURI = &SloURI
+	}
+	
+	if SloBinding, ok := GenericsamlMap["sloBinding"].(string); ok {
+		o.SloBinding = &SloBinding
+	}
+	
+	if Certificate, ok := GenericsamlMap["certificate"].(string); ok {
+		o.Certificate = &Certificate
+	}
+	
+	if Certificates, ok := GenericsamlMap["certificates"].([]interface{}); ok {
+		CertificatesString, _ := json.Marshal(Certificates)
+		json.Unmarshal(CertificatesString, &o.Certificates)
+	}
+	
+	if RelyingPartyIdentifier, ok := GenericsamlMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
+	}
+	
+	if LogoImageData, ok := GenericsamlMap["logoImageData"].(string); ok {
+		o.LogoImageData = &LogoImageData
+	}
+	
+	if EndpointCompression, ok := GenericsamlMap["endpointCompression"].(bool); ok {
+		o.EndpointCompression = &EndpointCompression
+	}
+	
+	if NameIdentifierFormat, ok := GenericsamlMap["nameIdentifierFormat"].(string); ok {
+		o.NameIdentifierFormat = &NameIdentifierFormat
+	}
+	
+	if SelfUri, ok := GenericsamlMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

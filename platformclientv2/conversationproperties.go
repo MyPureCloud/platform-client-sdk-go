@@ -53,13 +53,11 @@ type Conversationproperties struct {
 
 }
 
-func (u *Conversationproperties) MarshalJSON() ([]byte, error) {
+func (o *Conversationproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationproperties
-
 	
-
 	return json.Marshal(&struct { 
 		IsWaiting *bool `json:"isWaiting,omitempty"`
 		
@@ -84,29 +82,84 @@ func (u *Conversationproperties) MarshalJSON() ([]byte, error) {
 		MatchAll *bool `json:"matchAll,omitempty"`
 		*Alias
 	}{ 
-		IsWaiting: u.IsWaiting,
+		IsWaiting: o.IsWaiting,
 		
-		IsActive: u.IsActive,
+		IsActive: o.IsActive,
 		
-		IsAcd: u.IsAcd,
+		IsAcd: o.IsAcd,
 		
-		IsPreferred: u.IsPreferred,
+		IsPreferred: o.IsPreferred,
 		
-		IsScreenshare: u.IsScreenshare,
+		IsScreenshare: o.IsScreenshare,
 		
-		IsCobrowse: u.IsCobrowse,
+		IsCobrowse: o.IsCobrowse,
 		
-		IsVoicemail: u.IsVoicemail,
+		IsVoicemail: o.IsVoicemail,
 		
-		IsFlagged: u.IsFlagged,
+		IsFlagged: o.IsFlagged,
 		
-		IsMonitored: u.IsMonitored,
+		IsMonitored: o.IsMonitored,
 		
-		FilterWrapUpNotes: u.FilterWrapUpNotes,
+		FilterWrapUpNotes: o.FilterWrapUpNotes,
 		
-		MatchAll: u.MatchAll,
-		Alias:    (*Alias)(u),
+		MatchAll: o.MatchAll,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationproperties) UnmarshalJSON(b []byte) error {
+	var ConversationpropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationpropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if IsWaiting, ok := ConversationpropertiesMap["isWaiting"].(bool); ok {
+		o.IsWaiting = &IsWaiting
+	}
+	
+	if IsActive, ok := ConversationpropertiesMap["isActive"].(bool); ok {
+		o.IsActive = &IsActive
+	}
+	
+	if IsAcd, ok := ConversationpropertiesMap["isAcd"].(bool); ok {
+		o.IsAcd = &IsAcd
+	}
+	
+	if IsPreferred, ok := ConversationpropertiesMap["isPreferred"].(bool); ok {
+		o.IsPreferred = &IsPreferred
+	}
+	
+	if IsScreenshare, ok := ConversationpropertiesMap["isScreenshare"].(bool); ok {
+		o.IsScreenshare = &IsScreenshare
+	}
+	
+	if IsCobrowse, ok := ConversationpropertiesMap["isCobrowse"].(bool); ok {
+		o.IsCobrowse = &IsCobrowse
+	}
+	
+	if IsVoicemail, ok := ConversationpropertiesMap["isVoicemail"].(bool); ok {
+		o.IsVoicemail = &IsVoicemail
+	}
+	
+	if IsFlagged, ok := ConversationpropertiesMap["isFlagged"].(bool); ok {
+		o.IsFlagged = &IsFlagged
+	}
+	
+	if IsMonitored, ok := ConversationpropertiesMap["isMonitored"].(bool); ok {
+		o.IsMonitored = &IsMonitored
+	}
+	
+	if FilterWrapUpNotes, ok := ConversationpropertiesMap["filterWrapUpNotes"].(bool); ok {
+		o.FilterWrapUpNotes = &FilterWrapUpNotes
+	}
+	
+	if MatchAll, ok := ConversationpropertiesMap["matchAll"].(bool); ok {
+		o.MatchAll = &MatchAll
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

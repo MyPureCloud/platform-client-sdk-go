@@ -45,13 +45,11 @@ type Locationssearchresponse struct {
 
 }
 
-func (u *Locationssearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Locationssearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationssearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -72,25 +70,78 @@ func (u *Locationssearchresponse) MarshalJSON() ([]byte, error) {
 		Results *[]Locationdefinition `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PreviousPage: u.PreviousPage,
+		PreviousPage: o.PreviousPage,
 		
-		CurrentPage: u.CurrentPage,
+		CurrentPage: o.CurrentPage,
 		
-		NextPage: u.NextPage,
+		NextPage: o.NextPage,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationssearchresponse) UnmarshalJSON(b []byte) error {
+	var LocationssearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationssearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := LocationssearchresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := LocationssearchresponseMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if PageSize, ok := LocationssearchresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := LocationssearchresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PreviousPage, ok := LocationssearchresponseMap["previousPage"].(string); ok {
+		o.PreviousPage = &PreviousPage
+	}
+	
+	if CurrentPage, ok := LocationssearchresponseMap["currentPage"].(string); ok {
+		o.CurrentPage = &CurrentPage
+	}
+	
+	if NextPage, ok := LocationssearchresponseMap["nextPage"].(string); ok {
+		o.NextPage = &NextPage
+	}
+	
+	if Types, ok := LocationssearchresponseMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if Results, ok := LocationssearchresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

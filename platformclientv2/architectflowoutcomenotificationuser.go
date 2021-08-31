@@ -21,13 +21,11 @@ type Architectflowoutcomenotificationuser struct {
 
 }
 
-func (u *Architectflowoutcomenotificationuser) MarshalJSON() ([]byte, error) {
+func (o *Architectflowoutcomenotificationuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflowoutcomenotificationuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Architectflowoutcomenotificationuser) MarshalJSON() ([]byte, error) {
 		HomeOrg *Architectflowoutcomenotificationhomeorganization `json:"homeOrg,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		HomeOrg: u.HomeOrg,
-		Alias:    (*Alias)(u),
+		HomeOrg: o.HomeOrg,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflowoutcomenotificationuser) UnmarshalJSON(b []byte) error {
+	var ArchitectflowoutcomenotificationuserMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflowoutcomenotificationuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectflowoutcomenotificationuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ArchitectflowoutcomenotificationuserMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if HomeOrg, ok := ArchitectflowoutcomenotificationuserMap["homeOrg"].(map[string]interface{}); ok {
+		HomeOrgString, _ := json.Marshal(HomeOrg)
+		json.Unmarshal(HomeOrgString, &o.HomeOrg)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -37,13 +37,11 @@ type Textbotflowturnresponse struct {
 
 }
 
-func (u *Textbotflowturnresponse) MarshalJSON() ([]byte, error) {
+func (o *Textbotflowturnresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotflowturnresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,65 @@ func (u *Textbotflowturnresponse) MarshalJSON() ([]byte, error) {
 		NextActionExit *Textbotexitaction `json:"nextActionExit,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		PreviousTurn: u.PreviousTurn,
+		PreviousTurn: o.PreviousTurn,
 		
-		Prompts: u.Prompts,
+		Prompts: o.Prompts,
 		
-		NextActionType: u.NextActionType,
+		NextActionType: o.NextActionType,
 		
-		NextActionDisconnect: u.NextActionDisconnect,
+		NextActionDisconnect: o.NextActionDisconnect,
 		
-		NextActionWaitForInput: u.NextActionWaitForInput,
+		NextActionWaitForInput: o.NextActionWaitForInput,
 		
-		NextActionExit: u.NextActionExit,
-		Alias:    (*Alias)(u),
+		NextActionExit: o.NextActionExit,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotflowturnresponse) UnmarshalJSON(b []byte) error {
+	var TextbotflowturnresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotflowturnresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TextbotflowturnresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if PreviousTurn, ok := TextbotflowturnresponseMap["previousTurn"].(map[string]interface{}); ok {
+		PreviousTurnString, _ := json.Marshal(PreviousTurn)
+		json.Unmarshal(PreviousTurnString, &o.PreviousTurn)
+	}
+	
+	if Prompts, ok := TextbotflowturnresponseMap["prompts"].(map[string]interface{}); ok {
+		PromptsString, _ := json.Marshal(Prompts)
+		json.Unmarshal(PromptsString, &o.Prompts)
+	}
+	
+	if NextActionType, ok := TextbotflowturnresponseMap["nextActionType"].(string); ok {
+		o.NextActionType = &NextActionType
+	}
+	
+	if NextActionDisconnect, ok := TextbotflowturnresponseMap["nextActionDisconnect"].(map[string]interface{}); ok {
+		NextActionDisconnectString, _ := json.Marshal(NextActionDisconnect)
+		json.Unmarshal(NextActionDisconnectString, &o.NextActionDisconnect)
+	}
+	
+	if NextActionWaitForInput, ok := TextbotflowturnresponseMap["nextActionWaitForInput"].(map[string]interface{}); ok {
+		NextActionWaitForInputString, _ := json.Marshal(NextActionWaitForInput)
+		json.Unmarshal(NextActionWaitForInputString, &o.NextActionWaitForInput)
+	}
+	
+	if NextActionExit, ok := TextbotflowturnresponseMap["nextActionExit"].(map[string]interface{}); ok {
+		NextActionExitString, _ := json.Marshal(NextActionExit)
+		json.Unmarshal(NextActionExitString, &o.NextActionExit)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

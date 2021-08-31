@@ -29,13 +29,11 @@ type Transcriptiontopictranscriptalternative struct {
 
 }
 
-func (u *Transcriptiontopictranscriptalternative) MarshalJSON() ([]byte, error) {
+func (o *Transcriptiontopictranscriptalternative) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptiontopictranscriptalternative
-
 	
-
 	return json.Marshal(&struct { 
 		Confidence *float32 `json:"confidence,omitempty"`
 		
@@ -48,17 +46,52 @@ func (u *Transcriptiontopictranscriptalternative) MarshalJSON() ([]byte, error) 
 		Words *[]Transcriptiontopictranscriptword `json:"words,omitempty"`
 		*Alias
 	}{ 
-		Confidence: u.Confidence,
+		Confidence: o.Confidence,
 		
-		OffsetMs: u.OffsetMs,
+		OffsetMs: o.OffsetMs,
 		
-		DurationMs: u.DurationMs,
+		DurationMs: o.DurationMs,
 		
-		Transcript: u.Transcript,
+		Transcript: o.Transcript,
 		
-		Words: u.Words,
-		Alias:    (*Alias)(u),
+		Words: o.Words,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptiontopictranscriptalternative) UnmarshalJSON(b []byte) error {
+	var TranscriptiontopictranscriptalternativeMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptiontopictranscriptalternativeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Confidence, ok := TranscriptiontopictranscriptalternativeMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
+	if OffsetMs, ok := TranscriptiontopictranscriptalternativeMap["offsetMs"].(float64); ok {
+		OffsetMsInt := int(OffsetMs)
+		o.OffsetMs = &OffsetMsInt
+	}
+	
+	if DurationMs, ok := TranscriptiontopictranscriptalternativeMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
+	}
+	
+	if Transcript, ok := TranscriptiontopictranscriptalternativeMap["transcript"].(string); ok {
+		o.Transcript = &Transcript
+	}
+	
+	if Words, ok := TranscriptiontopictranscriptalternativeMap["words"].([]interface{}); ok {
+		WordsString, _ := json.Marshal(Words)
+		json.Unmarshal(WordsString, &o.Words)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

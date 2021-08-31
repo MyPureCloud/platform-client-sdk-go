@@ -13,20 +13,33 @@ type Articlecontentbody struct {
 
 }
 
-func (u *Articlecontentbody) MarshalJSON() ([]byte, error) {
+func (o *Articlecontentbody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Articlecontentbody
-
 	
-
 	return json.Marshal(&struct { 
 		LocationUrl *string `json:"locationUrl,omitempty"`
 		*Alias
 	}{ 
-		LocationUrl: u.LocationUrl,
-		Alias:    (*Alias)(u),
+		LocationUrl: o.LocationUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Articlecontentbody) UnmarshalJSON(b []byte) error {
+	var ArticlecontentbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &ArticlecontentbodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if LocationUrl, ok := ArticlecontentbodyMap["locationUrl"].(string); ok {
+		o.LocationUrl = &LocationUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

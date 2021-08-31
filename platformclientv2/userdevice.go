@@ -49,13 +49,11 @@ type Userdevice struct {
 
 }
 
-func (u *Userdevice) MarshalJSON() ([]byte, error) {
+func (o *Userdevice) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userdevice
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,78 @@ func (u *Userdevice) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		DeviceToken: u.DeviceToken,
+		DeviceToken: o.DeviceToken,
 		
-		NotificationId: u.NotificationId,
+		NotificationId: o.NotificationId,
 		
-		Make: u.Make,
+		Make: o.Make,
 		
-		Model: u.Model,
+		Model: o.Model,
 		
-		AcceptNotifications: u.AcceptNotifications,
+		AcceptNotifications: o.AcceptNotifications,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		SessionHash: u.SessionHash,
+		SessionHash: o.SessionHash,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userdevice) UnmarshalJSON(b []byte) error {
+	var UserdeviceMap map[string]interface{}
+	err := json.Unmarshal(b, &UserdeviceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserdeviceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserdeviceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if DeviceToken, ok := UserdeviceMap["deviceToken"].(string); ok {
+		o.DeviceToken = &DeviceToken
+	}
+	
+	if NotificationId, ok := UserdeviceMap["notificationId"].(string); ok {
+		o.NotificationId = &NotificationId
+	}
+	
+	if Make, ok := UserdeviceMap["make"].(string); ok {
+		o.Make = &Make
+	}
+	
+	if Model, ok := UserdeviceMap["model"].(string); ok {
+		o.Model = &Model
+	}
+	
+	if AcceptNotifications, ok := UserdeviceMap["acceptNotifications"].(bool); ok {
+		o.AcceptNotifications = &AcceptNotifications
+	}
+	
+	if VarType, ok := UserdeviceMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if SessionHash, ok := UserdeviceMap["sessionHash"].(string); ok {
+		o.SessionHash = &SessionHash
+	}
+	
+	if SelfUri, ok := UserdeviceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

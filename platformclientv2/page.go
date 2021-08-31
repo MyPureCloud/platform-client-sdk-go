@@ -42,29 +42,27 @@ type Page struct {
 
 }
 
-func (u *Page) MarshalJSON() ([]byte, error) {
+func (o *Page) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Page
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -83,23 +81,70 @@ func (u *Page) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VersionId: u.VersionId,
+		VersionId: o.VersionId,
 		
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
 		
-		RootContainer: u.RootContainer,
+		RootContainer: o.RootContainer,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Page) UnmarshalJSON(b []byte) error {
+	var PageMap map[string]interface{}
+	err := json.Unmarshal(b, &PageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VersionId, ok := PageMap["versionId"].(string); ok {
+		o.VersionId = &VersionId
+	}
+	
+	if createdDateString, ok := PageMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := PageMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if RootContainer, ok := PageMap["rootContainer"].(map[string]interface{}); ok {
+		RootContainerString, _ := json.Marshal(RootContainer)
+		json.Unmarshal(RootContainerString, &o.RootContainer)
+	}
+	
+	if Properties, ok := PageMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if SelfUri, ok := PageMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Itemvalidationlimits struct {
 
 }
 
-func (u *Itemvalidationlimits) MarshalJSON() ([]byte, error) {
+func (o *Itemvalidationlimits) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Itemvalidationlimits
-
 	
-
 	return json.Marshal(&struct { 
 		MinLength *Minlength `json:"minLength,omitempty"`
 		
 		MaxLength *Maxlength `json:"maxLength,omitempty"`
 		*Alias
 	}{ 
-		MinLength: u.MinLength,
+		MinLength: o.MinLength,
 		
-		MaxLength: u.MaxLength,
-		Alias:    (*Alias)(u),
+		MaxLength: o.MaxLength,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Itemvalidationlimits) UnmarshalJSON(b []byte) error {
+	var ItemvalidationlimitsMap map[string]interface{}
+	err := json.Unmarshal(b, &ItemvalidationlimitsMap)
+	if err != nil {
+		return err
+	}
+	
+	if MinLength, ok := ItemvalidationlimitsMap["minLength"].(map[string]interface{}); ok {
+		MinLengthString, _ := json.Marshal(MinLength)
+		json.Unmarshal(MinLengthString, &o.MinLength)
+	}
+	
+	if MaxLength, ok := ItemvalidationlimitsMap["maxLength"].(map[string]interface{}); ok {
+		MaxLengthString, _ := json.Marshal(MaxLength)
+		json.Unmarshal(MaxLengthString, &o.MaxLength)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

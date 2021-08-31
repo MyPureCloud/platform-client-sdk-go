@@ -37,13 +37,11 @@ type Usergreetingeventgreeting struct {
 
 }
 
-func (u *Usergreetingeventgreeting) MarshalJSON() ([]byte, error) {
+func (o *Usergreetingeventgreeting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Usergreetingeventgreeting
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Usergreetingeventgreeting) MarshalJSON() ([]byte, error) {
 		AudioTTS *string `json:"audioTTS,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		OwnerType: u.OwnerType,
+		OwnerType: o.OwnerType,
 		
-		Owner: u.Owner,
+		Owner: o.Owner,
 		
-		GreetingAudioFile: u.GreetingAudioFile,
+		GreetingAudioFile: o.GreetingAudioFile,
 		
-		AudioTTS: u.AudioTTS,
-		Alias:    (*Alias)(u),
+		AudioTTS: o.AudioTTS,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Usergreetingeventgreeting) UnmarshalJSON(b []byte) error {
+	var UsergreetingeventgreetingMap map[string]interface{}
+	err := json.Unmarshal(b, &UsergreetingeventgreetingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UsergreetingeventgreetingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UsergreetingeventgreetingMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := UsergreetingeventgreetingMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if OwnerType, ok := UsergreetingeventgreetingMap["ownerType"].(string); ok {
+		o.OwnerType = &OwnerType
+	}
+	
+	if Owner, ok := UsergreetingeventgreetingMap["owner"].(map[string]interface{}); ok {
+		OwnerString, _ := json.Marshal(Owner)
+		json.Unmarshal(OwnerString, &o.Owner)
+	}
+	
+	if GreetingAudioFile, ok := UsergreetingeventgreetingMap["greetingAudioFile"].(map[string]interface{}); ok {
+		GreetingAudioFileString, _ := json.Marshal(GreetingAudioFile)
+		json.Unmarshal(GreetingAudioFileString, &o.GreetingAudioFile)
+	}
+	
+	if AudioTTS, ok := UsergreetingeventgreetingMap["audioTTS"].(string); ok {
+		o.AudioTTS = &AudioTTS
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

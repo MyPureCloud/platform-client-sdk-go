@@ -33,13 +33,11 @@ type Connectededge struct {
 
 }
 
-func (u *Connectededge) MarshalJSON() ([]byte, error) {
+func (o *Connectededge) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Connectededge
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Connectededge) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		InterfaceName: u.InterfaceName,
+		InterfaceName: o.InterfaceName,
 		
-		InterfaceIpAddress: u.InterfaceIpAddress,
+		InterfaceIpAddress: o.InterfaceIpAddress,
 		
-		EdgeConnectionList: u.EdgeConnectionList,
+		EdgeConnectionList: o.EdgeConnectionList,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Connectededge) UnmarshalJSON(b []byte) error {
+	var ConnectededgeMap map[string]interface{}
+	err := json.Unmarshal(b, &ConnectededgeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConnectededgeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConnectededgeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if InterfaceName, ok := ConnectededgeMap["interfaceName"].(string); ok {
+		o.InterfaceName = &InterfaceName
+	}
+	
+	if InterfaceIpAddress, ok := ConnectededgeMap["interfaceIpAddress"].(string); ok {
+		o.InterfaceIpAddress = &InterfaceIpAddress
+	}
+	
+	if EdgeConnectionList, ok := ConnectededgeMap["edgeConnectionList"].([]interface{}); ok {
+		EdgeConnectionListString, _ := json.Marshal(EdgeConnectionList)
+		json.Unmarshal(EdgeConnectionListString, &o.EdgeConnectionList)
+	}
+	
+	if SelfUri, ok := ConnectededgeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

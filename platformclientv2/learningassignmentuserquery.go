@@ -17,24 +17,42 @@ type Learningassignmentuserquery struct {
 
 }
 
-func (u *Learningassignmentuserquery) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentuserquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentuserquery
-
 	
-
 	return json.Marshal(&struct { 
 		Rule *Learningmodulerule `json:"rule,omitempty"`
 		
 		SearchTerm *string `json:"searchTerm,omitempty"`
 		*Alias
 	}{ 
-		Rule: u.Rule,
+		Rule: o.Rule,
 		
-		SearchTerm: u.SearchTerm,
-		Alias:    (*Alias)(u),
+		SearchTerm: o.SearchTerm,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentuserquery) UnmarshalJSON(b []byte) error {
+	var LearningassignmentuserqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentuserqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Rule, ok := LearningassignmentuserqueryMap["rule"].(map[string]interface{}); ok {
+		RuleString, _ := json.Marshal(Rule)
+		json.Unmarshal(RuleString, &o.Rule)
+	}
+	
+	if SearchTerm, ok := LearningassignmentuserqueryMap["searchTerm"].(string); ok {
+		o.SearchTerm = &SearchTerm
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

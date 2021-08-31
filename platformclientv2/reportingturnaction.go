@@ -25,13 +25,11 @@ type Reportingturnaction struct {
 
 }
 
-func (u *Reportingturnaction) MarshalJSON() ([]byte, error) {
+func (o *Reportingturnaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingturnaction
-
 	
-
 	return json.Marshal(&struct { 
 		ActionId *string `json:"actionId,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Reportingturnaction) MarshalJSON() ([]byte, error) {
 		ActionType *string `json:"actionType,omitempty"`
 		*Alias
 	}{ 
-		ActionId: u.ActionId,
+		ActionId: o.ActionId,
 		
-		ActionName: u.ActionName,
+		ActionName: o.ActionName,
 		
-		ActionNumber: u.ActionNumber,
+		ActionNumber: o.ActionNumber,
 		
-		ActionType: u.ActionType,
-		Alias:    (*Alias)(u),
+		ActionType: o.ActionType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingturnaction) UnmarshalJSON(b []byte) error {
+	var ReportingturnactionMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingturnactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActionId, ok := ReportingturnactionMap["actionId"].(string); ok {
+		o.ActionId = &ActionId
+	}
+	
+	if ActionName, ok := ReportingturnactionMap["actionName"].(string); ok {
+		o.ActionName = &ActionName
+	}
+	
+	if ActionNumber, ok := ReportingturnactionMap["actionNumber"].(float64); ok {
+		ActionNumberInt := int(ActionNumber)
+		o.ActionNumber = &ActionNumberInt
+	}
+	
+	if ActionType, ok := ReportingturnactionMap["actionType"].(string); ok {
+		o.ActionType = &ActionType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

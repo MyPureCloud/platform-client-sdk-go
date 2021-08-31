@@ -29,13 +29,11 @@ type Queueconversationsocialexpressioneventtopicconversationroutingdata struct {
 
 }
 
-func (u *Queueconversationsocialexpressioneventtopicconversationroutingdata) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationsocialexpressioneventtopicconversationroutingdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationsocialexpressioneventtopicconversationroutingdata
-
 	
-
 	return json.Marshal(&struct { 
 		Queue *Queueconversationsocialexpressioneventtopicurireference `json:"queue,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Queueconversationsocialexpressioneventtopicconversationroutingdata) Mar
 		ScoredAgents *[]Queueconversationsocialexpressioneventtopicscoredagent `json:"scoredAgents,omitempty"`
 		*Alias
 	}{ 
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		ScoredAgents: u.ScoredAgents,
-		Alias:    (*Alias)(u),
+		ScoredAgents: o.ScoredAgents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationsocialexpressioneventtopicconversationroutingdata) UnmarshalJSON(b []byte) error {
+	var QueueconversationsocialexpressioneventtopicconversationroutingdataMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopicconversationroutingdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Queue, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Language, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["language"].(map[string]interface{}); ok {
+		LanguageString, _ := json.Marshal(Language)
+		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if Priority, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Skills, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if ScoredAgents, ok := QueueconversationsocialexpressioneventtopicconversationroutingdataMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

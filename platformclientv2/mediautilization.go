@@ -21,13 +21,11 @@ type Mediautilization struct {
 
 }
 
-func (u *Mediautilization) MarshalJSON() ([]byte, error) {
+func (o *Mediautilization) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediautilization
-
 	
-
 	return json.Marshal(&struct { 
 		MaximumCapacity *int `json:"maximumCapacity,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Mediautilization) MarshalJSON() ([]byte, error) {
 		IncludeNonAcd *bool `json:"includeNonAcd,omitempty"`
 		*Alias
 	}{ 
-		MaximumCapacity: u.MaximumCapacity,
+		MaximumCapacity: o.MaximumCapacity,
 		
-		InterruptableMediaTypes: u.InterruptableMediaTypes,
+		InterruptableMediaTypes: o.InterruptableMediaTypes,
 		
-		IncludeNonAcd: u.IncludeNonAcd,
-		Alias:    (*Alias)(u),
+		IncludeNonAcd: o.IncludeNonAcd,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediautilization) UnmarshalJSON(b []byte) error {
+	var MediautilizationMap map[string]interface{}
+	err := json.Unmarshal(b, &MediautilizationMap)
+	if err != nil {
+		return err
+	}
+	
+	if MaximumCapacity, ok := MediautilizationMap["maximumCapacity"].(float64); ok {
+		MaximumCapacityInt := int(MaximumCapacity)
+		o.MaximumCapacity = &MaximumCapacityInt
+	}
+	
+	if InterruptableMediaTypes, ok := MediautilizationMap["interruptableMediaTypes"].([]interface{}); ok {
+		InterruptableMediaTypesString, _ := json.Marshal(InterruptableMediaTypes)
+		json.Unmarshal(InterruptableMediaTypesString, &o.InterruptableMediaTypes)
+	}
+	
+	if IncludeNonAcd, ok := MediautilizationMap["includeNonAcd"].(bool); ok {
+		o.IncludeNonAcd = &IncludeNonAcd
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

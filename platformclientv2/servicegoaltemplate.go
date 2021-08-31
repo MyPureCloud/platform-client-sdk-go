@@ -37,13 +37,11 @@ type Servicegoaltemplate struct {
 
 }
 
-func (u *Servicegoaltemplate) MarshalJSON() ([]byte, error) {
+func (o *Servicegoaltemplate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Servicegoaltemplate
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,64 @@ func (u *Servicegoaltemplate) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ServiceLevel: u.ServiceLevel,
+		ServiceLevel: o.ServiceLevel,
 		
-		AverageSpeedOfAnswer: u.AverageSpeedOfAnswer,
+		AverageSpeedOfAnswer: o.AverageSpeedOfAnswer,
 		
-		AbandonRate: u.AbandonRate,
+		AbandonRate: o.AbandonRate,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Servicegoaltemplate) UnmarshalJSON(b []byte) error {
+	var ServicegoaltemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &ServicegoaltemplateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ServicegoaltemplateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ServicegoaltemplateMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ServiceLevel, ok := ServicegoaltemplateMap["serviceLevel"].(map[string]interface{}); ok {
+		ServiceLevelString, _ := json.Marshal(ServiceLevel)
+		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
+	}
+	
+	if AverageSpeedOfAnswer, ok := ServicegoaltemplateMap["averageSpeedOfAnswer"].(map[string]interface{}); ok {
+		AverageSpeedOfAnswerString, _ := json.Marshal(AverageSpeedOfAnswer)
+		json.Unmarshal(AverageSpeedOfAnswerString, &o.AverageSpeedOfAnswer)
+	}
+	
+	if AbandonRate, ok := ServicegoaltemplateMap["abandonRate"].(map[string]interface{}); ok {
+		AbandonRateString, _ := json.Marshal(AbandonRate)
+		json.Unmarshal(AbandonRateString, &o.AbandonRate)
+	}
+	
+	if Metadata, ok := ServicegoaltemplateMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := ServicegoaltemplateMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

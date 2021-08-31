@@ -21,13 +21,11 @@ type Adjacents struct {
 
 }
 
-func (u *Adjacents) MarshalJSON() ([]byte, error) {
+func (o *Adjacents) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Adjacents
-
 	
-
 	return json.Marshal(&struct { 
 		Superiors *[]User `json:"superiors,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Adjacents) MarshalJSON() ([]byte, error) {
 		DirectReports *[]User `json:"directReports,omitempty"`
 		*Alias
 	}{ 
-		Superiors: u.Superiors,
+		Superiors: o.Superiors,
 		
-		Siblings: u.Siblings,
+		Siblings: o.Siblings,
 		
-		DirectReports: u.DirectReports,
-		Alias:    (*Alias)(u),
+		DirectReports: o.DirectReports,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Adjacents) UnmarshalJSON(b []byte) error {
+	var AdjacentsMap map[string]interface{}
+	err := json.Unmarshal(b, &AdjacentsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Superiors, ok := AdjacentsMap["superiors"].([]interface{}); ok {
+		SuperiorsString, _ := json.Marshal(Superiors)
+		json.Unmarshal(SuperiorsString, &o.Superiors)
+	}
+	
+	if Siblings, ok := AdjacentsMap["siblings"].([]interface{}); ok {
+		SiblingsString, _ := json.Marshal(Siblings)
+		json.Unmarshal(SiblingsString, &o.Siblings)
+	}
+	
+	if DirectReports, ok := AdjacentsMap["directReports"].([]interface{}); ok {
+		DirectReportsString, _ := json.Marshal(DirectReports)
+		json.Unmarshal(DirectReportsString, &o.DirectReports)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

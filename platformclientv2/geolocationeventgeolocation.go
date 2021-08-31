@@ -29,13 +29,11 @@ type Geolocationeventgeolocation struct {
 
 }
 
-func (u *Geolocationeventgeolocation) MarshalJSON() ([]byte, error) {
+func (o *Geolocationeventgeolocation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Geolocationeventgeolocation
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Geolocationeventgeolocation) MarshalJSON() ([]byte, error) {
 		City *string `json:"city,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Country: u.Country,
+		Country: o.Country,
 		
-		Region: u.Region,
+		Region: o.Region,
 		
-		City: u.City,
-		Alias:    (*Alias)(u),
+		City: o.City,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Geolocationeventgeolocation) UnmarshalJSON(b []byte) error {
+	var GeolocationeventgeolocationMap map[string]interface{}
+	err := json.Unmarshal(b, &GeolocationeventgeolocationMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := GeolocationeventgeolocationMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if VarType, ok := GeolocationeventgeolocationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Country, ok := GeolocationeventgeolocationMap["country"].(string); ok {
+		o.Country = &Country
+	}
+	
+	if Region, ok := GeolocationeventgeolocationMap["region"].(string); ok {
+		o.Region = &Region
+	}
+	
+	if City, ok := GeolocationeventgeolocationMap["city"].(string); ok {
+		o.City = &City
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

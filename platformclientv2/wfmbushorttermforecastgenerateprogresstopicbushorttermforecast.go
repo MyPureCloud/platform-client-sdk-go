@@ -62,21 +62,19 @@ type Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast struct {
 
 }
 
-func (u *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast
-
 	
 	ReferenceStartDate := new(string)
-	if u.ReferenceStartDate != nil {
+	if o.ReferenceStartDate != nil {
 		
-		*ReferenceStartDate = timeutil.Strftime(u.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReferenceStartDate = timeutil.Strftime(o.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReferenceStartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -105,33 +103,102 @@ func (u *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) Marshal
 		CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		WeekDate: u.WeekDate,
+		WeekDate: o.WeekDate,
 		
-		CreationMethod: u.CreationMethod,
+		CreationMethod: o.CreationMethod,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Legacy: u.Legacy,
+		Legacy: o.Legacy,
 		
 		ReferenceStartDate: ReferenceStartDate,
 		
-		SourceDays: u.SourceDays,
+		SourceDays: o.SourceDays,
 		
-		Modifications: u.Modifications,
+		Modifications: o.Modifications,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		PlanningGroupsVersion: u.PlanningGroupsVersion,
+		PlanningGroupsVersion: o.PlanningGroupsVersion,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		CanUseForScheduling: u.CanUseForScheduling,
-		Alias:    (*Alias)(u),
+		CanUseForScheduling: o.CanUseForScheduling,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastgenerateprogresstopicbushorttermforecast) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if WeekDate, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+	if CreationMethod, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["creationMethod"].(string); ok {
+		o.CreationMethod = &CreationMethod
+	}
+	
+	if Description, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Legacy, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["legacy"].(bool); ok {
+		o.Legacy = &Legacy
+	}
+	
+	if referenceStartDateString, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["referenceStartDate"].(string); ok {
+		ReferenceStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", referenceStartDateString)
+		o.ReferenceStartDate = &ReferenceStartDate
+	}
+	
+	if SourceDays, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["sourceDays"].([]interface{}); ok {
+		SourceDaysString, _ := json.Marshal(SourceDays)
+		json.Unmarshal(SourceDaysString, &o.SourceDays)
+	}
+	
+	if Modifications, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["modifications"].([]interface{}); ok {
+		ModificationsString, _ := json.Marshal(Modifications)
+		json.Unmarshal(ModificationsString, &o.Modifications)
+	}
+	
+	if TimeZone, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if PlanningGroupsVersion, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["planningGroupsVersion"].(float64); ok {
+		PlanningGroupsVersionInt := int(PlanningGroupsVersion)
+		o.PlanningGroupsVersion = &PlanningGroupsVersionInt
+	}
+	
+	if WeekCount, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if Metadata, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if CanUseForScheduling, ok := WfmbushorttermforecastgenerateprogresstopicbushorttermforecastMap["canUseForScheduling"].(bool); ok {
+		o.CanUseForScheduling = &CanUseForScheduling
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

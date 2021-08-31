@@ -21,13 +21,11 @@ type Historicaladherenceactuals struct {
 
 }
 
-func (u *Historicaladherenceactuals) MarshalJSON() ([]byte, error) {
+func (o *Historicaladherenceactuals) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historicaladherenceactuals
-
 	
-
 	return json.Marshal(&struct { 
 		ActualActivityCategory *string `json:"actualActivityCategory,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Historicaladherenceactuals) MarshalJSON() ([]byte, error) {
 		EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
 		*Alias
 	}{ 
-		ActualActivityCategory: u.ActualActivityCategory,
+		ActualActivityCategory: o.ActualActivityCategory,
 		
-		StartOffsetSeconds: u.StartOffsetSeconds,
+		StartOffsetSeconds: o.StartOffsetSeconds,
 		
-		EndOffsetSeconds: u.EndOffsetSeconds,
-		Alias:    (*Alias)(u),
+		EndOffsetSeconds: o.EndOffsetSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historicaladherenceactuals) UnmarshalJSON(b []byte) error {
+	var HistoricaladherenceactualsMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoricaladherenceactualsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActualActivityCategory, ok := HistoricaladherenceactualsMap["actualActivityCategory"].(string); ok {
+		o.ActualActivityCategory = &ActualActivityCategory
+	}
+	
+	if StartOffsetSeconds, ok := HistoricaladherenceactualsMap["startOffsetSeconds"].(float64); ok {
+		StartOffsetSecondsInt := int(StartOffsetSeconds)
+		o.StartOffsetSeconds = &StartOffsetSecondsInt
+	}
+	
+	if EndOffsetSeconds, ok := HistoricaladherenceactualsMap["endOffsetSeconds"].(float64); ok {
+		EndOffsetSecondsInt := int(EndOffsetSeconds)
+		o.EndOffsetSeconds = &EndOffsetSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

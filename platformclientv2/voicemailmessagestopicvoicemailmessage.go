@@ -66,29 +66,27 @@ type Voicemailmessagestopicvoicemailmessage struct {
 
 }
 
-func (u *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
+func (o *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmessagestopicvoicemailmessage
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,35 +117,108 @@ func (u *Voicemailmessagestopicvoicemailmessage) MarshalJSON() ([]byte, error) {
 		CopiedFrom *Voicemailmessagestopicvoicemailcopyrecord `json:"copiedFrom,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
-		AudioRecordingDurationSeconds: u.AudioRecordingDurationSeconds,
+		AudioRecordingDurationSeconds: o.AudioRecordingDurationSeconds,
 		
-		AudioRecordingSizeBytes: u.AudioRecordingSizeBytes,
+		AudioRecordingSizeBytes: o.AudioRecordingSizeBytes,
 		
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
 		
-		CallerAddress: u.CallerAddress,
+		CallerAddress: o.CallerAddress,
 		
-		CallerName: u.CallerName,
+		CallerName: o.CallerName,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		Note: u.Note,
+		Note: o.Note,
 		
-		Deleted: u.Deleted,
+		Deleted: o.Deleted,
 		
-		ModifiedByUserId: u.ModifiedByUserId,
+		ModifiedByUserId: o.ModifiedByUserId,
 		
-		CopiedTo: u.CopiedTo,
+		CopiedTo: o.CopiedTo,
 		
-		CopiedFrom: u.CopiedFrom,
-		Alias:    (*Alias)(u),
+		CopiedFrom: o.CopiedFrom,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailmessagestopicvoicemailmessage) UnmarshalJSON(b []byte) error {
+	var VoicemailmessagestopicvoicemailmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailmessagestopicvoicemailmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := VoicemailmessagestopicvoicemailmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Read, ok := VoicemailmessagestopicvoicemailmessageMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if AudioRecordingDurationSeconds, ok := VoicemailmessagestopicvoicemailmessageMap["audioRecordingDurationSeconds"].(float64); ok {
+		AudioRecordingDurationSecondsInt := int(AudioRecordingDurationSeconds)
+		o.AudioRecordingDurationSeconds = &AudioRecordingDurationSecondsInt
+	}
+	
+	if AudioRecordingSizeBytes, ok := VoicemailmessagestopicvoicemailmessageMap["audioRecordingSizeBytes"].(float64); ok {
+		AudioRecordingSizeBytesInt := int(AudioRecordingSizeBytes)
+		o.AudioRecordingSizeBytes = &AudioRecordingSizeBytesInt
+	}
+	
+	if createdDateString, ok := VoicemailmessagestopicvoicemailmessageMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := VoicemailmessagestopicvoicemailmessageMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if CallerAddress, ok := VoicemailmessagestopicvoicemailmessageMap["callerAddress"].(string); ok {
+		o.CallerAddress = &CallerAddress
+	}
+	
+	if CallerName, ok := VoicemailmessagestopicvoicemailmessageMap["callerName"].(string); ok {
+		o.CallerName = &CallerName
+	}
+	
+	if Action, ok := VoicemailmessagestopicvoicemailmessageMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Note, ok := VoicemailmessagestopicvoicemailmessageMap["note"].(string); ok {
+		o.Note = &Note
+	}
+	
+	if Deleted, ok := VoicemailmessagestopicvoicemailmessageMap["deleted"].(bool); ok {
+		o.Deleted = &Deleted
+	}
+	
+	if ModifiedByUserId, ok := VoicemailmessagestopicvoicemailmessageMap["modifiedByUserId"].(string); ok {
+		o.ModifiedByUserId = &ModifiedByUserId
+	}
+	
+	if CopiedTo, ok := VoicemailmessagestopicvoicemailmessageMap["copiedTo"].([]interface{}); ok {
+		CopiedToString, _ := json.Marshal(CopiedTo)
+		json.Unmarshal(CopiedToString, &o.CopiedTo)
+	}
+	
+	if CopiedFrom, ok := VoicemailmessagestopicvoicemailmessageMap["copiedFrom"].(map[string]interface{}); ok {
+		CopiedFromString, _ := json.Marshal(CopiedFrom)
+		json.Unmarshal(CopiedFromString, &o.CopiedFrom)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

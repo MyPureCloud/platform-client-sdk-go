@@ -61,13 +61,11 @@ type Organizationfeatures struct {
 
 }
 
-func (u *Organizationfeatures) MarshalJSON() ([]byte, error) {
+func (o *Organizationfeatures) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Organizationfeatures
-
 	
-
 	return json.Marshal(&struct { 
 		RealtimeCIC *bool `json:"realtimeCIC,omitempty"`
 		
@@ -96,33 +94,96 @@ func (u *Organizationfeatures) MarshalJSON() ([]byte, error) {
 		Custserv *bool `json:"custserv,omitempty"`
 		*Alias
 	}{ 
-		RealtimeCIC: u.RealtimeCIC,
+		RealtimeCIC: o.RealtimeCIC,
 		
-		Purecloud: u.Purecloud,
+		Purecloud: o.Purecloud,
 		
-		Hipaa: u.Hipaa,
+		Hipaa: o.Hipaa,
 		
-		UcEnabled: u.UcEnabled,
+		UcEnabled: o.UcEnabled,
 		
-		Pci: u.Pci,
+		Pci: o.Pci,
 		
-		PurecloudVoice: u.PurecloudVoice,
+		PurecloudVoice: o.PurecloudVoice,
 		
-		XmppFederation: u.XmppFederation,
+		XmppFederation: o.XmppFederation,
 		
-		Chat: u.Chat,
+		Chat: o.Chat,
 		
-		InformalPhotos: u.InformalPhotos,
+		InformalPhotos: o.InformalPhotos,
 		
-		Directory: u.Directory,
+		Directory: o.Directory,
 		
-		ContactCenter: u.ContactCenter,
+		ContactCenter: o.ContactCenter,
 		
-		UnifiedCommunications: u.UnifiedCommunications,
+		UnifiedCommunications: o.UnifiedCommunications,
 		
-		Custserv: u.Custserv,
-		Alias:    (*Alias)(u),
+		Custserv: o.Custserv,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Organizationfeatures) UnmarshalJSON(b []byte) error {
+	var OrganizationfeaturesMap map[string]interface{}
+	err := json.Unmarshal(b, &OrganizationfeaturesMap)
+	if err != nil {
+		return err
+	}
+	
+	if RealtimeCIC, ok := OrganizationfeaturesMap["realtimeCIC"].(bool); ok {
+		o.RealtimeCIC = &RealtimeCIC
+	}
+	
+	if Purecloud, ok := OrganizationfeaturesMap["purecloud"].(bool); ok {
+		o.Purecloud = &Purecloud
+	}
+	
+	if Hipaa, ok := OrganizationfeaturesMap["hipaa"].(bool); ok {
+		o.Hipaa = &Hipaa
+	}
+	
+	if UcEnabled, ok := OrganizationfeaturesMap["ucEnabled"].(bool); ok {
+		o.UcEnabled = &UcEnabled
+	}
+	
+	if Pci, ok := OrganizationfeaturesMap["pci"].(bool); ok {
+		o.Pci = &Pci
+	}
+	
+	if PurecloudVoice, ok := OrganizationfeaturesMap["purecloudVoice"].(bool); ok {
+		o.PurecloudVoice = &PurecloudVoice
+	}
+	
+	if XmppFederation, ok := OrganizationfeaturesMap["xmppFederation"].(bool); ok {
+		o.XmppFederation = &XmppFederation
+	}
+	
+	if Chat, ok := OrganizationfeaturesMap["chat"].(bool); ok {
+		o.Chat = &Chat
+	}
+	
+	if InformalPhotos, ok := OrganizationfeaturesMap["informalPhotos"].(bool); ok {
+		o.InformalPhotos = &InformalPhotos
+	}
+	
+	if Directory, ok := OrganizationfeaturesMap["directory"].(bool); ok {
+		o.Directory = &Directory
+	}
+	
+	if ContactCenter, ok := OrganizationfeaturesMap["contactCenter"].(bool); ok {
+		o.ContactCenter = &ContactCenter
+	}
+	
+	if UnifiedCommunications, ok := OrganizationfeaturesMap["unifiedCommunications"].(bool); ok {
+		o.UnifiedCommunications = &UnifiedCommunications
+	}
+	
+	if Custserv, ok := OrganizationfeaturesMap["custserv"].(bool); ok {
+		o.Custserv = &Custserv
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -38,21 +38,19 @@ type Policyerrormessage struct {
 
 }
 
-func (u *Policyerrormessage) MarshalJSON() ([]byte, error) {
+func (o *Policyerrormessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Policyerrormessage
-
 	
 	InsertDate := new(string)
-	if u.InsertDate != nil {
+	if o.InsertDate != nil {
 		
-		*InsertDate = timeutil.Strftime(u.InsertDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*InsertDate = timeutil.Strftime(o.InsertDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		InsertDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StatusCode *int `json:"statusCode,omitempty"`
 		
@@ -69,21 +67,64 @@ func (u *Policyerrormessage) MarshalJSON() ([]byte, error) {
 		InsertDate *string `json:"insertDate,omitempty"`
 		*Alias
 	}{ 
-		StatusCode: u.StatusCode,
+		StatusCode: o.StatusCode,
 		
-		UserMessage: u.UserMessage,
+		UserMessage: o.UserMessage,
 		
-		UserParamsMessage: u.UserParamsMessage,
+		UserParamsMessage: o.UserParamsMessage,
 		
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		UserParams: u.UserParams,
+		UserParams: o.UserParams,
 		
 		InsertDate: InsertDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Policyerrormessage) UnmarshalJSON(b []byte) error {
+	var PolicyerrormessageMap map[string]interface{}
+	err := json.Unmarshal(b, &PolicyerrormessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if StatusCode, ok := PolicyerrormessageMap["statusCode"].(float64); ok {
+		StatusCodeInt := int(StatusCode)
+		o.StatusCode = &StatusCodeInt
+	}
+	
+	if UserMessage, ok := PolicyerrormessageMap["userMessage"].(map[string]interface{}); ok {
+		UserMessageString, _ := json.Marshal(UserMessage)
+		json.Unmarshal(UserMessageString, &o.UserMessage)
+	}
+	
+	if UserParamsMessage, ok := PolicyerrormessageMap["userParamsMessage"].(string); ok {
+		o.UserParamsMessage = &UserParamsMessage
+	}
+	
+	if ErrorCode, ok := PolicyerrormessageMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if CorrelationId, ok := PolicyerrormessageMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if UserParams, ok := PolicyerrormessageMap["userParams"].([]interface{}); ok {
+		UserParamsString, _ := json.Marshal(UserParams)
+		json.Unmarshal(UserParamsString, &o.UserParams)
+	}
+	
+	if insertDateString, ok := PolicyerrormessageMap["insertDate"].(string); ok {
+		InsertDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", insertDateString)
+		o.InsertDate = &InsertDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

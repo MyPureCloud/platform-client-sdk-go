@@ -29,13 +29,11 @@ type Groupcontact struct {
 
 }
 
-func (u *Groupcontact) MarshalJSON() ([]byte, error) {
+func (o *Groupcontact) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Groupcontact
-
 	
-
 	return json.Marshal(&struct { 
 		Address *string `json:"address,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Groupcontact) MarshalJSON() ([]byte, error) {
 		MediaType *string `json:"mediaType,omitempty"`
 		*Alias
 	}{ 
-		Address: u.Address,
+		Address: o.Address,
 		
-		Extension: u.Extension,
+		Extension: o.Extension,
 		
-		Display: u.Display,
+		Display: o.Display,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		MediaType: u.MediaType,
-		Alias:    (*Alias)(u),
+		MediaType: o.MediaType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Groupcontact) UnmarshalJSON(b []byte) error {
+	var GroupcontactMap map[string]interface{}
+	err := json.Unmarshal(b, &GroupcontactMap)
+	if err != nil {
+		return err
+	}
+	
+	if Address, ok := GroupcontactMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if Extension, ok := GroupcontactMap["extension"].(string); ok {
+		o.Extension = &Extension
+	}
+	
+	if Display, ok := GroupcontactMap["display"].(string); ok {
+		o.Display = &Display
+	}
+	
+	if VarType, ok := GroupcontactMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if MediaType, ok := GroupcontactMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

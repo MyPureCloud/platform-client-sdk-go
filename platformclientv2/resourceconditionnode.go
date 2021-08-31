@@ -29,13 +29,11 @@ type Resourceconditionnode struct {
 
 }
 
-func (u *Resourceconditionnode) MarshalJSON() ([]byte, error) {
+func (o *Resourceconditionnode) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Resourceconditionnode
-
 	
-
 	return json.Marshal(&struct { 
 		VariableName *string `json:"variableName,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Resourceconditionnode) MarshalJSON() ([]byte, error) {
 		Terms *[]Resourceconditionnode `json:"terms,omitempty"`
 		*Alias
 	}{ 
-		VariableName: u.VariableName,
+		VariableName: o.VariableName,
 		
-		Conjunction: u.Conjunction,
+		Conjunction: o.Conjunction,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Operands: u.Operands,
+		Operands: o.Operands,
 		
-		Terms: u.Terms,
-		Alias:    (*Alias)(u),
+		Terms: o.Terms,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Resourceconditionnode) UnmarshalJSON(b []byte) error {
+	var ResourceconditionnodeMap map[string]interface{}
+	err := json.Unmarshal(b, &ResourceconditionnodeMap)
+	if err != nil {
+		return err
+	}
+	
+	if VariableName, ok := ResourceconditionnodeMap["variableName"].(string); ok {
+		o.VariableName = &VariableName
+	}
+	
+	if Conjunction, ok := ResourceconditionnodeMap["conjunction"].(string); ok {
+		o.Conjunction = &Conjunction
+	}
+	
+	if Operator, ok := ResourceconditionnodeMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Operands, ok := ResourceconditionnodeMap["operands"].([]interface{}); ok {
+		OperandsString, _ := json.Marshal(Operands)
+		json.Unmarshal(OperandsString, &o.Operands)
+	}
+	
+	if Terms, ok := ResourceconditionnodeMap["terms"].([]interface{}); ok {
+		TermsString, _ := json.Marshal(Terms)
+		json.Unmarshal(TermsString, &o.Terms)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

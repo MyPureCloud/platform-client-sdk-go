@@ -13,20 +13,33 @@ type Copyworkplanrotationrequest struct {
 
 }
 
-func (u *Copyworkplanrotationrequest) MarshalJSON() ([]byte, error) {
+func (o *Copyworkplanrotationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Copyworkplanrotationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Copyworkplanrotationrequest) UnmarshalJSON(b []byte) error {
+	var CopyworkplanrotationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CopyworkplanrotationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := CopyworkplanrotationrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -66,21 +66,19 @@ type Emailmessage struct {
 
 }
 
-func (u *Emailmessage) MarshalJSON() ([]byte, error) {
+func (o *Emailmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emailmessage
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -111,35 +109,109 @@ func (u *Emailmessage) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		To: u.To,
+		To: o.To,
 		
-		Cc: u.Cc,
+		Cc: o.Cc,
 		
-		Bcc: u.Bcc,
+		Bcc: o.Bcc,
 		
-		From: u.From,
+		From: o.From,
 		
-		ReplyTo: u.ReplyTo,
+		ReplyTo: o.ReplyTo,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
-		Attachments: u.Attachments,
+		Attachments: o.Attachments,
 		
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		HtmlBody: u.HtmlBody,
+		HtmlBody: o.HtmlBody,
 		
 		Time: Time,
 		
-		HistoryIncluded: u.HistoryIncluded,
+		HistoryIncluded: o.HistoryIncluded,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emailmessage) UnmarshalJSON(b []byte) error {
+	var EmailmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EmailmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EmailmessageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if To, ok := EmailmessageMap["to"].([]interface{}); ok {
+		ToString, _ := json.Marshal(To)
+		json.Unmarshal(ToString, &o.To)
+	}
+	
+	if Cc, ok := EmailmessageMap["cc"].([]interface{}); ok {
+		CcString, _ := json.Marshal(Cc)
+		json.Unmarshal(CcString, &o.Cc)
+	}
+	
+	if Bcc, ok := EmailmessageMap["bcc"].([]interface{}); ok {
+		BccString, _ := json.Marshal(Bcc)
+		json.Unmarshal(BccString, &o.Bcc)
+	}
+	
+	if From, ok := EmailmessageMap["from"].(map[string]interface{}); ok {
+		FromString, _ := json.Marshal(From)
+		json.Unmarshal(FromString, &o.From)
+	}
+	
+	if ReplyTo, ok := EmailmessageMap["replyTo"].(map[string]interface{}); ok {
+		ReplyToString, _ := json.Marshal(ReplyTo)
+		json.Unmarshal(ReplyToString, &o.ReplyTo)
+	}
+	
+	if Subject, ok := EmailmessageMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+	if Attachments, ok := EmailmessageMap["attachments"].([]interface{}); ok {
+		AttachmentsString, _ := json.Marshal(Attachments)
+		json.Unmarshal(AttachmentsString, &o.Attachments)
+	}
+	
+	if TextBody, ok := EmailmessageMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if HtmlBody, ok := EmailmessageMap["htmlBody"].(string); ok {
+		o.HtmlBody = &HtmlBody
+	}
+	
+	if timeString, ok := EmailmessageMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+	if HistoryIncluded, ok := EmailmessageMap["historyIncluded"].(bool); ok {
+		o.HistoryIncluded = &HistoryIncluded
+	}
+	
+	if SelfUri, ok := EmailmessageMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

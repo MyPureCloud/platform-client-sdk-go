@@ -42,21 +42,19 @@ type Voicemailorganizationpolicy struct {
 
 }
 
-func (u *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
+func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailorganizationpolicy
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -75,23 +73,69 @@ func (u *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		AlertTimeoutSeconds: u.AlertTimeoutSeconds,
+		AlertTimeoutSeconds: o.AlertTimeoutSeconds,
 		
-		PinConfiguration: u.PinConfiguration,
+		PinConfiguration: o.PinConfiguration,
 		
-		VoicemailExtension: u.VoicemailExtension,
+		VoicemailExtension: o.VoicemailExtension,
 		
-		PinRequired: u.PinRequired,
+		PinRequired: o.PinRequired,
 		
-		SendEmailNotifications: u.SendEmailNotifications,
+		SendEmailNotifications: o.SendEmailNotifications,
 		
-		DisableEmailPii: u.DisableEmailPii,
+		DisableEmailPii: o.DisableEmailPii,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailorganizationpolicy) UnmarshalJSON(b []byte) error {
+	var VoicemailorganizationpolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailorganizationpolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := VoicemailorganizationpolicyMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if AlertTimeoutSeconds, ok := VoicemailorganizationpolicyMap["alertTimeoutSeconds"].(float64); ok {
+		AlertTimeoutSecondsInt := int(AlertTimeoutSeconds)
+		o.AlertTimeoutSeconds = &AlertTimeoutSecondsInt
+	}
+	
+	if PinConfiguration, ok := VoicemailorganizationpolicyMap["pinConfiguration"].(map[string]interface{}); ok {
+		PinConfigurationString, _ := json.Marshal(PinConfiguration)
+		json.Unmarshal(PinConfigurationString, &o.PinConfiguration)
+	}
+	
+	if VoicemailExtension, ok := VoicemailorganizationpolicyMap["voicemailExtension"].(string); ok {
+		o.VoicemailExtension = &VoicemailExtension
+	}
+	
+	if PinRequired, ok := VoicemailorganizationpolicyMap["pinRequired"].(bool); ok {
+		o.PinRequired = &PinRequired
+	}
+	
+	if SendEmailNotifications, ok := VoicemailorganizationpolicyMap["sendEmailNotifications"].(bool); ok {
+		o.SendEmailNotifications = &SendEmailNotifications
+	}
+	
+	if DisableEmailPii, ok := VoicemailorganizationpolicyMap["disableEmailPii"].(bool); ok {
+		o.DisableEmailPii = &DisableEmailPii
+	}
+	
+	if modifiedDateString, ok := VoicemailorganizationpolicyMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

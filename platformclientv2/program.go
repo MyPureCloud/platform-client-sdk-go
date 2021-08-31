@@ -54,29 +54,27 @@ type Program struct {
 
 }
 
-func (u *Program) MarshalJSON() ([]byte, error) {
+func (o *Program) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Program
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DatePublished := new(string)
-	if u.DatePublished != nil {
+	if o.DatePublished != nil {
 		
-		*DatePublished = timeutil.Strftime(u.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DatePublished = timeutil.Strftime(o.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DatePublished = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -101,29 +99,90 @@ func (u *Program) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		Topics: u.Topics,
+		Topics: o.Topics,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		PublishedBy: u.PublishedBy,
+		PublishedBy: o.PublishedBy,
 		
 		DatePublished: DatePublished,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Program) UnmarshalJSON(b []byte) error {
+	var ProgramMap map[string]interface{}
+	err := json.Unmarshal(b, &ProgramMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ProgramMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ProgramMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ProgramMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := ProgramMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if Topics, ok := ProgramMap["topics"].([]interface{}); ok {
+		TopicsString, _ := json.Marshal(Topics)
+		json.Unmarshal(TopicsString, &o.Topics)
+	}
+	
+	if Tags, ok := ProgramMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if ModifiedBy, ok := ProgramMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := ProgramMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if PublishedBy, ok := ProgramMap["publishedBy"].(map[string]interface{}); ok {
+		PublishedByString, _ := json.Marshal(PublishedBy)
+		json.Unmarshal(PublishedByString, &o.PublishedBy)
+	}
+	
+	if datePublishedString, ok := ProgramMap["datePublished"].(string); ok {
+		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
+		o.DatePublished = &DatePublished
+	}
+	
+	if SelfUri, ok := ProgramMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -74,21 +74,19 @@ type Qualityauditlogmessage struct {
 
 }
 
-func (u *Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
+func (o *Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Qualityauditlogmessage
-
 	
 	EventDate := new(string)
-	if u.EventDate != nil {
+	if o.EventDate != nil {
 		
-		*EventDate = timeutil.Strftime(u.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventDate = timeutil.Strftime(o.EventDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -123,39 +121,122 @@ func (u *Qualityauditlogmessage) MarshalJSON() ([]byte, error) {
 		Context *map[string]string `json:"context,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		UserHomeOrgId: u.UserHomeOrgId,
+		UserHomeOrgId: o.UserHomeOrgId,
 		
-		UserTrusteeOrgId: u.UserTrusteeOrgId,
+		UserTrusteeOrgId: o.UserTrusteeOrgId,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		RemoteIps: u.RemoteIps,
+		RemoteIps: o.RemoteIps,
 		
-		ServiceName: u.ServiceName,
+		ServiceName: o.ServiceName,
 		
-		Level: u.Level,
+		Level: o.Level,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		EventDate: EventDate,
 		
-		MessageInfo: u.MessageInfo,
+		MessageInfo: o.MessageInfo,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		PropertyChanges: u.PropertyChanges,
+		PropertyChanges: o.PropertyChanges,
 		
-		Context: u.Context,
-		Alias:    (*Alias)(u),
+		Context: o.Context,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Qualityauditlogmessage) UnmarshalJSON(b []byte) error {
+	var QualityauditlogmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &QualityauditlogmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QualityauditlogmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if UserHomeOrgId, ok := QualityauditlogmessageMap["userHomeOrgId"].(string); ok {
+		o.UserHomeOrgId = &UserHomeOrgId
+	}
+	
+	if UserTrusteeOrgId, ok := QualityauditlogmessageMap["userTrusteeOrgId"].(string); ok {
+		o.UserTrusteeOrgId = &UserTrusteeOrgId
+	}
+	
+	if User, ok := QualityauditlogmessageMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := QualityauditlogmessageMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if RemoteIps, ok := QualityauditlogmessageMap["remoteIps"].([]interface{}); ok {
+		RemoteIpsString, _ := json.Marshal(RemoteIps)
+		json.Unmarshal(RemoteIpsString, &o.RemoteIps)
+	}
+	
+	if ServiceName, ok := QualityauditlogmessageMap["serviceName"].(string); ok {
+		o.ServiceName = &ServiceName
+	}
+	
+	if Level, ok := QualityauditlogmessageMap["level"].(string); ok {
+		o.Level = &Level
+	}
+	
+	if Status, ok := QualityauditlogmessageMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if eventDateString, ok := QualityauditlogmessageMap["eventDate"].(string); ok {
+		EventDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventDateString)
+		o.EventDate = &EventDate
+	}
+	
+	if MessageInfo, ok := QualityauditlogmessageMap["messageInfo"].(map[string]interface{}); ok {
+		MessageInfoString, _ := json.Marshal(MessageInfo)
+		json.Unmarshal(MessageInfoString, &o.MessageInfo)
+	}
+	
+	if Action, ok := QualityauditlogmessageMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Entity, ok := QualityauditlogmessageMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if EntityType, ok := QualityauditlogmessageMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if PropertyChanges, ok := QualityauditlogmessageMap["propertyChanges"].([]interface{}); ok {
+		PropertyChangesString, _ := json.Marshal(PropertyChanges)
+		json.Unmarshal(PropertyChangesString, &o.PropertyChanges)
+	}
+	
+	if Context, ok := QualityauditlogmessageMap["context"].(map[string]interface{}); ok {
+		ContextString, _ := json.Marshal(Context)
+		json.Unmarshal(ContextString, &o.Context)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

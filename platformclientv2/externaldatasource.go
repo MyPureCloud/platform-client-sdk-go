@@ -17,24 +17,41 @@ type Externaldatasource struct {
 
 }
 
-func (u *Externaldatasource) MarshalJSON() ([]byte, error) {
+func (o *Externaldatasource) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Externaldatasource
-
 	
-
 	return json.Marshal(&struct { 
 		Platform *string `json:"platform,omitempty"`
 		
 		Url *string `json:"url,omitempty"`
 		*Alias
 	}{ 
-		Platform: u.Platform,
+		Platform: o.Platform,
 		
-		Url: u.Url,
-		Alias:    (*Alias)(u),
+		Url: o.Url,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Externaldatasource) UnmarshalJSON(b []byte) error {
+	var ExternaldatasourceMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternaldatasourceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Platform, ok := ExternaldatasourceMap["platform"].(string); ok {
+		o.Platform = &Platform
+	}
+	
+	if Url, ok := ExternaldatasourceMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

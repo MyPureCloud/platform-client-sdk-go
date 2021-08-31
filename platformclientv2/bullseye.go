@@ -13,20 +13,34 @@ type Bullseye struct {
 
 }
 
-func (u *Bullseye) MarshalJSON() ([]byte, error) {
+func (o *Bullseye) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bullseye
-
 	
-
 	return json.Marshal(&struct { 
 		Rings *[]Ring `json:"rings,omitempty"`
 		*Alias
 	}{ 
-		Rings: u.Rings,
-		Alias:    (*Alias)(u),
+		Rings: o.Rings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bullseye) UnmarshalJSON(b []byte) error {
+	var BullseyeMap map[string]interface{}
+	err := json.Unmarshal(b, &BullseyeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Rings, ok := BullseyeMap["rings"].([]interface{}); ok {
+		RingsString, _ := json.Marshal(Rings)
+		json.Unmarshal(RingsString, &o.Rings)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

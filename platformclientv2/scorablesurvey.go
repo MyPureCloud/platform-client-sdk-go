@@ -33,13 +33,11 @@ type Scorablesurvey struct {
 
 }
 
-func (u *Scorablesurvey) MarshalJSON() ([]byte, error) {
+func (o *Scorablesurvey) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scorablesurvey
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Scorablesurvey) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SurveyForm: u.SurveyForm,
+		SurveyForm: o.SurveyForm,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Answers: u.Answers,
+		Answers: o.Answers,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scorablesurvey) UnmarshalJSON(b []byte) error {
+	var ScorablesurveyMap map[string]interface{}
+	err := json.Unmarshal(b, &ScorablesurveyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ScorablesurveyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ScorablesurveyMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SurveyForm, ok := ScorablesurveyMap["surveyForm"].(map[string]interface{}); ok {
+		SurveyFormString, _ := json.Marshal(SurveyForm)
+		json.Unmarshal(SurveyFormString, &o.SurveyForm)
+	}
+	
+	if Status, ok := ScorablesurveyMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Answers, ok := ScorablesurveyMap["answers"].(map[string]interface{}); ok {
+		AnswersString, _ := json.Marshal(Answers)
+		json.Unmarshal(AnswersString, &o.Answers)
+	}
+	
+	if SelfUri, ok := ScorablesurveyMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

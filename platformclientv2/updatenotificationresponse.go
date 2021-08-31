@@ -17,24 +17,41 @@ type Updatenotificationresponse struct {
 
 }
 
-func (u *Updatenotificationresponse) MarshalJSON() ([]byte, error) {
+func (o *Updatenotificationresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updatenotificationresponse
-
 	
-
 	return json.Marshal(&struct { 
 		MutableGroupId *string `json:"mutableGroupId,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		MutableGroupId: u.MutableGroupId,
+		MutableGroupId: o.MutableGroupId,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updatenotificationresponse) UnmarshalJSON(b []byte) error {
+	var UpdatenotificationresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdatenotificationresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if MutableGroupId, ok := UpdatenotificationresponseMap["mutableGroupId"].(string); ok {
+		o.MutableGroupId = &MutableGroupId
+	}
+	
+	if Id, ok := UpdatenotificationresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -18,32 +18,50 @@ type Billingusageresource struct {
 
 }
 
-func (u *Billingusageresource) MarshalJSON() ([]byte, error) {
+func (o *Billingusageresource) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Billingusageresource
-
 	
 	Date := new(string)
-	if u.Date != nil {
+	if o.Date != nil {
 		
-		*Date = timeutil.Strftime(u.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Date = timeutil.Strftime(o.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Date = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Date *string `json:"date,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
 		Date: Date,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Billingusageresource) UnmarshalJSON(b []byte) error {
+	var BillingusageresourceMap map[string]interface{}
+	err := json.Unmarshal(b, &BillingusageresourceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := BillingusageresourceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateString, ok := BillingusageresourceMap["date"].(string); ok {
+		Date, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateString)
+		o.Date = &Date
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

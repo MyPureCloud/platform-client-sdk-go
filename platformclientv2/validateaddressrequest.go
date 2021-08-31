@@ -13,20 +13,34 @@ type Validateaddressrequest struct {
 
 }
 
-func (u *Validateaddressrequest) MarshalJSON() ([]byte, error) {
+func (o *Validateaddressrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Validateaddressrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Address *Streetaddress `json:"address,omitempty"`
 		*Alias
 	}{ 
-		Address: u.Address,
-		Alias:    (*Alias)(u),
+		Address: o.Address,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Validateaddressrequest) UnmarshalJSON(b []byte) error {
+	var ValidateaddressrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ValidateaddressrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Address, ok := ValidateaddressrequestMap["address"].(map[string]interface{}); ok {
+		AddressString, _ := json.Marshal(Address)
+		json.Unmarshal(AddressString, &o.Address)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

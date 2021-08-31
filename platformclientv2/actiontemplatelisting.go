@@ -49,13 +49,11 @@ type Actiontemplatelisting struct {
 
 }
 
-func (u *Actiontemplatelisting) MarshalJSON() ([]byte, error) {
+func (o *Actiontemplatelisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actiontemplatelisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Actiontemplate `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Actiontemplatelisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actiontemplatelisting) UnmarshalJSON(b []byte) error {
+	var ActiontemplatelistingMap map[string]interface{}
+	err := json.Unmarshal(b, &ActiontemplatelistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := ActiontemplatelistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := ActiontemplatelistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := ActiontemplatelistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := ActiontemplatelistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := ActiontemplatelistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if SelfUri, ok := ActiontemplatelistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if NextUri, ok := ActiontemplatelistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := ActiontemplatelistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := ActiontemplatelistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if PageCount, ok := ActiontemplatelistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

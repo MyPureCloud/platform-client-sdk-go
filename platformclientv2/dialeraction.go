@@ -25,13 +25,11 @@ type Dialeraction struct {
 
 }
 
-func (u *Dialeraction) MarshalJSON() ([]byte, error) {
+func (o *Dialeraction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeraction
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Dialeraction) MarshalJSON() ([]byte, error) {
 		Properties *map[string]string `json:"properties,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		ActionTypeName: u.ActionTypeName,
+		ActionTypeName: o.ActionTypeName,
 		
-		UpdateOption: u.UpdateOption,
+		UpdateOption: o.UpdateOption,
 		
-		Properties: u.Properties,
-		Alias:    (*Alias)(u),
+		Properties: o.Properties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialeraction) UnmarshalJSON(b []byte) error {
+	var DialeractionMap map[string]interface{}
+	err := json.Unmarshal(b, &DialeractionMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := DialeractionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if ActionTypeName, ok := DialeractionMap["actionTypeName"].(string); ok {
+		o.ActionTypeName = &ActionTypeName
+	}
+	
+	if UpdateOption, ok := DialeractionMap["updateOption"].(string); ok {
+		o.UpdateOption = &UpdateOption
+	}
+	
+	if Properties, ok := DialeractionMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

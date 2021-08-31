@@ -17,24 +17,43 @@ type Campaignruleentities struct {
 
 }
 
-func (u *Campaignruleentities) MarshalJSON() ([]byte, error) {
+func (o *Campaignruleentities) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruleentities
-
 	
-
 	return json.Marshal(&struct { 
 		Campaigns *[]Domainentityref `json:"campaigns,omitempty"`
 		
 		Sequences *[]Domainentityref `json:"sequences,omitempty"`
 		*Alias
 	}{ 
-		Campaigns: u.Campaigns,
+		Campaigns: o.Campaigns,
 		
-		Sequences: u.Sequences,
-		Alias:    (*Alias)(u),
+		Sequences: o.Sequences,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaignruleentities) UnmarshalJSON(b []byte) error {
+	var CampaignruleentitiesMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignruleentitiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Campaigns, ok := CampaignruleentitiesMap["campaigns"].([]interface{}); ok {
+		CampaignsString, _ := json.Marshal(Campaigns)
+		json.Unmarshal(CampaignsString, &o.Campaigns)
+	}
+	
+	if Sequences, ok := CampaignruleentitiesMap["sequences"].([]interface{}); ok {
+		SequencesString, _ := json.Marshal(Sequences)
+		json.Unmarshal(SequencesString, &o.Sequences)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -57,13 +57,11 @@ type Annotation struct {
 
 }
 
-func (u *Annotation) MarshalJSON() ([]byte, error) {
+func (o *Annotation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Annotation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -90,31 +88,97 @@ func (u *Annotation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Location: u.Location,
+		Location: o.Location,
 		
-		DurationMs: u.DurationMs,
+		DurationMs: o.DurationMs,
 		
-		AbsoluteLocation: u.AbsoluteLocation,
+		AbsoluteLocation: o.AbsoluteLocation,
 		
-		AbsoluteDurationMs: u.AbsoluteDurationMs,
+		AbsoluteDurationMs: o.AbsoluteDurationMs,
 		
-		RecordingLocation: u.RecordingLocation,
+		RecordingLocation: o.RecordingLocation,
 		
-		RecordingDurationMs: u.RecordingDurationMs,
+		RecordingDurationMs: o.RecordingDurationMs,
 		
-		User: u.User,
+		User: o.User,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Annotation) UnmarshalJSON(b []byte) error {
+	var AnnotationMap map[string]interface{}
+	err := json.Unmarshal(b, &AnnotationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AnnotationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AnnotationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := AnnotationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Location, ok := AnnotationMap["location"].(float64); ok {
+		LocationInt := int(Location)
+		o.Location = &LocationInt
+	}
+	
+	if DurationMs, ok := AnnotationMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
+	}
+	
+	if AbsoluteLocation, ok := AnnotationMap["absoluteLocation"].(float64); ok {
+		AbsoluteLocationInt := int(AbsoluteLocation)
+		o.AbsoluteLocation = &AbsoluteLocationInt
+	}
+	
+	if AbsoluteDurationMs, ok := AnnotationMap["absoluteDurationMs"].(float64); ok {
+		AbsoluteDurationMsInt := int(AbsoluteDurationMs)
+		o.AbsoluteDurationMs = &AbsoluteDurationMsInt
+	}
+	
+	if RecordingLocation, ok := AnnotationMap["recordingLocation"].(float64); ok {
+		RecordingLocationInt := int(RecordingLocation)
+		o.RecordingLocation = &RecordingLocationInt
+	}
+	
+	if RecordingDurationMs, ok := AnnotationMap["recordingDurationMs"].(float64); ok {
+		RecordingDurationMsInt := int(RecordingDurationMs)
+		o.RecordingDurationMs = &RecordingDurationMsInt
+	}
+	
+	if User, ok := AnnotationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Description, ok := AnnotationMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := AnnotationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

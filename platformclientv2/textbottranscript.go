@@ -17,24 +17,42 @@ type Textbottranscript struct {
 
 }
 
-func (u *Textbottranscript) MarshalJSON() ([]byte, error) {
+func (o *Textbottranscript) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbottranscript
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
 		Confidence *float32 `json:"confidence,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Confidence: u.Confidence,
-		Alias:    (*Alias)(u),
+		Confidence: o.Confidence,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbottranscript) UnmarshalJSON(b []byte) error {
+	var TextbottranscriptMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbottranscriptMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := TextbottranscriptMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Confidence, ok := TextbottranscriptMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

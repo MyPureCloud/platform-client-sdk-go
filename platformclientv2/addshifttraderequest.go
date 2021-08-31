@@ -30,21 +30,19 @@ type Addshifttraderequest struct {
 
 }
 
-func (u *Addshifttraderequest) MarshalJSON() ([]byte, error) {
+func (o *Addshifttraderequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Addshifttraderequest
-
 	
 	Expiration := new(string)
-	if u.Expiration != nil {
+	if o.Expiration != nil {
 		
-		*Expiration = timeutil.Strftime(u.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Expiration = timeutil.Strftime(o.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Expiration = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ScheduleId *string `json:"scheduleId,omitempty"`
 		
@@ -57,17 +55,50 @@ func (u *Addshifttraderequest) MarshalJSON() ([]byte, error) {
 		AcceptableIntervals *[]string `json:"acceptableIntervals,omitempty"`
 		*Alias
 	}{ 
-		ScheduleId: u.ScheduleId,
+		ScheduleId: o.ScheduleId,
 		
-		InitiatingShiftId: u.InitiatingShiftId,
+		InitiatingShiftId: o.InitiatingShiftId,
 		
-		ReceivingUserId: u.ReceivingUserId,
+		ReceivingUserId: o.ReceivingUserId,
 		
 		Expiration: Expiration,
 		
-		AcceptableIntervals: u.AcceptableIntervals,
-		Alias:    (*Alias)(u),
+		AcceptableIntervals: o.AcceptableIntervals,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Addshifttraderequest) UnmarshalJSON(b []byte) error {
+	var AddshifttraderequestMap map[string]interface{}
+	err := json.Unmarshal(b, &AddshifttraderequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ScheduleId, ok := AddshifttraderequestMap["scheduleId"].(string); ok {
+		o.ScheduleId = &ScheduleId
+	}
+	
+	if InitiatingShiftId, ok := AddshifttraderequestMap["initiatingShiftId"].(string); ok {
+		o.InitiatingShiftId = &InitiatingShiftId
+	}
+	
+	if ReceivingUserId, ok := AddshifttraderequestMap["receivingUserId"].(string); ok {
+		o.ReceivingUserId = &ReceivingUserId
+	}
+	
+	if expirationString, ok := AddshifttraderequestMap["expiration"].(string); ok {
+		Expiration, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationString)
+		o.Expiration = &Expiration
+	}
+	
+	if AcceptableIntervals, ok := AddshifttraderequestMap["acceptableIntervals"].([]interface{}); ok {
+		AcceptableIntervalsString, _ := json.Marshal(AcceptableIntervals)
+		json.Unmarshal(AcceptableIntervalsString, &o.AcceptableIntervals)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

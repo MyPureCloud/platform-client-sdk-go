@@ -21,13 +21,11 @@ type Replacerequest struct {
 
 }
 
-func (u *Replacerequest) MarshalJSON() ([]byte, error) {
+func (o *Replacerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Replacerequest
-
 	
-
 	return json.Marshal(&struct { 
 		ChangeNumber *int `json:"changeNumber,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Replacerequest) MarshalJSON() ([]byte, error) {
 		AuthToken *string `json:"authToken,omitempty"`
 		*Alias
 	}{ 
-		ChangeNumber: u.ChangeNumber,
+		ChangeNumber: o.ChangeNumber,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		AuthToken: u.AuthToken,
-		Alias:    (*Alias)(u),
+		AuthToken: o.AuthToken,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Replacerequest) UnmarshalJSON(b []byte) error {
+	var ReplacerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ReplacerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ChangeNumber, ok := ReplacerequestMap["changeNumber"].(float64); ok {
+		ChangeNumberInt := int(ChangeNumber)
+		o.ChangeNumber = &ChangeNumberInt
+	}
+	
+	if Name, ok := ReplacerequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if AuthToken, ok := ReplacerequestMap["authToken"].(string); ok {
+		o.AuthToken = &AuthToken
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

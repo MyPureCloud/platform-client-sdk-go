@@ -45,13 +45,11 @@ type Systemmessagesystemmessage struct {
 
 }
 
-func (u *Systemmessagesystemmessage) MarshalJSON() ([]byte, error) {
+func (o *Systemmessagesystemmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Systemmessagesystemmessage
-
 	
-
 	return json.Marshal(&struct { 
 		ChannelId *string `json:"channelId,omitempty"`
 		
@@ -72,25 +70,73 @@ func (u *Systemmessagesystemmessage) MarshalJSON() ([]byte, error) {
 		Data *interface{} `json:"data,omitempty"`
 		*Alias
 	}{ 
-		ChannelId: u.ChannelId,
+		ChannelId: o.ChannelId,
 		
-		SystemTopicType: u.SystemTopicType,
+		SystemTopicType: o.SystemTopicType,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		OrganizationId: u.OrganizationId,
+		OrganizationId: o.OrganizationId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		OauthClientId: u.OauthClientId,
+		OauthClientId: o.OauthClientId,
 		
-		Reason: u.Reason,
+		Reason: o.Reason,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		Data: u.Data,
-		Alias:    (*Alias)(u),
+		Data: o.Data,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Systemmessagesystemmessage) UnmarshalJSON(b []byte) error {
+	var SystemmessagesystemmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &SystemmessagesystemmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if ChannelId, ok := SystemmessagesystemmessageMap["channelId"].(string); ok {
+		o.ChannelId = &ChannelId
+	}
+	
+	if SystemTopicType, ok := SystemmessagesystemmessageMap["systemTopicType"].(string); ok {
+		o.SystemTopicType = &SystemTopicType
+	}
+	
+	if CorrelationId, ok := SystemmessagesystemmessageMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if OrganizationId, ok := SystemmessagesystemmessageMap["organizationId"].(string); ok {
+		o.OrganizationId = &OrganizationId
+	}
+	
+	if UserId, ok := SystemmessagesystemmessageMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if OauthClientId, ok := SystemmessagesystemmessageMap["oauthClientId"].(string); ok {
+		o.OauthClientId = &OauthClientId
+	}
+	
+	if Reason, ok := SystemmessagesystemmessageMap["reason"].(string); ok {
+		o.Reason = &Reason
+	}
+	
+	if Message, ok := SystemmessagesystemmessageMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if Data, ok := SystemmessagesystemmessageMap["data"].(map[string]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

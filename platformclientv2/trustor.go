@@ -38,21 +38,19 @@ type Trustor struct {
 
 }
 
-func (u *Trustor) MarshalJSON() ([]byte, error) {
+func (o *Trustor) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustor
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,64 @@ func (u *Trustor) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
 		DateCreated: DateCreated,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		Organization: u.Organization,
+		Organization: o.Organization,
 		
-		Authorization: u.Authorization,
+		Authorization: o.Authorization,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustor) UnmarshalJSON(b []byte) error {
+	var TrustorMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustorMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrustorMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Enabled, ok := TrustorMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if dateCreatedString, ok := TrustorMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if CreatedBy, ok := TrustorMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if Organization, ok := TrustorMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+	if Authorization, ok := TrustorMap["authorization"].(map[string]interface{}); ok {
+		AuthorizationString, _ := json.Marshal(Authorization)
+		json.Unmarshal(AuthorizationString, &o.Authorization)
+	}
+	
+	if SelfUri, ok := TrustorMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

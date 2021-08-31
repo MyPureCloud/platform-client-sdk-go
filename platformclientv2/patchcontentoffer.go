@@ -41,13 +41,11 @@ type Patchcontentoffer struct {
 
 }
 
-func (u *Patchcontentoffer) MarshalJSON() ([]byte, error) {
+func (o *Patchcontentoffer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchcontentoffer
-
 	
-
 	return json.Marshal(&struct { 
 		ImageUrl *string `json:"imageUrl,omitempty"`
 		
@@ -66,23 +64,68 @@ func (u *Patchcontentoffer) MarshalJSON() ([]byte, error) {
 		Style *Patchcontentofferstylingconfiguration `json:"style,omitempty"`
 		*Alias
 	}{ 
-		ImageUrl: u.ImageUrl,
+		ImageUrl: o.ImageUrl,
 		
-		DisplayMode: u.DisplayMode,
+		DisplayMode: o.DisplayMode,
 		
-		LayoutMode: u.LayoutMode,
+		LayoutMode: o.LayoutMode,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Headline: u.Headline,
+		Headline: o.Headline,
 		
-		Body: u.Body,
+		Body: o.Body,
 		
-		CallToAction: u.CallToAction,
+		CallToAction: o.CallToAction,
 		
-		Style: u.Style,
-		Alias:    (*Alias)(u),
+		Style: o.Style,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchcontentoffer) UnmarshalJSON(b []byte) error {
+	var PatchcontentofferMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchcontentofferMap)
+	if err != nil {
+		return err
+	}
+	
+	if ImageUrl, ok := PatchcontentofferMap["imageUrl"].(string); ok {
+		o.ImageUrl = &ImageUrl
+	}
+	
+	if DisplayMode, ok := PatchcontentofferMap["displayMode"].(string); ok {
+		o.DisplayMode = &DisplayMode
+	}
+	
+	if LayoutMode, ok := PatchcontentofferMap["layoutMode"].(string); ok {
+		o.LayoutMode = &LayoutMode
+	}
+	
+	if Title, ok := PatchcontentofferMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Headline, ok := PatchcontentofferMap["headline"].(string); ok {
+		o.Headline = &Headline
+	}
+	
+	if Body, ok := PatchcontentofferMap["body"].(string); ok {
+		o.Body = &Body
+	}
+	
+	if CallToAction, ok := PatchcontentofferMap["callToAction"].(map[string]interface{}); ok {
+		CallToActionString, _ := json.Marshal(CallToAction)
+		json.Unmarshal(CallToActionString, &o.CallToAction)
+	}
+	
+	if Style, ok := PatchcontentofferMap["style"].(map[string]interface{}); ok {
+		StyleString, _ := json.Marshal(Style)
+		json.Unmarshal(StyleString, &o.Style)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

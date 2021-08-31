@@ -21,13 +21,11 @@ type Routingrule struct {
 
 }
 
-func (u *Routingrule) MarshalJSON() ([]byte, error) {
+func (o *Routingrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingrule
-
 	
-
 	return json.Marshal(&struct { 
 		Operator *string `json:"operator,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Routingrule) MarshalJSON() ([]byte, error) {
 		WaitSeconds *float64 `json:"waitSeconds,omitempty"`
 		*Alias
 	}{ 
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Threshold: u.Threshold,
+		Threshold: o.Threshold,
 		
-		WaitSeconds: u.WaitSeconds,
-		Alias:    (*Alias)(u),
+		WaitSeconds: o.WaitSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingrule) UnmarshalJSON(b []byte) error {
+	var RoutingruleMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Operator, ok := RoutingruleMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Threshold, ok := RoutingruleMap["threshold"].(float64); ok {
+		ThresholdInt := int(Threshold)
+		o.Threshold = &ThresholdInt
+	}
+	
+	if WaitSeconds, ok := RoutingruleMap["waitSeconds"].(float64); ok {
+		o.WaitSeconds = &WaitSeconds
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

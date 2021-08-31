@@ -25,13 +25,11 @@ type Timeoffrequestlist struct {
 
 }
 
-func (u *Timeoffrequestlist) MarshalJSON() ([]byte, error) {
+func (o *Timeoffrequestlist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffrequestlist
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Timeoffrequestlist) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		TimeOffRequests: u.TimeOffRequests,
+		TimeOffRequests: o.TimeOffRequests,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeoffrequestlist) UnmarshalJSON(b []byte) error {
+	var TimeoffrequestlistMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeoffrequestlistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TimeoffrequestlistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TimeoffrequestlistMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if TimeOffRequests, ok := TimeoffrequestlistMap["timeOffRequests"].([]interface{}); ok {
+		TimeOffRequestsString, _ := json.Marshal(TimeOffRequests)
+		json.Unmarshal(TimeOffRequestsString, &o.TimeOffRequests)
+	}
+	
+	if SelfUri, ok := TimeoffrequestlistMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

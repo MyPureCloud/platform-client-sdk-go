@@ -50,29 +50,27 @@ type Sipsearchpublicrequest struct {
 
 }
 
-func (u *Sipsearchpublicrequest) MarshalJSON() ([]byte, error) {
+func (o *Sipsearchpublicrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sipsearchpublicrequest
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
 	DateEnd := new(string)
-	if u.DateEnd != nil {
+	if o.DateEnd != nil {
 		
-		*DateEnd = timeutil.Strftime(u.DateEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateEnd = timeutil.Strftime(o.DateEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateEnd = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,80 @@ func (u *Sipsearchpublicrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		CallId: u.CallId,
+		CallId: o.CallId,
 		
-		ToUser: u.ToUser,
+		ToUser: o.ToUser,
 		
-		FromUser: u.FromUser,
+		FromUser: o.FromUser,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		ParticipantId: u.ParticipantId,
+		ParticipantId: o.ParticipantId,
 		
 		DateStart: DateStart,
 		
 		DateEnd: DateEnd,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sipsearchpublicrequest) UnmarshalJSON(b []byte) error {
+	var SipsearchpublicrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SipsearchpublicrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SipsearchpublicrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SipsearchpublicrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if CallId, ok := SipsearchpublicrequestMap["callId"].(string); ok {
+		o.CallId = &CallId
+	}
+	
+	if ToUser, ok := SipsearchpublicrequestMap["toUser"].(string); ok {
+		o.ToUser = &ToUser
+	}
+	
+	if FromUser, ok := SipsearchpublicrequestMap["fromUser"].(string); ok {
+		o.FromUser = &FromUser
+	}
+	
+	if ConversationId, ok := SipsearchpublicrequestMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if ParticipantId, ok := SipsearchpublicrequestMap["participantId"].(string); ok {
+		o.ParticipantId = &ParticipantId
+	}
+	
+	if dateStartString, ok := SipsearchpublicrequestMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if dateEndString, ok := SipsearchpublicrequestMap["dateEnd"].(string); ok {
+		DateEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateEndString)
+		o.DateEnd = &DateEnd
+	}
+	
+	if SelfUri, ok := SipsearchpublicrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

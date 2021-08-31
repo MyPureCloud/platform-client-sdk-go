@@ -57,13 +57,11 @@ type Inboundmessagerequest struct {
 
 }
 
-func (u *Inboundmessagerequest) MarshalJSON() ([]byte, error) {
+func (o *Inboundmessagerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Inboundmessagerequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueueId *string `json:"queueId,omitempty"`
 		
@@ -90,31 +88,93 @@ func (u *Inboundmessagerequest) MarshalJSON() ([]byte, error) {
 		Subject *string `json:"subject,omitempty"`
 		*Alias
 	}{ 
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		FlowId: u.FlowId,
+		FlowId: o.FlowId,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		SkillIds: u.SkillIds,
+		SkillIds: o.SkillIds,
 		
-		LanguageId: u.LanguageId,
+		LanguageId: o.LanguageId,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		ToName: u.ToName,
+		ToName: o.ToName,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		FromName: u.FromName,
+		FromName: o.FromName,
 		
-		Subject: u.Subject,
-		Alias:    (*Alias)(u),
+		Subject: o.Subject,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Inboundmessagerequest) UnmarshalJSON(b []byte) error {
+	var InboundmessagerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &InboundmessagerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueId, ok := InboundmessagerequestMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if FlowId, ok := InboundmessagerequestMap["flowId"].(string); ok {
+		o.FlowId = &FlowId
+	}
+	
+	if Provider, ok := InboundmessagerequestMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if SkillIds, ok := InboundmessagerequestMap["skillIds"].([]interface{}); ok {
+		SkillIdsString, _ := json.Marshal(SkillIds)
+		json.Unmarshal(SkillIdsString, &o.SkillIds)
+	}
+	
+	if LanguageId, ok := InboundmessagerequestMap["languageId"].(string); ok {
+		o.LanguageId = &LanguageId
+	}
+	
+	if Priority, ok := InboundmessagerequestMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Attributes, ok := InboundmessagerequestMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if ToAddress, ok := InboundmessagerequestMap["toAddress"].(string); ok {
+		o.ToAddress = &ToAddress
+	}
+	
+	if ToName, ok := InboundmessagerequestMap["toName"].(string); ok {
+		o.ToName = &ToName
+	}
+	
+	if FromAddress, ok := InboundmessagerequestMap["fromAddress"].(string); ok {
+		o.FromAddress = &FromAddress
+	}
+	
+	if FromName, ok := InboundmessagerequestMap["fromName"].(string); ok {
+		o.FromName = &FromName
+	}
+	
+	if Subject, ok := InboundmessagerequestMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

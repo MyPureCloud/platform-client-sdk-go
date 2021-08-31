@@ -21,13 +21,11 @@ type Scimv2groupreference struct {
 
 }
 
-func (u *Scimv2groupreference) MarshalJSON() ([]byte, error) {
+func (o *Scimv2groupreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2groupreference
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Scimv2groupreference) MarshalJSON() ([]byte, error) {
 		Ref *string `json:"$ref,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Ref: u.Ref,
-		Alias:    (*Alias)(u),
+		Ref: o.Ref,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2groupreference) UnmarshalJSON(b []byte) error {
+	var Scimv2groupreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2groupreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := Scimv2groupreferenceMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Value, ok := Scimv2groupreferenceMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Ref, ok := Scimv2groupreferenceMap["$ref"].(string); ok {
+		o.Ref = &Ref
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

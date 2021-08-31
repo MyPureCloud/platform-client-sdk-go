@@ -21,13 +21,11 @@ type Externalsegment struct {
 
 }
 
-func (u *Externalsegment) MarshalJSON() ([]byte, error) {
+func (o *Externalsegment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Externalsegment
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Externalsegment) MarshalJSON() ([]byte, error) {
 		Source *string `json:"source,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Source: u.Source,
-		Alias:    (*Alias)(u),
+		Source: o.Source,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Externalsegment) UnmarshalJSON(b []byte) error {
+	var ExternalsegmentMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternalsegmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ExternalsegmentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ExternalsegmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Source, ok := ExternalsegmentMap["source"].(string); ok {
+		o.Source = &Source
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -101,13 +101,11 @@ type Workplanshift struct {
 
 }
 
-func (u *Workplanshift) MarshalJSON() ([]byte, error) {
+func (o *Workplanshift) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanshift
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -156,53 +154,169 @@ func (u *Workplanshift) MarshalJSON() ([]byte, error) {
 		ValidationId *string `json:"validationId,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Days: u.Days,
+		Days: o.Days,
 		
-		FlexibleStartTime: u.FlexibleStartTime,
+		FlexibleStartTime: o.FlexibleStartTime,
 		
-		ExactStartTimeMinutesFromMidnight: u.ExactStartTimeMinutesFromMidnight,
+		ExactStartTimeMinutesFromMidnight: o.ExactStartTimeMinutesFromMidnight,
 		
-		EarliestStartTimeMinutesFromMidnight: u.EarliestStartTimeMinutesFromMidnight,
+		EarliestStartTimeMinutesFromMidnight: o.EarliestStartTimeMinutesFromMidnight,
 		
-		LatestStartTimeMinutesFromMidnight: u.LatestStartTimeMinutesFromMidnight,
+		LatestStartTimeMinutesFromMidnight: o.LatestStartTimeMinutesFromMidnight,
 		
-		ConstrainStopTime: u.ConstrainStopTime,
+		ConstrainStopTime: o.ConstrainStopTime,
 		
-		ConstrainLatestStopTime: u.ConstrainLatestStopTime,
+		ConstrainLatestStopTime: o.ConstrainLatestStopTime,
 		
-		LatestStopTimeMinutesFromMidnight: u.LatestStopTimeMinutesFromMidnight,
+		LatestStopTimeMinutesFromMidnight: o.LatestStopTimeMinutesFromMidnight,
 		
-		ConstrainEarliestStopTime: u.ConstrainEarliestStopTime,
+		ConstrainEarliestStopTime: o.ConstrainEarliestStopTime,
 		
-		EarliestStopTimeMinutesFromMidnight: u.EarliestStopTimeMinutesFromMidnight,
+		EarliestStopTimeMinutesFromMidnight: o.EarliestStopTimeMinutesFromMidnight,
 		
-		StartIncrementMinutes: u.StartIncrementMinutes,
+		StartIncrementMinutes: o.StartIncrementMinutes,
 		
-		FlexiblePaidTime: u.FlexiblePaidTime,
+		FlexiblePaidTime: o.FlexiblePaidTime,
 		
-		ExactPaidTimeMinutes: u.ExactPaidTimeMinutes,
+		ExactPaidTimeMinutes: o.ExactPaidTimeMinutes,
 		
-		MinimumPaidTimeMinutes: u.MinimumPaidTimeMinutes,
+		MinimumPaidTimeMinutes: o.MinimumPaidTimeMinutes,
 		
-		MaximumPaidTimeMinutes: u.MaximumPaidTimeMinutes,
+		MaximumPaidTimeMinutes: o.MaximumPaidTimeMinutes,
 		
-		ConstrainContiguousWorkTime: u.ConstrainContiguousWorkTime,
+		ConstrainContiguousWorkTime: o.ConstrainContiguousWorkTime,
 		
-		MinimumContiguousWorkTimeMinutes: u.MinimumContiguousWorkTimeMinutes,
+		MinimumContiguousWorkTimeMinutes: o.MinimumContiguousWorkTimeMinutes,
 		
-		MaximumContiguousWorkTimeMinutes: u.MaximumContiguousWorkTimeMinutes,
+		MaximumContiguousWorkTimeMinutes: o.MaximumContiguousWorkTimeMinutes,
 		
-		Activities: u.Activities,
+		Activities: o.Activities,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Delete: u.Delete,
+		Delete: o.Delete,
 		
-		ValidationId: u.ValidationId,
-		Alias:    (*Alias)(u),
+		ValidationId: o.ValidationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanshift) UnmarshalJSON(b []byte) error {
+	var WorkplanshiftMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanshiftMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := WorkplanshiftMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Days, ok := WorkplanshiftMap["days"].(map[string]interface{}); ok {
+		DaysString, _ := json.Marshal(Days)
+		json.Unmarshal(DaysString, &o.Days)
+	}
+	
+	if FlexibleStartTime, ok := WorkplanshiftMap["flexibleStartTime"].(bool); ok {
+		o.FlexibleStartTime = &FlexibleStartTime
+	}
+	
+	if ExactStartTimeMinutesFromMidnight, ok := WorkplanshiftMap["exactStartTimeMinutesFromMidnight"].(float64); ok {
+		ExactStartTimeMinutesFromMidnightInt := int(ExactStartTimeMinutesFromMidnight)
+		o.ExactStartTimeMinutesFromMidnight = &ExactStartTimeMinutesFromMidnightInt
+	}
+	
+	if EarliestStartTimeMinutesFromMidnight, ok := WorkplanshiftMap["earliestStartTimeMinutesFromMidnight"].(float64); ok {
+		EarliestStartTimeMinutesFromMidnightInt := int(EarliestStartTimeMinutesFromMidnight)
+		o.EarliestStartTimeMinutesFromMidnight = &EarliestStartTimeMinutesFromMidnightInt
+	}
+	
+	if LatestStartTimeMinutesFromMidnight, ok := WorkplanshiftMap["latestStartTimeMinutesFromMidnight"].(float64); ok {
+		LatestStartTimeMinutesFromMidnightInt := int(LatestStartTimeMinutesFromMidnight)
+		o.LatestStartTimeMinutesFromMidnight = &LatestStartTimeMinutesFromMidnightInt
+	}
+	
+	if ConstrainStopTime, ok := WorkplanshiftMap["constrainStopTime"].(bool); ok {
+		o.ConstrainStopTime = &ConstrainStopTime
+	}
+	
+	if ConstrainLatestStopTime, ok := WorkplanshiftMap["constrainLatestStopTime"].(bool); ok {
+		o.ConstrainLatestStopTime = &ConstrainLatestStopTime
+	}
+	
+	if LatestStopTimeMinutesFromMidnight, ok := WorkplanshiftMap["latestStopTimeMinutesFromMidnight"].(float64); ok {
+		LatestStopTimeMinutesFromMidnightInt := int(LatestStopTimeMinutesFromMidnight)
+		o.LatestStopTimeMinutesFromMidnight = &LatestStopTimeMinutesFromMidnightInt
+	}
+	
+	if ConstrainEarliestStopTime, ok := WorkplanshiftMap["constrainEarliestStopTime"].(bool); ok {
+		o.ConstrainEarliestStopTime = &ConstrainEarliestStopTime
+	}
+	
+	if EarliestStopTimeMinutesFromMidnight, ok := WorkplanshiftMap["earliestStopTimeMinutesFromMidnight"].(float64); ok {
+		EarliestStopTimeMinutesFromMidnightInt := int(EarliestStopTimeMinutesFromMidnight)
+		o.EarliestStopTimeMinutesFromMidnight = &EarliestStopTimeMinutesFromMidnightInt
+	}
+	
+	if StartIncrementMinutes, ok := WorkplanshiftMap["startIncrementMinutes"].(float64); ok {
+		StartIncrementMinutesInt := int(StartIncrementMinutes)
+		o.StartIncrementMinutes = &StartIncrementMinutesInt
+	}
+	
+	if FlexiblePaidTime, ok := WorkplanshiftMap["flexiblePaidTime"].(bool); ok {
+		o.FlexiblePaidTime = &FlexiblePaidTime
+	}
+	
+	if ExactPaidTimeMinutes, ok := WorkplanshiftMap["exactPaidTimeMinutes"].(float64); ok {
+		ExactPaidTimeMinutesInt := int(ExactPaidTimeMinutes)
+		o.ExactPaidTimeMinutes = &ExactPaidTimeMinutesInt
+	}
+	
+	if MinimumPaidTimeMinutes, ok := WorkplanshiftMap["minimumPaidTimeMinutes"].(float64); ok {
+		MinimumPaidTimeMinutesInt := int(MinimumPaidTimeMinutes)
+		o.MinimumPaidTimeMinutes = &MinimumPaidTimeMinutesInt
+	}
+	
+	if MaximumPaidTimeMinutes, ok := WorkplanshiftMap["maximumPaidTimeMinutes"].(float64); ok {
+		MaximumPaidTimeMinutesInt := int(MaximumPaidTimeMinutes)
+		o.MaximumPaidTimeMinutes = &MaximumPaidTimeMinutesInt
+	}
+	
+	if ConstrainContiguousWorkTime, ok := WorkplanshiftMap["constrainContiguousWorkTime"].(bool); ok {
+		o.ConstrainContiguousWorkTime = &ConstrainContiguousWorkTime
+	}
+	
+	if MinimumContiguousWorkTimeMinutes, ok := WorkplanshiftMap["minimumContiguousWorkTimeMinutes"].(float64); ok {
+		MinimumContiguousWorkTimeMinutesInt := int(MinimumContiguousWorkTimeMinutes)
+		o.MinimumContiguousWorkTimeMinutes = &MinimumContiguousWorkTimeMinutesInt
+	}
+	
+	if MaximumContiguousWorkTimeMinutes, ok := WorkplanshiftMap["maximumContiguousWorkTimeMinutes"].(float64); ok {
+		MaximumContiguousWorkTimeMinutesInt := int(MaximumContiguousWorkTimeMinutes)
+		o.MaximumContiguousWorkTimeMinutes = &MaximumContiguousWorkTimeMinutesInt
+	}
+	
+	if Activities, ok := WorkplanshiftMap["activities"].([]interface{}); ok {
+		ActivitiesString, _ := json.Marshal(Activities)
+		json.Unmarshal(ActivitiesString, &o.Activities)
+	}
+	
+	if Id, ok := WorkplanshiftMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Delete, ok := WorkplanshiftMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+	
+	if ValidationId, ok := WorkplanshiftMap["validationId"].(string); ok {
+		o.ValidationId = &ValidationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

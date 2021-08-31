@@ -13,20 +13,34 @@ type Forecastplanninggroupsresponse struct {
 
 }
 
-func (u *Forecastplanninggroupsresponse) MarshalJSON() ([]byte, error) {
+func (o *Forecastplanninggroupsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastplanninggroupsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Forecastplanninggroupresponse `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastplanninggroupsresponse) UnmarshalJSON(b []byte) error {
+	var ForecastplanninggroupsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastplanninggroupsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := ForecastplanninggroupsresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -78,37 +78,35 @@ type Queueconversationeventtopicchat struct {
 
 }
 
-func (u *Queueconversationeventtopicchat) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationeventtopicchat) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopicchat
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -145,23 +143,23 @@ func (u *Queueconversationeventtopicchat) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		RoomId: u.RoomId,
+		RoomId: o.RoomId,
 		
-		AvatarImageUrl: u.AvatarImageUrl,
+		AvatarImageUrl: o.AvatarImageUrl,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
@@ -169,17 +167,103 @@ func (u *Queueconversationeventtopicchat) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		JourneyContext: u.JourneyContext,
+		JourneyContext: o.JourneyContext,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationeventtopicchat) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopicchatMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopicchatMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := QueueconversationeventtopicchatMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := QueueconversationeventtopicchatMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Provider, ok := QueueconversationeventtopicchatMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := QueueconversationeventtopicchatMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := QueueconversationeventtopicchatMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if RoomId, ok := QueueconversationeventtopicchatMap["roomId"].(string); ok {
+		o.RoomId = &RoomId
+	}
+	
+	if AvatarImageUrl, ok := QueueconversationeventtopicchatMap["avatarImageUrl"].(string); ok {
+		o.AvatarImageUrl = &AvatarImageUrl
+	}
+	
+	if Held, ok := QueueconversationeventtopicchatMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if DisconnectType, ok := QueueconversationeventtopicchatMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := QueueconversationeventtopicchatMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if connectedTimeString, ok := QueueconversationeventtopicchatMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := QueueconversationeventtopicchatMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if JourneyContext, ok := QueueconversationeventtopicchatMap["journeyContext"].(map[string]interface{}); ok {
+		JourneyContextString, _ := json.Marshal(JourneyContext)
+		json.Unmarshal(JourneyContextString, &o.JourneyContext)
+	}
+	
+	if Wrapup, ok := QueueconversationeventtopicchatMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := QueueconversationeventtopicchatMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := QueueconversationeventtopicchatMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AdditionalProperties, ok := QueueconversationeventtopicchatMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

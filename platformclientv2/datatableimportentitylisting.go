@@ -29,13 +29,11 @@ type Datatableimportentitylisting struct {
 
 }
 
-func (u *Datatableimportentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Datatableimportentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Datatableimportentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Datatableimportjob `json:"entities,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Datatableimportentitylisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Datatableimportentitylisting) UnmarshalJSON(b []byte) error {
+	var DatatableimportentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &DatatableimportentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := DatatableimportentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := DatatableimportentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := DatatableimportentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := DatatableimportentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := DatatableimportentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

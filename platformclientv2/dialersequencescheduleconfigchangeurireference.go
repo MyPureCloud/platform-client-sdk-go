@@ -17,24 +17,41 @@ type Dialersequencescheduleconfigchangeurireference struct {
 
 }
 
-func (u *Dialersequencescheduleconfigchangeurireference) MarshalJSON() ([]byte, error) {
+func (o *Dialersequencescheduleconfigchangeurireference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialersequencescheduleconfigchangeurireference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialersequencescheduleconfigchangeurireference) UnmarshalJSON(b []byte) error {
+	var DialersequencescheduleconfigchangeurireferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DialersequencescheduleconfigchangeurireferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialersequencescheduleconfigchangeurireferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialersequencescheduleconfigchangeurireferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

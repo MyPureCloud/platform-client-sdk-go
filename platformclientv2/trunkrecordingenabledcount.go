@@ -17,24 +17,43 @@ type Trunkrecordingenabledcount struct {
 
 }
 
-func (u *Trunkrecordingenabledcount) MarshalJSON() ([]byte, error) {
+func (o *Trunkrecordingenabledcount) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkrecordingenabledcount
-
 	
-
 	return json.Marshal(&struct { 
 		EnabledCount *int `json:"enabledCount,omitempty"`
 		
 		DisabledCount *int `json:"disabledCount,omitempty"`
 		*Alias
 	}{ 
-		EnabledCount: u.EnabledCount,
+		EnabledCount: o.EnabledCount,
 		
-		DisabledCount: u.DisabledCount,
-		Alias:    (*Alias)(u),
+		DisabledCount: o.DisabledCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkrecordingenabledcount) UnmarshalJSON(b []byte) error {
+	var TrunkrecordingenabledcountMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkrecordingenabledcountMap)
+	if err != nil {
+		return err
+	}
+	
+	if EnabledCount, ok := TrunkrecordingenabledcountMap["enabledCount"].(float64); ok {
+		EnabledCountInt := int(EnabledCount)
+		o.EnabledCount = &EnabledCountInt
+	}
+	
+	if DisabledCount, ok := TrunkrecordingenabledcountMap["disabledCount"].(float64); ok {
+		DisabledCountInt := int(DisabledCount)
+		o.DisabledCount = &DisabledCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

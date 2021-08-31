@@ -29,13 +29,11 @@ type Contactlistfilterrange struct {
 
 }
 
-func (u *Contactlistfilterrange) MarshalJSON() ([]byte, error) {
+func (o *Contactlistfilterrange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlistfilterrange
-
 	
-
 	return json.Marshal(&struct { 
 		Min *string `json:"min,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Contactlistfilterrange) MarshalJSON() ([]byte, error) {
 		InSet *[]string `json:"inSet,omitempty"`
 		*Alias
 	}{ 
-		Min: u.Min,
+		Min: o.Min,
 		
-		Max: u.Max,
+		Max: o.Max,
 		
-		MinInclusive: u.MinInclusive,
+		MinInclusive: o.MinInclusive,
 		
-		MaxInclusive: u.MaxInclusive,
+		MaxInclusive: o.MaxInclusive,
 		
-		InSet: u.InSet,
-		Alias:    (*Alias)(u),
+		InSet: o.InSet,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlistfilterrange) UnmarshalJSON(b []byte) error {
+	var ContactlistfilterrangeMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistfilterrangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Min, ok := ContactlistfilterrangeMap["min"].(string); ok {
+		o.Min = &Min
+	}
+	
+	if Max, ok := ContactlistfilterrangeMap["max"].(string); ok {
+		o.Max = &Max
+	}
+	
+	if MinInclusive, ok := ContactlistfilterrangeMap["minInclusive"].(bool); ok {
+		o.MinInclusive = &MinInclusive
+	}
+	
+	if MaxInclusive, ok := ContactlistfilterrangeMap["maxInclusive"].(bool); ok {
+		o.MaxInclusive = &MaxInclusive
+	}
+	
+	if InSet, ok := ContactlistfilterrangeMap["inSet"].([]interface{}); ok {
+		InSetString, _ := json.Marshal(InSet)
+		json.Unmarshal(InSetString, &o.InSet)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

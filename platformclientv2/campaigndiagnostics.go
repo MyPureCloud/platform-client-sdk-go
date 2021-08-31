@@ -29,13 +29,11 @@ type Campaigndiagnostics struct {
 
 }
 
-func (u *Campaigndiagnostics) MarshalJSON() ([]byte, error) {
+func (o *Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaigndiagnostics
-
 	
-
 	return json.Marshal(&struct { 
 		CallableContacts *Callablecontactsdiagnostic `json:"callableContacts,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Campaigndiagnostics) MarshalJSON() ([]byte, error) {
 		ScheduledInteractionsCount *int `json:"scheduledInteractionsCount,omitempty"`
 		*Alias
 	}{ 
-		CallableContacts: u.CallableContacts,
+		CallableContacts: o.CallableContacts,
 		
-		QueueUtilizationDiagnostic: u.QueueUtilizationDiagnostic,
+		QueueUtilizationDiagnostic: o.QueueUtilizationDiagnostic,
 		
-		RuleSetDiagnostics: u.RuleSetDiagnostics,
+		RuleSetDiagnostics: o.RuleSetDiagnostics,
 		
-		OutstandingInteractionsCount: u.OutstandingInteractionsCount,
+		OutstandingInteractionsCount: o.OutstandingInteractionsCount,
 		
-		ScheduledInteractionsCount: u.ScheduledInteractionsCount,
-		Alias:    (*Alias)(u),
+		ScheduledInteractionsCount: o.ScheduledInteractionsCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaigndiagnostics) UnmarshalJSON(b []byte) error {
+	var CampaigndiagnosticsMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaigndiagnosticsMap)
+	if err != nil {
+		return err
+	}
+	
+	if CallableContacts, ok := CampaigndiagnosticsMap["callableContacts"].(map[string]interface{}); ok {
+		CallableContactsString, _ := json.Marshal(CallableContacts)
+		json.Unmarshal(CallableContactsString, &o.CallableContacts)
+	}
+	
+	if QueueUtilizationDiagnostic, ok := CampaigndiagnosticsMap["queueUtilizationDiagnostic"].(map[string]interface{}); ok {
+		QueueUtilizationDiagnosticString, _ := json.Marshal(QueueUtilizationDiagnostic)
+		json.Unmarshal(QueueUtilizationDiagnosticString, &o.QueueUtilizationDiagnostic)
+	}
+	
+	if RuleSetDiagnostics, ok := CampaigndiagnosticsMap["ruleSetDiagnostics"].([]interface{}); ok {
+		RuleSetDiagnosticsString, _ := json.Marshal(RuleSetDiagnostics)
+		json.Unmarshal(RuleSetDiagnosticsString, &o.RuleSetDiagnostics)
+	}
+	
+	if OutstandingInteractionsCount, ok := CampaigndiagnosticsMap["outstandingInteractionsCount"].(float64); ok {
+		OutstandingInteractionsCountInt := int(OutstandingInteractionsCount)
+		o.OutstandingInteractionsCount = &OutstandingInteractionsCountInt
+	}
+	
+	if ScheduledInteractionsCount, ok := CampaigndiagnosticsMap["scheduledInteractionsCount"].(float64); ok {
+		ScheduledInteractionsCountInt := int(ScheduledInteractionsCount)
+		o.ScheduledInteractionsCount = &ScheduledInteractionsCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

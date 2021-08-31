@@ -21,13 +21,11 @@ type Contentpostback struct {
 
 }
 
-func (u *Contentpostback) MarshalJSON() ([]byte, error) {
+func (o *Contentpostback) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentpostback
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Contentpostback) MarshalJSON() ([]byte, error) {
 		Payload *string `json:"payload,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Payload: u.Payload,
-		Alias:    (*Alias)(u),
+		Payload: o.Payload,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentpostback) UnmarshalJSON(b []byte) error {
+	var ContentpostbackMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentpostbackMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ContentpostbackMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Text, ok := ContentpostbackMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Payload, ok := ContentpostbackMap["payload"].(string); ok {
+		o.Payload = &Payload
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

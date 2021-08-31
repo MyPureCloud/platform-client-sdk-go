@@ -37,13 +37,11 @@ type Ttsvoiceentity struct {
 
 }
 
-func (u *Ttsvoiceentity) MarshalJSON() ([]byte, error) {
+func (o *Ttsvoiceentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ttsvoiceentity
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Ttsvoiceentity) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Gender: u.Gender,
+		Gender: o.Gender,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Engine: u.Engine,
+		Engine: o.Engine,
 		
-		IsDefault: u.IsDefault,
+		IsDefault: o.IsDefault,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ttsvoiceentity) UnmarshalJSON(b []byte) error {
+	var TtsvoiceentityMap map[string]interface{}
+	err := json.Unmarshal(b, &TtsvoiceentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TtsvoiceentityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TtsvoiceentityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Gender, ok := TtsvoiceentityMap["gender"].(string); ok {
+		o.Gender = &Gender
+	}
+	
+	if Language, ok := TtsvoiceentityMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Engine, ok := TtsvoiceentityMap["engine"].(map[string]interface{}); ok {
+		EngineString, _ := json.Marshal(Engine)
+		json.Unmarshal(EngineString, &o.Engine)
+	}
+	
+	if IsDefault, ok := TtsvoiceentityMap["isDefault"].(bool); ok {
+		o.IsDefault = &IsDefault
+	}
+	
+	if SelfUri, ok := TtsvoiceentityMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

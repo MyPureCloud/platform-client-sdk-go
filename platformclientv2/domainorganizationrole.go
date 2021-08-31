@@ -57,13 +57,11 @@ type Domainorganizationrole struct {
 
 }
 
-func (u *Domainorganizationrole) MarshalJSON() ([]byte, error) {
+func (o *Domainorganizationrole) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainorganizationrole
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -90,31 +88,94 @@ func (u *Domainorganizationrole) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		DefaultRoleId: u.DefaultRoleId,
+		DefaultRoleId: o.DefaultRoleId,
 		
-		Permissions: u.Permissions,
+		Permissions: o.Permissions,
 		
-		UnusedPermissions: u.UnusedPermissions,
+		UnusedPermissions: o.UnusedPermissions,
 		
-		PermissionPolicies: u.PermissionPolicies,
+		PermissionPolicies: o.PermissionPolicies,
 		
-		UserCount: u.UserCount,
+		UserCount: o.UserCount,
 		
-		RoleNeedsUpdate: u.RoleNeedsUpdate,
+		RoleNeedsUpdate: o.RoleNeedsUpdate,
 		
-		VarDefault: u.VarDefault,
+		VarDefault: o.VarDefault,
 		
-		Base: u.Base,
+		Base: o.Base,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainorganizationrole) UnmarshalJSON(b []byte) error {
+	var DomainorganizationroleMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainorganizationroleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainorganizationroleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainorganizationroleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := DomainorganizationroleMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if DefaultRoleId, ok := DomainorganizationroleMap["defaultRoleId"].(string); ok {
+		o.DefaultRoleId = &DefaultRoleId
+	}
+	
+	if Permissions, ok := DomainorganizationroleMap["permissions"].([]interface{}); ok {
+		PermissionsString, _ := json.Marshal(Permissions)
+		json.Unmarshal(PermissionsString, &o.Permissions)
+	}
+	
+	if UnusedPermissions, ok := DomainorganizationroleMap["unusedPermissions"].([]interface{}); ok {
+		UnusedPermissionsString, _ := json.Marshal(UnusedPermissions)
+		json.Unmarshal(UnusedPermissionsString, &o.UnusedPermissions)
+	}
+	
+	if PermissionPolicies, ok := DomainorganizationroleMap["permissionPolicies"].([]interface{}); ok {
+		PermissionPoliciesString, _ := json.Marshal(PermissionPolicies)
+		json.Unmarshal(PermissionPoliciesString, &o.PermissionPolicies)
+	}
+	
+	if UserCount, ok := DomainorganizationroleMap["userCount"].(float64); ok {
+		UserCountInt := int(UserCount)
+		o.UserCount = &UserCountInt
+	}
+	
+	if RoleNeedsUpdate, ok := DomainorganizationroleMap["roleNeedsUpdate"].(bool); ok {
+		o.RoleNeedsUpdate = &RoleNeedsUpdate
+	}
+	
+	if VarDefault, ok := DomainorganizationroleMap["default"].(bool); ok {
+		o.VarDefault = &VarDefault
+	}
+	
+	if Base, ok := DomainorganizationroleMap["base"].(bool); ok {
+		o.Base = &Base
+	}
+	
+	if SelfUri, ok := DomainorganizationroleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

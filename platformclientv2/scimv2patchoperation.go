@@ -21,13 +21,11 @@ type Scimv2patchoperation struct {
 
 }
 
-func (u *Scimv2patchoperation) MarshalJSON() ([]byte, error) {
+func (o *Scimv2patchoperation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2patchoperation
-
 	
-
 	return json.Marshal(&struct { 
 		Op *string `json:"op,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Scimv2patchoperation) MarshalJSON() ([]byte, error) {
 		Value *Jsonnode `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Op: u.Op,
+		Op: o.Op,
 		
-		Path: u.Path,
+		Path: o.Path,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2patchoperation) UnmarshalJSON(b []byte) error {
+	var Scimv2patchoperationMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2patchoperationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Op, ok := Scimv2patchoperationMap["op"].(string); ok {
+		o.Op = &Op
+	}
+	
+	if Path, ok := Scimv2patchoperationMap["path"].(string); ok {
+		o.Path = &Path
+	}
+	
+	if Value, ok := Scimv2patchoperationMap["value"].(map[string]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Disallowedentitylearningassignmentreference struct {
 
 }
 
-func (u *Disallowedentitylearningassignmentreference) MarshalJSON() ([]byte, error) {
+func (o *Disallowedentitylearningassignmentreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Disallowedentitylearningassignmentreference
-
 	
-
 	return json.Marshal(&struct { 
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
 		Entity *Learningassignmentreference `json:"entity,omitempty"`
 		*Alias
 	}{ 
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		Entity: u.Entity,
-		Alias:    (*Alias)(u),
+		Entity: o.Entity,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Disallowedentitylearningassignmentreference) UnmarshalJSON(b []byte) error {
+	var DisallowedentitylearningassignmentreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DisallowedentitylearningassignmentreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if ErrorCode, ok := DisallowedentitylearningassignmentreferenceMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if Entity, ok := DisallowedentitylearningassignmentreferenceMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

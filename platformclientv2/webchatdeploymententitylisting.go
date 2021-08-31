@@ -21,13 +21,11 @@ type Webchatdeploymententitylisting struct {
 
 }
 
-func (u *Webchatdeploymententitylisting) MarshalJSON() ([]byte, error) {
+func (o *Webchatdeploymententitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatdeploymententitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Webchatdeploymententitylisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatdeploymententitylisting) UnmarshalJSON(b []byte) error {
+	var WebchatdeploymententitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatdeploymententitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := WebchatdeploymententitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if Entities, ok := WebchatdeploymententitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if SelfUri, ok := WebchatdeploymententitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

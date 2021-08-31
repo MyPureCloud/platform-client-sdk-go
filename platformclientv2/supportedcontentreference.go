@@ -25,13 +25,11 @@ type Supportedcontentreference struct {
 
 }
 
-func (u *Supportedcontentreference) MarshalJSON() ([]byte, error) {
+func (o *Supportedcontentreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Supportedcontentreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Supportedcontentreference) MarshalJSON() ([]byte, error) {
 		MediaTypes *Mediatypes `json:"mediaTypes,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		MediaTypes: u.MediaTypes,
-		Alias:    (*Alias)(u),
+		MediaTypes: o.MediaTypes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Supportedcontentreference) UnmarshalJSON(b []byte) error {
+	var SupportedcontentreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &SupportedcontentreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SupportedcontentreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SupportedcontentreferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := SupportedcontentreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if MediaTypes, ok := SupportedcontentreferenceMap["mediaTypes"].(map[string]interface{}); ok {
+		MediaTypesString, _ := json.Marshal(MediaTypes)
+		json.Unmarshal(MediaTypesString, &o.MediaTypes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

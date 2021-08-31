@@ -33,13 +33,11 @@ type Eventmessage struct {
 
 }
 
-func (u *Eventmessage) MarshalJSON() ([]byte, error) {
+func (o *Eventmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Eventmessage
-
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Eventmessage) MarshalJSON() ([]byte, error) {
 		ResourceURIs *[]string `json:"resourceURIs,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
+		MessageParams: o.MessageParams,
 		
-		DocumentationUri: u.DocumentationUri,
+		DocumentationUri: o.DocumentationUri,
 		
-		ResourceURIs: u.ResourceURIs,
-		Alias:    (*Alias)(u),
+		ResourceURIs: o.ResourceURIs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Eventmessage) UnmarshalJSON(b []byte) error {
+	var EventmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &EventmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := EventmessageMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Message, ok := EventmessageMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := EventmessageMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := EventmessageMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+	if DocumentationUri, ok := EventmessageMap["documentationUri"].(string); ok {
+		o.DocumentationUri = &DocumentationUri
+	}
+	
+	if ResourceURIs, ok := EventmessageMap["resourceURIs"].([]interface{}); ok {
+		ResourceURIsString, _ := json.Marshal(ResourceURIs)
+		json.Unmarshal(ResourceURIsString, &o.ResourceURIs)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

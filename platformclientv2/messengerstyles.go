@@ -13,20 +13,33 @@ type Messengerstyles struct {
 
 }
 
-func (u *Messengerstyles) MarshalJSON() ([]byte, error) {
+func (o *Messengerstyles) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messengerstyles
-
 	
-
 	return json.Marshal(&struct { 
 		PrimaryColor *string `json:"primaryColor,omitempty"`
 		*Alias
 	}{ 
-		PrimaryColor: u.PrimaryColor,
-		Alias:    (*Alias)(u),
+		PrimaryColor: o.PrimaryColor,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messengerstyles) UnmarshalJSON(b []byte) error {
+	var MessengerstylesMap map[string]interface{}
+	err := json.Unmarshal(b, &MessengerstylesMap)
+	if err != nil {
+		return err
+	}
+	
+	if PrimaryColor, ok := MessengerstylesMap["primaryColor"].(string); ok {
+		o.PrimaryColor = &PrimaryColor
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

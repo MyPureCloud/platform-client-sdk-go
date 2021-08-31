@@ -25,13 +25,11 @@ type Googledialogflowcustomsettings struct {
 
 }
 
-func (u *Googledialogflowcustomsettings) MarshalJSON() ([]byte, error) {
+func (o *Googledialogflowcustomsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Googledialogflowcustomsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Environment *string `json:"environment,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Googledialogflowcustomsettings) MarshalJSON() ([]byte, error) {
 		EventInputParameters *map[string]string `json:"eventInputParameters,omitempty"`
 		*Alias
 	}{ 
-		Environment: u.Environment,
+		Environment: o.Environment,
 		
-		EventName: u.EventName,
+		EventName: o.EventName,
 		
-		WebhookQueryParameters: u.WebhookQueryParameters,
+		WebhookQueryParameters: o.WebhookQueryParameters,
 		
-		EventInputParameters: u.EventInputParameters,
-		Alias:    (*Alias)(u),
+		EventInputParameters: o.EventInputParameters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Googledialogflowcustomsettings) UnmarshalJSON(b []byte) error {
+	var GoogledialogflowcustomsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &GoogledialogflowcustomsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Environment, ok := GoogledialogflowcustomsettingsMap["environment"].(string); ok {
+		o.Environment = &Environment
+	}
+	
+	if EventName, ok := GoogledialogflowcustomsettingsMap["eventName"].(string); ok {
+		o.EventName = &EventName
+	}
+	
+	if WebhookQueryParameters, ok := GoogledialogflowcustomsettingsMap["webhookQueryParameters"].(map[string]interface{}); ok {
+		WebhookQueryParametersString, _ := json.Marshal(WebhookQueryParameters)
+		json.Unmarshal(WebhookQueryParametersString, &o.WebhookQueryParameters)
+	}
+	
+	if EventInputParameters, ok := GoogledialogflowcustomsettingsMap["eventInputParameters"].(map[string]interface{}); ok {
+		EventInputParametersString, _ := json.Marshal(EventInputParameters)
+		json.Unmarshal(EventInputParametersString, &o.EventInputParameters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -62,21 +62,19 @@ type Callhistoryconversation struct {
 
 }
 
-func (u *Callhistoryconversation) MarshalJSON() ([]byte, error) {
+func (o *Callhistoryconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callhistoryconversation
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -105,33 +103,98 @@ func (u *Callhistoryconversation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		WentToVoicemail: u.WentToVoicemail,
+		WentToVoicemail: o.WentToVoicemail,
 		
-		MissedCall: u.MissedCall,
+		MissedCall: o.MissedCall,
 		
 		StartTime: StartTime,
 		
-		WasConference: u.WasConference,
+		WasConference: o.WasConference,
 		
-		WasCallback: u.WasCallback,
+		WasCallback: o.WasCallback,
 		
-		HadScreenShare: u.HadScreenShare,
+		HadScreenShare: o.HadScreenShare,
 		
-		HadCobrowse: u.HadCobrowse,
+		HadCobrowse: o.HadCobrowse,
 		
-		WasOutboundCampaign: u.WasOutboundCampaign,
+		WasOutboundCampaign: o.WasOutboundCampaign,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callhistoryconversation) UnmarshalJSON(b []byte) error {
+	var CallhistoryconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &CallhistoryconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CallhistoryconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CallhistoryconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := CallhistoryconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if Direction, ok := CallhistoryconversationMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if WentToVoicemail, ok := CallhistoryconversationMap["wentToVoicemail"].(bool); ok {
+		o.WentToVoicemail = &WentToVoicemail
+	}
+	
+	if MissedCall, ok := CallhistoryconversationMap["missedCall"].(bool); ok {
+		o.MissedCall = &MissedCall
+	}
+	
+	if startTimeString, ok := CallhistoryconversationMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if WasConference, ok := CallhistoryconversationMap["wasConference"].(bool); ok {
+		o.WasConference = &WasConference
+	}
+	
+	if WasCallback, ok := CallhistoryconversationMap["wasCallback"].(bool); ok {
+		o.WasCallback = &WasCallback
+	}
+	
+	if HadScreenShare, ok := CallhistoryconversationMap["hadScreenShare"].(bool); ok {
+		o.HadScreenShare = &HadScreenShare
+	}
+	
+	if HadCobrowse, ok := CallhistoryconversationMap["hadCobrowse"].(bool); ok {
+		o.HadCobrowse = &HadCobrowse
+	}
+	
+	if WasOutboundCampaign, ok := CallhistoryconversationMap["wasOutboundCampaign"].(bool); ok {
+		o.WasOutboundCampaign = &WasOutboundCampaign
+	}
+	
+	if SelfUri, ok := CallhistoryconversationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

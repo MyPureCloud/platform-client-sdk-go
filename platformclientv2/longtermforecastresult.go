@@ -22,20 +22,18 @@ type Longtermforecastresult struct {
 
 }
 
-func (u *Longtermforecastresult) MarshalJSON() ([]byte, error) {
+func (o *Longtermforecastresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Longtermforecastresult
-
 	
 	ReferenceStartDate := new(string)
-	if u.ReferenceStartDate != nil {
-		*ReferenceStartDate = timeutil.Strftime(u.ReferenceStartDate, "%Y-%m-%d")
+	if o.ReferenceStartDate != nil {
+		*ReferenceStartDate = timeutil.Strftime(o.ReferenceStartDate, "%Y-%m-%d")
 	} else {
 		ReferenceStartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		PlanningGroups *[]Longtermforecastplanninggroupdata `json:"planningGroups,omitempty"`
 		
@@ -44,13 +42,39 @@ func (u *Longtermforecastresult) MarshalJSON() ([]byte, error) {
 		WeekCount *int `json:"weekCount,omitempty"`
 		*Alias
 	}{ 
-		PlanningGroups: u.PlanningGroups,
+		PlanningGroups: o.PlanningGroups,
 		
 		ReferenceStartDate: ReferenceStartDate,
 		
-		WeekCount: u.WeekCount,
-		Alias:    (*Alias)(u),
+		WeekCount: o.WeekCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Longtermforecastresult) UnmarshalJSON(b []byte) error {
+	var LongtermforecastresultMap map[string]interface{}
+	err := json.Unmarshal(b, &LongtermforecastresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if PlanningGroups, ok := LongtermforecastresultMap["planningGroups"].([]interface{}); ok {
+		PlanningGroupsString, _ := json.Marshal(PlanningGroups)
+		json.Unmarshal(PlanningGroupsString, &o.PlanningGroups)
+	}
+	
+	if referenceStartDateString, ok := LongtermforecastresultMap["referenceStartDate"].(string); ok {
+		ReferenceStartDate, _ := time.Parse("2006-01-02", referenceStartDateString)
+		o.ReferenceStartDate = &ReferenceStartDate
+	}
+	
+	if WeekCount, ok := LongtermforecastresultMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

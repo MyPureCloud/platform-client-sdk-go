@@ -33,13 +33,11 @@ type Routingdata struct {
 
 }
 
-func (u *Routingdata) MarshalJSON() ([]byte, error) {
+func (o *Routingdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingdata
-
 	
-
 	return json.Marshal(&struct { 
 		QueueId *string `json:"queueId,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Routingdata) MarshalJSON() ([]byte, error) {
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 		*Alias
 	}{ 
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		LanguageId: u.LanguageId,
+		LanguageId: o.LanguageId,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		SkillIds: u.SkillIds,
+		SkillIds: o.SkillIds,
 		
-		PreferredAgentIds: u.PreferredAgentIds,
+		PreferredAgentIds: o.PreferredAgentIds,
 		
-		ScoredAgents: u.ScoredAgents,
-		Alias:    (*Alias)(u),
+		ScoredAgents: o.ScoredAgents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingdata) UnmarshalJSON(b []byte) error {
+	var RoutingdataMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueId, ok := RoutingdataMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if LanguageId, ok := RoutingdataMap["languageId"].(string); ok {
+		o.LanguageId = &LanguageId
+	}
+	
+	if Priority, ok := RoutingdataMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if SkillIds, ok := RoutingdataMap["skillIds"].([]interface{}); ok {
+		SkillIdsString, _ := json.Marshal(SkillIds)
+		json.Unmarshal(SkillIdsString, &o.SkillIds)
+	}
+	
+	if PreferredAgentIds, ok := RoutingdataMap["preferredAgentIds"].([]interface{}); ok {
+		PreferredAgentIdsString, _ := json.Marshal(PreferredAgentIds)
+		json.Unmarshal(PreferredAgentIdsString, &o.PreferredAgentIds)
+	}
+	
+	if ScoredAgents, ok := RoutingdataMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Outboundmessagingmessagingcampaignconfigchangesmsconfig struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangesmsconfig) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangesmsconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangesmsconfig
-
 	
-
 	return json.Marshal(&struct { 
 		MessageColumn *string `json:"messageColumn,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Outboundmessagingmessagingcampaignconfigchangesmsconfig) MarshalJSON() 
 		ContentTemplate *Outboundmessagingmessagingcampaignconfigchangeresponseref `json:"contentTemplate,omitempty"`
 		*Alias
 	}{ 
-		MessageColumn: u.MessageColumn,
+		MessageColumn: o.MessageColumn,
 		
-		PhoneColumn: u.PhoneColumn,
+		PhoneColumn: o.PhoneColumn,
 		
-		SenderSmsPhoneNumber: u.SenderSmsPhoneNumber,
+		SenderSmsPhoneNumber: o.SenderSmsPhoneNumber,
 		
-		ContentTemplate: u.ContentTemplate,
-		Alias:    (*Alias)(u),
+		ContentTemplate: o.ContentTemplate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangesmsconfig) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangesmsconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangesmsconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if MessageColumn, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["messageColumn"].(string); ok {
+		o.MessageColumn = &MessageColumn
+	}
+	
+	if PhoneColumn, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["phoneColumn"].(string); ok {
+		o.PhoneColumn = &PhoneColumn
+	}
+	
+	if SenderSmsPhoneNumber, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["senderSmsPhoneNumber"].(map[string]interface{}); ok {
+		SenderSmsPhoneNumberString, _ := json.Marshal(SenderSmsPhoneNumber)
+		json.Unmarshal(SenderSmsPhoneNumberString, &o.SenderSmsPhoneNumber)
+	}
+	
+	if ContentTemplate, ok := OutboundmessagingmessagingcampaignconfigchangesmsconfigMap["contentTemplate"].(map[string]interface{}); ok {
+		ContentTemplateString, _ := json.Marshal(ContentTemplate)
+		json.Unmarshal(ContentTemplateString, &o.ContentTemplate)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

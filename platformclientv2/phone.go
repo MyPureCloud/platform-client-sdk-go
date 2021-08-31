@@ -110,29 +110,27 @@ type Phone struct {
 
 }
 
-func (u *Phone) MarshalJSON() ([]byte, error) {
+func (o *Phone) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phone
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -185,57 +183,184 @@ func (u *Phone) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		PhoneBaseSettings: u.PhoneBaseSettings,
+		PhoneBaseSettings: o.PhoneBaseSettings,
 		
-		LineBaseSettings: u.LineBaseSettings,
+		LineBaseSettings: o.LineBaseSettings,
 		
-		PhoneMetaBase: u.PhoneMetaBase,
+		PhoneMetaBase: o.PhoneMetaBase,
 		
-		Lines: u.Lines,
+		Lines: o.Lines,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		SecondaryStatus: u.SecondaryStatus,
+		SecondaryStatus: o.SecondaryStatus,
 		
-		UserAgentInfo: u.UserAgentInfo,
+		UserAgentInfo: o.UserAgentInfo,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		Capabilities: u.Capabilities,
+		Capabilities: o.Capabilities,
 		
-		WebRtcUser: u.WebRtcUser,
+		WebRtcUser: o.WebRtcUser,
 		
-		PrimaryEdge: u.PrimaryEdge,
+		PrimaryEdge: o.PrimaryEdge,
 		
-		SecondaryEdge: u.SecondaryEdge,
+		SecondaryEdge: o.SecondaryEdge,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phone) UnmarshalJSON(b []byte) error {
+	var PhoneMap map[string]interface{}
+	err := json.Unmarshal(b, &PhoneMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PhoneMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PhoneMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := PhoneMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := PhoneMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := PhoneMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := PhoneMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := PhoneMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := PhoneMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := PhoneMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := PhoneMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := PhoneMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Site, ok := PhoneMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if PhoneBaseSettings, ok := PhoneMap["phoneBaseSettings"].(map[string]interface{}); ok {
+		PhoneBaseSettingsString, _ := json.Marshal(PhoneBaseSettings)
+		json.Unmarshal(PhoneBaseSettingsString, &o.PhoneBaseSettings)
+	}
+	
+	if LineBaseSettings, ok := PhoneMap["lineBaseSettings"].(map[string]interface{}); ok {
+		LineBaseSettingsString, _ := json.Marshal(LineBaseSettings)
+		json.Unmarshal(LineBaseSettingsString, &o.LineBaseSettings)
+	}
+	
+	if PhoneMetaBase, ok := PhoneMap["phoneMetaBase"].(map[string]interface{}); ok {
+		PhoneMetaBaseString, _ := json.Marshal(PhoneMetaBase)
+		json.Unmarshal(PhoneMetaBaseString, &o.PhoneMetaBase)
+	}
+	
+	if Lines, ok := PhoneMap["lines"].([]interface{}); ok {
+		LinesString, _ := json.Marshal(Lines)
+		json.Unmarshal(LinesString, &o.Lines)
+	}
+	
+	if Status, ok := PhoneMap["status"].(map[string]interface{}); ok {
+		StatusString, _ := json.Marshal(Status)
+		json.Unmarshal(StatusString, &o.Status)
+	}
+	
+	if SecondaryStatus, ok := PhoneMap["secondaryStatus"].(map[string]interface{}); ok {
+		SecondaryStatusString, _ := json.Marshal(SecondaryStatus)
+		json.Unmarshal(SecondaryStatusString, &o.SecondaryStatus)
+	}
+	
+	if UserAgentInfo, ok := PhoneMap["userAgentInfo"].(map[string]interface{}); ok {
+		UserAgentInfoString, _ := json.Marshal(UserAgentInfo)
+		json.Unmarshal(UserAgentInfoString, &o.UserAgentInfo)
+	}
+	
+	if Properties, ok := PhoneMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if Capabilities, ok := PhoneMap["capabilities"].(map[string]interface{}); ok {
+		CapabilitiesString, _ := json.Marshal(Capabilities)
+		json.Unmarshal(CapabilitiesString, &o.Capabilities)
+	}
+	
+	if WebRtcUser, ok := PhoneMap["webRtcUser"].(map[string]interface{}); ok {
+		WebRtcUserString, _ := json.Marshal(WebRtcUser)
+		json.Unmarshal(WebRtcUserString, &o.WebRtcUser)
+	}
+	
+	if PrimaryEdge, ok := PhoneMap["primaryEdge"].(map[string]interface{}); ok {
+		PrimaryEdgeString, _ := json.Marshal(PrimaryEdge)
+		json.Unmarshal(PrimaryEdgeString, &o.PrimaryEdge)
+	}
+	
+	if SecondaryEdge, ok := PhoneMap["secondaryEdge"].(map[string]interface{}); ok {
+		SecondaryEdgeString, _ := json.Marshal(SecondaryEdge)
+		json.Unmarshal(SecondaryEdgeString, &o.SecondaryEdge)
+	}
+	
+	if SelfUri, ok := PhoneMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

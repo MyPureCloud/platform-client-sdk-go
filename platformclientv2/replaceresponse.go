@@ -33,13 +33,11 @@ type Replaceresponse struct {
 
 }
 
-func (u *Replaceresponse) MarshalJSON() ([]byte, error) {
+func (o *Replaceresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Replaceresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Replaceresponse) MarshalJSON() ([]byte, error) {
 		UploadMethod *string `json:"uploadMethod,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ChangeNumber: u.ChangeNumber,
+		ChangeNumber: o.ChangeNumber,
 		
-		UploadStatus: u.UploadStatus,
+		UploadStatus: o.UploadStatus,
 		
-		UploadDestinationUri: u.UploadDestinationUri,
+		UploadDestinationUri: o.UploadDestinationUri,
 		
-		UploadMethod: u.UploadMethod,
-		Alias:    (*Alias)(u),
+		UploadMethod: o.UploadMethod,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Replaceresponse) UnmarshalJSON(b []byte) error {
+	var ReplaceresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ReplaceresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReplaceresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ReplaceresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ChangeNumber, ok := ReplaceresponseMap["changeNumber"].(float64); ok {
+		ChangeNumberInt := int(ChangeNumber)
+		o.ChangeNumber = &ChangeNumberInt
+	}
+	
+	if UploadStatus, ok := ReplaceresponseMap["uploadStatus"].(map[string]interface{}); ok {
+		UploadStatusString, _ := json.Marshal(UploadStatus)
+		json.Unmarshal(UploadStatusString, &o.UploadStatus)
+	}
+	
+	if UploadDestinationUri, ok := ReplaceresponseMap["uploadDestinationUri"].(string); ok {
+		o.UploadDestinationUri = &UploadDestinationUri
+	}
+	
+	if UploadMethod, ok := ReplaceresponseMap["uploadMethod"].(string); ok {
+		o.UploadMethod = &UploadMethod
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

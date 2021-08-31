@@ -21,13 +21,11 @@ type Useractioncategory struct {
 
 }
 
-func (u *Useractioncategory) MarshalJSON() ([]byte, error) {
+func (o *Useractioncategory) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Useractioncategory
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Useractioncategory) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Useractioncategory) UnmarshalJSON(b []byte) error {
+	var UseractioncategoryMap map[string]interface{}
+	err := json.Unmarshal(b, &UseractioncategoryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UseractioncategoryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UseractioncategoryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := UseractioncategoryMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

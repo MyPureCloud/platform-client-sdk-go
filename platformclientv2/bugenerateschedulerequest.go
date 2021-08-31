@@ -21,13 +21,11 @@ type Bugenerateschedulerequest struct {
 
 }
 
-func (u *Bugenerateschedulerequest) MarshalJSON() ([]byte, error) {
+func (o *Bugenerateschedulerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bugenerateschedulerequest
-
 	
-
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Bugenerateschedulerequest) MarshalJSON() ([]byte, error) {
 		WeekCount *int `json:"weekCount,omitempty"`
 		*Alias
 	}{ 
-		Description: u.Description,
+		Description: o.Description,
 		
-		ShortTermForecast: u.ShortTermForecast,
+		ShortTermForecast: o.ShortTermForecast,
 		
-		WeekCount: u.WeekCount,
-		Alias:    (*Alias)(u),
+		WeekCount: o.WeekCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bugenerateschedulerequest) UnmarshalJSON(b []byte) error {
+	var BugenerateschedulerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BugenerateschedulerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Description, ok := BugenerateschedulerequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if ShortTermForecast, ok := BugenerateschedulerequestMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+	if WeekCount, ok := BugenerateschedulerequestMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

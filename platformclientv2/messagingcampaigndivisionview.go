@@ -25,13 +25,11 @@ type Messagingcampaigndivisionview struct {
 
 }
 
-func (u *Messagingcampaigndivisionview) MarshalJSON() ([]byte, error) {
+func (o *Messagingcampaigndivisionview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagingcampaigndivisionview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Messagingcampaigndivisionview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagingcampaigndivisionview) UnmarshalJSON(b []byte) error {
+	var MessagingcampaigndivisionviewMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagingcampaigndivisionviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MessagingcampaigndivisionviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MessagingcampaigndivisionviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := MessagingcampaigndivisionviewMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if SelfUri, ok := MessagingcampaigndivisionviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

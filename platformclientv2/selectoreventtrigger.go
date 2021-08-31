@@ -17,24 +17,41 @@ type Selectoreventtrigger struct {
 
 }
 
-func (u *Selectoreventtrigger) MarshalJSON() ([]byte, error) {
+func (o *Selectoreventtrigger) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Selectoreventtrigger
-
 	
-
 	return json.Marshal(&struct { 
 		Selector *string `json:"selector,omitempty"`
 		
 		EventName *string `json:"eventName,omitempty"`
 		*Alias
 	}{ 
-		Selector: u.Selector,
+		Selector: o.Selector,
 		
-		EventName: u.EventName,
-		Alias:    (*Alias)(u),
+		EventName: o.EventName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Selectoreventtrigger) UnmarshalJSON(b []byte) error {
+	var SelectoreventtriggerMap map[string]interface{}
+	err := json.Unmarshal(b, &SelectoreventtriggerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Selector, ok := SelectoreventtriggerMap["selector"].(string); ok {
+		o.Selector = &Selector
+	}
+	
+	if EventName, ok := SelectoreventtriggerMap["eventName"].(string); ok {
+		o.EventName = &EventName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

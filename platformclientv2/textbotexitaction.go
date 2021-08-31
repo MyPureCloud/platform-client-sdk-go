@@ -29,13 +29,11 @@ type Textbotexitaction struct {
 
 }
 
-func (u *Textbotexitaction) MarshalJSON() ([]byte, error) {
+func (o *Textbotexitaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotexitaction
-
 	
-
 	return json.Marshal(&struct { 
 		Reason *string `json:"reason,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Textbotexitaction) MarshalJSON() ([]byte, error) {
 		OutputData *Textbotinputoutputdata `json:"outputData,omitempty"`
 		*Alias
 	}{ 
-		Reason: u.Reason,
+		Reason: o.Reason,
 		
-		ReasonExtendedInfo: u.ReasonExtendedInfo,
+		ReasonExtendedInfo: o.ReasonExtendedInfo,
 		
-		ActiveIntent: u.ActiveIntent,
+		ActiveIntent: o.ActiveIntent,
 		
-		FlowLocation: u.FlowLocation,
+		FlowLocation: o.FlowLocation,
 		
-		OutputData: u.OutputData,
-		Alias:    (*Alias)(u),
+		OutputData: o.OutputData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotexitaction) UnmarshalJSON(b []byte) error {
+	var TextbotexitactionMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotexitactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Reason, ok := TextbotexitactionMap["reason"].(string); ok {
+		o.Reason = &Reason
+	}
+	
+	if ReasonExtendedInfo, ok := TextbotexitactionMap["reasonExtendedInfo"].(string); ok {
+		o.ReasonExtendedInfo = &ReasonExtendedInfo
+	}
+	
+	if ActiveIntent, ok := TextbotexitactionMap["activeIntent"].(string); ok {
+		o.ActiveIntent = &ActiveIntent
+	}
+	
+	if FlowLocation, ok := TextbotexitactionMap["flowLocation"].(map[string]interface{}); ok {
+		FlowLocationString, _ := json.Marshal(FlowLocation)
+		json.Unmarshal(FlowLocationString, &o.FlowLocation)
+	}
+	
+	if OutputData, ok := TextbotexitactionMap["outputData"].(map[string]interface{}); ok {
+		OutputDataString, _ := json.Marshal(OutputData)
+		json.Unmarshal(OutputDataString, &o.OutputData)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

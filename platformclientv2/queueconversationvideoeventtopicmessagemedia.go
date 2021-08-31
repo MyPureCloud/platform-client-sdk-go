@@ -29,13 +29,11 @@ type Queueconversationvideoeventtopicmessagemedia struct {
 
 }
 
-func (u *Queueconversationvideoeventtopicmessagemedia) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationvideoeventtopicmessagemedia) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopicmessagemedia
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Queueconversationvideoeventtopicmessagemedia) MarshalJSON() ([]byte, er
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
+		Url: o.Url,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ContentLengthBytes: u.ContentLengthBytes,
+		ContentLengthBytes: o.ContentLengthBytes,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationvideoeventtopicmessagemedia) UnmarshalJSON(b []byte) error {
+	var QueueconversationvideoeventtopicmessagemediaMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationvideoeventtopicmessagemediaMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := QueueconversationvideoeventtopicmessagemediaMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if MediaType, ok := QueueconversationvideoeventtopicmessagemediaMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ContentLengthBytes, ok := QueueconversationvideoeventtopicmessagemediaMap["contentLengthBytes"].(float64); ok {
+		ContentLengthBytesInt := int(ContentLengthBytes)
+		o.ContentLengthBytes = &ContentLengthBytesInt
+	}
+	
+	if Name, ok := QueueconversationvideoeventtopicmessagemediaMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Id, ok := QueueconversationvideoeventtopicmessagemediaMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

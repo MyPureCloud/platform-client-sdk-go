@@ -17,24 +17,41 @@ type Ticker struct {
 
 }
 
-func (u *Ticker) MarshalJSON() ([]byte, error) {
+func (o *Ticker) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ticker
-
 	
-
 	return json.Marshal(&struct { 
 		Symbol *string `json:"symbol,omitempty"`
 		
 		Exchange *string `json:"exchange,omitempty"`
 		*Alias
 	}{ 
-		Symbol: u.Symbol,
+		Symbol: o.Symbol,
 		
-		Exchange: u.Exchange,
-		Alias:    (*Alias)(u),
+		Exchange: o.Exchange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ticker) UnmarshalJSON(b []byte) error {
+	var TickerMap map[string]interface{}
+	err := json.Unmarshal(b, &TickerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Symbol, ok := TickerMap["symbol"].(string); ok {
+		o.Symbol = &Symbol
+	}
+	
+	if Exchange, ok := TickerMap["exchange"].(string); ok {
+		o.Exchange = &Exchange
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

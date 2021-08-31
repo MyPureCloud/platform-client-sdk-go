@@ -41,13 +41,11 @@ type Contentoffer struct {
 
 }
 
-func (u *Contentoffer) MarshalJSON() ([]byte, error) {
+func (o *Contentoffer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentoffer
-
 	
-
 	return json.Marshal(&struct { 
 		ImageUrl *string `json:"imageUrl,omitempty"`
 		
@@ -66,23 +64,68 @@ func (u *Contentoffer) MarshalJSON() ([]byte, error) {
 		Style *Contentofferstylingconfiguration `json:"style,omitempty"`
 		*Alias
 	}{ 
-		ImageUrl: u.ImageUrl,
+		ImageUrl: o.ImageUrl,
 		
-		DisplayMode: u.DisplayMode,
+		DisplayMode: o.DisplayMode,
 		
-		LayoutMode: u.LayoutMode,
+		LayoutMode: o.LayoutMode,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Headline: u.Headline,
+		Headline: o.Headline,
 		
-		Body: u.Body,
+		Body: o.Body,
 		
-		CallToAction: u.CallToAction,
+		CallToAction: o.CallToAction,
 		
-		Style: u.Style,
-		Alias:    (*Alias)(u),
+		Style: o.Style,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentoffer) UnmarshalJSON(b []byte) error {
+	var ContentofferMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentofferMap)
+	if err != nil {
+		return err
+	}
+	
+	if ImageUrl, ok := ContentofferMap["imageUrl"].(string); ok {
+		o.ImageUrl = &ImageUrl
+	}
+	
+	if DisplayMode, ok := ContentofferMap["displayMode"].(string); ok {
+		o.DisplayMode = &DisplayMode
+	}
+	
+	if LayoutMode, ok := ContentofferMap["layoutMode"].(string); ok {
+		o.LayoutMode = &LayoutMode
+	}
+	
+	if Title, ok := ContentofferMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Headline, ok := ContentofferMap["headline"].(string); ok {
+		o.Headline = &Headline
+	}
+	
+	if Body, ok := ContentofferMap["body"].(string); ok {
+		o.Body = &Body
+	}
+	
+	if CallToAction, ok := ContentofferMap["callToAction"].(map[string]interface{}); ok {
+		CallToActionString, _ := json.Marshal(CallToAction)
+		json.Unmarshal(CallToActionString, &o.CallToAction)
+	}
+	
+	if Style, ok := ContentofferMap["style"].(map[string]interface{}); ok {
+		StyleString, _ := json.Marshal(Style)
+		json.Unmarshal(StyleString, &o.Style)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

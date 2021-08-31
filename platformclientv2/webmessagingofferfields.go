@@ -13,20 +13,33 @@ type Webmessagingofferfields struct {
 
 }
 
-func (u *Webmessagingofferfields) MarshalJSON() ([]byte, error) {
+func (o *Webmessagingofferfields) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webmessagingofferfields
-
 	
-
 	return json.Marshal(&struct { 
 		OfferText *string `json:"offerText,omitempty"`
 		*Alias
 	}{ 
-		OfferText: u.OfferText,
-		Alias:    (*Alias)(u),
+		OfferText: o.OfferText,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webmessagingofferfields) UnmarshalJSON(b []byte) error {
+	var WebmessagingofferfieldsMap map[string]interface{}
+	err := json.Unmarshal(b, &WebmessagingofferfieldsMap)
+	if err != nil {
+		return err
+	}
+	
+	if OfferText, ok := WebmessagingofferfieldsMap["offerText"].(string); ok {
+		o.OfferText = &OfferText
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Sharedresponse struct {
 
 }
 
-func (u *Sharedresponse) MarshalJSON() ([]byte, error) {
+func (o *Sharedresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sharedresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Sharedresponse) MarshalJSON() ([]byte, error) {
 		Share *Share `json:"share,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		DownloadUri: u.DownloadUri,
+		DownloadUri: o.DownloadUri,
 		
-		ViewUri: u.ViewUri,
+		ViewUri: o.ViewUri,
 		
-		Document: u.Document,
+		Document: o.Document,
 		
-		Share: u.Share,
-		Alias:    (*Alias)(u),
+		Share: o.Share,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sharedresponse) UnmarshalJSON(b []byte) error {
+	var SharedresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SharedresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SharedresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DownloadUri, ok := SharedresponseMap["downloadUri"].(string); ok {
+		o.DownloadUri = &DownloadUri
+	}
+	
+	if ViewUri, ok := SharedresponseMap["viewUri"].(string); ok {
+		o.ViewUri = &ViewUri
+	}
+	
+	if Document, ok := SharedresponseMap["document"].(map[string]interface{}); ok {
+		DocumentString, _ := json.Marshal(Document)
+		json.Unmarshal(DocumentString, &o.Document)
+	}
+	
+	if Share, ok := SharedresponseMap["share"].(map[string]interface{}); ok {
+		ShareString, _ := json.Marshal(Share)
+		json.Unmarshal(ShareString, &o.Share)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

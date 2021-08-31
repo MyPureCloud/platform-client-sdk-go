@@ -86,29 +86,27 @@ type Callhistoryparticipant struct {
 
 }
 
-func (u *Callhistoryparticipant) MarshalJSON() ([]byte, error) {
+func (o *Callhistoryparticipant) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callhistoryparticipant
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -149,45 +147,141 @@ func (u *Callhistoryparticipant) MarshalJSON() ([]byte, error) {
 		OutboundCampaign *Campaign `json:"outboundCampaign,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
 		StartTime: StartTime,
 		
 		EndTime: EndTime,
 		
-		Purpose: u.Purpose,
+		Purpose: o.Purpose,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Ani: u.Ani,
+		Ani: o.Ani,
 		
-		Dnis: u.Dnis,
+		Dnis: o.Dnis,
 		
-		User: u.User,
+		User: o.User,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
-		ExternalContact: u.ExternalContact,
+		ExternalContact: o.ExternalContact,
 		
-		ExternalOrganization: u.ExternalOrganization,
+		ExternalOrganization: o.ExternalOrganization,
 		
-		DidInteract: u.DidInteract,
+		DidInteract: o.DidInteract,
 		
-		SipResponseCodes: u.SipResponseCodes,
+		SipResponseCodes: o.SipResponseCodes,
 		
-		FlaggedReason: u.FlaggedReason,
+		FlaggedReason: o.FlaggedReason,
 		
-		OutboundCampaign: u.OutboundCampaign,
-		Alias:    (*Alias)(u),
+		OutboundCampaign: o.OutboundCampaign,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callhistoryparticipant) UnmarshalJSON(b []byte) error {
+	var CallhistoryparticipantMap map[string]interface{}
+	err := json.Unmarshal(b, &CallhistoryparticipantMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CallhistoryparticipantMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CallhistoryparticipantMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Address, ok := CallhistoryparticipantMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if startTimeString, ok := CallhistoryparticipantMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := CallhistoryparticipantMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if Purpose, ok := CallhistoryparticipantMap["purpose"].(string); ok {
+		o.Purpose = &Purpose
+	}
+	
+	if Direction, ok := CallhistoryparticipantMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Ani, ok := CallhistoryparticipantMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+	
+	if Dnis, ok := CallhistoryparticipantMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
+	}
+	
+	if User, ok := CallhistoryparticipantMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Queue, ok := CallhistoryparticipantMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Group, ok := CallhistoryparticipantMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if DisconnectType, ok := CallhistoryparticipantMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if ExternalContact, ok := CallhistoryparticipantMap["externalContact"].(map[string]interface{}); ok {
+		ExternalContactString, _ := json.Marshal(ExternalContact)
+		json.Unmarshal(ExternalContactString, &o.ExternalContact)
+	}
+	
+	if ExternalOrganization, ok := CallhistoryparticipantMap["externalOrganization"].(map[string]interface{}); ok {
+		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
+		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
+	}
+	
+	if DidInteract, ok := CallhistoryparticipantMap["didInteract"].(bool); ok {
+		o.DidInteract = &DidInteract
+	}
+	
+	if SipResponseCodes, ok := CallhistoryparticipantMap["sipResponseCodes"].([]interface{}); ok {
+		SipResponseCodesString, _ := json.Marshal(SipResponseCodes)
+		json.Unmarshal(SipResponseCodesString, &o.SipResponseCodes)
+	}
+	
+	if FlaggedReason, ok := CallhistoryparticipantMap["flaggedReason"].(string); ok {
+		o.FlaggedReason = &FlaggedReason
+	}
+	
+	if OutboundCampaign, ok := CallhistoryparticipantMap["outboundCampaign"].(map[string]interface{}); ok {
+		OutboundCampaignString, _ := json.Marshal(OutboundCampaign)
+		json.Unmarshal(OutboundCampaignString, &o.OutboundCampaign)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -9,16 +9,25 @@ import (
 // Channelmetadata - Information about the channel.
 type Channelmetadata struct { }
 
-func (u *Channelmetadata) MarshalJSON() ([]byte, error) {
+func (o *Channelmetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Channelmetadata
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Channelmetadata) UnmarshalJSON(b []byte) error {
+	var ChannelmetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &ChannelmetadataMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

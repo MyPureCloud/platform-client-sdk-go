@@ -33,13 +33,11 @@ type Scimserviceproviderconfigauthenticationscheme struct {
 
 }
 
-func (u *Scimserviceproviderconfigauthenticationscheme) MarshalJSON() ([]byte, error) {
+func (o *Scimserviceproviderconfigauthenticationscheme) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimserviceproviderconfigauthenticationscheme
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Scimserviceproviderconfigauthenticationscheme) MarshalJSON() ([]byte, e
 		Primary *bool `json:"primary,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SpecUri: u.SpecUri,
+		SpecUri: o.SpecUri,
 		
-		DocumentationUri: u.DocumentationUri,
+		DocumentationUri: o.DocumentationUri,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Primary: u.Primary,
-		Alias:    (*Alias)(u),
+		Primary: o.Primary,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimserviceproviderconfigauthenticationscheme) UnmarshalJSON(b []byte) error {
+	var ScimserviceproviderconfigauthenticationschemeMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimserviceproviderconfigauthenticationschemeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ScimserviceproviderconfigauthenticationschemeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ScimserviceproviderconfigauthenticationschemeMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SpecUri, ok := ScimserviceproviderconfigauthenticationschemeMap["specUri"].(string); ok {
+		o.SpecUri = &SpecUri
+	}
+	
+	if DocumentationUri, ok := ScimserviceproviderconfigauthenticationschemeMap["documentationUri"].(string); ok {
+		o.DocumentationUri = &DocumentationUri
+	}
+	
+	if VarType, ok := ScimserviceproviderconfigauthenticationschemeMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Primary, ok := ScimserviceproviderconfigauthenticationschemeMap["primary"].(bool); ok {
+		o.Primary = &Primary
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

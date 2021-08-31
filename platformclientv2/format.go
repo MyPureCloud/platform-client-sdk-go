@@ -13,20 +13,34 @@ type Format struct {
 
 }
 
-func (u *Format) MarshalJSON() ([]byte, error) {
+func (o *Format) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Format
-
 	
-
 	return json.Marshal(&struct { 
 		Flags *[]string `json:"flags,omitempty"`
 		*Alias
 	}{ 
-		Flags: u.Flags,
-		Alias:    (*Alias)(u),
+		Flags: o.Flags,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Format) UnmarshalJSON(b []byte) error {
+	var FormatMap map[string]interface{}
+	err := json.Unmarshal(b, &FormatMap)
+	if err != nil {
+		return err
+	}
+	
+	if Flags, ok := FormatMap["flags"].([]interface{}); ok {
+		FlagsString, _ := json.Marshal(Flags)
+		json.Unmarshal(FlagsString, &o.Flags)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

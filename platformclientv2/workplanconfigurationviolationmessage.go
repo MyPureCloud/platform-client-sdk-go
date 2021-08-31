@@ -21,13 +21,11 @@ type Workplanconfigurationviolationmessage struct {
 
 }
 
-func (u *Workplanconfigurationviolationmessage) MarshalJSON() ([]byte, error) {
+func (o *Workplanconfigurationviolationmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanconfigurationviolationmessage
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Workplanconfigurationviolationmessage) MarshalJSON() ([]byte, error) {
 		Severity *string `json:"severity,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Arguments: u.Arguments,
+		Arguments: o.Arguments,
 		
-		Severity: u.Severity,
-		Alias:    (*Alias)(u),
+		Severity: o.Severity,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanconfigurationviolationmessage) UnmarshalJSON(b []byte) error {
+	var WorkplanconfigurationviolationmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanconfigurationviolationmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := WorkplanconfigurationviolationmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Arguments, ok := WorkplanconfigurationviolationmessageMap["arguments"].([]interface{}); ok {
+		ArgumentsString, _ := json.Marshal(Arguments)
+		json.Unmarshal(ArgumentsString, &o.Arguments)
+	}
+	
+	if Severity, ok := WorkplanconfigurationviolationmessageMap["severity"].(string); ok {
+		o.Severity = &Severity
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

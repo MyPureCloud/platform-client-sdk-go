@@ -30,21 +30,19 @@ type Linestatus struct {
 
 }
 
-func (u *Linestatus) MarshalJSON() ([]byte, error) {
+func (o *Linestatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Linestatus
-
 	
 	ReachableStateTime := new(string)
-	if u.ReachableStateTime != nil {
+	if o.ReachableStateTime != nil {
 		
-		*ReachableStateTime = timeutil.Strftime(u.ReachableStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReachableStateTime = timeutil.Strftime(o.ReachableStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReachableStateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -57,17 +55,50 @@ func (u *Linestatus) MarshalJSON() ([]byte, error) {
 		ReachableStateTime *string `json:"reachableStateTime,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Reachable: u.Reachable,
+		Reachable: o.Reachable,
 		
-		AddressOfRecord: u.AddressOfRecord,
+		AddressOfRecord: o.AddressOfRecord,
 		
-		ContactAddresses: u.ContactAddresses,
+		ContactAddresses: o.ContactAddresses,
 		
 		ReachableStateTime: ReachableStateTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Linestatus) UnmarshalJSON(b []byte) error {
+	var LinestatusMap map[string]interface{}
+	err := json.Unmarshal(b, &LinestatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LinestatusMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Reachable, ok := LinestatusMap["reachable"].(bool); ok {
+		o.Reachable = &Reachable
+	}
+	
+	if AddressOfRecord, ok := LinestatusMap["addressOfRecord"].(string); ok {
+		o.AddressOfRecord = &AddressOfRecord
+	}
+	
+	if ContactAddresses, ok := LinestatusMap["contactAddresses"].([]interface{}); ok {
+		ContactAddressesString, _ := json.Marshal(ContactAddresses)
+		json.Unmarshal(ContactAddressesString, &o.ContactAddresses)
+	}
+	
+	if reachableStateTimeString, ok := LinestatusMap["reachableStateTime"].(string); ok {
+		ReachableStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", reachableStateTimeString)
+		o.ReachableStateTime = &ReachableStateTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

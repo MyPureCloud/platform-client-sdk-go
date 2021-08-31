@@ -30,20 +30,18 @@ type Objective struct {
 
 }
 
-func (u *Objective) MarshalJSON() ([]byte, error) {
+func (o *Objective) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Objective
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%d")
+	if o.DateStart != nil {
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%d")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -56,17 +54,50 @@ func (u *Objective) MarshalJSON() ([]byte, error) {
 		DateStart *string `json:"dateStart,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		TemplateId: u.TemplateId,
+		TemplateId: o.TemplateId,
 		
-		Zones: u.Zones,
+		Zones: o.Zones,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
 		DateStart: DateStart,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Objective) UnmarshalJSON(b []byte) error {
+	var ObjectiveMap map[string]interface{}
+	err := json.Unmarshal(b, &ObjectiveMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ObjectiveMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if TemplateId, ok := ObjectiveMap["templateId"].(string); ok {
+		o.TemplateId = &TemplateId
+	}
+	
+	if Zones, ok := ObjectiveMap["zones"].([]interface{}); ok {
+		ZonesString, _ := json.Marshal(Zones)
+		json.Unmarshal(ZonesString, &o.Zones)
+	}
+	
+	if Enabled, ok := ObjectiveMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if dateStartString, ok := ObjectiveMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Gkndocumentationsearchcriteria struct {
 
 }
 
-func (u *Gkndocumentationsearchcriteria) MarshalJSON() ([]byte, error) {
+func (o *Gkndocumentationsearchcriteria) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gkndocumentationsearchcriteria
-
 	
-
 	return json.Marshal(&struct { 
 		EndValue *string `json:"endValue,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Gkndocumentationsearchcriteria) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		EndValue: u.EndValue,
+		EndValue: o.EndValue,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		StartValue: u.StartValue,
+		StartValue: o.StartValue,
 		
-		Fields: u.Fields,
+		Fields: o.Fields,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		DateFormat: u.DateFormat,
+		DateFormat: o.DateFormat,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gkndocumentationsearchcriteria) UnmarshalJSON(b []byte) error {
+	var GkndocumentationsearchcriteriaMap map[string]interface{}
+	err := json.Unmarshal(b, &GkndocumentationsearchcriteriaMap)
+	if err != nil {
+		return err
+	}
+	
+	if EndValue, ok := GkndocumentationsearchcriteriaMap["endValue"].(string); ok {
+		o.EndValue = &EndValue
+	}
+	
+	if Values, ok := GkndocumentationsearchcriteriaMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if StartValue, ok := GkndocumentationsearchcriteriaMap["startValue"].(string); ok {
+		o.StartValue = &StartValue
+	}
+	
+	if Fields, ok := GkndocumentationsearchcriteriaMap["fields"].([]interface{}); ok {
+		FieldsString, _ := json.Marshal(Fields)
+		json.Unmarshal(FieldsString, &o.Fields)
+	}
+	
+	if Value, ok := GkndocumentationsearchcriteriaMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Operator, ok := GkndocumentationsearchcriteriaMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Group, ok := GkndocumentationsearchcriteriaMap["group"].([]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if DateFormat, ok := GkndocumentationsearchcriteriaMap["dateFormat"].(string); ok {
+		o.DateFormat = &DateFormat
+	}
+	
+	if VarType, ok := GkndocumentationsearchcriteriaMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

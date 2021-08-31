@@ -17,24 +17,42 @@ type Importerror struct {
 
 }
 
-func (u *Importerror) MarshalJSON() ([]byte, error) {
+func (o *Importerror) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Importerror
-
 	
-
 	return json.Marshal(&struct { 
 		Message *string `json:"message,omitempty"`
 		
 		Line *int `json:"line,omitempty"`
 		*Alias
 	}{ 
-		Message: u.Message,
+		Message: o.Message,
 		
-		Line: u.Line,
-		Alias:    (*Alias)(u),
+		Line: o.Line,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Importerror) UnmarshalJSON(b []byte) error {
+	var ImporterrorMap map[string]interface{}
+	err := json.Unmarshal(b, &ImporterrorMap)
+	if err != nil {
+		return err
+	}
+	
+	if Message, ok := ImporterrorMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if Line, ok := ImporterrorMap["line"].(float64); ok {
+		LineInt := int(Line)
+		o.Line = &LineInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

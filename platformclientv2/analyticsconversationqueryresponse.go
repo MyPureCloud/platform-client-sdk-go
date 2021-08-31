@@ -21,13 +21,11 @@ type Analyticsconversationqueryresponse struct {
 
 }
 
-func (u *Analyticsconversationqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Analyticsconversationqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsconversationqueryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Aggregations *[]Aggregationresult `json:"aggregations,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Analyticsconversationqueryresponse) MarshalJSON() ([]byte, error) {
 		TotalHits *int `json:"totalHits,omitempty"`
 		*Alias
 	}{ 
-		Aggregations: u.Aggregations,
+		Aggregations: o.Aggregations,
 		
-		Conversations: u.Conversations,
+		Conversations: o.Conversations,
 		
-		TotalHits: u.TotalHits,
-		Alias:    (*Alias)(u),
+		TotalHits: o.TotalHits,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsconversationqueryresponse) UnmarshalJSON(b []byte) error {
+	var AnalyticsconversationqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsconversationqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Aggregations, ok := AnalyticsconversationqueryresponseMap["aggregations"].([]interface{}); ok {
+		AggregationsString, _ := json.Marshal(Aggregations)
+		json.Unmarshal(AggregationsString, &o.Aggregations)
+	}
+	
+	if Conversations, ok := AnalyticsconversationqueryresponseMap["conversations"].([]interface{}); ok {
+		ConversationsString, _ := json.Marshal(Conversations)
+		json.Unmarshal(ConversationsString, &o.Conversations)
+	}
+	
+	if TotalHits, ok := AnalyticsconversationqueryresponseMap["totalHits"].(float64); ok {
+		TotalHitsInt := int(TotalHits)
+		o.TotalHits = &TotalHitsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

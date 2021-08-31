@@ -41,13 +41,11 @@ type Segmentdetailquerypredicate struct {
 
 }
 
-func (u *Segmentdetailquerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Segmentdetailquerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Segmentdetailquerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -66,23 +64,67 @@ func (u *Segmentdetailquerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		PropertyType: u.PropertyType,
+		PropertyType: o.PropertyType,
 		
-		Property: u.Property,
+		Property: o.Property,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Segmentdetailquerypredicate) UnmarshalJSON(b []byte) error {
+	var SegmentdetailquerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &SegmentdetailquerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := SegmentdetailquerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := SegmentdetailquerypredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if PropertyType, ok := SegmentdetailquerypredicateMap["propertyType"].(string); ok {
+		o.PropertyType = &PropertyType
+	}
+	
+	if Property, ok := SegmentdetailquerypredicateMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if Metric, ok := SegmentdetailquerypredicateMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Operator, ok := SegmentdetailquerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := SegmentdetailquerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := SegmentdetailquerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

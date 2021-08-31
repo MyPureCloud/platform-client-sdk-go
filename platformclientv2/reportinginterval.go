@@ -17,24 +17,42 @@ type Reportinginterval struct {
 
 }
 
-func (u *Reportinginterval) MarshalJSON() ([]byte, error) {
+func (o *Reportinginterval) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportinginterval
-
 	
-
 	return json.Marshal(&struct { 
 		IntervalType *string `json:"intervalType,omitempty"`
 		
 		IntervalValue *int `json:"intervalValue,omitempty"`
 		*Alias
 	}{ 
-		IntervalType: u.IntervalType,
+		IntervalType: o.IntervalType,
 		
-		IntervalValue: u.IntervalValue,
-		Alias:    (*Alias)(u),
+		IntervalValue: o.IntervalValue,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportinginterval) UnmarshalJSON(b []byte) error {
+	var ReportingintervalMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingintervalMap)
+	if err != nil {
+		return err
+	}
+	
+	if IntervalType, ok := ReportingintervalMap["intervalType"].(string); ok {
+		o.IntervalType = &IntervalType
+	}
+	
+	if IntervalValue, ok := ReportingintervalMap["intervalValue"].(float64); ok {
+		IntervalValueInt := int(IntervalValue)
+		o.IntervalValue = &IntervalValueInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

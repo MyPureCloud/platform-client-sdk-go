@@ -65,13 +65,11 @@ type Posttextrequest struct {
 
 }
 
-func (u *Posttextrequest) MarshalJSON() ([]byte, error) {
+func (o *Posttextrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Posttextrequest
-
 	
-
 	return json.Marshal(&struct { 
 		BotId *string `json:"botId,omitempty"`
 		
@@ -102,35 +100,109 @@ func (u *Posttextrequest) MarshalJSON() ([]byte, error) {
 		NuanceMixDlg *Nuancemixdlgsettings `json:"nuanceMixDlg,omitempty"`
 		*Alias
 	}{ 
-		BotId: u.BotId,
+		BotId: o.BotId,
 		
-		BotAlias: u.BotAlias,
+		BotAlias: o.BotAlias,
 		
-		IntegrationId: u.IntegrationId,
+		IntegrationId: o.IntegrationId,
 		
-		BotSessionId: u.BotSessionId,
+		BotSessionId: o.BotSessionId,
 		
-		PostTextMessage: u.PostTextMessage,
+		PostTextMessage: o.PostTextMessage,
 		
-		LanguageCode: u.LanguageCode,
+		LanguageCode: o.LanguageCode,
 		
-		BotSessionTimeoutMinutes: u.BotSessionTimeoutMinutes,
+		BotSessionTimeoutMinutes: o.BotSessionTimeoutMinutes,
 		
-		BotChannels: u.BotChannels,
+		BotChannels: o.BotChannels,
 		
-		BotCorrelationId: u.BotCorrelationId,
+		BotCorrelationId: o.BotCorrelationId,
 		
-		MessagingPlatformType: u.MessagingPlatformType,
+		MessagingPlatformType: o.MessagingPlatformType,
 		
-		AmazonLexRequest: u.AmazonLexRequest,
+		AmazonLexRequest: o.AmazonLexRequest,
 		
-		GoogleDialogflow: u.GoogleDialogflow,
+		GoogleDialogflow: o.GoogleDialogflow,
 		
-		GenesysBotConnector: u.GenesysBotConnector,
+		GenesysBotConnector: o.GenesysBotConnector,
 		
-		NuanceMixDlg: u.NuanceMixDlg,
-		Alias:    (*Alias)(u),
+		NuanceMixDlg: o.NuanceMixDlg,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Posttextrequest) UnmarshalJSON(b []byte) error {
+	var PosttextrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &PosttextrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if BotId, ok := PosttextrequestMap["botId"].(string); ok {
+		o.BotId = &BotId
+	}
+	
+	if BotAlias, ok := PosttextrequestMap["botAlias"].(string); ok {
+		o.BotAlias = &BotAlias
+	}
+	
+	if IntegrationId, ok := PosttextrequestMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+	
+	if BotSessionId, ok := PosttextrequestMap["botSessionId"].(string); ok {
+		o.BotSessionId = &BotSessionId
+	}
+	
+	if PostTextMessage, ok := PosttextrequestMap["postTextMessage"].(map[string]interface{}); ok {
+		PostTextMessageString, _ := json.Marshal(PostTextMessage)
+		json.Unmarshal(PostTextMessageString, &o.PostTextMessage)
+	}
+	
+	if LanguageCode, ok := PosttextrequestMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
+	}
+	
+	if BotSessionTimeoutMinutes, ok := PosttextrequestMap["botSessionTimeoutMinutes"].(float64); ok {
+		BotSessionTimeoutMinutesInt := int(BotSessionTimeoutMinutes)
+		o.BotSessionTimeoutMinutes = &BotSessionTimeoutMinutesInt
+	}
+	
+	if BotChannels, ok := PosttextrequestMap["botChannels"].([]interface{}); ok {
+		BotChannelsString, _ := json.Marshal(BotChannels)
+		json.Unmarshal(BotChannelsString, &o.BotChannels)
+	}
+	
+	if BotCorrelationId, ok := PosttextrequestMap["botCorrelationId"].(string); ok {
+		o.BotCorrelationId = &BotCorrelationId
+	}
+	
+	if MessagingPlatformType, ok := PosttextrequestMap["messagingPlatformType"].(string); ok {
+		o.MessagingPlatformType = &MessagingPlatformType
+	}
+	
+	if AmazonLexRequest, ok := PosttextrequestMap["amazonLexRequest"].(map[string]interface{}); ok {
+		AmazonLexRequestString, _ := json.Marshal(AmazonLexRequest)
+		json.Unmarshal(AmazonLexRequestString, &o.AmazonLexRequest)
+	}
+	
+	if GoogleDialogflow, ok := PosttextrequestMap["googleDialogflow"].(map[string]interface{}); ok {
+		GoogleDialogflowString, _ := json.Marshal(GoogleDialogflow)
+		json.Unmarshal(GoogleDialogflowString, &o.GoogleDialogflow)
+	}
+	
+	if GenesysBotConnector, ok := PosttextrequestMap["genesysBotConnector"].(map[string]interface{}); ok {
+		GenesysBotConnectorString, _ := json.Marshal(GenesysBotConnector)
+		json.Unmarshal(GenesysBotConnectorString, &o.GenesysBotConnector)
+	}
+	
+	if NuanceMixDlg, ok := PosttextrequestMap["nuanceMixDlg"].(map[string]interface{}); ok {
+		NuanceMixDlgString, _ := json.Marshal(NuanceMixDlg)
+		json.Unmarshal(NuanceMixDlgString, &o.NuanceMixDlg)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

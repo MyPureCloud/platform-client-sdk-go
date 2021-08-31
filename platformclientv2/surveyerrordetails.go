@@ -17,24 +17,42 @@ type Surveyerrordetails struct {
 
 }
 
-func (u *Surveyerrordetails) MarshalJSON() ([]byte, error) {
+func (o *Surveyerrordetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyerrordetails
-
 	
-
 	return json.Marshal(&struct { 
 		FlowDiagnosticInfo *Flowdiagnosticinfo `json:"flowDiagnosticInfo,omitempty"`
 		
 		SurveyErrorReason *string `json:"surveyErrorReason,omitempty"`
 		*Alias
 	}{ 
-		FlowDiagnosticInfo: u.FlowDiagnosticInfo,
+		FlowDiagnosticInfo: o.FlowDiagnosticInfo,
 		
-		SurveyErrorReason: u.SurveyErrorReason,
-		Alias:    (*Alias)(u),
+		SurveyErrorReason: o.SurveyErrorReason,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyerrordetails) UnmarshalJSON(b []byte) error {
+	var SurveyerrordetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyerrordetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if FlowDiagnosticInfo, ok := SurveyerrordetailsMap["flowDiagnosticInfo"].(map[string]interface{}); ok {
+		FlowDiagnosticInfoString, _ := json.Marshal(FlowDiagnosticInfo)
+		json.Unmarshal(FlowDiagnosticInfoString, &o.FlowDiagnosticInfo)
+	}
+	
+	if SurveyErrorReason, ok := SurveyerrordetailsMap["surveyErrorReason"].(string); ok {
+		o.SurveyErrorReason = &SurveyErrorReason
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

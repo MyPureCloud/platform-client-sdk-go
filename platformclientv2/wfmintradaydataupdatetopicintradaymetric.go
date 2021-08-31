@@ -17,24 +17,41 @@ type Wfmintradaydataupdatetopicintradaymetric struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradaymetric) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradaymetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradaymetric
-
 	
-
 	return json.Marshal(&struct { 
 		Category *string `json:"category,omitempty"`
 		
 		Version *string `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Category: u.Category,
+		Category: o.Category,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradaymetric) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradaymetricMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradaymetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Category, ok := WfmintradaydataupdatetopicintradaymetricMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Version, ok := WfmintradaydataupdatetopicintradaymetricMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

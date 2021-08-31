@@ -13,20 +13,34 @@ type Journeyaggregatequeryresponse struct {
 
 }
 
-func (u *Journeyaggregatequeryresponse) MarshalJSON() ([]byte, error) {
+func (o *Journeyaggregatequeryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeyaggregatequeryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Journeyaggregatedatacontainer `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeyaggregatequeryresponse) UnmarshalJSON(b []byte) error {
+	var JourneyaggregatequeryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyaggregatequeryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := JourneyaggregatequeryresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

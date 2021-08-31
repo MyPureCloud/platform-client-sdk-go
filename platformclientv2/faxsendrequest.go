@@ -45,13 +45,11 @@ type Faxsendrequest struct {
 
 }
 
-func (u *Faxsendrequest) MarshalJSON() ([]byte, error) {
+func (o *Faxsendrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Faxsendrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,76 @@ func (u *Faxsendrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		DocumentId: u.DocumentId,
+		DocumentId: o.DocumentId,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		Workspace: u.Workspace,
+		Workspace: o.Workspace,
 		
-		CoverSheet: u.CoverSheet,
+		CoverSheet: o.CoverSheet,
 		
-		TimeZoneOffsetMinutes: u.TimeZoneOffsetMinutes,
+		TimeZoneOffsetMinutes: o.TimeZoneOffsetMinutes,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Faxsendrequest) UnmarshalJSON(b []byte) error {
+	var FaxsendrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &FaxsendrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FaxsendrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FaxsendrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Addresses, ok := FaxsendrequestMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if DocumentId, ok := FaxsendrequestMap["documentId"].(string); ok {
+		o.DocumentId = &DocumentId
+	}
+	
+	if ContentType, ok := FaxsendrequestMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if Workspace, ok := FaxsendrequestMap["workspace"].(map[string]interface{}); ok {
+		WorkspaceString, _ := json.Marshal(Workspace)
+		json.Unmarshal(WorkspaceString, &o.Workspace)
+	}
+	
+	if CoverSheet, ok := FaxsendrequestMap["coverSheet"].(map[string]interface{}); ok {
+		CoverSheetString, _ := json.Marshal(CoverSheet)
+		json.Unmarshal(CoverSheetString, &o.CoverSheet)
+	}
+	
+	if TimeZoneOffsetMinutes, ok := FaxsendrequestMap["timeZoneOffsetMinutes"].(float64); ok {
+		TimeZoneOffsetMinutesInt := int(TimeZoneOffsetMinutes)
+		o.TimeZoneOffsetMinutes = &TimeZoneOffsetMinutesInt
+	}
+	
+	if SelfUri, ok := FaxsendrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

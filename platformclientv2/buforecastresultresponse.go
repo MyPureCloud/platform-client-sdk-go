@@ -17,24 +17,42 @@ type Buforecastresultresponse struct {
 
 }
 
-func (u *Buforecastresultresponse) MarshalJSON() ([]byte, error) {
+func (o *Buforecastresultresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buforecastresultresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Result *Buforecastresult `json:"result,omitempty"`
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		*Alias
 	}{ 
-		Result: u.Result,
+		Result: o.Result,
 		
-		DownloadUrl: u.DownloadUrl,
-		Alias:    (*Alias)(u),
+		DownloadUrl: o.DownloadUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buforecastresultresponse) UnmarshalJSON(b []byte) error {
+	var BuforecastresultresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuforecastresultresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Result, ok := BuforecastresultresponseMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+	if DownloadUrl, ok := BuforecastresultresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

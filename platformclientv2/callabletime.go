@@ -17,24 +17,42 @@ type Callabletime struct {
 
 }
 
-func (u *Callabletime) MarshalJSON() ([]byte, error) {
+func (o *Callabletime) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callabletime
-
 	
-
 	return json.Marshal(&struct { 
 		TimeSlots *[]Campaigntimeslot `json:"timeSlots,omitempty"`
 		
 		TimeZoneId *string `json:"timeZoneId,omitempty"`
 		*Alias
 	}{ 
-		TimeSlots: u.TimeSlots,
+		TimeSlots: o.TimeSlots,
 		
-		TimeZoneId: u.TimeZoneId,
-		Alias:    (*Alias)(u),
+		TimeZoneId: o.TimeZoneId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callabletime) UnmarshalJSON(b []byte) error {
+	var CallabletimeMap map[string]interface{}
+	err := json.Unmarshal(b, &CallabletimeMap)
+	if err != nil {
+		return err
+	}
+	
+	if TimeSlots, ok := CallabletimeMap["timeSlots"].([]interface{}); ok {
+		TimeSlotsString, _ := json.Marshal(TimeSlots)
+		json.Unmarshal(TimeSlotsString, &o.TimeSlots)
+	}
+	
+	if TimeZoneId, ok := CallabletimeMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

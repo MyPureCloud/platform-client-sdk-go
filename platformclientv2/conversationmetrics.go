@@ -21,13 +21,11 @@ type Conversationmetrics struct {
 
 }
 
-func (u *Conversationmetrics) MarshalJSON() ([]byte, error) {
+func (o *Conversationmetrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationmetrics
-
 	
-
 	return json.Marshal(&struct { 
 		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Conversationmetrics) MarshalJSON() ([]byte, error) {
 		SentimentTrend *float64 `json:"sentimentTrend,omitempty"`
 		*Alias
 	}{ 
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		SentimentScore: u.SentimentScore,
+		SentimentScore: o.SentimentScore,
 		
-		SentimentTrend: u.SentimentTrend,
-		Alias:    (*Alias)(u),
+		SentimentTrend: o.SentimentTrend,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationmetrics) UnmarshalJSON(b []byte) error {
+	var ConversationmetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationmetricsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Conversation, ok := ConversationmetricsMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if SentimentScore, ok := ConversationmetricsMap["sentimentScore"].(float64); ok {
+		o.SentimentScore = &SentimentScore
+	}
+	
+	if SentimentTrend, ok := ConversationmetricsMap["sentimentTrend"].(float64); ok {
+		o.SentimentTrend = &SentimentTrend
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

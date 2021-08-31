@@ -21,13 +21,11 @@ type Forecastplanninggroupdata struct {
 
 }
 
-func (u *Forecastplanninggroupdata) MarshalJSON() ([]byte, error) {
+func (o *Forecastplanninggroupdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastplanninggroupdata
-
 	
-
 	return json.Marshal(&struct { 
 		PlanningGroupId *string `json:"planningGroupId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Forecastplanninggroupdata) MarshalJSON() ([]byte, error) {
 		AverageHandleTimeSecondsPerInterval *[]float64 `json:"averageHandleTimeSecondsPerInterval,omitempty"`
 		*Alias
 	}{ 
-		PlanningGroupId: u.PlanningGroupId,
+		PlanningGroupId: o.PlanningGroupId,
 		
-		OfferedPerInterval: u.OfferedPerInterval,
+		OfferedPerInterval: o.OfferedPerInterval,
 		
-		AverageHandleTimeSecondsPerInterval: u.AverageHandleTimeSecondsPerInterval,
-		Alias:    (*Alias)(u),
+		AverageHandleTimeSecondsPerInterval: o.AverageHandleTimeSecondsPerInterval,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastplanninggroupdata) UnmarshalJSON(b []byte) error {
+	var ForecastplanninggroupdataMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastplanninggroupdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if PlanningGroupId, ok := ForecastplanninggroupdataMap["planningGroupId"].(string); ok {
+		o.PlanningGroupId = &PlanningGroupId
+	}
+	
+	if OfferedPerInterval, ok := ForecastplanninggroupdataMap["offeredPerInterval"].([]interface{}); ok {
+		OfferedPerIntervalString, _ := json.Marshal(OfferedPerInterval)
+		json.Unmarshal(OfferedPerIntervalString, &o.OfferedPerInterval)
+	}
+	
+	if AverageHandleTimeSecondsPerInterval, ok := ForecastplanninggroupdataMap["averageHandleTimeSecondsPerInterval"].([]interface{}); ok {
+		AverageHandleTimeSecondsPerIntervalString, _ := json.Marshal(AverageHandleTimeSecondsPerInterval)
+		json.Unmarshal(AverageHandleTimeSecondsPerIntervalString, &o.AverageHandleTimeSecondsPerInterval)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

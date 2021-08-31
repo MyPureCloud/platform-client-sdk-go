@@ -66,29 +66,27 @@ type Linebase struct {
 
 }
 
-func (u *Linebase) MarshalJSON() ([]byte, error) {
+func (o *Linebase) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Linebase
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,35 +117,107 @@ func (u *Linebase) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		LineMetaBase: u.LineMetaBase,
+		LineMetaBase: o.LineMetaBase,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Linebase) UnmarshalJSON(b []byte) error {
+	var LinebaseMap map[string]interface{}
+	err := json.Unmarshal(b, &LinebaseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LinebaseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LinebaseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := LinebaseMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := LinebaseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := LinebaseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := LinebaseMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := LinebaseMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := LinebaseMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := LinebaseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := LinebaseMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := LinebaseMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if LineMetaBase, ok := LinebaseMap["lineMetaBase"].(map[string]interface{}); ok {
+		LineMetaBaseString, _ := json.Marshal(LineMetaBase)
+		json.Unmarshal(LineMetaBaseString, &o.LineMetaBase)
+	}
+	
+	if Properties, ok := LinebaseMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if SelfUri, ok := LinebaseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

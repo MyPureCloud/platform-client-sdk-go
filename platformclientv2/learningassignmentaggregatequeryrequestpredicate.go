@@ -17,24 +17,41 @@ type Learningassignmentaggregatequeryrequestpredicate struct {
 
 }
 
-func (u *Learningassignmentaggregatequeryrequestpredicate) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentaggregatequeryrequestpredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentaggregatequeryrequestpredicate
-
 	
-
 	return json.Marshal(&struct { 
 		Dimension *string `json:"dimension,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentaggregatequeryrequestpredicate) UnmarshalJSON(b []byte) error {
+	var LearningassignmentaggregatequeryrequestpredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentaggregatequeryrequestpredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Dimension, ok := LearningassignmentaggregatequeryrequestpredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Value, ok := LearningassignmentaggregatequeryrequestpredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

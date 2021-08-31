@@ -50,37 +50,35 @@ type Knowledgetraining struct {
 
 }
 
-func (u *Knowledgetraining) MarshalJSON() ([]byte, error) {
+func (o *Knowledgetraining) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgetraining
-
 	
 	DateTriggered := new(string)
-	if u.DateTriggered != nil {
+	if o.DateTriggered != nil {
 		
-		*DateTriggered = timeutil.Strftime(u.DateTriggered, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateTriggered = timeutil.Strftime(o.DateTriggered, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateTriggered = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
 	DatePromoted := new(string)
-	if u.DatePromoted != nil {
+	if o.DatePromoted != nil {
 		
-		*DatePromoted = timeutil.Strftime(u.DatePromoted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DatePromoted = timeutil.Strftime(o.DatePromoted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DatePromoted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -103,27 +101,82 @@ func (u *Knowledgetraining) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		DateTriggered: DateTriggered,
 		
 		DateCompleted: DateCompleted,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		LanguageCode: u.LanguageCode,
+		LanguageCode: o.LanguageCode,
 		
-		KnowledgeBase: u.KnowledgeBase,
+		KnowledgeBase: o.KnowledgeBase,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
-		KnowledgeDocumentsState: u.KnowledgeDocumentsState,
+		KnowledgeDocumentsState: o.KnowledgeDocumentsState,
 		
 		DatePromoted: DatePromoted,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgetraining) UnmarshalJSON(b []byte) error {
+	var KnowledgetrainingMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgetrainingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KnowledgetrainingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if dateTriggeredString, ok := KnowledgetrainingMap["dateTriggered"].(string); ok {
+		DateTriggered, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateTriggeredString)
+		o.DateTriggered = &DateTriggered
+	}
+	
+	if dateCompletedString, ok := KnowledgetrainingMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if Status, ok := KnowledgetrainingMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if LanguageCode, ok := KnowledgetrainingMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
+	}
+	
+	if KnowledgeBase, ok := KnowledgetrainingMap["knowledgeBase"].(map[string]interface{}); ok {
+		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
+		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if ErrorMessage, ok := KnowledgetrainingMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if KnowledgeDocumentsState, ok := KnowledgetrainingMap["knowledgeDocumentsState"].(string); ok {
+		o.KnowledgeDocumentsState = &KnowledgeDocumentsState
+	}
+	
+	if datePromotedString, ok := KnowledgetrainingMap["datePromoted"].(string); ok {
+		DatePromoted, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePromotedString)
+		o.DatePromoted = &DatePromoted
+	}
+	
+	if SelfUri, ok := KnowledgetrainingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

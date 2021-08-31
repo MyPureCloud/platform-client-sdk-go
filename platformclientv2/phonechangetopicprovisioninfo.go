@@ -22,21 +22,19 @@ type Phonechangetopicprovisioninfo struct {
 
 }
 
-func (u *Phonechangetopicprovisioninfo) MarshalJSON() ([]byte, error) {
+func (o *Phonechangetopicprovisioninfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonechangetopicprovisioninfo
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Time *string `json:"time,omitempty"`
 		
@@ -47,11 +45,35 @@ func (u *Phonechangetopicprovisioninfo) MarshalJSON() ([]byte, error) {
 	}{ 
 		Time: Time,
 		
-		Source: u.Source,
+		Source: o.Source,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonechangetopicprovisioninfo) UnmarshalJSON(b []byte) error {
+	var PhonechangetopicprovisioninfoMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonechangetopicprovisioninfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if timeString, ok := PhonechangetopicprovisioninfoMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+	if Source, ok := PhonechangetopicprovisioninfoMap["source"].(string); ok {
+		o.Source = &Source
+	}
+	
+	if ErrorInfo, ok := PhonechangetopicprovisioninfoMap["errorInfo"].(string); ok {
+		o.ErrorInfo = &ErrorInfo
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

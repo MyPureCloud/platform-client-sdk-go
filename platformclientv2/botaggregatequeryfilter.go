@@ -21,13 +21,11 @@ type Botaggregatequeryfilter struct {
 
 }
 
-func (u *Botaggregatequeryfilter) MarshalJSON() ([]byte, error) {
+func (o *Botaggregatequeryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botaggregatequeryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Botaggregatequeryfilter) MarshalJSON() ([]byte, error) {
 		Predicates *[]Botaggregatequerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
+		Clauses: o.Clauses,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botaggregatequeryfilter) UnmarshalJSON(b []byte) error {
+	var BotaggregatequeryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &BotaggregatequeryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := BotaggregatequeryfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := BotaggregatequeryfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if Predicates, ok := BotaggregatequeryfilterMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

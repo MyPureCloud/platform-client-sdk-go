@@ -33,13 +33,11 @@ type Createoutboundmessagingconversationrequest struct {
 
 }
 
-func (u *Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, error) {
+func (o *Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createoutboundmessagingconversationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueueId *string `json:"queueId,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, erro
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		*Alias
 	}{ 
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		ToAddressMessengerType: u.ToAddressMessengerType,
+		ToAddressMessengerType: o.ToAddressMessengerType,
 		
-		UseExistingConversation: u.UseExistingConversation,
+		UseExistingConversation: o.UseExistingConversation,
 		
-		ExternalContactId: u.ExternalContactId,
+		ExternalContactId: o.ExternalContactId,
 		
-		ExternalOrganizationId: u.ExternalOrganizationId,
-		Alias:    (*Alias)(u),
+		ExternalOrganizationId: o.ExternalOrganizationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createoutboundmessagingconversationrequest) UnmarshalJSON(b []byte) error {
+	var CreateoutboundmessagingconversationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateoutboundmessagingconversationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueId, ok := CreateoutboundmessagingconversationrequestMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if ToAddress, ok := CreateoutboundmessagingconversationrequestMap["toAddress"].(string); ok {
+		o.ToAddress = &ToAddress
+	}
+	
+	if ToAddressMessengerType, ok := CreateoutboundmessagingconversationrequestMap["toAddressMessengerType"].(string); ok {
+		o.ToAddressMessengerType = &ToAddressMessengerType
+	}
+	
+	if UseExistingConversation, ok := CreateoutboundmessagingconversationrequestMap["useExistingConversation"].(bool); ok {
+		o.UseExistingConversation = &UseExistingConversation
+	}
+	
+	if ExternalContactId, ok := CreateoutboundmessagingconversationrequestMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
+	}
+	
+	if ExternalOrganizationId, ok := CreateoutboundmessagingconversationrequestMap["externalOrganizationId"].(string); ok {
+		o.ExternalOrganizationId = &ExternalOrganizationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

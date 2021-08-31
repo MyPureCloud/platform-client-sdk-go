@@ -46,20 +46,18 @@ type Bushorttermforecastlistitem struct {
 
 }
 
-func (u *Bushorttermforecastlistitem) MarshalJSON() ([]byte, error) {
+func (o *Bushorttermforecastlistitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bushorttermforecastlistitem
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -80,25 +78,75 @@ func (u *Bushorttermforecastlistitem) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		CreationMethod: u.CreationMethod,
+		CreationMethod: o.CreationMethod,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Legacy: u.Legacy,
+		Legacy: o.Legacy,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		CanUseForScheduling: u.CanUseForScheduling,
+		CanUseForScheduling: o.CanUseForScheduling,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bushorttermforecastlistitem) UnmarshalJSON(b []byte) error {
+	var BushorttermforecastlistitemMap map[string]interface{}
+	err := json.Unmarshal(b, &BushorttermforecastlistitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BushorttermforecastlistitemMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BushorttermforecastlistitemMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if WeekCount, ok := BushorttermforecastlistitemMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if CreationMethod, ok := BushorttermforecastlistitemMap["creationMethod"].(string); ok {
+		o.CreationMethod = &CreationMethod
+	}
+	
+	if Description, ok := BushorttermforecastlistitemMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Legacy, ok := BushorttermforecastlistitemMap["legacy"].(bool); ok {
+		o.Legacy = &Legacy
+	}
+	
+	if Metadata, ok := BushorttermforecastlistitemMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if CanUseForScheduling, ok := BushorttermforecastlistitemMap["canUseForScheduling"].(bool); ok {
+		o.CanUseForScheduling = &CanUseForScheduling
+	}
+	
+	if SelfUri, ok := BushorttermforecastlistitemMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

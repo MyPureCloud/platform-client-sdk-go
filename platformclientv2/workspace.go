@@ -58,29 +58,27 @@ type Workspace struct {
 
 }
 
-func (u *Workspace) MarshalJSON() ([]byte, error) {
+func (o *Workspace) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workspace
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -107,31 +105,95 @@ func (u *Workspace) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		IsCurrentUserWorkspace: u.IsCurrentUserWorkspace,
+		IsCurrentUserWorkspace: o.IsCurrentUserWorkspace,
 		
-		User: u.User,
+		User: o.User,
 		
-		Bucket: u.Bucket,
+		Bucket: o.Bucket,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Summary: u.Summary,
+		Summary: o.Summary,
 		
-		Acl: u.Acl,
+		Acl: o.Acl,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workspace) UnmarshalJSON(b []byte) error {
+	var WorkspaceMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkspaceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WorkspaceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WorkspaceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := WorkspaceMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if IsCurrentUserWorkspace, ok := WorkspaceMap["isCurrentUserWorkspace"].(bool); ok {
+		o.IsCurrentUserWorkspace = &IsCurrentUserWorkspace
+	}
+	
+	if User, ok := WorkspaceMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Bucket, ok := WorkspaceMap["bucket"].(string); ok {
+		o.Bucket = &Bucket
+	}
+	
+	if dateCreatedString, ok := WorkspaceMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := WorkspaceMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Summary, ok := WorkspaceMap["summary"].(map[string]interface{}); ok {
+		SummaryString, _ := json.Marshal(Summary)
+		json.Unmarshal(SummaryString, &o.Summary)
+	}
+	
+	if Acl, ok := WorkspaceMap["acl"].([]interface{}); ok {
+		AclString, _ := json.Marshal(Acl)
+		json.Unmarshal(AclString, &o.Acl)
+	}
+	
+	if Description, ok := WorkspaceMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := WorkspaceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

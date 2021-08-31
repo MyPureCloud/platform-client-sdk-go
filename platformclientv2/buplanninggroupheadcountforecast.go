@@ -21,13 +21,11 @@ type Buplanninggroupheadcountforecast struct {
 
 }
 
-func (u *Buplanninggroupheadcountforecast) MarshalJSON() ([]byte, error) {
+func (o *Buplanninggroupheadcountforecast) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buplanninggroupheadcountforecast
-
 	
-
 	return json.Marshal(&struct { 
 		PlanningGroup *Planninggroupreference `json:"planningGroup,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Buplanninggroupheadcountforecast) MarshalJSON() ([]byte, error) {
 		RequiredWithoutShrinkagePerInterval *[]float64 `json:"requiredWithoutShrinkagePerInterval,omitempty"`
 		*Alias
 	}{ 
-		PlanningGroup: u.PlanningGroup,
+		PlanningGroup: o.PlanningGroup,
 		
-		RequiredPerInterval: u.RequiredPerInterval,
+		RequiredPerInterval: o.RequiredPerInterval,
 		
-		RequiredWithoutShrinkagePerInterval: u.RequiredWithoutShrinkagePerInterval,
-		Alias:    (*Alias)(u),
+		RequiredWithoutShrinkagePerInterval: o.RequiredWithoutShrinkagePerInterval,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buplanninggroupheadcountforecast) UnmarshalJSON(b []byte) error {
+	var BuplanninggroupheadcountforecastMap map[string]interface{}
+	err := json.Unmarshal(b, &BuplanninggroupheadcountforecastMap)
+	if err != nil {
+		return err
+	}
+	
+	if PlanningGroup, ok := BuplanninggroupheadcountforecastMap["planningGroup"].(map[string]interface{}); ok {
+		PlanningGroupString, _ := json.Marshal(PlanningGroup)
+		json.Unmarshal(PlanningGroupString, &o.PlanningGroup)
+	}
+	
+	if RequiredPerInterval, ok := BuplanninggroupheadcountforecastMap["requiredPerInterval"].([]interface{}); ok {
+		RequiredPerIntervalString, _ := json.Marshal(RequiredPerInterval)
+		json.Unmarshal(RequiredPerIntervalString, &o.RequiredPerInterval)
+	}
+	
+	if RequiredWithoutShrinkagePerInterval, ok := BuplanninggroupheadcountforecastMap["requiredWithoutShrinkagePerInterval"].([]interface{}); ok {
+		RequiredWithoutShrinkagePerIntervalString, _ := json.Marshal(RequiredWithoutShrinkagePerInterval)
+		json.Unmarshal(RequiredWithoutShrinkagePerIntervalString, &o.RequiredWithoutShrinkagePerInterval)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

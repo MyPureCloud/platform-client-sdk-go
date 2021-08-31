@@ -53,13 +53,11 @@ type Messagecontent struct {
 
 }
 
-func (u *Messagecontent) MarshalJSON() ([]byte, error) {
+func (o *Messagecontent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagecontent
-
 	
-
 	return json.Marshal(&struct { 
 		ContentType *string `json:"contentType,omitempty"`
 		
@@ -84,29 +82,94 @@ func (u *Messagecontent) MarshalJSON() ([]byte, error) {
 		Postback *Contentpostback `json:"postback,omitempty"`
 		*Alias
 	}{ 
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		Location: u.Location,
+		Location: o.Location,
 		
-		Attachment: u.Attachment,
+		Attachment: o.Attachment,
 		
-		QuickReply: u.QuickReply,
+		QuickReply: o.QuickReply,
 		
-		ButtonResponse: u.ButtonResponse,
+		ButtonResponse: o.ButtonResponse,
 		
-		Generic: u.Generic,
+		Generic: o.Generic,
 		
-		List: u.List,
+		List: o.List,
 		
-		Template: u.Template,
+		Template: o.Template,
 		
-		Reactions: u.Reactions,
+		Reactions: o.Reactions,
 		
-		Mention: u.Mention,
+		Mention: o.Mention,
 		
-		Postback: u.Postback,
-		Alias:    (*Alias)(u),
+		Postback: o.Postback,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagecontent) UnmarshalJSON(b []byte) error {
+	var MessagecontentMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagecontentMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContentType, ok := MessagecontentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if Location, ok := MessagecontentMap["location"].(map[string]interface{}); ok {
+		LocationString, _ := json.Marshal(Location)
+		json.Unmarshal(LocationString, &o.Location)
+	}
+	
+	if Attachment, ok := MessagecontentMap["attachment"].(map[string]interface{}); ok {
+		AttachmentString, _ := json.Marshal(Attachment)
+		json.Unmarshal(AttachmentString, &o.Attachment)
+	}
+	
+	if QuickReply, ok := MessagecontentMap["quickReply"].(map[string]interface{}); ok {
+		QuickReplyString, _ := json.Marshal(QuickReply)
+		json.Unmarshal(QuickReplyString, &o.QuickReply)
+	}
+	
+	if ButtonResponse, ok := MessagecontentMap["buttonResponse"].(map[string]interface{}); ok {
+		ButtonResponseString, _ := json.Marshal(ButtonResponse)
+		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
+	}
+	
+	if Generic, ok := MessagecontentMap["generic"].(map[string]interface{}); ok {
+		GenericString, _ := json.Marshal(Generic)
+		json.Unmarshal(GenericString, &o.Generic)
+	}
+	
+	if List, ok := MessagecontentMap["list"].(map[string]interface{}); ok {
+		ListString, _ := json.Marshal(List)
+		json.Unmarshal(ListString, &o.List)
+	}
+	
+	if Template, ok := MessagecontentMap["template"].(map[string]interface{}); ok {
+		TemplateString, _ := json.Marshal(Template)
+		json.Unmarshal(TemplateString, &o.Template)
+	}
+	
+	if Reactions, ok := MessagecontentMap["reactions"].([]interface{}); ok {
+		ReactionsString, _ := json.Marshal(Reactions)
+		json.Unmarshal(ReactionsString, &o.Reactions)
+	}
+	
+	if Mention, ok := MessagecontentMap["mention"].(map[string]interface{}); ok {
+		MentionString, _ := json.Marshal(Mention)
+		json.Unmarshal(MentionString, &o.Mention)
+	}
+	
+	if Postback, ok := MessagecontentMap["postback"].(map[string]interface{}); ok {
+		PostbackString, _ := json.Marshal(Postback)
+		json.Unmarshal(PostbackString, &o.Postback)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

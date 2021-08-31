@@ -17,24 +17,42 @@ type Buqueryagentschedulesrequest struct {
 
 }
 
-func (u *Buqueryagentschedulesrequest) MarshalJSON() ([]byte, error) {
+func (o *Buqueryagentschedulesrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buqueryagentschedulesrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ManagementUnitId *string `json:"managementUnitId,omitempty"`
 		
 		UserIds *[]string `json:"userIds,omitempty"`
 		*Alias
 	}{ 
-		ManagementUnitId: u.ManagementUnitId,
+		ManagementUnitId: o.ManagementUnitId,
 		
-		UserIds: u.UserIds,
-		Alias:    (*Alias)(u),
+		UserIds: o.UserIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buqueryagentschedulesrequest) UnmarshalJSON(b []byte) error {
+	var BuqueryagentschedulesrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BuqueryagentschedulesrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ManagementUnitId, ok := BuqueryagentschedulesrequestMap["managementUnitId"].(string); ok {
+		o.ManagementUnitId = &ManagementUnitId
+	}
+	
+	if UserIds, ok := BuqueryagentschedulesrequestMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

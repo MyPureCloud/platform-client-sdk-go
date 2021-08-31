@@ -38,21 +38,19 @@ type Messagedetails struct {
 
 }
 
-func (u *Messagedetails) MarshalJSON() ([]byte, error) {
+func (o *Messagedetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagedetails
-
 	
 	MessageTime := new(string)
-	if u.MessageTime != nil {
+	if o.MessageTime != nil {
 		
-		*MessageTime = timeutil.Strftime(u.MessageTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*MessageTime = timeutil.Strftime(o.MessageTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		MessageTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		MessageId *string `json:"messageId,omitempty"`
 		
@@ -69,21 +67,64 @@ func (u *Messagedetails) MarshalJSON() ([]byte, error) {
 		Stickers *[]Messagesticker `json:"stickers,omitempty"`
 		*Alias
 	}{ 
-		MessageId: u.MessageId,
+		MessageId: o.MessageId,
 		
-		MessageURI: u.MessageURI,
+		MessageURI: o.MessageURI,
 		
-		MessageStatus: u.MessageStatus,
+		MessageStatus: o.MessageStatus,
 		
-		MessageSegmentCount: u.MessageSegmentCount,
+		MessageSegmentCount: o.MessageSegmentCount,
 		
 		MessageTime: MessageTime,
 		
-		Media: u.Media,
+		Media: o.Media,
 		
-		Stickers: u.Stickers,
-		Alias:    (*Alias)(u),
+		Stickers: o.Stickers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagedetails) UnmarshalJSON(b []byte) error {
+	var MessagedetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagedetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if MessageId, ok := MessagedetailsMap["messageId"].(string); ok {
+		o.MessageId = &MessageId
+	}
+	
+	if MessageURI, ok := MessagedetailsMap["messageURI"].(string); ok {
+		o.MessageURI = &MessageURI
+	}
+	
+	if MessageStatus, ok := MessagedetailsMap["messageStatus"].(string); ok {
+		o.MessageStatus = &MessageStatus
+	}
+	
+	if MessageSegmentCount, ok := MessagedetailsMap["messageSegmentCount"].(float64); ok {
+		MessageSegmentCountInt := int(MessageSegmentCount)
+		o.MessageSegmentCount = &MessageSegmentCountInt
+	}
+	
+	if messageTimeString, ok := MessagedetailsMap["messageTime"].(string); ok {
+		MessageTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", messageTimeString)
+		o.MessageTime = &MessageTime
+	}
+	
+	if Media, ok := MessagedetailsMap["media"].([]interface{}); ok {
+		MediaString, _ := json.Marshal(Media)
+		json.Unmarshal(MediaString, &o.Media)
+	}
+	
+	if Stickers, ok := MessagedetailsMap["stickers"].([]interface{}); ok {
+		StickersString, _ := json.Marshal(Stickers)
+		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

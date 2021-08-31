@@ -34,29 +34,27 @@ type Bucurrentagentschedulesearchresponse struct {
 
 }
 
-func (u *Bucurrentagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Bucurrentagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bucurrentagentschedulesearchresponse
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
 		
@@ -71,19 +69,59 @@ func (u *Bucurrentagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 		Updates *[]Buagentscheduleupdate `json:"updates,omitempty"`
 		*Alias
 	}{ 
-		AgentSchedules: u.AgentSchedules,
+		AgentSchedules: o.AgentSchedules,
 		
-		BusinessUnitTimeZone: u.BusinessUnitTimeZone,
+		BusinessUnitTimeZone: o.BusinessUnitTimeZone,
 		
-		PublishedSchedules: u.PublishedSchedules,
+		PublishedSchedules: o.PublishedSchedules,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		Updates: u.Updates,
-		Alias:    (*Alias)(u),
+		Updates: o.Updates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bucurrentagentschedulesearchresponse) UnmarshalJSON(b []byte) error {
+	var BucurrentagentschedulesearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BucurrentagentschedulesearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if AgentSchedules, ok := BucurrentagentschedulesearchresponseMap["agentSchedules"].([]interface{}); ok {
+		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
+		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
+	}
+	
+	if BusinessUnitTimeZone, ok := BucurrentagentschedulesearchresponseMap["businessUnitTimeZone"].(string); ok {
+		o.BusinessUnitTimeZone = &BusinessUnitTimeZone
+	}
+	
+	if PublishedSchedules, ok := BucurrentagentschedulesearchresponseMap["publishedSchedules"].([]interface{}); ok {
+		PublishedSchedulesString, _ := json.Marshal(PublishedSchedules)
+		json.Unmarshal(PublishedSchedulesString, &o.PublishedSchedules)
+	}
+	
+	if startDateString, ok := BucurrentagentschedulesearchresponseMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := BucurrentagentschedulesearchresponseMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if Updates, ok := BucurrentagentschedulesearchresponseMap["updates"].([]interface{}); ok {
+		UpdatesString, _ := json.Marshal(Updates)
+		json.Unmarshal(UpdatesString, &o.Updates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

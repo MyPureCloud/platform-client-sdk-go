@@ -21,13 +21,11 @@ type Mailfromresult struct {
 
 }
 
-func (u *Mailfromresult) MarshalJSON() ([]byte, error) {
+func (o *Mailfromresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mailfromresult
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Mailfromresult) MarshalJSON() ([]byte, error) {
 		MailFromDomain *string `json:"mailFromDomain,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		Records: u.Records,
+		Records: o.Records,
 		
-		MailFromDomain: u.MailFromDomain,
-		Alias:    (*Alias)(u),
+		MailFromDomain: o.MailFromDomain,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mailfromresult) UnmarshalJSON(b []byte) error {
+	var MailfromresultMap map[string]interface{}
+	err := json.Unmarshal(b, &MailfromresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := MailfromresultMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Records, ok := MailfromresultMap["records"].([]interface{}); ok {
+		RecordsString, _ := json.Marshal(Records)
+		json.Unmarshal(RecordsString, &o.Records)
+	}
+	
+	if MailFromDomain, ok := MailfromresultMap["mailFromDomain"].(string); ok {
+		o.MailFromDomain = &MailFromDomain
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

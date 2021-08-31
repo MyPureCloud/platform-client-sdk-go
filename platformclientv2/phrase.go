@@ -21,13 +21,11 @@ type Phrase struct {
 
 }
 
-func (u *Phrase) MarshalJSON() ([]byte, error) {
+func (o *Phrase) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phrase
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Phrase) MarshalJSON() ([]byte, error) {
 		Sentiment *string `json:"sentiment,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Strictness: u.Strictness,
+		Strictness: o.Strictness,
 		
-		Sentiment: u.Sentiment,
-		Alias:    (*Alias)(u),
+		Sentiment: o.Sentiment,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phrase) UnmarshalJSON(b []byte) error {
+	var PhraseMap map[string]interface{}
+	err := json.Unmarshal(b, &PhraseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := PhraseMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Strictness, ok := PhraseMap["strictness"].(string); ok {
+		o.Strictness = &Strictness
+	}
+	
+	if Sentiment, ok := PhraseMap["sentiment"].(string); ok {
+		o.Sentiment = &Sentiment
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

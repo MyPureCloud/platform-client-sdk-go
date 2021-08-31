@@ -13,20 +13,34 @@ type Maxparticipants struct {
 
 }
 
-func (u *Maxparticipants) MarshalJSON() ([]byte, error) {
+func (o *Maxparticipants) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Maxparticipants
-
 	
-
 	return json.Marshal(&struct { 
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
 		*Alias
 	}{ 
-		MaxParticipants: u.MaxParticipants,
-		Alias:    (*Alias)(u),
+		MaxParticipants: o.MaxParticipants,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Maxparticipants) UnmarshalJSON(b []byte) error {
+	var MaxparticipantsMap map[string]interface{}
+	err := json.Unmarshal(b, &MaxparticipantsMap)
+	if err != nil {
+		return err
+	}
+	
+	if MaxParticipants, ok := MaxparticipantsMap["maxParticipants"].(float64); ok {
+		MaxParticipantsInt := int(MaxParticipants)
+		o.MaxParticipants = &MaxParticipantsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

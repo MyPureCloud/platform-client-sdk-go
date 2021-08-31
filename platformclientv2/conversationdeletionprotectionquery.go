@@ -13,20 +13,34 @@ type Conversationdeletionprotectionquery struct {
 
 }
 
-func (u *Conversationdeletionprotectionquery) MarshalJSON() ([]byte, error) {
+func (o *Conversationdeletionprotectionquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationdeletionprotectionquery
-
 	
-
 	return json.Marshal(&struct { 
 		ConversationIds *[]string `json:"conversationIds,omitempty"`
 		*Alias
 	}{ 
-		ConversationIds: u.ConversationIds,
-		Alias:    (*Alias)(u),
+		ConversationIds: o.ConversationIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationdeletionprotectionquery) UnmarshalJSON(b []byte) error {
+	var ConversationdeletionprotectionqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationdeletionprotectionqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if ConversationIds, ok := ConversationdeletionprotectionqueryMap["conversationIds"].([]interface{}); ok {
+		ConversationIdsString, _ := json.Marshal(ConversationIds)
+		json.Unmarshal(ConversationIdsString, &o.ConversationIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

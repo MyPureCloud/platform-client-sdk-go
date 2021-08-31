@@ -21,13 +21,11 @@ type Leaderboarditem struct {
 
 }
 
-func (u *Leaderboarditem) MarshalJSON() ([]byte, error) {
+func (o *Leaderboarditem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Leaderboarditem
-
 	
-
 	return json.Marshal(&struct { 
 		User *Userreference `json:"user,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Leaderboarditem) MarshalJSON() ([]byte, error) {
 		Points *int `json:"points,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Rank: u.Rank,
+		Rank: o.Rank,
 		
-		Points: u.Points,
-		Alias:    (*Alias)(u),
+		Points: o.Points,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Leaderboarditem) UnmarshalJSON(b []byte) error {
+	var LeaderboarditemMap map[string]interface{}
+	err := json.Unmarshal(b, &LeaderboarditemMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := LeaderboarditemMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Rank, ok := LeaderboarditemMap["rank"].(float64); ok {
+		RankInt := int(Rank)
+		o.Rank = &RankInt
+	}
+	
+	if Points, ok := LeaderboarditemMap["points"].(float64); ok {
+		PointsInt := int(Points)
+		o.Points = &PointsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

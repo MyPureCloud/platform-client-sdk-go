@@ -21,13 +21,11 @@ type Nludetectionresponse struct {
 
 }
 
-func (u *Nludetectionresponse) MarshalJSON() ([]byte, error) {
+func (o *Nludetectionresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nludetectionresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Version *Nludomainversion `json:"version,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Nludetectionresponse) MarshalJSON() ([]byte, error) {
 		Input *Nludetectioninput `json:"input,omitempty"`
 		*Alias
 	}{ 
-		Version: u.Version,
+		Version: o.Version,
 		
-		Output: u.Output,
+		Output: o.Output,
 		
-		Input: u.Input,
-		Alias:    (*Alias)(u),
+		Input: o.Input,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nludetectionresponse) UnmarshalJSON(b []byte) error {
+	var NludetectionresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &NludetectionresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Version, ok := NludetectionresponseMap["version"].(map[string]interface{}); ok {
+		VersionString, _ := json.Marshal(Version)
+		json.Unmarshal(VersionString, &o.Version)
+	}
+	
+	if Output, ok := NludetectionresponseMap["output"].(map[string]interface{}); ok {
+		OutputString, _ := json.Marshal(Output)
+		json.Unmarshal(OutputString, &o.Output)
+	}
+	
+	if Input, ok := NludetectionresponseMap["input"].(map[string]interface{}); ok {
+		InputString, _ := json.Marshal(Input)
+		json.Unmarshal(InputString, &o.Input)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

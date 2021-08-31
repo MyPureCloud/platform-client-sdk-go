@@ -25,13 +25,11 @@ type Failedobject struct {
 
 }
 
-func (u *Failedobject) MarshalJSON() ([]byte, error) {
+func (o *Failedobject) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Failedobject
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Failedobject) MarshalJSON() ([]byte, error) {
 		ErrorCode *string `json:"errorCode,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ErrorCode: u.ErrorCode,
-		Alias:    (*Alias)(u),
+		ErrorCode: o.ErrorCode,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Failedobject) UnmarshalJSON(b []byte) error {
+	var FailedobjectMap map[string]interface{}
+	err := json.Unmarshal(b, &FailedobjectMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FailedobjectMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Version, ok := FailedobjectMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if Name, ok := FailedobjectMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ErrorCode, ok := FailedobjectMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

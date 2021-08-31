@@ -53,13 +53,11 @@ type Assessmentformquestiongroup struct {
 
 }
 
-func (u *Assessmentformquestiongroup) MarshalJSON() ([]byte, error) {
+func (o *Assessmentformquestiongroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assessmentformquestiongroup
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,87 @@ func (u *Assessmentformquestiongroup) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		DefaultAnswersToHighest: u.DefaultAnswersToHighest,
+		DefaultAnswersToHighest: o.DefaultAnswersToHighest,
 		
-		DefaultAnswersToNA: u.DefaultAnswersToNA,
+		DefaultAnswersToNA: o.DefaultAnswersToNA,
 		
-		NaEnabled: u.NaEnabled,
+		NaEnabled: o.NaEnabled,
 		
-		Weight: u.Weight,
+		Weight: o.Weight,
 		
-		ManualWeight: u.ManualWeight,
+		ManualWeight: o.ManualWeight,
 		
-		Questions: u.Questions,
+		Questions: o.Questions,
 		
-		VisibilityCondition: u.VisibilityCondition,
+		VisibilityCondition: o.VisibilityCondition,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assessmentformquestiongroup) UnmarshalJSON(b []byte) error {
+	var AssessmentformquestiongroupMap map[string]interface{}
+	err := json.Unmarshal(b, &AssessmentformquestiongroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AssessmentformquestiongroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AssessmentformquestiongroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := AssessmentformquestiongroupMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if DefaultAnswersToHighest, ok := AssessmentformquestiongroupMap["defaultAnswersToHighest"].(bool); ok {
+		o.DefaultAnswersToHighest = &DefaultAnswersToHighest
+	}
+	
+	if DefaultAnswersToNA, ok := AssessmentformquestiongroupMap["defaultAnswersToNA"].(bool); ok {
+		o.DefaultAnswersToNA = &DefaultAnswersToNA
+	}
+	
+	if NaEnabled, ok := AssessmentformquestiongroupMap["naEnabled"].(bool); ok {
+		o.NaEnabled = &NaEnabled
+	}
+	
+	if Weight, ok := AssessmentformquestiongroupMap["weight"].(float64); ok {
+		WeightFloat32 := float32(Weight)
+		o.Weight = &WeightFloat32
+	}
+	
+	if ManualWeight, ok := AssessmentformquestiongroupMap["manualWeight"].(bool); ok {
+		o.ManualWeight = &ManualWeight
+	}
+	
+	if Questions, ok := AssessmentformquestiongroupMap["questions"].([]interface{}); ok {
+		QuestionsString, _ := json.Marshal(Questions)
+		json.Unmarshal(QuestionsString, &o.Questions)
+	}
+	
+	if VisibilityCondition, ok := AssessmentformquestiongroupMap["visibilityCondition"].(map[string]interface{}); ok {
+		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
+		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
+	}
+	
+	if SelfUri, ok := AssessmentformquestiongroupMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

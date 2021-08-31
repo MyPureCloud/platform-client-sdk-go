@@ -21,13 +21,11 @@ type Userobservationqueryfilter struct {
 
 }
 
-func (u *Userobservationqueryfilter) MarshalJSON() ([]byte, error) {
+func (o *Userobservationqueryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userobservationqueryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Userobservationqueryfilter) MarshalJSON() ([]byte, error) {
 		Predicates *[]Userobservationquerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
+		Clauses: o.Clauses,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userobservationqueryfilter) UnmarshalJSON(b []byte) error {
+	var UserobservationqueryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &UserobservationqueryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := UserobservationqueryfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := UserobservationqueryfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if Predicates, ok := UserobservationqueryfilterMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

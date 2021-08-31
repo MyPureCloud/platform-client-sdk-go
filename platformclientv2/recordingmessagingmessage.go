@@ -46,21 +46,19 @@ type Recordingmessagingmessage struct {
 
 }
 
-func (u *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
+func (o *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingmessagingmessage
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		From *string `json:"from,omitempty"`
 		
@@ -81,25 +79,77 @@ func (u *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		MessageStickerAttachments *[]Messagestickerattachment `json:"messageStickerAttachments,omitempty"`
 		*Alias
 	}{ 
-		From: u.From,
+		From: o.From,
 		
-		FromUser: u.FromUser,
+		FromUser: o.FromUser,
 		
-		FromExternalContact: u.FromExternalContact,
+		FromExternalContact: o.FromExternalContact,
 		
-		To: u.To,
+		To: o.To,
 		
 		Timestamp: Timestamp,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		MessageText: u.MessageText,
+		MessageText: o.MessageText,
 		
-		MessageMediaAttachments: u.MessageMediaAttachments,
+		MessageMediaAttachments: o.MessageMediaAttachments,
 		
-		MessageStickerAttachments: u.MessageStickerAttachments,
-		Alias:    (*Alias)(u),
+		MessageStickerAttachments: o.MessageStickerAttachments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
+	var RecordingmessagingmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingmessagingmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if From, ok := RecordingmessagingmessageMap["from"].(string); ok {
+		o.From = &From
+	}
+	
+	if FromUser, ok := RecordingmessagingmessageMap["fromUser"].(map[string]interface{}); ok {
+		FromUserString, _ := json.Marshal(FromUser)
+		json.Unmarshal(FromUserString, &o.FromUser)
+	}
+	
+	if FromExternalContact, ok := RecordingmessagingmessageMap["fromExternalContact"].(map[string]interface{}); ok {
+		FromExternalContactString, _ := json.Marshal(FromExternalContact)
+		json.Unmarshal(FromExternalContactString, &o.FromExternalContact)
+	}
+	
+	if To, ok := RecordingmessagingmessageMap["to"].(string); ok {
+		o.To = &To
+	}
+	
+	if timestampString, ok := RecordingmessagingmessageMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if Id, ok := RecordingmessagingmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if MessageText, ok := RecordingmessagingmessageMap["messageText"].(string); ok {
+		o.MessageText = &MessageText
+	}
+	
+	if MessageMediaAttachments, ok := RecordingmessagingmessageMap["messageMediaAttachments"].([]interface{}); ok {
+		MessageMediaAttachmentsString, _ := json.Marshal(MessageMediaAttachments)
+		json.Unmarshal(MessageMediaAttachmentsString, &o.MessageMediaAttachments)
+	}
+	
+	if MessageStickerAttachments, ok := RecordingmessagingmessageMap["messageStickerAttachments"].([]interface{}); ok {
+		MessageStickerAttachmentsString, _ := json.Marshal(MessageStickerAttachments)
+		json.Unmarshal(MessageStickerAttachmentsString, &o.MessageStickerAttachments)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Amazonlexrequest struct {
 
 }
 
-func (u *Amazonlexrequest) MarshalJSON() ([]byte, error) {
+func (o *Amazonlexrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Amazonlexrequest
-
 	
-
 	return json.Marshal(&struct { 
 		RequestAttributes *map[string]string `json:"requestAttributes,omitempty"`
 		
 		SessionAttributes *map[string]string `json:"sessionAttributes,omitempty"`
 		*Alias
 	}{ 
-		RequestAttributes: u.RequestAttributes,
+		RequestAttributes: o.RequestAttributes,
 		
-		SessionAttributes: u.SessionAttributes,
-		Alias:    (*Alias)(u),
+		SessionAttributes: o.SessionAttributes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Amazonlexrequest) UnmarshalJSON(b []byte) error {
+	var AmazonlexrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &AmazonlexrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if RequestAttributes, ok := AmazonlexrequestMap["requestAttributes"].(map[string]interface{}); ok {
+		RequestAttributesString, _ := json.Marshal(RequestAttributes)
+		json.Unmarshal(RequestAttributesString, &o.RequestAttributes)
+	}
+	
+	if SessionAttributes, ok := AmazonlexrequestMap["sessionAttributes"].(map[string]interface{}); ok {
+		SessionAttributesString, _ := json.Marshal(SessionAttributes)
+		json.Unmarshal(SessionAttributesString, &o.SessionAttributes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

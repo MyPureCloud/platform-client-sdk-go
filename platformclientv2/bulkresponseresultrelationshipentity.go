@@ -25,13 +25,11 @@ type Bulkresponseresultrelationshipentity struct {
 
 }
 
-func (u *Bulkresponseresultrelationshipentity) MarshalJSON() ([]byte, error) {
+func (o *Bulkresponseresultrelationshipentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkresponseresultrelationshipentity
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Bulkresponseresultrelationshipentity) MarshalJSON() ([]byte, error) {
 		VarError *Bulkerrorentity `json:"error,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Success: u.Success,
+		Success: o.Success,
 		
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		VarError: u.VarError,
-		Alias:    (*Alias)(u),
+		VarError: o.VarError,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkresponseresultrelationshipentity) UnmarshalJSON(b []byte) error {
+	var BulkresponseresultrelationshipentityMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkresponseresultrelationshipentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BulkresponseresultrelationshipentityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Success, ok := BulkresponseresultrelationshipentityMap["success"].(bool); ok {
+		o.Success = &Success
+	}
+	
+	if Entity, ok := BulkresponseresultrelationshipentityMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if VarError, ok := BulkresponseresultrelationshipentityMap["error"].(map[string]interface{}); ok {
+		VarErrorString, _ := json.Marshal(VarError)
+		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

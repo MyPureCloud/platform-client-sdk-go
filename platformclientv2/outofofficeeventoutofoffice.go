@@ -30,29 +30,27 @@ type Outofofficeeventoutofoffice struct {
 
 }
 
-func (u *Outofofficeeventoutofoffice) MarshalJSON() ([]byte, error) {
+func (o *Outofofficeeventoutofoffice) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outofofficeeventoutofoffice
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		User *Outofofficeeventuser `json:"user,omitempty"`
 		
@@ -65,17 +63,51 @@ func (u *Outofofficeeventoutofoffice) MarshalJSON() ([]byte, error) {
 		EndDate *string `json:"endDate,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		Indefinite: u.Indefinite,
+		Indefinite: o.Indefinite,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outofofficeeventoutofoffice) UnmarshalJSON(b []byte) error {
+	var OutofofficeeventoutofofficeMap map[string]interface{}
+	err := json.Unmarshal(b, &OutofofficeeventoutofofficeMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := OutofofficeeventoutofofficeMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Active, ok := OutofofficeeventoutofofficeMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if Indefinite, ok := OutofofficeeventoutofofficeMap["indefinite"].(bool); ok {
+		o.Indefinite = &Indefinite
+	}
+	
+	if startDateString, ok := OutofofficeeventoutofofficeMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := OutofofficeeventoutofofficeMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

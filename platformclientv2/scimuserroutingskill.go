@@ -17,24 +17,41 @@ type Scimuserroutingskill struct {
 
 }
 
-func (u *Scimuserroutingskill) MarshalJSON() ([]byte, error) {
+func (o *Scimuserroutingskill) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimuserroutingskill
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Proficiency *float64 `json:"proficiency,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Proficiency: u.Proficiency,
-		Alias:    (*Alias)(u),
+		Proficiency: o.Proficiency,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimuserroutingskill) UnmarshalJSON(b []byte) error {
+	var ScimuserroutingskillMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimuserroutingskillMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ScimuserroutingskillMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Proficiency, ok := ScimuserroutingskillMap["proficiency"].(float64); ok {
+		o.Proficiency = &Proficiency
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

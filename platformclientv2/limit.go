@@ -17,24 +17,41 @@ type Limit struct {
 
 }
 
-func (u *Limit) MarshalJSON() ([]byte, error) {
+func (o *Limit) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Limit
-
 	
-
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
 		Value *float64 `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Key: u.Key,
+		Key: o.Key,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Limit) UnmarshalJSON(b []byte) error {
+	var LimitMap map[string]interface{}
+	err := json.Unmarshal(b, &LimitMap)
+	if err != nil {
+		return err
+	}
+	
+	if Key, ok := LimitMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Value, ok := LimitMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

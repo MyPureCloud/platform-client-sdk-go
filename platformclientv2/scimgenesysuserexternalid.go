@@ -17,24 +17,41 @@ type Scimgenesysuserexternalid struct {
 
 }
 
-func (u *Scimgenesysuserexternalid) MarshalJSON() ([]byte, error) {
+func (o *Scimgenesysuserexternalid) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimgenesysuserexternalid
-
 	
-
 	return json.Marshal(&struct { 
 		Authority *string `json:"authority,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Authority: u.Authority,
+		Authority: o.Authority,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimgenesysuserexternalid) UnmarshalJSON(b []byte) error {
+	var ScimgenesysuserexternalidMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimgenesysuserexternalidMap)
+	if err != nil {
+		return err
+	}
+	
+	if Authority, ok := ScimgenesysuserexternalidMap["authority"].(string); ok {
+		o.Authority = &Authority
+	}
+	
+	if Value, ok := ScimgenesysuserexternalidMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

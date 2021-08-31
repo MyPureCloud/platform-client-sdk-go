@@ -21,13 +21,11 @@ type Trustmembercreate struct {
 
 }
 
-func (u *Trustmembercreate) MarshalJSON() ([]byte, error) {
+func (o *Trustmembercreate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustmembercreate
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Trustmembercreate) MarshalJSON() ([]byte, error) {
 		RoleDivisions *Roledivisiongrants `json:"roleDivisions,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		RoleIds: u.RoleIds,
+		RoleIds: o.RoleIds,
 		
-		RoleDivisions: u.RoleDivisions,
-		Alias:    (*Alias)(u),
+		RoleDivisions: o.RoleDivisions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustmembercreate) UnmarshalJSON(b []byte) error {
+	var TrustmembercreateMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustmembercreateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrustmembercreateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if RoleIds, ok := TrustmembercreateMap["roleIds"].([]interface{}); ok {
+		RoleIdsString, _ := json.Marshal(RoleIds)
+		json.Unmarshal(RoleIdsString, &o.RoleIds)
+	}
+	
+	if RoleDivisions, ok := TrustmembercreateMap["roleDivisions"].(map[string]interface{}); ok {
+		RoleDivisionsString, _ := json.Marshal(RoleDivisions)
+		json.Unmarshal(RoleDivisionsString, &o.RoleDivisions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

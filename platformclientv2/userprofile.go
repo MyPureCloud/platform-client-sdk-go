@@ -38,21 +38,19 @@ type Userprofile struct {
 
 }
 
-func (u *Userprofile) MarshalJSON() ([]byte, error) {
+func (o *Userprofile) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userprofile
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Userprofile) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Expands: u.Expands,
+		Expands: o.Expands,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userprofile) UnmarshalJSON(b []byte) error {
+	var UserprofileMap map[string]interface{}
+	err := json.Unmarshal(b, &UserprofileMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserprofileMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserprofileMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if State, ok := UserprofileMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateModifiedString, ok := UserprofileMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := UserprofileMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Expands, ok := UserprofileMap["expands"].(map[string]interface{}); ok {
+		ExpandsString, _ := json.Marshal(Expands)
+		json.Unmarshal(ExpandsString, &o.Expands)
+	}
+	
+	if SelfUri, ok := UserprofileMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

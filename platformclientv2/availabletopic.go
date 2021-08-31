@@ -61,13 +61,11 @@ type Availabletopic struct {
 
 }
 
-func (u *Availabletopic) MarshalJSON() ([]byte, error) {
+func (o *Availabletopic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Availabletopic
-
 	
-
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
 		
@@ -96,33 +94,101 @@ func (u *Availabletopic) MarshalJSON() ([]byte, error) {
 		PublicApiTemplateUriPaths *[]string `json:"publicApiTemplateUriPaths,omitempty"`
 		*Alias
 	}{ 
-		Description: u.Description,
+		Description: o.Description,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		PermissionDetails: u.PermissionDetails,
+		PermissionDetails: o.PermissionDetails,
 		
-		RequiresPermissions: u.RequiresPermissions,
+		RequiresPermissions: o.RequiresPermissions,
 		
-		RequiresDivisionPermissions: u.RequiresDivisionPermissions,
+		RequiresDivisionPermissions: o.RequiresDivisionPermissions,
 		
-		RequiresAnyValidator: u.RequiresAnyValidator,
+		RequiresAnyValidator: o.RequiresAnyValidator,
 		
-		Enforced: u.Enforced,
+		Enforced: o.Enforced,
 		
-		Visibility: u.Visibility,
+		Visibility: o.Visibility,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		RequiresCurrentUser: u.RequiresCurrentUser,
+		RequiresCurrentUser: o.RequiresCurrentUser,
 		
-		RequiresCurrentUserOrPermission: u.RequiresCurrentUserOrPermission,
+		RequiresCurrentUserOrPermission: o.RequiresCurrentUserOrPermission,
 		
-		Transports: u.Transports,
+		Transports: o.Transports,
 		
-		PublicApiTemplateUriPaths: u.PublicApiTemplateUriPaths,
-		Alias:    (*Alias)(u),
+		PublicApiTemplateUriPaths: o.PublicApiTemplateUriPaths,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Availabletopic) UnmarshalJSON(b []byte) error {
+	var AvailabletopicMap map[string]interface{}
+	err := json.Unmarshal(b, &AvailabletopicMap)
+	if err != nil {
+		return err
+	}
+	
+	if Description, ok := AvailabletopicMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Id, ok := AvailabletopicMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if PermissionDetails, ok := AvailabletopicMap["permissionDetails"].([]interface{}); ok {
+		PermissionDetailsString, _ := json.Marshal(PermissionDetails)
+		json.Unmarshal(PermissionDetailsString, &o.PermissionDetails)
+	}
+	
+	if RequiresPermissions, ok := AvailabletopicMap["requiresPermissions"].([]interface{}); ok {
+		RequiresPermissionsString, _ := json.Marshal(RequiresPermissions)
+		json.Unmarshal(RequiresPermissionsString, &o.RequiresPermissions)
+	}
+	
+	if RequiresDivisionPermissions, ok := AvailabletopicMap["requiresDivisionPermissions"].(bool); ok {
+		o.RequiresDivisionPermissions = &RequiresDivisionPermissions
+	}
+	
+	if RequiresAnyValidator, ok := AvailabletopicMap["requiresAnyValidator"].(bool); ok {
+		o.RequiresAnyValidator = &RequiresAnyValidator
+	}
+	
+	if Enforced, ok := AvailabletopicMap["enforced"].(bool); ok {
+		o.Enforced = &Enforced
+	}
+	
+	if Visibility, ok := AvailabletopicMap["visibility"].(string); ok {
+		o.Visibility = &Visibility
+	}
+	
+	if Schema, ok := AvailabletopicMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if RequiresCurrentUser, ok := AvailabletopicMap["requiresCurrentUser"].(bool); ok {
+		o.RequiresCurrentUser = &RequiresCurrentUser
+	}
+	
+	if RequiresCurrentUserOrPermission, ok := AvailabletopicMap["requiresCurrentUserOrPermission"].(bool); ok {
+		o.RequiresCurrentUserOrPermission = &RequiresCurrentUserOrPermission
+	}
+	
+	if Transports, ok := AvailabletopicMap["transports"].([]interface{}); ok {
+		TransportsString, _ := json.Marshal(Transports)
+		json.Unmarshal(TransportsString, &o.Transports)
+	}
+	
+	if PublicApiTemplateUriPaths, ok := AvailabletopicMap["publicApiTemplateUriPaths"].([]interface{}); ok {
+		PublicApiTemplateUriPathsString, _ := json.Marshal(PublicApiTemplateUriPaths)
+		json.Unmarshal(PublicApiTemplateUriPathsString, &o.PublicApiTemplateUriPaths)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

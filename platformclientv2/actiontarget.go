@@ -54,29 +54,27 @@ type Actiontarget struct {
 
 }
 
-func (u *Actiontarget) MarshalJSON() ([]byte, error) {
+func (o *Actiontarget) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actiontarget
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -101,29 +99,90 @@ func (u *Actiontarget) MarshalJSON() ([]byte, error) {
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		UserData: u.UserData,
+		UserData: o.UserData,
 		
-		SupportedMediaTypes: u.SupportedMediaTypes,
+		SupportedMediaTypes: o.SupportedMediaTypes,
 		
-		State: u.State,
+		State: o.State,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		ServiceLevel: u.ServiceLevel,
+		ServiceLevel: o.ServiceLevel,
 		
-		ShortAbandonThreshold: u.ShortAbandonThreshold,
+		ShortAbandonThreshold: o.ShortAbandonThreshold,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actiontarget) UnmarshalJSON(b []byte) error {
+	var ActiontargetMap map[string]interface{}
+	err := json.Unmarshal(b, &ActiontargetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ActiontargetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ActiontargetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if UserData, ok := ActiontargetMap["userData"].([]interface{}); ok {
+		UserDataString, _ := json.Marshal(UserData)
+		json.Unmarshal(UserDataString, &o.UserData)
+	}
+	
+	if SupportedMediaTypes, ok := ActiontargetMap["supportedMediaTypes"].([]interface{}); ok {
+		SupportedMediaTypesString, _ := json.Marshal(SupportedMediaTypes)
+		json.Unmarshal(SupportedMediaTypesString, &o.SupportedMediaTypes)
+	}
+	
+	if State, ok := ActiontargetMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Description, ok := ActiontargetMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if ServiceLevel, ok := ActiontargetMap["serviceLevel"].(map[string]interface{}); ok {
+		ServiceLevelString, _ := json.Marshal(ServiceLevel)
+		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
+	}
+	
+	if ShortAbandonThreshold, ok := ActiontargetMap["shortAbandonThreshold"].(float64); ok {
+		ShortAbandonThresholdInt := int(ShortAbandonThreshold)
+		o.ShortAbandonThreshold = &ShortAbandonThresholdInt
+	}
+	
+	if SelfUri, ok := ActiontargetMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if createdDateString, ok := ActiontargetMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := ActiontargetMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

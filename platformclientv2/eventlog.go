@@ -50,21 +50,19 @@ type Eventlog struct {
 
 }
 
-func (u *Eventlog) MarshalJSON() ([]byte, error) {
+func (o *Eventlog) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Eventlog
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -87,27 +85,82 @@ func (u *Eventlog) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ErrorEntity: u.ErrorEntity,
+		ErrorEntity: o.ErrorEntity,
 		
-		RelatedEntity: u.RelatedEntity,
+		RelatedEntity: o.RelatedEntity,
 		
 		Timestamp: Timestamp,
 		
-		Level: u.Level,
+		Level: o.Level,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		EventMessage: u.EventMessage,
+		EventMessage: o.EventMessage,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Eventlog) UnmarshalJSON(b []byte) error {
+	var EventlogMap map[string]interface{}
+	err := json.Unmarshal(b, &EventlogMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EventlogMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EventlogMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ErrorEntity, ok := EventlogMap["errorEntity"].(map[string]interface{}); ok {
+		ErrorEntityString, _ := json.Marshal(ErrorEntity)
+		json.Unmarshal(ErrorEntityString, &o.ErrorEntity)
+	}
+	
+	if RelatedEntity, ok := EventlogMap["relatedEntity"].(map[string]interface{}); ok {
+		RelatedEntityString, _ := json.Marshal(RelatedEntity)
+		json.Unmarshal(RelatedEntityString, &o.RelatedEntity)
+	}
+	
+	if timestampString, ok := EventlogMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if Level, ok := EventlogMap["level"].(string); ok {
+		o.Level = &Level
+	}
+	
+	if Category, ok := EventlogMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if CorrelationId, ok := EventlogMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if EventMessage, ok := EventlogMap["eventMessage"].(map[string]interface{}); ok {
+		EventMessageString, _ := json.Marshal(EventMessage)
+		json.Unmarshal(EventMessageString, &o.EventMessage)
+	}
+	
+	if SelfUri, ok := EventlogMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

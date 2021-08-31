@@ -25,13 +25,11 @@ type Categorylisting struct {
 
 }
 
-func (u *Categorylisting) MarshalJSON() ([]byte, error) {
+func (o *Categorylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Categorylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Knowledgecategory `json:"entities,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Categorylisting) MarshalJSON() ([]byte, error) {
 		PreviousUri *string `json:"previousUri,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		PreviousUri: u.PreviousUri,
-		Alias:    (*Alias)(u),
+		PreviousUri: o.PreviousUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Categorylisting) UnmarshalJSON(b []byte) error {
+	var CategorylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &CategorylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := CategorylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NextUri, ok := CategorylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if SelfUri, ok := CategorylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if PreviousUri, ok := CategorylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

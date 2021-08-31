@@ -13,20 +13,34 @@ type Planninggrouplist struct {
 
 }
 
-func (u *Planninggrouplist) MarshalJSON() ([]byte, error) {
+func (o *Planninggrouplist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Planninggrouplist
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Planninggroup `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Planninggrouplist) UnmarshalJSON(b []byte) error {
+	var PlanninggrouplistMap map[string]interface{}
+	err := json.Unmarshal(b, &PlanninggrouplistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := PlanninggrouplistMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

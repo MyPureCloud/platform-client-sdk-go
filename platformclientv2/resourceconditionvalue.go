@@ -17,24 +17,41 @@ type Resourceconditionvalue struct {
 
 }
 
-func (u *Resourceconditionvalue) MarshalJSON() ([]byte, error) {
+func (o *Resourceconditionvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Resourceconditionvalue
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Resourceconditionvalue) UnmarshalJSON(b []byte) error {
+	var ResourceconditionvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &ResourceconditionvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ResourceconditionvalueMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Value, ok := ResourceconditionvalueMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

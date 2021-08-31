@@ -17,24 +17,41 @@ type Detectednamedentityvalue struct {
 
 }
 
-func (u *Detectednamedentityvalue) MarshalJSON() ([]byte, error) {
+func (o *Detectednamedentityvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Detectednamedentityvalue
-
 	
-
 	return json.Marshal(&struct { 
 		Raw *string `json:"raw,omitempty"`
 		
 		Resolved *string `json:"resolved,omitempty"`
 		*Alias
 	}{ 
-		Raw: u.Raw,
+		Raw: o.Raw,
 		
-		Resolved: u.Resolved,
-		Alias:    (*Alias)(u),
+		Resolved: o.Resolved,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Detectednamedentityvalue) UnmarshalJSON(b []byte) error {
+	var DetectednamedentityvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &DetectednamedentityvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if Raw, ok := DetectednamedentityvalueMap["raw"].(string); ok {
+		o.Raw = &Raw
+	}
+	
+	if Resolved, ok := DetectednamedentityvalueMap["resolved"].(string); ok {
+		o.Resolved = &Resolved
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

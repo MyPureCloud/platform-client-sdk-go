@@ -33,13 +33,11 @@ type Opennormalizedmessage struct {
 
 }
 
-func (u *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
+func (o *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Opennormalizedmessage
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 		Direction *string `json:"direction,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Channel: u.Channel,
+		Channel: o.Channel,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Content: u.Content,
+		Content: o.Content,
 		
-		Direction: u.Direction,
-		Alias:    (*Alias)(u),
+		Direction: o.Direction,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
+	var OpennormalizedmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &OpennormalizedmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OpennormalizedmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Channel, ok := OpennormalizedmessageMap["channel"].(map[string]interface{}); ok {
+		ChannelString, _ := json.Marshal(Channel)
+		json.Unmarshal(ChannelString, &o.Channel)
+	}
+	
+	if VarType, ok := OpennormalizedmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Text, ok := OpennormalizedmessageMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Content, ok := OpennormalizedmessageMap["content"].([]interface{}); ok {
+		ContentString, _ := json.Marshal(Content)
+		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+	if Direction, ok := OpennormalizedmessageMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

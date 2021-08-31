@@ -21,13 +21,11 @@ type Dialercampaignconfigchangeresterrordetail struct {
 
 }
 
-func (u *Dialercampaignconfigchangeresterrordetail) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignconfigchangeresterrordetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignconfigchangeresterrordetail
-
 	
-
 	return json.Marshal(&struct { 
 		VarError *string `json:"error,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Dialercampaignconfigchangeresterrordetail) MarshalJSON() ([]byte, error
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		VarError: u.VarError,
+		VarError: o.VarError,
 		
-		Details: u.Details,
+		Details: o.Details,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignconfigchangeresterrordetail) UnmarshalJSON(b []byte) error {
+	var DialercampaignconfigchangeresterrordetailMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignconfigchangeresterrordetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarError, ok := DialercampaignconfigchangeresterrordetailMap["error"].(string); ok {
+		o.VarError = &VarError
+	}
+	
+	if Details, ok := DialercampaignconfigchangeresterrordetailMap["details"].(string); ok {
+		o.Details = &Details
+	}
+	
+	if AdditionalProperties, ok := DialercampaignconfigchangeresterrordetailMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

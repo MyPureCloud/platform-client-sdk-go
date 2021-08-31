@@ -21,13 +21,11 @@ type Longtermforecastplanninggroupdata struct {
 
 }
 
-func (u *Longtermforecastplanninggroupdata) MarshalJSON() ([]byte, error) {
+func (o *Longtermforecastplanninggroupdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Longtermforecastplanninggroupdata
-
 	
-
 	return json.Marshal(&struct { 
 		PlanningGroupId *string `json:"planningGroupId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Longtermforecastplanninggroupdata) MarshalJSON() ([]byte, error) {
 		AverageHandleTimeSecondsPerDay *[]float64 `json:"averageHandleTimeSecondsPerDay,omitempty"`
 		*Alias
 	}{ 
-		PlanningGroupId: u.PlanningGroupId,
+		PlanningGroupId: o.PlanningGroupId,
 		
-		OfferedPerDay: u.OfferedPerDay,
+		OfferedPerDay: o.OfferedPerDay,
 		
-		AverageHandleTimeSecondsPerDay: u.AverageHandleTimeSecondsPerDay,
-		Alias:    (*Alias)(u),
+		AverageHandleTimeSecondsPerDay: o.AverageHandleTimeSecondsPerDay,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Longtermforecastplanninggroupdata) UnmarshalJSON(b []byte) error {
+	var LongtermforecastplanninggroupdataMap map[string]interface{}
+	err := json.Unmarshal(b, &LongtermforecastplanninggroupdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if PlanningGroupId, ok := LongtermforecastplanninggroupdataMap["planningGroupId"].(string); ok {
+		o.PlanningGroupId = &PlanningGroupId
+	}
+	
+	if OfferedPerDay, ok := LongtermforecastplanninggroupdataMap["offeredPerDay"].([]interface{}); ok {
+		OfferedPerDayString, _ := json.Marshal(OfferedPerDay)
+		json.Unmarshal(OfferedPerDayString, &o.OfferedPerDay)
+	}
+	
+	if AverageHandleTimeSecondsPerDay, ok := LongtermforecastplanninggroupdataMap["averageHandleTimeSecondsPerDay"].([]interface{}); ok {
+		AverageHandleTimeSecondsPerDayString, _ := json.Marshal(AverageHandleTimeSecondsPerDay)
+		json.Unmarshal(AverageHandleTimeSecondsPerDayString, &o.AverageHandleTimeSecondsPerDay)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

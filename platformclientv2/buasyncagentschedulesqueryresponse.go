@@ -29,13 +29,11 @@ type Buasyncagentschedulesqueryresponse struct {
 
 }
 
-func (u *Buasyncagentschedulesqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Buasyncagentschedulesqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buasyncagentschedulesqueryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Buasyncagentschedulesqueryresponse) MarshalJSON() ([]byte, error) {
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		OperationId: u.OperationId,
+		OperationId: o.OperationId,
 		
-		Result: u.Result,
+		Result: o.Result,
 		
-		Progress: u.Progress,
+		Progress: o.Progress,
 		
-		DownloadUrl: u.DownloadUrl,
-		Alias:    (*Alias)(u),
+		DownloadUrl: o.DownloadUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buasyncagentschedulesqueryresponse) UnmarshalJSON(b []byte) error {
+	var BuasyncagentschedulesqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuasyncagentschedulesqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := BuasyncagentschedulesqueryresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if OperationId, ok := BuasyncagentschedulesqueryresponseMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+	if Result, ok := BuasyncagentschedulesqueryresponseMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+	if Progress, ok := BuasyncagentschedulesqueryresponseMap["progress"].(float64); ok {
+		ProgressInt := int(Progress)
+		o.Progress = &ProgressInt
+	}
+	
+	if DownloadUrl, ok := BuasyncagentschedulesqueryresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Queueconversationeventtopicdisconnectreason struct {
 
 }
 
-func (u *Queueconversationeventtopicdisconnectreason) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationeventtopicdisconnectreason) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopicdisconnectreason
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Queueconversationeventtopicdisconnectreason) MarshalJSON() ([]byte, err
 		Phrase *string `json:"phrase,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		Phrase: u.Phrase,
-		Alias:    (*Alias)(u),
+		Phrase: o.Phrase,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationeventtopicdisconnectreason) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopicdisconnectreasonMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopicdisconnectreasonMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := QueueconversationeventtopicdisconnectreasonMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Code, ok := QueueconversationeventtopicdisconnectreasonMap["code"].(float64); ok {
+		CodeInt := int(Code)
+		o.Code = &CodeInt
+	}
+	
+	if Phrase, ok := QueueconversationeventtopicdisconnectreasonMap["phrase"].(string); ok {
+		o.Phrase = &Phrase
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

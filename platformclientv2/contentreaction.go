@@ -17,24 +17,42 @@ type Contentreaction struct {
 
 }
 
-func (u *Contentreaction) MarshalJSON() ([]byte, error) {
+func (o *Contentreaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentreaction
-
 	
-
 	return json.Marshal(&struct { 
 		ReactionType *string `json:"reactionType,omitempty"`
 		
 		Count *int `json:"count,omitempty"`
 		*Alias
 	}{ 
-		ReactionType: u.ReactionType,
+		ReactionType: o.ReactionType,
 		
-		Count: u.Count,
-		Alias:    (*Alias)(u),
+		Count: o.Count,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentreaction) UnmarshalJSON(b []byte) error {
+	var ContentreactionMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentreactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if ReactionType, ok := ContentreactionMap["reactionType"].(string); ok {
+		o.ReactionType = &ReactionType
+	}
+	
+	if Count, ok := ContentreactionMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

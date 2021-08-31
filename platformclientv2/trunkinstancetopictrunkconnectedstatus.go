@@ -18,32 +18,50 @@ type Trunkinstancetopictrunkconnectedstatus struct {
 
 }
 
-func (u *Trunkinstancetopictrunkconnectedstatus) MarshalJSON() ([]byte, error) {
+func (o *Trunkinstancetopictrunkconnectedstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkinstancetopictrunkconnectedstatus
-
 	
 	ConnectedStateTime := new(string)
-	if u.ConnectedStateTime != nil {
+	if o.ConnectedStateTime != nil {
 		
-		*ConnectedStateTime = timeutil.Strftime(u.ConnectedStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedStateTime = timeutil.Strftime(o.ConnectedStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedStateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Connected *bool `json:"connected,omitempty"`
 		
 		ConnectedStateTime *string `json:"connectedStateTime,omitempty"`
 		*Alias
 	}{ 
-		Connected: u.Connected,
+		Connected: o.Connected,
 		
 		ConnectedStateTime: ConnectedStateTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkinstancetopictrunkconnectedstatus) UnmarshalJSON(b []byte) error {
+	var TrunkinstancetopictrunkconnectedstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkinstancetopictrunkconnectedstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Connected, ok := TrunkinstancetopictrunkconnectedstatusMap["connected"].(bool); ok {
+		o.Connected = &Connected
+	}
+	
+	if connectedStateTimeString, ok := TrunkinstancetopictrunkconnectedstatusMap["connectedStateTime"].(string); ok {
+		ConnectedStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedStateTimeString)
+		o.ConnectedStateTime = &ConnectedStateTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

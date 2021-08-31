@@ -13,20 +13,33 @@ type Utterance struct {
 
 }
 
-func (u *Utterance) MarshalJSON() ([]byte, error) {
+func (o *Utterance) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Utterance
-
 	
-
 	return json.Marshal(&struct { 
 		UtteranceText *string `json:"utteranceText,omitempty"`
 		*Alias
 	}{ 
-		UtteranceText: u.UtteranceText,
-		Alias:    (*Alias)(u),
+		UtteranceText: o.UtteranceText,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Utterance) UnmarshalJSON(b []byte) error {
+	var UtteranceMap map[string]interface{}
+	err := json.Unmarshal(b, &UtteranceMap)
+	if err != nil {
+		return err
+	}
+	
+	if UtteranceText, ok := UtteranceMap["utteranceText"].(string); ok {
+		o.UtteranceText = &UtteranceText
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

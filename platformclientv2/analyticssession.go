@@ -298,29 +298,27 @@ type Analyticssession struct {
 
 }
 
-func (u *Analyticssession) MarshalJSON() ([]byte, error) {
+func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticssession
-
 	
 	CallbackScheduledTime := new(string)
-	if u.CallbackScheduledTime != nil {
+	if o.CallbackScheduledTime != nil {
 		
-		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CallbackScheduledTime = timeutil.Strftime(o.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CallbackScheduledTime = nil
 	}
 	
 	DeliveryStatusChangeDate := new(string)
-	if u.DeliveryStatusChangeDate != nil {
+	if o.DeliveryStatusChangeDate != nil {
 		
-		*DeliveryStatusChangeDate = timeutil.Strftime(u.DeliveryStatusChangeDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DeliveryStatusChangeDate = timeutil.Strftime(o.DeliveryStatusChangeDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DeliveryStatusChangeDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ActiveSkillIds *[]string `json:"activeSkillIds,omitempty"`
 		
@@ -467,151 +465,469 @@ func (u *Analyticssession) MarshalJSON() ([]byte, error) {
 		Segments *[]Analyticsconversationsegment `json:"segments,omitempty"`
 		*Alias
 	}{ 
-		ActiveSkillIds: u.ActiveSkillIds,
+		ActiveSkillIds: o.ActiveSkillIds,
 		
-		AcwSkipped: u.AcwSkipped,
+		AcwSkipped: o.AcwSkipped,
 		
-		AddressFrom: u.AddressFrom,
+		AddressFrom: o.AddressFrom,
 		
-		AddressOther: u.AddressOther,
+		AddressOther: o.AddressOther,
 		
-		AddressSelf: u.AddressSelf,
+		AddressSelf: o.AddressSelf,
 		
-		AddressTo: u.AddressTo,
+		AddressTo: o.AddressTo,
 		
-		AgentAssistantId: u.AgentAssistantId,
+		AgentAssistantId: o.AgentAssistantId,
 		
-		AgentBullseyeRing: u.AgentBullseyeRing,
+		AgentBullseyeRing: o.AgentBullseyeRing,
 		
-		AgentOwned: u.AgentOwned,
+		AgentOwned: o.AgentOwned,
 		
-		Ani: u.Ani,
+		Ani: o.Ani,
 		
-		AssignerId: u.AssignerId,
+		AssignerId: o.AssignerId,
 		
-		Authenticated: u.Authenticated,
+		Authenticated: o.Authenticated,
 		
-		CallbackNumbers: u.CallbackNumbers,
+		CallbackNumbers: o.CallbackNumbers,
 		
 		CallbackScheduledTime: CallbackScheduledTime,
 		
-		CallbackUserName: u.CallbackUserName,
+		CallbackUserName: o.CallbackUserName,
 		
-		CoachedParticipantId: u.CoachedParticipantId,
+		CoachedParticipantId: o.CoachedParticipantId,
 		
-		CobrowseRole: u.CobrowseRole,
+		CobrowseRole: o.CobrowseRole,
 		
-		CobrowseRoomId: u.CobrowseRoomId,
+		CobrowseRoomId: o.CobrowseRoomId,
 		
-		DeliveryStatus: u.DeliveryStatus,
+		DeliveryStatus: o.DeliveryStatus,
 		
 		DeliveryStatusChangeDate: DeliveryStatusChangeDate,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		DispositionAnalyzer: u.DispositionAnalyzer,
+		DispositionAnalyzer: o.DispositionAnalyzer,
 		
-		DispositionName: u.DispositionName,
+		DispositionName: o.DispositionName,
 		
-		Dnis: u.Dnis,
+		Dnis: o.Dnis,
 		
-		EdgeId: u.EdgeId,
+		EdgeId: o.EdgeId,
 		
-		EligibleAgentCounts: u.EligibleAgentCounts,
+		EligibleAgentCounts: o.EligibleAgentCounts,
 		
-		FlowInType: u.FlowInType,
+		FlowInType: o.FlowInType,
 		
-		FlowOutType: u.FlowOutType,
+		FlowOutType: o.FlowOutType,
 		
-		JourneyActionId: u.JourneyActionId,
+		JourneyActionId: o.JourneyActionId,
 		
-		JourneyActionMapId: u.JourneyActionMapId,
+		JourneyActionMapId: o.JourneyActionMapId,
 		
-		JourneyActionMapVersion: u.JourneyActionMapVersion,
+		JourneyActionMapVersion: o.JourneyActionMapVersion,
 		
-		JourneyCustomerId: u.JourneyCustomerId,
+		JourneyCustomerId: o.JourneyCustomerId,
 		
-		JourneyCustomerIdType: u.JourneyCustomerIdType,
+		JourneyCustomerIdType: o.JourneyCustomerIdType,
 		
-		JourneyCustomerSessionId: u.JourneyCustomerSessionId,
+		JourneyCustomerSessionId: o.JourneyCustomerSessionId,
 		
-		JourneyCustomerSessionIdType: u.JourneyCustomerSessionIdType,
+		JourneyCustomerSessionIdType: o.JourneyCustomerSessionIdType,
 		
-		MediaBridgeId: u.MediaBridgeId,
+		MediaBridgeId: o.MediaBridgeId,
 		
-		MediaCount: u.MediaCount,
+		MediaCount: o.MediaCount,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		MessageType: u.MessageType,
+		MessageType: o.MessageType,
 		
-		MonitoredParticipantId: u.MonitoredParticipantId,
+		MonitoredParticipantId: o.MonitoredParticipantId,
 		
-		OutboundCampaignId: u.OutboundCampaignId,
+		OutboundCampaignId: o.OutboundCampaignId,
 		
-		OutboundContactId: u.OutboundContactId,
+		OutboundContactId: o.OutboundContactId,
 		
-		OutboundContactListId: u.OutboundContactListId,
+		OutboundContactListId: o.OutboundContactListId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		ProtocolCallId: u.ProtocolCallId,
+		ProtocolCallId: o.ProtocolCallId,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		Recording: u.Recording,
+		Recording: o.Recording,
 		
-		Remote: u.Remote,
+		Remote: o.Remote,
 		
-		RemoteNameDisplayable: u.RemoteNameDisplayable,
+		RemoteNameDisplayable: o.RemoteNameDisplayable,
 		
-		RemovedSkillIds: u.RemovedSkillIds,
+		RemovedSkillIds: o.RemovedSkillIds,
 		
-		RequestedRoutings: u.RequestedRoutings,
+		RequestedRoutings: o.RequestedRoutings,
 		
-		RoomId: u.RoomId,
+		RoomId: o.RoomId,
 		
-		RoutingRing: u.RoutingRing,
+		RoutingRing: o.RoutingRing,
 		
-		ScreenShareAddressSelf: u.ScreenShareAddressSelf,
+		ScreenShareAddressSelf: o.ScreenShareAddressSelf,
 		
-		ScreenShareRoomId: u.ScreenShareRoomId,
+		ScreenShareRoomId: o.ScreenShareRoomId,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		SelectedAgentId: u.SelectedAgentId,
+		SelectedAgentId: o.SelectedAgentId,
 		
-		SelectedAgentRank: u.SelectedAgentRank,
+		SelectedAgentRank: o.SelectedAgentRank,
 		
-		SessionDnis: u.SessionDnis,
+		SessionDnis: o.SessionDnis,
 		
-		SessionId: u.SessionId,
+		SessionId: o.SessionId,
 		
-		SharingScreen: u.SharingScreen,
+		SharingScreen: o.SharingScreen,
 		
-		SkipEnabled: u.SkipEnabled,
+		SkipEnabled: o.SkipEnabled,
 		
-		TimeoutSeconds: u.TimeoutSeconds,
+		TimeoutSeconds: o.TimeoutSeconds,
 		
-		UsedRouting: u.UsedRouting,
+		UsedRouting: o.UsedRouting,
 		
-		VideoAddressSelf: u.VideoAddressSelf,
+		VideoAddressSelf: o.VideoAddressSelf,
 		
-		VideoRoomId: u.VideoRoomId,
+		VideoRoomId: o.VideoRoomId,
 		
-		WaitingInteractionCounts: u.WaitingInteractionCounts,
+		WaitingInteractionCounts: o.WaitingInteractionCounts,
 		
-		ProposedAgents: u.ProposedAgents,
+		ProposedAgents: o.ProposedAgents,
 		
-		MediaEndpointStats: u.MediaEndpointStats,
+		MediaEndpointStats: o.MediaEndpointStats,
 		
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		Segments: u.Segments,
-		Alias:    (*Alias)(u),
+		Segments: o.Segments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticssession) UnmarshalJSON(b []byte) error {
+	var AnalyticssessionMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticssessionMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActiveSkillIds, ok := AnalyticssessionMap["activeSkillIds"].([]interface{}); ok {
+		ActiveSkillIdsString, _ := json.Marshal(ActiveSkillIds)
+		json.Unmarshal(ActiveSkillIdsString, &o.ActiveSkillIds)
+	}
+	
+	if AcwSkipped, ok := AnalyticssessionMap["acwSkipped"].(bool); ok {
+		o.AcwSkipped = &AcwSkipped
+	}
+	
+	if AddressFrom, ok := AnalyticssessionMap["addressFrom"].(string); ok {
+		o.AddressFrom = &AddressFrom
+	}
+	
+	if AddressOther, ok := AnalyticssessionMap["addressOther"].(string); ok {
+		o.AddressOther = &AddressOther
+	}
+	
+	if AddressSelf, ok := AnalyticssessionMap["addressSelf"].(string); ok {
+		o.AddressSelf = &AddressSelf
+	}
+	
+	if AddressTo, ok := AnalyticssessionMap["addressTo"].(string); ok {
+		o.AddressTo = &AddressTo
+	}
+	
+	if AgentAssistantId, ok := AnalyticssessionMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
+	}
+	
+	if AgentBullseyeRing, ok := AnalyticssessionMap["agentBullseyeRing"].(float64); ok {
+		AgentBullseyeRingInt := int(AgentBullseyeRing)
+		o.AgentBullseyeRing = &AgentBullseyeRingInt
+	}
+	
+	if AgentOwned, ok := AnalyticssessionMap["agentOwned"].(bool); ok {
+		o.AgentOwned = &AgentOwned
+	}
+	
+	if Ani, ok := AnalyticssessionMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+	
+	if AssignerId, ok := AnalyticssessionMap["assignerId"].(string); ok {
+		o.AssignerId = &AssignerId
+	}
+	
+	if Authenticated, ok := AnalyticssessionMap["authenticated"].(bool); ok {
+		o.Authenticated = &Authenticated
+	}
+	
+	if CallbackNumbers, ok := AnalyticssessionMap["callbackNumbers"].([]interface{}); ok {
+		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
+		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
+	}
+	
+	if callbackScheduledTimeString, ok := AnalyticssessionMap["callbackScheduledTime"].(string); ok {
+		CallbackScheduledTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callbackScheduledTimeString)
+		o.CallbackScheduledTime = &CallbackScheduledTime
+	}
+	
+	if CallbackUserName, ok := AnalyticssessionMap["callbackUserName"].(string); ok {
+		o.CallbackUserName = &CallbackUserName
+	}
+	
+	if CoachedParticipantId, ok := AnalyticssessionMap["coachedParticipantId"].(string); ok {
+		o.CoachedParticipantId = &CoachedParticipantId
+	}
+	
+	if CobrowseRole, ok := AnalyticssessionMap["cobrowseRole"].(string); ok {
+		o.CobrowseRole = &CobrowseRole
+	}
+	
+	if CobrowseRoomId, ok := AnalyticssessionMap["cobrowseRoomId"].(string); ok {
+		o.CobrowseRoomId = &CobrowseRoomId
+	}
+	
+	if DeliveryStatus, ok := AnalyticssessionMap["deliveryStatus"].(string); ok {
+		o.DeliveryStatus = &DeliveryStatus
+	}
+	
+	if deliveryStatusChangeDateString, ok := AnalyticssessionMap["deliveryStatusChangeDate"].(string); ok {
+		DeliveryStatusChangeDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deliveryStatusChangeDateString)
+		o.DeliveryStatusChangeDate = &DeliveryStatusChangeDate
+	}
+	
+	if Direction, ok := AnalyticssessionMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if DispositionAnalyzer, ok := AnalyticssessionMap["dispositionAnalyzer"].(string); ok {
+		o.DispositionAnalyzer = &DispositionAnalyzer
+	}
+	
+	if DispositionName, ok := AnalyticssessionMap["dispositionName"].(string); ok {
+		o.DispositionName = &DispositionName
+	}
+	
+	if Dnis, ok := AnalyticssessionMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
+	}
+	
+	if EdgeId, ok := AnalyticssessionMap["edgeId"].(string); ok {
+		o.EdgeId = &EdgeId
+	}
+	
+	if EligibleAgentCounts, ok := AnalyticssessionMap["eligibleAgentCounts"].([]interface{}); ok {
+		EligibleAgentCountsString, _ := json.Marshal(EligibleAgentCounts)
+		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
+	}
+	
+	if FlowInType, ok := AnalyticssessionMap["flowInType"].(string); ok {
+		o.FlowInType = &FlowInType
+	}
+	
+	if FlowOutType, ok := AnalyticssessionMap["flowOutType"].(string); ok {
+		o.FlowOutType = &FlowOutType
+	}
+	
+	if JourneyActionId, ok := AnalyticssessionMap["journeyActionId"].(string); ok {
+		o.JourneyActionId = &JourneyActionId
+	}
+	
+	if JourneyActionMapId, ok := AnalyticssessionMap["journeyActionMapId"].(string); ok {
+		o.JourneyActionMapId = &JourneyActionMapId
+	}
+	
+	if JourneyActionMapVersion, ok := AnalyticssessionMap["journeyActionMapVersion"].(float64); ok {
+		JourneyActionMapVersionInt := int(JourneyActionMapVersion)
+		o.JourneyActionMapVersion = &JourneyActionMapVersionInt
+	}
+	
+	if JourneyCustomerId, ok := AnalyticssessionMap["journeyCustomerId"].(string); ok {
+		o.JourneyCustomerId = &JourneyCustomerId
+	}
+	
+	if JourneyCustomerIdType, ok := AnalyticssessionMap["journeyCustomerIdType"].(string); ok {
+		o.JourneyCustomerIdType = &JourneyCustomerIdType
+	}
+	
+	if JourneyCustomerSessionId, ok := AnalyticssessionMap["journeyCustomerSessionId"].(string); ok {
+		o.JourneyCustomerSessionId = &JourneyCustomerSessionId
+	}
+	
+	if JourneyCustomerSessionIdType, ok := AnalyticssessionMap["journeyCustomerSessionIdType"].(string); ok {
+		o.JourneyCustomerSessionIdType = &JourneyCustomerSessionIdType
+	}
+	
+	if MediaBridgeId, ok := AnalyticssessionMap["mediaBridgeId"].(string); ok {
+		o.MediaBridgeId = &MediaBridgeId
+	}
+	
+	if MediaCount, ok := AnalyticssessionMap["mediaCount"].(float64); ok {
+		MediaCountInt := int(MediaCount)
+		o.MediaCount = &MediaCountInt
+	}
+	
+	if MediaType, ok := AnalyticssessionMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if MessageType, ok := AnalyticssessionMap["messageType"].(string); ok {
+		o.MessageType = &MessageType
+	}
+	
+	if MonitoredParticipantId, ok := AnalyticssessionMap["monitoredParticipantId"].(string); ok {
+		o.MonitoredParticipantId = &MonitoredParticipantId
+	}
+	
+	if OutboundCampaignId, ok := AnalyticssessionMap["outboundCampaignId"].(string); ok {
+		o.OutboundCampaignId = &OutboundCampaignId
+	}
+	
+	if OutboundContactId, ok := AnalyticssessionMap["outboundContactId"].(string); ok {
+		o.OutboundContactId = &OutboundContactId
+	}
+	
+	if OutboundContactListId, ok := AnalyticssessionMap["outboundContactListId"].(string); ok {
+		o.OutboundContactListId = &OutboundContactListId
+	}
+	
+	if PeerId, ok := AnalyticssessionMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if ProtocolCallId, ok := AnalyticssessionMap["protocolCallId"].(string); ok {
+		o.ProtocolCallId = &ProtocolCallId
+	}
+	
+	if Provider, ok := AnalyticssessionMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if Recording, ok := AnalyticssessionMap["recording"].(bool); ok {
+		o.Recording = &Recording
+	}
+	
+	if Remote, ok := AnalyticssessionMap["remote"].(string); ok {
+		o.Remote = &Remote
+	}
+	
+	if RemoteNameDisplayable, ok := AnalyticssessionMap["remoteNameDisplayable"].(string); ok {
+		o.RemoteNameDisplayable = &RemoteNameDisplayable
+	}
+	
+	if RemovedSkillIds, ok := AnalyticssessionMap["removedSkillIds"].([]interface{}); ok {
+		RemovedSkillIdsString, _ := json.Marshal(RemovedSkillIds)
+		json.Unmarshal(RemovedSkillIdsString, &o.RemovedSkillIds)
+	}
+	
+	if RequestedRoutings, ok := AnalyticssessionMap["requestedRoutings"].([]interface{}); ok {
+		RequestedRoutingsString, _ := json.Marshal(RequestedRoutings)
+		json.Unmarshal(RequestedRoutingsString, &o.RequestedRoutings)
+	}
+	
+	if RoomId, ok := AnalyticssessionMap["roomId"].(string); ok {
+		o.RoomId = &RoomId
+	}
+	
+	if RoutingRing, ok := AnalyticssessionMap["routingRing"].(float64); ok {
+		RoutingRingInt := int(RoutingRing)
+		o.RoutingRing = &RoutingRingInt
+	}
+	
+	if ScreenShareAddressSelf, ok := AnalyticssessionMap["screenShareAddressSelf"].(string); ok {
+		o.ScreenShareAddressSelf = &ScreenShareAddressSelf
+	}
+	
+	if ScreenShareRoomId, ok := AnalyticssessionMap["screenShareRoomId"].(string); ok {
+		o.ScreenShareRoomId = &ScreenShareRoomId
+	}
+	
+	if ScriptId, ok := AnalyticssessionMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if SelectedAgentId, ok := AnalyticssessionMap["selectedAgentId"].(string); ok {
+		o.SelectedAgentId = &SelectedAgentId
+	}
+	
+	if SelectedAgentRank, ok := AnalyticssessionMap["selectedAgentRank"].(float64); ok {
+		SelectedAgentRankInt := int(SelectedAgentRank)
+		o.SelectedAgentRank = &SelectedAgentRankInt
+	}
+	
+	if SessionDnis, ok := AnalyticssessionMap["sessionDnis"].(string); ok {
+		o.SessionDnis = &SessionDnis
+	}
+	
+	if SessionId, ok := AnalyticssessionMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
+	}
+	
+	if SharingScreen, ok := AnalyticssessionMap["sharingScreen"].(bool); ok {
+		o.SharingScreen = &SharingScreen
+	}
+	
+	if SkipEnabled, ok := AnalyticssessionMap["skipEnabled"].(bool); ok {
+		o.SkipEnabled = &SkipEnabled
+	}
+	
+	if TimeoutSeconds, ok := AnalyticssessionMap["timeoutSeconds"].(float64); ok {
+		TimeoutSecondsInt := int(TimeoutSeconds)
+		o.TimeoutSeconds = &TimeoutSecondsInt
+	}
+	
+	if UsedRouting, ok := AnalyticssessionMap["usedRouting"].(string); ok {
+		o.UsedRouting = &UsedRouting
+	}
+	
+	if VideoAddressSelf, ok := AnalyticssessionMap["videoAddressSelf"].(string); ok {
+		o.VideoAddressSelf = &VideoAddressSelf
+	}
+	
+	if VideoRoomId, ok := AnalyticssessionMap["videoRoomId"].(string); ok {
+		o.VideoRoomId = &VideoRoomId
+	}
+	
+	if WaitingInteractionCounts, ok := AnalyticssessionMap["waitingInteractionCounts"].([]interface{}); ok {
+		WaitingInteractionCountsString, _ := json.Marshal(WaitingInteractionCounts)
+		json.Unmarshal(WaitingInteractionCountsString, &o.WaitingInteractionCounts)
+	}
+	
+	if ProposedAgents, ok := AnalyticssessionMap["proposedAgents"].([]interface{}); ok {
+		ProposedAgentsString, _ := json.Marshal(ProposedAgents)
+		json.Unmarshal(ProposedAgentsString, &o.ProposedAgents)
+	}
+	
+	if MediaEndpointStats, ok := AnalyticssessionMap["mediaEndpointStats"].([]interface{}); ok {
+		MediaEndpointStatsString, _ := json.Marshal(MediaEndpointStats)
+		json.Unmarshal(MediaEndpointStatsString, &o.MediaEndpointStats)
+	}
+	
+	if Flow, ok := AnalyticssessionMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if Metrics, ok := AnalyticssessionMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if Segments, ok := AnalyticssessionMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

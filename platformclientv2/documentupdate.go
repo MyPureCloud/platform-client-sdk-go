@@ -45,13 +45,11 @@ type Documentupdate struct {
 
 }
 
-func (u *Documentupdate) MarshalJSON() ([]byte, error) {
+func (o *Documentupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentupdate
-
 	
-
 	return json.Marshal(&struct { 
 		ChangeNumber *int `json:"changeNumber,omitempty"`
 		
@@ -72,25 +70,79 @@ func (u *Documentupdate) MarshalJSON() ([]byte, error) {
 		RemoveAttributes *[]string `json:"removeAttributes,omitempty"`
 		*Alias
 	}{ 
-		ChangeNumber: u.ChangeNumber,
+		ChangeNumber: o.ChangeNumber,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
-		AddTags: u.AddTags,
+		AddTags: o.AddTags,
 		
-		RemoveTags: u.RemoveTags,
+		RemoveTags: o.RemoveTags,
 		
-		AddTagIds: u.AddTagIds,
+		AddTagIds: o.AddTagIds,
 		
-		RemoveTagIds: u.RemoveTagIds,
+		RemoveTagIds: o.RemoveTagIds,
 		
-		UpdateAttributes: u.UpdateAttributes,
+		UpdateAttributes: o.UpdateAttributes,
 		
-		RemoveAttributes: u.RemoveAttributes,
-		Alias:    (*Alias)(u),
+		RemoveAttributes: o.RemoveAttributes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentupdate) UnmarshalJSON(b []byte) error {
+	var DocumentupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if ChangeNumber, ok := DocumentupdateMap["changeNumber"].(float64); ok {
+		ChangeNumberInt := int(ChangeNumber)
+		o.ChangeNumber = &ChangeNumberInt
+	}
+	
+	if Name, ok := DocumentupdateMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Read, ok := DocumentupdateMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if AddTags, ok := DocumentupdateMap["addTags"].([]interface{}); ok {
+		AddTagsString, _ := json.Marshal(AddTags)
+		json.Unmarshal(AddTagsString, &o.AddTags)
+	}
+	
+	if RemoveTags, ok := DocumentupdateMap["removeTags"].([]interface{}); ok {
+		RemoveTagsString, _ := json.Marshal(RemoveTags)
+		json.Unmarshal(RemoveTagsString, &o.RemoveTags)
+	}
+	
+	if AddTagIds, ok := DocumentupdateMap["addTagIds"].([]interface{}); ok {
+		AddTagIdsString, _ := json.Marshal(AddTagIds)
+		json.Unmarshal(AddTagIdsString, &o.AddTagIds)
+	}
+	
+	if RemoveTagIds, ok := DocumentupdateMap["removeTagIds"].([]interface{}); ok {
+		RemoveTagIdsString, _ := json.Marshal(RemoveTagIds)
+		json.Unmarshal(RemoveTagIdsString, &o.RemoveTagIds)
+	}
+	
+	if UpdateAttributes, ok := DocumentupdateMap["updateAttributes"].([]interface{}); ok {
+		UpdateAttributesString, _ := json.Marshal(UpdateAttributes)
+		json.Unmarshal(UpdateAttributesString, &o.UpdateAttributes)
+	}
+	
+	if RemoveAttributes, ok := DocumentupdateMap["removeAttributes"].([]interface{}); ok {
+		RemoveAttributesString, _ := json.Marshal(RemoveAttributes)
+		json.Unmarshal(RemoveAttributesString, &o.RemoveAttributes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

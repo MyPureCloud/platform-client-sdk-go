@@ -46,45 +46,43 @@ type Historicalimportstatus struct {
 
 }
 
-func (u *Historicalimportstatus) MarshalJSON() ([]byte, error) {
+func (o *Historicalimportstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historicalimportstatus
-
 	
 	DateImportEnded := new(string)
-	if u.DateImportEnded != nil {
+	if o.DateImportEnded != nil {
 		
-		*DateImportEnded = timeutil.Strftime(u.DateImportEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateImportEnded = timeutil.Strftime(o.DateImportEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateImportEnded = nil
 	}
 	
 	DateImportStarted := new(string)
-	if u.DateImportStarted != nil {
+	if o.DateImportStarted != nil {
 		
-		*DateImportStarted = timeutil.Strftime(u.DateImportStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateImportStarted = timeutil.Strftime(o.DateImportStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateImportStarted = nil
 	}
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		RequestId *string `json:"requestId,omitempty"`
 		
@@ -105,25 +103,76 @@ func (u *Historicalimportstatus) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		RequestId: u.RequestId,
+		RequestId: o.RequestId,
 		
 		DateImportEnded: DateImportEnded,
 		
 		DateImportStarted: DateImportStarted,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		VarError: u.VarError,
+		VarError: o.VarError,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historicalimportstatus) UnmarshalJSON(b []byte) error {
+	var HistoricalimportstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoricalimportstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if RequestId, ok := HistoricalimportstatusMap["requestId"].(string); ok {
+		o.RequestId = &RequestId
+	}
+	
+	if dateImportEndedString, ok := HistoricalimportstatusMap["dateImportEnded"].(string); ok {
+		DateImportEnded, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateImportEndedString)
+		o.DateImportEnded = &DateImportEnded
+	}
+	
+	if dateImportStartedString, ok := HistoricalimportstatusMap["dateImportStarted"].(string); ok {
+		DateImportStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateImportStartedString)
+		o.DateImportStarted = &DateImportStarted
+	}
+	
+	if Status, ok := HistoricalimportstatusMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if VarError, ok := HistoricalimportstatusMap["error"].(string); ok {
+		o.VarError = &VarError
+	}
+	
+	if dateCreatedString, ok := HistoricalimportstatusMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := HistoricalimportstatusMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Active, ok := HistoricalimportstatusMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if VarType, ok := HistoricalimportstatusMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

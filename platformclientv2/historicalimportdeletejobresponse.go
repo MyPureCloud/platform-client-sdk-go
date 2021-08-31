@@ -25,13 +25,11 @@ type Historicalimportdeletejobresponse struct {
 
 }
 
-func (u *Historicalimportdeletejobresponse) MarshalJSON() ([]byte, error) {
+func (o *Historicalimportdeletejobresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historicalimportdeletejobresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Historicalimportdeletejobresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historicalimportdeletejobresponse) UnmarshalJSON(b []byte) error {
+	var HistoricalimportdeletejobresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoricalimportdeletejobresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := HistoricalimportdeletejobresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := HistoricalimportdeletejobresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Status, ok := HistoricalimportdeletejobresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if SelfUri, ok := HistoricalimportdeletejobresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

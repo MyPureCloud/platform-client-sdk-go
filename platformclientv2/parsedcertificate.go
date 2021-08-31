@@ -13,20 +13,34 @@ type Parsedcertificate struct {
 
 }
 
-func (u *Parsedcertificate) MarshalJSON() ([]byte, error) {
+func (o *Parsedcertificate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Parsedcertificate
-
 	
-
 	return json.Marshal(&struct { 
 		CertificateDetails *[]Certificatedetails `json:"certificateDetails,omitempty"`
 		*Alias
 	}{ 
-		CertificateDetails: u.CertificateDetails,
-		Alias:    (*Alias)(u),
+		CertificateDetails: o.CertificateDetails,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Parsedcertificate) UnmarshalJSON(b []byte) error {
+	var ParsedcertificateMap map[string]interface{}
+	err := json.Unmarshal(b, &ParsedcertificateMap)
+	if err != nil {
+		return err
+	}
+	
+	if CertificateDetails, ok := ParsedcertificateMap["certificateDetails"].([]interface{}); ok {
+		CertificateDetailsString, _ := json.Marshal(CertificateDetails)
+		json.Unmarshal(CertificateDetailsString, &o.CertificateDetails)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -66,21 +66,19 @@ type Analyticsevaluation struct {
 
 }
 
-func (u *Analyticsevaluation) MarshalJSON() ([]byte, error) {
+func (o *Analyticsevaluation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsevaluation
-
 	
 	EventTime := new(string)
-	if u.EventTime != nil {
+	if o.EventTime != nil {
 		
-		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		CalibrationId *string `json:"calibrationId,omitempty"`
 		
@@ -111,35 +109,105 @@ func (u *Analyticsevaluation) MarshalJSON() ([]byte, error) {
 		OTotalScore *int `json:"oTotalScore,omitempty"`
 		*Alias
 	}{ 
-		CalibrationId: u.CalibrationId,
+		CalibrationId: o.CalibrationId,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		Deleted: u.Deleted,
+		Deleted: o.Deleted,
 		
-		EvaluationId: u.EvaluationId,
+		EvaluationId: o.EvaluationId,
 		
-		EvaluatorId: u.EvaluatorId,
+		EvaluatorId: o.EvaluatorId,
 		
 		EventTime: EventTime,
 		
-		FormId: u.FormId,
+		FormId: o.FormId,
 		
-		FormName: u.FormName,
+		FormName: o.FormName,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		Released: u.Released,
+		Released: o.Released,
 		
-		Rescored: u.Rescored,
+		Rescored: o.Rescored,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		OTotalCriticalScore: u.OTotalCriticalScore,
+		OTotalCriticalScore: o.OTotalCriticalScore,
 		
-		OTotalScore: u.OTotalScore,
-		Alias:    (*Alias)(u),
+		OTotalScore: o.OTotalScore,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsevaluation) UnmarshalJSON(b []byte) error {
+	var AnalyticsevaluationMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsevaluationMap)
+	if err != nil {
+		return err
+	}
+	
+	if CalibrationId, ok := AnalyticsevaluationMap["calibrationId"].(string); ok {
+		o.CalibrationId = &CalibrationId
+	}
+	
+	if ContextId, ok := AnalyticsevaluationMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if Deleted, ok := AnalyticsevaluationMap["deleted"].(bool); ok {
+		o.Deleted = &Deleted
+	}
+	
+	if EvaluationId, ok := AnalyticsevaluationMap["evaluationId"].(string); ok {
+		o.EvaluationId = &EvaluationId
+	}
+	
+	if EvaluatorId, ok := AnalyticsevaluationMap["evaluatorId"].(string); ok {
+		o.EvaluatorId = &EvaluatorId
+	}
+	
+	if eventTimeString, ok := AnalyticsevaluationMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
+	}
+	
+	if FormId, ok := AnalyticsevaluationMap["formId"].(string); ok {
+		o.FormId = &FormId
+	}
+	
+	if FormName, ok := AnalyticsevaluationMap["formName"].(string); ok {
+		o.FormName = &FormName
+	}
+	
+	if QueueId, ok := AnalyticsevaluationMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if Released, ok := AnalyticsevaluationMap["released"].(bool); ok {
+		o.Released = &Released
+	}
+	
+	if Rescored, ok := AnalyticsevaluationMap["rescored"].(bool); ok {
+		o.Rescored = &Rescored
+	}
+	
+	if UserId, ok := AnalyticsevaluationMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if OTotalCriticalScore, ok := AnalyticsevaluationMap["oTotalCriticalScore"].(float64); ok {
+		OTotalCriticalScoreInt := int(OTotalCriticalScore)
+		o.OTotalCriticalScore = &OTotalCriticalScoreInt
+	}
+	
+	if OTotalScore, ok := AnalyticsevaluationMap["oTotalScore"].(float64); ok {
+		OTotalScoreInt := int(OTotalScore)
+		o.OTotalScore = &OTotalScoreInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

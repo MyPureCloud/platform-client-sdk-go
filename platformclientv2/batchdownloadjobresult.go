@@ -41,13 +41,11 @@ type Batchdownloadjobresult struct {
 
 }
 
-func (u *Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
+func (o *Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Batchdownloadjobresult
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,66 @@ func (u *Batchdownloadjobresult) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		RecordingId: u.RecordingId,
+		RecordingId: o.RecordingId,
 		
-		ResultUrl: u.ResultUrl,
+		ResultUrl: o.ResultUrl,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		ErrorMsg: u.ErrorMsg,
+		ErrorMsg: o.ErrorMsg,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Batchdownloadjobresult) UnmarshalJSON(b []byte) error {
+	var BatchdownloadjobresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BatchdownloadjobresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BatchdownloadjobresultMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := BatchdownloadjobresultMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ConversationId, ok := BatchdownloadjobresultMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if RecordingId, ok := BatchdownloadjobresultMap["recordingId"].(string); ok {
+		o.RecordingId = &RecordingId
+	}
+	
+	if ResultUrl, ok := BatchdownloadjobresultMap["resultUrl"].(string); ok {
+		o.ResultUrl = &ResultUrl
+	}
+	
+	if ContentType, ok := BatchdownloadjobresultMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if ErrorMsg, ok := BatchdownloadjobresultMap["errorMsg"].(string); ok {
+		o.ErrorMsg = &ErrorMsg
+	}
+	
+	if SelfUri, ok := BatchdownloadjobresultMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

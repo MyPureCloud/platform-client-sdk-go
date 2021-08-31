@@ -21,13 +21,11 @@ type Attributefilteritem struct {
 
 }
 
-func (u *Attributefilteritem) MarshalJSON() ([]byte, error) {
+func (o *Attributefilteritem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Attributefilteritem
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Attributefilteritem) MarshalJSON() ([]byte, error) {
 		Values *[]string `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Attributefilteritem) UnmarshalJSON(b []byte) error {
+	var AttributefilteritemMap map[string]interface{}
+	err := json.Unmarshal(b, &AttributefilteritemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AttributefilteritemMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Operator, ok := AttributefilteritemMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Values, ok := AttributefilteritemMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

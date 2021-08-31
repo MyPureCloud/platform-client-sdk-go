@@ -21,13 +21,11 @@ type Patchpredictorrequest struct {
 
 }
 
-func (u *Patchpredictorrequest) MarshalJSON() ([]byte, error) {
+func (o *Patchpredictorrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchpredictorrequest
-
 	
-
 	return json.Marshal(&struct { 
 		RoutingTimeoutSeconds *int `json:"routingTimeoutSeconds,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Patchpredictorrequest) MarshalJSON() ([]byte, error) {
 		WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
 		*Alias
 	}{ 
-		RoutingTimeoutSeconds: u.RoutingTimeoutSeconds,
+		RoutingTimeoutSeconds: o.RoutingTimeoutSeconds,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		WorkloadBalancingConfig: u.WorkloadBalancingConfig,
-		Alias:    (*Alias)(u),
+		WorkloadBalancingConfig: o.WorkloadBalancingConfig,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchpredictorrequest) UnmarshalJSON(b []byte) error {
+	var PatchpredictorrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchpredictorrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if RoutingTimeoutSeconds, ok := PatchpredictorrequestMap["routingTimeoutSeconds"].(float64); ok {
+		RoutingTimeoutSecondsInt := int(RoutingTimeoutSeconds)
+		o.RoutingTimeoutSeconds = &RoutingTimeoutSecondsInt
+	}
+	
+	if Schedule, ok := PatchpredictorrequestMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if WorkloadBalancingConfig, ok := PatchpredictorrequestMap["workloadBalancingConfig"].(map[string]interface{}); ok {
+		WorkloadBalancingConfigString, _ := json.Marshal(WorkloadBalancingConfig)
+		json.Unmarshal(WorkloadBalancingConfigString, &o.WorkloadBalancingConfig)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

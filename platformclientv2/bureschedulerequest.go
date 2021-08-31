@@ -46,29 +46,27 @@ type Bureschedulerequest struct {
 
 }
 
-func (u *Bureschedulerequest) MarshalJSON() ([]byte, error) {
+func (o *Bureschedulerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bureschedulerequest
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -93,21 +91,73 @@ func (u *Bureschedulerequest) MarshalJSON() ([]byte, error) {
 		
 		EndDate: EndDate,
 		
-		AgentIds: u.AgentIds,
+		AgentIds: o.AgentIds,
 		
-		ActivityCodeIds: u.ActivityCodeIds,
+		ActivityCodeIds: o.ActivityCodeIds,
 		
-		ManagementUnitIds: u.ManagementUnitIds,
+		ManagementUnitIds: o.ManagementUnitIds,
 		
-		DoNotChangeWeeklyPaidTime: u.DoNotChangeWeeklyPaidTime,
+		DoNotChangeWeeklyPaidTime: o.DoNotChangeWeeklyPaidTime,
 		
-		DoNotChangeDailyPaidTime: u.DoNotChangeDailyPaidTime,
+		DoNotChangeDailyPaidTime: o.DoNotChangeDailyPaidTime,
 		
-		DoNotChangeShiftStartTimes: u.DoNotChangeShiftStartTimes,
+		DoNotChangeShiftStartTimes: o.DoNotChangeShiftStartTimes,
 		
-		DoNotChangeManuallyEditedShifts: u.DoNotChangeManuallyEditedShifts,
-		Alias:    (*Alias)(u),
+		DoNotChangeManuallyEditedShifts: o.DoNotChangeManuallyEditedShifts,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bureschedulerequest) UnmarshalJSON(b []byte) error {
+	var BureschedulerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BureschedulerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := BureschedulerequestMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := BureschedulerequestMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if AgentIds, ok := BureschedulerequestMap["agentIds"].([]interface{}); ok {
+		AgentIdsString, _ := json.Marshal(AgentIds)
+		json.Unmarshal(AgentIdsString, &o.AgentIds)
+	}
+	
+	if ActivityCodeIds, ok := BureschedulerequestMap["activityCodeIds"].([]interface{}); ok {
+		ActivityCodeIdsString, _ := json.Marshal(ActivityCodeIds)
+		json.Unmarshal(ActivityCodeIdsString, &o.ActivityCodeIds)
+	}
+	
+	if ManagementUnitIds, ok := BureschedulerequestMap["managementUnitIds"].([]interface{}); ok {
+		ManagementUnitIdsString, _ := json.Marshal(ManagementUnitIds)
+		json.Unmarshal(ManagementUnitIdsString, &o.ManagementUnitIds)
+	}
+	
+	if DoNotChangeWeeklyPaidTime, ok := BureschedulerequestMap["doNotChangeWeeklyPaidTime"].(bool); ok {
+		o.DoNotChangeWeeklyPaidTime = &DoNotChangeWeeklyPaidTime
+	}
+	
+	if DoNotChangeDailyPaidTime, ok := BureschedulerequestMap["doNotChangeDailyPaidTime"].(bool); ok {
+		o.DoNotChangeDailyPaidTime = &DoNotChangeDailyPaidTime
+	}
+	
+	if DoNotChangeShiftStartTimes, ok := BureschedulerequestMap["doNotChangeShiftStartTimes"].(bool); ok {
+		o.DoNotChangeShiftStartTimes = &DoNotChangeShiftStartTimes
+	}
+	
+	if DoNotChangeManuallyEditedShifts, ok := BureschedulerequestMap["doNotChangeManuallyEditedShifts"].(bool); ok {
+		o.DoNotChangeManuallyEditedShifts = &DoNotChangeManuallyEditedShifts
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

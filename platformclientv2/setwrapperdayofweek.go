@@ -13,20 +13,34 @@ type Setwrapperdayofweek struct {
 
 }
 
-func (u *Setwrapperdayofweek) MarshalJSON() ([]byte, error) {
+func (o *Setwrapperdayofweek) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Setwrapperdayofweek
-
 	
-
 	return json.Marshal(&struct { 
 		Values *[]string `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Setwrapperdayofweek) UnmarshalJSON(b []byte) error {
+	var SetwrapperdayofweekMap map[string]interface{}
+	err := json.Unmarshal(b, &SetwrapperdayofweekMap)
+	if err != nil {
+		return err
+	}
+	
+	if Values, ok := SetwrapperdayofweekMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

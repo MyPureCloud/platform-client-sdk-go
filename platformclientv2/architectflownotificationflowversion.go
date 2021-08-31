@@ -13,20 +13,33 @@ type Architectflownotificationflowversion struct {
 
 }
 
-func (u *Architectflownotificationflowversion) MarshalJSON() ([]byte, error) {
+func (o *Architectflownotificationflowversion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflownotificationflowversion
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflownotificationflowversion) UnmarshalJSON(b []byte) error {
+	var ArchitectflownotificationflowversionMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflownotificationflowversionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectflownotificationflowversionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

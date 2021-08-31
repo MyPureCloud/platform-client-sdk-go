@@ -38,29 +38,27 @@ type Facetstatistics struct {
 
 }
 
-func (u *Facetstatistics) MarshalJSON() ([]byte, error) {
+func (o *Facetstatistics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facetstatistics
-
 	
 	DateMin := new(string)
-	if u.DateMin != nil {
+	if o.DateMin != nil {
 		
-		*DateMin = timeutil.Strftime(u.DateMin, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateMin = timeutil.Strftime(o.DateMin, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateMin = nil
 	}
 	
 	DateMax := new(string)
-	if u.DateMax != nil {
+	if o.DateMax != nil {
 		
-		*DateMax = timeutil.Strftime(u.DateMax, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateMax = timeutil.Strftime(o.DateMax, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateMax = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		
@@ -77,21 +75,63 @@ func (u *Facetstatistics) MarshalJSON() ([]byte, error) {
 		DateMax *string `json:"dateMax,omitempty"`
 		*Alias
 	}{ 
-		Count: u.Count,
+		Count: o.Count,
 		
-		Min: u.Min,
+		Min: o.Min,
 		
-		Max: u.Max,
+		Max: o.Max,
 		
-		Mean: u.Mean,
+		Mean: o.Mean,
 		
-		StdDeviation: u.StdDeviation,
+		StdDeviation: o.StdDeviation,
 		
 		DateMin: DateMin,
 		
 		DateMax: DateMax,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facetstatistics) UnmarshalJSON(b []byte) error {
+	var FacetstatisticsMap map[string]interface{}
+	err := json.Unmarshal(b, &FacetstatisticsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Count, ok := FacetstatisticsMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if Min, ok := FacetstatisticsMap["min"].(float64); ok {
+		o.Min = &Min
+	}
+	
+	if Max, ok := FacetstatisticsMap["max"].(float64); ok {
+		o.Max = &Max
+	}
+	
+	if Mean, ok := FacetstatisticsMap["mean"].(float64); ok {
+		o.Mean = &Mean
+	}
+	
+	if StdDeviation, ok := FacetstatisticsMap["stdDeviation"].(float64); ok {
+		o.StdDeviation = &StdDeviation
+	}
+	
+	if dateMinString, ok := FacetstatisticsMap["dateMin"].(string); ok {
+		DateMin, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateMinString)
+		o.DateMin = &DateMin
+	}
+	
+	if dateMaxString, ok := FacetstatisticsMap["dateMax"].(string); ok {
+		DateMax, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateMaxString)
+		o.DateMax = &DateMax
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

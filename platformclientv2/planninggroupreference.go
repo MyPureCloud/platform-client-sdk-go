@@ -17,24 +17,41 @@ type Planninggroupreference struct {
 
 }
 
-func (u *Planninggroupreference) MarshalJSON() ([]byte, error) {
+func (o *Planninggroupreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Planninggroupreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Planninggroupreference) UnmarshalJSON(b []byte) error {
+	var PlanninggroupreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &PlanninggroupreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PlanninggroupreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := PlanninggroupreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

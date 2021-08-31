@@ -21,13 +21,11 @@ type Edgelogsjobrequest struct {
 
 }
 
-func (u *Edgelogsjobrequest) MarshalJSON() ([]byte, error) {
+func (o *Edgelogsjobrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgelogsjobrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Path *string `json:"path,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Edgelogsjobrequest) MarshalJSON() ([]byte, error) {
 		Recurse *bool `json:"recurse,omitempty"`
 		*Alias
 	}{ 
-		Path: u.Path,
+		Path: o.Path,
 		
-		Query: u.Query,
+		Query: o.Query,
 		
-		Recurse: u.Recurse,
-		Alias:    (*Alias)(u),
+		Recurse: o.Recurse,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgelogsjobrequest) UnmarshalJSON(b []byte) error {
+	var EdgelogsjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgelogsjobrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Path, ok := EdgelogsjobrequestMap["path"].(string); ok {
+		o.Path = &Path
+	}
+	
+	if Query, ok := EdgelogsjobrequestMap["query"].(string); ok {
+		o.Query = &Query
+	}
+	
+	if Recurse, ok := EdgelogsjobrequestMap["recurse"].(bool); ok {
+		o.Recurse = &Recurse
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

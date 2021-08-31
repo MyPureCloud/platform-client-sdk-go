@@ -62,29 +62,27 @@ type Userrecording struct {
 
 }
 
-func (u *Userrecording) MarshalJSON() ([]byte, error) {
+func (o *Userrecording) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userrecording
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,104 @@ func (u *Userrecording) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ContentUri: u.ContentUri,
+		ContentUri: o.ContentUri,
 		
-		Workspace: u.Workspace,
+		Workspace: o.Workspace,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		DurationMilliseconds: u.DurationMilliseconds,
+		DurationMilliseconds: o.DurationMilliseconds,
 		
-		Thumbnails: u.Thumbnails,
+		Thumbnails: o.Thumbnails,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userrecording) UnmarshalJSON(b []byte) error {
+	var UserrecordingMap map[string]interface{}
+	err := json.Unmarshal(b, &UserrecordingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserrecordingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserrecordingMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := UserrecordingMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := UserrecordingMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ContentUri, ok := UserrecordingMap["contentUri"].(string); ok {
+		o.ContentUri = &ContentUri
+	}
+	
+	if Workspace, ok := UserrecordingMap["workspace"].(map[string]interface{}); ok {
+		WorkspaceString, _ := json.Marshal(Workspace)
+		json.Unmarshal(WorkspaceString, &o.Workspace)
+	}
+	
+	if CreatedBy, ok := UserrecordingMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if Conversation, ok := UserrecordingMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if ContentLength, ok := UserrecordingMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if DurationMilliseconds, ok := UserrecordingMap["durationMilliseconds"].(float64); ok {
+		DurationMillisecondsInt := int(DurationMilliseconds)
+		o.DurationMilliseconds = &DurationMillisecondsInt
+	}
+	
+	if Thumbnails, ok := UserrecordingMap["thumbnails"].([]interface{}); ok {
+		ThumbnailsString, _ := json.Marshal(Thumbnails)
+		json.Unmarshal(ThumbnailsString, &o.Thumbnails)
+	}
+	
+	if Read, ok := UserrecordingMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if SelfUri, ok := UserrecordingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Wfmbushorttermforecastupdatecompletetopicbushorttermforecastnotification st
 
 }
 
-func (u *Wfmbushorttermforecastupdatecompletetopicbushorttermforecastnotification) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastupdatecompletetopicbushorttermforecastnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastupdatecompletetopicbushorttermforecastnotification
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Wfmbushorttermforecastupdatecompletetopicbushorttermforecastnotificatio
 		OperationId *string `json:"operationId,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		Result: u.Result,
+		Result: o.Result,
 		
-		OperationId: u.OperationId,
-		Alias:    (*Alias)(u),
+		OperationId: o.OperationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastupdatecompletetopicbushorttermforecastnotification) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastupdatecompletetopicbushorttermforecastnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastupdatecompletetopicbushorttermforecastnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := WfmbushorttermforecastupdatecompletetopicbushorttermforecastnotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Result, ok := WfmbushorttermforecastupdatecompletetopicbushorttermforecastnotificationMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+	if OperationId, ok := WfmbushorttermforecastupdatecompletetopicbushorttermforecastnotificationMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

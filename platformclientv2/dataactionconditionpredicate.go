@@ -9,16 +9,25 @@ import (
 // Dataactionconditionpredicate
 type Dataactionconditionpredicate struct { }
 
-func (u *Dataactionconditionpredicate) MarshalJSON() ([]byte, error) {
+func (o *Dataactionconditionpredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dataactionconditionpredicate
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Dataactionconditionpredicate) UnmarshalJSON(b []byte) error {
+	var DataactionconditionpredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &DataactionconditionpredicateMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Useravailabletimes struct {
 
 }
 
-func (u *Useravailabletimes) MarshalJSON() ([]byte, error) {
+func (o *Useravailabletimes) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Useravailabletimes
-
 	
-
 	return json.Marshal(&struct { 
 		User *Userreference `json:"user,omitempty"`
 		
 		AvailableTimes *[]Availabletime `json:"availableTimes,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		AvailableTimes: u.AvailableTimes,
-		Alias:    (*Alias)(u),
+		AvailableTimes: o.AvailableTimes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Useravailabletimes) UnmarshalJSON(b []byte) error {
+	var UseravailabletimesMap map[string]interface{}
+	err := json.Unmarshal(b, &UseravailabletimesMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := UseravailabletimesMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if AvailableTimes, ok := UseravailabletimesMap["availableTimes"].([]interface{}); ok {
+		AvailableTimesString, _ := json.Marshal(AvailableTimes)
+		json.Unmarshal(AvailableTimesString, &o.AvailableTimes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

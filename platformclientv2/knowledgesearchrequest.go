@@ -33,13 +33,11 @@ type Knowledgesearchrequest struct {
 
 }
 
-func (u *Knowledgesearchrequest) MarshalJSON() ([]byte, error) {
+func (o *Knowledgesearchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgesearchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Query *string `json:"query,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Knowledgesearchrequest) MarshalJSON() ([]byte, error) {
 		SearchOnDraftDocuments *bool `json:"searchOnDraftDocuments,omitempty"`
 		*Alias
 	}{ 
-		Query: u.Query,
+		Query: o.Query,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		DocumentType: u.DocumentType,
+		DocumentType: o.DocumentType,
 		
-		LanguageCode: u.LanguageCode,
+		LanguageCode: o.LanguageCode,
 		
-		SearchOnDraftDocuments: u.SearchOnDraftDocuments,
-		Alias:    (*Alias)(u),
+		SearchOnDraftDocuments: o.SearchOnDraftDocuments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgesearchrequest) UnmarshalJSON(b []byte) error {
+	var KnowledgesearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgesearchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Query, ok := KnowledgesearchrequestMap["query"].(string); ok {
+		o.Query = &Query
+	}
+	
+	if PageSize, ok := KnowledgesearchrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := KnowledgesearchrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if DocumentType, ok := KnowledgesearchrequestMap["documentType"].(string); ok {
+		o.DocumentType = &DocumentType
+	}
+	
+	if LanguageCode, ok := KnowledgesearchrequestMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
+	}
+	
+	if SearchOnDraftDocuments, ok := KnowledgesearchrequestMap["searchOnDraftDocuments"].(bool); ok {
+		o.SearchOnDraftDocuments = &SearchOnDraftDocuments
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

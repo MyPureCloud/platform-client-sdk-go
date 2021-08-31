@@ -45,13 +45,11 @@ type Flowdivisionview struct {
 
 }
 
-func (u *Flowdivisionview) MarshalJSON() ([]byte, error) {
+func (o *Flowdivisionview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowdivisionview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,77 @@ func (u *Flowdivisionview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		InputSchema: u.InputSchema,
+		InputSchema: o.InputSchema,
 		
-		OutputSchema: u.OutputSchema,
+		OutputSchema: o.OutputSchema,
 		
-		PublishedVersion: u.PublishedVersion,
+		PublishedVersion: o.PublishedVersion,
 		
-		DebugVersion: u.DebugVersion,
+		DebugVersion: o.DebugVersion,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowdivisionview) UnmarshalJSON(b []byte) error {
+	var FlowdivisionviewMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowdivisionviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FlowdivisionviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FlowdivisionviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := FlowdivisionviewMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if VarType, ok := FlowdivisionviewMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if InputSchema, ok := FlowdivisionviewMap["inputSchema"].(map[string]interface{}); ok {
+		InputSchemaString, _ := json.Marshal(InputSchema)
+		json.Unmarshal(InputSchemaString, &o.InputSchema)
+	}
+	
+	if OutputSchema, ok := FlowdivisionviewMap["outputSchema"].(map[string]interface{}); ok {
+		OutputSchemaString, _ := json.Marshal(OutputSchema)
+		json.Unmarshal(OutputSchemaString, &o.OutputSchema)
+	}
+	
+	if PublishedVersion, ok := FlowdivisionviewMap["publishedVersion"].(map[string]interface{}); ok {
+		PublishedVersionString, _ := json.Marshal(PublishedVersion)
+		json.Unmarshal(PublishedVersionString, &o.PublishedVersion)
+	}
+	
+	if DebugVersion, ok := FlowdivisionviewMap["debugVersion"].(map[string]interface{}); ok {
+		DebugVersionString, _ := json.Marshal(DebugVersion)
+		json.Unmarshal(DebugVersionString, &o.DebugVersion)
+	}
+	
+	if SelfUri, ok := FlowdivisionviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -30,27 +30,25 @@ type Userbestpointsitem struct {
 
 }
 
-func (u *Userbestpointsitem) MarshalJSON() ([]byte, error) {
+func (o *Userbestpointsitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userbestpointsitem
-
 	
 	DateStartWorkday := new(string)
-	if u.DateStartWorkday != nil {
-		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	if o.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(o.DateStartWorkday, "%Y-%m-%d")
 	} else {
 		DateStartWorkday = nil
 	}
 	
 	DateEndWorkday := new(string)
-	if u.DateEndWorkday != nil {
-		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	if o.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(o.DateEndWorkday, "%Y-%m-%d")
 	} else {
 		DateEndWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		GranularityType *string `json:"granularityType,omitempty"`
 		
@@ -63,17 +61,52 @@ func (u *Userbestpointsitem) MarshalJSON() ([]byte, error) {
 		Rank *int `json:"rank,omitempty"`
 		*Alias
 	}{ 
-		GranularityType: u.GranularityType,
+		GranularityType: o.GranularityType,
 		
-		Points: u.Points,
+		Points: o.Points,
 		
 		DateStartWorkday: DateStartWorkday,
 		
 		DateEndWorkday: DateEndWorkday,
 		
-		Rank: u.Rank,
-		Alias:    (*Alias)(u),
+		Rank: o.Rank,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userbestpointsitem) UnmarshalJSON(b []byte) error {
+	var UserbestpointsitemMap map[string]interface{}
+	err := json.Unmarshal(b, &UserbestpointsitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if GranularityType, ok := UserbestpointsitemMap["granularityType"].(string); ok {
+		o.GranularityType = &GranularityType
+	}
+	
+	if Points, ok := UserbestpointsitemMap["points"].(float64); ok {
+		PointsInt := int(Points)
+		o.Points = &PointsInt
+	}
+	
+	if dateStartWorkdayString, ok := UserbestpointsitemMap["dateStartWorkday"].(string); ok {
+		DateStartWorkday, _ := time.Parse("2006-01-02", dateStartWorkdayString)
+		o.DateStartWorkday = &DateStartWorkday
+	}
+	
+	if dateEndWorkdayString, ok := UserbestpointsitemMap["dateEndWorkday"].(string); ok {
+		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
+		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+	if Rank, ok := UserbestpointsitemMap["rank"].(float64); ok {
+		RankInt := int(Rank)
+		o.Rank = &RankInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

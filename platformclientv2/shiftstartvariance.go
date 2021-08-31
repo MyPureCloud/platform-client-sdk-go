@@ -17,24 +17,43 @@ type Shiftstartvariance struct {
 
 }
 
-func (u *Shiftstartvariance) MarshalJSON() ([]byte, error) {
+func (o *Shiftstartvariance) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shiftstartvariance
-
 	
-
 	return json.Marshal(&struct { 
 		ApplicableDays *[]string `json:"applicableDays,omitempty"`
 		
 		MaxShiftStartVarianceMinutes *int `json:"maxShiftStartVarianceMinutes,omitempty"`
 		*Alias
 	}{ 
-		ApplicableDays: u.ApplicableDays,
+		ApplicableDays: o.ApplicableDays,
 		
-		MaxShiftStartVarianceMinutes: u.MaxShiftStartVarianceMinutes,
-		Alias:    (*Alias)(u),
+		MaxShiftStartVarianceMinutes: o.MaxShiftStartVarianceMinutes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shiftstartvariance) UnmarshalJSON(b []byte) error {
+	var ShiftstartvarianceMap map[string]interface{}
+	err := json.Unmarshal(b, &ShiftstartvarianceMap)
+	if err != nil {
+		return err
+	}
+	
+	if ApplicableDays, ok := ShiftstartvarianceMap["applicableDays"].([]interface{}); ok {
+		ApplicableDaysString, _ := json.Marshal(ApplicableDays)
+		json.Unmarshal(ApplicableDaysString, &o.ApplicableDays)
+	}
+	
+	if MaxShiftStartVarianceMinutes, ok := ShiftstartvarianceMap["maxShiftStartVarianceMinutes"].(float64); ok {
+		MaxShiftStartVarianceMinutesInt := int(MaxShiftStartVarianceMinutes)
+		o.MaxShiftStartVarianceMinutes = &MaxShiftStartVarianceMinutesInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

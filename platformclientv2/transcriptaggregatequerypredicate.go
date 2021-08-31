@@ -29,13 +29,11 @@ type Transcriptaggregatequerypredicate struct {
 
 }
 
-func (u *Transcriptaggregatequerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Transcriptaggregatequerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptaggregatequerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Transcriptaggregatequerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptaggregatequerypredicate) UnmarshalJSON(b []byte) error {
+	var TranscriptaggregatequerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptaggregatequerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := TranscriptaggregatequerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := TranscriptaggregatequerypredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Operator, ok := TranscriptaggregatequerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := TranscriptaggregatequerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := TranscriptaggregatequerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

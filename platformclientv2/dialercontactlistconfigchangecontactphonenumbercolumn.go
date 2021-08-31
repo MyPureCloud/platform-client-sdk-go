@@ -25,13 +25,11 @@ type Dialercontactlistconfigchangecontactphonenumbercolumn struct {
 
 }
 
-func (u *Dialercontactlistconfigchangecontactphonenumbercolumn) MarshalJSON() ([]byte, error) {
+func (o *Dialercontactlistconfigchangecontactphonenumbercolumn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontactlistconfigchangecontactphonenumbercolumn
-
 	
-
 	return json.Marshal(&struct { 
 		ColumnName *string `json:"columnName,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Dialercontactlistconfigchangecontactphonenumbercolumn) MarshalJSON() ([
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		ColumnName: u.ColumnName,
+		ColumnName: o.ColumnName,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		CallableTimeColumn: u.CallableTimeColumn,
+		CallableTimeColumn: o.CallableTimeColumn,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercontactlistconfigchangecontactphonenumbercolumn) UnmarshalJSON(b []byte) error {
+	var DialercontactlistconfigchangecontactphonenumbercolumnMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercontactlistconfigchangecontactphonenumbercolumnMap)
+	if err != nil {
+		return err
+	}
+	
+	if ColumnName, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["columnName"].(string); ok {
+		o.ColumnName = &ColumnName
+	}
+	
+	if VarType, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if CallableTimeColumn, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["callableTimeColumn"].(string); ok {
+		o.CallableTimeColumn = &CallableTimeColumn
+	}
+	
+	if AdditionalProperties, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

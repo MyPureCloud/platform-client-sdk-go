@@ -17,24 +17,41 @@ type Phonecolumn struct {
 
 }
 
-func (u *Phonecolumn) MarshalJSON() ([]byte, error) {
+func (o *Phonecolumn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonecolumn
-
 	
-
 	return json.Marshal(&struct { 
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		ColumnName: u.ColumnName,
+		ColumnName: o.ColumnName,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonecolumn) UnmarshalJSON(b []byte) error {
+	var PhonecolumnMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonecolumnMap)
+	if err != nil {
+		return err
+	}
+	
+	if ColumnName, ok := PhonecolumnMap["columnName"].(string); ok {
+		o.ColumnName = &ColumnName
+	}
+	
+	if VarType, ok := PhonecolumnMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

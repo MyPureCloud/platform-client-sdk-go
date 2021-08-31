@@ -17,24 +17,42 @@ type Nuancemixdlgsettings struct {
 
 }
 
-func (u *Nuancemixdlgsettings) MarshalJSON() ([]byte, error) {
+func (o *Nuancemixdlgsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nuancemixdlgsettings
-
 	
-
 	return json.Marshal(&struct { 
 		ChannelId *string `json:"channelId,omitempty"`
 		
 		InputParameters *map[string]interface{} `json:"inputParameters,omitempty"`
 		*Alias
 	}{ 
-		ChannelId: u.ChannelId,
+		ChannelId: o.ChannelId,
 		
-		InputParameters: u.InputParameters,
-		Alias:    (*Alias)(u),
+		InputParameters: o.InputParameters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nuancemixdlgsettings) UnmarshalJSON(b []byte) error {
+	var NuancemixdlgsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &NuancemixdlgsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ChannelId, ok := NuancemixdlgsettingsMap["channelId"].(string); ok {
+		o.ChannelId = &ChannelId
+	}
+	
+	if InputParameters, ok := NuancemixdlgsettingsMap["inputParameters"].(map[string]interface{}); ok {
+		InputParametersString, _ := json.Marshal(InputParameters)
+		json.Unmarshal(InputParametersString, &o.InputParameters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

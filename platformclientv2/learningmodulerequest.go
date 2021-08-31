@@ -33,13 +33,11 @@ type Learningmodulerequest struct {
 
 }
 
-func (u *Learningmodulerequest) MarshalJSON() ([]byte, error) {
+func (o *Learningmodulerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmodulerequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		CompletionTimeInDays: u.CompletionTimeInDays,
+		CompletionTimeInDays: o.CompletionTimeInDays,
 		
-		InformSteps: u.InformSteps,
+		InformSteps: o.InformSteps,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		AssessmentForm: u.AssessmentForm,
-		Alias:    (*Alias)(u),
+		AssessmentForm: o.AssessmentForm,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmodulerequest) UnmarshalJSON(b []byte) error {
+	var LearningmodulerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmodulerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := LearningmodulerequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := LearningmodulerequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if CompletionTimeInDays, ok := LearningmodulerequestMap["completionTimeInDays"].(float64); ok {
+		CompletionTimeInDaysInt := int(CompletionTimeInDays)
+		o.CompletionTimeInDays = &CompletionTimeInDaysInt
+	}
+	
+	if InformSteps, ok := LearningmodulerequestMap["informSteps"].([]interface{}); ok {
+		InformStepsString, _ := json.Marshal(InformSteps)
+		json.Unmarshal(InformStepsString, &o.InformSteps)
+	}
+	
+	if VarType, ok := LearningmodulerequestMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if AssessmentForm, ok := LearningmodulerequestMap["assessmentForm"].(map[string]interface{}); ok {
+		AssessmentFormString, _ := json.Marshal(AssessmentForm)
+		json.Unmarshal(AssessmentFormString, &o.AssessmentForm)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -26,20 +26,18 @@ type Bushorttermforecastreference struct {
 
 }
 
-func (u *Bushorttermforecastreference) MarshalJSON() ([]byte, error) {
+func (o *Bushorttermforecastreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bushorttermforecastreference
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -50,15 +48,43 @@ func (u *Bushorttermforecastreference) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bushorttermforecastreference) UnmarshalJSON(b []byte) error {
+	var BushorttermforecastreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &BushorttermforecastreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BushorttermforecastreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BushorttermforecastreferenceMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if Description, ok := BushorttermforecastreferenceMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := BushorttermforecastreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

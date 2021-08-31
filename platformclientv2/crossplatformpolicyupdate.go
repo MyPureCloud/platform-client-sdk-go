@@ -13,20 +13,33 @@ type Crossplatformpolicyupdate struct {
 
 }
 
-func (u *Crossplatformpolicyupdate) MarshalJSON() ([]byte, error) {
+func (o *Crossplatformpolicyupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Crossplatformpolicyupdate
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
-		Alias:    (*Alias)(u),
+		Enabled: o.Enabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Crossplatformpolicyupdate) UnmarshalJSON(b []byte) error {
+	var CrossplatformpolicyupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &CrossplatformpolicyupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := CrossplatformpolicyupdateMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Contentactions struct {
 
 }
 
-func (u *Contentactions) MarshalJSON() ([]byte, error) {
+func (o *Contentactions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentactions
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Contentactions) MarshalJSON() ([]byte, error) {
 		Textback *string `json:"textback,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
+		Url: o.Url,
 		
-		UrlTarget: u.UrlTarget,
+		UrlTarget: o.UrlTarget,
 		
-		Textback: u.Textback,
-		Alias:    (*Alias)(u),
+		Textback: o.Textback,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentactions) UnmarshalJSON(b []byte) error {
+	var ContentactionsMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentactionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := ContentactionsMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if UrlTarget, ok := ContentactionsMap["urlTarget"].(string); ok {
+		o.UrlTarget = &UrlTarget
+	}
+	
+	if Textback, ok := ContentactionsMap["textback"].(string); ok {
+		o.Textback = &Textback
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

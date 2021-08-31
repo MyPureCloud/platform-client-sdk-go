@@ -110,53 +110,51 @@ type Evaluation struct {
 
 }
 
-func (u *Evaluation) MarshalJSON() ([]byte, error) {
+func (o *Evaluation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluation
-
 	
 	ReleaseDate := new(string)
-	if u.ReleaseDate != nil {
+	if o.ReleaseDate != nil {
 		
-		*ReleaseDate = timeutil.Strftime(u.ReleaseDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReleaseDate = timeutil.Strftime(o.ReleaseDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReleaseDate = nil
 	}
 	
 	AssignedDate := new(string)
-	if u.AssignedDate != nil {
+	if o.AssignedDate != nil {
 		
-		*AssignedDate = timeutil.Strftime(u.AssignedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*AssignedDate = timeutil.Strftime(o.AssignedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		AssignedDate = nil
 	}
 	
 	ChangedDate := new(string)
-	if u.ChangedDate != nil {
+	if o.ChangedDate != nil {
 		
-		*ChangedDate = timeutil.Strftime(u.ChangedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ChangedDate = timeutil.Strftime(o.ChangedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ChangedDate = nil
 	}
 	
 	ConversationDate := new(string)
-	if u.ConversationDate != nil {
+	if o.ConversationDate != nil {
 		
-		*ConversationDate = timeutil.Strftime(u.ConversationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConversationDate = timeutil.Strftime(o.ConversationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConversationDate = nil
 	}
 	
 	ConversationEndDate := new(string)
-	if u.ConversationEndDate != nil {
+	if o.ConversationEndDate != nil {
 		
-		*ConversationEndDate = timeutil.Strftime(u.ConversationEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConversationEndDate = timeutil.Strftime(o.ConversationEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConversationEndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -209,25 +207,25 @@ func (u *Evaluation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		EvaluationForm: u.EvaluationForm,
+		EvaluationForm: o.EvaluationForm,
 		
-		Evaluator: u.Evaluator,
+		Evaluator: o.Evaluator,
 		
-		Agent: u.Agent,
+		Agent: o.Agent,
 		
-		Calibration: u.Calibration,
+		Calibration: o.Calibration,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Answers: u.Answers,
+		Answers: o.Answers,
 		
-		AgentHasRead: u.AgentHasRead,
+		AgentHasRead: o.AgentHasRead,
 		
 		ReleaseDate: ReleaseDate,
 		
@@ -235,31 +233,156 @@ func (u *Evaluation) MarshalJSON() ([]byte, error) {
 		
 		ChangedDate: ChangedDate,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		Rescore: u.Rescore,
+		Rescore: o.Rescore,
 		
 		ConversationDate: ConversationDate,
 		
 		ConversationEndDate: ConversationEndDate,
 		
-		NeverRelease: u.NeverRelease,
+		NeverRelease: o.NeverRelease,
 		
-		ResourceId: u.ResourceId,
+		ResourceId: o.ResourceId,
 		
-		ResourceType: u.ResourceType,
+		ResourceType: o.ResourceType,
 		
-		Redacted: u.Redacted,
+		Redacted: o.Redacted,
 		
-		IsScoringIndex: u.IsScoringIndex,
+		IsScoringIndex: o.IsScoringIndex,
 		
-		AuthorizedActions: u.AuthorizedActions,
+		AuthorizedActions: o.AuthorizedActions,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluation) UnmarshalJSON(b []byte) error {
+	var EvaluationMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EvaluationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EvaluationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Conversation, ok := EvaluationMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if EvaluationForm, ok := EvaluationMap["evaluationForm"].(map[string]interface{}); ok {
+		EvaluationFormString, _ := json.Marshal(EvaluationForm)
+		json.Unmarshal(EvaluationFormString, &o.EvaluationForm)
+	}
+	
+	if Evaluator, ok := EvaluationMap["evaluator"].(map[string]interface{}); ok {
+		EvaluatorString, _ := json.Marshal(Evaluator)
+		json.Unmarshal(EvaluatorString, &o.Evaluator)
+	}
+	
+	if Agent, ok := EvaluationMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Calibration, ok := EvaluationMap["calibration"].(map[string]interface{}); ok {
+		CalibrationString, _ := json.Marshal(Calibration)
+		json.Unmarshal(CalibrationString, &o.Calibration)
+	}
+	
+	if Status, ok := EvaluationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Answers, ok := EvaluationMap["answers"].(map[string]interface{}); ok {
+		AnswersString, _ := json.Marshal(Answers)
+		json.Unmarshal(AnswersString, &o.Answers)
+	}
+	
+	if AgentHasRead, ok := EvaluationMap["agentHasRead"].(bool); ok {
+		o.AgentHasRead = &AgentHasRead
+	}
+	
+	if releaseDateString, ok := EvaluationMap["releaseDate"].(string); ok {
+		ReleaseDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", releaseDateString)
+		o.ReleaseDate = &ReleaseDate
+	}
+	
+	if assignedDateString, ok := EvaluationMap["assignedDate"].(string); ok {
+		AssignedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", assignedDateString)
+		o.AssignedDate = &AssignedDate
+	}
+	
+	if changedDateString, ok := EvaluationMap["changedDate"].(string); ok {
+		ChangedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", changedDateString)
+		o.ChangedDate = &ChangedDate
+	}
+	
+	if Queue, ok := EvaluationMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if MediaType, ok := EvaluationMap["mediaType"].([]interface{}); ok {
+		MediaTypeString, _ := json.Marshal(MediaType)
+		json.Unmarshal(MediaTypeString, &o.MediaType)
+	}
+	
+	if Rescore, ok := EvaluationMap["rescore"].(bool); ok {
+		o.Rescore = &Rescore
+	}
+	
+	if conversationDateString, ok := EvaluationMap["conversationDate"].(string); ok {
+		ConversationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationDateString)
+		o.ConversationDate = &ConversationDate
+	}
+	
+	if conversationEndDateString, ok := EvaluationMap["conversationEndDate"].(string); ok {
+		ConversationEndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationEndDateString)
+		o.ConversationEndDate = &ConversationEndDate
+	}
+	
+	if NeverRelease, ok := EvaluationMap["neverRelease"].(bool); ok {
+		o.NeverRelease = &NeverRelease
+	}
+	
+	if ResourceId, ok := EvaluationMap["resourceId"].(string); ok {
+		o.ResourceId = &ResourceId
+	}
+	
+	if ResourceType, ok := EvaluationMap["resourceType"].(string); ok {
+		o.ResourceType = &ResourceType
+	}
+	
+	if Redacted, ok := EvaluationMap["redacted"].(bool); ok {
+		o.Redacted = &Redacted
+	}
+	
+	if IsScoringIndex, ok := EvaluationMap["isScoringIndex"].(bool); ok {
+		o.IsScoringIndex = &IsScoringIndex
+	}
+	
+	if AuthorizedActions, ok := EvaluationMap["authorizedActions"].([]interface{}); ok {
+		AuthorizedActionsString, _ := json.Marshal(AuthorizedActions)
+		json.Unmarshal(AuthorizedActionsString, &o.AuthorizedActions)
+	}
+	
+	if SelfUri, ok := EvaluationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

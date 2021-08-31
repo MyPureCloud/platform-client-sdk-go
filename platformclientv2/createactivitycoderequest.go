@@ -33,13 +33,11 @@ type Createactivitycoderequest struct {
 
 }
 
-func (u *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
+func (o *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createactivitycoderequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Createactivitycoderequest) MarshalJSON() ([]byte, error) {
 		AgentTimeOffSelectable *bool `json:"agentTimeOffSelectable,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
+		CountsAsPaidTime: o.CountsAsPaidTime,
 		
-		CountsAsWorkTime: u.CountsAsWorkTime,
+		CountsAsWorkTime: o.CountsAsWorkTime,
 		
-		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
-		Alias:    (*Alias)(u),
+		AgentTimeOffSelectable: o.AgentTimeOffSelectable,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createactivitycoderequest) UnmarshalJSON(b []byte) error {
+	var CreateactivitycoderequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateactivitycoderequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := CreateactivitycoderequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Category, ok := CreateactivitycoderequestMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if LengthInMinutes, ok := CreateactivitycoderequestMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if CountsAsPaidTime, ok := CreateactivitycoderequestMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+	if CountsAsWorkTime, ok := CreateactivitycoderequestMap["countsAsWorkTime"].(bool); ok {
+		o.CountsAsWorkTime = &CountsAsWorkTime
+	}
+	
+	if AgentTimeOffSelectable, ok := CreateactivitycoderequestMap["agentTimeOffSelectable"].(bool); ok {
+		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

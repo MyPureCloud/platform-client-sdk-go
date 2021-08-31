@@ -21,13 +21,11 @@ type Buagentschedulesearchresponse struct {
 
 }
 
-func (u *Buagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulesearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		User *Userreference `json:"user,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Buagentschedulesearchresponse) MarshalJSON() ([]byte, error) {
 		FullDayTimeOffMarkers *[]Bufulldaytimeoffmarker `json:"fullDayTimeOffMarkers,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Shifts: u.Shifts,
+		Shifts: o.Shifts,
 		
-		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
-		Alias:    (*Alias)(u),
+		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulesearchresponse) UnmarshalJSON(b []byte) error {
+	var BuagentschedulesearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulesearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := BuagentschedulesearchresponseMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Shifts, ok := BuagentschedulesearchresponseMap["shifts"].([]interface{}); ok {
+		ShiftsString, _ := json.Marshal(Shifts)
+		json.Unmarshal(ShiftsString, &o.Shifts)
+	}
+	
+	if FullDayTimeOffMarkers, ok := BuagentschedulesearchresponseMap["fullDayTimeOffMarkers"].([]interface{}); ok {
+		FullDayTimeOffMarkersString, _ := json.Marshal(FullDayTimeOffMarkers)
+		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

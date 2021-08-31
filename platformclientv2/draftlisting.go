@@ -25,13 +25,11 @@ type Draftlisting struct {
 
 }
 
-func (u *Draftlisting) MarshalJSON() ([]byte, error) {
+func (o *Draftlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Draftlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Draft `json:"entities,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Draftlisting) MarshalJSON() ([]byte, error) {
 		PreviousUri *string `json:"previousUri,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		PreviousUri: u.PreviousUri,
-		Alias:    (*Alias)(u),
+		PreviousUri: o.PreviousUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Draftlisting) UnmarshalJSON(b []byte) error {
+	var DraftlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &DraftlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := DraftlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NextUri, ok := DraftlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if SelfUri, ok := DraftlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if PreviousUri, ok := DraftlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

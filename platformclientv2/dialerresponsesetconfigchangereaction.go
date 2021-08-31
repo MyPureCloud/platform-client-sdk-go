@@ -25,13 +25,11 @@ type Dialerresponsesetconfigchangereaction struct {
 
 }
 
-func (u *Dialerresponsesetconfigchangereaction) MarshalJSON() ([]byte, error) {
+func (o *Dialerresponsesetconfigchangereaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerresponsesetconfigchangereaction
-
 	
-
 	return json.Marshal(&struct { 
 		Data *string `json:"data,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Dialerresponsesetconfigchangereaction) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Data: u.Data,
+		Data: o.Data,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ReactionType: u.ReactionType,
+		ReactionType: o.ReactionType,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerresponsesetconfigchangereaction) UnmarshalJSON(b []byte) error {
+	var DialerresponsesetconfigchangereactionMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerresponsesetconfigchangereactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Data, ok := DialerresponsesetconfigchangereactionMap["data"].(string); ok {
+		o.Data = &Data
+	}
+	
+	if Name, ok := DialerresponsesetconfigchangereactionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ReactionType, ok := DialerresponsesetconfigchangereactionMap["reactionType"].(string); ok {
+		o.ReactionType = &ReactionType
+	}
+	
+	if AdditionalProperties, ok := DialerresponsesetconfigchangereactionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

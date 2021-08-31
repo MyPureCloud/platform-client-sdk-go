@@ -13,20 +13,34 @@ type Chatsettings struct {
 
 }
 
-func (u *Chatsettings) MarshalJSON() ([]byte, error) {
+func (o *Chatsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Chatsettings
-
 	
-
 	return json.Marshal(&struct { 
 		MessageRetentionPeriodDays *int `json:"messageRetentionPeriodDays,omitempty"`
 		*Alias
 	}{ 
-		MessageRetentionPeriodDays: u.MessageRetentionPeriodDays,
-		Alias:    (*Alias)(u),
+		MessageRetentionPeriodDays: o.MessageRetentionPeriodDays,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Chatsettings) UnmarshalJSON(b []byte) error {
+	var ChatsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &ChatsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if MessageRetentionPeriodDays, ok := ChatsettingsMap["messageRetentionPeriodDays"].(float64); ok {
+		MessageRetentionPeriodDaysInt := int(MessageRetentionPeriodDays)
+		o.MessageRetentionPeriodDays = &MessageRetentionPeriodDaysInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

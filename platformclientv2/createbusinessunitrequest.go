@@ -21,13 +21,11 @@ type Createbusinessunitrequest struct {
 
 }
 
-func (u *Createbusinessunitrequest) MarshalJSON() ([]byte, error) {
+func (o *Createbusinessunitrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createbusinessunitrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Createbusinessunitrequest) MarshalJSON() ([]byte, error) {
 		Settings *Createbusinessunitsettings `json:"settings,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		DivisionId: u.DivisionId,
+		DivisionId: o.DivisionId,
 		
-		Settings: u.Settings,
-		Alias:    (*Alias)(u),
+		Settings: o.Settings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createbusinessunitrequest) UnmarshalJSON(b []byte) error {
+	var CreatebusinessunitrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatebusinessunitrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := CreatebusinessunitrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if DivisionId, ok := CreatebusinessunitrequestMap["divisionId"].(string); ok {
+		o.DivisionId = &DivisionId
+	}
+	
+	if Settings, ok := CreatebusinessunitrequestMap["settings"].(map[string]interface{}); ok {
+		SettingsString, _ := json.Marshal(Settings)
+		json.Unmarshal(SettingsString, &o.Settings)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

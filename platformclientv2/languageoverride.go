@@ -21,13 +21,11 @@ type Languageoverride struct {
 
 }
 
-func (u *Languageoverride) MarshalJSON() ([]byte, error) {
+func (o *Languageoverride) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Languageoverride
-
 	
-
 	return json.Marshal(&struct { 
 		Language *string `json:"language,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Languageoverride) MarshalJSON() ([]byte, error) {
 		Voice *string `json:"voice,omitempty"`
 		*Alias
 	}{ 
-		Language: u.Language,
+		Language: o.Language,
 		
-		Engine: u.Engine,
+		Engine: o.Engine,
 		
-		Voice: u.Voice,
-		Alias:    (*Alias)(u),
+		Voice: o.Voice,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Languageoverride) UnmarshalJSON(b []byte) error {
+	var LanguageoverrideMap map[string]interface{}
+	err := json.Unmarshal(b, &LanguageoverrideMap)
+	if err != nil {
+		return err
+	}
+	
+	if Language, ok := LanguageoverrideMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Engine, ok := LanguageoverrideMap["engine"].(string); ok {
+		o.Engine = &Engine
+	}
+	
+	if Voice, ok := LanguageoverrideMap["voice"].(string); ok {
+		o.Voice = &Voice
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

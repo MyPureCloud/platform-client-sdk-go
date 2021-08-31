@@ -25,13 +25,11 @@ type Lexintent struct {
 
 }
 
-func (u *Lexintent) MarshalJSON() ([]byte, error) {
+func (o *Lexintent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lexintent
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Lexintent) MarshalJSON() ([]byte, error) {
 		Version *string `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Slots: u.Slots,
+		Slots: o.Slots,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lexintent) UnmarshalJSON(b []byte) error {
+	var LexintentMap map[string]interface{}
+	err := json.Unmarshal(b, &LexintentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := LexintentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := LexintentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Slots, ok := LexintentMap["slots"].(map[string]interface{}); ok {
+		SlotsString, _ := json.Marshal(Slots)
+		json.Unmarshal(SlotsString, &o.Slots)
+	}
+	
+	if Version, ok := LexintentMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

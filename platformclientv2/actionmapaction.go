@@ -25,13 +25,11 @@ type Actionmapaction struct {
 
 }
 
-func (u *Actionmapaction) MarshalJSON() ([]byte, error) {
+func (o *Actionmapaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actionmapaction
-
 	
-
 	return json.Marshal(&struct { 
 		ActionTemplate *Actionmapactiontemplate `json:"actionTemplate,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Actionmapaction) MarshalJSON() ([]byte, error) {
 		WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
 		*Alias
 	}{ 
-		ActionTemplate: u.ActionTemplate,
+		ActionTemplate: o.ActionTemplate,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ArchitectFlowFields: u.ArchitectFlowFields,
+		ArchitectFlowFields: o.ArchitectFlowFields,
 		
-		WebMessagingOfferFields: u.WebMessagingOfferFields,
-		Alias:    (*Alias)(u),
+		WebMessagingOfferFields: o.WebMessagingOfferFields,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actionmapaction) UnmarshalJSON(b []byte) error {
+	var ActionmapactionMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionmapactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActionTemplate, ok := ActionmapactionMap["actionTemplate"].(map[string]interface{}); ok {
+		ActionTemplateString, _ := json.Marshal(ActionTemplate)
+		json.Unmarshal(ActionTemplateString, &o.ActionTemplate)
+	}
+	
+	if MediaType, ok := ActionmapactionMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ArchitectFlowFields, ok := ActionmapactionMap["architectFlowFields"].(map[string]interface{}); ok {
+		ArchitectFlowFieldsString, _ := json.Marshal(ArchitectFlowFields)
+		json.Unmarshal(ArchitectFlowFieldsString, &o.ArchitectFlowFields)
+	}
+	
+	if WebMessagingOfferFields, ok := ActionmapactionMap["webMessagingOfferFields"].(map[string]interface{}); ok {
+		WebMessagingOfferFieldsString, _ := json.Marshal(WebMessagingOfferFields)
+		json.Unmarshal(WebMessagingOfferFieldsString, &o.WebMessagingOfferFields)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

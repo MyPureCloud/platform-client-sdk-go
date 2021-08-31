@@ -29,13 +29,11 @@ type Edgemetricsnetwork struct {
 
 }
 
-func (u *Edgemetricsnetwork) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricsnetwork) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricsnetwork
-
 	
-
 	return json.Marshal(&struct { 
 		Ifname *string `json:"ifname,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Edgemetricsnetwork) MarshalJSON() ([]byte, error) {
 		UtilizationPct *float64 `json:"utilizationPct,omitempty"`
 		*Alias
 	}{ 
-		Ifname: u.Ifname,
+		Ifname: o.Ifname,
 		
-		SentBytesPerSec: u.SentBytesPerSec,
+		SentBytesPerSec: o.SentBytesPerSec,
 		
-		ReceivedBytesPerSec: u.ReceivedBytesPerSec,
+		ReceivedBytesPerSec: o.ReceivedBytesPerSec,
 		
-		BandwidthBitsPerSec: u.BandwidthBitsPerSec,
+		BandwidthBitsPerSec: o.BandwidthBitsPerSec,
 		
-		UtilizationPct: u.UtilizationPct,
-		Alias:    (*Alias)(u),
+		UtilizationPct: o.UtilizationPct,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricsnetwork) UnmarshalJSON(b []byte) error {
+	var EdgemetricsnetworkMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricsnetworkMap)
+	if err != nil {
+		return err
+	}
+	
+	if Ifname, ok := EdgemetricsnetworkMap["ifname"].(string); ok {
+		o.Ifname = &Ifname
+	}
+	
+	if SentBytesPerSec, ok := EdgemetricsnetworkMap["sentBytesPerSec"].(float64); ok {
+		SentBytesPerSecInt := int(SentBytesPerSec)
+		o.SentBytesPerSec = &SentBytesPerSecInt
+	}
+	
+	if ReceivedBytesPerSec, ok := EdgemetricsnetworkMap["receivedBytesPerSec"].(float64); ok {
+		ReceivedBytesPerSecInt := int(ReceivedBytesPerSec)
+		o.ReceivedBytesPerSec = &ReceivedBytesPerSecInt
+	}
+	
+	if BandwidthBitsPerSec, ok := EdgemetricsnetworkMap["bandwidthBitsPerSec"].(float64); ok {
+		o.BandwidthBitsPerSec = &BandwidthBitsPerSec
+	}
+	
+	if UtilizationPct, ok := EdgemetricsnetworkMap["utilizationPct"].(float64); ok {
+		o.UtilizationPct = &UtilizationPct
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

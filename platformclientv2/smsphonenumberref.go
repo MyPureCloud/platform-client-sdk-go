@@ -17,24 +17,41 @@ type Smsphonenumberref struct {
 
 }
 
-func (u *Smsphonenumberref) MarshalJSON() ([]byte, error) {
+func (o *Smsphonenumberref) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsphonenumberref
-
 	
-
 	return json.Marshal(&struct { 
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsphonenumberref) UnmarshalJSON(b []byte) error {
+	var SmsphonenumberrefMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsphonenumberrefMap)
+	if err != nil {
+		return err
+	}
+	
+	if PhoneNumber, ok := SmsphonenumberrefMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if SelfUri, ok := SmsphonenumberrefMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

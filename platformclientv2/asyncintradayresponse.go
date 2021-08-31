@@ -21,13 +21,11 @@ type Asyncintradayresponse struct {
 
 }
 
-func (u *Asyncintradayresponse) MarshalJSON() ([]byte, error) {
+func (o *Asyncintradayresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Asyncintradayresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Asyncintradayresponse) MarshalJSON() ([]byte, error) {
 		Result *Buintradayresponse `json:"result,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		OperationId: u.OperationId,
+		OperationId: o.OperationId,
 		
-		Result: u.Result,
-		Alias:    (*Alias)(u),
+		Result: o.Result,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Asyncintradayresponse) UnmarshalJSON(b []byte) error {
+	var AsyncintradayresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AsyncintradayresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := AsyncintradayresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if OperationId, ok := AsyncintradayresponseMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+	if Result, ok := AsyncintradayresponseMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

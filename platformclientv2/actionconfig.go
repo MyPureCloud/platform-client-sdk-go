@@ -17,24 +17,43 @@ type Actionconfig struct {
 
 }
 
-func (u *Actionconfig) MarshalJSON() ([]byte, error) {
+func (o *Actionconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actionconfig
-
 	
-
 	return json.Marshal(&struct { 
 		Request *Requestconfig `json:"request,omitempty"`
 		
 		Response *Responseconfig `json:"response,omitempty"`
 		*Alias
 	}{ 
-		Request: u.Request,
+		Request: o.Request,
 		
-		Response: u.Response,
-		Alias:    (*Alias)(u),
+		Response: o.Response,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actionconfig) UnmarshalJSON(b []byte) error {
+	var ActionconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if Request, ok := ActionconfigMap["request"].(map[string]interface{}); ok {
+		RequestString, _ := json.Marshal(Request)
+		json.Unmarshal(RequestString, &o.Request)
+	}
+	
+	if Response, ok := ActionconfigMap["response"].(map[string]interface{}); ok {
+		ResponseString, _ := json.Marshal(Response)
+		json.Unmarshal(ResponseString, &o.Response)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

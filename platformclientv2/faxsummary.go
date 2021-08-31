@@ -21,13 +21,11 @@ type Faxsummary struct {
 
 }
 
-func (u *Faxsummary) MarshalJSON() ([]byte, error) {
+func (o *Faxsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Faxsummary
-
 	
-
 	return json.Marshal(&struct { 
 		ReadCount *int `json:"readCount,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Faxsummary) MarshalJSON() ([]byte, error) {
 		TotalCount *int `json:"totalCount,omitempty"`
 		*Alias
 	}{ 
-		ReadCount: u.ReadCount,
+		ReadCount: o.ReadCount,
 		
-		UnreadCount: u.UnreadCount,
+		UnreadCount: o.UnreadCount,
 		
-		TotalCount: u.TotalCount,
-		Alias:    (*Alias)(u),
+		TotalCount: o.TotalCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Faxsummary) UnmarshalJSON(b []byte) error {
+	var FaxsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &FaxsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if ReadCount, ok := FaxsummaryMap["readCount"].(float64); ok {
+		ReadCountInt := int(ReadCount)
+		o.ReadCount = &ReadCountInt
+	}
+	
+	if UnreadCount, ok := FaxsummaryMap["unreadCount"].(float64); ok {
+		UnreadCountInt := int(UnreadCount)
+		o.UnreadCount = &UnreadCountInt
+	}
+	
+	if TotalCount, ok := FaxsummaryMap["totalCount"].(float64); ok {
+		TotalCountInt := int(TotalCount)
+		o.TotalCount = &TotalCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Mediapolicies struct {
 
 }
 
-func (u *Mediapolicies) MarshalJSON() ([]byte, error) {
+func (o *Mediapolicies) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediapolicies
-
 	
-
 	return json.Marshal(&struct { 
 		CallPolicy *Callmediapolicy `json:"callPolicy,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Mediapolicies) MarshalJSON() ([]byte, error) {
 		MessagePolicy *Messagemediapolicy `json:"messagePolicy,omitempty"`
 		*Alias
 	}{ 
-		CallPolicy: u.CallPolicy,
+		CallPolicy: o.CallPolicy,
 		
-		ChatPolicy: u.ChatPolicy,
+		ChatPolicy: o.ChatPolicy,
 		
-		EmailPolicy: u.EmailPolicy,
+		EmailPolicy: o.EmailPolicy,
 		
-		MessagePolicy: u.MessagePolicy,
-		Alias:    (*Alias)(u),
+		MessagePolicy: o.MessagePolicy,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediapolicies) UnmarshalJSON(b []byte) error {
+	var MediapoliciesMap map[string]interface{}
+	err := json.Unmarshal(b, &MediapoliciesMap)
+	if err != nil {
+		return err
+	}
+	
+	if CallPolicy, ok := MediapoliciesMap["callPolicy"].(map[string]interface{}); ok {
+		CallPolicyString, _ := json.Marshal(CallPolicy)
+		json.Unmarshal(CallPolicyString, &o.CallPolicy)
+	}
+	
+	if ChatPolicy, ok := MediapoliciesMap["chatPolicy"].(map[string]interface{}); ok {
+		ChatPolicyString, _ := json.Marshal(ChatPolicy)
+		json.Unmarshal(ChatPolicyString, &o.ChatPolicy)
+	}
+	
+	if EmailPolicy, ok := MediapoliciesMap["emailPolicy"].(map[string]interface{}); ok {
+		EmailPolicyString, _ := json.Marshal(EmailPolicy)
+		json.Unmarshal(EmailPolicyString, &o.EmailPolicy)
+	}
+	
+	if MessagePolicy, ok := MediapoliciesMap["messagePolicy"].(map[string]interface{}); ok {
+		MessagePolicyString, _ := json.Marshal(MessagePolicy)
+		json.Unmarshal(MessagePolicyString, &o.MessagePolicy)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

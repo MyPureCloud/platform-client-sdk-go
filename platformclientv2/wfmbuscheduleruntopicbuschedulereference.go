@@ -13,20 +13,33 @@ type Wfmbuscheduleruntopicbuschedulereference struct {
 
 }
 
-func (u *Wfmbuscheduleruntopicbuschedulereference) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuscheduleruntopicbuschedulereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuscheduleruntopicbuschedulereference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuscheduleruntopicbuschedulereference) UnmarshalJSON(b []byte) error {
+	var WfmbuscheduleruntopicbuschedulereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuscheduleruntopicbuschedulereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbuscheduleruntopicbuschedulereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

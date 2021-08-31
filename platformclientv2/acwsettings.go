@@ -17,24 +17,42 @@ type Acwsettings struct {
 
 }
 
-func (u *Acwsettings) MarshalJSON() ([]byte, error) {
+func (o *Acwsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Acwsettings
-
 	
-
 	return json.Marshal(&struct { 
 		WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
 		
 		TimeoutMs *int `json:"timeoutMs,omitempty"`
 		*Alias
 	}{ 
-		WrapupPrompt: u.WrapupPrompt,
+		WrapupPrompt: o.WrapupPrompt,
 		
-		TimeoutMs: u.TimeoutMs,
-		Alias:    (*Alias)(u),
+		TimeoutMs: o.TimeoutMs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Acwsettings) UnmarshalJSON(b []byte) error {
+	var AcwsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &AcwsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if WrapupPrompt, ok := AcwsettingsMap["wrapupPrompt"].(string); ok {
+		o.WrapupPrompt = &WrapupPrompt
+	}
+	
+	if TimeoutMs, ok := AcwsettingsMap["timeoutMs"].(float64); ok {
+		TimeoutMsInt := int(TimeoutMs)
+		o.TimeoutMs = &TimeoutMsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

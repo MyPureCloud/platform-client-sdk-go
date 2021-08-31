@@ -38,29 +38,27 @@ type Billingusagereport struct {
 
 }
 
-func (u *Billingusagereport) MarshalJSON() ([]byte, error) {
+func (o *Billingusagereport) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Billingusagereport
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -77,21 +75,63 @@ func (u *Billingusagereport) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Usages: u.Usages,
+		Usages: o.Usages,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Billingusagereport) UnmarshalJSON(b []byte) error {
+	var BillingusagereportMap map[string]interface{}
+	err := json.Unmarshal(b, &BillingusagereportMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BillingusagereportMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := BillingusagereportMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if startDateString, ok := BillingusagereportMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := BillingusagereportMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if Status, ok := BillingusagereportMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Usages, ok := BillingusagereportMap["usages"].([]interface{}); ok {
+		UsagesString, _ := json.Marshal(Usages)
+		json.Unmarshal(UsagesString, &o.Usages)
+	}
+	
+	if SelfUri, ok := BillingusagereportMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

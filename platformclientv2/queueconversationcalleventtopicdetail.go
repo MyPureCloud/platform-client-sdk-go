@@ -25,13 +25,11 @@ type Queueconversationcalleventtopicdetail struct {
 
 }
 
-func (u *Queueconversationcalleventtopicdetail) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationcalleventtopicdetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationcalleventtopicdetail
-
 	
-
 	return json.Marshal(&struct { 
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Queueconversationcalleventtopicdetail) MarshalJSON() ([]byte, error) {
 		EntityName *string `json:"entityName,omitempty"`
 		*Alias
 	}{ 
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		FieldName: u.FieldName,
+		FieldName: o.FieldName,
 		
-		EntityId: u.EntityId,
+		EntityId: o.EntityId,
 		
-		EntityName: u.EntityName,
-		Alias:    (*Alias)(u),
+		EntityName: o.EntityName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationcalleventtopicdetail) UnmarshalJSON(b []byte) error {
+	var QueueconversationcalleventtopicdetailMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationcalleventtopicdetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if ErrorCode, ok := QueueconversationcalleventtopicdetailMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if FieldName, ok := QueueconversationcalleventtopicdetailMap["fieldName"].(string); ok {
+		o.FieldName = &FieldName
+	}
+	
+	if EntityId, ok := QueueconversationcalleventtopicdetailMap["entityId"].(string); ok {
+		o.EntityId = &EntityId
+	}
+	
+	if EntityName, ok := QueueconversationcalleventtopicdetailMap["entityName"].(string); ok {
+		o.EntityName = &EntityName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

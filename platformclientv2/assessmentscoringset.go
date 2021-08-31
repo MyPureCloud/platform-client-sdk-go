@@ -41,13 +41,11 @@ type Assessmentscoringset struct {
 
 }
 
-func (u *Assessmentscoringset) MarshalJSON() ([]byte, error) {
+func (o *Assessmentscoringset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assessmentscoringset
-
 	
-
 	return json.Marshal(&struct { 
 		TotalScore *float32 `json:"totalScore,omitempty"`
 		
@@ -66,23 +64,71 @@ func (u *Assessmentscoringset) MarshalJSON() ([]byte, error) {
 		IsPassed *bool `json:"isPassed,omitempty"`
 		*Alias
 	}{ 
-		TotalScore: u.TotalScore,
+		TotalScore: o.TotalScore,
 		
-		TotalCriticalScore: u.TotalCriticalScore,
+		TotalCriticalScore: o.TotalCriticalScore,
 		
-		TotalNonCriticalScore: u.TotalNonCriticalScore,
+		TotalNonCriticalScore: o.TotalNonCriticalScore,
 		
-		QuestionGroupScores: u.QuestionGroupScores,
+		QuestionGroupScores: o.QuestionGroupScores,
 		
-		FailureReasons: u.FailureReasons,
+		FailureReasons: o.FailureReasons,
 		
-		Comments: u.Comments,
+		Comments: o.Comments,
 		
-		AgentComments: u.AgentComments,
+		AgentComments: o.AgentComments,
 		
-		IsPassed: u.IsPassed,
-		Alias:    (*Alias)(u),
+		IsPassed: o.IsPassed,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assessmentscoringset) UnmarshalJSON(b []byte) error {
+	var AssessmentscoringsetMap map[string]interface{}
+	err := json.Unmarshal(b, &AssessmentscoringsetMap)
+	if err != nil {
+		return err
+	}
+	
+	if TotalScore, ok := AssessmentscoringsetMap["totalScore"].(float64); ok {
+		TotalScoreFloat32 := float32(TotalScore)
+		o.TotalScore = &TotalScoreFloat32
+	}
+	
+	if TotalCriticalScore, ok := AssessmentscoringsetMap["totalCriticalScore"].(float64); ok {
+		TotalCriticalScoreFloat32 := float32(TotalCriticalScore)
+		o.TotalCriticalScore = &TotalCriticalScoreFloat32
+	}
+	
+	if TotalNonCriticalScore, ok := AssessmentscoringsetMap["totalNonCriticalScore"].(float64); ok {
+		TotalNonCriticalScoreFloat32 := float32(TotalNonCriticalScore)
+		o.TotalNonCriticalScore = &TotalNonCriticalScoreFloat32
+	}
+	
+	if QuestionGroupScores, ok := AssessmentscoringsetMap["questionGroupScores"].([]interface{}); ok {
+		QuestionGroupScoresString, _ := json.Marshal(QuestionGroupScores)
+		json.Unmarshal(QuestionGroupScoresString, &o.QuestionGroupScores)
+	}
+	
+	if FailureReasons, ok := AssessmentscoringsetMap["failureReasons"].([]interface{}); ok {
+		FailureReasonsString, _ := json.Marshal(FailureReasons)
+		json.Unmarshal(FailureReasonsString, &o.FailureReasons)
+	}
+	
+	if Comments, ok := AssessmentscoringsetMap["comments"].(string); ok {
+		o.Comments = &Comments
+	}
+	
+	if AgentComments, ok := AssessmentscoringsetMap["agentComments"].(string); ok {
+		o.AgentComments = &AgentComments
+	}
+	
+	if IsPassed, ok := AssessmentscoringsetMap["isPassed"].(bool); ok {
+		o.IsPassed = &IsPassed
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -205,13 +205,11 @@ type Userme struct {
 
 }
 
-func (u *Userme) MarshalJSON() ([]byte, error) {
+func (o *Userme) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userme
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -312,105 +310,351 @@ func (u *Userme) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Chat: u.Chat,
+		Chat: o.Chat,
 		
-		Department: u.Department,
+		Department: o.Department,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		PrimaryContactInfo: u.PrimaryContactInfo,
+		PrimaryContactInfo: o.PrimaryContactInfo,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		State: u.State,
+		State: o.State,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Username: u.Username,
+		Username: o.Username,
 		
-		Manager: u.Manager,
+		Manager: o.Manager,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Certifications: u.Certifications,
+		Certifications: o.Certifications,
 		
-		Biography: u.Biography,
+		Biography: o.Biography,
 		
-		EmployerInfo: u.EmployerInfo,
+		EmployerInfo: o.EmployerInfo,
 		
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		Presence: u.Presence,
+		Presence: o.Presence,
 		
-		ConversationSummary: u.ConversationSummary,
+		ConversationSummary: o.ConversationSummary,
 		
-		OutOfOffice: u.OutOfOffice,
+		OutOfOffice: o.OutOfOffice,
 		
-		Geolocation: u.Geolocation,
+		Geolocation: o.Geolocation,
 		
-		Station: u.Station,
+		Station: o.Station,
 		
-		Authorization: u.Authorization,
+		Authorization: o.Authorization,
 		
-		ProfileSkills: u.ProfileSkills,
+		ProfileSkills: o.ProfileSkills,
 		
-		Locations: u.Locations,
+		Locations: o.Locations,
 		
-		Groups: u.Groups,
+		Groups: o.Groups,
 		
-		Team: u.Team,
+		Team: o.Team,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		AcdAutoAnswer: u.AcdAutoAnswer,
+		AcdAutoAnswer: o.AcdAutoAnswer,
 		
-		LanguagePreference: u.LanguagePreference,
+		LanguagePreference: o.LanguagePreference,
 		
-		LastTokenIssued: u.LastTokenIssued,
+		LastTokenIssued: o.LastTokenIssued,
 		
-		Date: u.Date,
+		Date: o.Date,
 		
-		GeolocationSettings: u.GeolocationSettings,
+		GeolocationSettings: o.GeolocationSettings,
 		
-		Organization: u.Organization,
+		Organization: o.Organization,
 		
-		PresenceDefinitions: u.PresenceDefinitions,
+		PresenceDefinitions: o.PresenceDefinitions,
 		
-		LocationDefinitions: u.LocationDefinitions,
+		LocationDefinitions: o.LocationDefinitions,
 		
-		OrgAuthorization: u.OrgAuthorization,
+		OrgAuthorization: o.OrgAuthorization,
 		
-		Favorites: u.Favorites,
+		Favorites: o.Favorites,
 		
-		Superiors: u.Superiors,
+		Superiors: o.Superiors,
 		
-		DirectReports: u.DirectReports,
+		DirectReports: o.DirectReports,
 		
-		Adjacents: u.Adjacents,
+		Adjacents: o.Adjacents,
 		
-		RoutingSkills: u.RoutingSkills,
+		RoutingSkills: o.RoutingSkills,
 		
-		FieldConfigs: u.FieldConfigs,
+		FieldConfigs: o.FieldConfigs,
 		
-		Token: u.Token,
+		Token: o.Token,
 		
-		Trustors: u.Trustors,
+		Trustors: o.Trustors,
 		
-		OrgProducts: u.OrgProducts,
+		OrgProducts: o.OrgProducts,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userme) UnmarshalJSON(b []byte) error {
+	var UsermeMap map[string]interface{}
+	err := json.Unmarshal(b, &UsermeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UsermeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UsermeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := UsermeMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Chat, ok := UsermeMap["chat"].(map[string]interface{}); ok {
+		ChatString, _ := json.Marshal(Chat)
+		json.Unmarshal(ChatString, &o.Chat)
+	}
+	
+	if Department, ok := UsermeMap["department"].(string); ok {
+		o.Department = &Department
+	}
+	
+	if Email, ok := UsermeMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+	if PrimaryContactInfo, ok := UsermeMap["primaryContactInfo"].([]interface{}); ok {
+		PrimaryContactInfoString, _ := json.Marshal(PrimaryContactInfo)
+		json.Unmarshal(PrimaryContactInfoString, &o.PrimaryContactInfo)
+	}
+	
+	if Addresses, ok := UsermeMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if State, ok := UsermeMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Title, ok := UsermeMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Username, ok := UsermeMap["username"].(string); ok {
+		o.Username = &Username
+	}
+	
+	if Manager, ok := UsermeMap["manager"].(map[string]interface{}); ok {
+		ManagerString, _ := json.Marshal(Manager)
+		json.Unmarshal(ManagerString, &o.Manager)
+	}
+	
+	if Images, ok := UsermeMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
+	}
+	
+	if Version, ok := UsermeMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Certifications, ok := UsermeMap["certifications"].([]interface{}); ok {
+		CertificationsString, _ := json.Marshal(Certifications)
+		json.Unmarshal(CertificationsString, &o.Certifications)
+	}
+	
+	if Biography, ok := UsermeMap["biography"].(map[string]interface{}); ok {
+		BiographyString, _ := json.Marshal(Biography)
+		json.Unmarshal(BiographyString, &o.Biography)
+	}
+	
+	if EmployerInfo, ok := UsermeMap["employerInfo"].(map[string]interface{}); ok {
+		EmployerInfoString, _ := json.Marshal(EmployerInfo)
+		json.Unmarshal(EmployerInfoString, &o.EmployerInfo)
+	}
+	
+	if RoutingStatus, ok := UsermeMap["routingStatus"].(map[string]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+	if Presence, ok := UsermeMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if ConversationSummary, ok := UsermeMap["conversationSummary"].(map[string]interface{}); ok {
+		ConversationSummaryString, _ := json.Marshal(ConversationSummary)
+		json.Unmarshal(ConversationSummaryString, &o.ConversationSummary)
+	}
+	
+	if OutOfOffice, ok := UsermeMap["outOfOffice"].(map[string]interface{}); ok {
+		OutOfOfficeString, _ := json.Marshal(OutOfOffice)
+		json.Unmarshal(OutOfOfficeString, &o.OutOfOffice)
+	}
+	
+	if Geolocation, ok := UsermeMap["geolocation"].(map[string]interface{}); ok {
+		GeolocationString, _ := json.Marshal(Geolocation)
+		json.Unmarshal(GeolocationString, &o.Geolocation)
+	}
+	
+	if Station, ok := UsermeMap["station"].(map[string]interface{}); ok {
+		StationString, _ := json.Marshal(Station)
+		json.Unmarshal(StationString, &o.Station)
+	}
+	
+	if Authorization, ok := UsermeMap["authorization"].(map[string]interface{}); ok {
+		AuthorizationString, _ := json.Marshal(Authorization)
+		json.Unmarshal(AuthorizationString, &o.Authorization)
+	}
+	
+	if ProfileSkills, ok := UsermeMap["profileSkills"].([]interface{}); ok {
+		ProfileSkillsString, _ := json.Marshal(ProfileSkills)
+		json.Unmarshal(ProfileSkillsString, &o.ProfileSkills)
+	}
+	
+	if Locations, ok := UsermeMap["locations"].([]interface{}); ok {
+		LocationsString, _ := json.Marshal(Locations)
+		json.Unmarshal(LocationsString, &o.Locations)
+	}
+	
+	if Groups, ok := UsermeMap["groups"].([]interface{}); ok {
+		GroupsString, _ := json.Marshal(Groups)
+		json.Unmarshal(GroupsString, &o.Groups)
+	}
+	
+	if Team, ok := UsermeMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
+	}
+	
+	if Skills, ok := UsermeMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if Languages, ok := UsermeMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if AcdAutoAnswer, ok := UsermeMap["acdAutoAnswer"].(bool); ok {
+		o.AcdAutoAnswer = &AcdAutoAnswer
+	}
+	
+	if LanguagePreference, ok := UsermeMap["languagePreference"].(string); ok {
+		o.LanguagePreference = &LanguagePreference
+	}
+	
+	if LastTokenIssued, ok := UsermeMap["lastTokenIssued"].(map[string]interface{}); ok {
+		LastTokenIssuedString, _ := json.Marshal(LastTokenIssued)
+		json.Unmarshal(LastTokenIssuedString, &o.LastTokenIssued)
+	}
+	
+	if Date, ok := UsermeMap["date"].(map[string]interface{}); ok {
+		DateString, _ := json.Marshal(Date)
+		json.Unmarshal(DateString, &o.Date)
+	}
+	
+	if GeolocationSettings, ok := UsermeMap["geolocationSettings"].(map[string]interface{}); ok {
+		GeolocationSettingsString, _ := json.Marshal(GeolocationSettings)
+		json.Unmarshal(GeolocationSettingsString, &o.GeolocationSettings)
+	}
+	
+	if Organization, ok := UsermeMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+	if PresenceDefinitions, ok := UsermeMap["presenceDefinitions"].([]interface{}); ok {
+		PresenceDefinitionsString, _ := json.Marshal(PresenceDefinitions)
+		json.Unmarshal(PresenceDefinitionsString, &o.PresenceDefinitions)
+	}
+	
+	if LocationDefinitions, ok := UsermeMap["locationDefinitions"].([]interface{}); ok {
+		LocationDefinitionsString, _ := json.Marshal(LocationDefinitions)
+		json.Unmarshal(LocationDefinitionsString, &o.LocationDefinitions)
+	}
+	
+	if OrgAuthorization, ok := UsermeMap["orgAuthorization"].([]interface{}); ok {
+		OrgAuthorizationString, _ := json.Marshal(OrgAuthorization)
+		json.Unmarshal(OrgAuthorizationString, &o.OrgAuthorization)
+	}
+	
+	if Favorites, ok := UsermeMap["favorites"].([]interface{}); ok {
+		FavoritesString, _ := json.Marshal(Favorites)
+		json.Unmarshal(FavoritesString, &o.Favorites)
+	}
+	
+	if Superiors, ok := UsermeMap["superiors"].([]interface{}); ok {
+		SuperiorsString, _ := json.Marshal(Superiors)
+		json.Unmarshal(SuperiorsString, &o.Superiors)
+	}
+	
+	if DirectReports, ok := UsermeMap["directReports"].([]interface{}); ok {
+		DirectReportsString, _ := json.Marshal(DirectReports)
+		json.Unmarshal(DirectReportsString, &o.DirectReports)
+	}
+	
+	if Adjacents, ok := UsermeMap["adjacents"].(map[string]interface{}); ok {
+		AdjacentsString, _ := json.Marshal(Adjacents)
+		json.Unmarshal(AdjacentsString, &o.Adjacents)
+	}
+	
+	if RoutingSkills, ok := UsermeMap["routingSkills"].([]interface{}); ok {
+		RoutingSkillsString, _ := json.Marshal(RoutingSkills)
+		json.Unmarshal(RoutingSkillsString, &o.RoutingSkills)
+	}
+	
+	if FieldConfigs, ok := UsermeMap["fieldConfigs"].(map[string]interface{}); ok {
+		FieldConfigsString, _ := json.Marshal(FieldConfigs)
+		json.Unmarshal(FieldConfigsString, &o.FieldConfigs)
+	}
+	
+	if Token, ok := UsermeMap["token"].(map[string]interface{}); ok {
+		TokenString, _ := json.Marshal(Token)
+		json.Unmarshal(TokenString, &o.Token)
+	}
+	
+	if Trustors, ok := UsermeMap["trustors"].([]interface{}); ok {
+		TrustorsString, _ := json.Marshal(Trustors)
+		json.Unmarshal(TrustorsString, &o.Trustors)
+	}
+	
+	if OrgProducts, ok := UsermeMap["orgProducts"].([]interface{}); ok {
+		OrgProductsString, _ := json.Marshal(OrgProducts)
+		json.Unmarshal(OrgProductsString, &o.OrgProducts)
+	}
+	
+	if SelfUri, ok := UsermeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

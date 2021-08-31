@@ -25,13 +25,11 @@ type Schedulingtestingoptionsrequest struct {
 
 }
 
-func (u *Schedulingtestingoptionsrequest) MarshalJSON() ([]byte, error) {
+func (o *Schedulingtestingoptionsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulingtestingoptionsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		FastScheduling *bool `json:"fastScheduling,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Schedulingtestingoptionsrequest) MarshalJSON() ([]byte, error) {
 		PopulateWarnings *bool `json:"populateWarnings,omitempty"`
 		*Alias
 	}{ 
-		FastScheduling: u.FastScheduling,
+		FastScheduling: o.FastScheduling,
 		
-		DelayScheduling: u.DelayScheduling,
+		DelayScheduling: o.DelayScheduling,
 		
-		FailScheduling: u.FailScheduling,
+		FailScheduling: o.FailScheduling,
 		
-		PopulateWarnings: u.PopulateWarnings,
-		Alias:    (*Alias)(u),
+		PopulateWarnings: o.PopulateWarnings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulingtestingoptionsrequest) UnmarshalJSON(b []byte) error {
+	var SchedulingtestingoptionsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulingtestingoptionsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if FastScheduling, ok := SchedulingtestingoptionsrequestMap["fastScheduling"].(bool); ok {
+		o.FastScheduling = &FastScheduling
+	}
+	
+	if DelayScheduling, ok := SchedulingtestingoptionsrequestMap["delayScheduling"].(bool); ok {
+		o.DelayScheduling = &DelayScheduling
+	}
+	
+	if FailScheduling, ok := SchedulingtestingoptionsrequestMap["failScheduling"].(bool); ok {
+		o.FailScheduling = &FailScheduling
+	}
+	
+	if PopulateWarnings, ok := SchedulingtestingoptionsrequestMap["populateWarnings"].(bool); ok {
+		o.PopulateWarnings = &PopulateWarnings
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

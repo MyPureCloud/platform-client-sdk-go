@@ -17,24 +17,42 @@ type Whatsappid struct {
 
 }
 
-func (u *Whatsappid) MarshalJSON() ([]byte, error) {
+func (o *Whatsappid) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Whatsappid
-
 	
-
 	return json.Marshal(&struct { 
 		PhoneNumber *Phonenumber `json:"phoneNumber,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
 		*Alias
 	}{ 
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		DisplayName: u.DisplayName,
-		Alias:    (*Alias)(u),
+		DisplayName: o.DisplayName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Whatsappid) UnmarshalJSON(b []byte) error {
+	var WhatsappidMap map[string]interface{}
+	err := json.Unmarshal(b, &WhatsappidMap)
+	if err != nil {
+		return err
+	}
+	
+	if PhoneNumber, ok := WhatsappidMap["phoneNumber"].(map[string]interface{}); ok {
+		PhoneNumberString, _ := json.Marshal(PhoneNumber)
+		json.Unmarshal(PhoneNumberString, &o.PhoneNumber)
+	}
+	
+	if DisplayName, ok := WhatsappidMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

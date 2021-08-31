@@ -13,20 +13,34 @@ type Edgerebootparameters struct {
 
 }
 
-func (u *Edgerebootparameters) MarshalJSON() ([]byte, error) {
+func (o *Edgerebootparameters) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgerebootparameters
-
 	
-
 	return json.Marshal(&struct { 
 		CallDrainingWaitTimeSeconds *int `json:"callDrainingWaitTimeSeconds,omitempty"`
 		*Alias
 	}{ 
-		CallDrainingWaitTimeSeconds: u.CallDrainingWaitTimeSeconds,
-		Alias:    (*Alias)(u),
+		CallDrainingWaitTimeSeconds: o.CallDrainingWaitTimeSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgerebootparameters) UnmarshalJSON(b []byte) error {
+	var EdgerebootparametersMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgerebootparametersMap)
+	if err != nil {
+		return err
+	}
+	
+	if CallDrainingWaitTimeSeconds, ok := EdgerebootparametersMap["callDrainingWaitTimeSeconds"].(float64); ok {
+		CallDrainingWaitTimeSecondsInt := int(CallDrainingWaitTimeSeconds)
+		o.CallDrainingWaitTimeSeconds = &CallDrainingWaitTimeSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

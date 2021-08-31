@@ -12,29 +12,48 @@ type Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress struct {
 	Domain *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"domain,omitempty"`
 
 
-	// RouteId
-	RouteId *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"routeId,omitempty"`
+	// Route
+	Route *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"route,omitempty"`
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Domain *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"domain,omitempty"`
 		
-		RouteId *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"routeId,omitempty"`
+		Route *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"route,omitempty"`
 		*Alias
 	}{ 
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		RouteId: u.RouteId,
-		Alias:    (*Alias)(u),
+		Route: o.Route,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangereplytoemailaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangereplytoemailaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Domain, ok := OutboundmessagingmessagingcampaignconfigchangereplytoemailaddressMap["domain"].(map[string]interface{}); ok {
+		DomainString, _ := json.Marshal(Domain)
+		json.Unmarshal(DomainString, &o.Domain)
+	}
+	
+	if Route, ok := OutboundmessagingmessagingcampaignconfigchangereplytoemailaddressMap["route"].(map[string]interface{}); ok {
+		RouteString, _ := json.Marshal(Route)
+		json.Unmarshal(RouteString, &o.Route)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

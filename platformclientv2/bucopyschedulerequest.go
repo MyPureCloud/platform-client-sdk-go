@@ -18,31 +18,49 @@ type Bucopyschedulerequest struct {
 
 }
 
-func (u *Bucopyschedulerequest) MarshalJSON() ([]byte, error) {
+func (o *Bucopyschedulerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bucopyschedulerequest
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
 		
 		WeekDate *string `json:"weekDate,omitempty"`
 		*Alias
 	}{ 
-		Description: u.Description,
+		Description: o.Description,
 		
 		WeekDate: WeekDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bucopyschedulerequest) UnmarshalJSON(b []byte) error {
+	var BucopyschedulerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BucopyschedulerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Description, ok := BucopyschedulerequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if weekDateString, ok := BucopyschedulerequestMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Publishform struct {
 
 }
 
-func (u *Publishform) MarshalJSON() ([]byte, error) {
+func (o *Publishform) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Publishform
-
 	
-
 	return json.Marshal(&struct { 
 		Published *bool `json:"published,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Published: u.Published,
+		Published: o.Published,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Publishform) UnmarshalJSON(b []byte) error {
+	var PublishformMap map[string]interface{}
+	err := json.Unmarshal(b, &PublishformMap)
+	if err != nil {
+		return err
+	}
+	
+	if Published, ok := PublishformMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if Id, ok := PublishformMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

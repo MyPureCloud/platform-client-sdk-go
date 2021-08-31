@@ -25,13 +25,11 @@ type Calibrationassignment struct {
 
 }
 
-func (u *Calibrationassignment) MarshalJSON() ([]byte, error) {
+func (o *Calibrationassignment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Calibrationassignment
-
 	
-
 	return json.Marshal(&struct { 
 		Calibrator *User `json:"calibrator,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Calibrationassignment) MarshalJSON() ([]byte, error) {
 		ExpertEvaluator *User `json:"expertEvaluator,omitempty"`
 		*Alias
 	}{ 
-		Calibrator: u.Calibrator,
+		Calibrator: o.Calibrator,
 		
-		Evaluators: u.Evaluators,
+		Evaluators: o.Evaluators,
 		
-		EvaluationForm: u.EvaluationForm,
+		EvaluationForm: o.EvaluationForm,
 		
-		ExpertEvaluator: u.ExpertEvaluator,
-		Alias:    (*Alias)(u),
+		ExpertEvaluator: o.ExpertEvaluator,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Calibrationassignment) UnmarshalJSON(b []byte) error {
+	var CalibrationassignmentMap map[string]interface{}
+	err := json.Unmarshal(b, &CalibrationassignmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Calibrator, ok := CalibrationassignmentMap["calibrator"].(map[string]interface{}); ok {
+		CalibratorString, _ := json.Marshal(Calibrator)
+		json.Unmarshal(CalibratorString, &o.Calibrator)
+	}
+	
+	if Evaluators, ok := CalibrationassignmentMap["evaluators"].([]interface{}); ok {
+		EvaluatorsString, _ := json.Marshal(Evaluators)
+		json.Unmarshal(EvaluatorsString, &o.Evaluators)
+	}
+	
+	if EvaluationForm, ok := CalibrationassignmentMap["evaluationForm"].(map[string]interface{}); ok {
+		EvaluationFormString, _ := json.Marshal(EvaluationForm)
+		json.Unmarshal(EvaluationFormString, &o.EvaluationForm)
+	}
+	
+	if ExpertEvaluator, ok := CalibrationassignmentMap["expertEvaluator"].(map[string]interface{}); ok {
+		ExpertEvaluatorString, _ := json.Marshal(ExpertEvaluator)
+		json.Unmarshal(ExpertEvaluatorString, &o.ExpertEvaluator)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

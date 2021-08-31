@@ -17,24 +17,43 @@ type Subjectdivisions struct {
 
 }
 
-func (u *Subjectdivisions) MarshalJSON() ([]byte, error) {
+func (o *Subjectdivisions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Subjectdivisions
-
 	
-
 	return json.Marshal(&struct { 
 		SubjectIds *[]string `json:"subjectIds,omitempty"`
 		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		*Alias
 	}{ 
-		SubjectIds: u.SubjectIds,
+		SubjectIds: o.SubjectIds,
 		
-		DivisionIds: u.DivisionIds,
-		Alias:    (*Alias)(u),
+		DivisionIds: o.DivisionIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Subjectdivisions) UnmarshalJSON(b []byte) error {
+	var SubjectdivisionsMap map[string]interface{}
+	err := json.Unmarshal(b, &SubjectdivisionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if SubjectIds, ok := SubjectdivisionsMap["subjectIds"].([]interface{}); ok {
+		SubjectIdsString, _ := json.Marshal(SubjectIds)
+		json.Unmarshal(SubjectIdsString, &o.SubjectIds)
+	}
+	
+	if DivisionIds, ok := SubjectdivisionsMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

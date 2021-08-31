@@ -29,13 +29,11 @@ type Shifttradematchreviewuserresponse struct {
 
 }
 
-func (u *Shifttradematchreviewuserresponse) MarshalJSON() ([]byte, error) {
+func (o *Shifttradematchreviewuserresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradematchreviewuserresponse
-
 	
-
 	return json.Marshal(&struct { 
 		WeeklyMinimumPaidMinutes *int `json:"weeklyMinimumPaidMinutes,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Shifttradematchreviewuserresponse) MarshalJSON() ([]byte, error) {
 		PostTradeNewShift *Shifttradepreviewresponse `json:"postTradeNewShift,omitempty"`
 		*Alias
 	}{ 
-		WeeklyMinimumPaidMinutes: u.WeeklyMinimumPaidMinutes,
+		WeeklyMinimumPaidMinutes: o.WeeklyMinimumPaidMinutes,
 		
-		WeeklyMaximumPaidMinutes: u.WeeklyMaximumPaidMinutes,
+		WeeklyMaximumPaidMinutes: o.WeeklyMaximumPaidMinutes,
 		
-		PreTradeSchedulePaidMinutes: u.PreTradeSchedulePaidMinutes,
+		PreTradeSchedulePaidMinutes: o.PreTradeSchedulePaidMinutes,
 		
-		PostTradeSchedulePaidMinutes: u.PostTradeSchedulePaidMinutes,
+		PostTradeSchedulePaidMinutes: o.PostTradeSchedulePaidMinutes,
 		
-		PostTradeNewShift: u.PostTradeNewShift,
-		Alias:    (*Alias)(u),
+		PostTradeNewShift: o.PostTradeNewShift,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradematchreviewuserresponse) UnmarshalJSON(b []byte) error {
+	var ShifttradematchreviewuserresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradematchreviewuserresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if WeeklyMinimumPaidMinutes, ok := ShifttradematchreviewuserresponseMap["weeklyMinimumPaidMinutes"].(float64); ok {
+		WeeklyMinimumPaidMinutesInt := int(WeeklyMinimumPaidMinutes)
+		o.WeeklyMinimumPaidMinutes = &WeeklyMinimumPaidMinutesInt
+	}
+	
+	if WeeklyMaximumPaidMinutes, ok := ShifttradematchreviewuserresponseMap["weeklyMaximumPaidMinutes"].(float64); ok {
+		WeeklyMaximumPaidMinutesInt := int(WeeklyMaximumPaidMinutes)
+		o.WeeklyMaximumPaidMinutes = &WeeklyMaximumPaidMinutesInt
+	}
+	
+	if PreTradeSchedulePaidMinutes, ok := ShifttradematchreviewuserresponseMap["preTradeSchedulePaidMinutes"].(float64); ok {
+		PreTradeSchedulePaidMinutesInt := int(PreTradeSchedulePaidMinutes)
+		o.PreTradeSchedulePaidMinutes = &PreTradeSchedulePaidMinutesInt
+	}
+	
+	if PostTradeSchedulePaidMinutes, ok := ShifttradematchreviewuserresponseMap["postTradeSchedulePaidMinutes"].(float64); ok {
+		PostTradeSchedulePaidMinutesInt := int(PostTradeSchedulePaidMinutes)
+		o.PostTradeSchedulePaidMinutes = &PostTradeSchedulePaidMinutesInt
+	}
+	
+	if PostTradeNewShift, ok := ShifttradematchreviewuserresponseMap["postTradeNewShift"].(map[string]interface{}); ok {
+		PostTradeNewShiftString, _ := json.Marshal(PostTradeNewShift)
+		json.Unmarshal(PostTradeNewShiftString, &o.PostTradeNewShift)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

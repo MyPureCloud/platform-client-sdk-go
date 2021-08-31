@@ -17,24 +17,41 @@ type Servicegoaltemplatereference struct {
 
 }
 
-func (u *Servicegoaltemplatereference) MarshalJSON() ([]byte, error) {
+func (o *Servicegoaltemplatereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Servicegoaltemplatereference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Servicegoaltemplatereference) UnmarshalJSON(b []byte) error {
+	var ServicegoaltemplatereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &ServicegoaltemplatereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ServicegoaltemplatereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := ServicegoaltemplatereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

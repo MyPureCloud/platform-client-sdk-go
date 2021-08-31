@@ -25,13 +25,11 @@ type Gkndocumentationresult struct {
 
 }
 
-func (u *Gkndocumentationresult) MarshalJSON() ([]byte, error) {
+func (o *Gkndocumentationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gkndocumentationresult
-
 	
-
 	return json.Marshal(&struct { 
 		Content *string `json:"content,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Gkndocumentationresult) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"_type,omitempty"`
 		*Alias
 	}{ 
-		Content: u.Content,
+		Content: o.Content,
 		
-		Link: u.Link,
+		Link: o.Link,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gkndocumentationresult) UnmarshalJSON(b []byte) error {
+	var GkndocumentationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &GkndocumentationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Content, ok := GkndocumentationresultMap["content"].(string); ok {
+		o.Content = &Content
+	}
+	
+	if Link, ok := GkndocumentationresultMap["link"].(string); ok {
+		o.Link = &Link
+	}
+	
+	if Title, ok := GkndocumentationresultMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if VarType, ok := GkndocumentationresultMap["_type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Userauthorization struct {
 
 }
 
-func (u *Userauthorization) MarshalJSON() ([]byte, error) {
+func (o *Userauthorization) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userauthorization
-
 	
-
 	return json.Marshal(&struct { 
 		Roles *[]Domainrole `json:"roles,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Userauthorization) MarshalJSON() ([]byte, error) {
 		PermissionPolicies *[]Resourcepermissionpolicy `json:"permissionPolicies,omitempty"`
 		*Alias
 	}{ 
-		Roles: u.Roles,
+		Roles: o.Roles,
 		
-		UnusedRoles: u.UnusedRoles,
+		UnusedRoles: o.UnusedRoles,
 		
-		Permissions: u.Permissions,
+		Permissions: o.Permissions,
 		
-		PermissionPolicies: u.PermissionPolicies,
-		Alias:    (*Alias)(u),
+		PermissionPolicies: o.PermissionPolicies,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userauthorization) UnmarshalJSON(b []byte) error {
+	var UserauthorizationMap map[string]interface{}
+	err := json.Unmarshal(b, &UserauthorizationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Roles, ok := UserauthorizationMap["roles"].([]interface{}); ok {
+		RolesString, _ := json.Marshal(Roles)
+		json.Unmarshal(RolesString, &o.Roles)
+	}
+	
+	if UnusedRoles, ok := UserauthorizationMap["unusedRoles"].([]interface{}); ok {
+		UnusedRolesString, _ := json.Marshal(UnusedRoles)
+		json.Unmarshal(UnusedRolesString, &o.UnusedRoles)
+	}
+	
+	if Permissions, ok := UserauthorizationMap["permissions"].([]interface{}); ok {
+		PermissionsString, _ := json.Marshal(Permissions)
+		json.Unmarshal(PermissionsString, &o.Permissions)
+	}
+	
+	if PermissionPolicies, ok := UserauthorizationMap["permissionPolicies"].([]interface{}); ok {
+		PermissionPoliciesString, _ := json.Marshal(PermissionPolicies)
+		json.Unmarshal(PermissionPoliciesString, &o.PermissionPolicies)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

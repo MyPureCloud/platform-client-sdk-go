@@ -21,13 +21,11 @@ type Dialercallabletimesetconfigchangecallabletime struct {
 
 }
 
-func (u *Dialercallabletimesetconfigchangecallabletime) MarshalJSON() ([]byte, error) {
+func (o *Dialercallabletimesetconfigchangecallabletime) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercallabletimesetconfigchangecallabletime
-
 	
-
 	return json.Marshal(&struct { 
 		TimeSlots *[]Dialercallabletimesetconfigchangetimeslot `json:"timeSlots,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Dialercallabletimesetconfigchangecallabletime) MarshalJSON() ([]byte, e
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		TimeSlots: u.TimeSlots,
+		TimeSlots: o.TimeSlots,
 		
-		TimeZoneId: u.TimeZoneId,
+		TimeZoneId: o.TimeZoneId,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercallabletimesetconfigchangecallabletime) UnmarshalJSON(b []byte) error {
+	var DialercallabletimesetconfigchangecallabletimeMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercallabletimesetconfigchangecallabletimeMap)
+	if err != nil {
+		return err
+	}
+	
+	if TimeSlots, ok := DialercallabletimesetconfigchangecallabletimeMap["timeSlots"].([]interface{}); ok {
+		TimeSlotsString, _ := json.Marshal(TimeSlots)
+		json.Unmarshal(TimeSlotsString, &o.TimeSlots)
+	}
+	
+	if TimeZoneId, ok := DialercallabletimesetconfigchangecallabletimeMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
+	if AdditionalProperties, ok := DialercallabletimesetconfigchangecallabletimeMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

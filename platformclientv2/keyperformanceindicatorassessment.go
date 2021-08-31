@@ -21,13 +21,11 @@ type Keyperformanceindicatorassessment struct {
 
 }
 
-func (u *Keyperformanceindicatorassessment) MarshalJSON() ([]byte, error) {
+func (o *Keyperformanceindicatorassessment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Keyperformanceindicatorassessment
-
 	
-
 	return json.Marshal(&struct { 
 		Kpi *string `json:"kpi,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Keyperformanceindicatorassessment) MarshalJSON() ([]byte, error) {
 		Checks *[]Check `json:"checks,omitempty"`
 		*Alias
 	}{ 
-		Kpi: u.Kpi,
+		Kpi: o.Kpi,
 		
-		AssessmentResult: u.AssessmentResult,
+		AssessmentResult: o.AssessmentResult,
 		
-		Checks: u.Checks,
-		Alias:    (*Alias)(u),
+		Checks: o.Checks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Keyperformanceindicatorassessment) UnmarshalJSON(b []byte) error {
+	var KeyperformanceindicatorassessmentMap map[string]interface{}
+	err := json.Unmarshal(b, &KeyperformanceindicatorassessmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Kpi, ok := KeyperformanceindicatorassessmentMap["kpi"].(string); ok {
+		o.Kpi = &Kpi
+	}
+	
+	if AssessmentResult, ok := KeyperformanceindicatorassessmentMap["assessmentResult"].(string); ok {
+		o.AssessmentResult = &AssessmentResult
+	}
+	
+	if Checks, ok := KeyperformanceindicatorassessmentMap["checks"].([]interface{}); ok {
+		ChecksString, _ := json.Marshal(Checks)
+		json.Unmarshal(ChecksString, &o.Checks)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

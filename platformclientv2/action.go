@@ -45,13 +45,11 @@ type Action struct {
 
 }
 
-func (u *Action) MarshalJSON() ([]byte, error) {
+func (o *Action) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Action
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Action) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		IntegrationId: u.IntegrationId,
+		IntegrationId: o.IntegrationId,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		Contract: u.Contract,
+		Contract: o.Contract,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Secure: u.Secure,
+		Secure: o.Secure,
 		
-		Config: u.Config,
+		Config: o.Config,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Action) UnmarshalJSON(b []byte) error {
+	var ActionMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ActionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ActionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if IntegrationId, ok := ActionMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+	
+	if Category, ok := ActionMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Contract, ok := ActionMap["contract"].(map[string]interface{}); ok {
+		ContractString, _ := json.Marshal(Contract)
+		json.Unmarshal(ContractString, &o.Contract)
+	}
+	
+	if Version, ok := ActionMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Secure, ok := ActionMap["secure"].(bool); ok {
+		o.Secure = &Secure
+	}
+	
+	if Config, ok := ActionMap["config"].(map[string]interface{}); ok {
+		ConfigString, _ := json.Marshal(Config)
+		json.Unmarshal(ConfigString, &o.Config)
+	}
+	
+	if SelfUri, ok := ActionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

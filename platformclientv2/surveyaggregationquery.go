@@ -45,13 +45,11 @@ type Surveyaggregationquery struct {
 
 }
 
-func (u *Surveyaggregationquery) MarshalJSON() ([]byte, error) {
+func (o *Surveyaggregationquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyaggregationquery
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -72,25 +70,76 @@ func (u *Surveyaggregationquery) MarshalJSON() ([]byte, error) {
 		AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Granularity: u.Granularity,
+		Granularity: o.Granularity,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		GroupBy: u.GroupBy,
+		GroupBy: o.GroupBy,
 		
-		Filter: u.Filter,
+		Filter: o.Filter,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		FlattenMultivaluedDimensions: u.FlattenMultivaluedDimensions,
+		FlattenMultivaluedDimensions: o.FlattenMultivaluedDimensions,
 		
-		Views: u.Views,
+		Views: o.Views,
 		
-		AlternateTimeDimension: u.AlternateTimeDimension,
-		Alias:    (*Alias)(u),
+		AlternateTimeDimension: o.AlternateTimeDimension,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyaggregationquery) UnmarshalJSON(b []byte) error {
+	var SurveyaggregationqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyaggregationqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := SurveyaggregationqueryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Granularity, ok := SurveyaggregationqueryMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+	
+	if TimeZone, ok := SurveyaggregationqueryMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if GroupBy, ok := SurveyaggregationqueryMap["groupBy"].([]interface{}); ok {
+		GroupByString, _ := json.Marshal(GroupBy)
+		json.Unmarshal(GroupByString, &o.GroupBy)
+	}
+	
+	if Filter, ok := SurveyaggregationqueryMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Metrics, ok := SurveyaggregationqueryMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if FlattenMultivaluedDimensions, ok := SurveyaggregationqueryMap["flattenMultivaluedDimensions"].(bool); ok {
+		o.FlattenMultivaluedDimensions = &FlattenMultivaluedDimensions
+	}
+	
+	if Views, ok := SurveyaggregationqueryMap["views"].([]interface{}); ok {
+		ViewsString, _ := json.Marshal(Views)
+		json.Unmarshal(ViewsString, &o.Views)
+	}
+	
+	if AlternateTimeDimension, ok := SurveyaggregationqueryMap["alternateTimeDimension"].(string); ok {
+		o.AlternateTimeDimension = &AlternateTimeDimension
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

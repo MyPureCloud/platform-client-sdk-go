@@ -13,20 +13,34 @@ type Bulkshifttradestateupdaterequest struct {
 
 }
 
-func (u *Bulkshifttradestateupdaterequest) MarshalJSON() ([]byte, error) {
+func (o *Bulkshifttradestateupdaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkshifttradestateupdaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Bulkupdateshifttradestaterequestitem `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkshifttradestateupdaterequest) UnmarshalJSON(b []byte) error {
+	var BulkshifttradestateupdaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkshifttradestateupdaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := BulkshifttradestateupdaterequestMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -70,29 +70,27 @@ type Edgetrunkbase struct {
 
 }
 
-func (u *Edgetrunkbase) MarshalJSON() ([]byte, error) {
+func (o *Edgetrunkbase) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgetrunkbase
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -125,37 +123,113 @@ func (u *Edgetrunkbase) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		TrunkMetabase: u.TrunkMetabase,
+		TrunkMetabase: o.TrunkMetabase,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		TrunkType: u.TrunkType,
+		TrunkType: o.TrunkType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgetrunkbase) UnmarshalJSON(b []byte) error {
+	var EdgetrunkbaseMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgetrunkbaseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgetrunkbaseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EdgetrunkbaseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := EdgetrunkbaseMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := EdgetrunkbaseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := EdgetrunkbaseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := EdgetrunkbaseMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := EdgetrunkbaseMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := EdgetrunkbaseMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := EdgetrunkbaseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := EdgetrunkbaseMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := EdgetrunkbaseMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if TrunkMetabase, ok := EdgetrunkbaseMap["trunkMetabase"].(map[string]interface{}); ok {
+		TrunkMetabaseString, _ := json.Marshal(TrunkMetabase)
+		json.Unmarshal(TrunkMetabaseString, &o.TrunkMetabase)
+	}
+	
+	if Properties, ok := EdgetrunkbaseMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if TrunkType, ok := EdgetrunkbaseMap["trunkType"].(string); ok {
+		o.TrunkType = &TrunkType
+	}
+	
+	if SelfUri, ok := EdgetrunkbaseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,33 @@ type Queueusereventtopicuserreference struct {
 
 }
 
-func (u *Queueusereventtopicuserreference) MarshalJSON() ([]byte, error) {
+func (o *Queueusereventtopicuserreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueusereventtopicuserreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueusereventtopicuserreference) UnmarshalJSON(b []byte) error {
+	var QueueusereventtopicuserreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueusereventtopicuserreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueusereventtopicuserreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

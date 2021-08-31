@@ -17,24 +17,43 @@ type Replytoemailaddress struct {
 
 }
 
-func (u *Replytoemailaddress) MarshalJSON() ([]byte, error) {
+func (o *Replytoemailaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Replytoemailaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Domain *Domainentityref `json:"domain,omitempty"`
 		
 		Route *Domainentityref `json:"route,omitempty"`
 		*Alias
 	}{ 
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		Route: u.Route,
-		Alias:    (*Alias)(u),
+		Route: o.Route,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Replytoemailaddress) UnmarshalJSON(b []byte) error {
+	var ReplytoemailaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &ReplytoemailaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Domain, ok := ReplytoemailaddressMap["domain"].(map[string]interface{}); ok {
+		DomainString, _ := json.Marshal(Domain)
+		json.Unmarshal(DomainString, &o.Domain)
+	}
+	
+	if Route, ok := ReplytoemailaddressMap["route"].(map[string]interface{}); ok {
+		RouteString, _ := json.Marshal(Route)
+		json.Unmarshal(RouteString, &o.Route)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

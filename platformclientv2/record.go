@@ -21,13 +21,11 @@ type Record struct {
 
 }
 
-func (u *Record) MarshalJSON() ([]byte, error) {
+func (o *Record) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Record
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Record) MarshalJSON() ([]byte, error) {
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Record) UnmarshalJSON(b []byte) error {
+	var RecordMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := RecordMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := RecordMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Value, ok := RecordMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

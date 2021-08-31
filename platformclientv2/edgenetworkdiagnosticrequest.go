@@ -13,20 +13,33 @@ type Edgenetworkdiagnosticrequest struct {
 
 }
 
-func (u *Edgenetworkdiagnosticrequest) MarshalJSON() ([]byte, error) {
+func (o *Edgenetworkdiagnosticrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgenetworkdiagnosticrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Host *string `json:"host,omitempty"`
 		*Alias
 	}{ 
-		Host: u.Host,
-		Alias:    (*Alias)(u),
+		Host: o.Host,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgenetworkdiagnosticrequest) UnmarshalJSON(b []byte) error {
+	var EdgenetworkdiagnosticrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgenetworkdiagnosticrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Host, ok := EdgenetworkdiagnosticrequestMap["host"].(string); ok {
+		o.Host = &Host
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

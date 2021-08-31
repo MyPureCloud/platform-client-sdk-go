@@ -13,20 +13,34 @@ type Mediatypes struct {
 
 }
 
-func (u *Mediatypes) MarshalJSON() ([]byte, error) {
+func (o *Mediatypes) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediatypes
-
 	
-
 	return json.Marshal(&struct { 
 		Allow *Mediatypeaccess `json:"allow,omitempty"`
 		*Alias
 	}{ 
-		Allow: u.Allow,
-		Alias:    (*Alias)(u),
+		Allow: o.Allow,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediatypes) UnmarshalJSON(b []byte) error {
+	var MediatypesMap map[string]interface{}
+	err := json.Unmarshal(b, &MediatypesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Allow, ok := MediatypesMap["allow"].(map[string]interface{}); ok {
+		AllowString, _ := json.Marshal(Allow)
+		json.Unmarshal(AllowString, &o.Allow)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

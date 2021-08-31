@@ -70,45 +70,43 @@ type Schedule struct {
 
 }
 
-func (u *Schedule) MarshalJSON() ([]byte, error) {
+func (o *Schedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedule
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	Start := new(string)
-	if u.Start != nil {
-		*Start = timeutil.Strftime(u.Start, "%Y-%m-%dT%H:%M:%S.%f")
+	if o.Start != nil {
+		*Start = timeutil.Strftime(o.Start, "%Y-%m-%dT%H:%M:%S.%f")
 		
 	} else {
 		Start = nil
 	}
 	
 	End := new(string)
-	if u.End != nil {
-		*End = timeutil.Strftime(u.End, "%Y-%m-%dT%H:%M:%S.%f")
+	if o.End != nil {
+		*End = timeutil.Strftime(o.End, "%Y-%m-%dT%H:%M:%S.%f")
 		
 	} else {
 		End = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -141,37 +139,113 @@ func (u *Schedule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
 		Start: Start,
 		
 		End: End,
 		
-		Rrule: u.Rrule,
+		Rrule: o.Rrule,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedule) UnmarshalJSON(b []byte) error {
+	var ScheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &ScheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ScheduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ScheduleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ScheduleMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := ScheduleMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := ScheduleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := ScheduleMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := ScheduleMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := ScheduleMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := ScheduleMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := ScheduleMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := ScheduleMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if startString, ok := ScheduleMap["start"].(string); ok {
+		Start, _ := time.Parse("2006-01-02T15:04:05.999999", startString)
+		o.Start = &Start
+	}
+	
+	if endString, ok := ScheduleMap["end"].(string); ok {
+		End, _ := time.Parse("2006-01-02T15:04:05.999999", endString)
+		o.End = &End
+	}
+	
+	if Rrule, ok := ScheduleMap["rrule"].(string); ok {
+		o.Rrule = &Rrule
+	}
+	
+	if SelfUri, ok := ScheduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

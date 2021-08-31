@@ -17,24 +17,43 @@ type Pagingspec struct {
 
 }
 
-func (u *Pagingspec) MarshalJSON() ([]byte, error) {
+func (o *Pagingspec) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Pagingspec
-
 	
-
 	return json.Marshal(&struct { 
 		PageSize *int `json:"pageSize,omitempty"`
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		*Alias
 	}{ 
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
-		Alias:    (*Alias)(u),
+		PageNumber: o.PageNumber,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Pagingspec) UnmarshalJSON(b []byte) error {
+	var PagingspecMap map[string]interface{}
+	err := json.Unmarshal(b, &PagingspecMap)
+	if err != nil {
+		return err
+	}
+	
+	if PageSize, ok := PagingspecMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := PagingspecMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

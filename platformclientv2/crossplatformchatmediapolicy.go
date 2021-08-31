@@ -17,24 +17,43 @@ type Crossplatformchatmediapolicy struct {
 
 }
 
-func (u *Crossplatformchatmediapolicy) MarshalJSON() ([]byte, error) {
+func (o *Crossplatformchatmediapolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Crossplatformchatmediapolicy
-
 	
-
 	return json.Marshal(&struct { 
 		Actions *Crossplatformpolicyactions `json:"actions,omitempty"`
 		
 		Conditions *Chatmediapolicyconditions `json:"conditions,omitempty"`
 		*Alias
 	}{ 
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Conditions: u.Conditions,
-		Alias:    (*Alias)(u),
+		Conditions: o.Conditions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Crossplatformchatmediapolicy) UnmarshalJSON(b []byte) error {
+	var CrossplatformchatmediapolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &CrossplatformchatmediapolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Actions, ok := CrossplatformchatmediapolicyMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Conditions, ok := CrossplatformchatmediapolicyMap["conditions"].(map[string]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

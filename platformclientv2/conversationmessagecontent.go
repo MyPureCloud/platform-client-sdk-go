@@ -33,13 +33,11 @@ type Conversationmessagecontent struct {
 
 }
 
-func (u *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
+func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationmessagecontent
-
 	
-
 	return json.Marshal(&struct { 
 		ContentType *string `json:"contentType,omitempty"`
 		
@@ -54,19 +52,59 @@ func (u *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		Generic *Contentgeneric `json:"generic,omitempty"`
 		*Alias
 	}{ 
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		Attachment: u.Attachment,
+		Attachment: o.Attachment,
 		
-		QuickReply: u.QuickReply,
+		QuickReply: o.QuickReply,
 		
-		Template: u.Template,
+		Template: o.Template,
 		
-		ButtonResponse: u.ButtonResponse,
+		ButtonResponse: o.ButtonResponse,
 		
-		Generic: u.Generic,
-		Alias:    (*Alias)(u),
+		Generic: o.Generic,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
+	var ConversationmessagecontentMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationmessagecontentMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContentType, ok := ConversationmessagecontentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if Attachment, ok := ConversationmessagecontentMap["attachment"].(map[string]interface{}); ok {
+		AttachmentString, _ := json.Marshal(Attachment)
+		json.Unmarshal(AttachmentString, &o.Attachment)
+	}
+	
+	if QuickReply, ok := ConversationmessagecontentMap["quickReply"].(map[string]interface{}); ok {
+		QuickReplyString, _ := json.Marshal(QuickReply)
+		json.Unmarshal(QuickReplyString, &o.QuickReply)
+	}
+	
+	if Template, ok := ConversationmessagecontentMap["template"].(map[string]interface{}); ok {
+		TemplateString, _ := json.Marshal(Template)
+		json.Unmarshal(TemplateString, &o.Template)
+	}
+	
+	if ButtonResponse, ok := ConversationmessagecontentMap["buttonResponse"].(map[string]interface{}); ok {
+		ButtonResponseString, _ := json.Marshal(ButtonResponse)
+		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
+	}
+	
+	if Generic, ok := ConversationmessagecontentMap["generic"].(map[string]interface{}); ok {
+		GenericString, _ := json.Marshal(Generic)
+		json.Unmarshal(GenericString, &o.Generic)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Items struct {
 
 }
 
-func (u *Items) MarshalJSON() ([]byte, error) {
+func (o *Items) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Items
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Pattern *string `json:"pattern,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Pattern: u.Pattern,
-		Alias:    (*Alias)(u),
+		Pattern: o.Pattern,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Items) UnmarshalJSON(b []byte) error {
+	var ItemsMap map[string]interface{}
+	err := json.Unmarshal(b, &ItemsMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ItemsMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Pattern, ok := ItemsMap["pattern"].(string); ok {
+		o.Pattern = &Pattern
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

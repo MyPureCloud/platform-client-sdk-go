@@ -49,13 +49,11 @@ type Logicalinterfaceentitylisting struct {
 
 }
 
-func (u *Logicalinterfaceentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Logicalinterfaceentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Logicalinterfaceentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Domainlogicalinterface `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Logicalinterfaceentitylisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Logicalinterfaceentitylisting) UnmarshalJSON(b []byte) error {
+	var LogicalinterfaceentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &LogicalinterfaceentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := LogicalinterfaceentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := LogicalinterfaceentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := LogicalinterfaceentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := LogicalinterfaceentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := LogicalinterfaceentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if SelfUri, ok := LogicalinterfaceentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if NextUri, ok := LogicalinterfaceentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := LogicalinterfaceentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := LogicalinterfaceentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if PageCount, ok := LogicalinterfaceentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

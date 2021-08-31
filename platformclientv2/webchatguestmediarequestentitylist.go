@@ -13,20 +13,34 @@ type Webchatguestmediarequestentitylist struct {
 
 }
 
-func (u *Webchatguestmediarequestentitylist) MarshalJSON() ([]byte, error) {
+func (o *Webchatguestmediarequestentitylist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatguestmediarequestentitylist
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Webchatguestmediarequest `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatguestmediarequestentitylist) UnmarshalJSON(b []byte) error {
+	var WebchatguestmediarequestentitylistMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatguestmediarequestentitylistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := WebchatguestmediarequestentitylistMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

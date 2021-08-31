@@ -17,24 +17,41 @@ type Userimage struct {
 
 }
 
-func (u *Userimage) MarshalJSON() ([]byte, error) {
+func (o *Userimage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userimage
-
 	
-
 	return json.Marshal(&struct { 
 		Resolution *string `json:"resolution,omitempty"`
 		
 		ImageUri *string `json:"imageUri,omitempty"`
 		*Alias
 	}{ 
-		Resolution: u.Resolution,
+		Resolution: o.Resolution,
 		
-		ImageUri: u.ImageUri,
-		Alias:    (*Alias)(u),
+		ImageUri: o.ImageUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userimage) UnmarshalJSON(b []byte) error {
+	var UserimageMap map[string]interface{}
+	err := json.Unmarshal(b, &UserimageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Resolution, ok := UserimageMap["resolution"].(string); ok {
+		o.Resolution = &Resolution
+	}
+	
+	if ImageUri, ok := UserimageMap["imageUri"].(string); ok {
+		o.ImageUri = &ImageUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

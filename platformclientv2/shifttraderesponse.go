@@ -82,68 +82,66 @@ type Shifttraderesponse struct {
 
 }
 
-func (u *Shifttraderesponse) MarshalJSON() ([]byte, error) {
+func (o *Shifttraderesponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttraderesponse
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
 	InitiatingShiftStart := new(string)
-	if u.InitiatingShiftStart != nil {
+	if o.InitiatingShiftStart != nil {
 		
-		*InitiatingShiftStart = timeutil.Strftime(u.InitiatingShiftStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*InitiatingShiftStart = timeutil.Strftime(o.InitiatingShiftStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		InitiatingShiftStart = nil
 	}
 	
 	InitiatingShiftEnd := new(string)
-	if u.InitiatingShiftEnd != nil {
+	if o.InitiatingShiftEnd != nil {
 		
-		*InitiatingShiftEnd = timeutil.Strftime(u.InitiatingShiftEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*InitiatingShiftEnd = timeutil.Strftime(o.InitiatingShiftEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		InitiatingShiftEnd = nil
 	}
 	
 	ReceivingShiftStart := new(string)
-	if u.ReceivingShiftStart != nil {
+	if o.ReceivingShiftStart != nil {
 		
-		*ReceivingShiftStart = timeutil.Strftime(u.ReceivingShiftStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReceivingShiftStart = timeutil.Strftime(o.ReceivingShiftStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReceivingShiftStart = nil
 	}
 	
 	ReceivingShiftEnd := new(string)
-	if u.ReceivingShiftEnd != nil {
+	if o.ReceivingShiftEnd != nil {
 		
-		*ReceivingShiftEnd = timeutil.Strftime(u.ReceivingShiftEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReceivingShiftEnd = timeutil.Strftime(o.ReceivingShiftEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReceivingShiftEnd = nil
 	}
 	
 	Expiration := new(string)
-	if u.Expiration != nil {
+	if o.Expiration != nil {
 		
-		*Expiration = timeutil.Strftime(u.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Expiration = timeutil.Strftime(o.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Expiration = nil
 	}
 	
 	ReviewedDate := new(string)
-	if u.ReviewedDate != nil {
+	if o.ReviewedDate != nil {
 		
-		*ReviewedDate = timeutil.Strftime(u.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReviewedDate = timeutil.Strftime(o.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReviewedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -182,25 +180,25 @@ func (u *Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		State: u.State,
+		State: o.State,
 		
-		InitiatingUser: u.InitiatingUser,
+		InitiatingUser: o.InitiatingUser,
 		
-		InitiatingShiftId: u.InitiatingShiftId,
+		InitiatingShiftId: o.InitiatingShiftId,
 		
 		InitiatingShiftStart: InitiatingShiftStart,
 		
 		InitiatingShiftEnd: InitiatingShiftEnd,
 		
-		ReceivingUser: u.ReceivingUser,
+		ReceivingUser: o.ReceivingUser,
 		
-		ReceivingShiftId: u.ReceivingShiftId,
+		ReceivingShiftId: o.ReceivingShiftId,
 		
 		ReceivingShiftStart: ReceivingShiftStart,
 		
@@ -208,17 +206,113 @@ func (u *Shifttraderesponse) MarshalJSON() ([]byte, error) {
 		
 		Expiration: Expiration,
 		
-		OneSided: u.OneSided,
+		OneSided: o.OneSided,
 		
-		AcceptableIntervals: u.AcceptableIntervals,
+		AcceptableIntervals: o.AcceptableIntervals,
 		
-		ReviewedBy: u.ReviewedBy,
+		ReviewedBy: o.ReviewedBy,
 		
 		ReviewedDate: ReviewedDate,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttraderesponse) UnmarshalJSON(b []byte) error {
+	var ShifttraderesponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttraderesponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ShifttraderesponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := ShifttraderesponseMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if Schedule, ok := ShifttraderesponseMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if State, ok := ShifttraderesponseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if InitiatingUser, ok := ShifttraderesponseMap["initiatingUser"].(map[string]interface{}); ok {
+		InitiatingUserString, _ := json.Marshal(InitiatingUser)
+		json.Unmarshal(InitiatingUserString, &o.InitiatingUser)
+	}
+	
+	if InitiatingShiftId, ok := ShifttraderesponseMap["initiatingShiftId"].(string); ok {
+		o.InitiatingShiftId = &InitiatingShiftId
+	}
+	
+	if initiatingShiftStartString, ok := ShifttraderesponseMap["initiatingShiftStart"].(string); ok {
+		InitiatingShiftStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", initiatingShiftStartString)
+		o.InitiatingShiftStart = &InitiatingShiftStart
+	}
+	
+	if initiatingShiftEndString, ok := ShifttraderesponseMap["initiatingShiftEnd"].(string); ok {
+		InitiatingShiftEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", initiatingShiftEndString)
+		o.InitiatingShiftEnd = &InitiatingShiftEnd
+	}
+	
+	if ReceivingUser, ok := ShifttraderesponseMap["receivingUser"].(map[string]interface{}); ok {
+		ReceivingUserString, _ := json.Marshal(ReceivingUser)
+		json.Unmarshal(ReceivingUserString, &o.ReceivingUser)
+	}
+	
+	if ReceivingShiftId, ok := ShifttraderesponseMap["receivingShiftId"].(string); ok {
+		o.ReceivingShiftId = &ReceivingShiftId
+	}
+	
+	if receivingShiftStartString, ok := ShifttraderesponseMap["receivingShiftStart"].(string); ok {
+		ReceivingShiftStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", receivingShiftStartString)
+		o.ReceivingShiftStart = &ReceivingShiftStart
+	}
+	
+	if receivingShiftEndString, ok := ShifttraderesponseMap["receivingShiftEnd"].(string); ok {
+		ReceivingShiftEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", receivingShiftEndString)
+		o.ReceivingShiftEnd = &ReceivingShiftEnd
+	}
+	
+	if expirationString, ok := ShifttraderesponseMap["expiration"].(string); ok {
+		Expiration, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationString)
+		o.Expiration = &Expiration
+	}
+	
+	if OneSided, ok := ShifttraderesponseMap["oneSided"].(bool); ok {
+		o.OneSided = &OneSided
+	}
+	
+	if AcceptableIntervals, ok := ShifttraderesponseMap["acceptableIntervals"].([]interface{}); ok {
+		AcceptableIntervalsString, _ := json.Marshal(AcceptableIntervals)
+		json.Unmarshal(AcceptableIntervalsString, &o.AcceptableIntervals)
+	}
+	
+	if ReviewedBy, ok := ShifttraderesponseMap["reviewedBy"].(map[string]interface{}); ok {
+		ReviewedByString, _ := json.Marshal(ReviewedBy)
+		json.Unmarshal(ReviewedByString, &o.ReviewedBy)
+	}
+	
+	if reviewedDateString, ok := ShifttraderesponseMap["reviewedDate"].(string); ok {
+		ReviewedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", reviewedDateString)
+		o.ReviewedDate = &ReviewedDate
+	}
+	
+	if Metadata, ok := ShifttraderesponseMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

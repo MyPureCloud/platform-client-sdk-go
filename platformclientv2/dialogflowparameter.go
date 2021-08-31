@@ -17,24 +17,41 @@ type Dialogflowparameter struct {
 
 }
 
-func (u *Dialogflowparameter) MarshalJSON() ([]byte, error) {
+func (o *Dialogflowparameter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialogflowparameter
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialogflowparameter) UnmarshalJSON(b []byte) error {
+	var DialogflowparameterMap map[string]interface{}
+	err := json.Unmarshal(b, &DialogflowparameterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := DialogflowparameterMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := DialogflowparameterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

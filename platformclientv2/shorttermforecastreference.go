@@ -25,13 +25,11 @@ type Shorttermforecastreference struct {
 
 }
 
-func (u *Shorttermforecastreference) MarshalJSON() ([]byte, error) {
+func (o *Shorttermforecastreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shorttermforecastreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Shorttermforecastreference) MarshalJSON() ([]byte, error) {
 		Description *string `json:"description,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		WeekDate: u.WeekDate,
+		WeekDate: o.WeekDate,
 		
-		Description: u.Description,
-		Alias:    (*Alias)(u),
+		Description: o.Description,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shorttermforecastreference) UnmarshalJSON(b []byte) error {
+	var ShorttermforecastreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &ShorttermforecastreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ShorttermforecastreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := ShorttermforecastreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if WeekDate, ok := ShorttermforecastreferenceMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+	if Description, ok := ShorttermforecastreferenceMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

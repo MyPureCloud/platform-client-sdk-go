@@ -21,13 +21,11 @@ type Facetkeyattribute struct {
 
 }
 
-func (u *Facetkeyattribute) MarshalJSON() ([]byte, error) {
+func (o *Facetkeyattribute) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facetkeyattribute
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Facetkeyattribute) MarshalJSON() ([]byte, error) {
 		Count *int `json:"count,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Count: u.Count,
-		Alias:    (*Alias)(u),
+		Count: o.Count,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facetkeyattribute) UnmarshalJSON(b []byte) error {
+	var FacetkeyattributeMap map[string]interface{}
+	err := json.Unmarshal(b, &FacetkeyattributeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FacetkeyattributeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FacetkeyattributeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Count, ok := FacetkeyattributeMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

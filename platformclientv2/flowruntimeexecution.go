@@ -54,29 +54,27 @@ type Flowruntimeexecution struct {
 
 }
 
-func (u *Flowruntimeexecution) MarshalJSON() ([]byte, error) {
+func (o *Flowruntimeexecution) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowruntimeexecution
-
 	
 	DateLaunched := new(string)
-	if u.DateLaunched != nil {
+	if o.DateLaunched != nil {
 		
-		*DateLaunched = timeutil.Strftime(u.DateLaunched, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateLaunched = timeutil.Strftime(o.DateLaunched, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateLaunched = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -101,29 +99,90 @@ func (u *Flowruntimeexecution) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		FlowVersion: u.FlowVersion,
+		FlowVersion: o.FlowVersion,
 		
 		DateLaunched: DateLaunched,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		DateCompleted: DateCompleted,
 		
-		CompletionReason: u.CompletionReason,
+		CompletionReason: o.CompletionReason,
 		
-		FlowErrorInfo: u.FlowErrorInfo,
+		FlowErrorInfo: o.FlowErrorInfo,
 		
-		OutputData: u.OutputData,
+		OutputData: o.OutputData,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowruntimeexecution) UnmarshalJSON(b []byte) error {
+	var FlowruntimeexecutionMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowruntimeexecutionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FlowruntimeexecutionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FlowruntimeexecutionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if FlowVersion, ok := FlowruntimeexecutionMap["flowVersion"].(map[string]interface{}); ok {
+		FlowVersionString, _ := json.Marshal(FlowVersion)
+		json.Unmarshal(FlowVersionString, &o.FlowVersion)
+	}
+	
+	if dateLaunchedString, ok := FlowruntimeexecutionMap["dateLaunched"].(string); ok {
+		DateLaunched, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLaunchedString)
+		o.DateLaunched = &DateLaunched
+	}
+	
+	if Status, ok := FlowruntimeexecutionMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if dateCompletedString, ok := FlowruntimeexecutionMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if CompletionReason, ok := FlowruntimeexecutionMap["completionReason"].(string); ok {
+		o.CompletionReason = &CompletionReason
+	}
+	
+	if FlowErrorInfo, ok := FlowruntimeexecutionMap["flowErrorInfo"].(map[string]interface{}); ok {
+		FlowErrorInfoString, _ := json.Marshal(FlowErrorInfo)
+		json.Unmarshal(FlowErrorInfoString, &o.FlowErrorInfo)
+	}
+	
+	if OutputData, ok := FlowruntimeexecutionMap["outputData"].(map[string]interface{}); ok {
+		OutputDataString, _ := json.Marshal(OutputData)
+		json.Unmarshal(OutputDataString, &o.OutputData)
+	}
+	
+	if Conversation, ok := FlowruntimeexecutionMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if SelfUri, ok := FlowruntimeexecutionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

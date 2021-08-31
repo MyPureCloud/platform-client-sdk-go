@@ -25,13 +25,11 @@ type Importreport struct {
 
 }
 
-func (u *Importreport) MarshalJSON() ([]byte, error) {
+func (o *Importreport) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Importreport
-
 	
-
 	return json.Marshal(&struct { 
 		Errors *[]Importerror `json:"errors,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Importreport) MarshalJSON() ([]byte, error) {
 		TotalDocuments *int `json:"totalDocuments,omitempty"`
 		*Alias
 	}{ 
-		Errors: u.Errors,
+		Errors: o.Errors,
 		
-		Validated: u.Validated,
+		Validated: o.Validated,
 		
-		Imported: u.Imported,
+		Imported: o.Imported,
 		
-		TotalDocuments: u.TotalDocuments,
-		Alias:    (*Alias)(u),
+		TotalDocuments: o.TotalDocuments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Importreport) UnmarshalJSON(b []byte) error {
+	var ImportreportMap map[string]interface{}
+	err := json.Unmarshal(b, &ImportreportMap)
+	if err != nil {
+		return err
+	}
+	
+	if Errors, ok := ImportreportMap["errors"].([]interface{}); ok {
+		ErrorsString, _ := json.Marshal(Errors)
+		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if Validated, ok := ImportreportMap["validated"].(map[string]interface{}); ok {
+		ValidatedString, _ := json.Marshal(Validated)
+		json.Unmarshal(ValidatedString, &o.Validated)
+	}
+	
+	if Imported, ok := ImportreportMap["imported"].(map[string]interface{}); ok {
+		ImportedString, _ := json.Marshal(Imported)
+		json.Unmarshal(ImportedString, &o.Imported)
+	}
+	
+	if TotalDocuments, ok := ImportreportMap["totalDocuments"].(float64); ok {
+		TotalDocumentsInt := int(TotalDocuments)
+		o.TotalDocuments = &TotalDocumentsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

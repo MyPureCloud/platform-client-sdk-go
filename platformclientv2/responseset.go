@@ -38,29 +38,27 @@ type Responseset struct {
 
 }
 
-func (u *Responseset) MarshalJSON() ([]byte, error) {
+func (o *Responseset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Responseset
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -77,21 +75,64 @@ func (u *Responseset) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Responses: u.Responses,
+		Responses: o.Responses,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Responseset) UnmarshalJSON(b []byte) error {
+	var ResponsesetMap map[string]interface{}
+	err := json.Unmarshal(b, &ResponsesetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ResponsesetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ResponsesetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := ResponsesetMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := ResponsesetMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := ResponsesetMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Responses, ok := ResponsesetMap["responses"].(map[string]interface{}); ok {
+		ResponsesString, _ := json.Marshal(Responses)
+		json.Unmarshal(ResponsesString, &o.Responses)
+	}
+	
+	if SelfUri, ok := ResponsesetMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

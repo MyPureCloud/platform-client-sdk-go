@@ -70,29 +70,27 @@ type Journeysegment struct {
 
 }
 
-func (u *Journeysegment) MarshalJSON() ([]byte, error) {
+func (o *Journeysegment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeysegment
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -125,37 +123,115 @@ func (u *Journeysegment) MarshalJSON() ([]byte, error) {
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		IsActive: u.IsActive,
+		IsActive: o.IsActive,
 		
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Color: u.Color,
+		Color: o.Color,
 		
-		Scope: u.Scope,
+		Scope: o.Scope,
 		
-		ShouldDisplayToAgent: u.ShouldDisplayToAgent,
+		ShouldDisplayToAgent: o.ShouldDisplayToAgent,
 		
-		Context: u.Context,
+		Context: o.Context,
 		
-		Journey: u.Journey,
+		Journey: o.Journey,
 		
-		ExternalSegment: u.ExternalSegment,
+		ExternalSegment: o.ExternalSegment,
 		
-		AssignmentExpirationDays: u.AssignmentExpirationDays,
+		AssignmentExpirationDays: o.AssignmentExpirationDays,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeysegment) UnmarshalJSON(b []byte) error {
+	var JourneysegmentMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneysegmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := JourneysegmentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if IsActive, ok := JourneysegmentMap["isActive"].(bool); ok {
+		o.IsActive = &IsActive
+	}
+	
+	if DisplayName, ok := JourneysegmentMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if Version, ok := JourneysegmentMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Description, ok := JourneysegmentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Color, ok := JourneysegmentMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if Scope, ok := JourneysegmentMap["scope"].(string); ok {
+		o.Scope = &Scope
+	}
+	
+	if ShouldDisplayToAgent, ok := JourneysegmentMap["shouldDisplayToAgent"].(bool); ok {
+		o.ShouldDisplayToAgent = &ShouldDisplayToAgent
+	}
+	
+	if Context, ok := JourneysegmentMap["context"].(map[string]interface{}); ok {
+		ContextString, _ := json.Marshal(Context)
+		json.Unmarshal(ContextString, &o.Context)
+	}
+	
+	if Journey, ok := JourneysegmentMap["journey"].(map[string]interface{}); ok {
+		JourneyString, _ := json.Marshal(Journey)
+		json.Unmarshal(JourneyString, &o.Journey)
+	}
+	
+	if ExternalSegment, ok := JourneysegmentMap["externalSegment"].(map[string]interface{}); ok {
+		ExternalSegmentString, _ := json.Marshal(ExternalSegment)
+		json.Unmarshal(ExternalSegmentString, &o.ExternalSegment)
+	}
+	
+	if AssignmentExpirationDays, ok := JourneysegmentMap["assignmentExpirationDays"].(float64); ok {
+		AssignmentExpirationDaysInt := int(AssignmentExpirationDays)
+		o.AssignmentExpirationDays = &AssignmentExpirationDaysInt
+	}
+	
+	if SelfUri, ok := JourneysegmentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if createdDateString, ok := JourneysegmentMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := JourneysegmentMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

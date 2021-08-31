@@ -34,21 +34,19 @@ type Nlufeedbackresponse struct {
 
 }
 
-func (u *Nlufeedbackresponse) MarshalJSON() ([]byte, error) {
+func (o *Nlufeedbackresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nlufeedbackresponse
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,19 +61,57 @@ func (u *Nlufeedbackresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nlufeedbackresponse) UnmarshalJSON(b []byte) error {
+	var NlufeedbackresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &NlufeedbackresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := NlufeedbackresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Text, ok := NlufeedbackresponseMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Intents, ok := NlufeedbackresponseMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if Version, ok := NlufeedbackresponseMap["version"].(map[string]interface{}); ok {
+		VersionString, _ := json.Marshal(Version)
+		json.Unmarshal(VersionString, &o.Version)
+	}
+	
+	if dateCreatedString, ok := NlufeedbackresponseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if SelfUri, ok := NlufeedbackresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

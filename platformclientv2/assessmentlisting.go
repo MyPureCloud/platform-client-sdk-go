@@ -25,13 +25,11 @@ type Assessmentlisting struct {
 
 }
 
-func (u *Assessmentlisting) MarshalJSON() ([]byte, error) {
+func (o *Assessmentlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assessmentlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Benefitassessment `json:"entities,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Assessmentlisting) MarshalJSON() ([]byte, error) {
 		PreviousUri *string `json:"previousUri,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		PreviousUri: u.PreviousUri,
-		Alias:    (*Alias)(u),
+		PreviousUri: o.PreviousUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assessmentlisting) UnmarshalJSON(b []byte) error {
+	var AssessmentlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &AssessmentlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := AssessmentlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NextUri, ok := AssessmentlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if SelfUri, ok := AssessmentlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if PreviousUri, ok := AssessmentlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Patchbureschedulingoptionsrequest struct {
 
 }
 
-func (u *Patchbureschedulingoptionsrequest) MarshalJSON() ([]byte, error) {
+func (o *Patchbureschedulingoptionsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchbureschedulingoptionsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ManagementUnits *[]Patchbureschedulingoptionsmanagementunitrequest `json:"managementUnits,omitempty"`
 		*Alias
 	}{ 
-		ManagementUnits: u.ManagementUnits,
-		Alias:    (*Alias)(u),
+		ManagementUnits: o.ManagementUnits,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchbureschedulingoptionsrequest) UnmarshalJSON(b []byte) error {
+	var PatchbureschedulingoptionsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchbureschedulingoptionsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ManagementUnits, ok := PatchbureschedulingoptionsrequestMap["managementUnits"].([]interface{}); ok {
+		ManagementUnitsString, _ := json.Marshal(ManagementUnits)
+		json.Unmarshal(ManagementUnitsString, &o.ManagementUnits)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

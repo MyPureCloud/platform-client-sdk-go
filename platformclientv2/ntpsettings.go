@@ -13,20 +13,34 @@ type Ntpsettings struct {
 
 }
 
-func (u *Ntpsettings) MarshalJSON() ([]byte, error) {
+func (o *Ntpsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ntpsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Servers *[]string `json:"servers,omitempty"`
 		*Alias
 	}{ 
-		Servers: u.Servers,
-		Alias:    (*Alias)(u),
+		Servers: o.Servers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ntpsettings) UnmarshalJSON(b []byte) error {
+	var NtpsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &NtpsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Servers, ok := NtpsettingsMap["servers"].([]interface{}); ok {
+		ServersString, _ := json.Marshal(Servers)
+		json.Unmarshal(ServersString, &o.Servers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Useraggregationquery struct {
 
 }
 
-func (u *Useraggregationquery) MarshalJSON() ([]byte, error) {
+func (o *Useraggregationquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Useraggregationquery
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -72,25 +70,76 @@ func (u *Useraggregationquery) MarshalJSON() ([]byte, error) {
 		AlternateTimeDimension *string `json:"alternateTimeDimension,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Granularity: u.Granularity,
+		Granularity: o.Granularity,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		GroupBy: u.GroupBy,
+		GroupBy: o.GroupBy,
 		
-		Filter: u.Filter,
+		Filter: o.Filter,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		FlattenMultivaluedDimensions: u.FlattenMultivaluedDimensions,
+		FlattenMultivaluedDimensions: o.FlattenMultivaluedDimensions,
 		
-		Views: u.Views,
+		Views: o.Views,
 		
-		AlternateTimeDimension: u.AlternateTimeDimension,
-		Alias:    (*Alias)(u),
+		AlternateTimeDimension: o.AlternateTimeDimension,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Useraggregationquery) UnmarshalJSON(b []byte) error {
+	var UseraggregationqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &UseraggregationqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := UseraggregationqueryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Granularity, ok := UseraggregationqueryMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+	
+	if TimeZone, ok := UseraggregationqueryMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if GroupBy, ok := UseraggregationqueryMap["groupBy"].([]interface{}); ok {
+		GroupByString, _ := json.Marshal(GroupBy)
+		json.Unmarshal(GroupByString, &o.GroupBy)
+	}
+	
+	if Filter, ok := UseraggregationqueryMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Metrics, ok := UseraggregationqueryMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if FlattenMultivaluedDimensions, ok := UseraggregationqueryMap["flattenMultivaluedDimensions"].(bool); ok {
+		o.FlattenMultivaluedDimensions = &FlattenMultivaluedDimensions
+	}
+	
+	if Views, ok := UseraggregationqueryMap["views"].([]interface{}); ok {
+		ViewsString, _ := json.Marshal(Views)
+		json.Unmarshal(ViewsString, &o.Views)
+	}
+	
+	if AlternateTimeDimension, ok := UseraggregationqueryMap["alternateTimeDimension"].(string); ok {
+		o.AlternateTimeDimension = &AlternateTimeDimension
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Voicemailretentionpolicy struct {
 
 }
 
-func (u *Voicemailretentionpolicy) MarshalJSON() ([]byte, error) {
+func (o *Voicemailretentionpolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailretentionpolicy
-
 	
-
 	return json.Marshal(&struct { 
 		VoicemailRetentionPolicyType *string `json:"voicemailRetentionPolicyType,omitempty"`
 		
 		NumberOfDays *int `json:"numberOfDays,omitempty"`
 		*Alias
 	}{ 
-		VoicemailRetentionPolicyType: u.VoicemailRetentionPolicyType,
+		VoicemailRetentionPolicyType: o.VoicemailRetentionPolicyType,
 		
-		NumberOfDays: u.NumberOfDays,
-		Alias:    (*Alias)(u),
+		NumberOfDays: o.NumberOfDays,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailretentionpolicy) UnmarshalJSON(b []byte) error {
+	var VoicemailretentionpolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailretentionpolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if VoicemailRetentionPolicyType, ok := VoicemailretentionpolicyMap["voicemailRetentionPolicyType"].(string); ok {
+		o.VoicemailRetentionPolicyType = &VoicemailRetentionPolicyType
+	}
+	
+	if NumberOfDays, ok := VoicemailretentionpolicyMap["numberOfDays"].(float64); ok {
+		NumberOfDaysInt := int(NumberOfDays)
+		o.NumberOfDays = &NumberOfDaysInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

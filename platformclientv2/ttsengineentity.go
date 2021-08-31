@@ -41,13 +41,11 @@ type Ttsengineentity struct {
 
 }
 
-func (u *Ttsengineentity) MarshalJSON() ([]byte, error) {
+func (o *Ttsengineentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ttsengineentity
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Ttsengineentity) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		OutputFormats: u.OutputFormats,
+		OutputFormats: o.OutputFormats,
 		
-		Voices: u.Voices,
+		Voices: o.Voices,
 		
-		IsDefault: u.IsDefault,
+		IsDefault: o.IsDefault,
 		
-		IsSecure: u.IsSecure,
+		IsSecure: o.IsSecure,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ttsengineentity) UnmarshalJSON(b []byte) error {
+	var TtsengineentityMap map[string]interface{}
+	err := json.Unmarshal(b, &TtsengineentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TtsengineentityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TtsengineentityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Languages, ok := TtsengineentityMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if OutputFormats, ok := TtsengineentityMap["outputFormats"].([]interface{}); ok {
+		OutputFormatsString, _ := json.Marshal(OutputFormats)
+		json.Unmarshal(OutputFormatsString, &o.OutputFormats)
+	}
+	
+	if Voices, ok := TtsengineentityMap["voices"].([]interface{}); ok {
+		VoicesString, _ := json.Marshal(Voices)
+		json.Unmarshal(VoicesString, &o.Voices)
+	}
+	
+	if IsDefault, ok := TtsengineentityMap["isDefault"].(bool); ok {
+		o.IsDefault = &IsDefault
+	}
+	
+	if IsSecure, ok := TtsengineentityMap["isSecure"].(bool); ok {
+		o.IsSecure = &IsSecure
+	}
+	
+	if SelfUri, ok := TtsengineentityMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

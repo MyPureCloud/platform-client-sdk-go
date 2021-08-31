@@ -13,20 +13,34 @@ type Buforecastgenerationresult struct {
 
 }
 
-func (u *Buforecastgenerationresult) MarshalJSON() ([]byte, error) {
+func (o *Buforecastgenerationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buforecastgenerationresult
-
 	
-
 	return json.Marshal(&struct { 
 		PlanningGroupResults *[]Buforecastgenerationplanninggroupresult `json:"planningGroupResults,omitempty"`
 		*Alias
 	}{ 
-		PlanningGroupResults: u.PlanningGroupResults,
-		Alias:    (*Alias)(u),
+		PlanningGroupResults: o.PlanningGroupResults,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buforecastgenerationresult) UnmarshalJSON(b []byte) error {
+	var BuforecastgenerationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BuforecastgenerationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if PlanningGroupResults, ok := BuforecastgenerationresultMap["planningGroupResults"].([]interface{}); ok {
+		PlanningGroupResultsString, _ := json.Marshal(PlanningGroupResults)
+		json.Unmarshal(PlanningGroupResultsString, &o.PlanningGroupResults)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

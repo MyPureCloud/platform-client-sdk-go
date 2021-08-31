@@ -30,27 +30,25 @@ type Education struct {
 
 }
 
-func (u *Education) MarshalJSON() ([]byte, error) {
+func (o *Education) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Education
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%d")
+	if o.DateStart != nil {
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%d")
 	} else {
 		DateStart = nil
 	}
 	
 	DateEnd := new(string)
-	if u.DateEnd != nil {
-		*DateEnd = timeutil.Strftime(u.DateEnd, "%Y-%m-%d")
+	if o.DateEnd != nil {
+		*DateEnd = timeutil.Strftime(o.DateEnd, "%Y-%m-%d")
 	} else {
 		DateEnd = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		School *string `json:"school,omitempty"`
 		
@@ -63,17 +61,50 @@ func (u *Education) MarshalJSON() ([]byte, error) {
 		DateEnd *string `json:"dateEnd,omitempty"`
 		*Alias
 	}{ 
-		School: u.School,
+		School: o.School,
 		
-		FieldOfStudy: u.FieldOfStudy,
+		FieldOfStudy: o.FieldOfStudy,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
 		DateStart: DateStart,
 		
 		DateEnd: DateEnd,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Education) UnmarshalJSON(b []byte) error {
+	var EducationMap map[string]interface{}
+	err := json.Unmarshal(b, &EducationMap)
+	if err != nil {
+		return err
+	}
+	
+	if School, ok := EducationMap["school"].(string); ok {
+		o.School = &School
+	}
+	
+	if FieldOfStudy, ok := EducationMap["fieldOfStudy"].(string); ok {
+		o.FieldOfStudy = &FieldOfStudy
+	}
+	
+	if Notes, ok := EducationMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if dateStartString, ok := EducationMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if dateEndString, ok := EducationMap["dateEnd"].(string); ok {
+		DateEnd, _ := time.Parse("2006-01-02", dateEndString)
+		o.DateEnd = &DateEnd
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Scimserviceproviderconfigfilterfeature struct {
 
 }
 
-func (u *Scimserviceproviderconfigfilterfeature) MarshalJSON() ([]byte, error) {
+func (o *Scimserviceproviderconfigfilterfeature) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimserviceproviderconfigfilterfeature
-
 	
-
 	return json.Marshal(&struct { 
 		Supported *bool `json:"supported,omitempty"`
 		
 		MaxResults *int `json:"maxResults,omitempty"`
 		*Alias
 	}{ 
-		Supported: u.Supported,
+		Supported: o.Supported,
 		
-		MaxResults: u.MaxResults,
-		Alias:    (*Alias)(u),
+		MaxResults: o.MaxResults,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimserviceproviderconfigfilterfeature) UnmarshalJSON(b []byte) error {
+	var ScimserviceproviderconfigfilterfeatureMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimserviceproviderconfigfilterfeatureMap)
+	if err != nil {
+		return err
+	}
+	
+	if Supported, ok := ScimserviceproviderconfigfilterfeatureMap["supported"].(bool); ok {
+		o.Supported = &Supported
+	}
+	
+	if MaxResults, ok := ScimserviceproviderconfigfilterfeatureMap["maxResults"].(float64); ok {
+		MaxResultsInt := int(MaxResults)
+		o.MaxResults = &MaxResultsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

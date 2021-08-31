@@ -33,13 +33,11 @@ type Recordingtranscodecompletetopicrecording struct {
 
 }
 
-func (u *Recordingtranscodecompletetopicrecording) MarshalJSON() ([]byte, error) {
+func (o *Recordingtranscodecompletetopicrecording) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingtranscodecompletetopicrecording
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Recordingtranscodecompletetopicrecording) MarshalJSON() ([]byte, error)
 		ActualTranscodeTimeMs *float32 `json:"actualTranscodeTimeMs,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		FileState: u.FileState,
+		FileState: o.FileState,
 		
-		MediaUris: u.MediaUris,
+		MediaUris: o.MediaUris,
 		
-		EstimatedTranscodeTimeMs: u.EstimatedTranscodeTimeMs,
+		EstimatedTranscodeTimeMs: o.EstimatedTranscodeTimeMs,
 		
-		ActualTranscodeTimeMs: u.ActualTranscodeTimeMs,
-		Alias:    (*Alias)(u),
+		ActualTranscodeTimeMs: o.ActualTranscodeTimeMs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingtranscodecompletetopicrecording) UnmarshalJSON(b []byte) error {
+	var RecordingtranscodecompletetopicrecordingMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingtranscodecompletetopicrecordingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RecordingtranscodecompletetopicrecordingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ConversationId, ok := RecordingtranscodecompletetopicrecordingMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if FileState, ok := RecordingtranscodecompletetopicrecordingMap["fileState"].(string); ok {
+		o.FileState = &FileState
+	}
+	
+	if MediaUris, ok := RecordingtranscodecompletetopicrecordingMap["mediaUris"].([]interface{}); ok {
+		MediaUrisString, _ := json.Marshal(MediaUris)
+		json.Unmarshal(MediaUrisString, &o.MediaUris)
+	}
+	
+	if EstimatedTranscodeTimeMs, ok := RecordingtranscodecompletetopicrecordingMap["estimatedTranscodeTimeMs"].(float64); ok {
+		EstimatedTranscodeTimeMsFloat32 := float32(EstimatedTranscodeTimeMs)
+		o.EstimatedTranscodeTimeMs = &EstimatedTranscodeTimeMsFloat32
+	}
+	
+	if ActualTranscodeTimeMs, ok := RecordingtranscodecompletetopicrecordingMap["actualTranscodeTimeMs"].(float64); ok {
+		ActualTranscodeTimeMsFloat32 := float32(ActualTranscodeTimeMs)
+		o.ActualTranscodeTimeMs = &ActualTranscodeTimeMsFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

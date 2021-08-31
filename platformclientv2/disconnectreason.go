@@ -21,13 +21,11 @@ type Disconnectreason struct {
 
 }
 
-func (u *Disconnectreason) MarshalJSON() ([]byte, error) {
+func (o *Disconnectreason) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Disconnectreason
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Disconnectreason) MarshalJSON() ([]byte, error) {
 		Phrase *string `json:"phrase,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		Phrase: u.Phrase,
-		Alias:    (*Alias)(u),
+		Phrase: o.Phrase,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Disconnectreason) UnmarshalJSON(b []byte) error {
+	var DisconnectreasonMap map[string]interface{}
+	err := json.Unmarshal(b, &DisconnectreasonMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := DisconnectreasonMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Code, ok := DisconnectreasonMap["code"].(float64); ok {
+		CodeInt := int(Code)
+		o.Code = &CodeInt
+	}
+	
+	if Phrase, ok := DisconnectreasonMap["phrase"].(string); ok {
+		o.Phrase = &Phrase
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

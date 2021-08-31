@@ -17,24 +17,42 @@ type Mediaresult struct {
 
 }
 
-func (u *Mediaresult) MarshalJSON() ([]byte, error) {
+func (o *Mediaresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediaresult
-
 	
-
 	return json.Marshal(&struct { 
 		MediaUri *string `json:"mediaUri,omitempty"`
 		
 		WaveformData *[]float32 `json:"waveformData,omitempty"`
 		*Alias
 	}{ 
-		MediaUri: u.MediaUri,
+		MediaUri: o.MediaUri,
 		
-		WaveformData: u.WaveformData,
-		Alias:    (*Alias)(u),
+		WaveformData: o.WaveformData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediaresult) UnmarshalJSON(b []byte) error {
+	var MediaresultMap map[string]interface{}
+	err := json.Unmarshal(b, &MediaresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if MediaUri, ok := MediaresultMap["mediaUri"].(string); ok {
+		o.MediaUri = &MediaUri
+	}
+	
+	if WaveformData, ok := MediaresultMap["waveformData"].([]interface{}); ok {
+		WaveformDataString, _ := json.Marshal(WaveformData)
+		json.Unmarshal(WaveformDataString, &o.WaveformData)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

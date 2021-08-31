@@ -25,13 +25,11 @@ type Architectpromptnotificationpromptnotification struct {
 
 }
 
-func (u *Architectpromptnotificationpromptnotification) MarshalJSON() ([]byte, error) {
+func (o *Architectpromptnotificationpromptnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectpromptnotificationpromptnotification
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Architectpromptnotificationpromptnotification) MarshalJSON() ([]byte, e
 		CurrentOperation *Architectpromptnotificationarchitectoperation `json:"currentOperation,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		CurrentOperation: u.CurrentOperation,
-		Alias:    (*Alias)(u),
+		CurrentOperation: o.CurrentOperation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectpromptnotificationpromptnotification) UnmarshalJSON(b []byte) error {
+	var ArchitectpromptnotificationpromptnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectpromptnotificationpromptnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectpromptnotificationpromptnotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ArchitectpromptnotificationpromptnotificationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ArchitectpromptnotificationpromptnotificationMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if CurrentOperation, ok := ArchitectpromptnotificationpromptnotificationMap["currentOperation"].(map[string]interface{}); ok {
+		CurrentOperationString, _ := json.Marshal(CurrentOperation)
+		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Userdetailsquery struct {
 
 }
 
-func (u *Userdetailsquery) MarshalJSON() ([]byte, error) {
+func (o *Userdetailsquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userdetailsquery
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -66,23 +64,72 @@ func (u *Userdetailsquery) MarshalJSON() ([]byte, error) {
 		Paging *Pagingspec `json:"paging,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		UserFilters: u.UserFilters,
+		UserFilters: o.UserFilters,
 		
-		PresenceFilters: u.PresenceFilters,
+		PresenceFilters: o.PresenceFilters,
 		
-		RoutingStatusFilters: u.RoutingStatusFilters,
+		RoutingStatusFilters: o.RoutingStatusFilters,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		PresenceAggregations: u.PresenceAggregations,
+		PresenceAggregations: o.PresenceAggregations,
 		
-		RoutingStatusAggregations: u.RoutingStatusAggregations,
+		RoutingStatusAggregations: o.RoutingStatusAggregations,
 		
-		Paging: u.Paging,
-		Alias:    (*Alias)(u),
+		Paging: o.Paging,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userdetailsquery) UnmarshalJSON(b []byte) error {
+	var UserdetailsqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &UserdetailsqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := UserdetailsqueryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if UserFilters, ok := UserdetailsqueryMap["userFilters"].([]interface{}); ok {
+		UserFiltersString, _ := json.Marshal(UserFilters)
+		json.Unmarshal(UserFiltersString, &o.UserFilters)
+	}
+	
+	if PresenceFilters, ok := UserdetailsqueryMap["presenceFilters"].([]interface{}); ok {
+		PresenceFiltersString, _ := json.Marshal(PresenceFilters)
+		json.Unmarshal(PresenceFiltersString, &o.PresenceFilters)
+	}
+	
+	if RoutingStatusFilters, ok := UserdetailsqueryMap["routingStatusFilters"].([]interface{}); ok {
+		RoutingStatusFiltersString, _ := json.Marshal(RoutingStatusFilters)
+		json.Unmarshal(RoutingStatusFiltersString, &o.RoutingStatusFilters)
+	}
+	
+	if Order, ok := UserdetailsqueryMap["order"].(string); ok {
+		o.Order = &Order
+	}
+	
+	if PresenceAggregations, ok := UserdetailsqueryMap["presenceAggregations"].([]interface{}); ok {
+		PresenceAggregationsString, _ := json.Marshal(PresenceAggregations)
+		json.Unmarshal(PresenceAggregationsString, &o.PresenceAggregations)
+	}
+	
+	if RoutingStatusAggregations, ok := UserdetailsqueryMap["routingStatusAggregations"].([]interface{}); ok {
+		RoutingStatusAggregationsString, _ := json.Marshal(RoutingStatusAggregations)
+		json.Unmarshal(RoutingStatusAggregationsString, &o.RoutingStatusAggregations)
+	}
+	
+	if Paging, ok := UserdetailsqueryMap["paging"].(map[string]interface{}); ok {
+		PagingString, _ := json.Marshal(Paging)
+		json.Unmarshal(PagingString, &o.Paging)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

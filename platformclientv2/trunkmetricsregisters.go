@@ -26,21 +26,19 @@ type Trunkmetricsregisters struct {
 
 }
 
-func (u *Trunkmetricsregisters) MarshalJSON() ([]byte, error) {
+func (o *Trunkmetricsregisters) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkmetricsregisters
-
 	
 	RegisterStateTime := new(string)
-	if u.RegisterStateTime != nil {
+	if o.RegisterStateTime != nil {
 		
-		*RegisterStateTime = timeutil.Strftime(u.RegisterStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RegisterStateTime = timeutil.Strftime(o.RegisterStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RegisterStateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ProxyAddress *string `json:"proxyAddress,omitempty"`
 		
@@ -51,15 +49,44 @@ func (u *Trunkmetricsregisters) MarshalJSON() ([]byte, error) {
 		ErrorInfo *Trunkerrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		ProxyAddress: u.ProxyAddress,
+		ProxyAddress: o.ProxyAddress,
 		
-		RegisterState: u.RegisterState,
+		RegisterState: o.RegisterState,
 		
 		RegisterStateTime: RegisterStateTime,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkmetricsregisters) UnmarshalJSON(b []byte) error {
+	var TrunkmetricsregistersMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkmetricsregistersMap)
+	if err != nil {
+		return err
+	}
+	
+	if ProxyAddress, ok := TrunkmetricsregistersMap["proxyAddress"].(string); ok {
+		o.ProxyAddress = &ProxyAddress
+	}
+	
+	if RegisterState, ok := TrunkmetricsregistersMap["registerState"].(bool); ok {
+		o.RegisterState = &RegisterState
+	}
+	
+	if registerStateTimeString, ok := TrunkmetricsregistersMap["registerStateTime"].(string); ok {
+		RegisterStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", registerStateTimeString)
+		o.RegisterStateTime = &RegisterStateTime
+	}
+	
+	if ErrorInfo, ok := TrunkmetricsregistersMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

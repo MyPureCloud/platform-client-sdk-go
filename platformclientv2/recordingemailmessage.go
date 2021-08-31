@@ -50,21 +50,19 @@ type Recordingemailmessage struct {
 
 }
 
-func (u *Recordingemailmessage) MarshalJSON() ([]byte, error) {
+func (o *Recordingemailmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingemailmessage
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		HtmlBody *string `json:"htmlBody,omitempty"`
 		
@@ -87,27 +85,84 @@ func (u *Recordingemailmessage) MarshalJSON() ([]byte, error) {
 		Time *string `json:"time,omitempty"`
 		*Alias
 	}{ 
-		HtmlBody: u.HtmlBody,
+		HtmlBody: o.HtmlBody,
 		
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		To: u.To,
+		To: o.To,
 		
-		Cc: u.Cc,
+		Cc: o.Cc,
 		
-		Bcc: u.Bcc,
+		Bcc: o.Bcc,
 		
-		From: u.From,
+		From: o.From,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
-		Attachments: u.Attachments,
+		Attachments: o.Attachments,
 		
 		Time: Time,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingemailmessage) UnmarshalJSON(b []byte) error {
+	var RecordingemailmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingemailmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if HtmlBody, ok := RecordingemailmessageMap["htmlBody"].(string); ok {
+		o.HtmlBody = &HtmlBody
+	}
+	
+	if TextBody, ok := RecordingemailmessageMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if Id, ok := RecordingemailmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if To, ok := RecordingemailmessageMap["to"].([]interface{}); ok {
+		ToString, _ := json.Marshal(To)
+		json.Unmarshal(ToString, &o.To)
+	}
+	
+	if Cc, ok := RecordingemailmessageMap["cc"].([]interface{}); ok {
+		CcString, _ := json.Marshal(Cc)
+		json.Unmarshal(CcString, &o.Cc)
+	}
+	
+	if Bcc, ok := RecordingemailmessageMap["bcc"].([]interface{}); ok {
+		BccString, _ := json.Marshal(Bcc)
+		json.Unmarshal(BccString, &o.Bcc)
+	}
+	
+	if From, ok := RecordingemailmessageMap["from"].(map[string]interface{}); ok {
+		FromString, _ := json.Marshal(From)
+		json.Unmarshal(FromString, &o.From)
+	}
+	
+	if Subject, ok := RecordingemailmessageMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+	if Attachments, ok := RecordingemailmessageMap["attachments"].([]interface{}); ok {
+		AttachmentsString, _ := json.Marshal(Attachments)
+		json.Unmarshal(AttachmentsString, &o.Attachments)
+	}
+	
+	if timeString, ok := RecordingemailmessageMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

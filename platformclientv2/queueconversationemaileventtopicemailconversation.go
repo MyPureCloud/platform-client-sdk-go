@@ -25,13 +25,11 @@ type Queueconversationemaileventtopicemailconversation struct {
 
 }
 
-func (u *Queueconversationemaileventtopicemailconversation) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationemaileventtopicemailconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationemaileventtopicemailconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Queueconversationemaileventtopicemailconversation) MarshalJSON() ([]byt
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
-		Alias:    (*Alias)(u),
+		OtherMediaUris: o.OtherMediaUris,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationemaileventtopicemailconversation) UnmarshalJSON(b []byte) error {
+	var QueueconversationemaileventtopicemailconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationemaileventtopicemailconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationemaileventtopicemailconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := QueueconversationemaileventtopicemailconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := QueueconversationemaileventtopicemailconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := QueueconversationemaileventtopicemailconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

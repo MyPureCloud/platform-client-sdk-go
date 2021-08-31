@@ -21,13 +21,11 @@ type Billingusage struct {
 
 }
 
-func (u *Billingusage) MarshalJSON() ([]byte, error) {
+func (o *Billingusage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Billingusage
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Billingusage) MarshalJSON() ([]byte, error) {
 		Resources *[]Billingusageresource `json:"resources,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		TotalUsage: u.TotalUsage,
+		TotalUsage: o.TotalUsage,
 		
-		Resources: u.Resources,
-		Alias:    (*Alias)(u),
+		Resources: o.Resources,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Billingusage) UnmarshalJSON(b []byte) error {
+	var BillingusageMap map[string]interface{}
+	err := json.Unmarshal(b, &BillingusageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := BillingusageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if TotalUsage, ok := BillingusageMap["totalUsage"].(string); ok {
+		o.TotalUsage = &TotalUsage
+	}
+	
+	if Resources, ok := BillingusageMap["resources"].([]interface{}); ok {
+		ResourcesString, _ := json.Marshal(Resources)
+		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

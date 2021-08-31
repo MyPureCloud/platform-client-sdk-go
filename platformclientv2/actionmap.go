@@ -82,45 +82,43 @@ type Actionmap struct {
 
 }
 
-func (u *Actionmap) MarshalJSON() ([]byte, error) {
+func (o *Actionmap) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actionmap
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -159,33 +157,33 @@ func (u *Actionmap) MarshalJSON() ([]byte, error) {
 		EndDate *string `json:"endDate,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		IsActive: u.IsActive,
+		IsActive: o.IsActive,
 		
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		TriggerWithSegments: u.TriggerWithSegments,
+		TriggerWithSegments: o.TriggerWithSegments,
 		
-		TriggerWithEventConditions: u.TriggerWithEventConditions,
+		TriggerWithEventConditions: o.TriggerWithEventConditions,
 		
-		TriggerWithOutcomeProbabilityConditions: u.TriggerWithOutcomeProbabilityConditions,
+		TriggerWithOutcomeProbabilityConditions: o.TriggerWithOutcomeProbabilityConditions,
 		
-		PageUrlConditions: u.PageUrlConditions,
+		PageUrlConditions: o.PageUrlConditions,
 		
-		Activation: u.Activation,
+		Activation: o.Activation,
 		
-		Weight: u.Weight,
+		Weight: o.Weight,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		ActionMapScheduleGroups: u.ActionMapScheduleGroups,
+		ActionMapScheduleGroups: o.ActionMapScheduleGroups,
 		
-		IgnoreFrequencyCap: u.IgnoreFrequencyCap,
+		IgnoreFrequencyCap: o.IgnoreFrequencyCap,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
 		CreatedDate: CreatedDate,
 		
@@ -194,8 +192,104 @@ func (u *Actionmap) MarshalJSON() ([]byte, error) {
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actionmap) UnmarshalJSON(b []byte) error {
+	var ActionmapMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionmapMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ActionmapMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Version, ok := ActionmapMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if IsActive, ok := ActionmapMap["isActive"].(bool); ok {
+		o.IsActive = &IsActive
+	}
+	
+	if DisplayName, ok := ActionmapMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if TriggerWithSegments, ok := ActionmapMap["triggerWithSegments"].([]interface{}); ok {
+		TriggerWithSegmentsString, _ := json.Marshal(TriggerWithSegments)
+		json.Unmarshal(TriggerWithSegmentsString, &o.TriggerWithSegments)
+	}
+	
+	if TriggerWithEventConditions, ok := ActionmapMap["triggerWithEventConditions"].([]interface{}); ok {
+		TriggerWithEventConditionsString, _ := json.Marshal(TriggerWithEventConditions)
+		json.Unmarshal(TriggerWithEventConditionsString, &o.TriggerWithEventConditions)
+	}
+	
+	if TriggerWithOutcomeProbabilityConditions, ok := ActionmapMap["triggerWithOutcomeProbabilityConditions"].([]interface{}); ok {
+		TriggerWithOutcomeProbabilityConditionsString, _ := json.Marshal(TriggerWithOutcomeProbabilityConditions)
+		json.Unmarshal(TriggerWithOutcomeProbabilityConditionsString, &o.TriggerWithOutcomeProbabilityConditions)
+	}
+	
+	if PageUrlConditions, ok := ActionmapMap["pageUrlConditions"].([]interface{}); ok {
+		PageUrlConditionsString, _ := json.Marshal(PageUrlConditions)
+		json.Unmarshal(PageUrlConditionsString, &o.PageUrlConditions)
+	}
+	
+	if Activation, ok := ActionmapMap["activation"].(map[string]interface{}); ok {
+		ActivationString, _ := json.Marshal(Activation)
+		json.Unmarshal(ActivationString, &o.Activation)
+	}
+	
+	if Weight, ok := ActionmapMap["weight"].(float64); ok {
+		WeightInt := int(Weight)
+		o.Weight = &WeightInt
+	}
+	
+	if Action, ok := ActionmapMap["action"].(map[string]interface{}); ok {
+		ActionString, _ := json.Marshal(Action)
+		json.Unmarshal(ActionString, &o.Action)
+	}
+	
+	if ActionMapScheduleGroups, ok := ActionmapMap["actionMapScheduleGroups"].(map[string]interface{}); ok {
+		ActionMapScheduleGroupsString, _ := json.Marshal(ActionMapScheduleGroups)
+		json.Unmarshal(ActionMapScheduleGroupsString, &o.ActionMapScheduleGroups)
+	}
+	
+	if IgnoreFrequencyCap, ok := ActionmapMap["ignoreFrequencyCap"].(bool); ok {
+		o.IgnoreFrequencyCap = &IgnoreFrequencyCap
+	}
+	
+	if SelfUri, ok := ActionmapMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if createdDateString, ok := ActionmapMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := ActionmapMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if startDateString, ok := ActionmapMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := ActionmapMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

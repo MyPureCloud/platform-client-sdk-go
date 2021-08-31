@@ -25,13 +25,11 @@ type Flowexecutionlaunchrequest struct {
 
 }
 
-func (u *Flowexecutionlaunchrequest) MarshalJSON() ([]byte, error) {
+func (o *Flowexecutionlaunchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowexecutionlaunchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		FlowId *string `json:"flowId,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Flowexecutionlaunchrequest) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		FlowId: u.FlowId,
+		FlowId: o.FlowId,
 		
-		FlowVersion: u.FlowVersion,
+		FlowVersion: o.FlowVersion,
 		
-		InputData: u.InputData,
+		InputData: o.InputData,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowexecutionlaunchrequest) UnmarshalJSON(b []byte) error {
+	var FlowexecutionlaunchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowexecutionlaunchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if FlowId, ok := FlowexecutionlaunchrequestMap["flowId"].(string); ok {
+		o.FlowId = &FlowId
+	}
+	
+	if FlowVersion, ok := FlowexecutionlaunchrequestMap["flowVersion"].(string); ok {
+		o.FlowVersion = &FlowVersion
+	}
+	
+	if InputData, ok := FlowexecutionlaunchrequestMap["inputData"].(map[string]interface{}); ok {
+		InputDataString, _ := json.Marshal(InputData)
+		json.Unmarshal(InputDataString, &o.InputData)
+	}
+	
+	if Name, ok := FlowexecutionlaunchrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

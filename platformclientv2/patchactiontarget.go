@@ -29,13 +29,11 @@ type Patchactiontarget struct {
 
 }
 
-func (u *Patchactiontarget) MarshalJSON() ([]byte, error) {
+func (o *Patchactiontarget) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchactiontarget
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Patchactiontarget) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ServiceLevel: u.ServiceLevel,
+		ServiceLevel: o.ServiceLevel,
 		
-		ShortAbandonThreshold: u.ShortAbandonThreshold,
+		ShortAbandonThreshold: o.ShortAbandonThreshold,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchactiontarget) UnmarshalJSON(b []byte) error {
+	var PatchactiontargetMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchactiontargetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PatchactiontargetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PatchactiontargetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ServiceLevel, ok := PatchactiontargetMap["serviceLevel"].(map[string]interface{}); ok {
+		ServiceLevelString, _ := json.Marshal(ServiceLevel)
+		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
+	}
+	
+	if ShortAbandonThreshold, ok := PatchactiontargetMap["shortAbandonThreshold"].(float64); ok {
+		ShortAbandonThresholdInt := int(ShortAbandonThreshold)
+		o.ShortAbandonThreshold = &ShortAbandonThresholdInt
+	}
+	
+	if SelfUri, ok := PatchactiontargetMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

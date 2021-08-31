@@ -17,24 +17,41 @@ type Gdprjourneycustomer struct {
 
 }
 
-func (u *Gdprjourneycustomer) MarshalJSON() ([]byte, error) {
+func (o *Gdprjourneycustomer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gdprjourneycustomer
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gdprjourneycustomer) UnmarshalJSON(b []byte) error {
+	var GdprjourneycustomerMap map[string]interface{}
+	err := json.Unmarshal(b, &GdprjourneycustomerMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := GdprjourneycustomerMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Id, ok := GdprjourneycustomerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

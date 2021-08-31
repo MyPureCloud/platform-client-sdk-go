@@ -66,21 +66,19 @@ type Group struct {
 
 }
 
-func (u *Group) MarshalJSON() ([]byte, error) {
+func (o *Group) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Group
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -111,35 +109,108 @@ func (u *Group) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
 		DateModified: DateModified,
 		
-		MemberCount: u.MemberCount,
+		MemberCount: o.MemberCount,
 		
-		State: u.State,
+		State: o.State,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		RulesVisible: u.RulesVisible,
+		RulesVisible: o.RulesVisible,
 		
-		Visibility: u.Visibility,
+		Visibility: o.Visibility,
 		
-		Owners: u.Owners,
+		Owners: o.Owners,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Group) UnmarshalJSON(b []byte) error {
+	var GroupMap map[string]interface{}
+	err := json.Unmarshal(b, &GroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := GroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := GroupMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if dateModifiedString, ok := GroupMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if MemberCount, ok := GroupMap["memberCount"].(float64); ok {
+		MemberCountInt := int(MemberCount)
+		o.MemberCount = &MemberCountInt
+	}
+	
+	if State, ok := GroupMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Version, ok := GroupMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if VarType, ok := GroupMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Images, ok := GroupMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
+	}
+	
+	if Addresses, ok := GroupMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if RulesVisible, ok := GroupMap["rulesVisible"].(bool); ok {
+		o.RulesVisible = &RulesVisible
+	}
+	
+	if Visibility, ok := GroupMap["visibility"].(string); ok {
+		o.Visibility = &Visibility
+	}
+	
+	if Owners, ok := GroupMap["owners"].([]interface{}); ok {
+		OwnersString, _ := json.Marshal(Owners)
+		json.Unmarshal(OwnersString, &o.Owners)
+	}
+	
+	if SelfUri, ok := GroupMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

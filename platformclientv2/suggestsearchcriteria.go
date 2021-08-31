@@ -41,13 +41,11 @@ type Suggestsearchcriteria struct {
 
 }
 
-func (u *Suggestsearchcriteria) MarshalJSON() ([]byte, error) {
+func (o *Suggestsearchcriteria) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Suggestsearchcriteria
-
 	
-
 	return json.Marshal(&struct { 
 		EndValue *string `json:"endValue,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Suggestsearchcriteria) MarshalJSON() ([]byte, error) {
 		DateFormat *string `json:"dateFormat,omitempty"`
 		*Alias
 	}{ 
-		EndValue: u.EndValue,
+		EndValue: o.EndValue,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		StartValue: u.StartValue,
+		StartValue: o.StartValue,
 		
-		Fields: u.Fields,
+		Fields: o.Fields,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		DateFormat: u.DateFormat,
-		Alias:    (*Alias)(u),
+		DateFormat: o.DateFormat,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Suggestsearchcriteria) UnmarshalJSON(b []byte) error {
+	var SuggestsearchcriteriaMap map[string]interface{}
+	err := json.Unmarshal(b, &SuggestsearchcriteriaMap)
+	if err != nil {
+		return err
+	}
+	
+	if EndValue, ok := SuggestsearchcriteriaMap["endValue"].(string); ok {
+		o.EndValue = &EndValue
+	}
+	
+	if Values, ok := SuggestsearchcriteriaMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if StartValue, ok := SuggestsearchcriteriaMap["startValue"].(string); ok {
+		o.StartValue = &StartValue
+	}
+	
+	if Fields, ok := SuggestsearchcriteriaMap["fields"].([]interface{}); ok {
+		FieldsString, _ := json.Marshal(Fields)
+		json.Unmarshal(FieldsString, &o.Fields)
+	}
+	
+	if Value, ok := SuggestsearchcriteriaMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Operator, ok := SuggestsearchcriteriaMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Group, ok := SuggestsearchcriteriaMap["group"].([]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if DateFormat, ok := SuggestsearchcriteriaMap["dateFormat"].(string); ok {
+		o.DateFormat = &DateFormat
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

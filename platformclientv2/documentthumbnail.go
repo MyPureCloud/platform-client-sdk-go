@@ -25,13 +25,11 @@ type Documentthumbnail struct {
 
 }
 
-func (u *Documentthumbnail) MarshalJSON() ([]byte, error) {
+func (o *Documentthumbnail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentthumbnail
-
 	
-
 	return json.Marshal(&struct { 
 		Resolution *string `json:"resolution,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Documentthumbnail) MarshalJSON() ([]byte, error) {
 		Width *int `json:"width,omitempty"`
 		*Alias
 	}{ 
-		Resolution: u.Resolution,
+		Resolution: o.Resolution,
 		
-		ImageUri: u.ImageUri,
+		ImageUri: o.ImageUri,
 		
-		Height: u.Height,
+		Height: o.Height,
 		
-		Width: u.Width,
-		Alias:    (*Alias)(u),
+		Width: o.Width,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentthumbnail) UnmarshalJSON(b []byte) error {
+	var DocumentthumbnailMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentthumbnailMap)
+	if err != nil {
+		return err
+	}
+	
+	if Resolution, ok := DocumentthumbnailMap["resolution"].(string); ok {
+		o.Resolution = &Resolution
+	}
+	
+	if ImageUri, ok := DocumentthumbnailMap["imageUri"].(string); ok {
+		o.ImageUri = &ImageUri
+	}
+	
+	if Height, ok := DocumentthumbnailMap["height"].(float64); ok {
+		HeightInt := int(Height)
+		o.Height = &HeightInt
+	}
+	
+	if Width, ok := DocumentthumbnailMap["width"].(float64); ok {
+		WidthInt := int(Width)
+		o.Width = &WidthInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

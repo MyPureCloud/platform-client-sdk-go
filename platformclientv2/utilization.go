@@ -13,20 +13,34 @@ type Utilization struct {
 
 }
 
-func (u *Utilization) MarshalJSON() ([]byte, error) {
+func (o *Utilization) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Utilization
-
 	
-
 	return json.Marshal(&struct { 
 		Utilization *map[string]Mediautilization `json:"utilization,omitempty"`
 		*Alias
 	}{ 
-		Utilization: u.Utilization,
-		Alias:    (*Alias)(u),
+		Utilization: o.Utilization,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Utilization) UnmarshalJSON(b []byte) error {
+	var UtilizationMap map[string]interface{}
+	err := json.Unmarshal(b, &UtilizationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Utilization, ok := UtilizationMap["utilization"].(map[string]interface{}); ok {
+		UtilizationString, _ := json.Marshal(Utilization)
+		json.Unmarshal(UtilizationString, &o.Utilization)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

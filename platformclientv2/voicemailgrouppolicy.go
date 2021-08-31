@@ -45,13 +45,11 @@ type Voicemailgrouppolicy struct {
 
 }
 
-func (u *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
+func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailgrouppolicy
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		GroupAlertType *string `json:"groupAlertType,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		SendEmailNotifications: u.SendEmailNotifications,
+		SendEmailNotifications: o.SendEmailNotifications,
 		
-		DisableEmailPii: u.DisableEmailPii,
+		DisableEmailPii: o.DisableEmailPii,
 		
-		RotateCallsSecs: u.RotateCallsSecs,
+		RotateCallsSecs: o.RotateCallsSecs,
 		
-		StopRingingAfterRotations: u.StopRingingAfterRotations,
+		StopRingingAfterRotations: o.StopRingingAfterRotations,
 		
-		OverflowGroupId: u.OverflowGroupId,
+		OverflowGroupId: o.OverflowGroupId,
 		
-		GroupAlertType: u.GroupAlertType,
-		Alias:    (*Alias)(u),
+		GroupAlertType: o.GroupAlertType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
+	var VoicemailgrouppolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailgrouppolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := VoicemailgrouppolicyMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Group, ok := VoicemailgrouppolicyMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if Enabled, ok := VoicemailgrouppolicyMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if SendEmailNotifications, ok := VoicemailgrouppolicyMap["sendEmailNotifications"].(bool); ok {
+		o.SendEmailNotifications = &SendEmailNotifications
+	}
+	
+	if DisableEmailPii, ok := VoicemailgrouppolicyMap["disableEmailPii"].(bool); ok {
+		o.DisableEmailPii = &DisableEmailPii
+	}
+	
+	if RotateCallsSecs, ok := VoicemailgrouppolicyMap["rotateCallsSecs"].(float64); ok {
+		RotateCallsSecsInt := int(RotateCallsSecs)
+		o.RotateCallsSecs = &RotateCallsSecsInt
+	}
+	
+	if StopRingingAfterRotations, ok := VoicemailgrouppolicyMap["stopRingingAfterRotations"].(float64); ok {
+		StopRingingAfterRotationsInt := int(StopRingingAfterRotations)
+		o.StopRingingAfterRotations = &StopRingingAfterRotationsInt
+	}
+	
+	if OverflowGroupId, ok := VoicemailgrouppolicyMap["overflowGroupId"].(string); ok {
+		o.OverflowGroupId = &OverflowGroupId
+	}
+	
+	if GroupAlertType, ok := VoicemailgrouppolicyMap["groupAlertType"].(string); ok {
+		o.GroupAlertType = &GroupAlertType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

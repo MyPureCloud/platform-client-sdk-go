@@ -21,13 +21,11 @@ type Agenttimeoffrequestpatch struct {
 
 }
 
-func (u *Agenttimeoffrequestpatch) MarshalJSON() ([]byte, error) {
+func (o *Agenttimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agenttimeoffrequestpatch
-
 	
-
 	return json.Marshal(&struct { 
 		MarkedAsRead *bool `json:"markedAsRead,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Agenttimeoffrequestpatch) MarshalJSON() ([]byte, error) {
 		Notes *string `json:"notes,omitempty"`
 		*Alias
 	}{ 
-		MarkedAsRead: u.MarkedAsRead,
+		MarkedAsRead: o.MarkedAsRead,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Notes: u.Notes,
-		Alias:    (*Alias)(u),
+		Notes: o.Notes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agenttimeoffrequestpatch) UnmarshalJSON(b []byte) error {
+	var AgenttimeoffrequestpatchMap map[string]interface{}
+	err := json.Unmarshal(b, &AgenttimeoffrequestpatchMap)
+	if err != nil {
+		return err
+	}
+	
+	if MarkedAsRead, ok := AgenttimeoffrequestpatchMap["markedAsRead"].(bool); ok {
+		o.MarkedAsRead = &MarkedAsRead
+	}
+	
+	if Status, ok := AgenttimeoffrequestpatchMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Notes, ok := AgenttimeoffrequestpatchMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

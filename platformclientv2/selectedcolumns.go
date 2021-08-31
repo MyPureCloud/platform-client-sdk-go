@@ -17,24 +17,42 @@ type Selectedcolumns struct {
 
 }
 
-func (u *Selectedcolumns) MarshalJSON() ([]byte, error) {
+func (o *Selectedcolumns) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Selectedcolumns
-
 	
-
 	return json.Marshal(&struct { 
 		ColumnOrder *int `json:"columnOrder,omitempty"`
 		
 		ColumnName *string `json:"columnName,omitempty"`
 		*Alias
 	}{ 
-		ColumnOrder: u.ColumnOrder,
+		ColumnOrder: o.ColumnOrder,
 		
-		ColumnName: u.ColumnName,
-		Alias:    (*Alias)(u),
+		ColumnName: o.ColumnName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Selectedcolumns) UnmarshalJSON(b []byte) error {
+	var SelectedcolumnsMap map[string]interface{}
+	err := json.Unmarshal(b, &SelectedcolumnsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ColumnOrder, ok := SelectedcolumnsMap["columnOrder"].(float64); ok {
+		ColumnOrderInt := int(ColumnOrder)
+		o.ColumnOrder = &ColumnOrderInt
+	}
+	
+	if ColumnName, ok := SelectedcolumnsMap["columnName"].(string); ok {
+		o.ColumnName = &ColumnName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

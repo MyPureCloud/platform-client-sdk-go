@@ -17,24 +17,42 @@ type Developmentactivityaggregatequeryresponsemetric struct {
 
 }
 
-func (u *Developmentactivityaggregatequeryresponsemetric) MarshalJSON() ([]byte, error) {
+func (o *Developmentactivityaggregatequeryresponsemetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Developmentactivityaggregatequeryresponsemetric
-
 	
-
 	return json.Marshal(&struct { 
 		Metric *string `json:"metric,omitempty"`
 		
 		Stats *Developmentactivityaggregatequeryresponsestatistics `json:"stats,omitempty"`
 		*Alias
 	}{ 
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Stats: u.Stats,
-		Alias:    (*Alias)(u),
+		Stats: o.Stats,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Developmentactivityaggregatequeryresponsemetric) UnmarshalJSON(b []byte) error {
+	var DevelopmentactivityaggregatequeryresponsemetricMap map[string]interface{}
+	err := json.Unmarshal(b, &DevelopmentactivityaggregatequeryresponsemetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metric, ok := DevelopmentactivityaggregatequeryresponsemetricMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Stats, ok := DevelopmentactivityaggregatequeryresponsemetricMap["stats"].(map[string]interface{}); ok {
+		StatsString, _ := json.Marshal(Stats)
+		json.Unmarshal(StatsString, &o.Stats)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

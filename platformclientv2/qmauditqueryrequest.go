@@ -21,13 +21,11 @@ type Qmauditqueryrequest struct {
 
 }
 
-func (u *Qmauditqueryrequest) MarshalJSON() ([]byte, error) {
+func (o *Qmauditqueryrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Qmauditqueryrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Qmauditqueryrequest) MarshalJSON() ([]byte, error) {
 		Sort *[]Auditquerysort `json:"sort,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Filters: u.Filters,
+		Filters: o.Filters,
 		
-		Sort: u.Sort,
-		Alias:    (*Alias)(u),
+		Sort: o.Sort,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Qmauditqueryrequest) UnmarshalJSON(b []byte) error {
+	var QmauditqueryrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &QmauditqueryrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := QmauditqueryrequestMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Filters, ok := QmauditqueryrequestMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if Sort, ok := QmauditqueryrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

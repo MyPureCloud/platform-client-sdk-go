@@ -46,29 +46,27 @@ type Coachingannotation struct {
 
 }
 
-func (u *Coachingannotation) MarshalJSON() ([]byte, error) {
+func (o *Coachingannotation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingannotation
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,76 @@ func (u *Coachingannotation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		IsDeleted: u.IsDeleted,
+		IsDeleted: o.IsDeleted,
 		
-		AccessType: u.AccessType,
+		AccessType: o.AccessType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingannotation) UnmarshalJSON(b []byte) error {
+	var CoachingannotationMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingannotationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CoachingannotationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if CreatedBy, ok := CoachingannotationMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := CoachingannotationMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ModifiedBy, ok := CoachingannotationMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := CoachingannotationMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Text, ok := CoachingannotationMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if IsDeleted, ok := CoachingannotationMap["isDeleted"].(bool); ok {
+		o.IsDeleted = &IsDeleted
+	}
+	
+	if AccessType, ok := CoachingannotationMap["accessType"].(string); ok {
+		o.AccessType = &AccessType
+	}
+	
+	if SelfUri, ok := CoachingannotationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

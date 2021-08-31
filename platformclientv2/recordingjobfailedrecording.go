@@ -17,24 +17,43 @@ type Recordingjobfailedrecording struct {
 
 }
 
-func (u *Recordingjobfailedrecording) MarshalJSON() ([]byte, error) {
+func (o *Recordingjobfailedrecording) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingjobfailedrecording
-
 	
-
 	return json.Marshal(&struct { 
 		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		
 		Recording *Addressableentityref `json:"recording,omitempty"`
 		*Alias
 	}{ 
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		Recording: u.Recording,
-		Alias:    (*Alias)(u),
+		Recording: o.Recording,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingjobfailedrecording) UnmarshalJSON(b []byte) error {
+	var RecordingjobfailedrecordingMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingjobfailedrecordingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Conversation, ok := RecordingjobfailedrecordingMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if Recording, ok := RecordingjobfailedrecordingMap["recording"].(map[string]interface{}); ok {
+		RecordingString, _ := json.Marshal(Recording)
+		json.Unmarshal(RecordingString, &o.Recording)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

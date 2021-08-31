@@ -29,13 +29,11 @@ type Createsharerequest struct {
 
 }
 
-func (u *Createsharerequest) MarshalJSON() ([]byte, error) {
+func (o *Createsharerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createsharerequest
-
 	
-
 	return json.Marshal(&struct { 
 		SharedEntityType *string `json:"sharedEntityType,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Createsharerequest) MarshalJSON() ([]byte, error) {
 		Members *[]Createsharerequestmember `json:"members,omitempty"`
 		*Alias
 	}{ 
-		SharedEntityType: u.SharedEntityType,
+		SharedEntityType: o.SharedEntityType,
 		
-		SharedEntity: u.SharedEntity,
+		SharedEntity: o.SharedEntity,
 		
-		MemberType: u.MemberType,
+		MemberType: o.MemberType,
 		
-		Member: u.Member,
+		Member: o.Member,
 		
-		Members: u.Members,
-		Alias:    (*Alias)(u),
+		Members: o.Members,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createsharerequest) UnmarshalJSON(b []byte) error {
+	var CreatesharerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatesharerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SharedEntityType, ok := CreatesharerequestMap["sharedEntityType"].(string); ok {
+		o.SharedEntityType = &SharedEntityType
+	}
+	
+	if SharedEntity, ok := CreatesharerequestMap["sharedEntity"].(map[string]interface{}); ok {
+		SharedEntityString, _ := json.Marshal(SharedEntity)
+		json.Unmarshal(SharedEntityString, &o.SharedEntity)
+	}
+	
+	if MemberType, ok := CreatesharerequestMap["memberType"].(string); ok {
+		o.MemberType = &MemberType
+	}
+	
+	if Member, ok := CreatesharerequestMap["member"].(map[string]interface{}); ok {
+		MemberString, _ := json.Marshal(Member)
+		json.Unmarshal(MemberString, &o.Member)
+	}
+	
+	if Members, ok := CreatesharerequestMap["members"].([]interface{}); ok {
+		MembersString, _ := json.Marshal(Members)
+		json.Unmarshal(MembersString, &o.Members)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Responsefilter struct {
 
 }
 
-func (u *Responsefilter) MarshalJSON() ([]byte, error) {
+func (o *Responsefilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Responsefilter
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Responsefilter) MarshalJSON() ([]byte, error) {
 		Values *[]string `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Responsefilter) UnmarshalJSON(b []byte) error {
+	var ResponsefilterMap map[string]interface{}
+	err := json.Unmarshal(b, &ResponsefilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ResponsefilterMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Operator, ok := ResponsefilterMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Values, ok := ResponsefilterMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

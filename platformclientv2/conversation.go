@@ -62,29 +62,27 @@ type Conversation struct {
 
 }
 
-func (u *Conversation) MarshalJSON() ([]byte, error) {
+func (o *Conversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversation
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,102 @@ func (u *Conversation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ExternalTag: u.ExternalTag,
+		ExternalTag: o.ExternalTag,
 		
 		StartTime: StartTime,
 		
 		EndTime: EndTime,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		ConversationIds: u.ConversationIds,
+		ConversationIds: o.ConversationIds,
 		
-		MaxParticipants: u.MaxParticipants,
+		MaxParticipants: o.MaxParticipants,
 		
-		RecordingState: u.RecordingState,
+		RecordingState: o.RecordingState,
 		
-		State: u.State,
+		State: o.State,
 		
-		Divisions: u.Divisions,
+		Divisions: o.Divisions,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversation) UnmarshalJSON(b []byte) error {
+	var ConversationMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ExternalTag, ok := ConversationMap["externalTag"].(string); ok {
+		o.ExternalTag = &ExternalTag
+	}
+	
+	if startTimeString, ok := ConversationMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := ConversationMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if Address, ok := ConversationMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if Participants, ok := ConversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if ConversationIds, ok := ConversationMap["conversationIds"].([]interface{}); ok {
+		ConversationIdsString, _ := json.Marshal(ConversationIds)
+		json.Unmarshal(ConversationIdsString, &o.ConversationIds)
+	}
+	
+	if MaxParticipants, ok := ConversationMap["maxParticipants"].(float64); ok {
+		MaxParticipantsInt := int(MaxParticipants)
+		o.MaxParticipants = &MaxParticipantsInt
+	}
+	
+	if RecordingState, ok := ConversationMap["recordingState"].(string); ok {
+		o.RecordingState = &RecordingState
+	}
+	
+	if State, ok := ConversationMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Divisions, ok := ConversationMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
+	if SelfUri, ok := ConversationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

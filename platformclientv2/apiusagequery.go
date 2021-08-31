@@ -25,13 +25,11 @@ type Apiusagequery struct {
 
 }
 
-func (u *Apiusagequery) MarshalJSON() ([]byte, error) {
+func (o *Apiusagequery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Apiusagequery
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Apiusagequery) MarshalJSON() ([]byte, error) {
 		Metrics *[]string `json:"metrics,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Granularity: u.Granularity,
+		Granularity: o.Granularity,
 		
-		GroupBy: u.GroupBy,
+		GroupBy: o.GroupBy,
 		
-		Metrics: u.Metrics,
-		Alias:    (*Alias)(u),
+		Metrics: o.Metrics,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Apiusagequery) UnmarshalJSON(b []byte) error {
+	var ApiusagequeryMap map[string]interface{}
+	err := json.Unmarshal(b, &ApiusagequeryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := ApiusagequeryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Granularity, ok := ApiusagequeryMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+	
+	if GroupBy, ok := ApiusagequeryMap["groupBy"].([]interface{}); ok {
+		GroupByString, _ := json.Marshal(GroupBy)
+		json.Unmarshal(GroupByString, &o.GroupBy)
+	}
+	
+	if Metrics, ok := ApiusagequeryMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

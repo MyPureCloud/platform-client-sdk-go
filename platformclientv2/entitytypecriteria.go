@@ -29,13 +29,11 @@ type Entitytypecriteria struct {
 
 }
 
-func (u *Entitytypecriteria) MarshalJSON() ([]byte, error) {
+func (o *Entitytypecriteria) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Entitytypecriteria
-
 	
-
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Entitytypecriteria) MarshalJSON() ([]byte, error) {
 		EntityType *string `json:"entityType,omitempty"`
 		*Alias
 	}{ 
-		Key: u.Key,
+		Key: o.Key,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		ShouldIgnoreCase: u.ShouldIgnoreCase,
+		ShouldIgnoreCase: o.ShouldIgnoreCase,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		EntityType: u.EntityType,
-		Alias:    (*Alias)(u),
+		EntityType: o.EntityType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Entitytypecriteria) UnmarshalJSON(b []byte) error {
+	var EntitytypecriteriaMap map[string]interface{}
+	err := json.Unmarshal(b, &EntitytypecriteriaMap)
+	if err != nil {
+		return err
+	}
+	
+	if Key, ok := EntitytypecriteriaMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Values, ok := EntitytypecriteriaMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if ShouldIgnoreCase, ok := EntitytypecriteriaMap["shouldIgnoreCase"].(bool); ok {
+		o.ShouldIgnoreCase = &ShouldIgnoreCase
+	}
+	
+	if Operator, ok := EntitytypecriteriaMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if EntityType, ok := EntitytypecriteriaMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

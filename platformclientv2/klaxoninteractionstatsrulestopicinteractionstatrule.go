@@ -65,13 +65,11 @@ type Klaxoninteractionstatsrulestopicinteractionstatrule struct {
 
 }
 
-func (u *Klaxoninteractionstatsrulestopicinteractionstatrule) MarshalJSON() ([]byte, error) {
+func (o *Klaxoninteractionstatsrulestopicinteractionstatrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Klaxoninteractionstatsrulestopicinteractionstatrule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,105 @@ func (u *Klaxoninteractionstatsrulestopicinteractionstatrule) MarshalJSON() ([]b
 		AlertTypes *[]string `json:"alertTypes,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		DimensionValue: u.DimensionValue,
+		DimensionValue: o.DimensionValue,
 		
-		DimensionValueName: u.DimensionValueName,
+		DimensionValueName: o.DimensionValueName,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		NumericRange: u.NumericRange,
+		NumericRange: o.NumericRange,
 		
-		Statistic: u.Statistic,
+		Statistic: o.Statistic,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		InAlarm: u.InAlarm,
+		InAlarm: o.InAlarm,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		NotificationUsers: u.NotificationUsers,
+		NotificationUsers: o.NotificationUsers,
 		
-		AlertTypes: u.AlertTypes,
-		Alias:    (*Alias)(u),
+		AlertTypes: o.AlertTypes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Klaxoninteractionstatsrulestopicinteractionstatrule) UnmarshalJSON(b []byte) error {
+	var KlaxoninteractionstatsrulestopicinteractionstatruleMap map[string]interface{}
+	err := json.Unmarshal(b, &KlaxoninteractionstatsrulestopicinteractionstatruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Dimension, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if DimensionValue, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["dimensionValue"].(string); ok {
+		o.DimensionValue = &DimensionValue
+	}
+	
+	if DimensionValueName, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["dimensionValueName"].(string); ok {
+		o.DimensionValueName = &DimensionValueName
+	}
+	
+	if Metric, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if MediaType, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if NumericRange, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["numericRange"].(string); ok {
+		o.NumericRange = &NumericRange
+	}
+	
+	if Statistic, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["statistic"].(string); ok {
+		o.Statistic = &Statistic
+	}
+	
+	if Value, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["value"].(float64); ok {
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
+	}
+	
+	if InAlarm, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["inAlarm"].(bool); ok {
+		o.InAlarm = &InAlarm
+	}
+	
+	if Enabled, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if NotificationUsers, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["notificationUsers"].([]interface{}); ok {
+		NotificationUsersString, _ := json.Marshal(NotificationUsers)
+		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
+	}
+	
+	if AlertTypes, ok := KlaxoninteractionstatsrulestopicinteractionstatruleMap["alertTypes"].([]interface{}); ok {
+		AlertTypesString, _ := json.Marshal(AlertTypes)
+		json.Unmarshal(AlertTypesString, &o.AlertTypes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

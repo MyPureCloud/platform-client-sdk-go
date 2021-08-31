@@ -25,13 +25,11 @@ type Botaggregationview struct {
 
 }
 
-func (u *Botaggregationview) MarshalJSON() ([]byte, error) {
+func (o *Botaggregationview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botaggregationview
-
 	
-
 	return json.Marshal(&struct { 
 		Target *string `json:"target,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Botaggregationview) MarshalJSON() ([]byte, error) {
 		VarRange *Aggregationrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		Target: u.Target,
+		Target: o.Target,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Function: u.Function,
+		Function: o.Function,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botaggregationview) UnmarshalJSON(b []byte) error {
+	var BotaggregationviewMap map[string]interface{}
+	err := json.Unmarshal(b, &BotaggregationviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Target, ok := BotaggregationviewMap["target"].(string); ok {
+		o.Target = &Target
+	}
+	
+	if Name, ok := BotaggregationviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Function, ok := BotaggregationviewMap["function"].(string); ok {
+		o.Function = &Function
+	}
+	
+	if VarRange, ok := BotaggregationviewMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

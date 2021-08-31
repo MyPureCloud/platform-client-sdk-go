@@ -50,29 +50,27 @@ type Reschedulingoptionsrunresponse struct {
 
 }
 
-func (u *Reschedulingoptionsrunresponse) MarshalJSON() ([]byte, error) {
+func (o *Reschedulingoptionsrunresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reschedulingoptionsrunresponse
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ExistingSchedule *Buschedulereference `json:"existingSchedule,omitempty"`
 		
@@ -95,27 +93,84 @@ func (u *Reschedulingoptionsrunresponse) MarshalJSON() ([]byte, error) {
 		DoNotChangeManuallyEditedShifts *bool `json:"doNotChangeManuallyEditedShifts,omitempty"`
 		*Alias
 	}{ 
-		ExistingSchedule: u.ExistingSchedule,
+		ExistingSchedule: o.ExistingSchedule,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		ManagementUnits: u.ManagementUnits,
+		ManagementUnits: o.ManagementUnits,
 		
-		AgentCount: u.AgentCount,
+		AgentCount: o.AgentCount,
 		
-		ActivityCodeIds: u.ActivityCodeIds,
+		ActivityCodeIds: o.ActivityCodeIds,
 		
-		DoNotChangeWeeklyPaidTime: u.DoNotChangeWeeklyPaidTime,
+		DoNotChangeWeeklyPaidTime: o.DoNotChangeWeeklyPaidTime,
 		
-		DoNotChangeDailyPaidTime: u.DoNotChangeDailyPaidTime,
+		DoNotChangeDailyPaidTime: o.DoNotChangeDailyPaidTime,
 		
-		DoNotChangeShiftStartTimes: u.DoNotChangeShiftStartTimes,
+		DoNotChangeShiftStartTimes: o.DoNotChangeShiftStartTimes,
 		
-		DoNotChangeManuallyEditedShifts: u.DoNotChangeManuallyEditedShifts,
-		Alias:    (*Alias)(u),
+		DoNotChangeManuallyEditedShifts: o.DoNotChangeManuallyEditedShifts,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reschedulingoptionsrunresponse) UnmarshalJSON(b []byte) error {
+	var ReschedulingoptionsrunresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ReschedulingoptionsrunresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExistingSchedule, ok := ReschedulingoptionsrunresponseMap["existingSchedule"].(map[string]interface{}); ok {
+		ExistingScheduleString, _ := json.Marshal(ExistingSchedule)
+		json.Unmarshal(ExistingScheduleString, &o.ExistingSchedule)
+	}
+	
+	if startDateString, ok := ReschedulingoptionsrunresponseMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := ReschedulingoptionsrunresponseMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if ManagementUnits, ok := ReschedulingoptionsrunresponseMap["managementUnits"].([]interface{}); ok {
+		ManagementUnitsString, _ := json.Marshal(ManagementUnits)
+		json.Unmarshal(ManagementUnitsString, &o.ManagementUnits)
+	}
+	
+	if AgentCount, ok := ReschedulingoptionsrunresponseMap["agentCount"].(float64); ok {
+		AgentCountInt := int(AgentCount)
+		o.AgentCount = &AgentCountInt
+	}
+	
+	if ActivityCodeIds, ok := ReschedulingoptionsrunresponseMap["activityCodeIds"].([]interface{}); ok {
+		ActivityCodeIdsString, _ := json.Marshal(ActivityCodeIds)
+		json.Unmarshal(ActivityCodeIdsString, &o.ActivityCodeIds)
+	}
+	
+	if DoNotChangeWeeklyPaidTime, ok := ReschedulingoptionsrunresponseMap["doNotChangeWeeklyPaidTime"].(bool); ok {
+		o.DoNotChangeWeeklyPaidTime = &DoNotChangeWeeklyPaidTime
+	}
+	
+	if DoNotChangeDailyPaidTime, ok := ReschedulingoptionsrunresponseMap["doNotChangeDailyPaidTime"].(bool); ok {
+		o.DoNotChangeDailyPaidTime = &DoNotChangeDailyPaidTime
+	}
+	
+	if DoNotChangeShiftStartTimes, ok := ReschedulingoptionsrunresponseMap["doNotChangeShiftStartTimes"].(bool); ok {
+		o.DoNotChangeShiftStartTimes = &DoNotChangeShiftStartTimes
+	}
+	
+	if DoNotChangeManuallyEditedShifts, ok := ReschedulingoptionsrunresponseMap["doNotChangeManuallyEditedShifts"].(bool); ok {
+		o.DoNotChangeManuallyEditedShifts = &DoNotChangeManuallyEditedShifts
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

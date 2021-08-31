@@ -17,24 +17,43 @@ type Callmediapolicy struct {
 
 }
 
-func (u *Callmediapolicy) MarshalJSON() ([]byte, error) {
+func (o *Callmediapolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callmediapolicy
-
 	
-
 	return json.Marshal(&struct { 
 		Actions *Policyactions `json:"actions,omitempty"`
 		
 		Conditions *Callmediapolicyconditions `json:"conditions,omitempty"`
 		*Alias
 	}{ 
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Conditions: u.Conditions,
-		Alias:    (*Alias)(u),
+		Conditions: o.Conditions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callmediapolicy) UnmarshalJSON(b []byte) error {
+	var CallmediapolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &CallmediapolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Actions, ok := CallmediapolicyMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Conditions, ok := CallmediapolicyMap["conditions"].(map[string]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

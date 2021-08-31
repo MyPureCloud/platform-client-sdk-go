@@ -14,28 +14,42 @@ type Valuewrapperdate struct {
 
 }
 
-func (u *Valuewrapperdate) MarshalJSON() ([]byte, error) {
+func (o *Valuewrapperdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Valuewrapperdate
-
 	
 	Value := new(string)
-	if u.Value != nil {
+	if o.Value != nil {
 		
-		*Value = timeutil.Strftime(u.Value, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Value = timeutil.Strftime(o.Value, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Value = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
 		Value: Value,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Valuewrapperdate) UnmarshalJSON(b []byte) error {
+	var ValuewrapperdateMap map[string]interface{}
+	err := json.Unmarshal(b, &ValuewrapperdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if valueString, ok := ValuewrapperdateMap["value"].(string); ok {
+		Value, _ := time.Parse("2006-01-02T15:04:05.999999Z", valueString)
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

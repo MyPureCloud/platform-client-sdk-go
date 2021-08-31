@@ -21,13 +21,11 @@ type Statisticalresponse struct {
 
 }
 
-func (u *Statisticalresponse) MarshalJSON() ([]byte, error) {
+func (o *Statisticalresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Statisticalresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Statisticalresponse) MarshalJSON() ([]byte, error) {
 		Views *[]Aggregateviewdata `json:"views,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		Views: u.Views,
-		Alias:    (*Alias)(u),
+		Views: o.Views,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Statisticalresponse) UnmarshalJSON(b []byte) error {
+	var StatisticalresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &StatisticalresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := StatisticalresponseMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Metrics, ok := StatisticalresponseMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if Views, ok := StatisticalresponseMap["views"].([]interface{}); ok {
+		ViewsString, _ := json.Marshal(Views)
+		json.Unmarshal(ViewsString, &o.Views)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

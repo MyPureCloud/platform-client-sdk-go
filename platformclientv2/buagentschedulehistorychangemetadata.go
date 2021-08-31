@@ -18,21 +18,19 @@ type Buagentschedulehistorychangemetadata struct {
 
 }
 
-func (u *Buagentschedulehistorychangemetadata) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulehistorychangemetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulehistorychangemetadata
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateModified *string `json:"dateModified,omitempty"`
 		
@@ -41,9 +39,30 @@ func (u *Buagentschedulehistorychangemetadata) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
-		Alias:    (*Alias)(u),
+		ModifiedBy: o.ModifiedBy,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulehistorychangemetadata) UnmarshalJSON(b []byte) error {
+	var BuagentschedulehistorychangemetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulehistorychangemetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateModifiedString, ok := BuagentschedulehistorychangemetadataMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := BuagentschedulehistorychangemetadataMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

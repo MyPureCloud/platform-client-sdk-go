@@ -13,20 +13,34 @@ type Publishdraftinput struct {
 
 }
 
-func (u *Publishdraftinput) MarshalJSON() ([]byte, error) {
+func (o *Publishdraftinput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Publishdraftinput
-
 	
-
 	return json.Marshal(&struct { 
 		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Publishdraftinput) UnmarshalJSON(b []byte) error {
+	var PublishdraftinputMap map[string]interface{}
+	err := json.Unmarshal(b, &PublishdraftinputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Version, ok := PublishdraftinputMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

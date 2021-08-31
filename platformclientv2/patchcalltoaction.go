@@ -21,13 +21,11 @@ type Patchcalltoaction struct {
 
 }
 
-func (u *Patchcalltoaction) MarshalJSON() ([]byte, error) {
+func (o *Patchcalltoaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchcalltoaction
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Patchcalltoaction) MarshalJSON() ([]byte, error) {
 		Target *string `json:"target,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		Target: u.Target,
-		Alias:    (*Alias)(u),
+		Target: o.Target,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchcalltoaction) UnmarshalJSON(b []byte) error {
+	var PatchcalltoactionMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchcalltoactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := PatchcalltoactionMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Url, ok := PatchcalltoactionMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if Target, ok := PatchcalltoactionMap["target"].(string); ok {
+		o.Target = &Target
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

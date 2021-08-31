@@ -41,13 +41,11 @@ type Wfmintradaydataupdatetopicintradayhistoricalqueuedata struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradayhistoricalqueuedata) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradayhistoricalqueuedata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradayhistoricalqueuedata
-
 	
-
 	return json.Marshal(&struct { 
 		Offered *int `json:"offered,omitempty"`
 		
@@ -66,23 +64,74 @@ func (u *Wfmintradaydataupdatetopicintradayhistoricalqueuedata) MarshalJSON() ([
 		AverageSpeedOfAnswerSeconds *float32 `json:"averageSpeedOfAnswerSeconds,omitempty"`
 		*Alias
 	}{ 
-		Offered: u.Offered,
+		Offered: o.Offered,
 		
-		Completed: u.Completed,
+		Completed: o.Completed,
 		
-		Answered: u.Answered,
+		Answered: o.Answered,
 		
-		Abandoned: u.Abandoned,
+		Abandoned: o.Abandoned,
 		
-		AverageTalkTimeSeconds: u.AverageTalkTimeSeconds,
+		AverageTalkTimeSeconds: o.AverageTalkTimeSeconds,
 		
-		AverageAfterCallWorkSeconds: u.AverageAfterCallWorkSeconds,
+		AverageAfterCallWorkSeconds: o.AverageAfterCallWorkSeconds,
 		
-		ServiceLevelPercent: u.ServiceLevelPercent,
+		ServiceLevelPercent: o.ServiceLevelPercent,
 		
-		AverageSpeedOfAnswerSeconds: u.AverageSpeedOfAnswerSeconds,
-		Alias:    (*Alias)(u),
+		AverageSpeedOfAnswerSeconds: o.AverageSpeedOfAnswerSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradayhistoricalqueuedata) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradayhistoricalqueuedataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradayhistoricalqueuedataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Offered, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["offered"].(float64); ok {
+		OfferedInt := int(Offered)
+		o.Offered = &OfferedInt
+	}
+	
+	if Completed, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["completed"].(float64); ok {
+		CompletedInt := int(Completed)
+		o.Completed = &CompletedInt
+	}
+	
+	if Answered, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["answered"].(float64); ok {
+		AnsweredInt := int(Answered)
+		o.Answered = &AnsweredInt
+	}
+	
+	if Abandoned, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["abandoned"].(float64); ok {
+		AbandonedInt := int(Abandoned)
+		o.Abandoned = &AbandonedInt
+	}
+	
+	if AverageTalkTimeSeconds, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["averageTalkTimeSeconds"].(float64); ok {
+		AverageTalkTimeSecondsFloat32 := float32(AverageTalkTimeSeconds)
+		o.AverageTalkTimeSeconds = &AverageTalkTimeSecondsFloat32
+	}
+	
+	if AverageAfterCallWorkSeconds, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["averageAfterCallWorkSeconds"].(float64); ok {
+		AverageAfterCallWorkSecondsFloat32 := float32(AverageAfterCallWorkSeconds)
+		o.AverageAfterCallWorkSeconds = &AverageAfterCallWorkSecondsFloat32
+	}
+	
+	if ServiceLevelPercent, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["serviceLevelPercent"].(float64); ok {
+		ServiceLevelPercentFloat32 := float32(ServiceLevelPercent)
+		o.ServiceLevelPercent = &ServiceLevelPercentFloat32
+	}
+	
+	if AverageSpeedOfAnswerSeconds, ok := WfmintradaydataupdatetopicintradayhistoricalqueuedataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
+		AverageSpeedOfAnswerSecondsFloat32 := float32(AverageSpeedOfAnswerSeconds)
+		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSecondsFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

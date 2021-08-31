@@ -62,21 +62,19 @@ type Listedtopic struct {
 
 }
 
-func (u *Listedtopic) MarshalJSON() ([]byte, error) {
+func (o *Listedtopic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Listedtopic
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -105,33 +103,101 @@ func (u *Listedtopic) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		Strictness: u.Strictness,
+		Strictness: o.Strictness,
 		
-		ProgramsCount: u.ProgramsCount,
+		ProgramsCount: o.ProgramsCount,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		Dialect: u.Dialect,
+		Dialect: o.Dialect,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		PhrasesCount: u.PhrasesCount,
+		PhrasesCount: o.PhrasesCount,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Listedtopic) UnmarshalJSON(b []byte) error {
+	var ListedtopicMap map[string]interface{}
+	err := json.Unmarshal(b, &ListedtopicMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ListedtopicMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ListedtopicMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ListedtopicMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := ListedtopicMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if Strictness, ok := ListedtopicMap["strictness"].(string); ok {
+		o.Strictness = &Strictness
+	}
+	
+	if ProgramsCount, ok := ListedtopicMap["programsCount"].(float64); ok {
+		ProgramsCountInt := int(ProgramsCount)
+		o.ProgramsCount = &ProgramsCountInt
+	}
+	
+	if Tags, ok := ListedtopicMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if Dialect, ok := ListedtopicMap["dialect"].(string); ok {
+		o.Dialect = &Dialect
+	}
+	
+	if Participants, ok := ListedtopicMap["participants"].(string); ok {
+		o.Participants = &Participants
+	}
+	
+	if PhrasesCount, ok := ListedtopicMap["phrasesCount"].(float64); ok {
+		PhrasesCountInt := int(PhrasesCount)
+		o.PhrasesCount = &PhrasesCountInt
+	}
+	
+	if ModifiedBy, ok := ListedtopicMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := ListedtopicMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if SelfUri, ok := ListedtopicMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

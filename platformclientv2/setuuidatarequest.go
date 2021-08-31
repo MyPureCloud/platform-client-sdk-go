@@ -13,20 +13,33 @@ type Setuuidatarequest struct {
 
 }
 
-func (u *Setuuidatarequest) MarshalJSON() ([]byte, error) {
+func (o *Setuuidatarequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Setuuidatarequest
-
 	
-
 	return json.Marshal(&struct { 
 		UuiData *string `json:"uuiData,omitempty"`
 		*Alias
 	}{ 
-		UuiData: u.UuiData,
-		Alias:    (*Alias)(u),
+		UuiData: o.UuiData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Setuuidatarequest) UnmarshalJSON(b []byte) error {
+	var SetuuidatarequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SetuuidatarequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if UuiData, ok := SetuuidatarequestMap["uuiData"].(string); ok {
+		o.UuiData = &UuiData
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

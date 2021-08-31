@@ -50,21 +50,19 @@ type Gdprrequest struct {
 
 }
 
-func (u *Gdprrequest) MarshalJSON() ([]byte, error) {
+func (o *Gdprrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gdprrequest
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -87,27 +85,82 @@ func (u *Gdprrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ReplacementTerms: u.ReplacementTerms,
+		ReplacementTerms: o.ReplacementTerms,
 		
-		RequestType: u.RequestType,
+		RequestType: o.RequestType,
 		
 		CreatedDate: CreatedDate,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
-		ResultsUrl: u.ResultsUrl,
+		ResultsUrl: o.ResultsUrl,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gdprrequest) UnmarshalJSON(b []byte) error {
+	var GdprrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &GdprrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GdprrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := GdprrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if CreatedBy, ok := GdprrequestMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ReplacementTerms, ok := GdprrequestMap["replacementTerms"].([]interface{}); ok {
+		ReplacementTermsString, _ := json.Marshal(ReplacementTerms)
+		json.Unmarshal(ReplacementTermsString, &o.ReplacementTerms)
+	}
+	
+	if RequestType, ok := GdprrequestMap["requestType"].(string); ok {
+		o.RequestType = &RequestType
+	}
+	
+	if createdDateString, ok := GdprrequestMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if Status, ok := GdprrequestMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Subject, ok := GdprrequestMap["subject"].(map[string]interface{}); ok {
+		SubjectString, _ := json.Marshal(Subject)
+		json.Unmarshal(SubjectString, &o.Subject)
+	}
+	
+	if ResultsUrl, ok := GdprrequestMap["resultsUrl"].(string); ok {
+		o.ResultsUrl = &ResultsUrl
+	}
+	
+	if SelfUri, ok := GdprrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

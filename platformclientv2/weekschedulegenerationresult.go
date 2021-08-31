@@ -25,13 +25,11 @@ type Weekschedulegenerationresult struct {
 
 }
 
-func (u *Weekschedulegenerationresult) MarshalJSON() ([]byte, error) {
+func (o *Weekschedulegenerationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Weekschedulegenerationresult
-
 	
-
 	return json.Marshal(&struct { 
 		Failed *bool `json:"failed,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Weekschedulegenerationresult) MarshalJSON() ([]byte, error) {
 		AgentWarningCount *int `json:"agentWarningCount,omitempty"`
 		*Alias
 	}{ 
-		Failed: u.Failed,
+		Failed: o.Failed,
 		
-		RunId: u.RunId,
+		RunId: o.RunId,
 		
-		AgentWarnings: u.AgentWarnings,
+		AgentWarnings: o.AgentWarnings,
 		
-		AgentWarningCount: u.AgentWarningCount,
-		Alias:    (*Alias)(u),
+		AgentWarningCount: o.AgentWarningCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Weekschedulegenerationresult) UnmarshalJSON(b []byte) error {
+	var WeekschedulegenerationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &WeekschedulegenerationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Failed, ok := WeekschedulegenerationresultMap["failed"].(bool); ok {
+		o.Failed = &Failed
+	}
+	
+	if RunId, ok := WeekschedulegenerationresultMap["runId"].(string); ok {
+		o.RunId = &RunId
+	}
+	
+	if AgentWarnings, ok := WeekschedulegenerationresultMap["agentWarnings"].([]interface{}); ok {
+		AgentWarningsString, _ := json.Marshal(AgentWarnings)
+		json.Unmarshal(AgentWarningsString, &o.AgentWarnings)
+	}
+	
+	if AgentWarningCount, ok := WeekschedulegenerationresultMap["agentWarningCount"].(float64); ok {
+		AgentWarningCountInt := int(AgentWarningCount)
+		o.AgentWarningCount = &AgentWarningCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

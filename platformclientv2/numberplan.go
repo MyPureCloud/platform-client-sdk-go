@@ -86,29 +86,27 @@ type Numberplan struct {
 
 }
 
-func (u *Numberplan) MarshalJSON() ([]byte, error) {
+func (o *Numberplan) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Numberplan
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -149,45 +147,138 @@ func (u *Numberplan) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Match: u.Match,
+		Match: o.Match,
 		
-		NormalizedFormat: u.NormalizedFormat,
+		NormalizedFormat: o.NormalizedFormat,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Numbers: u.Numbers,
+		Numbers: o.Numbers,
 		
-		DigitLength: u.DigitLength,
+		DigitLength: o.DigitLength,
 		
-		Classification: u.Classification,
+		Classification: o.Classification,
 		
-		MatchType: u.MatchType,
+		MatchType: o.MatchType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Numberplan) UnmarshalJSON(b []byte) error {
+	var NumberplanMap map[string]interface{}
+	err := json.Unmarshal(b, &NumberplanMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := NumberplanMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := NumberplanMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := NumberplanMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := NumberplanMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := NumberplanMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := NumberplanMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := NumberplanMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := NumberplanMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := NumberplanMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := NumberplanMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := NumberplanMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Match, ok := NumberplanMap["match"].(string); ok {
+		o.Match = &Match
+	}
+	
+	if NormalizedFormat, ok := NumberplanMap["normalizedFormat"].(string); ok {
+		o.NormalizedFormat = &NormalizedFormat
+	}
+	
+	if Priority, ok := NumberplanMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Numbers, ok := NumberplanMap["numbers"].([]interface{}); ok {
+		NumbersString, _ := json.Marshal(Numbers)
+		json.Unmarshal(NumbersString, &o.Numbers)
+	}
+	
+	if DigitLength, ok := NumberplanMap["digitLength"].(map[string]interface{}); ok {
+		DigitLengthString, _ := json.Marshal(DigitLength)
+		json.Unmarshal(DigitLengthString, &o.DigitLength)
+	}
+	
+	if Classification, ok := NumberplanMap["classification"].(string); ok {
+		o.Classification = &Classification
+	}
+	
+	if MatchType, ok := NumberplanMap["matchType"].(string); ok {
+		o.MatchType = &MatchType
+	}
+	
+	if SelfUri, ok := NumberplanMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

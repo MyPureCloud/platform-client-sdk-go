@@ -17,24 +17,41 @@ type Scheduleinterval struct {
 
 }
 
-func (u *Scheduleinterval) MarshalJSON() ([]byte, error) {
+func (o *Scheduleinterval) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scheduleinterval
-
 	
-
 	return json.Marshal(&struct { 
 		Start *string `json:"start,omitempty"`
 		
 		End *string `json:"end,omitempty"`
 		*Alias
 	}{ 
-		Start: u.Start,
+		Start: o.Start,
 		
-		End: u.End,
-		Alias:    (*Alias)(u),
+		End: o.End,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scheduleinterval) UnmarshalJSON(b []byte) error {
+	var ScheduleintervalMap map[string]interface{}
+	err := json.Unmarshal(b, &ScheduleintervalMap)
+	if err != nil {
+		return err
+	}
+	
+	if Start, ok := ScheduleintervalMap["start"].(string); ok {
+		o.Start = &Start
+	}
+	
+	if End, ok := ScheduleintervalMap["end"].(string); ok {
+		o.End = &End
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

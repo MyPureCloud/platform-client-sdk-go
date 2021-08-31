@@ -21,13 +21,11 @@ type Replacementterm struct {
 
 }
 
-func (u *Replacementterm) MarshalJSON() ([]byte, error) {
+func (o *Replacementterm) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Replacementterm
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Replacementterm) MarshalJSON() ([]byte, error) {
 		UpdatedValue *string `json:"updatedValue,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		ExistingValue: u.ExistingValue,
+		ExistingValue: o.ExistingValue,
 		
-		UpdatedValue: u.UpdatedValue,
-		Alias:    (*Alias)(u),
+		UpdatedValue: o.UpdatedValue,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Replacementterm) UnmarshalJSON(b []byte) error {
+	var ReplacementtermMap map[string]interface{}
+	err := json.Unmarshal(b, &ReplacementtermMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ReplacementtermMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if ExistingValue, ok := ReplacementtermMap["existingValue"].(string); ok {
+		o.ExistingValue = &ExistingValue
+	}
+	
+	if UpdatedValue, ok := ReplacementtermMap["updatedValue"].(string); ok {
+		o.UpdatedValue = &UpdatedValue
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

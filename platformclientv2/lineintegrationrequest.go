@@ -37,13 +37,11 @@ type Lineintegrationrequest struct {
 
 }
 
-func (u *Lineintegrationrequest) MarshalJSON() ([]byte, error) {
+func (o *Lineintegrationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lineintegrationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,60 @@ func (u *Lineintegrationrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ChannelId: u.ChannelId,
+		ChannelId: o.ChannelId,
 		
-		ChannelSecret: u.ChannelSecret,
+		ChannelSecret: o.ChannelSecret,
 		
-		SwitcherSecret: u.SwitcherSecret,
+		SwitcherSecret: o.SwitcherSecret,
 		
-		ServiceCode: u.ServiceCode,
+		ServiceCode: o.ServiceCode,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lineintegrationrequest) UnmarshalJSON(b []byte) error {
+	var LineintegrationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &LineintegrationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LineintegrationrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LineintegrationrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ChannelId, ok := LineintegrationrequestMap["channelId"].(string); ok {
+		o.ChannelId = &ChannelId
+	}
+	
+	if ChannelSecret, ok := LineintegrationrequestMap["channelSecret"].(string); ok {
+		o.ChannelSecret = &ChannelSecret
+	}
+	
+	if SwitcherSecret, ok := LineintegrationrequestMap["switcherSecret"].(string); ok {
+		o.SwitcherSecret = &SwitcherSecret
+	}
+	
+	if ServiceCode, ok := LineintegrationrequestMap["serviceCode"].(string); ok {
+		o.ServiceCode = &ServiceCode
+	}
+	
+	if SelfUri, ok := LineintegrationrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

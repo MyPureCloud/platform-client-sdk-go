@@ -25,13 +25,11 @@ type Documentupload struct {
 
 }
 
-func (u *Documentupload) MarshalJSON() ([]byte, error) {
+func (o *Documentupload) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentupload
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Documentupload) MarshalJSON() ([]byte, error) {
 		TagIds *[]string `json:"tagIds,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Workspace: u.Workspace,
+		Workspace: o.Workspace,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		TagIds: u.TagIds,
-		Alias:    (*Alias)(u),
+		TagIds: o.TagIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentupload) UnmarshalJSON(b []byte) error {
+	var DocumentuploadMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentuploadMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := DocumentuploadMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Workspace, ok := DocumentuploadMap["workspace"].(map[string]interface{}); ok {
+		WorkspaceString, _ := json.Marshal(Workspace)
+		json.Unmarshal(WorkspaceString, &o.Workspace)
+	}
+	
+	if Tags, ok := DocumentuploadMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if TagIds, ok := DocumentuploadMap["tagIds"].([]interface{}); ok {
+		TagIdsString, _ := json.Marshal(TagIds)
+		json.Unmarshal(TagIdsString, &o.TagIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

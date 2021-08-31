@@ -54,29 +54,27 @@ type Attemptlimits struct {
 
 }
 
-func (u *Attemptlimits) MarshalJSON() ([]byte, error) {
+func (o *Attemptlimits) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Attemptlimits
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -101,29 +99,90 @@ func (u *Attemptlimits) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		MaxAttemptsPerContact: u.MaxAttemptsPerContact,
+		MaxAttemptsPerContact: o.MaxAttemptsPerContact,
 		
-		MaxAttemptsPerNumber: u.MaxAttemptsPerNumber,
+		MaxAttemptsPerNumber: o.MaxAttemptsPerNumber,
 		
-		TimeZoneId: u.TimeZoneId,
+		TimeZoneId: o.TimeZoneId,
 		
-		ResetPeriod: u.ResetPeriod,
+		ResetPeriod: o.ResetPeriod,
 		
-		RecallEntries: u.RecallEntries,
+		RecallEntries: o.RecallEntries,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Attemptlimits) UnmarshalJSON(b []byte) error {
+	var AttemptlimitsMap map[string]interface{}
+	err := json.Unmarshal(b, &AttemptlimitsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AttemptlimitsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AttemptlimitsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := AttemptlimitsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := AttemptlimitsMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := AttemptlimitsMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if MaxAttemptsPerContact, ok := AttemptlimitsMap["maxAttemptsPerContact"].(float64); ok {
+		MaxAttemptsPerContactInt := int(MaxAttemptsPerContact)
+		o.MaxAttemptsPerContact = &MaxAttemptsPerContactInt
+	}
+	
+	if MaxAttemptsPerNumber, ok := AttemptlimitsMap["maxAttemptsPerNumber"].(float64); ok {
+		MaxAttemptsPerNumberInt := int(MaxAttemptsPerNumber)
+		o.MaxAttemptsPerNumber = &MaxAttemptsPerNumberInt
+	}
+	
+	if TimeZoneId, ok := AttemptlimitsMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
+	if ResetPeriod, ok := AttemptlimitsMap["resetPeriod"].(string); ok {
+		o.ResetPeriod = &ResetPeriod
+	}
+	
+	if RecallEntries, ok := AttemptlimitsMap["recallEntries"].(map[string]interface{}); ok {
+		RecallEntriesString, _ := json.Marshal(RecallEntries)
+		json.Unmarshal(RecallEntriesString, &o.RecallEntries)
+	}
+	
+	if SelfUri, ok := AttemptlimitsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -37,13 +37,11 @@ type Edgeconnectioninfo struct {
 
 }
 
-func (u *Edgeconnectioninfo) MarshalJSON() ([]byte, error) {
+func (o *Edgeconnectioninfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgeconnectioninfo
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Edgeconnectioninfo) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		InterfaceName: u.InterfaceName,
+		InterfaceName: o.InterfaceName,
 		
-		InterfaceIpAddress: u.InterfaceIpAddress,
+		InterfaceIpAddress: o.InterfaceIpAddress,
 		
-		ConnectionErrors: u.ConnectionErrors,
+		ConnectionErrors: o.ConnectionErrors,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgeconnectioninfo) UnmarshalJSON(b []byte) error {
+	var EdgeconnectioninfoMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgeconnectioninfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgeconnectioninfoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EdgeconnectioninfoMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if InterfaceName, ok := EdgeconnectioninfoMap["interfaceName"].(string); ok {
+		o.InterfaceName = &InterfaceName
+	}
+	
+	if InterfaceIpAddress, ok := EdgeconnectioninfoMap["interfaceIpAddress"].(string); ok {
+		o.InterfaceIpAddress = &InterfaceIpAddress
+	}
+	
+	if ConnectionErrors, ok := EdgeconnectioninfoMap["connectionErrors"].([]interface{}); ok {
+		ConnectionErrorsString, _ := json.Marshal(ConnectionErrors)
+		json.Unmarshal(ConnectionErrorsString, &o.ConnectionErrors)
+	}
+	
+	if Site, ok := EdgeconnectioninfoMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if SelfUri, ok := EdgeconnectioninfoMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

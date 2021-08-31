@@ -25,13 +25,11 @@ type Scimerror struct {
 
 }
 
-func (u *Scimerror) MarshalJSON() ([]byte, error) {
+func (o *Scimerror) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimerror
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Scimerror) MarshalJSON() ([]byte, error) {
 		Detail *string `json:"detail,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		ScimType: u.ScimType,
+		ScimType: o.ScimType,
 		
-		Detail: u.Detail,
-		Alias:    (*Alias)(u),
+		Detail: o.Detail,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimerror) UnmarshalJSON(b []byte) error {
+	var ScimerrorMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimerrorMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := ScimerrorMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if Status, ok := ScimerrorMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if ScimType, ok := ScimerrorMap["scimType"].(string); ok {
+		o.ScimType = &ScimType
+	}
+	
+	if Detail, ok := ScimerrorMap["detail"].(string); ok {
+		o.Detail = &Detail
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

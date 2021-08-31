@@ -17,24 +17,43 @@ type Learningassignmentbulkaddresponse struct {
 
 }
 
-func (u *Learningassignmentbulkaddresponse) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentbulkaddresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentbulkaddresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Learningassignment `json:"entities,omitempty"`
 		
 		DisallowedEntities *[]Disallowedentitylearningassignmentitem `json:"disallowedEntities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		DisallowedEntities: u.DisallowedEntities,
-		Alias:    (*Alias)(u),
+		DisallowedEntities: o.DisallowedEntities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentbulkaddresponse) UnmarshalJSON(b []byte) error {
+	var LearningassignmentbulkaddresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentbulkaddresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := LearningassignmentbulkaddresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if DisallowedEntities, ok := LearningassignmentbulkaddresponseMap["disallowedEntities"].([]interface{}); ok {
+		DisallowedEntitiesString, _ := json.Marshal(DisallowedEntities)
+		json.Unmarshal(DisallowedEntitiesString, &o.DisallowedEntities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

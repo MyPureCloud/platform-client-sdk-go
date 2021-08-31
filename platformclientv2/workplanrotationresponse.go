@@ -45,13 +45,11 @@ type Workplanrotationresponse struct {
 
 }
 
-func (u *Workplanrotationresponse) MarshalJSON() ([]byte, error) {
+func (o *Workplanrotationresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanrotationresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,77 @@ func (u *Workplanrotationresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		DateRange: u.DateRange,
+		DateRange: o.DateRange,
 		
-		Pattern: u.Pattern,
+		Pattern: o.Pattern,
 		
-		AgentCount: u.AgentCount,
+		AgentCount: o.AgentCount,
 		
-		Agents: u.Agents,
+		Agents: o.Agents,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanrotationresponse) UnmarshalJSON(b []byte) error {
+	var WorkplanrotationresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanrotationresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WorkplanrotationresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WorkplanrotationresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Enabled, ok := WorkplanrotationresponseMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if DateRange, ok := WorkplanrotationresponseMap["dateRange"].(map[string]interface{}); ok {
+		DateRangeString, _ := json.Marshal(DateRange)
+		json.Unmarshal(DateRangeString, &o.DateRange)
+	}
+	
+	if Pattern, ok := WorkplanrotationresponseMap["pattern"].(map[string]interface{}); ok {
+		PatternString, _ := json.Marshal(Pattern)
+		json.Unmarshal(PatternString, &o.Pattern)
+	}
+	
+	if AgentCount, ok := WorkplanrotationresponseMap["agentCount"].(float64); ok {
+		AgentCountInt := int(AgentCount)
+		o.AgentCount = &AgentCountInt
+	}
+	
+	if Agents, ok := WorkplanrotationresponseMap["agents"].([]interface{}); ok {
+		AgentsString, _ := json.Marshal(Agents)
+		json.Unmarshal(AgentsString, &o.Agents)
+	}
+	
+	if Metadata, ok := WorkplanrotationresponseMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := WorkplanrotationresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

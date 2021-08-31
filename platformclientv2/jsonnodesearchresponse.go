@@ -49,13 +49,11 @@ type Jsonnodesearchresponse struct {
 
 }
 
-func (u *Jsonnodesearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Jsonnodesearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Jsonnodesearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -78,27 +76,85 @@ func (u *Jsonnodesearchresponse) MarshalJSON() ([]byte, error) {
 		Aggregations *Arraynode `json:"aggregations,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PreviousPage: u.PreviousPage,
+		PreviousPage: o.PreviousPage,
 		
-		CurrentPage: u.CurrentPage,
+		CurrentPage: o.CurrentPage,
 		
-		NextPage: u.NextPage,
+		NextPage: o.NextPage,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		Results: u.Results,
+		Results: o.Results,
 		
-		Aggregations: u.Aggregations,
-		Alias:    (*Alias)(u),
+		Aggregations: o.Aggregations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Jsonnodesearchresponse) UnmarshalJSON(b []byte) error {
+	var JsonnodesearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &JsonnodesearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := JsonnodesearchresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := JsonnodesearchresponseMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if PageSize, ok := JsonnodesearchresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := JsonnodesearchresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PreviousPage, ok := JsonnodesearchresponseMap["previousPage"].(string); ok {
+		o.PreviousPage = &PreviousPage
+	}
+	
+	if CurrentPage, ok := JsonnodesearchresponseMap["currentPage"].(string); ok {
+		o.CurrentPage = &CurrentPage
+	}
+	
+	if NextPage, ok := JsonnodesearchresponseMap["nextPage"].(string); ok {
+		o.NextPage = &NextPage
+	}
+	
+	if Types, ok := JsonnodesearchresponseMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if Results, ok := JsonnodesearchresponseMap["results"].(map[string]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if Aggregations, ok := JsonnodesearchresponseMap["aggregations"].(map[string]interface{}); ok {
+		AggregationsString, _ := json.Marshal(Aggregations)
+		json.Unmarshal(AggregationsString, &o.Aggregations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

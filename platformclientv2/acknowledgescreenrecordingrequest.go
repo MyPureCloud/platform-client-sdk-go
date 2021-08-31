@@ -21,13 +21,11 @@ type Acknowledgescreenrecordingrequest struct {
 
 }
 
-func (u *Acknowledgescreenrecordingrequest) MarshalJSON() ([]byte, error) {
+func (o *Acknowledgescreenrecordingrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Acknowledgescreenrecordingrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ParticipantJid *string `json:"participantJid,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Acknowledgescreenrecordingrequest) MarshalJSON() ([]byte, error) {
 		ConversationId *string `json:"conversationId,omitempty"`
 		*Alias
 	}{ 
-		ParticipantJid: u.ParticipantJid,
+		ParticipantJid: o.ParticipantJid,
 		
-		RoomId: u.RoomId,
+		RoomId: o.RoomId,
 		
-		ConversationId: u.ConversationId,
-		Alias:    (*Alias)(u),
+		ConversationId: o.ConversationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Acknowledgescreenrecordingrequest) UnmarshalJSON(b []byte) error {
+	var AcknowledgescreenrecordingrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &AcknowledgescreenrecordingrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ParticipantJid, ok := AcknowledgescreenrecordingrequestMap["participantJid"].(string); ok {
+		o.ParticipantJid = &ParticipantJid
+	}
+	
+	if RoomId, ok := AcknowledgescreenrecordingrequestMap["roomId"].(string); ok {
+		o.RoomId = &RoomId
+	}
+	
+	if ConversationId, ok := AcknowledgescreenrecordingrequestMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

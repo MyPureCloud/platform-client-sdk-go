@@ -53,13 +53,11 @@ type Weekschedule struct {
 
 }
 
-func (u *Weekschedule) MarshalJSON() ([]byte, error) {
+func (o *Weekschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Weekschedule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,90 @@ func (u *Weekschedule) MarshalJSON() ([]byte, error) {
 		AgentSchedulesVersion *int `json:"agentSchedulesVersion,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		WeekDate: u.WeekDate,
+		WeekDate: o.WeekDate,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		ShortTermForecast: u.ShortTermForecast,
+		ShortTermForecast: o.ShortTermForecast,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		UserSchedules: u.UserSchedules,
+		UserSchedules: o.UserSchedules,
 		
-		HeadcountForecast: u.HeadcountForecast,
+		HeadcountForecast: o.HeadcountForecast,
 		
-		AgentSchedulesVersion: u.AgentSchedulesVersion,
-		Alias:    (*Alias)(u),
+		AgentSchedulesVersion: o.AgentSchedulesVersion,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Weekschedule) UnmarshalJSON(b []byte) error {
+	var WeekscheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &WeekscheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WeekscheduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := WeekscheduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if WeekDate, ok := WeekscheduleMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+	if Description, ok := WeekscheduleMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := WeekscheduleMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if GenerationResults, ok := WeekscheduleMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if ShortTermForecast, ok := WeekscheduleMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+	if Metadata, ok := WeekscheduleMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if UserSchedules, ok := WeekscheduleMap["userSchedules"].(map[string]interface{}); ok {
+		UserSchedulesString, _ := json.Marshal(UserSchedules)
+		json.Unmarshal(UserSchedulesString, &o.UserSchedules)
+	}
+	
+	if HeadcountForecast, ok := WeekscheduleMap["headcountForecast"].(map[string]interface{}); ok {
+		HeadcountForecastString, _ := json.Marshal(HeadcountForecast)
+		json.Unmarshal(HeadcountForecastString, &o.HeadcountForecast)
+	}
+	
+	if AgentSchedulesVersion, ok := WeekscheduleMap["agentSchedulesVersion"].(float64); ok {
+		AgentSchedulesVersionInt := int(AgentSchedulesVersion)
+		o.AgentSchedulesVersion = &AgentSchedulesVersionInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

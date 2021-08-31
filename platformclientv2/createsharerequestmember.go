@@ -17,24 +17,42 @@ type Createsharerequestmember struct {
 
 }
 
-func (u *Createsharerequestmember) MarshalJSON() ([]byte, error) {
+func (o *Createsharerequestmember) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createsharerequestmember
-
 	
-
 	return json.Marshal(&struct { 
 		MemberType *string `json:"memberType,omitempty"`
 		
 		Member *Memberentity `json:"member,omitempty"`
 		*Alias
 	}{ 
-		MemberType: u.MemberType,
+		MemberType: o.MemberType,
 		
-		Member: u.Member,
-		Alias:    (*Alias)(u),
+		Member: o.Member,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createsharerequestmember) UnmarshalJSON(b []byte) error {
+	var CreatesharerequestmemberMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatesharerequestmemberMap)
+	if err != nil {
+		return err
+	}
+	
+	if MemberType, ok := CreatesharerequestmemberMap["memberType"].(string); ok {
+		o.MemberType = &MemberType
+	}
+	
+	if Member, ok := CreatesharerequestmemberMap["member"].(map[string]interface{}); ok {
+		MemberString, _ := json.Marshal(Member)
+		json.Unmarshal(MemberString, &o.Member)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

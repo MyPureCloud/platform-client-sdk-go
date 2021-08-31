@@ -26,21 +26,19 @@ type Integrationstatusinfo struct {
 
 }
 
-func (u *Integrationstatusinfo) MarshalJSON() ([]byte, error) {
+func (o *Integrationstatusinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Integrationstatusinfo
-
 	
 	LastUpdated := new(string)
-	if u.LastUpdated != nil {
+	if o.LastUpdated != nil {
 		
-		*LastUpdated = timeutil.Strftime(u.LastUpdated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*LastUpdated = timeutil.Strftime(o.LastUpdated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		LastUpdated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
@@ -51,15 +49,44 @@ func (u *Integrationstatusinfo) MarshalJSON() ([]byte, error) {
 		LastUpdated *string `json:"lastUpdated,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Effective: u.Effective,
+		Effective: o.Effective,
 		
-		Detail: u.Detail,
+		Detail: o.Detail,
 		
 		LastUpdated: LastUpdated,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Integrationstatusinfo) UnmarshalJSON(b []byte) error {
+	var IntegrationstatusinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &IntegrationstatusinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := IntegrationstatusinfoMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Effective, ok := IntegrationstatusinfoMap["effective"].(string); ok {
+		o.Effective = &Effective
+	}
+	
+	if Detail, ok := IntegrationstatusinfoMap["detail"].(map[string]interface{}); ok {
+		DetailString, _ := json.Marshal(Detail)
+		json.Unmarshal(DetailString, &o.Detail)
+	}
+	
+	if lastUpdatedString, ok := IntegrationstatusinfoMap["lastUpdated"].(string); ok {
+		LastUpdated, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastUpdatedString)
+		o.LastUpdated = &LastUpdated
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

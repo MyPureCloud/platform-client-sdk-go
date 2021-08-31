@@ -18,20 +18,18 @@ type Attendancestatus struct {
 
 }
 
-func (u *Attendancestatus) MarshalJSON() ([]byte, error) {
+func (o *Attendancestatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Attendancestatus
-
 	
 	DateWorkday := new(string)
-	if u.DateWorkday != nil {
-		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	if o.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(o.DateWorkday, "%Y-%m-%d")
 	} else {
 		DateWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateWorkday *string `json:"dateWorkday,omitempty"`
 		
@@ -40,9 +38,29 @@ func (u *Attendancestatus) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateWorkday: DateWorkday,
 		
-		AttendanceStatusType: u.AttendanceStatusType,
-		Alias:    (*Alias)(u),
+		AttendanceStatusType: o.AttendanceStatusType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Attendancestatus) UnmarshalJSON(b []byte) error {
+	var AttendancestatusMap map[string]interface{}
+	err := json.Unmarshal(b, &AttendancestatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateWorkdayString, ok := AttendancestatusMap["dateWorkday"].(string); ok {
+		DateWorkday, _ := time.Parse("2006-01-02", dateWorkdayString)
+		o.DateWorkday = &DateWorkday
+	}
+	
+	if AttendanceStatusType, ok := AttendancestatusMap["attendanceStatusType"].(string); ok {
+		o.AttendanceStatusType = &AttendanceStatusType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

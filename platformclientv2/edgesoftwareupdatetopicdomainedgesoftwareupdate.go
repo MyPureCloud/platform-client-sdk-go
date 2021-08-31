@@ -30,37 +30,35 @@ type Edgesoftwareupdatetopicdomainedgesoftwareupdate struct {
 
 }
 
-func (u *Edgesoftwareupdatetopicdomainedgesoftwareupdate) MarshalJSON() ([]byte, error) {
+func (o *Edgesoftwareupdatetopicdomainedgesoftwareupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgesoftwareupdatetopicdomainedgesoftwareupdate
-
 	
 	DownloadStartTime := new(string)
-	if u.DownloadStartTime != nil {
+	if o.DownloadStartTime != nil {
 		
-		*DownloadStartTime = timeutil.Strftime(u.DownloadStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DownloadStartTime = timeutil.Strftime(o.DownloadStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DownloadStartTime = nil
 	}
 	
 	ExecuteStartTime := new(string)
-	if u.ExecuteStartTime != nil {
+	if o.ExecuteStartTime != nil {
 		
-		*ExecuteStartTime = timeutil.Strftime(u.ExecuteStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExecuteStartTime = timeutil.Strftime(o.ExecuteStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExecuteStartTime = nil
 	}
 	
 	ExecuteStopTime := new(string)
-	if u.ExecuteStopTime != nil {
+	if o.ExecuteStopTime != nil {
 		
-		*ExecuteStopTime = timeutil.Strftime(u.ExecuteStopTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExecuteStopTime = timeutil.Strftime(o.ExecuteStopTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExecuteStopTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -73,17 +71,51 @@ func (u *Edgesoftwareupdatetopicdomainedgesoftwareupdate) MarshalJSON() ([]byte,
 		ExecuteStopTime *string `json:"executeStopTime,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		DownloadStartTime: DownloadStartTime,
 		
 		ExecuteStartTime: ExecuteStartTime,
 		
 		ExecuteStopTime: ExecuteStopTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgesoftwareupdatetopicdomainedgesoftwareupdate) UnmarshalJSON(b []byte) error {
+	var EdgesoftwareupdatetopicdomainedgesoftwareupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgesoftwareupdatetopicdomainedgesoftwareupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Status, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if downloadStartTimeString, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["downloadStartTime"].(string); ok {
+		DownloadStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", downloadStartTimeString)
+		o.DownloadStartTime = &DownloadStartTime
+	}
+	
+	if executeStartTimeString, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["executeStartTime"].(string); ok {
+		ExecuteStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", executeStartTimeString)
+		o.ExecuteStartTime = &ExecuteStartTime
+	}
+	
+	if executeStopTimeString, ok := EdgesoftwareupdatetopicdomainedgesoftwareupdateMap["executeStopTime"].(string); ok {
+		ExecuteStopTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", executeStopTimeString)
+		o.ExecuteStopTime = &ExecuteStopTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

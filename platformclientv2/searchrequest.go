@@ -49,13 +49,11 @@ type Searchrequest struct {
 
 }
 
-func (u *Searchrequest) MarshalJSON() ([]byte, error) {
+func (o *Searchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Searchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		SortOrder *string `json:"sortOrder,omitempty"`
 		
@@ -78,27 +76,86 @@ func (u *Searchrequest) MarshalJSON() ([]byte, error) {
 		Aggregations *[]Searchaggregation `json:"aggregations,omitempty"`
 		*Alias
 	}{ 
-		SortOrder: u.SortOrder,
+		SortOrder: o.SortOrder,
 		
-		SortBy: u.SortBy,
+		SortBy: o.SortBy,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		ReturnFields: u.ReturnFields,
+		ReturnFields: o.ReturnFields,
 		
-		Expand: u.Expand,
+		Expand: o.Expand,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		Query: u.Query,
+		Query: o.Query,
 		
-		Aggregations: u.Aggregations,
-		Alias:    (*Alias)(u),
+		Aggregations: o.Aggregations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Searchrequest) UnmarshalJSON(b []byte) error {
+	var SearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SearchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SortOrder, ok := SearchrequestMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+	
+	if SortBy, ok := SearchrequestMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+	
+	if PageSize, ok := SearchrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := SearchrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Sort, ok := SearchrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if ReturnFields, ok := SearchrequestMap["returnFields"].([]interface{}); ok {
+		ReturnFieldsString, _ := json.Marshal(ReturnFields)
+		json.Unmarshal(ReturnFieldsString, &o.ReturnFields)
+	}
+	
+	if Expand, ok := SearchrequestMap["expand"].([]interface{}); ok {
+		ExpandString, _ := json.Marshal(Expand)
+		json.Unmarshal(ExpandString, &o.Expand)
+	}
+	
+	if Types, ok := SearchrequestMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if Query, ok := SearchrequestMap["query"].([]interface{}); ok {
+		QueryString, _ := json.Marshal(Query)
+		json.Unmarshal(QueryString, &o.Query)
+	}
+	
+	if Aggregations, ok := SearchrequestMap["aggregations"].([]interface{}); ok {
+		AggregationsString, _ := json.Marshal(Aggregations)
+		json.Unmarshal(AggregationsString, &o.Aggregations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

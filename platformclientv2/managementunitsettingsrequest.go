@@ -33,13 +33,11 @@ type Managementunitsettingsrequest struct {
 
 }
 
-func (u *Managementunitsettingsrequest) MarshalJSON() ([]byte, error) {
+func (o *Managementunitsettingsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Managementunitsettingsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Adherence *Adherencesettings `json:"adherence,omitempty"`
 		
@@ -54,19 +52,60 @@ func (u *Managementunitsettingsrequest) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Adherence: u.Adherence,
+		Adherence: o.Adherence,
 		
-		ShortTermForecasting: u.ShortTermForecasting,
+		ShortTermForecasting: o.ShortTermForecasting,
 		
-		TimeOff: u.TimeOff,
+		TimeOff: o.TimeOff,
 		
-		Scheduling: u.Scheduling,
+		Scheduling: o.Scheduling,
 		
-		ShiftTrading: u.ShiftTrading,
+		ShiftTrading: o.ShiftTrading,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Managementunitsettingsrequest) UnmarshalJSON(b []byte) error {
+	var ManagementunitsettingsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ManagementunitsettingsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Adherence, ok := ManagementunitsettingsrequestMap["adherence"].(map[string]interface{}); ok {
+		AdherenceString, _ := json.Marshal(Adherence)
+		json.Unmarshal(AdherenceString, &o.Adherence)
+	}
+	
+	if ShortTermForecasting, ok := ManagementunitsettingsrequestMap["shortTermForecasting"].(map[string]interface{}); ok {
+		ShortTermForecastingString, _ := json.Marshal(ShortTermForecasting)
+		json.Unmarshal(ShortTermForecastingString, &o.ShortTermForecasting)
+	}
+	
+	if TimeOff, ok := ManagementunitsettingsrequestMap["timeOff"].(map[string]interface{}); ok {
+		TimeOffString, _ := json.Marshal(TimeOff)
+		json.Unmarshal(TimeOffString, &o.TimeOff)
+	}
+	
+	if Scheduling, ok := ManagementunitsettingsrequestMap["scheduling"].(map[string]interface{}); ok {
+		SchedulingString, _ := json.Marshal(Scheduling)
+		json.Unmarshal(SchedulingString, &o.Scheduling)
+	}
+	
+	if ShiftTrading, ok := ManagementunitsettingsrequestMap["shiftTrading"].(map[string]interface{}); ok {
+		ShiftTradingString, _ := json.Marshal(ShiftTrading)
+		json.Unmarshal(ShiftTradingString, &o.ShiftTrading)
+	}
+	
+	if Metadata, ok := ManagementunitsettingsrequestMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Inbounddomainpatchrequest struct {
 
 }
 
-func (u *Inbounddomainpatchrequest) MarshalJSON() ([]byte, error) {
+func (o *Inbounddomainpatchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Inbounddomainpatchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		MailFromSettings *Mailfromresult `json:"mailFromSettings,omitempty"`
 		
 		CustomSMTPServer *Domainentityref `json:"customSMTPServer,omitempty"`
 		*Alias
 	}{ 
-		MailFromSettings: u.MailFromSettings,
+		MailFromSettings: o.MailFromSettings,
 		
-		CustomSMTPServer: u.CustomSMTPServer,
-		Alias:    (*Alias)(u),
+		CustomSMTPServer: o.CustomSMTPServer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Inbounddomainpatchrequest) UnmarshalJSON(b []byte) error {
+	var InbounddomainpatchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &InbounddomainpatchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if MailFromSettings, ok := InbounddomainpatchrequestMap["mailFromSettings"].(map[string]interface{}); ok {
+		MailFromSettingsString, _ := json.Marshal(MailFromSettings)
+		json.Unmarshal(MailFromSettingsString, &o.MailFromSettings)
+	}
+	
+	if CustomSMTPServer, ok := InbounddomainpatchrequestMap["customSMTPServer"].(map[string]interface{}); ok {
+		CustomSMTPServerString, _ := json.Marshal(CustomSMTPServer)
+		json.Unmarshal(CustomSMTPServerString, &o.CustomSMTPServer)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

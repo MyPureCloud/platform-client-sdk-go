@@ -46,29 +46,27 @@ type Ruleset struct {
 
 }
 
-func (u *Ruleset) MarshalJSON() ([]byte, error) {
+func (o *Ruleset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ruleset
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,78 @@ func (u *Ruleset) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ContactList: u.ContactList,
+		ContactList: o.ContactList,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Rules: u.Rules,
+		Rules: o.Rules,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ruleset) UnmarshalJSON(b []byte) error {
+	var RulesetMap map[string]interface{}
+	err := json.Unmarshal(b, &RulesetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RulesetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := RulesetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := RulesetMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := RulesetMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := RulesetMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ContactList, ok := RulesetMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if Queue, ok := RulesetMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Rules, ok := RulesetMap["rules"].([]interface{}); ok {
+		RulesString, _ := json.Marshal(Rules)
+		json.Unmarshal(RulesString, &o.Rules)
+	}
+	
+	if SelfUri, ok := RulesetMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Operation struct {
 
 }
 
-func (u *Operation) MarshalJSON() ([]byte, error) {
+func (o *Operation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Operation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,82 @@ func (u *Operation) MarshalJSON() ([]byte, error) {
 		ActionStatus *string `json:"actionStatus,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Complete: u.Complete,
+		Complete: o.Complete,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		ErrorDetails: u.ErrorDetails,
+		ErrorDetails: o.ErrorDetails,
 		
-		ErrorMessageParams: u.ErrorMessageParams,
+		ErrorMessageParams: o.ErrorMessageParams,
 		
-		ActionName: u.ActionName,
+		ActionName: o.ActionName,
 		
-		ActionStatus: u.ActionStatus,
-		Alias:    (*Alias)(u),
+		ActionStatus: o.ActionStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Operation) UnmarshalJSON(b []byte) error {
+	var OperationMap map[string]interface{}
+	err := json.Unmarshal(b, &OperationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OperationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Complete, ok := OperationMap["complete"].(bool); ok {
+		o.Complete = &Complete
+	}
+	
+	if User, ok := OperationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := OperationMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if ErrorMessage, ok := OperationMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if ErrorCode, ok := OperationMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if ErrorDetails, ok := OperationMap["errorDetails"].([]interface{}); ok {
+		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
+		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
+	}
+	
+	if ErrorMessageParams, ok := OperationMap["errorMessageParams"].(map[string]interface{}); ok {
+		ErrorMessageParamsString, _ := json.Marshal(ErrorMessageParams)
+		json.Unmarshal(ErrorMessageParamsString, &o.ErrorMessageParams)
+	}
+	
+	if ActionName, ok := OperationMap["actionName"].(string); ok {
+		o.ActionName = &ActionName
+	}
+	
+	if ActionStatus, ok := OperationMap["actionStatus"].(string); ok {
+		o.ActionStatus = &ActionStatus
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

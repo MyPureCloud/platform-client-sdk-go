@@ -18,24 +18,42 @@ type Buagentscheduleupdate struct {
 
 }
 
-func (u *Buagentscheduleupdate) MarshalJSON() ([]byte, error) {
+func (o *Buagentscheduleupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentscheduleupdate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		ShiftStartDates *[]time.Time `json:"shiftStartDates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		ShiftStartDates: u.ShiftStartDates,
-		Alias:    (*Alias)(u),
+		ShiftStartDates: o.ShiftStartDates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentscheduleupdate) UnmarshalJSON(b []byte) error {
+	var BuagentscheduleupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentscheduleupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := BuagentscheduleupdateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if ShiftStartDates, ok := BuagentscheduleupdateMap["shiftStartDates"].([]interface{}); ok {
+		ShiftStartDatesString, _ := json.Marshal(ShiftStartDates)
+		json.Unmarshal(ShiftStartDatesString, &o.ShiftStartDates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

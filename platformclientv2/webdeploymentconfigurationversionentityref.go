@@ -25,13 +25,11 @@ type Webdeploymentconfigurationversionentityref struct {
 
 }
 
-func (u *Webdeploymentconfigurationversionentityref) MarshalJSON() ([]byte, error) {
+func (o *Webdeploymentconfigurationversionentityref) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webdeploymentconfigurationversionentityref
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Webdeploymentconfigurationversionentityref) MarshalJSON() ([]byte, erro
 		Version *string `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webdeploymentconfigurationversionentityref) UnmarshalJSON(b []byte) error {
+	var WebdeploymentconfigurationversionentityrefMap map[string]interface{}
+	err := json.Unmarshal(b, &WebdeploymentconfigurationversionentityrefMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebdeploymentconfigurationversionentityrefMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WebdeploymentconfigurationversionentityrefMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := WebdeploymentconfigurationversionentityrefMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Version, ok := WebdeploymentconfigurationversionentityrefMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

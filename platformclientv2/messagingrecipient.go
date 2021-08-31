@@ -37,13 +37,11 @@ type Messagingrecipient struct {
 
 }
 
-func (u *Messagingrecipient) MarshalJSON() ([]byte, error) {
+func (o *Messagingrecipient) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagingrecipient
-
 	
-
 	return json.Marshal(&struct { 
 		Nickname *string `json:"nickname,omitempty"`
 		
@@ -60,21 +58,60 @@ func (u *Messagingrecipient) MarshalJSON() ([]byte, error) {
 		Email *string `json:"email,omitempty"`
 		*Alias
 	}{ 
-		Nickname: u.Nickname,
+		Nickname: o.Nickname,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		IdType: u.IdType,
+		IdType: o.IdType,
 		
-		Image: u.Image,
+		Image: o.Image,
 		
-		FirstName: u.FirstName,
+		FirstName: o.FirstName,
 		
-		LastName: u.LastName,
+		LastName: o.LastName,
 		
-		Email: u.Email,
-		Alias:    (*Alias)(u),
+		Email: o.Email,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagingrecipient) UnmarshalJSON(b []byte) error {
+	var MessagingrecipientMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagingrecipientMap)
+	if err != nil {
+		return err
+	}
+	
+	if Nickname, ok := MessagingrecipientMap["nickname"].(string); ok {
+		o.Nickname = &Nickname
+	}
+	
+	if Id, ok := MessagingrecipientMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if IdType, ok := MessagingrecipientMap["idType"].(string); ok {
+		o.IdType = &IdType
+	}
+	
+	if Image, ok := MessagingrecipientMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if FirstName, ok := MessagingrecipientMap["firstName"].(string); ok {
+		o.FirstName = &FirstName
+	}
+	
+	if LastName, ok := MessagingrecipientMap["lastName"].(string); ok {
+		o.LastName = &LastName
+	}
+	
+	if Email, ok := MessagingrecipientMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

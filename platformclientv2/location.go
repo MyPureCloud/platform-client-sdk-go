@@ -29,13 +29,11 @@ type Location struct {
 
 }
 
-func (u *Location) MarshalJSON() ([]byte, error) {
+func (o *Location) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Location
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Location) MarshalJSON() ([]byte, error) {
 		LocationDefinition *Locationdefinition `json:"locationDefinition,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		FloorplanId: u.FloorplanId,
+		FloorplanId: o.FloorplanId,
 		
-		Coordinates: u.Coordinates,
+		Coordinates: o.Coordinates,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		LocationDefinition: u.LocationDefinition,
-		Alias:    (*Alias)(u),
+		LocationDefinition: o.LocationDefinition,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Location) UnmarshalJSON(b []byte) error {
+	var LocationMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LocationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if FloorplanId, ok := LocationMap["floorplanId"].(string); ok {
+		o.FloorplanId = &FloorplanId
+	}
+	
+	if Coordinates, ok := LocationMap["coordinates"].(map[string]interface{}); ok {
+		CoordinatesString, _ := json.Marshal(Coordinates)
+		json.Unmarshal(CoordinatesString, &o.Coordinates)
+	}
+	
+	if Notes, ok := LocationMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if LocationDefinition, ok := LocationMap["locationDefinition"].(map[string]interface{}); ok {
+		LocationDefinitionString, _ := json.Marshal(LocationDefinition)
+		json.Unmarshal(LocationDefinitionString, &o.LocationDefinition)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

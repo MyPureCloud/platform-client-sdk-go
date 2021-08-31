@@ -41,13 +41,11 @@ type Wfmbuscheduletopicbuschedulemetadata struct {
 
 }
 
-func (u *Wfmbuscheduletopicbuschedulemetadata) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuscheduletopicbuschedulemetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuscheduletopicbuschedulemetadata
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,71 @@ func (u *Wfmbuscheduletopicbuschedulemetadata) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmbuscheduletopicwfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		ShortTermForecast: u.ShortTermForecast,
+		ShortTermForecast: o.ShortTermForecast,
 		
-		ManagementUnits: u.ManagementUnits,
+		ManagementUnits: o.ManagementUnits,
 		
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuscheduletopicbuschedulemetadata) UnmarshalJSON(b []byte) error {
+	var WfmbuscheduletopicbuschedulemetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuscheduletopicbuschedulemetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbuscheduletopicbuschedulemetadataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if WeekCount, ok := WfmbuscheduletopicbuschedulemetadataMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if Description, ok := WfmbuscheduletopicbuschedulemetadataMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := WfmbuscheduletopicbuschedulemetadataMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if ShortTermForecast, ok := WfmbuscheduletopicbuschedulemetadataMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+	if ManagementUnits, ok := WfmbuscheduletopicbuschedulemetadataMap["managementUnits"].([]interface{}); ok {
+		ManagementUnitsString, _ := json.Marshal(ManagementUnits)
+		json.Unmarshal(ManagementUnitsString, &o.ManagementUnits)
+	}
+	
+	if GenerationResults, ok := WfmbuscheduletopicbuschedulemetadataMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if Metadata, ok := WfmbuscheduletopicbuschedulemetadataMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

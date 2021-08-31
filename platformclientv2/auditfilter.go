@@ -25,13 +25,11 @@ type Auditfilter struct {
 
 }
 
-func (u *Auditfilter) MarshalJSON() ([]byte, error) {
+func (o *Auditfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditfilter
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Auditfilter) MarshalJSON() ([]byte, error) {
 		Values *[]string `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditfilter) UnmarshalJSON(b []byte) error {
+	var AuditfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := AuditfilterMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := AuditfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Operator, ok := AuditfilterMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Values, ok := AuditfilterMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

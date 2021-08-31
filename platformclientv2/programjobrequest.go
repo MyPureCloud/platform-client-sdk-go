@@ -13,20 +13,34 @@ type Programjobrequest struct {
 
 }
 
-func (u *Programjobrequest) MarshalJSON() ([]byte, error) {
+func (o *Programjobrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Programjobrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ProgramIds *[]string `json:"programIds,omitempty"`
 		*Alias
 	}{ 
-		ProgramIds: u.ProgramIds,
-		Alias:    (*Alias)(u),
+		ProgramIds: o.ProgramIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Programjobrequest) UnmarshalJSON(b []byte) error {
+	var ProgramjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ProgramjobrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ProgramIds, ok := ProgramjobrequestMap["programIds"].([]interface{}); ok {
+		ProgramIdsString, _ := json.Marshal(ProgramIds)
+		json.Unmarshal(ProgramIdsString, &o.ProgramIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

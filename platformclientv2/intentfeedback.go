@@ -25,13 +25,11 @@ type Intentfeedback struct {
 
 }
 
-func (u *Intentfeedback) MarshalJSON() ([]byte, error) {
+func (o *Intentfeedback) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Intentfeedback
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Intentfeedback) MarshalJSON() ([]byte, error) {
 		Assessment *string `json:"assessment,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Probability: u.Probability,
+		Probability: o.Probability,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		Assessment: u.Assessment,
-		Alias:    (*Alias)(u),
+		Assessment: o.Assessment,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Intentfeedback) UnmarshalJSON(b []byte) error {
+	var IntentfeedbackMap map[string]interface{}
+	err := json.Unmarshal(b, &IntentfeedbackMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := IntentfeedbackMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Probability, ok := IntentfeedbackMap["probability"].(float64); ok {
+		o.Probability = &Probability
+	}
+	
+	if Entities, ok := IntentfeedbackMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if Assessment, ok := IntentfeedbackMap["assessment"].(string); ok {
+		o.Assessment = &Assessment
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

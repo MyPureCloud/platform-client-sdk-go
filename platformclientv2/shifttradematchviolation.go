@@ -17,24 +17,42 @@ type Shifttradematchviolation struct {
 
 }
 
-func (u *Shifttradematchviolation) MarshalJSON() ([]byte, error) {
+func (o *Shifttradematchviolation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradematchviolation
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Params *map[string]string `json:"params,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Params: u.Params,
-		Alias:    (*Alias)(u),
+		Params: o.Params,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradematchviolation) UnmarshalJSON(b []byte) error {
+	var ShifttradematchviolationMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradematchviolationMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ShifttradematchviolationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Params, ok := ShifttradematchviolationMap["params"].(map[string]interface{}); ok {
+		ParamsString, _ := json.Marshal(Params)
+		json.Unmarshal(ParamsString, &o.Params)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

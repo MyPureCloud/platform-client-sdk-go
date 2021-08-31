@@ -37,13 +37,11 @@ type Assessmentquestionscore struct {
 
 }
 
-func (u *Assessmentquestionscore) MarshalJSON() ([]byte, error) {
+func (o *Assessmentquestionscore) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assessmentquestionscore
-
 	
-
 	return json.Marshal(&struct { 
 		FailedKillQuestion *bool `json:"failedKillQuestion,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Assessmentquestionscore) MarshalJSON() ([]byte, error) {
 		FreeTextAnswer *string `json:"freeTextAnswer,omitempty"`
 		*Alias
 	}{ 
-		FailedKillQuestion: u.FailedKillQuestion,
+		FailedKillQuestion: o.FailedKillQuestion,
 		
-		Comments: u.Comments,
+		Comments: o.Comments,
 		
-		QuestionId: u.QuestionId,
+		QuestionId: o.QuestionId,
 		
-		AnswerId: u.AnswerId,
+		AnswerId: o.AnswerId,
 		
-		Score: u.Score,
+		Score: o.Score,
 		
-		MarkedNA: u.MarkedNA,
+		MarkedNA: o.MarkedNA,
 		
-		FreeTextAnswer: u.FreeTextAnswer,
-		Alias:    (*Alias)(u),
+		FreeTextAnswer: o.FreeTextAnswer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assessmentquestionscore) UnmarshalJSON(b []byte) error {
+	var AssessmentquestionscoreMap map[string]interface{}
+	err := json.Unmarshal(b, &AssessmentquestionscoreMap)
+	if err != nil {
+		return err
+	}
+	
+	if FailedKillQuestion, ok := AssessmentquestionscoreMap["failedKillQuestion"].(bool); ok {
+		o.FailedKillQuestion = &FailedKillQuestion
+	}
+	
+	if Comments, ok := AssessmentquestionscoreMap["comments"].(string); ok {
+		o.Comments = &Comments
+	}
+	
+	if QuestionId, ok := AssessmentquestionscoreMap["questionId"].(string); ok {
+		o.QuestionId = &QuestionId
+	}
+	
+	if AnswerId, ok := AssessmentquestionscoreMap["answerId"].(string); ok {
+		o.AnswerId = &AnswerId
+	}
+	
+	if Score, ok := AssessmentquestionscoreMap["score"].(float64); ok {
+		ScoreInt := int(Score)
+		o.Score = &ScoreInt
+	}
+	
+	if MarkedNA, ok := AssessmentquestionscoreMap["markedNA"].(bool); ok {
+		o.MarkedNA = &MarkedNA
+	}
+	
+	if FreeTextAnswer, ok := AssessmentquestionscoreMap["freeTextAnswer"].(string); ok {
+		o.FreeTextAnswer = &FreeTextAnswer
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody struct {
 
 }
 
-func (u *Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody) MarshalJSON() ([]byte, error) {
+func (o *Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody) MarshalJSON
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webdeploymentsconfigtopicwebmessagingconfigchangeeventbody) UnmarshalJSON(b []byte) error {
+	var WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Version, ok := WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if Status, ok := WebdeploymentsconfigtopicwebmessagingconfigchangeeventbodyMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

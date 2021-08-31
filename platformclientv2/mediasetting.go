@@ -17,24 +17,43 @@ type Mediasetting struct {
 
 }
 
-func (u *Mediasetting) MarshalJSON() ([]byte, error) {
+func (o *Mediasetting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediasetting
-
 	
-
 	return json.Marshal(&struct { 
 		AlertingTimeoutSeconds *int `json:"alertingTimeoutSeconds,omitempty"`
 		
 		ServiceLevel *Servicelevel `json:"serviceLevel,omitempty"`
 		*Alias
 	}{ 
-		AlertingTimeoutSeconds: u.AlertingTimeoutSeconds,
+		AlertingTimeoutSeconds: o.AlertingTimeoutSeconds,
 		
-		ServiceLevel: u.ServiceLevel,
-		Alias:    (*Alias)(u),
+		ServiceLevel: o.ServiceLevel,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediasetting) UnmarshalJSON(b []byte) error {
+	var MediasettingMap map[string]interface{}
+	err := json.Unmarshal(b, &MediasettingMap)
+	if err != nil {
+		return err
+	}
+	
+	if AlertingTimeoutSeconds, ok := MediasettingMap["alertingTimeoutSeconds"].(float64); ok {
+		AlertingTimeoutSecondsInt := int(AlertingTimeoutSeconds)
+		o.AlertingTimeoutSeconds = &AlertingTimeoutSecondsInt
+	}
+	
+	if ServiceLevel, ok := MediasettingMap["serviceLevel"].(map[string]interface{}); ok {
+		ServiceLevelString, _ := json.Marshal(ServiceLevel)
+		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

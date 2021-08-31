@@ -37,13 +37,11 @@ type Batchdownloadjobstatusresult struct {
 
 }
 
-func (u *Batchdownloadjobstatusresult) MarshalJSON() ([]byte, error) {
+func (o *Batchdownloadjobstatusresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Batchdownloadjobstatusresult
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,64 @@ func (u *Batchdownloadjobstatusresult) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		JobId: u.JobId,
+		JobId: o.JobId,
 		
-		ExpectedResultCount: u.ExpectedResultCount,
+		ExpectedResultCount: o.ExpectedResultCount,
 		
-		ResultCount: u.ResultCount,
+		ResultCount: o.ResultCount,
 		
-		ErrorCount: u.ErrorCount,
+		ErrorCount: o.ErrorCount,
 		
-		Results: u.Results,
+		Results: o.Results,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Batchdownloadjobstatusresult) UnmarshalJSON(b []byte) error {
+	var BatchdownloadjobstatusresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BatchdownloadjobstatusresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BatchdownloadjobstatusresultMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if JobId, ok := BatchdownloadjobstatusresultMap["jobId"].(string); ok {
+		o.JobId = &JobId
+	}
+	
+	if ExpectedResultCount, ok := BatchdownloadjobstatusresultMap["expectedResultCount"].(float64); ok {
+		ExpectedResultCountInt := int(ExpectedResultCount)
+		o.ExpectedResultCount = &ExpectedResultCountInt
+	}
+	
+	if ResultCount, ok := BatchdownloadjobstatusresultMap["resultCount"].(float64); ok {
+		ResultCountInt := int(ResultCount)
+		o.ResultCount = &ResultCountInt
+	}
+	
+	if ErrorCount, ok := BatchdownloadjobstatusresultMap["errorCount"].(float64); ok {
+		ErrorCountInt := int(ErrorCount)
+		o.ErrorCount = &ErrorCountInt
+	}
+	
+	if Results, ok := BatchdownloadjobstatusresultMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if SelfUri, ok := BatchdownloadjobstatusresultMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

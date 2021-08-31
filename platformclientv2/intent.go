@@ -13,20 +13,33 @@ type Intent struct {
 
 }
 
-func (u *Intent) MarshalJSON() ([]byte, error) {
+func (o *Intent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Intent
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Intent) UnmarshalJSON(b []byte) error {
+	var IntentMap map[string]interface{}
+	err := json.Unmarshal(b, &IntentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := IntentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

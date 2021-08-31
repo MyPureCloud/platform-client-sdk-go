@@ -29,13 +29,11 @@ type Geolocationsettings struct {
 
 }
 
-func (u *Geolocationsettings) MarshalJSON() ([]byte, error) {
+func (o *Geolocationsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Geolocationsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Geolocationsettings) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		MapboxKey: u.MapboxKey,
+		MapboxKey: o.MapboxKey,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Geolocationsettings) UnmarshalJSON(b []byte) error {
+	var GeolocationsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &GeolocationsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GeolocationsettingsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := GeolocationsettingsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Enabled, ok := GeolocationsettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if MapboxKey, ok := GeolocationsettingsMap["mapboxKey"].(string); ok {
+		o.MapboxKey = &MapboxKey
+	}
+	
+	if SelfUri, ok := GeolocationsettingsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

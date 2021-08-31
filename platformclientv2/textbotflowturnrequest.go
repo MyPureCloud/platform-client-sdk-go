@@ -25,13 +25,11 @@ type Textbotflowturnrequest struct {
 
 }
 
-func (u *Textbotflowturnrequest) MarshalJSON() ([]byte, error) {
+func (o *Textbotflowturnrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotflowturnrequest
-
 	
-
 	return json.Marshal(&struct { 
 		PreviousTurn *Textbotturnreference `json:"previousTurn,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Textbotflowturnrequest) MarshalJSON() ([]byte, error) {
 		InputEventError *Textboterrorinputevent `json:"inputEventError,omitempty"`
 		*Alias
 	}{ 
-		PreviousTurn: u.PreviousTurn,
+		PreviousTurn: o.PreviousTurn,
 		
-		InputEventType: u.InputEventType,
+		InputEventType: o.InputEventType,
 		
-		InputEventUserInput: u.InputEventUserInput,
+		InputEventUserInput: o.InputEventUserInput,
 		
-		InputEventError: u.InputEventError,
-		Alias:    (*Alias)(u),
+		InputEventError: o.InputEventError,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotflowturnrequest) UnmarshalJSON(b []byte) error {
+	var TextbotflowturnrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotflowturnrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if PreviousTurn, ok := TextbotflowturnrequestMap["previousTurn"].(map[string]interface{}); ok {
+		PreviousTurnString, _ := json.Marshal(PreviousTurn)
+		json.Unmarshal(PreviousTurnString, &o.PreviousTurn)
+	}
+	
+	if InputEventType, ok := TextbotflowturnrequestMap["inputEventType"].(string); ok {
+		o.InputEventType = &InputEventType
+	}
+	
+	if InputEventUserInput, ok := TextbotflowturnrequestMap["inputEventUserInput"].(map[string]interface{}); ok {
+		InputEventUserInputString, _ := json.Marshal(InputEventUserInput)
+		json.Unmarshal(InputEventUserInputString, &o.InputEventUserInput)
+	}
+	
+	if InputEventError, ok := TextbotflowturnrequestMap["inputEventError"].(map[string]interface{}); ok {
+		InputEventErrorString, _ := json.Marshal(InputEventError)
+		json.Unmarshal(InputEventErrorString, &o.InputEventError)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

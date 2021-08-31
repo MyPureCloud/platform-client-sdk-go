@@ -29,13 +29,11 @@ type Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer struct {
 
 }
 
-func (u *Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer
-
 	
-
 	return json.Marshal(&struct { 
 		DayOfWeek *string `json:"dayOfWeek,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer) Mars
 		DataKey *string `json:"dataKey,omitempty"`
 		*Alias
 	}{ 
-		DayOfWeek: u.DayOfWeek,
+		DayOfWeek: o.DayOfWeek,
 		
-		Weight: u.Weight,
+		Weight: o.Weight,
 		
-		Date: u.Date,
+		Date: o.Date,
 		
-		FileName: u.FileName,
+		FileName: o.FileName,
 		
-		DataKey: u.DataKey,
-		Alias:    (*Alias)(u),
+		DataKey: o.DataKey,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastimportcompletetopicforecastsourcedaypointer) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap)
+	if err != nil {
+		return err
+	}
+	
+	if DayOfWeek, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["dayOfWeek"].(string); ok {
+		o.DayOfWeek = &DayOfWeek
+	}
+	
+	if Weight, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["weight"].(float64); ok {
+		WeightInt := int(Weight)
+		o.Weight = &WeightInt
+	}
+	
+	if Date, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["date"].(string); ok {
+		o.Date = &Date
+	}
+	
+	if FileName, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+	
+	if DataKey, ok := WfmbushorttermforecastimportcompletetopicforecastsourcedaypointerMap["dataKey"].(string); ok {
+		o.DataKey = &DataKey
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

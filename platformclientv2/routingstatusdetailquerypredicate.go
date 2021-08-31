@@ -29,13 +29,11 @@ type Routingstatusdetailquerypredicate struct {
 
 }
 
-func (u *Routingstatusdetailquerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Routingstatusdetailquerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingstatusdetailquerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Routingstatusdetailquerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingstatusdetailquerypredicate) UnmarshalJSON(b []byte) error {
+	var RoutingstatusdetailquerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingstatusdetailquerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := RoutingstatusdetailquerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := RoutingstatusdetailquerypredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Operator, ok := RoutingstatusdetailquerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := RoutingstatusdetailquerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := RoutingstatusdetailquerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

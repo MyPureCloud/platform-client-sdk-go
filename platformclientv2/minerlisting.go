@@ -25,13 +25,11 @@ type Minerlisting struct {
 
 }
 
-func (u *Minerlisting) MarshalJSON() ([]byte, error) {
+func (o *Minerlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Minerlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Miner `json:"entities,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Minerlisting) MarshalJSON() ([]byte, error) {
 		PreviousUri *string `json:"previousUri,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		PreviousUri: u.PreviousUri,
-		Alias:    (*Alias)(u),
+		PreviousUri: o.PreviousUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Minerlisting) UnmarshalJSON(b []byte) error {
+	var MinerlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &MinerlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := MinerlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NextUri, ok := MinerlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if SelfUri, ok := MinerlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if PreviousUri, ok := MinerlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

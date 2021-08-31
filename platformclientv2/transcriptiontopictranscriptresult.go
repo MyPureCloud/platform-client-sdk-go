@@ -49,13 +49,11 @@ type Transcriptiontopictranscriptresult struct {
 
 }
 
-func (u *Transcriptiontopictranscriptresult) MarshalJSON() ([]byte, error) {
+func (o *Transcriptiontopictranscriptresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptiontopictranscriptresult
-
 	
-
 	return json.Marshal(&struct { 
 		UtteranceId *string `json:"utteranceId,omitempty"`
 		
@@ -78,27 +76,79 @@ func (u *Transcriptiontopictranscriptresult) MarshalJSON() ([]byte, error) {
 		VoiceTranscriptionEnabled *bool `json:"voiceTranscriptionEnabled,omitempty"`
 		*Alias
 	}{ 
-		UtteranceId: u.UtteranceId,
+		UtteranceId: o.UtteranceId,
 		
-		IsFinal: u.IsFinal,
+		IsFinal: o.IsFinal,
 		
-		Channel: u.Channel,
+		Channel: o.Channel,
 		
-		Alternatives: u.Alternatives,
+		Alternatives: o.Alternatives,
 		
-		AgentAssistantId: u.AgentAssistantId,
+		AgentAssistantId: o.AgentAssistantId,
 		
-		EngineId: u.EngineId,
+		EngineId: o.EngineId,
 		
-		Dialect: u.Dialect,
+		Dialect: o.Dialect,
 		
-		SpeechTextAnalyticsProgramId: u.SpeechTextAnalyticsProgramId,
+		SpeechTextAnalyticsProgramId: o.SpeechTextAnalyticsProgramId,
 		
-		AgentAssistEnabled: u.AgentAssistEnabled,
+		AgentAssistEnabled: o.AgentAssistEnabled,
 		
-		VoiceTranscriptionEnabled: u.VoiceTranscriptionEnabled,
-		Alias:    (*Alias)(u),
+		VoiceTranscriptionEnabled: o.VoiceTranscriptionEnabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptiontopictranscriptresult) UnmarshalJSON(b []byte) error {
+	var TranscriptiontopictranscriptresultMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptiontopictranscriptresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if UtteranceId, ok := TranscriptiontopictranscriptresultMap["utteranceId"].(string); ok {
+		o.UtteranceId = &UtteranceId
+	}
+	
+	if IsFinal, ok := TranscriptiontopictranscriptresultMap["isFinal"].(bool); ok {
+		o.IsFinal = &IsFinal
+	}
+	
+	if Channel, ok := TranscriptiontopictranscriptresultMap["channel"].(string); ok {
+		o.Channel = &Channel
+	}
+	
+	if Alternatives, ok := TranscriptiontopictranscriptresultMap["alternatives"].([]interface{}); ok {
+		AlternativesString, _ := json.Marshal(Alternatives)
+		json.Unmarshal(AlternativesString, &o.Alternatives)
+	}
+	
+	if AgentAssistantId, ok := TranscriptiontopictranscriptresultMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
+	}
+	
+	if EngineId, ok := TranscriptiontopictranscriptresultMap["engineId"].(string); ok {
+		o.EngineId = &EngineId
+	}
+	
+	if Dialect, ok := TranscriptiontopictranscriptresultMap["dialect"].(string); ok {
+		o.Dialect = &Dialect
+	}
+	
+	if SpeechTextAnalyticsProgramId, ok := TranscriptiontopictranscriptresultMap["speechTextAnalyticsProgramId"].(string); ok {
+		o.SpeechTextAnalyticsProgramId = &SpeechTextAnalyticsProgramId
+	}
+	
+	if AgentAssistEnabled, ok := TranscriptiontopictranscriptresultMap["agentAssistEnabled"].(bool); ok {
+		o.AgentAssistEnabled = &AgentAssistEnabled
+	}
+	
+	if VoiceTranscriptionEnabled, ok := TranscriptiontopictranscriptresultMap["voiceTranscriptionEnabled"].(bool); ok {
+		o.VoiceTranscriptionEnabled = &VoiceTranscriptionEnabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

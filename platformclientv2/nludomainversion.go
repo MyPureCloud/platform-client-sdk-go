@@ -70,45 +70,43 @@ type Nludomainversion struct {
 
 }
 
-func (u *Nludomainversion) MarshalJSON() ([]byte, error) {
+func (o *Nludomainversion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nludomainversion
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateTrained := new(string)
-	if u.DateTrained != nil {
+	if o.DateTrained != nil {
 		
-		*DateTrained = timeutil.Strftime(u.DateTrained, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateTrained = timeutil.Strftime(o.DateTrained, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateTrained = nil
 	}
 	
 	DatePublished := new(string)
-	if u.DatePublished != nil {
+	if o.DatePublished != nil {
 		
-		*DatePublished = timeutil.Strftime(u.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DatePublished = timeutil.Strftime(o.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DatePublished = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -141,15 +139,15 @@ func (u *Nludomainversion) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
 		DateCreated: DateCreated,
 		
@@ -159,19 +157,98 @@ func (u *Nludomainversion) MarshalJSON() ([]byte, error) {
 		
 		DatePublished: DatePublished,
 		
-		TrainingStatus: u.TrainingStatus,
+		TrainingStatus: o.TrainingStatus,
 		
-		EvaluationStatus: u.EvaluationStatus,
+		EvaluationStatus: o.EvaluationStatus,
 		
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
-		EntityTypes: u.EntityTypes,
+		EntityTypes: o.EntityTypes,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nludomainversion) UnmarshalJSON(b []byte) error {
+	var NludomainversionMap map[string]interface{}
+	err := json.Unmarshal(b, &NludomainversionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := NludomainversionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Domain, ok := NludomainversionMap["domain"].(map[string]interface{}); ok {
+		DomainString, _ := json.Marshal(Domain)
+		json.Unmarshal(DomainString, &o.Domain)
+	}
+	
+	if Description, ok := NludomainversionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Language, ok := NludomainversionMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Published, ok := NludomainversionMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if dateCreatedString, ok := NludomainversionMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := NludomainversionMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if dateTrainedString, ok := NludomainversionMap["dateTrained"].(string); ok {
+		DateTrained, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateTrainedString)
+		o.DateTrained = &DateTrained
+	}
+	
+	if datePublishedString, ok := NludomainversionMap["datePublished"].(string); ok {
+		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
+		o.DatePublished = &DatePublished
+	}
+	
+	if TrainingStatus, ok := NludomainversionMap["trainingStatus"].(string); ok {
+		o.TrainingStatus = &TrainingStatus
+	}
+	
+	if EvaluationStatus, ok := NludomainversionMap["evaluationStatus"].(string); ok {
+		o.EvaluationStatus = &EvaluationStatus
+	}
+	
+	if Intents, ok := NludomainversionMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if EntityTypes, ok := NludomainversionMap["entityTypes"].([]interface{}); ok {
+		EntityTypesString, _ := json.Marshal(EntityTypes)
+		json.Unmarshal(EntityTypesString, &o.EntityTypes)
+	}
+	
+	if Entities, ok := NludomainversionMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if SelfUri, ok := NludomainversionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Learningassignmentitem struct {
 
 }
 
-func (u *Learningassignmentitem) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentitem
-
 	
-
 	return json.Marshal(&struct { 
 		ModuleId *string `json:"moduleId,omitempty"`
 		
 		UserId *string `json:"userId,omitempty"`
 		*Alias
 	}{ 
-		ModuleId: u.ModuleId,
+		ModuleId: o.ModuleId,
 		
-		UserId: u.UserId,
-		Alias:    (*Alias)(u),
+		UserId: o.UserId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentitem) UnmarshalJSON(b []byte) error {
+	var LearningassignmentitemMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if ModuleId, ok := LearningassignmentitemMap["moduleId"].(string); ok {
+		o.ModuleId = &ModuleId
+	}
+	
+	if UserId, ok := LearningassignmentitemMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

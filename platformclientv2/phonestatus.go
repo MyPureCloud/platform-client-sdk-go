@@ -49,13 +49,11 @@ type Phonestatus struct {
 
 }
 
-func (u *Phonestatus) MarshalJSON() ([]byte, error) {
+func (o *Phonestatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonestatus
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,81 @@ func (u *Phonestatus) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		OperationalStatus: u.OperationalStatus,
+		OperationalStatus: o.OperationalStatus,
 		
-		EdgesStatus: u.EdgesStatus,
+		EdgesStatus: o.EdgesStatus,
 		
-		EventCreationTime: u.EventCreationTime,
+		EventCreationTime: o.EventCreationTime,
 		
-		Provision: u.Provision,
+		Provision: o.Provision,
 		
-		LineStatuses: u.LineStatuses,
+		LineStatuses: o.LineStatuses,
 		
-		PhoneAssignmentToEdgeType: u.PhoneAssignmentToEdgeType,
+		PhoneAssignmentToEdgeType: o.PhoneAssignmentToEdgeType,
 		
-		Edge: u.Edge,
+		Edge: o.Edge,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonestatus) UnmarshalJSON(b []byte) error {
+	var PhonestatusMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonestatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PhonestatusMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PhonestatusMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if OperationalStatus, ok := PhonestatusMap["operationalStatus"].(string); ok {
+		o.OperationalStatus = &OperationalStatus
+	}
+	
+	if EdgesStatus, ok := PhonestatusMap["edgesStatus"].(string); ok {
+		o.EdgesStatus = &EdgesStatus
+	}
+	
+	if EventCreationTime, ok := PhonestatusMap["eventCreationTime"].(string); ok {
+		o.EventCreationTime = &EventCreationTime
+	}
+	
+	if Provision, ok := PhonestatusMap["provision"].(map[string]interface{}); ok {
+		ProvisionString, _ := json.Marshal(Provision)
+		json.Unmarshal(ProvisionString, &o.Provision)
+	}
+	
+	if LineStatuses, ok := PhonestatusMap["lineStatuses"].([]interface{}); ok {
+		LineStatusesString, _ := json.Marshal(LineStatuses)
+		json.Unmarshal(LineStatusesString, &o.LineStatuses)
+	}
+	
+	if PhoneAssignmentToEdgeType, ok := PhonestatusMap["phoneAssignmentToEdgeType"].(string); ok {
+		o.PhoneAssignmentToEdgeType = &PhoneAssignmentToEdgeType
+	}
+	
+	if Edge, ok := PhonestatusMap["edge"].(map[string]interface{}); ok {
+		EdgeString, _ := json.Marshal(Edge)
+		json.Unmarshal(EdgeString, &o.Edge)
+	}
+	
+	if SelfUri, ok := PhonestatusMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

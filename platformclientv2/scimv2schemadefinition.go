@@ -29,13 +29,11 @@ type Scimv2schemadefinition struct {
 
 }
 
-func (u *Scimv2schemadefinition) MarshalJSON() ([]byte, error) {
+func (o *Scimv2schemadefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2schemadefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Scimv2schemadefinition) MarshalJSON() ([]byte, error) {
 		Meta *Scimmetadata `json:"meta,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		Meta: u.Meta,
-		Alias:    (*Alias)(u),
+		Meta: o.Meta,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2schemadefinition) UnmarshalJSON(b []byte) error {
+	var Scimv2schemadefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2schemadefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := Scimv2schemadefinitionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := Scimv2schemadefinitionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := Scimv2schemadefinitionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Attributes, ok := Scimv2schemadefinitionMap["attributes"].([]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if Meta, ok := Scimv2schemadefinitionMap["meta"].(map[string]interface{}); ok {
+		MetaString, _ := json.Marshal(Meta)
+		json.Unmarshal(MetaString, &o.Meta)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

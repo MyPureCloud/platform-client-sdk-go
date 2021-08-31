@@ -17,24 +17,43 @@ type Architectflowfields struct {
 
 }
 
-func (u *Architectflowfields) MarshalJSON() ([]byte, error) {
+func (o *Architectflowfields) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflowfields
-
 	
-
 	return json.Marshal(&struct { 
 		ArchitectFlow *Addressableentityref `json:"architectFlow,omitempty"`
 		
 		FlowRequestMappings *[]Requestmapping `json:"flowRequestMappings,omitempty"`
 		*Alias
 	}{ 
-		ArchitectFlow: u.ArchitectFlow,
+		ArchitectFlow: o.ArchitectFlow,
 		
-		FlowRequestMappings: u.FlowRequestMappings,
-		Alias:    (*Alias)(u),
+		FlowRequestMappings: o.FlowRequestMappings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflowfields) UnmarshalJSON(b []byte) error {
+	var ArchitectflowfieldsMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflowfieldsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ArchitectFlow, ok := ArchitectflowfieldsMap["architectFlow"].(map[string]interface{}); ok {
+		ArchitectFlowString, _ := json.Marshal(ArchitectFlow)
+		json.Unmarshal(ArchitectFlowString, &o.ArchitectFlow)
+	}
+	
+	if FlowRequestMappings, ok := ArchitectflowfieldsMap["flowRequestMappings"].([]interface{}); ok {
+		FlowRequestMappingsString, _ := json.Marshal(FlowRequestMappings)
+		json.Unmarshal(FlowRequestMappingsString, &o.FlowRequestMappings)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

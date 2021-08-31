@@ -74,29 +74,27 @@ type Contactlist struct {
 
 }
 
-func (u *Contactlist) MarshalJSON() ([]byte, error) {
+func (o *Contactlist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlist
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -131,39 +129,124 @@ func (u *Contactlist) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		ColumnNames: u.ColumnNames,
+		ColumnNames: o.ColumnNames,
 		
-		PhoneColumns: u.PhoneColumns,
+		PhoneColumns: o.PhoneColumns,
 		
-		ImportStatus: u.ImportStatus,
+		ImportStatus: o.ImportStatus,
 		
-		PreviewModeColumnName: u.PreviewModeColumnName,
+		PreviewModeColumnName: o.PreviewModeColumnName,
 		
-		PreviewModeAcceptedValues: u.PreviewModeAcceptedValues,
+		PreviewModeAcceptedValues: o.PreviewModeAcceptedValues,
 		
-		Size: u.Size,
+		Size: o.Size,
 		
-		AttemptLimits: u.AttemptLimits,
+		AttemptLimits: o.AttemptLimits,
 		
-		AutomaticTimeZoneMapping: u.AutomaticTimeZoneMapping,
+		AutomaticTimeZoneMapping: o.AutomaticTimeZoneMapping,
 		
-		ZipCodeColumnName: u.ZipCodeColumnName,
+		ZipCodeColumnName: o.ZipCodeColumnName,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlist) UnmarshalJSON(b []byte) error {
+	var ContactlistMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ContactlistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ContactlistMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := ContactlistMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := ContactlistMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := ContactlistMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Division, ok := ContactlistMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if ColumnNames, ok := ContactlistMap["columnNames"].([]interface{}); ok {
+		ColumnNamesString, _ := json.Marshal(ColumnNames)
+		json.Unmarshal(ColumnNamesString, &o.ColumnNames)
+	}
+	
+	if PhoneColumns, ok := ContactlistMap["phoneColumns"].([]interface{}); ok {
+		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
+		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
+	}
+	
+	if ImportStatus, ok := ContactlistMap["importStatus"].(map[string]interface{}); ok {
+		ImportStatusString, _ := json.Marshal(ImportStatus)
+		json.Unmarshal(ImportStatusString, &o.ImportStatus)
+	}
+	
+	if PreviewModeColumnName, ok := ContactlistMap["previewModeColumnName"].(string); ok {
+		o.PreviewModeColumnName = &PreviewModeColumnName
+	}
+	
+	if PreviewModeAcceptedValues, ok := ContactlistMap["previewModeAcceptedValues"].([]interface{}); ok {
+		PreviewModeAcceptedValuesString, _ := json.Marshal(PreviewModeAcceptedValues)
+		json.Unmarshal(PreviewModeAcceptedValuesString, &o.PreviewModeAcceptedValues)
+	}
+	
+	if Size, ok := ContactlistMap["size"].(float64); ok {
+		SizeInt := int(Size)
+		o.Size = &SizeInt
+	}
+	
+	if AttemptLimits, ok := ContactlistMap["attemptLimits"].(map[string]interface{}); ok {
+		AttemptLimitsString, _ := json.Marshal(AttemptLimits)
+		json.Unmarshal(AttemptLimitsString, &o.AttemptLimits)
+	}
+	
+	if AutomaticTimeZoneMapping, ok := ContactlistMap["automaticTimeZoneMapping"].(bool); ok {
+		o.AutomaticTimeZoneMapping = &AutomaticTimeZoneMapping
+	}
+	
+	if ZipCodeColumnName, ok := ContactlistMap["zipCodeColumnName"].(string); ok {
+		o.ZipCodeColumnName = &ZipCodeColumnName
+	}
+	
+	if SelfUri, ok := ContactlistMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

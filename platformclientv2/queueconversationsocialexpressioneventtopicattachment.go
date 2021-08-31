@@ -33,13 +33,11 @@ type Queueconversationsocialexpressioneventtopicattachment struct {
 
 }
 
-func (u *Queueconversationsocialexpressioneventtopicattachment) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationsocialexpressioneventtopicattachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationsocialexpressioneventtopicattachment
-
 	
-
 	return json.Marshal(&struct { 
 		AttachmentId *string `json:"attachmentId,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Queueconversationsocialexpressioneventtopicattachment) MarshalJSON() ([
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		AttachmentId: u.AttachmentId,
+		AttachmentId: o.AttachmentId,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContentUri: u.ContentUri,
+		ContentUri: o.ContentUri,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationsocialexpressioneventtopicattachment) UnmarshalJSON(b []byte) error {
+	var QueueconversationsocialexpressioneventtopicattachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopicattachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if AttachmentId, ok := QueueconversationsocialexpressioneventtopicattachmentMap["attachmentId"].(string); ok {
+		o.AttachmentId = &AttachmentId
+	}
+	
+	if Name, ok := QueueconversationsocialexpressioneventtopicattachmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContentUri, ok := QueueconversationsocialexpressioneventtopicattachmentMap["contentUri"].(string); ok {
+		o.ContentUri = &ContentUri
+	}
+	
+	if ContentType, ok := QueueconversationsocialexpressioneventtopicattachmentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if ContentLength, ok := QueueconversationsocialexpressioneventtopicattachmentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicattachmentMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

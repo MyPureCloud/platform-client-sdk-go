@@ -53,13 +53,11 @@ type Wfmagent struct {
 
 }
 
-func (u *Wfmagent) MarshalJSON() ([]byte, error) {
+func (o *Wfmagent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmagent
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,91 @@ func (u *Wfmagent) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		User: u.User,
+		User: o.User,
 		
-		WorkPlan: u.WorkPlan,
+		WorkPlan: o.WorkPlan,
 		
-		WorkPlanRotation: u.WorkPlanRotation,
+		WorkPlanRotation: o.WorkPlanRotation,
 		
-		AcceptDirectShiftTrades: u.AcceptDirectShiftTrades,
+		AcceptDirectShiftTrades: o.AcceptDirectShiftTrades,
 		
-		Queues: u.Queues,
+		Queues: o.Queues,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		Schedulable: u.Schedulable,
+		Schedulable: o.Schedulable,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmagent) UnmarshalJSON(b []byte) error {
+	var WfmagentMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmagentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmagentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if User, ok := WfmagentMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if WorkPlan, ok := WfmagentMap["workPlan"].(map[string]interface{}); ok {
+		WorkPlanString, _ := json.Marshal(WorkPlan)
+		json.Unmarshal(WorkPlanString, &o.WorkPlan)
+	}
+	
+	if WorkPlanRotation, ok := WfmagentMap["workPlanRotation"].(map[string]interface{}); ok {
+		WorkPlanRotationString, _ := json.Marshal(WorkPlanRotation)
+		json.Unmarshal(WorkPlanRotationString, &o.WorkPlanRotation)
+	}
+	
+	if AcceptDirectShiftTrades, ok := WfmagentMap["acceptDirectShiftTrades"].(bool); ok {
+		o.AcceptDirectShiftTrades = &AcceptDirectShiftTrades
+	}
+	
+	if Queues, ok := WfmagentMap["queues"].([]interface{}); ok {
+		QueuesString, _ := json.Marshal(Queues)
+		json.Unmarshal(QueuesString, &o.Queues)
+	}
+	
+	if Languages, ok := WfmagentMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if Skills, ok := WfmagentMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if Schedulable, ok := WfmagentMap["schedulable"].(bool); ok {
+		o.Schedulable = &Schedulable
+	}
+	
+	if Metadata, ok := WfmagentMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := WfmagentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

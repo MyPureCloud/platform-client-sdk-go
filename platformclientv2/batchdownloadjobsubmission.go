@@ -13,20 +13,34 @@ type Batchdownloadjobsubmission struct {
 
 }
 
-func (u *Batchdownloadjobsubmission) MarshalJSON() ([]byte, error) {
+func (o *Batchdownloadjobsubmission) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Batchdownloadjobsubmission
-
 	
-
 	return json.Marshal(&struct { 
 		BatchDownloadRequestList *[]Batchdownloadrequest `json:"batchDownloadRequestList,omitempty"`
 		*Alias
 	}{ 
-		BatchDownloadRequestList: u.BatchDownloadRequestList,
-		Alias:    (*Alias)(u),
+		BatchDownloadRequestList: o.BatchDownloadRequestList,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Batchdownloadjobsubmission) UnmarshalJSON(b []byte) error {
+	var BatchdownloadjobsubmissionMap map[string]interface{}
+	err := json.Unmarshal(b, &BatchdownloadjobsubmissionMap)
+	if err != nil {
+		return err
+	}
+	
+	if BatchDownloadRequestList, ok := BatchdownloadjobsubmissionMap["batchDownloadRequestList"].([]interface{}); ok {
+		BatchDownloadRequestListString, _ := json.Marshal(BatchDownloadRequestList)
+		json.Unmarshal(BatchDownloadRequestListString, &o.BatchDownloadRequestList)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

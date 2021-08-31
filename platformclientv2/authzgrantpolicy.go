@@ -25,13 +25,11 @@ type Authzgrantpolicy struct {
 
 }
 
-func (u *Authzgrantpolicy) MarshalJSON() ([]byte, error) {
+func (o *Authzgrantpolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Authzgrantpolicy
-
 	
-
 	return json.Marshal(&struct { 
 		Actions *[]string `json:"actions,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Authzgrantpolicy) MarshalJSON() ([]byte, error) {
 		EntityName *string `json:"entityName,omitempty"`
 		*Alias
 	}{ 
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Condition: u.Condition,
+		Condition: o.Condition,
 		
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		EntityName: u.EntityName,
-		Alias:    (*Alias)(u),
+		EntityName: o.EntityName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Authzgrantpolicy) UnmarshalJSON(b []byte) error {
+	var AuthzgrantpolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &AuthzgrantpolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Actions, ok := AuthzgrantpolicyMap["actions"].([]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Condition, ok := AuthzgrantpolicyMap["condition"].(string); ok {
+		o.Condition = &Condition
+	}
+	
+	if Domain, ok := AuthzgrantpolicyMap["domain"].(string); ok {
+		o.Domain = &Domain
+	}
+	
+	if EntityName, ok := AuthzgrantpolicyMap["entityName"].(string); ok {
+		o.EntityName = &EntityName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

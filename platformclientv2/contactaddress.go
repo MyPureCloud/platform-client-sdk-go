@@ -33,13 +33,11 @@ type Contactaddress struct {
 
 }
 
-func (u *Contactaddress) MarshalJSON() ([]byte, error) {
+func (o *Contactaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Address1 *string `json:"address1,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Contactaddress) MarshalJSON() ([]byte, error) {
 		CountryCode *string `json:"countryCode,omitempty"`
 		*Alias
 	}{ 
-		Address1: u.Address1,
+		Address1: o.Address1,
 		
-		Address2: u.Address2,
+		Address2: o.Address2,
 		
-		City: u.City,
+		City: o.City,
 		
-		State: u.State,
+		State: o.State,
 		
-		PostalCode: u.PostalCode,
+		PostalCode: o.PostalCode,
 		
-		CountryCode: u.CountryCode,
-		Alias:    (*Alias)(u),
+		CountryCode: o.CountryCode,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactaddress) UnmarshalJSON(b []byte) error {
+	var ContactaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Address1, ok := ContactaddressMap["address1"].(string); ok {
+		o.Address1 = &Address1
+	}
+	
+	if Address2, ok := ContactaddressMap["address2"].(string); ok {
+		o.Address2 = &Address2
+	}
+	
+	if City, ok := ContactaddressMap["city"].(string); ok {
+		o.City = &City
+	}
+	
+	if State, ok := ContactaddressMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if PostalCode, ok := ContactaddressMap["postalCode"].(string); ok {
+		o.PostalCode = &PostalCode
+	}
+	
+	if CountryCode, ok := ContactaddressMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

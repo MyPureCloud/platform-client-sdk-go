@@ -30,21 +30,19 @@ type Recordingjobsquery struct {
 
 }
 
-func (u *Recordingjobsquery) MarshalJSON() ([]byte, error) {
+func (o *Recordingjobsquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingjobsquery
-
 	
 	ActionDate := new(string)
-	if u.ActionDate != nil {
+	if o.ActionDate != nil {
 		
-		*ActionDate = timeutil.Strftime(u.ActionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ActionDate = timeutil.Strftime(o.ActionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ActionDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Action *string `json:"action,omitempty"`
 		
@@ -57,17 +55,50 @@ func (u *Recordingjobsquery) MarshalJSON() ([]byte, error) {
 		ConversationQuery *Asyncconversationquery `json:"conversationQuery,omitempty"`
 		*Alias
 	}{ 
-		Action: u.Action,
+		Action: o.Action,
 		
 		ActionDate: ActionDate,
 		
-		IntegrationId: u.IntegrationId,
+		IntegrationId: o.IntegrationId,
 		
-		IncludeScreenRecordings: u.IncludeScreenRecordings,
+		IncludeScreenRecordings: o.IncludeScreenRecordings,
 		
-		ConversationQuery: u.ConversationQuery,
-		Alias:    (*Alias)(u),
+		ConversationQuery: o.ConversationQuery,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingjobsquery) UnmarshalJSON(b []byte) error {
+	var RecordingjobsqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingjobsqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Action, ok := RecordingjobsqueryMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if actionDateString, ok := RecordingjobsqueryMap["actionDate"].(string); ok {
+		ActionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", actionDateString)
+		o.ActionDate = &ActionDate
+	}
+	
+	if IntegrationId, ok := RecordingjobsqueryMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+	
+	if IncludeScreenRecordings, ok := RecordingjobsqueryMap["includeScreenRecordings"].(bool); ok {
+		o.IncludeScreenRecordings = &IncludeScreenRecordings
+	}
+	
+	if ConversationQuery, ok := RecordingjobsqueryMap["conversationQuery"].(map[string]interface{}); ok {
+		ConversationQueryString, _ := json.Marshal(ConversationQuery)
+		json.Unmarshal(ConversationQueryString, &o.ConversationQuery)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

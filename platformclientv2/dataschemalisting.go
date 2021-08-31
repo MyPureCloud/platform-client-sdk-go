@@ -21,13 +21,11 @@ type Dataschemalisting struct {
 
 }
 
-func (u *Dataschemalisting) MarshalJSON() ([]byte, error) {
+func (o *Dataschemalisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dataschemalisting
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Dataschemalisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dataschemalisting) UnmarshalJSON(b []byte) error {
+	var DataschemalistingMap map[string]interface{}
+	err := json.Unmarshal(b, &DataschemalistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := DataschemalistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if Entities, ok := DataschemalistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if SelfUri, ok := DataschemalistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

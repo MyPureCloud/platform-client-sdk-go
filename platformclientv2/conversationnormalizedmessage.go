@@ -53,13 +53,11 @@ type Conversationnormalizedmessage struct {
 
 }
 
-func (u *Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
+func (o *Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationnormalizedmessage
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,88 @@ func (u *Conversationnormalizedmessage) MarshalJSON() ([]byte, error) {
 		Metadata *map[string]string `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Channel: u.Channel,
+		Channel: o.Channel,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Content: u.Content,
+		Content: o.Content,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Reasons: u.Reasons,
+		Reasons: o.Reasons,
 		
-		OriginatingEntity: u.OriginatingEntity,
+		OriginatingEntity: o.OriginatingEntity,
 		
-		IsFinalReceipt: u.IsFinalReceipt,
+		IsFinalReceipt: o.IsFinalReceipt,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationnormalizedmessage) UnmarshalJSON(b []byte) error {
+	var ConversationnormalizedmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationnormalizedmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationnormalizedmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Channel, ok := ConversationnormalizedmessageMap["channel"].(map[string]interface{}); ok {
+		ChannelString, _ := json.Marshal(Channel)
+		json.Unmarshal(ChannelString, &o.Channel)
+	}
+	
+	if VarType, ok := ConversationnormalizedmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Text, ok := ConversationnormalizedmessageMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Content, ok := ConversationnormalizedmessageMap["content"].([]interface{}); ok {
+		ContentString, _ := json.Marshal(Content)
+		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+	if Status, ok := ConversationnormalizedmessageMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Reasons, ok := ConversationnormalizedmessageMap["reasons"].([]interface{}); ok {
+		ReasonsString, _ := json.Marshal(Reasons)
+		json.Unmarshal(ReasonsString, &o.Reasons)
+	}
+	
+	if OriginatingEntity, ok := ConversationnormalizedmessageMap["originatingEntity"].(string); ok {
+		o.OriginatingEntity = &OriginatingEntity
+	}
+	
+	if IsFinalReceipt, ok := ConversationnormalizedmessageMap["isFinalReceipt"].(bool); ok {
+		o.IsFinalReceipt = &IsFinalReceipt
+	}
+	
+	if Direction, ok := ConversationnormalizedmessageMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Metadata, ok := ConversationnormalizedmessageMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

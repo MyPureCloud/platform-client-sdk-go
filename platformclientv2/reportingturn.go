@@ -46,21 +46,19 @@ type Reportingturn struct {
 
 }
 
-func (u *Reportingturn) MarshalJSON() ([]byte, error) {
+func (o *Reportingturn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingturn
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		UserInput *string `json:"userInput,omitempty"`
 		
@@ -81,25 +79,78 @@ func (u *Reportingturn) MarshalJSON() ([]byte, error) {
 		Conversation *Addressableentityref `json:"conversation,omitempty"`
 		*Alias
 	}{ 
-		UserInput: u.UserInput,
+		UserInput: o.UserInput,
 		
-		BotPrompts: u.BotPrompts,
+		BotPrompts: o.BotPrompts,
 		
-		SessionId: u.SessionId,
+		SessionId: o.SessionId,
 		
-		AskAction: u.AskAction,
+		AskAction: o.AskAction,
 		
-		Intent: u.Intent,
+		Intent: o.Intent,
 		
-		Knowledge: u.Knowledge,
+		Knowledge: o.Knowledge,
 		
 		DateCreated: DateCreated,
 		
-		AskActionResult: u.AskActionResult,
+		AskActionResult: o.AskActionResult,
 		
-		Conversation: u.Conversation,
-		Alias:    (*Alias)(u),
+		Conversation: o.Conversation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingturn) UnmarshalJSON(b []byte) error {
+	var ReportingturnMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingturnMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserInput, ok := ReportingturnMap["userInput"].(string); ok {
+		o.UserInput = &UserInput
+	}
+	
+	if BotPrompts, ok := ReportingturnMap["botPrompts"].([]interface{}); ok {
+		BotPromptsString, _ := json.Marshal(BotPrompts)
+		json.Unmarshal(BotPromptsString, &o.BotPrompts)
+	}
+	
+	if SessionId, ok := ReportingturnMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
+	}
+	
+	if AskAction, ok := ReportingturnMap["askAction"].(map[string]interface{}); ok {
+		AskActionString, _ := json.Marshal(AskAction)
+		json.Unmarshal(AskActionString, &o.AskAction)
+	}
+	
+	if Intent, ok := ReportingturnMap["intent"].(map[string]interface{}); ok {
+		IntentString, _ := json.Marshal(Intent)
+		json.Unmarshal(IntentString, &o.Intent)
+	}
+	
+	if Knowledge, ok := ReportingturnMap["knowledge"].(map[string]interface{}); ok {
+		KnowledgeString, _ := json.Marshal(Knowledge)
+		json.Unmarshal(KnowledgeString, &o.Knowledge)
+	}
+	
+	if dateCreatedString, ok := ReportingturnMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if AskActionResult, ok := ReportingturnMap["askActionResult"].(string); ok {
+		o.AskActionResult = &AskActionResult
+	}
+	
+	if Conversation, ok := ReportingturnMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

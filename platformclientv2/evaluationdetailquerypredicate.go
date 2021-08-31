@@ -33,13 +33,11 @@ type Evaluationdetailquerypredicate struct {
 
 }
 
-func (u *Evaluationdetailquerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Evaluationdetailquerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationdetailquerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Evaluationdetailquerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationdetailquerypredicate) UnmarshalJSON(b []byte) error {
+	var EvaluationdetailquerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationdetailquerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := EvaluationdetailquerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := EvaluationdetailquerypredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Metric, ok := EvaluationdetailquerypredicateMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Operator, ok := EvaluationdetailquerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := EvaluationdetailquerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := EvaluationdetailquerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

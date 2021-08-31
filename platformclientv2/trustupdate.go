@@ -18,32 +18,50 @@ type Trustupdate struct {
 
 }
 
-func (u *Trustupdate) MarshalJSON() ([]byte, error) {
+func (o *Trustupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustupdate
-
 	
 	DateExpired := new(string)
-	if u.DateExpired != nil {
+	if o.DateExpired != nil {
 		
-		*DateExpired = timeutil.Strftime(u.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateExpired = timeutil.Strftime(o.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateExpired = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		DateExpired *string `json:"dateExpired,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
 		DateExpired: DateExpired,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustupdate) UnmarshalJSON(b []byte) error {
+	var TrustupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := TrustupdateMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if dateExpiredString, ok := TrustupdateMap["dateExpired"].(string); ok {
+		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
+		o.DateExpired = &DateExpired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

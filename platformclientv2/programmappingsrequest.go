@@ -17,24 +17,43 @@ type Programmappingsrequest struct {
 
 }
 
-func (u *Programmappingsrequest) MarshalJSON() ([]byte, error) {
+func (o *Programmappingsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Programmappingsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueueIds *[]string `json:"queueIds,omitempty"`
 		
 		FlowIds *[]string `json:"flowIds,omitempty"`
 		*Alias
 	}{ 
-		QueueIds: u.QueueIds,
+		QueueIds: o.QueueIds,
 		
-		FlowIds: u.FlowIds,
-		Alias:    (*Alias)(u),
+		FlowIds: o.FlowIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Programmappingsrequest) UnmarshalJSON(b []byte) error {
+	var ProgrammappingsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ProgrammappingsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueIds, ok := ProgrammappingsrequestMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
+	}
+	
+	if FlowIds, ok := ProgrammappingsrequestMap["flowIds"].([]interface{}); ok {
+		FlowIdsString, _ := json.Marshal(FlowIds)
+		json.Unmarshal(FlowIdsString, &o.FlowIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

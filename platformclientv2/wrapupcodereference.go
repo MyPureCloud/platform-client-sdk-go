@@ -13,20 +13,33 @@ type Wrapupcodereference struct {
 
 }
 
-func (u *Wrapupcodereference) MarshalJSON() ([]byte, error) {
+func (o *Wrapupcodereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wrapupcodereference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wrapupcodereference) UnmarshalJSON(b []byte) error {
+	var WrapupcodereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WrapupcodereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WrapupcodereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

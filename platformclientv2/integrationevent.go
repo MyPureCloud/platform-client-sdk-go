@@ -54,21 +54,19 @@ type Integrationevent struct {
 
 }
 
-func (u *Integrationevent) MarshalJSON() ([]byte, error) {
+func (o *Integrationevent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Integrationevent
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -93,29 +91,90 @@ func (u *Integrationevent) MarshalJSON() ([]byte, error) {
 		User *User `json:"user,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
 		Timestamp: Timestamp,
 		
-		Level: u.Level,
+		Level: o.Level,
 		
-		EventCode: u.EventCode,
+		EventCode: o.EventCode,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		ContextAttributes: u.ContextAttributes,
+		ContextAttributes: o.ContextAttributes,
 		
-		DetailMessage: u.DetailMessage,
+		DetailMessage: o.DetailMessage,
 		
-		User: u.User,
-		Alias:    (*Alias)(u),
+		User: o.User,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Integrationevent) UnmarshalJSON(b []byte) error {
+	var IntegrationeventMap map[string]interface{}
+	err := json.Unmarshal(b, &IntegrationeventMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := IntegrationeventMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := IntegrationeventMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if CorrelationId, ok := IntegrationeventMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if timestampString, ok := IntegrationeventMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if Level, ok := IntegrationeventMap["level"].(string); ok {
+		o.Level = &Level
+	}
+	
+	if EventCode, ok := IntegrationeventMap["eventCode"].(string); ok {
+		o.EventCode = &EventCode
+	}
+	
+	if Message, ok := IntegrationeventMap["message"].(map[string]interface{}); ok {
+		MessageString, _ := json.Marshal(Message)
+		json.Unmarshal(MessageString, &o.Message)
+	}
+	
+	if Entities, ok := IntegrationeventMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if ContextAttributes, ok := IntegrationeventMap["contextAttributes"].(map[string]interface{}); ok {
+		ContextAttributesString, _ := json.Marshal(ContextAttributes)
+		json.Unmarshal(ContextAttributesString, &o.ContextAttributes)
+	}
+	
+	if DetailMessage, ok := IntegrationeventMap["detailMessage"].(map[string]interface{}); ok {
+		DetailMessageString, _ := json.Marshal(DetailMessage)
+		json.Unmarshal(DetailMessageString, &o.DetailMessage)
+	}
+	
+	if User, ok := IntegrationeventMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Sendagentlessoutboundmessagerequest struct {
 
 }
 
-func (u *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
+func (o *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sendagentlessoutboundmessagerequest
-
 	
-
 	return json.Marshal(&struct { 
 		FromAddress *string `json:"fromAddress,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
 		*Alias
 	}{ 
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		ToAddressMessengerType: u.ToAddressMessengerType,
+		ToAddressMessengerType: o.ToAddressMessengerType,
 		
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		MessagingTemplate: u.MessagingTemplate,
-		Alias:    (*Alias)(u),
+		MessagingTemplate: o.MessagingTemplate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sendagentlessoutboundmessagerequest) UnmarshalJSON(b []byte) error {
+	var SendagentlessoutboundmessagerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SendagentlessoutboundmessagerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if FromAddress, ok := SendagentlessoutboundmessagerequestMap["fromAddress"].(string); ok {
+		o.FromAddress = &FromAddress
+	}
+	
+	if ToAddress, ok := SendagentlessoutboundmessagerequestMap["toAddress"].(string); ok {
+		o.ToAddress = &ToAddress
+	}
+	
+	if ToAddressMessengerType, ok := SendagentlessoutboundmessagerequestMap["toAddressMessengerType"].(string); ok {
+		o.ToAddressMessengerType = &ToAddressMessengerType
+	}
+	
+	if TextBody, ok := SendagentlessoutboundmessagerequestMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if MessagingTemplate, ok := SendagentlessoutboundmessagerequestMap["messagingTemplate"].(map[string]interface{}); ok {
+		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
+		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Auditquerysort struct {
 
 }
 
-func (u *Auditquerysort) MarshalJSON() ([]byte, error) {
+func (o *Auditquerysort) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditquerysort
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		SortOrder *string `json:"sortOrder,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		SortOrder: u.SortOrder,
-		Alias:    (*Alias)(u),
+		SortOrder: o.SortOrder,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditquerysort) UnmarshalJSON(b []byte) error {
+	var AuditquerysortMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditquerysortMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := AuditquerysortMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SortOrder, ok := AuditquerysortMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

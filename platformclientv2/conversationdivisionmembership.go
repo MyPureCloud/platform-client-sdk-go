@@ -17,24 +17,43 @@ type Conversationdivisionmembership struct {
 
 }
 
-func (u *Conversationdivisionmembership) MarshalJSON() ([]byte, error) {
+func (o *Conversationdivisionmembership) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationdivisionmembership
-
 	
-
 	return json.Marshal(&struct { 
 		Division *Domainentityref `json:"division,omitempty"`
 		
 		Entities *[]Domainentityref `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Division: u.Division,
+		Division: o.Division,
 		
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationdivisionmembership) UnmarshalJSON(b []byte) error {
+	var ConversationdivisionmembershipMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationdivisionmembershipMap)
+	if err != nil {
+		return err
+	}
+	
+	if Division, ok := ConversationdivisionmembershipMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Entities, ok := ConversationdivisionmembershipMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

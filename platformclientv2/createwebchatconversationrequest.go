@@ -33,13 +33,11 @@ type Createwebchatconversationrequest struct {
 
 }
 
-func (u *Createwebchatconversationrequest) MarshalJSON() ([]byte, error) {
+func (o *Createwebchatconversationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createwebchatconversationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		OrganizationId *string `json:"organizationId,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Createwebchatconversationrequest) MarshalJSON() ([]byte, error) {
 		JourneyContext *Journeycontext `json:"journeyContext,omitempty"`
 		*Alias
 	}{ 
-		OrganizationId: u.OrganizationId,
+		OrganizationId: o.OrganizationId,
 		
-		DeploymentId: u.DeploymentId,
+		DeploymentId: o.DeploymentId,
 		
-		RoutingTarget: u.RoutingTarget,
+		RoutingTarget: o.RoutingTarget,
 		
-		MemberInfo: u.MemberInfo,
+		MemberInfo: o.MemberInfo,
 		
-		MemberAuthToken: u.MemberAuthToken,
+		MemberAuthToken: o.MemberAuthToken,
 		
-		JourneyContext: u.JourneyContext,
-		Alias:    (*Alias)(u),
+		JourneyContext: o.JourneyContext,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createwebchatconversationrequest) UnmarshalJSON(b []byte) error {
+	var CreatewebchatconversationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatewebchatconversationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if OrganizationId, ok := CreatewebchatconversationrequestMap["organizationId"].(string); ok {
+		o.OrganizationId = &OrganizationId
+	}
+	
+	if DeploymentId, ok := CreatewebchatconversationrequestMap["deploymentId"].(string); ok {
+		o.DeploymentId = &DeploymentId
+	}
+	
+	if RoutingTarget, ok := CreatewebchatconversationrequestMap["routingTarget"].(map[string]interface{}); ok {
+		RoutingTargetString, _ := json.Marshal(RoutingTarget)
+		json.Unmarshal(RoutingTargetString, &o.RoutingTarget)
+	}
+	
+	if MemberInfo, ok := CreatewebchatconversationrequestMap["memberInfo"].(map[string]interface{}); ok {
+		MemberInfoString, _ := json.Marshal(MemberInfo)
+		json.Unmarshal(MemberInfoString, &o.MemberInfo)
+	}
+	
+	if MemberAuthToken, ok := CreatewebchatconversationrequestMap["memberAuthToken"].(string); ok {
+		o.MemberAuthToken = &MemberAuthToken
+	}
+	
+	if JourneyContext, ok := CreatewebchatconversationrequestMap["journeyContext"].(map[string]interface{}); ok {
+		JourneyContextString, _ := json.Marshal(JourneyContext)
+		json.Unmarshal(JourneyContextString, &o.JourneyContext)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

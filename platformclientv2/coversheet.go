@@ -17,24 +17,41 @@ type Coversheet struct {
 
 }
 
-func (u *Coversheet) MarshalJSON() ([]byte, error) {
+func (o *Coversheet) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coversheet
-
 	
-
 	return json.Marshal(&struct { 
 		Notes *string `json:"notes,omitempty"`
 		
 		Locale *string `json:"locale,omitempty"`
 		*Alias
 	}{ 
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		Locale: u.Locale,
-		Alias:    (*Alias)(u),
+		Locale: o.Locale,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coversheet) UnmarshalJSON(b []byte) error {
+	var CoversheetMap map[string]interface{}
+	err := json.Unmarshal(b, &CoversheetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Notes, ok := CoversheetMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if Locale, ok := CoversheetMap["locale"].(string); ok {
+		o.Locale = &Locale
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

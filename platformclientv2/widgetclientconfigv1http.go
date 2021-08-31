@@ -17,24 +17,41 @@ type Widgetclientconfigv1http struct {
 
 }
 
-func (u *Widgetclientconfigv1http) MarshalJSON() ([]byte, error) {
+func (o *Widgetclientconfigv1http) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Widgetclientconfigv1http
-
 	
-
 	return json.Marshal(&struct { 
 		WebChatSkin *string `json:"webChatSkin,omitempty"`
 		
 		AuthenticationUrl *string `json:"authenticationUrl,omitempty"`
 		*Alias
 	}{ 
-		WebChatSkin: u.WebChatSkin,
+		WebChatSkin: o.WebChatSkin,
 		
-		AuthenticationUrl: u.AuthenticationUrl,
-		Alias:    (*Alias)(u),
+		AuthenticationUrl: o.AuthenticationUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Widgetclientconfigv1http) UnmarshalJSON(b []byte) error {
+	var Widgetclientconfigv1httpMap map[string]interface{}
+	err := json.Unmarshal(b, &Widgetclientconfigv1httpMap)
+	if err != nil {
+		return err
+	}
+	
+	if WebChatSkin, ok := Widgetclientconfigv1httpMap["webChatSkin"].(string); ok {
+		o.WebChatSkin = &WebChatSkin
+	}
+	
+	if AuthenticationUrl, ok := Widgetclientconfigv1httpMap["authenticationUrl"].(string); ok {
+		o.AuthenticationUrl = &AuthenticationUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

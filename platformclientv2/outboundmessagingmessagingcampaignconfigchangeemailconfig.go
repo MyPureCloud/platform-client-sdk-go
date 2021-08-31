@@ -25,13 +25,11 @@ type Outboundmessagingmessagingcampaignconfigchangeemailconfig struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangeemailconfig) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangeemailconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangeemailconfig
-
 	
-
 	return json.Marshal(&struct { 
 		EmailColumns *[]string `json:"emailColumns,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Outboundmessagingmessagingcampaignconfigchangeemailconfig) MarshalJSON(
 		ReplyToAddress *Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress `json:"replyToAddress,omitempty"`
 		*Alias
 	}{ 
-		EmailColumns: u.EmailColumns,
+		EmailColumns: o.EmailColumns,
 		
-		ContentTemplate: u.ContentTemplate,
+		ContentTemplate: o.ContentTemplate,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		ReplyToAddress: u.ReplyToAddress,
-		Alias:    (*Alias)(u),
+		ReplyToAddress: o.ReplyToAddress,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangeemailconfig) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangeemailconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangeemailconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if EmailColumns, ok := OutboundmessagingmessagingcampaignconfigchangeemailconfigMap["emailColumns"].([]interface{}); ok {
+		EmailColumnsString, _ := json.Marshal(EmailColumns)
+		json.Unmarshal(EmailColumnsString, &o.EmailColumns)
+	}
+	
+	if ContentTemplate, ok := OutboundmessagingmessagingcampaignconfigchangeemailconfigMap["contentTemplate"].(map[string]interface{}); ok {
+		ContentTemplateString, _ := json.Marshal(ContentTemplate)
+		json.Unmarshal(ContentTemplateString, &o.ContentTemplate)
+	}
+	
+	if FromAddress, ok := OutboundmessagingmessagingcampaignconfigchangeemailconfigMap["fromAddress"].(map[string]interface{}); ok {
+		FromAddressString, _ := json.Marshal(FromAddress)
+		json.Unmarshal(FromAddressString, &o.FromAddress)
+	}
+	
+	if ReplyToAddress, ok := OutboundmessagingmessagingcampaignconfigchangeemailconfigMap["replyToAddress"].(map[string]interface{}); ok {
+		ReplyToAddressString, _ := json.Marshal(ReplyToAddress)
+		json.Unmarshal(ReplyToAddressString, &o.ReplyToAddress)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

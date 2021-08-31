@@ -14,28 +14,42 @@ type Dataavailabilityresponse struct {
 
 }
 
-func (u *Dataavailabilityresponse) MarshalJSON() ([]byte, error) {
+func (o *Dataavailabilityresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dataavailabilityresponse
-
 	
 	DataAvailabilityDate := new(string)
-	if u.DataAvailabilityDate != nil {
+	if o.DataAvailabilityDate != nil {
 		
-		*DataAvailabilityDate = timeutil.Strftime(u.DataAvailabilityDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DataAvailabilityDate = timeutil.Strftime(o.DataAvailabilityDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DataAvailabilityDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DataAvailabilityDate *string `json:"dataAvailabilityDate,omitempty"`
 		*Alias
 	}{ 
 		DataAvailabilityDate: DataAvailabilityDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dataavailabilityresponse) UnmarshalJSON(b []byte) error {
+	var DataavailabilityresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &DataavailabilityresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if dataAvailabilityDateString, ok := DataavailabilityresponseMap["dataAvailabilityDate"].(string); ok {
+		DataAvailabilityDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", dataAvailabilityDateString)
+		o.DataAvailabilityDate = &DataAvailabilityDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

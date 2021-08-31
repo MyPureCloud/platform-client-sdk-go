@@ -25,13 +25,11 @@ type Aggregationresultentry struct {
 
 }
 
-func (u *Aggregationresultentry) MarshalJSON() ([]byte, error) {
+func (o *Aggregationresultentry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Aggregationresultentry
-
 	
-
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Aggregationresultentry) MarshalJSON() ([]byte, error) {
 		Lt *float32 `json:"lt,omitempty"`
 		*Alias
 	}{ 
-		Count: u.Count,
+		Count: o.Count,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Gte: u.Gte,
+		Gte: o.Gte,
 		
-		Lt: u.Lt,
-		Alias:    (*Alias)(u),
+		Lt: o.Lt,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Aggregationresultentry) UnmarshalJSON(b []byte) error {
+	var AggregationresultentryMap map[string]interface{}
+	err := json.Unmarshal(b, &AggregationresultentryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Count, ok := AggregationresultentryMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if Value, ok := AggregationresultentryMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Gte, ok := AggregationresultentryMap["gte"].(float64); ok {
+		GteFloat32 := float32(Gte)
+		o.Gte = &GteFloat32
+	}
+	
+	if Lt, ok := AggregationresultentryMap["lt"].(float64); ok {
+		LtFloat32 := float32(Lt)
+		o.Lt = &LtFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

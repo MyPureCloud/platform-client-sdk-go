@@ -78,69 +78,67 @@ type Trusteebillingoverview struct {
 
 }
 
-func (u *Trusteebillingoverview) MarshalJSON() ([]byte, error) {
+func (o *Trusteebillingoverview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trusteebillingoverview
-
 	
 	RampPeriodStartDate := new(string)
-	if u.RampPeriodStartDate != nil {
+	if o.RampPeriodStartDate != nil {
 		
-		*RampPeriodStartDate = timeutil.Strftime(u.RampPeriodStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RampPeriodStartDate = timeutil.Strftime(o.RampPeriodStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RampPeriodStartDate = nil
 	}
 	
 	RampPeriodEndDate := new(string)
-	if u.RampPeriodEndDate != nil {
+	if o.RampPeriodEndDate != nil {
 		
-		*RampPeriodEndDate = timeutil.Strftime(u.RampPeriodEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RampPeriodEndDate = timeutil.Strftime(o.RampPeriodEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RampPeriodEndDate = nil
 	}
 	
 	BillingPeriodStartDate := new(string)
-	if u.BillingPeriodStartDate != nil {
+	if o.BillingPeriodStartDate != nil {
 		
-		*BillingPeriodStartDate = timeutil.Strftime(u.BillingPeriodStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*BillingPeriodStartDate = timeutil.Strftime(o.BillingPeriodStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		BillingPeriodStartDate = nil
 	}
 	
 	BillingPeriodEndDate := new(string)
-	if u.BillingPeriodEndDate != nil {
+	if o.BillingPeriodEndDate != nil {
 		
-		*BillingPeriodEndDate = timeutil.Strftime(u.BillingPeriodEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*BillingPeriodEndDate = timeutil.Strftime(o.BillingPeriodEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		BillingPeriodEndDate = nil
 	}
 	
 	ContractAmendmentDate := new(string)
-	if u.ContractAmendmentDate != nil {
+	if o.ContractAmendmentDate != nil {
 		
-		*ContractAmendmentDate = timeutil.Strftime(u.ContractAmendmentDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ContractAmendmentDate = timeutil.Strftime(o.ContractAmendmentDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ContractAmendmentDate = nil
 	}
 	
 	ContractEffectiveDate := new(string)
-	if u.ContractEffectiveDate != nil {
+	if o.ContractEffectiveDate != nil {
 		
-		*ContractEffectiveDate = timeutil.Strftime(u.ContractEffectiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ContractEffectiveDate = timeutil.Strftime(o.ContractEffectiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ContractEffectiveDate = nil
 	}
 	
 	ContractEndDate := new(string)
-	if u.ContractEndDate != nil {
+	if o.ContractEndDate != nil {
 		
-		*ContractEndDate = timeutil.Strftime(u.ContractEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ContractEndDate = timeutil.Strftime(o.ContractEndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ContractEndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -177,17 +175,17 @@ func (u *Trusteebillingoverview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Organization: u.Organization,
+		Organization: o.Organization,
 		
-		Currency: u.Currency,
+		Currency: o.Currency,
 		
-		EnabledProducts: u.EnabledProducts,
+		EnabledProducts: o.EnabledProducts,
 		
-		SubscriptionType: u.SubscriptionType,
+		SubscriptionType: o.SubscriptionType,
 		
 		RampPeriodStartDate: RampPeriodStartDate,
 		
@@ -197,7 +195,7 @@ func (u *Trusteebillingoverview) MarshalJSON() ([]byte, error) {
 		
 		BillingPeriodEndDate: BillingPeriodEndDate,
 		
-		Usages: u.Usages,
+		Usages: o.Usages,
 		
 		ContractAmendmentDate: ContractAmendmentDate,
 		
@@ -205,13 +203,102 @@ func (u *Trusteebillingoverview) MarshalJSON() ([]byte, error) {
 		
 		ContractEndDate: ContractEndDate,
 		
-		MinimumMonthlyAmount: u.MinimumMonthlyAmount,
+		MinimumMonthlyAmount: o.MinimumMonthlyAmount,
 		
-		InRampPeriod: u.InRampPeriod,
+		InRampPeriod: o.InRampPeriod,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trusteebillingoverview) UnmarshalJSON(b []byte) error {
+	var TrusteebillingoverviewMap map[string]interface{}
+	err := json.Unmarshal(b, &TrusteebillingoverviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrusteebillingoverviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TrusteebillingoverviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Organization, ok := TrusteebillingoverviewMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+	if Currency, ok := TrusteebillingoverviewMap["currency"].(string); ok {
+		o.Currency = &Currency
+	}
+	
+	if EnabledProducts, ok := TrusteebillingoverviewMap["enabledProducts"].([]interface{}); ok {
+		EnabledProductsString, _ := json.Marshal(EnabledProducts)
+		json.Unmarshal(EnabledProductsString, &o.EnabledProducts)
+	}
+	
+	if SubscriptionType, ok := TrusteebillingoverviewMap["subscriptionType"].(string); ok {
+		o.SubscriptionType = &SubscriptionType
+	}
+	
+	if rampPeriodStartDateString, ok := TrusteebillingoverviewMap["rampPeriodStartDate"].(string); ok {
+		RampPeriodStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", rampPeriodStartDateString)
+		o.RampPeriodStartDate = &RampPeriodStartDate
+	}
+	
+	if rampPeriodEndDateString, ok := TrusteebillingoverviewMap["rampPeriodEndDate"].(string); ok {
+		RampPeriodEndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", rampPeriodEndDateString)
+		o.RampPeriodEndDate = &RampPeriodEndDate
+	}
+	
+	if billingPeriodStartDateString, ok := TrusteebillingoverviewMap["billingPeriodStartDate"].(string); ok {
+		BillingPeriodStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", billingPeriodStartDateString)
+		o.BillingPeriodStartDate = &BillingPeriodStartDate
+	}
+	
+	if billingPeriodEndDateString, ok := TrusteebillingoverviewMap["billingPeriodEndDate"].(string); ok {
+		BillingPeriodEndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", billingPeriodEndDateString)
+		o.BillingPeriodEndDate = &BillingPeriodEndDate
+	}
+	
+	if Usages, ok := TrusteebillingoverviewMap["usages"].([]interface{}); ok {
+		UsagesString, _ := json.Marshal(Usages)
+		json.Unmarshal(UsagesString, &o.Usages)
+	}
+	
+	if contractAmendmentDateString, ok := TrusteebillingoverviewMap["contractAmendmentDate"].(string); ok {
+		ContractAmendmentDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", contractAmendmentDateString)
+		o.ContractAmendmentDate = &ContractAmendmentDate
+	}
+	
+	if contractEffectiveDateString, ok := TrusteebillingoverviewMap["contractEffectiveDate"].(string); ok {
+		ContractEffectiveDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", contractEffectiveDateString)
+		o.ContractEffectiveDate = &ContractEffectiveDate
+	}
+	
+	if contractEndDateString, ok := TrusteebillingoverviewMap["contractEndDate"].(string); ok {
+		ContractEndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", contractEndDateString)
+		o.ContractEndDate = &ContractEndDate
+	}
+	
+	if MinimumMonthlyAmount, ok := TrusteebillingoverviewMap["minimumMonthlyAmount"].(string); ok {
+		o.MinimumMonthlyAmount = &MinimumMonthlyAmount
+	}
+	
+	if InRampPeriod, ok := TrusteebillingoverviewMap["inRampPeriod"].(bool); ok {
+		o.InRampPeriod = &InRampPeriod
+	}
+	
+	if SelfUri, ok := TrusteebillingoverviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

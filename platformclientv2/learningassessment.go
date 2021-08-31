@@ -42,37 +42,35 @@ type Learningassessment struct {
 
 }
 
-func (u *Learningassessment) MarshalJSON() ([]byte, error) {
+func (o *Learningassessment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassessment
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateSubmitted := new(string)
-	if u.DateSubmitted != nil {
+	if o.DateSubmitted != nil {
 		
-		*DateSubmitted = timeutil.Strftime(u.DateSubmitted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateSubmitted = timeutil.Strftime(o.DateSubmitted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateSubmitted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		AssessmentId *string `json:"assessmentId,omitempty"`
 		
@@ -91,23 +89,70 @@ func (u *Learningassessment) MarshalJSON() ([]byte, error) {
 		DateSubmitted *string `json:"dateSubmitted,omitempty"`
 		*Alias
 	}{ 
-		AssessmentId: u.AssessmentId,
+		AssessmentId: o.AssessmentId,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		AssessmentFormId: u.AssessmentFormId,
+		AssessmentFormId: o.AssessmentFormId,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Answers: u.Answers,
+		Answers: o.Answers,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
 		DateSubmitted: DateSubmitted,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassessment) UnmarshalJSON(b []byte) error {
+	var LearningassessmentMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassessmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if AssessmentId, ok := LearningassessmentMap["assessmentId"].(string); ok {
+		o.AssessmentId = &AssessmentId
+	}
+	
+	if ContextId, ok := LearningassessmentMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if AssessmentFormId, ok := LearningassessmentMap["assessmentFormId"].(string); ok {
+		o.AssessmentFormId = &AssessmentFormId
+	}
+	
+	if Status, ok := LearningassessmentMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Answers, ok := LearningassessmentMap["answers"].(map[string]interface{}); ok {
+		AnswersString, _ := json.Marshal(Answers)
+		json.Unmarshal(AnswersString, &o.Answers)
+	}
+	
+	if dateCreatedString, ok := LearningassessmentMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := LearningassessmentMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if dateSubmittedString, ok := LearningassessmentMap["dateSubmitted"].(string); ok {
+		DateSubmitted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateSubmittedString)
+		o.DateSubmitted = &DateSubmitted
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Edgemetricsprocessor struct {
 
 }
 
-func (u *Edgemetricsprocessor) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricsprocessor) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricsprocessor
-
 	
-
 	return json.Marshal(&struct { 
 		ActiveTimePct *float64 `json:"activeTimePct,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Edgemetricsprocessor) MarshalJSON() ([]byte, error) {
 		UserTimePct *float64 `json:"userTimePct,omitempty"`
 		*Alias
 	}{ 
-		ActiveTimePct: u.ActiveTimePct,
+		ActiveTimePct: o.ActiveTimePct,
 		
-		CpuId: u.CpuId,
+		CpuId: o.CpuId,
 		
-		IdleTimePct: u.IdleTimePct,
+		IdleTimePct: o.IdleTimePct,
 		
-		PrivilegedTimePct: u.PrivilegedTimePct,
+		PrivilegedTimePct: o.PrivilegedTimePct,
 		
-		UserTimePct: u.UserTimePct,
-		Alias:    (*Alias)(u),
+		UserTimePct: o.UserTimePct,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricsprocessor) UnmarshalJSON(b []byte) error {
+	var EdgemetricsprocessorMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricsprocessorMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActiveTimePct, ok := EdgemetricsprocessorMap["activeTimePct"].(float64); ok {
+		o.ActiveTimePct = &ActiveTimePct
+	}
+	
+	if CpuId, ok := EdgemetricsprocessorMap["cpuId"].(string); ok {
+		o.CpuId = &CpuId
+	}
+	
+	if IdleTimePct, ok := EdgemetricsprocessorMap["idleTimePct"].(float64); ok {
+		o.IdleTimePct = &IdleTimePct
+	}
+	
+	if PrivilegedTimePct, ok := EdgemetricsprocessorMap["privilegedTimePct"].(float64); ok {
+		o.PrivilegedTimePct = &PrivilegedTimePct
+	}
+	
+	if UserTimePct, ok := EdgemetricsprocessorMap["userTimePct"].(float64); ok {
+		o.UserTimePct = &UserTimePct
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

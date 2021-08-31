@@ -34,27 +34,25 @@ type Workdayvaluestrend struct {
 
 }
 
-func (u *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
+func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workdayvaluestrend
-
 	
 	DateStartWorkday := new(string)
-	if u.DateStartWorkday != nil {
-		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	if o.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(o.DateStartWorkday, "%Y-%m-%d")
 	} else {
 		DateStartWorkday = nil
 	}
 	
 	DateEndWorkday := new(string)
-	if u.DateEndWorkday != nil {
-		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	if o.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(o.DateEndWorkday, "%Y-%m-%d")
 	} else {
 		DateEndWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateStartWorkday *string `json:"dateStartWorkday,omitempty"`
 		
@@ -73,15 +71,55 @@ func (u *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 		
 		DateEndWorkday: DateEndWorkday,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		User: u.User,
+		User: o.User,
 		
-		Timezone: u.Timezone,
+		Timezone: o.Timezone,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workdayvaluestrend) UnmarshalJSON(b []byte) error {
+	var WorkdayvaluestrendMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkdayvaluestrendMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateStartWorkdayString, ok := WorkdayvaluestrendMap["dateStartWorkday"].(string); ok {
+		DateStartWorkday, _ := time.Parse("2006-01-02", dateStartWorkdayString)
+		o.DateStartWorkday = &DateStartWorkday
+	}
+	
+	if dateEndWorkdayString, ok := WorkdayvaluestrendMap["dateEndWorkday"].(string); ok {
+		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
+		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+	if Division, ok := WorkdayvaluestrendMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if User, ok := WorkdayvaluestrendMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Timezone, ok := WorkdayvaluestrendMap["timezone"].(string); ok {
+		o.Timezone = &Timezone
+	}
+	
+	if Results, ok := WorkdayvaluestrendMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

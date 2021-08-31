@@ -17,24 +17,42 @@ type Visibilitycondition struct {
 
 }
 
-func (u *Visibilitycondition) MarshalJSON() ([]byte, error) {
+func (o *Visibilitycondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Visibilitycondition
-
 	
-
 	return json.Marshal(&struct { 
 		CombiningOperation *string `json:"combiningOperation,omitempty"`
 		
 		Predicates *[]interface{} `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		CombiningOperation: u.CombiningOperation,
+		CombiningOperation: o.CombiningOperation,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Visibilitycondition) UnmarshalJSON(b []byte) error {
+	var VisibilityconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &VisibilityconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if CombiningOperation, ok := VisibilityconditionMap["combiningOperation"].(string); ok {
+		o.CombiningOperation = &CombiningOperation
+	}
+	
+	if Predicates, ok := VisibilityconditionMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Botlist struct {
 
 }
 
-func (u *Botlist) MarshalJSON() ([]byte, error) {
+func (o *Botlist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botlist
-
 	
-
 	return json.Marshal(&struct { 
 		ChatBots *[]Botconnectorbot `json:"chatBots,omitempty"`
 		*Alias
 	}{ 
-		ChatBots: u.ChatBots,
-		Alias:    (*Alias)(u),
+		ChatBots: o.ChatBots,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botlist) UnmarshalJSON(b []byte) error {
+	var BotlistMap map[string]interface{}
+	err := json.Unmarshal(b, &BotlistMap)
+	if err != nil {
+		return err
+	}
+	
+	if ChatBots, ok := BotlistMap["chatBots"].([]interface{}); ok {
+		ChatBotsString, _ := json.Marshal(ChatBots)
+		json.Unmarshal(ChatBotsString, &o.ChatBots)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

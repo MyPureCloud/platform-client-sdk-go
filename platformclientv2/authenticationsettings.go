@@ -17,24 +17,41 @@ type Authenticationsettings struct {
 
 }
 
-func (u *Authenticationsettings) MarshalJSON() ([]byte, error) {
+func (o *Authenticationsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Authenticationsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		IntegrationId *string `json:"integrationId,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		IntegrationId: u.IntegrationId,
-		Alias:    (*Alias)(u),
+		IntegrationId: o.IntegrationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Authenticationsettings) UnmarshalJSON(b []byte) error {
+	var AuthenticationsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &AuthenticationsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := AuthenticationsettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if IntegrationId, ok := AuthenticationsettingsMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

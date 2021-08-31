@@ -86,21 +86,19 @@ type Observationvalue struct {
 
 }
 
-func (u *Observationvalue) MarshalJSON() ([]byte, error) {
+func (o *Observationvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Observationvalue
-
 	
 	ObservationDate := new(string)
-	if u.ObservationDate != nil {
+	if o.ObservationDate != nil {
 		
-		*ObservationDate = timeutil.Strftime(u.ObservationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ObservationDate = timeutil.Strftime(o.ObservationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ObservationDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ObservationDate *string `json:"observationDate,omitempty"`
 		
@@ -143,43 +141,135 @@ func (u *Observationvalue) MarshalJSON() ([]byte, error) {
 	}{ 
 		ObservationDate: ObservationDate,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		SessionId: u.SessionId,
+		SessionId: o.SessionId,
 		
-		RequestedRoutingSkillIds: u.RequestedRoutingSkillIds,
+		RequestedRoutingSkillIds: o.RequestedRoutingSkillIds,
 		
-		RequestedLanguageId: u.RequestedLanguageId,
+		RequestedLanguageId: o.RequestedLanguageId,
 		
-		RoutingPriority: u.RoutingPriority,
+		RoutingPriority: o.RoutingPriority,
 		
-		ParticipantName: u.ParticipantName,
+		ParticipantName: o.ParticipantName,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		ConvertedFrom: u.ConvertedFrom,
+		ConvertedFrom: o.ConvertedFrom,
 		
-		ConvertedTo: u.ConvertedTo,
+		ConvertedTo: o.ConvertedTo,
 		
-		AddressFrom: u.AddressFrom,
+		AddressFrom: o.AddressFrom,
 		
-		AddressTo: u.AddressTo,
+		AddressTo: o.AddressTo,
 		
-		Ani: u.Ani,
+		Ani: o.Ani,
 		
-		Dnis: u.Dnis,
+		Dnis: o.Dnis,
 		
-		TeamId: u.TeamId,
+		TeamId: o.TeamId,
 		
-		RequestedRoutings: u.RequestedRoutings,
+		RequestedRoutings: o.RequestedRoutings,
 		
-		UsedRouting: u.UsedRouting,
+		UsedRouting: o.UsedRouting,
 		
-		ScoredAgents: u.ScoredAgents,
-		Alias:    (*Alias)(u),
+		ScoredAgents: o.ScoredAgents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Observationvalue) UnmarshalJSON(b []byte) error {
+	var ObservationvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &ObservationvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if observationDateString, ok := ObservationvalueMap["observationDate"].(string); ok {
+		ObservationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", observationDateString)
+		o.ObservationDate = &ObservationDate
+	}
+	
+	if ConversationId, ok := ObservationvalueMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if SessionId, ok := ObservationvalueMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
+	}
+	
+	if RequestedRoutingSkillIds, ok := ObservationvalueMap["requestedRoutingSkillIds"].([]interface{}); ok {
+		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
+		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
+	}
+	
+	if RequestedLanguageId, ok := ObservationvalueMap["requestedLanguageId"].(string); ok {
+		o.RequestedLanguageId = &RequestedLanguageId
+	}
+	
+	if RoutingPriority, ok := ObservationvalueMap["routingPriority"].(float64); ok {
+		RoutingPriorityInt := int(RoutingPriority)
+		o.RoutingPriority = &RoutingPriorityInt
+	}
+	
+	if ParticipantName, ok := ObservationvalueMap["participantName"].(string); ok {
+		o.ParticipantName = &ParticipantName
+	}
+	
+	if UserId, ok := ObservationvalueMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Direction, ok := ObservationvalueMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if ConvertedFrom, ok := ObservationvalueMap["convertedFrom"].(string); ok {
+		o.ConvertedFrom = &ConvertedFrom
+	}
+	
+	if ConvertedTo, ok := ObservationvalueMap["convertedTo"].(string); ok {
+		o.ConvertedTo = &ConvertedTo
+	}
+	
+	if AddressFrom, ok := ObservationvalueMap["addressFrom"].(string); ok {
+		o.AddressFrom = &AddressFrom
+	}
+	
+	if AddressTo, ok := ObservationvalueMap["addressTo"].(string); ok {
+		o.AddressTo = &AddressTo
+	}
+	
+	if Ani, ok := ObservationvalueMap["ani"].(string); ok {
+		o.Ani = &Ani
+	}
+	
+	if Dnis, ok := ObservationvalueMap["dnis"].(string); ok {
+		o.Dnis = &Dnis
+	}
+	
+	if TeamId, ok := ObservationvalueMap["teamId"].(string); ok {
+		o.TeamId = &TeamId
+	}
+	
+	if RequestedRoutings, ok := ObservationvalueMap["requestedRoutings"].([]interface{}); ok {
+		RequestedRoutingsString, _ := json.Marshal(RequestedRoutings)
+		json.Unmarshal(RequestedRoutingsString, &o.RequestedRoutings)
+	}
+	
+	if UsedRouting, ok := ObservationvalueMap["usedRouting"].(string); ok {
+		o.UsedRouting = &UsedRouting
+	}
+	
+	if ScoredAgents, ok := ObservationvalueMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

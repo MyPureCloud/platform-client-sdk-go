@@ -26,29 +26,27 @@ type Locationaddressverificationdetails struct {
 
 }
 
-func (u *Locationaddressverificationdetails) MarshalJSON() ([]byte, error) {
+func (o *Locationaddressverificationdetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationaddressverificationdetails
-
 	
 	DateFinished := new(string)
-	if u.DateFinished != nil {
+	if o.DateFinished != nil {
 		
-		*DateFinished = timeutil.Strftime(u.DateFinished, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateFinished = timeutil.Strftime(o.DateFinished, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateFinished = nil
 	}
 	
 	DateStarted := new(string)
-	if u.DateStarted != nil {
+	if o.DateStarted != nil {
 		
-		*DateStarted = timeutil.Strftime(u.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStarted = timeutil.Strftime(o.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStarted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -59,15 +57,44 @@ func (u *Locationaddressverificationdetails) MarshalJSON() ([]byte, error) {
 		Service *string `json:"service,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
 		DateFinished: DateFinished,
 		
 		DateStarted: DateStarted,
 		
-		Service: u.Service,
-		Alias:    (*Alias)(u),
+		Service: o.Service,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationaddressverificationdetails) UnmarshalJSON(b []byte) error {
+	var LocationaddressverificationdetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationaddressverificationdetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := LocationaddressverificationdetailsMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if dateFinishedString, ok := LocationaddressverificationdetailsMap["dateFinished"].(string); ok {
+		DateFinished, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateFinishedString)
+		o.DateFinished = &DateFinished
+	}
+	
+	if dateStartedString, ok := LocationaddressverificationdetailsMap["dateStarted"].(string); ok {
+		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
+		o.DateStarted = &DateStarted
+	}
+	
+	if Service, ok := LocationaddressverificationdetailsMap["service"].(string); ok {
+		o.Service = &Service
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

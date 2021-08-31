@@ -34,21 +34,19 @@ type Conversationcallbackeventtopicwrapup struct {
 
 }
 
-func (u *Conversationcallbackeventtopicwrapup) MarshalJSON() ([]byte, error) {
+func (o *Conversationcallbackeventtopicwrapup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcallbackeventtopicwrapup
-
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
@@ -63,19 +61,58 @@ func (u *Conversationcallbackeventtopicwrapup) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		DurationSeconds: u.DurationSeconds,
+		DurationSeconds: o.DurationSeconds,
 		
 		EndTime: EndTime,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcallbackeventtopicwrapup) UnmarshalJSON(b []byte) error {
+	var ConversationcallbackeventtopicwrapupMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcallbackeventtopicwrapupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := ConversationcallbackeventtopicwrapupMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Notes, ok := ConversationcallbackeventtopicwrapupMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if Tags, ok := ConversationcallbackeventtopicwrapupMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if DurationSeconds, ok := ConversationcallbackeventtopicwrapupMap["durationSeconds"].(float64); ok {
+		DurationSecondsInt := int(DurationSeconds)
+		o.DurationSeconds = &DurationSecondsInt
+	}
+	
+	if endTimeString, ok := ConversationcallbackeventtopicwrapupMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if AdditionalProperties, ok := ConversationcallbackeventtopicwrapupMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

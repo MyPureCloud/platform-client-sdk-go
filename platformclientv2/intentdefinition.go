@@ -25,13 +25,11 @@ type Intentdefinition struct {
 
 }
 
-func (u *Intentdefinition) MarshalJSON() ([]byte, error) {
+func (o *Intentdefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Intentdefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Intentdefinition) MarshalJSON() ([]byte, error) {
 		Utterances *[]Nluutterance `json:"utterances,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		EntityTypeBindings: u.EntityTypeBindings,
+		EntityTypeBindings: o.EntityTypeBindings,
 		
-		EntityNameReferences: u.EntityNameReferences,
+		EntityNameReferences: o.EntityNameReferences,
 		
-		Utterances: u.Utterances,
-		Alias:    (*Alias)(u),
+		Utterances: o.Utterances,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Intentdefinition) UnmarshalJSON(b []byte) error {
+	var IntentdefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &IntentdefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := IntentdefinitionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if EntityTypeBindings, ok := IntentdefinitionMap["entityTypeBindings"].([]interface{}); ok {
+		EntityTypeBindingsString, _ := json.Marshal(EntityTypeBindings)
+		json.Unmarshal(EntityTypeBindingsString, &o.EntityTypeBindings)
+	}
+	
+	if EntityNameReferences, ok := IntentdefinitionMap["entityNameReferences"].([]interface{}); ok {
+		EntityNameReferencesString, _ := json.Marshal(EntityNameReferences)
+		json.Unmarshal(EntityNameReferencesString, &o.EntityNameReferences)
+	}
+	
+	if Utterances, ok := IntentdefinitionMap["utterances"].([]interface{}); ok {
+		UtterancesString, _ := json.Marshal(Utterances)
+		json.Unmarshal(UtterancesString, &o.Utterances)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

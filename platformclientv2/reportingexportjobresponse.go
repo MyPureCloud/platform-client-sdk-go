@@ -130,29 +130,27 @@ type Reportingexportjobresponse struct {
 
 }
 
-func (u *Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
+func (o *Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingexportjobresponse
-
 	
 	CreatedDateTime := new(string)
-	if u.CreatedDateTime != nil {
+	if o.CreatedDateTime != nil {
 		
-		*CreatedDateTime = timeutil.Strftime(u.CreatedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDateTime = timeutil.Strftime(o.CreatedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDateTime = nil
 	}
 	
 	ModifiedDateTime := new(string)
-	if u.ModifiedDateTime != nil {
+	if o.ModifiedDateTime != nil {
 		
-		*ModifiedDateTime = timeutil.Strftime(u.ModifiedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDateTime = timeutil.Strftime(o.ModifiedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -215,67 +213,204 @@ func (u *Reportingexportjobresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		RunId: u.RunId,
+		RunId: o.RunId,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		ExportFormat: u.ExportFormat,
+		ExportFormat: o.ExportFormat,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		DownloadUrl: u.DownloadUrl,
+		DownloadUrl: o.DownloadUrl,
 		
-		ViewType: u.ViewType,
+		ViewType: o.ViewType,
 		
-		ExportErrorMessagesType: u.ExportErrorMessagesType,
+		ExportErrorMessagesType: o.ExportErrorMessagesType,
 		
-		Period: u.Period,
+		Period: o.Period,
 		
-		Filter: u.Filter,
+		Filter: o.Filter,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
 		CreatedDateTime: CreatedDateTime,
 		
 		ModifiedDateTime: ModifiedDateTime,
 		
-		Locale: u.Locale,
+		Locale: o.Locale,
 		
-		PercentageComplete: u.PercentageComplete,
+		PercentageComplete: o.PercentageComplete,
 		
-		HasFormatDurations: u.HasFormatDurations,
+		HasFormatDurations: o.HasFormatDurations,
 		
-		HasSplitFilters: u.HasSplitFilters,
+		HasSplitFilters: o.HasSplitFilters,
 		
-		ExcludeEmptyRows: u.ExcludeEmptyRows,
+		ExcludeEmptyRows: o.ExcludeEmptyRows,
 		
-		HasSplitByMedia: u.HasSplitByMedia,
+		HasSplitByMedia: o.HasSplitByMedia,
 		
-		HasSummaryRow: u.HasSummaryRow,
+		HasSummaryRow: o.HasSummaryRow,
 		
-		CsvDelimiter: u.CsvDelimiter,
+		CsvDelimiter: o.CsvDelimiter,
 		
-		SelectedColumns: u.SelectedColumns,
+		SelectedColumns: o.SelectedColumns,
 		
-		HasCustomParticipantAttributes: u.HasCustomParticipantAttributes,
+		HasCustomParticipantAttributes: o.HasCustomParticipantAttributes,
 		
-		RecipientEmails: u.RecipientEmails,
+		RecipientEmails: o.RecipientEmails,
 		
-		EmailStatuses: u.EmailStatuses,
+		EmailStatuses: o.EmailStatuses,
 		
-		EmailErrorDescription: u.EmailErrorDescription,
+		EmailErrorDescription: o.EmailErrorDescription,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingexportjobresponse) UnmarshalJSON(b []byte) error {
+	var ReportingexportjobresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingexportjobresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReportingexportjobresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ReportingexportjobresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if RunId, ok := ReportingexportjobresponseMap["runId"].(string); ok {
+		o.RunId = &RunId
+	}
+	
+	if Status, ok := ReportingexportjobresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if TimeZone, ok := ReportingexportjobresponseMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if ExportFormat, ok := ReportingexportjobresponseMap["exportFormat"].(string); ok {
+		o.ExportFormat = &ExportFormat
+	}
+	
+	if Interval, ok := ReportingexportjobresponseMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if DownloadUrl, ok := ReportingexportjobresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+	if ViewType, ok := ReportingexportjobresponseMap["viewType"].(string); ok {
+		o.ViewType = &ViewType
+	}
+	
+	if ExportErrorMessagesType, ok := ReportingexportjobresponseMap["exportErrorMessagesType"].(string); ok {
+		o.ExportErrorMessagesType = &ExportErrorMessagesType
+	}
+	
+	if Period, ok := ReportingexportjobresponseMap["period"].(string); ok {
+		o.Period = &Period
+	}
+	
+	if Filter, ok := ReportingexportjobresponseMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Read, ok := ReportingexportjobresponseMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if createdDateTimeString, ok := ReportingexportjobresponseMap["createdDateTime"].(string); ok {
+		CreatedDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateTimeString)
+		o.CreatedDateTime = &CreatedDateTime
+	}
+	
+	if modifiedDateTimeString, ok := ReportingexportjobresponseMap["modifiedDateTime"].(string); ok {
+		ModifiedDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateTimeString)
+		o.ModifiedDateTime = &ModifiedDateTime
+	}
+	
+	if Locale, ok := ReportingexportjobresponseMap["locale"].(string); ok {
+		o.Locale = &Locale
+	}
+	
+	if PercentageComplete, ok := ReportingexportjobresponseMap["percentageComplete"].(float64); ok {
+		o.PercentageComplete = &PercentageComplete
+	}
+	
+	if HasFormatDurations, ok := ReportingexportjobresponseMap["hasFormatDurations"].(bool); ok {
+		o.HasFormatDurations = &HasFormatDurations
+	}
+	
+	if HasSplitFilters, ok := ReportingexportjobresponseMap["hasSplitFilters"].(bool); ok {
+		o.HasSplitFilters = &HasSplitFilters
+	}
+	
+	if ExcludeEmptyRows, ok := ReportingexportjobresponseMap["excludeEmptyRows"].(bool); ok {
+		o.ExcludeEmptyRows = &ExcludeEmptyRows
+	}
+	
+	if HasSplitByMedia, ok := ReportingexportjobresponseMap["hasSplitByMedia"].(bool); ok {
+		o.HasSplitByMedia = &HasSplitByMedia
+	}
+	
+	if HasSummaryRow, ok := ReportingexportjobresponseMap["hasSummaryRow"].(bool); ok {
+		o.HasSummaryRow = &HasSummaryRow
+	}
+	
+	if CsvDelimiter, ok := ReportingexportjobresponseMap["csvDelimiter"].(string); ok {
+		o.CsvDelimiter = &CsvDelimiter
+	}
+	
+	if SelectedColumns, ok := ReportingexportjobresponseMap["selectedColumns"].([]interface{}); ok {
+		SelectedColumnsString, _ := json.Marshal(SelectedColumns)
+		json.Unmarshal(SelectedColumnsString, &o.SelectedColumns)
+	}
+	
+	if HasCustomParticipantAttributes, ok := ReportingexportjobresponseMap["hasCustomParticipantAttributes"].(bool); ok {
+		o.HasCustomParticipantAttributes = &HasCustomParticipantAttributes
+	}
+	
+	if RecipientEmails, ok := ReportingexportjobresponseMap["recipientEmails"].([]interface{}); ok {
+		RecipientEmailsString, _ := json.Marshal(RecipientEmails)
+		json.Unmarshal(RecipientEmailsString, &o.RecipientEmails)
+	}
+	
+	if EmailStatuses, ok := ReportingexportjobresponseMap["emailStatuses"].(map[string]interface{}); ok {
+		EmailStatusesString, _ := json.Marshal(EmailStatuses)
+		json.Unmarshal(EmailStatusesString, &o.EmailStatuses)
+	}
+	
+	if EmailErrorDescription, ok := ReportingexportjobresponseMap["emailErrorDescription"].(string); ok {
+		o.EmailErrorDescription = &EmailErrorDescription
+	}
+	
+	if Enabled, ok := ReportingexportjobresponseMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if SelfUri, ok := ReportingexportjobresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

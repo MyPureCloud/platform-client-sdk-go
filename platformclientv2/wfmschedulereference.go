@@ -26,20 +26,18 @@ type Wfmschedulereference struct {
 
 }
 
-func (u *Wfmschedulereference) MarshalJSON() ([]byte, error) {
+func (o *Wfmschedulereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmschedulereference
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -50,15 +48,44 @@ func (u *Wfmschedulereference) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		BusinessUnit: u.BusinessUnit,
+		BusinessUnit: o.BusinessUnit,
 		
 		WeekDate: WeekDate,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmschedulereference) UnmarshalJSON(b []byte) error {
+	var WfmschedulereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmschedulereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmschedulereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if BusinessUnit, ok := WfmschedulereferenceMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
+	}
+	
+	if weekDateString, ok := WfmschedulereferenceMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if SelfUri, ok := WfmschedulereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

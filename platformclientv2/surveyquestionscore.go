@@ -37,13 +37,11 @@ type Surveyquestionscore struct {
 
 }
 
-func (u *Surveyquestionscore) MarshalJSON() ([]byte, error) {
+func (o *Surveyquestionscore) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyquestionscore
-
 	
-
 	return json.Marshal(&struct { 
 		QuestionId *string `json:"questionId,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Surveyquestionscore) MarshalJSON() ([]byte, error) {
 		FreeTextAnswer *string `json:"freeTextAnswer,omitempty"`
 		*Alias
 	}{ 
-		QuestionId: u.QuestionId,
+		QuestionId: o.QuestionId,
 		
-		AnswerId: u.AnswerId,
+		AnswerId: o.AnswerId,
 		
-		Score: u.Score,
+		Score: o.Score,
 		
-		MarkedNA: u.MarkedNA,
+		MarkedNA: o.MarkedNA,
 		
-		NpsScore: u.NpsScore,
+		NpsScore: o.NpsScore,
 		
-		NpsTextAnswer: u.NpsTextAnswer,
+		NpsTextAnswer: o.NpsTextAnswer,
 		
-		FreeTextAnswer: u.FreeTextAnswer,
-		Alias:    (*Alias)(u),
+		FreeTextAnswer: o.FreeTextAnswer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyquestionscore) UnmarshalJSON(b []byte) error {
+	var SurveyquestionscoreMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyquestionscoreMap)
+	if err != nil {
+		return err
+	}
+	
+	if QuestionId, ok := SurveyquestionscoreMap["questionId"].(string); ok {
+		o.QuestionId = &QuestionId
+	}
+	
+	if AnswerId, ok := SurveyquestionscoreMap["answerId"].(string); ok {
+		o.AnswerId = &AnswerId
+	}
+	
+	if Score, ok := SurveyquestionscoreMap["score"].(float64); ok {
+		ScoreInt := int(Score)
+		o.Score = &ScoreInt
+	}
+	
+	if MarkedNA, ok := SurveyquestionscoreMap["markedNA"].(bool); ok {
+		o.MarkedNA = &MarkedNA
+	}
+	
+	if NpsScore, ok := SurveyquestionscoreMap["npsScore"].(float64); ok {
+		NpsScoreInt := int(NpsScore)
+		o.NpsScore = &NpsScoreInt
+	}
+	
+	if NpsTextAnswer, ok := SurveyquestionscoreMap["npsTextAnswer"].(string); ok {
+		o.NpsTextAnswer = &NpsTextAnswer
+	}
+	
+	if FreeTextAnswer, ok := SurveyquestionscoreMap["freeTextAnswer"].(string); ok {
+		o.FreeTextAnswer = &FreeTextAnswer
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

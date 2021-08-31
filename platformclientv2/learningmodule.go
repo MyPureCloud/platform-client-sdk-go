@@ -86,29 +86,27 @@ type Learningmodule struct {
 
 }
 
-func (u *Learningmodule) MarshalJSON() ([]byte, error) {
+func (o *Learningmodule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmodule
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -149,45 +147,142 @@ func (u *Learningmodule) MarshalJSON() ([]byte, error) {
 		SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ExternalId: u.ExternalId,
+		ExternalId: o.ExternalId,
 		
-		Source: u.Source,
+		Source: o.Source,
 		
-		Rule: u.Rule,
+		Rule: o.Rule,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		IsArchived: u.IsArchived,
+		IsArchived: o.IsArchived,
 		
-		IsPublished: u.IsPublished,
+		IsPublished: o.IsPublished,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		CompletionTimeInDays: u.CompletionTimeInDays,
+		CompletionTimeInDays: o.CompletionTimeInDays,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		InformSteps: u.InformSteps,
+		InformSteps: o.InformSteps,
 		
-		AssessmentForm: u.AssessmentForm,
+		AssessmentForm: o.AssessmentForm,
 		
-		SummaryData: u.SummaryData,
-		Alias:    (*Alias)(u),
+		SummaryData: o.SummaryData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmodule) UnmarshalJSON(b []byte) error {
+	var LearningmoduleMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmoduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LearningmoduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LearningmoduleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if CreatedBy, ok := LearningmoduleMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := LearningmoduleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ModifiedBy, ok := LearningmoduleMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := LearningmoduleMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := LearningmoduleMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ExternalId, ok := LearningmoduleMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+	
+	if Source, ok := LearningmoduleMap["source"].(string); ok {
+		o.Source = &Source
+	}
+	
+	if Rule, ok := LearningmoduleMap["rule"].(map[string]interface{}); ok {
+		RuleString, _ := json.Marshal(Rule)
+		json.Unmarshal(RuleString, &o.Rule)
+	}
+	
+	if SelfUri, ok := LearningmoduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if IsArchived, ok := LearningmoduleMap["isArchived"].(bool); ok {
+		o.IsArchived = &IsArchived
+	}
+	
+	if IsPublished, ok := LearningmoduleMap["isPublished"].(bool); ok {
+		o.IsPublished = &IsPublished
+	}
+	
+	if Description, ok := LearningmoduleMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if CompletionTimeInDays, ok := LearningmoduleMap["completionTimeInDays"].(float64); ok {
+		CompletionTimeInDaysInt := int(CompletionTimeInDays)
+		o.CompletionTimeInDays = &CompletionTimeInDaysInt
+	}
+	
+	if VarType, ok := LearningmoduleMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if InformSteps, ok := LearningmoduleMap["informSteps"].([]interface{}); ok {
+		InformStepsString, _ := json.Marshal(InformSteps)
+		json.Unmarshal(InformStepsString, &o.InformSteps)
+	}
+	
+	if AssessmentForm, ok := LearningmoduleMap["assessmentForm"].(map[string]interface{}); ok {
+		AssessmentFormString, _ := json.Marshal(AssessmentForm)
+		json.Unmarshal(AssessmentFormString, &o.AssessmentForm)
+	}
+	
+	if SummaryData, ok := LearningmoduleMap["summaryData"].(map[string]interface{}); ok {
+		SummaryDataString, _ := json.Marshal(SummaryData)
+		json.Unmarshal(SummaryDataString, &o.SummaryData)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

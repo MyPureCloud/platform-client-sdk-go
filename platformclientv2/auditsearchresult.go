@@ -33,13 +33,11 @@ type Auditsearchresult struct {
 
 }
 
-func (u *Auditsearchresult) MarshalJSON() ([]byte, error) {
+func (o *Auditsearchresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditsearchresult
-
 	
-
 	return json.Marshal(&struct { 
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
@@ -54,19 +52,60 @@ func (u *Auditsearchresult) MarshalJSON() ([]byte, error) {
 		AuditMessages *[]Auditmessage `json:"auditMessages,omitempty"`
 		*Alias
 	}{ 
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		FacetInfo: u.FacetInfo,
+		FacetInfo: o.FacetInfo,
 		
-		AuditMessages: u.AuditMessages,
-		Alias:    (*Alias)(u),
+		AuditMessages: o.AuditMessages,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditsearchresult) UnmarshalJSON(b []byte) error {
+	var AuditsearchresultMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditsearchresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if PageNumber, ok := AuditsearchresultMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PageSize, ok := AuditsearchresultMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if Total, ok := AuditsearchresultMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := AuditsearchresultMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if FacetInfo, ok := AuditsearchresultMap["facetInfo"].([]interface{}); ok {
+		FacetInfoString, _ := json.Marshal(FacetInfo)
+		json.Unmarshal(FacetInfoString, &o.FacetInfo)
+	}
+	
+	if AuditMessages, ok := AuditsearchresultMap["auditMessages"].([]interface{}); ok {
+		AuditMessagesString, _ := json.Marshal(AuditMessages)
+		json.Unmarshal(AuditMessagesString, &o.AuditMessages)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

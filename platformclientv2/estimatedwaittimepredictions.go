@@ -13,20 +13,34 @@ type Estimatedwaittimepredictions struct {
 
 }
 
-func (u *Estimatedwaittimepredictions) MarshalJSON() ([]byte, error) {
+func (o *Estimatedwaittimepredictions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Estimatedwaittimepredictions
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Predictionresults `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Estimatedwaittimepredictions) UnmarshalJSON(b []byte) error {
+	var EstimatedwaittimepredictionsMap map[string]interface{}
+	err := json.Unmarshal(b, &EstimatedwaittimepredictionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := EstimatedwaittimepredictionsMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

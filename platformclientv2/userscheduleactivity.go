@@ -38,21 +38,19 @@ type Userscheduleactivity struct {
 
 }
 
-func (u *Userscheduleactivity) MarshalJSON() ([]byte, error) {
+func (o *Userscheduleactivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userscheduleactivity
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
@@ -69,21 +67,62 @@ func (u *Userscheduleactivity) MarshalJSON() ([]byte, error) {
 		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 		*Alias
 	}{ 
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
 		StartDate: StartDate,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
+		CountsAsPaidTime: o.CountsAsPaidTime,
 		
-		IsDstFallback: u.IsDstFallback,
+		IsDstFallback: o.IsDstFallback,
 		
-		TimeOffRequestId: u.TimeOffRequestId,
-		Alias:    (*Alias)(u),
+		TimeOffRequestId: o.TimeOffRequestId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userscheduleactivity) UnmarshalJSON(b []byte) error {
+	var UserscheduleactivityMap map[string]interface{}
+	err := json.Unmarshal(b, &UserscheduleactivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActivityCodeId, ok := UserscheduleactivityMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if startDateString, ok := UserscheduleactivityMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if LengthInMinutes, ok := UserscheduleactivityMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if Description, ok := UserscheduleactivityMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if CountsAsPaidTime, ok := UserscheduleactivityMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+	if IsDstFallback, ok := UserscheduleactivityMap["isDstFallback"].(bool); ok {
+		o.IsDstFallback = &IsDstFallback
+	}
+	
+	if TimeOffRequestId, ok := UserscheduleactivityMap["timeOffRequestId"].(string); ok {
+		o.TimeOffRequestId = &TimeOffRequestId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

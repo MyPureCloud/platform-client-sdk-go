@@ -17,24 +17,41 @@ type Createwebchatmessagerequest struct {
 
 }
 
-func (u *Createwebchatmessagerequest) MarshalJSON() ([]byte, error) {
+func (o *Createwebchatmessagerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createwebchatmessagerequest
-
 	
-
 	return json.Marshal(&struct { 
 		Body *string `json:"body,omitempty"`
 		
 		BodyType *string `json:"bodyType,omitempty"`
 		*Alias
 	}{ 
-		Body: u.Body,
+		Body: o.Body,
 		
-		BodyType: u.BodyType,
-		Alias:    (*Alias)(u),
+		BodyType: o.BodyType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createwebchatmessagerequest) UnmarshalJSON(b []byte) error {
+	var CreatewebchatmessagerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatewebchatmessagerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Body, ok := CreatewebchatmessagerequestMap["body"].(string); ok {
+		o.Body = &Body
+	}
+	
+	if BodyType, ok := CreatewebchatmessagerequestMap["bodyType"].(string); ok {
+		o.BodyType = &BodyType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

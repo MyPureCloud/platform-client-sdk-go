@@ -13,20 +13,34 @@ type Surveyaggregatequeryresponse struct {
 
 }
 
-func (u *Surveyaggregatequeryresponse) MarshalJSON() ([]byte, error) {
+func (o *Surveyaggregatequeryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyaggregatequeryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Surveyaggregatedatacontainer `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyaggregatequeryresponse) UnmarshalJSON(b []byte) error {
+	var SurveyaggregatequeryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyaggregatequeryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := SurveyaggregatequeryresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

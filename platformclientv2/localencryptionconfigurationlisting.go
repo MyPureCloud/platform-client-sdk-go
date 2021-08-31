@@ -21,13 +21,11 @@ type Localencryptionconfigurationlisting struct {
 
 }
 
-func (u *Localencryptionconfigurationlisting) MarshalJSON() ([]byte, error) {
+func (o *Localencryptionconfigurationlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Localencryptionconfigurationlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Localencryptionconfigurationlisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Localencryptionconfigurationlisting) UnmarshalJSON(b []byte) error {
+	var LocalencryptionconfigurationlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &LocalencryptionconfigurationlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := LocalencryptionconfigurationlistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if Entities, ok := LocalencryptionconfigurationlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if SelfUri, ok := LocalencryptionconfigurationlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

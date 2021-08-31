@@ -86,53 +86,51 @@ type Recordingmetadata struct {
 
 }
 
-func (u *Recordingmetadata) MarshalJSON() ([]byte, error) {
+func (o *Recordingmetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingmetadata
-
 	
 	RestoreExpirationTime := new(string)
-	if u.RestoreExpirationTime != nil {
+	if o.RestoreExpirationTime != nil {
 		
-		*RestoreExpirationTime = timeutil.Strftime(u.RestoreExpirationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RestoreExpirationTime = timeutil.Strftime(o.RestoreExpirationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RestoreExpirationTime = nil
 	}
 	
 	ArchiveDate := new(string)
-	if u.ArchiveDate != nil {
+	if o.ArchiveDate != nil {
 		
-		*ArchiveDate = timeutil.Strftime(u.ArchiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ArchiveDate = timeutil.Strftime(o.ArchiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ArchiveDate = nil
 	}
 	
 	DeleteDate := new(string)
-	if u.DeleteDate != nil {
+	if o.DeleteDate != nil {
 		
-		*DeleteDate = timeutil.Strftime(u.DeleteDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DeleteDate = timeutil.Strftime(o.DeleteDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DeleteDate = nil
 	}
 	
 	ExportDate := new(string)
-	if u.ExportDate != nil {
+	if o.ExportDate != nil {
 		
-		*ExportDate = timeutil.Strftime(u.ExportDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExportDate = timeutil.Strftime(o.ExportDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExportDate = nil
 	}
 	
 	ExportedDate := new(string)
-	if u.ExportedDate != nil {
+	if o.ExportedDate != nil {
 		
-		*ExportedDate = timeutil.Strftime(u.ExportedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExportedDate = timeutil.Strftime(o.ExportedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExportedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -173,29 +171,29 @@ func (u *Recordingmetadata) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		Path: u.Path,
+		Path: o.Path,
 		
-		StartTime: u.StartTime,
+		StartTime: o.StartTime,
 		
-		EndTime: u.EndTime,
+		EndTime: o.EndTime,
 		
-		Media: u.Media,
+		Media: o.Media,
 		
-		Annotations: u.Annotations,
+		Annotations: o.Annotations,
 		
-		FileState: u.FileState,
+		FileState: o.FileState,
 		
 		RestoreExpirationTime: RestoreExpirationTime,
 		
 		ArchiveDate: ArchiveDate,
 		
-		ArchiveMedium: u.ArchiveMedium,
+		ArchiveMedium: o.ArchiveMedium,
 		
 		DeleteDate: DeleteDate,
 		
@@ -203,15 +201,110 @@ func (u *Recordingmetadata) MarshalJSON() ([]byte, error) {
 		
 		ExportedDate: ExportedDate,
 		
-		MaxAllowedRestorationsForOrg: u.MaxAllowedRestorationsForOrg,
+		MaxAllowedRestorationsForOrg: o.MaxAllowedRestorationsForOrg,
 		
-		RemainingRestorationsAllowedForOrg: u.RemainingRestorationsAllowedForOrg,
+		RemainingRestorationsAllowedForOrg: o.RemainingRestorationsAllowedForOrg,
 		
-		SessionId: u.SessionId,
+		SessionId: o.SessionId,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingmetadata) UnmarshalJSON(b []byte) error {
+	var RecordingmetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingmetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RecordingmetadataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := RecordingmetadataMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ConversationId, ok := RecordingmetadataMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if Path, ok := RecordingmetadataMap["path"].(string); ok {
+		o.Path = &Path
+	}
+	
+	if StartTime, ok := RecordingmetadataMap["startTime"].(string); ok {
+		o.StartTime = &StartTime
+	}
+	
+	if EndTime, ok := RecordingmetadataMap["endTime"].(string); ok {
+		o.EndTime = &EndTime
+	}
+	
+	if Media, ok := RecordingmetadataMap["media"].(string); ok {
+		o.Media = &Media
+	}
+	
+	if Annotations, ok := RecordingmetadataMap["annotations"].([]interface{}); ok {
+		AnnotationsString, _ := json.Marshal(Annotations)
+		json.Unmarshal(AnnotationsString, &o.Annotations)
+	}
+	
+	if FileState, ok := RecordingmetadataMap["fileState"].(string); ok {
+		o.FileState = &FileState
+	}
+	
+	if restoreExpirationTimeString, ok := RecordingmetadataMap["restoreExpirationTime"].(string); ok {
+		RestoreExpirationTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", restoreExpirationTimeString)
+		o.RestoreExpirationTime = &RestoreExpirationTime
+	}
+	
+	if archiveDateString, ok := RecordingmetadataMap["archiveDate"].(string); ok {
+		ArchiveDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", archiveDateString)
+		o.ArchiveDate = &ArchiveDate
+	}
+	
+	if ArchiveMedium, ok := RecordingmetadataMap["archiveMedium"].(string); ok {
+		o.ArchiveMedium = &ArchiveMedium
+	}
+	
+	if deleteDateString, ok := RecordingmetadataMap["deleteDate"].(string); ok {
+		DeleteDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deleteDateString)
+		o.DeleteDate = &DeleteDate
+	}
+	
+	if exportDateString, ok := RecordingmetadataMap["exportDate"].(string); ok {
+		ExportDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", exportDateString)
+		o.ExportDate = &ExportDate
+	}
+	
+	if exportedDateString, ok := RecordingmetadataMap["exportedDate"].(string); ok {
+		ExportedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", exportedDateString)
+		o.ExportedDate = &ExportedDate
+	}
+	
+	if MaxAllowedRestorationsForOrg, ok := RecordingmetadataMap["maxAllowedRestorationsForOrg"].(float64); ok {
+		MaxAllowedRestorationsForOrgInt := int(MaxAllowedRestorationsForOrg)
+		o.MaxAllowedRestorationsForOrg = &MaxAllowedRestorationsForOrgInt
+	}
+	
+	if RemainingRestorationsAllowedForOrg, ok := RecordingmetadataMap["remainingRestorationsAllowedForOrg"].(float64); ok {
+		RemainingRestorationsAllowedForOrgInt := int(RemainingRestorationsAllowedForOrg)
+		o.RemainingRestorationsAllowedForOrg = &RemainingRestorationsAllowedForOrgInt
+	}
+	
+	if SessionId, ok := RecordingmetadataMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
+	}
+	
+	if SelfUri, ok := RecordingmetadataMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

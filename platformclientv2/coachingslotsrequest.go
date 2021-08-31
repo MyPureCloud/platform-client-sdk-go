@@ -25,13 +25,11 @@ type Coachingslotsrequest struct {
 
 }
 
-func (u *Coachingslotsrequest) MarshalJSON() ([]byte, error) {
+func (o *Coachingslotsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingslotsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Coachingslotsrequest) MarshalJSON() ([]byte, error) {
 		FacilitatorIds *[]string `json:"facilitatorIds,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		AttendeeIds: u.AttendeeIds,
+		AttendeeIds: o.AttendeeIds,
 		
-		FacilitatorIds: u.FacilitatorIds,
-		Alias:    (*Alias)(u),
+		FacilitatorIds: o.FacilitatorIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingslotsrequest) UnmarshalJSON(b []byte) error {
+	var CoachingslotsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingslotsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := CoachingslotsrequestMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if LengthInMinutes, ok := CoachingslotsrequestMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if AttendeeIds, ok := CoachingslotsrequestMap["attendeeIds"].([]interface{}); ok {
+		AttendeeIdsString, _ := json.Marshal(AttendeeIds)
+		json.Unmarshal(AttendeeIdsString, &o.AttendeeIds)
+	}
+	
+	if FacilitatorIds, ok := CoachingslotsrequestMap["facilitatorIds"].([]interface{}); ok {
+		FacilitatorIdsString, _ := json.Marshal(FacilitatorIds)
+		json.Unmarshal(FacilitatorIdsString, &o.FacilitatorIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Sourceplanninggrouprequest struct {
 
 }
 
-func (u *Sourceplanninggrouprequest) MarshalJSON() ([]byte, error) {
+func (o *Sourceplanninggrouprequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sourceplanninggrouprequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sourceplanninggrouprequest) UnmarshalJSON(b []byte) error {
+	var SourceplanninggrouprequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SourceplanninggrouprequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SourceplanninggrouprequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Metadata, ok := SourceplanninggrouprequestMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

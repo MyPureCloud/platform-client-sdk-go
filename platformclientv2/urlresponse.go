@@ -13,20 +13,33 @@ type Urlresponse struct {
 
 }
 
-func (u *Urlresponse) MarshalJSON() ([]byte, error) {
+func (o *Urlresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Urlresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
-		Alias:    (*Alias)(u),
+		Url: o.Url,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Urlresponse) UnmarshalJSON(b []byte) error {
+	var UrlresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &UrlresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := UrlresponseMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

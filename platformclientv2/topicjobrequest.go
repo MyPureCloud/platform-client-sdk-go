@@ -13,20 +13,34 @@ type Topicjobrequest struct {
 
 }
 
-func (u *Topicjobrequest) MarshalJSON() ([]byte, error) {
+func (o *Topicjobrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Topicjobrequest
-
 	
-
 	return json.Marshal(&struct { 
 		TopicIds *[]string `json:"topicIds,omitempty"`
 		*Alias
 	}{ 
-		TopicIds: u.TopicIds,
-		Alias:    (*Alias)(u),
+		TopicIds: o.TopicIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Topicjobrequest) UnmarshalJSON(b []byte) error {
+	var TopicjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TopicjobrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if TopicIds, ok := TopicjobrequestMap["topicIds"].([]interface{}); ok {
+		TopicIdsString, _ := json.Marshal(TopicIds)
+		json.Unmarshal(TopicIdsString, &o.TopicIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

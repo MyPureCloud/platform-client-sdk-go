@@ -25,13 +25,11 @@ type Journeyaggregationview struct {
 
 }
 
-func (u *Journeyaggregationview) MarshalJSON() ([]byte, error) {
+func (o *Journeyaggregationview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeyaggregationview
-
 	
-
 	return json.Marshal(&struct { 
 		Target *string `json:"target,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Journeyaggregationview) MarshalJSON() ([]byte, error) {
 		VarRange *Aggregationrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		Target: u.Target,
+		Target: o.Target,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Function: u.Function,
+		Function: o.Function,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeyaggregationview) UnmarshalJSON(b []byte) error {
+	var JourneyaggregationviewMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyaggregationviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Target, ok := JourneyaggregationviewMap["target"].(string); ok {
+		o.Target = &Target
+	}
+	
+	if Name, ok := JourneyaggregationviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Function, ok := JourneyaggregationviewMap["function"].(string); ok {
+		o.Function = &Function
+	}
+	
+	if VarRange, ok := JourneyaggregationviewMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

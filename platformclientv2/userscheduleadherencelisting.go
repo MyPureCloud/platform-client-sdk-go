@@ -17,24 +17,42 @@ type Userscheduleadherencelisting struct {
 
 }
 
-func (u *Userscheduleadherencelisting) MarshalJSON() ([]byte, error) {
+func (o *Userscheduleadherencelisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userscheduleadherencelisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Userscheduleadherence `json:"entities,omitempty"`
 		
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		DownloadUrl: u.DownloadUrl,
-		Alias:    (*Alias)(u),
+		DownloadUrl: o.DownloadUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userscheduleadherencelisting) UnmarshalJSON(b []byte) error {
+	var UserscheduleadherencelistingMap map[string]interface{}
+	err := json.Unmarshal(b, &UserscheduleadherencelistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := UserscheduleadherencelistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if DownloadUrl, ok := UserscheduleadherencelistingMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

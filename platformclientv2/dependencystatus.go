@@ -50,29 +50,27 @@ type Dependencystatus struct {
 
 }
 
-func (u *Dependencystatus) MarshalJSON() ([]byte, error) {
+func (o *Dependencystatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dependencystatus
-
 	
 	DateStarted := new(string)
-	if u.DateStarted != nil {
+	if o.DateStarted != nil {
 		
-		*DateStarted = timeutil.Strftime(u.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStarted = timeutil.Strftime(o.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStarted = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,83 @@ func (u *Dependencystatus) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		BuildId: u.BuildId,
+		BuildId: o.BuildId,
 		
 		DateStarted: DateStarted,
 		
 		DateCompleted: DateCompleted,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		FailedObjects: u.FailedObjects,
+		FailedObjects: o.FailedObjects,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dependencystatus) UnmarshalJSON(b []byte) error {
+	var DependencystatusMap map[string]interface{}
+	err := json.Unmarshal(b, &DependencystatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DependencystatusMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DependencystatusMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if User, ok := DependencystatusMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := DependencystatusMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if BuildId, ok := DependencystatusMap["buildId"].(string); ok {
+		o.BuildId = &BuildId
+	}
+	
+	if dateStartedString, ok := DependencystatusMap["dateStarted"].(string); ok {
+		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
+		o.DateStarted = &DateStarted
+	}
+	
+	if dateCompletedString, ok := DependencystatusMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if Status, ok := DependencystatusMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if FailedObjects, ok := DependencystatusMap["failedObjects"].([]interface{}); ok {
+		FailedObjectsString, _ := json.Marshal(FailedObjects)
+		json.Unmarshal(FailedObjectsString, &o.FailedObjects)
+	}
+	
+	if SelfUri, ok := DependencystatusMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Burescheduleagentscheduleresult struct {
 
 }
 
-func (u *Burescheduleagentscheduleresult) MarshalJSON() ([]byte, error) {
+func (o *Burescheduleagentscheduleresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Burescheduleagentscheduleresult
-
 	
-
 	return json.Marshal(&struct { 
 		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Burescheduleagentscheduleresult) MarshalJSON() ([]byte, error) {
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		*Alias
 	}{ 
-		ManagementUnit: u.ManagementUnit,
+		ManagementUnit: o.ManagementUnit,
 		
-		DownloadResult: u.DownloadResult,
+		DownloadResult: o.DownloadResult,
 		
-		DownloadUrl: u.DownloadUrl,
-		Alias:    (*Alias)(u),
+		DownloadUrl: o.DownloadUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Burescheduleagentscheduleresult) UnmarshalJSON(b []byte) error {
+	var BurescheduleagentscheduleresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BurescheduleagentscheduleresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if ManagementUnit, ok := BurescheduleagentscheduleresultMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if DownloadResult, ok := BurescheduleagentscheduleresultMap["downloadResult"].(map[string]interface{}); ok {
+		DownloadResultString, _ := json.Marshal(DownloadResult)
+		json.Unmarshal(DownloadResultString, &o.DownloadResult)
+	}
+	
+	if DownloadUrl, ok := BurescheduleagentscheduleresultMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -38,21 +38,19 @@ type Screenrecordingsession struct {
 
 }
 
-func (u *Screenrecordingsession) MarshalJSON() ([]byte, error) {
+func (o *Screenrecordingsession) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Screenrecordingsession
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Screenrecordingsession) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		User: u.User,
+		User: o.User,
 		
-		CommunicationId: u.CommunicationId,
+		CommunicationId: o.CommunicationId,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
 		StartTime: StartTime,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Screenrecordingsession) UnmarshalJSON(b []byte) error {
+	var ScreenrecordingsessionMap map[string]interface{}
+	err := json.Unmarshal(b, &ScreenrecordingsessionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ScreenrecordingsessionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ScreenrecordingsessionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if User, ok := ScreenrecordingsessionMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if CommunicationId, ok := ScreenrecordingsessionMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
+	}
+	
+	if Conversation, ok := ScreenrecordingsessionMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if startTimeString, ok := ScreenrecordingsessionMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if SelfUri, ok := ScreenrecordingsessionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

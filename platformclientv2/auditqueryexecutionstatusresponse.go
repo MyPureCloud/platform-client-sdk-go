@@ -38,21 +38,19 @@ type Auditqueryexecutionstatusresponse struct {
 
 }
 
-func (u *Auditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error) {
+func (o *Auditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditqueryexecutionstatusresponse
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Auditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error) {
 		Sort *[]Auditquerysort `json:"sort,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
 		StartDate: StartDate,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		ServiceName: u.ServiceName,
+		ServiceName: o.ServiceName,
 		
-		Filters: u.Filters,
+		Filters: o.Filters,
 		
-		Sort: u.Sort,
-		Alias:    (*Alias)(u),
+		Sort: o.Sort,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditqueryexecutionstatusresponse) UnmarshalJSON(b []byte) error {
+	var AuditqueryexecutionstatusresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditqueryexecutionstatusresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AuditqueryexecutionstatusresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := AuditqueryexecutionstatusresponseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if startDateString, ok := AuditqueryexecutionstatusresponseMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if Interval, ok := AuditqueryexecutionstatusresponseMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if ServiceName, ok := AuditqueryexecutionstatusresponseMap["serviceName"].(string); ok {
+		o.ServiceName = &ServiceName
+	}
+	
+	if Filters, ok := AuditqueryexecutionstatusresponseMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if Sort, ok := AuditqueryexecutionstatusresponseMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

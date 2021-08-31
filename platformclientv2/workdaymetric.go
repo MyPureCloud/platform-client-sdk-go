@@ -29,13 +29,11 @@ type Workdaymetric struct {
 
 }
 
-func (u *Workdaymetric) MarshalJSON() ([]byte, error) {
+func (o *Workdaymetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workdaymetric
-
 	
-
 	return json.Marshal(&struct { 
 		Metric *Metric `json:"metric,omitempty"`
 		
@@ -48,17 +46,52 @@ func (u *Workdaymetric) MarshalJSON() ([]byte, error) {
 		PunctualityEvents *[]Punctualityevent `json:"punctualityEvents,omitempty"`
 		*Alias
 	}{ 
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Objective: u.Objective,
+		Objective: o.Objective,
 		
-		Points: u.Points,
+		Points: o.Points,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		PunctualityEvents: u.PunctualityEvents,
-		Alias:    (*Alias)(u),
+		PunctualityEvents: o.PunctualityEvents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workdaymetric) UnmarshalJSON(b []byte) error {
+	var WorkdaymetricMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkdaymetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metric, ok := WorkdaymetricMap["metric"].(map[string]interface{}); ok {
+		MetricString, _ := json.Marshal(Metric)
+		json.Unmarshal(MetricString, &o.Metric)
+	}
+	
+	if Objective, ok := WorkdaymetricMap["objective"].(map[string]interface{}); ok {
+		ObjectiveString, _ := json.Marshal(Objective)
+		json.Unmarshal(ObjectiveString, &o.Objective)
+	}
+	
+	if Points, ok := WorkdaymetricMap["points"].(float64); ok {
+		PointsInt := int(Points)
+		o.Points = &PointsInt
+	}
+	
+	if Value, ok := WorkdaymetricMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+	if PunctualityEvents, ok := WorkdaymetricMap["punctualityEvents"].([]interface{}); ok {
+		PunctualityEventsString, _ := json.Marshal(PunctualityEvents)
+		json.Unmarshal(PunctualityEventsString, &o.PunctualityEvents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Facebookid struct {
 
 }
 
-func (u *Facebookid) MarshalJSON() ([]byte, error) {
+func (o *Facebookid) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facebookid
-
 	
-
 	return json.Marshal(&struct { 
 		Ids *[]Facebookscopedid `json:"ids,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
 		*Alias
 	}{ 
-		Ids: u.Ids,
+		Ids: o.Ids,
 		
-		DisplayName: u.DisplayName,
-		Alias:    (*Alias)(u),
+		DisplayName: o.DisplayName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facebookid) UnmarshalJSON(b []byte) error {
+	var FacebookidMap map[string]interface{}
+	err := json.Unmarshal(b, &FacebookidMap)
+	if err != nil {
+		return err
+	}
+	
+	if Ids, ok := FacebookidMap["ids"].([]interface{}); ok {
+		IdsString, _ := json.Marshal(Ids)
+		json.Unmarshal(IdsString, &o.Ids)
+	}
+	
+	if DisplayName, ok := FacebookidMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

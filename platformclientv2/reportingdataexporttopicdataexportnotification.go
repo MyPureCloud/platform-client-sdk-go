@@ -70,29 +70,27 @@ type Reportingdataexporttopicdataexportnotification struct {
 
 }
 
-func (u *Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, error) {
+func (o *Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingdataexporttopicdataexportnotification
-
 	
 	CreatedDateTime := new(string)
-	if u.CreatedDateTime != nil {
+	if o.CreatedDateTime != nil {
 		
-		*CreatedDateTime = timeutil.Strftime(u.CreatedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDateTime = timeutil.Strftime(o.CreatedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDateTime = nil
 	}
 	
 	ModifiedDateTime := new(string)
-	if u.ModifiedDateTime != nil {
+	if o.ModifiedDateTime != nil {
 		
-		*ModifiedDateTime = timeutil.Strftime(u.ModifiedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDateTime = timeutil.Strftime(o.ModifiedDateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -125,37 +123,112 @@ func (u *Reportingdataexporttopicdataexportnotification) MarshalJSON() ([]byte, 
 		ScheduleExpression *string `json:"scheduleExpression,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		RunId: u.RunId,
+		RunId: o.RunId,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		ExportFormat: u.ExportFormat,
+		ExportFormat: o.ExportFormat,
 		
-		DownloadUrl: u.DownloadUrl,
+		DownloadUrl: o.DownloadUrl,
 		
-		ViewType: u.ViewType,
+		ViewType: o.ViewType,
 		
-		ExportErrorMessagesType: u.ExportErrorMessagesType,
+		ExportErrorMessagesType: o.ExportErrorMessagesType,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
 		CreatedDateTime: CreatedDateTime,
 		
 		ModifiedDateTime: ModifiedDateTime,
 		
-		PercentageComplete: u.PercentageComplete,
+		PercentageComplete: o.PercentageComplete,
 		
-		EmailStatuses: u.EmailStatuses,
+		EmailStatuses: o.EmailStatuses,
 		
-		EmailErrorDescription: u.EmailErrorDescription,
+		EmailErrorDescription: o.EmailErrorDescription,
 		
-		ScheduleExpression: u.ScheduleExpression,
-		Alias:    (*Alias)(u),
+		ScheduleExpression: o.ScheduleExpression,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingdataexporttopicdataexportnotification) UnmarshalJSON(b []byte) error {
+	var ReportingdataexporttopicdataexportnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingdataexporttopicdataexportnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReportingdataexporttopicdataexportnotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if RunId, ok := ReportingdataexporttopicdataexportnotificationMap["runId"].(string); ok {
+		o.RunId = &RunId
+	}
+	
+	if Name, ok := ReportingdataexporttopicdataexportnotificationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Status, ok := ReportingdataexporttopicdataexportnotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if ExportFormat, ok := ReportingdataexporttopicdataexportnotificationMap["exportFormat"].(string); ok {
+		o.ExportFormat = &ExportFormat
+	}
+	
+	if DownloadUrl, ok := ReportingdataexporttopicdataexportnotificationMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+	if ViewType, ok := ReportingdataexporttopicdataexportnotificationMap["viewType"].(string); ok {
+		o.ViewType = &ViewType
+	}
+	
+	if ExportErrorMessagesType, ok := ReportingdataexporttopicdataexportnotificationMap["exportErrorMessagesType"].(string); ok {
+		o.ExportErrorMessagesType = &ExportErrorMessagesType
+	}
+	
+	if Read, ok := ReportingdataexporttopicdataexportnotificationMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if createdDateTimeString, ok := ReportingdataexporttopicdataexportnotificationMap["createdDateTime"].(string); ok {
+		CreatedDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateTimeString)
+		o.CreatedDateTime = &CreatedDateTime
+	}
+	
+	if modifiedDateTimeString, ok := ReportingdataexporttopicdataexportnotificationMap["modifiedDateTime"].(string); ok {
+		ModifiedDateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateTimeString)
+		o.ModifiedDateTime = &ModifiedDateTime
+	}
+	
+	if PercentageComplete, ok := ReportingdataexporttopicdataexportnotificationMap["percentageComplete"].(float64); ok {
+		PercentageCompleteFloat32 := float32(PercentageComplete)
+		o.PercentageComplete = &PercentageCompleteFloat32
+	}
+	
+	if EmailStatuses, ok := ReportingdataexporttopicdataexportnotificationMap["emailStatuses"].(map[string]interface{}); ok {
+		EmailStatusesString, _ := json.Marshal(EmailStatuses)
+		json.Unmarshal(EmailStatusesString, &o.EmailStatuses)
+	}
+	
+	if EmailErrorDescription, ok := ReportingdataexporttopicdataexportnotificationMap["emailErrorDescription"].(string); ok {
+		o.EmailErrorDescription = &EmailErrorDescription
+	}
+	
+	if ScheduleExpression, ok := ReportingdataexporttopicdataexportnotificationMap["scheduleExpression"].(string); ok {
+		o.ScheduleExpression = &ScheduleExpression
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

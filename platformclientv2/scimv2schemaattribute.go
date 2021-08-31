@@ -57,13 +57,11 @@ type Scimv2schemaattribute struct {
 
 }
 
-func (u *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
+func (o *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2schemaattribute
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -90,31 +88,93 @@ func (u *Scimv2schemaattribute) MarshalJSON() ([]byte, error) {
 		ReferenceTypes *[]string `json:"referenceTypes,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		SubAttributes: u.SubAttributes,
+		SubAttributes: o.SubAttributes,
 		
-		MultiValued: u.MultiValued,
+		MultiValued: o.MultiValued,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Required: u.Required,
+		Required: o.Required,
 		
-		CanonicalValues: u.CanonicalValues,
+		CanonicalValues: o.CanonicalValues,
 		
-		CaseExact: u.CaseExact,
+		CaseExact: o.CaseExact,
 		
-		Mutability: u.Mutability,
+		Mutability: o.Mutability,
 		
-		Returned: u.Returned,
+		Returned: o.Returned,
 		
-		Uniqueness: u.Uniqueness,
+		Uniqueness: o.Uniqueness,
 		
-		ReferenceTypes: u.ReferenceTypes,
-		Alias:    (*Alias)(u),
+		ReferenceTypes: o.ReferenceTypes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2schemaattribute) UnmarshalJSON(b []byte) error {
+	var Scimv2schemaattributeMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2schemaattributeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := Scimv2schemaattributeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := Scimv2schemaattributeMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if SubAttributes, ok := Scimv2schemaattributeMap["subAttributes"].([]interface{}); ok {
+		SubAttributesString, _ := json.Marshal(SubAttributes)
+		json.Unmarshal(SubAttributesString, &o.SubAttributes)
+	}
+	
+	if MultiValued, ok := Scimv2schemaattributeMap["multiValued"].(bool); ok {
+		o.MultiValued = &MultiValued
+	}
+	
+	if Description, ok := Scimv2schemaattributeMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Required, ok := Scimv2schemaattributeMap["required"].(bool); ok {
+		o.Required = &Required
+	}
+	
+	if CanonicalValues, ok := Scimv2schemaattributeMap["canonicalValues"].([]interface{}); ok {
+		CanonicalValuesString, _ := json.Marshal(CanonicalValues)
+		json.Unmarshal(CanonicalValuesString, &o.CanonicalValues)
+	}
+	
+	if CaseExact, ok := Scimv2schemaattributeMap["caseExact"].(bool); ok {
+		o.CaseExact = &CaseExact
+	}
+	
+	if Mutability, ok := Scimv2schemaattributeMap["mutability"].(string); ok {
+		o.Mutability = &Mutability
+	}
+	
+	if Returned, ok := Scimv2schemaattributeMap["returned"].(string); ok {
+		o.Returned = &Returned
+	}
+	
+	if Uniqueness, ok := Scimv2schemaattributeMap["uniqueness"].(string); ok {
+		o.Uniqueness = &Uniqueness
+	}
+	
+	if ReferenceTypes, ok := Scimv2schemaattributeMap["referenceTypes"].([]interface{}); ok {
+		ReferenceTypesString, _ := json.Marshal(ReferenceTypes)
+		json.Unmarshal(ReferenceTypesString, &o.ReferenceTypes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

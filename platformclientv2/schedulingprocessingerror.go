@@ -17,24 +17,41 @@ type Schedulingprocessingerror struct {
 
 }
 
-func (u *Schedulingprocessingerror) MarshalJSON() ([]byte, error) {
+func (o *Schedulingprocessingerror) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulingprocessingerror
-
 	
-
 	return json.Marshal(&struct { 
 		InternalErrorCode *string `json:"internalErrorCode,omitempty"`
 		
 		Description *string `json:"description,omitempty"`
 		*Alias
 	}{ 
-		InternalErrorCode: u.InternalErrorCode,
+		InternalErrorCode: o.InternalErrorCode,
 		
-		Description: u.Description,
-		Alias:    (*Alias)(u),
+		Description: o.Description,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulingprocessingerror) UnmarshalJSON(b []byte) error {
+	var SchedulingprocessingerrorMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulingprocessingerrorMap)
+	if err != nil {
+		return err
+	}
+	
+	if InternalErrorCode, ok := SchedulingprocessingerrorMap["internalErrorCode"].(string); ok {
+		o.InternalErrorCode = &InternalErrorCode
+	}
+	
+	if Description, ok := SchedulingprocessingerrorMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

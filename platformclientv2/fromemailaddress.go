@@ -21,13 +21,11 @@ type Fromemailaddress struct {
 
 }
 
-func (u *Fromemailaddress) MarshalJSON() ([]byte, error) {
+func (o *Fromemailaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Fromemailaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Domain *Domainentityref `json:"domain,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Fromemailaddress) MarshalJSON() ([]byte, error) {
 		LocalPart *string `json:"localPart,omitempty"`
 		*Alias
 	}{ 
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		FriendlyName: u.FriendlyName,
+		FriendlyName: o.FriendlyName,
 		
-		LocalPart: u.LocalPart,
-		Alias:    (*Alias)(u),
+		LocalPart: o.LocalPart,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Fromemailaddress) UnmarshalJSON(b []byte) error {
+	var FromemailaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &FromemailaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Domain, ok := FromemailaddressMap["domain"].(map[string]interface{}); ok {
+		DomainString, _ := json.Marshal(Domain)
+		json.Unmarshal(DomainString, &o.Domain)
+	}
+	
+	if FriendlyName, ok := FromemailaddressMap["friendlyName"].(string); ok {
+		o.FriendlyName = &FriendlyName
+	}
+	
+	if LocalPart, ok := FromemailaddressMap["localPart"].(string); ok {
+		o.LocalPart = &LocalPart
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

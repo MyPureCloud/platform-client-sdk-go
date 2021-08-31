@@ -110,45 +110,43 @@ type Message struct {
 
 }
 
-func (u *Message) MarshalJSON() ([]byte, error) {
+func (o *Message) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Message
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -201,21 +199,21 @@ func (u *Message) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		Segments: u.Segments,
+		Segments: o.Segments,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		RecordingId: u.RecordingId,
+		RecordingId: o.RecordingId,
 		
-		ErrorInfo: u.ErrorInfo,
+		ErrorInfo: o.ErrorInfo,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
@@ -225,33 +223,156 @@ func (u *Message) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		RecipientCountry: u.RecipientCountry,
+		RecipientCountry: o.RecipientCountry,
 		
-		RecipientType: u.RecipientType,
+		RecipientType: o.RecipientType,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		Messages: u.Messages,
+		Messages: o.Messages,
 		
-		JourneyContext: u.JourneyContext,
+		JourneyContext: o.JourneyContext,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
-		Alias:    (*Alias)(u),
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Message) UnmarshalJSON(b []byte) error {
+	var MessageMap map[string]interface{}
+	err := json.Unmarshal(b, &MessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := MessageMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := MessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Held, ok := MessageMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if Segments, ok := MessageMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+	if Direction, ok := MessageMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if RecordingId, ok := MessageMap["recordingId"].(string); ok {
+		o.RecordingId = &RecordingId
+	}
+	
+	if ErrorInfo, ok := MessageMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if DisconnectType, ok := MessageMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := MessageMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if startAlertingTimeString, ok := MessageMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := MessageMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := MessageMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Provider, ok := MessageMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if VarType, ok := MessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if RecipientCountry, ok := MessageMap["recipientCountry"].(string); ok {
+		o.RecipientCountry = &RecipientCountry
+	}
+	
+	if RecipientType, ok := MessageMap["recipientType"].(string); ok {
+		o.RecipientType = &RecipientType
+	}
+	
+	if ScriptId, ok := MessageMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := MessageMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if ToAddress, ok := MessageMap["toAddress"].(map[string]interface{}); ok {
+		ToAddressString, _ := json.Marshal(ToAddress)
+		json.Unmarshal(ToAddressString, &o.ToAddress)
+	}
+	
+	if FromAddress, ok := MessageMap["fromAddress"].(map[string]interface{}); ok {
+		FromAddressString, _ := json.Marshal(FromAddress)
+		json.Unmarshal(FromAddressString, &o.FromAddress)
+	}
+	
+	if Messages, ok := MessageMap["messages"].([]interface{}); ok {
+		MessagesString, _ := json.Marshal(Messages)
+		json.Unmarshal(MessagesString, &o.Messages)
+	}
+	
+	if JourneyContext, ok := MessageMap["journeyContext"].(map[string]interface{}); ok {
+		JourneyContextString, _ := json.Marshal(JourneyContext)
+		json.Unmarshal(JourneyContextString, &o.JourneyContext)
+	}
+	
+	if Wrapup, ok := MessageMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := MessageMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := MessageMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

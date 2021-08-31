@@ -34,29 +34,27 @@ type Credentialinfo struct {
 
 }
 
-func (u *Credentialinfo) MarshalJSON() ([]byte, error) {
+func (o *Credentialinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Credentialinfo
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -71,19 +69,57 @@ func (u *Credentialinfo) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Credentialinfo) UnmarshalJSON(b []byte) error {
+	var CredentialinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &CredentialinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CredentialinfoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CredentialinfoMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if createdDateString, ok := CredentialinfoMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := CredentialinfoMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if VarType, ok := CredentialinfoMap["type"].(map[string]interface{}); ok {
+		VarTypeString, _ := json.Marshal(VarType)
+		json.Unmarshal(VarTypeString, &o.VarType)
+	}
+	
+	if SelfUri, ok := CredentialinfoMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Audittopicpropertychange struct {
 
 }
 
-func (u *Audittopicpropertychange) MarshalJSON() ([]byte, error) {
+func (o *Audittopicpropertychange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Audittopicpropertychange
-
 	
-
 	return json.Marshal(&struct { 
 		Property *string `json:"property,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Audittopicpropertychange) MarshalJSON() ([]byte, error) {
 		NewValues *[]string `json:"newValues,omitempty"`
 		*Alias
 	}{ 
-		Property: u.Property,
+		Property: o.Property,
 		
-		OldValues: u.OldValues,
+		OldValues: o.OldValues,
 		
-		NewValues: u.NewValues,
-		Alias:    (*Alias)(u),
+		NewValues: o.NewValues,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Audittopicpropertychange) UnmarshalJSON(b []byte) error {
+	var AudittopicpropertychangeMap map[string]interface{}
+	err := json.Unmarshal(b, &AudittopicpropertychangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Property, ok := AudittopicpropertychangeMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if OldValues, ok := AudittopicpropertychangeMap["oldValues"].([]interface{}); ok {
+		OldValuesString, _ := json.Marshal(OldValues)
+		json.Unmarshal(OldValuesString, &o.OldValues)
+	}
+	
+	if NewValues, ok := AudittopicpropertychangeMap["newValues"].([]interface{}); ok {
+		NewValuesString, _ := json.Marshal(NewValues)
+		json.Unmarshal(NewValuesString, &o.NewValues)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

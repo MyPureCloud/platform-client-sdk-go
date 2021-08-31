@@ -13,20 +13,34 @@ type Bulkorganizationsrequest struct {
 
 }
 
-func (u *Bulkorganizationsrequest) MarshalJSON() ([]byte, error) {
+func (o *Bulkorganizationsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkorganizationsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Externalorganization `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkorganizationsrequest) UnmarshalJSON(b []byte) error {
+	var BulkorganizationsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkorganizationsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := BulkorganizationsrequestMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

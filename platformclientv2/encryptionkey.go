@@ -38,21 +38,19 @@ type Encryptionkey struct {
 
 }
 
-func (u *Encryptionkey) MarshalJSON() ([]byte, error) {
+func (o *Encryptionkey) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Encryptionkey
-
 	
 	CreateDate := new(string)
-	if u.CreateDate != nil {
+	if o.CreateDate != nil {
 		
-		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreateDate = timeutil.Strftime(o.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreateDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Encryptionkey) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		CreateDate: CreateDate,
 		
-		KeydataSummary: u.KeydataSummary,
+		KeydataSummary: o.KeydataSummary,
 		
-		User: u.User,
+		User: o.User,
 		
-		LocalEncryptionConfiguration: u.LocalEncryptionConfiguration,
+		LocalEncryptionConfiguration: o.LocalEncryptionConfiguration,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Encryptionkey) UnmarshalJSON(b []byte) error {
+	var EncryptionkeyMap map[string]interface{}
+	err := json.Unmarshal(b, &EncryptionkeyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EncryptionkeyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EncryptionkeyMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if createDateString, ok := EncryptionkeyMap["createDate"].(string); ok {
+		CreateDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createDateString)
+		o.CreateDate = &CreateDate
+	}
+	
+	if KeydataSummary, ok := EncryptionkeyMap["keydataSummary"].(string); ok {
+		o.KeydataSummary = &KeydataSummary
+	}
+	
+	if User, ok := EncryptionkeyMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if LocalEncryptionConfiguration, ok := EncryptionkeyMap["localEncryptionConfiguration"].(map[string]interface{}); ok {
+		LocalEncryptionConfigurationString, _ := json.Marshal(LocalEncryptionConfiguration)
+		json.Unmarshal(LocalEncryptionConfigurationString, &o.LocalEncryptionConfiguration)
+	}
+	
+	if SelfUri, ok := EncryptionkeyMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

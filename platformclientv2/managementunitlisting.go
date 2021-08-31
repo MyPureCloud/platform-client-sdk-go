@@ -49,13 +49,11 @@ type Managementunitlisting struct {
 
 }
 
-func (u *Managementunitlisting) MarshalJSON() ([]byte, error) {
+func (o *Managementunitlisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Managementunitlisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Managementunit `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Managementunitlisting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Managementunitlisting) UnmarshalJSON(b []byte) error {
+	var ManagementunitlistingMap map[string]interface{}
+	err := json.Unmarshal(b, &ManagementunitlistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := ManagementunitlistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := ManagementunitlistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := ManagementunitlistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := ManagementunitlistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := ManagementunitlistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if NextUri, ok := ManagementunitlistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PageCount, ok := ManagementunitlistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if PreviousUri, ok := ManagementunitlistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := ManagementunitlistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if SelfUri, ok := ManagementunitlistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

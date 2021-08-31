@@ -21,13 +21,11 @@ type Analyticsuserdetail struct {
 
 }
 
-func (u *Analyticsuserdetail) MarshalJSON() ([]byte, error) {
+func (o *Analyticsuserdetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsuserdetail
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Analyticsuserdetail) MarshalJSON() ([]byte, error) {
 		RoutingStatus *[]Analyticsroutingstatusrecord `json:"routingStatus,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		PrimaryPresence: u.PrimaryPresence,
+		PrimaryPresence: o.PrimaryPresence,
 		
-		RoutingStatus: u.RoutingStatus,
-		Alias:    (*Alias)(u),
+		RoutingStatus: o.RoutingStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsuserdetail) UnmarshalJSON(b []byte) error {
+	var AnalyticsuserdetailMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsuserdetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := AnalyticsuserdetailMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if PrimaryPresence, ok := AnalyticsuserdetailMap["primaryPresence"].([]interface{}); ok {
+		PrimaryPresenceString, _ := json.Marshal(PrimaryPresence)
+		json.Unmarshal(PrimaryPresenceString, &o.PrimaryPresence)
+	}
+	
+	if RoutingStatus, ok := AnalyticsuserdetailMap["routingStatus"].([]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

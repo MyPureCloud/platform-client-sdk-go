@@ -33,13 +33,11 @@ type Localencryptionconfiguration struct {
 
 }
 
-func (u *Localencryptionconfiguration) MarshalJSON() ([]byte, error) {
+func (o *Localencryptionconfiguration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Localencryptionconfiguration
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Localencryptionconfiguration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		ApiId: u.ApiId,
+		ApiId: o.ApiId,
 		
-		ApiKey: u.ApiKey,
+		ApiKey: o.ApiKey,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Localencryptionconfiguration) UnmarshalJSON(b []byte) error {
+	var LocalencryptionconfigurationMap map[string]interface{}
+	err := json.Unmarshal(b, &LocalencryptionconfigurationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LocalencryptionconfigurationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LocalencryptionconfigurationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Url, ok := LocalencryptionconfigurationMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if ApiId, ok := LocalencryptionconfigurationMap["apiId"].(string); ok {
+		o.ApiId = &ApiId
+	}
+	
+	if ApiKey, ok := LocalencryptionconfigurationMap["apiKey"].(string); ok {
+		o.ApiKey = &ApiKey
+	}
+	
+	if SelfUri, ok := LocalencryptionconfigurationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

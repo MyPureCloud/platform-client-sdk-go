@@ -17,24 +17,41 @@ type Schedulermessageargument struct {
 
 }
 
-func (u *Schedulermessageargument) MarshalJSON() ([]byte, error) {
+func (o *Schedulermessageargument) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulermessageargument
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulermessageargument) UnmarshalJSON(b []byte) error {
+	var SchedulermessageargumentMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulermessageargumentMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := SchedulermessageargumentMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Value, ok := SchedulermessageargumentMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

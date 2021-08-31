@@ -90,45 +90,43 @@ type Socialexpression struct {
 
 }
 
-func (u *Socialexpression) MarshalJSON() ([]byte, error) {
+func (o *Socialexpression) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Socialexpression
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -171,25 +169,25 @@ func (u *Socialexpression) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		SocialMediaId: u.SocialMediaId,
+		SocialMediaId: o.SocialMediaId,
 		
-		SocialMediaHub: u.SocialMediaHub,
+		SocialMediaHub: o.SocialMediaHub,
 		
-		SocialUserName: u.SocialUserName,
+		SocialUserName: o.SocialUserName,
 		
-		PreviewText: u.PreviewText,
+		PreviewText: o.PreviewText,
 		
-		RecordingId: u.RecordingId,
+		RecordingId: o.RecordingId,
 		
-		Segments: u.Segments,
+		Segments: o.Segments,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
@@ -199,19 +197,117 @@ func (u *Socialexpression) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
-		Alias:    (*Alias)(u),
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Socialexpression) UnmarshalJSON(b []byte) error {
+	var SocialexpressionMap map[string]interface{}
+	err := json.Unmarshal(b, &SocialexpressionMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := SocialexpressionMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := SocialexpressionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SocialMediaId, ok := SocialexpressionMap["socialMediaId"].(string); ok {
+		o.SocialMediaId = &SocialMediaId
+	}
+	
+	if SocialMediaHub, ok := SocialexpressionMap["socialMediaHub"].(string); ok {
+		o.SocialMediaHub = &SocialMediaHub
+	}
+	
+	if SocialUserName, ok := SocialexpressionMap["socialUserName"].(string); ok {
+		o.SocialUserName = &SocialUserName
+	}
+	
+	if PreviewText, ok := SocialexpressionMap["previewText"].(string); ok {
+		o.PreviewText = &PreviewText
+	}
+	
+	if RecordingId, ok := SocialexpressionMap["recordingId"].(string); ok {
+		o.RecordingId = &RecordingId
+	}
+	
+	if Segments, ok := SocialexpressionMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+	if Held, ok := SocialexpressionMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if DisconnectType, ok := SocialexpressionMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := SocialexpressionMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if startAlertingTimeString, ok := SocialexpressionMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := SocialexpressionMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := SocialexpressionMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Provider, ok := SocialexpressionMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := SocialexpressionMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := SocialexpressionMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if Wrapup, ok := SocialexpressionMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := SocialexpressionMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := SocialexpressionMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

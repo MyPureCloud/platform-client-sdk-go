@@ -33,13 +33,11 @@ type Openintegrationupdaterequest struct {
 
 }
 
-func (u *Openintegrationupdaterequest) MarshalJSON() ([]byte, error) {
+func (o *Openintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Openintegrationupdaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Openintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		OutboundNotificationWebhookUrl: u.OutboundNotificationWebhookUrl,
+		OutboundNotificationWebhookUrl: o.OutboundNotificationWebhookUrl,
 		
-		OutboundNotificationWebhookSignatureSecretToken: u.OutboundNotificationWebhookSignatureSecretToken,
+		OutboundNotificationWebhookSignatureSecretToken: o.OutboundNotificationWebhookSignatureSecretToken,
 		
-		WebhookHeaders: u.WebhookHeaders,
+		WebhookHeaders: o.WebhookHeaders,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Openintegrationupdaterequest) UnmarshalJSON(b []byte) error {
+	var OpenintegrationupdaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &OpenintegrationupdaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OpenintegrationupdaterequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OpenintegrationupdaterequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if OutboundNotificationWebhookUrl, ok := OpenintegrationupdaterequestMap["outboundNotificationWebhookUrl"].(string); ok {
+		o.OutboundNotificationWebhookUrl = &OutboundNotificationWebhookUrl
+	}
+	
+	if OutboundNotificationWebhookSignatureSecretToken, ok := OpenintegrationupdaterequestMap["outboundNotificationWebhookSignatureSecretToken"].(string); ok {
+		o.OutboundNotificationWebhookSignatureSecretToken = &OutboundNotificationWebhookSignatureSecretToken
+	}
+	
+	if WebhookHeaders, ok := OpenintegrationupdaterequestMap["webhookHeaders"].(map[string]interface{}); ok {
+		WebhookHeadersString, _ := json.Marshal(WebhookHeaders)
+		json.Unmarshal(WebhookHeadersString, &o.WebhookHeaders)
+	}
+	
+	if SelfUri, ok := OpenintegrationupdaterequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

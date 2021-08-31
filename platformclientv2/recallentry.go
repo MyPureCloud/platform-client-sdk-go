@@ -17,24 +17,43 @@ type Recallentry struct {
 
 }
 
-func (u *Recallentry) MarshalJSON() ([]byte, error) {
+func (o *Recallentry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recallentry
-
 	
-
 	return json.Marshal(&struct { 
 		NbrAttempts *int `json:"nbrAttempts,omitempty"`
 		
 		MinutesBetweenAttempts *int `json:"minutesBetweenAttempts,omitempty"`
 		*Alias
 	}{ 
-		NbrAttempts: u.NbrAttempts,
+		NbrAttempts: o.NbrAttempts,
 		
-		MinutesBetweenAttempts: u.MinutesBetweenAttempts,
-		Alias:    (*Alias)(u),
+		MinutesBetweenAttempts: o.MinutesBetweenAttempts,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recallentry) UnmarshalJSON(b []byte) error {
+	var RecallentryMap map[string]interface{}
+	err := json.Unmarshal(b, &RecallentryMap)
+	if err != nil {
+		return err
+	}
+	
+	if NbrAttempts, ok := RecallentryMap["nbrAttempts"].(float64); ok {
+		NbrAttemptsInt := int(NbrAttempts)
+		o.NbrAttempts = &NbrAttemptsInt
+	}
+	
+	if MinutesBetweenAttempts, ok := RecallentryMap["minutesBetweenAttempts"].(float64); ok {
+		MinutesBetweenAttemptsInt := int(MinutesBetweenAttempts)
+		o.MinutesBetweenAttempts = &MinutesBetweenAttemptsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

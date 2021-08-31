@@ -29,13 +29,11 @@ type Authzdivisiongrantentitylisting struct {
 
 }
 
-func (u *Authzdivisiongrantentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Authzdivisiongrantentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Authzdivisiongrantentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Authzgrant `json:"entities,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Authzdivisiongrantentitylisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Authzdivisiongrantentitylisting) UnmarshalJSON(b []byte) error {
+	var AuthzdivisiongrantentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &AuthzdivisiongrantentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := AuthzdivisiongrantentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := AuthzdivisiongrantentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := AuthzdivisiongrantentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := AuthzdivisiongrantentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := AuthzdivisiongrantentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -26,20 +26,18 @@ type Buagentschedulepublishedschedulereference struct {
 
 }
 
-func (u *Buagentschedulepublishedschedulereference) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulepublishedschedulereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulepublishedschedulereference
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -50,15 +48,44 @@ func (u *Buagentschedulepublishedschedulereference) MarshalJSON() ([]byte, error
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulepublishedschedulereference) UnmarshalJSON(b []byte) error {
+	var BuagentschedulepublishedschedulereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulepublishedschedulereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BuagentschedulepublishedschedulereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BuagentschedulepublishedschedulereferenceMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if WeekCount, ok := BuagentschedulepublishedschedulereferenceMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if SelfUri, ok := BuagentschedulepublishedschedulereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

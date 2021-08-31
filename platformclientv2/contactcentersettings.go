@@ -13,20 +13,33 @@ type Contactcentersettings struct {
 
 }
 
-func (u *Contactcentersettings) MarshalJSON() ([]byte, error) {
+func (o *Contactcentersettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactcentersettings
-
 	
-
 	return json.Marshal(&struct { 
 		RemoveSkillsFromBlindTransfer *bool `json:"removeSkillsFromBlindTransfer,omitempty"`
 		*Alias
 	}{ 
-		RemoveSkillsFromBlindTransfer: u.RemoveSkillsFromBlindTransfer,
-		Alias:    (*Alias)(u),
+		RemoveSkillsFromBlindTransfer: o.RemoveSkillsFromBlindTransfer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactcentersettings) UnmarshalJSON(b []byte) error {
+	var ContactcentersettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactcentersettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if RemoveSkillsFromBlindTransfer, ok := ContactcentersettingsMap["removeSkillsFromBlindTransfer"].(bool); ok {
+		o.RemoveSkillsFromBlindTransfer = &RemoveSkillsFromBlindTransfer
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

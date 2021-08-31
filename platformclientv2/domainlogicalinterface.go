@@ -174,45 +174,43 @@ type Domainlogicalinterface struct {
 
 }
 
-func (u *Domainlogicalinterface) MarshalJSON() ([]byte, error) {
+func (o *Domainlogicalinterface) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainlogicalinterface
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -297,89 +295,277 @@ func (u *Domainlogicalinterface) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		EdgeUri: u.EdgeUri,
+		EdgeUri: o.EdgeUri,
 		
-		EdgeAssignedId: u.EdgeAssignedId,
+		EdgeAssignedId: o.EdgeAssignedId,
 		
-		FriendlyName: u.FriendlyName,
+		FriendlyName: o.FriendlyName,
 		
-		VlanTagId: u.VlanTagId,
+		VlanTagId: o.VlanTagId,
 		
-		HardwareAddress: u.HardwareAddress,
+		HardwareAddress: o.HardwareAddress,
 		
-		PhysicalAdapterId: u.PhysicalAdapterId,
+		PhysicalAdapterId: o.PhysicalAdapterId,
 		
-		IfStatus: u.IfStatus,
+		IfStatus: o.IfStatus,
 		
-		InterfaceType: u.InterfaceType,
+		InterfaceType: o.InterfaceType,
 		
-		PublicNatAddressIpV4: u.PublicNatAddressIpV4,
+		PublicNatAddressIpV4: o.PublicNatAddressIpV4,
 		
-		PublicNatAddressIpV6: u.PublicNatAddressIpV6,
+		PublicNatAddressIpV6: o.PublicNatAddressIpV6,
 		
-		Routes: u.Routes,
+		Routes: o.Routes,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		Ipv4Capabilities: u.Ipv4Capabilities,
+		Ipv4Capabilities: o.Ipv4Capabilities,
 		
-		Ipv6Capabilities: u.Ipv6Capabilities,
+		Ipv6Capabilities: o.Ipv6Capabilities,
 		
-		CurrentState: u.CurrentState,
+		CurrentState: o.CurrentState,
 		
-		LastModifiedUserId: u.LastModifiedUserId,
+		LastModifiedUserId: o.LastModifiedUserId,
 		
-		LastModifiedCorrelationId: u.LastModifiedCorrelationId,
+		LastModifiedCorrelationId: o.LastModifiedCorrelationId,
 		
-		CommandResponses: u.CommandResponses,
+		CommandResponses: o.CommandResponses,
 		
-		InheritPhoneTrunkBasesIPv4: u.InheritPhoneTrunkBasesIPv4,
+		InheritPhoneTrunkBasesIPv4: o.InheritPhoneTrunkBasesIPv4,
 		
-		InheritPhoneTrunkBasesIPv6: u.InheritPhoneTrunkBasesIPv6,
+		InheritPhoneTrunkBasesIPv6: o.InheritPhoneTrunkBasesIPv6,
 		
-		UseForInternalEdgeCommunication: u.UseForInternalEdgeCommunication,
+		UseForInternalEdgeCommunication: o.UseForInternalEdgeCommunication,
 		
-		UseForIndirectEdgeCommunication: u.UseForIndirectEdgeCommunication,
+		UseForIndirectEdgeCommunication: o.UseForIndirectEdgeCommunication,
 		
-		UseForCloudProxyEdgeCommunication: u.UseForCloudProxyEdgeCommunication,
+		UseForCloudProxyEdgeCommunication: o.UseForCloudProxyEdgeCommunication,
 		
-		UseForWanInterface: u.UseForWanInterface,
+		UseForWanInterface: o.UseForWanInterface,
 		
-		ExternalTrunkBaseAssignments: u.ExternalTrunkBaseAssignments,
+		ExternalTrunkBaseAssignments: o.ExternalTrunkBaseAssignments,
 		
-		PhoneTrunkBaseAssignments: u.PhoneTrunkBaseAssignments,
+		PhoneTrunkBaseAssignments: o.PhoneTrunkBaseAssignments,
 		
-		TraceEnabled: u.TraceEnabled,
+		TraceEnabled: o.TraceEnabled,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainlogicalinterface) UnmarshalJSON(b []byte) error {
+	var DomainlogicalinterfaceMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainlogicalinterfaceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainlogicalinterfaceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainlogicalinterfaceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := DomainlogicalinterfaceMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := DomainlogicalinterfaceMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := DomainlogicalinterfaceMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DomainlogicalinterfaceMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := DomainlogicalinterfaceMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := DomainlogicalinterfaceMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := DomainlogicalinterfaceMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := DomainlogicalinterfaceMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := DomainlogicalinterfaceMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if EdgeUri, ok := DomainlogicalinterfaceMap["edgeUri"].(string); ok {
+		o.EdgeUri = &EdgeUri
+	}
+	
+	if EdgeAssignedId, ok := DomainlogicalinterfaceMap["edgeAssignedId"].(string); ok {
+		o.EdgeAssignedId = &EdgeAssignedId
+	}
+	
+	if FriendlyName, ok := DomainlogicalinterfaceMap["friendlyName"].(string); ok {
+		o.FriendlyName = &FriendlyName
+	}
+	
+	if VlanTagId, ok := DomainlogicalinterfaceMap["vlanTagId"].(float64); ok {
+		VlanTagIdInt := int(VlanTagId)
+		o.VlanTagId = &VlanTagIdInt
+	}
+	
+	if HardwareAddress, ok := DomainlogicalinterfaceMap["hardwareAddress"].(string); ok {
+		o.HardwareAddress = &HardwareAddress
+	}
+	
+	if PhysicalAdapterId, ok := DomainlogicalinterfaceMap["physicalAdapterId"].(string); ok {
+		o.PhysicalAdapterId = &PhysicalAdapterId
+	}
+	
+	if IfStatus, ok := DomainlogicalinterfaceMap["ifStatus"].(string); ok {
+		o.IfStatus = &IfStatus
+	}
+	
+	if InterfaceType, ok := DomainlogicalinterfaceMap["interfaceType"].(string); ok {
+		o.InterfaceType = &InterfaceType
+	}
+	
+	if PublicNatAddressIpV4, ok := DomainlogicalinterfaceMap["publicNatAddressIpV4"].(string); ok {
+		o.PublicNatAddressIpV4 = &PublicNatAddressIpV4
+	}
+	
+	if PublicNatAddressIpV6, ok := DomainlogicalinterfaceMap["publicNatAddressIpV6"].(string); ok {
+		o.PublicNatAddressIpV6 = &PublicNatAddressIpV6
+	}
+	
+	if Routes, ok := DomainlogicalinterfaceMap["routes"].([]interface{}); ok {
+		RoutesString, _ := json.Marshal(Routes)
+		json.Unmarshal(RoutesString, &o.Routes)
+	}
+	
+	if Addresses, ok := DomainlogicalinterfaceMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if Ipv4Capabilities, ok := DomainlogicalinterfaceMap["ipv4Capabilities"].(map[string]interface{}); ok {
+		Ipv4CapabilitiesString, _ := json.Marshal(Ipv4Capabilities)
+		json.Unmarshal(Ipv4CapabilitiesString, &o.Ipv4Capabilities)
+	}
+	
+	if Ipv6Capabilities, ok := DomainlogicalinterfaceMap["ipv6Capabilities"].(map[string]interface{}); ok {
+		Ipv6CapabilitiesString, _ := json.Marshal(Ipv6Capabilities)
+		json.Unmarshal(Ipv6CapabilitiesString, &o.Ipv6Capabilities)
+	}
+	
+	if CurrentState, ok := DomainlogicalinterfaceMap["currentState"].(string); ok {
+		o.CurrentState = &CurrentState
+	}
+	
+	if LastModifiedUserId, ok := DomainlogicalinterfaceMap["lastModifiedUserId"].(string); ok {
+		o.LastModifiedUserId = &LastModifiedUserId
+	}
+	
+	if LastModifiedCorrelationId, ok := DomainlogicalinterfaceMap["lastModifiedCorrelationId"].(string); ok {
+		o.LastModifiedCorrelationId = &LastModifiedCorrelationId
+	}
+	
+	if CommandResponses, ok := DomainlogicalinterfaceMap["commandResponses"].([]interface{}); ok {
+		CommandResponsesString, _ := json.Marshal(CommandResponses)
+		json.Unmarshal(CommandResponsesString, &o.CommandResponses)
+	}
+	
+	if InheritPhoneTrunkBasesIPv4, ok := DomainlogicalinterfaceMap["inheritPhoneTrunkBasesIPv4"].(bool); ok {
+		o.InheritPhoneTrunkBasesIPv4 = &InheritPhoneTrunkBasesIPv4
+	}
+	
+	if InheritPhoneTrunkBasesIPv6, ok := DomainlogicalinterfaceMap["inheritPhoneTrunkBasesIPv6"].(bool); ok {
+		o.InheritPhoneTrunkBasesIPv6 = &InheritPhoneTrunkBasesIPv6
+	}
+	
+	if UseForInternalEdgeCommunication, ok := DomainlogicalinterfaceMap["useForInternalEdgeCommunication"].(bool); ok {
+		o.UseForInternalEdgeCommunication = &UseForInternalEdgeCommunication
+	}
+	
+	if UseForIndirectEdgeCommunication, ok := DomainlogicalinterfaceMap["useForIndirectEdgeCommunication"].(bool); ok {
+		o.UseForIndirectEdgeCommunication = &UseForIndirectEdgeCommunication
+	}
+	
+	if UseForCloudProxyEdgeCommunication, ok := DomainlogicalinterfaceMap["useForCloudProxyEdgeCommunication"].(bool); ok {
+		o.UseForCloudProxyEdgeCommunication = &UseForCloudProxyEdgeCommunication
+	}
+	
+	if UseForWanInterface, ok := DomainlogicalinterfaceMap["useForWanInterface"].(bool); ok {
+		o.UseForWanInterface = &UseForWanInterface
+	}
+	
+	if ExternalTrunkBaseAssignments, ok := DomainlogicalinterfaceMap["externalTrunkBaseAssignments"].([]interface{}); ok {
+		ExternalTrunkBaseAssignmentsString, _ := json.Marshal(ExternalTrunkBaseAssignments)
+		json.Unmarshal(ExternalTrunkBaseAssignmentsString, &o.ExternalTrunkBaseAssignments)
+	}
+	
+	if PhoneTrunkBaseAssignments, ok := DomainlogicalinterfaceMap["phoneTrunkBaseAssignments"].([]interface{}); ok {
+		PhoneTrunkBaseAssignmentsString, _ := json.Marshal(PhoneTrunkBaseAssignments)
+		json.Unmarshal(PhoneTrunkBaseAssignmentsString, &o.PhoneTrunkBaseAssignments)
+	}
+	
+	if TraceEnabled, ok := DomainlogicalinterfaceMap["traceEnabled"].(bool); ok {
+		o.TraceEnabled = &TraceEnabled
+	}
+	
+	if startDateString, ok := DomainlogicalinterfaceMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := DomainlogicalinterfaceMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if SelfUri, ok := DomainlogicalinterfaceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

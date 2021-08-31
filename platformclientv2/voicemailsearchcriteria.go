@@ -45,13 +45,11 @@ type Voicemailsearchcriteria struct {
 
 }
 
-func (u *Voicemailsearchcriteria) MarshalJSON() ([]byte, error) {
+func (o *Voicemailsearchcriteria) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailsearchcriteria
-
 	
-
 	return json.Marshal(&struct { 
 		EndValue *string `json:"endValue,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Voicemailsearchcriteria) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		EndValue: u.EndValue,
+		EndValue: o.EndValue,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		StartValue: u.StartValue,
+		StartValue: o.StartValue,
 		
-		Fields: u.Fields,
+		Fields: o.Fields,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		DateFormat: u.DateFormat,
+		DateFormat: o.DateFormat,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailsearchcriteria) UnmarshalJSON(b []byte) error {
+	var VoicemailsearchcriteriaMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailsearchcriteriaMap)
+	if err != nil {
+		return err
+	}
+	
+	if EndValue, ok := VoicemailsearchcriteriaMap["endValue"].(string); ok {
+		o.EndValue = &EndValue
+	}
+	
+	if Values, ok := VoicemailsearchcriteriaMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if StartValue, ok := VoicemailsearchcriteriaMap["startValue"].(string); ok {
+		o.StartValue = &StartValue
+	}
+	
+	if Fields, ok := VoicemailsearchcriteriaMap["fields"].([]interface{}); ok {
+		FieldsString, _ := json.Marshal(Fields)
+		json.Unmarshal(FieldsString, &o.Fields)
+	}
+	
+	if Value, ok := VoicemailsearchcriteriaMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Operator, ok := VoicemailsearchcriteriaMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Group, ok := VoicemailsearchcriteriaMap["group"].([]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if DateFormat, ok := VoicemailsearchcriteriaMap["dateFormat"].(string); ok {
+		o.DateFormat = &DateFormat
+	}
+	
+	if VarType, ok := VoicemailsearchcriteriaMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Userparam struct {
 
 }
 
-func (u *Userparam) MarshalJSON() ([]byte, error) {
+func (o *Userparam) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userparam
-
 	
-
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Key: u.Key,
+		Key: o.Key,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userparam) UnmarshalJSON(b []byte) error {
+	var UserparamMap map[string]interface{}
+	err := json.Unmarshal(b, &UserparamMap)
+	if err != nil {
+		return err
+	}
+	
+	if Key, ok := UserparamMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Value, ok := UserparamMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

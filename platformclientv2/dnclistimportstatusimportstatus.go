@@ -33,13 +33,11 @@ type Dnclistimportstatusimportstatus struct {
 
 }
 
-func (u *Dnclistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
+func (o *Dnclistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dnclistimportstatusimportstatus
-
 	
-
 	return json.Marshal(&struct { 
 		ImportState *string `json:"importState,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Dnclistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		ImportState: u.ImportState,
+		ImportState: o.ImportState,
 		
-		TotalRecords: u.TotalRecords,
+		TotalRecords: o.TotalRecords,
 		
-		CompletedRecords: u.CompletedRecords,
+		CompletedRecords: o.CompletedRecords,
 		
-		PercentageComplete: u.PercentageComplete,
+		PercentageComplete: o.PercentageComplete,
 		
-		FailureReason: u.FailureReason,
+		FailureReason: o.FailureReason,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dnclistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
+	var DnclistimportstatusimportstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &DnclistimportstatusimportstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if ImportState, ok := DnclistimportstatusimportstatusMap["importState"].(string); ok {
+		o.ImportState = &ImportState
+	}
+	
+	if TotalRecords, ok := DnclistimportstatusimportstatusMap["totalRecords"].(float64); ok {
+		TotalRecordsInt := int(TotalRecords)
+		o.TotalRecords = &TotalRecordsInt
+	}
+	
+	if CompletedRecords, ok := DnclistimportstatusimportstatusMap["completedRecords"].(float64); ok {
+		CompletedRecordsInt := int(CompletedRecords)
+		o.CompletedRecords = &CompletedRecordsInt
+	}
+	
+	if PercentageComplete, ok := DnclistimportstatusimportstatusMap["percentageComplete"].(float64); ok {
+		PercentageCompleteInt := int(PercentageComplete)
+		o.PercentageComplete = &PercentageCompleteInt
+	}
+	
+	if FailureReason, ok := DnclistimportstatusimportstatusMap["failureReason"].(string); ok {
+		o.FailureReason = &FailureReason
+	}
+	
+	if AdditionalProperties, ok := DnclistimportstatusimportstatusMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

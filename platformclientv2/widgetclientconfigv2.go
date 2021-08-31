@@ -9,16 +9,25 @@ import (
 // Widgetclientconfigv2
 type Widgetclientconfigv2 struct { }
 
-func (u *Widgetclientconfigv2) MarshalJSON() ([]byte, error) {
+func (o *Widgetclientconfigv2) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Widgetclientconfigv2
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Widgetclientconfigv2) UnmarshalJSON(b []byte) error {
+	var Widgetclientconfigv2Map map[string]interface{}
+	err := json.Unmarshal(b, &Widgetclientconfigv2Map)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

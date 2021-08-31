@@ -21,13 +21,11 @@ type Greetingmediainfo struct {
 
 }
 
-func (u *Greetingmediainfo) MarshalJSON() ([]byte, error) {
+func (o *Greetingmediainfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Greetingmediainfo
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Greetingmediainfo) MarshalJSON() ([]byte, error) {
 		MediaImageUri *string `json:"mediaImageUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		MediaFileUri: u.MediaFileUri,
+		MediaFileUri: o.MediaFileUri,
 		
-		MediaImageUri: u.MediaImageUri,
-		Alias:    (*Alias)(u),
+		MediaImageUri: o.MediaImageUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Greetingmediainfo) UnmarshalJSON(b []byte) error {
+	var GreetingmediainfoMap map[string]interface{}
+	err := json.Unmarshal(b, &GreetingmediainfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GreetingmediainfoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if MediaFileUri, ok := GreetingmediainfoMap["mediaFileUri"].(string); ok {
+		o.MediaFileUri = &MediaFileUri
+	}
+	
+	if MediaImageUri, ok := GreetingmediainfoMap["mediaImageUri"].(string); ok {
+		o.MediaImageUri = &MediaImageUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

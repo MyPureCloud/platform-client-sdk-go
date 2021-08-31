@@ -50,29 +50,27 @@ type Punctualityevent struct {
 
 }
 
-func (u *Punctualityevent) MarshalJSON() ([]byte, error) {
+func (o *Punctualityevent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Punctualityevent
-
 	
 	DateScheduleStart := new(string)
-	if u.DateScheduleStart != nil {
+	if o.DateScheduleStart != nil {
 		
-		*DateScheduleStart = timeutil.Strftime(u.DateScheduleStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateScheduleStart = timeutil.Strftime(o.DateScheduleStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateScheduleStart = nil
 	}
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateScheduleStart *string `json:"dateScheduleStart,omitempty"`
 		
@@ -99,23 +97,78 @@ func (u *Punctualityevent) MarshalJSON() ([]byte, error) {
 		
 		DateStart: DateStart,
 		
-		LengthMinutes: u.LengthMinutes,
+		LengthMinutes: o.LengthMinutes,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		ActivityCode: u.ActivityCode,
+		ActivityCode: o.ActivityCode,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		Points: u.Points,
+		Points: o.Points,
 		
-		Delta: u.Delta,
+		Delta: o.Delta,
 		
-		Bullseye: u.Bullseye,
-		Alias:    (*Alias)(u),
+		Bullseye: o.Bullseye,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Punctualityevent) UnmarshalJSON(b []byte) error {
+	var PunctualityeventMap map[string]interface{}
+	err := json.Unmarshal(b, &PunctualityeventMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateScheduleStartString, ok := PunctualityeventMap["dateScheduleStart"].(string); ok {
+		DateScheduleStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateScheduleStartString)
+		o.DateScheduleStart = &DateScheduleStart
+	}
+	
+	if dateStartString, ok := PunctualityeventMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if LengthMinutes, ok := PunctualityeventMap["lengthMinutes"].(float64); ok {
+		LengthMinutesInt := int(LengthMinutes)
+		o.LengthMinutes = &LengthMinutesInt
+	}
+	
+	if Description, ok := PunctualityeventMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if ActivityCodeId, ok := PunctualityeventMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if ActivityCode, ok := PunctualityeventMap["activityCode"].(string); ok {
+		o.ActivityCode = &ActivityCode
+	}
+	
+	if Category, ok := PunctualityeventMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Points, ok := PunctualityeventMap["points"].(float64); ok {
+		PointsInt := int(Points)
+		o.Points = &PointsInt
+	}
+	
+	if Delta, ok := PunctualityeventMap["delta"].(float64); ok {
+		o.Delta = &Delta
+	}
+	
+	if Bullseye, ok := PunctualityeventMap["bullseye"].(bool); ok {
+		o.Bullseye = &Bullseye
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

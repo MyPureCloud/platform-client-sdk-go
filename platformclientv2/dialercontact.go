@@ -53,13 +53,11 @@ type Dialercontact struct {
 
 }
 
-func (u *Dialercontact) MarshalJSON() ([]byte, error) {
+func (o *Dialercontact) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontact
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,90 @@ func (u *Dialercontact) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContactListId: u.ContactListId,
+		ContactListId: o.ContactListId,
 		
-		Data: u.Data,
+		Data: o.Data,
 		
-		CallRecords: u.CallRecords,
+		CallRecords: o.CallRecords,
 		
-		LatestSmsEvaluations: u.LatestSmsEvaluations,
+		LatestSmsEvaluations: o.LatestSmsEvaluations,
 		
-		Callable: u.Callable,
+		Callable: o.Callable,
 		
-		PhoneNumberStatus: u.PhoneNumberStatus,
+		PhoneNumberStatus: o.PhoneNumberStatus,
 		
-		ContactColumnTimeZones: u.ContactColumnTimeZones,
+		ContactColumnTimeZones: o.ContactColumnTimeZones,
 		
-		ConfigurationOverrides: u.ConfigurationOverrides,
+		ConfigurationOverrides: o.ConfigurationOverrides,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercontact) UnmarshalJSON(b []byte) error {
+	var DialercontactMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercontactMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialercontactMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialercontactMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContactListId, ok := DialercontactMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+	if Data, ok := DialercontactMap["data"].(map[string]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+	if CallRecords, ok := DialercontactMap["callRecords"].(map[string]interface{}); ok {
+		CallRecordsString, _ := json.Marshal(CallRecords)
+		json.Unmarshal(CallRecordsString, &o.CallRecords)
+	}
+	
+	if LatestSmsEvaluations, ok := DialercontactMap["latestSmsEvaluations"].(map[string]interface{}); ok {
+		LatestSmsEvaluationsString, _ := json.Marshal(LatestSmsEvaluations)
+		json.Unmarshal(LatestSmsEvaluationsString, &o.LatestSmsEvaluations)
+	}
+	
+	if Callable, ok := DialercontactMap["callable"].(bool); ok {
+		o.Callable = &Callable
+	}
+	
+	if PhoneNumberStatus, ok := DialercontactMap["phoneNumberStatus"].(map[string]interface{}); ok {
+		PhoneNumberStatusString, _ := json.Marshal(PhoneNumberStatus)
+		json.Unmarshal(PhoneNumberStatusString, &o.PhoneNumberStatus)
+	}
+	
+	if ContactColumnTimeZones, ok := DialercontactMap["contactColumnTimeZones"].(map[string]interface{}); ok {
+		ContactColumnTimeZonesString, _ := json.Marshal(ContactColumnTimeZones)
+		json.Unmarshal(ContactColumnTimeZonesString, &o.ContactColumnTimeZones)
+	}
+	
+	if ConfigurationOverrides, ok := DialercontactMap["configurationOverrides"].(map[string]interface{}); ok {
+		ConfigurationOverridesString, _ := json.Marshal(ConfigurationOverrides)
+		json.Unmarshal(ConfigurationOverridesString, &o.ConfigurationOverrides)
+	}
+	
+	if SelfUri, ok := DialercontactMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

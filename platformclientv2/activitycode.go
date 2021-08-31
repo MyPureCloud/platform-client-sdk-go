@@ -53,13 +53,11 @@ type Activitycode struct {
 
 }
 
-func (u *Activitycode) MarshalJSON() ([]byte, error) {
+func (o *Activitycode) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Activitycode
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,86 @@ func (u *Activitycode) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		IsActive: u.IsActive,
+		IsActive: o.IsActive,
 		
-		IsDefault: u.IsDefault,
+		IsDefault: o.IsDefault,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
+		CountsAsPaidTime: o.CountsAsPaidTime,
 		
-		CountsAsWorkTime: u.CountsAsWorkTime,
+		CountsAsWorkTime: o.CountsAsWorkTime,
 		
-		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		AgentTimeOffSelectable: o.AgentTimeOffSelectable,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Activitycode) UnmarshalJSON(b []byte) error {
+	var ActivitycodeMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivitycodeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ActivitycodeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := ActivitycodeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Name, ok := ActivitycodeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if IsActive, ok := ActivitycodeMap["isActive"].(bool); ok {
+		o.IsActive = &IsActive
+	}
+	
+	if IsDefault, ok := ActivitycodeMap["isDefault"].(bool); ok {
+		o.IsDefault = &IsDefault
+	}
+	
+	if Category, ok := ActivitycodeMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if LengthInMinutes, ok := ActivitycodeMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if CountsAsPaidTime, ok := ActivitycodeMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+	if CountsAsWorkTime, ok := ActivitycodeMap["countsAsWorkTime"].(bool); ok {
+		o.CountsAsWorkTime = &CountsAsWorkTime
+	}
+	
+	if AgentTimeOffSelectable, ok := ActivitycodeMap["agentTimeOffSelectable"].(bool); ok {
+		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
+	}
+	
+	if Metadata, ok := ActivitycodeMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Emergencycallflow struct {
 
 }
 
-func (u *Emergencycallflow) MarshalJSON() ([]byte, error) {
+func (o *Emergencycallflow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emergencycallflow
-
 	
-
 	return json.Marshal(&struct { 
 		EmergencyFlow *Domainentityref `json:"emergencyFlow,omitempty"`
 		
 		Ivrs *[]Domainentityref `json:"ivrs,omitempty"`
 		*Alias
 	}{ 
-		EmergencyFlow: u.EmergencyFlow,
+		EmergencyFlow: o.EmergencyFlow,
 		
-		Ivrs: u.Ivrs,
-		Alias:    (*Alias)(u),
+		Ivrs: o.Ivrs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emergencycallflow) UnmarshalJSON(b []byte) error {
+	var EmergencycallflowMap map[string]interface{}
+	err := json.Unmarshal(b, &EmergencycallflowMap)
+	if err != nil {
+		return err
+	}
+	
+	if EmergencyFlow, ok := EmergencycallflowMap["emergencyFlow"].(map[string]interface{}); ok {
+		EmergencyFlowString, _ := json.Marshal(EmergencyFlow)
+		json.Unmarshal(EmergencyFlowString, &o.EmergencyFlow)
+	}
+	
+	if Ivrs, ok := EmergencycallflowMap["ivrs"].([]interface{}); ok {
+		IvrsString, _ := json.Marshal(Ivrs)
+		json.Unmarshal(IvrsString, &o.Ivrs)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

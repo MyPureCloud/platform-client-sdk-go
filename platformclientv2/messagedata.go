@@ -66,21 +66,19 @@ type Messagedata struct {
 
 }
 
-func (u *Messagedata) MarshalJSON() ([]byte, error) {
+func (o *Messagedata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagedata
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -111,35 +109,106 @@ func (u *Messagedata) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ProviderMessageId: u.ProviderMessageId,
+		ProviderMessageId: o.ProviderMessageId,
 		
 		Timestamp: Timestamp,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		MessengerType: u.MessengerType,
+		MessengerType: o.MessengerType,
 		
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Media: u.Media,
+		Media: o.Media,
 		
-		Stickers: u.Stickers,
+		Stickers: o.Stickers,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagedata) UnmarshalJSON(b []byte) error {
+	var MessagedataMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagedataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MessagedataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MessagedataMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ProviderMessageId, ok := MessagedataMap["providerMessageId"].(string); ok {
+		o.ProviderMessageId = &ProviderMessageId
+	}
+	
+	if timestampString, ok := MessagedataMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if FromAddress, ok := MessagedataMap["fromAddress"].(string); ok {
+		o.FromAddress = &FromAddress
+	}
+	
+	if ToAddress, ok := MessagedataMap["toAddress"].(string); ok {
+		o.ToAddress = &ToAddress
+	}
+	
+	if Direction, ok := MessagedataMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if MessengerType, ok := MessagedataMap["messengerType"].(string); ok {
+		o.MessengerType = &MessengerType
+	}
+	
+	if TextBody, ok := MessagedataMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if Status, ok := MessagedataMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Media, ok := MessagedataMap["media"].([]interface{}); ok {
+		MediaString, _ := json.Marshal(Media)
+		json.Unmarshal(MediaString, &o.Media)
+	}
+	
+	if Stickers, ok := MessagedataMap["stickers"].([]interface{}); ok {
+		StickersString, _ := json.Marshal(Stickers)
+		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+	if CreatedBy, ok := MessagedataMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if SelfUri, ok := MessagedataMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

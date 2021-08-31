@@ -34,27 +34,25 @@ type Leaderboard struct {
 
 }
 
-func (u *Leaderboard) MarshalJSON() ([]byte, error) {
+func (o *Leaderboard) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Leaderboard
-
 	
 	DateStartWorkday := new(string)
-	if u.DateStartWorkday != nil {
-		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	if o.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(o.DateStartWorkday, "%Y-%m-%d")
 	} else {
 		DateStartWorkday = nil
 	}
 	
 	DateEndWorkday := new(string)
-	if u.DateEndWorkday != nil {
-		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	if o.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(o.DateEndWorkday, "%Y-%m-%d")
 	} else {
 		DateEndWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Division *Division `json:"division,omitempty"`
 		
@@ -69,19 +67,60 @@ func (u *Leaderboard) MarshalJSON() ([]byte, error) {
 		UserRank *Leaderboarditem `json:"userRank,omitempty"`
 		*Alias
 	}{ 
-		Division: u.Division,
+		Division: o.Division,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
 		DateStartWorkday: DateStartWorkday,
 		
 		DateEndWorkday: DateEndWorkday,
 		
-		Leaders: u.Leaders,
+		Leaders: o.Leaders,
 		
-		UserRank: u.UserRank,
-		Alias:    (*Alias)(u),
+		UserRank: o.UserRank,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Leaderboard) UnmarshalJSON(b []byte) error {
+	var LeaderboardMap map[string]interface{}
+	err := json.Unmarshal(b, &LeaderboardMap)
+	if err != nil {
+		return err
+	}
+	
+	if Division, ok := LeaderboardMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Metric, ok := LeaderboardMap["metric"].(map[string]interface{}); ok {
+		MetricString, _ := json.Marshal(Metric)
+		json.Unmarshal(MetricString, &o.Metric)
+	}
+	
+	if dateStartWorkdayString, ok := LeaderboardMap["dateStartWorkday"].(string); ok {
+		DateStartWorkday, _ := time.Parse("2006-01-02", dateStartWorkdayString)
+		o.DateStartWorkday = &DateStartWorkday
+	}
+	
+	if dateEndWorkdayString, ok := LeaderboardMap["dateEndWorkday"].(string); ok {
+		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
+		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+	if Leaders, ok := LeaderboardMap["leaders"].([]interface{}); ok {
+		LeadersString, _ := json.Marshal(Leaders)
+		json.Unmarshal(LeadersString, &o.Leaders)
+	}
+	
+	if UserRank, ok := LeaderboardMap["userRank"].(map[string]interface{}); ok {
+		UserRankString, _ := json.Marshal(UserRank)
+		json.Unmarshal(UserRankString, &o.UserRank)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

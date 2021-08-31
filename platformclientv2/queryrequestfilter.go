@@ -17,24 +17,42 @@ type Queryrequestfilter struct {
 
 }
 
-func (u *Queryrequestfilter) MarshalJSON() ([]byte, error) {
+func (o *Queryrequestfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queryrequestfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Clauses *[]Queryrequestclause `json:"clauses,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
-		Alias:    (*Alias)(u),
+		Clauses: o.Clauses,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queryrequestfilter) UnmarshalJSON(b []byte) error {
+	var QueryrequestfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &QueryrequestfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := QueryrequestfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := QueryrequestfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

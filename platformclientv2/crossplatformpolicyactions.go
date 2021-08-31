@@ -49,13 +49,11 @@ type Crossplatformpolicyactions struct {
 
 }
 
-func (u *Crossplatformpolicyactions) MarshalJSON() ([]byte, error) {
+func (o *Crossplatformpolicyactions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Crossplatformpolicyactions
-
 	
-
 	return json.Marshal(&struct { 
 		RetainRecording *bool `json:"retainRecording,omitempty"`
 		
@@ -78,27 +76,85 @@ func (u *Crossplatformpolicyactions) MarshalJSON() ([]byte, error) {
 		IntegrationExport *Integrationexport `json:"integrationExport,omitempty"`
 		*Alias
 	}{ 
-		RetainRecording: u.RetainRecording,
+		RetainRecording: o.RetainRecording,
 		
-		DeleteRecording: u.DeleteRecording,
+		DeleteRecording: o.DeleteRecording,
 		
-		AlwaysDelete: u.AlwaysDelete,
+		AlwaysDelete: o.AlwaysDelete,
 		
-		AssignEvaluations: u.AssignEvaluations,
+		AssignEvaluations: o.AssignEvaluations,
 		
-		AssignMeteredEvaluations: u.AssignMeteredEvaluations,
+		AssignMeteredEvaluations: o.AssignMeteredEvaluations,
 		
-		AssignMeteredAssignmentByAgent: u.AssignMeteredAssignmentByAgent,
+		AssignMeteredAssignmentByAgent: o.AssignMeteredAssignmentByAgent,
 		
-		AssignCalibrations: u.AssignCalibrations,
+		AssignCalibrations: o.AssignCalibrations,
 		
-		RetentionDuration: u.RetentionDuration,
+		RetentionDuration: o.RetentionDuration,
 		
-		MediaTranscriptions: u.MediaTranscriptions,
+		MediaTranscriptions: o.MediaTranscriptions,
 		
-		IntegrationExport: u.IntegrationExport,
-		Alias:    (*Alias)(u),
+		IntegrationExport: o.IntegrationExport,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Crossplatformpolicyactions) UnmarshalJSON(b []byte) error {
+	var CrossplatformpolicyactionsMap map[string]interface{}
+	err := json.Unmarshal(b, &CrossplatformpolicyactionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if RetainRecording, ok := CrossplatformpolicyactionsMap["retainRecording"].(bool); ok {
+		o.RetainRecording = &RetainRecording
+	}
+	
+	if DeleteRecording, ok := CrossplatformpolicyactionsMap["deleteRecording"].(bool); ok {
+		o.DeleteRecording = &DeleteRecording
+	}
+	
+	if AlwaysDelete, ok := CrossplatformpolicyactionsMap["alwaysDelete"].(bool); ok {
+		o.AlwaysDelete = &AlwaysDelete
+	}
+	
+	if AssignEvaluations, ok := CrossplatformpolicyactionsMap["assignEvaluations"].([]interface{}); ok {
+		AssignEvaluationsString, _ := json.Marshal(AssignEvaluations)
+		json.Unmarshal(AssignEvaluationsString, &o.AssignEvaluations)
+	}
+	
+	if AssignMeteredEvaluations, ok := CrossplatformpolicyactionsMap["assignMeteredEvaluations"].([]interface{}); ok {
+		AssignMeteredEvaluationsString, _ := json.Marshal(AssignMeteredEvaluations)
+		json.Unmarshal(AssignMeteredEvaluationsString, &o.AssignMeteredEvaluations)
+	}
+	
+	if AssignMeteredAssignmentByAgent, ok := CrossplatformpolicyactionsMap["assignMeteredAssignmentByAgent"].([]interface{}); ok {
+		AssignMeteredAssignmentByAgentString, _ := json.Marshal(AssignMeteredAssignmentByAgent)
+		json.Unmarshal(AssignMeteredAssignmentByAgentString, &o.AssignMeteredAssignmentByAgent)
+	}
+	
+	if AssignCalibrations, ok := CrossplatformpolicyactionsMap["assignCalibrations"].([]interface{}); ok {
+		AssignCalibrationsString, _ := json.Marshal(AssignCalibrations)
+		json.Unmarshal(AssignCalibrationsString, &o.AssignCalibrations)
+	}
+	
+	if RetentionDuration, ok := CrossplatformpolicyactionsMap["retentionDuration"].(map[string]interface{}); ok {
+		RetentionDurationString, _ := json.Marshal(RetentionDuration)
+		json.Unmarshal(RetentionDurationString, &o.RetentionDuration)
+	}
+	
+	if MediaTranscriptions, ok := CrossplatformpolicyactionsMap["mediaTranscriptions"].([]interface{}); ok {
+		MediaTranscriptionsString, _ := json.Marshal(MediaTranscriptions)
+		json.Unmarshal(MediaTranscriptionsString, &o.MediaTranscriptions)
+	}
+	
+	if IntegrationExport, ok := CrossplatformpolicyactionsMap["integrationExport"].(map[string]interface{}); ok {
+		IntegrationExportString, _ := json.Marshal(IntegrationExport)
+		json.Unmarshal(IntegrationExportString, &o.IntegrationExport)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

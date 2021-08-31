@@ -54,21 +54,19 @@ type Reportrunentry struct {
 
 }
 
-func (u *Reportrunentry) MarshalJSON() ([]byte, error) {
+func (o *Reportrunentry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportrunentry
-
 	
 	RunTime := new(string)
-	if u.RunTime != nil {
+	if o.RunTime != nil {
 		
-		*RunTime = timeutil.Strftime(u.RunTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RunTime = timeutil.Strftime(o.RunTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RunTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -93,29 +91,86 @@ func (u *Reportrunentry) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ReportId: u.ReportId,
+		ReportId: o.ReportId,
 		
 		RunTime: RunTime,
 		
-		RunStatus: u.RunStatus,
+		RunStatus: o.RunStatus,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
-		RunDurationMsec: u.RunDurationMsec,
+		RunDurationMsec: o.RunDurationMsec,
 		
-		ReportUrl: u.ReportUrl,
+		ReportUrl: o.ReportUrl,
 		
-		ReportFormat: u.ReportFormat,
+		ReportFormat: o.ReportFormat,
 		
-		ScheduleUri: u.ScheduleUri,
+		ScheduleUri: o.ScheduleUri,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportrunentry) UnmarshalJSON(b []byte) error {
+	var ReportrunentryMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportrunentryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReportrunentryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ReportrunentryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ReportId, ok := ReportrunentryMap["reportId"].(string); ok {
+		o.ReportId = &ReportId
+	}
+	
+	if runTimeString, ok := ReportrunentryMap["runTime"].(string); ok {
+		RunTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", runTimeString)
+		o.RunTime = &RunTime
+	}
+	
+	if RunStatus, ok := ReportrunentryMap["runStatus"].(string); ok {
+		o.RunStatus = &RunStatus
+	}
+	
+	if ErrorMessage, ok := ReportrunentryMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if RunDurationMsec, ok := ReportrunentryMap["runDurationMsec"].(float64); ok {
+		RunDurationMsecInt := int(RunDurationMsec)
+		o.RunDurationMsec = &RunDurationMsecInt
+	}
+	
+	if ReportUrl, ok := ReportrunentryMap["reportUrl"].(string); ok {
+		o.ReportUrl = &ReportUrl
+	}
+	
+	if ReportFormat, ok := ReportrunentryMap["reportFormat"].(string); ok {
+		o.ReportFormat = &ReportFormat
+	}
+	
+	if ScheduleUri, ok := ReportrunentryMap["scheduleUri"].(string); ok {
+		o.ScheduleUri = &ScheduleUri
+	}
+	
+	if SelfUri, ok := ReportrunentryMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Businessunitreference struct {
 
 }
 
-func (u *Businessunitreference) MarshalJSON() ([]byte, error) {
+func (o *Businessunitreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Businessunitreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Businessunitreference) UnmarshalJSON(b []byte) error {
+	var BusinessunitreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &BusinessunitreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BusinessunitreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := BusinessunitreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

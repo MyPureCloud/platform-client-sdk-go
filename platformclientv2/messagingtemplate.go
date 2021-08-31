@@ -13,20 +13,34 @@ type Messagingtemplate struct {
 
 }
 
-func (u *Messagingtemplate) MarshalJSON() ([]byte, error) {
+func (o *Messagingtemplate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagingtemplate
-
 	
-
 	return json.Marshal(&struct { 
 		WhatsApp *Whatsappdefinition `json:"whatsApp,omitempty"`
 		*Alias
 	}{ 
-		WhatsApp: u.WhatsApp,
-		Alias:    (*Alias)(u),
+		WhatsApp: o.WhatsApp,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagingtemplate) UnmarshalJSON(b []byte) error {
+	var MessagingtemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagingtemplateMap)
+	if err != nil {
+		return err
+	}
+	
+	if WhatsApp, ok := MessagingtemplateMap["whatsApp"].(map[string]interface{}); ok {
+		WhatsAppString, _ := json.Marshal(WhatsApp)
+		json.Unmarshal(WhatsAppString, &o.WhatsApp)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

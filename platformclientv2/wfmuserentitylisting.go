@@ -13,20 +13,34 @@ type Wfmuserentitylisting struct {
 
 }
 
-func (u *Wfmuserentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Wfmuserentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmuserentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]User `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmuserentitylisting) UnmarshalJSON(b []byte) error {
+	var WfmuserentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmuserentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := WfmuserentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

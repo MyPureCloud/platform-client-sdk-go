@@ -489,13 +489,11 @@ type Viewfilter struct {
 
 }
 
-func (u *Viewfilter) MarshalJSON() ([]byte, error) {
+func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Viewfilter
-
 	
-
 	return json.Marshal(&struct { 
 		MediaTypes *[]string `json:"mediaTypes,omitempty"`
 		
@@ -738,247 +736,835 @@ func (u *Viewfilter) MarshalJSON() ([]byte, error) {
 		HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
 		*Alias
 	}{ 
-		MediaTypes: u.MediaTypes,
+		MediaTypes: o.MediaTypes,
 		
-		QueueIds: u.QueueIds,
+		QueueIds: o.QueueIds,
 		
-		SkillIds: u.SkillIds,
+		SkillIds: o.SkillIds,
 		
-		SkillGroups: u.SkillGroups,
+		SkillGroups: o.SkillGroups,
 		
-		LanguageIds: u.LanguageIds,
+		LanguageIds: o.LanguageIds,
 		
-		LanguageGroups: u.LanguageGroups,
+		LanguageGroups: o.LanguageGroups,
 		
-		Directions: u.Directions,
+		Directions: o.Directions,
 		
-		OriginatingDirections: u.OriginatingDirections,
+		OriginatingDirections: o.OriginatingDirections,
 		
-		WrapUpCodes: u.WrapUpCodes,
+		WrapUpCodes: o.WrapUpCodes,
 		
-		DnisList: u.DnisList,
+		DnisList: o.DnisList,
 		
-		SessionDnisList: u.SessionDnisList,
+		SessionDnisList: o.SessionDnisList,
 		
-		FilterQueuesByUserIds: u.FilterQueuesByUserIds,
+		FilterQueuesByUserIds: o.FilterQueuesByUserIds,
 		
-		FilterUsersByQueueIds: u.FilterUsersByQueueIds,
+		FilterUsersByQueueIds: o.FilterUsersByQueueIds,
 		
-		UserIds: u.UserIds,
+		UserIds: o.UserIds,
 		
-		AddressTos: u.AddressTos,
+		AddressTos: o.AddressTos,
 		
-		AddressFroms: u.AddressFroms,
+		AddressFroms: o.AddressFroms,
 		
-		OutboundCampaignIds: u.OutboundCampaignIds,
+		OutboundCampaignIds: o.OutboundCampaignIds,
 		
-		OutboundContactListIds: u.OutboundContactListIds,
+		OutboundContactListIds: o.OutboundContactListIds,
 		
-		ContactIds: u.ContactIds,
+		ContactIds: o.ContactIds,
 		
-		ExternalContactIds: u.ExternalContactIds,
+		ExternalContactIds: o.ExternalContactIds,
 		
-		ExternalOrgIds: u.ExternalOrgIds,
+		ExternalOrgIds: o.ExternalOrgIds,
 		
-		AniList: u.AniList,
+		AniList: o.AniList,
 		
-		DurationsMilliseconds: u.DurationsMilliseconds,
+		DurationsMilliseconds: o.DurationsMilliseconds,
 		
-		AcdDurationsMilliseconds: u.AcdDurationsMilliseconds,
+		AcdDurationsMilliseconds: o.AcdDurationsMilliseconds,
 		
-		TalkDurationsMilliseconds: u.TalkDurationsMilliseconds,
+		TalkDurationsMilliseconds: o.TalkDurationsMilliseconds,
 		
-		AcwDurationsMilliseconds: u.AcwDurationsMilliseconds,
+		AcwDurationsMilliseconds: o.AcwDurationsMilliseconds,
 		
-		HandleDurationsMilliseconds: u.HandleDurationsMilliseconds,
+		HandleDurationsMilliseconds: o.HandleDurationsMilliseconds,
 		
-		HoldDurationsMilliseconds: u.HoldDurationsMilliseconds,
+		HoldDurationsMilliseconds: o.HoldDurationsMilliseconds,
 		
-		AbandonDurationsMilliseconds: u.AbandonDurationsMilliseconds,
+		AbandonDurationsMilliseconds: o.AbandonDurationsMilliseconds,
 		
-		EvaluationScore: u.EvaluationScore,
+		EvaluationScore: o.EvaluationScore,
 		
-		EvaluationCriticalScore: u.EvaluationCriticalScore,
+		EvaluationCriticalScore: o.EvaluationCriticalScore,
 		
-		EvaluationFormIds: u.EvaluationFormIds,
+		EvaluationFormIds: o.EvaluationFormIds,
 		
-		EvaluatedAgentIds: u.EvaluatedAgentIds,
+		EvaluatedAgentIds: o.EvaluatedAgentIds,
 		
-		EvaluatorIds: u.EvaluatorIds,
+		EvaluatorIds: o.EvaluatorIds,
 		
-		Transferred: u.Transferred,
+		Transferred: o.Transferred,
 		
-		Abandoned: u.Abandoned,
+		Abandoned: o.Abandoned,
 		
-		Answered: u.Answered,
+		Answered: o.Answered,
 		
-		MessageTypes: u.MessageTypes,
+		MessageTypes: o.MessageTypes,
 		
-		DivisionIds: u.DivisionIds,
+		DivisionIds: o.DivisionIds,
 		
-		SurveyFormIds: u.SurveyFormIds,
+		SurveyFormIds: o.SurveyFormIds,
 		
-		SurveyTotalScore: u.SurveyTotalScore,
+		SurveyTotalScore: o.SurveyTotalScore,
 		
-		SurveyNpsScore: u.SurveyNpsScore,
+		SurveyNpsScore: o.SurveyNpsScore,
 		
-		Mos: u.Mos,
+		Mos: o.Mos,
 		
-		SurveyQuestionGroupScore: u.SurveyQuestionGroupScore,
+		SurveyQuestionGroupScore: o.SurveyQuestionGroupScore,
 		
-		SurveyPromoterScore: u.SurveyPromoterScore,
+		SurveyPromoterScore: o.SurveyPromoterScore,
 		
-		SurveyFormContextIds: u.SurveyFormContextIds,
+		SurveyFormContextIds: o.SurveyFormContextIds,
 		
-		ConversationIds: u.ConversationIds,
+		ConversationIds: o.ConversationIds,
 		
-		SipCallIds: u.SipCallIds,
+		SipCallIds: o.SipCallIds,
 		
-		IsEnded: u.IsEnded,
+		IsEnded: o.IsEnded,
 		
-		IsSurveyed: u.IsSurveyed,
+		IsSurveyed: o.IsSurveyed,
 		
-		SurveyScores: u.SurveyScores,
+		SurveyScores: o.SurveyScores,
 		
-		PromoterScores: u.PromoterScores,
+		PromoterScores: o.PromoterScores,
 		
-		IsCampaign: u.IsCampaign,
+		IsCampaign: o.IsCampaign,
 		
-		SurveyStatuses: u.SurveyStatuses,
+		SurveyStatuses: o.SurveyStatuses,
 		
-		ConversationProperties: u.ConversationProperties,
+		ConversationProperties: o.ConversationProperties,
 		
-		IsBlindTransferred: u.IsBlindTransferred,
+		IsBlindTransferred: o.IsBlindTransferred,
 		
-		IsConsulted: u.IsConsulted,
+		IsConsulted: o.IsConsulted,
 		
-		IsConsultTransferred: u.IsConsultTransferred,
+		IsConsultTransferred: o.IsConsultTransferred,
 		
-		RemoteParticipants: u.RemoteParticipants,
+		RemoteParticipants: o.RemoteParticipants,
 		
-		FlowIds: u.FlowIds,
+		FlowIds: o.FlowIds,
 		
-		FlowOutcomeIds: u.FlowOutcomeIds,
+		FlowOutcomeIds: o.FlowOutcomeIds,
 		
-		FlowOutcomeValues: u.FlowOutcomeValues,
+		FlowOutcomeValues: o.FlowOutcomeValues,
 		
-		FlowDestinationTypes: u.FlowDestinationTypes,
+		FlowDestinationTypes: o.FlowDestinationTypes,
 		
-		FlowDisconnectReasons: u.FlowDisconnectReasons,
+		FlowDisconnectReasons: o.FlowDisconnectReasons,
 		
-		FlowTypes: u.FlowTypes,
+		FlowTypes: o.FlowTypes,
 		
-		FlowEntryTypes: u.FlowEntryTypes,
+		FlowEntryTypes: o.FlowEntryTypes,
 		
-		FlowEntryReasons: u.FlowEntryReasons,
+		FlowEntryReasons: o.FlowEntryReasons,
 		
-		FlowVersions: u.FlowVersions,
+		FlowVersions: o.FlowVersions,
 		
-		GroupIds: u.GroupIds,
+		GroupIds: o.GroupIds,
 		
-		HasJourneyCustomerId: u.HasJourneyCustomerId,
+		HasJourneyCustomerId: o.HasJourneyCustomerId,
 		
-		HasJourneyActionMapId: u.HasJourneyActionMapId,
+		HasJourneyActionMapId: o.HasJourneyActionMapId,
 		
-		HasJourneyVisitId: u.HasJourneyVisitId,
+		HasJourneyVisitId: o.HasJourneyVisitId,
 		
-		HasMedia: u.HasMedia,
+		HasMedia: o.HasMedia,
 		
-		RoleIds: u.RoleIds,
+		RoleIds: o.RoleIds,
 		
-		ReportsTos: u.ReportsTos,
+		ReportsTos: o.ReportsTos,
 		
-		LocationIds: u.LocationIds,
+		LocationIds: o.LocationIds,
 		
-		FlowOutTypes: u.FlowOutTypes,
+		FlowOutTypes: o.FlowOutTypes,
 		
-		ProviderList: u.ProviderList,
+		ProviderList: o.ProviderList,
 		
-		CallbackNumberList: u.CallbackNumberList,
+		CallbackNumberList: o.CallbackNumberList,
 		
-		CallbackInterval: u.CallbackInterval,
+		CallbackInterval: o.CallbackInterval,
 		
-		UsedRoutingTypes: u.UsedRoutingTypes,
+		UsedRoutingTypes: o.UsedRoutingTypes,
 		
-		RequestedRoutingTypes: u.RequestedRoutingTypes,
+		RequestedRoutingTypes: o.RequestedRoutingTypes,
 		
-		HasAgentAssistId: u.HasAgentAssistId,
+		HasAgentAssistId: o.HasAgentAssistId,
 		
-		Transcripts: u.Transcripts,
+		Transcripts: o.Transcripts,
 		
-		TranscriptLanguages: u.TranscriptLanguages,
+		TranscriptLanguages: o.TranscriptLanguages,
 		
-		ParticipantPurposes: u.ParticipantPurposes,
+		ParticipantPurposes: o.ParticipantPurposes,
 		
-		ShowFirstQueue: u.ShowFirstQueue,
+		ShowFirstQueue: o.ShowFirstQueue,
 		
-		TeamIds: u.TeamIds,
+		TeamIds: o.TeamIds,
 		
-		FilterUsersByTeamIds: u.FilterUsersByTeamIds,
+		FilterUsersByTeamIds: o.FilterUsersByTeamIds,
 		
-		JourneyActionMapIds: u.JourneyActionMapIds,
+		JourneyActionMapIds: o.JourneyActionMapIds,
 		
-		JourneyOutcomeIds: u.JourneyOutcomeIds,
+		JourneyOutcomeIds: o.JourneyOutcomeIds,
 		
-		JourneySegmentIds: u.JourneySegmentIds,
+		JourneySegmentIds: o.JourneySegmentIds,
 		
-		JourneyActionMapTypes: u.JourneyActionMapTypes,
+		JourneyActionMapTypes: o.JourneyActionMapTypes,
 		
-		DevelopmentRoleList: u.DevelopmentRoleList,
+		DevelopmentRoleList: o.DevelopmentRoleList,
 		
-		DevelopmentTypeList: u.DevelopmentTypeList,
+		DevelopmentTypeList: o.DevelopmentTypeList,
 		
-		DevelopmentStatusList: u.DevelopmentStatusList,
+		DevelopmentStatusList: o.DevelopmentStatusList,
 		
-		DevelopmentModuleIds: u.DevelopmentModuleIds,
+		DevelopmentModuleIds: o.DevelopmentModuleIds,
 		
-		DevelopmentActivityOverdue: u.DevelopmentActivityOverdue,
+		DevelopmentActivityOverdue: o.DevelopmentActivityOverdue,
 		
-		CustomerSentimentScore: u.CustomerSentimentScore,
+		CustomerSentimentScore: o.CustomerSentimentScore,
 		
-		CustomerSentimentTrend: u.CustomerSentimentTrend,
+		CustomerSentimentTrend: o.CustomerSentimentTrend,
 		
-		FlowTransferTargets: u.FlowTransferTargets,
+		FlowTransferTargets: o.FlowTransferTargets,
 		
-		DevelopmentName: u.DevelopmentName,
+		DevelopmentName: o.DevelopmentName,
 		
-		TopicIds: u.TopicIds,
+		TopicIds: o.TopicIds,
 		
-		ExternalTags: u.ExternalTags,
+		ExternalTags: o.ExternalTags,
 		
-		IsNotResponding: u.IsNotResponding,
+		IsNotResponding: o.IsNotResponding,
 		
-		IsAuthenticated: u.IsAuthenticated,
+		IsAuthenticated: o.IsAuthenticated,
 		
-		BotIds: u.BotIds,
+		BotIds: o.BotIds,
 		
-		BotVersions: u.BotVersions,
+		BotVersions: o.BotVersions,
 		
-		BotMessageTypes: u.BotMessageTypes,
+		BotMessageTypes: o.BotMessageTypes,
 		
-		BotProviderList: u.BotProviderList,
+		BotProviderList: o.BotProviderList,
 		
-		BotProductList: u.BotProductList,
+		BotProductList: o.BotProductList,
 		
-		BotRecognitionFailureReasonList: u.BotRecognitionFailureReasonList,
+		BotRecognitionFailureReasonList: o.BotRecognitionFailureReasonList,
 		
-		BotIntentList: u.BotIntentList,
+		BotIntentList: o.BotIntentList,
 		
-		BotFinalIntentList: u.BotFinalIntentList,
+		BotFinalIntentList: o.BotFinalIntentList,
 		
-		BotSlotList: u.BotSlotList,
+		BotSlotList: o.BotSlotList,
 		
-		BotResultList: u.BotResultList,
+		BotResultList: o.BotResultList,
 		
-		BlockedReasons: u.BlockedReasons,
+		BlockedReasons: o.BlockedReasons,
 		
-		IsRecorded: u.IsRecorded,
+		IsRecorded: o.IsRecorded,
 		
-		HasEvaluation: u.HasEvaluation,
+		HasEvaluation: o.HasEvaluation,
 		
-		HasScoredEvaluation: u.HasScoredEvaluation,
-		Alias:    (*Alias)(u),
+		HasScoredEvaluation: o.HasScoredEvaluation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Viewfilter) UnmarshalJSON(b []byte) error {
+	var ViewfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &ViewfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if MediaTypes, ok := ViewfilterMap["mediaTypes"].([]interface{}); ok {
+		MediaTypesString, _ := json.Marshal(MediaTypes)
+		json.Unmarshal(MediaTypesString, &o.MediaTypes)
+	}
+	
+	if QueueIds, ok := ViewfilterMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
+	}
+	
+	if SkillIds, ok := ViewfilterMap["skillIds"].([]interface{}); ok {
+		SkillIdsString, _ := json.Marshal(SkillIds)
+		json.Unmarshal(SkillIdsString, &o.SkillIds)
+	}
+	
+	if SkillGroups, ok := ViewfilterMap["skillGroups"].([]interface{}); ok {
+		SkillGroupsString, _ := json.Marshal(SkillGroups)
+		json.Unmarshal(SkillGroupsString, &o.SkillGroups)
+	}
+	
+	if LanguageIds, ok := ViewfilterMap["languageIds"].([]interface{}); ok {
+		LanguageIdsString, _ := json.Marshal(LanguageIds)
+		json.Unmarshal(LanguageIdsString, &o.LanguageIds)
+	}
+	
+	if LanguageGroups, ok := ViewfilterMap["languageGroups"].([]interface{}); ok {
+		LanguageGroupsString, _ := json.Marshal(LanguageGroups)
+		json.Unmarshal(LanguageGroupsString, &o.LanguageGroups)
+	}
+	
+	if Directions, ok := ViewfilterMap["directions"].([]interface{}); ok {
+		DirectionsString, _ := json.Marshal(Directions)
+		json.Unmarshal(DirectionsString, &o.Directions)
+	}
+	
+	if OriginatingDirections, ok := ViewfilterMap["originatingDirections"].([]interface{}); ok {
+		OriginatingDirectionsString, _ := json.Marshal(OriginatingDirections)
+		json.Unmarshal(OriginatingDirectionsString, &o.OriginatingDirections)
+	}
+	
+	if WrapUpCodes, ok := ViewfilterMap["wrapUpCodes"].([]interface{}); ok {
+		WrapUpCodesString, _ := json.Marshal(WrapUpCodes)
+		json.Unmarshal(WrapUpCodesString, &o.WrapUpCodes)
+	}
+	
+	if DnisList, ok := ViewfilterMap["dnisList"].([]interface{}); ok {
+		DnisListString, _ := json.Marshal(DnisList)
+		json.Unmarshal(DnisListString, &o.DnisList)
+	}
+	
+	if SessionDnisList, ok := ViewfilterMap["sessionDnisList"].([]interface{}); ok {
+		SessionDnisListString, _ := json.Marshal(SessionDnisList)
+		json.Unmarshal(SessionDnisListString, &o.SessionDnisList)
+	}
+	
+	if FilterQueuesByUserIds, ok := ViewfilterMap["filterQueuesByUserIds"].([]interface{}); ok {
+		FilterQueuesByUserIdsString, _ := json.Marshal(FilterQueuesByUserIds)
+		json.Unmarshal(FilterQueuesByUserIdsString, &o.FilterQueuesByUserIds)
+	}
+	
+	if FilterUsersByQueueIds, ok := ViewfilterMap["filterUsersByQueueIds"].([]interface{}); ok {
+		FilterUsersByQueueIdsString, _ := json.Marshal(FilterUsersByQueueIds)
+		json.Unmarshal(FilterUsersByQueueIdsString, &o.FilterUsersByQueueIds)
+	}
+	
+	if UserIds, ok := ViewfilterMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if AddressTos, ok := ViewfilterMap["addressTos"].([]interface{}); ok {
+		AddressTosString, _ := json.Marshal(AddressTos)
+		json.Unmarshal(AddressTosString, &o.AddressTos)
+	}
+	
+	if AddressFroms, ok := ViewfilterMap["addressFroms"].([]interface{}); ok {
+		AddressFromsString, _ := json.Marshal(AddressFroms)
+		json.Unmarshal(AddressFromsString, &o.AddressFroms)
+	}
+	
+	if OutboundCampaignIds, ok := ViewfilterMap["outboundCampaignIds"].([]interface{}); ok {
+		OutboundCampaignIdsString, _ := json.Marshal(OutboundCampaignIds)
+		json.Unmarshal(OutboundCampaignIdsString, &o.OutboundCampaignIds)
+	}
+	
+	if OutboundContactListIds, ok := ViewfilterMap["outboundContactListIds"].([]interface{}); ok {
+		OutboundContactListIdsString, _ := json.Marshal(OutboundContactListIds)
+		json.Unmarshal(OutboundContactListIdsString, &o.OutboundContactListIds)
+	}
+	
+	if ContactIds, ok := ViewfilterMap["contactIds"].([]interface{}); ok {
+		ContactIdsString, _ := json.Marshal(ContactIds)
+		json.Unmarshal(ContactIdsString, &o.ContactIds)
+	}
+	
+	if ExternalContactIds, ok := ViewfilterMap["externalContactIds"].([]interface{}); ok {
+		ExternalContactIdsString, _ := json.Marshal(ExternalContactIds)
+		json.Unmarshal(ExternalContactIdsString, &o.ExternalContactIds)
+	}
+	
+	if ExternalOrgIds, ok := ViewfilterMap["externalOrgIds"].([]interface{}); ok {
+		ExternalOrgIdsString, _ := json.Marshal(ExternalOrgIds)
+		json.Unmarshal(ExternalOrgIdsString, &o.ExternalOrgIds)
+	}
+	
+	if AniList, ok := ViewfilterMap["aniList"].([]interface{}); ok {
+		AniListString, _ := json.Marshal(AniList)
+		json.Unmarshal(AniListString, &o.AniList)
+	}
+	
+	if DurationsMilliseconds, ok := ViewfilterMap["durationsMilliseconds"].([]interface{}); ok {
+		DurationsMillisecondsString, _ := json.Marshal(DurationsMilliseconds)
+		json.Unmarshal(DurationsMillisecondsString, &o.DurationsMilliseconds)
+	}
+	
+	if AcdDurationsMilliseconds, ok := ViewfilterMap["acdDurationsMilliseconds"].([]interface{}); ok {
+		AcdDurationsMillisecondsString, _ := json.Marshal(AcdDurationsMilliseconds)
+		json.Unmarshal(AcdDurationsMillisecondsString, &o.AcdDurationsMilliseconds)
+	}
+	
+	if TalkDurationsMilliseconds, ok := ViewfilterMap["talkDurationsMilliseconds"].([]interface{}); ok {
+		TalkDurationsMillisecondsString, _ := json.Marshal(TalkDurationsMilliseconds)
+		json.Unmarshal(TalkDurationsMillisecondsString, &o.TalkDurationsMilliseconds)
+	}
+	
+	if AcwDurationsMilliseconds, ok := ViewfilterMap["acwDurationsMilliseconds"].([]interface{}); ok {
+		AcwDurationsMillisecondsString, _ := json.Marshal(AcwDurationsMilliseconds)
+		json.Unmarshal(AcwDurationsMillisecondsString, &o.AcwDurationsMilliseconds)
+	}
+	
+	if HandleDurationsMilliseconds, ok := ViewfilterMap["handleDurationsMilliseconds"].([]interface{}); ok {
+		HandleDurationsMillisecondsString, _ := json.Marshal(HandleDurationsMilliseconds)
+		json.Unmarshal(HandleDurationsMillisecondsString, &o.HandleDurationsMilliseconds)
+	}
+	
+	if HoldDurationsMilliseconds, ok := ViewfilterMap["holdDurationsMilliseconds"].([]interface{}); ok {
+		HoldDurationsMillisecondsString, _ := json.Marshal(HoldDurationsMilliseconds)
+		json.Unmarshal(HoldDurationsMillisecondsString, &o.HoldDurationsMilliseconds)
+	}
+	
+	if AbandonDurationsMilliseconds, ok := ViewfilterMap["abandonDurationsMilliseconds"].([]interface{}); ok {
+		AbandonDurationsMillisecondsString, _ := json.Marshal(AbandonDurationsMilliseconds)
+		json.Unmarshal(AbandonDurationsMillisecondsString, &o.AbandonDurationsMilliseconds)
+	}
+	
+	if EvaluationScore, ok := ViewfilterMap["evaluationScore"].(map[string]interface{}); ok {
+		EvaluationScoreString, _ := json.Marshal(EvaluationScore)
+		json.Unmarshal(EvaluationScoreString, &o.EvaluationScore)
+	}
+	
+	if EvaluationCriticalScore, ok := ViewfilterMap["evaluationCriticalScore"].(map[string]interface{}); ok {
+		EvaluationCriticalScoreString, _ := json.Marshal(EvaluationCriticalScore)
+		json.Unmarshal(EvaluationCriticalScoreString, &o.EvaluationCriticalScore)
+	}
+	
+	if EvaluationFormIds, ok := ViewfilterMap["evaluationFormIds"].([]interface{}); ok {
+		EvaluationFormIdsString, _ := json.Marshal(EvaluationFormIds)
+		json.Unmarshal(EvaluationFormIdsString, &o.EvaluationFormIds)
+	}
+	
+	if EvaluatedAgentIds, ok := ViewfilterMap["evaluatedAgentIds"].([]interface{}); ok {
+		EvaluatedAgentIdsString, _ := json.Marshal(EvaluatedAgentIds)
+		json.Unmarshal(EvaluatedAgentIdsString, &o.EvaluatedAgentIds)
+	}
+	
+	if EvaluatorIds, ok := ViewfilterMap["evaluatorIds"].([]interface{}); ok {
+		EvaluatorIdsString, _ := json.Marshal(EvaluatorIds)
+		json.Unmarshal(EvaluatorIdsString, &o.EvaluatorIds)
+	}
+	
+	if Transferred, ok := ViewfilterMap["transferred"].(bool); ok {
+		o.Transferred = &Transferred
+	}
+	
+	if Abandoned, ok := ViewfilterMap["abandoned"].(bool); ok {
+		o.Abandoned = &Abandoned
+	}
+	
+	if Answered, ok := ViewfilterMap["answered"].(bool); ok {
+		o.Answered = &Answered
+	}
+	
+	if MessageTypes, ok := ViewfilterMap["messageTypes"].([]interface{}); ok {
+		MessageTypesString, _ := json.Marshal(MessageTypes)
+		json.Unmarshal(MessageTypesString, &o.MessageTypes)
+	}
+	
+	if DivisionIds, ok := ViewfilterMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+	if SurveyFormIds, ok := ViewfilterMap["surveyFormIds"].([]interface{}); ok {
+		SurveyFormIdsString, _ := json.Marshal(SurveyFormIds)
+		json.Unmarshal(SurveyFormIdsString, &o.SurveyFormIds)
+	}
+	
+	if SurveyTotalScore, ok := ViewfilterMap["surveyTotalScore"].(map[string]interface{}); ok {
+		SurveyTotalScoreString, _ := json.Marshal(SurveyTotalScore)
+		json.Unmarshal(SurveyTotalScoreString, &o.SurveyTotalScore)
+	}
+	
+	if SurveyNpsScore, ok := ViewfilterMap["surveyNpsScore"].(map[string]interface{}); ok {
+		SurveyNpsScoreString, _ := json.Marshal(SurveyNpsScore)
+		json.Unmarshal(SurveyNpsScoreString, &o.SurveyNpsScore)
+	}
+	
+	if Mos, ok := ViewfilterMap["mos"].(map[string]interface{}); ok {
+		MosString, _ := json.Marshal(Mos)
+		json.Unmarshal(MosString, &o.Mos)
+	}
+	
+	if SurveyQuestionGroupScore, ok := ViewfilterMap["surveyQuestionGroupScore"].(map[string]interface{}); ok {
+		SurveyQuestionGroupScoreString, _ := json.Marshal(SurveyQuestionGroupScore)
+		json.Unmarshal(SurveyQuestionGroupScoreString, &o.SurveyQuestionGroupScore)
+	}
+	
+	if SurveyPromoterScore, ok := ViewfilterMap["surveyPromoterScore"].(map[string]interface{}); ok {
+		SurveyPromoterScoreString, _ := json.Marshal(SurveyPromoterScore)
+		json.Unmarshal(SurveyPromoterScoreString, &o.SurveyPromoterScore)
+	}
+	
+	if SurveyFormContextIds, ok := ViewfilterMap["surveyFormContextIds"].([]interface{}); ok {
+		SurveyFormContextIdsString, _ := json.Marshal(SurveyFormContextIds)
+		json.Unmarshal(SurveyFormContextIdsString, &o.SurveyFormContextIds)
+	}
+	
+	if ConversationIds, ok := ViewfilterMap["conversationIds"].([]interface{}); ok {
+		ConversationIdsString, _ := json.Marshal(ConversationIds)
+		json.Unmarshal(ConversationIdsString, &o.ConversationIds)
+	}
+	
+	if SipCallIds, ok := ViewfilterMap["sipCallIds"].([]interface{}); ok {
+		SipCallIdsString, _ := json.Marshal(SipCallIds)
+		json.Unmarshal(SipCallIdsString, &o.SipCallIds)
+	}
+	
+	if IsEnded, ok := ViewfilterMap["isEnded"].(bool); ok {
+		o.IsEnded = &IsEnded
+	}
+	
+	if IsSurveyed, ok := ViewfilterMap["isSurveyed"].(bool); ok {
+		o.IsSurveyed = &IsSurveyed
+	}
+	
+	if SurveyScores, ok := ViewfilterMap["surveyScores"].([]interface{}); ok {
+		SurveyScoresString, _ := json.Marshal(SurveyScores)
+		json.Unmarshal(SurveyScoresString, &o.SurveyScores)
+	}
+	
+	if PromoterScores, ok := ViewfilterMap["promoterScores"].([]interface{}); ok {
+		PromoterScoresString, _ := json.Marshal(PromoterScores)
+		json.Unmarshal(PromoterScoresString, &o.PromoterScores)
+	}
+	
+	if IsCampaign, ok := ViewfilterMap["isCampaign"].(bool); ok {
+		o.IsCampaign = &IsCampaign
+	}
+	
+	if SurveyStatuses, ok := ViewfilterMap["surveyStatuses"].([]interface{}); ok {
+		SurveyStatusesString, _ := json.Marshal(SurveyStatuses)
+		json.Unmarshal(SurveyStatusesString, &o.SurveyStatuses)
+	}
+	
+	if ConversationProperties, ok := ViewfilterMap["conversationProperties"].(map[string]interface{}); ok {
+		ConversationPropertiesString, _ := json.Marshal(ConversationProperties)
+		json.Unmarshal(ConversationPropertiesString, &o.ConversationProperties)
+	}
+	
+	if IsBlindTransferred, ok := ViewfilterMap["isBlindTransferred"].(bool); ok {
+		o.IsBlindTransferred = &IsBlindTransferred
+	}
+	
+	if IsConsulted, ok := ViewfilterMap["isConsulted"].(bool); ok {
+		o.IsConsulted = &IsConsulted
+	}
+	
+	if IsConsultTransferred, ok := ViewfilterMap["isConsultTransferred"].(bool); ok {
+		o.IsConsultTransferred = &IsConsultTransferred
+	}
+	
+	if RemoteParticipants, ok := ViewfilterMap["remoteParticipants"].([]interface{}); ok {
+		RemoteParticipantsString, _ := json.Marshal(RemoteParticipants)
+		json.Unmarshal(RemoteParticipantsString, &o.RemoteParticipants)
+	}
+	
+	if FlowIds, ok := ViewfilterMap["flowIds"].([]interface{}); ok {
+		FlowIdsString, _ := json.Marshal(FlowIds)
+		json.Unmarshal(FlowIdsString, &o.FlowIds)
+	}
+	
+	if FlowOutcomeIds, ok := ViewfilterMap["flowOutcomeIds"].([]interface{}); ok {
+		FlowOutcomeIdsString, _ := json.Marshal(FlowOutcomeIds)
+		json.Unmarshal(FlowOutcomeIdsString, &o.FlowOutcomeIds)
+	}
+	
+	if FlowOutcomeValues, ok := ViewfilterMap["flowOutcomeValues"].([]interface{}); ok {
+		FlowOutcomeValuesString, _ := json.Marshal(FlowOutcomeValues)
+		json.Unmarshal(FlowOutcomeValuesString, &o.FlowOutcomeValues)
+	}
+	
+	if FlowDestinationTypes, ok := ViewfilterMap["flowDestinationTypes"].([]interface{}); ok {
+		FlowDestinationTypesString, _ := json.Marshal(FlowDestinationTypes)
+		json.Unmarshal(FlowDestinationTypesString, &o.FlowDestinationTypes)
+	}
+	
+	if FlowDisconnectReasons, ok := ViewfilterMap["flowDisconnectReasons"].([]interface{}); ok {
+		FlowDisconnectReasonsString, _ := json.Marshal(FlowDisconnectReasons)
+		json.Unmarshal(FlowDisconnectReasonsString, &o.FlowDisconnectReasons)
+	}
+	
+	if FlowTypes, ok := ViewfilterMap["flowTypes"].([]interface{}); ok {
+		FlowTypesString, _ := json.Marshal(FlowTypes)
+		json.Unmarshal(FlowTypesString, &o.FlowTypes)
+	}
+	
+	if FlowEntryTypes, ok := ViewfilterMap["flowEntryTypes"].([]interface{}); ok {
+		FlowEntryTypesString, _ := json.Marshal(FlowEntryTypes)
+		json.Unmarshal(FlowEntryTypesString, &o.FlowEntryTypes)
+	}
+	
+	if FlowEntryReasons, ok := ViewfilterMap["flowEntryReasons"].([]interface{}); ok {
+		FlowEntryReasonsString, _ := json.Marshal(FlowEntryReasons)
+		json.Unmarshal(FlowEntryReasonsString, &o.FlowEntryReasons)
+	}
+	
+	if FlowVersions, ok := ViewfilterMap["flowVersions"].([]interface{}); ok {
+		FlowVersionsString, _ := json.Marshal(FlowVersions)
+		json.Unmarshal(FlowVersionsString, &o.FlowVersions)
+	}
+	
+	if GroupIds, ok := ViewfilterMap["groupIds"].([]interface{}); ok {
+		GroupIdsString, _ := json.Marshal(GroupIds)
+		json.Unmarshal(GroupIdsString, &o.GroupIds)
+	}
+	
+	if HasJourneyCustomerId, ok := ViewfilterMap["hasJourneyCustomerId"].(bool); ok {
+		o.HasJourneyCustomerId = &HasJourneyCustomerId
+	}
+	
+	if HasJourneyActionMapId, ok := ViewfilterMap["hasJourneyActionMapId"].(bool); ok {
+		o.HasJourneyActionMapId = &HasJourneyActionMapId
+	}
+	
+	if HasJourneyVisitId, ok := ViewfilterMap["hasJourneyVisitId"].(bool); ok {
+		o.HasJourneyVisitId = &HasJourneyVisitId
+	}
+	
+	if HasMedia, ok := ViewfilterMap["hasMedia"].(bool); ok {
+		o.HasMedia = &HasMedia
+	}
+	
+	if RoleIds, ok := ViewfilterMap["roleIds"].([]interface{}); ok {
+		RoleIdsString, _ := json.Marshal(RoleIds)
+		json.Unmarshal(RoleIdsString, &o.RoleIds)
+	}
+	
+	if ReportsTos, ok := ViewfilterMap["reportsTos"].([]interface{}); ok {
+		ReportsTosString, _ := json.Marshal(ReportsTos)
+		json.Unmarshal(ReportsTosString, &o.ReportsTos)
+	}
+	
+	if LocationIds, ok := ViewfilterMap["locationIds"].([]interface{}); ok {
+		LocationIdsString, _ := json.Marshal(LocationIds)
+		json.Unmarshal(LocationIdsString, &o.LocationIds)
+	}
+	
+	if FlowOutTypes, ok := ViewfilterMap["flowOutTypes"].([]interface{}); ok {
+		FlowOutTypesString, _ := json.Marshal(FlowOutTypes)
+		json.Unmarshal(FlowOutTypesString, &o.FlowOutTypes)
+	}
+	
+	if ProviderList, ok := ViewfilterMap["providerList"].([]interface{}); ok {
+		ProviderListString, _ := json.Marshal(ProviderList)
+		json.Unmarshal(ProviderListString, &o.ProviderList)
+	}
+	
+	if CallbackNumberList, ok := ViewfilterMap["callbackNumberList"].([]interface{}); ok {
+		CallbackNumberListString, _ := json.Marshal(CallbackNumberList)
+		json.Unmarshal(CallbackNumberListString, &o.CallbackNumberList)
+	}
+	
+	if CallbackInterval, ok := ViewfilterMap["callbackInterval"].(string); ok {
+		o.CallbackInterval = &CallbackInterval
+	}
+	
+	if UsedRoutingTypes, ok := ViewfilterMap["usedRoutingTypes"].([]interface{}); ok {
+		UsedRoutingTypesString, _ := json.Marshal(UsedRoutingTypes)
+		json.Unmarshal(UsedRoutingTypesString, &o.UsedRoutingTypes)
+	}
+	
+	if RequestedRoutingTypes, ok := ViewfilterMap["requestedRoutingTypes"].([]interface{}); ok {
+		RequestedRoutingTypesString, _ := json.Marshal(RequestedRoutingTypes)
+		json.Unmarshal(RequestedRoutingTypesString, &o.RequestedRoutingTypes)
+	}
+	
+	if HasAgentAssistId, ok := ViewfilterMap["hasAgentAssistId"].(bool); ok {
+		o.HasAgentAssistId = &HasAgentAssistId
+	}
+	
+	if Transcripts, ok := ViewfilterMap["transcripts"].([]interface{}); ok {
+		TranscriptsString, _ := json.Marshal(Transcripts)
+		json.Unmarshal(TranscriptsString, &o.Transcripts)
+	}
+	
+	if TranscriptLanguages, ok := ViewfilterMap["transcriptLanguages"].([]interface{}); ok {
+		TranscriptLanguagesString, _ := json.Marshal(TranscriptLanguages)
+		json.Unmarshal(TranscriptLanguagesString, &o.TranscriptLanguages)
+	}
+	
+	if ParticipantPurposes, ok := ViewfilterMap["participantPurposes"].([]interface{}); ok {
+		ParticipantPurposesString, _ := json.Marshal(ParticipantPurposes)
+		json.Unmarshal(ParticipantPurposesString, &o.ParticipantPurposes)
+	}
+	
+	if ShowFirstQueue, ok := ViewfilterMap["showFirstQueue"].(bool); ok {
+		o.ShowFirstQueue = &ShowFirstQueue
+	}
+	
+	if TeamIds, ok := ViewfilterMap["teamIds"].([]interface{}); ok {
+		TeamIdsString, _ := json.Marshal(TeamIds)
+		json.Unmarshal(TeamIdsString, &o.TeamIds)
+	}
+	
+	if FilterUsersByTeamIds, ok := ViewfilterMap["filterUsersByTeamIds"].([]interface{}); ok {
+		FilterUsersByTeamIdsString, _ := json.Marshal(FilterUsersByTeamIds)
+		json.Unmarshal(FilterUsersByTeamIdsString, &o.FilterUsersByTeamIds)
+	}
+	
+	if JourneyActionMapIds, ok := ViewfilterMap["journeyActionMapIds"].([]interface{}); ok {
+		JourneyActionMapIdsString, _ := json.Marshal(JourneyActionMapIds)
+		json.Unmarshal(JourneyActionMapIdsString, &o.JourneyActionMapIds)
+	}
+	
+	if JourneyOutcomeIds, ok := ViewfilterMap["journeyOutcomeIds"].([]interface{}); ok {
+		JourneyOutcomeIdsString, _ := json.Marshal(JourneyOutcomeIds)
+		json.Unmarshal(JourneyOutcomeIdsString, &o.JourneyOutcomeIds)
+	}
+	
+	if JourneySegmentIds, ok := ViewfilterMap["journeySegmentIds"].([]interface{}); ok {
+		JourneySegmentIdsString, _ := json.Marshal(JourneySegmentIds)
+		json.Unmarshal(JourneySegmentIdsString, &o.JourneySegmentIds)
+	}
+	
+	if JourneyActionMapTypes, ok := ViewfilterMap["journeyActionMapTypes"].([]interface{}); ok {
+		JourneyActionMapTypesString, _ := json.Marshal(JourneyActionMapTypes)
+		json.Unmarshal(JourneyActionMapTypesString, &o.JourneyActionMapTypes)
+	}
+	
+	if DevelopmentRoleList, ok := ViewfilterMap["developmentRoleList"].([]interface{}); ok {
+		DevelopmentRoleListString, _ := json.Marshal(DevelopmentRoleList)
+		json.Unmarshal(DevelopmentRoleListString, &o.DevelopmentRoleList)
+	}
+	
+	if DevelopmentTypeList, ok := ViewfilterMap["developmentTypeList"].([]interface{}); ok {
+		DevelopmentTypeListString, _ := json.Marshal(DevelopmentTypeList)
+		json.Unmarshal(DevelopmentTypeListString, &o.DevelopmentTypeList)
+	}
+	
+	if DevelopmentStatusList, ok := ViewfilterMap["developmentStatusList"].([]interface{}); ok {
+		DevelopmentStatusListString, _ := json.Marshal(DevelopmentStatusList)
+		json.Unmarshal(DevelopmentStatusListString, &o.DevelopmentStatusList)
+	}
+	
+	if DevelopmentModuleIds, ok := ViewfilterMap["developmentModuleIds"].([]interface{}); ok {
+		DevelopmentModuleIdsString, _ := json.Marshal(DevelopmentModuleIds)
+		json.Unmarshal(DevelopmentModuleIdsString, &o.DevelopmentModuleIds)
+	}
+	
+	if DevelopmentActivityOverdue, ok := ViewfilterMap["developmentActivityOverdue"].(bool); ok {
+		o.DevelopmentActivityOverdue = &DevelopmentActivityOverdue
+	}
+	
+	if CustomerSentimentScore, ok := ViewfilterMap["customerSentimentScore"].(map[string]interface{}); ok {
+		CustomerSentimentScoreString, _ := json.Marshal(CustomerSentimentScore)
+		json.Unmarshal(CustomerSentimentScoreString, &o.CustomerSentimentScore)
+	}
+	
+	if CustomerSentimentTrend, ok := ViewfilterMap["customerSentimentTrend"].(map[string]interface{}); ok {
+		CustomerSentimentTrendString, _ := json.Marshal(CustomerSentimentTrend)
+		json.Unmarshal(CustomerSentimentTrendString, &o.CustomerSentimentTrend)
+	}
+	
+	if FlowTransferTargets, ok := ViewfilterMap["flowTransferTargets"].([]interface{}); ok {
+		FlowTransferTargetsString, _ := json.Marshal(FlowTransferTargets)
+		json.Unmarshal(FlowTransferTargetsString, &o.FlowTransferTargets)
+	}
+	
+	if DevelopmentName, ok := ViewfilterMap["developmentName"].(string); ok {
+		o.DevelopmentName = &DevelopmentName
+	}
+	
+	if TopicIds, ok := ViewfilterMap["topicIds"].([]interface{}); ok {
+		TopicIdsString, _ := json.Marshal(TopicIds)
+		json.Unmarshal(TopicIdsString, &o.TopicIds)
+	}
+	
+	if ExternalTags, ok := ViewfilterMap["externalTags"].([]interface{}); ok {
+		ExternalTagsString, _ := json.Marshal(ExternalTags)
+		json.Unmarshal(ExternalTagsString, &o.ExternalTags)
+	}
+	
+	if IsNotResponding, ok := ViewfilterMap["isNotResponding"].(bool); ok {
+		o.IsNotResponding = &IsNotResponding
+	}
+	
+	if IsAuthenticated, ok := ViewfilterMap["isAuthenticated"].(bool); ok {
+		o.IsAuthenticated = &IsAuthenticated
+	}
+	
+	if BotIds, ok := ViewfilterMap["botIds"].([]interface{}); ok {
+		BotIdsString, _ := json.Marshal(BotIds)
+		json.Unmarshal(BotIdsString, &o.BotIds)
+	}
+	
+	if BotVersions, ok := ViewfilterMap["botVersions"].([]interface{}); ok {
+		BotVersionsString, _ := json.Marshal(BotVersions)
+		json.Unmarshal(BotVersionsString, &o.BotVersions)
+	}
+	
+	if BotMessageTypes, ok := ViewfilterMap["botMessageTypes"].([]interface{}); ok {
+		BotMessageTypesString, _ := json.Marshal(BotMessageTypes)
+		json.Unmarshal(BotMessageTypesString, &o.BotMessageTypes)
+	}
+	
+	if BotProviderList, ok := ViewfilterMap["botProviderList"].([]interface{}); ok {
+		BotProviderListString, _ := json.Marshal(BotProviderList)
+		json.Unmarshal(BotProviderListString, &o.BotProviderList)
+	}
+	
+	if BotProductList, ok := ViewfilterMap["botProductList"].([]interface{}); ok {
+		BotProductListString, _ := json.Marshal(BotProductList)
+		json.Unmarshal(BotProductListString, &o.BotProductList)
+	}
+	
+	if BotRecognitionFailureReasonList, ok := ViewfilterMap["botRecognitionFailureReasonList"].([]interface{}); ok {
+		BotRecognitionFailureReasonListString, _ := json.Marshal(BotRecognitionFailureReasonList)
+		json.Unmarshal(BotRecognitionFailureReasonListString, &o.BotRecognitionFailureReasonList)
+	}
+	
+	if BotIntentList, ok := ViewfilterMap["botIntentList"].([]interface{}); ok {
+		BotIntentListString, _ := json.Marshal(BotIntentList)
+		json.Unmarshal(BotIntentListString, &o.BotIntentList)
+	}
+	
+	if BotFinalIntentList, ok := ViewfilterMap["botFinalIntentList"].([]interface{}); ok {
+		BotFinalIntentListString, _ := json.Marshal(BotFinalIntentList)
+		json.Unmarshal(BotFinalIntentListString, &o.BotFinalIntentList)
+	}
+	
+	if BotSlotList, ok := ViewfilterMap["botSlotList"].([]interface{}); ok {
+		BotSlotListString, _ := json.Marshal(BotSlotList)
+		json.Unmarshal(BotSlotListString, &o.BotSlotList)
+	}
+	
+	if BotResultList, ok := ViewfilterMap["botResultList"].([]interface{}); ok {
+		BotResultListString, _ := json.Marshal(BotResultList)
+		json.Unmarshal(BotResultListString, &o.BotResultList)
+	}
+	
+	if BlockedReasons, ok := ViewfilterMap["blockedReasons"].([]interface{}); ok {
+		BlockedReasonsString, _ := json.Marshal(BlockedReasons)
+		json.Unmarshal(BlockedReasonsString, &o.BlockedReasons)
+	}
+	
+	if IsRecorded, ok := ViewfilterMap["isRecorded"].(bool); ok {
+		o.IsRecorded = &IsRecorded
+	}
+	
+	if HasEvaluation, ok := ViewfilterMap["hasEvaluation"].(bool); ok {
+		o.HasEvaluation = &HasEvaluation
+	}
+	
+	if HasScoredEvaluation, ok := ViewfilterMap["hasScoredEvaluation"].(bool); ok {
+		o.HasScoredEvaluation = &HasScoredEvaluation
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

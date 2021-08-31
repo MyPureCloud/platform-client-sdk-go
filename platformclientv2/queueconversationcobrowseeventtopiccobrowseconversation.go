@@ -25,13 +25,11 @@ type Queueconversationcobrowseeventtopiccobrowseconversation struct {
 
 }
 
-func (u *Queueconversationcobrowseeventtopiccobrowseconversation) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationcobrowseeventtopiccobrowseconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationcobrowseeventtopiccobrowseconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Queueconversationcobrowseeventtopiccobrowseconversation) MarshalJSON() 
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
-		Alias:    (*Alias)(u),
+		OtherMediaUris: o.OtherMediaUris,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationcobrowseeventtopiccobrowseconversation) UnmarshalJSON(b []byte) error {
+	var QueueconversationcobrowseeventtopiccobrowseconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationcobrowseeventtopiccobrowseconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationcobrowseeventtopiccobrowseconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := QueueconversationcobrowseeventtopiccobrowseconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := QueueconversationcobrowseeventtopiccobrowseconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := QueueconversationcobrowseeventtopiccobrowseconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

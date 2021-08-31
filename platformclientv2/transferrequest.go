@@ -29,13 +29,11 @@ type Transferrequest struct {
 
 }
 
-func (u *Transferrequest) MarshalJSON() ([]byte, error) {
+func (o *Transferrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transferrequest
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Transferrequest) MarshalJSON() ([]byte, error) {
 		Voicemail *bool `json:"voicemail,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		UserName: u.UserName,
+		UserName: o.UserName,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		Voicemail: u.Voicemail,
-		Alias:    (*Alias)(u),
+		Voicemail: o.Voicemail,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transferrequest) UnmarshalJSON(b []byte) error {
+	var TransferrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TransferrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := TransferrequestMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Address, ok := TransferrequestMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if UserName, ok := TransferrequestMap["userName"].(string); ok {
+		o.UserName = &UserName
+	}
+	
+	if QueueId, ok := TransferrequestMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if Voicemail, ok := TransferrequestMap["voicemail"].(bool); ok {
+		o.Voicemail = &Voicemail
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

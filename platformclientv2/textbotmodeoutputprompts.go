@@ -13,20 +13,34 @@ type Textbotmodeoutputprompts struct {
 
 }
 
-func (u *Textbotmodeoutputprompts) MarshalJSON() ([]byte, error) {
+func (o *Textbotmodeoutputprompts) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotmodeoutputprompts
-
 	
-
 	return json.Marshal(&struct { 
 		Segments *[]Textbotpromptsegment `json:"segments,omitempty"`
 		*Alias
 	}{ 
-		Segments: u.Segments,
-		Alias:    (*Alias)(u),
+		Segments: o.Segments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotmodeoutputprompts) UnmarshalJSON(b []byte) error {
+	var TextbotmodeoutputpromptsMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotmodeoutputpromptsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Segments, ok := TextbotmodeoutputpromptsMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

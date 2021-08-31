@@ -17,24 +17,41 @@ type Addressableentityref struct {
 
 }
 
-func (u *Addressableentityref) MarshalJSON() ([]byte, error) {
+func (o *Addressableentityref) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Addressableentityref
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Addressableentityref) UnmarshalJSON(b []byte) error {
+	var AddressableentityrefMap map[string]interface{}
+	err := json.Unmarshal(b, &AddressableentityrefMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AddressableentityrefMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := AddressableentityrefMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

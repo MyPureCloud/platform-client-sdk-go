@@ -26,21 +26,19 @@ type Scimmetadata struct {
 
 }
 
-func (u *Scimmetadata) MarshalJSON() ([]byte, error) {
+func (o *Scimmetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimmetadata
-
 	
 	LastModified := new(string)
-	if u.LastModified != nil {
+	if o.LastModified != nil {
 		
-		*LastModified = timeutil.Strftime(u.LastModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*LastModified = timeutil.Strftime(o.LastModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		LastModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ResourceType *string `json:"resourceType,omitempty"`
 		
@@ -51,15 +49,43 @@ func (u *Scimmetadata) MarshalJSON() ([]byte, error) {
 		Version *string `json:"version,omitempty"`
 		*Alias
 	}{ 
-		ResourceType: u.ResourceType,
+		ResourceType: o.ResourceType,
 		
 		LastModified: LastModified,
 		
-		Location: u.Location,
+		Location: o.Location,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimmetadata) UnmarshalJSON(b []byte) error {
+	var ScimmetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimmetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if ResourceType, ok := ScimmetadataMap["resourceType"].(string); ok {
+		o.ResourceType = &ResourceType
+	}
+	
+	if lastModifiedString, ok := ScimmetadataMap["lastModified"].(string); ok {
+		LastModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastModifiedString)
+		o.LastModified = &LastModified
+	}
+	
+	if Location, ok := ScimmetadataMap["location"].(string); ok {
+		o.Location = &Location
+	}
+	
+	if Version, ok := ScimmetadataMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

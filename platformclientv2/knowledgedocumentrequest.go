@@ -29,13 +29,11 @@ type Knowledgedocumentrequest struct {
 
 }
 
-func (u *Knowledgedocumentrequest) MarshalJSON() ([]byte, error) {
+func (o *Knowledgedocumentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgedocumentrequest
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Knowledgedocumentrequest) MarshalJSON() ([]byte, error) {
 		Article *Documentarticle `json:"article,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		ExternalUrl: u.ExternalUrl,
+		ExternalUrl: o.ExternalUrl,
 		
-		Faq: u.Faq,
+		Faq: o.Faq,
 		
-		Categories: u.Categories,
+		Categories: o.Categories,
 		
-		Article: u.Article,
-		Alias:    (*Alias)(u),
+		Article: o.Article,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgedocumentrequest) UnmarshalJSON(b []byte) error {
+	var KnowledgedocumentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgedocumentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := KnowledgedocumentrequestMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if ExternalUrl, ok := KnowledgedocumentrequestMap["externalUrl"].(string); ok {
+		o.ExternalUrl = &ExternalUrl
+	}
+	
+	if Faq, ok := KnowledgedocumentrequestMap["faq"].(map[string]interface{}); ok {
+		FaqString, _ := json.Marshal(Faq)
+		json.Unmarshal(FaqString, &o.Faq)
+	}
+	
+	if Categories, ok := KnowledgedocumentrequestMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
+	if Article, ok := KnowledgedocumentrequestMap["article"].(map[string]interface{}); ok {
+		ArticleString, _ := json.Marshal(Article)
+		json.Unmarshal(ArticleString, &o.Article)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Forecastsourcedaypointer struct {
 
 }
 
-func (u *Forecastsourcedaypointer) MarshalJSON() ([]byte, error) {
+func (o *Forecastsourcedaypointer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastsourcedaypointer
-
 	
-
 	return json.Marshal(&struct { 
 		DayOfWeek *string `json:"dayOfWeek,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Forecastsourcedaypointer) MarshalJSON() ([]byte, error) {
 		DataKey *string `json:"dataKey,omitempty"`
 		*Alias
 	}{ 
-		DayOfWeek: u.DayOfWeek,
+		DayOfWeek: o.DayOfWeek,
 		
-		Weight: u.Weight,
+		Weight: o.Weight,
 		
-		Date: u.Date,
+		Date: o.Date,
 		
-		FileName: u.FileName,
+		FileName: o.FileName,
 		
-		DataKey: u.DataKey,
-		Alias:    (*Alias)(u),
+		DataKey: o.DataKey,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastsourcedaypointer) UnmarshalJSON(b []byte) error {
+	var ForecastsourcedaypointerMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastsourcedaypointerMap)
+	if err != nil {
+		return err
+	}
+	
+	if DayOfWeek, ok := ForecastsourcedaypointerMap["dayOfWeek"].(string); ok {
+		o.DayOfWeek = &DayOfWeek
+	}
+	
+	if Weight, ok := ForecastsourcedaypointerMap["weight"].(float64); ok {
+		WeightInt := int(Weight)
+		o.Weight = &WeightInt
+	}
+	
+	if Date, ok := ForecastsourcedaypointerMap["date"].(string); ok {
+		o.Date = &Date
+	}
+	
+	if FileName, ok := ForecastsourcedaypointerMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+	
+	if DataKey, ok := ForecastsourcedaypointerMap["dataKey"].(string); ok {
+		o.DataKey = &DataKey
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

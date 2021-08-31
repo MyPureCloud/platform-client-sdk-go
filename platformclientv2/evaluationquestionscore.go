@@ -33,13 +33,11 @@ type Evaluationquestionscore struct {
 
 }
 
-func (u *Evaluationquestionscore) MarshalJSON() ([]byte, error) {
+func (o *Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationquestionscore
-
 	
-
 	return json.Marshal(&struct { 
 		QuestionId *string `json:"questionId,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		Comments *string `json:"comments,omitempty"`
 		*Alias
 	}{ 
-		QuestionId: u.QuestionId,
+		QuestionId: o.QuestionId,
 		
-		AnswerId: u.AnswerId,
+		AnswerId: o.AnswerId,
 		
-		Score: u.Score,
+		Score: o.Score,
 		
-		MarkedNA: u.MarkedNA,
+		MarkedNA: o.MarkedNA,
 		
-		FailedKillQuestion: u.FailedKillQuestion,
+		FailedKillQuestion: o.FailedKillQuestion,
 		
-		Comments: u.Comments,
-		Alias:    (*Alias)(u),
+		Comments: o.Comments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationquestionscore) UnmarshalJSON(b []byte) error {
+	var EvaluationquestionscoreMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationquestionscoreMap)
+	if err != nil {
+		return err
+	}
+	
+	if QuestionId, ok := EvaluationquestionscoreMap["questionId"].(string); ok {
+		o.QuestionId = &QuestionId
+	}
+	
+	if AnswerId, ok := EvaluationquestionscoreMap["answerId"].(string); ok {
+		o.AnswerId = &AnswerId
+	}
+	
+	if Score, ok := EvaluationquestionscoreMap["score"].(float64); ok {
+		ScoreInt := int(Score)
+		o.Score = &ScoreInt
+	}
+	
+	if MarkedNA, ok := EvaluationquestionscoreMap["markedNA"].(bool); ok {
+		o.MarkedNA = &MarkedNA
+	}
+	
+	if FailedKillQuestion, ok := EvaluationquestionscoreMap["failedKillQuestion"].(bool); ok {
+		o.FailedKillQuestion = &FailedKillQuestion
+	}
+	
+	if Comments, ok := EvaluationquestionscoreMap["comments"].(string); ok {
+		o.Comments = &Comments
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

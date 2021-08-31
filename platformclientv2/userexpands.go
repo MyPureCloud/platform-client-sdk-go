@@ -37,13 +37,11 @@ type Userexpands struct {
 
 }
 
-func (u *Userexpands) MarshalJSON() ([]byte, error) {
+func (o *Userexpands) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userexpands
-
 	
-
 	return json.Marshal(&struct { 
 		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
 		
@@ -60,21 +58,67 @@ func (u *Userexpands) MarshalJSON() ([]byte, error) {
 		Authorization *Userauthorization `json:"authorization,omitempty"`
 		*Alias
 	}{ 
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		Presence: u.Presence,
+		Presence: o.Presence,
 		
-		ConversationSummary: u.ConversationSummary,
+		ConversationSummary: o.ConversationSummary,
 		
-		OutOfOffice: u.OutOfOffice,
+		OutOfOffice: o.OutOfOffice,
 		
-		Geolocation: u.Geolocation,
+		Geolocation: o.Geolocation,
 		
-		Station: u.Station,
+		Station: o.Station,
 		
-		Authorization: u.Authorization,
-		Alias:    (*Alias)(u),
+		Authorization: o.Authorization,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userexpands) UnmarshalJSON(b []byte) error {
+	var UserexpandsMap map[string]interface{}
+	err := json.Unmarshal(b, &UserexpandsMap)
+	if err != nil {
+		return err
+	}
+	
+	if RoutingStatus, ok := UserexpandsMap["routingStatus"].(map[string]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+	if Presence, ok := UserexpandsMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if ConversationSummary, ok := UserexpandsMap["conversationSummary"].(map[string]interface{}); ok {
+		ConversationSummaryString, _ := json.Marshal(ConversationSummary)
+		json.Unmarshal(ConversationSummaryString, &o.ConversationSummary)
+	}
+	
+	if OutOfOffice, ok := UserexpandsMap["outOfOffice"].(map[string]interface{}); ok {
+		OutOfOfficeString, _ := json.Marshal(OutOfOffice)
+		json.Unmarshal(OutOfOfficeString, &o.OutOfOffice)
+	}
+	
+	if Geolocation, ok := UserexpandsMap["geolocation"].(map[string]interface{}); ok {
+		GeolocationString, _ := json.Marshal(Geolocation)
+		json.Unmarshal(GeolocationString, &o.Geolocation)
+	}
+	
+	if Station, ok := UserexpandsMap["station"].(map[string]interface{}); ok {
+		StationString, _ := json.Marshal(Station)
+		json.Unmarshal(StationString, &o.Station)
+	}
+	
+	if Authorization, ok := UserexpandsMap["authorization"].(map[string]interface{}); ok {
+		AuthorizationString, _ := json.Marshal(Authorization)
+		json.Unmarshal(AuthorizationString, &o.Authorization)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

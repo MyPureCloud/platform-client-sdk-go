@@ -174,29 +174,27 @@ type Edge struct {
 
 }
 
-func (u *Edge) MarshalJSON() ([]byte, error) {
+func (o *Edge) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edge
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -281,89 +279,272 @@ func (u *Edge) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Interfaces: u.Interfaces,
+		Interfaces: o.Interfaces,
 		
-		Make: u.Make,
+		Make: o.Make,
 		
-		Model: u.Model,
+		Model: o.Model,
 		
-		ApiVersion: u.ApiVersion,
+		ApiVersion: o.ApiVersion,
 		
-		SoftwareVersion: u.SoftwareVersion,
+		SoftwareVersion: o.SoftwareVersion,
 		
-		SoftwareVersionTimestamp: u.SoftwareVersionTimestamp,
+		SoftwareVersionTimestamp: o.SoftwareVersionTimestamp,
 		
-		SoftwareVersionPlatform: u.SoftwareVersionPlatform,
+		SoftwareVersionPlatform: o.SoftwareVersionPlatform,
 		
-		SoftwareVersionConfiguration: u.SoftwareVersionConfiguration,
+		SoftwareVersionConfiguration: o.SoftwareVersionConfiguration,
 		
-		FullSoftwareVersion: u.FullSoftwareVersion,
+		FullSoftwareVersion: o.FullSoftwareVersion,
 		
-		PairingId: u.PairingId,
+		PairingId: o.PairingId,
 		
-		Fingerprint: u.Fingerprint,
+		Fingerprint: o.Fingerprint,
 		
-		FingerprintHint: u.FingerprintHint,
+		FingerprintHint: o.FingerprintHint,
 		
-		CurrentVersion: u.CurrentVersion,
+		CurrentVersion: o.CurrentVersion,
 		
-		StagedVersion: u.StagedVersion,
+		StagedVersion: o.StagedVersion,
 		
-		Patch: u.Patch,
+		Patch: o.Patch,
 		
-		StatusCode: u.StatusCode,
+		StatusCode: o.StatusCode,
 		
-		EdgeGroup: u.EdgeGroup,
+		EdgeGroup: o.EdgeGroup,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		SoftwareStatus: u.SoftwareStatus,
+		SoftwareStatus: o.SoftwareStatus,
 		
-		OnlineStatus: u.OnlineStatus,
+		OnlineStatus: o.OnlineStatus,
 		
-		SerialNumber: u.SerialNumber,
+		SerialNumber: o.SerialNumber,
 		
-		PhysicalEdge: u.PhysicalEdge,
+		PhysicalEdge: o.PhysicalEdge,
 		
-		Managed: u.Managed,
+		Managed: o.Managed,
 		
-		EdgeDeploymentType: u.EdgeDeploymentType,
+		EdgeDeploymentType: o.EdgeDeploymentType,
 		
-		CallDrainingState: u.CallDrainingState,
+		CallDrainingState: o.CallDrainingState,
 		
-		ConversationCount: u.ConversationCount,
+		ConversationCount: o.ConversationCount,
 		
-		Proxy: u.Proxy,
+		Proxy: o.Proxy,
 		
-		OfflineConfigCalled: u.OfflineConfigCalled,
+		OfflineConfigCalled: o.OfflineConfigCalled,
 		
-		OsName: u.OsName,
+		OsName: o.OsName,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edge) UnmarshalJSON(b []byte) error {
+	var EdgeMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EdgeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := EdgeMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := EdgeMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := EdgeMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := EdgeMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := EdgeMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := EdgeMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := EdgeMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := EdgeMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := EdgeMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Interfaces, ok := EdgeMap["interfaces"].([]interface{}); ok {
+		InterfacesString, _ := json.Marshal(Interfaces)
+		json.Unmarshal(InterfacesString, &o.Interfaces)
+	}
+	
+	if Make, ok := EdgeMap["make"].(string); ok {
+		o.Make = &Make
+	}
+	
+	if Model, ok := EdgeMap["model"].(string); ok {
+		o.Model = &Model
+	}
+	
+	if ApiVersion, ok := EdgeMap["apiVersion"].(string); ok {
+		o.ApiVersion = &ApiVersion
+	}
+	
+	if SoftwareVersion, ok := EdgeMap["softwareVersion"].(string); ok {
+		o.SoftwareVersion = &SoftwareVersion
+	}
+	
+	if SoftwareVersionTimestamp, ok := EdgeMap["softwareVersionTimestamp"].(string); ok {
+		o.SoftwareVersionTimestamp = &SoftwareVersionTimestamp
+	}
+	
+	if SoftwareVersionPlatform, ok := EdgeMap["softwareVersionPlatform"].(string); ok {
+		o.SoftwareVersionPlatform = &SoftwareVersionPlatform
+	}
+	
+	if SoftwareVersionConfiguration, ok := EdgeMap["softwareVersionConfiguration"].(string); ok {
+		o.SoftwareVersionConfiguration = &SoftwareVersionConfiguration
+	}
+	
+	if FullSoftwareVersion, ok := EdgeMap["fullSoftwareVersion"].(string); ok {
+		o.FullSoftwareVersion = &FullSoftwareVersion
+	}
+	
+	if PairingId, ok := EdgeMap["pairingId"].(string); ok {
+		o.PairingId = &PairingId
+	}
+	
+	if Fingerprint, ok := EdgeMap["fingerprint"].(string); ok {
+		o.Fingerprint = &Fingerprint
+	}
+	
+	if FingerprintHint, ok := EdgeMap["fingerprintHint"].(string); ok {
+		o.FingerprintHint = &FingerprintHint
+	}
+	
+	if CurrentVersion, ok := EdgeMap["currentVersion"].(string); ok {
+		o.CurrentVersion = &CurrentVersion
+	}
+	
+	if StagedVersion, ok := EdgeMap["stagedVersion"].(string); ok {
+		o.StagedVersion = &StagedVersion
+	}
+	
+	if Patch, ok := EdgeMap["patch"].(string); ok {
+		o.Patch = &Patch
+	}
+	
+	if StatusCode, ok := EdgeMap["statusCode"].(string); ok {
+		o.StatusCode = &StatusCode
+	}
+	
+	if EdgeGroup, ok := EdgeMap["edgeGroup"].(map[string]interface{}); ok {
+		EdgeGroupString, _ := json.Marshal(EdgeGroup)
+		json.Unmarshal(EdgeGroupString, &o.EdgeGroup)
+	}
+	
+	if Site, ok := EdgeMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if SoftwareStatus, ok := EdgeMap["softwareStatus"].(map[string]interface{}); ok {
+		SoftwareStatusString, _ := json.Marshal(SoftwareStatus)
+		json.Unmarshal(SoftwareStatusString, &o.SoftwareStatus)
+	}
+	
+	if OnlineStatus, ok := EdgeMap["onlineStatus"].(string); ok {
+		o.OnlineStatus = &OnlineStatus
+	}
+	
+	if SerialNumber, ok := EdgeMap["serialNumber"].(string); ok {
+		o.SerialNumber = &SerialNumber
+	}
+	
+	if PhysicalEdge, ok := EdgeMap["physicalEdge"].(bool); ok {
+		o.PhysicalEdge = &PhysicalEdge
+	}
+	
+	if Managed, ok := EdgeMap["managed"].(bool); ok {
+		o.Managed = &Managed
+	}
+	
+	if EdgeDeploymentType, ok := EdgeMap["edgeDeploymentType"].(string); ok {
+		o.EdgeDeploymentType = &EdgeDeploymentType
+	}
+	
+	if CallDrainingState, ok := EdgeMap["callDrainingState"].(string); ok {
+		o.CallDrainingState = &CallDrainingState
+	}
+	
+	if ConversationCount, ok := EdgeMap["conversationCount"].(float64); ok {
+		ConversationCountInt := int(ConversationCount)
+		o.ConversationCount = &ConversationCountInt
+	}
+	
+	if Proxy, ok := EdgeMap["proxy"].(string); ok {
+		o.Proxy = &Proxy
+	}
+	
+	if OfflineConfigCalled, ok := EdgeMap["offlineConfigCalled"].(bool); ok {
+		o.OfflineConfigCalled = &OfflineConfigCalled
+	}
+	
+	if OsName, ok := EdgeMap["osName"].(string); ok {
+		o.OsName = &OsName
+	}
+	
+	if SelfUri, ok := EdgeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Dialercampaignprogresseventurireference struct {
 
 }
 
-func (u *Dialercampaignprogresseventurireference) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignprogresseventurireference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignprogresseventurireference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignprogresseventurireference) UnmarshalJSON(b []byte) error {
+	var DialercampaignprogresseventurireferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignprogresseventurireferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialercampaignprogresseventurireferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialercampaignprogresseventurireferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

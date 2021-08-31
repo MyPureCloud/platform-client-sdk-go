@@ -21,13 +21,11 @@ type Resolutiondetailqueryfilter struct {
 
 }
 
-func (u *Resolutiondetailqueryfilter) MarshalJSON() ([]byte, error) {
+func (o *Resolutiondetailqueryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Resolutiondetailqueryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Resolutiondetailqueryfilter) MarshalJSON() ([]byte, error) {
 		Predicates *[]Resolutiondetailquerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
+		Clauses: o.Clauses,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Resolutiondetailqueryfilter) UnmarshalJSON(b []byte) error {
+	var ResolutiondetailqueryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &ResolutiondetailqueryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ResolutiondetailqueryfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := ResolutiondetailqueryfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if Predicates, ok := ResolutiondetailqueryfilterMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

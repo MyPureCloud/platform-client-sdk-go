@@ -13,20 +13,33 @@ type Edgeversioninformation struct {
 
 }
 
-func (u *Edgeversioninformation) MarshalJSON() ([]byte, error) {
+func (o *Edgeversioninformation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgeversioninformation
-
 	
-
 	return json.Marshal(&struct { 
 		SoftwareVersion *string `json:"softwareVersion,omitempty"`
 		*Alias
 	}{ 
-		SoftwareVersion: u.SoftwareVersion,
-		Alias:    (*Alias)(u),
+		SoftwareVersion: o.SoftwareVersion,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgeversioninformation) UnmarshalJSON(b []byte) error {
+	var EdgeversioninformationMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgeversioninformationMap)
+	if err != nil {
+		return err
+	}
+	
+	if SoftwareVersion, ok := EdgeversioninformationMap["softwareVersion"].(string); ok {
+		o.SoftwareVersion = &SoftwareVersion
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

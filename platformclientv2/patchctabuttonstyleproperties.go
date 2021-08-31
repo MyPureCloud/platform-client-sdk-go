@@ -29,13 +29,11 @@ type Patchctabuttonstyleproperties struct {
 
 }
 
-func (u *Patchctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
+func (o *Patchctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchctabuttonstyleproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Color *string `json:"color,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Patchctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
 		BackgroundColor *string `json:"backgroundColor,omitempty"`
 		*Alias
 	}{ 
-		Color: u.Color,
+		Color: o.Color,
 		
-		Font: u.Font,
+		Font: o.Font,
 		
-		FontSize: u.FontSize,
+		FontSize: o.FontSize,
 		
-		TextAlign: u.TextAlign,
+		TextAlign: o.TextAlign,
 		
-		BackgroundColor: u.BackgroundColor,
-		Alias:    (*Alias)(u),
+		BackgroundColor: o.BackgroundColor,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchctabuttonstyleproperties) UnmarshalJSON(b []byte) error {
+	var PatchctabuttonstylepropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchctabuttonstylepropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Color, ok := PatchctabuttonstylepropertiesMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if Font, ok := PatchctabuttonstylepropertiesMap["font"].(string); ok {
+		o.Font = &Font
+	}
+	
+	if FontSize, ok := PatchctabuttonstylepropertiesMap["fontSize"].(string); ok {
+		o.FontSize = &FontSize
+	}
+	
+	if TextAlign, ok := PatchctabuttonstylepropertiesMap["textAlign"].(string); ok {
+		o.TextAlign = &TextAlign
+	}
+	
+	if BackgroundColor, ok := PatchctabuttonstylepropertiesMap["backgroundColor"].(string); ok {
+		o.BackgroundColor = &BackgroundColor
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

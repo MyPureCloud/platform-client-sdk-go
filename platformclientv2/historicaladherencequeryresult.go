@@ -46,29 +46,27 @@ type Historicaladherencequeryresult struct {
 
 }
 
-func (u *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
+func (o *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historicaladherencequeryresult
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -89,25 +87,77 @@ func (u *Historicaladherencequeryresult) MarshalJSON() ([]byte, error) {
 		Actuals *[]Historicaladherenceactuals `json:"actuals,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		AdherencePercentage: u.AdherencePercentage,
+		AdherencePercentage: o.AdherencePercentage,
 		
-		ConformancePercentage: u.ConformancePercentage,
+		ConformancePercentage: o.ConformancePercentage,
 		
-		Impact: u.Impact,
+		Impact: o.Impact,
 		
-		ExceptionInfo: u.ExceptionInfo,
+		ExceptionInfo: o.ExceptionInfo,
 		
-		DayMetrics: u.DayMetrics,
+		DayMetrics: o.DayMetrics,
 		
-		Actuals: u.Actuals,
-		Alias:    (*Alias)(u),
+		Actuals: o.Actuals,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historicaladherencequeryresult) UnmarshalJSON(b []byte) error {
+	var HistoricaladherencequeryresultMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoricaladherencequeryresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := HistoricaladherencequeryresultMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if startDateString, ok := HistoricaladherencequeryresultMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := HistoricaladherencequeryresultMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if AdherencePercentage, ok := HistoricaladherencequeryresultMap["adherencePercentage"].(float64); ok {
+		o.AdherencePercentage = &AdherencePercentage
+	}
+	
+	if ConformancePercentage, ok := HistoricaladherencequeryresultMap["conformancePercentage"].(float64); ok {
+		o.ConformancePercentage = &ConformancePercentage
+	}
+	
+	if Impact, ok := HistoricaladherencequeryresultMap["impact"].(string); ok {
+		o.Impact = &Impact
+	}
+	
+	if ExceptionInfo, ok := HistoricaladherencequeryresultMap["exceptionInfo"].([]interface{}); ok {
+		ExceptionInfoString, _ := json.Marshal(ExceptionInfo)
+		json.Unmarshal(ExceptionInfoString, &o.ExceptionInfo)
+	}
+	
+	if DayMetrics, ok := HistoricaladherencequeryresultMap["dayMetrics"].([]interface{}); ok {
+		DayMetricsString, _ := json.Marshal(DayMetrics)
+		json.Unmarshal(DayMetricsString, &o.DayMetrics)
+	}
+	
+	if Actuals, ok := HistoricaladherencequeryresultMap["actuals"].([]interface{}); ok {
+		ActualsString, _ := json.Marshal(Actuals)
+		json.Unmarshal(ActualsString, &o.Actuals)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

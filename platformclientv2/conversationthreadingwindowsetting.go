@@ -17,24 +17,42 @@ type Conversationthreadingwindowsetting struct {
 
 }
 
-func (u *Conversationthreadingwindowsetting) MarshalJSON() ([]byte, error) {
+func (o *Conversationthreadingwindowsetting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationthreadingwindowsetting
-
 	
-
 	return json.Marshal(&struct { 
 		MessengerType *string `json:"messengerType,omitempty"`
 		
 		TimeoutInMinutes *int `json:"timeoutInMinutes,omitempty"`
 		*Alias
 	}{ 
-		MessengerType: u.MessengerType,
+		MessengerType: o.MessengerType,
 		
-		TimeoutInMinutes: u.TimeoutInMinutes,
-		Alias:    (*Alias)(u),
+		TimeoutInMinutes: o.TimeoutInMinutes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationthreadingwindowsetting) UnmarshalJSON(b []byte) error {
+	var ConversationthreadingwindowsettingMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationthreadingwindowsettingMap)
+	if err != nil {
+		return err
+	}
+	
+	if MessengerType, ok := ConversationthreadingwindowsettingMap["messengerType"].(string); ok {
+		o.MessengerType = &MessengerType
+	}
+	
+	if TimeoutInMinutes, ok := ConversationthreadingwindowsettingMap["timeoutInMinutes"].(float64); ok {
+		TimeoutInMinutesInt := int(TimeoutInMinutes)
+		o.TimeoutInMinutes = &TimeoutInMinutesInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Businessunitsettings struct {
 
 }
 
-func (u *Businessunitsettings) MarshalJSON() ([]byte, error) {
+func (o *Businessunitsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Businessunitsettings
-
 	
-
 	return json.Marshal(&struct { 
 		StartDayOfWeek *string `json:"startDayOfWeek,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Businessunitsettings) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		StartDayOfWeek: u.StartDayOfWeek,
+		StartDayOfWeek: o.StartDayOfWeek,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		ShortTermForecasting: u.ShortTermForecasting,
+		ShortTermForecasting: o.ShortTermForecasting,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Businessunitsettings) UnmarshalJSON(b []byte) error {
+	var BusinessunitsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &BusinessunitsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if StartDayOfWeek, ok := BusinessunitsettingsMap["startDayOfWeek"].(string); ok {
+		o.StartDayOfWeek = &StartDayOfWeek
+	}
+	
+	if TimeZone, ok := BusinessunitsettingsMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if ShortTermForecasting, ok := BusinessunitsettingsMap["shortTermForecasting"].(map[string]interface{}); ok {
+		ShortTermForecastingString, _ := json.Marshal(ShortTermForecasting)
+		json.Unmarshal(ShortTermForecastingString, &o.ShortTermForecasting)
+	}
+	
+	if Metadata, ok := BusinessunitsettingsMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

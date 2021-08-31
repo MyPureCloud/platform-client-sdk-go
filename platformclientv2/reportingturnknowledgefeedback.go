@@ -21,13 +21,11 @@ type Reportingturnknowledgefeedback struct {
 
 }
 
-func (u *Reportingturnknowledgefeedback) MarshalJSON() ([]byte, error) {
+func (o *Reportingturnknowledgefeedback) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingturnknowledgefeedback
-
 	
-
 	return json.Marshal(&struct { 
 		SearchId *string `json:"searchId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Reportingturnknowledgefeedback) MarshalJSON() ([]byte, error) {
 		Documents *[]Reportingturnknowledgedocument `json:"documents,omitempty"`
 		*Alias
 	}{ 
-		SearchId: u.SearchId,
+		SearchId: o.SearchId,
 		
-		Rating: u.Rating,
+		Rating: o.Rating,
 		
-		Documents: u.Documents,
-		Alias:    (*Alias)(u),
+		Documents: o.Documents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingturnknowledgefeedback) UnmarshalJSON(b []byte) error {
+	var ReportingturnknowledgefeedbackMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingturnknowledgefeedbackMap)
+	if err != nil {
+		return err
+	}
+	
+	if SearchId, ok := ReportingturnknowledgefeedbackMap["searchId"].(string); ok {
+		o.SearchId = &SearchId
+	}
+	
+	if Rating, ok := ReportingturnknowledgefeedbackMap["rating"].(float64); ok {
+		RatingInt := int(Rating)
+		o.Rating = &RatingInt
+	}
+	
+	if Documents, ok := ReportingturnknowledgefeedbackMap["documents"].([]interface{}); ok {
+		DocumentsString, _ := json.Marshal(Documents)
+		json.Unmarshal(DocumentsString, &o.Documents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

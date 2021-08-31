@@ -26,21 +26,19 @@ type Trunkinstancetopictrunkmetricsregisters struct {
 
 }
 
-func (u *Trunkinstancetopictrunkmetricsregisters) MarshalJSON() ([]byte, error) {
+func (o *Trunkinstancetopictrunkmetricsregisters) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkinstancetopictrunkmetricsregisters
-
 	
 	RegisterStateTime := new(string)
-	if u.RegisterStateTime != nil {
+	if o.RegisterStateTime != nil {
 		
-		*RegisterStateTime = timeutil.Strftime(u.RegisterStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RegisterStateTime = timeutil.Strftime(o.RegisterStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RegisterStateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ProxyAddress *string `json:"proxyAddress,omitempty"`
 		
@@ -51,15 +49,44 @@ func (u *Trunkinstancetopictrunkmetricsregisters) MarshalJSON() ([]byte, error) 
 		ErrorInfo *Trunkinstancetopictrunkerrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		ProxyAddress: u.ProxyAddress,
+		ProxyAddress: o.ProxyAddress,
 		
-		RegisterState: u.RegisterState,
+		RegisterState: o.RegisterState,
 		
 		RegisterStateTime: RegisterStateTime,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkinstancetopictrunkmetricsregisters) UnmarshalJSON(b []byte) error {
+	var TrunkinstancetopictrunkmetricsregistersMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkinstancetopictrunkmetricsregistersMap)
+	if err != nil {
+		return err
+	}
+	
+	if ProxyAddress, ok := TrunkinstancetopictrunkmetricsregistersMap["proxyAddress"].(string); ok {
+		o.ProxyAddress = &ProxyAddress
+	}
+	
+	if RegisterState, ok := TrunkinstancetopictrunkmetricsregistersMap["registerState"].(bool); ok {
+		o.RegisterState = &RegisterState
+	}
+	
+	if registerStateTimeString, ok := TrunkinstancetopictrunkmetricsregistersMap["registerStateTime"].(string); ok {
+		RegisterStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", registerStateTimeString)
+		o.RegisterStateTime = &RegisterStateTime
+	}
+	
+	if ErrorInfo, ok := TrunkinstancetopictrunkmetricsregistersMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

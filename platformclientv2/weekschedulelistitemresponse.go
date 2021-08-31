@@ -41,13 +41,11 @@ type Weekschedulelistitemresponse struct {
 
 }
 
-func (u *Weekschedulelistitemresponse) MarshalJSON() ([]byte, error) {
+func (o *Weekschedulelistitemresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Weekschedulelistitemresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Weekschedulelistitemresponse) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		WeekDate: u.WeekDate,
+		WeekDate: o.WeekDate,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		ShortTermForecast: u.ShortTermForecast,
+		ShortTermForecast: o.ShortTermForecast,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Weekschedulelistitemresponse) UnmarshalJSON(b []byte) error {
+	var WeekschedulelistitemresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &WeekschedulelistitemresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WeekschedulelistitemresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := WeekschedulelistitemresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if WeekDate, ok := WeekschedulelistitemresponseMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+	if Description, ok := WeekschedulelistitemresponseMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := WeekschedulelistitemresponseMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if GenerationResults, ok := WeekschedulelistitemresponseMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if ShortTermForecast, ok := WeekschedulelistitemresponseMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+	if Metadata, ok := WeekschedulelistitemresponseMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Filterpreviewresponse struct {
 
 }
 
-func (u *Filterpreviewresponse) MarshalJSON() ([]byte, error) {
+func (o *Filterpreviewresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Filterpreviewresponse
-
 	
-
 	return json.Marshal(&struct { 
 		FilteredContacts *int `json:"filteredContacts,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Filterpreviewresponse) MarshalJSON() ([]byte, error) {
 		Preview *[]Dialercontact `json:"preview,omitempty"`
 		*Alias
 	}{ 
-		FilteredContacts: u.FilteredContacts,
+		FilteredContacts: o.FilteredContacts,
 		
-		TotalContacts: u.TotalContacts,
+		TotalContacts: o.TotalContacts,
 		
-		Preview: u.Preview,
-		Alias:    (*Alias)(u),
+		Preview: o.Preview,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Filterpreviewresponse) UnmarshalJSON(b []byte) error {
+	var FilterpreviewresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &FilterpreviewresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if FilteredContacts, ok := FilterpreviewresponseMap["filteredContacts"].(float64); ok {
+		FilteredContactsInt := int(FilteredContacts)
+		o.FilteredContacts = &FilteredContactsInt
+	}
+	
+	if TotalContacts, ok := FilterpreviewresponseMap["totalContacts"].(float64); ok {
+		TotalContactsInt := int(TotalContacts)
+		o.TotalContacts = &TotalContactsInt
+	}
+	
+	if Preview, ok := FilterpreviewresponseMap["preview"].([]interface{}); ok {
+		PreviewString, _ := json.Marshal(Preview)
+		json.Unmarshal(PreviewString, &o.Preview)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

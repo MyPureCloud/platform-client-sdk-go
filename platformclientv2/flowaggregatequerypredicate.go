@@ -29,13 +29,11 @@ type Flowaggregatequerypredicate struct {
 
 }
 
-func (u *Flowaggregatequerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Flowaggregatequerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowaggregatequerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Flowaggregatequerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowaggregatequerypredicate) UnmarshalJSON(b []byte) error {
+	var FlowaggregatequerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowaggregatequerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := FlowaggregatequerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := FlowaggregatequerypredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Operator, ok := FlowaggregatequerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := FlowaggregatequerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := FlowaggregatequerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Gettemplatesresponse struct {
 
 }
 
-func (u *Gettemplatesresponse) MarshalJSON() ([]byte, error) {
+func (o *Gettemplatesresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gettemplatesresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Gettemplatesresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gettemplatesresponse) UnmarshalJSON(b []byte) error {
+	var GettemplatesresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &GettemplatesresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := GettemplatesresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if Entities, ok := GettemplatesresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if SelfUri, ok := GettemplatesresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

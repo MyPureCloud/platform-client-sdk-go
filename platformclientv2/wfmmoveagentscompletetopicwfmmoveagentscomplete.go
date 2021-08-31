@@ -21,13 +21,11 @@ type Wfmmoveagentscompletetopicwfmmoveagentscomplete struct {
 
 }
 
-func (u *Wfmmoveagentscompletetopicwfmmoveagentscomplete) MarshalJSON() ([]byte, error) {
+func (o *Wfmmoveagentscompletetopicwfmmoveagentscomplete) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmmoveagentscompletetopicwfmmoveagentscomplete
-
 	
-
 	return json.Marshal(&struct { 
 		RequestingUser *Wfmmoveagentscompletetopicuserreference `json:"requestingUser,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Wfmmoveagentscompletetopicwfmmoveagentscomplete) MarshalJSON() ([]byte,
 		Results *[]Wfmmoveagentscompletetopicwfmmoveagentdata `json:"results,omitempty"`
 		*Alias
 	}{ 
-		RequestingUser: u.RequestingUser,
+		RequestingUser: o.RequestingUser,
 		
-		DestinationManagementUnit: u.DestinationManagementUnit,
+		DestinationManagementUnit: o.DestinationManagementUnit,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmmoveagentscompletetopicwfmmoveagentscomplete) UnmarshalJSON(b []byte) error {
+	var WfmmoveagentscompletetopicwfmmoveagentscompleteMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmmoveagentscompletetopicwfmmoveagentscompleteMap)
+	if err != nil {
+		return err
+	}
+	
+	if RequestingUser, ok := WfmmoveagentscompletetopicwfmmoveagentscompleteMap["requestingUser"].(map[string]interface{}); ok {
+		RequestingUserString, _ := json.Marshal(RequestingUser)
+		json.Unmarshal(RequestingUserString, &o.RequestingUser)
+	}
+	
+	if DestinationManagementUnit, ok := WfmmoveagentscompletetopicwfmmoveagentscompleteMap["destinationManagementUnit"].(map[string]interface{}); ok {
+		DestinationManagementUnitString, _ := json.Marshal(DestinationManagementUnit)
+		json.Unmarshal(DestinationManagementUnitString, &o.DestinationManagementUnit)
+	}
+	
+	if Results, ok := WfmmoveagentscompletetopicwfmmoveagentscompleteMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

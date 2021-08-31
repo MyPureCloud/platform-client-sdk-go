@@ -17,24 +17,41 @@ type Queuereference struct {
 
 }
 
-func (u *Queuereference) MarshalJSON() ([]byte, error) {
+func (o *Queuereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queuereference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queuereference) UnmarshalJSON(b []byte) error {
+	var QueuereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &QueuereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueuereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := QueuereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

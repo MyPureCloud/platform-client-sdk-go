@@ -70,29 +70,27 @@ type Limitchangerequestdetails struct {
 
 }
 
-func (u *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
+func (o *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Limitchangerequestdetails
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -125,37 +123,111 @@ func (u *Limitchangerequestdetails) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Key: u.Key,
+		Key: o.Key,
 		
-		Namespace: u.Namespace,
+		Namespace: o.Namespace,
 		
-		RequestedValue: u.RequestedValue,
+		RequestedValue: o.RequestedValue,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SupportCaseUrl: u.SupportCaseUrl,
+		SupportCaseUrl: o.SupportCaseUrl,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		CurrentValue: u.CurrentValue,
+		CurrentValue: o.CurrentValue,
 		
 		DateCreated: DateCreated,
 		
-		StatusHistory: u.StatusHistory,
+		StatusHistory: o.StatusHistory,
 		
 		DateCompleted: DateCompleted,
 		
-		LastChangedBy: u.LastChangedBy,
+		LastChangedBy: o.LastChangedBy,
 		
-		RejectReason: u.RejectReason,
+		RejectReason: o.RejectReason,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Limitchangerequestdetails) UnmarshalJSON(b []byte) error {
+	var LimitchangerequestdetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &LimitchangerequestdetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LimitchangerequestdetailsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Key, ok := LimitchangerequestdetailsMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Namespace, ok := LimitchangerequestdetailsMap["namespace"].(string); ok {
+		o.Namespace = &Namespace
+	}
+	
+	if RequestedValue, ok := LimitchangerequestdetailsMap["requestedValue"].(float64); ok {
+		o.RequestedValue = &RequestedValue
+	}
+	
+	if Description, ok := LimitchangerequestdetailsMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SupportCaseUrl, ok := LimitchangerequestdetailsMap["supportCaseUrl"].(string); ok {
+		o.SupportCaseUrl = &SupportCaseUrl
+	}
+	
+	if CreatedBy, ok := LimitchangerequestdetailsMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if Status, ok := LimitchangerequestdetailsMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if CurrentValue, ok := LimitchangerequestdetailsMap["currentValue"].(float64); ok {
+		o.CurrentValue = &CurrentValue
+	}
+	
+	if dateCreatedString, ok := LimitchangerequestdetailsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if StatusHistory, ok := LimitchangerequestdetailsMap["statusHistory"].([]interface{}); ok {
+		StatusHistoryString, _ := json.Marshal(StatusHistory)
+		json.Unmarshal(StatusHistoryString, &o.StatusHistory)
+	}
+	
+	if dateCompletedString, ok := LimitchangerequestdetailsMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if LastChangedBy, ok := LimitchangerequestdetailsMap["lastChangedBy"].(string); ok {
+		o.LastChangedBy = &LastChangedBy
+	}
+	
+	if RejectReason, ok := LimitchangerequestdetailsMap["rejectReason"].(string); ok {
+		o.RejectReason = &RejectReason
+	}
+	
+	if SelfUri, ok := LimitchangerequestdetailsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

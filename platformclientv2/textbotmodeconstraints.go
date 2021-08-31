@@ -13,20 +13,34 @@ type Textbotmodeconstraints struct {
 
 }
 
-func (u *Textbotmodeconstraints) MarshalJSON() ([]byte, error) {
+func (o *Textbotmodeconstraints) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotmodeconstraints
-
 	
-
 	return json.Marshal(&struct { 
 		Text *Textbottextmodeconstraints `json:"text,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
-		Alias:    (*Alias)(u),
+		Text: o.Text,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotmodeconstraints) UnmarshalJSON(b []byte) error {
+	var TextbotmodeconstraintsMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotmodeconstraintsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := TextbotmodeconstraintsMap["text"].(map[string]interface{}); ok {
+		TextString, _ := json.Marshal(Text)
+		json.Unmarshal(TextString, &o.Text)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Dialercampaignruleconfigchangecampaignruleaction struct {
 
 }
 
-func (u *Dialercampaignruleconfigchangecampaignruleaction) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignruleconfigchangecampaignruleaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignruleconfigchangecampaignruleaction
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Dialercampaignruleconfigchangecampaignruleaction) MarshalJSON() ([]byte
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Parameters: u.Parameters,
+		Parameters: o.Parameters,
 		
-		ActionType: u.ActionType,
+		ActionType: o.ActionType,
 		
-		CampaignRuleActionEntities: u.CampaignRuleActionEntities,
+		CampaignRuleActionEntities: o.CampaignRuleActionEntities,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignruleconfigchangecampaignruleaction) UnmarshalJSON(b []byte) error {
+	var DialercampaignruleconfigchangecampaignruleactionMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignruleconfigchangecampaignruleactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialercampaignruleconfigchangecampaignruleactionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Parameters, ok := DialercampaignruleconfigchangecampaignruleactionMap["parameters"].(map[string]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+	if ActionType, ok := DialercampaignruleconfigchangecampaignruleactionMap["actionType"].(string); ok {
+		o.ActionType = &ActionType
+	}
+	
+	if CampaignRuleActionEntities, ok := DialercampaignruleconfigchangecampaignruleactionMap["campaignRuleActionEntities"].(map[string]interface{}); ok {
+		CampaignRuleActionEntitiesString, _ := json.Marshal(CampaignRuleActionEntities)
+		json.Unmarshal(CampaignRuleActionEntitiesString, &o.CampaignRuleActionEntities)
+	}
+	
+	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleactionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

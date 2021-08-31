@@ -34,21 +34,19 @@ type Qualityauditqueryexecutionstatusresponse struct {
 
 }
 
-func (u *Qualityauditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error) {
+func (o *Qualityauditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Qualityauditqueryexecutionstatusresponse
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,19 +61,57 @@ func (u *Qualityauditqueryexecutionstatusresponse) MarshalJSON() ([]byte, error)
 		Sort *[]Auditquerysort `json:"sort,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateStart: DateStart,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Filters: u.Filters,
+		Filters: o.Filters,
 		
-		Sort: u.Sort,
-		Alias:    (*Alias)(u),
+		Sort: o.Sort,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Qualityauditqueryexecutionstatusresponse) UnmarshalJSON(b []byte) error {
+	var QualityauditqueryexecutionstatusresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &QualityauditqueryexecutionstatusresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QualityauditqueryexecutionstatusresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := QualityauditqueryexecutionstatusresponseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateStartString, ok := QualityauditqueryexecutionstatusresponseMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if Interval, ok := QualityauditqueryexecutionstatusresponseMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Filters, ok := QualityauditqueryexecutionstatusresponseMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if Sort, ok := QualityauditqueryexecutionstatusresponseMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

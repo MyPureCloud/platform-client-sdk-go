@@ -22,29 +22,27 @@ type Orphanupdaterequest struct {
 
 }
 
-func (u *Orphanupdaterequest) MarshalJSON() ([]byte, error) {
+func (o *Orphanupdaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Orphanupdaterequest
-
 	
 	ArchiveDate := new(string)
-	if u.ArchiveDate != nil {
+	if o.ArchiveDate != nil {
 		
-		*ArchiveDate = timeutil.Strftime(u.ArchiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ArchiveDate = timeutil.Strftime(o.ArchiveDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ArchiveDate = nil
 	}
 	
 	DeleteDate := new(string)
-	if u.DeleteDate != nil {
+	if o.DeleteDate != nil {
 		
-		*DeleteDate = timeutil.Strftime(u.DeleteDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DeleteDate = timeutil.Strftime(o.DeleteDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DeleteDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ArchiveDate *string `json:"archiveDate,omitempty"`
 		
@@ -57,9 +55,34 @@ func (u *Orphanupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		DeleteDate: DeleteDate,
 		
-		ConversationId: u.ConversationId,
-		Alias:    (*Alias)(u),
+		ConversationId: o.ConversationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Orphanupdaterequest) UnmarshalJSON(b []byte) error {
+	var OrphanupdaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &OrphanupdaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if archiveDateString, ok := OrphanupdaterequestMap["archiveDate"].(string); ok {
+		ArchiveDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", archiveDateString)
+		o.ArchiveDate = &ArchiveDate
+	}
+	
+	if deleteDateString, ok := OrphanupdaterequestMap["deleteDate"].(string); ok {
+		DeleteDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deleteDateString)
+		o.DeleteDate = &DeleteDate
+	}
+	
+	if ConversationId, ok := OrphanupdaterequestMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

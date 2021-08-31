@@ -17,24 +17,43 @@ type Evaluationassignment struct {
 
 }
 
-func (u *Evaluationassignment) MarshalJSON() ([]byte, error) {
+func (o *Evaluationassignment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationassignment
-
 	
-
 	return json.Marshal(&struct { 
 		EvaluationForm *Evaluationform `json:"evaluationForm,omitempty"`
 		
 		User *User `json:"user,omitempty"`
 		*Alias
 	}{ 
-		EvaluationForm: u.EvaluationForm,
+		EvaluationForm: o.EvaluationForm,
 		
-		User: u.User,
-		Alias:    (*Alias)(u),
+		User: o.User,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationassignment) UnmarshalJSON(b []byte) error {
+	var EvaluationassignmentMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationassignmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if EvaluationForm, ok := EvaluationassignmentMap["evaluationForm"].(map[string]interface{}); ok {
+		EvaluationFormString, _ := json.Marshal(EvaluationForm)
+		json.Unmarshal(EvaluationFormString, &o.EvaluationForm)
+	}
+	
+	if User, ok := EvaluationassignmentMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

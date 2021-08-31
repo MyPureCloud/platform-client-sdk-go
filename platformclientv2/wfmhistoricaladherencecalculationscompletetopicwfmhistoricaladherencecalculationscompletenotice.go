@@ -25,13 +25,11 @@ type Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalcul
 
 }
 
-func (u *Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenotice) MarshalJSON() ([]byte, error) {
+func (o *Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenotice) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenotice
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherenceca
 		QueryState *string `json:"queryState,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		DownloadUrl: u.DownloadUrl,
+		DownloadUrl: o.DownloadUrl,
 		
-		DownloadUrls: u.DownloadUrls,
+		DownloadUrls: o.DownloadUrls,
 		
-		QueryState: u.QueryState,
-		Alias:    (*Alias)(u),
+		QueryState: o.QueryState,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenotice) UnmarshalJSON(b []byte) error {
+	var WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DownloadUrl, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+	if DownloadUrls, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["downloadUrls"].([]interface{}); ok {
+		DownloadUrlsString, _ := json.Marshal(DownloadUrls)
+		json.Unmarshal(DownloadUrlsString, &o.DownloadUrls)
+	}
+	
+	if QueryState, ok := WfmhistoricaladherencecalculationscompletetopicwfmhistoricaladherencecalculationscompletenoticeMap["queryState"].(string); ok {
+		o.QueryState = &QueryState
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

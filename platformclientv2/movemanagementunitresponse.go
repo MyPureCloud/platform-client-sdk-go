@@ -17,24 +17,42 @@ type Movemanagementunitresponse struct {
 
 }
 
-func (u *Movemanagementunitresponse) MarshalJSON() ([]byte, error) {
+func (o *Movemanagementunitresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Movemanagementunitresponse
-
 	
-
 	return json.Marshal(&struct { 
 		BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		BusinessUnit: u.BusinessUnit,
+		BusinessUnit: o.BusinessUnit,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Movemanagementunitresponse) UnmarshalJSON(b []byte) error {
+	var MovemanagementunitresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &MovemanagementunitresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if BusinessUnit, ok := MovemanagementunitresponseMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
+	}
+	
+	if Status, ok := MovemanagementunitresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

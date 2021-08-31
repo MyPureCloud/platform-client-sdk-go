@@ -29,13 +29,11 @@ type Contentlocation struct {
 
 }
 
-func (u *Contentlocation) MarshalJSON() ([]byte, error) {
+func (o *Contentlocation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentlocation
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Contentlocation) MarshalJSON() ([]byte, error) {
 		Longitude *float64 `json:"longitude,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
+		Url: o.Url,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Latitude: u.Latitude,
+		Latitude: o.Latitude,
 		
-		Longitude: u.Longitude,
-		Alias:    (*Alias)(u),
+		Longitude: o.Longitude,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentlocation) UnmarshalJSON(b []byte) error {
+	var ContentlocationMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentlocationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := ContentlocationMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if Address, ok := ContentlocationMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if Text, ok := ContentlocationMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Latitude, ok := ContentlocationMap["latitude"].(float64); ok {
+		o.Latitude = &Latitude
+	}
+	
+	if Longitude, ok := ContentlocationMap["longitude"].(float64); ok {
+		o.Longitude = &Longitude
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

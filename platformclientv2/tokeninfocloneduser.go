@@ -17,24 +17,42 @@ type Tokeninfocloneduser struct {
 
 }
 
-func (u *Tokeninfocloneduser) MarshalJSON() ([]byte, error) {
+func (o *Tokeninfocloneduser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Tokeninfocloneduser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Organization *Entity `json:"organization,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Organization: u.Organization,
-		Alias:    (*Alias)(u),
+		Organization: o.Organization,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Tokeninfocloneduser) UnmarshalJSON(b []byte) error {
+	var TokeninfocloneduserMap map[string]interface{}
+	err := json.Unmarshal(b, &TokeninfocloneduserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TokeninfocloneduserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Organization, ok := TokeninfocloneduserMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

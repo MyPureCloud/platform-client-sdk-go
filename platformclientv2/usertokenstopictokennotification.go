@@ -37,13 +37,11 @@ type Usertokenstopictokennotification struct {
 
 }
 
-func (u *Usertokenstopictokennotification) MarshalJSON() ([]byte, error) {
+func (o *Usertokenstopictokennotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Usertokenstopictokennotification
-
 	
-
 	return json.Marshal(&struct { 
 		User *Usertokenstopicurireference `json:"user,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Usertokenstopictokennotification) MarshalJSON() ([]byte, error) {
 		TokenHash *string `json:"tokenHash,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		IpAddress: u.IpAddress,
+		IpAddress: o.IpAddress,
 		
-		DateCreated: u.DateCreated,
+		DateCreated: o.DateCreated,
 		
-		TokenExpirationDate: u.TokenExpirationDate,
+		TokenExpirationDate: o.TokenExpirationDate,
 		
-		SessionId: u.SessionId,
+		SessionId: o.SessionId,
 		
-		ClientId: u.ClientId,
+		ClientId: o.ClientId,
 		
-		TokenHash: u.TokenHash,
-		Alias:    (*Alias)(u),
+		TokenHash: o.TokenHash,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Usertokenstopictokennotification) UnmarshalJSON(b []byte) error {
+	var UsertokenstopictokennotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &UsertokenstopictokennotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := UsertokenstopictokennotificationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if IpAddress, ok := UsertokenstopictokennotificationMap["ipAddress"].(string); ok {
+		o.IpAddress = &IpAddress
+	}
+	
+	if DateCreated, ok := UsertokenstopictokennotificationMap["dateCreated"].(string); ok {
+		o.DateCreated = &DateCreated
+	}
+	
+	if TokenExpirationDate, ok := UsertokenstopictokennotificationMap["tokenExpirationDate"].(string); ok {
+		o.TokenExpirationDate = &TokenExpirationDate
+	}
+	
+	if SessionId, ok := UsertokenstopictokennotificationMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
+	}
+	
+	if ClientId, ok := UsertokenstopictokennotificationMap["clientId"].(string); ok {
+		o.ClientId = &ClientId
+	}
+	
+	if TokenHash, ok := UsertokenstopictokennotificationMap["tokenHash"].(string); ok {
+		o.TokenHash = &TokenHash
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

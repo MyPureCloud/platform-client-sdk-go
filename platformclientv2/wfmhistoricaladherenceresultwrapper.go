@@ -21,13 +21,11 @@ type Wfmhistoricaladherenceresultwrapper struct {
 
 }
 
-func (u *Wfmhistoricaladherenceresultwrapper) MarshalJSON() ([]byte, error) {
+func (o *Wfmhistoricaladherenceresultwrapper) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmhistoricaladherenceresultwrapper
-
 	
-
 	return json.Marshal(&struct { 
 		EntityId *string `json:"entityId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Wfmhistoricaladherenceresultwrapper) MarshalJSON() ([]byte, error) {
 		LookupIdToSecondaryPresenceId *map[string]string `json:"lookupIdToSecondaryPresenceId,omitempty"`
 		*Alias
 	}{ 
-		EntityId: u.EntityId,
+		EntityId: o.EntityId,
 		
-		Data: u.Data,
+		Data: o.Data,
 		
-		LookupIdToSecondaryPresenceId: u.LookupIdToSecondaryPresenceId,
-		Alias:    (*Alias)(u),
+		LookupIdToSecondaryPresenceId: o.LookupIdToSecondaryPresenceId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmhistoricaladherenceresultwrapper) UnmarshalJSON(b []byte) error {
+	var WfmhistoricaladherenceresultwrapperMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmhistoricaladherenceresultwrapperMap)
+	if err != nil {
+		return err
+	}
+	
+	if EntityId, ok := WfmhistoricaladherenceresultwrapperMap["entityId"].(string); ok {
+		o.EntityId = &EntityId
+	}
+	
+	if Data, ok := WfmhistoricaladherenceresultwrapperMap["data"].([]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+	if LookupIdToSecondaryPresenceId, ok := WfmhistoricaladherenceresultwrapperMap["lookupIdToSecondaryPresenceId"].(map[string]interface{}); ok {
+		LookupIdToSecondaryPresenceIdString, _ := json.Marshal(LookupIdToSecondaryPresenceId)
+		json.Unmarshal(LookupIdToSecondaryPresenceIdString, &o.LookupIdToSecondaryPresenceId)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

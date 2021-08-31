@@ -22,21 +22,19 @@ type Analyticsconversationasyncqueryresponse struct {
 
 }
 
-func (u *Analyticsconversationasyncqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Analyticsconversationasyncqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsconversationasyncqueryresponse
-
 	
 	DataAvailabilityDate := new(string)
-	if u.DataAvailabilityDate != nil {
+	if o.DataAvailabilityDate != nil {
 		
-		*DataAvailabilityDate = timeutil.Strftime(u.DataAvailabilityDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DataAvailabilityDate = timeutil.Strftime(o.DataAvailabilityDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DataAvailabilityDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Cursor *string `json:"cursor,omitempty"`
 		
@@ -45,13 +43,38 @@ func (u *Analyticsconversationasyncqueryresponse) MarshalJSON() ([]byte, error) 
 		Conversations *[]Analyticsconversation `json:"conversations,omitempty"`
 		*Alias
 	}{ 
-		Cursor: u.Cursor,
+		Cursor: o.Cursor,
 		
 		DataAvailabilityDate: DataAvailabilityDate,
 		
-		Conversations: u.Conversations,
-		Alias:    (*Alias)(u),
+		Conversations: o.Conversations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsconversationasyncqueryresponse) UnmarshalJSON(b []byte) error {
+	var AnalyticsconversationasyncqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsconversationasyncqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Cursor, ok := AnalyticsconversationasyncqueryresponseMap["cursor"].(string); ok {
+		o.Cursor = &Cursor
+	}
+	
+	if dataAvailabilityDateString, ok := AnalyticsconversationasyncqueryresponseMap["dataAvailabilityDate"].(string); ok {
+		DataAvailabilityDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", dataAvailabilityDateString)
+		o.DataAvailabilityDate = &DataAvailabilityDate
+	}
+	
+	if Conversations, ok := AnalyticsconversationasyncqueryresponseMap["conversations"].([]interface{}); ok {
+		ConversationsString, _ := json.Marshal(Conversations)
+		json.Unmarshal(ConversationsString, &o.Conversations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

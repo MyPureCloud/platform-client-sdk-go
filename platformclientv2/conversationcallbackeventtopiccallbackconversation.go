@@ -25,13 +25,11 @@ type Conversationcallbackeventtopiccallbackconversation struct {
 
 }
 
-func (u *Conversationcallbackeventtopiccallbackconversation) MarshalJSON() ([]byte, error) {
+func (o *Conversationcallbackeventtopiccallbackconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcallbackeventtopiccallbackconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Conversationcallbackeventtopiccallbackconversation) MarshalJSON() ([]by
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
-		Alias:    (*Alias)(u),
+		OtherMediaUris: o.OtherMediaUris,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcallbackeventtopiccallbackconversation) UnmarshalJSON(b []byte) error {
+	var ConversationcallbackeventtopiccallbackconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcallbackeventtopiccallbackconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationcallbackeventtopiccallbackconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationcallbackeventtopiccallbackconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := ConversationcallbackeventtopiccallbackconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := ConversationcallbackeventtopiccallbackconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

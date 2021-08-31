@@ -49,13 +49,11 @@ type Dependencyobject struct {
 
 }
 
-func (u *Dependencyobject) MarshalJSON() ([]byte, error) {
+func (o *Dependencyobject) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dependencyobject
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,80 @@ func (u *Dependencyobject) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Deleted: u.Deleted,
+		Deleted: o.Deleted,
 		
-		Updated: u.Updated,
+		Updated: o.Updated,
 		
-		StateUnknown: u.StateUnknown,
+		StateUnknown: o.StateUnknown,
 		
-		ConsumedResources: u.ConsumedResources,
+		ConsumedResources: o.ConsumedResources,
 		
-		ConsumingResources: u.ConsumingResources,
+		ConsumingResources: o.ConsumingResources,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dependencyobject) UnmarshalJSON(b []byte) error {
+	var DependencyobjectMap map[string]interface{}
+	err := json.Unmarshal(b, &DependencyobjectMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DependencyobjectMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DependencyobjectMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := DependencyobjectMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if VarType, ok := DependencyobjectMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Deleted, ok := DependencyobjectMap["deleted"].(bool); ok {
+		o.Deleted = &Deleted
+	}
+	
+	if Updated, ok := DependencyobjectMap["updated"].(bool); ok {
+		o.Updated = &Updated
+	}
+	
+	if StateUnknown, ok := DependencyobjectMap["stateUnknown"].(bool); ok {
+		o.StateUnknown = &StateUnknown
+	}
+	
+	if ConsumedResources, ok := DependencyobjectMap["consumedResources"].([]interface{}); ok {
+		ConsumedResourcesString, _ := json.Marshal(ConsumedResources)
+		json.Unmarshal(ConsumedResourcesString, &o.ConsumedResources)
+	}
+	
+	if ConsumingResources, ok := DependencyobjectMap["consumingResources"].([]interface{}); ok {
+		ConsumingResourcesString, _ := json.Marshal(ConsumingResources)
+		json.Unmarshal(ConsumingResourcesString, &o.ConsumingResources)
+	}
+	
+	if SelfUri, ok := DependencyobjectMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

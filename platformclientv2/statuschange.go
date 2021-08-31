@@ -34,21 +34,19 @@ type Statuschange struct {
 
 }
 
-func (u *Statuschange) MarshalJSON() ([]byte, error) {
+func (o *Statuschange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Statuschange
-
 	
 	DateStatusChanged := new(string)
-	if u.DateStatusChanged != nil {
+	if o.DateStatusChanged != nil {
 		
-		*DateStatusChanged = timeutil.Strftime(u.DateStatusChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStatusChanged = timeutil.Strftime(o.DateStatusChanged, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStatusChanged = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateStatusChanged *string `json:"dateStatusChanged,omitempty"`
 		
@@ -65,17 +63,53 @@ func (u *Statuschange) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateStatusChanged: DateStatusChanged,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		PreviousStatus: u.PreviousStatus,
+		PreviousStatus: o.PreviousStatus,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		ChangedBy: u.ChangedBy,
+		ChangedBy: o.ChangedBy,
 		
-		RejectReason: u.RejectReason,
-		Alias:    (*Alias)(u),
+		RejectReason: o.RejectReason,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Statuschange) UnmarshalJSON(b []byte) error {
+	var StatuschangeMap map[string]interface{}
+	err := json.Unmarshal(b, &StatuschangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateStatusChangedString, ok := StatuschangeMap["dateStatusChanged"].(string); ok {
+		DateStatusChanged, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStatusChangedString)
+		o.DateStatusChanged = &DateStatusChanged
+	}
+	
+	if Status, ok := StatuschangeMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if PreviousStatus, ok := StatuschangeMap["previousStatus"].(string); ok {
+		o.PreviousStatus = &PreviousStatus
+	}
+	
+	if Message, ok := StatuschangeMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if ChangedBy, ok := StatuschangeMap["changedBy"].(string); ok {
+		o.ChangedBy = &ChangedBy
+	}
+	
+	if RejectReason, ok := StatuschangeMap["rejectReason"].(string); ok {
+		o.RejectReason = &RejectReason
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Salesforce struct {
 
 }
 
-func (u *Salesforce) MarshalJSON() ([]byte, error) {
+func (o *Salesforce) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Salesforce
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,79 @@ func (u *Salesforce) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		IssuerURI: u.IssuerURI,
+		IssuerURI: o.IssuerURI,
 		
-		SsoTargetURI: u.SsoTargetURI,
+		SsoTargetURI: o.SsoTargetURI,
 		
-		SloURI: u.SloURI,
+		SloURI: o.SloURI,
 		
-		SloBinding: u.SloBinding,
+		SloBinding: o.SloBinding,
 		
-		Certificate: u.Certificate,
+		Certificate: o.Certificate,
 		
-		Certificates: u.Certificates,
+		Certificates: o.Certificates,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Salesforce) UnmarshalJSON(b []byte) error {
+	var SalesforceMap map[string]interface{}
+	err := json.Unmarshal(b, &SalesforceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SalesforceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SalesforceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := SalesforceMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if IssuerURI, ok := SalesforceMap["issuerURI"].(string); ok {
+		o.IssuerURI = &IssuerURI
+	}
+	
+	if SsoTargetURI, ok := SalesforceMap["ssoTargetURI"].(string); ok {
+		o.SsoTargetURI = &SsoTargetURI
+	}
+	
+	if SloURI, ok := SalesforceMap["sloURI"].(string); ok {
+		o.SloURI = &SloURI
+	}
+	
+	if SloBinding, ok := SalesforceMap["sloBinding"].(string); ok {
+		o.SloBinding = &SloBinding
+	}
+	
+	if Certificate, ok := SalesforceMap["certificate"].(string); ok {
+		o.Certificate = &Certificate
+	}
+	
+	if Certificates, ok := SalesforceMap["certificates"].([]interface{}); ok {
+		CertificatesString, _ := json.Marshal(Certificates)
+		json.Unmarshal(CertificatesString, &o.Certificates)
+	}
+	
+	if SelfUri, ok := SalesforceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

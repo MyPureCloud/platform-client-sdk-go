@@ -69,13 +69,11 @@ type Analyticsflow struct {
 
 }
 
-func (u *Analyticsflow) MarshalJSON() ([]byte, error) {
+func (o *Analyticsflow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsflow
-
 	
-
 	return json.Marshal(&struct { 
 		EndingLanguage *string `json:"endingLanguage,omitempty"`
 		
@@ -108,37 +106,109 @@ func (u *Analyticsflow) MarshalJSON() ([]byte, error) {
 		Outcomes *[]Analyticsflowoutcome `json:"outcomes,omitempty"`
 		*Alias
 	}{ 
-		EndingLanguage: u.EndingLanguage,
+		EndingLanguage: o.EndingLanguage,
 		
-		EntryReason: u.EntryReason,
+		EntryReason: o.EntryReason,
 		
-		EntryType: u.EntryType,
+		EntryType: o.EntryType,
 		
-		ExitReason: u.ExitReason,
+		ExitReason: o.ExitReason,
 		
-		FlowId: u.FlowId,
+		FlowId: o.FlowId,
 		
-		FlowName: u.FlowName,
+		FlowName: o.FlowName,
 		
-		FlowType: u.FlowType,
+		FlowType: o.FlowType,
 		
-		FlowVersion: u.FlowVersion,
+		FlowVersion: o.FlowVersion,
 		
-		IssuedCallback: u.IssuedCallback,
+		IssuedCallback: o.IssuedCallback,
 		
-		RecognitionFailureReason: u.RecognitionFailureReason,
+		RecognitionFailureReason: o.RecognitionFailureReason,
 		
-		StartingLanguage: u.StartingLanguage,
+		StartingLanguage: o.StartingLanguage,
 		
-		TransferTargetAddress: u.TransferTargetAddress,
+		TransferTargetAddress: o.TransferTargetAddress,
 		
-		TransferTargetName: u.TransferTargetName,
+		TransferTargetName: o.TransferTargetName,
 		
-		TransferType: u.TransferType,
+		TransferType: o.TransferType,
 		
-		Outcomes: u.Outcomes,
-		Alias:    (*Alias)(u),
+		Outcomes: o.Outcomes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsflow) UnmarshalJSON(b []byte) error {
+	var AnalyticsflowMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsflowMap)
+	if err != nil {
+		return err
+	}
+	
+	if EndingLanguage, ok := AnalyticsflowMap["endingLanguage"].(string); ok {
+		o.EndingLanguage = &EndingLanguage
+	}
+	
+	if EntryReason, ok := AnalyticsflowMap["entryReason"].(string); ok {
+		o.EntryReason = &EntryReason
+	}
+	
+	if EntryType, ok := AnalyticsflowMap["entryType"].(string); ok {
+		o.EntryType = &EntryType
+	}
+	
+	if ExitReason, ok := AnalyticsflowMap["exitReason"].(string); ok {
+		o.ExitReason = &ExitReason
+	}
+	
+	if FlowId, ok := AnalyticsflowMap["flowId"].(string); ok {
+		o.FlowId = &FlowId
+	}
+	
+	if FlowName, ok := AnalyticsflowMap["flowName"].(string); ok {
+		o.FlowName = &FlowName
+	}
+	
+	if FlowType, ok := AnalyticsflowMap["flowType"].(string); ok {
+		o.FlowType = &FlowType
+	}
+	
+	if FlowVersion, ok := AnalyticsflowMap["flowVersion"].(string); ok {
+		o.FlowVersion = &FlowVersion
+	}
+	
+	if IssuedCallback, ok := AnalyticsflowMap["issuedCallback"].(bool); ok {
+		o.IssuedCallback = &IssuedCallback
+	}
+	
+	if RecognitionFailureReason, ok := AnalyticsflowMap["recognitionFailureReason"].(string); ok {
+		o.RecognitionFailureReason = &RecognitionFailureReason
+	}
+	
+	if StartingLanguage, ok := AnalyticsflowMap["startingLanguage"].(string); ok {
+		o.StartingLanguage = &StartingLanguage
+	}
+	
+	if TransferTargetAddress, ok := AnalyticsflowMap["transferTargetAddress"].(string); ok {
+		o.TransferTargetAddress = &TransferTargetAddress
+	}
+	
+	if TransferTargetName, ok := AnalyticsflowMap["transferTargetName"].(string); ok {
+		o.TransferTargetName = &TransferTargetName
+	}
+	
+	if TransferType, ok := AnalyticsflowMap["transferType"].(string); ok {
+		o.TransferType = &TransferType
+	}
+	
+	if Outcomes, ok := AnalyticsflowMap["outcomes"].([]interface{}); ok {
+		OutcomesString, _ := json.Marshal(Outcomes)
+		json.Unmarshal(OutcomesString, &o.Outcomes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

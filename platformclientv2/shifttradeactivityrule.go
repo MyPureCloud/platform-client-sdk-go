@@ -21,13 +21,11 @@ type Shifttradeactivityrule struct {
 
 }
 
-func (u *Shifttradeactivityrule) MarshalJSON() ([]byte, error) {
+func (o *Shifttradeactivityrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradeactivityrule
-
 	
-
 	return json.Marshal(&struct { 
 		ActivityCategory *string `json:"activityCategory,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Shifttradeactivityrule) MarshalJSON() ([]byte, error) {
 		ActivityCodeIdReplacement *string `json:"activityCodeIdReplacement,omitempty"`
 		*Alias
 	}{ 
-		ActivityCategory: u.ActivityCategory,
+		ActivityCategory: o.ActivityCategory,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		ActivityCodeIdReplacement: u.ActivityCodeIdReplacement,
-		Alias:    (*Alias)(u),
+		ActivityCodeIdReplacement: o.ActivityCodeIdReplacement,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradeactivityrule) UnmarshalJSON(b []byte) error {
+	var ShifttradeactivityruleMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradeactivityruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActivityCategory, ok := ShifttradeactivityruleMap["activityCategory"].(string); ok {
+		o.ActivityCategory = &ActivityCategory
+	}
+	
+	if Action, ok := ShifttradeactivityruleMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if ActivityCodeIdReplacement, ok := ShifttradeactivityruleMap["activityCodeIdReplacement"].(string); ok {
+		o.ActivityCodeIdReplacement = &ActivityCodeIdReplacement
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

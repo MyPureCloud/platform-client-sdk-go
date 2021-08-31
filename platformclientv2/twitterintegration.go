@@ -82,29 +82,27 @@ type Twitterintegration struct {
 
 }
 
-func (u *Twitterintegration) MarshalJSON() ([]byte, error) {
+func (o *Twitterintegration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Twitterintegration
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -143,43 +141,133 @@ func (u *Twitterintegration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		AccessTokenKey: u.AccessTokenKey,
+		AccessTokenKey: o.AccessTokenKey,
 		
-		ConsumerKey: u.ConsumerKey,
+		ConsumerKey: o.ConsumerKey,
 		
-		Username: u.Username,
+		Username: o.Username,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Tier: u.Tier,
+		Tier: o.Tier,
 		
-		EnvName: u.EnvName,
+		EnvName: o.EnvName,
 		
-		Recipient: u.Recipient,
+		Recipient: o.Recipient,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		CreateStatus: u.CreateStatus,
+		CreateStatus: o.CreateStatus,
 		
-		CreateError: u.CreateError,
+		CreateError: o.CreateError,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Twitterintegration) UnmarshalJSON(b []byte) error {
+	var TwitterintegrationMap map[string]interface{}
+	err := json.Unmarshal(b, &TwitterintegrationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TwitterintegrationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TwitterintegrationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if AccessTokenKey, ok := TwitterintegrationMap["accessTokenKey"].(string); ok {
+		o.AccessTokenKey = &AccessTokenKey
+	}
+	
+	if ConsumerKey, ok := TwitterintegrationMap["consumerKey"].(string); ok {
+		o.ConsumerKey = &ConsumerKey
+	}
+	
+	if Username, ok := TwitterintegrationMap["username"].(string); ok {
+		o.Username = &Username
+	}
+	
+	if UserId, ok := TwitterintegrationMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Status, ok := TwitterintegrationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Tier, ok := TwitterintegrationMap["tier"].(string); ok {
+		o.Tier = &Tier
+	}
+	
+	if EnvName, ok := TwitterintegrationMap["envName"].(string); ok {
+		o.EnvName = &EnvName
+	}
+	
+	if Recipient, ok := TwitterintegrationMap["recipient"].(map[string]interface{}); ok {
+		RecipientString, _ := json.Marshal(Recipient)
+		json.Unmarshal(RecipientString, &o.Recipient)
+	}
+	
+	if dateCreatedString, ok := TwitterintegrationMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := TwitterintegrationMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := TwitterintegrationMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ModifiedBy, ok := TwitterintegrationMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if Version, ok := TwitterintegrationMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if CreateStatus, ok := TwitterintegrationMap["createStatus"].(string); ok {
+		o.CreateStatus = &CreateStatus
+	}
+	
+	if CreateError, ok := TwitterintegrationMap["createError"].(map[string]interface{}); ok {
+		CreateErrorString, _ := json.Marshal(CreateError)
+		json.Unmarshal(CreateErrorString, &o.CreateError)
+	}
+	
+	if SelfUri, ok := TwitterintegrationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

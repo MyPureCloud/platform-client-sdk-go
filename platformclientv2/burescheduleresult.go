@@ -29,13 +29,11 @@ type Burescheduleresult struct {
 
 }
 
-func (u *Burescheduleresult) MarshalJSON() ([]byte, error) {
+func (o *Burescheduleresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Burescheduleresult
-
 	
-
 	return json.Marshal(&struct { 
 		GenerationResults *Schedulegenerationresult `json:"generationResults,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Burescheduleresult) MarshalJSON() ([]byte, error) {
 		AgentSchedules *[]Burescheduleagentscheduleresult `json:"agentSchedules,omitempty"`
 		*Alias
 	}{ 
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		GenerationResultsDownloadUrl: u.GenerationResultsDownloadUrl,
+		GenerationResultsDownloadUrl: o.GenerationResultsDownloadUrl,
 		
-		HeadcountForecast: u.HeadcountForecast,
+		HeadcountForecast: o.HeadcountForecast,
 		
-		HeadcountForecastDownloadUrl: u.HeadcountForecastDownloadUrl,
+		HeadcountForecastDownloadUrl: o.HeadcountForecastDownloadUrl,
 		
-		AgentSchedules: u.AgentSchedules,
-		Alias:    (*Alias)(u),
+		AgentSchedules: o.AgentSchedules,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Burescheduleresult) UnmarshalJSON(b []byte) error {
+	var BurescheduleresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BurescheduleresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if GenerationResults, ok := BurescheduleresultMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if GenerationResultsDownloadUrl, ok := BurescheduleresultMap["generationResultsDownloadUrl"].(string); ok {
+		o.GenerationResultsDownloadUrl = &GenerationResultsDownloadUrl
+	}
+	
+	if HeadcountForecast, ok := BurescheduleresultMap["headcountForecast"].(map[string]interface{}); ok {
+		HeadcountForecastString, _ := json.Marshal(HeadcountForecast)
+		json.Unmarshal(HeadcountForecastString, &o.HeadcountForecast)
+	}
+	
+	if HeadcountForecastDownloadUrl, ok := BurescheduleresultMap["headcountForecastDownloadUrl"].(string); ok {
+		o.HeadcountForecastDownloadUrl = &HeadcountForecastDownloadUrl
+	}
+	
+	if AgentSchedules, ok := BurescheduleresultMap["agentSchedules"].([]interface{}); ok {
+		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
+		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

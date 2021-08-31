@@ -29,13 +29,11 @@ type Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate 
 
 }
 
-func (u *Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate) MarshalJSON() ([]byte, error) {
+func (o *Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate
-
 	
-
 	return json.Marshal(&struct { 
 		RequestId *string `json:"requestId,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupd
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		RequestId: u.RequestId,
+		RequestId: o.RequestId,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		VarError: u.VarError,
+		VarError: o.VarError,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdate) UnmarshalJSON(b []byte) error {
+	var WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if RequestId, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["requestId"].(string); ok {
+		o.RequestId = &RequestId
+	}
+	
+	if Status, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if VarError, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["error"].(string); ok {
+		o.VarError = &VarError
+	}
+	
+	if Active, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if VarType, ok := WfmhistoricaldatauploadrequeststatustopichistoricaldatauploadrequestupdateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

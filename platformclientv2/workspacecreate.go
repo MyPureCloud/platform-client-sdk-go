@@ -21,13 +21,11 @@ type Workspacecreate struct {
 
 }
 
-func (u *Workspacecreate) MarshalJSON() ([]byte, error) {
+func (o *Workspacecreate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workspacecreate
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Workspacecreate) MarshalJSON() ([]byte, error) {
 		Description *string `json:"description,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Bucket: u.Bucket,
+		Bucket: o.Bucket,
 		
-		Description: u.Description,
-		Alias:    (*Alias)(u),
+		Description: o.Description,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workspacecreate) UnmarshalJSON(b []byte) error {
+	var WorkspacecreateMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkspacecreateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := WorkspacecreateMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Bucket, ok := WorkspacecreateMap["bucket"].(string); ok {
+		o.Bucket = &Bucket
+	}
+	
+	if Description, ok := WorkspacecreateMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

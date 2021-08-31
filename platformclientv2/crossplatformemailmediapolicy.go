@@ -17,24 +17,43 @@ type Crossplatformemailmediapolicy struct {
 
 }
 
-func (u *Crossplatformemailmediapolicy) MarshalJSON() ([]byte, error) {
+func (o *Crossplatformemailmediapolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Crossplatformemailmediapolicy
-
 	
-
 	return json.Marshal(&struct { 
 		Actions *Crossplatformpolicyactions `json:"actions,omitempty"`
 		
 		Conditions *Emailmediapolicyconditions `json:"conditions,omitempty"`
 		*Alias
 	}{ 
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Conditions: u.Conditions,
-		Alias:    (*Alias)(u),
+		Conditions: o.Conditions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Crossplatformemailmediapolicy) UnmarshalJSON(b []byte) error {
+	var CrossplatformemailmediapolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &CrossplatformemailmediapolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Actions, ok := CrossplatformemailmediapolicyMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Conditions, ok := CrossplatformemailmediapolicyMap["conditions"].(map[string]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

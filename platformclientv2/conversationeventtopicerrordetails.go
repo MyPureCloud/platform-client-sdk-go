@@ -41,13 +41,11 @@ type Conversationeventtopicerrordetails struct {
 
 }
 
-func (u *Conversationeventtopicerrordetails) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicerrordetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicerrordetails
-
 	
-
 	return json.Marshal(&struct { 
 		Status *int `json:"status,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Conversationeventtopicerrordetails) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
+		MessageParams: o.MessageParams,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		Uri: u.Uri,
+		Uri: o.Uri,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicerrordetails) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicerrordetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicerrordetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := ConversationeventtopicerrordetailsMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if Code, ok := ConversationeventtopicerrordetailsMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Message, ok := ConversationeventtopicerrordetailsMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := ConversationeventtopicerrordetailsMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := ConversationeventtopicerrordetailsMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+	if ContextId, ok := ConversationeventtopicerrordetailsMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if Uri, ok := ConversationeventtopicerrordetailsMap["uri"].(string); ok {
+		o.Uri = &Uri
+	}
+	
+	if AdditionalProperties, ok := ConversationeventtopicerrordetailsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

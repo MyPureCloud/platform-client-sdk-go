@@ -74,59 +74,57 @@ type Miner struct {
 
 }
 
-func (u *Miner) MarshalJSON() ([]byte, error) {
+func (o *Miner) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Miner
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	ConversationsDateRangeStart := new(string)
-	if u.ConversationsDateRangeStart != nil {
-		*ConversationsDateRangeStart = timeutil.Strftime(u.ConversationsDateRangeStart, "%Y-%m-%d")
+	if o.ConversationsDateRangeStart != nil {
+		*ConversationsDateRangeStart = timeutil.Strftime(o.ConversationsDateRangeStart, "%Y-%m-%d")
 	} else {
 		ConversationsDateRangeStart = nil
 	}
 	
 	ConversationsDateRangeEnd := new(string)
-	if u.ConversationsDateRangeEnd != nil {
-		*ConversationsDateRangeEnd = timeutil.Strftime(u.ConversationsDateRangeEnd, "%Y-%m-%d")
+	if o.ConversationsDateRangeEnd != nil {
+		*ConversationsDateRangeEnd = timeutil.Strftime(o.ConversationsDateRangeEnd, "%Y-%m-%d")
 	} else {
 		ConversationsDateRangeEnd = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
 	DateTriggered := new(string)
-	if u.DateTriggered != nil {
+	if o.DateTriggered != nil {
 		
-		*DateTriggered = timeutil.Strftime(u.DateTriggered, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateTriggered = timeutil.Strftime(o.DateTriggered, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateTriggered = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -161,15 +159,15 @@ func (u *Miner) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
 		DateCreated: DateCreated,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		ConversationsDateRangeStart: ConversationsDateRangeStart,
 		
@@ -177,23 +175,106 @@ func (u *Miner) MarshalJSON() ([]byte, error) {
 		
 		DateCompleted: DateCompleted,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		ConversationDataUploaded: u.ConversationDataUploaded,
+		ConversationDataUploaded: o.ConversationDataUploaded,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		QueueIds: u.QueueIds,
+		QueueIds: o.QueueIds,
 		
 		DateTriggered: DateTriggered,
 		
 		DateModified: DateModified,
 		
-		LatestDraftVersion: u.LatestDraftVersion,
+		LatestDraftVersion: o.LatestDraftVersion,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Miner) UnmarshalJSON(b []byte) error {
+	var MinerMap map[string]interface{}
+	err := json.Unmarshal(b, &MinerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MinerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MinerMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Language, ok := MinerMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if dateCreatedString, ok := MinerMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if Status, ok := MinerMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if conversationsDateRangeStartString, ok := MinerMap["conversationsDateRangeStart"].(string); ok {
+		ConversationsDateRangeStart, _ := time.Parse("2006-01-02", conversationsDateRangeStartString)
+		o.ConversationsDateRangeStart = &ConversationsDateRangeStart
+	}
+	
+	if conversationsDateRangeEndString, ok := MinerMap["conversationsDateRangeEnd"].(string); ok {
+		ConversationsDateRangeEnd, _ := time.Parse("2006-01-02", conversationsDateRangeEndString)
+		o.ConversationsDateRangeEnd = &ConversationsDateRangeEnd
+	}
+	
+	if dateCompletedString, ok := MinerMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if Message, ok := MinerMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if ConversationDataUploaded, ok := MinerMap["conversationDataUploaded"].(bool); ok {
+		o.ConversationDataUploaded = &ConversationDataUploaded
+	}
+	
+	if MediaType, ok := MinerMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if QueueIds, ok := MinerMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
+	}
+	
+	if dateTriggeredString, ok := MinerMap["dateTriggered"].(string); ok {
+		DateTriggered, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateTriggeredString)
+		o.DateTriggered = &DateTriggered
+	}
+	
+	if dateModifiedString, ok := MinerMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if LatestDraftVersion, ok := MinerMap["latestDraftVersion"].(map[string]interface{}); ok {
+		LatestDraftVersionString, _ := json.Marshal(LatestDraftVersion)
+		json.Unmarshal(LatestDraftVersionString, &o.LatestDraftVersion)
+	}
+	
+	if SelfUri, ok := MinerMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

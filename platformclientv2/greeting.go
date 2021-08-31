@@ -58,29 +58,27 @@ type Greeting struct {
 
 }
 
-func (u *Greeting) MarshalJSON() ([]byte, error) {
+func (o *Greeting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Greeting
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -107,31 +105,94 @@ func (u *Greeting) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		OwnerType: u.OwnerType,
+		OwnerType: o.OwnerType,
 		
-		Owner: u.Owner,
+		Owner: o.Owner,
 		
-		AudioFile: u.AudioFile,
+		AudioFile: o.AudioFile,
 		
-		AudioTTS: u.AudioTTS,
+		AudioTTS: o.AudioTTS,
 		
 		CreatedDate: CreatedDate,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		ModifiedDate: ModifiedDate,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Greeting) UnmarshalJSON(b []byte) error {
+	var GreetingMap map[string]interface{}
+	err := json.Unmarshal(b, &GreetingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GreetingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := GreetingMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := GreetingMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if OwnerType, ok := GreetingMap["ownerType"].(string); ok {
+		o.OwnerType = &OwnerType
+	}
+	
+	if Owner, ok := GreetingMap["owner"].(map[string]interface{}); ok {
+		OwnerString, _ := json.Marshal(Owner)
+		json.Unmarshal(OwnerString, &o.Owner)
+	}
+	
+	if AudioFile, ok := GreetingMap["audioFile"].(map[string]interface{}); ok {
+		AudioFileString, _ := json.Marshal(AudioFile)
+		json.Unmarshal(AudioFileString, &o.AudioFile)
+	}
+	
+	if AudioTTS, ok := GreetingMap["audioTTS"].(string); ok {
+		o.AudioTTS = &AudioTTS
+	}
+	
+	if createdDateString, ok := GreetingMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if CreatedBy, ok := GreetingMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if modifiedDateString, ok := GreetingMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if ModifiedBy, ok := GreetingMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if SelfUri, ok := GreetingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Getmetricresponse struct {
 
 }
 
-func (u *Getmetricresponse) MarshalJSON() ([]byte, error) {
+func (o *Getmetricresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Getmetricresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Getmetricresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Getmetricresponse) UnmarshalJSON(b []byte) error {
+	var GetmetricresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &GetmetricresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := GetmetricresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if Entities, ok := GetmetricresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if SelfUri, ok := GetmetricresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Edgeservicestaterequest struct {
 
 }
 
-func (u *Edgeservicestaterequest) MarshalJSON() ([]byte, error) {
+func (o *Edgeservicestaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgeservicestaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		InService *bool `json:"inService,omitempty"`
 		
 		CallDrainingWaitTimeSeconds *int `json:"callDrainingWaitTimeSeconds,omitempty"`
 		*Alias
 	}{ 
-		InService: u.InService,
+		InService: o.InService,
 		
-		CallDrainingWaitTimeSeconds: u.CallDrainingWaitTimeSeconds,
-		Alias:    (*Alias)(u),
+		CallDrainingWaitTimeSeconds: o.CallDrainingWaitTimeSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgeservicestaterequest) UnmarshalJSON(b []byte) error {
+	var EdgeservicestaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgeservicestaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if InService, ok := EdgeservicestaterequestMap["inService"].(bool); ok {
+		o.InService = &InService
+	}
+	
+	if CallDrainingWaitTimeSeconds, ok := EdgeservicestaterequestMap["callDrainingWaitTimeSeconds"].(float64); ok {
+		CallDrainingWaitTimeSecondsInt := int(CallDrainingWaitTimeSeconds)
+		o.CallDrainingWaitTimeSeconds = &CallDrainingWaitTimeSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

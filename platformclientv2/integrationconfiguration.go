@@ -41,13 +41,11 @@ type Integrationconfiguration struct {
 
 }
 
-func (u *Integrationconfiguration) MarshalJSON() ([]byte, error) {
+func (o *Integrationconfiguration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Integrationconfiguration
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,70 @@ func (u *Integrationconfiguration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		Advanced: u.Advanced,
+		Advanced: o.Advanced,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		Credentials: u.Credentials,
+		Credentials: o.Credentials,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Integrationconfiguration) UnmarshalJSON(b []byte) error {
+	var IntegrationconfigurationMap map[string]interface{}
+	err := json.Unmarshal(b, &IntegrationconfigurationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := IntegrationconfigurationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := IntegrationconfigurationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := IntegrationconfigurationMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Properties, ok := IntegrationconfigurationMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if Advanced, ok := IntegrationconfigurationMap["advanced"].(map[string]interface{}); ok {
+		AdvancedString, _ := json.Marshal(Advanced)
+		json.Unmarshal(AdvancedString, &o.Advanced)
+	}
+	
+	if Notes, ok := IntegrationconfigurationMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if Credentials, ok := IntegrationconfigurationMap["credentials"].(map[string]interface{}); ok {
+		CredentialsString, _ := json.Marshal(Credentials)
+		json.Unmarshal(CredentialsString, &o.Credentials)
+	}
+	
+	if SelfUri, ok := IntegrationconfigurationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

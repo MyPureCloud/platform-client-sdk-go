@@ -45,13 +45,11 @@ type Workspacemember struct {
 
 }
 
-func (u *Workspacemember) MarshalJSON() ([]byte, error) {
+func (o *Workspacemember) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workspacemember
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,77 @@ func (u *Workspacemember) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Workspace: u.Workspace,
+		Workspace: o.Workspace,
 		
-		MemberType: u.MemberType,
+		MemberType: o.MemberType,
 		
-		Member: u.Member,
+		Member: o.Member,
 		
-		User: u.User,
+		User: o.User,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		SecurityProfile: u.SecurityProfile,
+		SecurityProfile: o.SecurityProfile,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workspacemember) UnmarshalJSON(b []byte) error {
+	var WorkspacememberMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkspacememberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WorkspacememberMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WorkspacememberMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Workspace, ok := WorkspacememberMap["workspace"].(map[string]interface{}); ok {
+		WorkspaceString, _ := json.Marshal(Workspace)
+		json.Unmarshal(WorkspaceString, &o.Workspace)
+	}
+	
+	if MemberType, ok := WorkspacememberMap["memberType"].(string); ok {
+		o.MemberType = &MemberType
+	}
+	
+	if Member, ok := WorkspacememberMap["member"].(map[string]interface{}); ok {
+		MemberString, _ := json.Marshal(Member)
+		json.Unmarshal(MemberString, &o.Member)
+	}
+	
+	if User, ok := WorkspacememberMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Group, ok := WorkspacememberMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if SecurityProfile, ok := WorkspacememberMap["securityProfile"].(map[string]interface{}); ok {
+		SecurityProfileString, _ := json.Marshal(SecurityProfile)
+		json.Unmarshal(SecurityProfileString, &o.SecurityProfile)
+	}
+	
+	if SelfUri, ok := WorkspacememberMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Searchshifttraderesponse struct {
 
 }
 
-func (u *Searchshifttraderesponse) MarshalJSON() ([]byte, error) {
+func (o *Searchshifttraderesponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Searchshifttraderesponse
-
 	
-
 	return json.Marshal(&struct { 
 		Trade *Shifttraderesponse `json:"trade,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Searchshifttraderesponse) MarshalJSON() ([]byte, error) {
 		Preview *Shifttradepreviewresponse `json:"preview,omitempty"`
 		*Alias
 	}{ 
-		Trade: u.Trade,
+		Trade: o.Trade,
 		
-		MatchingReceivingShiftIds: u.MatchingReceivingShiftIds,
+		MatchingReceivingShiftIds: o.MatchingReceivingShiftIds,
 		
-		Preview: u.Preview,
-		Alias:    (*Alias)(u),
+		Preview: o.Preview,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Searchshifttraderesponse) UnmarshalJSON(b []byte) error {
+	var SearchshifttraderesponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SearchshifttraderesponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Trade, ok := SearchshifttraderesponseMap["trade"].(map[string]interface{}); ok {
+		TradeString, _ := json.Marshal(Trade)
+		json.Unmarshal(TradeString, &o.Trade)
+	}
+	
+	if MatchingReceivingShiftIds, ok := SearchshifttraderesponseMap["matchingReceivingShiftIds"].([]interface{}); ok {
+		MatchingReceivingShiftIdsString, _ := json.Marshal(MatchingReceivingShiftIds)
+		json.Unmarshal(MatchingReceivingShiftIdsString, &o.MatchingReceivingShiftIds)
+	}
+	
+	if Preview, ok := SearchshifttraderesponseMap["preview"].(map[string]interface{}); ok {
+		PreviewString, _ := json.Marshal(Preview)
+		json.Unmarshal(PreviewString, &o.Preview)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

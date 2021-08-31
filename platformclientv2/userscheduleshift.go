@@ -38,21 +38,19 @@ type Userscheduleshift struct {
 
 }
 
-func (u *Userscheduleshift) MarshalJSON() ([]byte, error) {
+func (o *Userscheduleshift) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userscheduleshift
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		WeekSchedule *Weekschedulereference `json:"weekSchedule,omitempty"`
 		
@@ -69,21 +67,64 @@ func (u *Userscheduleshift) MarshalJSON() ([]byte, error) {
 		ManuallyEdited *bool `json:"manuallyEdited,omitempty"`
 		*Alias
 	}{ 
-		WeekSchedule: u.WeekSchedule,
+		WeekSchedule: o.WeekSchedule,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
 		StartDate: StartDate,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Activities: u.Activities,
+		Activities: o.Activities,
 		
-		Delete: u.Delete,
+		Delete: o.Delete,
 		
-		ManuallyEdited: u.ManuallyEdited,
-		Alias:    (*Alias)(u),
+		ManuallyEdited: o.ManuallyEdited,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userscheduleshift) UnmarshalJSON(b []byte) error {
+	var UserscheduleshiftMap map[string]interface{}
+	err := json.Unmarshal(b, &UserscheduleshiftMap)
+	if err != nil {
+		return err
+	}
+	
+	if WeekSchedule, ok := UserscheduleshiftMap["weekSchedule"].(map[string]interface{}); ok {
+		WeekScheduleString, _ := json.Marshal(WeekSchedule)
+		json.Unmarshal(WeekScheduleString, &o.WeekSchedule)
+	}
+	
+	if Id, ok := UserscheduleshiftMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if startDateString, ok := UserscheduleshiftMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if LengthInMinutes, ok := UserscheduleshiftMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if Activities, ok := UserscheduleshiftMap["activities"].([]interface{}); ok {
+		ActivitiesString, _ := json.Marshal(Activities)
+		json.Unmarshal(ActivitiesString, &o.Activities)
+	}
+	
+	if Delete, ok := UserscheduleshiftMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+	
+	if ManuallyEdited, ok := UserscheduleshiftMap["manuallyEdited"].(bool); ok {
+		o.ManuallyEdited = &ManuallyEdited
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

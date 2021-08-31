@@ -21,13 +21,11 @@ type Outcomeprobabilitycondition struct {
 
 }
 
-func (u *Outcomeprobabilitycondition) MarshalJSON() ([]byte, error) {
+func (o *Outcomeprobabilitycondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outcomeprobabilitycondition
-
 	
-
 	return json.Marshal(&struct { 
 		OutcomeId *string `json:"outcomeId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Outcomeprobabilitycondition) MarshalJSON() ([]byte, error) {
 		Probability *float32 `json:"probability,omitempty"`
 		*Alias
 	}{ 
-		OutcomeId: u.OutcomeId,
+		OutcomeId: o.OutcomeId,
 		
-		MaximumProbability: u.MaximumProbability,
+		MaximumProbability: o.MaximumProbability,
 		
-		Probability: u.Probability,
-		Alias:    (*Alias)(u),
+		Probability: o.Probability,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outcomeprobabilitycondition) UnmarshalJSON(b []byte) error {
+	var OutcomeprobabilityconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &OutcomeprobabilityconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if OutcomeId, ok := OutcomeprobabilityconditionMap["outcomeId"].(string); ok {
+		o.OutcomeId = &OutcomeId
+	}
+	
+	if MaximumProbability, ok := OutcomeprobabilityconditionMap["maximumProbability"].(float64); ok {
+		MaximumProbabilityFloat32 := float32(MaximumProbability)
+		o.MaximumProbability = &MaximumProbabilityFloat32
+	}
+	
+	if Probability, ok := OutcomeprobabilityconditionMap["probability"].(float64); ok {
+		ProbabilityFloat32 := float32(Probability)
+		o.Probability = &ProbabilityFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

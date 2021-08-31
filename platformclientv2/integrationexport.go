@@ -17,24 +17,42 @@ type Integrationexport struct {
 
 }
 
-func (u *Integrationexport) MarshalJSON() ([]byte, error) {
+func (o *Integrationexport) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Integrationexport
-
 	
-
 	return json.Marshal(&struct { 
 		Integration *Domainentityref `json:"integration,omitempty"`
 		
 		ShouldExportScreenRecordings *bool `json:"shouldExportScreenRecordings,omitempty"`
 		*Alias
 	}{ 
-		Integration: u.Integration,
+		Integration: o.Integration,
 		
-		ShouldExportScreenRecordings: u.ShouldExportScreenRecordings,
-		Alias:    (*Alias)(u),
+		ShouldExportScreenRecordings: o.ShouldExportScreenRecordings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Integrationexport) UnmarshalJSON(b []byte) error {
+	var IntegrationexportMap map[string]interface{}
+	err := json.Unmarshal(b, &IntegrationexportMap)
+	if err != nil {
+		return err
+	}
+	
+	if Integration, ok := IntegrationexportMap["integration"].(map[string]interface{}); ok {
+		IntegrationString, _ := json.Marshal(Integration)
+		json.Unmarshal(IntegrationString, &o.Integration)
+	}
+	
+	if ShouldExportScreenRecordings, ok := IntegrationexportMap["shouldExportScreenRecordings"].(bool); ok {
+		o.ShouldExportScreenRecordings = &ShouldExportScreenRecordings
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

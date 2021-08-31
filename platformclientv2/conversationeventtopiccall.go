@@ -118,37 +118,35 @@ type Conversationeventtopiccall struct {
 
 }
 
-func (u *Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopiccall
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -205,61 +203,191 @@ func (u *Conversationeventtopiccall) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
-		Recording: u.Recording,
+		Recording: o.Recording,
 		
-		RecordingState: u.RecordingState,
+		RecordingState: o.RecordingState,
 		
-		Muted: u.Muted,
+		Muted: o.Muted,
 		
-		Confined: u.Confined,
+		Confined: o.Confined,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		ErrorInfo: u.ErrorInfo,
+		ErrorInfo: o.ErrorInfo,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		DocumentId: u.DocumentId,
+		DocumentId: o.DocumentId,
 		
-		Self: u.Self,
+		Self: o.Self,
 		
-		Other: u.Other,
+		Other: o.Other,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
 		ConnectedTime: ConnectedTime,
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		DisconnectReasons: u.DisconnectReasons,
+		DisconnectReasons: o.DisconnectReasons,
 		
-		FaxStatus: u.FaxStatus,
+		FaxStatus: o.FaxStatus,
 		
-		UuiData: u.UuiData,
+		UuiData: o.UuiData,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		AgentAssistantId: u.AgentAssistantId,
+		AgentAssistantId: o.AgentAssistantId,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopiccall) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopiccallMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopiccallMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationeventtopiccallMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := ConversationeventtopiccallMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Recording, ok := ConversationeventtopiccallMap["recording"].(bool); ok {
+		o.Recording = &Recording
+	}
+	
+	if RecordingState, ok := ConversationeventtopiccallMap["recordingState"].(string); ok {
+		o.RecordingState = &RecordingState
+	}
+	
+	if Muted, ok := ConversationeventtopiccallMap["muted"].(bool); ok {
+		o.Muted = &Muted
+	}
+	
+	if Confined, ok := ConversationeventtopiccallMap["confined"].(bool); ok {
+		o.Confined = &Confined
+	}
+	
+	if Held, ok := ConversationeventtopiccallMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if ErrorInfo, ok := ConversationeventtopiccallMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if DisconnectType, ok := ConversationeventtopiccallMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := ConversationeventtopiccallMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if Direction, ok := ConversationeventtopiccallMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if DocumentId, ok := ConversationeventtopiccallMap["documentId"].(string); ok {
+		o.DocumentId = &DocumentId
+	}
+	
+	if Self, ok := ConversationeventtopiccallMap["self"].(map[string]interface{}); ok {
+		SelfString, _ := json.Marshal(Self)
+		json.Unmarshal(SelfString, &o.Self)
+	}
+	
+	if Other, ok := ConversationeventtopiccallMap["other"].(map[string]interface{}); ok {
+		OtherString, _ := json.Marshal(Other)
+		json.Unmarshal(OtherString, &o.Other)
+	}
+	
+	if Provider, ok := ConversationeventtopiccallMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := ConversationeventtopiccallMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := ConversationeventtopiccallMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if connectedTimeString, ok := ConversationeventtopiccallMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := ConversationeventtopiccallMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if DisconnectReasons, ok := ConversationeventtopiccallMap["disconnectReasons"].([]interface{}); ok {
+		DisconnectReasonsString, _ := json.Marshal(DisconnectReasons)
+		json.Unmarshal(DisconnectReasonsString, &o.DisconnectReasons)
+	}
+	
+	if FaxStatus, ok := ConversationeventtopiccallMap["faxStatus"].(map[string]interface{}); ok {
+		FaxStatusString, _ := json.Marshal(FaxStatus)
+		json.Unmarshal(FaxStatusString, &o.FaxStatus)
+	}
+	
+	if UuiData, ok := ConversationeventtopiccallMap["uuiData"].(string); ok {
+		o.UuiData = &UuiData
+	}
+	
+	if Wrapup, ok := ConversationeventtopiccallMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := ConversationeventtopiccallMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := ConversationeventtopiccallMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AgentAssistantId, ok := ConversationeventtopiccallMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
+	}
+	
+	if AdditionalProperties, ok := ConversationeventtopiccallMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

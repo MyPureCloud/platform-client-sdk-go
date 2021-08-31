@@ -21,13 +21,11 @@ type Conversationcontentbuttonresponse struct {
 
 }
 
-func (u *Conversationcontentbuttonresponse) MarshalJSON() ([]byte, error) {
+func (o *Conversationcontentbuttonresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcontentbuttonresponse
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Conversationcontentbuttonresponse) MarshalJSON() ([]byte, error) {
 		Payload *string `json:"payload,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Payload: u.Payload,
-		Alias:    (*Alias)(u),
+		Payload: o.Payload,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcontentbuttonresponse) UnmarshalJSON(b []byte) error {
+	var ConversationcontentbuttonresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentbuttonresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ConversationcontentbuttonresponseMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Text, ok := ConversationcontentbuttonresponseMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Payload, ok := ConversationcontentbuttonresponseMap["payload"].(string); ok {
+		o.Payload = &Payload
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

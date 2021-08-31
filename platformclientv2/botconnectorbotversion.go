@@ -21,13 +21,11 @@ type Botconnectorbotversion struct {
 
 }
 
-func (u *Botconnectorbotversion) MarshalJSON() ([]byte, error) {
+func (o *Botconnectorbotversion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botconnectorbotversion
-
 	
-
 	return json.Marshal(&struct { 
 		Version *string `json:"version,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Botconnectorbotversion) MarshalJSON() ([]byte, error) {
 		Intents *[]Botintent `json:"intents,omitempty"`
 		*Alias
 	}{ 
-		Version: u.Version,
+		Version: o.Version,
 		
-		SupportedLanguages: u.SupportedLanguages,
+		SupportedLanguages: o.SupportedLanguages,
 		
-		Intents: u.Intents,
-		Alias:    (*Alias)(u),
+		Intents: o.Intents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botconnectorbotversion) UnmarshalJSON(b []byte) error {
+	var BotconnectorbotversionMap map[string]interface{}
+	err := json.Unmarshal(b, &BotconnectorbotversionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Version, ok := BotconnectorbotversionMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if SupportedLanguages, ok := BotconnectorbotversionMap["supportedLanguages"].([]interface{}); ok {
+		SupportedLanguagesString, _ := json.Marshal(SupportedLanguages)
+		json.Unmarshal(SupportedLanguagesString, &o.SupportedLanguages)
+	}
+	
+	if Intents, ok := BotconnectorbotversionMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

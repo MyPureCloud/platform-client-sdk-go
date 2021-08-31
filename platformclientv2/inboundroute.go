@@ -65,13 +65,11 @@ type Inboundroute struct {
 
 }
 
-func (u *Inboundroute) MarshalJSON() ([]byte, error) {
+func (o *Inboundroute) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Inboundroute
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,110 @@ func (u *Inboundroute) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Pattern: u.Pattern,
+		Pattern: o.Pattern,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		FromName: u.FromName,
+		FromName: o.FromName,
 		
-		FromEmail: u.FromEmail,
+		FromEmail: o.FromEmail,
 		
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		ReplyEmailAddress: u.ReplyEmailAddress,
+		ReplyEmailAddress: o.ReplyEmailAddress,
 		
-		AutoBcc: u.AutoBcc,
+		AutoBcc: o.AutoBcc,
 		
-		SpamFlow: u.SpamFlow,
+		SpamFlow: o.SpamFlow,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Inboundroute) UnmarshalJSON(b []byte) error {
+	var InboundrouteMap map[string]interface{}
+	err := json.Unmarshal(b, &InboundrouteMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := InboundrouteMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := InboundrouteMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Pattern, ok := InboundrouteMap["pattern"].(string); ok {
+		o.Pattern = &Pattern
+	}
+	
+	if Queue, ok := InboundrouteMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Priority, ok := InboundrouteMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Skills, ok := InboundrouteMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if Language, ok := InboundrouteMap["language"].(map[string]interface{}); ok {
+		LanguageString, _ := json.Marshal(Language)
+		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if FromName, ok := InboundrouteMap["fromName"].(string); ok {
+		o.FromName = &FromName
+	}
+	
+	if FromEmail, ok := InboundrouteMap["fromEmail"].(string); ok {
+		o.FromEmail = &FromEmail
+	}
+	
+	if Flow, ok := InboundrouteMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if ReplyEmailAddress, ok := InboundrouteMap["replyEmailAddress"].(map[string]interface{}); ok {
+		ReplyEmailAddressString, _ := json.Marshal(ReplyEmailAddress)
+		json.Unmarshal(ReplyEmailAddressString, &o.ReplyEmailAddress)
+	}
+	
+	if AutoBcc, ok := InboundrouteMap["autoBcc"].([]interface{}); ok {
+		AutoBccString, _ := json.Marshal(AutoBcc)
+		json.Unmarshal(AutoBccString, &o.AutoBcc)
+	}
+	
+	if SpamFlow, ok := InboundrouteMap["spamFlow"].(map[string]interface{}); ok {
+		SpamFlowString, _ := json.Marshal(SpamFlow)
+		json.Unmarshal(SpamFlowString, &o.SpamFlow)
+	}
+	
+	if SelfUri, ok := InboundrouteMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

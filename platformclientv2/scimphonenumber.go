@@ -21,13 +21,11 @@ type Scimphonenumber struct {
 
 }
 
-func (u *Scimphonenumber) MarshalJSON() ([]byte, error) {
+func (o *Scimphonenumber) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimphonenumber
-
 	
-
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Scimphonenumber) MarshalJSON() ([]byte, error) {
 		Primary *bool `json:"primary,omitempty"`
 		*Alias
 	}{ 
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Primary: u.Primary,
-		Alias:    (*Alias)(u),
+		Primary: o.Primary,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimphonenumber) UnmarshalJSON(b []byte) error {
+	var ScimphonenumberMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimphonenumberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Value, ok := ScimphonenumberMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarType, ok := ScimphonenumberMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Primary, ok := ScimphonenumberMap["primary"].(bool); ok {
+		o.Primary = &Primary
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

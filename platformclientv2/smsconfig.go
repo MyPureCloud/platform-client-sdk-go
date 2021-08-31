@@ -21,13 +21,11 @@ type Smsconfig struct {
 
 }
 
-func (u *Smsconfig) MarshalJSON() ([]byte, error) {
+func (o *Smsconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsconfig
-
 	
-
 	return json.Marshal(&struct { 
 		MessageColumn *string `json:"messageColumn,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Smsconfig) MarshalJSON() ([]byte, error) {
 		SenderSmsPhoneNumber *Smsphonenumberref `json:"senderSmsPhoneNumber,omitempty"`
 		*Alias
 	}{ 
-		MessageColumn: u.MessageColumn,
+		MessageColumn: o.MessageColumn,
 		
-		PhoneColumn: u.PhoneColumn,
+		PhoneColumn: o.PhoneColumn,
 		
-		SenderSmsPhoneNumber: u.SenderSmsPhoneNumber,
-		Alias:    (*Alias)(u),
+		SenderSmsPhoneNumber: o.SenderSmsPhoneNumber,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsconfig) UnmarshalJSON(b []byte) error {
+	var SmsconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if MessageColumn, ok := SmsconfigMap["messageColumn"].(string); ok {
+		o.MessageColumn = &MessageColumn
+	}
+	
+	if PhoneColumn, ok := SmsconfigMap["phoneColumn"].(string); ok {
+		o.PhoneColumn = &PhoneColumn
+	}
+	
+	if SenderSmsPhoneNumber, ok := SmsconfigMap["senderSmsPhoneNumber"].(map[string]interface{}); ok {
+		SenderSmsPhoneNumberString, _ := json.Marshal(SenderSmsPhoneNumber)
+		json.Unmarshal(SenderSmsPhoneNumberString, &o.SenderSmsPhoneNumber)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

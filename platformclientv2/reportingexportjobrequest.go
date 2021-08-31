@@ -81,13 +81,11 @@ type Reportingexportjobrequest struct {
 
 }
 
-func (u *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
+func (o *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingexportjobrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -126,43 +124,129 @@ func (u *Reportingexportjobrequest) MarshalJSON() ([]byte, error) {
 		RecipientEmails *[]string `json:"recipientEmails,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		ExportFormat: u.ExportFormat,
+		ExportFormat: o.ExportFormat,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Period: u.Period,
+		Period: o.Period,
 		
-		ViewType: u.ViewType,
+		ViewType: o.ViewType,
 		
-		Filter: u.Filter,
+		Filter: o.Filter,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
-		Locale: u.Locale,
+		Locale: o.Locale,
 		
-		HasFormatDurations: u.HasFormatDurations,
+		HasFormatDurations: o.HasFormatDurations,
 		
-		HasSplitFilters: u.HasSplitFilters,
+		HasSplitFilters: o.HasSplitFilters,
 		
-		ExcludeEmptyRows: u.ExcludeEmptyRows,
+		ExcludeEmptyRows: o.ExcludeEmptyRows,
 		
-		HasSplitByMedia: u.HasSplitByMedia,
+		HasSplitByMedia: o.HasSplitByMedia,
 		
-		HasSummaryRow: u.HasSummaryRow,
+		HasSummaryRow: o.HasSummaryRow,
 		
-		CsvDelimiter: u.CsvDelimiter,
+		CsvDelimiter: o.CsvDelimiter,
 		
-		SelectedColumns: u.SelectedColumns,
+		SelectedColumns: o.SelectedColumns,
 		
-		HasCustomParticipantAttributes: u.HasCustomParticipantAttributes,
+		HasCustomParticipantAttributes: o.HasCustomParticipantAttributes,
 		
-		RecipientEmails: u.RecipientEmails,
-		Alias:    (*Alias)(u),
+		RecipientEmails: o.RecipientEmails,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingexportjobrequest) UnmarshalJSON(b []byte) error {
+	var ReportingexportjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingexportjobrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ReportingexportjobrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if TimeZone, ok := ReportingexportjobrequestMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if ExportFormat, ok := ReportingexportjobrequestMap["exportFormat"].(string); ok {
+		o.ExportFormat = &ExportFormat
+	}
+	
+	if Interval, ok := ReportingexportjobrequestMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Period, ok := ReportingexportjobrequestMap["period"].(string); ok {
+		o.Period = &Period
+	}
+	
+	if ViewType, ok := ReportingexportjobrequestMap["viewType"].(string); ok {
+		o.ViewType = &ViewType
+	}
+	
+	if Filter, ok := ReportingexportjobrequestMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Read, ok := ReportingexportjobrequestMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if Locale, ok := ReportingexportjobrequestMap["locale"].(string); ok {
+		o.Locale = &Locale
+	}
+	
+	if HasFormatDurations, ok := ReportingexportjobrequestMap["hasFormatDurations"].(bool); ok {
+		o.HasFormatDurations = &HasFormatDurations
+	}
+	
+	if HasSplitFilters, ok := ReportingexportjobrequestMap["hasSplitFilters"].(bool); ok {
+		o.HasSplitFilters = &HasSplitFilters
+	}
+	
+	if ExcludeEmptyRows, ok := ReportingexportjobrequestMap["excludeEmptyRows"].(bool); ok {
+		o.ExcludeEmptyRows = &ExcludeEmptyRows
+	}
+	
+	if HasSplitByMedia, ok := ReportingexportjobrequestMap["hasSplitByMedia"].(bool); ok {
+		o.HasSplitByMedia = &HasSplitByMedia
+	}
+	
+	if HasSummaryRow, ok := ReportingexportjobrequestMap["hasSummaryRow"].(bool); ok {
+		o.HasSummaryRow = &HasSummaryRow
+	}
+	
+	if CsvDelimiter, ok := ReportingexportjobrequestMap["csvDelimiter"].(string); ok {
+		o.CsvDelimiter = &CsvDelimiter
+	}
+	
+	if SelectedColumns, ok := ReportingexportjobrequestMap["selectedColumns"].([]interface{}); ok {
+		SelectedColumnsString, _ := json.Marshal(SelectedColumns)
+		json.Unmarshal(SelectedColumnsString, &o.SelectedColumns)
+	}
+	
+	if HasCustomParticipantAttributes, ok := ReportingexportjobrequestMap["hasCustomParticipantAttributes"].(bool); ok {
+		o.HasCustomParticipantAttributes = &HasCustomParticipantAttributes
+	}
+	
+	if RecipientEmails, ok := ReportingexportjobrequestMap["recipientEmails"].([]interface{}); ok {
+		RecipientEmailsString, _ := json.Marshal(RecipientEmails)
+		json.Unmarshal(RecipientEmailsString, &o.RecipientEmails)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

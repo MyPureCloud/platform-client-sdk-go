@@ -17,24 +17,42 @@ type Draftvalidationresult struct {
 
 }
 
-func (u *Draftvalidationresult) MarshalJSON() ([]byte, error) {
+func (o *Draftvalidationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Draftvalidationresult
-
 	
-
 	return json.Marshal(&struct { 
 		Valid *bool `json:"valid,omitempty"`
 		
 		Errors *[]Errorbody `json:"errors,omitempty"`
 		*Alias
 	}{ 
-		Valid: u.Valid,
+		Valid: o.Valid,
 		
-		Errors: u.Errors,
-		Alias:    (*Alias)(u),
+		Errors: o.Errors,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Draftvalidationresult) UnmarshalJSON(b []byte) error {
+	var DraftvalidationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &DraftvalidationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Valid, ok := DraftvalidationresultMap["valid"].(bool); ok {
+		o.Valid = &Valid
+	}
+	
+	if Errors, ok := DraftvalidationresultMap["errors"].([]interface{}); ok {
+		ErrorsString, _ := json.Marshal(Errors)
+		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

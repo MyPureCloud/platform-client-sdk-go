@@ -41,13 +41,11 @@ type Sipsearchresult struct {
 
 }
 
-func (u *Sipsearchresult) MarshalJSON() ([]byte, error) {
+func (o *Sipsearchresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sipsearchresult
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Sipsearchresult) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Sid: u.Sid,
+		Sid: o.Sid,
 		
-		Auth: u.Auth,
+		Auth: o.Auth,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		Data: u.Data,
+		Data: o.Data,
 		
-		Count: u.Count,
+		Count: o.Count,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sipsearchresult) UnmarshalJSON(b []byte) error {
+	var SipsearchresultMap map[string]interface{}
+	err := json.Unmarshal(b, &SipsearchresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SipsearchresultMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Status, ok := SipsearchresultMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if Sid, ok := SipsearchresultMap["sid"].(string); ok {
+		o.Sid = &Sid
+	}
+	
+	if Auth, ok := SipsearchresultMap["auth"].(string); ok {
+		o.Auth = &Auth
+	}
+	
+	if Message, ok := SipsearchresultMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if Data, ok := SipsearchresultMap["data"].([]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+	if Count, ok := SipsearchresultMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if SelfUri, ok := SipsearchresultMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Testexecutionoperationresult struct {
 
 }
 
-func (u *Testexecutionoperationresult) MarshalJSON() ([]byte, error) {
+func (o *Testexecutionoperationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Testexecutionoperationresult
-
 	
-
 	return json.Marshal(&struct { 
 		Step *int `json:"step,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Testexecutionoperationresult) MarshalJSON() ([]byte, error) {
 		VarError *Errorbody `json:"error,omitempty"`
 		*Alias
 	}{ 
-		Step: u.Step,
+		Step: o.Step,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Success: u.Success,
+		Success: o.Success,
 		
-		Result: u.Result,
+		Result: o.Result,
 		
-		VarError: u.VarError,
-		Alias:    (*Alias)(u),
+		VarError: o.VarError,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Testexecutionoperationresult) UnmarshalJSON(b []byte) error {
+	var TestexecutionoperationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &TestexecutionoperationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Step, ok := TestexecutionoperationresultMap["step"].(float64); ok {
+		StepInt := int(Step)
+		o.Step = &StepInt
+	}
+	
+	if Name, ok := TestexecutionoperationresultMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Success, ok := TestexecutionoperationresultMap["success"].(bool); ok {
+		o.Success = &Success
+	}
+	
+	if Result, ok := TestexecutionoperationresultMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+	if VarError, ok := TestexecutionoperationresultMap["error"].(map[string]interface{}); ok {
+		VarErrorString, _ := json.Marshal(VarError)
+		json.Unmarshal(VarErrorString, &o.VarError)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

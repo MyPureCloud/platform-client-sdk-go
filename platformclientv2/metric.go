@@ -54,28 +54,26 @@ type Metric struct {
 
 }
 
-func (u *Metric) MarshalJSON() ([]byte, error) {
+func (o *Metric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Metric
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateUnlinked := new(string)
-	if u.DateUnlinked != nil {
-		*DateUnlinked = timeutil.Strftime(u.DateUnlinked, "%Y-%m-%d")
+	if o.DateUnlinked != nil {
+		*DateUnlinked = timeutil.Strftime(o.DateUnlinked, "%Y-%m-%d")
 	} else {
 		DateUnlinked = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -100,29 +98,89 @@ func (u *Metric) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		MetricDefinitionId: u.MetricDefinitionId,
+		MetricDefinitionId: o.MetricDefinitionId,
 		
-		ExternalMetricDefinitionId: u.ExternalMetricDefinitionId,
+		ExternalMetricDefinitionId: o.ExternalMetricDefinitionId,
 		
-		Objective: u.Objective,
+		Objective: o.Objective,
 		
-		PerformanceProfileId: u.PerformanceProfileId,
+		PerformanceProfileId: o.PerformanceProfileId,
 		
-		LinkedMetric: u.LinkedMetric,
+		LinkedMetric: o.LinkedMetric,
 		
 		DateCreated: DateCreated,
 		
 		DateUnlinked: DateUnlinked,
 		
-		SourcePerformanceProfile: u.SourcePerformanceProfile,
+		SourcePerformanceProfile: o.SourcePerformanceProfile,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Metric) UnmarshalJSON(b []byte) error {
+	var MetricMap map[string]interface{}
+	err := json.Unmarshal(b, &MetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MetricMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MetricMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if MetricDefinitionId, ok := MetricMap["metricDefinitionId"].(string); ok {
+		o.MetricDefinitionId = &MetricDefinitionId
+	}
+	
+	if ExternalMetricDefinitionId, ok := MetricMap["externalMetricDefinitionId"].(string); ok {
+		o.ExternalMetricDefinitionId = &ExternalMetricDefinitionId
+	}
+	
+	if Objective, ok := MetricMap["objective"].(map[string]interface{}); ok {
+		ObjectiveString, _ := json.Marshal(Objective)
+		json.Unmarshal(ObjectiveString, &o.Objective)
+	}
+	
+	if PerformanceProfileId, ok := MetricMap["performanceProfileId"].(string); ok {
+		o.PerformanceProfileId = &PerformanceProfileId
+	}
+	
+	if LinkedMetric, ok := MetricMap["linkedMetric"].(map[string]interface{}); ok {
+		LinkedMetricString, _ := json.Marshal(LinkedMetric)
+		json.Unmarshal(LinkedMetricString, &o.LinkedMetric)
+	}
+	
+	if dateCreatedString, ok := MetricMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateUnlinkedString, ok := MetricMap["dateUnlinked"].(string); ok {
+		DateUnlinked, _ := time.Parse("2006-01-02", dateUnlinkedString)
+		o.DateUnlinked = &DateUnlinked
+	}
+	
+	if SourcePerformanceProfile, ok := MetricMap["sourcePerformanceProfile"].(map[string]interface{}); ok {
+		SourcePerformanceProfileString, _ := json.Marshal(SourcePerformanceProfile)
+		json.Unmarshal(SourcePerformanceProfileString, &o.SourcePerformanceProfile)
+	}
+	
+	if SelfUri, ok := MetricMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

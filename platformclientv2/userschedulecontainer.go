@@ -21,13 +21,11 @@ type Userschedulecontainer struct {
 
 }
 
-func (u *Userschedulecontainer) MarshalJSON() ([]byte, error) {
+func (o *Userschedulecontainer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userschedulecontainer
-
 	
-
 	return json.Marshal(&struct { 
 		ManagementUnitTimeZone *string `json:"managementUnitTimeZone,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Userschedulecontainer) MarshalJSON() ([]byte, error) {
 		UserSchedules *map[string]Userschedule `json:"userSchedules,omitempty"`
 		*Alias
 	}{ 
-		ManagementUnitTimeZone: u.ManagementUnitTimeZone,
+		ManagementUnitTimeZone: o.ManagementUnitTimeZone,
 		
-		PublishedSchedules: u.PublishedSchedules,
+		PublishedSchedules: o.PublishedSchedules,
 		
-		UserSchedules: u.UserSchedules,
-		Alias:    (*Alias)(u),
+		UserSchedules: o.UserSchedules,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userschedulecontainer) UnmarshalJSON(b []byte) error {
+	var UserschedulecontainerMap map[string]interface{}
+	err := json.Unmarshal(b, &UserschedulecontainerMap)
+	if err != nil {
+		return err
+	}
+	
+	if ManagementUnitTimeZone, ok := UserschedulecontainerMap["managementUnitTimeZone"].(string); ok {
+		o.ManagementUnitTimeZone = &ManagementUnitTimeZone
+	}
+	
+	if PublishedSchedules, ok := UserschedulecontainerMap["publishedSchedules"].([]interface{}); ok {
+		PublishedSchedulesString, _ := json.Marshal(PublishedSchedules)
+		json.Unmarshal(PublishedSchedulesString, &o.PublishedSchedules)
+	}
+	
+	if UserSchedules, ok := UserschedulecontainerMap["userSchedules"].(map[string]interface{}); ok {
+		UserSchedulesString, _ := json.Marshal(UserSchedules)
+		json.Unmarshal(UserSchedulesString, &o.UserSchedules)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

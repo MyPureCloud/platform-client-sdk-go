@@ -45,13 +45,11 @@ type Reportmetadata struct {
 
 }
 
-func (u *Reportmetadata) MarshalJSON() ([]byte, error) {
+func (o *Reportmetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportmetadata
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Reportmetadata) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Keywords: u.Keywords,
+		Keywords: o.Keywords,
 		
-		AvailableLocales: u.AvailableLocales,
+		AvailableLocales: o.AvailableLocales,
 		
-		Parameters: u.Parameters,
+		Parameters: o.Parameters,
 		
-		ExampleUrl: u.ExampleUrl,
+		ExampleUrl: o.ExampleUrl,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportmetadata) UnmarshalJSON(b []byte) error {
+	var ReportmetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportmetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReportmetadataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ReportmetadataMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Title, ok := ReportmetadataMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Description, ok := ReportmetadataMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Keywords, ok := ReportmetadataMap["keywords"].([]interface{}); ok {
+		KeywordsString, _ := json.Marshal(Keywords)
+		json.Unmarshal(KeywordsString, &o.Keywords)
+	}
+	
+	if AvailableLocales, ok := ReportmetadataMap["availableLocales"].([]interface{}); ok {
+		AvailableLocalesString, _ := json.Marshal(AvailableLocales)
+		json.Unmarshal(AvailableLocalesString, &o.AvailableLocales)
+	}
+	
+	if Parameters, ok := ReportmetadataMap["parameters"].([]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+	if ExampleUrl, ok := ReportmetadataMap["exampleUrl"].(string); ok {
+		o.ExampleUrl = &ExampleUrl
+	}
+	
+	if SelfUri, ok := ReportmetadataMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

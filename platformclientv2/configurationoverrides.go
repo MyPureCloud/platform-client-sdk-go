@@ -13,20 +13,33 @@ type Configurationoverrides struct {
 
 }
 
-func (u *Configurationoverrides) MarshalJSON() ([]byte, error) {
+func (o *Configurationoverrides) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Configurationoverrides
-
 	
-
 	return json.Marshal(&struct { 
 		Priority *bool `json:"priority,omitempty"`
 		*Alias
 	}{ 
-		Priority: u.Priority,
-		Alias:    (*Alias)(u),
+		Priority: o.Priority,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Configurationoverrides) UnmarshalJSON(b []byte) error {
+	var ConfigurationoverridesMap map[string]interface{}
+	err := json.Unmarshal(b, &ConfigurationoverridesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Priority, ok := ConfigurationoverridesMap["priority"].(bool); ok {
+		o.Priority = &Priority
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

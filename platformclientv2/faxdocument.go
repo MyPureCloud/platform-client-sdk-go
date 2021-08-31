@@ -82,29 +82,27 @@ type Faxdocument struct {
 
 }
 
-func (u *Faxdocument) MarshalJSON() ([]byte, error) {
+func (o *Faxdocument) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Faxdocument
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -143,43 +141,133 @@ func (u *Faxdocument) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ContentUri: u.ContentUri,
+		ContentUri: o.ContentUri,
 		
-		Workspace: u.Workspace,
+		Workspace: o.Workspace,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		SharingUri: u.SharingUri,
+		SharingUri: o.SharingUri,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		Filename: u.Filename,
+		Filename: o.Filename,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		CallerAddress: u.CallerAddress,
+		CallerAddress: o.CallerAddress,
 		
-		ReceiverAddress: u.ReceiverAddress,
+		ReceiverAddress: o.ReceiverAddress,
 		
-		Thumbnails: u.Thumbnails,
+		Thumbnails: o.Thumbnails,
 		
-		DownloadSharingUri: u.DownloadSharingUri,
+		DownloadSharingUri: o.DownloadSharingUri,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Faxdocument) UnmarshalJSON(b []byte) error {
+	var FaxdocumentMap map[string]interface{}
+	err := json.Unmarshal(b, &FaxdocumentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FaxdocumentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FaxdocumentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := FaxdocumentMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := FaxdocumentMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ContentUri, ok := FaxdocumentMap["contentUri"].(string); ok {
+		o.ContentUri = &ContentUri
+	}
+	
+	if Workspace, ok := FaxdocumentMap["workspace"].(map[string]interface{}); ok {
+		WorkspaceString, _ := json.Marshal(Workspace)
+		json.Unmarshal(WorkspaceString, &o.Workspace)
+	}
+	
+	if CreatedBy, ok := FaxdocumentMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if SharingUri, ok := FaxdocumentMap["sharingUri"].(string); ok {
+		o.SharingUri = &SharingUri
+	}
+	
+	if ContentType, ok := FaxdocumentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if ContentLength, ok := FaxdocumentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if Filename, ok := FaxdocumentMap["filename"].(string); ok {
+		o.Filename = &Filename
+	}
+	
+	if Read, ok := FaxdocumentMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if PageCount, ok := FaxdocumentMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if CallerAddress, ok := FaxdocumentMap["callerAddress"].(string); ok {
+		o.CallerAddress = &CallerAddress
+	}
+	
+	if ReceiverAddress, ok := FaxdocumentMap["receiverAddress"].(string); ok {
+		o.ReceiverAddress = &ReceiverAddress
+	}
+	
+	if Thumbnails, ok := FaxdocumentMap["thumbnails"].([]interface{}); ok {
+		ThumbnailsString, _ := json.Marshal(Thumbnails)
+		json.Unmarshal(ThumbnailsString, &o.Thumbnails)
+	}
+	
+	if DownloadSharingUri, ok := FaxdocumentMap["downloadSharingUri"].(string); ok {
+		o.DownloadSharingUri = &DownloadSharingUri
+	}
+	
+	if SelfUri, ok := FaxdocumentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Contactlistdivisionview struct {
 
 }
 
-func (u *Contactlistdivisionview) MarshalJSON() ([]byte, error) {
+func (o *Contactlistdivisionview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlistdivisionview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,71 @@ func (u *Contactlistdivisionview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		ColumnNames: u.ColumnNames,
+		ColumnNames: o.ColumnNames,
 		
-		PhoneColumns: u.PhoneColumns,
+		PhoneColumns: o.PhoneColumns,
 		
-		ImportStatus: u.ImportStatus,
+		ImportStatus: o.ImportStatus,
 		
-		Size: u.Size,
+		Size: o.Size,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlistdivisionview) UnmarshalJSON(b []byte) error {
+	var ContactlistdivisionviewMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistdivisionviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ContactlistdivisionviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ContactlistdivisionviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := ContactlistdivisionviewMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if ColumnNames, ok := ContactlistdivisionviewMap["columnNames"].([]interface{}); ok {
+		ColumnNamesString, _ := json.Marshal(ColumnNames)
+		json.Unmarshal(ColumnNamesString, &o.ColumnNames)
+	}
+	
+	if PhoneColumns, ok := ContactlistdivisionviewMap["phoneColumns"].([]interface{}); ok {
+		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
+		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
+	}
+	
+	if ImportStatus, ok := ContactlistdivisionviewMap["importStatus"].(map[string]interface{}); ok {
+		ImportStatusString, _ := json.Marshal(ImportStatus)
+		json.Unmarshal(ImportStatusString, &o.ImportStatus)
+	}
+	
+	if Size, ok := ContactlistdivisionviewMap["size"].(float64); ok {
+		SizeInt := int(Size)
+		o.Size = &SizeInt
+	}
+	
+	if SelfUri, ok := ContactlistdivisionviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

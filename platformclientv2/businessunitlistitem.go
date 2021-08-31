@@ -29,13 +29,11 @@ type Businessunitlistitem struct {
 
 }
 
-func (u *Businessunitlistitem) MarshalJSON() ([]byte, error) {
+func (o *Businessunitlistitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Businessunitlistitem
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Businessunitlistitem) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Authorized: u.Authorized,
+		Authorized: o.Authorized,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Businessunitlistitem) UnmarshalJSON(b []byte) error {
+	var BusinessunitlistitemMap map[string]interface{}
+	err := json.Unmarshal(b, &BusinessunitlistitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BusinessunitlistitemMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := BusinessunitlistitemMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Authorized, ok := BusinessunitlistitemMap["authorized"].(bool); ok {
+		o.Authorized = &Authorized
+	}
+	
+	if Division, ok := BusinessunitlistitemMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if SelfUri, ok := BusinessunitlistitemMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

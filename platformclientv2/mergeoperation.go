@@ -21,13 +21,11 @@ type Mergeoperation struct {
 
 }
 
-func (u *Mergeoperation) MarshalJSON() ([]byte, error) {
+func (o *Mergeoperation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mergeoperation
-
 	
-
 	return json.Marshal(&struct { 
 		SourceContact *Addressableentityref `json:"sourceContact,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Mergeoperation) MarshalJSON() ([]byte, error) {
 		ResultingContact *Addressableentityref `json:"resultingContact,omitempty"`
 		*Alias
 	}{ 
-		SourceContact: u.SourceContact,
+		SourceContact: o.SourceContact,
 		
-		TargetContact: u.TargetContact,
+		TargetContact: o.TargetContact,
 		
-		ResultingContact: u.ResultingContact,
-		Alias:    (*Alias)(u),
+		ResultingContact: o.ResultingContact,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mergeoperation) UnmarshalJSON(b []byte) error {
+	var MergeoperationMap map[string]interface{}
+	err := json.Unmarshal(b, &MergeoperationMap)
+	if err != nil {
+		return err
+	}
+	
+	if SourceContact, ok := MergeoperationMap["sourceContact"].(map[string]interface{}); ok {
+		SourceContactString, _ := json.Marshal(SourceContact)
+		json.Unmarshal(SourceContactString, &o.SourceContact)
+	}
+	
+	if TargetContact, ok := MergeoperationMap["targetContact"].(map[string]interface{}); ok {
+		TargetContactString, _ := json.Marshal(TargetContact)
+		json.Unmarshal(TargetContactString, &o.TargetContact)
+	}
+	
+	if ResultingContact, ok := MergeoperationMap["resultingContact"].(map[string]interface{}); ok {
+		ResultingContactString, _ := json.Marshal(ResultingContact)
+		json.Unmarshal(ResultingContactString, &o.ResultingContact)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Queueconversationcalleventtopicerrorbody struct {
 
 }
 
-func (u *Queueconversationcalleventtopicerrorbody) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationcalleventtopicerrorbody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationcalleventtopicerrorbody
-
 	
-
 	return json.Marshal(&struct { 
 		Message *string `json:"message,omitempty"`
 		
@@ -78,27 +76,82 @@ func (u *Queueconversationcalleventtopicerrorbody) MarshalJSON() ([]byte, error)
 		Errors *[]Queueconversationcalleventtopicerrorbody `json:"errors,omitempty"`
 		*Alias
 	}{ 
-		Message: u.Message,
+		Message: o.Message,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		EntityId: u.EntityId,
+		EntityId: o.EntityId,
 		
-		EntityName: u.EntityName,
+		EntityName: o.EntityName,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
+		MessageParams: o.MessageParams,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		Details: u.Details,
+		Details: o.Details,
 		
-		Errors: u.Errors,
-		Alias:    (*Alias)(u),
+		Errors: o.Errors,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationcalleventtopicerrorbody) UnmarshalJSON(b []byte) error {
+	var QueueconversationcalleventtopicerrorbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationcalleventtopicerrorbodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Message, ok := QueueconversationcalleventtopicerrorbodyMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if Code, ok := QueueconversationcalleventtopicerrorbodyMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Status, ok := QueueconversationcalleventtopicerrorbodyMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if EntityId, ok := QueueconversationcalleventtopicerrorbodyMap["entityId"].(string); ok {
+		o.EntityId = &EntityId
+	}
+	
+	if EntityName, ok := QueueconversationcalleventtopicerrorbodyMap["entityName"].(string); ok {
+		o.EntityName = &EntityName
+	}
+	
+	if MessageWithParams, ok := QueueconversationcalleventtopicerrorbodyMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := QueueconversationcalleventtopicerrorbodyMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+	if ContextId, ok := QueueconversationcalleventtopicerrorbodyMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if Details, ok := QueueconversationcalleventtopicerrorbodyMap["details"].([]interface{}); ok {
+		DetailsString, _ := json.Marshal(Details)
+		json.Unmarshal(DetailsString, &o.Details)
+	}
+	
+	if Errors, ok := QueueconversationcalleventtopicerrorbodyMap["errors"].([]interface{}); ok {
+		ErrorsString, _ := json.Marshal(Errors)
+		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

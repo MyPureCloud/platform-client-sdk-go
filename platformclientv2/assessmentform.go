@@ -38,21 +38,19 @@ type Assessmentform struct {
 
 }
 
-func (u *Assessmentform) MarshalJSON() ([]byte, error) {
+func (o *Assessmentform) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assessmentform
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Assessmentform) MarshalJSON() ([]byte, error) {
 		QuestionGroups *[]Assessmentformquestiongroup `json:"questionGroups,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		DateModified: DateModified,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		PassPercent: u.PassPercent,
+		PassPercent: o.PassPercent,
 		
-		QuestionGroups: u.QuestionGroups,
-		Alias:    (*Alias)(u),
+		QuestionGroups: o.QuestionGroups,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assessmentform) UnmarshalJSON(b []byte) error {
+	var AssessmentformMap map[string]interface{}
+	err := json.Unmarshal(b, &AssessmentformMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AssessmentformMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if dateModifiedString, ok := AssessmentformMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ContextId, ok := AssessmentformMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if SelfUri, ok := AssessmentformMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Published, ok := AssessmentformMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if PassPercent, ok := AssessmentformMap["passPercent"].(float64); ok {
+		PassPercentInt := int(PassPercent)
+		o.PassPercent = &PassPercentInt
+	}
+	
+	if QuestionGroups, ok := AssessmentformMap["questionGroups"].([]interface{}); ok {
+		QuestionGroupsString, _ := json.Marshal(QuestionGroups)
+		json.Unmarshal(QuestionGroupsString, &o.QuestionGroups)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

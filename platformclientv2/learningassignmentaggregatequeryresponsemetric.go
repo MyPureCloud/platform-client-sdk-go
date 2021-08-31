@@ -17,24 +17,42 @@ type Learningassignmentaggregatequeryresponsemetric struct {
 
 }
 
-func (u *Learningassignmentaggregatequeryresponsemetric) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentaggregatequeryresponsemetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentaggregatequeryresponsemetric
-
 	
-
 	return json.Marshal(&struct { 
 		Metric *string `json:"metric,omitempty"`
 		
 		Stats *Learningassignmentaggregatequeryresponsestats `json:"stats,omitempty"`
 		*Alias
 	}{ 
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Stats: u.Stats,
-		Alias:    (*Alias)(u),
+		Stats: o.Stats,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentaggregatequeryresponsemetric) UnmarshalJSON(b []byte) error {
+	var LearningassignmentaggregatequeryresponsemetricMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentaggregatequeryresponsemetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metric, ok := LearningassignmentaggregatequeryresponsemetricMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Stats, ok := LearningassignmentaggregatequeryresponsemetricMap["stats"].(map[string]interface{}); ok {
+		StatsString, _ := json.Marshal(Stats)
+		json.Unmarshal(StatsString, &o.Stats)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -50,37 +50,35 @@ type Domainedgesoftwareupdatedto struct {
 
 }
 
-func (u *Domainedgesoftwareupdatedto) MarshalJSON() ([]byte, error) {
+func (o *Domainedgesoftwareupdatedto) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainedgesoftwareupdatedto
-
 	
 	DownloadStartTime := new(string)
-	if u.DownloadStartTime != nil {
+	if o.DownloadStartTime != nil {
 		
-		*DownloadStartTime = timeutil.Strftime(u.DownloadStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DownloadStartTime = timeutil.Strftime(o.DownloadStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DownloadStartTime = nil
 	}
 	
 	ExecuteStartTime := new(string)
-	if u.ExecuteStartTime != nil {
+	if o.ExecuteStartTime != nil {
 		
-		*ExecuteStartTime = timeutil.Strftime(u.ExecuteStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExecuteStartTime = timeutil.Strftime(o.ExecuteStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExecuteStartTime = nil
 	}
 	
 	ExecuteStopTime := new(string)
-	if u.ExecuteStopTime != nil {
+	if o.ExecuteStopTime != nil {
 		
-		*ExecuteStopTime = timeutil.Strftime(u.ExecuteStopTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExecuteStopTime = timeutil.Strftime(o.ExecuteStopTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExecuteStopTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Version *Domainedgesoftwareversiondto `json:"version,omitempty"`
 		
@@ -103,9 +101,9 @@ func (u *Domainedgesoftwareupdatedto) MarshalJSON() ([]byte, error) {
 		Current *bool `json:"current,omitempty"`
 		*Alias
 	}{ 
-		Version: u.Version,
+		Version: o.Version,
 		
-		MaxDownloadRate: u.MaxDownloadRate,
+		MaxDownloadRate: o.MaxDownloadRate,
 		
 		DownloadStartTime: DownloadStartTime,
 		
@@ -113,17 +111,74 @@ func (u *Domainedgesoftwareupdatedto) MarshalJSON() ([]byte, error) {
 		
 		ExecuteStopTime: ExecuteStopTime,
 		
-		ExecuteOnIdle: u.ExecuteOnIdle,
+		ExecuteOnIdle: o.ExecuteOnIdle,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		EdgeUri: u.EdgeUri,
+		EdgeUri: o.EdgeUri,
 		
-		CallDrainingWaitTimeSeconds: u.CallDrainingWaitTimeSeconds,
+		CallDrainingWaitTimeSeconds: o.CallDrainingWaitTimeSeconds,
 		
-		Current: u.Current,
-		Alias:    (*Alias)(u),
+		Current: o.Current,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainedgesoftwareupdatedto) UnmarshalJSON(b []byte) error {
+	var DomainedgesoftwareupdatedtoMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainedgesoftwareupdatedtoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Version, ok := DomainedgesoftwareupdatedtoMap["version"].(map[string]interface{}); ok {
+		VersionString, _ := json.Marshal(Version)
+		json.Unmarshal(VersionString, &o.Version)
+	}
+	
+	if MaxDownloadRate, ok := DomainedgesoftwareupdatedtoMap["maxDownloadRate"].(float64); ok {
+		MaxDownloadRateInt := int(MaxDownloadRate)
+		o.MaxDownloadRate = &MaxDownloadRateInt
+	}
+	
+	if downloadStartTimeString, ok := DomainedgesoftwareupdatedtoMap["downloadStartTime"].(string); ok {
+		DownloadStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", downloadStartTimeString)
+		o.DownloadStartTime = &DownloadStartTime
+	}
+	
+	if executeStartTimeString, ok := DomainedgesoftwareupdatedtoMap["executeStartTime"].(string); ok {
+		ExecuteStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", executeStartTimeString)
+		o.ExecuteStartTime = &ExecuteStartTime
+	}
+	
+	if executeStopTimeString, ok := DomainedgesoftwareupdatedtoMap["executeStopTime"].(string); ok {
+		ExecuteStopTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", executeStopTimeString)
+		o.ExecuteStopTime = &ExecuteStopTime
+	}
+	
+	if ExecuteOnIdle, ok := DomainedgesoftwareupdatedtoMap["executeOnIdle"].(bool); ok {
+		o.ExecuteOnIdle = &ExecuteOnIdle
+	}
+	
+	if Status, ok := DomainedgesoftwareupdatedtoMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if EdgeUri, ok := DomainedgesoftwareupdatedtoMap["edgeUri"].(string); ok {
+		o.EdgeUri = &EdgeUri
+	}
+	
+	if CallDrainingWaitTimeSeconds, ok := DomainedgesoftwareupdatedtoMap["callDrainingWaitTimeSeconds"].(float64); ok {
+		CallDrainingWaitTimeSecondsInt := int(CallDrainingWaitTimeSeconds)
+		o.CallDrainingWaitTimeSeconds = &CallDrainingWaitTimeSecondsInt
+	}
+	
+	if Current, ok := DomainedgesoftwareupdatedtoMap["current"].(bool); ok {
+		o.Current = &Current
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

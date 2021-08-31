@@ -90,37 +90,35 @@ type Voicemailmessage struct {
 
 }
 
-func (u *Voicemailmessage) MarshalJSON() ([]byte, error) {
+func (o *Voicemailmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmessage
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
 	DeletedDate := new(string)
-	if u.DeletedDate != nil {
+	if o.DeletedDate != nil {
 		
-		*DeletedDate = timeutil.Strftime(u.DeletedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DeletedDate = timeutil.Strftime(o.DeletedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DeletedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -163,15 +161,15 @@ func (u *Voicemailmessage) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		Read: u.Read,
+		Read: o.Read,
 		
-		AudioRecordingDurationSeconds: u.AudioRecordingDurationSeconds,
+		AudioRecordingDurationSeconds: o.AudioRecordingDurationSeconds,
 		
-		AudioRecordingSizeBytes: u.AudioRecordingSizeBytes,
+		AudioRecordingSizeBytes: o.AudioRecordingSizeBytes,
 		
 		CreatedDate: CreatedDate,
 		
@@ -179,31 +177,135 @@ func (u *Voicemailmessage) MarshalJSON() ([]byte, error) {
 		
 		DeletedDate: DeletedDate,
 		
-		CallerAddress: u.CallerAddress,
+		CallerAddress: o.CallerAddress,
 		
-		CallerName: u.CallerName,
+		CallerName: o.CallerName,
 		
-		CallerUser: u.CallerUser,
+		CallerUser: o.CallerUser,
 		
-		Deleted: u.Deleted,
+		Deleted: o.Deleted,
 		
-		Note: u.Note,
+		Note: o.Note,
 		
-		User: u.User,
+		User: o.User,
 		
-		Group: u.Group,
+		Group: o.Group,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		CopiedFrom: u.CopiedFrom,
+		CopiedFrom: o.CopiedFrom,
 		
-		CopiedTo: u.CopiedTo,
+		CopiedTo: o.CopiedTo,
 		
-		DeleteRetentionPolicy: u.DeleteRetentionPolicy,
+		DeleteRetentionPolicy: o.DeleteRetentionPolicy,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailmessage) UnmarshalJSON(b []byte) error {
+	var VoicemailmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := VoicemailmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Conversation, ok := VoicemailmessageMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if Read, ok := VoicemailmessageMap["read"].(bool); ok {
+		o.Read = &Read
+	}
+	
+	if AudioRecordingDurationSeconds, ok := VoicemailmessageMap["audioRecordingDurationSeconds"].(float64); ok {
+		AudioRecordingDurationSecondsInt := int(AudioRecordingDurationSeconds)
+		o.AudioRecordingDurationSeconds = &AudioRecordingDurationSecondsInt
+	}
+	
+	if AudioRecordingSizeBytes, ok := VoicemailmessageMap["audioRecordingSizeBytes"].(float64); ok {
+		AudioRecordingSizeBytesInt := int(AudioRecordingSizeBytes)
+		o.AudioRecordingSizeBytes = &AudioRecordingSizeBytesInt
+	}
+	
+	if createdDateString, ok := VoicemailmessageMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := VoicemailmessageMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if deletedDateString, ok := VoicemailmessageMap["deletedDate"].(string); ok {
+		DeletedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deletedDateString)
+		o.DeletedDate = &DeletedDate
+	}
+	
+	if CallerAddress, ok := VoicemailmessageMap["callerAddress"].(string); ok {
+		o.CallerAddress = &CallerAddress
+	}
+	
+	if CallerName, ok := VoicemailmessageMap["callerName"].(string); ok {
+		o.CallerName = &CallerName
+	}
+	
+	if CallerUser, ok := VoicemailmessageMap["callerUser"].(map[string]interface{}); ok {
+		CallerUserString, _ := json.Marshal(CallerUser)
+		json.Unmarshal(CallerUserString, &o.CallerUser)
+	}
+	
+	if Deleted, ok := VoicemailmessageMap["deleted"].(bool); ok {
+		o.Deleted = &Deleted
+	}
+	
+	if Note, ok := VoicemailmessageMap["note"].(string); ok {
+		o.Note = &Note
+	}
+	
+	if User, ok := VoicemailmessageMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Group, ok := VoicemailmessageMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if Queue, ok := VoicemailmessageMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if CopiedFrom, ok := VoicemailmessageMap["copiedFrom"].(map[string]interface{}); ok {
+		CopiedFromString, _ := json.Marshal(CopiedFrom)
+		json.Unmarshal(CopiedFromString, &o.CopiedFrom)
+	}
+	
+	if CopiedTo, ok := VoicemailmessageMap["copiedTo"].([]interface{}); ok {
+		CopiedToString, _ := json.Marshal(CopiedTo)
+		json.Unmarshal(CopiedToString, &o.CopiedTo)
+	}
+	
+	if DeleteRetentionPolicy, ok := VoicemailmessageMap["deleteRetentionPolicy"].(map[string]interface{}); ok {
+		DeleteRetentionPolicyString, _ := json.Marshal(DeleteRetentionPolicy)
+		json.Unmarshal(DeleteRetentionPolicyString, &o.DeleteRetentionPolicy)
+	}
+	
+	if SelfUri, ok := VoicemailmessageMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

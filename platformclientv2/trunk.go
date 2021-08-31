@@ -122,29 +122,27 @@ type Trunk struct {
 
 }
 
-func (u *Trunk) MarshalJSON() ([]byte, error) {
+func (o *Trunk) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunk
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -203,63 +201,200 @@ func (u *Trunk) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		TrunkType: u.TrunkType,
+		TrunkType: o.TrunkType,
 		
-		Edge: u.Edge,
+		Edge: o.Edge,
 		
-		TrunkBase: u.TrunkBase,
+		TrunkBase: o.TrunkBase,
 		
-		TrunkMetabase: u.TrunkMetabase,
+		TrunkMetabase: o.TrunkMetabase,
 		
-		EdgeGroup: u.EdgeGroup,
+		EdgeGroup: o.EdgeGroup,
 		
-		InService: u.InService,
+		InService: o.InService,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		LogicalInterface: u.LogicalInterface,
+		LogicalInterface: o.LogicalInterface,
 		
-		ConnectedStatus: u.ConnectedStatus,
+		ConnectedStatus: o.ConnectedStatus,
 		
-		OptionsStatus: u.OptionsStatus,
+		OptionsStatus: o.OptionsStatus,
 		
-		RegistersStatus: u.RegistersStatus,
+		RegistersStatus: o.RegistersStatus,
 		
-		IpStatus: u.IpStatus,
+		IpStatus: o.IpStatus,
 		
-		OptionsEnabledStatus: u.OptionsEnabledStatus,
+		OptionsEnabledStatus: o.OptionsEnabledStatus,
 		
-		RegistersEnabledStatus: u.RegistersEnabledStatus,
+		RegistersEnabledStatus: o.RegistersEnabledStatus,
 		
-		Family: u.Family,
+		Family: o.Family,
 		
-		ProxyAddressList: u.ProxyAddressList,
+		ProxyAddressList: o.ProxyAddressList,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunk) UnmarshalJSON(b []byte) error {
+	var TrunkMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrunkMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TrunkMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := TrunkMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := TrunkMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := TrunkMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := TrunkMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := TrunkMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := TrunkMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := TrunkMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := TrunkMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := TrunkMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if TrunkType, ok := TrunkMap["trunkType"].(string); ok {
+		o.TrunkType = &TrunkType
+	}
+	
+	if Edge, ok := TrunkMap["edge"].(map[string]interface{}); ok {
+		EdgeString, _ := json.Marshal(Edge)
+		json.Unmarshal(EdgeString, &o.Edge)
+	}
+	
+	if TrunkBase, ok := TrunkMap["trunkBase"].(map[string]interface{}); ok {
+		TrunkBaseString, _ := json.Marshal(TrunkBase)
+		json.Unmarshal(TrunkBaseString, &o.TrunkBase)
+	}
+	
+	if TrunkMetabase, ok := TrunkMap["trunkMetabase"].(map[string]interface{}); ok {
+		TrunkMetabaseString, _ := json.Marshal(TrunkMetabase)
+		json.Unmarshal(TrunkMetabaseString, &o.TrunkMetabase)
+	}
+	
+	if EdgeGroup, ok := TrunkMap["edgeGroup"].(map[string]interface{}); ok {
+		EdgeGroupString, _ := json.Marshal(EdgeGroup)
+		json.Unmarshal(EdgeGroupString, &o.EdgeGroup)
+	}
+	
+	if InService, ok := TrunkMap["inService"].(bool); ok {
+		o.InService = &InService
+	}
+	
+	if Enabled, ok := TrunkMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if LogicalInterface, ok := TrunkMap["logicalInterface"].(map[string]interface{}); ok {
+		LogicalInterfaceString, _ := json.Marshal(LogicalInterface)
+		json.Unmarshal(LogicalInterfaceString, &o.LogicalInterface)
+	}
+	
+	if ConnectedStatus, ok := TrunkMap["connectedStatus"].(map[string]interface{}); ok {
+		ConnectedStatusString, _ := json.Marshal(ConnectedStatus)
+		json.Unmarshal(ConnectedStatusString, &o.ConnectedStatus)
+	}
+	
+	if OptionsStatus, ok := TrunkMap["optionsStatus"].([]interface{}); ok {
+		OptionsStatusString, _ := json.Marshal(OptionsStatus)
+		json.Unmarshal(OptionsStatusString, &o.OptionsStatus)
+	}
+	
+	if RegistersStatus, ok := TrunkMap["registersStatus"].([]interface{}); ok {
+		RegistersStatusString, _ := json.Marshal(RegistersStatus)
+		json.Unmarshal(RegistersStatusString, &o.RegistersStatus)
+	}
+	
+	if IpStatus, ok := TrunkMap["ipStatus"].(map[string]interface{}); ok {
+		IpStatusString, _ := json.Marshal(IpStatus)
+		json.Unmarshal(IpStatusString, &o.IpStatus)
+	}
+	
+	if OptionsEnabledStatus, ok := TrunkMap["optionsEnabledStatus"].(string); ok {
+		o.OptionsEnabledStatus = &OptionsEnabledStatus
+	}
+	
+	if RegistersEnabledStatus, ok := TrunkMap["registersEnabledStatus"].(string); ok {
+		o.RegistersEnabledStatus = &RegistersEnabledStatus
+	}
+	
+	if Family, ok := TrunkMap["family"].(float64); ok {
+		FamilyInt := int(Family)
+		o.Family = &FamilyInt
+	}
+	
+	if ProxyAddressList, ok := TrunkMap["proxyAddressList"].([]interface{}); ok {
+		ProxyAddressListString, _ := json.Marshal(ProxyAddressList)
+		json.Unmarshal(ProxyAddressListString, &o.ProxyAddressList)
+	}
+	
+	if SelfUri, ok := TrunkMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

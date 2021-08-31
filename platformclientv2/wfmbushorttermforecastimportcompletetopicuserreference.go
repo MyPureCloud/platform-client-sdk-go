@@ -13,20 +13,33 @@ type Wfmbushorttermforecastimportcompletetopicuserreference struct {
 
 }
 
-func (u *Wfmbushorttermforecastimportcompletetopicuserreference) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastimportcompletetopicuserreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastimportcompletetopicuserreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastimportcompletetopicuserreference) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastimportcompletetopicuserreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastimportcompletetopicuserreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbushorttermforecastimportcompletetopicuserreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

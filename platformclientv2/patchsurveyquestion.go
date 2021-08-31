@@ -29,13 +29,11 @@ type Patchsurveyquestion struct {
 
 }
 
-func (u *Patchsurveyquestion) MarshalJSON() ([]byte, error) {
+func (o *Patchsurveyquestion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchsurveyquestion
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Patchsurveyquestion) MarshalJSON() ([]byte, error) {
 		IsMandatory *bool `json:"isMandatory,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Label: u.Label,
+		Label: o.Label,
 		
-		CustomerProperty: u.CustomerProperty,
+		CustomerProperty: o.CustomerProperty,
 		
-		Choices: u.Choices,
+		Choices: o.Choices,
 		
-		IsMandatory: u.IsMandatory,
-		Alias:    (*Alias)(u),
+		IsMandatory: o.IsMandatory,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchsurveyquestion) UnmarshalJSON(b []byte) error {
+	var PatchsurveyquestionMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchsurveyquestionMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := PatchsurveyquestionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Label, ok := PatchsurveyquestionMap["label"].(string); ok {
+		o.Label = &Label
+	}
+	
+	if CustomerProperty, ok := PatchsurveyquestionMap["customerProperty"].(string); ok {
+		o.CustomerProperty = &CustomerProperty
+	}
+	
+	if Choices, ok := PatchsurveyquestionMap["choices"].([]interface{}); ok {
+		ChoicesString, _ := json.Marshal(Choices)
+		json.Unmarshal(ChoicesString, &o.Choices)
+	}
+	
+	if IsMandatory, ok := PatchsurveyquestionMap["isMandatory"].(bool); ok {
+		o.IsMandatory = &IsMandatory
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Scimuserextensions struct {
 
 }
 
-func (u *Scimuserextensions) MarshalJSON() ([]byte, error) {
+func (o *Scimuserextensions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimuserextensions
-
 	
-
 	return json.Marshal(&struct { 
 		RoutingSkills *[]Scimuserroutingskill `json:"routingSkills,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Scimuserextensions) MarshalJSON() ([]byte, error) {
 		ExternalIds *[]Scimgenesysuserexternalid `json:"externalIds,omitempty"`
 		*Alias
 	}{ 
-		RoutingSkills: u.RoutingSkills,
+		RoutingSkills: o.RoutingSkills,
 		
-		RoutingLanguages: u.RoutingLanguages,
+		RoutingLanguages: o.RoutingLanguages,
 		
-		ExternalIds: u.ExternalIds,
-		Alias:    (*Alias)(u),
+		ExternalIds: o.ExternalIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimuserextensions) UnmarshalJSON(b []byte) error {
+	var ScimuserextensionsMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimuserextensionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if RoutingSkills, ok := ScimuserextensionsMap["routingSkills"].([]interface{}); ok {
+		RoutingSkillsString, _ := json.Marshal(RoutingSkills)
+		json.Unmarshal(RoutingSkillsString, &o.RoutingSkills)
+	}
+	
+	if RoutingLanguages, ok := ScimuserextensionsMap["routingLanguages"].([]interface{}); ok {
+		RoutingLanguagesString, _ := json.Marshal(RoutingLanguages)
+		json.Unmarshal(RoutingLanguagesString, &o.RoutingLanguages)
+	}
+	
+	if ExternalIds, ok := ScimuserextensionsMap["externalIds"].([]interface{}); ok {
+		ExternalIdsString, _ := json.Marshal(ExternalIds)
+		json.Unmarshal(ExternalIdsString, &o.ExternalIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

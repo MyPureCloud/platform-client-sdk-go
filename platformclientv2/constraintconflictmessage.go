@@ -17,24 +17,43 @@ type Constraintconflictmessage struct {
 
 }
 
-func (u *Constraintconflictmessage) MarshalJSON() ([]byte, error) {
+func (o *Constraintconflictmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Constraintconflictmessage
-
 	
-
 	return json.Marshal(&struct { 
 		Message *Workplanconstraintconflictmessage `json:"message,omitempty"`
 		
 		ConflictedConstraintMessages *[]Workplanconstraintmessage `json:"conflictedConstraintMessages,omitempty"`
 		*Alias
 	}{ 
-		Message: u.Message,
+		Message: o.Message,
 		
-		ConflictedConstraintMessages: u.ConflictedConstraintMessages,
-		Alias:    (*Alias)(u),
+		ConflictedConstraintMessages: o.ConflictedConstraintMessages,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Constraintconflictmessage) UnmarshalJSON(b []byte) error {
+	var ConstraintconflictmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &ConstraintconflictmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Message, ok := ConstraintconflictmessageMap["message"].(map[string]interface{}); ok {
+		MessageString, _ := json.Marshal(Message)
+		json.Unmarshal(MessageString, &o.Message)
+	}
+	
+	if ConflictedConstraintMessages, ok := ConstraintconflictmessageMap["conflictedConstraintMessages"].([]interface{}); ok {
+		ConflictedConstraintMessagesString, _ := json.Marshal(ConflictedConstraintMessages)
+		json.Unmarshal(ConflictedConstraintMessagesString, &o.ConflictedConstraintMessages)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

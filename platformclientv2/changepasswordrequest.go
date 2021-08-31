@@ -13,20 +13,33 @@ type Changepasswordrequest struct {
 
 }
 
-func (u *Changepasswordrequest) MarshalJSON() ([]byte, error) {
+func (o *Changepasswordrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Changepasswordrequest
-
 	
-
 	return json.Marshal(&struct { 
 		NewPassword *string `json:"newPassword,omitempty"`
 		*Alias
 	}{ 
-		NewPassword: u.NewPassword,
-		Alias:    (*Alias)(u),
+		NewPassword: o.NewPassword,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Changepasswordrequest) UnmarshalJSON(b []byte) error {
+	var ChangepasswordrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ChangepasswordrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if NewPassword, ok := ChangepasswordrequestMap["newPassword"].(string); ok {
+		o.NewPassword = &NewPassword
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

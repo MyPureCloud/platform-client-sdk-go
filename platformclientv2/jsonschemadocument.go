@@ -41,13 +41,11 @@ type Jsonschemadocument struct {
 
 }
 
-func (u *Jsonschemadocument) MarshalJSON() ([]byte, error) {
+func (o *Jsonschemadocument) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Jsonschemadocument
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Jsonschemadocument) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Required: u.Required,
+		Required: o.Required,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Jsonschemadocument) UnmarshalJSON(b []byte) error {
+	var JsonschemadocumentMap map[string]interface{}
+	err := json.Unmarshal(b, &JsonschemadocumentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := JsonschemadocumentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Schema, ok := JsonschemadocumentMap["$schema"].(string); ok {
+		o.Schema = &Schema
+	}
+	
+	if Title, ok := JsonschemadocumentMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Description, ok := JsonschemadocumentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if VarType, ok := JsonschemadocumentMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Required, ok := JsonschemadocumentMap["required"].([]interface{}); ok {
+		RequiredString, _ := json.Marshal(Required)
+		json.Unmarshal(RequiredString, &o.Required)
+	}
+	
+	if Properties, ok := JsonschemadocumentMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if AdditionalProperties, ok := JsonschemadocumentMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

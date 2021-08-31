@@ -30,29 +30,27 @@ type Benefitassessmentjob struct {
 
 }
 
-func (u *Benefitassessmentjob) MarshalJSON() ([]byte, error) {
+func (o *Benefitassessmentjob) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Benefitassessmentjob
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -65,17 +63,50 @@ func (u *Benefitassessmentjob) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Benefitassessmentjob) UnmarshalJSON(b []byte) error {
+	var BenefitassessmentjobMap map[string]interface{}
+	err := json.Unmarshal(b, &BenefitassessmentjobMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BenefitassessmentjobMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := BenefitassessmentjobMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateCreatedString, ok := BenefitassessmentjobMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := BenefitassessmentjobMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if SelfUri, ok := BenefitassessmentjobMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

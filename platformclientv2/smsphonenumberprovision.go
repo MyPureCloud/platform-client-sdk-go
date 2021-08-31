@@ -37,13 +37,11 @@ type Smsphonenumberprovision struct {
 
 }
 
-func (u *Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
+func (o *Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsphonenumberprovision
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,60 @@ func (u *Smsphonenumberprovision) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		PhoneNumberType: u.PhoneNumberType,
+		PhoneNumberType: o.PhoneNumberType,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
-		AddressId: u.AddressId,
+		AddressId: o.AddressId,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsphonenumberprovision) UnmarshalJSON(b []byte) error {
+	var SmsphonenumberprovisionMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsphonenumberprovisionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SmsphonenumberprovisionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SmsphonenumberprovisionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PhoneNumber, ok := SmsphonenumberprovisionMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if PhoneNumberType, ok := SmsphonenumberprovisionMap["phoneNumberType"].(string); ok {
+		o.PhoneNumberType = &PhoneNumberType
+	}
+	
+	if CountryCode, ok := SmsphonenumberprovisionMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if AddressId, ok := SmsphonenumberprovisionMap["addressId"].(string); ok {
+		o.AddressId = &AddressId
+	}
+	
+	if SelfUri, ok := SmsphonenumberprovisionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

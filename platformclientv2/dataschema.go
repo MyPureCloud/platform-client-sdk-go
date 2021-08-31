@@ -46,21 +46,19 @@ type Dataschema struct {
 
 }
 
-func (u *Dataschema) MarshalJSON() ([]byte, error) {
+func (o *Dataschema) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dataschema
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -81,25 +79,77 @@ func (u *Dataschema) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		AppliesTo: u.AppliesTo,
+		AppliesTo: o.AppliesTo,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		JsonSchema: u.JsonSchema,
+		JsonSchema: o.JsonSchema,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dataschema) UnmarshalJSON(b []byte) error {
+	var DataschemaMap map[string]interface{}
+	err := json.Unmarshal(b, &DataschemaMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DataschemaMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DataschemaMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := DataschemaMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if AppliesTo, ok := DataschemaMap["appliesTo"].([]interface{}); ok {
+		AppliesToString, _ := json.Marshal(AppliesTo)
+		json.Unmarshal(AppliesToString, &o.AppliesTo)
+	}
+	
+	if Enabled, ok := DataschemaMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if CreatedBy, ok := DataschemaMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := DataschemaMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if JsonSchema, ok := DataschemaMap["jsonSchema"].(map[string]interface{}); ok {
+		JsonSchemaString, _ := json.Marshal(JsonSchema)
+		json.Unmarshal(JsonSchemaString, &o.JsonSchema)
+	}
+	
+	if SelfUri, ok := DataschemaMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

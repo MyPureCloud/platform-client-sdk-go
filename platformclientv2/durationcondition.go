@@ -21,13 +21,11 @@ type Durationcondition struct {
 
 }
 
-func (u *Durationcondition) MarshalJSON() ([]byte, error) {
+func (o *Durationcondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Durationcondition
-
 	
-
 	return json.Marshal(&struct { 
 		DurationTarget *string `json:"durationTarget,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Durationcondition) MarshalJSON() ([]byte, error) {
 		DurationRange *string `json:"durationRange,omitempty"`
 		*Alias
 	}{ 
-		DurationTarget: u.DurationTarget,
+		DurationTarget: o.DurationTarget,
 		
-		DurationOperator: u.DurationOperator,
+		DurationOperator: o.DurationOperator,
 		
-		DurationRange: u.DurationRange,
-		Alias:    (*Alias)(u),
+		DurationRange: o.DurationRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Durationcondition) UnmarshalJSON(b []byte) error {
+	var DurationconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &DurationconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if DurationTarget, ok := DurationconditionMap["durationTarget"].(string); ok {
+		o.DurationTarget = &DurationTarget
+	}
+	
+	if DurationOperator, ok := DurationconditionMap["durationOperator"].(string); ok {
+		o.DurationOperator = &DurationOperator
+	}
+	
+	if DurationRange, ok := DurationconditionMap["durationRange"].(string); ok {
+		o.DurationRange = &DurationRange
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

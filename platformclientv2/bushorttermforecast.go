@@ -74,28 +74,26 @@ type Bushorttermforecast struct {
 
 }
 
-func (u *Bushorttermforecast) MarshalJSON() ([]byte, error) {
+func (o *Bushorttermforecast) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bushorttermforecast
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
 	ReferenceStartDate := new(string)
-	if u.ReferenceStartDate != nil {
+	if o.ReferenceStartDate != nil {
 		
-		*ReferenceStartDate = timeutil.Strftime(u.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReferenceStartDate = timeutil.Strftime(o.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReferenceStartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -130,39 +128,123 @@ func (u *Bushorttermforecast) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		CreationMethod: u.CreationMethod,
+		CreationMethod: o.CreationMethod,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Legacy: u.Legacy,
+		Legacy: o.Legacy,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		CanUseForScheduling: u.CanUseForScheduling,
+		CanUseForScheduling: o.CanUseForScheduling,
 		
 		ReferenceStartDate: ReferenceStartDate,
 		
-		SourceDays: u.SourceDays,
+		SourceDays: o.SourceDays,
 		
-		Modifications: u.Modifications,
+		Modifications: o.Modifications,
 		
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		PlanningGroupsVersion: u.PlanningGroupsVersion,
+		PlanningGroupsVersion: o.PlanningGroupsVersion,
 		
-		PlanningGroups: u.PlanningGroups,
+		PlanningGroups: o.PlanningGroups,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bushorttermforecast) UnmarshalJSON(b []byte) error {
+	var BushorttermforecastMap map[string]interface{}
+	err := json.Unmarshal(b, &BushorttermforecastMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BushorttermforecastMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BushorttermforecastMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if WeekCount, ok := BushorttermforecastMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if CreationMethod, ok := BushorttermforecastMap["creationMethod"].(string); ok {
+		o.CreationMethod = &CreationMethod
+	}
+	
+	if Description, ok := BushorttermforecastMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Legacy, ok := BushorttermforecastMap["legacy"].(bool); ok {
+		o.Legacy = &Legacy
+	}
+	
+	if Metadata, ok := BushorttermforecastMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if CanUseForScheduling, ok := BushorttermforecastMap["canUseForScheduling"].(bool); ok {
+		o.CanUseForScheduling = &CanUseForScheduling
+	}
+	
+	if referenceStartDateString, ok := BushorttermforecastMap["referenceStartDate"].(string); ok {
+		ReferenceStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", referenceStartDateString)
+		o.ReferenceStartDate = &ReferenceStartDate
+	}
+	
+	if SourceDays, ok := BushorttermforecastMap["sourceDays"].([]interface{}); ok {
+		SourceDaysString, _ := json.Marshal(SourceDays)
+		json.Unmarshal(SourceDaysString, &o.SourceDays)
+	}
+	
+	if Modifications, ok := BushorttermforecastMap["modifications"].([]interface{}); ok {
+		ModificationsString, _ := json.Marshal(Modifications)
+		json.Unmarshal(ModificationsString, &o.Modifications)
+	}
+	
+	if GenerationResults, ok := BushorttermforecastMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if TimeZone, ok := BushorttermforecastMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if PlanningGroupsVersion, ok := BushorttermforecastMap["planningGroupsVersion"].(float64); ok {
+		PlanningGroupsVersionInt := int(PlanningGroupsVersion)
+		o.PlanningGroupsVersion = &PlanningGroupsVersionInt
+	}
+	
+	if PlanningGroups, ok := BushorttermforecastMap["planningGroups"].(map[string]interface{}); ok {
+		PlanningGroupsString, _ := json.Marshal(PlanningGroups)
+		json.Unmarshal(PlanningGroupsString, &o.PlanningGroups)
+	}
+	
+	if SelfUri, ok := BushorttermforecastMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

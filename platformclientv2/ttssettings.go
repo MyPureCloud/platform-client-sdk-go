@@ -17,24 +17,42 @@ type Ttssettings struct {
 
 }
 
-func (u *Ttssettings) MarshalJSON() ([]byte, error) {
+func (o *Ttssettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ttssettings
-
 	
-
 	return json.Marshal(&struct { 
 		DefaultEngine *string `json:"defaultEngine,omitempty"`
 		
 		LanguageOverrides *[]Languageoverride `json:"languageOverrides,omitempty"`
 		*Alias
 	}{ 
-		DefaultEngine: u.DefaultEngine,
+		DefaultEngine: o.DefaultEngine,
 		
-		LanguageOverrides: u.LanguageOverrides,
-		Alias:    (*Alias)(u),
+		LanguageOverrides: o.LanguageOverrides,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ttssettings) UnmarshalJSON(b []byte) error {
+	var TtssettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &TtssettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if DefaultEngine, ok := TtssettingsMap["defaultEngine"].(string); ok {
+		o.DefaultEngine = &DefaultEngine
+	}
+	
+	if LanguageOverrides, ok := TtssettingsMap["languageOverrides"].([]interface{}); ok {
+		LanguageOverridesString, _ := json.Marshal(LanguageOverrides)
+		json.Unmarshal(LanguageOverridesString, &o.LanguageOverrides)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

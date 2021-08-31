@@ -37,13 +37,11 @@ type Dialercontactlistfilterconfigchangefilterpredicate struct {
 
 }
 
-func (u *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]byte, error) {
+func (o *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontactlistfilterconfigchangefilterpredicate
-
 	
-
 	return json.Marshal(&struct { 
 		Column *string `json:"column,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]by
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Column: u.Column,
+		Column: o.Column,
 		
-		ColumnType: u.ColumnType,
+		ColumnType: o.ColumnType,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
+		VarRange: o.VarRange,
 		
-		Inverted: u.Inverted,
+		Inverted: o.Inverted,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercontactlistfilterconfigchangefilterpredicate) UnmarshalJSON(b []byte) error {
+	var DialercontactlistfilterconfigchangefilterpredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercontactlistfilterconfigchangefilterpredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Column, ok := DialercontactlistfilterconfigchangefilterpredicateMap["column"].(string); ok {
+		o.Column = &Column
+	}
+	
+	if ColumnType, ok := DialercontactlistfilterconfigchangefilterpredicateMap["columnType"].(string); ok {
+		o.ColumnType = &ColumnType
+	}
+	
+	if Operator, ok := DialercontactlistfilterconfigchangefilterpredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := DialercontactlistfilterconfigchangefilterpredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := DialercontactlistfilterconfigchangefilterpredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+	if Inverted, ok := DialercontactlistfilterconfigchangefilterpredicateMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+	
+	if AdditionalProperties, ok := DialercontactlistfilterconfigchangefilterpredicateMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

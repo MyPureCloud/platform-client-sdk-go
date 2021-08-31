@@ -21,13 +21,11 @@ type Userlicenses struct {
 
 }
 
-func (u *Userlicenses) MarshalJSON() ([]byte, error) {
+func (o *Userlicenses) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userlicenses
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Userlicenses) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Licenses: u.Licenses,
+		Licenses: o.Licenses,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userlicenses) UnmarshalJSON(b []byte) error {
+	var UserlicensesMap map[string]interface{}
+	err := json.Unmarshal(b, &UserlicensesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserlicensesMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Licenses, ok := UserlicensesMap["licenses"].([]interface{}); ok {
+		LicensesString, _ := json.Marshal(Licenses)
+		json.Unmarshal(LicensesString, &o.Licenses)
+	}
+	
+	if SelfUri, ok := UserlicensesMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -42,21 +42,19 @@ type Transcriptiontopictranscriptionmessage struct {
 
 }
 
-func (u *Transcriptiontopictranscriptionmessage) MarshalJSON() ([]byte, error) {
+func (o *Transcriptiontopictranscriptionmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptiontopictranscriptionmessage
-
 	
 	EventTime := new(string)
-	if u.EventTime != nil {
+	if o.EventTime != nil {
 		
-		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		EventTime *string `json:"eventTime,omitempty"`
 		
@@ -77,21 +75,69 @@ func (u *Transcriptiontopictranscriptionmessage) MarshalJSON() ([]byte, error) {
 	}{ 
 		EventTime: EventTime,
 		
-		OrganizationId: u.OrganizationId,
+		OrganizationId: o.OrganizationId,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		CommunicationId: u.CommunicationId,
+		CommunicationId: o.CommunicationId,
 		
-		SessionStartTimeMs: u.SessionStartTimeMs,
+		SessionStartTimeMs: o.SessionStartTimeMs,
 		
-		TranscriptionStartTimeMs: u.TranscriptionStartTimeMs,
+		TranscriptionStartTimeMs: o.TranscriptionStartTimeMs,
 		
-		Transcripts: u.Transcripts,
+		Transcripts: o.Transcripts,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptiontopictranscriptionmessage) UnmarshalJSON(b []byte) error {
+	var TranscriptiontopictranscriptionmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptiontopictranscriptionmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if eventTimeString, ok := TranscriptiontopictranscriptionmessageMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
+	}
+	
+	if OrganizationId, ok := TranscriptiontopictranscriptionmessageMap["organizationId"].(string); ok {
+		o.OrganizationId = &OrganizationId
+	}
+	
+	if ConversationId, ok := TranscriptiontopictranscriptionmessageMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if CommunicationId, ok := TranscriptiontopictranscriptionmessageMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
+	}
+	
+	if SessionStartTimeMs, ok := TranscriptiontopictranscriptionmessageMap["sessionStartTimeMs"].(float64); ok {
+		SessionStartTimeMsInt := int(SessionStartTimeMs)
+		o.SessionStartTimeMs = &SessionStartTimeMsInt
+	}
+	
+	if TranscriptionStartTimeMs, ok := TranscriptiontopictranscriptionmessageMap["transcriptionStartTimeMs"].(float64); ok {
+		TranscriptionStartTimeMsInt := int(TranscriptionStartTimeMs)
+		o.TranscriptionStartTimeMs = &TranscriptionStartTimeMsInt
+	}
+	
+	if Transcripts, ok := TranscriptiontopictranscriptionmessageMap["transcripts"].([]interface{}); ok {
+		TranscriptsString, _ := json.Marshal(Transcripts)
+		json.Unmarshal(TranscriptsString, &o.Transcripts)
+	}
+	
+	if Status, ok := TranscriptiontopictranscriptionmessageMap["status"].(map[string]interface{}); ok {
+		StatusString, _ := json.Marshal(Status)
+		json.Unmarshal(StatusString, &o.Status)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

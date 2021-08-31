@@ -13,20 +13,34 @@ type Activealertcount struct {
 
 }
 
-func (u *Activealertcount) MarshalJSON() ([]byte, error) {
+func (o *Activealertcount) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Activealertcount
-
 	
-
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		*Alias
 	}{ 
-		Count: u.Count,
-		Alias:    (*Alias)(u),
+		Count: o.Count,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Activealertcount) UnmarshalJSON(b []byte) error {
+	var ActivealertcountMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivealertcountMap)
+	if err != nil {
+		return err
+	}
+	
+	if Count, ok := ActivealertcountMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Digitlength struct {
 
 }
 
-func (u *Digitlength) MarshalJSON() ([]byte, error) {
+func (o *Digitlength) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Digitlength
-
 	
-
 	return json.Marshal(&struct { 
 		Start *string `json:"start,omitempty"`
 		
 		End *string `json:"end,omitempty"`
 		*Alias
 	}{ 
-		Start: u.Start,
+		Start: o.Start,
 		
-		End: u.End,
-		Alias:    (*Alias)(u),
+		End: o.End,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Digitlength) UnmarshalJSON(b []byte) error {
+	var DigitlengthMap map[string]interface{}
+	err := json.Unmarshal(b, &DigitlengthMap)
+	if err != nil {
+		return err
+	}
+	
+	if Start, ok := DigitlengthMap["start"].(string); ok {
+		o.Start = &Start
+	}
+	
+	if End, ok := DigitlengthMap["end"].(string); ok {
+		o.End = &End
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

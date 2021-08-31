@@ -13,20 +13,34 @@ type Genesysbotconnector struct {
 
 }
 
-func (u *Genesysbotconnector) MarshalJSON() ([]byte, error) {
+func (o *Genesysbotconnector) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Genesysbotconnector
-
 	
-
 	return json.Marshal(&struct { 
 		QueryParameters *map[string]string `json:"queryParameters,omitempty"`
 		*Alias
 	}{ 
-		QueryParameters: u.QueryParameters,
-		Alias:    (*Alias)(u),
+		QueryParameters: o.QueryParameters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Genesysbotconnector) UnmarshalJSON(b []byte) error {
+	var GenesysbotconnectorMap map[string]interface{}
+	err := json.Unmarshal(b, &GenesysbotconnectorMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueryParameters, ok := GenesysbotconnectorMap["queryParameters"].(map[string]interface{}); ok {
+		QueryParametersString, _ := json.Marshal(QueryParameters)
+		json.Unmarshal(QueryParametersString, &o.QueryParameters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

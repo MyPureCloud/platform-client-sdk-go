@@ -22,13 +22,11 @@ type Buagentschedulehistorydeletedchange struct {
 
 }
 
-func (u *Buagentschedulehistorydeletedchange) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulehistorydeletedchange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulehistorydeletedchange
-
 	
-
 	return json.Marshal(&struct { 
 		ShiftIds *[]string `json:"shiftIds,omitempty"`
 		
@@ -37,13 +35,38 @@ func (u *Buagentschedulehistorydeletedchange) MarshalJSON() ([]byte, error) {
 		AgentSchedule *bool `json:"agentSchedule,omitempty"`
 		*Alias
 	}{ 
-		ShiftIds: u.ShiftIds,
+		ShiftIds: o.ShiftIds,
 		
-		FullDayTimeOffMarkerDates: u.FullDayTimeOffMarkerDates,
+		FullDayTimeOffMarkerDates: o.FullDayTimeOffMarkerDates,
 		
-		AgentSchedule: u.AgentSchedule,
-		Alias:    (*Alias)(u),
+		AgentSchedule: o.AgentSchedule,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulehistorydeletedchange) UnmarshalJSON(b []byte) error {
+	var BuagentschedulehistorydeletedchangeMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulehistorydeletedchangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if ShiftIds, ok := BuagentschedulehistorydeletedchangeMap["shiftIds"].([]interface{}); ok {
+		ShiftIdsString, _ := json.Marshal(ShiftIds)
+		json.Unmarshal(ShiftIdsString, &o.ShiftIds)
+	}
+	
+	if FullDayTimeOffMarkerDates, ok := BuagentschedulehistorydeletedchangeMap["fullDayTimeOffMarkerDates"].([]interface{}); ok {
+		FullDayTimeOffMarkerDatesString, _ := json.Marshal(FullDayTimeOffMarkerDates)
+		json.Unmarshal(FullDayTimeOffMarkerDatesString, &o.FullDayTimeOffMarkerDates)
+	}
+	
+	if AgentSchedule, ok := BuagentschedulehistorydeletedchangeMap["agentSchedule"].(bool); ok {
+		o.AgentSchedule = &AgentSchedule
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

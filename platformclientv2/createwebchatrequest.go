@@ -37,13 +37,11 @@ type Createwebchatrequest struct {
 
 }
 
-func (u *Createwebchatrequest) MarshalJSON() ([]byte, error) {
+func (o *Createwebchatrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createwebchatrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueueId *string `json:"queueId,omitempty"`
 		
@@ -60,21 +58,63 @@ func (u *Createwebchatrequest) MarshalJSON() ([]byte, error) {
 		CustomerName *string `json:"customerName,omitempty"`
 		*Alias
 	}{ 
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		SkillIds: u.SkillIds,
+		SkillIds: o.SkillIds,
 		
-		LanguageId: u.LanguageId,
+		LanguageId: o.LanguageId,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		CustomerName: u.CustomerName,
-		Alias:    (*Alias)(u),
+		CustomerName: o.CustomerName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createwebchatrequest) UnmarshalJSON(b []byte) error {
+	var CreatewebchatrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatewebchatrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueId, ok := CreatewebchatrequestMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if Provider, ok := CreatewebchatrequestMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if SkillIds, ok := CreatewebchatrequestMap["skillIds"].([]interface{}); ok {
+		SkillIdsString, _ := json.Marshal(SkillIds)
+		json.Unmarshal(SkillIdsString, &o.SkillIds)
+	}
+	
+	if LanguageId, ok := CreatewebchatrequestMap["languageId"].(string); ok {
+		o.LanguageId = &LanguageId
+	}
+	
+	if Priority, ok := CreatewebchatrequestMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Attributes, ok := CreatewebchatrequestMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if CustomerName, ok := CreatewebchatrequestMap["customerName"].(string); ok {
+		o.CustomerName = &CustomerName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

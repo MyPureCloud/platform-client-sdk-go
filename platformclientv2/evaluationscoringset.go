@@ -37,13 +37,11 @@ type Evaluationscoringset struct {
 
 }
 
-func (u *Evaluationscoringset) MarshalJSON() ([]byte, error) {
+func (o *Evaluationscoringset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationscoringset
-
 	
-
 	return json.Marshal(&struct { 
 		TotalScore *float32 `json:"totalScore,omitempty"`
 		
@@ -60,21 +58,64 @@ func (u *Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		AgentComments *string `json:"agentComments,omitempty"`
 		*Alias
 	}{ 
-		TotalScore: u.TotalScore,
+		TotalScore: o.TotalScore,
 		
-		TotalCriticalScore: u.TotalCriticalScore,
+		TotalCriticalScore: o.TotalCriticalScore,
 		
-		TotalNonCriticalScore: u.TotalNonCriticalScore,
+		TotalNonCriticalScore: o.TotalNonCriticalScore,
 		
-		QuestionGroupScores: u.QuestionGroupScores,
+		QuestionGroupScores: o.QuestionGroupScores,
 		
-		AnyFailedKillQuestions: u.AnyFailedKillQuestions,
+		AnyFailedKillQuestions: o.AnyFailedKillQuestions,
 		
-		Comments: u.Comments,
+		Comments: o.Comments,
 		
-		AgentComments: u.AgentComments,
-		Alias:    (*Alias)(u),
+		AgentComments: o.AgentComments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationscoringset) UnmarshalJSON(b []byte) error {
+	var EvaluationscoringsetMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationscoringsetMap)
+	if err != nil {
+		return err
+	}
+	
+	if TotalScore, ok := EvaluationscoringsetMap["totalScore"].(float64); ok {
+		TotalScoreFloat32 := float32(TotalScore)
+		o.TotalScore = &TotalScoreFloat32
+	}
+	
+	if TotalCriticalScore, ok := EvaluationscoringsetMap["totalCriticalScore"].(float64); ok {
+		TotalCriticalScoreFloat32 := float32(TotalCriticalScore)
+		o.TotalCriticalScore = &TotalCriticalScoreFloat32
+	}
+	
+	if TotalNonCriticalScore, ok := EvaluationscoringsetMap["totalNonCriticalScore"].(float64); ok {
+		TotalNonCriticalScoreFloat32 := float32(TotalNonCriticalScore)
+		o.TotalNonCriticalScore = &TotalNonCriticalScoreFloat32
+	}
+	
+	if QuestionGroupScores, ok := EvaluationscoringsetMap["questionGroupScores"].([]interface{}); ok {
+		QuestionGroupScoresString, _ := json.Marshal(QuestionGroupScores)
+		json.Unmarshal(QuestionGroupScoresString, &o.QuestionGroupScores)
+	}
+	
+	if AnyFailedKillQuestions, ok := EvaluationscoringsetMap["anyFailedKillQuestions"].(bool); ok {
+		o.AnyFailedKillQuestions = &AnyFailedKillQuestions
+	}
+	
+	if Comments, ok := EvaluationscoringsetMap["comments"].(string); ok {
+		o.Comments = &Comments
+	}
+	
+	if AgentComments, ok := EvaluationscoringsetMap["agentComments"].(string); ok {
+		o.AgentComments = &AgentComments
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

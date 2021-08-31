@@ -17,24 +17,42 @@ type Closebuttonstyleproperties struct {
 
 }
 
-func (u *Closebuttonstyleproperties) MarshalJSON() ([]byte, error) {
+func (o *Closebuttonstyleproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Closebuttonstyleproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Color *string `json:"color,omitempty"`
 		
 		Opacity *float32 `json:"opacity,omitempty"`
 		*Alias
 	}{ 
-		Color: u.Color,
+		Color: o.Color,
 		
-		Opacity: u.Opacity,
-		Alias:    (*Alias)(u),
+		Opacity: o.Opacity,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Closebuttonstyleproperties) UnmarshalJSON(b []byte) error {
+	var ClosebuttonstylepropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &ClosebuttonstylepropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Color, ok := ClosebuttonstylepropertiesMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if Opacity, ok := ClosebuttonstylepropertiesMap["opacity"].(float64); ok {
+		OpacityFloat32 := float32(Opacity)
+		o.Opacity = &OpacityFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

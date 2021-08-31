@@ -33,13 +33,11 @@ type Buagentschedulequeryresponse struct {
 
 }
 
-func (u *Buagentschedulequeryresponse) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulequeryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulequeryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		User *Userreference `json:"user,omitempty"`
 		
@@ -54,19 +52,60 @@ func (u *Buagentschedulequeryresponse) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Shifts: u.Shifts,
+		Shifts: o.Shifts,
 		
-		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
 		
-		WorkPlan: u.WorkPlan,
+		WorkPlan: o.WorkPlan,
 		
-		WorkPlansPerWeek: u.WorkPlansPerWeek,
+		WorkPlansPerWeek: o.WorkPlansPerWeek,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulequeryresponse) UnmarshalJSON(b []byte) error {
+	var BuagentschedulequeryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulequeryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := BuagentschedulequeryresponseMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Shifts, ok := BuagentschedulequeryresponseMap["shifts"].([]interface{}); ok {
+		ShiftsString, _ := json.Marshal(Shifts)
+		json.Unmarshal(ShiftsString, &o.Shifts)
+	}
+	
+	if FullDayTimeOffMarkers, ok := BuagentschedulequeryresponseMap["fullDayTimeOffMarkers"].([]interface{}); ok {
+		FullDayTimeOffMarkersString, _ := json.Marshal(FullDayTimeOffMarkers)
+		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
+	}
+	
+	if WorkPlan, ok := BuagentschedulequeryresponseMap["workPlan"].(map[string]interface{}); ok {
+		WorkPlanString, _ := json.Marshal(WorkPlan)
+		json.Unmarshal(WorkPlanString, &o.WorkPlan)
+	}
+	
+	if WorkPlansPerWeek, ok := BuagentschedulequeryresponseMap["workPlansPerWeek"].([]interface{}); ok {
+		WorkPlansPerWeekString, _ := json.Marshal(WorkPlansPerWeek)
+		json.Unmarshal(WorkPlansPerWeekString, &o.WorkPlansPerWeek)
+	}
+	
+	if Metadata, ok := BuagentschedulequeryresponseMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

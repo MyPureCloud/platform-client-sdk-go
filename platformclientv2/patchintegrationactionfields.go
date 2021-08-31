@@ -17,24 +17,43 @@ type Patchintegrationactionfields struct {
 
 }
 
-func (u *Patchintegrationactionfields) MarshalJSON() ([]byte, error) {
+func (o *Patchintegrationactionfields) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchintegrationactionfields
-
 	
-
 	return json.Marshal(&struct { 
 		IntegrationAction *Patchintegrationaction `json:"integrationAction,omitempty"`
 		
 		RequestMappings *[]Requestmapping `json:"requestMappings,omitempty"`
 		*Alias
 	}{ 
-		IntegrationAction: u.IntegrationAction,
+		IntegrationAction: o.IntegrationAction,
 		
-		RequestMappings: u.RequestMappings,
-		Alias:    (*Alias)(u),
+		RequestMappings: o.RequestMappings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchintegrationactionfields) UnmarshalJSON(b []byte) error {
+	var PatchintegrationactionfieldsMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchintegrationactionfieldsMap)
+	if err != nil {
+		return err
+	}
+	
+	if IntegrationAction, ok := PatchintegrationactionfieldsMap["integrationAction"].(map[string]interface{}); ok {
+		IntegrationActionString, _ := json.Marshal(IntegrationAction)
+		json.Unmarshal(IntegrationActionString, &o.IntegrationAction)
+	}
+	
+	if RequestMappings, ok := PatchintegrationactionfieldsMap["requestMappings"].([]interface{}); ok {
+		RequestMappingsString, _ := json.Marshal(RequestMappings)
+		json.Unmarshal(RequestMappingsString, &o.RequestMappings)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

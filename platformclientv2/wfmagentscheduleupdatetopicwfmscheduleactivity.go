@@ -34,21 +34,19 @@ type Wfmagentscheduleupdatetopicwfmscheduleactivity struct {
 
 }
 
-func (u *Wfmagentscheduleupdatetopicwfmscheduleactivity) MarshalJSON() ([]byte, error) {
+func (o *Wfmagentscheduleupdatetopicwfmscheduleactivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmagentscheduleupdatetopicwfmscheduleactivity
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
@@ -63,19 +61,56 @@ func (u *Wfmagentscheduleupdatetopicwfmscheduleactivity) MarshalJSON() ([]byte, 
 		Description *string `json:"description,omitempty"`
 		*Alias
 	}{ 
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
 		StartDate: StartDate,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
+		CountsAsPaidTime: o.CountsAsPaidTime,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		TimeOffRequestId: u.TimeOffRequestId,
+		TimeOffRequestId: o.TimeOffRequestId,
 		
-		Description: u.Description,
-		Alias:    (*Alias)(u),
+		Description: o.Description,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmagentscheduleupdatetopicwfmscheduleactivity) UnmarshalJSON(b []byte) error {
+	var WfmagentscheduleupdatetopicwfmscheduleactivityMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmagentscheduleupdatetopicwfmscheduleactivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActivityCodeId, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if startDateString, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if CountsAsPaidTime, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+	if LengthInMinutes, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if TimeOffRequestId, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["timeOffRequestId"].(string); ok {
+		o.TimeOffRequestId = &TimeOffRequestId
+	}
+	
+	if Description, ok := WfmagentscheduleupdatetopicwfmscheduleactivityMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

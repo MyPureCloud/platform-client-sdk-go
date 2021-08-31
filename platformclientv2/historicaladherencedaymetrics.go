@@ -53,13 +53,11 @@ type Historicaladherencedaymetrics struct {
 
 }
 
-func (u *Historicaladherencedaymetrics) MarshalJSON() ([]byte, error) {
+func (o *Historicaladherencedaymetrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historicaladherencedaymetrics
-
 	
-
 	return json.Marshal(&struct { 
 		DayStartOffsetSecs *int `json:"dayStartOffsetSecs,omitempty"`
 		
@@ -84,29 +82,93 @@ func (u *Historicaladherencedaymetrics) MarshalJSON() ([]byte, error) {
 		ConformancePercentage *float64 `json:"conformancePercentage,omitempty"`
 		*Alias
 	}{ 
-		DayStartOffsetSecs: u.DayStartOffsetSecs,
+		DayStartOffsetSecs: o.DayStartOffsetSecs,
 		
-		AdherenceScheduleSecs: u.AdherenceScheduleSecs,
+		AdherenceScheduleSecs: o.AdherenceScheduleSecs,
 		
-		ConformanceScheduleSecs: u.ConformanceScheduleSecs,
+		ConformanceScheduleSecs: o.ConformanceScheduleSecs,
 		
-		ConformanceActualSecs: u.ConformanceActualSecs,
+		ConformanceActualSecs: o.ConformanceActualSecs,
 		
-		ExceptionCount: u.ExceptionCount,
+		ExceptionCount: o.ExceptionCount,
 		
-		ExceptionDurationSecs: u.ExceptionDurationSecs,
+		ExceptionDurationSecs: o.ExceptionDurationSecs,
 		
-		ImpactSeconds: u.ImpactSeconds,
+		ImpactSeconds: o.ImpactSeconds,
 		
-		ScheduleLengthSecs: u.ScheduleLengthSecs,
+		ScheduleLengthSecs: o.ScheduleLengthSecs,
 		
-		ActualLengthSecs: u.ActualLengthSecs,
+		ActualLengthSecs: o.ActualLengthSecs,
 		
-		AdherencePercentage: u.AdherencePercentage,
+		AdherencePercentage: o.AdherencePercentage,
 		
-		ConformancePercentage: u.ConformancePercentage,
-		Alias:    (*Alias)(u),
+		ConformancePercentage: o.ConformancePercentage,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historicaladherencedaymetrics) UnmarshalJSON(b []byte) error {
+	var HistoricaladherencedaymetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoricaladherencedaymetricsMap)
+	if err != nil {
+		return err
+	}
+	
+	if DayStartOffsetSecs, ok := HistoricaladherencedaymetricsMap["dayStartOffsetSecs"].(float64); ok {
+		DayStartOffsetSecsInt := int(DayStartOffsetSecs)
+		o.DayStartOffsetSecs = &DayStartOffsetSecsInt
+	}
+	
+	if AdherenceScheduleSecs, ok := HistoricaladherencedaymetricsMap["adherenceScheduleSecs"].(float64); ok {
+		AdherenceScheduleSecsInt := int(AdherenceScheduleSecs)
+		o.AdherenceScheduleSecs = &AdherenceScheduleSecsInt
+	}
+	
+	if ConformanceScheduleSecs, ok := HistoricaladherencedaymetricsMap["conformanceScheduleSecs"].(float64); ok {
+		ConformanceScheduleSecsInt := int(ConformanceScheduleSecs)
+		o.ConformanceScheduleSecs = &ConformanceScheduleSecsInt
+	}
+	
+	if ConformanceActualSecs, ok := HistoricaladherencedaymetricsMap["conformanceActualSecs"].(float64); ok {
+		ConformanceActualSecsInt := int(ConformanceActualSecs)
+		o.ConformanceActualSecs = &ConformanceActualSecsInt
+	}
+	
+	if ExceptionCount, ok := HistoricaladherencedaymetricsMap["exceptionCount"].(float64); ok {
+		ExceptionCountInt := int(ExceptionCount)
+		o.ExceptionCount = &ExceptionCountInt
+	}
+	
+	if ExceptionDurationSecs, ok := HistoricaladherencedaymetricsMap["exceptionDurationSecs"].(float64); ok {
+		ExceptionDurationSecsInt := int(ExceptionDurationSecs)
+		o.ExceptionDurationSecs = &ExceptionDurationSecsInt
+	}
+	
+	if ImpactSeconds, ok := HistoricaladherencedaymetricsMap["impactSeconds"].(float64); ok {
+		ImpactSecondsInt := int(ImpactSeconds)
+		o.ImpactSeconds = &ImpactSecondsInt
+	}
+	
+	if ScheduleLengthSecs, ok := HistoricaladherencedaymetricsMap["scheduleLengthSecs"].(float64); ok {
+		ScheduleLengthSecsInt := int(ScheduleLengthSecs)
+		o.ScheduleLengthSecs = &ScheduleLengthSecsInt
+	}
+	
+	if ActualLengthSecs, ok := HistoricaladherencedaymetricsMap["actualLengthSecs"].(float64); ok {
+		ActualLengthSecsInt := int(ActualLengthSecs)
+		o.ActualLengthSecs = &ActualLengthSecsInt
+	}
+	
+	if AdherencePercentage, ok := HistoricaladherencedaymetricsMap["adherencePercentage"].(float64); ok {
+		o.AdherencePercentage = &AdherencePercentage
+	}
+	
+	if ConformancePercentage, ok := HistoricaladherencedaymetricsMap["conformancePercentage"].(float64); ok {
+		o.ConformancePercentage = &ConformancePercentage
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

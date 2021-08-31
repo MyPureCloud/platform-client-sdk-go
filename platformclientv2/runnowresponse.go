@@ -21,13 +21,11 @@ type Runnowresponse struct {
 
 }
 
-func (u *Runnowresponse) MarshalJSON() ([]byte, error) {
+func (o *Runnowresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Runnowresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Runnowresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Runnowresponse) UnmarshalJSON(b []byte) error {
+	var RunnowresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &RunnowresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RunnowresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := RunnowresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := RunnowresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

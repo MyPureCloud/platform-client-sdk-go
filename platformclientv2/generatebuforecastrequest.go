@@ -21,13 +21,11 @@ type Generatebuforecastrequest struct {
 
 }
 
-func (u *Generatebuforecastrequest) MarshalJSON() ([]byte, error) {
+func (o *Generatebuforecastrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Generatebuforecastrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Generatebuforecastrequest) MarshalJSON() ([]byte, error) {
 		CanUseForScheduling *bool `json:"canUseForScheduling,omitempty"`
 		*Alias
 	}{ 
-		Description: u.Description,
+		Description: o.Description,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		CanUseForScheduling: u.CanUseForScheduling,
-		Alias:    (*Alias)(u),
+		CanUseForScheduling: o.CanUseForScheduling,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Generatebuforecastrequest) UnmarshalJSON(b []byte) error {
+	var GeneratebuforecastrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &GeneratebuforecastrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Description, ok := GeneratebuforecastrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if WeekCount, ok := GeneratebuforecastrequestMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if CanUseForScheduling, ok := GeneratebuforecastrequestMap["canUseForScheduling"].(bool); ok {
+		o.CanUseForScheduling = &CanUseForScheduling
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

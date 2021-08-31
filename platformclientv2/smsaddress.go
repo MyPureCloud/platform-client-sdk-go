@@ -45,13 +45,11 @@ type Smsaddress struct {
 
 }
 
-func (u *Smsaddress) MarshalJSON() ([]byte, error) {
+func (o *Smsaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,72 @@ func (u *Smsaddress) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Street: u.Street,
+		Street: o.Street,
 		
-		City: u.City,
+		City: o.City,
 		
-		Region: u.Region,
+		Region: o.Region,
 		
-		PostalCode: u.PostalCode,
+		PostalCode: o.PostalCode,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
-		Validated: u.Validated,
+		Validated: o.Validated,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsaddress) UnmarshalJSON(b []byte) error {
+	var SmsaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SmsaddressMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SmsaddressMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Street, ok := SmsaddressMap["street"].(string); ok {
+		o.Street = &Street
+	}
+	
+	if City, ok := SmsaddressMap["city"].(string); ok {
+		o.City = &City
+	}
+	
+	if Region, ok := SmsaddressMap["region"].(string); ok {
+		o.Region = &Region
+	}
+	
+	if PostalCode, ok := SmsaddressMap["postalCode"].(string); ok {
+		o.PostalCode = &PostalCode
+	}
+	
+	if CountryCode, ok := SmsaddressMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if Validated, ok := SmsaddressMap["validated"].(bool); ok {
+		o.Validated = &Validated
+	}
+	
+	if SelfUri, ok := SmsaddressMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

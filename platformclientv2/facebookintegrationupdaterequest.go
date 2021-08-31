@@ -29,13 +29,11 @@ type Facebookintegrationupdaterequest struct {
 
 }
 
-func (u *Facebookintegrationupdaterequest) MarshalJSON() ([]byte, error) {
+func (o *Facebookintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facebookintegrationupdaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Facebookintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PageAccessToken: u.PageAccessToken,
+		PageAccessToken: o.PageAccessToken,
 		
-		UserAccessToken: u.UserAccessToken,
+		UserAccessToken: o.UserAccessToken,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facebookintegrationupdaterequest) UnmarshalJSON(b []byte) error {
+	var FacebookintegrationupdaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &FacebookintegrationupdaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FacebookintegrationupdaterequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FacebookintegrationupdaterequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PageAccessToken, ok := FacebookintegrationupdaterequestMap["pageAccessToken"].(string); ok {
+		o.PageAccessToken = &PageAccessToken
+	}
+	
+	if UserAccessToken, ok := FacebookintegrationupdaterequestMap["userAccessToken"].(string); ok {
+		o.UserAccessToken = &UserAccessToken
+	}
+	
+	if SelfUri, ok := FacebookintegrationupdaterequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

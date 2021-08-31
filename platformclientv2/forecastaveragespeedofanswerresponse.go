@@ -13,20 +13,34 @@ type Forecastaveragespeedofanswerresponse struct {
 
 }
 
-func (u *Forecastaveragespeedofanswerresponse) MarshalJSON() ([]byte, error) {
+func (o *Forecastaveragespeedofanswerresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastaveragespeedofanswerresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Seconds *int `json:"seconds,omitempty"`
 		*Alias
 	}{ 
-		Seconds: u.Seconds,
-		Alias:    (*Alias)(u),
+		Seconds: o.Seconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastaveragespeedofanswerresponse) UnmarshalJSON(b []byte) error {
+	var ForecastaveragespeedofanswerresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastaveragespeedofanswerresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Seconds, ok := ForecastaveragespeedofanswerresponseMap["seconds"].(float64); ok {
+		SecondsInt := int(Seconds)
+		o.Seconds = &SecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Actions struct {
 
 }
 
-func (u *Actions) MarshalJSON() ([]byte, error) {
+func (o *Actions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actions
-
 	
-
 	return json.Marshal(&struct { 
 		SkillsToRemove *[]Skillstoremove `json:"skillsToRemove,omitempty"`
 		*Alias
 	}{ 
-		SkillsToRemove: u.SkillsToRemove,
-		Alias:    (*Alias)(u),
+		SkillsToRemove: o.SkillsToRemove,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actions) UnmarshalJSON(b []byte) error {
+	var ActionsMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if SkillsToRemove, ok := ActionsMap["skillsToRemove"].([]interface{}); ok {
+		SkillsToRemoveString, _ := json.Marshal(SkillsToRemove)
+		json.Unmarshal(SkillsToRemoveString, &o.SkillsToRemove)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

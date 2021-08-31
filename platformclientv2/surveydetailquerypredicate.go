@@ -33,13 +33,11 @@ type Surveydetailquerypredicate struct {
 
 }
 
-func (u *Surveydetailquerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Surveydetailquerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveydetailquerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Surveydetailquerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveydetailquerypredicate) UnmarshalJSON(b []byte) error {
+	var SurveydetailquerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveydetailquerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := SurveydetailquerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := SurveydetailquerypredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Metric, ok := SurveydetailquerypredicateMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Operator, ok := SurveydetailquerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := SurveydetailquerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := SurveydetailquerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

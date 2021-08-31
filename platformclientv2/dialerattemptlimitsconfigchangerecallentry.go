@@ -21,13 +21,11 @@ type Dialerattemptlimitsconfigchangerecallentry struct {
 
 }
 
-func (u *Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, error) {
+func (o *Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerattemptlimitsconfigchangerecallentry
-
 	
-
 	return json.Marshal(&struct { 
 		NbrAttempts *int `json:"nbrAttempts,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Dialerattemptlimitsconfigchangerecallentry) MarshalJSON() ([]byte, erro
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		NbrAttempts: u.NbrAttempts,
+		NbrAttempts: o.NbrAttempts,
 		
-		MinutesBetweenAttempts: u.MinutesBetweenAttempts,
+		MinutesBetweenAttempts: o.MinutesBetweenAttempts,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerattemptlimitsconfigchangerecallentry) UnmarshalJSON(b []byte) error {
+	var DialerattemptlimitsconfigchangerecallentryMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerattemptlimitsconfigchangerecallentryMap)
+	if err != nil {
+		return err
+	}
+	
+	if NbrAttempts, ok := DialerattemptlimitsconfigchangerecallentryMap["nbrAttempts"].(float64); ok {
+		NbrAttemptsInt := int(NbrAttempts)
+		o.NbrAttempts = &NbrAttemptsInt
+	}
+	
+	if MinutesBetweenAttempts, ok := DialerattemptlimitsconfigchangerecallentryMap["minutesBetweenAttempts"].(float64); ok {
+		MinutesBetweenAttemptsInt := int(MinutesBetweenAttempts)
+		o.MinutesBetweenAttempts = &MinutesBetweenAttemptsInt
+	}
+	
+	if AdditionalProperties, ok := DialerattemptlimitsconfigchangerecallentryMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

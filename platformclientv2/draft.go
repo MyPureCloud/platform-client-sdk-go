@@ -38,29 +38,27 @@ type Draft struct {
 
 }
 
-func (u *Draft) MarshalJSON() ([]byte, error) {
+func (o *Draft) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Draft
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -77,21 +75,64 @@ func (u *Draft) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Miner: u.Miner,
+		Miner: o.Miner,
 		
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Draft) UnmarshalJSON(b []byte) error {
+	var DraftMap map[string]interface{}
+	err := json.Unmarshal(b, &DraftMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DraftMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DraftMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Miner, ok := DraftMap["miner"].(map[string]interface{}); ok {
+		MinerString, _ := json.Marshal(Miner)
+		json.Unmarshal(MinerString, &o.Miner)
+	}
+	
+	if Intents, ok := DraftMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if dateCreatedString, ok := DraftMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DraftMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if SelfUri, ok := DraftMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

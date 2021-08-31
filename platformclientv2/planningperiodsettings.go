@@ -18,31 +18,50 @@ type Planningperiodsettings struct {
 
 }
 
-func (u *Planningperiodsettings) MarshalJSON() ([]byte, error) {
+func (o *Planningperiodsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Planningperiodsettings
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%d")
+	if o.StartDate != nil {
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%d")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		WeekCount *int `json:"weekCount,omitempty"`
 		
 		StartDate *string `json:"startDate,omitempty"`
 		*Alias
 	}{ 
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
 		StartDate: StartDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Planningperiodsettings) UnmarshalJSON(b []byte) error {
+	var PlanningperiodsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &PlanningperiodsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if WeekCount, ok := PlanningperiodsettingsMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if startDateString, ok := PlanningperiodsettingsMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

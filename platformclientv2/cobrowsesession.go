@@ -82,45 +82,43 @@ type Cobrowsesession struct {
 
 }
 
-func (u *Cobrowsesession) MarshalJSON() ([]byte, error) {
+func (o *Cobrowsesession) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Cobrowsesession
-
 	
 	ProviderEventTime := new(string)
-	if u.ProviderEventTime != nil {
+	if o.ProviderEventTime != nil {
 		
-		*ProviderEventTime = timeutil.Strftime(u.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ProviderEventTime = timeutil.Strftime(o.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ProviderEventTime = nil
 	}
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -159,21 +157,21 @@ func (u *Cobrowsesession) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
-		Self: u.Self,
+		Self: o.Self,
 		
-		CobrowseSessionId: u.CobrowseSessionId,
+		CobrowseSessionId: o.CobrowseSessionId,
 		
-		CobrowseRole: u.CobrowseRole,
+		CobrowseRole: o.CobrowseRole,
 		
-		Controlling: u.Controlling,
+		Controlling: o.Controlling,
 		
-		ViewerUrl: u.ViewerUrl,
+		ViewerUrl: o.ViewerUrl,
 		
 		ProviderEventTime: ProviderEventTime,
 		
@@ -183,19 +181,111 @@ func (u *Cobrowsesession) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		Segments: u.Segments,
+		Segments: o.Segments,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
-		Alias:    (*Alias)(u),
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Cobrowsesession) UnmarshalJSON(b []byte) error {
+	var CobrowsesessionMap map[string]interface{}
+	err := json.Unmarshal(b, &CobrowsesessionMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := CobrowsesessionMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := CobrowsesessionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DisconnectType, ok := CobrowsesessionMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if Self, ok := CobrowsesessionMap["self"].(map[string]interface{}); ok {
+		SelfString, _ := json.Marshal(Self)
+		json.Unmarshal(SelfString, &o.Self)
+	}
+	
+	if CobrowseSessionId, ok := CobrowsesessionMap["cobrowseSessionId"].(string); ok {
+		o.CobrowseSessionId = &CobrowseSessionId
+	}
+	
+	if CobrowseRole, ok := CobrowsesessionMap["cobrowseRole"].(string); ok {
+		o.CobrowseRole = &CobrowseRole
+	}
+	
+	if Controlling, ok := CobrowsesessionMap["controlling"].([]interface{}); ok {
+		ControllingString, _ := json.Marshal(Controlling)
+		json.Unmarshal(ControllingString, &o.Controlling)
+	}
+	
+	if ViewerUrl, ok := CobrowsesessionMap["viewerUrl"].(string); ok {
+		o.ViewerUrl = &ViewerUrl
+	}
+	
+	if providerEventTimeString, ok := CobrowsesessionMap["providerEventTime"].(string); ok {
+		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
+		o.ProviderEventTime = &ProviderEventTime
+	}
+	
+	if startAlertingTimeString, ok := CobrowsesessionMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := CobrowsesessionMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := CobrowsesessionMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Provider, ok := CobrowsesessionMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if PeerId, ok := CobrowsesessionMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if Segments, ok := CobrowsesessionMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+	if Wrapup, ok := CobrowsesessionMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := CobrowsesessionMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := CobrowsesessionMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

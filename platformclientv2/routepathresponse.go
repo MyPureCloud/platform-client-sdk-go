@@ -25,13 +25,11 @@ type Routepathresponse struct {
 
 }
 
-func (u *Routepathresponse) MarshalJSON() ([]byte, error) {
+func (o *Routepathresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routepathresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Queue *Queuereference `json:"queue,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Routepathresponse) MarshalJSON() ([]byte, error) {
 		Skills *[]Routingskillreference `json:"skills,omitempty"`
 		*Alias
 	}{ 
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Skills: u.Skills,
-		Alias:    (*Alias)(u),
+		Skills: o.Skills,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routepathresponse) UnmarshalJSON(b []byte) error {
+	var RoutepathresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutepathresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Queue, ok := RoutepathresponseMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if MediaType, ok := RoutepathresponseMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if Language, ok := RoutepathresponseMap["language"].(map[string]interface{}); ok {
+		LanguageString, _ := json.Marshal(Language)
+		json.Unmarshal(LanguageString, &o.Language)
+	}
+	
+	if Skills, ok := RoutepathresponseMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

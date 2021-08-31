@@ -25,13 +25,11 @@ type Conversationvideoeventtopicvideoconversation struct {
 
 }
 
-func (u *Conversationvideoeventtopicvideoconversation) MarshalJSON() ([]byte, error) {
+func (o *Conversationvideoeventtopicvideoconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationvideoeventtopicvideoconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Conversationvideoeventtopicvideoconversation) MarshalJSON() ([]byte, er
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
-		Alias:    (*Alias)(u),
+		OtherMediaUris: o.OtherMediaUris,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationvideoeventtopicvideoconversation) UnmarshalJSON(b []byte) error {
+	var ConversationvideoeventtopicvideoconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationvideoeventtopicvideoconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationvideoeventtopicvideoconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationvideoeventtopicvideoconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := ConversationvideoeventtopicvideoconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := ConversationvideoeventtopicvideoconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

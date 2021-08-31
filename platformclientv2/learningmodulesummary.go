@@ -25,13 +25,11 @@ type Learningmodulesummary struct {
 
 }
 
-func (u *Learningmodulesummary) MarshalJSON() ([]byte, error) {
+func (o *Learningmodulesummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmodulesummary
-
 	
-
 	return json.Marshal(&struct { 
 		AssignedCount *int `json:"assignedCount,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Learningmodulesummary) MarshalJSON() ([]byte, error) {
 		CompletedSum *float32 `json:"completedSum,omitempty"`
 		*Alias
 	}{ 
-		AssignedCount: u.AssignedCount,
+		AssignedCount: o.AssignedCount,
 		
-		CompletedCount: u.CompletedCount,
+		CompletedCount: o.CompletedCount,
 		
-		PassedCount: u.PassedCount,
+		PassedCount: o.PassedCount,
 		
-		CompletedSum: u.CompletedSum,
-		Alias:    (*Alias)(u),
+		CompletedSum: o.CompletedSum,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmodulesummary) UnmarshalJSON(b []byte) error {
+	var LearningmodulesummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmodulesummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if AssignedCount, ok := LearningmodulesummaryMap["assignedCount"].(float64); ok {
+		AssignedCountInt := int(AssignedCount)
+		o.AssignedCount = &AssignedCountInt
+	}
+	
+	if CompletedCount, ok := LearningmodulesummaryMap["completedCount"].(float64); ok {
+		CompletedCountInt := int(CompletedCount)
+		o.CompletedCount = &CompletedCountInt
+	}
+	
+	if PassedCount, ok := LearningmodulesummaryMap["passedCount"].(float64); ok {
+		PassedCountInt := int(PassedCount)
+		o.PassedCount = &PassedCountInt
+	}
+	
+	if CompletedSum, ok := LearningmodulesummaryMap["completedSum"].(float64); ok {
+		CompletedSumFloat32 := float32(CompletedSum)
+		o.CompletedSum = &CompletedSumFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Architectflownotificationflownotification struct {
 
 }
 
-func (u *Architectflownotificationflownotification) MarshalJSON() ([]byte, error) {
+func (o *Architectflownotificationflownotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflownotificationflownotification
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,70 @@ func (u *Architectflownotificationflownotification) MarshalJSON() ([]byte, error
 		CurrentOperation *Architectflownotificationarchitectoperation `json:"currentOperation,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Deleted: u.Deleted,
+		Deleted: o.Deleted,
 		
-		CheckedInVersion: u.CheckedInVersion,
+		CheckedInVersion: o.CheckedInVersion,
 		
-		SavedVersion: u.SavedVersion,
+		SavedVersion: o.SavedVersion,
 		
-		PublishedVersion: u.PublishedVersion,
+		PublishedVersion: o.PublishedVersion,
 		
-		CurrentOperation: u.CurrentOperation,
-		Alias:    (*Alias)(u),
+		CurrentOperation: o.CurrentOperation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflownotificationflownotification) UnmarshalJSON(b []byte) error {
+	var ArchitectflownotificationflownotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflownotificationflownotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectflownotificationflownotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ArchitectflownotificationflownotificationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ArchitectflownotificationflownotificationMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Deleted, ok := ArchitectflownotificationflownotificationMap["deleted"].(bool); ok {
+		o.Deleted = &Deleted
+	}
+	
+	if CheckedInVersion, ok := ArchitectflownotificationflownotificationMap["checkedInVersion"].(map[string]interface{}); ok {
+		CheckedInVersionString, _ := json.Marshal(CheckedInVersion)
+		json.Unmarshal(CheckedInVersionString, &o.CheckedInVersion)
+	}
+	
+	if SavedVersion, ok := ArchitectflownotificationflownotificationMap["savedVersion"].(map[string]interface{}); ok {
+		SavedVersionString, _ := json.Marshal(SavedVersion)
+		json.Unmarshal(SavedVersionString, &o.SavedVersion)
+	}
+	
+	if PublishedVersion, ok := ArchitectflownotificationflownotificationMap["publishedVersion"].(map[string]interface{}); ok {
+		PublishedVersionString, _ := json.Marshal(PublishedVersion)
+		json.Unmarshal(PublishedVersionString, &o.PublishedVersion)
+	}
+	
+	if CurrentOperation, ok := ArchitectflownotificationflownotificationMap["currentOperation"].(map[string]interface{}); ok {
+		CurrentOperationString, _ := json.Marshal(CurrentOperation)
+		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

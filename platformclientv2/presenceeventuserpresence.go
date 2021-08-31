@@ -30,21 +30,19 @@ type Presenceeventuserpresence struct {
 
 }
 
-func (u *Presenceeventuserpresence) MarshalJSON() ([]byte, error) {
+func (o *Presenceeventuserpresence) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Presenceeventuserpresence
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Source *string `json:"source,omitempty"`
 		
@@ -57,17 +55,50 @@ func (u *Presenceeventuserpresence) MarshalJSON() ([]byte, error) {
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
-		Source: u.Source,
+		Source: o.Source,
 		
-		PresenceDefinition: u.PresenceDefinition,
+		PresenceDefinition: o.PresenceDefinition,
 		
-		Primary: u.Primary,
+		Primary: o.Primary,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Presenceeventuserpresence) UnmarshalJSON(b []byte) error {
+	var PresenceeventuserpresenceMap map[string]interface{}
+	err := json.Unmarshal(b, &PresenceeventuserpresenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Source, ok := PresenceeventuserpresenceMap["source"].(string); ok {
+		o.Source = &Source
+	}
+	
+	if PresenceDefinition, ok := PresenceeventuserpresenceMap["presenceDefinition"].(map[string]interface{}); ok {
+		PresenceDefinitionString, _ := json.Marshal(PresenceDefinition)
+		json.Unmarshal(PresenceDefinitionString, &o.PresenceDefinition)
+	}
+	
+	if Primary, ok := PresenceeventuserpresenceMap["primary"].(bool); ok {
+		o.Primary = &Primary
+	}
+	
+	if Message, ok := PresenceeventuserpresenceMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if modifiedDateString, ok := PresenceeventuserpresenceMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

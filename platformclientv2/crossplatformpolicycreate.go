@@ -58,29 +58,27 @@ type Crossplatformpolicycreate struct {
 
 }
 
-func (u *Crossplatformpolicycreate) MarshalJSON() ([]byte, error) {
+func (o *Crossplatformpolicycreate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Crossplatformpolicycreate
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -107,31 +105,97 @@ func (u *Crossplatformpolicycreate) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		ModifiedDate: ModifiedDate,
 		
 		CreatedDate: CreatedDate,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		MediaPolicies: u.MediaPolicies,
+		MediaPolicies: o.MediaPolicies,
 		
-		Conditions: u.Conditions,
+		Conditions: o.Conditions,
 		
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		PolicyErrors: u.PolicyErrors,
+		PolicyErrors: o.PolicyErrors,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Crossplatformpolicycreate) UnmarshalJSON(b []byte) error {
+	var CrossplatformpolicycreateMap map[string]interface{}
+	err := json.Unmarshal(b, &CrossplatformpolicycreateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CrossplatformpolicycreateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CrossplatformpolicycreateMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if modifiedDateString, ok := CrossplatformpolicycreateMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if createdDateString, ok := CrossplatformpolicycreateMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if Order, ok := CrossplatformpolicycreateMap["order"].(float64); ok {
+		OrderInt := int(Order)
+		o.Order = &OrderInt
+	}
+	
+	if Description, ok := CrossplatformpolicycreateMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Enabled, ok := CrossplatformpolicycreateMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if MediaPolicies, ok := CrossplatformpolicycreateMap["mediaPolicies"].(map[string]interface{}); ok {
+		MediaPoliciesString, _ := json.Marshal(MediaPolicies)
+		json.Unmarshal(MediaPoliciesString, &o.MediaPolicies)
+	}
+	
+	if Conditions, ok := CrossplatformpolicycreateMap["conditions"].(map[string]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+	if Actions, ok := CrossplatformpolicycreateMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if PolicyErrors, ok := CrossplatformpolicycreateMap["policyErrors"].(map[string]interface{}); ok {
+		PolicyErrorsString, _ := json.Marshal(PolicyErrors)
+		json.Unmarshal(PolicyErrorsString, &o.PolicyErrors)
+	}
+	
+	if SelfUri, ok := CrossplatformpolicycreateMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Didnumber struct {
 
 }
 
-func (u *Didnumber) MarshalJSON() ([]byte, error) {
+func (o *Didnumber) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Didnumber
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,68 @@ func (u *Didnumber) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Number: u.Number,
+		Number: o.Number,
 		
-		Assigned: u.Assigned,
+		Assigned: o.Assigned,
 		
-		DidPool: u.DidPool,
+		DidPool: o.DidPool,
 		
-		Owner: u.Owner,
+		Owner: o.Owner,
 		
-		OwnerType: u.OwnerType,
+		OwnerType: o.OwnerType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Didnumber) UnmarshalJSON(b []byte) error {
+	var DidnumberMap map[string]interface{}
+	err := json.Unmarshal(b, &DidnumberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DidnumberMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DidnumberMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Number, ok := DidnumberMap["number"].(string); ok {
+		o.Number = &Number
+	}
+	
+	if Assigned, ok := DidnumberMap["assigned"].(bool); ok {
+		o.Assigned = &Assigned
+	}
+	
+	if DidPool, ok := DidnumberMap["didPool"].(map[string]interface{}); ok {
+		DidPoolString, _ := json.Marshal(DidPool)
+		json.Unmarshal(DidPoolString, &o.DidPool)
+	}
+	
+	if Owner, ok := DidnumberMap["owner"].(map[string]interface{}); ok {
+		OwnerString, _ := json.Marshal(Owner)
+		json.Unmarshal(OwnerString, &o.Owner)
+	}
+	
+	if OwnerType, ok := DidnumberMap["ownerType"].(string); ok {
+		o.OwnerType = &OwnerType
+	}
+	
+	if SelfUri, ok := DidnumberMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

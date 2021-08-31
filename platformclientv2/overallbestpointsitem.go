@@ -34,27 +34,25 @@ type Overallbestpointsitem struct {
 
 }
 
-func (u *Overallbestpointsitem) MarshalJSON() ([]byte, error) {
+func (o *Overallbestpointsitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Overallbestpointsitem
-
 	
 	DateStartWorkday := new(string)
-	if u.DateStartWorkday != nil {
-		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	if o.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(o.DateStartWorkday, "%Y-%m-%d")
 	} else {
 		DateStartWorkday = nil
 	}
 	
 	DateEndWorkday := new(string)
-	if u.DateEndWorkday != nil {
-		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	if o.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(o.DateEndWorkday, "%Y-%m-%d")
 	} else {
 		DateEndWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		GranularityType *string `json:"granularityType,omitempty"`
 		
@@ -69,19 +67,59 @@ func (u *Overallbestpointsitem) MarshalJSON() ([]byte, error) {
 		DateEndWorkday *string `json:"dateEndWorkday,omitempty"`
 		*Alias
 	}{ 
-		GranularityType: u.GranularityType,
+		GranularityType: o.GranularityType,
 		
-		Users: u.Users,
+		Users: o.Users,
 		
-		Count: u.Count,
+		Count: o.Count,
 		
-		Points: u.Points,
+		Points: o.Points,
 		
 		DateStartWorkday: DateStartWorkday,
 		
 		DateEndWorkday: DateEndWorkday,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Overallbestpointsitem) UnmarshalJSON(b []byte) error {
+	var OverallbestpointsitemMap map[string]interface{}
+	err := json.Unmarshal(b, &OverallbestpointsitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if GranularityType, ok := OverallbestpointsitemMap["granularityType"].(string); ok {
+		o.GranularityType = &GranularityType
+	}
+	
+	if Users, ok := OverallbestpointsitemMap["users"].([]interface{}); ok {
+		UsersString, _ := json.Marshal(Users)
+		json.Unmarshal(UsersString, &o.Users)
+	}
+	
+	if Count, ok := OverallbestpointsitemMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if Points, ok := OverallbestpointsitemMap["points"].(float64); ok {
+		PointsInt := int(Points)
+		o.Points = &PointsInt
+	}
+	
+	if dateStartWorkdayString, ok := OverallbestpointsitemMap["dateStartWorkday"].(string); ok {
+		DateStartWorkday, _ := time.Parse("2006-01-02", dateStartWorkdayString)
+		o.DateStartWorkday = &DateStartWorkday
+	}
+	
+	if dateEndWorkdayString, ok := OverallbestpointsitemMap["dateEndWorkday"].(string); ok {
+		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
+		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

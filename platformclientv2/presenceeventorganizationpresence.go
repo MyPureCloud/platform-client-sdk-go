@@ -17,24 +17,41 @@ type Presenceeventorganizationpresence struct {
 
 }
 
-func (u *Presenceeventorganizationpresence) MarshalJSON() ([]byte, error) {
+func (o *Presenceeventorganizationpresence) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Presenceeventorganizationpresence
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SystemPresence *string `json:"systemPresence,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SystemPresence: u.SystemPresence,
-		Alias:    (*Alias)(u),
+		SystemPresence: o.SystemPresence,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Presenceeventorganizationpresence) UnmarshalJSON(b []byte) error {
+	var PresenceeventorganizationpresenceMap map[string]interface{}
+	err := json.Unmarshal(b, &PresenceeventorganizationpresenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PresenceeventorganizationpresenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SystemPresence, ok := PresenceeventorganizationpresenceMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

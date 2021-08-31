@@ -45,13 +45,11 @@ type Fieldlist struct {
 
 }
 
-func (u *Fieldlist) MarshalJSON() ([]byte, error) {
+func (o *Fieldlist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Fieldlist
-
 	
-
 	return json.Marshal(&struct { 
 		CustomLabels *bool `json:"customLabels,omitempty"`
 		
@@ -72,25 +70,74 @@ func (u *Fieldlist) MarshalJSON() ([]byte, error) {
 		Required *bool `json:"required,omitempty"`
 		*Alias
 	}{ 
-		CustomLabels: u.CustomLabels,
+		CustomLabels: o.CustomLabels,
 		
-		InstructionText: u.InstructionText,
+		InstructionText: o.InstructionText,
 		
-		Key: u.Key,
+		Key: o.Key,
 		
-		LabelKeys: u.LabelKeys,
+		LabelKeys: o.LabelKeys,
 		
-		Params: u.Params,
+		Params: o.Params,
 		
-		Repeatable: u.Repeatable,
+		Repeatable: o.Repeatable,
 		
-		State: u.State,
+		State: o.State,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Required: u.Required,
-		Alias:    (*Alias)(u),
+		Required: o.Required,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Fieldlist) UnmarshalJSON(b []byte) error {
+	var FieldlistMap map[string]interface{}
+	err := json.Unmarshal(b, &FieldlistMap)
+	if err != nil {
+		return err
+	}
+	
+	if CustomLabels, ok := FieldlistMap["customLabels"].(bool); ok {
+		o.CustomLabels = &CustomLabels
+	}
+	
+	if InstructionText, ok := FieldlistMap["instructionText"].(string); ok {
+		o.InstructionText = &InstructionText
+	}
+	
+	if Key, ok := FieldlistMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if LabelKeys, ok := FieldlistMap["labelKeys"].([]interface{}); ok {
+		LabelKeysString, _ := json.Marshal(LabelKeys)
+		json.Unmarshal(LabelKeysString, &o.LabelKeys)
+	}
+	
+	if Params, ok := FieldlistMap["params"].(map[string]interface{}); ok {
+		ParamsString, _ := json.Marshal(Params)
+		json.Unmarshal(ParamsString, &o.Params)
+	}
+	
+	if Repeatable, ok := FieldlistMap["repeatable"].(bool); ok {
+		o.Repeatable = &Repeatable
+	}
+	
+	if State, ok := FieldlistMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if VarType, ok := FieldlistMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Required, ok := FieldlistMap["required"].(bool); ok {
+		o.Required = &Required
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

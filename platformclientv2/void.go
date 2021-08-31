@@ -9,16 +9,25 @@ import (
 // Void
 type Void struct { }
 
-func (u *Void) MarshalJSON() ([]byte, error) {
+func (o *Void) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Void
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Void) UnmarshalJSON(b []byte) error {
+	var VoidMap map[string]interface{}
+	err := json.Unmarshal(b, &VoidMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

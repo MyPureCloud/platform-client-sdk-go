@@ -17,24 +17,41 @@ type Contentsortitem struct {
 
 }
 
-func (u *Contentsortitem) MarshalJSON() ([]byte, error) {
+func (o *Contentsortitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentsortitem
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Ascending *bool `json:"ascending,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Ascending: u.Ascending,
-		Alias:    (*Alias)(u),
+		Ascending: o.Ascending,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentsortitem) UnmarshalJSON(b []byte) error {
+	var ContentsortitemMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentsortitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ContentsortitemMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Ascending, ok := ContentsortitemMap["ascending"].(bool); ok {
+		o.Ascending = &Ascending
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

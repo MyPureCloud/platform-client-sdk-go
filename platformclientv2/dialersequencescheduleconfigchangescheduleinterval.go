@@ -21,13 +21,11 @@ type Dialersequencescheduleconfigchangescheduleinterval struct {
 
 }
 
-func (u *Dialersequencescheduleconfigchangescheduleinterval) MarshalJSON() ([]byte, error) {
+func (o *Dialersequencescheduleconfigchangescheduleinterval) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialersequencescheduleconfigchangescheduleinterval
-
 	
-
 	return json.Marshal(&struct { 
 		Start *string `json:"start,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Dialersequencescheduleconfigchangescheduleinterval) MarshalJSON() ([]by
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Start: u.Start,
+		Start: o.Start,
 		
-		End: u.End,
+		End: o.End,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialersequencescheduleconfigchangescheduleinterval) UnmarshalJSON(b []byte) error {
+	var DialersequencescheduleconfigchangescheduleintervalMap map[string]interface{}
+	err := json.Unmarshal(b, &DialersequencescheduleconfigchangescheduleintervalMap)
+	if err != nil {
+		return err
+	}
+	
+	if Start, ok := DialersequencescheduleconfigchangescheduleintervalMap["start"].(string); ok {
+		o.Start = &Start
+	}
+	
+	if End, ok := DialersequencescheduleconfigchangescheduleintervalMap["end"].(string); ok {
+		o.End = &End
+	}
+	
+	if AdditionalProperties, ok := DialersequencescheduleconfigchangescheduleintervalMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

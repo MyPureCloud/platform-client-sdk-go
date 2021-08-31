@@ -17,24 +17,43 @@ type Resultcounters struct {
 
 }
 
-func (u *Resultcounters) MarshalJSON() ([]byte, error) {
+func (o *Resultcounters) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Resultcounters
-
 	
-
 	return json.Marshal(&struct { 
 		Success *int `json:"success,omitempty"`
 		
 		Failure *int `json:"failure,omitempty"`
 		*Alias
 	}{ 
-		Success: u.Success,
+		Success: o.Success,
 		
-		Failure: u.Failure,
-		Alias:    (*Alias)(u),
+		Failure: o.Failure,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Resultcounters) UnmarshalJSON(b []byte) error {
+	var ResultcountersMap map[string]interface{}
+	err := json.Unmarshal(b, &ResultcountersMap)
+	if err != nil {
+		return err
+	}
+	
+	if Success, ok := ResultcountersMap["success"].(float64); ok {
+		SuccessInt := int(Success)
+		o.Success = &SuccessInt
+	}
+	
+	if Failure, ok := ResultcountersMap["failure"].(float64); ok {
+		FailureInt := int(Failure)
+		o.Failure = &FailureInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

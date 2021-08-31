@@ -13,20 +13,33 @@ type Nludetectioninput struct {
 
 }
 
-func (u *Nludetectioninput) MarshalJSON() ([]byte, error) {
+func (o *Nludetectioninput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nludetectioninput
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
-		Alias:    (*Alias)(u),
+		Text: o.Text,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nludetectioninput) UnmarshalJSON(b []byte) error {
+	var NludetectioninputMap map[string]interface{}
+	err := json.Unmarshal(b, &NludetectioninputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := NludetectioninputMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

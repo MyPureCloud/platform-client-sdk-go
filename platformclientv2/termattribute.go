@@ -21,13 +21,11 @@ type Termattribute struct {
 
 }
 
-func (u *Termattribute) MarshalJSON() ([]byte, error) {
+func (o *Termattribute) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Termattribute
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Termattribute) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Termattribute) UnmarshalJSON(b []byte) error {
+	var TermattributeMap map[string]interface{}
+	err := json.Unmarshal(b, &TermattributeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TermattributeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TermattributeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := TermattributeMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -162,69 +162,67 @@ type Cobrowsemediaparticipant struct {
 
 }
 
-func (u *Cobrowsemediaparticipant) MarshalJSON() ([]byte, error) {
+func (o *Cobrowsemediaparticipant) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Cobrowsemediaparticipant
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	StartAcwTime := new(string)
-	if u.StartAcwTime != nil {
+	if o.StartAcwTime != nil {
 		
-		*StartAcwTime = timeutil.Strftime(u.StartAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAcwTime = timeutil.Strftime(o.StartAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAcwTime = nil
 	}
 	
 	EndAcwTime := new(string)
-	if u.EndAcwTime != nil {
+	if o.EndAcwTime != nil {
 		
-		*EndAcwTime = timeutil.Strftime(u.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndAcwTime = timeutil.Strftime(o.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndAcwTime = nil
 	}
 	
 	ProviderEventTime := new(string)
-	if u.ProviderEventTime != nil {
+	if o.ProviderEventTime != nil {
 		
-		*ProviderEventTime = timeutil.Strftime(u.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ProviderEventTime = timeutil.Strftime(o.ProviderEventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ProviderEventTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -303,11 +301,11 @@ func (u *Cobrowsemediaparticipant) MarshalJSON() ([]byte, error) {
 		ProviderEventTime *string `json:"providerEventTime,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
 		StartTime: StartTime,
 		
@@ -317,69 +315,253 @@ func (u *Cobrowsemediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		StartHoldTime: StartHoldTime,
 		
-		Purpose: u.Purpose,
+		Purpose: o.Purpose,
 		
-		State: u.State,
+		State: o.State,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		WrapupRequired: u.WrapupRequired,
+		WrapupRequired: o.WrapupRequired,
 		
-		WrapupPrompt: u.WrapupPrompt,
+		WrapupPrompt: o.WrapupPrompt,
 		
-		User: u.User,
+		User: o.User,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Team: u.Team,
+		Team: o.Team,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		ErrorInfo: u.ErrorInfo,
+		ErrorInfo: o.ErrorInfo,
 		
-		Script: u.Script,
+		Script: o.Script,
 		
-		WrapupTimeoutMs: u.WrapupTimeoutMs,
+		WrapupTimeoutMs: o.WrapupTimeoutMs,
 		
-		WrapupSkipped: u.WrapupSkipped,
+		WrapupSkipped: o.WrapupSkipped,
 		
-		AlertingTimeoutMs: u.AlertingTimeoutMs,
+		AlertingTimeoutMs: o.AlertingTimeoutMs,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ExternalContact: u.ExternalContact,
+		ExternalContact: o.ExternalContact,
 		
-		ExternalOrganization: u.ExternalOrganization,
+		ExternalOrganization: o.ExternalOrganization,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		Peer: u.Peer,
+		Peer: o.Peer,
 		
-		FlaggedReason: u.FlaggedReason,
+		FlaggedReason: o.FlaggedReason,
 		
-		JourneyContext: u.JourneyContext,
+		JourneyContext: o.JourneyContext,
 		
-		ConversationRoutingData: u.ConversationRoutingData,
+		ConversationRoutingData: o.ConversationRoutingData,
 		
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
 		
-		CobrowseSessionId: u.CobrowseSessionId,
+		CobrowseSessionId: o.CobrowseSessionId,
 		
-		CobrowseRole: u.CobrowseRole,
+		CobrowseRole: o.CobrowseRole,
 		
-		Controlling: u.Controlling,
+		Controlling: o.Controlling,
 		
-		ViewerUrl: u.ViewerUrl,
+		ViewerUrl: o.ViewerUrl,
 		
 		ProviderEventTime: ProviderEventTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Cobrowsemediaparticipant) UnmarshalJSON(b []byte) error {
+	var CobrowsemediaparticipantMap map[string]interface{}
+	err := json.Unmarshal(b, &CobrowsemediaparticipantMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CobrowsemediaparticipantMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CobrowsemediaparticipantMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Address, ok := CobrowsemediaparticipantMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if startTimeString, ok := CobrowsemediaparticipantMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if connectedTimeString, ok := CobrowsemediaparticipantMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if endTimeString, ok := CobrowsemediaparticipantMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if startHoldTimeString, ok := CobrowsemediaparticipantMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if Purpose, ok := CobrowsemediaparticipantMap["purpose"].(string); ok {
+		o.Purpose = &Purpose
+	}
+	
+	if State, ok := CobrowsemediaparticipantMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Direction, ok := CobrowsemediaparticipantMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if DisconnectType, ok := CobrowsemediaparticipantMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if Held, ok := CobrowsemediaparticipantMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if WrapupRequired, ok := CobrowsemediaparticipantMap["wrapupRequired"].(bool); ok {
+		o.WrapupRequired = &WrapupRequired
+	}
+	
+	if WrapupPrompt, ok := CobrowsemediaparticipantMap["wrapupPrompt"].(string); ok {
+		o.WrapupPrompt = &WrapupPrompt
+	}
+	
+	if User, ok := CobrowsemediaparticipantMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Queue, ok := CobrowsemediaparticipantMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Team, ok := CobrowsemediaparticipantMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
+	}
+	
+	if Attributes, ok := CobrowsemediaparticipantMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if ErrorInfo, ok := CobrowsemediaparticipantMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if Script, ok := CobrowsemediaparticipantMap["script"].(map[string]interface{}); ok {
+		ScriptString, _ := json.Marshal(Script)
+		json.Unmarshal(ScriptString, &o.Script)
+	}
+	
+	if WrapupTimeoutMs, ok := CobrowsemediaparticipantMap["wrapupTimeoutMs"].(float64); ok {
+		WrapupTimeoutMsInt := int(WrapupTimeoutMs)
+		o.WrapupTimeoutMs = &WrapupTimeoutMsInt
+	}
+	
+	if WrapupSkipped, ok := CobrowsemediaparticipantMap["wrapupSkipped"].(bool); ok {
+		o.WrapupSkipped = &WrapupSkipped
+	}
+	
+	if AlertingTimeoutMs, ok := CobrowsemediaparticipantMap["alertingTimeoutMs"].(float64); ok {
+		AlertingTimeoutMsInt := int(AlertingTimeoutMs)
+		o.AlertingTimeoutMs = &AlertingTimeoutMsInt
+	}
+	
+	if Provider, ok := CobrowsemediaparticipantMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ExternalContact, ok := CobrowsemediaparticipantMap["externalContact"].(map[string]interface{}); ok {
+		ExternalContactString, _ := json.Marshal(ExternalContact)
+		json.Unmarshal(ExternalContactString, &o.ExternalContact)
+	}
+	
+	if ExternalOrganization, ok := CobrowsemediaparticipantMap["externalOrganization"].(map[string]interface{}); ok {
+		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
+		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
+	}
+	
+	if Wrapup, ok := CobrowsemediaparticipantMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if Peer, ok := CobrowsemediaparticipantMap["peer"].(string); ok {
+		o.Peer = &Peer
+	}
+	
+	if FlaggedReason, ok := CobrowsemediaparticipantMap["flaggedReason"].(string); ok {
+		o.FlaggedReason = &FlaggedReason
+	}
+	
+	if JourneyContext, ok := CobrowsemediaparticipantMap["journeyContext"].(map[string]interface{}); ok {
+		JourneyContextString, _ := json.Marshal(JourneyContext)
+		json.Unmarshal(JourneyContextString, &o.JourneyContext)
+	}
+	
+	if ConversationRoutingData, ok := CobrowsemediaparticipantMap["conversationRoutingData"].(map[string]interface{}); ok {
+		ConversationRoutingDataString, _ := json.Marshal(ConversationRoutingData)
+		json.Unmarshal(ConversationRoutingDataString, &o.ConversationRoutingData)
+	}
+	
+	if startAcwTimeString, ok := CobrowsemediaparticipantMap["startAcwTime"].(string); ok {
+		StartAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAcwTimeString)
+		o.StartAcwTime = &StartAcwTime
+	}
+	
+	if endAcwTimeString, ok := CobrowsemediaparticipantMap["endAcwTime"].(string); ok {
+		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
+		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if CobrowseSessionId, ok := CobrowsemediaparticipantMap["cobrowseSessionId"].(string); ok {
+		o.CobrowseSessionId = &CobrowseSessionId
+	}
+	
+	if CobrowseRole, ok := CobrowsemediaparticipantMap["cobrowseRole"].(string); ok {
+		o.CobrowseRole = &CobrowseRole
+	}
+	
+	if Controlling, ok := CobrowsemediaparticipantMap["controlling"].([]interface{}); ok {
+		ControllingString, _ := json.Marshal(Controlling)
+		json.Unmarshal(ControllingString, &o.Controlling)
+	}
+	
+	if ViewerUrl, ok := CobrowsemediaparticipantMap["viewerUrl"].(string); ok {
+		o.ViewerUrl = &ViewerUrl
+	}
+	
+	if providerEventTimeString, ok := CobrowsemediaparticipantMap["providerEventTime"].(string); ok {
+		ProviderEventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", providerEventTimeString)
+		o.ProviderEventTime = &ProviderEventTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

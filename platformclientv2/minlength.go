@@ -17,24 +17,43 @@ type Minlength struct {
 
 }
 
-func (u *Minlength) MarshalJSON() ([]byte, error) {
+func (o *Minlength) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Minlength
-
 	
-
 	return json.Marshal(&struct { 
 		Min *int `json:"min,omitempty"`
 		
 		Max *int `json:"max,omitempty"`
 		*Alias
 	}{ 
-		Min: u.Min,
+		Min: o.Min,
 		
-		Max: u.Max,
-		Alias:    (*Alias)(u),
+		Max: o.Max,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Minlength) UnmarshalJSON(b []byte) error {
+	var MinlengthMap map[string]interface{}
+	err := json.Unmarshal(b, &MinlengthMap)
+	if err != nil {
+		return err
+	}
+	
+	if Min, ok := MinlengthMap["min"].(float64); ok {
+		MinInt := int(Min)
+		o.Min = &MinInt
+	}
+	
+	if Max, ok := MinlengthMap["max"].(float64); ok {
+		MaxInt := int(Max)
+		o.Max = &MaxInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

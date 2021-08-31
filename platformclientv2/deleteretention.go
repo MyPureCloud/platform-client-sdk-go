@@ -13,20 +13,34 @@ type Deleteretention struct {
 
 }
 
-func (u *Deleteretention) MarshalJSON() ([]byte, error) {
+func (o *Deleteretention) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Deleteretention
-
 	
-
 	return json.Marshal(&struct { 
 		Days *int `json:"days,omitempty"`
 		*Alias
 	}{ 
-		Days: u.Days,
-		Alias:    (*Alias)(u),
+		Days: o.Days,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Deleteretention) UnmarshalJSON(b []byte) error {
+	var DeleteretentionMap map[string]interface{}
+	err := json.Unmarshal(b, &DeleteretentionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Days, ok := DeleteretentionMap["days"].(float64); ok {
+		DaysInt := int(Days)
+		o.Days = &DaysInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

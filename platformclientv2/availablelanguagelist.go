@@ -13,20 +13,34 @@ type Availablelanguagelist struct {
 
 }
 
-func (u *Availablelanguagelist) MarshalJSON() ([]byte, error) {
+func (o *Availablelanguagelist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Availablelanguagelist
-
 	
-
 	return json.Marshal(&struct { 
 		Languages *[]string `json:"languages,omitempty"`
 		*Alias
 	}{ 
-		Languages: u.Languages,
-		Alias:    (*Alias)(u),
+		Languages: o.Languages,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Availablelanguagelist) UnmarshalJSON(b []byte) error {
+	var AvailablelanguagelistMap map[string]interface{}
+	err := json.Unmarshal(b, &AvailablelanguagelistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Languages, ok := AvailablelanguagelistMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

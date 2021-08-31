@@ -66,21 +66,19 @@ type Recordingjob struct {
 
 }
 
-func (u *Recordingjob) MarshalJSON() ([]byte, error) {
+func (o *Recordingjob) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingjob
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -111,35 +109,111 @@ func (u *Recordingjob) MarshalJSON() ([]byte, error) {
 		User *Addressableentityref `json:"user,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
-		RecordingJobsQuery: u.RecordingJobsQuery,
+		RecordingJobsQuery: o.RecordingJobsQuery,
 		
 		DateCreated: DateCreated,
 		
-		TotalConversations: u.TotalConversations,
+		TotalConversations: o.TotalConversations,
 		
-		TotalRecordings: u.TotalRecordings,
+		TotalRecordings: o.TotalRecordings,
 		
-		TotalSkippedRecordings: u.TotalSkippedRecordings,
+		TotalSkippedRecordings: o.TotalSkippedRecordings,
 		
-		TotalFailedRecordings: u.TotalFailedRecordings,
+		TotalFailedRecordings: o.TotalFailedRecordings,
 		
-		TotalProcessedRecordings: u.TotalProcessedRecordings,
+		TotalProcessedRecordings: o.TotalProcessedRecordings,
 		
-		PercentProgress: u.PercentProgress,
+		PercentProgress: o.PercentProgress,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
-		FailedRecordings: u.FailedRecordings,
+		FailedRecordings: o.FailedRecordings,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		User: u.User,
-		Alias:    (*Alias)(u),
+		User: o.User,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingjob) UnmarshalJSON(b []byte) error {
+	var RecordingjobMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingjobMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RecordingjobMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := RecordingjobMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if RecordingJobsQuery, ok := RecordingjobMap["recordingJobsQuery"].(map[string]interface{}); ok {
+		RecordingJobsQueryString, _ := json.Marshal(RecordingJobsQuery)
+		json.Unmarshal(RecordingJobsQueryString, &o.RecordingJobsQuery)
+	}
+	
+	if dateCreatedString, ok := RecordingjobMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if TotalConversations, ok := RecordingjobMap["totalConversations"].(float64); ok {
+		TotalConversationsInt := int(TotalConversations)
+		o.TotalConversations = &TotalConversationsInt
+	}
+	
+	if TotalRecordings, ok := RecordingjobMap["totalRecordings"].(float64); ok {
+		TotalRecordingsInt := int(TotalRecordings)
+		o.TotalRecordings = &TotalRecordingsInt
+	}
+	
+	if TotalSkippedRecordings, ok := RecordingjobMap["totalSkippedRecordings"].(float64); ok {
+		TotalSkippedRecordingsInt := int(TotalSkippedRecordings)
+		o.TotalSkippedRecordings = &TotalSkippedRecordingsInt
+	}
+	
+	if TotalFailedRecordings, ok := RecordingjobMap["totalFailedRecordings"].(float64); ok {
+		TotalFailedRecordingsInt := int(TotalFailedRecordings)
+		o.TotalFailedRecordings = &TotalFailedRecordingsInt
+	}
+	
+	if TotalProcessedRecordings, ok := RecordingjobMap["totalProcessedRecordings"].(float64); ok {
+		TotalProcessedRecordingsInt := int(TotalProcessedRecordings)
+		o.TotalProcessedRecordings = &TotalProcessedRecordingsInt
+	}
+	
+	if PercentProgress, ok := RecordingjobMap["percentProgress"].(float64); ok {
+		PercentProgressInt := int(PercentProgress)
+		o.PercentProgress = &PercentProgressInt
+	}
+	
+	if ErrorMessage, ok := RecordingjobMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if FailedRecordings, ok := RecordingjobMap["failedRecordings"].(string); ok {
+		o.FailedRecordings = &FailedRecordings
+	}
+	
+	if SelfUri, ok := RecordingjobMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if User, ok := RecordingjobMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

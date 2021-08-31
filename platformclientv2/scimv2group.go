@@ -33,13 +33,11 @@ type Scimv2group struct {
 
 }
 
-func (u *Scimv2group) MarshalJSON() ([]byte, error) {
+func (o *Scimv2group) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2group
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Scimv2group) MarshalJSON() ([]byte, error) {
 		Meta *Scimmetadata `json:"meta,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		ExternalId: u.ExternalId,
+		ExternalId: o.ExternalId,
 		
-		Members: u.Members,
+		Members: o.Members,
 		
-		Meta: u.Meta,
-		Alias:    (*Alias)(u),
+		Meta: o.Meta,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2group) UnmarshalJSON(b []byte) error {
+	var Scimv2groupMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2groupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := Scimv2groupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Schemas, ok := Scimv2groupMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if DisplayName, ok := Scimv2groupMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if ExternalId, ok := Scimv2groupMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+	
+	if Members, ok := Scimv2groupMap["members"].([]interface{}); ok {
+		MembersString, _ := json.Marshal(Members)
+		json.Unmarshal(MembersString, &o.Members)
+	}
+	
+	if Meta, ok := Scimv2groupMap["meta"].(map[string]interface{}); ok {
+		MetaString, _ := json.Marshal(Meta)
+		json.Unmarshal(MetaString, &o.Meta)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

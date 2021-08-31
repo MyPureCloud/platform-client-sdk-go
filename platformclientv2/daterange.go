@@ -17,24 +17,41 @@ type Daterange struct {
 
 }
 
-func (u *Daterange) MarshalJSON() ([]byte, error) {
+func (o *Daterange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Daterange
-
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
 		EndDate *string `json:"endDate,omitempty"`
 		*Alias
 	}{ 
-		StartDate: u.StartDate,
+		StartDate: o.StartDate,
 		
-		EndDate: u.EndDate,
-		Alias:    (*Alias)(u),
+		EndDate: o.EndDate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Daterange) UnmarshalJSON(b []byte) error {
+	var DaterangeMap map[string]interface{}
+	err := json.Unmarshal(b, &DaterangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if StartDate, ok := DaterangeMap["startDate"].(string); ok {
+		o.StartDate = &StartDate
+	}
+	
+	if EndDate, ok := DaterangeMap["endDate"].(string); ok {
+		o.EndDate = &EndDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

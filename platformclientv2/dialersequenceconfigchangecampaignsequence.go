@@ -54,29 +54,27 @@ type Dialersequenceconfigchangecampaignsequence struct {
 
 }
 
-func (u *Dialersequenceconfigchangecampaignsequence) MarshalJSON() ([]byte, error) {
+func (o *Dialersequenceconfigchangecampaignsequence) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialersequenceconfigchangecampaignsequence
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -101,29 +99,90 @@ func (u *Dialersequenceconfigchangecampaignsequence) MarshalJSON() ([]byte, erro
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Campaigns: u.Campaigns,
+		Campaigns: o.Campaigns,
 		
-		CurrentCampaign: u.CurrentCampaign,
+		CurrentCampaign: o.CurrentCampaign,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		StopMessage: u.StopMessage,
+		StopMessage: o.StopMessage,
 		
-		Repeat: u.Repeat,
+		Repeat: o.Repeat,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialersequenceconfigchangecampaignsequence) UnmarshalJSON(b []byte) error {
+	var DialersequenceconfigchangecampaignsequenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DialersequenceconfigchangecampaignsequenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialersequenceconfigchangecampaignsequenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialersequenceconfigchangecampaignsequenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialersequenceconfigchangecampaignsequenceMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Campaigns, ok := DialersequenceconfigchangecampaignsequenceMap["campaigns"].([]interface{}); ok {
+		CampaignsString, _ := json.Marshal(Campaigns)
+		json.Unmarshal(CampaignsString, &o.Campaigns)
+	}
+	
+	if CurrentCampaign, ok := DialersequenceconfigchangecampaignsequenceMap["currentCampaign"].(float64); ok {
+		CurrentCampaignInt := int(CurrentCampaign)
+		o.CurrentCampaign = &CurrentCampaignInt
+	}
+	
+	if Status, ok := DialersequenceconfigchangecampaignsequenceMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if StopMessage, ok := DialersequenceconfigchangecampaignsequenceMap["stopMessage"].(string); ok {
+		o.StopMessage = &StopMessage
+	}
+	
+	if Repeat, ok := DialersequenceconfigchangecampaignsequenceMap["repeat"].(bool); ok {
+		o.Repeat = &Repeat
+	}
+	
+	if AdditionalProperties, ok := DialersequenceconfigchangecampaignsequenceMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

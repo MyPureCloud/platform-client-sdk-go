@@ -13,20 +13,34 @@ type Postoutputcontract struct {
 
 }
 
-func (u *Postoutputcontract) MarshalJSON() ([]byte, error) {
+func (o *Postoutputcontract) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Postoutputcontract
-
 	
-
 	return json.Marshal(&struct { 
 		SuccessSchema *Jsonschemadocument `json:"successSchema,omitempty"`
 		*Alias
 	}{ 
-		SuccessSchema: u.SuccessSchema,
-		Alias:    (*Alias)(u),
+		SuccessSchema: o.SuccessSchema,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Postoutputcontract) UnmarshalJSON(b []byte) error {
+	var PostoutputcontractMap map[string]interface{}
+	err := json.Unmarshal(b, &PostoutputcontractMap)
+	if err != nil {
+		return err
+	}
+	
+	if SuccessSchema, ok := PostoutputcontractMap["successSchema"].(map[string]interface{}); ok {
+		SuccessSchemaString, _ := json.Marshal(SuccessSchema)
+		json.Unmarshal(SuccessSchemaString, &o.SuccessSchema)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

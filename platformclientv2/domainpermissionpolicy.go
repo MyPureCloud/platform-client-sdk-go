@@ -41,13 +41,11 @@ type Domainpermissionpolicy struct {
 
 }
 
-func (u *Domainpermissionpolicy) MarshalJSON() ([]byte, error) {
+func (o *Domainpermissionpolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainpermissionpolicy
-
 	
-
 	return json.Marshal(&struct { 
 		Domain *string `json:"domain,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Domainpermissionpolicy) MarshalJSON() ([]byte, error) {
 		ResourceConditionNode *Domainresourceconditionnode `json:"resourceConditionNode,omitempty"`
 		*Alias
 	}{ 
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		EntityName: u.EntityName,
+		EntityName: o.EntityName,
 		
-		PolicyName: u.PolicyName,
+		PolicyName: o.PolicyName,
 		
-		PolicyDescription: u.PolicyDescription,
+		PolicyDescription: o.PolicyDescription,
 		
-		ActionSet: u.ActionSet,
+		ActionSet: o.ActionSet,
 		
-		NamedResources: u.NamedResources,
+		NamedResources: o.NamedResources,
 		
-		AllowConditions: u.AllowConditions,
+		AllowConditions: o.AllowConditions,
 		
-		ResourceConditionNode: u.ResourceConditionNode,
-		Alias:    (*Alias)(u),
+		ResourceConditionNode: o.ResourceConditionNode,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainpermissionpolicy) UnmarshalJSON(b []byte) error {
+	var DomainpermissionpolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainpermissionpolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Domain, ok := DomainpermissionpolicyMap["domain"].(string); ok {
+		o.Domain = &Domain
+	}
+	
+	if EntityName, ok := DomainpermissionpolicyMap["entityName"].(string); ok {
+		o.EntityName = &EntityName
+	}
+	
+	if PolicyName, ok := DomainpermissionpolicyMap["policyName"].(string); ok {
+		o.PolicyName = &PolicyName
+	}
+	
+	if PolicyDescription, ok := DomainpermissionpolicyMap["policyDescription"].(string); ok {
+		o.PolicyDescription = &PolicyDescription
+	}
+	
+	if ActionSet, ok := DomainpermissionpolicyMap["actionSet"].([]interface{}); ok {
+		ActionSetString, _ := json.Marshal(ActionSet)
+		json.Unmarshal(ActionSetString, &o.ActionSet)
+	}
+	
+	if NamedResources, ok := DomainpermissionpolicyMap["namedResources"].([]interface{}); ok {
+		NamedResourcesString, _ := json.Marshal(NamedResources)
+		json.Unmarshal(NamedResourcesString, &o.NamedResources)
+	}
+	
+	if AllowConditions, ok := DomainpermissionpolicyMap["allowConditions"].(bool); ok {
+		o.AllowConditions = &AllowConditions
+	}
+	
+	if ResourceConditionNode, ok := DomainpermissionpolicyMap["resourceConditionNode"].(map[string]interface{}); ok {
+		ResourceConditionNodeString, _ := json.Marshal(ResourceConditionNode)
+		json.Unmarshal(ResourceConditionNodeString, &o.ResourceConditionNode)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

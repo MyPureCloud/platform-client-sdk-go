@@ -25,13 +25,11 @@ type Userroutingskillpost struct {
 
 }
 
-func (u *Userroutingskillpost) MarshalJSON() ([]byte, error) {
+func (o *Userroutingskillpost) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userroutingskillpost
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Userroutingskillpost) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Proficiency: u.Proficiency,
+		Proficiency: o.Proficiency,
 		
-		SkillUri: u.SkillUri,
+		SkillUri: o.SkillUri,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userroutingskillpost) UnmarshalJSON(b []byte) error {
+	var UserroutingskillpostMap map[string]interface{}
+	err := json.Unmarshal(b, &UserroutingskillpostMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserroutingskillpostMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Proficiency, ok := UserroutingskillpostMap["proficiency"].(float64); ok {
+		o.Proficiency = &Proficiency
+	}
+	
+	if SkillUri, ok := UserroutingskillpostMap["skillUri"].(string); ok {
+		o.SkillUri = &SkillUri
+	}
+	
+	if SelfUri, ok := UserroutingskillpostMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Schedulegenerationwarning struct {
 
 }
 
-func (u *Schedulegenerationwarning) MarshalJSON() ([]byte, error) {
+func (o *Schedulegenerationwarning) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulegenerationwarning
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -66,23 +64,68 @@ func (u *Schedulegenerationwarning) MarshalJSON() ([]byte, error) {
 		ShiftsTooCloseTogether *bool `json:"shiftsTooCloseTogether,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		UserNotLicensed: u.UserNotLicensed,
+		UserNotLicensed: o.UserNotLicensed,
 		
-		UnableToMeetMaxDays: u.UnableToMeetMaxDays,
+		UnableToMeetMaxDays: o.UnableToMeetMaxDays,
 		
-		UnableToScheduleRequiredDays: u.UnableToScheduleRequiredDays,
+		UnableToScheduleRequiredDays: o.UnableToScheduleRequiredDays,
 		
-		UnableToMeetMinPaidForTheWeek: u.UnableToMeetMinPaidForTheWeek,
+		UnableToMeetMinPaidForTheWeek: o.UnableToMeetMinPaidForTheWeek,
 		
-		UnableToMeetMaxPaidForTheWeek: u.UnableToMeetMaxPaidForTheWeek,
+		UnableToMeetMaxPaidForTheWeek: o.UnableToMeetMaxPaidForTheWeek,
 		
-		NoNeedDays: u.NoNeedDays,
+		NoNeedDays: o.NoNeedDays,
 		
-		ShiftsTooCloseTogether: u.ShiftsTooCloseTogether,
-		Alias:    (*Alias)(u),
+		ShiftsTooCloseTogether: o.ShiftsTooCloseTogether,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulegenerationwarning) UnmarshalJSON(b []byte) error {
+	var SchedulegenerationwarningMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulegenerationwarningMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := SchedulegenerationwarningMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if UserNotLicensed, ok := SchedulegenerationwarningMap["userNotLicensed"].(bool); ok {
+		o.UserNotLicensed = &UserNotLicensed
+	}
+	
+	if UnableToMeetMaxDays, ok := SchedulegenerationwarningMap["unableToMeetMaxDays"].(bool); ok {
+		o.UnableToMeetMaxDays = &UnableToMeetMaxDays
+	}
+	
+	if UnableToScheduleRequiredDays, ok := SchedulegenerationwarningMap["unableToScheduleRequiredDays"].([]interface{}); ok {
+		UnableToScheduleRequiredDaysString, _ := json.Marshal(UnableToScheduleRequiredDays)
+		json.Unmarshal(UnableToScheduleRequiredDaysString, &o.UnableToScheduleRequiredDays)
+	}
+	
+	if UnableToMeetMinPaidForTheWeek, ok := SchedulegenerationwarningMap["unableToMeetMinPaidForTheWeek"].(bool); ok {
+		o.UnableToMeetMinPaidForTheWeek = &UnableToMeetMinPaidForTheWeek
+	}
+	
+	if UnableToMeetMaxPaidForTheWeek, ok := SchedulegenerationwarningMap["unableToMeetMaxPaidForTheWeek"].(bool); ok {
+		o.UnableToMeetMaxPaidForTheWeek = &UnableToMeetMaxPaidForTheWeek
+	}
+	
+	if NoNeedDays, ok := SchedulegenerationwarningMap["noNeedDays"].([]interface{}); ok {
+		NoNeedDaysString, _ := json.Marshal(NoNeedDays)
+		json.Unmarshal(NoNeedDaysString, &o.NoNeedDays)
+	}
+	
+	if ShiftsTooCloseTogether, ok := SchedulegenerationwarningMap["shiftsTooCloseTogether"].(bool); ok {
+		o.ShiftsTooCloseTogether = &ShiftsTooCloseTogether
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

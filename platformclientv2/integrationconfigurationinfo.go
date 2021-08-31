@@ -13,20 +13,34 @@ type Integrationconfigurationinfo struct {
 
 }
 
-func (u *Integrationconfigurationinfo) MarshalJSON() ([]byte, error) {
+func (o *Integrationconfigurationinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Integrationconfigurationinfo
-
 	
-
 	return json.Marshal(&struct { 
 		Current *Integrationconfiguration `json:"current,omitempty"`
 		*Alias
 	}{ 
-		Current: u.Current,
-		Alias:    (*Alias)(u),
+		Current: o.Current,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Integrationconfigurationinfo) UnmarshalJSON(b []byte) error {
+	var IntegrationconfigurationinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &IntegrationconfigurationinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Current, ok := IntegrationconfigurationinfoMap["current"].(map[string]interface{}); ok {
+		CurrentString, _ := json.Marshal(Current)
+		json.Unmarshal(CurrentString, &o.Current)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

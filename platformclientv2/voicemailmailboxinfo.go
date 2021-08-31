@@ -34,29 +34,27 @@ type Voicemailmailboxinfo struct {
 
 }
 
-func (u *Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
+func (o *Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmailboxinfo
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		UsageSizeBytes *int `json:"usageSizeBytes,omitempty"`
 		
@@ -71,19 +69,60 @@ func (u *Voicemailmailboxinfo) MarshalJSON() ([]byte, error) {
 		ModifiedDate *string `json:"modifiedDate,omitempty"`
 		*Alias
 	}{ 
-		UsageSizeBytes: u.UsageSizeBytes,
+		UsageSizeBytes: o.UsageSizeBytes,
 		
-		TotalCount: u.TotalCount,
+		TotalCount: o.TotalCount,
 		
-		UnreadCount: u.UnreadCount,
+		UnreadCount: o.UnreadCount,
 		
-		DeletedCount: u.DeletedCount,
+		DeletedCount: o.DeletedCount,
 		
 		CreatedDate: CreatedDate,
 		
 		ModifiedDate: ModifiedDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailmailboxinfo) UnmarshalJSON(b []byte) error {
+	var VoicemailmailboxinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailmailboxinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if UsageSizeBytes, ok := VoicemailmailboxinfoMap["usageSizeBytes"].(float64); ok {
+		UsageSizeBytesInt := int(UsageSizeBytes)
+		o.UsageSizeBytes = &UsageSizeBytesInt
+	}
+	
+	if TotalCount, ok := VoicemailmailboxinfoMap["totalCount"].(float64); ok {
+		TotalCountInt := int(TotalCount)
+		o.TotalCount = &TotalCountInt
+	}
+	
+	if UnreadCount, ok := VoicemailmailboxinfoMap["unreadCount"].(float64); ok {
+		UnreadCountInt := int(UnreadCount)
+		o.UnreadCount = &UnreadCountInt
+	}
+	
+	if DeletedCount, ok := VoicemailmailboxinfoMap["deletedCount"].(float64); ok {
+		DeletedCountInt := int(DeletedCount)
+		o.DeletedCount = &DeletedCountInt
+	}
+	
+	if createdDateString, ok := VoicemailmailboxinfoMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := VoicemailmailboxinfoMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

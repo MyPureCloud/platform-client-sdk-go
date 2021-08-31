@@ -22,20 +22,18 @@ type Alltimepoints struct {
 
 }
 
-func (u *Alltimepoints) MarshalJSON() ([]byte, error) {
+func (o *Alltimepoints) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Alltimepoints
-
 	
 	DateEndWorkday := new(string)
-	if u.DateEndWorkday != nil {
-		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	if o.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(o.DateEndWorkday, "%Y-%m-%d")
 	} else {
 		DateEndWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		User *Userreference `json:"user,omitempty"`
 		
@@ -44,13 +42,39 @@ func (u *Alltimepoints) MarshalJSON() ([]byte, error) {
 		AllTimePoints *int `json:"allTimePoints,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
 		DateEndWorkday: DateEndWorkday,
 		
-		AllTimePoints: u.AllTimePoints,
-		Alias:    (*Alias)(u),
+		AllTimePoints: o.AllTimePoints,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Alltimepoints) UnmarshalJSON(b []byte) error {
+	var AlltimepointsMap map[string]interface{}
+	err := json.Unmarshal(b, &AlltimepointsMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := AlltimepointsMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if dateEndWorkdayString, ok := AlltimepointsMap["dateEndWorkday"].(string); ok {
+		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
+		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+	if AllTimePoints, ok := AlltimepointsMap["allTimePoints"].(float64); ok {
+		AllTimePointsInt := int(AllTimePoints)
+		o.AllTimePoints = &AllTimePointsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

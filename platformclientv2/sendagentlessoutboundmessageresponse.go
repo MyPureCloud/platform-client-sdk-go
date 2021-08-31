@@ -50,21 +50,19 @@ type Sendagentlessoutboundmessageresponse struct {
 
 }
 
-func (u *Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
+func (o *Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sendagentlessoutboundmessageresponse
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -87,27 +85,81 @@ func (u *Sendagentlessoutboundmessageresponse) MarshalJSON() ([]byte, error) {
 		User *Addressableentityref `json:"user,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		MessengerType: u.MessengerType,
+		MessengerType: o.MessengerType,
 		
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		MessagingTemplate: u.MessagingTemplate,
+		MessagingTemplate: o.MessagingTemplate,
 		
 		Timestamp: Timestamp,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		User: u.User,
-		Alias:    (*Alias)(u),
+		User: o.User,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sendagentlessoutboundmessageresponse) UnmarshalJSON(b []byte) error {
+	var SendagentlessoutboundmessageresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SendagentlessoutboundmessageresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SendagentlessoutboundmessageresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ConversationId, ok := SendagentlessoutboundmessageresponseMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if FromAddress, ok := SendagentlessoutboundmessageresponseMap["fromAddress"].(string); ok {
+		o.FromAddress = &FromAddress
+	}
+	
+	if ToAddress, ok := SendagentlessoutboundmessageresponseMap["toAddress"].(string); ok {
+		o.ToAddress = &ToAddress
+	}
+	
+	if MessengerType, ok := SendagentlessoutboundmessageresponseMap["messengerType"].(string); ok {
+		o.MessengerType = &MessengerType
+	}
+	
+	if TextBody, ok := SendagentlessoutboundmessageresponseMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if MessagingTemplate, ok := SendagentlessoutboundmessageresponseMap["messagingTemplate"].(map[string]interface{}); ok {
+		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
+		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
+	}
+	
+	if timestampString, ok := SendagentlessoutboundmessageresponseMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if SelfUri, ok := SendagentlessoutboundmessageresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if User, ok := SendagentlessoutboundmessageresponseMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

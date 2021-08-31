@@ -26,21 +26,19 @@ type Trunkmetricsoptions struct {
 
 }
 
-func (u *Trunkmetricsoptions) MarshalJSON() ([]byte, error) {
+func (o *Trunkmetricsoptions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkmetricsoptions
-
 	
 	OptionStateTime := new(string)
-	if u.OptionStateTime != nil {
+	if o.OptionStateTime != nil {
 		
-		*OptionStateTime = timeutil.Strftime(u.OptionStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*OptionStateTime = timeutil.Strftime(o.OptionStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		OptionStateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ProxyAddress *string `json:"proxyAddress,omitempty"`
 		
@@ -51,15 +49,44 @@ func (u *Trunkmetricsoptions) MarshalJSON() ([]byte, error) {
 		ErrorInfo *Trunkerrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		ProxyAddress: u.ProxyAddress,
+		ProxyAddress: o.ProxyAddress,
 		
-		OptionState: u.OptionState,
+		OptionState: o.OptionState,
 		
 		OptionStateTime: OptionStateTime,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkmetricsoptions) UnmarshalJSON(b []byte) error {
+	var TrunkmetricsoptionsMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkmetricsoptionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ProxyAddress, ok := TrunkmetricsoptionsMap["proxyAddress"].(string); ok {
+		o.ProxyAddress = &ProxyAddress
+	}
+	
+	if OptionState, ok := TrunkmetricsoptionsMap["optionState"].(bool); ok {
+		o.OptionState = &OptionState
+	}
+	
+	if optionStateTimeString, ok := TrunkmetricsoptionsMap["optionStateTime"].(string); ok {
+		OptionStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", optionStateTimeString)
+		o.OptionStateTime = &OptionStateTime
+	}
+	
+	if ErrorInfo, ok := TrunkmetricsoptionsMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

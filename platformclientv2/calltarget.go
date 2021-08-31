@@ -17,24 +17,41 @@ type Calltarget struct {
 
 }
 
-func (u *Calltarget) MarshalJSON() ([]byte, error) {
+func (o *Calltarget) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Calltarget
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Calltarget) UnmarshalJSON(b []byte) error {
+	var CalltargetMap map[string]interface{}
+	err := json.Unmarshal(b, &CalltargetMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := CalltargetMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Value, ok := CalltargetMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

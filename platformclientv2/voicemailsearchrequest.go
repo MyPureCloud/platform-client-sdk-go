@@ -37,13 +37,11 @@ type Voicemailsearchrequest struct {
 
 }
 
-func (u *Voicemailsearchrequest) MarshalJSON() ([]byte, error) {
+func (o *Voicemailsearchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailsearchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		SortOrder *string `json:"sortOrder,omitempty"`
 		
@@ -60,21 +58,65 @@ func (u *Voicemailsearchrequest) MarshalJSON() ([]byte, error) {
 		Query *[]Voicemailsearchcriteria `json:"query,omitempty"`
 		*Alias
 	}{ 
-		SortOrder: u.SortOrder,
+		SortOrder: o.SortOrder,
 		
-		SortBy: u.SortBy,
+		SortBy: o.SortBy,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		Expand: u.Expand,
+		Expand: o.Expand,
 		
-		Query: u.Query,
-		Alias:    (*Alias)(u),
+		Query: o.Query,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailsearchrequest) UnmarshalJSON(b []byte) error {
+	var VoicemailsearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailsearchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SortOrder, ok := VoicemailsearchrequestMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+	
+	if SortBy, ok := VoicemailsearchrequestMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+	
+	if PageSize, ok := VoicemailsearchrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := VoicemailsearchrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Sort, ok := VoicemailsearchrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if Expand, ok := VoicemailsearchrequestMap["expand"].([]interface{}); ok {
+		ExpandString, _ := json.Marshal(Expand)
+		json.Unmarshal(ExpandString, &o.Expand)
+	}
+	
+	if Query, ok := VoicemailsearchrequestMap["query"].([]interface{}); ok {
+		QueryString, _ := json.Marshal(Query)
+		json.Unmarshal(QueryString, &o.Query)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

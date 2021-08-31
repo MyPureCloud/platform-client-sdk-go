@@ -78,37 +78,35 @@ type Webdeploymentconfigurationversion struct {
 
 }
 
-func (u *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
+func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webdeploymentconfigurationversion
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DatePublished := new(string)
-	if u.DatePublished != nil {
+	if o.DatePublished != nil {
 		
-		*DatePublished = timeutil.Strftime(u.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DatePublished = timeutil.Strftime(o.DatePublished, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DatePublished = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -145,23 +143,23 @@ func (u *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		DefaultLanguage: u.DefaultLanguage,
+		DefaultLanguage: o.DefaultLanguage,
 		
-		Messenger: u.Messenger,
+		Messenger: o.Messenger,
 		
-		JourneyEvents: u.JourneyEvents,
+		JourneyEvents: o.JourneyEvents,
 		
-		AuthenticationSettings: u.AuthenticationSettings,
+		AuthenticationSettings: o.AuthenticationSettings,
 		
 		DateCreated: DateCreated,
 		
@@ -169,17 +167,106 @@ func (u *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		
 		DatePublished: DatePublished,
 		
-		LastModifiedUser: u.LastModifiedUser,
+		LastModifiedUser: o.LastModifiedUser,
 		
-		CreatedUser: u.CreatedUser,
+		CreatedUser: o.CreatedUser,
 		
-		PublishedUser: u.PublishedUser,
+		PublishedUser: o.PublishedUser,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
+	var WebdeploymentconfigurationversionMap map[string]interface{}
+	err := json.Unmarshal(b, &WebdeploymentconfigurationversionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebdeploymentconfigurationversionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WebdeploymentconfigurationversionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := WebdeploymentconfigurationversionMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if Description, ok := WebdeploymentconfigurationversionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Languages, ok := WebdeploymentconfigurationversionMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if DefaultLanguage, ok := WebdeploymentconfigurationversionMap["defaultLanguage"].(string); ok {
+		o.DefaultLanguage = &DefaultLanguage
+	}
+	
+	if Messenger, ok := WebdeploymentconfigurationversionMap["messenger"].(map[string]interface{}); ok {
+		MessengerString, _ := json.Marshal(Messenger)
+		json.Unmarshal(MessengerString, &o.Messenger)
+	}
+	
+	if JourneyEvents, ok := WebdeploymentconfigurationversionMap["journeyEvents"].(map[string]interface{}); ok {
+		JourneyEventsString, _ := json.Marshal(JourneyEvents)
+		json.Unmarshal(JourneyEventsString, &o.JourneyEvents)
+	}
+	
+	if AuthenticationSettings, ok := WebdeploymentconfigurationversionMap["authenticationSettings"].(map[string]interface{}); ok {
+		AuthenticationSettingsString, _ := json.Marshal(AuthenticationSettings)
+		json.Unmarshal(AuthenticationSettingsString, &o.AuthenticationSettings)
+	}
+	
+	if dateCreatedString, ok := WebdeploymentconfigurationversionMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := WebdeploymentconfigurationversionMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if datePublishedString, ok := WebdeploymentconfigurationversionMap["datePublished"].(string); ok {
+		DatePublished, _ := time.Parse("2006-01-02T15:04:05.999999Z", datePublishedString)
+		o.DatePublished = &DatePublished
+	}
+	
+	if LastModifiedUser, ok := WebdeploymentconfigurationversionMap["lastModifiedUser"].(map[string]interface{}); ok {
+		LastModifiedUserString, _ := json.Marshal(LastModifiedUser)
+		json.Unmarshal(LastModifiedUserString, &o.LastModifiedUser)
+	}
+	
+	if CreatedUser, ok := WebdeploymentconfigurationversionMap["createdUser"].(map[string]interface{}); ok {
+		CreatedUserString, _ := json.Marshal(CreatedUser)
+		json.Unmarshal(CreatedUserString, &o.CreatedUser)
+	}
+	
+	if PublishedUser, ok := WebdeploymentconfigurationversionMap["publishedUser"].(map[string]interface{}); ok {
+		PublishedUserString, _ := json.Marshal(PublishedUser)
+		json.Unmarshal(PublishedUserString, &o.PublishedUser)
+	}
+	
+	if Status, ok := WebdeploymentconfigurationversionMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if SelfUri, ok := WebdeploymentconfigurationversionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

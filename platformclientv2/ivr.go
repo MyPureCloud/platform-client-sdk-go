@@ -78,29 +78,27 @@ type Ivr struct {
 
 }
 
-func (u *Ivr) MarshalJSON() ([]byte, error) {
+func (o *Ivr) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ivr
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -137,41 +135,128 @@ func (u *Ivr) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Dnis: u.Dnis,
+		Dnis: o.Dnis,
 		
-		OpenHoursFlow: u.OpenHoursFlow,
+		OpenHoursFlow: o.OpenHoursFlow,
 		
-		ClosedHoursFlow: u.ClosedHoursFlow,
+		ClosedHoursFlow: o.ClosedHoursFlow,
 		
-		HolidayHoursFlow: u.HolidayHoursFlow,
+		HolidayHoursFlow: o.HolidayHoursFlow,
 		
-		ScheduleGroup: u.ScheduleGroup,
+		ScheduleGroup: o.ScheduleGroup,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ivr) UnmarshalJSON(b []byte) error {
+	var IvrMap map[string]interface{}
+	err := json.Unmarshal(b, &IvrMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := IvrMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := IvrMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := IvrMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := IvrMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := IvrMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := IvrMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := IvrMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := IvrMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := IvrMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := IvrMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := IvrMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Dnis, ok := IvrMap["dnis"].([]interface{}); ok {
+		DnisString, _ := json.Marshal(Dnis)
+		json.Unmarshal(DnisString, &o.Dnis)
+	}
+	
+	if OpenHoursFlow, ok := IvrMap["openHoursFlow"].(map[string]interface{}); ok {
+		OpenHoursFlowString, _ := json.Marshal(OpenHoursFlow)
+		json.Unmarshal(OpenHoursFlowString, &o.OpenHoursFlow)
+	}
+	
+	if ClosedHoursFlow, ok := IvrMap["closedHoursFlow"].(map[string]interface{}); ok {
+		ClosedHoursFlowString, _ := json.Marshal(ClosedHoursFlow)
+		json.Unmarshal(ClosedHoursFlowString, &o.ClosedHoursFlow)
+	}
+	
+	if HolidayHoursFlow, ok := IvrMap["holidayHoursFlow"].(map[string]interface{}); ok {
+		HolidayHoursFlowString, _ := json.Marshal(HolidayHoursFlow)
+		json.Unmarshal(HolidayHoursFlowString, &o.HolidayHoursFlow)
+	}
+	
+	if ScheduleGroup, ok := IvrMap["scheduleGroup"].(map[string]interface{}); ok {
+		ScheduleGroupString, _ := json.Marshal(ScheduleGroup)
+		json.Unmarshal(ScheduleGroupString, &o.ScheduleGroup)
+	}
+	
+	if SelfUri, ok := IvrMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

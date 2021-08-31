@@ -29,13 +29,11 @@ type Wfmhistoricaladherenceresponse struct {
 
 }
 
-func (u *Wfmhistoricaladherenceresponse) MarshalJSON() ([]byte, error) {
+func (o *Wfmhistoricaladherenceresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmhistoricaladherenceresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Wfmhistoricaladherenceresponse) MarshalJSON() ([]byte, error) {
 		QueryState *string `json:"queryState,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		DownloadUrl: u.DownloadUrl,
+		DownloadUrl: o.DownloadUrl,
 		
-		DownloadResult: u.DownloadResult,
+		DownloadResult: o.DownloadResult,
 		
-		DownloadUrls: u.DownloadUrls,
+		DownloadUrls: o.DownloadUrls,
 		
-		QueryState: u.QueryState,
-		Alias:    (*Alias)(u),
+		QueryState: o.QueryState,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmhistoricaladherenceresponse) UnmarshalJSON(b []byte) error {
+	var WfmhistoricaladherenceresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmhistoricaladherenceresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmhistoricaladherenceresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DownloadUrl, ok := WfmhistoricaladherenceresponseMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+	if DownloadResult, ok := WfmhistoricaladherenceresponseMap["downloadResult"].(map[string]interface{}); ok {
+		DownloadResultString, _ := json.Marshal(DownloadResult)
+		json.Unmarshal(DownloadResultString, &o.DownloadResult)
+	}
+	
+	if DownloadUrls, ok := WfmhistoricaladherenceresponseMap["downloadUrls"].([]interface{}); ok {
+		DownloadUrlsString, _ := json.Marshal(DownloadUrls)
+		json.Unmarshal(DownloadUrlsString, &o.DownloadUrls)
+	}
+	
+	if QueryState, ok := WfmhistoricaladherenceresponseMap["queryState"].(string); ok {
+		o.QueryState = &QueryState
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

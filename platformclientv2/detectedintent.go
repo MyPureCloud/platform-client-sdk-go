@@ -21,13 +21,11 @@ type Detectedintent struct {
 
 }
 
-func (u *Detectedintent) MarshalJSON() ([]byte, error) {
+func (o *Detectedintent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Detectedintent
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Detectedintent) MarshalJSON() ([]byte, error) {
 		Entities *[]Detectednamedentity `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Probability: u.Probability,
+		Probability: o.Probability,
 		
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Detectedintent) UnmarshalJSON(b []byte) error {
+	var DetectedintentMap map[string]interface{}
+	err := json.Unmarshal(b, &DetectedintentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := DetectedintentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Probability, ok := DetectedintentMap["probability"].(float64); ok {
+		o.Probability = &Probability
+	}
+	
+	if Entities, ok := DetectedintentMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

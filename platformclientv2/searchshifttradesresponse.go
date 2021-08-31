@@ -13,20 +13,34 @@ type Searchshifttradesresponse struct {
 
 }
 
-func (u *Searchshifttradesresponse) MarshalJSON() ([]byte, error) {
+func (o *Searchshifttradesresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Searchshifttradesresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Trades *[]Searchshifttraderesponse `json:"trades,omitempty"`
 		*Alias
 	}{ 
-		Trades: u.Trades,
-		Alias:    (*Alias)(u),
+		Trades: o.Trades,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Searchshifttradesresponse) UnmarshalJSON(b []byte) error {
+	var SearchshifttradesresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SearchshifttradesresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Trades, ok := SearchshifttradesresponseMap["trades"].([]interface{}); ok {
+		TradesString, _ := json.Marshal(Trades)
+		json.Unmarshal(TradesString, &o.Trades)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

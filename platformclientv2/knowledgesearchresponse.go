@@ -33,13 +33,11 @@ type Knowledgesearchresponse struct {
 
 }
 
-func (u *Knowledgesearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Knowledgesearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgesearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		SearchId *string `json:"searchId,omitempty"`
 		
@@ -54,19 +52,59 @@ func (u *Knowledgesearchresponse) MarshalJSON() ([]byte, error) {
 		Results *[]Knowledgesearchdocument `json:"results,omitempty"`
 		*Alias
 	}{ 
-		SearchId: u.SearchId,
+		SearchId: o.SearchId,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgesearchresponse) UnmarshalJSON(b []byte) error {
+	var KnowledgesearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgesearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if SearchId, ok := KnowledgesearchresponseMap["searchId"].(string); ok {
+		o.SearchId = &SearchId
+	}
+	
+	if Total, ok := KnowledgesearchresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := KnowledgesearchresponseMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if PageSize, ok := KnowledgesearchresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := KnowledgesearchresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Results, ok := KnowledgesearchresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

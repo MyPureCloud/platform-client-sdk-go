@@ -33,13 +33,11 @@ type Conversationemaileventtopicattachment struct {
 
 }
 
-func (u *Conversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
+func (o *Conversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationemaileventtopicattachment
-
 	
-
 	return json.Marshal(&struct { 
 		AttachmentId *string `json:"attachmentId,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Conversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		AttachmentId: u.AttachmentId,
+		AttachmentId: o.AttachmentId,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContentUri: u.ContentUri,
+		ContentUri: o.ContentUri,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationemaileventtopicattachment) UnmarshalJSON(b []byte) error {
+	var ConversationemaileventtopicattachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationemaileventtopicattachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if AttachmentId, ok := ConversationemaileventtopicattachmentMap["attachmentId"].(string); ok {
+		o.AttachmentId = &AttachmentId
+	}
+	
+	if Name, ok := ConversationemaileventtopicattachmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContentUri, ok := ConversationemaileventtopicattachmentMap["contentUri"].(string); ok {
+		o.ContentUri = &ContentUri
+	}
+	
+	if ContentType, ok := ConversationemaileventtopicattachmentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if ContentLength, ok := ConversationemaileventtopicattachmentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if AdditionalProperties, ok := ConversationemaileventtopicattachmentMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

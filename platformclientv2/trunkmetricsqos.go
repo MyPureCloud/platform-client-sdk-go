@@ -13,20 +13,34 @@ type Trunkmetricsqos struct {
 
 }
 
-func (u *Trunkmetricsqos) MarshalJSON() ([]byte, error) {
+func (o *Trunkmetricsqos) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkmetricsqos
-
 	
-
 	return json.Marshal(&struct { 
 		MismatchCount *int `json:"mismatchCount,omitempty"`
 		*Alias
 	}{ 
-		MismatchCount: u.MismatchCount,
-		Alias:    (*Alias)(u),
+		MismatchCount: o.MismatchCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkmetricsqos) UnmarshalJSON(b []byte) error {
+	var TrunkmetricsqosMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkmetricsqosMap)
+	if err != nil {
+		return err
+	}
+	
+	if MismatchCount, ok := TrunkmetricsqosMap["mismatchCount"].(float64); ok {
+		MismatchCountInt := int(MismatchCount)
+		o.MismatchCount = &MismatchCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

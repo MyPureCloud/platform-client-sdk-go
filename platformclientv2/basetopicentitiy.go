@@ -21,13 +21,11 @@ type Basetopicentitiy struct {
 
 }
 
-func (u *Basetopicentitiy) MarshalJSON() ([]byte, error) {
+func (o *Basetopicentitiy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Basetopicentitiy
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Basetopicentitiy) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Basetopicentitiy) UnmarshalJSON(b []byte) error {
+	var BasetopicentitiyMap map[string]interface{}
+	err := json.Unmarshal(b, &BasetopicentitiyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BasetopicentitiyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := BasetopicentitiyMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := BasetopicentitiyMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

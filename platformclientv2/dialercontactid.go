@@ -17,24 +17,41 @@ type Dialercontactid struct {
 
 }
 
-func (u *Dialercontactid) MarshalJSON() ([]byte, error) {
+func (o *Dialercontactid) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontactid
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		ContactListId *string `json:"contactListId,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ContactListId: u.ContactListId,
-		Alias:    (*Alias)(u),
+		ContactListId: o.ContactListId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercontactid) UnmarshalJSON(b []byte) error {
+	var DialercontactidMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercontactidMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialercontactidMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ContactListId, ok := DialercontactidMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

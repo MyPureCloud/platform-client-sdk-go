@@ -25,13 +25,11 @@ type Buagentschedulehistoryresponse struct {
 
 }
 
-func (u *Buagentschedulehistoryresponse) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulehistoryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulehistoryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		PriorPublishedSchedules *[]Buschedulereference `json:"priorPublishedSchedules,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Buagentschedulehistoryresponse) MarshalJSON() ([]byte, error) {
 		Changes *[]Buagentschedulehistorychange `json:"changes,omitempty"`
 		*Alias
 	}{ 
-		PriorPublishedSchedules: u.PriorPublishedSchedules,
+		PriorPublishedSchedules: o.PriorPublishedSchedules,
 		
-		BasePublishedSchedule: u.BasePublishedSchedule,
+		BasePublishedSchedule: o.BasePublishedSchedule,
 		
-		DroppedChanges: u.DroppedChanges,
+		DroppedChanges: o.DroppedChanges,
 		
-		Changes: u.Changes,
-		Alias:    (*Alias)(u),
+		Changes: o.Changes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulehistoryresponse) UnmarshalJSON(b []byte) error {
+	var BuagentschedulehistoryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulehistoryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if PriorPublishedSchedules, ok := BuagentschedulehistoryresponseMap["priorPublishedSchedules"].([]interface{}); ok {
+		PriorPublishedSchedulesString, _ := json.Marshal(PriorPublishedSchedules)
+		json.Unmarshal(PriorPublishedSchedulesString, &o.PriorPublishedSchedules)
+	}
+	
+	if BasePublishedSchedule, ok := BuagentschedulehistoryresponseMap["basePublishedSchedule"].(map[string]interface{}); ok {
+		BasePublishedScheduleString, _ := json.Marshal(BasePublishedSchedule)
+		json.Unmarshal(BasePublishedScheduleString, &o.BasePublishedSchedule)
+	}
+	
+	if DroppedChanges, ok := BuagentschedulehistoryresponseMap["droppedChanges"].([]interface{}); ok {
+		DroppedChangesString, _ := json.Marshal(DroppedChanges)
+		json.Unmarshal(DroppedChangesString, &o.DroppedChanges)
+	}
+	
+	if Changes, ok := BuagentschedulehistoryresponseMap["changes"].([]interface{}); ok {
+		ChangesString, _ := json.Marshal(Changes)
+		json.Unmarshal(ChangesString, &o.Changes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

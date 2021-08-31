@@ -21,13 +21,11 @@ type Stateventwrapupcodetopicmetric struct {
 
 }
 
-func (u *Stateventwrapupcodetopicmetric) MarshalJSON() ([]byte, error) {
+func (o *Stateventwrapupcodetopicmetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Stateventwrapupcodetopicmetric
-
 	
-
 	return json.Marshal(&struct { 
 		Metric *string `json:"metric,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Stateventwrapupcodetopicmetric) MarshalJSON() ([]byte, error) {
 		Stats *map[string]float32 `json:"stats,omitempty"`
 		*Alias
 	}{ 
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Qualifier: u.Qualifier,
+		Qualifier: o.Qualifier,
 		
-		Stats: u.Stats,
-		Alias:    (*Alias)(u),
+		Stats: o.Stats,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Stateventwrapupcodetopicmetric) UnmarshalJSON(b []byte) error {
+	var StateventwrapupcodetopicmetricMap map[string]interface{}
+	err := json.Unmarshal(b, &StateventwrapupcodetopicmetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metric, ok := StateventwrapupcodetopicmetricMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Qualifier, ok := StateventwrapupcodetopicmetricMap["qualifier"].(string); ok {
+		o.Qualifier = &Qualifier
+	}
+	
+	if Stats, ok := StateventwrapupcodetopicmetricMap["stats"].(map[string]interface{}); ok {
+		StatsString, _ := json.Marshal(Stats)
+		json.Unmarshal(StatsString, &o.Stats)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

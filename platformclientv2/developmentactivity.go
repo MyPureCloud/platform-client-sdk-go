@@ -58,37 +58,35 @@ type Developmentactivity struct {
 
 }
 
-func (u *Developmentactivity) MarshalJSON() ([]byte, error) {
+func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Developmentactivity
-
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateDue := new(string)
-	if u.DateDue != nil {
+	if o.DateDue != nil {
 		
-		*DateDue = timeutil.Strftime(u.DateDue, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateDue = timeutil.Strftime(o.DateDue, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateDue = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -115,31 +113,96 @@ func (u *Developmentactivity) MarshalJSON() ([]byte, error) {
 		IsOverdue *bool `json:"isOverdue,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		DateCompleted: DateCompleted,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		DateDue: DateDue,
 		
-		Facilitator: u.Facilitator,
+		Facilitator: o.Facilitator,
 		
-		Attendees: u.Attendees,
+		Attendees: o.Attendees,
 		
-		IsOverdue: u.IsOverdue,
-		Alias:    (*Alias)(u),
+		IsOverdue: o.IsOverdue,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
+	var DevelopmentactivityMap map[string]interface{}
+	err := json.Unmarshal(b, &DevelopmentactivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DevelopmentactivityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if dateCompletedString, ok := DevelopmentactivityMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if CreatedBy, ok := DevelopmentactivityMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := DevelopmentactivityMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if SelfUri, ok := DevelopmentactivityMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Name, ok := DevelopmentactivityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := DevelopmentactivityMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Status, ok := DevelopmentactivityMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if dateDueString, ok := DevelopmentactivityMap["dateDue"].(string); ok {
+		DateDue, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDueString)
+		o.DateDue = &DateDue
+	}
+	
+	if Facilitator, ok := DevelopmentactivityMap["facilitator"].(map[string]interface{}); ok {
+		FacilitatorString, _ := json.Marshal(Facilitator)
+		json.Unmarshal(FacilitatorString, &o.Facilitator)
+	}
+	
+	if Attendees, ok := DevelopmentactivityMap["attendees"].([]interface{}); ok {
+		AttendeesString, _ := json.Marshal(Attendees)
+		json.Unmarshal(AttendeesString, &o.Attendees)
+	}
+	
+	if IsOverdue, ok := DevelopmentactivityMap["isOverdue"].(bool); ok {
+		o.IsOverdue = &IsOverdue
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

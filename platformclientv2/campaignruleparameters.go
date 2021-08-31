@@ -25,13 +25,11 @@ type Campaignruleparameters struct {
 
 }
 
-func (u *Campaignruleparameters) MarshalJSON() ([]byte, error) {
+func (o *Campaignruleparameters) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruleparameters
-
 	
-
 	return json.Marshal(&struct { 
 		Operator *string `json:"operator,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Campaignruleparameters) MarshalJSON() ([]byte, error) {
 		DialingMode *string `json:"dialingMode,omitempty"`
 		*Alias
 	}{ 
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		DialingMode: u.DialingMode,
-		Alias:    (*Alias)(u),
+		DialingMode: o.DialingMode,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaignruleparameters) UnmarshalJSON(b []byte) error {
+	var CampaignruleparametersMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignruleparametersMap)
+	if err != nil {
+		return err
+	}
+	
+	if Operator, ok := CampaignruleparametersMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := CampaignruleparametersMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Priority, ok := CampaignruleparametersMap["priority"].(string); ok {
+		o.Priority = &Priority
+	}
+	
+	if DialingMode, ok := CampaignruleparametersMap["dialingMode"].(string); ok {
+		o.DialingMode = &DialingMode
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

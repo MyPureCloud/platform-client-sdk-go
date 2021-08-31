@@ -21,13 +21,11 @@ type Atzmtimeslotwithtimezone struct {
 
 }
 
-func (u *Atzmtimeslotwithtimezone) MarshalJSON() ([]byte, error) {
+func (o *Atzmtimeslotwithtimezone) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Atzmtimeslotwithtimezone
-
 	
-
 	return json.Marshal(&struct { 
 		EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Atzmtimeslotwithtimezone) MarshalJSON() ([]byte, error) {
 		TimeZoneId *string `json:"timeZoneId,omitempty"`
 		*Alias
 	}{ 
-		EarliestCallableTime: u.EarliestCallableTime,
+		EarliestCallableTime: o.EarliestCallableTime,
 		
-		LatestCallableTime: u.LatestCallableTime,
+		LatestCallableTime: o.LatestCallableTime,
 		
-		TimeZoneId: u.TimeZoneId,
-		Alias:    (*Alias)(u),
+		TimeZoneId: o.TimeZoneId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Atzmtimeslotwithtimezone) UnmarshalJSON(b []byte) error {
+	var AtzmtimeslotwithtimezoneMap map[string]interface{}
+	err := json.Unmarshal(b, &AtzmtimeslotwithtimezoneMap)
+	if err != nil {
+		return err
+	}
+	
+	if EarliestCallableTime, ok := AtzmtimeslotwithtimezoneMap["earliestCallableTime"].(string); ok {
+		o.EarliestCallableTime = &EarliestCallableTime
+	}
+	
+	if LatestCallableTime, ok := AtzmtimeslotwithtimezoneMap["latestCallableTime"].(string); ok {
+		o.LatestCallableTime = &LatestCallableTime
+	}
+	
+	if TimeZoneId, ok := AtzmtimeslotwithtimezoneMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

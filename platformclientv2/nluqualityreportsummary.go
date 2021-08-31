@@ -13,20 +13,34 @@ type Nluqualityreportsummary struct {
 
 }
 
-func (u *Nluqualityreportsummary) MarshalJSON() ([]byte, error) {
+func (o *Nluqualityreportsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nluqualityreportsummary
-
 	
-
 	return json.Marshal(&struct { 
 		Metrics *[]Nluqualityreportsummarymetric `json:"metrics,omitempty"`
 		*Alias
 	}{ 
-		Metrics: u.Metrics,
-		Alias:    (*Alias)(u),
+		Metrics: o.Metrics,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nluqualityreportsummary) UnmarshalJSON(b []byte) error {
+	var NluqualityreportsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &NluqualityreportsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metrics, ok := NluqualityreportsummaryMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

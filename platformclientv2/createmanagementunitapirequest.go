@@ -33,13 +33,11 @@ type Createmanagementunitapirequest struct {
 
 }
 
-func (u *Createmanagementunitapirequest) MarshalJSON() ([]byte, error) {
+func (o *Createmanagementunitapirequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createmanagementunitapirequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Createmanagementunitapirequest) MarshalJSON() ([]byte, error) {
 		BusinessUnitId *string `json:"businessUnitId,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		StartDayOfWeek: u.StartDayOfWeek,
+		StartDayOfWeek: o.StartDayOfWeek,
 		
-		Settings: u.Settings,
+		Settings: o.Settings,
 		
-		DivisionId: u.DivisionId,
+		DivisionId: o.DivisionId,
 		
-		BusinessUnitId: u.BusinessUnitId,
-		Alias:    (*Alias)(u),
+		BusinessUnitId: o.BusinessUnitId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createmanagementunitapirequest) UnmarshalJSON(b []byte) error {
+	var CreatemanagementunitapirequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatemanagementunitapirequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := CreatemanagementunitapirequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if TimeZone, ok := CreatemanagementunitapirequestMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if StartDayOfWeek, ok := CreatemanagementunitapirequestMap["startDayOfWeek"].(string); ok {
+		o.StartDayOfWeek = &StartDayOfWeek
+	}
+	
+	if Settings, ok := CreatemanagementunitapirequestMap["settings"].(map[string]interface{}); ok {
+		SettingsString, _ := json.Marshal(Settings)
+		json.Unmarshal(SettingsString, &o.Settings)
+	}
+	
+	if DivisionId, ok := CreatemanagementunitapirequestMap["divisionId"].(string); ok {
+		o.DivisionId = &DivisionId
+	}
+	
+	if BusinessUnitId, ok := CreatemanagementunitapirequestMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

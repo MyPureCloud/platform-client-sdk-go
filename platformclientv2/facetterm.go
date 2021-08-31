@@ -34,21 +34,19 @@ type Facetterm struct {
 
 }
 
-func (u *Facetterm) MarshalJSON() ([]byte, error) {
+func (o *Facetterm) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facetterm
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Term *string `json:"term,omitempty"`
 		
@@ -63,19 +61,57 @@ func (u *Facetterm) MarshalJSON() ([]byte, error) {
 		Time *string `json:"time,omitempty"`
 		*Alias
 	}{ 
-		Term: u.Term,
+		Term: o.Term,
 		
-		Key: u.Key,
+		Key: o.Key,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Count: u.Count,
+		Count: o.Count,
 		
 		Time: Time,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facetterm) UnmarshalJSON(b []byte) error {
+	var FacettermMap map[string]interface{}
+	err := json.Unmarshal(b, &FacettermMap)
+	if err != nil {
+		return err
+	}
+	
+	if Term, ok := FacettermMap["term"].(string); ok {
+		o.Term = &Term
+	}
+	
+	if Key, ok := FacettermMap["key"].(float64); ok {
+		KeyInt := int(Key)
+		o.Key = &KeyInt
+	}
+	
+	if Id, ok := FacettermMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FacettermMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Count, ok := FacettermMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if timeString, ok := FacettermMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

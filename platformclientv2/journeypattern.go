@@ -29,13 +29,11 @@ type Journeypattern struct {
 
 }
 
-func (u *Journeypattern) MarshalJSON() ([]byte, error) {
+func (o *Journeypattern) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeypattern
-
 	
-
 	return json.Marshal(&struct { 
 		Criteria *[]Criteria `json:"criteria,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Journeypattern) MarshalJSON() ([]byte, error) {
 		EventName *string `json:"eventName,omitempty"`
 		*Alias
 	}{ 
-		Criteria: u.Criteria,
+		Criteria: o.Criteria,
 		
-		Count: u.Count,
+		Count: o.Count,
 		
-		StreamType: u.StreamType,
+		StreamType: o.StreamType,
 		
-		SessionType: u.SessionType,
+		SessionType: o.SessionType,
 		
-		EventName: u.EventName,
-		Alias:    (*Alias)(u),
+		EventName: o.EventName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeypattern) UnmarshalJSON(b []byte) error {
+	var JourneypatternMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneypatternMap)
+	if err != nil {
+		return err
+	}
+	
+	if Criteria, ok := JourneypatternMap["criteria"].([]interface{}); ok {
+		CriteriaString, _ := json.Marshal(Criteria)
+		json.Unmarshal(CriteriaString, &o.Criteria)
+	}
+	
+	if Count, ok := JourneypatternMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if StreamType, ok := JourneypatternMap["streamType"].(string); ok {
+		o.StreamType = &StreamType
+	}
+	
+	if SessionType, ok := JourneypatternMap["sessionType"].(string); ok {
+		o.SessionType = &SessionType
+	}
+	
+	if EventName, ok := JourneypatternMap["eventName"].(string); ok {
+		o.EventName = &EventName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

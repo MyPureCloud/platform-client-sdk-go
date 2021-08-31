@@ -14,28 +14,42 @@ type Serverdate struct {
 
 }
 
-func (u *Serverdate) MarshalJSON() ([]byte, error) {
+func (o *Serverdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Serverdate
-
 	
 	CurrentDate := new(string)
-	if u.CurrentDate != nil {
+	if o.CurrentDate != nil {
 		
-		*CurrentDate = timeutil.Strftime(u.CurrentDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CurrentDate = timeutil.Strftime(o.CurrentDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CurrentDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		CurrentDate *string `json:"currentDate,omitempty"`
 		*Alias
 	}{ 
 		CurrentDate: CurrentDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Serverdate) UnmarshalJSON(b []byte) error {
+	var ServerdateMap map[string]interface{}
+	err := json.Unmarshal(b, &ServerdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if currentDateString, ok := ServerdateMap["currentDate"].(string); ok {
+		CurrentDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", currentDateString)
+		o.CurrentDate = &CurrentDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

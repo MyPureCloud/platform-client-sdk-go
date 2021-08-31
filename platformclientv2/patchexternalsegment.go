@@ -13,20 +13,33 @@ type Patchexternalsegment struct {
 
 }
 
-func (u *Patchexternalsegment) MarshalJSON() ([]byte, error) {
+func (o *Patchexternalsegment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchexternalsegment
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchexternalsegment) UnmarshalJSON(b []byte) error {
+	var PatchexternalsegmentMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchexternalsegmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := PatchexternalsegmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

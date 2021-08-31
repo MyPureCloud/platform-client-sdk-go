@@ -29,13 +29,11 @@ type Requestconfig struct {
 
 }
 
-func (u *Requestconfig) MarshalJSON() ([]byte, error) {
+func (o *Requestconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Requestconfig
-
 	
-
 	return json.Marshal(&struct { 
 		RequestUrlTemplate *string `json:"requestUrlTemplate,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Requestconfig) MarshalJSON() ([]byte, error) {
 		Headers *map[string]string `json:"headers,omitempty"`
 		*Alias
 	}{ 
-		RequestUrlTemplate: u.RequestUrlTemplate,
+		RequestUrlTemplate: o.RequestUrlTemplate,
 		
-		RequestTemplate: u.RequestTemplate,
+		RequestTemplate: o.RequestTemplate,
 		
-		RequestTemplateUri: u.RequestTemplateUri,
+		RequestTemplateUri: o.RequestTemplateUri,
 		
-		RequestType: u.RequestType,
+		RequestType: o.RequestType,
 		
-		Headers: u.Headers,
-		Alias:    (*Alias)(u),
+		Headers: o.Headers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Requestconfig) UnmarshalJSON(b []byte) error {
+	var RequestconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &RequestconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if RequestUrlTemplate, ok := RequestconfigMap["requestUrlTemplate"].(string); ok {
+		o.RequestUrlTemplate = &RequestUrlTemplate
+	}
+	
+	if RequestTemplate, ok := RequestconfigMap["requestTemplate"].(string); ok {
+		o.RequestTemplate = &RequestTemplate
+	}
+	
+	if RequestTemplateUri, ok := RequestconfigMap["requestTemplateUri"].(string); ok {
+		o.RequestTemplateUri = &RequestTemplateUri
+	}
+	
+	if RequestType, ok := RequestconfigMap["requestType"].(string); ok {
+		o.RequestType = &RequestType
+	}
+	
+	if Headers, ok := RequestconfigMap["headers"].(map[string]interface{}); ok {
+		HeadersString, _ := json.Marshal(Headers)
+		json.Unmarshal(HeadersString, &o.Headers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

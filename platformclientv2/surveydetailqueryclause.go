@@ -17,24 +17,42 @@ type Surveydetailqueryclause struct {
 
 }
 
-func (u *Surveydetailqueryclause) MarshalJSON() ([]byte, error) {
+func (o *Surveydetailqueryclause) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveydetailqueryclause
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Predicates *[]Surveydetailquerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveydetailqueryclause) UnmarshalJSON(b []byte) error {
+	var SurveydetailqueryclauseMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveydetailqueryclauseMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := SurveydetailqueryclauseMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Predicates, ok := SurveydetailqueryclauseMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Messageinfo struct {
 
 }
 
-func (u *Messageinfo) MarshalJSON() ([]byte, error) {
+func (o *Messageinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messageinfo
-
 	
-
 	return json.Marshal(&struct { 
 		LocalizableMessageCode *string `json:"localizableMessageCode,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Messageinfo) MarshalJSON() ([]byte, error) {
 		MessageParams *map[string]string `json:"messageParams,omitempty"`
 		*Alias
 	}{ 
-		LocalizableMessageCode: u.LocalizableMessageCode,
+		LocalizableMessageCode: o.LocalizableMessageCode,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
-		Alias:    (*Alias)(u),
+		MessageParams: o.MessageParams,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messageinfo) UnmarshalJSON(b []byte) error {
+	var MessageinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &MessageinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if LocalizableMessageCode, ok := MessageinfoMap["localizableMessageCode"].(string); ok {
+		o.LocalizableMessageCode = &LocalizableMessageCode
+	}
+	
+	if Message, ok := MessageinfoMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := MessageinfoMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := MessageinfoMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

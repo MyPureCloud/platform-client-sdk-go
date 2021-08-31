@@ -26,21 +26,19 @@ type Shifttradeactivitypreviewresponse struct {
 
 }
 
-func (u *Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
+func (o *Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradeactivitypreviewresponse
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -53,13 +51,42 @@ func (u *Shifttradeactivitypreviewresponse) MarshalJSON() ([]byte, error) {
 	}{ 
 		StartDate: StartDate,
 		
-		LengthMinutes: u.LengthMinutes,
+		LengthMinutes: o.LengthMinutes,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
-		Alias:    (*Alias)(u),
+		CountsAsPaidTime: o.CountsAsPaidTime,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradeactivitypreviewresponse) UnmarshalJSON(b []byte) error {
+	var ShifttradeactivitypreviewresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradeactivitypreviewresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := ShifttradeactivitypreviewresponseMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if LengthMinutes, ok := ShifttradeactivitypreviewresponseMap["lengthMinutes"].(float64); ok {
+		LengthMinutesInt := int(LengthMinutes)
+		o.LengthMinutes = &LengthMinutesInt
+	}
+	
+	if ActivityCodeId, ok := ShifttradeactivitypreviewresponseMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if CountsAsPaidTime, ok := ShifttradeactivitypreviewresponseMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

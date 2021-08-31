@@ -13,20 +13,34 @@ type Stationsettings struct {
 
 }
 
-func (u *Stationsettings) MarshalJSON() ([]byte, error) {
+func (o *Stationsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Stationsettings
-
 	
-
 	return json.Marshal(&struct { 
 		FreeSeatingConfiguration *Freeseatingconfiguration `json:"freeSeatingConfiguration,omitempty"`
 		*Alias
 	}{ 
-		FreeSeatingConfiguration: u.FreeSeatingConfiguration,
-		Alias:    (*Alias)(u),
+		FreeSeatingConfiguration: o.FreeSeatingConfiguration,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Stationsettings) UnmarshalJSON(b []byte) error {
+	var StationsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &StationsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if FreeSeatingConfiguration, ok := StationsettingsMap["freeSeatingConfiguration"].(map[string]interface{}); ok {
+		FreeSeatingConfigurationString, _ := json.Marshal(FreeSeatingConfiguration)
+		json.Unmarshal(FreeSeatingConfigurationString, &o.FreeSeatingConfiguration)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Condition struct {
 
 }
 
-func (u *Condition) MarshalJSON() ([]byte, error) {
+func (o *Condition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Condition
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -72,25 +70,73 @@ func (u *Condition) MarshalJSON() ([]byte, error) {
 		PropertyType *string `json:"propertyType,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Inverted: u.Inverted,
+		Inverted: o.Inverted,
 		
-		AttributeName: u.AttributeName,
+		AttributeName: o.AttributeName,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		ValueType: u.ValueType,
+		ValueType: o.ValueType,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Codes: u.Codes,
+		Codes: o.Codes,
 		
-		Property: u.Property,
+		Property: o.Property,
 		
-		PropertyType: u.PropertyType,
-		Alias:    (*Alias)(u),
+		PropertyType: o.PropertyType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Condition) UnmarshalJSON(b []byte) error {
+	var ConditionMap map[string]interface{}
+	err := json.Unmarshal(b, &ConditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ConditionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Inverted, ok := ConditionMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+	
+	if AttributeName, ok := ConditionMap["attributeName"].(string); ok {
+		o.AttributeName = &AttributeName
+	}
+	
+	if Value, ok := ConditionMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if ValueType, ok := ConditionMap["valueType"].(string); ok {
+		o.ValueType = &ValueType
+	}
+	
+	if Operator, ok := ConditionMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Codes, ok := ConditionMap["codes"].([]interface{}); ok {
+		CodesString, _ := json.Marshal(Codes)
+		json.Unmarshal(CodesString, &o.Codes)
+	}
+	
+	if Property, ok := ConditionMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if PropertyType, ok := ConditionMap["propertyType"].(string); ok {
+		o.PropertyType = &PropertyType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

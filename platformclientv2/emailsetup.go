@@ -13,20 +13,33 @@ type Emailsetup struct {
 
 }
 
-func (u *Emailsetup) MarshalJSON() ([]byte, error) {
+func (o *Emailsetup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emailsetup
-
 	
-
 	return json.Marshal(&struct { 
 		RootDomain *string `json:"rootDomain,omitempty"`
 		*Alias
 	}{ 
-		RootDomain: u.RootDomain,
-		Alias:    (*Alias)(u),
+		RootDomain: o.RootDomain,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emailsetup) UnmarshalJSON(b []byte) error {
+	var EmailsetupMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailsetupMap)
+	if err != nil {
+		return err
+	}
+	
+	if RootDomain, ok := EmailsetupMap["rootDomain"].(string); ok {
+		o.RootDomain = &RootDomain
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

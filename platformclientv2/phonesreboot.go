@@ -17,24 +17,42 @@ type Phonesreboot struct {
 
 }
 
-func (u *Phonesreboot) MarshalJSON() ([]byte, error) {
+func (o *Phonesreboot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonesreboot
-
 	
-
 	return json.Marshal(&struct { 
 		PhoneIds *[]string `json:"phoneIds,omitempty"`
 		
 		SiteId *string `json:"siteId,omitempty"`
 		*Alias
 	}{ 
-		PhoneIds: u.PhoneIds,
+		PhoneIds: o.PhoneIds,
 		
-		SiteId: u.SiteId,
-		Alias:    (*Alias)(u),
+		SiteId: o.SiteId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonesreboot) UnmarshalJSON(b []byte) error {
+	var PhonesrebootMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonesrebootMap)
+	if err != nil {
+		return err
+	}
+	
+	if PhoneIds, ok := PhonesrebootMap["phoneIds"].([]interface{}); ok {
+		PhoneIdsString, _ := json.Marshal(PhoneIds)
+		json.Unmarshal(PhoneIdsString, &o.PhoneIds)
+	}
+	
+	if SiteId, ok := PhonesrebootMap["siteId"].(string); ok {
+		o.SiteId = &SiteId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

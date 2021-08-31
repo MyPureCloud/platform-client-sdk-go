@@ -25,13 +25,11 @@ type Forecastplanninggroupresponse struct {
 
 }
 
-func (u *Forecastplanninggroupresponse) MarshalJSON() ([]byte, error) {
+func (o *Forecastplanninggroupresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastplanninggroupresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Forecastplanninggroupresponse) MarshalJSON() ([]byte, error) {
 		ServiceGoalTemplate *Forecastservicegoaltemplateresponse `json:"serviceGoalTemplate,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		RoutePaths: u.RoutePaths,
+		RoutePaths: o.RoutePaths,
 		
-		ServiceGoalTemplate: u.ServiceGoalTemplate,
-		Alias:    (*Alias)(u),
+		ServiceGoalTemplate: o.ServiceGoalTemplate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastplanninggroupresponse) UnmarshalJSON(b []byte) error {
+	var ForecastplanninggroupresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastplanninggroupresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ForecastplanninggroupresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ForecastplanninggroupresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if RoutePaths, ok := ForecastplanninggroupresponseMap["routePaths"].([]interface{}); ok {
+		RoutePathsString, _ := json.Marshal(RoutePaths)
+		json.Unmarshal(RoutePathsString, &o.RoutePaths)
+	}
+	
+	if ServiceGoalTemplate, ok := ForecastplanninggroupresponseMap["serviceGoalTemplate"].(map[string]interface{}); ok {
+		ServiceGoalTemplateString, _ := json.Marshal(ServiceGoalTemplate)
+		json.Unmarshal(ServiceGoalTemplateString, &o.ServiceGoalTemplate)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

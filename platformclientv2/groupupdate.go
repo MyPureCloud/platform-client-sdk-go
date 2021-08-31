@@ -53,13 +53,11 @@ type Groupupdate struct {
 
 }
 
-func (u *Groupupdate) MarshalJSON() ([]byte, error) {
+func (o *Groupupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Groupupdate
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,88 @@ func (u *Groupupdate) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		State: u.State,
+		State: o.State,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		RulesVisible: u.RulesVisible,
+		RulesVisible: o.RulesVisible,
 		
-		Visibility: u.Visibility,
+		Visibility: o.Visibility,
 		
-		OwnerIds: u.OwnerIds,
+		OwnerIds: o.OwnerIds,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Groupupdate) UnmarshalJSON(b []byte) error {
+	var GroupupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &GroupupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := GroupupdateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := GroupupdateMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := GroupupdateMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if State, ok := GroupupdateMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Version, ok := GroupupdateMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Images, ok := GroupupdateMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
+	}
+	
+	if Addresses, ok := GroupupdateMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if RulesVisible, ok := GroupupdateMap["rulesVisible"].(bool); ok {
+		o.RulesVisible = &RulesVisible
+	}
+	
+	if Visibility, ok := GroupupdateMap["visibility"].(string); ok {
+		o.Visibility = &Visibility
+	}
+	
+	if OwnerIds, ok := GroupupdateMap["ownerIds"].([]interface{}); ok {
+		OwnerIdsString, _ := json.Marshal(OwnerIds)
+		json.Unmarshal(OwnerIdsString, &o.OwnerIds)
+	}
+	
+	if SelfUri, ok := GroupupdateMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

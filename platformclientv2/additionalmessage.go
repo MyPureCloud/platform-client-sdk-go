@@ -25,13 +25,11 @@ type Additionalmessage struct {
 
 }
 
-func (u *Additionalmessage) MarshalJSON() ([]byte, error) {
+func (o *Additionalmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Additionalmessage
-
 	
-
 	return json.Marshal(&struct { 
 		TextBody *string `json:"textBody,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Additionalmessage) MarshalJSON() ([]byte, error) {
 		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
 		*Alias
 	}{ 
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		MediaIds: u.MediaIds,
+		MediaIds: o.MediaIds,
 		
-		StickerIds: u.StickerIds,
+		StickerIds: o.StickerIds,
 		
-		MessagingTemplate: u.MessagingTemplate,
-		Alias:    (*Alias)(u),
+		MessagingTemplate: o.MessagingTemplate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Additionalmessage) UnmarshalJSON(b []byte) error {
+	var AdditionalmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &AdditionalmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if TextBody, ok := AdditionalmessageMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if MediaIds, ok := AdditionalmessageMap["mediaIds"].([]interface{}); ok {
+		MediaIdsString, _ := json.Marshal(MediaIds)
+		json.Unmarshal(MediaIdsString, &o.MediaIds)
+	}
+	
+	if StickerIds, ok := AdditionalmessageMap["stickerIds"].([]interface{}); ok {
+		StickerIdsString, _ := json.Marshal(StickerIds)
+		json.Unmarshal(StickerIdsString, &o.StickerIds)
+	}
+	
+	if MessagingTemplate, ok := AdditionalmessageMap["messagingTemplate"].(map[string]interface{}); ok {
+		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
+		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

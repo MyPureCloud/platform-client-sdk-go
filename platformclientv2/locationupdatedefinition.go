@@ -41,13 +41,11 @@ type Locationupdatedefinition struct {
 
 }
 
-func (u *Locationupdatedefinition) MarshalJSON() ([]byte, error) {
+func (o *Locationupdatedefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationupdatedefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -66,23 +64,70 @@ func (u *Locationupdatedefinition) MarshalJSON() ([]byte, error) {
 		Address *Locationaddress `json:"address,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		State: u.State,
+		State: o.State,
 		
-		Path: u.Path,
+		Path: o.Path,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		ContactUser: u.ContactUser,
+		ContactUser: o.ContactUser,
 		
-		EmergencyNumber: u.EmergencyNumber,
+		EmergencyNumber: o.EmergencyNumber,
 		
-		Address: u.Address,
-		Alias:    (*Alias)(u),
+		Address: o.Address,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationupdatedefinition) UnmarshalJSON(b []byte) error {
+	var LocationupdatedefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationupdatedefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := LocationupdatedefinitionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := LocationupdatedefinitionMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if State, ok := LocationupdatedefinitionMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Path, ok := LocationupdatedefinitionMap["path"].([]interface{}); ok {
+		PathString, _ := json.Marshal(Path)
+		json.Unmarshal(PathString, &o.Path)
+	}
+	
+	if Notes, ok := LocationupdatedefinitionMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if ContactUser, ok := LocationupdatedefinitionMap["contactUser"].(string); ok {
+		o.ContactUser = &ContactUser
+	}
+	
+	if EmergencyNumber, ok := LocationupdatedefinitionMap["emergencyNumber"].(map[string]interface{}); ok {
+		EmergencyNumberString, _ := json.Marshal(EmergencyNumber)
+		json.Unmarshal(EmergencyNumberString, &o.EmergencyNumber)
+	}
+	
+	if Address, ok := LocationupdatedefinitionMap["address"].(map[string]interface{}); ok {
+		AddressString, _ := json.Marshal(Address)
+		json.Unmarshal(AddressString, &o.Address)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

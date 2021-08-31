@@ -17,24 +17,42 @@ type Queueconversationscreenshareeventtopicjourneyaction struct {
 
 }
 
-func (u *Queueconversationscreenshareeventtopicjourneyaction) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationscreenshareeventtopicjourneyaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationscreenshareeventtopicjourneyaction
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		ActionMap *Queueconversationscreenshareeventtopicjourneyactionmap `json:"actionMap,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ActionMap: u.ActionMap,
-		Alias:    (*Alias)(u),
+		ActionMap: o.ActionMap,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationscreenshareeventtopicjourneyaction) UnmarshalJSON(b []byte) error {
+	var QueueconversationscreenshareeventtopicjourneyactionMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationscreenshareeventtopicjourneyactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationscreenshareeventtopicjourneyactionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ActionMap, ok := QueueconversationscreenshareeventtopicjourneyactionMap["actionMap"].(map[string]interface{}); ok {
+		ActionMapString, _ := json.Marshal(ActionMap)
+		json.Unmarshal(ActionMapString, &o.ActionMap)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

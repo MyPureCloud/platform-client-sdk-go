@@ -34,21 +34,19 @@ type Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresul
 
 }
 
-func (u *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresult) MarshalJSON() ([]byte, error) {
+func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresult
-
 	
 	ReviewedDate := new(string)
-	if u.ReviewedDate != nil {
+	if o.ReviewedDate != nil {
 		
-		*ReviewedDate = timeutil.Strftime(u.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReviewedDate = timeutil.Strftime(o.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReviewedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,19 +61,57 @@ func (u *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdater
 		Metadata *Wfmbulkshifttradestateupdatenotificationtopicwfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
-		ReviewedBy: u.ReviewedBy,
+		ReviewedBy: o.ReviewedBy,
 		
 		ReviewedDate: ReviewedDate,
 		
-		FailureReason: u.FailureReason,
+		FailureReason: o.FailureReason,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresult) UnmarshalJSON(b []byte) error {
+	var WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ReviewedBy, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["reviewedBy"].(map[string]interface{}); ok {
+		ReviewedByString, _ := json.Marshal(ReviewedBy)
+		json.Unmarshal(ReviewedByString, &o.ReviewedBy)
+	}
+	
+	if reviewedDateString, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["reviewedDate"].(string); ok {
+		ReviewedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", reviewedDateString)
+		o.ReviewedDate = &ReviewedDate
+	}
+	
+	if FailureReason, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["failureReason"].(string); ok {
+		o.FailureReason = &FailureReason
+	}
+	
+	if Metadata, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

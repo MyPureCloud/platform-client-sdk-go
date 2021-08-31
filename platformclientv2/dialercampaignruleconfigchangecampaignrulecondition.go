@@ -25,13 +25,11 @@ type Dialercampaignruleconfigchangecampaignrulecondition struct {
 
 }
 
-func (u *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignruleconfigchangecampaignrulecondition
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]b
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Parameters: u.Parameters,
+		Parameters: o.Parameters,
 		
-		ConditionType: u.ConditionType,
+		ConditionType: o.ConditionType,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignruleconfigchangecampaignrulecondition) UnmarshalJSON(b []byte) error {
+	var DialercampaignruleconfigchangecampaignruleconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignruleconfigchangecampaignruleconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialercampaignruleconfigchangecampaignruleconditionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Parameters, ok := DialercampaignruleconfigchangecampaignruleconditionMap["parameters"].(map[string]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+	if ConditionType, ok := DialercampaignruleconfigchangecampaignruleconditionMap["conditionType"].(string); ok {
+		o.ConditionType = &ConditionType
+	}
+	
+	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleconditionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -46,29 +46,27 @@ type Dialerrulesetconfigchangeruleset struct {
 
 }
 
-func (u *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
+func (o *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerrulesetconfigchangeruleset
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,79 @@ func (u *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ContactList: u.ContactList,
+		ContactList: o.ContactList,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Rules: u.Rules,
+		Rules: o.Rules,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerrulesetconfigchangeruleset) UnmarshalJSON(b []byte) error {
+	var DialerrulesetconfigchangerulesetMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerrulesetconfigchangerulesetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialerrulesetconfigchangerulesetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialerrulesetconfigchangerulesetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialerrulesetconfigchangerulesetMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialerrulesetconfigchangerulesetMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialerrulesetconfigchangerulesetMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ContactList, ok := DialerrulesetconfigchangerulesetMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if Queue, ok := DialerrulesetconfigchangerulesetMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Rules, ok := DialerrulesetconfigchangerulesetMap["rules"].([]interface{}); ok {
+		RulesString, _ := json.Marshal(Rules)
+		json.Unmarshal(RulesString, &o.Rules)
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangerulesetMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

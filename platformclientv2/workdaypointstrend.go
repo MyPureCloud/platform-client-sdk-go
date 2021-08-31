@@ -34,27 +34,25 @@ type Workdaypointstrend struct {
 
 }
 
-func (u *Workdaypointstrend) MarshalJSON() ([]byte, error) {
+func (o *Workdaypointstrend) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workdaypointstrend
-
 	
 	DateStartWorkday := new(string)
-	if u.DateStartWorkday != nil {
-		*DateStartWorkday = timeutil.Strftime(u.DateStartWorkday, "%Y-%m-%d")
+	if o.DateStartWorkday != nil {
+		*DateStartWorkday = timeutil.Strftime(o.DateStartWorkday, "%Y-%m-%d")
 	} else {
 		DateStartWorkday = nil
 	}
 	
 	DateEndWorkday := new(string)
-	if u.DateEndWorkday != nil {
-		*DateEndWorkday = timeutil.Strftime(u.DateEndWorkday, "%Y-%m-%d")
+	if o.DateEndWorkday != nil {
+		*DateEndWorkday = timeutil.Strftime(o.DateEndWorkday, "%Y-%m-%d")
 	} else {
 		DateEndWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateStartWorkday *string `json:"dateStartWorkday,omitempty"`
 		
@@ -73,15 +71,54 @@ func (u *Workdaypointstrend) MarshalJSON() ([]byte, error) {
 		
 		DateEndWorkday: DateEndWorkday,
 		
-		User: u.User,
+		User: o.User,
 		
-		DayOfWeek: u.DayOfWeek,
+		DayOfWeek: o.DayOfWeek,
 		
-		AveragePoints: u.AveragePoints,
+		AveragePoints: o.AveragePoints,
 		
-		Trend: u.Trend,
-		Alias:    (*Alias)(u),
+		Trend: o.Trend,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workdaypointstrend) UnmarshalJSON(b []byte) error {
+	var WorkdaypointstrendMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkdaypointstrendMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateStartWorkdayString, ok := WorkdaypointstrendMap["dateStartWorkday"].(string); ok {
+		DateStartWorkday, _ := time.Parse("2006-01-02", dateStartWorkdayString)
+		o.DateStartWorkday = &DateStartWorkday
+	}
+	
+	if dateEndWorkdayString, ok := WorkdaypointstrendMap["dateEndWorkday"].(string); ok {
+		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
+		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+	if User, ok := WorkdaypointstrendMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if DayOfWeek, ok := WorkdaypointstrendMap["dayOfWeek"].(string); ok {
+		o.DayOfWeek = &DayOfWeek
+	}
+	
+	if AveragePoints, ok := WorkdaypointstrendMap["averagePoints"].(float64); ok {
+		o.AveragePoints = &AveragePoints
+	}
+	
+	if Trend, ok := WorkdaypointstrendMap["trend"].([]interface{}); ok {
+		TrendString, _ := json.Marshal(Trend)
+		json.Unmarshal(TrendString, &o.Trend)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

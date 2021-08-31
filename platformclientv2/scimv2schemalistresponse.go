@@ -29,13 +29,11 @@ type Scimv2schemalistresponse struct {
 
 }
 
-func (u *Scimv2schemalistresponse) MarshalJSON() ([]byte, error) {
+func (o *Scimv2schemalistresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2schemalistresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Scimv2schemalistresponse) MarshalJSON() ([]byte, error) {
 		Resources *[]Scimv2schemadefinition `json:"Resources,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		TotalResults: u.TotalResults,
+		TotalResults: o.TotalResults,
 		
-		StartIndex: u.StartIndex,
+		StartIndex: o.StartIndex,
 		
-		ItemsPerPage: u.ItemsPerPage,
+		ItemsPerPage: o.ItemsPerPage,
 		
-		Resources: u.Resources,
-		Alias:    (*Alias)(u),
+		Resources: o.Resources,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2schemalistresponse) UnmarshalJSON(b []byte) error {
+	var Scimv2schemalistresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2schemalistresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := Scimv2schemalistresponseMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if TotalResults, ok := Scimv2schemalistresponseMap["totalResults"].(float64); ok {
+		TotalResultsInt := int(TotalResults)
+		o.TotalResults = &TotalResultsInt
+	}
+	
+	if StartIndex, ok := Scimv2schemalistresponseMap["startIndex"].(float64); ok {
+		StartIndexInt := int(StartIndex)
+		o.StartIndex = &StartIndexInt
+	}
+	
+	if ItemsPerPage, ok := Scimv2schemalistresponseMap["itemsPerPage"].(float64); ok {
+		ItemsPerPageInt := int(ItemsPerPage)
+		o.ItemsPerPage = &ItemsPerPageInt
+	}
+	
+	if Resources, ok := Scimv2schemalistresponseMap["Resources"].([]interface{}); ok {
+		ResourcesString, _ := json.Marshal(Resources)
+		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

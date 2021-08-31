@@ -26,21 +26,19 @@ type Webchattyping struct {
 
 }
 
-func (u *Webchattyping) MarshalJSON() ([]byte, error) {
+func (o *Webchattyping) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchattyping
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -51,15 +49,45 @@ func (u *Webchattyping) MarshalJSON() ([]byte, error) {
 		Timestamp *string `json:"timestamp,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		Sender: u.Sender,
+		Sender: o.Sender,
 		
 		Timestamp: Timestamp,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchattyping) UnmarshalJSON(b []byte) error {
+	var WebchattypingMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchattypingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebchattypingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Conversation, ok := WebchattypingMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if Sender, ok := WebchattypingMap["sender"].(map[string]interface{}); ok {
+		SenderString, _ := json.Marshal(Sender)
+		json.Unmarshal(SenderString, &o.Sender)
+	}
+	
+	if timestampString, ok := WebchattypingMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

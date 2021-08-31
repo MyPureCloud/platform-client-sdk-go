@@ -82,29 +82,27 @@ type Endpoint struct {
 
 }
 
-func (u *Endpoint) MarshalJSON() ([]byte, error) {
+func (o *Endpoint) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Endpoint
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -143,43 +141,134 @@ func (u *Endpoint) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Count: u.Count,
+		Count: o.Count,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		Dids: u.Dids,
+		Dids: o.Dids,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Endpoint) UnmarshalJSON(b []byte) error {
+	var EndpointMap map[string]interface{}
+	err := json.Unmarshal(b, &EndpointMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EndpointMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EndpointMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := EndpointMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := EndpointMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := EndpointMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := EndpointMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := EndpointMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := EndpointMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := EndpointMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := EndpointMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := EndpointMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Count, ok := EndpointMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if Properties, ok := EndpointMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if Schema, ok := EndpointMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if Enabled, ok := EndpointMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Site, ok := EndpointMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if Dids, ok := EndpointMap["dids"].([]interface{}); ok {
+		DidsString, _ := json.Marshal(Dids)
+		json.Unmarshal(DidsString, &o.Dids)
+	}
+	
+	if SelfUri, ok := EndpointMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

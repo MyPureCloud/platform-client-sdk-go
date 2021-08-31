@@ -13,20 +13,34 @@ type Smsavailablephonenumberentitylisting struct {
 
 }
 
-func (u *Smsavailablephonenumberentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Smsavailablephonenumberentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsavailablephonenumberentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Smsavailablephonenumber `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsavailablephonenumberentitylisting) UnmarshalJSON(b []byte) error {
+	var SmsavailablephonenumberentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsavailablephonenumberentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := SmsavailablephonenumberentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

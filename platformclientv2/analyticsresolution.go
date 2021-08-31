@@ -26,21 +26,19 @@ type Analyticsresolution struct {
 
 }
 
-func (u *Analyticsresolution) MarshalJSON() ([]byte, error) {
+func (o *Analyticsresolution) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsresolution
-
 	
 	EventTime := new(string)
-	if u.EventTime != nil {
+	if o.EventTime != nil {
 		
-		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		EventTime *string `json:"eventTime,omitempty"`
 		
@@ -53,13 +51,42 @@ func (u *Analyticsresolution) MarshalJSON() ([]byte, error) {
 	}{ 
 		EventTime: EventTime,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		NNextContactAvoided: u.NNextContactAvoided,
-		Alias:    (*Alias)(u),
+		NNextContactAvoided: o.NNextContactAvoided,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsresolution) UnmarshalJSON(b []byte) error {
+	var AnalyticsresolutionMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsresolutionMap)
+	if err != nil {
+		return err
+	}
+	
+	if eventTimeString, ok := AnalyticsresolutionMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
+	}
+	
+	if QueueId, ok := AnalyticsresolutionMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if UserId, ok := AnalyticsresolutionMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if NNextContactAvoided, ok := AnalyticsresolutionMap["nNextContactAvoided"].(float64); ok {
+		NNextContactAvoidedInt := int(NNextContactAvoided)
+		o.NNextContactAvoided = &NNextContactAvoidedInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

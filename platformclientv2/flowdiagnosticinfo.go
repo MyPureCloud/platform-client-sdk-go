@@ -13,20 +13,34 @@ type Flowdiagnosticinfo struct {
 
 }
 
-func (u *Flowdiagnosticinfo) MarshalJSON() ([]byte, error) {
+func (o *Flowdiagnosticinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowdiagnosticinfo
-
 	
-
 	return json.Marshal(&struct { 
 		LastActionId *int `json:"lastActionId,omitempty"`
 		*Alias
 	}{ 
-		LastActionId: u.LastActionId,
-		Alias:    (*Alias)(u),
+		LastActionId: o.LastActionId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowdiagnosticinfo) UnmarshalJSON(b []byte) error {
+	var FlowdiagnosticinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowdiagnosticinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if LastActionId, ok := FlowdiagnosticinfoMap["lastActionId"].(float64); ok {
+		LastActionIdInt := int(LastActionId)
+		o.LastActionId = &LastActionIdInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

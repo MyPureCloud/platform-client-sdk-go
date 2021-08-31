@@ -13,20 +13,33 @@ type Asyncqueryresponse struct {
 
 }
 
-func (u *Asyncqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Asyncqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Asyncqueryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		JobId *string `json:"jobId,omitempty"`
 		*Alias
 	}{ 
-		JobId: u.JobId,
-		Alias:    (*Alias)(u),
+		JobId: o.JobId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Asyncqueryresponse) UnmarshalJSON(b []byte) error {
+	var AsyncqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AsyncqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if JobId, ok := AsyncqueryresponseMap["jobId"].(string); ok {
+		o.JobId = &JobId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

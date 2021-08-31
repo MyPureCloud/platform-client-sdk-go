@@ -18,20 +18,18 @@ type Workdayvaluestrenditem struct {
 
 }
 
-func (u *Workdayvaluestrenditem) MarshalJSON() ([]byte, error) {
+func (o *Workdayvaluestrenditem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workdayvaluestrenditem
-
 	
 	DateWorkday := new(string)
-	if u.DateWorkday != nil {
-		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	if o.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(o.DateWorkday, "%Y-%m-%d")
 	} else {
 		DateWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateWorkday *string `json:"dateWorkday,omitempty"`
 		
@@ -40,9 +38,29 @@ func (u *Workdayvaluestrenditem) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateWorkday: DateWorkday,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workdayvaluestrenditem) UnmarshalJSON(b []byte) error {
+	var WorkdayvaluestrenditemMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkdayvaluestrenditemMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateWorkdayString, ok := WorkdayvaluestrenditemMap["dateWorkday"].(string); ok {
+		DateWorkday, _ := time.Parse("2006-01-02", dateWorkdayString)
+		o.DateWorkday = &DateWorkday
+	}
+	
+	if Value, ok := WorkdayvaluestrenditemMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

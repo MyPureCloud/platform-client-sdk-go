@@ -34,21 +34,19 @@ type Routingskill struct {
 
 }
 
-func (u *Routingskill) MarshalJSON() ([]byte, error) {
+func (o *Routingskill) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingskill
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,19 +61,55 @@ func (u *Routingskill) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateModified: DateModified,
 		
-		State: u.State,
+		State: o.State,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingskill) UnmarshalJSON(b []byte) error {
+	var RoutingskillMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingskillMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RoutingskillMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := RoutingskillMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateModifiedString, ok := RoutingskillMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if State, ok := RoutingskillMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Version, ok := RoutingskillMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if SelfUri, ok := RoutingskillMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

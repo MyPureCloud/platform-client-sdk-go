@@ -17,24 +17,41 @@ type Templateparameter struct {
 
 }
 
-func (u *Templateparameter) MarshalJSON() ([]byte, error) {
+func (o *Templateparameter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Templateparameter
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Templateparameter) UnmarshalJSON(b []byte) error {
+	var TemplateparameterMap map[string]interface{}
+	err := json.Unmarshal(b, &TemplateparameterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TemplateparameterMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Value, ok := TemplateparameterMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

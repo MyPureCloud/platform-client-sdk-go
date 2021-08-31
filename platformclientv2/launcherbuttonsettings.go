@@ -13,20 +13,33 @@ type Launcherbuttonsettings struct {
 
 }
 
-func (u *Launcherbuttonsettings) MarshalJSON() ([]byte, error) {
+func (o *Launcherbuttonsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Launcherbuttonsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Visibility *string `json:"visibility,omitempty"`
 		*Alias
 	}{ 
-		Visibility: u.Visibility,
-		Alias:    (*Alias)(u),
+		Visibility: o.Visibility,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Launcherbuttonsettings) UnmarshalJSON(b []byte) error {
+	var LauncherbuttonsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &LauncherbuttonsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Visibility, ok := LauncherbuttonsettingsMap["visibility"].(string); ok {
+		o.Visibility = &Visibility
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

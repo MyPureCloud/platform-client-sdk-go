@@ -17,24 +17,41 @@ type Cursors struct {
 
 }
 
-func (u *Cursors) MarshalJSON() ([]byte, error) {
+func (o *Cursors) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Cursors
-
 	
-
 	return json.Marshal(&struct { 
 		Before *string `json:"before,omitempty"`
 		
 		After *string `json:"after,omitempty"`
 		*Alias
 	}{ 
-		Before: u.Before,
+		Before: o.Before,
 		
-		After: u.After,
-		Alias:    (*Alias)(u),
+		After: o.After,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Cursors) UnmarshalJSON(b []byte) error {
+	var CursorsMap map[string]interface{}
+	err := json.Unmarshal(b, &CursorsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Before, ok := CursorsMap["before"].(string); ok {
+		o.Before = &Before
+	}
+	
+	if After, ok := CursorsMap["after"].(string); ok {
+		o.After = &After
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

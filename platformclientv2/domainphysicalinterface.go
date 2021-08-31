@@ -78,29 +78,27 @@ type Domainphysicalinterface struct {
 
 }
 
-func (u *Domainphysicalinterface) MarshalJSON() ([]byte, error) {
+func (o *Domainphysicalinterface) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainphysicalinterface
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -137,41 +135,124 @@ func (u *Domainphysicalinterface) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		EdgeUri: u.EdgeUri,
+		EdgeUri: o.EdgeUri,
 		
-		FriendlyName: u.FriendlyName,
+		FriendlyName: o.FriendlyName,
 		
-		HardwareAddress: u.HardwareAddress,
+		HardwareAddress: o.HardwareAddress,
 		
-		PortLabel: u.PortLabel,
+		PortLabel: o.PortLabel,
 		
-		PhysicalCapabilities: u.PhysicalCapabilities,
+		PhysicalCapabilities: o.PhysicalCapabilities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainphysicalinterface) UnmarshalJSON(b []byte) error {
+	var DomainphysicalinterfaceMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainphysicalinterfaceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainphysicalinterfaceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainphysicalinterfaceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := DomainphysicalinterfaceMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := DomainphysicalinterfaceMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := DomainphysicalinterfaceMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DomainphysicalinterfaceMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := DomainphysicalinterfaceMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := DomainphysicalinterfaceMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := DomainphysicalinterfaceMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := DomainphysicalinterfaceMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := DomainphysicalinterfaceMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if EdgeUri, ok := DomainphysicalinterfaceMap["edgeUri"].(string); ok {
+		o.EdgeUri = &EdgeUri
+	}
+	
+	if FriendlyName, ok := DomainphysicalinterfaceMap["friendlyName"].(string); ok {
+		o.FriendlyName = &FriendlyName
+	}
+	
+	if HardwareAddress, ok := DomainphysicalinterfaceMap["hardwareAddress"].(string); ok {
+		o.HardwareAddress = &HardwareAddress
+	}
+	
+	if PortLabel, ok := DomainphysicalinterfaceMap["portLabel"].(string); ok {
+		o.PortLabel = &PortLabel
+	}
+	
+	if PhysicalCapabilities, ok := DomainphysicalinterfaceMap["physicalCapabilities"].(map[string]interface{}); ok {
+		PhysicalCapabilitiesString, _ := json.Marshal(PhysicalCapabilities)
+		json.Unmarshal(PhysicalCapabilitiesString, &o.PhysicalCapabilities)
+	}
+	
+	if SelfUri, ok := DomainphysicalinterfaceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

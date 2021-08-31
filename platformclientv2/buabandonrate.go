@@ -17,24 +17,42 @@ type Buabandonrate struct {
 
 }
 
-func (u *Buabandonrate) MarshalJSON() ([]byte, error) {
+func (o *Buabandonrate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buabandonrate
-
 	
-
 	return json.Marshal(&struct { 
 		Include *bool `json:"include,omitempty"`
 		
 		Percent *int `json:"percent,omitempty"`
 		*Alias
 	}{ 
-		Include: u.Include,
+		Include: o.Include,
 		
-		Percent: u.Percent,
-		Alias:    (*Alias)(u),
+		Percent: o.Percent,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buabandonrate) UnmarshalJSON(b []byte) error {
+	var BuabandonrateMap map[string]interface{}
+	err := json.Unmarshal(b, &BuabandonrateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Include, ok := BuabandonrateMap["include"].(bool); ok {
+		o.Include = &Include
+	}
+	
+	if Percent, ok := BuabandonrateMap["percent"].(float64); ok {
+		PercentInt := int(Percent)
+		o.Percent = &PercentInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

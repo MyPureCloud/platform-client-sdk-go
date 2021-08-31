@@ -25,13 +25,11 @@ type Architectflowoutcomenotificationflowoutcomenotification struct {
 
 }
 
-func (u *Architectflowoutcomenotificationflowoutcomenotification) MarshalJSON() ([]byte, error) {
+func (o *Architectflowoutcomenotificationflowoutcomenotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflowoutcomenotificationflowoutcomenotification
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Architectflowoutcomenotificationflowoutcomenotification) MarshalJSON() 
 		CurrentOperation *Architectflowoutcomenotificationarchitectoperation `json:"currentOperation,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		CurrentOperation: u.CurrentOperation,
-		Alias:    (*Alias)(u),
+		CurrentOperation: o.CurrentOperation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflowoutcomenotificationflowoutcomenotification) UnmarshalJSON(b []byte) error {
+	var ArchitectflowoutcomenotificationflowoutcomenotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflowoutcomenotificationflowoutcomenotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if CurrentOperation, ok := ArchitectflowoutcomenotificationflowoutcomenotificationMap["currentOperation"].(map[string]interface{}); ok {
+		CurrentOperationString, _ := json.Marshal(CurrentOperation)
+		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,33 @@ type Usergreetingeventgreetingowner struct {
 
 }
 
-func (u *Usergreetingeventgreetingowner) MarshalJSON() ([]byte, error) {
+func (o *Usergreetingeventgreetingowner) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Usergreetingeventgreetingowner
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Usergreetingeventgreetingowner) UnmarshalJSON(b []byte) error {
+	var UsergreetingeventgreetingownerMap map[string]interface{}
+	err := json.Unmarshal(b, &UsergreetingeventgreetingownerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UsergreetingeventgreetingownerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Parameter struct {
 
 }
 
-func (u *Parameter) MarshalJSON() ([]byte, error) {
+func (o *Parameter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Parameter
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Parameter) MarshalJSON() ([]byte, error) {
 		Required *bool `json:"required,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		ParameterType: u.ParameterType,
+		ParameterType: o.ParameterType,
 		
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		Required: u.Required,
-		Alias:    (*Alias)(u),
+		Required: o.Required,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Parameter) UnmarshalJSON(b []byte) error {
+	var ParameterMap map[string]interface{}
+	err := json.Unmarshal(b, &ParameterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ParameterMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ParameterType, ok := ParameterMap["parameterType"].(string); ok {
+		o.ParameterType = &ParameterType
+	}
+	
+	if Domain, ok := ParameterMap["domain"].(string); ok {
+		o.Domain = &Domain
+	}
+	
+	if Required, ok := ParameterMap["required"].(bool); ok {
+		o.Required = &Required
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

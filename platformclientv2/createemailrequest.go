@@ -69,13 +69,11 @@ type Createemailrequest struct {
 
 }
 
-func (u *Createemailrequest) MarshalJSON() ([]byte, error) {
+func (o *Createemailrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createemailrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueueId *string `json:"queueId,omitempty"`
 		
@@ -108,37 +106,111 @@ func (u *Createemailrequest) MarshalJSON() ([]byte, error) {
 		TextBody *string `json:"textBody,omitempty"`
 		*Alias
 	}{ 
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		FlowId: u.FlowId,
+		FlowId: o.FlowId,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		SkillIds: u.SkillIds,
+		SkillIds: o.SkillIds,
 		
-		LanguageId: u.LanguageId,
+		LanguageId: o.LanguageId,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		ToName: u.ToName,
+		ToName: o.ToName,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		FromName: u.FromName,
+		FromName: o.FromName,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		HtmlBody: u.HtmlBody,
+		HtmlBody: o.HtmlBody,
 		
-		TextBody: u.TextBody,
-		Alias:    (*Alias)(u),
+		TextBody: o.TextBody,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
+	var CreateemailrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateemailrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueId, ok := CreateemailrequestMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if FlowId, ok := CreateemailrequestMap["flowId"].(string); ok {
+		o.FlowId = &FlowId
+	}
+	
+	if Provider, ok := CreateemailrequestMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if SkillIds, ok := CreateemailrequestMap["skillIds"].([]interface{}); ok {
+		SkillIdsString, _ := json.Marshal(SkillIds)
+		json.Unmarshal(SkillIdsString, &o.SkillIds)
+	}
+	
+	if LanguageId, ok := CreateemailrequestMap["languageId"].(string); ok {
+		o.LanguageId = &LanguageId
+	}
+	
+	if Priority, ok := CreateemailrequestMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if Attributes, ok := CreateemailrequestMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if ToAddress, ok := CreateemailrequestMap["toAddress"].(string); ok {
+		o.ToAddress = &ToAddress
+	}
+	
+	if ToName, ok := CreateemailrequestMap["toName"].(string); ok {
+		o.ToName = &ToName
+	}
+	
+	if FromAddress, ok := CreateemailrequestMap["fromAddress"].(string); ok {
+		o.FromAddress = &FromAddress
+	}
+	
+	if FromName, ok := CreateemailrequestMap["fromName"].(string); ok {
+		o.FromName = &FromName
+	}
+	
+	if Subject, ok := CreateemailrequestMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+	if Direction, ok := CreateemailrequestMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if HtmlBody, ok := CreateemailrequestMap["htmlBody"].(string); ok {
+		o.HtmlBody = &HtmlBody
+	}
+	
+	if TextBody, ok := CreateemailrequestMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

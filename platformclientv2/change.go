@@ -25,13 +25,11 @@ type Change struct {
 
 }
 
-func (u *Change) MarshalJSON() ([]byte, error) {
+func (o *Change) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Change
-
 	
-
 	return json.Marshal(&struct { 
 		Entity *Auditentity `json:"entity,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Change) MarshalJSON() ([]byte, error) {
 		NewValues *[]string `json:"newValues,omitempty"`
 		*Alias
 	}{ 
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		Property: u.Property,
+		Property: o.Property,
 		
-		OldValues: u.OldValues,
+		OldValues: o.OldValues,
 		
-		NewValues: u.NewValues,
-		Alias:    (*Alias)(u),
+		NewValues: o.NewValues,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Change) UnmarshalJSON(b []byte) error {
+	var ChangeMap map[string]interface{}
+	err := json.Unmarshal(b, &ChangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entity, ok := ChangeMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if Property, ok := ChangeMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if OldValues, ok := ChangeMap["oldValues"].([]interface{}); ok {
+		OldValuesString, _ := json.Marshal(OldValues)
+		json.Unmarshal(OldValuesString, &o.OldValues)
+	}
+	
+	if NewValues, ok := ChangeMap["newValues"].([]interface{}); ok {
+		NewValuesString, _ := json.Marshal(NewValues)
+		json.Unmarshal(NewValuesString, &o.NewValues)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

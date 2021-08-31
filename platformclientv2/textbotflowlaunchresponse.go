@@ -13,20 +13,33 @@ type Textbotflowlaunchresponse struct {
 
 }
 
-func (u *Textbotflowlaunchresponse) MarshalJSON() ([]byte, error) {
+func (o *Textbotflowlaunchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotflowlaunchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotflowlaunchresponse) UnmarshalJSON(b []byte) error {
+	var TextbotflowlaunchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotflowlaunchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TextbotflowlaunchresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

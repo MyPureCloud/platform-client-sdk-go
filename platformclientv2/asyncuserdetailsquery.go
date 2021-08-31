@@ -33,13 +33,11 @@ type Asyncuserdetailsquery struct {
 
 }
 
-func (u *Asyncuserdetailsquery) MarshalJSON() ([]byte, error) {
+func (o *Asyncuserdetailsquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Asyncuserdetailsquery
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Asyncuserdetailsquery) MarshalJSON() ([]byte, error) {
 		Limit *int `json:"limit,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		UserFilters: u.UserFilters,
+		UserFilters: o.UserFilters,
 		
-		PresenceFilters: u.PresenceFilters,
+		PresenceFilters: o.PresenceFilters,
 		
-		RoutingStatusFilters: u.RoutingStatusFilters,
+		RoutingStatusFilters: o.RoutingStatusFilters,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		Limit: u.Limit,
-		Alias:    (*Alias)(u),
+		Limit: o.Limit,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Asyncuserdetailsquery) UnmarshalJSON(b []byte) error {
+	var AsyncuserdetailsqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &AsyncuserdetailsqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := AsyncuserdetailsqueryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if UserFilters, ok := AsyncuserdetailsqueryMap["userFilters"].([]interface{}); ok {
+		UserFiltersString, _ := json.Marshal(UserFilters)
+		json.Unmarshal(UserFiltersString, &o.UserFilters)
+	}
+	
+	if PresenceFilters, ok := AsyncuserdetailsqueryMap["presenceFilters"].([]interface{}); ok {
+		PresenceFiltersString, _ := json.Marshal(PresenceFilters)
+		json.Unmarshal(PresenceFiltersString, &o.PresenceFilters)
+	}
+	
+	if RoutingStatusFilters, ok := AsyncuserdetailsqueryMap["routingStatusFilters"].([]interface{}); ok {
+		RoutingStatusFiltersString, _ := json.Marshal(RoutingStatusFilters)
+		json.Unmarshal(RoutingStatusFiltersString, &o.RoutingStatusFilters)
+	}
+	
+	if Order, ok := AsyncuserdetailsqueryMap["order"].(string); ok {
+		o.Order = &Order
+	}
+	
+	if Limit, ok := AsyncuserdetailsqueryMap["limit"].(float64); ok {
+		LimitInt := int(Limit)
+		o.Limit = &LimitInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

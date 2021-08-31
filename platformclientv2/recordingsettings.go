@@ -17,24 +17,43 @@ type Recordingsettings struct {
 
 }
 
-func (u *Recordingsettings) MarshalJSON() ([]byte, error) {
+func (o *Recordingsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingsettings
-
 	
-
 	return json.Marshal(&struct { 
 		MaxSimultaneousStreams *int `json:"maxSimultaneousStreams,omitempty"`
 		
 		MaxConfigurableScreenRecordingStreams *int `json:"maxConfigurableScreenRecordingStreams,omitempty"`
 		*Alias
 	}{ 
-		MaxSimultaneousStreams: u.MaxSimultaneousStreams,
+		MaxSimultaneousStreams: o.MaxSimultaneousStreams,
 		
-		MaxConfigurableScreenRecordingStreams: u.MaxConfigurableScreenRecordingStreams,
-		Alias:    (*Alias)(u),
+		MaxConfigurableScreenRecordingStreams: o.MaxConfigurableScreenRecordingStreams,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingsettings) UnmarshalJSON(b []byte) error {
+	var RecordingsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if MaxSimultaneousStreams, ok := RecordingsettingsMap["maxSimultaneousStreams"].(float64); ok {
+		MaxSimultaneousStreamsInt := int(MaxSimultaneousStreams)
+		o.MaxSimultaneousStreams = &MaxSimultaneousStreamsInt
+	}
+	
+	if MaxConfigurableScreenRecordingStreams, ok := RecordingsettingsMap["maxConfigurableScreenRecordingStreams"].(float64); ok {
+		MaxConfigurableScreenRecordingStreamsInt := int(MaxConfigurableScreenRecordingStreams)
+		o.MaxConfigurableScreenRecordingStreams = &MaxConfigurableScreenRecordingStreamsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

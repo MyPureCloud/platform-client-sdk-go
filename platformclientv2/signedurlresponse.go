@@ -25,13 +25,11 @@ type Signedurlresponse struct {
 
 }
 
-func (u *Signedurlresponse) MarshalJSON() ([]byte, error) {
+func (o *Signedurlresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Signedurlresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Signedurlresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Signedurlresponse) UnmarshalJSON(b []byte) error {
+	var SignedurlresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SignedurlresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SignedurlresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SignedurlresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Url, ok := SignedurlresponseMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if SelfUri, ok := SignedurlresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

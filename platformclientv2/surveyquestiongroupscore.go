@@ -29,13 +29,11 @@ type Surveyquestiongroupscore struct {
 
 }
 
-func (u *Surveyquestiongroupscore) MarshalJSON() ([]byte, error) {
+func (o *Surveyquestiongroupscore) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyquestiongroupscore
-
 	
-
 	return json.Marshal(&struct { 
 		QuestionGroupId *string `json:"questionGroupId,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Surveyquestiongroupscore) MarshalJSON() ([]byte, error) {
 		QuestionScores *[]Surveyquestionscore `json:"questionScores,omitempty"`
 		*Alias
 	}{ 
-		QuestionGroupId: u.QuestionGroupId,
+		QuestionGroupId: o.QuestionGroupId,
 		
-		TotalScore: u.TotalScore,
+		TotalScore: o.TotalScore,
 		
-		MaxTotalScore: u.MaxTotalScore,
+		MaxTotalScore: o.MaxTotalScore,
 		
-		MarkedNA: u.MarkedNA,
+		MarkedNA: o.MarkedNA,
 		
-		QuestionScores: u.QuestionScores,
-		Alias:    (*Alias)(u),
+		QuestionScores: o.QuestionScores,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyquestiongroupscore) UnmarshalJSON(b []byte) error {
+	var SurveyquestiongroupscoreMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyquestiongroupscoreMap)
+	if err != nil {
+		return err
+	}
+	
+	if QuestionGroupId, ok := SurveyquestiongroupscoreMap["questionGroupId"].(string); ok {
+		o.QuestionGroupId = &QuestionGroupId
+	}
+	
+	if TotalScore, ok := SurveyquestiongroupscoreMap["totalScore"].(float64); ok {
+		TotalScoreFloat32 := float32(TotalScore)
+		o.TotalScore = &TotalScoreFloat32
+	}
+	
+	if MaxTotalScore, ok := SurveyquestiongroupscoreMap["maxTotalScore"].(float64); ok {
+		MaxTotalScoreFloat32 := float32(MaxTotalScore)
+		o.MaxTotalScore = &MaxTotalScoreFloat32
+	}
+	
+	if MarkedNA, ok := SurveyquestiongroupscoreMap["markedNA"].(bool); ok {
+		o.MarkedNA = &MarkedNA
+	}
+	
+	if QuestionScores, ok := SurveyquestiongroupscoreMap["questionScores"].([]interface{}); ok {
+		QuestionScoresString, _ := json.Marshal(QuestionScores)
+		json.Unmarshal(QuestionScoresString, &o.QuestionScores)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

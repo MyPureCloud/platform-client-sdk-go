@@ -41,13 +41,11 @@ type Userconversationsummary struct {
 
 }
 
-func (u *Userconversationsummary) MarshalJSON() ([]byte, error) {
+func (o *Userconversationsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userconversationsummary
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -66,23 +64,73 @@ func (u *Userconversationsummary) MarshalJSON() ([]byte, error) {
 		Video *Mediasummary `json:"video,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Call: u.Call,
+		Call: o.Call,
 		
-		Callback: u.Callback,
+		Callback: o.Callback,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		Chat: u.Chat,
+		Chat: o.Chat,
 		
-		SocialExpression: u.SocialExpression,
+		SocialExpression: o.SocialExpression,
 		
-		Video: u.Video,
-		Alias:    (*Alias)(u),
+		Video: o.Video,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userconversationsummary) UnmarshalJSON(b []byte) error {
+	var UserconversationsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &UserconversationsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := UserconversationsummaryMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Call, ok := UserconversationsummaryMap["call"].(map[string]interface{}); ok {
+		CallString, _ := json.Marshal(Call)
+		json.Unmarshal(CallString, &o.Call)
+	}
+	
+	if Callback, ok := UserconversationsummaryMap["callback"].(map[string]interface{}); ok {
+		CallbackString, _ := json.Marshal(Callback)
+		json.Unmarshal(CallbackString, &o.Callback)
+	}
+	
+	if Email, ok := UserconversationsummaryMap["email"].(map[string]interface{}); ok {
+		EmailString, _ := json.Marshal(Email)
+		json.Unmarshal(EmailString, &o.Email)
+	}
+	
+	if Message, ok := UserconversationsummaryMap["message"].(map[string]interface{}); ok {
+		MessageString, _ := json.Marshal(Message)
+		json.Unmarshal(MessageString, &o.Message)
+	}
+	
+	if Chat, ok := UserconversationsummaryMap["chat"].(map[string]interface{}); ok {
+		ChatString, _ := json.Marshal(Chat)
+		json.Unmarshal(ChatString, &o.Chat)
+	}
+	
+	if SocialExpression, ok := UserconversationsummaryMap["socialExpression"].(map[string]interface{}); ok {
+		SocialExpressionString, _ := json.Marshal(SocialExpression)
+		json.Unmarshal(SocialExpressionString, &o.SocialExpression)
+	}
+	
+	if Video, ok := UserconversationsummaryMap["video"].(map[string]interface{}); ok {
+		VideoString, _ := json.Marshal(Video)
+		json.Unmarshal(VideoString, &o.Video)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

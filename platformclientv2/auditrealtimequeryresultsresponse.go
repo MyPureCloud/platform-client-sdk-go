@@ -29,13 +29,11 @@ type Auditrealtimequeryresultsresponse struct {
 
 }
 
-func (u *Auditrealtimequeryresultsresponse) MarshalJSON() ([]byte, error) {
+func (o *Auditrealtimequeryresultsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditrealtimequeryresultsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Auditlogmessage `json:"entities,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Auditrealtimequeryresultsresponse) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditrealtimequeryresultsresponse) UnmarshalJSON(b []byte) error {
+	var AuditrealtimequeryresultsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditrealtimequeryresultsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := AuditrealtimequeryresultsresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := AuditrealtimequeryresultsresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := AuditrealtimequeryresultsresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := AuditrealtimequeryresultsresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := AuditrealtimequeryresultsresponseMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -81,13 +81,11 @@ type Wfmtimeoffrequestupdatetopictimeoffrequestupdate struct {
 
 }
 
-func (u *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte, error) {
+func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmtimeoffrequestupdatetopictimeoffrequestupdate
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -126,43 +124,130 @@ func (u *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) MarshalJSON() ([]byte
 		ModifiedBy *string `json:"modifiedBy,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		User: u.User,
+		User: o.User,
 		
-		IsFullDayRequest: u.IsFullDayRequest,
+		IsFullDayRequest: o.IsFullDayRequest,
 		
-		MarkedAsRead: u.MarkedAsRead,
+		MarkedAsRead: o.MarkedAsRead,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		Paid: u.Paid,
+		Paid: o.Paid,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Substatus: u.Substatus,
+		Substatus: o.Substatus,
 		
-		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
-		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
 		
-		DailyDurationMinutes: u.DailyDurationMinutes,
+		DailyDurationMinutes: o.DailyDurationMinutes,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		ReviewedDate: u.ReviewedDate,
+		ReviewedDate: o.ReviewedDate,
 		
-		ReviewedBy: u.ReviewedBy,
+		ReviewedBy: o.ReviewedBy,
 		
-		SubmittedDate: u.SubmittedDate,
+		SubmittedDate: o.SubmittedDate,
 		
-		SubmittedBy: u.SubmittedBy,
+		SubmittedBy: o.SubmittedBy,
 		
-		ModifiedDate: u.ModifiedDate,
+		ModifiedDate: o.ModifiedDate,
 		
-		ModifiedBy: u.ModifiedBy,
-		Alias:    (*Alias)(u),
+		ModifiedBy: o.ModifiedBy,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmtimeoffrequestupdatetopictimeoffrequestupdate) UnmarshalJSON(b []byte) error {
+	var WfmtimeoffrequestupdatetopictimeoffrequestupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmtimeoffrequestupdatetopictimeoffrequestupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if User, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if IsFullDayRequest, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["isFullDayRequest"].(bool); ok {
+		o.IsFullDayRequest = &IsFullDayRequest
+	}
+	
+	if MarkedAsRead, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["markedAsRead"].(bool); ok {
+		o.MarkedAsRead = &MarkedAsRead
+	}
+	
+	if ActivityCodeId, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if Paid, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+	
+	if Status, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Substatus, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["substatus"].(string); ok {
+		o.Substatus = &Substatus
+	}
+	
+	if PartialDayStartDateTimes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["partialDayStartDateTimes"].([]interface{}); ok {
+		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
+		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
+	}
+	
+	if FullDayManagementUnitDates, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["fullDayManagementUnitDates"].([]interface{}); ok {
+		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
+		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+	if DailyDurationMinutes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["dailyDurationMinutes"].(float64); ok {
+		DailyDurationMinutesInt := int(DailyDurationMinutes)
+		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+	if Notes, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if ReviewedDate, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["reviewedDate"].(string); ok {
+		o.ReviewedDate = &ReviewedDate
+	}
+	
+	if ReviewedBy, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["reviewedBy"].(string); ok {
+		o.ReviewedBy = &ReviewedBy
+	}
+	
+	if SubmittedDate, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["submittedDate"].(string); ok {
+		o.SubmittedDate = &SubmittedDate
+	}
+	
+	if SubmittedBy, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["submittedBy"].(string); ok {
+		o.SubmittedBy = &SubmittedBy
+	}
+	
+	if ModifiedDate, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["modifiedDate"].(string); ok {
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if ModifiedBy, ok := WfmtimeoffrequestupdatetopictimeoffrequestupdateMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

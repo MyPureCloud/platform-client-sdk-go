@@ -41,13 +41,11 @@ type Errordetails struct {
 
 }
 
-func (u *Errordetails) MarshalJSON() ([]byte, error) {
+func (o *Errordetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Errordetails
-
 	
-
 	return json.Marshal(&struct { 
 		Status *int `json:"status,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Errordetails) MarshalJSON() ([]byte, error) {
 		Details *string `json:"details,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
+		MessageParams: o.MessageParams,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		Nested: u.Nested,
+		Nested: o.Nested,
 		
-		Details: u.Details,
-		Alias:    (*Alias)(u),
+		Details: o.Details,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Errordetails) UnmarshalJSON(b []byte) error {
+	var ErrordetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &ErrordetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := ErrordetailsMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if Message, ok := ErrordetailsMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := ErrordetailsMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := ErrordetailsMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+	if Code, ok := ErrordetailsMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if ContextId, ok := ErrordetailsMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if Nested, ok := ErrordetailsMap["nested"].(map[string]interface{}); ok {
+		NestedString, _ := json.Marshal(Nested)
+		json.Unmarshal(NestedString, &o.Nested)
+	}
+	
+	if Details, ok := ErrordetailsMap["details"].(string); ok {
+		o.Details = &Details
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

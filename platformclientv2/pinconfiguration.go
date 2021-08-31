@@ -17,24 +17,43 @@ type Pinconfiguration struct {
 
 }
 
-func (u *Pinconfiguration) MarshalJSON() ([]byte, error) {
+func (o *Pinconfiguration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Pinconfiguration
-
 	
-
 	return json.Marshal(&struct { 
 		MinimumLength *int `json:"minimumLength,omitempty"`
 		
 		MaximumLength *int `json:"maximumLength,omitempty"`
 		*Alias
 	}{ 
-		MinimumLength: u.MinimumLength,
+		MinimumLength: o.MinimumLength,
 		
-		MaximumLength: u.MaximumLength,
-		Alias:    (*Alias)(u),
+		MaximumLength: o.MaximumLength,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Pinconfiguration) UnmarshalJSON(b []byte) error {
+	var PinconfigurationMap map[string]interface{}
+	err := json.Unmarshal(b, &PinconfigurationMap)
+	if err != nil {
+		return err
+	}
+	
+	if MinimumLength, ok := PinconfigurationMap["minimumLength"].(float64); ok {
+		MinimumLengthInt := int(MinimumLength)
+		o.MinimumLength = &MinimumLengthInt
+	}
+	
+	if MaximumLength, ok := PinconfigurationMap["maximumLength"].(float64); ok {
+		MaximumLengthInt := int(MaximumLength)
+		o.MaximumLength = &MaximumLengthInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

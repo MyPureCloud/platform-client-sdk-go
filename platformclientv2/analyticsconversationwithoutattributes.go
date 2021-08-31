@@ -58,29 +58,27 @@ type Analyticsconversationwithoutattributes struct {
 
 }
 
-func (u *Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
+func (o *Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsconversationwithoutattributes
-
 	
 	ConversationEnd := new(string)
-	if u.ConversationEnd != nil {
+	if o.ConversationEnd != nil {
 		
-		*ConversationEnd = timeutil.Strftime(u.ConversationEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConversationEnd = timeutil.Strftime(o.ConversationEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConversationEnd = nil
 	}
 	
 	ConversationStart := new(string)
-	if u.ConversationStart != nil {
+	if o.ConversationStart != nil {
 		
-		*ConversationStart = timeutil.Strftime(u.ConversationStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConversationStart = timeutil.Strftime(o.ConversationStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConversationStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ConversationEnd *string `json:"conversationEnd,omitempty"`
 		
@@ -109,29 +107,95 @@ func (u *Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
 	}{ 
 		ConversationEnd: ConversationEnd,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
 		ConversationStart: ConversationStart,
 		
-		DivisionIds: u.DivisionIds,
+		DivisionIds: o.DivisionIds,
 		
-		ExternalTag: u.ExternalTag,
+		ExternalTag: o.ExternalTag,
 		
-		MediaStatsMinConversationMos: u.MediaStatsMinConversationMos,
+		MediaStatsMinConversationMos: o.MediaStatsMinConversationMos,
 		
-		MediaStatsMinConversationRFactor: u.MediaStatsMinConversationRFactor,
+		MediaStatsMinConversationRFactor: o.MediaStatsMinConversationRFactor,
 		
-		OriginatingDirection: u.OriginatingDirection,
+		OriginatingDirection: o.OriginatingDirection,
 		
-		Evaluations: u.Evaluations,
+		Evaluations: o.Evaluations,
 		
-		Surveys: u.Surveys,
+		Surveys: o.Surveys,
 		
-		Resolutions: u.Resolutions,
+		Resolutions: o.Resolutions,
 		
-		Participants: u.Participants,
-		Alias:    (*Alias)(u),
+		Participants: o.Participants,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
+	var AnalyticsconversationwithoutattributesMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsconversationwithoutattributesMap)
+	if err != nil {
+		return err
+	}
+	
+	if conversationEndString, ok := AnalyticsconversationwithoutattributesMap["conversationEnd"].(string); ok {
+		ConversationEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationEndString)
+		o.ConversationEnd = &ConversationEnd
+	}
+	
+	if ConversationId, ok := AnalyticsconversationwithoutattributesMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if conversationStartString, ok := AnalyticsconversationwithoutattributesMap["conversationStart"].(string); ok {
+		ConversationStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationStartString)
+		o.ConversationStart = &ConversationStart
+	}
+	
+	if DivisionIds, ok := AnalyticsconversationwithoutattributesMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+	if ExternalTag, ok := AnalyticsconversationwithoutattributesMap["externalTag"].(string); ok {
+		o.ExternalTag = &ExternalTag
+	}
+	
+	if MediaStatsMinConversationMos, ok := AnalyticsconversationwithoutattributesMap["mediaStatsMinConversationMos"].(float64); ok {
+		o.MediaStatsMinConversationMos = &MediaStatsMinConversationMos
+	}
+	
+	if MediaStatsMinConversationRFactor, ok := AnalyticsconversationwithoutattributesMap["mediaStatsMinConversationRFactor"].(float64); ok {
+		o.MediaStatsMinConversationRFactor = &MediaStatsMinConversationRFactor
+	}
+	
+	if OriginatingDirection, ok := AnalyticsconversationwithoutattributesMap["originatingDirection"].(string); ok {
+		o.OriginatingDirection = &OriginatingDirection
+	}
+	
+	if Evaluations, ok := AnalyticsconversationwithoutattributesMap["evaluations"].([]interface{}); ok {
+		EvaluationsString, _ := json.Marshal(Evaluations)
+		json.Unmarshal(EvaluationsString, &o.Evaluations)
+	}
+	
+	if Surveys, ok := AnalyticsconversationwithoutattributesMap["surveys"].([]interface{}); ok {
+		SurveysString, _ := json.Marshal(Surveys)
+		json.Unmarshal(SurveysString, &o.Surveys)
+	}
+	
+	if Resolutions, ok := AnalyticsconversationwithoutattributesMap["resolutions"].([]interface{}); ok {
+		ResolutionsString, _ := json.Marshal(Resolutions)
+		json.Unmarshal(ResolutionsString, &o.Resolutions)
+	}
+	
+	if Participants, ok := AnalyticsconversationwithoutattributesMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

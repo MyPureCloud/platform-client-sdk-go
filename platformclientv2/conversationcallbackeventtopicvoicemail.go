@@ -17,24 +17,41 @@ type Conversationcallbackeventtopicvoicemail struct {
 
 }
 
-func (u *Conversationcallbackeventtopicvoicemail) MarshalJSON() ([]byte, error) {
+func (o *Conversationcallbackeventtopicvoicemail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcallbackeventtopicvoicemail
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		UploadStatus *string `json:"uploadStatus,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		UploadStatus: u.UploadStatus,
-		Alias:    (*Alias)(u),
+		UploadStatus: o.UploadStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcallbackeventtopicvoicemail) UnmarshalJSON(b []byte) error {
+	var ConversationcallbackeventtopicvoicemailMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcallbackeventtopicvoicemailMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationcallbackeventtopicvoicemailMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if UploadStatus, ok := ConversationcallbackeventtopicvoicemailMap["uploadStatus"].(string); ok {
+		o.UploadStatus = &UploadStatus
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

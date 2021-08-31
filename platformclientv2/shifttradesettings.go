@@ -61,13 +61,11 @@ type Shifttradesettings struct {
 
 }
 
-func (u *Shifttradesettings) MarshalJSON() ([]byte, error) {
+func (o *Shifttradesettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradesettings
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -96,33 +94,98 @@ func (u *Shifttradesettings) MarshalJSON() ([]byte, error) {
 		ActivityCategoryRules *[]Shifttradeactivityrule `json:"activityCategoryRules,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		AutoReview: u.AutoReview,
+		AutoReview: o.AutoReview,
 		
-		AllowDirectTrades: u.AllowDirectTrades,
+		AllowDirectTrades: o.AllowDirectTrades,
 		
-		MinHoursInFuture: u.MinHoursInFuture,
+		MinHoursInFuture: o.MinHoursInFuture,
 		
-		UnequalPaid: u.UnequalPaid,
+		UnequalPaid: o.UnequalPaid,
 		
-		OneSided: u.OneSided,
+		OneSided: o.OneSided,
 		
-		WeeklyMinPaidViolations: u.WeeklyMinPaidViolations,
+		WeeklyMinPaidViolations: o.WeeklyMinPaidViolations,
 		
-		WeeklyMaxPaidViolations: u.WeeklyMaxPaidViolations,
+		WeeklyMaxPaidViolations: o.WeeklyMaxPaidViolations,
 		
-		RequiresMatchingQueues: u.RequiresMatchingQueues,
+		RequiresMatchingQueues: o.RequiresMatchingQueues,
 		
-		RequiresMatchingLanguages: u.RequiresMatchingLanguages,
+		RequiresMatchingLanguages: o.RequiresMatchingLanguages,
 		
-		RequiresMatchingSkills: u.RequiresMatchingSkills,
+		RequiresMatchingSkills: o.RequiresMatchingSkills,
 		
-		RequiresMatchingPlanningGroups: u.RequiresMatchingPlanningGroups,
+		RequiresMatchingPlanningGroups: o.RequiresMatchingPlanningGroups,
 		
-		ActivityCategoryRules: u.ActivityCategoryRules,
-		Alias:    (*Alias)(u),
+		ActivityCategoryRules: o.ActivityCategoryRules,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradesettings) UnmarshalJSON(b []byte) error {
+	var ShifttradesettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradesettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := ShifttradesettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if AutoReview, ok := ShifttradesettingsMap["autoReview"].(bool); ok {
+		o.AutoReview = &AutoReview
+	}
+	
+	if AllowDirectTrades, ok := ShifttradesettingsMap["allowDirectTrades"].(bool); ok {
+		o.AllowDirectTrades = &AllowDirectTrades
+	}
+	
+	if MinHoursInFuture, ok := ShifttradesettingsMap["minHoursInFuture"].(float64); ok {
+		MinHoursInFutureInt := int(MinHoursInFuture)
+		o.MinHoursInFuture = &MinHoursInFutureInt
+	}
+	
+	if UnequalPaid, ok := ShifttradesettingsMap["unequalPaid"].(string); ok {
+		o.UnequalPaid = &UnequalPaid
+	}
+	
+	if OneSided, ok := ShifttradesettingsMap["oneSided"].(string); ok {
+		o.OneSided = &OneSided
+	}
+	
+	if WeeklyMinPaidViolations, ok := ShifttradesettingsMap["weeklyMinPaidViolations"].(string); ok {
+		o.WeeklyMinPaidViolations = &WeeklyMinPaidViolations
+	}
+	
+	if WeeklyMaxPaidViolations, ok := ShifttradesettingsMap["weeklyMaxPaidViolations"].(string); ok {
+		o.WeeklyMaxPaidViolations = &WeeklyMaxPaidViolations
+	}
+	
+	if RequiresMatchingQueues, ok := ShifttradesettingsMap["requiresMatchingQueues"].(bool); ok {
+		o.RequiresMatchingQueues = &RequiresMatchingQueues
+	}
+	
+	if RequiresMatchingLanguages, ok := ShifttradesettingsMap["requiresMatchingLanguages"].(bool); ok {
+		o.RequiresMatchingLanguages = &RequiresMatchingLanguages
+	}
+	
+	if RequiresMatchingSkills, ok := ShifttradesettingsMap["requiresMatchingSkills"].(bool); ok {
+		o.RequiresMatchingSkills = &RequiresMatchingSkills
+	}
+	
+	if RequiresMatchingPlanningGroups, ok := ShifttradesettingsMap["requiresMatchingPlanningGroups"].(bool); ok {
+		o.RequiresMatchingPlanningGroups = &RequiresMatchingPlanningGroups
+	}
+	
+	if ActivityCategoryRules, ok := ShifttradesettingsMap["activityCategoryRules"].([]interface{}); ok {
+		ActivityCategoryRulesString, _ := json.Marshal(ActivityCategoryRules)
+		json.Unmarshal(ActivityCategoryRulesString, &o.ActivityCategoryRules)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

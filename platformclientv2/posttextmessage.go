@@ -21,13 +21,11 @@ type Posttextmessage struct {
 
 }
 
-func (u *Posttextmessage) MarshalJSON() ([]byte, error) {
+func (o *Posttextmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Posttextmessage
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Posttextmessage) MarshalJSON() ([]byte, error) {
 		Content *[]Messagecontent `json:"content,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Content: u.Content,
-		Alias:    (*Alias)(u),
+		Content: o.Content,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Posttextmessage) UnmarshalJSON(b []byte) error {
+	var PosttextmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &PosttextmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := PosttextmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Text, ok := PosttextmessageMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Content, ok := PosttextmessageMap["content"].([]interface{}); ok {
+		ContentString, _ := json.Marshal(Content)
+		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

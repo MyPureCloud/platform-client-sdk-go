@@ -49,13 +49,11 @@ type Journeyeventssettings struct {
 
 }
 
-func (u *Journeyeventssettings) MarshalJSON() ([]byte, error) {
+func (o *Journeyeventssettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeyeventssettings
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -78,27 +76,85 @@ func (u *Journeyeventssettings) MarshalJSON() ([]byte, error) {
 		ScrollDepthEvents *[]Scrollpercentageeventtrigger `json:"scrollDepthEvents,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		ExcludedQueryParameters: u.ExcludedQueryParameters,
+		ExcludedQueryParameters: o.ExcludedQueryParameters,
 		
-		ShouldKeepUrlFragment: u.ShouldKeepUrlFragment,
+		ShouldKeepUrlFragment: o.ShouldKeepUrlFragment,
 		
-		SearchQueryParameters: u.SearchQueryParameters,
+		SearchQueryParameters: o.SearchQueryParameters,
 		
-		PageviewConfig: u.PageviewConfig,
+		PageviewConfig: o.PageviewConfig,
 		
-		ClickEvents: u.ClickEvents,
+		ClickEvents: o.ClickEvents,
 		
-		FormsTrackEvents: u.FormsTrackEvents,
+		FormsTrackEvents: o.FormsTrackEvents,
 		
-		IdleEvents: u.IdleEvents,
+		IdleEvents: o.IdleEvents,
 		
-		InViewportEvents: u.InViewportEvents,
+		InViewportEvents: o.InViewportEvents,
 		
-		ScrollDepthEvents: u.ScrollDepthEvents,
-		Alias:    (*Alias)(u),
+		ScrollDepthEvents: o.ScrollDepthEvents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeyeventssettings) UnmarshalJSON(b []byte) error {
+	var JourneyeventssettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyeventssettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := JourneyeventssettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if ExcludedQueryParameters, ok := JourneyeventssettingsMap["excludedQueryParameters"].([]interface{}); ok {
+		ExcludedQueryParametersString, _ := json.Marshal(ExcludedQueryParameters)
+		json.Unmarshal(ExcludedQueryParametersString, &o.ExcludedQueryParameters)
+	}
+	
+	if ShouldKeepUrlFragment, ok := JourneyeventssettingsMap["shouldKeepUrlFragment"].(bool); ok {
+		o.ShouldKeepUrlFragment = &ShouldKeepUrlFragment
+	}
+	
+	if SearchQueryParameters, ok := JourneyeventssettingsMap["searchQueryParameters"].([]interface{}); ok {
+		SearchQueryParametersString, _ := json.Marshal(SearchQueryParameters)
+		json.Unmarshal(SearchQueryParametersString, &o.SearchQueryParameters)
+	}
+	
+	if PageviewConfig, ok := JourneyeventssettingsMap["pageviewConfig"].(string); ok {
+		o.PageviewConfig = &PageviewConfig
+	}
+	
+	if ClickEvents, ok := JourneyeventssettingsMap["clickEvents"].([]interface{}); ok {
+		ClickEventsString, _ := json.Marshal(ClickEvents)
+		json.Unmarshal(ClickEventsString, &o.ClickEvents)
+	}
+	
+	if FormsTrackEvents, ok := JourneyeventssettingsMap["formsTrackEvents"].([]interface{}); ok {
+		FormsTrackEventsString, _ := json.Marshal(FormsTrackEvents)
+		json.Unmarshal(FormsTrackEventsString, &o.FormsTrackEvents)
+	}
+	
+	if IdleEvents, ok := JourneyeventssettingsMap["idleEvents"].([]interface{}); ok {
+		IdleEventsString, _ := json.Marshal(IdleEvents)
+		json.Unmarshal(IdleEventsString, &o.IdleEvents)
+	}
+	
+	if InViewportEvents, ok := JourneyeventssettingsMap["inViewportEvents"].([]interface{}); ok {
+		InViewportEventsString, _ := json.Marshal(InViewportEvents)
+		json.Unmarshal(InViewportEventsString, &o.InViewportEvents)
+	}
+	
+	if ScrollDepthEvents, ok := JourneyeventssettingsMap["scrollDepthEvents"].([]interface{}); ok {
+		ScrollDepthEventsString, _ := json.Marshal(ScrollDepthEvents)
+		json.Unmarshal(ScrollDepthEventsString, &o.ScrollDepthEvents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

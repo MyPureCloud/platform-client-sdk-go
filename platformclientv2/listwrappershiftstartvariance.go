@@ -13,20 +13,34 @@ type Listwrappershiftstartvariance struct {
 
 }
 
-func (u *Listwrappershiftstartvariance) MarshalJSON() ([]byte, error) {
+func (o *Listwrappershiftstartvariance) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Listwrappershiftstartvariance
-
 	
-
 	return json.Marshal(&struct { 
 		Values *[]Shiftstartvariance `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Listwrappershiftstartvariance) UnmarshalJSON(b []byte) error {
+	var ListwrappershiftstartvarianceMap map[string]interface{}
+	err := json.Unmarshal(b, &ListwrappershiftstartvarianceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Values, ok := ListwrappershiftstartvarianceMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

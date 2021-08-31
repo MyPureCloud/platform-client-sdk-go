@@ -30,29 +30,27 @@ type Analyticsflowoutcome struct {
 
 }
 
-func (u *Analyticsflowoutcome) MarshalJSON() ([]byte, error) {
+func (o *Analyticsflowoutcome) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsflowoutcome
-
 	
 	FlowOutcomeEndTimestamp := new(string)
-	if u.FlowOutcomeEndTimestamp != nil {
+	if o.FlowOutcomeEndTimestamp != nil {
 		
-		*FlowOutcomeEndTimestamp = timeutil.Strftime(u.FlowOutcomeEndTimestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*FlowOutcomeEndTimestamp = timeutil.Strftime(o.FlowOutcomeEndTimestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		FlowOutcomeEndTimestamp = nil
 	}
 	
 	FlowOutcomeStartTimestamp := new(string)
-	if u.FlowOutcomeStartTimestamp != nil {
+	if o.FlowOutcomeStartTimestamp != nil {
 		
-		*FlowOutcomeStartTimestamp = timeutil.Strftime(u.FlowOutcomeStartTimestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*FlowOutcomeStartTimestamp = timeutil.Strftime(o.FlowOutcomeStartTimestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		FlowOutcomeStartTimestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		FlowOutcome *string `json:"flowOutcome,omitempty"`
 		
@@ -65,17 +63,50 @@ func (u *Analyticsflowoutcome) MarshalJSON() ([]byte, error) {
 		FlowOutcomeValue *string `json:"flowOutcomeValue,omitempty"`
 		*Alias
 	}{ 
-		FlowOutcome: u.FlowOutcome,
+		FlowOutcome: o.FlowOutcome,
 		
 		FlowOutcomeEndTimestamp: FlowOutcomeEndTimestamp,
 		
-		FlowOutcomeId: u.FlowOutcomeId,
+		FlowOutcomeId: o.FlowOutcomeId,
 		
 		FlowOutcomeStartTimestamp: FlowOutcomeStartTimestamp,
 		
-		FlowOutcomeValue: u.FlowOutcomeValue,
-		Alias:    (*Alias)(u),
+		FlowOutcomeValue: o.FlowOutcomeValue,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsflowoutcome) UnmarshalJSON(b []byte) error {
+	var AnalyticsflowoutcomeMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsflowoutcomeMap)
+	if err != nil {
+		return err
+	}
+	
+	if FlowOutcome, ok := AnalyticsflowoutcomeMap["flowOutcome"].(string); ok {
+		o.FlowOutcome = &FlowOutcome
+	}
+	
+	if flowOutcomeEndTimestampString, ok := AnalyticsflowoutcomeMap["flowOutcomeEndTimestamp"].(string); ok {
+		FlowOutcomeEndTimestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", flowOutcomeEndTimestampString)
+		o.FlowOutcomeEndTimestamp = &FlowOutcomeEndTimestamp
+	}
+	
+	if FlowOutcomeId, ok := AnalyticsflowoutcomeMap["flowOutcomeId"].(string); ok {
+		o.FlowOutcomeId = &FlowOutcomeId
+	}
+	
+	if flowOutcomeStartTimestampString, ok := AnalyticsflowoutcomeMap["flowOutcomeStartTimestamp"].(string); ok {
+		FlowOutcomeStartTimestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", flowOutcomeStartTimestampString)
+		o.FlowOutcomeStartTimestamp = &FlowOutcomeStartTimestamp
+	}
+	
+	if FlowOutcomeValue, ok := AnalyticsflowoutcomeMap["flowOutcomeValue"].(string); ok {
+		o.FlowOutcomeValue = &FlowOutcomeValue
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

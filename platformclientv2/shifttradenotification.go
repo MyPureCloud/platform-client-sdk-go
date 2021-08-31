@@ -42,29 +42,27 @@ type Shifttradenotification struct {
 
 }
 
-func (u *Shifttradenotification) MarshalJSON() ([]byte, error) {
+func (o *Shifttradenotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradenotification
-
 	
 	InitiatingShiftDate := new(string)
-	if u.InitiatingShiftDate != nil {
+	if o.InitiatingShiftDate != nil {
 		
-		*InitiatingShiftDate = timeutil.Strftime(u.InitiatingShiftDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*InitiatingShiftDate = timeutil.Strftime(o.InitiatingShiftDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		InitiatingShiftDate = nil
 	}
 	
 	ReceivingShiftDate := new(string)
-	if u.ReceivingShiftDate != nil {
+	if o.ReceivingShiftDate != nil {
 		
-		*ReceivingShiftDate = timeutil.Strftime(u.ReceivingShiftDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReceivingShiftDate = timeutil.Strftime(o.ReceivingShiftDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReceivingShiftDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		WeekDate *string `json:"weekDate,omitempty"`
 		
@@ -83,23 +81,70 @@ func (u *Shifttradenotification) MarshalJSON() ([]byte, error) {
 		ReceivingShiftDate *string `json:"receivingShiftDate,omitempty"`
 		*Alias
 	}{ 
-		WeekDate: u.WeekDate,
+		WeekDate: o.WeekDate,
 		
-		TradeId: u.TradeId,
+		TradeId: o.TradeId,
 		
-		OneSided: u.OneSided,
+		OneSided: o.OneSided,
 		
-		NewState: u.NewState,
+		NewState: o.NewState,
 		
-		InitiatingUser: u.InitiatingUser,
+		InitiatingUser: o.InitiatingUser,
 		
 		InitiatingShiftDate: InitiatingShiftDate,
 		
-		ReceivingUser: u.ReceivingUser,
+		ReceivingUser: o.ReceivingUser,
 		
 		ReceivingShiftDate: ReceivingShiftDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradenotification) UnmarshalJSON(b []byte) error {
+	var ShifttradenotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradenotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if WeekDate, ok := ShifttradenotificationMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+	if TradeId, ok := ShifttradenotificationMap["tradeId"].(string); ok {
+		o.TradeId = &TradeId
+	}
+	
+	if OneSided, ok := ShifttradenotificationMap["oneSided"].(bool); ok {
+		o.OneSided = &OneSided
+	}
+	
+	if NewState, ok := ShifttradenotificationMap["newState"].(string); ok {
+		o.NewState = &NewState
+	}
+	
+	if InitiatingUser, ok := ShifttradenotificationMap["initiatingUser"].(map[string]interface{}); ok {
+		InitiatingUserString, _ := json.Marshal(InitiatingUser)
+		json.Unmarshal(InitiatingUserString, &o.InitiatingUser)
+	}
+	
+	if initiatingShiftDateString, ok := ShifttradenotificationMap["initiatingShiftDate"].(string); ok {
+		InitiatingShiftDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", initiatingShiftDateString)
+		o.InitiatingShiftDate = &InitiatingShiftDate
+	}
+	
+	if ReceivingUser, ok := ShifttradenotificationMap["receivingUser"].(map[string]interface{}); ok {
+		ReceivingUserString, _ := json.Marshal(ReceivingUser)
+		json.Unmarshal(ReceivingUserString, &o.ReceivingUser)
+	}
+	
+	if receivingShiftDateString, ok := ShifttradenotificationMap["receivingShiftDate"].(string); ok {
+		ReceivingShiftDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", receivingShiftDateString)
+		o.ReceivingShiftDate = &ReceivingShiftDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

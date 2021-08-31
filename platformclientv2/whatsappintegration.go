@@ -70,29 +70,27 @@ type Whatsappintegration struct {
 
 }
 
-func (u *Whatsappintegration) MarshalJSON() ([]byte, error) {
+func (o *Whatsappintegration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Whatsappintegration
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -125,37 +123,116 @@ func (u *Whatsappintegration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Recipient: u.Recipient,
+		Recipient: o.Recipient,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ActivationStatusCode: u.ActivationStatusCode,
+		ActivationStatusCode: o.ActivationStatusCode,
 		
-		ActivationErrorInfo: u.ActivationErrorInfo,
+		ActivationErrorInfo: o.ActivationErrorInfo,
 		
-		CreateStatus: u.CreateStatus,
+		CreateStatus: o.CreateStatus,
 		
-		CreateError: u.CreateError,
+		CreateError: o.CreateError,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
+	var WhatsappintegrationMap map[string]interface{}
+	err := json.Unmarshal(b, &WhatsappintegrationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WhatsappintegrationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WhatsappintegrationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PhoneNumber, ok := WhatsappintegrationMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if Status, ok := WhatsappintegrationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Recipient, ok := WhatsappintegrationMap["recipient"].(map[string]interface{}); ok {
+		RecipientString, _ := json.Marshal(Recipient)
+		json.Unmarshal(RecipientString, &o.Recipient)
+	}
+	
+	if dateCreatedString, ok := WhatsappintegrationMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := WhatsappintegrationMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := WhatsappintegrationMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ModifiedBy, ok := WhatsappintegrationMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if Version, ok := WhatsappintegrationMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ActivationStatusCode, ok := WhatsappintegrationMap["activationStatusCode"].(string); ok {
+		o.ActivationStatusCode = &ActivationStatusCode
+	}
+	
+	if ActivationErrorInfo, ok := WhatsappintegrationMap["activationErrorInfo"].(map[string]interface{}); ok {
+		ActivationErrorInfoString, _ := json.Marshal(ActivationErrorInfo)
+		json.Unmarshal(ActivationErrorInfoString, &o.ActivationErrorInfo)
+	}
+	
+	if CreateStatus, ok := WhatsappintegrationMap["createStatus"].(string); ok {
+		o.CreateStatus = &CreateStatus
+	}
+	
+	if CreateError, ok := WhatsappintegrationMap["createError"].(map[string]interface{}); ok {
+		CreateErrorString, _ := json.Marshal(CreateError)
+		json.Unmarshal(CreateErrorString, &o.CreateError)
+	}
+	
+	if SelfUri, ok := WhatsappintegrationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

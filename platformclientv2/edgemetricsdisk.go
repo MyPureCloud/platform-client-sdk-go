@@ -21,13 +21,11 @@ type Edgemetricsdisk struct {
 
 }
 
-func (u *Edgemetricsdisk) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricsdisk) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricsdisk
-
 	
-
 	return json.Marshal(&struct { 
 		AvailableBytes *float64 `json:"availableBytes,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Edgemetricsdisk) MarshalJSON() ([]byte, error) {
 		TotalBytes *float64 `json:"totalBytes,omitempty"`
 		*Alias
 	}{ 
-		AvailableBytes: u.AvailableBytes,
+		AvailableBytes: o.AvailableBytes,
 		
-		PartitionName: u.PartitionName,
+		PartitionName: o.PartitionName,
 		
-		TotalBytes: u.TotalBytes,
-		Alias:    (*Alias)(u),
+		TotalBytes: o.TotalBytes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricsdisk) UnmarshalJSON(b []byte) error {
+	var EdgemetricsdiskMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricsdiskMap)
+	if err != nil {
+		return err
+	}
+	
+	if AvailableBytes, ok := EdgemetricsdiskMap["availableBytes"].(float64); ok {
+		o.AvailableBytes = &AvailableBytes
+	}
+	
+	if PartitionName, ok := EdgemetricsdiskMap["partitionName"].(string); ok {
+		o.PartitionName = &PartitionName
+	}
+	
+	if TotalBytes, ok := EdgemetricsdiskMap["totalBytes"].(float64); ok {
+		o.TotalBytes = &TotalBytes
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

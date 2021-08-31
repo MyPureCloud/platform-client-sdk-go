@@ -22,21 +22,19 @@ type Analyticssessionmetric struct {
 
 }
 
-func (u *Analyticssessionmetric) MarshalJSON() ([]byte, error) {
+func (o *Analyticssessionmetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticssessionmetric
-
 	
 	EmitDate := new(string)
-	if u.EmitDate != nil {
+	if o.EmitDate != nil {
 		
-		*EmitDate = timeutil.Strftime(u.EmitDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EmitDate = timeutil.Strftime(o.EmitDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EmitDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		EmitDate *string `json:"emitDate,omitempty"`
 		
@@ -47,11 +45,36 @@ func (u *Analyticssessionmetric) MarshalJSON() ([]byte, error) {
 	}{ 
 		EmitDate: EmitDate,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticssessionmetric) UnmarshalJSON(b []byte) error {
+	var AnalyticssessionmetricMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticssessionmetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if emitDateString, ok := AnalyticssessionmetricMap["emitDate"].(string); ok {
+		EmitDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", emitDateString)
+		o.EmitDate = &EmitDate
+	}
+	
+	if Name, ok := AnalyticssessionmetricMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Value, ok := AnalyticssessionmetricMap["value"].(float64); ok {
+		ValueInt := int(Value)
+		o.Value = &ValueInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

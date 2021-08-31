@@ -33,13 +33,11 @@ type Queueconversationemaileventtopicattachment struct {
 
 }
 
-func (u *Queueconversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationemaileventtopicattachment
-
 	
-
 	return json.Marshal(&struct { 
 		AttachmentId *string `json:"attachmentId,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Queueconversationemaileventtopicattachment) MarshalJSON() ([]byte, erro
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		AttachmentId: u.AttachmentId,
+		AttachmentId: o.AttachmentId,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContentUri: u.ContentUri,
+		ContentUri: o.ContentUri,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationemaileventtopicattachment) UnmarshalJSON(b []byte) error {
+	var QueueconversationemaileventtopicattachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationemaileventtopicattachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if AttachmentId, ok := QueueconversationemaileventtopicattachmentMap["attachmentId"].(string); ok {
+		o.AttachmentId = &AttachmentId
+	}
+	
+	if Name, ok := QueueconversationemaileventtopicattachmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContentUri, ok := QueueconversationemaileventtopicattachmentMap["contentUri"].(string); ok {
+		o.ContentUri = &ContentUri
+	}
+	
+	if ContentType, ok := QueueconversationemaileventtopicattachmentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if ContentLength, ok := QueueconversationemaileventtopicattachmentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if AdditionalProperties, ok := QueueconversationemaileventtopicattachmentMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -42,21 +42,19 @@ type Edgemetrics struct {
 
 }
 
-func (u *Edgemetrics) MarshalJSON() ([]byte, error) {
+func (o *Edgemetrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetrics
-
 	
 	EventTime := new(string)
-	if u.EventTime != nil {
+	if o.EventTime != nil {
 		
-		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Edge *Domainentityref `json:"edge,omitempty"`
 		
@@ -75,23 +73,74 @@ func (u *Edgemetrics) MarshalJSON() ([]byte, error) {
 		Networks *[]Edgemetricsnetwork `json:"networks,omitempty"`
 		*Alias
 	}{ 
-		Edge: u.Edge,
+		Edge: o.Edge,
 		
 		EventTime: EventTime,
 		
-		UpTimeMsec: u.UpTimeMsec,
+		UpTimeMsec: o.UpTimeMsec,
 		
-		Processors: u.Processors,
+		Processors: o.Processors,
 		
-		Memory: u.Memory,
+		Memory: o.Memory,
 		
-		Disks: u.Disks,
+		Disks: o.Disks,
 		
-		Subsystems: u.Subsystems,
+		Subsystems: o.Subsystems,
 		
-		Networks: u.Networks,
-		Alias:    (*Alias)(u),
+		Networks: o.Networks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetrics) UnmarshalJSON(b []byte) error {
+	var EdgemetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Edge, ok := EdgemetricsMap["edge"].(map[string]interface{}); ok {
+		EdgeString, _ := json.Marshal(Edge)
+		json.Unmarshal(EdgeString, &o.Edge)
+	}
+	
+	if eventTimeString, ok := EdgemetricsMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
+	}
+	
+	if UpTimeMsec, ok := EdgemetricsMap["upTimeMsec"].(float64); ok {
+		UpTimeMsecInt := int(UpTimeMsec)
+		o.UpTimeMsec = &UpTimeMsecInt
+	}
+	
+	if Processors, ok := EdgemetricsMap["processors"].([]interface{}); ok {
+		ProcessorsString, _ := json.Marshal(Processors)
+		json.Unmarshal(ProcessorsString, &o.Processors)
+	}
+	
+	if Memory, ok := EdgemetricsMap["memory"].([]interface{}); ok {
+		MemoryString, _ := json.Marshal(Memory)
+		json.Unmarshal(MemoryString, &o.Memory)
+	}
+	
+	if Disks, ok := EdgemetricsMap["disks"].([]interface{}); ok {
+		DisksString, _ := json.Marshal(Disks)
+		json.Unmarshal(DisksString, &o.Disks)
+	}
+	
+	if Subsystems, ok := EdgemetricsMap["subsystems"].([]interface{}); ok {
+		SubsystemsString, _ := json.Marshal(Subsystems)
+		json.Unmarshal(SubsystemsString, &o.Subsystems)
+	}
+	
+	if Networks, ok := EdgemetricsMap["networks"].([]interface{}); ok {
+		NetworksString, _ := json.Marshal(Networks)
+		json.Unmarshal(NetworksString, &o.Networks)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

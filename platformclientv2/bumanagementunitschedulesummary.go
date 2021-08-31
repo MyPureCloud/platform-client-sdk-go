@@ -30,29 +30,27 @@ type Bumanagementunitschedulesummary struct {
 
 }
 
-func (u *Bumanagementunitschedulesummary) MarshalJSON() ([]byte, error) {
+func (o *Bumanagementunitschedulesummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bumanagementunitschedulesummary
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
 		
@@ -65,17 +63,53 @@ func (u *Bumanagementunitschedulesummary) MarshalJSON() ([]byte, error) {
 		Agents *[]Userreference `json:"agents,omitempty"`
 		*Alias
 	}{ 
-		ManagementUnit: u.ManagementUnit,
+		ManagementUnit: o.ManagementUnit,
 		
-		AgentCount: u.AgentCount,
+		AgentCount: o.AgentCount,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		Agents: u.Agents,
-		Alias:    (*Alias)(u),
+		Agents: o.Agents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bumanagementunitschedulesummary) UnmarshalJSON(b []byte) error {
+	var BumanagementunitschedulesummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &BumanagementunitschedulesummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if ManagementUnit, ok := BumanagementunitschedulesummaryMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if AgentCount, ok := BumanagementunitschedulesummaryMap["agentCount"].(float64); ok {
+		AgentCountInt := int(AgentCount)
+		o.AgentCount = &AgentCountInt
+	}
+	
+	if startDateString, ok := BumanagementunitschedulesummaryMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := BumanagementunitschedulesummaryMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if Agents, ok := BumanagementunitschedulesummaryMap["agents"].([]interface{}); ok {
+		AgentsString, _ := json.Marshal(Agents)
+		json.Unmarshal(AgentsString, &o.Agents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

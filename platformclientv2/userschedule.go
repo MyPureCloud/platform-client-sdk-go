@@ -29,13 +29,11 @@ type Userschedule struct {
 
 }
 
-func (u *Userschedule) MarshalJSON() ([]byte, error) {
+func (o *Userschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userschedule
-
 	
-
 	return json.Marshal(&struct { 
 		Shifts *[]Userscheduleshift `json:"shifts,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Userschedule) MarshalJSON() ([]byte, error) {
 		WorkPlanId *string `json:"workPlanId,omitempty"`
 		*Alias
 	}{ 
-		Shifts: u.Shifts,
+		Shifts: o.Shifts,
 		
-		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
 		
-		Delete: u.Delete,
+		Delete: o.Delete,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		WorkPlanId: u.WorkPlanId,
-		Alias:    (*Alias)(u),
+		WorkPlanId: o.WorkPlanId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userschedule) UnmarshalJSON(b []byte) error {
+	var UserscheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &UserscheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Shifts, ok := UserscheduleMap["shifts"].([]interface{}); ok {
+		ShiftsString, _ := json.Marshal(Shifts)
+		json.Unmarshal(ShiftsString, &o.Shifts)
+	}
+	
+	if FullDayTimeOffMarkers, ok := UserscheduleMap["fullDayTimeOffMarkers"].([]interface{}); ok {
+		FullDayTimeOffMarkersString, _ := json.Marshal(FullDayTimeOffMarkers)
+		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
+	}
+	
+	if Delete, ok := UserscheduleMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+	
+	if Metadata, ok := UserscheduleMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if WorkPlanId, ok := UserscheduleMap["workPlanId"].(string); ok {
+		o.WorkPlanId = &WorkPlanId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

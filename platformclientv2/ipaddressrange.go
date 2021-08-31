@@ -21,13 +21,11 @@ type Ipaddressrange struct {
 
 }
 
-func (u *Ipaddressrange) MarshalJSON() ([]byte, error) {
+func (o *Ipaddressrange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ipaddressrange
-
 	
-
 	return json.Marshal(&struct { 
 		Cidr *string `json:"cidr,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Ipaddressrange) MarshalJSON() ([]byte, error) {
 		Region *string `json:"region,omitempty"`
 		*Alias
 	}{ 
-		Cidr: u.Cidr,
+		Cidr: o.Cidr,
 		
-		Service: u.Service,
+		Service: o.Service,
 		
-		Region: u.Region,
-		Alias:    (*Alias)(u),
+		Region: o.Region,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ipaddressrange) UnmarshalJSON(b []byte) error {
+	var IpaddressrangeMap map[string]interface{}
+	err := json.Unmarshal(b, &IpaddressrangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Cidr, ok := IpaddressrangeMap["cidr"].(string); ok {
+		o.Cidr = &Cidr
+	}
+	
+	if Service, ok := IpaddressrangeMap["service"].(string); ok {
+		o.Service = &Service
+	}
+	
+	if Region, ok := IpaddressrangeMap["region"].(string); ok {
+		o.Region = &Region
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

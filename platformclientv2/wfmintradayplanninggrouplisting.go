@@ -17,24 +17,42 @@ type Wfmintradayplanninggrouplisting struct {
 
 }
 
-func (u *Wfmintradayplanninggrouplisting) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradayplanninggrouplisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradayplanninggrouplisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Forecastplanninggroupresponse `json:"entities,omitempty"`
 		
 		NoDataReason *string `json:"noDataReason,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		NoDataReason: u.NoDataReason,
-		Alias:    (*Alias)(u),
+		NoDataReason: o.NoDataReason,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradayplanninggrouplisting) UnmarshalJSON(b []byte) error {
+	var WfmintradayplanninggrouplistingMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradayplanninggrouplistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := WfmintradayplanninggrouplistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NoDataReason, ok := WfmintradayplanninggrouplistingMap["noDataReason"].(string); ok {
+		o.NoDataReason = &NoDataReason
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

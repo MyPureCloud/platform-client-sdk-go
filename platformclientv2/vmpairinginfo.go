@@ -25,13 +25,11 @@ type Vmpairinginfo struct {
 
 }
 
-func (u *Vmpairinginfo) MarshalJSON() ([]byte, error) {
+func (o *Vmpairinginfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Vmpairinginfo
-
 	
-
 	return json.Marshal(&struct { 
 		MetaData *Metadata `json:"meta-data,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Vmpairinginfo) MarshalJSON() ([]byte, error) {
 		OrgId *string `json:"org-id,omitempty"`
 		*Alias
 	}{ 
-		MetaData: u.MetaData,
+		MetaData: o.MetaData,
 		
-		EdgeId: u.EdgeId,
+		EdgeId: o.EdgeId,
 		
-		AuthToken: u.AuthToken,
+		AuthToken: o.AuthToken,
 		
-		OrgId: u.OrgId,
-		Alias:    (*Alias)(u),
+		OrgId: o.OrgId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Vmpairinginfo) UnmarshalJSON(b []byte) error {
+	var VmpairinginfoMap map[string]interface{}
+	err := json.Unmarshal(b, &VmpairinginfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if MetaData, ok := VmpairinginfoMap["meta-data"].(map[string]interface{}); ok {
+		MetaDataString, _ := json.Marshal(MetaData)
+		json.Unmarshal(MetaDataString, &o.MetaData)
+	}
+	
+	if EdgeId, ok := VmpairinginfoMap["edge-id"].(string); ok {
+		o.EdgeId = &EdgeId
+	}
+	
+	if AuthToken, ok := VmpairinginfoMap["auth-token"].(string); ok {
+		o.AuthToken = &AuthToken
+	}
+	
+	if OrgId, ok := VmpairinginfoMap["org-id"].(string); ok {
+		o.OrgId = &OrgId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

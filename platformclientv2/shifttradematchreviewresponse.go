@@ -25,13 +25,11 @@ type Shifttradematchreviewresponse struct {
 
 }
 
-func (u *Shifttradematchreviewresponse) MarshalJSON() ([]byte, error) {
+func (o *Shifttradematchreviewresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Shifttradematchreviewresponse
-
 	
-
 	return json.Marshal(&struct { 
 		InitiatingUser *Shifttradematchreviewuserresponse `json:"initiatingUser,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Shifttradematchreviewresponse) MarshalJSON() ([]byte, error) {
 		AdminReviewViolations *[]Shifttradematchviolation `json:"adminReviewViolations,omitempty"`
 		*Alias
 	}{ 
-		InitiatingUser: u.InitiatingUser,
+		InitiatingUser: o.InitiatingUser,
 		
-		ReceivingUser: u.ReceivingUser,
+		ReceivingUser: o.ReceivingUser,
 		
-		Violations: u.Violations,
+		Violations: o.Violations,
 		
-		AdminReviewViolations: u.AdminReviewViolations,
-		Alias:    (*Alias)(u),
+		AdminReviewViolations: o.AdminReviewViolations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Shifttradematchreviewresponse) UnmarshalJSON(b []byte) error {
+	var ShifttradematchreviewresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ShifttradematchreviewresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if InitiatingUser, ok := ShifttradematchreviewresponseMap["initiatingUser"].(map[string]interface{}); ok {
+		InitiatingUserString, _ := json.Marshal(InitiatingUser)
+		json.Unmarshal(InitiatingUserString, &o.InitiatingUser)
+	}
+	
+	if ReceivingUser, ok := ShifttradematchreviewresponseMap["receivingUser"].(map[string]interface{}); ok {
+		ReceivingUserString, _ := json.Marshal(ReceivingUser)
+		json.Unmarshal(ReceivingUserString, &o.ReceivingUser)
+	}
+	
+	if Violations, ok := ShifttradematchreviewresponseMap["violations"].([]interface{}); ok {
+		ViolationsString, _ := json.Marshal(Violations)
+		json.Unmarshal(ViolationsString, &o.Violations)
+	}
+	
+	if AdminReviewViolations, ok := ShifttradematchreviewresponseMap["adminReviewViolations"].([]interface{}); ok {
+		AdminReviewViolationsString, _ := json.Marshal(AdminReviewViolations)
+		json.Unmarshal(AdminReviewViolationsString, &o.AdminReviewViolations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

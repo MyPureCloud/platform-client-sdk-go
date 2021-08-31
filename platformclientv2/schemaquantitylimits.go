@@ -65,13 +65,11 @@ type Schemaquantitylimits struct {
 
 }
 
-func (u *Schemaquantitylimits) MarshalJSON() ([]byte, error) {
+func (o *Schemaquantitylimits) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schemaquantitylimits
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,113 @@ func (u *Schemaquantitylimits) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		MinFieldNameCharacters: u.MinFieldNameCharacters,
+		MinFieldNameCharacters: o.MinFieldNameCharacters,
 		
-		MaxFieldNameCharacters: u.MaxFieldNameCharacters,
+		MaxFieldNameCharacters: o.MaxFieldNameCharacters,
 		
-		MinFieldDescriptionCharacters: u.MinFieldDescriptionCharacters,
+		MinFieldDescriptionCharacters: o.MinFieldDescriptionCharacters,
 		
-		MaxFieldDescriptionCharacters: u.MaxFieldDescriptionCharacters,
+		MaxFieldDescriptionCharacters: o.MaxFieldDescriptionCharacters,
 		
-		MinSchemaNameCharacters: u.MinSchemaNameCharacters,
+		MinSchemaNameCharacters: o.MinSchemaNameCharacters,
 		
-		MaxSchemaNameCharacters: u.MaxSchemaNameCharacters,
+		MaxSchemaNameCharacters: o.MaxSchemaNameCharacters,
 		
-		MinSchemaDescriptionCharacters: u.MinSchemaDescriptionCharacters,
+		MinSchemaDescriptionCharacters: o.MinSchemaDescriptionCharacters,
 		
-		MaxSchemaDescriptionCharacters: u.MaxSchemaDescriptionCharacters,
+		MaxSchemaDescriptionCharacters: o.MaxSchemaDescriptionCharacters,
 		
-		MaxNumberOfSchemasPerOrg: u.MaxNumberOfSchemasPerOrg,
+		MaxNumberOfSchemasPerOrg: o.MaxNumberOfSchemasPerOrg,
 		
-		MaxNumberOfFieldsPerSchema: u.MaxNumberOfFieldsPerSchema,
+		MaxNumberOfFieldsPerSchema: o.MaxNumberOfFieldsPerSchema,
 		
-		MaxNumberOfFieldsPerOrg: u.MaxNumberOfFieldsPerOrg,
+		MaxNumberOfFieldsPerOrg: o.MaxNumberOfFieldsPerOrg,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schemaquantitylimits) UnmarshalJSON(b []byte) error {
+	var SchemaquantitylimitsMap map[string]interface{}
+	err := json.Unmarshal(b, &SchemaquantitylimitsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SchemaquantitylimitsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SchemaquantitylimitsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if MinFieldNameCharacters, ok := SchemaquantitylimitsMap["minFieldNameCharacters"].(float64); ok {
+		MinFieldNameCharactersInt := int(MinFieldNameCharacters)
+		o.MinFieldNameCharacters = &MinFieldNameCharactersInt
+	}
+	
+	if MaxFieldNameCharacters, ok := SchemaquantitylimitsMap["maxFieldNameCharacters"].(float64); ok {
+		MaxFieldNameCharactersInt := int(MaxFieldNameCharacters)
+		o.MaxFieldNameCharacters = &MaxFieldNameCharactersInt
+	}
+	
+	if MinFieldDescriptionCharacters, ok := SchemaquantitylimitsMap["minFieldDescriptionCharacters"].(float64); ok {
+		MinFieldDescriptionCharactersInt := int(MinFieldDescriptionCharacters)
+		o.MinFieldDescriptionCharacters = &MinFieldDescriptionCharactersInt
+	}
+	
+	if MaxFieldDescriptionCharacters, ok := SchemaquantitylimitsMap["maxFieldDescriptionCharacters"].(float64); ok {
+		MaxFieldDescriptionCharactersInt := int(MaxFieldDescriptionCharacters)
+		o.MaxFieldDescriptionCharacters = &MaxFieldDescriptionCharactersInt
+	}
+	
+	if MinSchemaNameCharacters, ok := SchemaquantitylimitsMap["minSchemaNameCharacters"].(float64); ok {
+		MinSchemaNameCharactersInt := int(MinSchemaNameCharacters)
+		o.MinSchemaNameCharacters = &MinSchemaNameCharactersInt
+	}
+	
+	if MaxSchemaNameCharacters, ok := SchemaquantitylimitsMap["maxSchemaNameCharacters"].(float64); ok {
+		MaxSchemaNameCharactersInt := int(MaxSchemaNameCharacters)
+		o.MaxSchemaNameCharacters = &MaxSchemaNameCharactersInt
+	}
+	
+	if MinSchemaDescriptionCharacters, ok := SchemaquantitylimitsMap["minSchemaDescriptionCharacters"].(float64); ok {
+		MinSchemaDescriptionCharactersInt := int(MinSchemaDescriptionCharacters)
+		o.MinSchemaDescriptionCharacters = &MinSchemaDescriptionCharactersInt
+	}
+	
+	if MaxSchemaDescriptionCharacters, ok := SchemaquantitylimitsMap["maxSchemaDescriptionCharacters"].(float64); ok {
+		MaxSchemaDescriptionCharactersInt := int(MaxSchemaDescriptionCharacters)
+		o.MaxSchemaDescriptionCharacters = &MaxSchemaDescriptionCharactersInt
+	}
+	
+	if MaxNumberOfSchemasPerOrg, ok := SchemaquantitylimitsMap["maxNumberOfSchemasPerOrg"].(float64); ok {
+		MaxNumberOfSchemasPerOrgInt := int(MaxNumberOfSchemasPerOrg)
+		o.MaxNumberOfSchemasPerOrg = &MaxNumberOfSchemasPerOrgInt
+	}
+	
+	if MaxNumberOfFieldsPerSchema, ok := SchemaquantitylimitsMap["maxNumberOfFieldsPerSchema"].(float64); ok {
+		MaxNumberOfFieldsPerSchemaInt := int(MaxNumberOfFieldsPerSchema)
+		o.MaxNumberOfFieldsPerSchema = &MaxNumberOfFieldsPerSchemaInt
+	}
+	
+	if MaxNumberOfFieldsPerOrg, ok := SchemaquantitylimitsMap["maxNumberOfFieldsPerOrg"].(float64); ok {
+		MaxNumberOfFieldsPerOrgInt := int(MaxNumberOfFieldsPerOrg)
+		o.MaxNumberOfFieldsPerOrg = &MaxNumberOfFieldsPerOrgInt
+	}
+	
+	if SelfUri, ok := SchemaquantitylimitsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

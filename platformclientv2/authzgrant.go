@@ -26,21 +26,19 @@ type Authzgrant struct {
 
 }
 
-func (u *Authzgrant) MarshalJSON() ([]byte, error) {
+func (o *Authzgrant) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Authzgrant
-
 	
 	GrantMadeAt := new(string)
-	if u.GrantMadeAt != nil {
+	if o.GrantMadeAt != nil {
 		
-		*GrantMadeAt = timeutil.Strftime(u.GrantMadeAt, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*GrantMadeAt = timeutil.Strftime(o.GrantMadeAt, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		GrantMadeAt = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		SubjectId *string `json:"subjectId,omitempty"`
 		
@@ -51,15 +49,45 @@ func (u *Authzgrant) MarshalJSON() ([]byte, error) {
 		GrantMadeAt *string `json:"grantMadeAt,omitempty"`
 		*Alias
 	}{ 
-		SubjectId: u.SubjectId,
+		SubjectId: o.SubjectId,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Role: u.Role,
+		Role: o.Role,
 		
 		GrantMadeAt: GrantMadeAt,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Authzgrant) UnmarshalJSON(b []byte) error {
+	var AuthzgrantMap map[string]interface{}
+	err := json.Unmarshal(b, &AuthzgrantMap)
+	if err != nil {
+		return err
+	}
+	
+	if SubjectId, ok := AuthzgrantMap["subjectId"].(string); ok {
+		o.SubjectId = &SubjectId
+	}
+	
+	if Division, ok := AuthzgrantMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Role, ok := AuthzgrantMap["role"].(map[string]interface{}); ok {
+		RoleString, _ := json.Marshal(Role)
+		json.Unmarshal(RoleString, &o.Role)
+	}
+	
+	if grantMadeAtString, ok := AuthzgrantMap["grantMadeAt"].(string); ok {
+		GrantMadeAt, _ := time.Parse("2006-01-02T15:04:05.999999Z", grantMadeAtString)
+		o.GrantMadeAt = &GrantMadeAt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

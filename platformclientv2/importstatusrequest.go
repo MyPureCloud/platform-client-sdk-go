@@ -13,20 +13,33 @@ type Importstatusrequest struct {
 
 }
 
-func (u *Importstatusrequest) MarshalJSON() ([]byte, error) {
+func (o *Importstatusrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Importstatusrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Importstatusrequest) UnmarshalJSON(b []byte) error {
+	var ImportstatusrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ImportstatusrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := ImportstatusrequestMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

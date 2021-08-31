@@ -45,13 +45,11 @@ type Analyticsparticipantwithoutattributes struct {
 
 }
 
-func (u *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
+func (o *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsparticipantwithoutattributes
-
 	
-
 	return json.Marshal(&struct { 
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
@@ -72,25 +70,73 @@ func (u *Analyticsparticipantwithoutattributes) MarshalJSON() ([]byte, error) {
 		Sessions *[]Analyticssession `json:"sessions,omitempty"`
 		*Alias
 	}{ 
-		ExternalContactId: u.ExternalContactId,
+		ExternalContactId: o.ExternalContactId,
 		
-		ExternalOrganizationId: u.ExternalOrganizationId,
+		ExternalOrganizationId: o.ExternalOrganizationId,
 		
-		FlaggedReason: u.FlaggedReason,
+		FlaggedReason: o.FlaggedReason,
 		
-		ParticipantId: u.ParticipantId,
+		ParticipantId: o.ParticipantId,
 		
-		ParticipantName: u.ParticipantName,
+		ParticipantName: o.ParticipantName,
 		
-		Purpose: u.Purpose,
+		Purpose: o.Purpose,
 		
-		TeamId: u.TeamId,
+		TeamId: o.TeamId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Sessions: u.Sessions,
-		Alias:    (*Alias)(u),
+		Sessions: o.Sessions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsparticipantwithoutattributes) UnmarshalJSON(b []byte) error {
+	var AnalyticsparticipantwithoutattributesMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsparticipantwithoutattributesMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExternalContactId, ok := AnalyticsparticipantwithoutattributesMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
+	}
+	
+	if ExternalOrganizationId, ok := AnalyticsparticipantwithoutattributesMap["externalOrganizationId"].(string); ok {
+		o.ExternalOrganizationId = &ExternalOrganizationId
+	}
+	
+	if FlaggedReason, ok := AnalyticsparticipantwithoutattributesMap["flaggedReason"].(string); ok {
+		o.FlaggedReason = &FlaggedReason
+	}
+	
+	if ParticipantId, ok := AnalyticsparticipantwithoutattributesMap["participantId"].(string); ok {
+		o.ParticipantId = &ParticipantId
+	}
+	
+	if ParticipantName, ok := AnalyticsparticipantwithoutattributesMap["participantName"].(string); ok {
+		o.ParticipantName = &ParticipantName
+	}
+	
+	if Purpose, ok := AnalyticsparticipantwithoutattributesMap["purpose"].(string); ok {
+		o.Purpose = &Purpose
+	}
+	
+	if TeamId, ok := AnalyticsparticipantwithoutattributesMap["teamId"].(string); ok {
+		o.TeamId = &TeamId
+	}
+	
+	if UserId, ok := AnalyticsparticipantwithoutattributesMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Sessions, ok := AnalyticsparticipantwithoutattributesMap["sessions"].([]interface{}); ok {
+		SessionsString, _ := json.Marshal(Sessions)
+		json.Unmarshal(SessionsString, &o.Sessions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Smsaddressprovision struct {
 
 }
 
-func (u *Smsaddressprovision) MarshalJSON() ([]byte, error) {
+func (o *Smsaddressprovision) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsaddressprovision
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,72 @@ func (u *Smsaddressprovision) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Street: u.Street,
+		Street: o.Street,
 		
-		City: u.City,
+		City: o.City,
 		
-		Region: u.Region,
+		Region: o.Region,
 		
-		PostalCode: u.PostalCode,
+		PostalCode: o.PostalCode,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
-		AutoCorrectAddress: u.AutoCorrectAddress,
+		AutoCorrectAddress: o.AutoCorrectAddress,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsaddressprovision) UnmarshalJSON(b []byte) error {
+	var SmsaddressprovisionMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsaddressprovisionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SmsaddressprovisionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SmsaddressprovisionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Street, ok := SmsaddressprovisionMap["street"].(string); ok {
+		o.Street = &Street
+	}
+	
+	if City, ok := SmsaddressprovisionMap["city"].(string); ok {
+		o.City = &City
+	}
+	
+	if Region, ok := SmsaddressprovisionMap["region"].(string); ok {
+		o.Region = &Region
+	}
+	
+	if PostalCode, ok := SmsaddressprovisionMap["postalCode"].(string); ok {
+		o.PostalCode = &PostalCode
+	}
+	
+	if CountryCode, ok := SmsaddressprovisionMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if AutoCorrectAddress, ok := SmsaddressprovisionMap["autoCorrectAddress"].(bool); ok {
+		o.AutoCorrectAddress = &AutoCorrectAddress
+	}
+	
+	if SelfUri, ok := SmsaddressprovisionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

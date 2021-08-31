@@ -50,29 +50,27 @@ type Dialeroutboundsettingsconfigchangeoutboundsettings struct {
 
 }
 
-func (u *Dialeroutboundsettingsconfigchangeoutboundsettings) MarshalJSON() ([]byte, error) {
+func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeroutboundsettingsconfigchangeoutboundsettings
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,85 @@ func (u *Dialeroutboundsettingsconfigchangeoutboundsettings) MarshalJSON() ([]by
 		AutomaticTimeZoneMapping *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		MaxCallsPerAgent: u.MaxCallsPerAgent,
+		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
-		MaxLineUtilization: u.MaxLineUtilization,
+		MaxLineUtilization: o.MaxLineUtilization,
 		
-		AbandonSeconds: u.AbandonSeconds,
+		AbandonSeconds: o.AbandonSeconds,
 		
-		ComplianceAbandonRateDenominator: u.ComplianceAbandonRateDenominator,
+		ComplianceAbandonRateDenominator: o.ComplianceAbandonRateDenominator,
 		
-		AutomaticTimeZoneMapping: u.AutomaticTimeZoneMapping,
-		Alias:    (*Alias)(u),
+		AutomaticTimeZoneMapping: o.AutomaticTimeZoneMapping,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) UnmarshalJSON(b []byte) error {
+	var DialeroutboundsettingsconfigchangeoutboundsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &DialeroutboundsettingsconfigchangeoutboundsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if MaxCallsPerAgent, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["maxCallsPerAgent"].(float64); ok {
+		MaxCallsPerAgentInt := int(MaxCallsPerAgent)
+		o.MaxCallsPerAgent = &MaxCallsPerAgentInt
+	}
+	
+	if MaxLineUtilization, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["maxLineUtilization"].(float64); ok {
+		MaxLineUtilizationFloat32 := float32(MaxLineUtilization)
+		o.MaxLineUtilization = &MaxLineUtilizationFloat32
+	}
+	
+	if AbandonSeconds, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["abandonSeconds"].(float64); ok {
+		AbandonSecondsFloat32 := float32(AbandonSeconds)
+		o.AbandonSeconds = &AbandonSecondsFloat32
+	}
+	
+	if ComplianceAbandonRateDenominator, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["complianceAbandonRateDenominator"].(string); ok {
+		o.ComplianceAbandonRateDenominator = &ComplianceAbandonRateDenominator
+	}
+	
+	if AutomaticTimeZoneMapping, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["automaticTimeZoneMapping"].(map[string]interface{}); ok {
+		AutomaticTimeZoneMappingString, _ := json.Marshal(AutomaticTimeZoneMapping)
+		json.Unmarshal(AutomaticTimeZoneMappingString, &o.AutomaticTimeZoneMapping)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -38,13 +38,11 @@ type Createadmintimeoffrequest struct {
 
 }
 
-func (u *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
+func (o *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createadmintimeoffrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -61,21 +59,64 @@ func (u *Createadmintimeoffrequest) MarshalJSON() ([]byte, error) {
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		Users: u.Users,
+		Users: o.Users,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
 		
-		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
-		DailyDurationMinutes: u.DailyDurationMinutes,
-		Alias:    (*Alias)(u),
+		DailyDurationMinutes: o.DailyDurationMinutes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createadmintimeoffrequest) UnmarshalJSON(b []byte) error {
+	var CreateadmintimeoffrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateadmintimeoffrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := CreateadmintimeoffrequestMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Users, ok := CreateadmintimeoffrequestMap["users"].([]interface{}); ok {
+		UsersString, _ := json.Marshal(Users)
+		json.Unmarshal(UsersString, &o.Users)
+	}
+	
+	if ActivityCodeId, ok := CreateadmintimeoffrequestMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if Notes, ok := CreateadmintimeoffrequestMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if FullDayManagementUnitDates, ok := CreateadmintimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
+		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
+		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+	if PartialDayStartDateTimes, ok := CreateadmintimeoffrequestMap["partialDayStartDateTimes"].([]interface{}); ok {
+		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
+		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
+	}
+	
+	if DailyDurationMinutes, ok := CreateadmintimeoffrequestMap["dailyDurationMinutes"].(float64); ok {
+		DailyDurationMinutesInt := int(DailyDurationMinutes)
+		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

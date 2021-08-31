@@ -17,24 +17,42 @@ type Contactlistfilterclause struct {
 
 }
 
-func (u *Contactlistfilterclause) MarshalJSON() ([]byte, error) {
+func (o *Contactlistfilterclause) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlistfilterclause
-
 	
-
 	return json.Marshal(&struct { 
 		FilterType *string `json:"filterType,omitempty"`
 		
 		Predicates *[]Contactlistfilterpredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		FilterType: u.FilterType,
+		FilterType: o.FilterType,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlistfilterclause) UnmarshalJSON(b []byte) error {
+	var ContactlistfilterclauseMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistfilterclauseMap)
+	if err != nil {
+		return err
+	}
+	
+	if FilterType, ok := ContactlistfilterclauseMap["filterType"].(string); ok {
+		o.FilterType = &FilterType
+	}
+	
+	if Predicates, ok := ContactlistfilterclauseMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

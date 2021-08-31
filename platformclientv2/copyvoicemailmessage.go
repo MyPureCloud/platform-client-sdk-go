@@ -21,13 +21,11 @@ type Copyvoicemailmessage struct {
 
 }
 
-func (u *Copyvoicemailmessage) MarshalJSON() ([]byte, error) {
+func (o *Copyvoicemailmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Copyvoicemailmessage
-
 	
-
 	return json.Marshal(&struct { 
 		VoicemailMessageId *string `json:"voicemailMessageId,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Copyvoicemailmessage) MarshalJSON() ([]byte, error) {
 		GroupId *string `json:"groupId,omitempty"`
 		*Alias
 	}{ 
-		VoicemailMessageId: u.VoicemailMessageId,
+		VoicemailMessageId: o.VoicemailMessageId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		GroupId: u.GroupId,
-		Alias:    (*Alias)(u),
+		GroupId: o.GroupId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Copyvoicemailmessage) UnmarshalJSON(b []byte) error {
+	var CopyvoicemailmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &CopyvoicemailmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if VoicemailMessageId, ok := CopyvoicemailmessageMap["voicemailMessageId"].(string); ok {
+		o.VoicemailMessageId = &VoicemailMessageId
+	}
+	
+	if UserId, ok := CopyvoicemailmessageMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if GroupId, ok := CopyvoicemailmessageMap["groupId"].(string); ok {
+		o.GroupId = &GroupId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

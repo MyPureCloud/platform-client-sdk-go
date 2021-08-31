@@ -21,13 +21,11 @@ type Forecastservicegoaltemplateresponse struct {
 
 }
 
-func (u *Forecastservicegoaltemplateresponse) MarshalJSON() ([]byte, error) {
+func (o *Forecastservicegoaltemplateresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastservicegoaltemplateresponse
-
 	
-
 	return json.Marshal(&struct { 
 		ServiceLevel *Forecastservicelevelresponse `json:"serviceLevel,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Forecastservicegoaltemplateresponse) MarshalJSON() ([]byte, error) {
 		AbandonRate *Forecastabandonrateresponse `json:"abandonRate,omitempty"`
 		*Alias
 	}{ 
-		ServiceLevel: u.ServiceLevel,
+		ServiceLevel: o.ServiceLevel,
 		
-		AverageSpeedOfAnswer: u.AverageSpeedOfAnswer,
+		AverageSpeedOfAnswer: o.AverageSpeedOfAnswer,
 		
-		AbandonRate: u.AbandonRate,
-		Alias:    (*Alias)(u),
+		AbandonRate: o.AbandonRate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastservicegoaltemplateresponse) UnmarshalJSON(b []byte) error {
+	var ForecastservicegoaltemplateresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastservicegoaltemplateresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if ServiceLevel, ok := ForecastservicegoaltemplateresponseMap["serviceLevel"].(map[string]interface{}); ok {
+		ServiceLevelString, _ := json.Marshal(ServiceLevel)
+		json.Unmarshal(ServiceLevelString, &o.ServiceLevel)
+	}
+	
+	if AverageSpeedOfAnswer, ok := ForecastservicegoaltemplateresponseMap["averageSpeedOfAnswer"].(map[string]interface{}); ok {
+		AverageSpeedOfAnswerString, _ := json.Marshal(AverageSpeedOfAnswer)
+		json.Unmarshal(AverageSpeedOfAnswerString, &o.AverageSpeedOfAnswer)
+	}
+	
+	if AbandonRate, ok := ForecastservicegoaltemplateresponseMap["abandonRate"].(map[string]interface{}); ok {
+		AbandonRateString, _ := json.Marshal(AbandonRate)
+		json.Unmarshal(AbandonRateString, &o.AbandonRate)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

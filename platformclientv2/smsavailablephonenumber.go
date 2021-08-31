@@ -49,13 +49,11 @@ type Smsavailablephonenumber struct {
 
 }
 
-func (u *Smsavailablephonenumber) MarshalJSON() ([]byte, error) {
+func (o *Smsavailablephonenumber) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsavailablephonenumber
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,79 @@ func (u *Smsavailablephonenumber) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
-		Region: u.Region,
+		Region: o.Region,
 		
-		City: u.City,
+		City: o.City,
 		
-		Capabilities: u.Capabilities,
+		Capabilities: o.Capabilities,
 		
-		PhoneNumberType: u.PhoneNumberType,
+		PhoneNumberType: o.PhoneNumberType,
 		
-		AddressRequirement: u.AddressRequirement,
+		AddressRequirement: o.AddressRequirement,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsavailablephonenumber) UnmarshalJSON(b []byte) error {
+	var SmsavailablephonenumberMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsavailablephonenumberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SmsavailablephonenumberMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SmsavailablephonenumberMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PhoneNumber, ok := SmsavailablephonenumberMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if CountryCode, ok := SmsavailablephonenumberMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if Region, ok := SmsavailablephonenumberMap["region"].(string); ok {
+		o.Region = &Region
+	}
+	
+	if City, ok := SmsavailablephonenumberMap["city"].(string); ok {
+		o.City = &City
+	}
+	
+	if Capabilities, ok := SmsavailablephonenumberMap["capabilities"].([]interface{}); ok {
+		CapabilitiesString, _ := json.Marshal(Capabilities)
+		json.Unmarshal(CapabilitiesString, &o.Capabilities)
+	}
+	
+	if PhoneNumberType, ok := SmsavailablephonenumberMap["phoneNumberType"].(string); ok {
+		o.PhoneNumberType = &PhoneNumberType
+	}
+	
+	if AddressRequirement, ok := SmsavailablephonenumberMap["addressRequirement"].(string); ok {
+		o.AddressRequirement = &AddressRequirement
+	}
+	
+	if SelfUri, ok := SmsavailablephonenumberMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

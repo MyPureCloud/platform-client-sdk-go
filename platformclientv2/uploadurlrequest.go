@@ -25,13 +25,11 @@ type Uploadurlrequest struct {
 
 }
 
-func (u *Uploadurlrequest) MarshalJSON() ([]byte, error) {
+func (o *Uploadurlrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Uploadurlrequest
-
 	
-
 	return json.Marshal(&struct { 
 		FileName *string `json:"fileName,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Uploadurlrequest) MarshalJSON() ([]byte, error) {
 		ServerSideEncryption *string `json:"serverSideEncryption,omitempty"`
 		*Alias
 	}{ 
-		FileName: u.FileName,
+		FileName: o.FileName,
 		
-		ContentMd5: u.ContentMd5,
+		ContentMd5: o.ContentMd5,
 		
-		SignedUrlTimeoutSeconds: u.SignedUrlTimeoutSeconds,
+		SignedUrlTimeoutSeconds: o.SignedUrlTimeoutSeconds,
 		
-		ServerSideEncryption: u.ServerSideEncryption,
-		Alias:    (*Alias)(u),
+		ServerSideEncryption: o.ServerSideEncryption,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Uploadurlrequest) UnmarshalJSON(b []byte) error {
+	var UploadurlrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UploadurlrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if FileName, ok := UploadurlrequestMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+	
+	if ContentMd5, ok := UploadurlrequestMap["contentMd5"].(string); ok {
+		o.ContentMd5 = &ContentMd5
+	}
+	
+	if SignedUrlTimeoutSeconds, ok := UploadurlrequestMap["signedUrlTimeoutSeconds"].(float64); ok {
+		SignedUrlTimeoutSecondsInt := int(SignedUrlTimeoutSeconds)
+		o.SignedUrlTimeoutSeconds = &SignedUrlTimeoutSecondsInt
+	}
+	
+	if ServerSideEncryption, ok := UploadurlrequestMap["serverSideEncryption"].(string); ok {
+		o.ServerSideEncryption = &ServerSideEncryption
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

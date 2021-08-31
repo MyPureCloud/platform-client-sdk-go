@@ -13,20 +13,33 @@ type Consulttransferupdate struct {
 
 }
 
-func (u *Consulttransferupdate) MarshalJSON() ([]byte, error) {
+func (o *Consulttransferupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Consulttransferupdate
-
 	
-
 	return json.Marshal(&struct { 
 		SpeakTo *string `json:"speakTo,omitempty"`
 		*Alias
 	}{ 
-		SpeakTo: u.SpeakTo,
-		Alias:    (*Alias)(u),
+		SpeakTo: o.SpeakTo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Consulttransferupdate) UnmarshalJSON(b []byte) error {
+	var ConsulttransferupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &ConsulttransferupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if SpeakTo, ok := ConsulttransferupdateMap["speakTo"].(string); ok {
+		o.SpeakTo = &SpeakTo
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

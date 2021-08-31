@@ -17,24 +17,43 @@ type Learningassignmentruleruntopiclearningassignmentrulerunnotification struct 
 
 }
 
-func (u *Learningassignmentruleruntopiclearningassignmentrulerunnotification) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentruleruntopiclearningassignmentrulerunnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentruleruntopiclearningassignmentrulerunnotification
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Learningassignmentruleruntopiclearningassignmentscreated `json:"entities,omitempty"`
 		
 		Total *int `json:"total,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		Total: u.Total,
-		Alias:    (*Alias)(u),
+		Total: o.Total,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentruleruntopiclearningassignmentrulerunnotification) UnmarshalJSON(b []byte) error {
+	var LearningassignmentruleruntopiclearningassignmentrulerunnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentruleruntopiclearningassignmentrulerunnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := LearningassignmentruleruntopiclearningassignmentrulerunnotificationMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if Total, ok := LearningassignmentruleruntopiclearningassignmentrulerunnotificationMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

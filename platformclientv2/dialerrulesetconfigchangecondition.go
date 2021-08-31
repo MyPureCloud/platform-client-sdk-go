@@ -77,13 +77,11 @@ type Dialerrulesetconfigchangecondition struct {
 
 }
 
-func (u *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
+func (o *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerrulesetconfigchangecondition
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -120,41 +118,125 @@ func (u *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Inverted: u.Inverted,
+		Inverted: o.Inverted,
 		
-		AttributeName: u.AttributeName,
+		AttributeName: o.AttributeName,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		ValueType: u.ValueType,
+		ValueType: o.ValueType,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Codes: u.Codes,
+		Codes: o.Codes,
 		
-		PropertyType: u.PropertyType,
+		PropertyType: o.PropertyType,
 		
-		Property: u.Property,
+		Property: o.Property,
 		
-		DataNotFoundResolution: u.DataNotFoundResolution,
+		DataNotFoundResolution: o.DataNotFoundResolution,
 		
-		ContactIdField: u.ContactIdField,
+		ContactIdField: o.ContactIdField,
 		
-		CallAnalysisResultField: u.CallAnalysisResultField,
+		CallAnalysisResultField: o.CallAnalysisResultField,
 		
-		AgentWrapupField: u.AgentWrapupField,
+		AgentWrapupField: o.AgentWrapupField,
 		
-		ContactColumnToDataActionFieldMappings: u.ContactColumnToDataActionFieldMappings,
+		ContactColumnToDataActionFieldMappings: o.ContactColumnToDataActionFieldMappings,
 		
-		Predicates: u.Predicates,
+		Predicates: o.Predicates,
 		
-		DataAction: u.DataAction,
+		DataAction: o.DataAction,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
+	var DialerrulesetconfigchangeconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerrulesetconfigchangeconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := DialerrulesetconfigchangeconditionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Inverted, ok := DialerrulesetconfigchangeconditionMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+	
+	if AttributeName, ok := DialerrulesetconfigchangeconditionMap["attributeName"].(string); ok {
+		o.AttributeName = &AttributeName
+	}
+	
+	if Value, ok := DialerrulesetconfigchangeconditionMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if ValueType, ok := DialerrulesetconfigchangeconditionMap["valueType"].(string); ok {
+		o.ValueType = &ValueType
+	}
+	
+	if Operator, ok := DialerrulesetconfigchangeconditionMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Codes, ok := DialerrulesetconfigchangeconditionMap["codes"].([]interface{}); ok {
+		CodesString, _ := json.Marshal(Codes)
+		json.Unmarshal(CodesString, &o.Codes)
+	}
+	
+	if PropertyType, ok := DialerrulesetconfigchangeconditionMap["propertyType"].(string); ok {
+		o.PropertyType = &PropertyType
+	}
+	
+	if Property, ok := DialerrulesetconfigchangeconditionMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if DataNotFoundResolution, ok := DialerrulesetconfigchangeconditionMap["dataNotFoundResolution"].(bool); ok {
+		o.DataNotFoundResolution = &DataNotFoundResolution
+	}
+	
+	if ContactIdField, ok := DialerrulesetconfigchangeconditionMap["contactIdField"].(string); ok {
+		o.ContactIdField = &ContactIdField
+	}
+	
+	if CallAnalysisResultField, ok := DialerrulesetconfigchangeconditionMap["callAnalysisResultField"].(string); ok {
+		o.CallAnalysisResultField = &CallAnalysisResultField
+	}
+	
+	if AgentWrapupField, ok := DialerrulesetconfigchangeconditionMap["agentWrapupField"].(string); ok {
+		o.AgentWrapupField = &AgentWrapupField
+	}
+	
+	if ContactColumnToDataActionFieldMappings, ok := DialerrulesetconfigchangeconditionMap["contactColumnToDataActionFieldMappings"].([]interface{}); ok {
+		ContactColumnToDataActionFieldMappingsString, _ := json.Marshal(ContactColumnToDataActionFieldMappings)
+		json.Unmarshal(ContactColumnToDataActionFieldMappingsString, &o.ContactColumnToDataActionFieldMappings)
+	}
+	
+	if Predicates, ok := DialerrulesetconfigchangeconditionMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+	if DataAction, ok := DialerrulesetconfigchangeconditionMap["dataAction"].(map[string]interface{}); ok {
+		DataActionString, _ := json.Marshal(DataAction)
+		json.Unmarshal(DataActionString, &o.DataAction)
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangeconditionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Textstyleproperties struct {
 
 }
 
-func (u *Textstyleproperties) MarshalJSON() ([]byte, error) {
+func (o *Textstyleproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textstyleproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Color *string `json:"color,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Textstyleproperties) MarshalJSON() ([]byte, error) {
 		TextAlign *string `json:"textAlign,omitempty"`
 		*Alias
 	}{ 
-		Color: u.Color,
+		Color: o.Color,
 		
-		Font: u.Font,
+		Font: o.Font,
 		
-		FontSize: u.FontSize,
+		FontSize: o.FontSize,
 		
-		TextAlign: u.TextAlign,
-		Alias:    (*Alias)(u),
+		TextAlign: o.TextAlign,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textstyleproperties) UnmarshalJSON(b []byte) error {
+	var TextstylepropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &TextstylepropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Color, ok := TextstylepropertiesMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if Font, ok := TextstylepropertiesMap["font"].(string); ok {
+		o.Font = &Font
+	}
+	
+	if FontSize, ok := TextstylepropertiesMap["fontSize"].(string); ok {
+		o.FontSize = &FontSize
+	}
+	
+	if TextAlign, ok := TextstylepropertiesMap["textAlign"].(string); ok {
+		o.TextAlign = &TextAlign
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

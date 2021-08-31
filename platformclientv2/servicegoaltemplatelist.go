@@ -13,20 +13,34 @@ type Servicegoaltemplatelist struct {
 
 }
 
-func (u *Servicegoaltemplatelist) MarshalJSON() ([]byte, error) {
+func (o *Servicegoaltemplatelist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Servicegoaltemplatelist
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Servicegoaltemplate `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Servicegoaltemplatelist) UnmarshalJSON(b []byte) error {
+	var ServicegoaltemplatelistMap map[string]interface{}
+	err := json.Unmarshal(b, &ServicegoaltemplatelistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := ServicegoaltemplatelistMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

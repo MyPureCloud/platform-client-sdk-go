@@ -25,13 +25,11 @@ type Buagentschedulehistorychange struct {
 
 }
 
-func (u *Buagentschedulehistorychange) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulehistorychange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulehistorychange
-
 	
-
 	return json.Marshal(&struct { 
 		Metadata *Buagentschedulehistorychangemetadata `json:"metadata,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Buagentschedulehistorychange) MarshalJSON() ([]byte, error) {
 		Deletes *Buagentschedulehistorydeletedchange `json:"deletes,omitempty"`
 		*Alias
 	}{ 
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		Shifts: u.Shifts,
+		Shifts: o.Shifts,
 		
-		FullDayTimeOffMarkers: u.FullDayTimeOffMarkers,
+		FullDayTimeOffMarkers: o.FullDayTimeOffMarkers,
 		
-		Deletes: u.Deletes,
-		Alias:    (*Alias)(u),
+		Deletes: o.Deletes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulehistorychange) UnmarshalJSON(b []byte) error {
+	var BuagentschedulehistorychangeMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulehistorychangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metadata, ok := BuagentschedulehistorychangeMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if Shifts, ok := BuagentschedulehistorychangeMap["shifts"].([]interface{}); ok {
+		ShiftsString, _ := json.Marshal(Shifts)
+		json.Unmarshal(ShiftsString, &o.Shifts)
+	}
+	
+	if FullDayTimeOffMarkers, ok := BuagentschedulehistorychangeMap["fullDayTimeOffMarkers"].([]interface{}); ok {
+		FullDayTimeOffMarkersString, _ := json.Marshal(FullDayTimeOffMarkers)
+		json.Unmarshal(FullDayTimeOffMarkersString, &o.FullDayTimeOffMarkers)
+	}
+	
+	if Deletes, ok := BuagentschedulehistorychangeMap["deletes"].(map[string]interface{}); ok {
+		DeletesString, _ := json.Marshal(Deletes)
+		json.Unmarshal(DeletesString, &o.Deletes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

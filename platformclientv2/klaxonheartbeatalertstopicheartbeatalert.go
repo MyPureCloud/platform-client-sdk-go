@@ -50,29 +50,27 @@ type Klaxonheartbeatalertstopicheartbeatalert struct {
 
 }
 
-func (u *Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error) {
+func (o *Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Klaxonheartbeatalertstopicheartbeatalert
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,83 @@ func (u *Klaxonheartbeatalertstopicheartbeatalert) MarshalJSON() ([]byte, error)
 		RuleType *string `json:"ruleType,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SenderId: u.SenderId,
+		SenderId: o.SenderId,
 		
-		HeartBeatTimeoutInMinutes: u.HeartBeatTimeoutInMinutes,
+		HeartBeatTimeoutInMinutes: o.HeartBeatTimeoutInMinutes,
 		
-		RuleId: u.RuleId,
+		RuleId: o.RuleId,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		NotificationUsers: u.NotificationUsers,
+		NotificationUsers: o.NotificationUsers,
 		
-		AlertTypes: u.AlertTypes,
+		AlertTypes: o.AlertTypes,
 		
-		RuleType: u.RuleType,
-		Alias:    (*Alias)(u),
+		RuleType: o.RuleType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Klaxonheartbeatalertstopicheartbeatalert) UnmarshalJSON(b []byte) error {
+	var KlaxonheartbeatalertstopicheartbeatalertMap map[string]interface{}
+	err := json.Unmarshal(b, &KlaxonheartbeatalertstopicheartbeatalertMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KlaxonheartbeatalertstopicheartbeatalertMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KlaxonheartbeatalertstopicheartbeatalertMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SenderId, ok := KlaxonheartbeatalertstopicheartbeatalertMap["senderId"].(string); ok {
+		o.SenderId = &SenderId
+	}
+	
+	if HeartBeatTimeoutInMinutes, ok := KlaxonheartbeatalertstopicheartbeatalertMap["heartBeatTimeoutInMinutes"].(float64); ok {
+		HeartBeatTimeoutInMinutesFloat32 := float32(HeartBeatTimeoutInMinutes)
+		o.HeartBeatTimeoutInMinutes = &HeartBeatTimeoutInMinutesFloat32
+	}
+	
+	if RuleId, ok := KlaxonheartbeatalertstopicheartbeatalertMap["ruleId"].(string); ok {
+		o.RuleId = &RuleId
+	}
+	
+	if startDateString, ok := KlaxonheartbeatalertstopicheartbeatalertMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := KlaxonheartbeatalertstopicheartbeatalertMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if NotificationUsers, ok := KlaxonheartbeatalertstopicheartbeatalertMap["notificationUsers"].([]interface{}); ok {
+		NotificationUsersString, _ := json.Marshal(NotificationUsers)
+		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
+	}
+	
+	if AlertTypes, ok := KlaxonheartbeatalertstopicheartbeatalertMap["alertTypes"].([]interface{}); ok {
+		AlertTypesString, _ := json.Marshal(AlertTypes)
+		json.Unmarshal(AlertTypesString, &o.AlertTypes)
+	}
+	
+	if RuleType, ok := KlaxonheartbeatalertstopicheartbeatalertMap["ruleType"].(string); ok {
+		o.RuleType = &RuleType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

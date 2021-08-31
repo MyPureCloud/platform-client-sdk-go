@@ -41,13 +41,11 @@ type Callmediapolicyconditions struct {
 
 }
 
-func (u *Callmediapolicyconditions) MarshalJSON() ([]byte, error) {
+func (o *Callmediapolicyconditions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callmediapolicyconditions
-
 	
-
 	return json.Marshal(&struct { 
 		ForUsers *[]User `json:"forUsers,omitempty"`
 		
@@ -66,23 +64,74 @@ func (u *Callmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		Duration *Durationcondition `json:"duration,omitempty"`
 		*Alias
 	}{ 
-		ForUsers: u.ForUsers,
+		ForUsers: o.ForUsers,
 		
-		DateRanges: u.DateRanges,
+		DateRanges: o.DateRanges,
 		
-		ForQueues: u.ForQueues,
+		ForQueues: o.ForQueues,
 		
-		WrapupCodes: u.WrapupCodes,
+		WrapupCodes: o.WrapupCodes,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		TimeAllowed: u.TimeAllowed,
+		TimeAllowed: o.TimeAllowed,
 		
-		Directions: u.Directions,
+		Directions: o.Directions,
 		
-		Duration: u.Duration,
-		Alias:    (*Alias)(u),
+		Duration: o.Duration,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callmediapolicyconditions) UnmarshalJSON(b []byte) error {
+	var CallmediapolicyconditionsMap map[string]interface{}
+	err := json.Unmarshal(b, &CallmediapolicyconditionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ForUsers, ok := CallmediapolicyconditionsMap["forUsers"].([]interface{}); ok {
+		ForUsersString, _ := json.Marshal(ForUsers)
+		json.Unmarshal(ForUsersString, &o.ForUsers)
+	}
+	
+	if DateRanges, ok := CallmediapolicyconditionsMap["dateRanges"].([]interface{}); ok {
+		DateRangesString, _ := json.Marshal(DateRanges)
+		json.Unmarshal(DateRangesString, &o.DateRanges)
+	}
+	
+	if ForQueues, ok := CallmediapolicyconditionsMap["forQueues"].([]interface{}); ok {
+		ForQueuesString, _ := json.Marshal(ForQueues)
+		json.Unmarshal(ForQueuesString, &o.ForQueues)
+	}
+	
+	if WrapupCodes, ok := CallmediapolicyconditionsMap["wrapupCodes"].([]interface{}); ok {
+		WrapupCodesString, _ := json.Marshal(WrapupCodes)
+		json.Unmarshal(WrapupCodesString, &o.WrapupCodes)
+	}
+	
+	if Languages, ok := CallmediapolicyconditionsMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if TimeAllowed, ok := CallmediapolicyconditionsMap["timeAllowed"].(map[string]interface{}); ok {
+		TimeAllowedString, _ := json.Marshal(TimeAllowed)
+		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
+	}
+	
+	if Directions, ok := CallmediapolicyconditionsMap["directions"].([]interface{}); ok {
+		DirectionsString, _ := json.Marshal(Directions)
+		json.Unmarshal(DirectionsString, &o.Directions)
+	}
+	
+	if Duration, ok := CallmediapolicyconditionsMap["duration"].(map[string]interface{}); ok {
+		DurationString, _ := json.Marshal(Duration)
+		json.Unmarshal(DurationString, &o.Duration)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Architectdependencytrackingbuildnotificationuser struct {
 
 }
 
-func (u *Architectdependencytrackingbuildnotificationuser) MarshalJSON() ([]byte, error) {
+func (o *Architectdependencytrackingbuildnotificationuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectdependencytrackingbuildnotificationuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Architectdependencytrackingbuildnotificationuser) MarshalJSON() ([]byte
 		HomeOrg *Architectdependencytrackingbuildnotificationhomeorganization `json:"homeOrg,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		HomeOrg: u.HomeOrg,
-		Alias:    (*Alias)(u),
+		HomeOrg: o.HomeOrg,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectdependencytrackingbuildnotificationuser) UnmarshalJSON(b []byte) error {
+	var ArchitectdependencytrackingbuildnotificationuserMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectdependencytrackingbuildnotificationuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectdependencytrackingbuildnotificationuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ArchitectdependencytrackingbuildnotificationuserMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if HomeOrg, ok := ArchitectdependencytrackingbuildnotificationuserMap["homeOrg"].(map[string]interface{}); ok {
+		HomeOrgString, _ := json.Marshal(HomeOrg)
+		json.Unmarshal(HomeOrgString, &o.HomeOrg)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

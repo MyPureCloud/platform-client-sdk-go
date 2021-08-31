@@ -37,13 +37,11 @@ type Edgemetricstopicedgemetrics struct {
 
 }
 
-func (u *Edgemetricstopicedgemetrics) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricstopicedgemetrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricstopicedgemetrics
-
 	
-
 	return json.Marshal(&struct { 
 		Edge *Edgemetricstopicurireference `json:"edge,omitempty"`
 		
@@ -60,21 +58,67 @@ func (u *Edgemetricstopicedgemetrics) MarshalJSON() ([]byte, error) {
 		Networks *[]Edgemetricstopicedgemetricnetworks `json:"networks,omitempty"`
 		*Alias
 	}{ 
-		Edge: u.Edge,
+		Edge: o.Edge,
 		
-		UpTimeMsec: u.UpTimeMsec,
+		UpTimeMsec: o.UpTimeMsec,
 		
-		Processors: u.Processors,
+		Processors: o.Processors,
 		
-		Memory: u.Memory,
+		Memory: o.Memory,
 		
-		Disks: u.Disks,
+		Disks: o.Disks,
 		
-		Subsystems: u.Subsystems,
+		Subsystems: o.Subsystems,
 		
-		Networks: u.Networks,
-		Alias:    (*Alias)(u),
+		Networks: o.Networks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricstopicedgemetrics) UnmarshalJSON(b []byte) error {
+	var EdgemetricstopicedgemetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricstopicedgemetricsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Edge, ok := EdgemetricstopicedgemetricsMap["edge"].(map[string]interface{}); ok {
+		EdgeString, _ := json.Marshal(Edge)
+		json.Unmarshal(EdgeString, &o.Edge)
+	}
+	
+	if UpTimeMsec, ok := EdgemetricstopicedgemetricsMap["upTimeMsec"].(float64); ok {
+		UpTimeMsecInt := int(UpTimeMsec)
+		o.UpTimeMsec = &UpTimeMsecInt
+	}
+	
+	if Processors, ok := EdgemetricstopicedgemetricsMap["processors"].([]interface{}); ok {
+		ProcessorsString, _ := json.Marshal(Processors)
+		json.Unmarshal(ProcessorsString, &o.Processors)
+	}
+	
+	if Memory, ok := EdgemetricstopicedgemetricsMap["memory"].([]interface{}); ok {
+		MemoryString, _ := json.Marshal(Memory)
+		json.Unmarshal(MemoryString, &o.Memory)
+	}
+	
+	if Disks, ok := EdgemetricstopicedgemetricsMap["disks"].([]interface{}); ok {
+		DisksString, _ := json.Marshal(Disks)
+		json.Unmarshal(DisksString, &o.Disks)
+	}
+	
+	if Subsystems, ok := EdgemetricstopicedgemetricsMap["subsystems"].([]interface{}); ok {
+		SubsystemsString, _ := json.Marshal(Subsystems)
+		json.Unmarshal(SubsystemsString, &o.Subsystems)
+	}
+	
+	if Networks, ok := EdgemetricstopicedgemetricsMap["networks"].([]interface{}); ok {
+		NetworksString, _ := json.Marshal(Networks)
+		json.Unmarshal(NetworksString, &o.Networks)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

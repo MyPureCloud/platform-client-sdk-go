@@ -90,21 +90,19 @@ type Documentationresult struct {
 
 }
 
-func (u *Documentationresult) MarshalJSON() ([]byte, error) {
+func (o *Documentationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentationresult
-
 	
 	Modified := new(string)
-	if u.Modified != nil {
+	if o.Modified != nil {
 		
-		*Modified = timeutil.Strftime(u.Modified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Modified = timeutil.Strftime(o.Modified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Modified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *int `json:"id,omitempty"`
 		
@@ -147,47 +145,150 @@ func (u *Documentationresult) MarshalJSON() ([]byte, error) {
 		VideoCategories *[]int `json:"video_categories,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Categories: u.Categories,
+		Categories: o.Categories,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Content: u.Content,
+		Content: o.Content,
 		
-		Excerpt: u.Excerpt,
+		Excerpt: o.Excerpt,
 		
-		Link: u.Link,
+		Link: o.Link,
 		
 		Modified: Modified,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Service: u.Service,
+		Service: o.Service,
 		
-		Slug: u.Slug,
+		Slug: o.Slug,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		GetType: u.GetType,
+		GetType: o.GetType,
 		
-		FacetFeature: u.FacetFeature,
+		FacetFeature: o.FacetFeature,
 		
-		FacetRole: u.FacetRole,
+		FacetRole: o.FacetRole,
 		
-		FacetService: u.FacetService,
+		FacetService: o.FacetService,
 		
-		FaqCategories: u.FaqCategories,
+		FaqCategories: o.FaqCategories,
 		
-		ReleasenoteCategory: u.ReleasenoteCategory,
+		ReleasenoteCategory: o.ReleasenoteCategory,
 		
-		ReleasenoteTag: u.ReleasenoteTag,
+		ReleasenoteTag: o.ReleasenoteTag,
 		
-		ServiceArea: u.ServiceArea,
+		ServiceArea: o.ServiceArea,
 		
-		VideoCategories: u.VideoCategories,
-		Alias:    (*Alias)(u),
+		VideoCategories: o.VideoCategories,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentationresult) UnmarshalJSON(b []byte) error {
+	var DocumentationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DocumentationresultMap["id"].(float64); ok {
+		IdInt := int(Id)
+		o.Id = &IdInt
+	}
+	
+	if Categories, ok := DocumentationresultMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
+	if Description, ok := DocumentationresultMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Content, ok := DocumentationresultMap["content"].(string); ok {
+		o.Content = &Content
+	}
+	
+	if Excerpt, ok := DocumentationresultMap["excerpt"].(string); ok {
+		o.Excerpt = &Excerpt
+	}
+	
+	if Link, ok := DocumentationresultMap["link"].(string); ok {
+		o.Link = &Link
+	}
+	
+	if modifiedString, ok := DocumentationresultMap["modified"].(string); ok {
+		Modified, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedString)
+		o.Modified = &Modified
+	}
+	
+	if Name, ok := DocumentationresultMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Service, ok := DocumentationresultMap["service"].([]interface{}); ok {
+		ServiceString, _ := json.Marshal(Service)
+		json.Unmarshal(ServiceString, &o.Service)
+	}
+	
+	if Slug, ok := DocumentationresultMap["slug"].(string); ok {
+		o.Slug = &Slug
+	}
+	
+	if Title, ok := DocumentationresultMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if GetType, ok := DocumentationresultMap["get_type"].(string); ok {
+		o.GetType = &GetType
+	}
+	
+	if FacetFeature, ok := DocumentationresultMap["facet_feature"].([]interface{}); ok {
+		FacetFeatureString, _ := json.Marshal(FacetFeature)
+		json.Unmarshal(FacetFeatureString, &o.FacetFeature)
+	}
+	
+	if FacetRole, ok := DocumentationresultMap["facet_role"].([]interface{}); ok {
+		FacetRoleString, _ := json.Marshal(FacetRole)
+		json.Unmarshal(FacetRoleString, &o.FacetRole)
+	}
+	
+	if FacetService, ok := DocumentationresultMap["facet_service"].([]interface{}); ok {
+		FacetServiceString, _ := json.Marshal(FacetService)
+		json.Unmarshal(FacetServiceString, &o.FacetService)
+	}
+	
+	if FaqCategories, ok := DocumentationresultMap["faq_categories"].([]interface{}); ok {
+		FaqCategoriesString, _ := json.Marshal(FaqCategories)
+		json.Unmarshal(FaqCategoriesString, &o.FaqCategories)
+	}
+	
+	if ReleasenoteCategory, ok := DocumentationresultMap["releasenote_category"].([]interface{}); ok {
+		ReleasenoteCategoryString, _ := json.Marshal(ReleasenoteCategory)
+		json.Unmarshal(ReleasenoteCategoryString, &o.ReleasenoteCategory)
+	}
+	
+	if ReleasenoteTag, ok := DocumentationresultMap["releasenote_tag"].([]interface{}); ok {
+		ReleasenoteTagString, _ := json.Marshal(ReleasenoteTag)
+		json.Unmarshal(ReleasenoteTagString, &o.ReleasenoteTag)
+	}
+	
+	if ServiceArea, ok := DocumentationresultMap["service-area"].([]interface{}); ok {
+		ServiceAreaString, _ := json.Marshal(ServiceArea)
+		json.Unmarshal(ServiceAreaString, &o.ServiceArea)
+	}
+	
+	if VideoCategories, ok := DocumentationresultMap["video_categories"].([]interface{}); ok {
+		VideoCategoriesString, _ := json.Marshal(VideoCategories)
+		json.Unmarshal(VideoCategoriesString, &o.VideoCategories)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

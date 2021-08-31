@@ -29,13 +29,11 @@ type Botversionsummary struct {
 
 }
 
-func (u *Botversionsummary) MarshalJSON() ([]byte, error) {
+func (o *Botversionsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botversionsummary
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Botversionsummary) MarshalJSON() ([]byte, error) {
 		Version *string `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		BotCompositeTag: u.BotCompositeTag,
+		BotCompositeTag: o.BotCompositeTag,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botversionsummary) UnmarshalJSON(b []byte) error {
+	var BotversionsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &BotversionsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := BotversionsummaryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Id, ok := BotversionsummaryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Description, ok := BotversionsummaryMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if BotCompositeTag, ok := BotversionsummaryMap["botCompositeTag"].(string); ok {
+		o.BotCompositeTag = &BotCompositeTag
+	}
+	
+	if Version, ok := BotversionsummaryMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

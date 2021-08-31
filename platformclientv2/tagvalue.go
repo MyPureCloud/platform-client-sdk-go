@@ -29,13 +29,11 @@ type Tagvalue struct {
 
 }
 
-func (u *Tagvalue) MarshalJSON() ([]byte, error) {
+func (o *Tagvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Tagvalue
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Tagvalue) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		InUse: u.InUse,
+		InUse: o.InUse,
 		
-		Acl: u.Acl,
+		Acl: o.Acl,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Tagvalue) UnmarshalJSON(b []byte) error {
+	var TagvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &TagvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TagvalueMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TagvalueMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if InUse, ok := TagvalueMap["inUse"].(bool); ok {
+		o.InUse = &InUse
+	}
+	
+	if Acl, ok := TagvalueMap["acl"].([]interface{}); ok {
+		AclString, _ := json.Marshal(Acl)
+		json.Unmarshal(AclString, &o.Acl)
+	}
+	
+	if SelfUri, ok := TagvalueMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

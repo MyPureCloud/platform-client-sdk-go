@@ -17,24 +17,41 @@ type Callbackidentifier struct {
 
 }
 
-func (u *Callbackidentifier) MarshalJSON() ([]byte, error) {
+func (o *Callbackidentifier) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callbackidentifier
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callbackidentifier) UnmarshalJSON(b []byte) error {
+	var CallbackidentifierMap map[string]interface{}
+	err := json.Unmarshal(b, &CallbackidentifierMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := CallbackidentifierMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Id, ok := CallbackidentifierMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

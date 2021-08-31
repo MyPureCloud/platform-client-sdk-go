@@ -57,13 +57,11 @@ type Subscriptionoverviewusage struct {
 
 }
 
-func (u *Subscriptionoverviewusage) MarshalJSON() ([]byte, error) {
+func (o *Subscriptionoverviewusage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Subscriptionoverviewusage
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -90,31 +88,90 @@ func (u *Subscriptionoverviewusage) MarshalJSON() ([]byte, error) {
 		IsThirdParty *bool `json:"isThirdParty,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		PartNumber: u.PartNumber,
+		PartNumber: o.PartNumber,
 		
-		Grouping: u.Grouping,
+		Grouping: o.Grouping,
 		
-		UnitOfMeasureType: u.UnitOfMeasureType,
+		UnitOfMeasureType: o.UnitOfMeasureType,
 		
-		UsageQuantity: u.UsageQuantity,
+		UsageQuantity: o.UsageQuantity,
 		
-		OveragePrice: u.OveragePrice,
+		OveragePrice: o.OveragePrice,
 		
-		PrepayQuantity: u.PrepayQuantity,
+		PrepayQuantity: o.PrepayQuantity,
 		
-		PrepayPrice: u.PrepayPrice,
+		PrepayPrice: o.PrepayPrice,
 		
-		UsageNotes: u.UsageNotes,
+		UsageNotes: o.UsageNotes,
 		
-		IsCancellable: u.IsCancellable,
+		IsCancellable: o.IsCancellable,
 		
-		BundleQuantity: u.BundleQuantity,
+		BundleQuantity: o.BundleQuantity,
 		
-		IsThirdParty: u.IsThirdParty,
-		Alias:    (*Alias)(u),
+		IsThirdParty: o.IsThirdParty,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Subscriptionoverviewusage) UnmarshalJSON(b []byte) error {
+	var SubscriptionoverviewusageMap map[string]interface{}
+	err := json.Unmarshal(b, &SubscriptionoverviewusageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := SubscriptionoverviewusageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PartNumber, ok := SubscriptionoverviewusageMap["partNumber"].(string); ok {
+		o.PartNumber = &PartNumber
+	}
+	
+	if Grouping, ok := SubscriptionoverviewusageMap["grouping"].(string); ok {
+		o.Grouping = &Grouping
+	}
+	
+	if UnitOfMeasureType, ok := SubscriptionoverviewusageMap["unitOfMeasureType"].(string); ok {
+		o.UnitOfMeasureType = &UnitOfMeasureType
+	}
+	
+	if UsageQuantity, ok := SubscriptionoverviewusageMap["usageQuantity"].(string); ok {
+		o.UsageQuantity = &UsageQuantity
+	}
+	
+	if OveragePrice, ok := SubscriptionoverviewusageMap["overagePrice"].(string); ok {
+		o.OveragePrice = &OveragePrice
+	}
+	
+	if PrepayQuantity, ok := SubscriptionoverviewusageMap["prepayQuantity"].(string); ok {
+		o.PrepayQuantity = &PrepayQuantity
+	}
+	
+	if PrepayPrice, ok := SubscriptionoverviewusageMap["prepayPrice"].(string); ok {
+		o.PrepayPrice = &PrepayPrice
+	}
+	
+	if UsageNotes, ok := SubscriptionoverviewusageMap["usageNotes"].(string); ok {
+		o.UsageNotes = &UsageNotes
+	}
+	
+	if IsCancellable, ok := SubscriptionoverviewusageMap["isCancellable"].(bool); ok {
+		o.IsCancellable = &IsCancellable
+	}
+	
+	if BundleQuantity, ok := SubscriptionoverviewusageMap["bundleQuantity"].(string); ok {
+		o.BundleQuantity = &BundleQuantity
+	}
+	
+	if IsThirdParty, ok := SubscriptionoverviewusageMap["isThirdParty"].(bool); ok {
+		o.IsThirdParty = &IsThirdParty
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

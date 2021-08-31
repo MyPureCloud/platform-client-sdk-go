@@ -61,13 +61,11 @@ type Scimv2createuser struct {
 
 }
 
-func (u *Scimv2createuser) MarshalJSON() ([]byte, error) {
+func (o *Scimv2createuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2createuser
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
@@ -96,33 +94,103 @@ func (u *Scimv2createuser) MarshalJSON() ([]byte, error) {
 		UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User *Scimuserextensions `json:"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		UserName: u.UserName,
+		UserName: o.UserName,
 		
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		Password: u.Password,
+		Password: o.Password,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		PhoneNumbers: u.PhoneNumbers,
+		PhoneNumbers: o.PhoneNumbers,
 		
-		Emails: u.Emails,
+		Emails: o.Emails,
 		
-		ExternalId: u.ExternalId,
+		ExternalId: o.ExternalId,
 		
-		Groups: u.Groups,
+		Groups: o.Groups,
 		
-		Roles: u.Roles,
+		Roles: o.Roles,
 		
-		UrnIetfParamsScimSchemasExtensionEnterprise20User: u.UrnIetfParamsScimSchemasExtensionEnterprise20User,
+		UrnIetfParamsScimSchemasExtensionEnterprise20User: o.UrnIetfParamsScimSchemasExtensionEnterprise20User,
 		
-		UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User: u.UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User,
-		Alias:    (*Alias)(u),
+		UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User: o.UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2createuser) UnmarshalJSON(b []byte) error {
+	var Scimv2createuserMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2createuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := Scimv2createuserMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if Active, ok := Scimv2createuserMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if UserName, ok := Scimv2createuserMap["userName"].(string); ok {
+		o.UserName = &UserName
+	}
+	
+	if DisplayName, ok := Scimv2createuserMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if Password, ok := Scimv2createuserMap["password"].(string); ok {
+		o.Password = &Password
+	}
+	
+	if Title, ok := Scimv2createuserMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if PhoneNumbers, ok := Scimv2createuserMap["phoneNumbers"].([]interface{}); ok {
+		PhoneNumbersString, _ := json.Marshal(PhoneNumbers)
+		json.Unmarshal(PhoneNumbersString, &o.PhoneNumbers)
+	}
+	
+	if Emails, ok := Scimv2createuserMap["emails"].([]interface{}); ok {
+		EmailsString, _ := json.Marshal(Emails)
+		json.Unmarshal(EmailsString, &o.Emails)
+	}
+	
+	if ExternalId, ok := Scimv2createuserMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+	
+	if Groups, ok := Scimv2createuserMap["groups"].([]interface{}); ok {
+		GroupsString, _ := json.Marshal(Groups)
+		json.Unmarshal(GroupsString, &o.Groups)
+	}
+	
+	if Roles, ok := Scimv2createuserMap["roles"].([]interface{}); ok {
+		RolesString, _ := json.Marshal(Roles)
+		json.Unmarshal(RolesString, &o.Roles)
+	}
+	
+	if UrnIetfParamsScimSchemasExtensionEnterprise20User, ok := Scimv2createuserMap["urn:ietf:params:scim:schemas:extension:enterprise:2.0:User"].(map[string]interface{}); ok {
+		UrnIetfParamsScimSchemasExtensionEnterprise20UserString, _ := json.Marshal(UrnIetfParamsScimSchemasExtensionEnterprise20User)
+		json.Unmarshal(UrnIetfParamsScimSchemasExtensionEnterprise20UserString, &o.UrnIetfParamsScimSchemasExtensionEnterprise20User)
+	}
+	
+	if UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User, ok := Scimv2createuserMap["urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User"].(map[string]interface{}); ok {
+		UrnIetfParamsScimSchemasExtensionGenesysPurecloud20UserString, _ := json.Marshal(UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User)
+		json.Unmarshal(UrnIetfParamsScimSchemasExtensionGenesysPurecloud20UserString, &o.UrnIetfParamsScimSchemasExtensionGenesysPurecloud20User)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

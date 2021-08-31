@@ -37,13 +37,11 @@ type Locationsearchrequest struct {
 
 }
 
-func (u *Locationsearchrequest) MarshalJSON() ([]byte, error) {
+func (o *Locationsearchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationsearchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		SortOrder *string `json:"sortOrder,omitempty"`
 		
@@ -60,21 +58,65 @@ func (u *Locationsearchrequest) MarshalJSON() ([]byte, error) {
 		Query *[]Locationsearchcriteria `json:"query,omitempty"`
 		*Alias
 	}{ 
-		SortOrder: u.SortOrder,
+		SortOrder: o.SortOrder,
 		
-		SortBy: u.SortBy,
+		SortBy: o.SortBy,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		Expand: u.Expand,
+		Expand: o.Expand,
 		
-		Query: u.Query,
-		Alias:    (*Alias)(u),
+		Query: o.Query,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationsearchrequest) UnmarshalJSON(b []byte) error {
+	var LocationsearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationsearchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SortOrder, ok := LocationsearchrequestMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+	
+	if SortBy, ok := LocationsearchrequestMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+	
+	if PageSize, ok := LocationsearchrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := LocationsearchrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Sort, ok := LocationsearchrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if Expand, ok := LocationsearchrequestMap["expand"].([]interface{}); ok {
+		ExpandString, _ := json.Marshal(Expand)
+		json.Unmarshal(ExpandString, &o.Expand)
+	}
+	
+	if Query, ok := LocationsearchrequestMap["query"].([]interface{}); ok {
+		QueryString, _ := json.Marshal(Query)
+		json.Unmarshal(QueryString, &o.Query)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

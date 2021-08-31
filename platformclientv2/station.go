@@ -65,13 +65,11 @@ type Station struct {
 
 }
 
-func (u *Station) MarshalJSON() ([]byte, error) {
+func (o *Station) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Station
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,105 @@ func (u *Station) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		WebRtcUserId: u.WebRtcUserId,
+		WebRtcUserId: o.WebRtcUserId,
 		
-		PrimaryEdge: u.PrimaryEdge,
+		PrimaryEdge: o.PrimaryEdge,
 		
-		SecondaryEdge: u.SecondaryEdge,
+		SecondaryEdge: o.SecondaryEdge,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		LineAppearanceId: u.LineAppearanceId,
+		LineAppearanceId: o.LineAppearanceId,
 		
-		WebRtcMediaDscp: u.WebRtcMediaDscp,
+		WebRtcMediaDscp: o.WebRtcMediaDscp,
 		
-		WebRtcPersistentEnabled: u.WebRtcPersistentEnabled,
+		WebRtcPersistentEnabled: o.WebRtcPersistentEnabled,
 		
-		WebRtcForceTurn: u.WebRtcForceTurn,
+		WebRtcForceTurn: o.WebRtcForceTurn,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Station) UnmarshalJSON(b []byte) error {
+	var StationMap map[string]interface{}
+	err := json.Unmarshal(b, &StationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := StationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := StationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := StationMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Status, ok := StationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if UserId, ok := StationMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if WebRtcUserId, ok := StationMap["webRtcUserId"].(string); ok {
+		o.WebRtcUserId = &WebRtcUserId
+	}
+	
+	if PrimaryEdge, ok := StationMap["primaryEdge"].(map[string]interface{}); ok {
+		PrimaryEdgeString, _ := json.Marshal(PrimaryEdge)
+		json.Unmarshal(PrimaryEdgeString, &o.PrimaryEdge)
+	}
+	
+	if SecondaryEdge, ok := StationMap["secondaryEdge"].(map[string]interface{}); ok {
+		SecondaryEdgeString, _ := json.Marshal(SecondaryEdge)
+		json.Unmarshal(SecondaryEdgeString, &o.SecondaryEdge)
+	}
+	
+	if VarType, ok := StationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if LineAppearanceId, ok := StationMap["lineAppearanceId"].(string); ok {
+		o.LineAppearanceId = &LineAppearanceId
+	}
+	
+	if WebRtcMediaDscp, ok := StationMap["webRtcMediaDscp"].(float64); ok {
+		WebRtcMediaDscpInt := int(WebRtcMediaDscp)
+		o.WebRtcMediaDscp = &WebRtcMediaDscpInt
+	}
+	
+	if WebRtcPersistentEnabled, ok := StationMap["webRtcPersistentEnabled"].(bool); ok {
+		o.WebRtcPersistentEnabled = &WebRtcPersistentEnabled
+	}
+	
+	if WebRtcForceTurn, ok := StationMap["webRtcForceTurn"].(bool); ok {
+		o.WebRtcForceTurn = &WebRtcForceTurn
+	}
+	
+	if SelfUri, ok := StationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

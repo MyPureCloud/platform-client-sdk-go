@@ -26,21 +26,19 @@ type Externalorganizationtrustorlink struct {
 
 }
 
-func (u *Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
+func (o *Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Externalorganizationtrustorlink
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		
@@ -51,15 +49,43 @@ func (u *Externalorganizationtrustorlink) MarshalJSON() ([]byte, error) {
 		ExternalOrganizationUri *string `json:"externalOrganizationUri,omitempty"`
 		*Alias
 	}{ 
-		ExternalOrganizationId: u.ExternalOrganizationId,
+		ExternalOrganizationId: o.ExternalOrganizationId,
 		
-		TrustorOrgId: u.TrustorOrgId,
+		TrustorOrgId: o.TrustorOrgId,
 		
 		DateCreated: DateCreated,
 		
-		ExternalOrganizationUri: u.ExternalOrganizationUri,
-		Alias:    (*Alias)(u),
+		ExternalOrganizationUri: o.ExternalOrganizationUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Externalorganizationtrustorlink) UnmarshalJSON(b []byte) error {
+	var ExternalorganizationtrustorlinkMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternalorganizationtrustorlinkMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExternalOrganizationId, ok := ExternalorganizationtrustorlinkMap["externalOrganizationId"].(string); ok {
+		o.ExternalOrganizationId = &ExternalOrganizationId
+	}
+	
+	if TrustorOrgId, ok := ExternalorganizationtrustorlinkMap["trustorOrgId"].(string); ok {
+		o.TrustorOrgId = &TrustorOrgId
+	}
+	
+	if dateCreatedString, ok := ExternalorganizationtrustorlinkMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ExternalOrganizationUri, ok := ExternalorganizationtrustorlinkMap["externalOrganizationUri"].(string); ok {
+		o.ExternalOrganizationUri = &ExternalOrganizationUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

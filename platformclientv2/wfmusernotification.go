@@ -46,21 +46,19 @@ type Wfmusernotification struct {
 
 }
 
-func (u *Wfmusernotification) MarshalJSON() ([]byte, error) {
+func (o *Wfmusernotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmusernotification
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -81,25 +79,76 @@ func (u *Wfmusernotification) MarshalJSON() ([]byte, error) {
 		OtherNotificationIdsInGroup *[]string `json:"otherNotificationIdsInGroup,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		MutableGroupId: u.MutableGroupId,
+		MutableGroupId: o.MutableGroupId,
 		
 		Timestamp: Timestamp,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		ShiftTrade: u.ShiftTrade,
+		ShiftTrade: o.ShiftTrade,
 		
-		TimeOffRequest: u.TimeOffRequest,
+		TimeOffRequest: o.TimeOffRequest,
 		
-		MarkedAsRead: u.MarkedAsRead,
+		MarkedAsRead: o.MarkedAsRead,
 		
-		AgentNotification: u.AgentNotification,
+		AgentNotification: o.AgentNotification,
 		
-		OtherNotificationIdsInGroup: u.OtherNotificationIdsInGroup,
-		Alias:    (*Alias)(u),
+		OtherNotificationIdsInGroup: o.OtherNotificationIdsInGroup,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmusernotification) UnmarshalJSON(b []byte) error {
+	var WfmusernotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmusernotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmusernotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if MutableGroupId, ok := WfmusernotificationMap["mutableGroupId"].(string); ok {
+		o.MutableGroupId = &MutableGroupId
+	}
+	
+	if timestampString, ok := WfmusernotificationMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if VarType, ok := WfmusernotificationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if ShiftTrade, ok := WfmusernotificationMap["shiftTrade"].(map[string]interface{}); ok {
+		ShiftTradeString, _ := json.Marshal(ShiftTrade)
+		json.Unmarshal(ShiftTradeString, &o.ShiftTrade)
+	}
+	
+	if TimeOffRequest, ok := WfmusernotificationMap["timeOffRequest"].(map[string]interface{}); ok {
+		TimeOffRequestString, _ := json.Marshal(TimeOffRequest)
+		json.Unmarshal(TimeOffRequestString, &o.TimeOffRequest)
+	}
+	
+	if MarkedAsRead, ok := WfmusernotificationMap["markedAsRead"].(bool); ok {
+		o.MarkedAsRead = &MarkedAsRead
+	}
+	
+	if AgentNotification, ok := WfmusernotificationMap["agentNotification"].(bool); ok {
+		o.AgentNotification = &AgentNotification
+	}
+	
+	if OtherNotificationIdsInGroup, ok := WfmusernotificationMap["otherNotificationIdsInGroup"].([]interface{}); ok {
+		OtherNotificationIdsInGroupString, _ := json.Marshal(OtherNotificationIdsInGroup)
+		json.Unmarshal(OtherNotificationIdsInGroupString, &o.OtherNotificationIdsInGroup)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

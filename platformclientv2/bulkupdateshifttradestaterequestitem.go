@@ -21,13 +21,11 @@ type Bulkupdateshifttradestaterequestitem struct {
 
 }
 
-func (u *Bulkupdateshifttradestaterequestitem) MarshalJSON() ([]byte, error) {
+func (o *Bulkupdateshifttradestaterequestitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkupdateshifttradestaterequestitem
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Bulkupdateshifttradestaterequestitem) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkupdateshifttradestaterequestitem) UnmarshalJSON(b []byte) error {
+	var BulkupdateshifttradestaterequestitemMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkupdateshifttradestaterequestitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BulkupdateshifttradestaterequestitemMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := BulkupdateshifttradestaterequestitemMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Metadata, ok := BulkupdateshifttradestaterequestitemMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

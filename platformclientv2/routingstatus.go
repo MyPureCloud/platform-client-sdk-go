@@ -22,21 +22,19 @@ type Routingstatus struct {
 
 }
 
-func (u *Routingstatus) MarshalJSON() ([]byte, error) {
+func (o *Routingstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingstatus
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -45,13 +43,37 @@ func (u *Routingstatus) MarshalJSON() ([]byte, error) {
 		StartTime *string `json:"startTime,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
 		StartTime: StartTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingstatus) UnmarshalJSON(b []byte) error {
+	var RoutingstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := RoutingstatusMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Status, ok := RoutingstatusMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if startTimeString, ok := RoutingstatusMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

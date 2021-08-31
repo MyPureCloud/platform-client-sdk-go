@@ -25,13 +25,11 @@ type Defaultobjective struct {
 
 }
 
-func (u *Defaultobjective) MarshalJSON() ([]byte, error) {
+func (o *Defaultobjective) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Defaultobjective
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Defaultobjective) MarshalJSON() ([]byte, error) {
 		Enabled *bool `json:"enabled,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		TemplateId: u.TemplateId,
+		TemplateId: o.TemplateId,
 		
-		Zones: u.Zones,
+		Zones: o.Zones,
 		
-		Enabled: u.Enabled,
-		Alias:    (*Alias)(u),
+		Enabled: o.Enabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Defaultobjective) UnmarshalJSON(b []byte) error {
+	var DefaultobjectiveMap map[string]interface{}
+	err := json.Unmarshal(b, &DefaultobjectiveMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DefaultobjectiveMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if TemplateId, ok := DefaultobjectiveMap["templateId"].(string); ok {
+		o.TemplateId = &TemplateId
+	}
+	
+	if Zones, ok := DefaultobjectiveMap["zones"].([]interface{}); ok {
+		ZonesString, _ := json.Marshal(Zones)
+		json.Unmarshal(ZonesString, &o.Zones)
+	}
+	
+	if Enabled, ok := DefaultobjectiveMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

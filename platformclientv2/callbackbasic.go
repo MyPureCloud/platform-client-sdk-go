@@ -118,53 +118,51 @@ type Callbackbasic struct {
 
 }
 
-func (u *Callbackbasic) MarshalJSON() ([]byte, error) {
+func (o *Callbackbasic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callbackbasic
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
 	CallbackScheduledTime := new(string)
-	if u.CallbackScheduledTime != nil {
+	if o.CallbackScheduledTime != nil {
 		
-		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CallbackScheduledTime = timeutil.Strftime(o.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CallbackScheduledTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -221,35 +219,35 @@ func (u *Callbackbasic) MarshalJSON() ([]byte, error) {
 		CallerIdName *string `json:"callerIdName,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Segments: u.Segments,
+		Segments: o.Segments,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
-		DialerPreview: u.DialerPreview,
+		DialerPreview: o.DialerPreview,
 		
-		Voicemail: u.Voicemail,
+		Voicemail: o.Voicemail,
 		
-		CallbackNumbers: u.CallbackNumbers,
+		CallbackNumbers: o.CallbackNumbers,
 		
-		CallbackUserName: u.CallbackUserName,
+		CallbackUserName: o.CallbackUserName,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		ExternalCampaign: u.ExternalCampaign,
+		ExternalCampaign: o.ExternalCampaign,
 		
-		SkipEnabled: u.SkipEnabled,
+		SkipEnabled: o.SkipEnabled,
 		
-		TimeoutSeconds: u.TimeoutSeconds,
+		TimeoutSeconds: o.TimeoutSeconds,
 		
 		StartAlertingTime: StartAlertingTime,
 		
@@ -259,23 +257,154 @@ func (u *Callbackbasic) MarshalJSON() ([]byte, error) {
 		
 		CallbackScheduledTime: CallbackScheduledTime,
 		
-		AutomatedCallbackConfigId: u.AutomatedCallbackConfigId,
+		AutomatedCallbackConfigId: o.AutomatedCallbackConfigId,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		CallerId: u.CallerId,
+		CallerId: o.CallerId,
 		
-		CallerIdName: u.CallerIdName,
-		Alias:    (*Alias)(u),
+		CallerIdName: o.CallerIdName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callbackbasic) UnmarshalJSON(b []byte) error {
+	var CallbackbasicMap map[string]interface{}
+	err := json.Unmarshal(b, &CallbackbasicMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := CallbackbasicMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := CallbackbasicMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Segments, ok := CallbackbasicMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+	if Direction, ok := CallbackbasicMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Held, ok := CallbackbasicMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if DisconnectType, ok := CallbackbasicMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := CallbackbasicMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if DialerPreview, ok := CallbackbasicMap["dialerPreview"].(map[string]interface{}); ok {
+		DialerPreviewString, _ := json.Marshal(DialerPreview)
+		json.Unmarshal(DialerPreviewString, &o.DialerPreview)
+	}
+	
+	if Voicemail, ok := CallbackbasicMap["voicemail"].(map[string]interface{}); ok {
+		VoicemailString, _ := json.Marshal(Voicemail)
+		json.Unmarshal(VoicemailString, &o.Voicemail)
+	}
+	
+	if CallbackNumbers, ok := CallbackbasicMap["callbackNumbers"].([]interface{}); ok {
+		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
+		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
+	}
+	
+	if CallbackUserName, ok := CallbackbasicMap["callbackUserName"].(string); ok {
+		o.CallbackUserName = &CallbackUserName
+	}
+	
+	if ScriptId, ok := CallbackbasicMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if ExternalCampaign, ok := CallbackbasicMap["externalCampaign"].(bool); ok {
+		o.ExternalCampaign = &ExternalCampaign
+	}
+	
+	if SkipEnabled, ok := CallbackbasicMap["skipEnabled"].(bool); ok {
+		o.SkipEnabled = &SkipEnabled
+	}
+	
+	if TimeoutSeconds, ok := CallbackbasicMap["timeoutSeconds"].(float64); ok {
+		TimeoutSecondsInt := int(TimeoutSeconds)
+		o.TimeoutSeconds = &TimeoutSecondsInt
+	}
+	
+	if startAlertingTimeString, ok := CallbackbasicMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := CallbackbasicMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := CallbackbasicMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if callbackScheduledTimeString, ok := CallbackbasicMap["callbackScheduledTime"].(string); ok {
+		CallbackScheduledTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callbackScheduledTimeString)
+		o.CallbackScheduledTime = &CallbackScheduledTime
+	}
+	
+	if AutomatedCallbackConfigId, ok := CallbackbasicMap["automatedCallbackConfigId"].(string); ok {
+		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
+	}
+	
+	if Provider, ok := CallbackbasicMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if PeerId, ok := CallbackbasicMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if Wrapup, ok := CallbackbasicMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := CallbackbasicMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := CallbackbasicMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if CallerId, ok := CallbackbasicMap["callerId"].(string); ok {
+		o.CallerId = &CallerId
+	}
+	
+	if CallerIdName, ok := CallbackbasicMap["callerIdName"].(string); ok {
+		o.CallerIdName = &CallerIdName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

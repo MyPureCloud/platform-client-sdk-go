@@ -17,24 +17,41 @@ type Edgemetricstopicurireference struct {
 
 }
 
-func (u *Edgemetricstopicurireference) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricstopicurireference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricstopicurireference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricstopicurireference) UnmarshalJSON(b []byte) error {
+	var EdgemetricstopicurireferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricstopicurireferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgemetricstopicurireferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EdgemetricstopicurireferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

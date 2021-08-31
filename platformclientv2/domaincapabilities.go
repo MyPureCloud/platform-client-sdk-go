@@ -33,13 +33,11 @@ type Domaincapabilities struct {
 
 }
 
-func (u *Domaincapabilities) MarshalJSON() ([]byte, error) {
+func (o *Domaincapabilities) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domaincapabilities
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Domaincapabilities) MarshalJSON() ([]byte, error) {
 		PingEnabled *bool `json:"pingEnabled,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Dhcp: u.Dhcp,
+		Dhcp: o.Dhcp,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		AutoMetric: u.AutoMetric,
+		AutoMetric: o.AutoMetric,
 		
-		SupportsMetric: u.SupportsMetric,
+		SupportsMetric: o.SupportsMetric,
 		
-		PingEnabled: u.PingEnabled,
-		Alias:    (*Alias)(u),
+		PingEnabled: o.PingEnabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domaincapabilities) UnmarshalJSON(b []byte) error {
+	var DomaincapabilitiesMap map[string]interface{}
+	err := json.Unmarshal(b, &DomaincapabilitiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := DomaincapabilitiesMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Dhcp, ok := DomaincapabilitiesMap["dhcp"].(bool); ok {
+		o.Dhcp = &Dhcp
+	}
+	
+	if Metric, ok := DomaincapabilitiesMap["metric"].(float64); ok {
+		MetricInt := int(Metric)
+		o.Metric = &MetricInt
+	}
+	
+	if AutoMetric, ok := DomaincapabilitiesMap["autoMetric"].(bool); ok {
+		o.AutoMetric = &AutoMetric
+	}
+	
+	if SupportsMetric, ok := DomaincapabilitiesMap["supportsMetric"].(bool); ok {
+		o.SupportsMetric = &SupportsMetric
+	}
+	
+	if PingEnabled, ok := DomaincapabilitiesMap["pingEnabled"].(bool); ok {
+		o.PingEnabled = &PingEnabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

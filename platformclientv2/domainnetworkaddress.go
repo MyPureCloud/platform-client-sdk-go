@@ -25,13 +25,11 @@ type Domainnetworkaddress struct {
 
 }
 
-func (u *Domainnetworkaddress) MarshalJSON() ([]byte, error) {
+func (o *Domainnetworkaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainnetworkaddress
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Domainnetworkaddress) MarshalJSON() ([]byte, error) {
 		Family *int `json:"family,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		Persistent: u.Persistent,
+		Persistent: o.Persistent,
 		
-		Family: u.Family,
-		Alias:    (*Alias)(u),
+		Family: o.Family,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainnetworkaddress) UnmarshalJSON(b []byte) error {
+	var DomainnetworkaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainnetworkaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := DomainnetworkaddressMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Address, ok := DomainnetworkaddressMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if Persistent, ok := DomainnetworkaddressMap["persistent"].(bool); ok {
+		o.Persistent = &Persistent
+	}
+	
+	if Family, ok := DomainnetworkaddressMap["family"].(float64); ok {
+		FamilyInt := int(Family)
+		o.Family = &FamilyInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

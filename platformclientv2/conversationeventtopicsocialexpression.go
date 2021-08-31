@@ -86,37 +86,35 @@ type Conversationeventtopicsocialexpression struct {
 
 }
 
-func (u *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicsocialexpression
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -157,29 +155,29 @@ func (u *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		SocialMediaId: u.SocialMediaId,
+		SocialMediaId: o.SocialMediaId,
 		
-		SocialMediaHub: u.SocialMediaHub,
+		SocialMediaHub: o.SocialMediaHub,
 		
-		SocialUserName: u.SocialUserName,
+		SocialUserName: o.SocialUserName,
 		
-		PreviewText: u.PreviewText,
+		PreviewText: o.PreviewText,
 		
-		RecordingId: u.RecordingId,
+		RecordingId: o.RecordingId,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
@@ -187,15 +185,108 @@ func (u *Conversationeventtopicsocialexpression) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicsocialexpression) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicsocialexpressionMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicsocialexpressionMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := ConversationeventtopicsocialexpressionMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := ConversationeventtopicsocialexpressionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SocialMediaId, ok := ConversationeventtopicsocialexpressionMap["socialMediaId"].(string); ok {
+		o.SocialMediaId = &SocialMediaId
+	}
+	
+	if SocialMediaHub, ok := ConversationeventtopicsocialexpressionMap["socialMediaHub"].(string); ok {
+		o.SocialMediaHub = &SocialMediaHub
+	}
+	
+	if SocialUserName, ok := ConversationeventtopicsocialexpressionMap["socialUserName"].(string); ok {
+		o.SocialUserName = &SocialUserName
+	}
+	
+	if PreviewText, ok := ConversationeventtopicsocialexpressionMap["previewText"].(string); ok {
+		o.PreviewText = &PreviewText
+	}
+	
+	if RecordingId, ok := ConversationeventtopicsocialexpressionMap["recordingId"].(string); ok {
+		o.RecordingId = &RecordingId
+	}
+	
+	if Held, ok := ConversationeventtopicsocialexpressionMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if Provider, ok := ConversationeventtopicsocialexpressionMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := ConversationeventtopicsocialexpressionMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := ConversationeventtopicsocialexpressionMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if DisconnectType, ok := ConversationeventtopicsocialexpressionMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := ConversationeventtopicsocialexpressionMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if connectedTimeString, ok := ConversationeventtopicsocialexpressionMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := ConversationeventtopicsocialexpressionMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Wrapup, ok := ConversationeventtopicsocialexpressionMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := ConversationeventtopicsocialexpressionMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := ConversationeventtopicsocialexpressionMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AdditionalProperties, ok := ConversationeventtopicsocialexpressionMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Nluconfusionmatrixcolumn struct {
 
 }
 
-func (u *Nluconfusionmatrixcolumn) MarshalJSON() ([]byte, error) {
+func (o *Nluconfusionmatrixcolumn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nluconfusionmatrixcolumn
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Value *float32 `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nluconfusionmatrixcolumn) UnmarshalJSON(b []byte) error {
+	var NluconfusionmatrixcolumnMap map[string]interface{}
+	err := json.Unmarshal(b, &NluconfusionmatrixcolumnMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := NluconfusionmatrixcolumnMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Value, ok := NluconfusionmatrixcolumnMap["value"].(float64); ok {
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

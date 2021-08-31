@@ -9,16 +9,25 @@ import (
 // Participantmetrics
 type Participantmetrics struct { }
 
-func (u *Participantmetrics) MarshalJSON() ([]byte, error) {
+func (o *Participantmetrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Participantmetrics
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Participantmetrics) UnmarshalJSON(b []byte) error {
+	var ParticipantmetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &ParticipantmetricsMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

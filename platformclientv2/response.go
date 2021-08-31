@@ -66,21 +66,19 @@ type Response struct {
 
 }
 
-func (u *Response) MarshalJSON() ([]byte, error) {
+func (o *Response) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Response
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -111,35 +109,111 @@ func (u *Response) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Libraries: u.Libraries,
+		Libraries: o.Libraries,
 		
-		Texts: u.Texts,
+		Texts: o.Texts,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		InteractionType: u.InteractionType,
+		InteractionType: o.InteractionType,
 		
-		Substitutions: u.Substitutions,
+		Substitutions: o.Substitutions,
 		
-		SubstitutionsSchema: u.SubstitutionsSchema,
+		SubstitutionsSchema: o.SubstitutionsSchema,
 		
-		ResponseType: u.ResponseType,
+		ResponseType: o.ResponseType,
 		
-		MessagingTemplate: u.MessagingTemplate,
+		MessagingTemplate: o.MessagingTemplate,
 		
-		Assets: u.Assets,
+		Assets: o.Assets,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Response) UnmarshalJSON(b []byte) error {
+	var ResponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ResponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ResponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ResponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := ResponseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Libraries, ok := ResponseMap["libraries"].([]interface{}); ok {
+		LibrariesString, _ := json.Marshal(Libraries)
+		json.Unmarshal(LibrariesString, &o.Libraries)
+	}
+	
+	if Texts, ok := ResponseMap["texts"].([]interface{}); ok {
+		TextsString, _ := json.Marshal(Texts)
+		json.Unmarshal(TextsString, &o.Texts)
+	}
+	
+	if CreatedBy, ok := ResponseMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := ResponseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if InteractionType, ok := ResponseMap["interactionType"].(string); ok {
+		o.InteractionType = &InteractionType
+	}
+	
+	if Substitutions, ok := ResponseMap["substitutions"].([]interface{}); ok {
+		SubstitutionsString, _ := json.Marshal(Substitutions)
+		json.Unmarshal(SubstitutionsString, &o.Substitutions)
+	}
+	
+	if SubstitutionsSchema, ok := ResponseMap["substitutionsSchema"].(map[string]interface{}); ok {
+		SubstitutionsSchemaString, _ := json.Marshal(SubstitutionsSchema)
+		json.Unmarshal(SubstitutionsSchemaString, &o.SubstitutionsSchema)
+	}
+	
+	if ResponseType, ok := ResponseMap["responseType"].(string); ok {
+		o.ResponseType = &ResponseType
+	}
+	
+	if MessagingTemplate, ok := ResponseMap["messagingTemplate"].(map[string]interface{}); ok {
+		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
+		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
+	}
+	
+	if Assets, ok := ResponseMap["assets"].([]interface{}); ok {
+		AssetsString, _ := json.Marshal(Assets)
+		json.Unmarshal(AssetsString, &o.Assets)
+	}
+	
+	if SelfUri, ok := ResponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

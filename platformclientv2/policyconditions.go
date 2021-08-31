@@ -41,13 +41,11 @@ type Policyconditions struct {
 
 }
 
-func (u *Policyconditions) MarshalJSON() ([]byte, error) {
+func (o *Policyconditions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Policyconditions
-
 	
-
 	return json.Marshal(&struct { 
 		ForUsers *[]User `json:"forUsers,omitempty"`
 		
@@ -66,23 +64,74 @@ func (u *Policyconditions) MarshalJSON() ([]byte, error) {
 		TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 		*Alias
 	}{ 
-		ForUsers: u.ForUsers,
+		ForUsers: o.ForUsers,
 		
-		Directions: u.Directions,
+		Directions: o.Directions,
 		
-		DateRanges: u.DateRanges,
+		DateRanges: o.DateRanges,
 		
-		MediaTypes: u.MediaTypes,
+		MediaTypes: o.MediaTypes,
 		
-		ForQueues: u.ForQueues,
+		ForQueues: o.ForQueues,
 		
-		Duration: u.Duration,
+		Duration: o.Duration,
 		
-		WrapupCodes: u.WrapupCodes,
+		WrapupCodes: o.WrapupCodes,
 		
-		TimeAllowed: u.TimeAllowed,
-		Alias:    (*Alias)(u),
+		TimeAllowed: o.TimeAllowed,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Policyconditions) UnmarshalJSON(b []byte) error {
+	var PolicyconditionsMap map[string]interface{}
+	err := json.Unmarshal(b, &PolicyconditionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ForUsers, ok := PolicyconditionsMap["forUsers"].([]interface{}); ok {
+		ForUsersString, _ := json.Marshal(ForUsers)
+		json.Unmarshal(ForUsersString, &o.ForUsers)
+	}
+	
+	if Directions, ok := PolicyconditionsMap["directions"].([]interface{}); ok {
+		DirectionsString, _ := json.Marshal(Directions)
+		json.Unmarshal(DirectionsString, &o.Directions)
+	}
+	
+	if DateRanges, ok := PolicyconditionsMap["dateRanges"].([]interface{}); ok {
+		DateRangesString, _ := json.Marshal(DateRanges)
+		json.Unmarshal(DateRangesString, &o.DateRanges)
+	}
+	
+	if MediaTypes, ok := PolicyconditionsMap["mediaTypes"].([]interface{}); ok {
+		MediaTypesString, _ := json.Marshal(MediaTypes)
+		json.Unmarshal(MediaTypesString, &o.MediaTypes)
+	}
+	
+	if ForQueues, ok := PolicyconditionsMap["forQueues"].([]interface{}); ok {
+		ForQueuesString, _ := json.Marshal(ForQueues)
+		json.Unmarshal(ForQueuesString, &o.ForQueues)
+	}
+	
+	if Duration, ok := PolicyconditionsMap["duration"].(map[string]interface{}); ok {
+		DurationString, _ := json.Marshal(Duration)
+		json.Unmarshal(DurationString, &o.Duration)
+	}
+	
+	if WrapupCodes, ok := PolicyconditionsMap["wrapupCodes"].([]interface{}); ok {
+		WrapupCodesString, _ := json.Marshal(WrapupCodes)
+		json.Unmarshal(WrapupCodesString, &o.WrapupCodes)
+	}
+	
+	if TimeAllowed, ok := PolicyconditionsMap["timeAllowed"].(map[string]interface{}); ok {
+		TimeAllowedString, _ := json.Marshal(TimeAllowed)
+		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

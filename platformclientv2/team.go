@@ -38,21 +38,19 @@ type Team struct {
 
 }
 
-func (u *Team) MarshalJSON() ([]byte, error) {
+func (o *Team) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Team
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Team) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
 		DateModified: DateModified,
 		
-		MemberCount: u.MemberCount,
+		MemberCount: o.MemberCount,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Team) UnmarshalJSON(b []byte) error {
+	var TeamMap map[string]interface{}
+	err := json.Unmarshal(b, &TeamMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TeamMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TeamMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := TeamMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Description, ok := TeamMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if dateModifiedString, ok := TeamMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if MemberCount, ok := TeamMap["memberCount"].(float64); ok {
+		MemberCountInt := int(MemberCount)
+		o.MemberCount = &MemberCountInt
+	}
+	
+	if SelfUri, ok := TeamMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

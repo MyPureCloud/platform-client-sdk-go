@@ -33,13 +33,11 @@ type Validationlimits struct {
 
 }
 
-func (u *Validationlimits) MarshalJSON() ([]byte, error) {
+func (o *Validationlimits) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Validationlimits
-
 	
-
 	return json.Marshal(&struct { 
 		MinLength *Minlength `json:"minLength,omitempty"`
 		
@@ -54,19 +52,60 @@ func (u *Validationlimits) MarshalJSON() ([]byte, error) {
 		Maximum *Maxlength `json:"maximum,omitempty"`
 		*Alias
 	}{ 
-		MinLength: u.MinLength,
+		MinLength: o.MinLength,
 		
-		MaxLength: u.MaxLength,
+		MaxLength: o.MaxLength,
 		
-		MinItems: u.MinItems,
+		MinItems: o.MinItems,
 		
-		MaxItems: u.MaxItems,
+		MaxItems: o.MaxItems,
 		
-		Minimum: u.Minimum,
+		Minimum: o.Minimum,
 		
-		Maximum: u.Maximum,
-		Alias:    (*Alias)(u),
+		Maximum: o.Maximum,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Validationlimits) UnmarshalJSON(b []byte) error {
+	var ValidationlimitsMap map[string]interface{}
+	err := json.Unmarshal(b, &ValidationlimitsMap)
+	if err != nil {
+		return err
+	}
+	
+	if MinLength, ok := ValidationlimitsMap["minLength"].(map[string]interface{}); ok {
+		MinLengthString, _ := json.Marshal(MinLength)
+		json.Unmarshal(MinLengthString, &o.MinLength)
+	}
+	
+	if MaxLength, ok := ValidationlimitsMap["maxLength"].(map[string]interface{}); ok {
+		MaxLengthString, _ := json.Marshal(MaxLength)
+		json.Unmarshal(MaxLengthString, &o.MaxLength)
+	}
+	
+	if MinItems, ok := ValidationlimitsMap["minItems"].(map[string]interface{}); ok {
+		MinItemsString, _ := json.Marshal(MinItems)
+		json.Unmarshal(MinItemsString, &o.MinItems)
+	}
+	
+	if MaxItems, ok := ValidationlimitsMap["maxItems"].(map[string]interface{}); ok {
+		MaxItemsString, _ := json.Marshal(MaxItems)
+		json.Unmarshal(MaxItemsString, &o.MaxItems)
+	}
+	
+	if Minimum, ok := ValidationlimitsMap["minimum"].(map[string]interface{}); ok {
+		MinimumString, _ := json.Marshal(Minimum)
+		json.Unmarshal(MinimumString, &o.Minimum)
+	}
+	
+	if Maximum, ok := ValidationlimitsMap["maximum"].(map[string]interface{}); ok {
+		MaximumString, _ := json.Marshal(Maximum)
+		json.Unmarshal(MaximumString, &o.Maximum)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

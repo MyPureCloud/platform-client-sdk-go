@@ -74,29 +74,27 @@ type Phonebase struct {
 
 }
 
-func (u *Phonebase) MarshalJSON() ([]byte, error) {
+func (o *Phonebase) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonebase
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -131,39 +129,121 @@ func (u *Phonebase) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		PhoneMetaBase: u.PhoneMetaBase,
+		PhoneMetaBase: o.PhoneMetaBase,
 		
-		Lines: u.Lines,
+		Lines: o.Lines,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		Capabilities: u.Capabilities,
+		Capabilities: o.Capabilities,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonebase) UnmarshalJSON(b []byte) error {
+	var PhonebaseMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonebaseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PhonebaseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PhonebaseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := PhonebaseMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := PhonebaseMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := PhonebaseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := PhonebaseMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := PhonebaseMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := PhonebaseMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := PhonebaseMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := PhonebaseMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := PhonebaseMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if PhoneMetaBase, ok := PhonebaseMap["phoneMetaBase"].(map[string]interface{}); ok {
+		PhoneMetaBaseString, _ := json.Marshal(PhoneMetaBase)
+		json.Unmarshal(PhoneMetaBaseString, &o.PhoneMetaBase)
+	}
+	
+	if Lines, ok := PhonebaseMap["lines"].([]interface{}); ok {
+		LinesString, _ := json.Marshal(Lines)
+		json.Unmarshal(LinesString, &o.Lines)
+	}
+	
+	if Properties, ok := PhonebaseMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if Capabilities, ok := PhonebaseMap["capabilities"].(map[string]interface{}); ok {
+		CapabilitiesString, _ := json.Marshal(Capabilities)
+		json.Unmarshal(CapabilitiesString, &o.Capabilities)
+	}
+	
+	if SelfUri, ok := PhonebaseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

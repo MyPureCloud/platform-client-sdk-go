@@ -50,29 +50,27 @@ type Predictor struct {
 
 }
 
-func (u *Predictor) MarshalJSON() ([]byte, error) {
+func (o *Predictor) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Predictor
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,84 @@ func (u *Predictor) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Queues: u.Queues,
+		Queues: o.Queues,
 		
-		Kpi: u.Kpi,
+		Kpi: o.Kpi,
 		
-		RoutingTimeoutSeconds: u.RoutingTimeoutSeconds,
+		RoutingTimeoutSeconds: o.RoutingTimeoutSeconds,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		WorkloadBalancingConfig: u.WorkloadBalancingConfig,
+		WorkloadBalancingConfig: o.WorkloadBalancingConfig,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Predictor) UnmarshalJSON(b []byte) error {
+	var PredictorMap map[string]interface{}
+	err := json.Unmarshal(b, &PredictorMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PredictorMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Queues, ok := PredictorMap["queues"].([]interface{}); ok {
+		QueuesString, _ := json.Marshal(Queues)
+		json.Unmarshal(QueuesString, &o.Queues)
+	}
+	
+	if Kpi, ok := PredictorMap["kpi"].(string); ok {
+		o.Kpi = &Kpi
+	}
+	
+	if RoutingTimeoutSeconds, ok := PredictorMap["routingTimeoutSeconds"].(float64); ok {
+		RoutingTimeoutSecondsInt := int(RoutingTimeoutSeconds)
+		o.RoutingTimeoutSeconds = &RoutingTimeoutSecondsInt
+	}
+	
+	if Schedule, ok := PredictorMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if State, ok := PredictorMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateCreatedString, ok := PredictorMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := PredictorMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if WorkloadBalancingConfig, ok := PredictorMap["workloadBalancingConfig"].(map[string]interface{}); ok {
+		WorkloadBalancingConfigString, _ := json.Marshal(WorkloadBalancingConfig)
+		json.Unmarshal(WorkloadBalancingConfigString, &o.WorkloadBalancingConfig)
+	}
+	
+	if SelfUri, ok := PredictorMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

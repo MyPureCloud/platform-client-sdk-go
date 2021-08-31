@@ -21,13 +21,11 @@ type Nlufeedbackrequest struct {
 
 }
 
-func (u *Nlufeedbackrequest) MarshalJSON() ([]byte, error) {
+func (o *Nlufeedbackrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Nlufeedbackrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Nlufeedbackrequest) MarshalJSON() ([]byte, error) {
 		VersionId *string `json:"versionId,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
-		VersionId: u.VersionId,
-		Alias:    (*Alias)(u),
+		VersionId: o.VersionId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Nlufeedbackrequest) UnmarshalJSON(b []byte) error {
+	var NlufeedbackrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &NlufeedbackrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := NlufeedbackrequestMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Intents, ok := NlufeedbackrequestMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if VersionId, ok := NlufeedbackrequestMap["versionId"].(string); ok {
+		o.VersionId = &VersionId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

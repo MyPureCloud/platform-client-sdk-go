@@ -45,13 +45,11 @@ type Queueutilizationdiagnostic struct {
 
 }
 
-func (u *Queueutilizationdiagnostic) MarshalJSON() ([]byte, error) {
+func (o *Queueutilizationdiagnostic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueutilizationdiagnostic
-
 	
-
 	return json.Marshal(&struct { 
 		Queue *Domainentityref `json:"queue,omitempty"`
 		
@@ -72,25 +70,81 @@ func (u *Queueutilizationdiagnostic) MarshalJSON() ([]byte, error) {
 		UsersOnANonCampaignCall *int `json:"usersOnANonCampaignCall,omitempty"`
 		*Alias
 	}{ 
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		UsersInQueue: u.UsersInQueue,
+		UsersInQueue: o.UsersInQueue,
 		
-		ActiveUsersInQueue: u.ActiveUsersInQueue,
+		ActiveUsersInQueue: o.ActiveUsersInQueue,
 		
-		UsersOnQueue: u.UsersOnQueue,
+		UsersOnQueue: o.UsersOnQueue,
 		
-		UsersNotUtilized: u.UsersNotUtilized,
+		UsersNotUtilized: o.UsersNotUtilized,
 		
-		UsersOnQueueWithStation: u.UsersOnQueueWithStation,
+		UsersOnQueueWithStation: o.UsersOnQueueWithStation,
 		
-		UsersOnACampaignCall: u.UsersOnACampaignCall,
+		UsersOnACampaignCall: o.UsersOnACampaignCall,
 		
-		UsersOnDifferentEdgeGroup: u.UsersOnDifferentEdgeGroup,
+		UsersOnDifferentEdgeGroup: o.UsersOnDifferentEdgeGroup,
 		
-		UsersOnANonCampaignCall: u.UsersOnANonCampaignCall,
-		Alias:    (*Alias)(u),
+		UsersOnANonCampaignCall: o.UsersOnANonCampaignCall,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueutilizationdiagnostic) UnmarshalJSON(b []byte) error {
+	var QueueutilizationdiagnosticMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueutilizationdiagnosticMap)
+	if err != nil {
+		return err
+	}
+	
+	if Queue, ok := QueueutilizationdiagnosticMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if UsersInQueue, ok := QueueutilizationdiagnosticMap["usersInQueue"].(float64); ok {
+		UsersInQueueInt := int(UsersInQueue)
+		o.UsersInQueue = &UsersInQueueInt
+	}
+	
+	if ActiveUsersInQueue, ok := QueueutilizationdiagnosticMap["activeUsersInQueue"].(float64); ok {
+		ActiveUsersInQueueInt := int(ActiveUsersInQueue)
+		o.ActiveUsersInQueue = &ActiveUsersInQueueInt
+	}
+	
+	if UsersOnQueue, ok := QueueutilizationdiagnosticMap["usersOnQueue"].(float64); ok {
+		UsersOnQueueInt := int(UsersOnQueue)
+		o.UsersOnQueue = &UsersOnQueueInt
+	}
+	
+	if UsersNotUtilized, ok := QueueutilizationdiagnosticMap["usersNotUtilized"].(float64); ok {
+		UsersNotUtilizedInt := int(UsersNotUtilized)
+		o.UsersNotUtilized = &UsersNotUtilizedInt
+	}
+	
+	if UsersOnQueueWithStation, ok := QueueutilizationdiagnosticMap["usersOnQueueWithStation"].(float64); ok {
+		UsersOnQueueWithStationInt := int(UsersOnQueueWithStation)
+		o.UsersOnQueueWithStation = &UsersOnQueueWithStationInt
+	}
+	
+	if UsersOnACampaignCall, ok := QueueutilizationdiagnosticMap["usersOnACampaignCall"].(float64); ok {
+		UsersOnACampaignCallInt := int(UsersOnACampaignCall)
+		o.UsersOnACampaignCall = &UsersOnACampaignCallInt
+	}
+	
+	if UsersOnDifferentEdgeGroup, ok := QueueutilizationdiagnosticMap["usersOnDifferentEdgeGroup"].(float64); ok {
+		UsersOnDifferentEdgeGroupInt := int(UsersOnDifferentEdgeGroup)
+		o.UsersOnDifferentEdgeGroup = &UsersOnDifferentEdgeGroupInt
+	}
+	
+	if UsersOnANonCampaignCall, ok := QueueutilizationdiagnosticMap["usersOnANonCampaignCall"].(float64); ok {
+		UsersOnANonCampaignCallInt := int(UsersOnANonCampaignCall)
+		o.UsersOnANonCampaignCall = &UsersOnANonCampaignCallInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

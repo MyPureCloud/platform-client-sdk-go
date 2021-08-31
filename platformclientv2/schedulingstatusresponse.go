@@ -29,13 +29,11 @@ type Schedulingstatusresponse struct {
 
 }
 
-func (u *Schedulingstatusresponse) MarshalJSON() ([]byte, error) {
+func (o *Schedulingstatusresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulingstatusresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Schedulingstatusresponse) MarshalJSON() ([]byte, error) {
 		PercentComplete *int `json:"percentComplete,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		ErrorDetails: u.ErrorDetails,
+		ErrorDetails: o.ErrorDetails,
 		
-		SchedulingResultUri: u.SchedulingResultUri,
+		SchedulingResultUri: o.SchedulingResultUri,
 		
-		PercentComplete: u.PercentComplete,
-		Alias:    (*Alias)(u),
+		PercentComplete: o.PercentComplete,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulingstatusresponse) UnmarshalJSON(b []byte) error {
+	var SchedulingstatusresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulingstatusresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SchedulingstatusresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Status, ok := SchedulingstatusresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if ErrorDetails, ok := SchedulingstatusresponseMap["errorDetails"].([]interface{}); ok {
+		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
+		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
+	}
+	
+	if SchedulingResultUri, ok := SchedulingstatusresponseMap["schedulingResultUri"].(string); ok {
+		o.SchedulingResultUri = &SchedulingResultUri
+	}
+	
+	if PercentComplete, ok := SchedulingstatusresponseMap["percentComplete"].(float64); ok {
+		PercentCompleteInt := int(PercentComplete)
+		o.PercentComplete = &PercentCompleteInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

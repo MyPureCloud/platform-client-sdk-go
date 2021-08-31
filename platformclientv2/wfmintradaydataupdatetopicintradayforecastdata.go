@@ -21,13 +21,11 @@ type Wfmintradaydataupdatetopicintradayforecastdata struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradayforecastdata) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradayforecastdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradayforecastdata
-
 	
-
 	return json.Marshal(&struct { 
 		Offered *float32 `json:"offered,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Wfmintradaydataupdatetopicintradayforecastdata) MarshalJSON() ([]byte, 
 		AverageAfterCallWorkSeconds *float32 `json:"averageAfterCallWorkSeconds,omitempty"`
 		*Alias
 	}{ 
-		Offered: u.Offered,
+		Offered: o.Offered,
 		
-		AverageTalkTimeSeconds: u.AverageTalkTimeSeconds,
+		AverageTalkTimeSeconds: o.AverageTalkTimeSeconds,
 		
-		AverageAfterCallWorkSeconds: u.AverageAfterCallWorkSeconds,
-		Alias:    (*Alias)(u),
+		AverageAfterCallWorkSeconds: o.AverageAfterCallWorkSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradayforecastdata) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradayforecastdataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradayforecastdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Offered, ok := WfmintradaydataupdatetopicintradayforecastdataMap["offered"].(float64); ok {
+		OfferedFloat32 := float32(Offered)
+		o.Offered = &OfferedFloat32
+	}
+	
+	if AverageTalkTimeSeconds, ok := WfmintradaydataupdatetopicintradayforecastdataMap["averageTalkTimeSeconds"].(float64); ok {
+		AverageTalkTimeSecondsFloat32 := float32(AverageTalkTimeSeconds)
+		o.AverageTalkTimeSeconds = &AverageTalkTimeSecondsFloat32
+	}
+	
+	if AverageAfterCallWorkSeconds, ok := WfmintradaydataupdatetopicintradayforecastdataMap["averageAfterCallWorkSeconds"].(float64); ok {
+		AverageAfterCallWorkSecondsFloat32 := float32(AverageAfterCallWorkSeconds)
+		o.AverageAfterCallWorkSeconds = &AverageAfterCallWorkSecondsFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

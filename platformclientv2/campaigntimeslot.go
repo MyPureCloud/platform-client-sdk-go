@@ -21,13 +21,11 @@ type Campaigntimeslot struct {
 
 }
 
-func (u *Campaigntimeslot) MarshalJSON() ([]byte, error) {
+func (o *Campaigntimeslot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaigntimeslot
-
 	
-
 	return json.Marshal(&struct { 
 		StartTime *string `json:"startTime,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Campaigntimeslot) MarshalJSON() ([]byte, error) {
 		Day *int `json:"day,omitempty"`
 		*Alias
 	}{ 
-		StartTime: u.StartTime,
+		StartTime: o.StartTime,
 		
-		StopTime: u.StopTime,
+		StopTime: o.StopTime,
 		
-		Day: u.Day,
-		Alias:    (*Alias)(u),
+		Day: o.Day,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaigntimeslot) UnmarshalJSON(b []byte) error {
+	var CampaigntimeslotMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaigntimeslotMap)
+	if err != nil {
+		return err
+	}
+	
+	if StartTime, ok := CampaigntimeslotMap["startTime"].(string); ok {
+		o.StartTime = &StartTime
+	}
+	
+	if StopTime, ok := CampaigntimeslotMap["stopTime"].(string); ok {
+		o.StopTime = &StopTime
+	}
+	
+	if Day, ok := CampaigntimeslotMap["day"].(float64); ok {
+		DayInt := int(Day)
+		o.Day = &DayInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

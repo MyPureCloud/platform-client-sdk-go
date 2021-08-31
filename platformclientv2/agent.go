@@ -13,20 +13,33 @@ type Agent struct {
 
 }
 
-func (u *Agent) MarshalJSON() ([]byte, error) {
+func (o *Agent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agent
-
 	
-
 	return json.Marshal(&struct { 
 		Stage *string `json:"stage,omitempty"`
 		*Alias
 	}{ 
-		Stage: u.Stage,
-		Alias:    (*Alias)(u),
+		Stage: o.Stage,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agent) UnmarshalJSON(b []byte) error {
+	var AgentMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Stage, ok := AgentMap["stage"].(string); ok {
+		o.Stage = &Stage
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

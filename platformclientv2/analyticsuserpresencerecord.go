@@ -26,29 +26,27 @@ type Analyticsuserpresencerecord struct {
 
 }
 
-func (u *Analyticsuserpresencerecord) MarshalJSON() ([]byte, error) {
+func (o *Analyticsuserpresencerecord) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsuserpresencerecord
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartTime *string `json:"startTime,omitempty"`
 		
@@ -63,11 +61,40 @@ func (u *Analyticsuserpresencerecord) MarshalJSON() ([]byte, error) {
 		
 		EndTime: EndTime,
 		
-		SystemPresence: u.SystemPresence,
+		SystemPresence: o.SystemPresence,
 		
-		OrganizationPresenceId: u.OrganizationPresenceId,
-		Alias:    (*Alias)(u),
+		OrganizationPresenceId: o.OrganizationPresenceId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsuserpresencerecord) UnmarshalJSON(b []byte) error {
+	var AnalyticsuserpresencerecordMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsuserpresencerecordMap)
+	if err != nil {
+		return err
+	}
+	
+	if startTimeString, ok := AnalyticsuserpresencerecordMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := AnalyticsuserpresencerecordMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if SystemPresence, ok := AnalyticsuserpresencerecordMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+	
+	if OrganizationPresenceId, ok := AnalyticsuserpresencerecordMap["organizationPresenceId"].(string); ok {
+		o.OrganizationPresenceId = &OrganizationPresenceId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

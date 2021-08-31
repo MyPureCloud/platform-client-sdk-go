@@ -33,13 +33,11 @@ type Dnclistdivisionview struct {
 
 }
 
-func (u *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
+func (o *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dnclistdivisionview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		ImportStatus: u.ImportStatus,
+		ImportStatus: o.ImportStatus,
 		
-		Size: u.Size,
+		Size: o.Size,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dnclistdivisionview) UnmarshalJSON(b []byte) error {
+	var DnclistdivisionviewMap map[string]interface{}
+	err := json.Unmarshal(b, &DnclistdivisionviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DnclistdivisionviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DnclistdivisionviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := DnclistdivisionviewMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if ImportStatus, ok := DnclistdivisionviewMap["importStatus"].(map[string]interface{}); ok {
+		ImportStatusString, _ := json.Marshal(ImportStatus)
+		json.Unmarshal(ImportStatusString, &o.ImportStatus)
+	}
+	
+	if Size, ok := DnclistdivisionviewMap["size"].(float64); ok {
+		SizeInt := int(Size)
+		o.Size = &SizeInt
+	}
+	
+	if SelfUri, ok := DnclistdivisionviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

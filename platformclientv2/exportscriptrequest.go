@@ -17,24 +17,41 @@ type Exportscriptrequest struct {
 
 }
 
-func (u *Exportscriptrequest) MarshalJSON() ([]byte, error) {
+func (o *Exportscriptrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Exportscriptrequest
-
 	
-
 	return json.Marshal(&struct { 
 		FileName *string `json:"fileName,omitempty"`
 		
 		VersionId *string `json:"versionId,omitempty"`
 		*Alias
 	}{ 
-		FileName: u.FileName,
+		FileName: o.FileName,
 		
-		VersionId: u.VersionId,
-		Alias:    (*Alias)(u),
+		VersionId: o.VersionId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Exportscriptrequest) UnmarshalJSON(b []byte) error {
+	var ExportscriptrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ExportscriptrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if FileName, ok := ExportscriptrequestMap["fileName"].(string); ok {
+		o.FileName = &FileName
+	}
+	
+	if VersionId, ok := ExportscriptrequestMap["versionId"].(string); ok {
+		o.VersionId = &VersionId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

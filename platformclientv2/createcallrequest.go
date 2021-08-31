@@ -57,13 +57,11 @@ type Createcallrequest struct {
 
 }
 
-func (u *Createcallrequest) MarshalJSON() ([]byte, error) {
+func (o *Createcallrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createcallrequest
-
 	
-
 	return json.Marshal(&struct { 
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
@@ -90,31 +88,94 @@ func (u *Createcallrequest) MarshalJSON() ([]byte, error) {
 		UuiData *string `json:"uuiData,omitempty"`
 		*Alias
 	}{ 
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		CallerId: u.CallerId,
+		CallerId: o.CallerId,
 		
-		CallerIdName: u.CallerIdName,
+		CallerIdName: o.CallerIdName,
 		
-		CallFromQueueId: u.CallFromQueueId,
+		CallFromQueueId: o.CallFromQueueId,
 		
-		CallQueueId: u.CallQueueId,
+		CallQueueId: o.CallQueueId,
 		
-		CallUserId: u.CallUserId,
+		CallUserId: o.CallUserId,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		LanguageId: u.LanguageId,
+		LanguageId: o.LanguageId,
 		
-		RoutingSkillsIds: u.RoutingSkillsIds,
+		RoutingSkillsIds: o.RoutingSkillsIds,
 		
-		ConversationIds: u.ConversationIds,
+		ConversationIds: o.ConversationIds,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		UuiData: u.UuiData,
-		Alias:    (*Alias)(u),
+		UuiData: o.UuiData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
+	var CreatecallrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatecallrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if PhoneNumber, ok := CreatecallrequestMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if CallerId, ok := CreatecallrequestMap["callerId"].(string); ok {
+		o.CallerId = &CallerId
+	}
+	
+	if CallerIdName, ok := CreatecallrequestMap["callerIdName"].(string); ok {
+		o.CallerIdName = &CallerIdName
+	}
+	
+	if CallFromQueueId, ok := CreatecallrequestMap["callFromQueueId"].(string); ok {
+		o.CallFromQueueId = &CallFromQueueId
+	}
+	
+	if CallQueueId, ok := CreatecallrequestMap["callQueueId"].(string); ok {
+		o.CallQueueId = &CallQueueId
+	}
+	
+	if CallUserId, ok := CreatecallrequestMap["callUserId"].(string); ok {
+		o.CallUserId = &CallUserId
+	}
+	
+	if Priority, ok := CreatecallrequestMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if LanguageId, ok := CreatecallrequestMap["languageId"].(string); ok {
+		o.LanguageId = &LanguageId
+	}
+	
+	if RoutingSkillsIds, ok := CreatecallrequestMap["routingSkillsIds"].([]interface{}); ok {
+		RoutingSkillsIdsString, _ := json.Marshal(RoutingSkillsIds)
+		json.Unmarshal(RoutingSkillsIdsString, &o.RoutingSkillsIds)
+	}
+	
+	if ConversationIds, ok := CreatecallrequestMap["conversationIds"].([]interface{}); ok {
+		ConversationIdsString, _ := json.Marshal(ConversationIds)
+		json.Unmarshal(ConversationIdsString, &o.ConversationIds)
+	}
+	
+	if Participants, ok := CreatecallrequestMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if UuiData, ok := CreatecallrequestMap["uuiData"].(string); ok {
+		o.UuiData = &UuiData
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

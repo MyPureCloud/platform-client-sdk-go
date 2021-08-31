@@ -45,13 +45,11 @@ type Clientapp struct {
 
 }
 
-func (u *Clientapp) MarshalJSON() ([]byte, error) {
+func (o *Clientapp) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Clientapp
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,76 @@ func (u *Clientapp) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		IntegrationType: u.IntegrationType,
+		IntegrationType: o.IntegrationType,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		IntendedState: u.IntendedState,
+		IntendedState: o.IntendedState,
 		
-		Config: u.Config,
+		Config: o.Config,
 		
-		ReportedState: u.ReportedState,
+		ReportedState: o.ReportedState,
 		
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Clientapp) UnmarshalJSON(b []byte) error {
+	var ClientappMap map[string]interface{}
+	err := json.Unmarshal(b, &ClientappMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ClientappMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ClientappMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if IntegrationType, ok := ClientappMap["integrationType"].(map[string]interface{}); ok {
+		IntegrationTypeString, _ := json.Marshal(IntegrationType)
+		json.Unmarshal(IntegrationTypeString, &o.IntegrationType)
+	}
+	
+	if Notes, ok := ClientappMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if IntendedState, ok := ClientappMap["intendedState"].(string); ok {
+		o.IntendedState = &IntendedState
+	}
+	
+	if Config, ok := ClientappMap["config"].(map[string]interface{}); ok {
+		ConfigString, _ := json.Marshal(Config)
+		json.Unmarshal(ConfigString, &o.Config)
+	}
+	
+	if ReportedState, ok := ClientappMap["reportedState"].(map[string]interface{}); ok {
+		ReportedStateString, _ := json.Marshal(ReportedState)
+		json.Unmarshal(ReportedStateString, &o.ReportedState)
+	}
+	
+	if Attributes, ok := ClientappMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if SelfUri, ok := ClientappMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

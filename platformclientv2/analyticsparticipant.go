@@ -49,13 +49,11 @@ type Analyticsparticipant struct {
 
 }
 
-func (u *Analyticsparticipant) MarshalJSON() ([]byte, error) {
+func (o *Analyticsparticipant) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsparticipant
-
 	
-
 	return json.Marshal(&struct { 
 		ExternalContactId *string `json:"externalContactId,omitempty"`
 		
@@ -78,27 +76,80 @@ func (u *Analyticsparticipant) MarshalJSON() ([]byte, error) {
 		Attributes *map[string]string `json:"attributes,omitempty"`
 		*Alias
 	}{ 
-		ExternalContactId: u.ExternalContactId,
+		ExternalContactId: o.ExternalContactId,
 		
-		ExternalOrganizationId: u.ExternalOrganizationId,
+		ExternalOrganizationId: o.ExternalOrganizationId,
 		
-		FlaggedReason: u.FlaggedReason,
+		FlaggedReason: o.FlaggedReason,
 		
-		ParticipantId: u.ParticipantId,
+		ParticipantId: o.ParticipantId,
 		
-		ParticipantName: u.ParticipantName,
+		ParticipantName: o.ParticipantName,
 		
-		Purpose: u.Purpose,
+		Purpose: o.Purpose,
 		
-		TeamId: u.TeamId,
+		TeamId: o.TeamId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Sessions: u.Sessions,
+		Sessions: o.Sessions,
 		
-		Attributes: u.Attributes,
-		Alias:    (*Alias)(u),
+		Attributes: o.Attributes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsparticipant) UnmarshalJSON(b []byte) error {
+	var AnalyticsparticipantMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsparticipantMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExternalContactId, ok := AnalyticsparticipantMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
+	}
+	
+	if ExternalOrganizationId, ok := AnalyticsparticipantMap["externalOrganizationId"].(string); ok {
+		o.ExternalOrganizationId = &ExternalOrganizationId
+	}
+	
+	if FlaggedReason, ok := AnalyticsparticipantMap["flaggedReason"].(string); ok {
+		o.FlaggedReason = &FlaggedReason
+	}
+	
+	if ParticipantId, ok := AnalyticsparticipantMap["participantId"].(string); ok {
+		o.ParticipantId = &ParticipantId
+	}
+	
+	if ParticipantName, ok := AnalyticsparticipantMap["participantName"].(string); ok {
+		o.ParticipantName = &ParticipantName
+	}
+	
+	if Purpose, ok := AnalyticsparticipantMap["purpose"].(string); ok {
+		o.Purpose = &Purpose
+	}
+	
+	if TeamId, ok := AnalyticsparticipantMap["teamId"].(string); ok {
+		o.TeamId = &TeamId
+	}
+	
+	if UserId, ok := AnalyticsparticipantMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Sessions, ok := AnalyticsparticipantMap["sessions"].([]interface{}); ok {
+		SessionsString, _ := json.Marshal(Sessions)
+		json.Unmarshal(SessionsString, &o.Sessions)
+	}
+	
+	if Attributes, ok := AnalyticsparticipantMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

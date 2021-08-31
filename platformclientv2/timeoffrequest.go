@@ -74,29 +74,27 @@ type Timeoffrequest struct {
 
 }
 
-func (u *Timeoffrequest) MarshalJSON() ([]byte, error) {
+func (o *Timeoffrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffrequest
-
 	
 	SubmittedDate := new(string)
-	if u.SubmittedDate != nil {
+	if o.SubmittedDate != nil {
 		
-		*SubmittedDate = timeutil.Strftime(u.SubmittedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*SubmittedDate = timeutil.Strftime(o.SubmittedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		SubmittedDate = nil
 	}
 	
 	ReviewedDate := new(string)
-	if u.ReviewedDate != nil {
+	if o.ReviewedDate != nil {
 		
-		*ReviewedDate = timeutil.Strftime(u.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReviewedDate = timeutil.Strftime(o.ReviewedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReviewedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -131,39 +129,123 @@ func (u *Timeoffrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		User: u.User,
+		User: o.User,
 		
-		IsFullDayRequest: u.IsFullDayRequest,
+		IsFullDayRequest: o.IsFullDayRequest,
 		
-		MarkedAsRead: u.MarkedAsRead,
+		MarkedAsRead: o.MarkedAsRead,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
-		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
 		
-		DailyDurationMinutes: u.DailyDurationMinutes,
+		DailyDurationMinutes: o.DailyDurationMinutes,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		SubmittedBy: u.SubmittedBy,
+		SubmittedBy: o.SubmittedBy,
 		
 		SubmittedDate: SubmittedDate,
 		
-		ReviewedBy: u.ReviewedBy,
+		ReviewedBy: o.ReviewedBy,
 		
 		ReviewedDate: ReviewedDate,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeoffrequest) UnmarshalJSON(b []byte) error {
+	var TimeoffrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeoffrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TimeoffrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if User, ok := TimeoffrequestMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if IsFullDayRequest, ok := TimeoffrequestMap["isFullDayRequest"].(bool); ok {
+		o.IsFullDayRequest = &IsFullDayRequest
+	}
+	
+	if MarkedAsRead, ok := TimeoffrequestMap["markedAsRead"].(bool); ok {
+		o.MarkedAsRead = &MarkedAsRead
+	}
+	
+	if ActivityCodeId, ok := TimeoffrequestMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if Status, ok := TimeoffrequestMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if PartialDayStartDateTimes, ok := TimeoffrequestMap["partialDayStartDateTimes"].([]interface{}); ok {
+		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
+		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
+	}
+	
+	if FullDayManagementUnitDates, ok := TimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
+		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
+		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+	if DailyDurationMinutes, ok := TimeoffrequestMap["dailyDurationMinutes"].(float64); ok {
+		DailyDurationMinutesInt := int(DailyDurationMinutes)
+		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+	if Notes, ok := TimeoffrequestMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if SubmittedBy, ok := TimeoffrequestMap["submittedBy"].(map[string]interface{}); ok {
+		SubmittedByString, _ := json.Marshal(SubmittedBy)
+		json.Unmarshal(SubmittedByString, &o.SubmittedBy)
+	}
+	
+	if submittedDateString, ok := TimeoffrequestMap["submittedDate"].(string); ok {
+		SubmittedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", submittedDateString)
+		o.SubmittedDate = &SubmittedDate
+	}
+	
+	if ReviewedBy, ok := TimeoffrequestMap["reviewedBy"].(map[string]interface{}); ok {
+		ReviewedByString, _ := json.Marshal(ReviewedBy)
+		json.Unmarshal(ReviewedByString, &o.ReviewedBy)
+	}
+	
+	if reviewedDateString, ok := TimeoffrequestMap["reviewedDate"].(string); ok {
+		ReviewedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", reviewedDateString)
+		o.ReviewedDate = &ReviewedDate
+	}
+	
+	if Metadata, ok := TimeoffrequestMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := TimeoffrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

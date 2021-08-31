@@ -41,13 +41,11 @@ type Edgeinterface struct {
 
 }
 
-func (u *Edgeinterface) MarshalJSON() ([]byte, error) {
+func (o *Edgeinterface) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgeinterface
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -66,23 +64,68 @@ func (u *Edgeinterface) MarshalJSON() ([]byte, error) {
 		AddressFamilyId *string `json:"addressFamilyId,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		IpAddress: u.IpAddress,
+		IpAddress: o.IpAddress,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		MacAddress: u.MacAddress,
+		MacAddress: o.MacAddress,
 		
-		IfName: u.IfName,
+		IfName: o.IfName,
 		
-		Endpoints: u.Endpoints,
+		Endpoints: o.Endpoints,
 		
-		LineTypes: u.LineTypes,
+		LineTypes: o.LineTypes,
 		
-		AddressFamilyId: u.AddressFamilyId,
-		Alias:    (*Alias)(u),
+		AddressFamilyId: o.AddressFamilyId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgeinterface) UnmarshalJSON(b []byte) error {
+	var EdgeinterfaceMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgeinterfaceMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := EdgeinterfaceMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if IpAddress, ok := EdgeinterfaceMap["ipAddress"].(string); ok {
+		o.IpAddress = &IpAddress
+	}
+	
+	if Name, ok := EdgeinterfaceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if MacAddress, ok := EdgeinterfaceMap["macAddress"].(string); ok {
+		o.MacAddress = &MacAddress
+	}
+	
+	if IfName, ok := EdgeinterfaceMap["ifName"].(string); ok {
+		o.IfName = &IfName
+	}
+	
+	if Endpoints, ok := EdgeinterfaceMap["endpoints"].([]interface{}); ok {
+		EndpointsString, _ := json.Marshal(Endpoints)
+		json.Unmarshal(EndpointsString, &o.Endpoints)
+	}
+	
+	if LineTypes, ok := EdgeinterfaceMap["lineTypes"].([]interface{}); ok {
+		LineTypesString, _ := json.Marshal(LineTypes)
+		json.Unmarshal(LineTypesString, &o.LineTypes)
+	}
+	
+	if AddressFamilyId, ok := EdgeinterfaceMap["addressFamilyId"].(string); ok {
+		o.AddressFamilyId = &AddressFamilyId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

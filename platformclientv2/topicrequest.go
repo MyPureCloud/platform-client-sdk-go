@@ -41,13 +41,11 @@ type Topicrequest struct {
 
 }
 
-func (u *Topicrequest) MarshalJSON() ([]byte, error) {
+func (o *Topicrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Topicrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Topicrequest) MarshalJSON() ([]byte, error) {
 		Phrases *[]Phrase `json:"phrases,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Strictness: u.Strictness,
+		Strictness: o.Strictness,
 		
-		ProgramIds: u.ProgramIds,
+		ProgramIds: o.ProgramIds,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		Dialect: u.Dialect,
+		Dialect: o.Dialect,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		Phrases: u.Phrases,
-		Alias:    (*Alias)(u),
+		Phrases: o.Phrases,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Topicrequest) UnmarshalJSON(b []byte) error {
+	var TopicrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TopicrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := TopicrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := TopicrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Strictness, ok := TopicrequestMap["strictness"].(string); ok {
+		o.Strictness = &Strictness
+	}
+	
+	if ProgramIds, ok := TopicrequestMap["programIds"].([]interface{}); ok {
+		ProgramIdsString, _ := json.Marshal(ProgramIds)
+		json.Unmarshal(ProgramIdsString, &o.ProgramIds)
+	}
+	
+	if Tags, ok := TopicrequestMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if Dialect, ok := TopicrequestMap["dialect"].(string); ok {
+		o.Dialect = &Dialect
+	}
+	
+	if Participants, ok := TopicrequestMap["participants"].(string); ok {
+		o.Participants = &Participants
+	}
+	
+	if Phrases, ok := TopicrequestMap["phrases"].([]interface{}); ok {
+		PhrasesString, _ := json.Marshal(Phrases)
+		json.Unmarshal(PhrasesString, &o.Phrases)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

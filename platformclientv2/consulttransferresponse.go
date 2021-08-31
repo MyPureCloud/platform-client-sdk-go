@@ -13,20 +13,33 @@ type Consulttransferresponse struct {
 
 }
 
-func (u *Consulttransferresponse) MarshalJSON() ([]byte, error) {
+func (o *Consulttransferresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Consulttransferresponse
-
 	
-
 	return json.Marshal(&struct { 
 		DestinationParticipantId *string `json:"destinationParticipantId,omitempty"`
 		*Alias
 	}{ 
-		DestinationParticipantId: u.DestinationParticipantId,
-		Alias:    (*Alias)(u),
+		DestinationParticipantId: o.DestinationParticipantId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Consulttransferresponse) UnmarshalJSON(b []byte) error {
+	var ConsulttransferresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ConsulttransferresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if DestinationParticipantId, ok := ConsulttransferresponseMap["destinationParticipantId"].(string); ok {
+		o.DestinationParticipantId = &DestinationParticipantId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

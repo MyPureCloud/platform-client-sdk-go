@@ -34,20 +34,18 @@ type Bufulldaytimeoffmarker struct {
 
 }
 
-func (u *Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
+func (o *Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bufulldaytimeoffmarker
-
 	
 	BusinessUnitDate := new(string)
-	if u.BusinessUnitDate != nil {
-		*BusinessUnitDate = timeutil.Strftime(u.BusinessUnitDate, "%Y-%m-%d")
+	if o.BusinessUnitDate != nil {
+		*BusinessUnitDate = timeutil.Strftime(o.BusinessUnitDate, "%Y-%m-%d")
 	} else {
 		BusinessUnitDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		BusinessUnitDate *string `json:"businessUnitDate,omitempty"`
 		
@@ -64,17 +62,54 @@ func (u *Bufulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 	}{ 
 		BusinessUnitDate: BusinessUnitDate,
 		
-		LengthMinutes: u.LengthMinutes,
+		LengthMinutes: o.LengthMinutes,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		Paid: u.Paid,
+		Paid: o.Paid,
 		
-		TimeOffRequestId: u.TimeOffRequestId,
-		Alias:    (*Alias)(u),
+		TimeOffRequestId: o.TimeOffRequestId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bufulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
+	var BufulldaytimeoffmarkerMap map[string]interface{}
+	err := json.Unmarshal(b, &BufulldaytimeoffmarkerMap)
+	if err != nil {
+		return err
+	}
+	
+	if businessUnitDateString, ok := BufulldaytimeoffmarkerMap["businessUnitDate"].(string); ok {
+		BusinessUnitDate, _ := time.Parse("2006-01-02", businessUnitDateString)
+		o.BusinessUnitDate = &BusinessUnitDate
+	}
+	
+	if LengthMinutes, ok := BufulldaytimeoffmarkerMap["lengthMinutes"].(float64); ok {
+		LengthMinutesInt := int(LengthMinutes)
+		o.LengthMinutes = &LengthMinutesInt
+	}
+	
+	if Description, ok := BufulldaytimeoffmarkerMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if ActivityCodeId, ok := BufulldaytimeoffmarkerMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if Paid, ok := BufulldaytimeoffmarkerMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+	
+	if TimeOffRequestId, ok := BufulldaytimeoffmarkerMap["timeOffRequestId"].(string); ok {
+		o.TimeOffRequestId = &TimeOffRequestId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

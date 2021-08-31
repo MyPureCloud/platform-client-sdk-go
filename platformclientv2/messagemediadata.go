@@ -41,13 +41,11 @@ type Messagemediadata struct {
 
 }
 
-func (u *Messagemediadata) MarshalJSON() ([]byte, error) {
+func (o *Messagemediadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagemediadata
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,67 @@ func (u *Messagemediadata) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ContentLengthBytes: u.ContentLengthBytes,
+		ContentLengthBytes: o.ContentLengthBytes,
 		
-		UploadUrl: u.UploadUrl,
+		UploadUrl: o.UploadUrl,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagemediadata) UnmarshalJSON(b []byte) error {
+	var MessagemediadataMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagemediadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MessagemediadataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MessagemediadataMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Url, ok := MessagemediadataMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if MediaType, ok := MessagemediadataMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ContentLengthBytes, ok := MessagemediadataMap["contentLengthBytes"].(float64); ok {
+		ContentLengthBytesInt := int(ContentLengthBytes)
+		o.ContentLengthBytes = &ContentLengthBytesInt
+	}
+	
+	if UploadUrl, ok := MessagemediadataMap["uploadUrl"].(string); ok {
+		o.UploadUrl = &UploadUrl
+	}
+	
+	if Status, ok := MessagemediadataMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if SelfUri, ok := MessagemediadataMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

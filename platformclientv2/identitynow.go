@@ -53,13 +53,11 @@ type Identitynow struct {
 
 }
 
-func (u *Identitynow) MarshalJSON() ([]byte, error) {
+func (o *Identitynow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Identitynow
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,85 @@ func (u *Identitynow) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		IssuerURI: u.IssuerURI,
+		IssuerURI: o.IssuerURI,
 		
-		SsoTargetURI: u.SsoTargetURI,
+		SsoTargetURI: o.SsoTargetURI,
 		
-		SloURI: u.SloURI,
+		SloURI: o.SloURI,
 		
-		SloBinding: u.SloBinding,
+		SloBinding: o.SloBinding,
 		
-		Certificate: u.Certificate,
+		Certificate: o.Certificate,
 		
-		Certificates: u.Certificates,
+		Certificates: o.Certificates,
 		
-		RelyingPartyIdentifier: u.RelyingPartyIdentifier,
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Identitynow) UnmarshalJSON(b []byte) error {
+	var IdentitynowMap map[string]interface{}
+	err := json.Unmarshal(b, &IdentitynowMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := IdentitynowMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := IdentitynowMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := IdentitynowMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if IssuerURI, ok := IdentitynowMap["issuerURI"].(string); ok {
+		o.IssuerURI = &IssuerURI
+	}
+	
+	if SsoTargetURI, ok := IdentitynowMap["ssoTargetURI"].(string); ok {
+		o.SsoTargetURI = &SsoTargetURI
+	}
+	
+	if SloURI, ok := IdentitynowMap["sloURI"].(string); ok {
+		o.SloURI = &SloURI
+	}
+	
+	if SloBinding, ok := IdentitynowMap["sloBinding"].(string); ok {
+		o.SloBinding = &SloBinding
+	}
+	
+	if Certificate, ok := IdentitynowMap["certificate"].(string); ok {
+		o.Certificate = &Certificate
+	}
+	
+	if Certificates, ok := IdentitynowMap["certificates"].([]interface{}); ok {
+		CertificatesString, _ := json.Marshal(Certificates)
+		json.Unmarshal(CertificatesString, &o.Certificates)
+	}
+	
+	if RelyingPartyIdentifier, ok := IdentitynowMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
+	}
+	
+	if SelfUri, ok := IdentitynowMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

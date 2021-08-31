@@ -17,24 +17,41 @@ type Documentreference struct {
 
 }
 
-func (u *Documentreference) MarshalJSON() ([]byte, error) {
+func (o *Documentreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentreference) UnmarshalJSON(b []byte) error {
+	var DocumentreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DocumentreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := DocumentreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

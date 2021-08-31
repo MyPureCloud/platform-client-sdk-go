@@ -33,13 +33,11 @@ type Planninggroup struct {
 
 }
 
-func (u *Planninggroup) MarshalJSON() ([]byte, error) {
+func (o *Planninggroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Planninggroup
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Planninggroup) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ServiceGoalTemplate: u.ServiceGoalTemplate,
+		ServiceGoalTemplate: o.ServiceGoalTemplate,
 		
-		RoutePaths: u.RoutePaths,
+		RoutePaths: o.RoutePaths,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Planninggroup) UnmarshalJSON(b []byte) error {
+	var PlanninggroupMap map[string]interface{}
+	err := json.Unmarshal(b, &PlanninggroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PlanninggroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PlanninggroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ServiceGoalTemplate, ok := PlanninggroupMap["serviceGoalTemplate"].(map[string]interface{}); ok {
+		ServiceGoalTemplateString, _ := json.Marshal(ServiceGoalTemplate)
+		json.Unmarshal(ServiceGoalTemplateString, &o.ServiceGoalTemplate)
+	}
+	
+	if RoutePaths, ok := PlanninggroupMap["routePaths"].([]interface{}); ok {
+		RoutePathsString, _ := json.Marshal(RoutePaths)
+		json.Unmarshal(RoutePathsString, &o.RoutePaths)
+	}
+	
+	if Metadata, ok := PlanninggroupMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := PlanninggroupMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

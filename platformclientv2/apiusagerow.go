@@ -62,21 +62,19 @@ type Apiusagerow struct {
 
 }
 
-func (u *Apiusagerow) MarshalJSON() ([]byte, error) {
+func (o *Apiusagerow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Apiusagerow
-
 	
 	Date := new(string)
-	if u.Date != nil {
+	if o.Date != nil {
 		
-		*Date = timeutil.Strftime(u.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Date = timeutil.Strftime(o.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Date = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ClientId *string `json:"clientId,omitempty"`
 		
@@ -105,33 +103,103 @@ func (u *Apiusagerow) MarshalJSON() ([]byte, error) {
 		Date *string `json:"date,omitempty"`
 		*Alias
 	}{ 
-		ClientId: u.ClientId,
+		ClientId: o.ClientId,
 		
-		ClientName: u.ClientName,
+		ClientName: o.ClientName,
 		
-		OrganizationId: u.OrganizationId,
+		OrganizationId: o.OrganizationId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		TemplateUri: u.TemplateUri,
+		TemplateUri: o.TemplateUri,
 		
-		HttpMethod: u.HttpMethod,
+		HttpMethod: o.HttpMethod,
 		
-		Status200: u.Status200,
+		Status200: o.Status200,
 		
-		Status300: u.Status300,
+		Status300: o.Status300,
 		
-		Status400: u.Status400,
+		Status400: o.Status400,
 		
-		Status500: u.Status500,
+		Status500: o.Status500,
 		
-		Status429: u.Status429,
+		Status429: o.Status429,
 		
-		Requests: u.Requests,
+		Requests: o.Requests,
 		
 		Date: Date,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Apiusagerow) UnmarshalJSON(b []byte) error {
+	var ApiusagerowMap map[string]interface{}
+	err := json.Unmarshal(b, &ApiusagerowMap)
+	if err != nil {
+		return err
+	}
+	
+	if ClientId, ok := ApiusagerowMap["clientId"].(string); ok {
+		o.ClientId = &ClientId
+	}
+	
+	if ClientName, ok := ApiusagerowMap["clientName"].(string); ok {
+		o.ClientName = &ClientName
+	}
+	
+	if OrganizationId, ok := ApiusagerowMap["organizationId"].(string); ok {
+		o.OrganizationId = &OrganizationId
+	}
+	
+	if UserId, ok := ApiusagerowMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if TemplateUri, ok := ApiusagerowMap["templateUri"].(string); ok {
+		o.TemplateUri = &TemplateUri
+	}
+	
+	if HttpMethod, ok := ApiusagerowMap["httpMethod"].(string); ok {
+		o.HttpMethod = &HttpMethod
+	}
+	
+	if Status200, ok := ApiusagerowMap["status200"].(float64); ok {
+		Status200Int := int(Status200)
+		o.Status200 = &Status200Int
+	}
+	
+	if Status300, ok := ApiusagerowMap["status300"].(float64); ok {
+		Status300Int := int(Status300)
+		o.Status300 = &Status300Int
+	}
+	
+	if Status400, ok := ApiusagerowMap["status400"].(float64); ok {
+		Status400Int := int(Status400)
+		o.Status400 = &Status400Int
+	}
+	
+	if Status500, ok := ApiusagerowMap["status500"].(float64); ok {
+		Status500Int := int(Status500)
+		o.Status500 = &Status500Int
+	}
+	
+	if Status429, ok := ApiusagerowMap["status429"].(float64); ok {
+		Status429Int := int(Status429)
+		o.Status429 = &Status429Int
+	}
+	
+	if Requests, ok := ApiusagerowMap["requests"].(float64); ok {
+		RequestsInt := int(Requests)
+		o.Requests = &RequestsInt
+	}
+	
+	if dateString, ok := ApiusagerowMap["date"].(string); ok {
+		Date, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateString)
+		o.Date = &Date
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

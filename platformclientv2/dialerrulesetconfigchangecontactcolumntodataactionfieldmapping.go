@@ -21,13 +21,11 @@ type Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping struct {
 
 }
 
-func (u *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) MarshalJSON() ([]byte, error) {
+func (o *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping
-
 	
-
 	return json.Marshal(&struct { 
 		ContactColumnName *string `json:"contactColumnName,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) Marshal
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		ContactColumnName: u.ContactColumnName,
+		ContactColumnName: o.ContactColumnName,
 		
-		DataActionField: u.DataActionField,
+		DataActionField: o.DataActionField,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping) UnmarshalJSON(b []byte) error {
+	var DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContactColumnName, ok := DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap["contactColumnName"].(string); ok {
+		o.ContactColumnName = &ContactColumnName
+	}
+	
+	if DataActionField, ok := DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap["dataActionField"].(string); ok {
+		o.DataActionField = &DataActionField
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangecontactcolumntodataactionfieldmappingMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

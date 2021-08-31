@@ -21,13 +21,11 @@ type Patchcontentofferstyleproperties struct {
 
 }
 
-func (u *Patchcontentofferstyleproperties) MarshalJSON() ([]byte, error) {
+func (o *Patchcontentofferstyleproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchcontentofferstyleproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Padding *string `json:"padding,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Patchcontentofferstyleproperties) MarshalJSON() ([]byte, error) {
 		BackgroundColor *string `json:"backgroundColor,omitempty"`
 		*Alias
 	}{ 
-		Padding: u.Padding,
+		Padding: o.Padding,
 		
-		Color: u.Color,
+		Color: o.Color,
 		
-		BackgroundColor: u.BackgroundColor,
-		Alias:    (*Alias)(u),
+		BackgroundColor: o.BackgroundColor,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchcontentofferstyleproperties) UnmarshalJSON(b []byte) error {
+	var PatchcontentofferstylepropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchcontentofferstylepropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Padding, ok := PatchcontentofferstylepropertiesMap["padding"].(string); ok {
+		o.Padding = &Padding
+	}
+	
+	if Color, ok := PatchcontentofferstylepropertiesMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if BackgroundColor, ok := PatchcontentofferstylepropertiesMap["backgroundColor"].(string); ok {
+		o.BackgroundColor = &BackgroundColor
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

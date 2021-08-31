@@ -57,13 +57,11 @@ type Chatmessage struct {
 
 }
 
-func (u *Chatmessage) MarshalJSON() ([]byte, error) {
+func (o *Chatmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Chatmessage
-
 	
-
 	return json.Marshal(&struct { 
 		Body *string `json:"body,omitempty"`
 		
@@ -90,31 +88,91 @@ func (u *Chatmessage) MarshalJSON() ([]byte, error) {
 		User *Chatmessageuser `json:"user,omitempty"`
 		*Alias
 	}{ 
-		Body: u.Body,
+		Body: o.Body,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		To: u.To,
+		To: o.To,
 		
-		From: u.From,
+		From: o.From,
 		
-		Utc: u.Utc,
+		Utc: o.Utc,
 		
-		Chat: u.Chat,
+		Chat: o.Chat,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		BodyType: u.BodyType,
+		BodyType: o.BodyType,
 		
-		SenderCommunicationId: u.SenderCommunicationId,
+		SenderCommunicationId: o.SenderCommunicationId,
 		
-		ParticipantPurpose: u.ParticipantPurpose,
+		ParticipantPurpose: o.ParticipantPurpose,
 		
-		User: u.User,
-		Alias:    (*Alias)(u),
+		User: o.User,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Chatmessage) UnmarshalJSON(b []byte) error {
+	var ChatmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &ChatmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Body, ok := ChatmessageMap["body"].(string); ok {
+		o.Body = &Body
+	}
+	
+	if Id, ok := ChatmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if To, ok := ChatmessageMap["to"].(string); ok {
+		o.To = &To
+	}
+	
+	if From, ok := ChatmessageMap["from"].(string); ok {
+		o.From = &From
+	}
+	
+	if Utc, ok := ChatmessageMap["utc"].(string); ok {
+		o.Utc = &Utc
+	}
+	
+	if Chat, ok := ChatmessageMap["chat"].(string); ok {
+		o.Chat = &Chat
+	}
+	
+	if Message, ok := ChatmessageMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if VarType, ok := ChatmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if BodyType, ok := ChatmessageMap["bodyType"].(string); ok {
+		o.BodyType = &BodyType
+	}
+	
+	if SenderCommunicationId, ok := ChatmessageMap["senderCommunicationId"].(string); ok {
+		o.SenderCommunicationId = &SenderCommunicationId
+	}
+	
+	if ParticipantPurpose, ok := ChatmessageMap["participantPurpose"].(string); ok {
+		o.ParticipantPurpose = &ParticipantPurpose
+	}
+	
+	if User, ok := ChatmessageMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

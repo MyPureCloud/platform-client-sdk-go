@@ -13,20 +13,33 @@ type Wfmbulkshifttradestateupdatenotificationtopicuserreference struct {
 
 }
 
-func (u *Wfmbulkshifttradestateupdatenotificationtopicuserreference) MarshalJSON() ([]byte, error) {
+func (o *Wfmbulkshifttradestateupdatenotificationtopicuserreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbulkshifttradestateupdatenotificationtopicuserreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbulkshifttradestateupdatenotificationtopicuserreference) UnmarshalJSON(b []byte) error {
+	var WfmbulkshifttradestateupdatenotificationtopicuserreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbulkshifttradestateupdatenotificationtopicuserreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbulkshifttradestateupdatenotificationtopicuserreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

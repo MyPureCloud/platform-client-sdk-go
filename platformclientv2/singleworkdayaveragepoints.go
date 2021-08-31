@@ -22,20 +22,18 @@ type Singleworkdayaveragepoints struct {
 
 }
 
-func (u *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
+func (o *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Singleworkdayaveragepoints
-
 	
 	DateWorkday := new(string)
-	if u.DateWorkday != nil {
-		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	if o.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(o.DateWorkday, "%Y-%m-%d")
 	} else {
 		DateWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateWorkday *string `json:"dateWorkday,omitempty"`
 		
@@ -46,11 +44,36 @@ func (u *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateWorkday: DateWorkday,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		AveragePoints: u.AveragePoints,
-		Alias:    (*Alias)(u),
+		AveragePoints: o.AveragePoints,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Singleworkdayaveragepoints) UnmarshalJSON(b []byte) error {
+	var SingleworkdayaveragepointsMap map[string]interface{}
+	err := json.Unmarshal(b, &SingleworkdayaveragepointsMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateWorkdayString, ok := SingleworkdayaveragepointsMap["dateWorkday"].(string); ok {
+		DateWorkday, _ := time.Parse("2006-01-02", dateWorkdayString)
+		o.DateWorkday = &DateWorkday
+	}
+	
+	if Division, ok := SingleworkdayaveragepointsMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if AveragePoints, ok := SingleworkdayaveragepointsMap["averagePoints"].(float64); ok {
+		o.AveragePoints = &AveragePoints
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Urlcondition struct {
 
 }
 
-func (u *Urlcondition) MarshalJSON() ([]byte, error) {
+func (o *Urlcondition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Urlcondition
-
 	
-
 	return json.Marshal(&struct { 
 		Values *[]string `json:"values,omitempty"`
 		
 		Operator *string `json:"operator,omitempty"`
 		*Alias
 	}{ 
-		Values: u.Values,
+		Values: o.Values,
 		
-		Operator: u.Operator,
-		Alias:    (*Alias)(u),
+		Operator: o.Operator,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Urlcondition) UnmarshalJSON(b []byte) error {
+	var UrlconditionMap map[string]interface{}
+	err := json.Unmarshal(b, &UrlconditionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Values, ok := UrlconditionMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if Operator, ok := UrlconditionMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

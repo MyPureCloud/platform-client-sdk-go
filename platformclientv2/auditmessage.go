@@ -73,13 +73,11 @@ type Auditmessage struct {
 
 }
 
-func (u *Auditmessage) MarshalJSON() ([]byte, error) {
+func (o *Auditmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditmessage
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -114,39 +112,118 @@ func (u *Auditmessage) MarshalJSON() ([]byte, error) {
 		ServiceContext *Servicecontext `json:"serviceContext,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		User: u.User,
+		User: o.User,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		TransactionId: u.TransactionId,
+		TransactionId: o.TransactionId,
 		
-		TransactionInitiator: u.TransactionInitiator,
+		TransactionInitiator: o.TransactionInitiator,
 		
-		Application: u.Application,
+		Application: o.Application,
 		
-		ServiceName: u.ServiceName,
+		ServiceName: o.ServiceName,
 		
-		Level: u.Level,
+		Level: o.Level,
 		
-		Timestamp: u.Timestamp,
+		Timestamp: o.Timestamp,
 		
-		ReceivedTimestamp: u.ReceivedTimestamp,
+		ReceivedTimestamp: o.ReceivedTimestamp,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		ActionContext: u.ActionContext,
+		ActionContext: o.ActionContext,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		Changes: u.Changes,
+		Changes: o.Changes,
 		
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		ServiceContext: u.ServiceContext,
-		Alias:    (*Alias)(u),
+		ServiceContext: o.ServiceContext,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditmessage) UnmarshalJSON(b []byte) error {
+	var AuditmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AuditmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if User, ok := AuditmessageMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if CorrelationId, ok := AuditmessageMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if TransactionId, ok := AuditmessageMap["transactionId"].(string); ok {
+		o.TransactionId = &TransactionId
+	}
+	
+	if TransactionInitiator, ok := AuditmessageMap["transactionInitiator"].(bool); ok {
+		o.TransactionInitiator = &TransactionInitiator
+	}
+	
+	if Application, ok := AuditmessageMap["application"].(string); ok {
+		o.Application = &Application
+	}
+	
+	if ServiceName, ok := AuditmessageMap["serviceName"].(string); ok {
+		o.ServiceName = &ServiceName
+	}
+	
+	if Level, ok := AuditmessageMap["level"].(string); ok {
+		o.Level = &Level
+	}
+	
+	if Timestamp, ok := AuditmessageMap["timestamp"].(string); ok {
+		o.Timestamp = &Timestamp
+	}
+	
+	if ReceivedTimestamp, ok := AuditmessageMap["receivedTimestamp"].(string); ok {
+		o.ReceivedTimestamp = &ReceivedTimestamp
+	}
+	
+	if Status, ok := AuditmessageMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if ActionContext, ok := AuditmessageMap["actionContext"].(string); ok {
+		o.ActionContext = &ActionContext
+	}
+	
+	if Action, ok := AuditmessageMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Changes, ok := AuditmessageMap["changes"].([]interface{}); ok {
+		ChangesString, _ := json.Marshal(Changes)
+		json.Unmarshal(ChangesString, &o.Changes)
+	}
+	
+	if Entity, ok := AuditmessageMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if ServiceContext, ok := AuditmessageMap["serviceContext"].(map[string]interface{}); ok {
+		ServiceContextString, _ := json.Marshal(ServiceContext)
+		json.Unmarshal(ServiceContextString, &o.ServiceContext)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

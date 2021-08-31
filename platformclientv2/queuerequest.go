@@ -114,29 +114,27 @@ type Queuerequest struct {
 
 }
 
-func (u *Queuerequest) MarshalJSON() ([]byte, error) {
+func (o *Queuerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queuerequest
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -191,59 +189,188 @@ func (u *Queuerequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		MemberCount: u.MemberCount,
+		MemberCount: o.MemberCount,
 		
-		JoinedMemberCount: u.JoinedMemberCount,
+		JoinedMemberCount: o.JoinedMemberCount,
 		
-		MediaSettings: u.MediaSettings,
+		MediaSettings: o.MediaSettings,
 		
-		RoutingRules: u.RoutingRules,
+		RoutingRules: o.RoutingRules,
 		
-		Bullseye: u.Bullseye,
+		Bullseye: o.Bullseye,
 		
-		AcwSettings: u.AcwSettings,
+		AcwSettings: o.AcwSettings,
 		
-		SkillEvaluationMethod: u.SkillEvaluationMethod,
+		SkillEvaluationMethod: o.SkillEvaluationMethod,
 		
-		QueueFlow: u.QueueFlow,
+		QueueFlow: o.QueueFlow,
 		
-		WhisperPrompt: u.WhisperPrompt,
+		WhisperPrompt: o.WhisperPrompt,
 		
-		AutoAnswerOnly: u.AutoAnswerOnly,
+		AutoAnswerOnly: o.AutoAnswerOnly,
 		
-		EnableTranscription: u.EnableTranscription,
+		EnableTranscription: o.EnableTranscription,
 		
-		EnableManualAssignment: u.EnableManualAssignment,
+		EnableManualAssignment: o.EnableManualAssignment,
 		
-		CallingPartyName: u.CallingPartyName,
+		CallingPartyName: o.CallingPartyName,
 		
-		CallingPartyNumber: u.CallingPartyNumber,
+		CallingPartyNumber: o.CallingPartyNumber,
 		
-		DefaultScripts: u.DefaultScripts,
+		DefaultScripts: o.DefaultScripts,
 		
-		OutboundMessagingAddresses: u.OutboundMessagingAddresses,
+		OutboundMessagingAddresses: o.OutboundMessagingAddresses,
 		
-		OutboundEmailAddress: u.OutboundEmailAddress,
+		OutboundEmailAddress: o.OutboundEmailAddress,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queuerequest) UnmarshalJSON(b []byte) error {
+	var QueuerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &QueuerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueuerequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := QueuerequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := QueuerequestMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Description, ok := QueuerequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if dateCreatedString, ok := QueuerequestMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := QueuerequestMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := QueuerequestMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := QueuerequestMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if MemberCount, ok := QueuerequestMap["memberCount"].(float64); ok {
+		MemberCountInt := int(MemberCount)
+		o.MemberCount = &MemberCountInt
+	}
+	
+	if JoinedMemberCount, ok := QueuerequestMap["joinedMemberCount"].(float64); ok {
+		JoinedMemberCountInt := int(JoinedMemberCount)
+		o.JoinedMemberCount = &JoinedMemberCountInt
+	}
+	
+	if MediaSettings, ok := QueuerequestMap["mediaSettings"].(map[string]interface{}); ok {
+		MediaSettingsString, _ := json.Marshal(MediaSettings)
+		json.Unmarshal(MediaSettingsString, &o.MediaSettings)
+	}
+	
+	if RoutingRules, ok := QueuerequestMap["routingRules"].([]interface{}); ok {
+		RoutingRulesString, _ := json.Marshal(RoutingRules)
+		json.Unmarshal(RoutingRulesString, &o.RoutingRules)
+	}
+	
+	if Bullseye, ok := QueuerequestMap["bullseye"].(map[string]interface{}); ok {
+		BullseyeString, _ := json.Marshal(Bullseye)
+		json.Unmarshal(BullseyeString, &o.Bullseye)
+	}
+	
+	if AcwSettings, ok := QueuerequestMap["acwSettings"].(map[string]interface{}); ok {
+		AcwSettingsString, _ := json.Marshal(AcwSettings)
+		json.Unmarshal(AcwSettingsString, &o.AcwSettings)
+	}
+	
+	if SkillEvaluationMethod, ok := QueuerequestMap["skillEvaluationMethod"].(string); ok {
+		o.SkillEvaluationMethod = &SkillEvaluationMethod
+	}
+	
+	if QueueFlow, ok := QueuerequestMap["queueFlow"].(map[string]interface{}); ok {
+		QueueFlowString, _ := json.Marshal(QueueFlow)
+		json.Unmarshal(QueueFlowString, &o.QueueFlow)
+	}
+	
+	if WhisperPrompt, ok := QueuerequestMap["whisperPrompt"].(map[string]interface{}); ok {
+		WhisperPromptString, _ := json.Marshal(WhisperPrompt)
+		json.Unmarshal(WhisperPromptString, &o.WhisperPrompt)
+	}
+	
+	if AutoAnswerOnly, ok := QueuerequestMap["autoAnswerOnly"].(bool); ok {
+		o.AutoAnswerOnly = &AutoAnswerOnly
+	}
+	
+	if EnableTranscription, ok := QueuerequestMap["enableTranscription"].(bool); ok {
+		o.EnableTranscription = &EnableTranscription
+	}
+	
+	if EnableManualAssignment, ok := QueuerequestMap["enableManualAssignment"].(bool); ok {
+		o.EnableManualAssignment = &EnableManualAssignment
+	}
+	
+	if CallingPartyName, ok := QueuerequestMap["callingPartyName"].(string); ok {
+		o.CallingPartyName = &CallingPartyName
+	}
+	
+	if CallingPartyNumber, ok := QueuerequestMap["callingPartyNumber"].(string); ok {
+		o.CallingPartyNumber = &CallingPartyNumber
+	}
+	
+	if DefaultScripts, ok := QueuerequestMap["defaultScripts"].(map[string]interface{}); ok {
+		DefaultScriptsString, _ := json.Marshal(DefaultScripts)
+		json.Unmarshal(DefaultScriptsString, &o.DefaultScripts)
+	}
+	
+	if OutboundMessagingAddresses, ok := QueuerequestMap["outboundMessagingAddresses"].(map[string]interface{}); ok {
+		OutboundMessagingAddressesString, _ := json.Marshal(OutboundMessagingAddresses)
+		json.Unmarshal(OutboundMessagingAddressesString, &o.OutboundMessagingAddresses)
+	}
+	
+	if OutboundEmailAddress, ok := QueuerequestMap["outboundEmailAddress"].(map[string]interface{}); ok {
+		OutboundEmailAddressString, _ := json.Marshal(OutboundEmailAddress)
+		json.Unmarshal(OutboundEmailAddressString, &o.OutboundEmailAddress)
+	}
+	
+	if SelfUri, ok := QueuerequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

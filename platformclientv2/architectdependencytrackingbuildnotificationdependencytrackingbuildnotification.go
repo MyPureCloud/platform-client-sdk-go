@@ -26,21 +26,19 @@ type Architectdependencytrackingbuildnotificationdependencytrackingbuildnotifica
 
 }
 
-func (u *Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification) MarshalJSON() ([]byte, error) {
+func (o *Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -51,15 +49,45 @@ func (u *Architectdependencytrackingbuildnotificationdependencytrackingbuildnoti
 		StartTime *string `json:"startTime,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
 		StartTime: StartTime,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification) UnmarshalJSON(b []byte) error {
+	var ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if User, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if startTimeString, ok := ArchitectdependencytrackingbuildnotificationdependencytrackingbuildnotificationMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

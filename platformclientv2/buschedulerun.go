@@ -78,44 +78,42 @@ type Buschedulerun struct {
 
 }
 
-func (u *Buschedulerun) MarshalJSON() ([]byte, error) {
+func (o *Buschedulerun) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buschedulerun
-
 	
 	TargetWeek := new(string)
-	if u.TargetWeek != nil {
-		*TargetWeek = timeutil.Strftime(u.TargetWeek, "%Y-%m-%d")
+	if o.TargetWeek != nil {
+		*TargetWeek = timeutil.Strftime(o.TargetWeek, "%Y-%m-%d")
 	} else {
 		TargetWeek = nil
 	}
 	
 	SchedulingStartTime := new(string)
-	if u.SchedulingStartTime != nil {
+	if o.SchedulingStartTime != nil {
 		
-		*SchedulingStartTime = timeutil.Strftime(u.SchedulingStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*SchedulingStartTime = timeutil.Strftime(o.SchedulingStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		SchedulingStartTime = nil
 	}
 	
 	SchedulingCompletedTime := new(string)
-	if u.SchedulingCompletedTime != nil {
+	if o.SchedulingCompletedTime != nil {
 		
-		*SchedulingCompletedTime = timeutil.Strftime(u.SchedulingCompletedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*SchedulingCompletedTime = timeutil.Strftime(o.SchedulingCompletedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		SchedulingCompletedTime = nil
 	}
 	
 	ReschedulingResultExpiration := new(string)
-	if u.ReschedulingResultExpiration != nil {
+	if o.ReschedulingResultExpiration != nil {
 		
-		*ReschedulingResultExpiration = timeutil.Strftime(u.ReschedulingResultExpiration, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReschedulingResultExpiration = timeutil.Strftime(o.ReschedulingResultExpiration, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReschedulingResultExpiration = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -152,41 +150,130 @@ func (u *Buschedulerun) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SchedulerRunId: u.SchedulerRunId,
+		SchedulerRunId: o.SchedulerRunId,
 		
-		IntradayRescheduling: u.IntradayRescheduling,
+		IntradayRescheduling: o.IntradayRescheduling,
 		
-		State: u.State,
+		State: o.State,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		PercentComplete: u.PercentComplete,
+		PercentComplete: o.PercentComplete,
 		
 		TargetWeek: TargetWeek,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		ScheduleDescription: u.ScheduleDescription,
+		ScheduleDescription: o.ScheduleDescription,
 		
 		SchedulingStartTime: SchedulingStartTime,
 		
-		SchedulingStartedBy: u.SchedulingStartedBy,
+		SchedulingStartedBy: o.SchedulingStartedBy,
 		
-		SchedulingCanceledBy: u.SchedulingCanceledBy,
+		SchedulingCanceledBy: o.SchedulingCanceledBy,
 		
 		SchedulingCompletedTime: SchedulingCompletedTime,
 		
-		MessageCount: u.MessageCount,
+		MessageCount: o.MessageCount,
 		
-		ReschedulingOptions: u.ReschedulingOptions,
+		ReschedulingOptions: o.ReschedulingOptions,
 		
 		ReschedulingResultExpiration: ReschedulingResultExpiration,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buschedulerun) UnmarshalJSON(b []byte) error {
+	var BuschedulerunMap map[string]interface{}
+	err := json.Unmarshal(b, &BuschedulerunMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BuschedulerunMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SchedulerRunId, ok := BuschedulerunMap["schedulerRunId"].(string); ok {
+		o.SchedulerRunId = &SchedulerRunId
+	}
+	
+	if IntradayRescheduling, ok := BuschedulerunMap["intradayRescheduling"].(bool); ok {
+		o.IntradayRescheduling = &IntradayRescheduling
+	}
+	
+	if State, ok := BuschedulerunMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if WeekCount, ok := BuschedulerunMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if PercentComplete, ok := BuschedulerunMap["percentComplete"].(float64); ok {
+		o.PercentComplete = &PercentComplete
+	}
+	
+	if targetWeekString, ok := BuschedulerunMap["targetWeek"].(string); ok {
+		TargetWeek, _ := time.Parse("2006-01-02", targetWeekString)
+		o.TargetWeek = &TargetWeek
+	}
+	
+	if Schedule, ok := BuschedulerunMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if ScheduleDescription, ok := BuschedulerunMap["scheduleDescription"].(string); ok {
+		o.ScheduleDescription = &ScheduleDescription
+	}
+	
+	if schedulingStartTimeString, ok := BuschedulerunMap["schedulingStartTime"].(string); ok {
+		SchedulingStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", schedulingStartTimeString)
+		o.SchedulingStartTime = &SchedulingStartTime
+	}
+	
+	if SchedulingStartedBy, ok := BuschedulerunMap["schedulingStartedBy"].(map[string]interface{}); ok {
+		SchedulingStartedByString, _ := json.Marshal(SchedulingStartedBy)
+		json.Unmarshal(SchedulingStartedByString, &o.SchedulingStartedBy)
+	}
+	
+	if SchedulingCanceledBy, ok := BuschedulerunMap["schedulingCanceledBy"].(map[string]interface{}); ok {
+		SchedulingCanceledByString, _ := json.Marshal(SchedulingCanceledBy)
+		json.Unmarshal(SchedulingCanceledByString, &o.SchedulingCanceledBy)
+	}
+	
+	if schedulingCompletedTimeString, ok := BuschedulerunMap["schedulingCompletedTime"].(string); ok {
+		SchedulingCompletedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", schedulingCompletedTimeString)
+		o.SchedulingCompletedTime = &SchedulingCompletedTime
+	}
+	
+	if MessageCount, ok := BuschedulerunMap["messageCount"].(float64); ok {
+		MessageCountInt := int(MessageCount)
+		o.MessageCount = &MessageCountInt
+	}
+	
+	if ReschedulingOptions, ok := BuschedulerunMap["reschedulingOptions"].(map[string]interface{}); ok {
+		ReschedulingOptionsString, _ := json.Marshal(ReschedulingOptions)
+		json.Unmarshal(ReschedulingOptionsString, &o.ReschedulingOptions)
+	}
+	
+	if reschedulingResultExpirationString, ok := BuschedulerunMap["reschedulingResultExpiration"].(string); ok {
+		ReschedulingResultExpiration, _ := time.Parse("2006-01-02T15:04:05.999999Z", reschedulingResultExpirationString)
+		o.ReschedulingResultExpiration = &ReschedulingResultExpiration
+	}
+	
+	if SelfUri, ok := BuschedulerunMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

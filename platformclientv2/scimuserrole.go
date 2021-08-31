@@ -13,20 +13,33 @@ type Scimuserrole struct {
 
 }
 
-func (u *Scimuserrole) MarshalJSON() ([]byte, error) {
+func (o *Scimuserrole) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimuserrole
-
 	
-
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimuserrole) UnmarshalJSON(b []byte) error {
+	var ScimuserroleMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimuserroleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Value, ok := ScimuserroleMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

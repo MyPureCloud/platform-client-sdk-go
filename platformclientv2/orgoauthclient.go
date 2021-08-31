@@ -58,37 +58,35 @@ type Orgoauthclient struct {
 
 }
 
-func (u *Orgoauthclient) MarshalJSON() ([]byte, error) {
+func (o *Orgoauthclient) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Orgoauthclient
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateToDelete := new(string)
-	if u.DateToDelete != nil {
+	if o.DateToDelete != nil {
 		
-		*DateToDelete = timeutil.Strftime(u.DateToDelete, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateToDelete = timeutil.Strftime(o.DateToDelete, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateToDelete = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -115,31 +113,98 @@ func (u *Orgoauthclient) MarshalJSON() ([]byte, error) {
 		Organization *Namedentity `json:"organization,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		AuthorizedGrantType: u.AuthorizedGrantType,
+		AuthorizedGrantType: o.AuthorizedGrantType,
 		
-		Scope: u.Scope,
+		Scope: o.Scope,
 		
-		RoleDivisions: u.RoleDivisions,
+		RoleDivisions: o.RoleDivisions,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateToDelete: DateToDelete,
 		
-		Organization: u.Organization,
-		Alias:    (*Alias)(u),
+		Organization: o.Organization,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Orgoauthclient) UnmarshalJSON(b []byte) error {
+	var OrgoauthclientMap map[string]interface{}
+	err := json.Unmarshal(b, &OrgoauthclientMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OrgoauthclientMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OrgoauthclientMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := OrgoauthclientMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := OrgoauthclientMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := OrgoauthclientMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ModifiedBy, ok := OrgoauthclientMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if AuthorizedGrantType, ok := OrgoauthclientMap["authorizedGrantType"].(string); ok {
+		o.AuthorizedGrantType = &AuthorizedGrantType
+	}
+	
+	if Scope, ok := OrgoauthclientMap["scope"].([]interface{}); ok {
+		ScopeString, _ := json.Marshal(Scope)
+		json.Unmarshal(ScopeString, &o.Scope)
+	}
+	
+	if RoleDivisions, ok := OrgoauthclientMap["roleDivisions"].([]interface{}); ok {
+		RoleDivisionsString, _ := json.Marshal(RoleDivisions)
+		json.Unmarshal(RoleDivisionsString, &o.RoleDivisions)
+	}
+	
+	if State, ok := OrgoauthclientMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateToDeleteString, ok := OrgoauthclientMap["dateToDelete"].(string); ok {
+		DateToDelete, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateToDeleteString)
+		o.DateToDelete = &DateToDelete
+	}
+	
+	if Organization, ok := OrgoauthclientMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Aggregationresult struct {
 
 }
 
-func (u *Aggregationresult) MarshalJSON() ([]byte, error) {
+func (o *Aggregationresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Aggregationresult
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Aggregationresult) MarshalJSON() ([]byte, error) {
 		Results *[]Aggregationresultentry `json:"results,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Count: u.Count,
+		Count: o.Count,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Aggregationresult) UnmarshalJSON(b []byte) error {
+	var AggregationresultMap map[string]interface{}
+	err := json.Unmarshal(b, &AggregationresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := AggregationresultMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := AggregationresultMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Metric, ok := AggregationresultMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Count, ok := AggregationresultMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if Results, ok := AggregationresultMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

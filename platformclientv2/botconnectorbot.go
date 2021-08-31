@@ -33,13 +33,11 @@ type Botconnectorbot struct {
 
 }
 
-func (u *Botconnectorbot) MarshalJSON() ([]byte, error) {
+func (o *Botconnectorbot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botconnectorbot
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Botconnectorbot) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Versions: u.Versions,
+		Versions: o.Versions,
 		
-		BotCompositeTag: u.BotCompositeTag,
+		BotCompositeTag: o.BotCompositeTag,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botconnectorbot) UnmarshalJSON(b []byte) error {
+	var BotconnectorbotMap map[string]interface{}
+	err := json.Unmarshal(b, &BotconnectorbotMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BotconnectorbotMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := BotconnectorbotMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := BotconnectorbotMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Versions, ok := BotconnectorbotMap["versions"].([]interface{}); ok {
+		VersionsString, _ := json.Marshal(Versions)
+		json.Unmarshal(VersionsString, &o.Versions)
+	}
+	
+	if BotCompositeTag, ok := BotconnectorbotMap["botCompositeTag"].(string); ok {
+		o.BotCompositeTag = &BotCompositeTag
+	}
+	
+	if SelfUri, ok := BotconnectorbotMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

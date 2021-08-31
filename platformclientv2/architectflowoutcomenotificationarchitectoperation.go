@@ -49,13 +49,11 @@ type Architectflowoutcomenotificationarchitectoperation struct {
 
 }
 
-func (u *Architectflowoutcomenotificationarchitectoperation) MarshalJSON() ([]byte, error) {
+func (o *Architectflowoutcomenotificationarchitectoperation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflowoutcomenotificationarchitectoperation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,82 @@ func (u *Architectflowoutcomenotificationarchitectoperation) MarshalJSON() ([]by
 		ErrorDetails *[]Architectflowoutcomenotificationerrordetail `json:"errorDetails,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Complete: u.Complete,
+		Complete: o.Complete,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		ActionName: u.ActionName,
+		ActionName: o.ActionName,
 		
-		ActionStatus: u.ActionStatus,
+		ActionStatus: o.ActionStatus,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		ErrorMessageParams: u.ErrorMessageParams,
+		ErrorMessageParams: o.ErrorMessageParams,
 		
-		ErrorDetails: u.ErrorDetails,
-		Alias:    (*Alias)(u),
+		ErrorDetails: o.ErrorDetails,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflowoutcomenotificationarchitectoperation) UnmarshalJSON(b []byte) error {
+	var ArchitectflowoutcomenotificationarchitectoperationMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflowoutcomenotificationarchitectoperationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ArchitectflowoutcomenotificationarchitectoperationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Complete, ok := ArchitectflowoutcomenotificationarchitectoperationMap["complete"].(bool); ok {
+		o.Complete = &Complete
+	}
+	
+	if User, ok := ArchitectflowoutcomenotificationarchitectoperationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := ArchitectflowoutcomenotificationarchitectoperationMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if ActionName, ok := ArchitectflowoutcomenotificationarchitectoperationMap["actionName"].(string); ok {
+		o.ActionName = &ActionName
+	}
+	
+	if ActionStatus, ok := ArchitectflowoutcomenotificationarchitectoperationMap["actionStatus"].(string); ok {
+		o.ActionStatus = &ActionStatus
+	}
+	
+	if ErrorMessage, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if ErrorCode, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if ErrorMessageParams, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorMessageParams"].(map[string]interface{}); ok {
+		ErrorMessageParamsString, _ := json.Marshal(ErrorMessageParams)
+		json.Unmarshal(ErrorMessageParamsString, &o.ErrorMessageParams)
+	}
+	
+	if ErrorDetails, ok := ArchitectflowoutcomenotificationarchitectoperationMap["errorDetails"].([]interface{}); ok {
+		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
+		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

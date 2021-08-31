@@ -18,21 +18,19 @@ type Headcountinterval struct {
 
 }
 
-func (u *Headcountinterval) MarshalJSON() ([]byte, error) {
+func (o *Headcountinterval) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Headcountinterval
-
 	
 	Interval := new(string)
-	if u.Interval != nil {
+	if o.Interval != nil {
 		
-		*Interval = timeutil.Strftime(u.Interval, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Interval = timeutil.Strftime(o.Interval, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Interval = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -41,9 +39,29 @@ func (u *Headcountinterval) MarshalJSON() ([]byte, error) {
 	}{ 
 		Interval: Interval,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Headcountinterval) UnmarshalJSON(b []byte) error {
+	var HeadcountintervalMap map[string]interface{}
+	err := json.Unmarshal(b, &HeadcountintervalMap)
+	if err != nil {
+		return err
+	}
+	
+	if intervalString, ok := HeadcountintervalMap["interval"].(string); ok {
+		Interval, _ := time.Parse("2006-01-02T15:04:05.999999Z", intervalString)
+		o.Interval = &Interval
+	}
+	
+	if Value, ok := HeadcountintervalMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Coachingappointmentaggregaterequest struct {
 
 }
 
-func (u *Coachingappointmentaggregaterequest) MarshalJSON() ([]byte, error) {
+func (o *Coachingappointmentaggregaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingappointmentaggregaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Coachingappointmentaggregaterequest) MarshalJSON() ([]byte, error) {
 		Filter *Queryrequestfilter `json:"filter,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		GroupBy: u.GroupBy,
+		GroupBy: o.GroupBy,
 		
-		Filter: u.Filter,
-		Alias:    (*Alias)(u),
+		Filter: o.Filter,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingappointmentaggregaterequest) UnmarshalJSON(b []byte) error {
+	var CoachingappointmentaggregaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingappointmentaggregaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := CoachingappointmentaggregaterequestMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Metrics, ok := CoachingappointmentaggregaterequestMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if GroupBy, ok := CoachingappointmentaggregaterequestMap["groupBy"].([]interface{}); ok {
+		GroupByString, _ := json.Marshal(GroupBy)
+		json.Unmarshal(GroupByString, &o.GroupBy)
+	}
+	
+	if Filter, ok := CoachingappointmentaggregaterequestMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Murescheduleresultwrapper struct {
 
 }
 
-func (u *Murescheduleresultwrapper) MarshalJSON() ([]byte, error) {
+func (o *Murescheduleresultwrapper) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Murescheduleresultwrapper
-
 	
-
 	return json.Marshal(&struct { 
 		AgentSchedules *[]Buagentschedulerescheduleresponse `json:"agentSchedules,omitempty"`
 		*Alias
 	}{ 
-		AgentSchedules: u.AgentSchedules,
-		Alias:    (*Alias)(u),
+		AgentSchedules: o.AgentSchedules,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Murescheduleresultwrapper) UnmarshalJSON(b []byte) error {
+	var MurescheduleresultwrapperMap map[string]interface{}
+	err := json.Unmarshal(b, &MurescheduleresultwrapperMap)
+	if err != nil {
+		return err
+	}
+	
+	if AgentSchedules, ok := MurescheduleresultwrapperMap["agentSchedules"].([]interface{}); ok {
+		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
+		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Historicaladherenceexceptioninfo struct {
 
 }
 
-func (u *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
+func (o *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historicaladherenceexceptioninfo
-
 	
-
 	return json.Marshal(&struct { 
 		StartOffsetSeconds *int `json:"startOffsetSeconds,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
 		SecondaryPresenceLookupId *string `json:"secondaryPresenceLookupId,omitempty"`
 		*Alias
 	}{ 
-		StartOffsetSeconds: u.StartOffsetSeconds,
+		StartOffsetSeconds: o.StartOffsetSeconds,
 		
-		EndOffsetSeconds: u.EndOffsetSeconds,
+		EndOffsetSeconds: o.EndOffsetSeconds,
 		
-		ScheduledActivityCodeId: u.ScheduledActivityCodeId,
+		ScheduledActivityCodeId: o.ScheduledActivityCodeId,
 		
-		ScheduledActivityCategory: u.ScheduledActivityCategory,
+		ScheduledActivityCategory: o.ScheduledActivityCategory,
 		
-		ActualActivityCategory: u.ActualActivityCategory,
+		ActualActivityCategory: o.ActualActivityCategory,
 		
-		SystemPresence: u.SystemPresence,
+		SystemPresence: o.SystemPresence,
 		
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		Impact: u.Impact,
+		Impact: o.Impact,
 		
-		SecondaryPresenceLookupId: u.SecondaryPresenceLookupId,
-		Alias:    (*Alias)(u),
+		SecondaryPresenceLookupId: o.SecondaryPresenceLookupId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historicaladherenceexceptioninfo) UnmarshalJSON(b []byte) error {
+	var HistoricaladherenceexceptioninfoMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoricaladherenceexceptioninfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if StartOffsetSeconds, ok := HistoricaladherenceexceptioninfoMap["startOffsetSeconds"].(float64); ok {
+		StartOffsetSecondsInt := int(StartOffsetSeconds)
+		o.StartOffsetSeconds = &StartOffsetSecondsInt
+	}
+	
+	if EndOffsetSeconds, ok := HistoricaladherenceexceptioninfoMap["endOffsetSeconds"].(float64); ok {
+		EndOffsetSecondsInt := int(EndOffsetSeconds)
+		o.EndOffsetSeconds = &EndOffsetSecondsInt
+	}
+	
+	if ScheduledActivityCodeId, ok := HistoricaladherenceexceptioninfoMap["scheduledActivityCodeId"].(string); ok {
+		o.ScheduledActivityCodeId = &ScheduledActivityCodeId
+	}
+	
+	if ScheduledActivityCategory, ok := HistoricaladherenceexceptioninfoMap["scheduledActivityCategory"].(string); ok {
+		o.ScheduledActivityCategory = &ScheduledActivityCategory
+	}
+	
+	if ActualActivityCategory, ok := HistoricaladherenceexceptioninfoMap["actualActivityCategory"].(string); ok {
+		o.ActualActivityCategory = &ActualActivityCategory
+	}
+	
+	if SystemPresence, ok := HistoricaladherenceexceptioninfoMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+	
+	if RoutingStatus, ok := HistoricaladherenceexceptioninfoMap["routingStatus"].(map[string]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+	if Impact, ok := HistoricaladherenceexceptioninfoMap["impact"].(string); ok {
+		o.Impact = &Impact
+	}
+	
+	if SecondaryPresenceLookupId, ok := HistoricaladherenceexceptioninfoMap["secondaryPresenceLookupId"].(string); ok {
+		o.SecondaryPresenceLookupId = &SecondaryPresenceLookupId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

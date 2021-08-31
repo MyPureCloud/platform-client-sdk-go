@@ -13,20 +13,34 @@ type Userobservationqueryresponse struct {
 
 }
 
-func (u *Userobservationqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Userobservationqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userobservationqueryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Userobservationdatacontainer `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userobservationqueryresponse) UnmarshalJSON(b []byte) error {
+	var UserobservationqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &UserobservationqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := UserobservationqueryresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

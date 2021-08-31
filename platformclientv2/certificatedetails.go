@@ -38,29 +38,27 @@ type Certificatedetails struct {
 
 }
 
-func (u *Certificatedetails) MarshalJSON() ([]byte, error) {
+func (o *Certificatedetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Certificatedetails
-
 	
 	ExpirationDate := new(string)
-	if u.ExpirationDate != nil {
+	if o.ExpirationDate != nil {
 		
-		*ExpirationDate = timeutil.Strftime(u.ExpirationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExpirationDate = timeutil.Strftime(o.ExpirationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExpirationDate = nil
 	}
 	
 	IssueDate := new(string)
-	if u.IssueDate != nil {
+	if o.IssueDate != nil {
 		
-		*IssueDate = timeutil.Strftime(u.IssueDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*IssueDate = timeutil.Strftime(o.IssueDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		IssueDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Issuer *string `json:"issuer,omitempty"`
 		
@@ -77,21 +75,62 @@ func (u *Certificatedetails) MarshalJSON() ([]byte, error) {
 		SignatureValid *bool `json:"signatureValid,omitempty"`
 		*Alias
 	}{ 
-		Issuer: u.Issuer,
+		Issuer: o.Issuer,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
 		ExpirationDate: ExpirationDate,
 		
 		IssueDate: IssueDate,
 		
-		Expired: u.Expired,
+		Expired: o.Expired,
 		
-		Valid: u.Valid,
+		Valid: o.Valid,
 		
-		SignatureValid: u.SignatureValid,
-		Alias:    (*Alias)(u),
+		SignatureValid: o.SignatureValid,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Certificatedetails) UnmarshalJSON(b []byte) error {
+	var CertificatedetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &CertificatedetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Issuer, ok := CertificatedetailsMap["issuer"].(string); ok {
+		o.Issuer = &Issuer
+	}
+	
+	if Subject, ok := CertificatedetailsMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+	if expirationDateString, ok := CertificatedetailsMap["expirationDate"].(string); ok {
+		ExpirationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationDateString)
+		o.ExpirationDate = &ExpirationDate
+	}
+	
+	if issueDateString, ok := CertificatedetailsMap["issueDate"].(string); ok {
+		IssueDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", issueDateString)
+		o.IssueDate = &IssueDate
+	}
+	
+	if Expired, ok := CertificatedetailsMap["expired"].(bool); ok {
+		o.Expired = &Expired
+	}
+	
+	if Valid, ok := CertificatedetailsMap["valid"].(bool); ok {
+		o.Valid = &Valid
+	}
+	
+	if SignatureValid, ok := CertificatedetailsMap["signatureValid"].(bool); ok {
+		o.SignatureValid = &SignatureValid
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

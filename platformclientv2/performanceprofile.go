@@ -50,21 +50,19 @@ type Performanceprofile struct {
 
 }
 
-func (u *Performanceprofile) MarshalJSON() ([]byte, error) {
+func (o *Performanceprofile) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Performanceprofile
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -87,27 +85,83 @@ func (u *Performanceprofile) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		MetricOrders: u.MetricOrders,
+		MetricOrders: o.MetricOrders,
 		
 		DateCreated: DateCreated,
 		
-		ReportingIntervals: u.ReportingIntervals,
+		ReportingIntervals: o.ReportingIntervals,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		MaxLeaderboardRankSize: u.MaxLeaderboardRankSize,
+		MaxLeaderboardRankSize: o.MaxLeaderboardRankSize,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Performanceprofile) UnmarshalJSON(b []byte) error {
+	var PerformanceprofileMap map[string]interface{}
+	err := json.Unmarshal(b, &PerformanceprofileMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PerformanceprofileMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PerformanceprofileMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := PerformanceprofileMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Description, ok := PerformanceprofileMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if MetricOrders, ok := PerformanceprofileMap["metricOrders"].([]interface{}); ok {
+		MetricOrdersString, _ := json.Marshal(MetricOrders)
+		json.Unmarshal(MetricOrdersString, &o.MetricOrders)
+	}
+	
+	if dateCreatedString, ok := PerformanceprofileMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ReportingIntervals, ok := PerformanceprofileMap["reportingIntervals"].([]interface{}); ok {
+		ReportingIntervalsString, _ := json.Marshal(ReportingIntervals)
+		json.Unmarshal(ReportingIntervalsString, &o.ReportingIntervals)
+	}
+	
+	if Active, ok := PerformanceprofileMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if MaxLeaderboardRankSize, ok := PerformanceprofileMap["maxLeaderboardRankSize"].(float64); ok {
+		MaxLeaderboardRankSizeInt := int(MaxLeaderboardRankSize)
+		o.MaxLeaderboardRankSize = &MaxLeaderboardRankSizeInt
+	}
+	
+	if SelfUri, ok := PerformanceprofileMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

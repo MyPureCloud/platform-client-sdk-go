@@ -46,29 +46,27 @@ type Note struct {
 
 }
 
-func (u *Note) MarshalJSON() ([]byte, error) {
+func (o *Note) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Note
-
 	
 	ModifyDate := new(string)
-	if u.ModifyDate != nil {
+	if o.ModifyDate != nil {
 		
-		*ModifyDate = timeutil.Strftime(u.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifyDate = timeutil.Strftime(o.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifyDate = nil
 	}
 	
 	CreateDate := new(string)
-	if u.CreateDate != nil {
+	if o.CreateDate != nil {
 		
-		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreateDate = timeutil.Strftime(o.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreateDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,76 @@ func (u *Note) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		EntityId: u.EntityId,
+		EntityId: o.EntityId,
 		
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		NoteText: u.NoteText,
+		NoteText: o.NoteText,
 		
 		ModifyDate: ModifyDate,
 		
 		CreateDate: CreateDate,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ExternalDataSources: u.ExternalDataSources,
+		ExternalDataSources: o.ExternalDataSources,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Note) UnmarshalJSON(b []byte) error {
+	var NoteMap map[string]interface{}
+	err := json.Unmarshal(b, &NoteMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := NoteMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if EntityId, ok := NoteMap["entityId"].(string); ok {
+		o.EntityId = &EntityId
+	}
+	
+	if EntityType, ok := NoteMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if NoteText, ok := NoteMap["noteText"].(string); ok {
+		o.NoteText = &NoteText
+	}
+	
+	if modifyDateString, ok := NoteMap["modifyDate"].(string); ok {
+		ModifyDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifyDateString)
+		o.ModifyDate = &ModifyDate
+	}
+	
+	if createDateString, ok := NoteMap["createDate"].(string); ok {
+		CreateDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createDateString)
+		o.CreateDate = &CreateDate
+	}
+	
+	if CreatedBy, ok := NoteMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ExternalDataSources, ok := NoteMap["externalDataSources"].([]interface{}); ok {
+		ExternalDataSourcesString, _ := json.Marshal(ExternalDataSources)
+		json.Unmarshal(ExternalDataSourcesString, &o.ExternalDataSources)
+	}
+	
+	if SelfUri, ok := NoteMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

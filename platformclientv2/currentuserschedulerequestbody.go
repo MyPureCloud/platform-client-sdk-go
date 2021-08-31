@@ -22,29 +22,27 @@ type Currentuserschedulerequestbody struct {
 
 }
 
-func (u *Currentuserschedulerequestbody) MarshalJSON() ([]byte, error) {
+func (o *Currentuserschedulerequestbody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Currentuserschedulerequestbody
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -57,9 +55,34 @@ func (u *Currentuserschedulerequestbody) MarshalJSON() ([]byte, error) {
 		
 		EndDate: EndDate,
 		
-		LoadFullWeeks: u.LoadFullWeeks,
-		Alias:    (*Alias)(u),
+		LoadFullWeeks: o.LoadFullWeeks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Currentuserschedulerequestbody) UnmarshalJSON(b []byte) error {
+	var CurrentuserschedulerequestbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &CurrentuserschedulerequestbodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := CurrentuserschedulerequestbodyMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := CurrentuserschedulerequestbodyMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if LoadFullWeeks, ok := CurrentuserschedulerequestbodyMap["loadFullWeeks"].(bool); ok {
+		o.LoadFullWeeks = &LoadFullWeeks
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

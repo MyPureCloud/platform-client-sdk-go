@@ -21,13 +21,11 @@ type Outboundmessagingmessagingcampaignconfigchangefromemailaddress struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangefromemailaddress) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangefromemailaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangefromemailaddress
-
 	
-
 	return json.Marshal(&struct { 
 		FriendlyName *string `json:"friendlyName,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Outboundmessagingmessagingcampaignconfigchangefromemailaddress) Marshal
 		Domain *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"domain,omitempty"`
 		*Alias
 	}{ 
-		FriendlyName: u.FriendlyName,
+		FriendlyName: o.FriendlyName,
 		
-		LocalPart: u.LocalPart,
+		LocalPart: o.LocalPart,
 		
-		Domain: u.Domain,
-		Alias:    (*Alias)(u),
+		Domain: o.Domain,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangefromemailaddress) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if FriendlyName, ok := OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap["friendlyName"].(string); ok {
+		o.FriendlyName = &FriendlyName
+	}
+	
+	if LocalPart, ok := OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap["localPart"].(string); ok {
+		o.LocalPart = &LocalPart
+	}
+	
+	if Domain, ok := OutboundmessagingmessagingcampaignconfigchangefromemailaddressMap["domain"].(map[string]interface{}); ok {
+		DomainString, _ := json.Marshal(Domain)
+		json.Unmarshal(DomainString, &o.Domain)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

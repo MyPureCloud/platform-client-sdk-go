@@ -17,24 +17,42 @@ type Buagentschedulesqueryresponse struct {
 
 }
 
-func (u *Buagentschedulesqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulesqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulesqueryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		AgentSchedules *[]Buagentschedulequeryresponse `json:"agentSchedules,omitempty"`
 		
 		BusinessUnitTimeZone *string `json:"businessUnitTimeZone,omitempty"`
 		*Alias
 	}{ 
-		AgentSchedules: u.AgentSchedules,
+		AgentSchedules: o.AgentSchedules,
 		
-		BusinessUnitTimeZone: u.BusinessUnitTimeZone,
-		Alias:    (*Alias)(u),
+		BusinessUnitTimeZone: o.BusinessUnitTimeZone,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulesqueryresponse) UnmarshalJSON(b []byte) error {
+	var BuagentschedulesqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulesqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if AgentSchedules, ok := BuagentschedulesqueryresponseMap["agentSchedules"].([]interface{}); ok {
+		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
+		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
+	}
+	
+	if BusinessUnitTimeZone, ok := BuagentschedulesqueryresponseMap["businessUnitTimeZone"].(string); ok {
+		o.BusinessUnitTimeZone = &BusinessUnitTimeZone
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

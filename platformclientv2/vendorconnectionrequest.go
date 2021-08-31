@@ -21,13 +21,11 @@ type Vendorconnectionrequest struct {
 
 }
 
-func (u *Vendorconnectionrequest) MarshalJSON() ([]byte, error) {
+func (o *Vendorconnectionrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Vendorconnectionrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Publisher *string `json:"publisher,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Vendorconnectionrequest) MarshalJSON() ([]byte, error) {
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Publisher: u.Publisher,
+		Publisher: o.Publisher,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Vendorconnectionrequest) UnmarshalJSON(b []byte) error {
+	var VendorconnectionrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &VendorconnectionrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Publisher, ok := VendorconnectionrequestMap["publisher"].(string); ok {
+		o.Publisher = &Publisher
+	}
+	
+	if VarType, ok := VendorconnectionrequestMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Name, ok := VendorconnectionrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

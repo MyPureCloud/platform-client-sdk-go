@@ -13,20 +13,34 @@ type Licensebatchassignmentrequest struct {
 
 }
 
-func (u *Licensebatchassignmentrequest) MarshalJSON() ([]byte, error) {
+func (o *Licensebatchassignmentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Licensebatchassignmentrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Assignments *[]Licenseassignmentrequest `json:"assignments,omitempty"`
 		*Alias
 	}{ 
-		Assignments: u.Assignments,
-		Alias:    (*Alias)(u),
+		Assignments: o.Assignments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Licensebatchassignmentrequest) UnmarshalJSON(b []byte) error {
+	var LicensebatchassignmentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &LicensebatchassignmentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Assignments, ok := LicensebatchassignmentrequestMap["assignments"].([]interface{}); ok {
+		AssignmentsString, _ := json.Marshal(Assignments)
+		json.Unmarshal(AssignmentsString, &o.Assignments)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

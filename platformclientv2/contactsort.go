@@ -21,13 +21,11 @@ type Contactsort struct {
 
 }
 
-func (u *Contactsort) MarshalJSON() ([]byte, error) {
+func (o *Contactsort) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactsort
-
 	
-
 	return json.Marshal(&struct { 
 		FieldName *string `json:"fieldName,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Contactsort) MarshalJSON() ([]byte, error) {
 		Numeric *bool `json:"numeric,omitempty"`
 		*Alias
 	}{ 
-		FieldName: u.FieldName,
+		FieldName: o.FieldName,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Numeric: u.Numeric,
-		Alias:    (*Alias)(u),
+		Numeric: o.Numeric,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactsort) UnmarshalJSON(b []byte) error {
+	var ContactsortMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactsortMap)
+	if err != nil {
+		return err
+	}
+	
+	if FieldName, ok := ContactsortMap["fieldName"].(string); ok {
+		o.FieldName = &FieldName
+	}
+	
+	if Direction, ok := ContactsortMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Numeric, ok := ContactsortMap["numeric"].(bool); ok {
+		o.Numeric = &Numeric
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

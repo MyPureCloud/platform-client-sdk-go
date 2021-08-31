@@ -33,13 +33,11 @@ type Userschedulefulldaytimeoffmarker struct {
 
 }
 
-func (u *Userschedulefulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
+func (o *Userschedulefulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userschedulefulldaytimeoffmarker
-
 	
-
 	return json.Marshal(&struct { 
 		ManagementUnitDate *string `json:"managementUnitDate,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Userschedulefulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 		Delete *bool `json:"delete,omitempty"`
 		*Alias
 	}{ 
-		ManagementUnitDate: u.ManagementUnitDate,
+		ManagementUnitDate: o.ManagementUnitDate,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		IsPaid: u.IsPaid,
+		IsPaid: o.IsPaid,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Delete: u.Delete,
-		Alias:    (*Alias)(u),
+		Delete: o.Delete,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userschedulefulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
+	var UserschedulefulldaytimeoffmarkerMap map[string]interface{}
+	err := json.Unmarshal(b, &UserschedulefulldaytimeoffmarkerMap)
+	if err != nil {
+		return err
+	}
+	
+	if ManagementUnitDate, ok := UserschedulefulldaytimeoffmarkerMap["managementUnitDate"].(string); ok {
+		o.ManagementUnitDate = &ManagementUnitDate
+	}
+	
+	if ActivityCodeId, ok := UserschedulefulldaytimeoffmarkerMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if IsPaid, ok := UserschedulefulldaytimeoffmarkerMap["isPaid"].(bool); ok {
+		o.IsPaid = &IsPaid
+	}
+	
+	if LengthInMinutes, ok := UserschedulefulldaytimeoffmarkerMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if Description, ok := UserschedulefulldaytimeoffmarkerMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Delete, ok := UserschedulefulldaytimeoffmarkerMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

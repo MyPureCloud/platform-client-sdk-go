@@ -29,13 +29,11 @@ type Edgemetricstopicedgemetricnetworks struct {
 
 }
 
-func (u *Edgemetricstopicedgemetricnetworks) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricstopicedgemetricnetworks) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricstopicedgemetricnetworks
-
 	
-
 	return json.Marshal(&struct { 
 		Ifname *string `json:"ifname,omitempty"`
 		
@@ -48,17 +46,52 @@ func (u *Edgemetricstopicedgemetricnetworks) MarshalJSON() ([]byte, error) {
 		UtilizationPct *float32 `json:"utilizationPct,omitempty"`
 		*Alias
 	}{ 
-		Ifname: u.Ifname,
+		Ifname: o.Ifname,
 		
-		SentBytesPerSec: u.SentBytesPerSec,
+		SentBytesPerSec: o.SentBytesPerSec,
 		
-		ReceivedBytesPerSec: u.ReceivedBytesPerSec,
+		ReceivedBytesPerSec: o.ReceivedBytesPerSec,
 		
-		BandwidthBitsPerSec: u.BandwidthBitsPerSec,
+		BandwidthBitsPerSec: o.BandwidthBitsPerSec,
 		
-		UtilizationPct: u.UtilizationPct,
-		Alias:    (*Alias)(u),
+		UtilizationPct: o.UtilizationPct,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricstopicedgemetricnetworks) UnmarshalJSON(b []byte) error {
+	var EdgemetricstopicedgemetricnetworksMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricstopicedgemetricnetworksMap)
+	if err != nil {
+		return err
+	}
+	
+	if Ifname, ok := EdgemetricstopicedgemetricnetworksMap["ifname"].(string); ok {
+		o.Ifname = &Ifname
+	}
+	
+	if SentBytesPerSec, ok := EdgemetricstopicedgemetricnetworksMap["sentBytesPerSec"].(float64); ok {
+		SentBytesPerSecInt := int(SentBytesPerSec)
+		o.SentBytesPerSec = &SentBytesPerSecInt
+	}
+	
+	if ReceivedBytesPerSec, ok := EdgemetricstopicedgemetricnetworksMap["receivedBytesPerSec"].(float64); ok {
+		ReceivedBytesPerSecInt := int(ReceivedBytesPerSec)
+		o.ReceivedBytesPerSec = &ReceivedBytesPerSecInt
+	}
+	
+	if BandwidthBitsPerSec, ok := EdgemetricstopicedgemetricnetworksMap["bandwidthBitsPerSec"].(float64); ok {
+		BandwidthBitsPerSecInt := int(BandwidthBitsPerSec)
+		o.BandwidthBitsPerSec = &BandwidthBitsPerSecInt
+	}
+	
+	if UtilizationPct, ok := EdgemetricstopicedgemetricnetworksMap["utilizationPct"].(float64); ok {
+		UtilizationPctFloat32 := float32(UtilizationPct)
+		o.UtilizationPct = &UtilizationPctFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

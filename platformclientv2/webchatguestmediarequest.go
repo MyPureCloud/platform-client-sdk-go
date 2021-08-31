@@ -37,13 +37,11 @@ type Webchatguestmediarequest struct {
 
 }
 
-func (u *Webchatguestmediarequest) MarshalJSON() ([]byte, error) {
+func (o *Webchatguestmediarequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatguestmediarequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Webchatguestmediarequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		State: u.State,
+		State: o.State,
 		
-		CommunicationId: u.CommunicationId,
+		CommunicationId: o.CommunicationId,
 		
-		SecurityKey: u.SecurityKey,
+		SecurityKey: o.SecurityKey,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatguestmediarequest) UnmarshalJSON(b []byte) error {
+	var WebchatguestmediarequestMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatguestmediarequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebchatguestmediarequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WebchatguestmediarequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Types, ok := WebchatguestmediarequestMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if State, ok := WebchatguestmediarequestMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if CommunicationId, ok := WebchatguestmediarequestMap["communicationId"].(string); ok {
+		o.CommunicationId = &CommunicationId
+	}
+	
+	if SecurityKey, ok := WebchatguestmediarequestMap["securityKey"].(string); ok {
+		o.SecurityKey = &SecurityKey
+	}
+	
+	if SelfUri, ok := WebchatguestmediarequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

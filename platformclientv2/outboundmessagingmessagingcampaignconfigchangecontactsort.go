@@ -25,13 +25,11 @@ type Outboundmessagingmessagingcampaignconfigchangecontactsort struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangecontactsort
-
 	
-
 	return json.Marshal(&struct { 
 		FieldName *string `json:"fieldName,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Outboundmessagingmessagingcampaignconfigchangecontactsort) MarshalJSON(
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		FieldName: u.FieldName,
+		FieldName: o.FieldName,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Numeric: u.Numeric,
+		Numeric: o.Numeric,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangecontactsort) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangecontactsortMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangecontactsortMap)
+	if err != nil {
+		return err
+	}
+	
+	if FieldName, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["fieldName"].(string); ok {
+		o.FieldName = &FieldName
+	}
+	
+	if Direction, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Numeric, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["numeric"].(bool); ok {
+		o.Numeric = &Numeric
+	}
+	
+	if AdditionalProperties, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

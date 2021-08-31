@@ -21,13 +21,11 @@ type Suggestsearchrequest struct {
 
 }
 
-func (u *Suggestsearchrequest) MarshalJSON() ([]byte, error) {
+func (o *Suggestsearchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Suggestsearchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Expand *[]string `json:"expand,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Suggestsearchrequest) MarshalJSON() ([]byte, error) {
 		Query *[]Suggestsearchcriteria `json:"query,omitempty"`
 		*Alias
 	}{ 
-		Expand: u.Expand,
+		Expand: o.Expand,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		Query: u.Query,
-		Alias:    (*Alias)(u),
+		Query: o.Query,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Suggestsearchrequest) UnmarshalJSON(b []byte) error {
+	var SuggestsearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SuggestsearchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Expand, ok := SuggestsearchrequestMap["expand"].([]interface{}); ok {
+		ExpandString, _ := json.Marshal(Expand)
+		json.Unmarshal(ExpandString, &o.Expand)
+	}
+	
+	if Types, ok := SuggestsearchrequestMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if Query, ok := SuggestsearchrequestMap["query"].([]interface{}); ok {
+		QueryString, _ := json.Marshal(Query)
+		json.Unmarshal(QueryString, &o.Query)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

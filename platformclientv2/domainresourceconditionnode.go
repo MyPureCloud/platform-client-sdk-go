@@ -29,13 +29,11 @@ type Domainresourceconditionnode struct {
 
 }
 
-func (u *Domainresourceconditionnode) MarshalJSON() ([]byte, error) {
+func (o *Domainresourceconditionnode) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainresourceconditionnode
-
 	
-
 	return json.Marshal(&struct { 
 		VariableName *string `json:"variableName,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Domainresourceconditionnode) MarshalJSON() ([]byte, error) {
 		Terms *[]Domainresourceconditionnode `json:"terms,omitempty"`
 		*Alias
 	}{ 
-		VariableName: u.VariableName,
+		VariableName: o.VariableName,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Operands: u.Operands,
+		Operands: o.Operands,
 		
-		Conjunction: u.Conjunction,
+		Conjunction: o.Conjunction,
 		
-		Terms: u.Terms,
-		Alias:    (*Alias)(u),
+		Terms: o.Terms,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainresourceconditionnode) UnmarshalJSON(b []byte) error {
+	var DomainresourceconditionnodeMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainresourceconditionnodeMap)
+	if err != nil {
+		return err
+	}
+	
+	if VariableName, ok := DomainresourceconditionnodeMap["variableName"].(string); ok {
+		o.VariableName = &VariableName
+	}
+	
+	if Operator, ok := DomainresourceconditionnodeMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Operands, ok := DomainresourceconditionnodeMap["operands"].([]interface{}); ok {
+		OperandsString, _ := json.Marshal(Operands)
+		json.Unmarshal(OperandsString, &o.Operands)
+	}
+	
+	if Conjunction, ok := DomainresourceconditionnodeMap["conjunction"].(string); ok {
+		o.Conjunction = &Conjunction
+	}
+	
+	if Terms, ok := DomainresourceconditionnodeMap["terms"].([]interface{}); ok {
+		TermsString, _ := json.Marshal(Terms)
+		json.Unmarshal(TermsString, &o.Terms)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

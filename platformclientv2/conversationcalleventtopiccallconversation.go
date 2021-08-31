@@ -33,13 +33,11 @@ type Conversationcalleventtopiccallconversation struct {
 
 }
 
-func (u *Conversationcalleventtopiccallconversation) MarshalJSON() ([]byte, error) {
+func (o *Conversationcalleventtopiccallconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcalleventtopiccallconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Conversationcalleventtopiccallconversation) MarshalJSON() ([]byte, erro
 		MaxParticipants *int `json:"maxParticipants,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
+		OtherMediaUris: o.OtherMediaUris,
 		
-		RecordingState: u.RecordingState,
+		RecordingState: o.RecordingState,
 		
-		MaxParticipants: u.MaxParticipants,
-		Alias:    (*Alias)(u),
+		MaxParticipants: o.MaxParticipants,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcalleventtopiccallconversation) UnmarshalJSON(b []byte) error {
+	var ConversationcalleventtopiccallconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcalleventtopiccallconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationcalleventtopiccallconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationcalleventtopiccallconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := ConversationcalleventtopiccallconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := ConversationcalleventtopiccallconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+	if RecordingState, ok := ConversationcalleventtopiccallconversationMap["recordingState"].(string); ok {
+		o.RecordingState = &RecordingState
+	}
+	
+	if MaxParticipants, ok := ConversationcalleventtopiccallconversationMap["maxParticipants"].(float64); ok {
+		MaxParticipantsInt := int(MaxParticipants)
+		o.MaxParticipants = &MaxParticipantsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

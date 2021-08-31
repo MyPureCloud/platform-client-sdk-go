@@ -13,20 +13,34 @@ type Workplanpatternresponse struct {
 
 }
 
-func (u *Workplanpatternresponse) MarshalJSON() ([]byte, error) {
+func (o *Workplanpatternresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanpatternresponse
-
 	
-
 	return json.Marshal(&struct { 
 		WorkPlans *[]Workplanreference `json:"workPlans,omitempty"`
 		*Alias
 	}{ 
-		WorkPlans: u.WorkPlans,
-		Alias:    (*Alias)(u),
+		WorkPlans: o.WorkPlans,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanpatternresponse) UnmarshalJSON(b []byte) error {
+	var WorkplanpatternresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanpatternresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if WorkPlans, ok := WorkplanpatternresponseMap["workPlans"].([]interface{}); ok {
+		WorkPlansString, _ := json.Marshal(WorkPlans)
+		json.Unmarshal(WorkPlansString, &o.WorkPlans)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

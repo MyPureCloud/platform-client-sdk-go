@@ -22,21 +22,19 @@ type Propertyindexrequest struct {
 
 }
 
-func (u *Propertyindexrequest) MarshalJSON() ([]byte, error) {
+func (o *Propertyindexrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Propertyindexrequest
-
 	
 	TargetDate := new(string)
-	if u.TargetDate != nil {
+	if o.TargetDate != nil {
 		
-		*TargetDate = timeutil.Strftime(u.TargetDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*TargetDate = timeutil.Strftime(o.TargetDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		TargetDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		SessionId *string `json:"sessionId,omitempty"`
 		
@@ -45,13 +43,38 @@ func (u *Propertyindexrequest) MarshalJSON() ([]byte, error) {
 		Properties *[]Analyticsproperty `json:"properties,omitempty"`
 		*Alias
 	}{ 
-		SessionId: u.SessionId,
+		SessionId: o.SessionId,
 		
 		TargetDate: TargetDate,
 		
-		Properties: u.Properties,
-		Alias:    (*Alias)(u),
+		Properties: o.Properties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Propertyindexrequest) UnmarshalJSON(b []byte) error {
+	var PropertyindexrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &PropertyindexrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SessionId, ok := PropertyindexrequestMap["sessionId"].(string); ok {
+		o.SessionId = &SessionId
+	}
+	
+	if targetDateString, ok := PropertyindexrequestMap["targetDate"].(string); ok {
+		TargetDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", targetDateString)
+		o.TargetDate = &TargetDate
+	}
+	
+	if Properties, ok := PropertyindexrequestMap["properties"].([]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

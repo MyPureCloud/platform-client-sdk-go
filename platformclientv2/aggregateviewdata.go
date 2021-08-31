@@ -17,24 +17,42 @@ type Aggregateviewdata struct {
 
 }
 
-func (u *Aggregateviewdata) MarshalJSON() ([]byte, error) {
+func (o *Aggregateviewdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Aggregateviewdata
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Stats *Statisticalsummary `json:"stats,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Stats: u.Stats,
-		Alias:    (*Alias)(u),
+		Stats: o.Stats,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Aggregateviewdata) UnmarshalJSON(b []byte) error {
+	var AggregateviewdataMap map[string]interface{}
+	err := json.Unmarshal(b, &AggregateviewdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := AggregateviewdataMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Stats, ok := AggregateviewdataMap["stats"].(map[string]interface{}); ok {
+		StatsString, _ := json.Marshal(Stats)
+		json.Unmarshal(StatsString, &o.Stats)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

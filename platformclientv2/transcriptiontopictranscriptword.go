@@ -29,13 +29,11 @@ type Transcriptiontopictranscriptword struct {
 
 }
 
-func (u *Transcriptiontopictranscriptword) MarshalJSON() ([]byte, error) {
+func (o *Transcriptiontopictranscriptword) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptiontopictranscriptword
-
 	
-
 	return json.Marshal(&struct { 
 		Confidence *float32 `json:"confidence,omitempty"`
 		
@@ -48,17 +46,52 @@ func (u *Transcriptiontopictranscriptword) MarshalJSON() ([]byte, error) {
 		Word *string `json:"word,omitempty"`
 		*Alias
 	}{ 
-		Confidence: u.Confidence,
+		Confidence: o.Confidence,
 		
-		StartTimeMs: u.StartTimeMs,
+		StartTimeMs: o.StartTimeMs,
 		
-		OffsetMs: u.OffsetMs,
+		OffsetMs: o.OffsetMs,
 		
-		DurationMs: u.DurationMs,
+		DurationMs: o.DurationMs,
 		
-		Word: u.Word,
-		Alias:    (*Alias)(u),
+		Word: o.Word,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptiontopictranscriptword) UnmarshalJSON(b []byte) error {
+	var TranscriptiontopictranscriptwordMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptiontopictranscriptwordMap)
+	if err != nil {
+		return err
+	}
+	
+	if Confidence, ok := TranscriptiontopictranscriptwordMap["confidence"].(float64); ok {
+		ConfidenceFloat32 := float32(Confidence)
+		o.Confidence = &ConfidenceFloat32
+	}
+	
+	if StartTimeMs, ok := TranscriptiontopictranscriptwordMap["startTimeMs"].(float64); ok {
+		StartTimeMsInt := int(StartTimeMs)
+		o.StartTimeMs = &StartTimeMsInt
+	}
+	
+	if OffsetMs, ok := TranscriptiontopictranscriptwordMap["offsetMs"].(float64); ok {
+		OffsetMsInt := int(OffsetMs)
+		o.OffsetMs = &OffsetMsInt
+	}
+	
+	if DurationMs, ok := TranscriptiontopictranscriptwordMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
+	}
+	
+	if Word, ok := TranscriptiontopictranscriptwordMap["word"].(string); ok {
+		o.Word = &Word
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

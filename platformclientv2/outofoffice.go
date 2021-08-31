@@ -42,29 +42,27 @@ type Outofoffice struct {
 
 }
 
-func (u *Outofoffice) MarshalJSON() ([]byte, error) {
+func (o *Outofoffice) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outofoffice
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -83,23 +81,69 @@ func (u *Outofoffice) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		User: u.User,
+		User: o.User,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		Indefinite: u.Indefinite,
+		Indefinite: o.Indefinite,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outofoffice) UnmarshalJSON(b []byte) error {
+	var OutofofficeMap map[string]interface{}
+	err := json.Unmarshal(b, &OutofofficeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OutofofficeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OutofofficeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if User, ok := OutofofficeMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if startDateString, ok := OutofofficeMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := OutofofficeMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if Active, ok := OutofofficeMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if Indefinite, ok := OutofofficeMap["indefinite"].(bool); ok {
+		o.Indefinite = &Indefinite
+	}
+	
+	if SelfUri, ok := OutofofficeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

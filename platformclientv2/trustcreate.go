@@ -30,21 +30,19 @@ type Trustcreate struct {
 
 }
 
-func (u *Trustcreate) MarshalJSON() ([]byte, error) {
+func (o *Trustcreate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustcreate
-
 	
 	DateExpired := new(string)
-	if u.DateExpired != nil {
+	if o.DateExpired != nil {
 		
-		*DateExpired = timeutil.Strftime(u.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateExpired = timeutil.Strftime(o.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateExpired = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		PairingId *string `json:"pairingId,omitempty"`
 		
@@ -57,17 +55,51 @@ func (u *Trustcreate) MarshalJSON() ([]byte, error) {
 		DateExpired *string `json:"dateExpired,omitempty"`
 		*Alias
 	}{ 
-		PairingId: u.PairingId,
+		PairingId: o.PairingId,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Users: u.Users,
+		Users: o.Users,
 		
-		Groups: u.Groups,
+		Groups: o.Groups,
 		
 		DateExpired: DateExpired,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustcreate) UnmarshalJSON(b []byte) error {
+	var TrustcreateMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustcreateMap)
+	if err != nil {
+		return err
+	}
+	
+	if PairingId, ok := TrustcreateMap["pairingId"].(string); ok {
+		o.PairingId = &PairingId
+	}
+	
+	if Enabled, ok := TrustcreateMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Users, ok := TrustcreateMap["users"].([]interface{}); ok {
+		UsersString, _ := json.Marshal(Users)
+		json.Unmarshal(UsersString, &o.Users)
+	}
+	
+	if Groups, ok := TrustcreateMap["groups"].([]interface{}); ok {
+		GroupsString, _ := json.Marshal(Groups)
+		json.Unmarshal(GroupsString, &o.Groups)
+	}
+	
+	if dateExpiredString, ok := TrustcreateMap["dateExpired"].(string); ok {
+		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
+		o.DateExpired = &DateExpired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

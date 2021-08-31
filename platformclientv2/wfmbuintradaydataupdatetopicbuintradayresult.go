@@ -42,29 +42,27 @@ type Wfmbuintradaydataupdatetopicbuintradayresult struct {
 
 }
 
-func (u *Wfmbuintradaydataupdatetopicbuintradayresult) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuintradaydataupdatetopicbuintradayresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuintradaydataupdatetopicbuintradayresult
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -87,19 +85,69 @@ func (u *Wfmbuintradaydataupdatetopicbuintradayresult) MarshalJSON() ([]byte, er
 		
 		EndDate: EndDate,
 		
-		IntervalLengthMinutes: u.IntervalLengthMinutes,
+		IntervalLengthMinutes: o.IntervalLengthMinutes,
 		
-		IntradayDataGroupings: u.IntradayDataGroupings,
+		IntradayDataGroupings: o.IntradayDataGroupings,
 		
-		Categories: u.Categories,
+		Categories: o.Categories,
 		
-		NoDataReason: u.NoDataReason,
+		NoDataReason: o.NoDataReason,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		ShortTermForecast: u.ShortTermForecast,
-		Alias:    (*Alias)(u),
+		ShortTermForecast: o.ShortTermForecast,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuintradaydataupdatetopicbuintradayresult) UnmarshalJSON(b []byte) error {
+	var WfmbuintradaydataupdatetopicbuintradayresultMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuintradaydataupdatetopicbuintradayresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if IntervalLengthMinutes, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["intervalLengthMinutes"].(float64); ok {
+		IntervalLengthMinutesInt := int(IntervalLengthMinutes)
+		o.IntervalLengthMinutes = &IntervalLengthMinutesInt
+	}
+	
+	if IntradayDataGroupings, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["intradayDataGroupings"].([]interface{}); ok {
+		IntradayDataGroupingsString, _ := json.Marshal(IntradayDataGroupings)
+		json.Unmarshal(IntradayDataGroupingsString, &o.IntradayDataGroupings)
+	}
+	
+	if Categories, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
+	if NoDataReason, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["noDataReason"].(string); ok {
+		o.NoDataReason = &NoDataReason
+	}
+	
+	if Schedule, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if ShortTermForecast, ok := WfmbuintradaydataupdatetopicbuintradayresultMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

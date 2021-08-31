@@ -21,13 +21,11 @@ type Schedulegenerationresultsummary struct {
 
 }
 
-func (u *Schedulegenerationresultsummary) MarshalJSON() ([]byte, error) {
+func (o *Schedulegenerationresultsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulegenerationresultsummary
-
 	
-
 	return json.Marshal(&struct { 
 		Failed *bool `json:"failed,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Schedulegenerationresultsummary) MarshalJSON() ([]byte, error) {
 		MessageCount *int `json:"messageCount,omitempty"`
 		*Alias
 	}{ 
-		Failed: u.Failed,
+		Failed: o.Failed,
 		
-		RunId: u.RunId,
+		RunId: o.RunId,
 		
-		MessageCount: u.MessageCount,
-		Alias:    (*Alias)(u),
+		MessageCount: o.MessageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulegenerationresultsummary) UnmarshalJSON(b []byte) error {
+	var SchedulegenerationresultsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulegenerationresultsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Failed, ok := SchedulegenerationresultsummaryMap["failed"].(bool); ok {
+		o.Failed = &Failed
+	}
+	
+	if RunId, ok := SchedulegenerationresultsummaryMap["runId"].(string); ok {
+		o.RunId = &RunId
+	}
+	
+	if MessageCount, ok := SchedulegenerationresultsummaryMap["messageCount"].(float64); ok {
+		MessageCountInt := int(MessageCount)
+		o.MessageCount = &MessageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

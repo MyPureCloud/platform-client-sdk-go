@@ -17,24 +17,41 @@ type Notificationtemplateparameter struct {
 
 }
 
-func (u *Notificationtemplateparameter) MarshalJSON() ([]byte, error) {
+func (o *Notificationtemplateparameter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Notificationtemplateparameter
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Text *string `json:"text,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Text: u.Text,
-		Alias:    (*Alias)(u),
+		Text: o.Text,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Notificationtemplateparameter) UnmarshalJSON(b []byte) error {
+	var NotificationtemplateparameterMap map[string]interface{}
+	err := json.Unmarshal(b, &NotificationtemplateparameterMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := NotificationtemplateparameterMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Text, ok := NotificationtemplateparameterMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

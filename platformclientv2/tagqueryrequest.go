@@ -21,13 +21,11 @@ type Tagqueryrequest struct {
 
 }
 
-func (u *Tagqueryrequest) MarshalJSON() ([]byte, error) {
+func (o *Tagqueryrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Tagqueryrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Query *string `json:"query,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Tagqueryrequest) MarshalJSON() ([]byte, error) {
 		PageSize *int `json:"pageSize,omitempty"`
 		*Alias
 	}{ 
-		Query: u.Query,
+		Query: o.Query,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PageSize: u.PageSize,
-		Alias:    (*Alias)(u),
+		PageSize: o.PageSize,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Tagqueryrequest) UnmarshalJSON(b []byte) error {
+	var TagqueryrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TagqueryrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Query, ok := TagqueryrequestMap["query"].(string); ok {
+		o.Query = &Query
+	}
+	
+	if PageNumber, ok := TagqueryrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PageSize, ok := TagqueryrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

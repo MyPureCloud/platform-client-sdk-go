@@ -17,24 +17,43 @@ type Actioncontractinput struct {
 
 }
 
-func (u *Actioncontractinput) MarshalJSON() ([]byte, error) {
+func (o *Actioncontractinput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actioncontractinput
-
 	
-
 	return json.Marshal(&struct { 
 		Input *Postinputcontract `json:"input,omitempty"`
 		
 		Output *Postoutputcontract `json:"output,omitempty"`
 		*Alias
 	}{ 
-		Input: u.Input,
+		Input: o.Input,
 		
-		Output: u.Output,
-		Alias:    (*Alias)(u),
+		Output: o.Output,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actioncontractinput) UnmarshalJSON(b []byte) error {
+	var ActioncontractinputMap map[string]interface{}
+	err := json.Unmarshal(b, &ActioncontractinputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Input, ok := ActioncontractinputMap["input"].(map[string]interface{}); ok {
+		InputString, _ := json.Marshal(Input)
+		json.Unmarshal(InputString, &o.Input)
+	}
+	
+	if Output, ok := ActioncontractinputMap["output"].(map[string]interface{}); ok {
+		OutputString, _ := json.Marshal(Output)
+		json.Unmarshal(OutputString, &o.Output)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

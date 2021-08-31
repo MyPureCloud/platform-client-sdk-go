@@ -18,32 +18,50 @@ type Predictorschedule struct {
 
 }
 
-func (u *Predictorschedule) MarshalJSON() ([]byte, error) {
+func (o *Predictorschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Predictorschedule
-
 	
 	DateStarted := new(string)
-	if u.DateStarted != nil {
+	if o.DateStarted != nil {
 		
-		*DateStarted = timeutil.Strftime(u.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStarted = timeutil.Strftime(o.DateStarted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStarted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ScheduleType *string `json:"scheduleType,omitempty"`
 		
 		DateStarted *string `json:"dateStarted,omitempty"`
 		*Alias
 	}{ 
-		ScheduleType: u.ScheduleType,
+		ScheduleType: o.ScheduleType,
 		
 		DateStarted: DateStarted,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Predictorschedule) UnmarshalJSON(b []byte) error {
+	var PredictorscheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &PredictorscheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if ScheduleType, ok := PredictorscheduleMap["scheduleType"].(string); ok {
+		o.ScheduleType = &ScheduleType
+	}
+	
+	if dateStartedString, ok := PredictorscheduleMap["dateStarted"].(string); ok {
+		DateStarted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartedString)
+		o.DateStarted = &DateStarted
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

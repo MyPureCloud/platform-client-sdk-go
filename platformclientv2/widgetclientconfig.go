@@ -25,13 +25,11 @@ type Widgetclientconfig struct {
 
 }
 
-func (u *Widgetclientconfig) MarshalJSON() ([]byte, error) {
+func (o *Widgetclientconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Widgetclientconfig
-
 	
-
 	return json.Marshal(&struct { 
 		V1 *Widgetclientconfigv1 `json:"v1,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Widgetclientconfig) MarshalJSON() ([]byte, error) {
 		ThirdParty *Widgetclientconfigthirdparty `json:"third-party,omitempty"`
 		*Alias
 	}{ 
-		V1: u.V1,
+		V1: o.V1,
 		
-		V2: u.V2,
+		V2: o.V2,
 		
-		V1Http: u.V1Http,
+		V1Http: o.V1Http,
 		
-		ThirdParty: u.ThirdParty,
-		Alias:    (*Alias)(u),
+		ThirdParty: o.ThirdParty,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Widgetclientconfig) UnmarshalJSON(b []byte) error {
+	var WidgetclientconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &WidgetclientconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if V1, ok := WidgetclientconfigMap["v1"].(map[string]interface{}); ok {
+		V1String, _ := json.Marshal(V1)
+		json.Unmarshal(V1String, &o.V1)
+	}
+	
+	if V2, ok := WidgetclientconfigMap["v2"].(map[string]interface{}); ok {
+		V2String, _ := json.Marshal(V2)
+		json.Unmarshal(V2String, &o.V2)
+	}
+	
+	if V1Http, ok := WidgetclientconfigMap["v1-http"].(map[string]interface{}); ok {
+		V1HttpString, _ := json.Marshal(V1Http)
+		json.Unmarshal(V1HttpString, &o.V1Http)
+	}
+	
+	if ThirdParty, ok := WidgetclientconfigMap["third-party"].(map[string]interface{}); ok {
+		ThirdPartyString, _ := json.Marshal(ThirdParty)
+		json.Unmarshal(ThirdPartyString, &o.ThirdParty)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

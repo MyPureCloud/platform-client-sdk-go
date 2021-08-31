@@ -17,24 +17,43 @@ type Queryfacetinfo struct {
 
 }
 
-func (u *Queryfacetinfo) MarshalJSON() ([]byte, error) {
+func (o *Queryfacetinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queryfacetinfo
-
 	
-
 	return json.Marshal(&struct { 
 		Attributes *[]Facetkeyattribute `json:"attributes,omitempty"`
 		
 		Facets *[]Facetentry `json:"facets,omitempty"`
 		*Alias
 	}{ 
-		Attributes: u.Attributes,
+		Attributes: o.Attributes,
 		
-		Facets: u.Facets,
-		Alias:    (*Alias)(u),
+		Facets: o.Facets,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queryfacetinfo) UnmarshalJSON(b []byte) error {
+	var QueryfacetinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &QueryfacetinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Attributes, ok := QueryfacetinfoMap["attributes"].([]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+	if Facets, ok := QueryfacetinfoMap["facets"].([]interface{}); ok {
+		FacetsString, _ := json.Marshal(Facets)
+		json.Unmarshal(FacetsString, &o.Facets)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

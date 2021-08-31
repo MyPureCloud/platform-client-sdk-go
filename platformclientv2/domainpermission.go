@@ -33,13 +33,11 @@ type Domainpermission struct {
 
 }
 
-func (u *Domainpermission) MarshalJSON() ([]byte, error) {
+func (o *Domainpermission) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainpermission
-
 	
-
 	return json.Marshal(&struct { 
 		Domain *string `json:"domain,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Domainpermission) MarshalJSON() ([]byte, error) {
 		DivisionAware *bool `json:"divisionAware,omitempty"`
 		*Alias
 	}{ 
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		Label: u.Label,
+		Label: o.Label,
 		
-		AllowsConditions: u.AllowsConditions,
+		AllowsConditions: o.AllowsConditions,
 		
-		DivisionAware: u.DivisionAware,
-		Alias:    (*Alias)(u),
+		DivisionAware: o.DivisionAware,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainpermission) UnmarshalJSON(b []byte) error {
+	var DomainpermissionMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainpermissionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Domain, ok := DomainpermissionMap["domain"].(string); ok {
+		o.Domain = &Domain
+	}
+	
+	if EntityType, ok := DomainpermissionMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if Action, ok := DomainpermissionMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Label, ok := DomainpermissionMap["label"].(string); ok {
+		o.Label = &Label
+	}
+	
+	if AllowsConditions, ok := DomainpermissionMap["allowsConditions"].(bool); ok {
+		o.AllowsConditions = &AllowsConditions
+	}
+	
+	if DivisionAware, ok := DomainpermissionMap["divisionAware"].(bool); ok {
+		o.DivisionAware = &DivisionAware
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

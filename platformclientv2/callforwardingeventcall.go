@@ -13,20 +13,34 @@ type Callforwardingeventcall struct {
 
 }
 
-func (u *Callforwardingeventcall) MarshalJSON() ([]byte, error) {
+func (o *Callforwardingeventcall) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callforwardingeventcall
-
 	
-
 	return json.Marshal(&struct { 
 		Targets *[]Callforwardingeventtarget `json:"targets,omitempty"`
 		*Alias
 	}{ 
-		Targets: u.Targets,
-		Alias:    (*Alias)(u),
+		Targets: o.Targets,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callforwardingeventcall) UnmarshalJSON(b []byte) error {
+	var CallforwardingeventcallMap map[string]interface{}
+	err := json.Unmarshal(b, &CallforwardingeventcallMap)
+	if err != nil {
+		return err
+	}
+	
+	if Targets, ok := CallforwardingeventcallMap["targets"].([]interface{}); ok {
+		TargetsString, _ := json.Marshal(Targets)
+		json.Unmarshal(TargetsString, &o.Targets)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Coachingannotationcreaterequest struct {
 
 }
 
-func (u *Coachingannotationcreaterequest) MarshalJSON() ([]byte, error) {
+func (o *Coachingannotationcreaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingannotationcreaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
 		AccessType *string `json:"accessType,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		AccessType: u.AccessType,
-		Alias:    (*Alias)(u),
+		AccessType: o.AccessType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingannotationcreaterequest) UnmarshalJSON(b []byte) error {
+	var CoachingannotationcreaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingannotationcreaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := CoachingannotationcreaterequestMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if AccessType, ok := CoachingannotationcreaterequestMap["accessType"].(string); ok {
+		o.AccessType = &AccessType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

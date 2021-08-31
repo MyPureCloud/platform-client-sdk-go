@@ -17,24 +17,43 @@ type Dialercampaignruleconfigchangecampaignruleentities struct {
 
 }
 
-func (u *Dialercampaignruleconfigchangecampaignruleentities) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignruleconfigchangecampaignruleentities) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignruleconfigchangecampaignruleentities
-
 	
-
 	return json.Marshal(&struct { 
 		Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
 		
 		Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
 		*Alias
 	}{ 
-		Campaigns: u.Campaigns,
+		Campaigns: o.Campaigns,
 		
-		Sequences: u.Sequences,
-		Alias:    (*Alias)(u),
+		Sequences: o.Sequences,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignruleconfigchangecampaignruleentities) UnmarshalJSON(b []byte) error {
+	var DialercampaignruleconfigchangecampaignruleentitiesMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignruleconfigchangecampaignruleentitiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Campaigns, ok := DialercampaignruleconfigchangecampaignruleentitiesMap["campaigns"].([]interface{}); ok {
+		CampaignsString, _ := json.Marshal(Campaigns)
+		json.Unmarshal(CampaignsString, &o.Campaigns)
+	}
+	
+	if Sequences, ok := DialercampaignruleconfigchangecampaignruleentitiesMap["sequences"].([]interface{}); ok {
+		SequencesString, _ := json.Marshal(Sequences)
+		json.Unmarshal(SequencesString, &o.Sequences)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

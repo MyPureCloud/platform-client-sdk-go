@@ -33,13 +33,11 @@ type Contentgeneric struct {
 
 }
 
-func (u *Contentgeneric) MarshalJSON() ([]byte, error) {
+func (o *Contentgeneric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentgeneric
-
 	
-
 	return json.Marshal(&struct { 
 		Title *string `json:"title,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Contentgeneric) MarshalJSON() ([]byte, error) {
 		Components *[]Buttoncomponent `json:"components,omitempty"`
 		*Alias
 	}{ 
-		Title: u.Title,
+		Title: o.Title,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Image: u.Image,
+		Image: o.Image,
 		
-		Video: u.Video,
+		Video: o.Video,
 		
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Components: u.Components,
-		Alias:    (*Alias)(u),
+		Components: o.Components,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentgeneric) UnmarshalJSON(b []byte) error {
+	var ContentgenericMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentgenericMap)
+	if err != nil {
+		return err
+	}
+	
+	if Title, ok := ContentgenericMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Description, ok := ContentgenericMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Image, ok := ContentgenericMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if Video, ok := ContentgenericMap["video"].(string); ok {
+		o.Video = &Video
+	}
+	
+	if Actions, ok := ContentgenericMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Components, ok := ContentgenericMap["components"].([]interface{}); ok {
+		ComponentsString, _ := json.Marshal(Components)
+		json.Unmarshal(ComponentsString, &o.Components)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

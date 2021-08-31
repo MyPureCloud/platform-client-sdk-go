@@ -18,21 +18,19 @@ type Trustuserdetails struct {
 
 }
 
-func (u *Trustuserdetails) MarshalJSON() ([]byte, error) {
+func (o *Trustuserdetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustuserdetails
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
@@ -41,9 +39,30 @@ func (u *Trustuserdetails) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateCreated: DateCreated,
 		
-		CreatedBy: u.CreatedBy,
-		Alias:    (*Alias)(u),
+		CreatedBy: o.CreatedBy,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustuserdetails) UnmarshalJSON(b []byte) error {
+	var TrustuserdetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustuserdetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateCreatedString, ok := TrustuserdetailsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if CreatedBy, ok := TrustuserdetailsMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

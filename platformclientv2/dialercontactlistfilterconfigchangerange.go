@@ -33,13 +33,11 @@ type Dialercontactlistfilterconfigchangerange struct {
 
 }
 
-func (u *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error) {
+func (o *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontactlistfilterconfigchangerange
-
 	
-
 	return json.Marshal(&struct { 
 		Min *string `json:"min,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error)
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Min: u.Min,
+		Min: o.Min,
 		
-		Max: u.Max,
+		Max: o.Max,
 		
-		MinInclusive: u.MinInclusive,
+		MinInclusive: o.MinInclusive,
 		
-		MaxInclusive: u.MaxInclusive,
+		MaxInclusive: o.MaxInclusive,
 		
-		InSet: u.InSet,
+		InSet: o.InSet,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercontactlistfilterconfigchangerange) UnmarshalJSON(b []byte) error {
+	var DialercontactlistfilterconfigchangerangeMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercontactlistfilterconfigchangerangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Min, ok := DialercontactlistfilterconfigchangerangeMap["min"].(string); ok {
+		o.Min = &Min
+	}
+	
+	if Max, ok := DialercontactlistfilterconfigchangerangeMap["max"].(string); ok {
+		o.Max = &Max
+	}
+	
+	if MinInclusive, ok := DialercontactlistfilterconfigchangerangeMap["minInclusive"].(bool); ok {
+		o.MinInclusive = &MinInclusive
+	}
+	
+	if MaxInclusive, ok := DialercontactlistfilterconfigchangerangeMap["maxInclusive"].(bool); ok {
+		o.MaxInclusive = &MaxInclusive
+	}
+	
+	if InSet, ok := DialercontactlistfilterconfigchangerangeMap["inSet"].([]interface{}); ok {
+		InSetString, _ := json.Marshal(InSet)
+		json.Unmarshal(InSetString, &o.InSet)
+	}
+	
+	if AdditionalProperties, ok := DialercontactlistfilterconfigchangerangeMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

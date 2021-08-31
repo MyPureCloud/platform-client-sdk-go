@@ -41,13 +41,11 @@ type Fieldconfig struct {
 
 }
 
-func (u *Fieldconfig) MarshalJSON() ([]byte, error) {
+func (o *Fieldconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Fieldconfig
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,67 @@ func (u *Fieldconfig) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		State: u.State,
+		State: o.State,
 		
-		Sections: u.Sections,
+		Sections: o.Sections,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		SchemaVersion: u.SchemaVersion,
+		SchemaVersion: o.SchemaVersion,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Fieldconfig) UnmarshalJSON(b []byte) error {
+	var FieldconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &FieldconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FieldconfigMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FieldconfigMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if EntityType, ok := FieldconfigMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if State, ok := FieldconfigMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Sections, ok := FieldconfigMap["sections"].([]interface{}); ok {
+		SectionsString, _ := json.Marshal(Sections)
+		json.Unmarshal(SectionsString, &o.Sections)
+	}
+	
+	if Version, ok := FieldconfigMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if SchemaVersion, ok := FieldconfigMap["schemaVersion"].(string); ok {
+		o.SchemaVersion = &SchemaVersion
+	}
+	
+	if SelfUri, ok := FieldconfigMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

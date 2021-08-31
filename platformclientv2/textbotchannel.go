@@ -25,13 +25,11 @@ type Textbotchannel struct {
 
 }
 
-func (u *Textbotchannel) MarshalJSON() ([]byte, error) {
+func (o *Textbotchannel) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotchannel
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Textbotchannel) MarshalJSON() ([]byte, error) {
 		UserAgent *Textbotuseragent `json:"userAgent,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		InputModes: u.InputModes,
+		InputModes: o.InputModes,
 		
-		OutputModes: u.OutputModes,
+		OutputModes: o.OutputModes,
 		
-		UserAgent: u.UserAgent,
-		Alias:    (*Alias)(u),
+		UserAgent: o.UserAgent,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotchannel) UnmarshalJSON(b []byte) error {
+	var TextbotchannelMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotchannelMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := TextbotchannelMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if InputModes, ok := TextbotchannelMap["inputModes"].([]interface{}); ok {
+		InputModesString, _ := json.Marshal(InputModes)
+		json.Unmarshal(InputModesString, &o.InputModes)
+	}
+	
+	if OutputModes, ok := TextbotchannelMap["outputModes"].([]interface{}); ok {
+		OutputModesString, _ := json.Marshal(OutputModes)
+		json.Unmarshal(OutputModesString, &o.OutputModes)
+	}
+	
+	if UserAgent, ok := TextbotchannelMap["userAgent"].(map[string]interface{}); ok {
+		UserAgentString, _ := json.Marshal(UserAgent)
+		json.Unmarshal(UserAgentString, &o.UserAgent)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

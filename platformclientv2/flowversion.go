@@ -85,13 +85,11 @@ type Flowversion struct {
 
 }
 
-func (u *Flowversion) MarshalJSON() ([]byte, error) {
+func (o *Flowversion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowversion
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -132,45 +130,140 @@ func (u *Flowversion) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		CommitVersion: u.CommitVersion,
+		CommitVersion: o.CommitVersion,
 		
-		ConfigurationVersion: u.ConfigurationVersion,
+		ConfigurationVersion: o.ConfigurationVersion,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Secure: u.Secure,
+		Secure: o.Secure,
 		
-		Debug: u.Debug,
+		Debug: o.Debug,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		CreatedByClient: u.CreatedByClient,
+		CreatedByClient: o.CreatedByClient,
 		
-		ConfigurationUri: u.ConfigurationUri,
+		ConfigurationUri: o.ConfigurationUri,
 		
-		DateCreated: u.DateCreated,
+		DateCreated: o.DateCreated,
 		
-		GenerationId: u.GenerationId,
+		GenerationId: o.GenerationId,
 		
-		PublishResultUri: u.PublishResultUri,
+		PublishResultUri: o.PublishResultUri,
 		
-		InputSchema: u.InputSchema,
+		InputSchema: o.InputSchema,
 		
-		OutputSchema: u.OutputSchema,
+		OutputSchema: o.OutputSchema,
 		
-		NluInfo: u.NluInfo,
+		NluInfo: o.NluInfo,
 		
-		SupportedLanguages: u.SupportedLanguages,
+		SupportedLanguages: o.SupportedLanguages,
 		
-		CompatibleFlowTypes: u.CompatibleFlowTypes,
+		CompatibleFlowTypes: o.CompatibleFlowTypes,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowversion) UnmarshalJSON(b []byte) error {
+	var FlowversionMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowversionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FlowversionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FlowversionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if CommitVersion, ok := FlowversionMap["commitVersion"].(string); ok {
+		o.CommitVersion = &CommitVersion
+	}
+	
+	if ConfigurationVersion, ok := FlowversionMap["configurationVersion"].(string); ok {
+		o.ConfigurationVersion = &ConfigurationVersion
+	}
+	
+	if VarType, ok := FlowversionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Secure, ok := FlowversionMap["secure"].(bool); ok {
+		o.Secure = &Secure
+	}
+	
+	if Debug, ok := FlowversionMap["debug"].(bool); ok {
+		o.Debug = &Debug
+	}
+	
+	if CreatedBy, ok := FlowversionMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if CreatedByClient, ok := FlowversionMap["createdByClient"].(map[string]interface{}); ok {
+		CreatedByClientString, _ := json.Marshal(CreatedByClient)
+		json.Unmarshal(CreatedByClientString, &o.CreatedByClient)
+	}
+	
+	if ConfigurationUri, ok := FlowversionMap["configurationUri"].(string); ok {
+		o.ConfigurationUri = &ConfigurationUri
+	}
+	
+	if DateCreated, ok := FlowversionMap["dateCreated"].(float64); ok {
+		DateCreatedInt := int(DateCreated)
+		o.DateCreated = &DateCreatedInt
+	}
+	
+	if GenerationId, ok := FlowversionMap["generationId"].(string); ok {
+		o.GenerationId = &GenerationId
+	}
+	
+	if PublishResultUri, ok := FlowversionMap["publishResultUri"].(string); ok {
+		o.PublishResultUri = &PublishResultUri
+	}
+	
+	if InputSchema, ok := FlowversionMap["inputSchema"].(map[string]interface{}); ok {
+		InputSchemaString, _ := json.Marshal(InputSchema)
+		json.Unmarshal(InputSchemaString, &o.InputSchema)
+	}
+	
+	if OutputSchema, ok := FlowversionMap["outputSchema"].(map[string]interface{}); ok {
+		OutputSchemaString, _ := json.Marshal(OutputSchema)
+		json.Unmarshal(OutputSchemaString, &o.OutputSchema)
+	}
+	
+	if NluInfo, ok := FlowversionMap["nluInfo"].(map[string]interface{}); ok {
+		NluInfoString, _ := json.Marshal(NluInfo)
+		json.Unmarshal(NluInfoString, &o.NluInfo)
+	}
+	
+	if SupportedLanguages, ok := FlowversionMap["supportedLanguages"].([]interface{}); ok {
+		SupportedLanguagesString, _ := json.Marshal(SupportedLanguages)
+		json.Unmarshal(SupportedLanguagesString, &o.SupportedLanguages)
+	}
+	
+	if CompatibleFlowTypes, ok := FlowversionMap["compatibleFlowTypes"].([]interface{}); ok {
+		CompatibleFlowTypesString, _ := json.Marshal(CompatibleFlowTypes)
+		json.Unmarshal(CompatibleFlowTypesString, &o.CompatibleFlowTypes)
+	}
+	
+	if SelfUri, ok := FlowversionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

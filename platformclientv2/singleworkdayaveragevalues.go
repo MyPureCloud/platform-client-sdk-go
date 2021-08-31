@@ -30,20 +30,18 @@ type Singleworkdayaveragevalues struct {
 
 }
 
-func (u *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
+func (o *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Singleworkdayaveragevalues
-
 	
 	DateWorkday := new(string)
-	if u.DateWorkday != nil {
-		*DateWorkday = timeutil.Strftime(u.DateWorkday, "%Y-%m-%d")
+	if o.DateWorkday != nil {
+		*DateWorkday = timeutil.Strftime(o.DateWorkday, "%Y-%m-%d")
 	} else {
 		DateWorkday = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateWorkday *string `json:"dateWorkday,omitempty"`
 		
@@ -58,15 +56,50 @@ func (u *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateWorkday: DateWorkday,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		User: u.User,
+		User: o.User,
 		
-		Timezone: u.Timezone,
+		Timezone: o.Timezone,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Singleworkdayaveragevalues) UnmarshalJSON(b []byte) error {
+	var SingleworkdayaveragevaluesMap map[string]interface{}
+	err := json.Unmarshal(b, &SingleworkdayaveragevaluesMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateWorkdayString, ok := SingleworkdayaveragevaluesMap["dateWorkday"].(string); ok {
+		DateWorkday, _ := time.Parse("2006-01-02", dateWorkdayString)
+		o.DateWorkday = &DateWorkday
+	}
+	
+	if Division, ok := SingleworkdayaveragevaluesMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if User, ok := SingleworkdayaveragevaluesMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Timezone, ok := SingleworkdayaveragevaluesMap["timezone"].(string); ok {
+		o.Timezone = &Timezone
+	}
+	
+	if Results, ok := SingleworkdayaveragevaluesMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -37,13 +37,11 @@ type Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker struct {
 
 }
 
-func (u *Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
+func (o *Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker
-
 	
-
 	return json.Marshal(&struct { 
 		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker) MarshalJSON() ([]by
 		Paid *bool `json:"paid,omitempty"`
 		*Alias
 	}{ 
-		TimeOffRequestId: u.TimeOffRequestId,
+		TimeOffRequestId: o.TimeOffRequestId,
 		
-		ManagementUnitDate: u.ManagementUnitDate,
+		ManagementUnitDate: o.ManagementUnitDate,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		IsPaid: u.IsPaid,
+		IsPaid: o.IsPaid,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Paid: u.Paid,
-		Alias:    (*Alias)(u),
+		Paid: o.Paid,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmagentscheduleupdatetopicwfmfulldaytimeoffmarker) UnmarshalJSON(b []byte) error {
+	var WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap)
+	if err != nil {
+		return err
+	}
+	
+	if TimeOffRequestId, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["timeOffRequestId"].(string); ok {
+		o.TimeOffRequestId = &TimeOffRequestId
+	}
+	
+	if ManagementUnitDate, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["managementUnitDate"].(string); ok {
+		o.ManagementUnitDate = &ManagementUnitDate
+	}
+	
+	if ActivityCodeId, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if IsPaid, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["isPaid"].(bool); ok {
+		o.IsPaid = &IsPaid
+	}
+	
+	if LengthInMinutes, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if Description, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Paid, ok := WfmagentscheduleupdatetopicwfmfulldaytimeoffmarkerMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

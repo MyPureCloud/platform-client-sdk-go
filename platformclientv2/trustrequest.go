@@ -38,21 +38,19 @@ type Trustrequest struct {
 
 }
 
-func (u *Trustrequest) MarshalJSON() ([]byte, error) {
+func (o *Trustrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustrequest
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,65 @@ func (u *Trustrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		Trustee: u.Trustee,
+		Trustee: o.Trustee,
 		
-		Users: u.Users,
+		Users: o.Users,
 		
-		Groups: u.Groups,
+		Groups: o.Groups,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustrequest) UnmarshalJSON(b []byte) error {
+	var TrustrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TrustrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrustrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if CreatedBy, ok := TrustrequestMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := TrustrequestMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if Trustee, ok := TrustrequestMap["trustee"].(map[string]interface{}); ok {
+		TrusteeString, _ := json.Marshal(Trustee)
+		json.Unmarshal(TrusteeString, &o.Trustee)
+	}
+	
+	if Users, ok := TrustrequestMap["users"].([]interface{}); ok {
+		UsersString, _ := json.Marshal(Users)
+		json.Unmarshal(UsersString, &o.Users)
+	}
+	
+	if Groups, ok := TrustrequestMap["groups"].([]interface{}); ok {
+		GroupsString, _ := json.Marshal(Groups)
+		json.Unmarshal(GroupsString, &o.Groups)
+	}
+	
+	if SelfUri, ok := TrustrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

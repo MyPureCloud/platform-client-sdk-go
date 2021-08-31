@@ -17,24 +17,43 @@ type Conversationeventtopicscoredagent struct {
 
 }
 
-func (u *Conversationeventtopicscoredagent) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicscoredagent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicscoredagent
-
 	
-
 	return json.Marshal(&struct { 
 		Agent *Conversationeventtopicurireference `json:"agent,omitempty"`
 		
 		Score *int `json:"score,omitempty"`
 		*Alias
 	}{ 
-		Agent: u.Agent,
+		Agent: o.Agent,
 		
-		Score: u.Score,
-		Alias:    (*Alias)(u),
+		Score: o.Score,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicscoredagent) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicscoredagentMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicscoredagentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Agent, ok := ConversationeventtopicscoredagentMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Score, ok := ConversationeventtopicscoredagentMap["score"].(float64); ok {
+		ScoreInt := int(Score)
+		o.Score = &ScoreInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Namedentitytypeitem struct {
 
 }
 
-func (u *Namedentitytypeitem) MarshalJSON() ([]byte, error) {
+func (o *Namedentitytypeitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Namedentitytypeitem
-
 	
-
 	return json.Marshal(&struct { 
 		Value *string `json:"value,omitempty"`
 		
 		Synonyms *[]string `json:"synonyms,omitempty"`
 		*Alias
 	}{ 
-		Value: u.Value,
+		Value: o.Value,
 		
-		Synonyms: u.Synonyms,
-		Alias:    (*Alias)(u),
+		Synonyms: o.Synonyms,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Namedentitytypeitem) UnmarshalJSON(b []byte) error {
+	var NamedentitytypeitemMap map[string]interface{}
+	err := json.Unmarshal(b, &NamedentitytypeitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Value, ok := NamedentitytypeitemMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Synonyms, ok := NamedentitytypeitemMap["synonyms"].([]interface{}); ok {
+		SynonymsString, _ := json.Marshal(Synonyms)
+		json.Unmarshal(SynonymsString, &o.Synonyms)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

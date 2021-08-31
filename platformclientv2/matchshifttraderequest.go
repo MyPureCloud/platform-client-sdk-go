@@ -21,13 +21,11 @@ type Matchshifttraderequest struct {
 
 }
 
-func (u *Matchshifttraderequest) MarshalJSON() ([]byte, error) {
+func (o *Matchshifttraderequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Matchshifttraderequest
-
 	
-
 	return json.Marshal(&struct { 
 		ReceivingScheduleId *string `json:"receivingScheduleId,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Matchshifttraderequest) MarshalJSON() ([]byte, error) {
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
-		ReceivingScheduleId: u.ReceivingScheduleId,
+		ReceivingScheduleId: o.ReceivingScheduleId,
 		
-		ReceivingShiftId: u.ReceivingShiftId,
+		ReceivingShiftId: o.ReceivingShiftId,
 		
-		Metadata: u.Metadata,
-		Alias:    (*Alias)(u),
+		Metadata: o.Metadata,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Matchshifttraderequest) UnmarshalJSON(b []byte) error {
+	var MatchshifttraderequestMap map[string]interface{}
+	err := json.Unmarshal(b, &MatchshifttraderequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ReceivingScheduleId, ok := MatchshifttraderequestMap["receivingScheduleId"].(string); ok {
+		o.ReceivingScheduleId = &ReceivingScheduleId
+	}
+	
+	if ReceivingShiftId, ok := MatchshifttraderequestMap["receivingShiftId"].(string); ok {
+		o.ReceivingShiftId = &ReceivingShiftId
+	}
+	
+	if Metadata, ok := MatchshifttraderequestMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

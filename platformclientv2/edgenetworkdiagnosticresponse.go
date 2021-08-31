@@ -17,24 +17,41 @@ type Edgenetworkdiagnosticresponse struct {
 
 }
 
-func (u *Edgenetworkdiagnosticresponse) MarshalJSON() ([]byte, error) {
+func (o *Edgenetworkdiagnosticresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgenetworkdiagnosticresponse
-
 	
-
 	return json.Marshal(&struct { 
 		CommandCorrelationId *string `json:"commandCorrelationId,omitempty"`
 		
 		Diagnostics *string `json:"diagnostics,omitempty"`
 		*Alias
 	}{ 
-		CommandCorrelationId: u.CommandCorrelationId,
+		CommandCorrelationId: o.CommandCorrelationId,
 		
-		Diagnostics: u.Diagnostics,
-		Alias:    (*Alias)(u),
+		Diagnostics: o.Diagnostics,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgenetworkdiagnosticresponse) UnmarshalJSON(b []byte) error {
+	var EdgenetworkdiagnosticresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgenetworkdiagnosticresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if CommandCorrelationId, ok := EdgenetworkdiagnosticresponseMap["commandCorrelationId"].(string); ok {
+		o.CommandCorrelationId = &CommandCorrelationId
+	}
+	
+	if Diagnostics, ok := EdgenetworkdiagnosticresponseMap["diagnostics"].(string); ok {
+		o.Diagnostics = &Diagnostics
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -62,29 +62,27 @@ type Webdeployment struct {
 
 }
 
-func (u *Webdeployment) MarshalJSON() ([]byte, error) {
+func (o *Webdeployment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webdeployment
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,102 @@ func (u *Webdeployment) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Configuration: u.Configuration,
+		Configuration: o.Configuration,
 		
-		AllowAllDomains: u.AllowAllDomains,
+		AllowAllDomains: o.AllowAllDomains,
 		
-		AllowedDomains: u.AllowedDomains,
+		AllowedDomains: o.AllowedDomains,
 		
-		Snippet: u.Snippet,
+		Snippet: o.Snippet,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		LastModifiedUser: u.LastModifiedUser,
+		LastModifiedUser: o.LastModifiedUser,
 		
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webdeployment) UnmarshalJSON(b []byte) error {
+	var WebdeploymentMap map[string]interface{}
+	err := json.Unmarshal(b, &WebdeploymentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebdeploymentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WebdeploymentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := WebdeploymentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Configuration, ok := WebdeploymentMap["configuration"].(map[string]interface{}); ok {
+		ConfigurationString, _ := json.Marshal(Configuration)
+		json.Unmarshal(ConfigurationString, &o.Configuration)
+	}
+	
+	if AllowAllDomains, ok := WebdeploymentMap["allowAllDomains"].(bool); ok {
+		o.AllowAllDomains = &AllowAllDomains
+	}
+	
+	if AllowedDomains, ok := WebdeploymentMap["allowedDomains"].([]interface{}); ok {
+		AllowedDomainsString, _ := json.Marshal(AllowedDomains)
+		json.Unmarshal(AllowedDomainsString, &o.AllowedDomains)
+	}
+	
+	if Snippet, ok := WebdeploymentMap["snippet"].(string); ok {
+		o.Snippet = &Snippet
+	}
+	
+	if dateCreatedString, ok := WebdeploymentMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := WebdeploymentMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if LastModifiedUser, ok := WebdeploymentMap["lastModifiedUser"].(map[string]interface{}); ok {
+		LastModifiedUserString, _ := json.Marshal(LastModifiedUser)
+		json.Unmarshal(LastModifiedUserString, &o.LastModifiedUser)
+	}
+	
+	if Flow, ok := WebdeploymentMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if Status, ok := WebdeploymentMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if SelfUri, ok := WebdeploymentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

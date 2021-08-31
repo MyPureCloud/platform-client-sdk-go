@@ -37,13 +37,11 @@ type Objectivezone struct {
 
 }
 
-func (u *Objectivezone) MarshalJSON() ([]byte, error) {
+func (o *Objectivezone) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Objectivezone
-
 	
-
 	return json.Marshal(&struct { 
 		Label *string `json:"label,omitempty"`
 		
@@ -60,21 +58,64 @@ func (u *Objectivezone) MarshalJSON() ([]byte, error) {
 		LowerLimitValue *int `json:"lowerLimitValue,omitempty"`
 		*Alias
 	}{ 
-		Label: u.Label,
+		Label: o.Label,
 		
-		DirectionType: u.DirectionType,
+		DirectionType: o.DirectionType,
 		
-		ZoneType: u.ZoneType,
+		ZoneType: o.ZoneType,
 		
-		UpperLimitPoints: u.UpperLimitPoints,
+		UpperLimitPoints: o.UpperLimitPoints,
 		
-		LowerLimitPoints: u.LowerLimitPoints,
+		LowerLimitPoints: o.LowerLimitPoints,
 		
-		UpperLimitValue: u.UpperLimitValue,
+		UpperLimitValue: o.UpperLimitValue,
 		
-		LowerLimitValue: u.LowerLimitValue,
-		Alias:    (*Alias)(u),
+		LowerLimitValue: o.LowerLimitValue,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Objectivezone) UnmarshalJSON(b []byte) error {
+	var ObjectivezoneMap map[string]interface{}
+	err := json.Unmarshal(b, &ObjectivezoneMap)
+	if err != nil {
+		return err
+	}
+	
+	if Label, ok := ObjectivezoneMap["label"].(string); ok {
+		o.Label = &Label
+	}
+	
+	if DirectionType, ok := ObjectivezoneMap["directionType"].(string); ok {
+		o.DirectionType = &DirectionType
+	}
+	
+	if ZoneType, ok := ObjectivezoneMap["zoneType"].(string); ok {
+		o.ZoneType = &ZoneType
+	}
+	
+	if UpperLimitPoints, ok := ObjectivezoneMap["upperLimitPoints"].(float64); ok {
+		UpperLimitPointsInt := int(UpperLimitPoints)
+		o.UpperLimitPoints = &UpperLimitPointsInt
+	}
+	
+	if LowerLimitPoints, ok := ObjectivezoneMap["lowerLimitPoints"].(float64); ok {
+		LowerLimitPointsInt := int(LowerLimitPoints)
+		o.LowerLimitPoints = &LowerLimitPointsInt
+	}
+	
+	if UpperLimitValue, ok := ObjectivezoneMap["upperLimitValue"].(float64); ok {
+		UpperLimitValueInt := int(UpperLimitValue)
+		o.UpperLimitValue = &UpperLimitValueInt
+	}
+	
+	if LowerLimitValue, ok := ObjectivezoneMap["lowerLimitValue"].(float64); ok {
+		LowerLimitValueInt := int(LowerLimitValue)
+		o.LowerLimitValue = &LowerLimitValueInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

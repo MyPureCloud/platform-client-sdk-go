@@ -17,24 +17,42 @@ type Transcriptaggregatequeryclause struct {
 
 }
 
-func (u *Transcriptaggregatequeryclause) MarshalJSON() ([]byte, error) {
+func (o *Transcriptaggregatequeryclause) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptaggregatequeryclause
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Predicates *[]Transcriptaggregatequerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptaggregatequeryclause) UnmarshalJSON(b []byte) error {
+	var TranscriptaggregatequeryclauseMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptaggregatequeryclauseMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := TranscriptaggregatequeryclauseMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Predicates, ok := TranscriptaggregatequeryclauseMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

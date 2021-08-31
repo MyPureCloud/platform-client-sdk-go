@@ -13,20 +13,34 @@ type Trusteeauthorization struct {
 
 }
 
-func (u *Trusteeauthorization) MarshalJSON() ([]byte, error) {
+func (o *Trusteeauthorization) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trusteeauthorization
-
 	
-
 	return json.Marshal(&struct { 
 		Permissions *[]string `json:"permissions,omitempty"`
 		*Alias
 	}{ 
-		Permissions: u.Permissions,
-		Alias:    (*Alias)(u),
+		Permissions: o.Permissions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trusteeauthorization) UnmarshalJSON(b []byte) error {
+	var TrusteeauthorizationMap map[string]interface{}
+	err := json.Unmarshal(b, &TrusteeauthorizationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Permissions, ok := TrusteeauthorizationMap["permissions"].([]interface{}); ok {
+		PermissionsString, _ := json.Marshal(Permissions)
+		json.Unmarshal(PermissionsString, &o.Permissions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

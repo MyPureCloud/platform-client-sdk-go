@@ -21,13 +21,11 @@ type Deletableuserreference struct {
 
 }
 
-func (u *Deletableuserreference) MarshalJSON() ([]byte, error) {
+func (o *Deletableuserreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Deletableuserreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Deletableuserreference) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Delete: u.Delete,
+		Delete: o.Delete,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Deletableuserreference) UnmarshalJSON(b []byte) error {
+	var DeletableuserreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DeletableuserreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DeletableuserreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Delete, ok := DeletableuserreferenceMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+	
+	if SelfUri, ok := DeletableuserreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -105,13 +105,11 @@ type Integrationtype struct {
 
 }
 
-func (u *Integrationtype) MarshalJSON() ([]byte, error) {
+func (o *Integrationtype) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Integrationtype
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -162,55 +160,168 @@ func (u *Integrationtype) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		ConfigPropertiesSchemaUri: u.ConfigPropertiesSchemaUri,
+		ConfigPropertiesSchemaUri: o.ConfigPropertiesSchemaUri,
 		
-		ConfigAdvancedSchemaUri: u.ConfigAdvancedSchemaUri,
+		ConfigAdvancedSchemaUri: o.ConfigAdvancedSchemaUri,
 		
-		HelpUri: u.HelpUri,
+		HelpUri: o.HelpUri,
 		
-		TermsOfServiceUri: u.TermsOfServiceUri,
+		TermsOfServiceUri: o.TermsOfServiceUri,
 		
-		VendorName: u.VendorName,
+		VendorName: o.VendorName,
 		
-		VendorWebsiteUri: u.VendorWebsiteUri,
+		VendorWebsiteUri: o.VendorWebsiteUri,
 		
-		MarketplaceUri: u.MarketplaceUri,
+		MarketplaceUri: o.MarketplaceUri,
 		
-		FaqUri: u.FaqUri,
+		FaqUri: o.FaqUri,
 		
-		PrivacyPolicyUri: u.PrivacyPolicyUri,
+		PrivacyPolicyUri: o.PrivacyPolicyUri,
 		
-		SupportContactUri: u.SupportContactUri,
+		SupportContactUri: o.SupportContactUri,
 		
-		SalesContactUri: u.SalesContactUri,
+		SalesContactUri: o.SalesContactUri,
 		
-		HelpLinks: u.HelpLinks,
+		HelpLinks: o.HelpLinks,
 		
-		Credentials: u.Credentials,
+		Credentials: o.Credentials,
 		
-		NonInstallable: u.NonInstallable,
+		NonInstallable: o.NonInstallable,
 		
-		MaxInstances: u.MaxInstances,
+		MaxInstances: o.MaxInstances,
 		
-		UserPermissions: u.UserPermissions,
+		UserPermissions: o.UserPermissions,
 		
-		VendorOAuthClientIds: u.VendorOAuthClientIds,
+		VendorOAuthClientIds: o.VendorOAuthClientIds,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Integrationtype) UnmarshalJSON(b []byte) error {
+	var IntegrationtypeMap map[string]interface{}
+	err := json.Unmarshal(b, &IntegrationtypeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := IntegrationtypeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := IntegrationtypeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := IntegrationtypeMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Provider, ok := IntegrationtypeMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if Category, ok := IntegrationtypeMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Images, ok := IntegrationtypeMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
+	}
+	
+	if ConfigPropertiesSchemaUri, ok := IntegrationtypeMap["configPropertiesSchemaUri"].(string); ok {
+		o.ConfigPropertiesSchemaUri = &ConfigPropertiesSchemaUri
+	}
+	
+	if ConfigAdvancedSchemaUri, ok := IntegrationtypeMap["configAdvancedSchemaUri"].(string); ok {
+		o.ConfigAdvancedSchemaUri = &ConfigAdvancedSchemaUri
+	}
+	
+	if HelpUri, ok := IntegrationtypeMap["helpUri"].(string); ok {
+		o.HelpUri = &HelpUri
+	}
+	
+	if TermsOfServiceUri, ok := IntegrationtypeMap["termsOfServiceUri"].(string); ok {
+		o.TermsOfServiceUri = &TermsOfServiceUri
+	}
+	
+	if VendorName, ok := IntegrationtypeMap["vendorName"].(string); ok {
+		o.VendorName = &VendorName
+	}
+	
+	if VendorWebsiteUri, ok := IntegrationtypeMap["vendorWebsiteUri"].(string); ok {
+		o.VendorWebsiteUri = &VendorWebsiteUri
+	}
+	
+	if MarketplaceUri, ok := IntegrationtypeMap["marketplaceUri"].(string); ok {
+		o.MarketplaceUri = &MarketplaceUri
+	}
+	
+	if FaqUri, ok := IntegrationtypeMap["faqUri"].(string); ok {
+		o.FaqUri = &FaqUri
+	}
+	
+	if PrivacyPolicyUri, ok := IntegrationtypeMap["privacyPolicyUri"].(string); ok {
+		o.PrivacyPolicyUri = &PrivacyPolicyUri
+	}
+	
+	if SupportContactUri, ok := IntegrationtypeMap["supportContactUri"].(string); ok {
+		o.SupportContactUri = &SupportContactUri
+	}
+	
+	if SalesContactUri, ok := IntegrationtypeMap["salesContactUri"].(string); ok {
+		o.SalesContactUri = &SalesContactUri
+	}
+	
+	if HelpLinks, ok := IntegrationtypeMap["helpLinks"].([]interface{}); ok {
+		HelpLinksString, _ := json.Marshal(HelpLinks)
+		json.Unmarshal(HelpLinksString, &o.HelpLinks)
+	}
+	
+	if Credentials, ok := IntegrationtypeMap["credentials"].(map[string]interface{}); ok {
+		CredentialsString, _ := json.Marshal(Credentials)
+		json.Unmarshal(CredentialsString, &o.Credentials)
+	}
+	
+	if NonInstallable, ok := IntegrationtypeMap["nonInstallable"].(bool); ok {
+		o.NonInstallable = &NonInstallable
+	}
+	
+	if MaxInstances, ok := IntegrationtypeMap["maxInstances"].(float64); ok {
+		MaxInstancesInt := int(MaxInstances)
+		o.MaxInstances = &MaxInstancesInt
+	}
+	
+	if UserPermissions, ok := IntegrationtypeMap["userPermissions"].([]interface{}); ok {
+		UserPermissionsString, _ := json.Marshal(UserPermissions)
+		json.Unmarshal(UserPermissionsString, &o.UserPermissions)
+	}
+	
+	if VendorOAuthClientIds, ok := IntegrationtypeMap["vendorOAuthClientIds"].([]interface{}); ok {
+		VendorOAuthClientIdsString, _ := json.Marshal(VendorOAuthClientIds)
+		json.Unmarshal(VendorOAuthClientIdsString, &o.VendorOAuthClientIds)
+	}
+	
+	if SelfUri, ok := IntegrationtypeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

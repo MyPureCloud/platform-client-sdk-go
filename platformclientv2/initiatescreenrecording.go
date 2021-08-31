@@ -21,13 +21,11 @@ type Initiatescreenrecording struct {
 
 }
 
-func (u *Initiatescreenrecording) MarshalJSON() ([]byte, error) {
+func (o *Initiatescreenrecording) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Initiatescreenrecording
-
 	
-
 	return json.Marshal(&struct { 
 		RecordACW *bool `json:"recordACW,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Initiatescreenrecording) MarshalJSON() ([]byte, error) {
 		DeleteRetention *Deleteretention `json:"deleteRetention,omitempty"`
 		*Alias
 	}{ 
-		RecordACW: u.RecordACW,
+		RecordACW: o.RecordACW,
 		
-		ArchiveRetention: u.ArchiveRetention,
+		ArchiveRetention: o.ArchiveRetention,
 		
-		DeleteRetention: u.DeleteRetention,
-		Alias:    (*Alias)(u),
+		DeleteRetention: o.DeleteRetention,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Initiatescreenrecording) UnmarshalJSON(b []byte) error {
+	var InitiatescreenrecordingMap map[string]interface{}
+	err := json.Unmarshal(b, &InitiatescreenrecordingMap)
+	if err != nil {
+		return err
+	}
+	
+	if RecordACW, ok := InitiatescreenrecordingMap["recordACW"].(bool); ok {
+		o.RecordACW = &RecordACW
+	}
+	
+	if ArchiveRetention, ok := InitiatescreenrecordingMap["archiveRetention"].(map[string]interface{}); ok {
+		ArchiveRetentionString, _ := json.Marshal(ArchiveRetention)
+		json.Unmarshal(ArchiveRetentionString, &o.ArchiveRetention)
+	}
+	
+	if DeleteRetention, ok := InitiatescreenrecordingMap["deleteRetention"].(map[string]interface{}); ok {
+		DeleteRetentionString, _ := json.Marshal(DeleteRetention)
+		json.Unmarshal(DeleteRetentionString, &o.DeleteRetention)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Createbenefitassessmentjobrequest struct {
 
 }
 
-func (u *Createbenefitassessmentjobrequest) MarshalJSON() ([]byte, error) {
+func (o *Createbenefitassessmentjobrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createbenefitassessmentjobrequest
-
 	
-
 	return json.Marshal(&struct { 
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		*Alias
 	}{ 
-		DivisionIds: u.DivisionIds,
-		Alias:    (*Alias)(u),
+		DivisionIds: o.DivisionIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createbenefitassessmentjobrequest) UnmarshalJSON(b []byte) error {
+	var CreatebenefitassessmentjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatebenefitassessmentjobrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if DivisionIds, ok := CreatebenefitassessmentjobrequestMap["divisionIds"].([]interface{}); ok {
+		DivisionIdsString, _ := json.Marshal(DivisionIds)
+		json.Unmarshal(DivisionIdsString, &o.DivisionIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

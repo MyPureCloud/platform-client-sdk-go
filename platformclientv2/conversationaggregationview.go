@@ -25,13 +25,11 @@ type Conversationaggregationview struct {
 
 }
 
-func (u *Conversationaggregationview) MarshalJSON() ([]byte, error) {
+func (o *Conversationaggregationview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationaggregationview
-
 	
-
 	return json.Marshal(&struct { 
 		Target *string `json:"target,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Conversationaggregationview) MarshalJSON() ([]byte, error) {
 		VarRange *Aggregationrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		Target: u.Target,
+		Target: o.Target,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Function: u.Function,
+		Function: o.Function,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationaggregationview) UnmarshalJSON(b []byte) error {
+	var ConversationaggregationviewMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationaggregationviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Target, ok := ConversationaggregationviewMap["target"].(string); ok {
+		o.Target = &Target
+	}
+	
+	if Name, ok := ConversationaggregationviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Function, ok := ConversationaggregationviewMap["function"].(string); ok {
+		o.Function = &Function
+	}
+	
+	if VarRange, ok := ConversationaggregationviewMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

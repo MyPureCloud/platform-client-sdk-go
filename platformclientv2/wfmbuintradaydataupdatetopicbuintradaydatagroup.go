@@ -37,13 +37,11 @@ type Wfmbuintradaydataupdatetopicbuintradaydatagroup struct {
 
 }
 
-func (u *Wfmbuintradaydataupdatetopicbuintradaydatagroup) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuintradaydataupdatetopicbuintradaydatagroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuintradaydataupdatetopicbuintradaydatagroup
-
 	
-
 	return json.Marshal(&struct { 
 		MediaType *string `json:"mediaType,omitempty"`
 		
@@ -60,21 +58,66 @@ func (u *Wfmbuintradaydataupdatetopicbuintradaydatagroup) MarshalJSON() ([]byte,
 		PerformancePredictionDataPerInterval *[]Wfmbuintradaydataupdatetopicintradayperformancepredictiondata `json:"performancePredictionDataPerInterval,omitempty"`
 		*Alias
 	}{ 
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ForecastDataSummary: u.ForecastDataSummary,
+		ForecastDataSummary: o.ForecastDataSummary,
 		
-		ForecastDataPerInterval: u.ForecastDataPerInterval,
+		ForecastDataPerInterval: o.ForecastDataPerInterval,
 		
-		ScheduleDataSummary: u.ScheduleDataSummary,
+		ScheduleDataSummary: o.ScheduleDataSummary,
 		
-		ScheduleDataPerInterval: u.ScheduleDataPerInterval,
+		ScheduleDataPerInterval: o.ScheduleDataPerInterval,
 		
-		PerformancePredictionDataSummary: u.PerformancePredictionDataSummary,
+		PerformancePredictionDataSummary: o.PerformancePredictionDataSummary,
 		
-		PerformancePredictionDataPerInterval: u.PerformancePredictionDataPerInterval,
-		Alias:    (*Alias)(u),
+		PerformancePredictionDataPerInterval: o.PerformancePredictionDataPerInterval,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuintradaydataupdatetopicbuintradaydatagroup) UnmarshalJSON(b []byte) error {
+	var WfmbuintradaydataupdatetopicbuintradaydatagroupMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuintradaydataupdatetopicbuintradaydatagroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if MediaType, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ForecastDataSummary, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["forecastDataSummary"].(map[string]interface{}); ok {
+		ForecastDataSummaryString, _ := json.Marshal(ForecastDataSummary)
+		json.Unmarshal(ForecastDataSummaryString, &o.ForecastDataSummary)
+	}
+	
+	if ForecastDataPerInterval, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["forecastDataPerInterval"].([]interface{}); ok {
+		ForecastDataPerIntervalString, _ := json.Marshal(ForecastDataPerInterval)
+		json.Unmarshal(ForecastDataPerIntervalString, &o.ForecastDataPerInterval)
+	}
+	
+	if ScheduleDataSummary, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["scheduleDataSummary"].(map[string]interface{}); ok {
+		ScheduleDataSummaryString, _ := json.Marshal(ScheduleDataSummary)
+		json.Unmarshal(ScheduleDataSummaryString, &o.ScheduleDataSummary)
+	}
+	
+	if ScheduleDataPerInterval, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["scheduleDataPerInterval"].([]interface{}); ok {
+		ScheduleDataPerIntervalString, _ := json.Marshal(ScheduleDataPerInterval)
+		json.Unmarshal(ScheduleDataPerIntervalString, &o.ScheduleDataPerInterval)
+	}
+	
+	if PerformancePredictionDataSummary, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["performancePredictionDataSummary"].(map[string]interface{}); ok {
+		PerformancePredictionDataSummaryString, _ := json.Marshal(PerformancePredictionDataSummary)
+		json.Unmarshal(PerformancePredictionDataSummaryString, &o.PerformancePredictionDataSummary)
+	}
+	
+	if PerformancePredictionDataPerInterval, ok := WfmbuintradaydataupdatetopicbuintradaydatagroupMap["performancePredictionDataPerInterval"].([]interface{}); ok {
+		PerformancePredictionDataPerIntervalString, _ := json.Marshal(PerformancePredictionDataPerInterval)
+		json.Unmarshal(PerformancePredictionDataPerIntervalString, &o.PerformancePredictionDataPerInterval)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

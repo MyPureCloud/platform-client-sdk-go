@@ -25,13 +25,11 @@ type Destination struct {
 
 }
 
-func (u *Destination) MarshalJSON() ([]byte, error) {
+func (o *Destination) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Destination
-
 	
-
 	return json.Marshal(&struct { 
 		Address *string `json:"address,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Destination) MarshalJSON() ([]byte, error) {
 		QueueId *string `json:"queueId,omitempty"`
 		*Alias
 	}{ 
-		Address: u.Address,
+		Address: o.Address,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		QueueId: u.QueueId,
-		Alias:    (*Alias)(u),
+		QueueId: o.QueueId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Destination) UnmarshalJSON(b []byte) error {
+	var DestinationMap map[string]interface{}
+	err := json.Unmarshal(b, &DestinationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Address, ok := DestinationMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if Name, ok := DestinationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if UserId, ok := DestinationMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if QueueId, ok := DestinationMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Bulkerrorrelationship struct {
 
 }
 
-func (u *Bulkerrorrelationship) MarshalJSON() ([]byte, error) {
+func (o *Bulkerrorrelationship) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkerrorrelationship
-
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Bulkerrorrelationship) MarshalJSON() ([]byte, error) {
 		Details *[]Bulkerrordetail `json:"details,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Retryable: u.Retryable,
+		Retryable: o.Retryable,
 		
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		Details: u.Details,
-		Alias:    (*Alias)(u),
+		Details: o.Details,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkerrorrelationship) UnmarshalJSON(b []byte) error {
+	var BulkerrorrelationshipMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkerrorrelationshipMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := BulkerrorrelationshipMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Message, ok := BulkerrorrelationshipMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if Status, ok := BulkerrorrelationshipMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if Retryable, ok := BulkerrorrelationshipMap["retryable"].(bool); ok {
+		o.Retryable = &Retryable
+	}
+	
+	if Entity, ok := BulkerrorrelationshipMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if Details, ok := BulkerrorrelationshipMap["details"].([]interface{}); ok {
+		DetailsString, _ := json.Marshal(Details)
+		json.Unmarshal(DetailsString, &o.Details)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

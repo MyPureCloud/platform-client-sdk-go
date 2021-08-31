@@ -29,13 +29,11 @@ type Userapp struct {
 
 }
 
-func (u *Userapp) MarshalJSON() ([]byte, error) {
+func (o *Userapp) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userapp
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Userapp) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		IntegrationType: u.IntegrationType,
+		IntegrationType: o.IntegrationType,
 		
-		Config: u.Config,
+		Config: o.Config,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userapp) UnmarshalJSON(b []byte) error {
+	var UserappMap map[string]interface{}
+	err := json.Unmarshal(b, &UserappMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserappMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserappMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if IntegrationType, ok := UserappMap["integrationType"].(map[string]interface{}); ok {
+		IntegrationTypeString, _ := json.Marshal(IntegrationType)
+		json.Unmarshal(IntegrationTypeString, &o.IntegrationType)
+	}
+	
+	if Config, ok := UserappMap["config"].(map[string]interface{}); ok {
+		ConfigString, _ := json.Marshal(Config)
+		json.Unmarshal(ConfigString, &o.Config)
+	}
+	
+	if SelfUri, ok := UserappMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Agentownedmappingpreview struct {
 
 }
 
-func (u *Agentownedmappingpreview) MarshalJSON() ([]byte, error) {
+func (o *Agentownedmappingpreview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentownedmappingpreview
-
 	
-
 	return json.Marshal(&struct { 
 		AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Agentownedmappingpreview) MarshalJSON() ([]byte, error) {
 		RecordCount *int `json:"recordCount,omitempty"`
 		*Alias
 	}{ 
-		AgentOwnedColumn: u.AgentOwnedColumn,
+		AgentOwnedColumn: o.AgentOwnedColumn,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		Exists: u.Exists,
+		Exists: o.Exists,
 		
-		IsQueueMember: u.IsQueueMember,
+		IsQueueMember: o.IsQueueMember,
 		
-		RecordCount: u.RecordCount,
-		Alias:    (*Alias)(u),
+		RecordCount: o.RecordCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agentownedmappingpreview) UnmarshalJSON(b []byte) error {
+	var AgentownedmappingpreviewMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentownedmappingpreviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if AgentOwnedColumn, ok := AgentownedmappingpreviewMap["agentOwnedColumn"].(string); ok {
+		o.AgentOwnedColumn = &AgentOwnedColumn
+	}
+	
+	if Email, ok := AgentownedmappingpreviewMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+	if UserId, ok := AgentownedmappingpreviewMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if Exists, ok := AgentownedmappingpreviewMap["exists"].(bool); ok {
+		o.Exists = &Exists
+	}
+	
+	if IsQueueMember, ok := AgentownedmappingpreviewMap["isQueueMember"].(bool); ok {
+		o.IsQueueMember = &IsQueueMember
+	}
+	
+	if RecordCount, ok := AgentownedmappingpreviewMap["recordCount"].(float64); ok {
+		RecordCountInt := int(RecordCount)
+		o.RecordCount = &RecordCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

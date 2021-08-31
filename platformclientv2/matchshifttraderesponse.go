@@ -21,13 +21,11 @@ type Matchshifttraderesponse struct {
 
 }
 
-func (u *Matchshifttraderesponse) MarshalJSON() ([]byte, error) {
+func (o *Matchshifttraderesponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Matchshifttraderesponse
-
 	
-
 	return json.Marshal(&struct { 
 		Trade *Shifttraderesponse `json:"trade,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Matchshifttraderesponse) MarshalJSON() ([]byte, error) {
 		AdminReviewViolations *[]Shifttradematchviolation `json:"adminReviewViolations,omitempty"`
 		*Alias
 	}{ 
-		Trade: u.Trade,
+		Trade: o.Trade,
 		
-		Violations: u.Violations,
+		Violations: o.Violations,
 		
-		AdminReviewViolations: u.AdminReviewViolations,
-		Alias:    (*Alias)(u),
+		AdminReviewViolations: o.AdminReviewViolations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Matchshifttraderesponse) UnmarshalJSON(b []byte) error {
+	var MatchshifttraderesponseMap map[string]interface{}
+	err := json.Unmarshal(b, &MatchshifttraderesponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Trade, ok := MatchshifttraderesponseMap["trade"].(map[string]interface{}); ok {
+		TradeString, _ := json.Marshal(Trade)
+		json.Unmarshal(TradeString, &o.Trade)
+	}
+	
+	if Violations, ok := MatchshifttraderesponseMap["violations"].([]interface{}); ok {
+		ViolationsString, _ := json.Marshal(Violations)
+		json.Unmarshal(ViolationsString, &o.Violations)
+	}
+	
+	if AdminReviewViolations, ok := MatchshifttraderesponseMap["adminReviewViolations"].([]interface{}); ok {
+		AdminReviewViolationsString, _ := json.Marshal(AdminReviewViolations)
+		json.Unmarshal(AdminReviewViolationsString, &o.AdminReviewViolations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

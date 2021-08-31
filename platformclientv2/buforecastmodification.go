@@ -53,13 +53,11 @@ type Buforecastmodification struct {
 
 }
 
-func (u *Buforecastmodification) MarshalJSON() ([]byte, error) {
+func (o *Buforecastmodification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buforecastmodification
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -84,29 +82,88 @@ func (u *Buforecastmodification) MarshalJSON() ([]byte, error) {
 		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		StartIntervalIndex: u.StartIntervalIndex,
+		StartIntervalIndex: o.StartIntervalIndex,
 		
-		EndIntervalIndex: u.EndIntervalIndex,
+		EndIntervalIndex: o.EndIntervalIndex,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		LegacyMetric: u.LegacyMetric,
+		LegacyMetric: o.LegacyMetric,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		DisplayGranularity: u.DisplayGranularity,
+		DisplayGranularity: o.DisplayGranularity,
 		
-		Granularity: u.Granularity,
+		Granularity: o.Granularity,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		PlanningGroupIds: u.PlanningGroupIds,
-		Alias:    (*Alias)(u),
+		PlanningGroupIds: o.PlanningGroupIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buforecastmodification) UnmarshalJSON(b []byte) error {
+	var BuforecastmodificationMap map[string]interface{}
+	err := json.Unmarshal(b, &BuforecastmodificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := BuforecastmodificationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if StartIntervalIndex, ok := BuforecastmodificationMap["startIntervalIndex"].(float64); ok {
+		StartIntervalIndexInt := int(StartIntervalIndex)
+		o.StartIntervalIndex = &StartIntervalIndexInt
+	}
+	
+	if EndIntervalIndex, ok := BuforecastmodificationMap["endIntervalIndex"].(float64); ok {
+		EndIntervalIndexInt := int(EndIntervalIndex)
+		o.EndIntervalIndex = &EndIntervalIndexInt
+	}
+	
+	if Metric, ok := BuforecastmodificationMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if LegacyMetric, ok := BuforecastmodificationMap["legacyMetric"].(string); ok {
+		o.LegacyMetric = &LegacyMetric
+	}
+	
+	if Value, ok := BuforecastmodificationMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+	if Values, ok := BuforecastmodificationMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if DisplayGranularity, ok := BuforecastmodificationMap["displayGranularity"].(string); ok {
+		o.DisplayGranularity = &DisplayGranularity
+	}
+	
+	if Granularity, ok := BuforecastmodificationMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+	
+	if Enabled, ok := BuforecastmodificationMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if PlanningGroupIds, ok := BuforecastmodificationMap["planningGroupIds"].([]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

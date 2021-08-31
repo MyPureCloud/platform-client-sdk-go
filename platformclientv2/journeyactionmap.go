@@ -17,24 +17,42 @@ type Journeyactionmap struct {
 
 }
 
-func (u *Journeyactionmap) MarshalJSON() ([]byte, error) {
+func (o *Journeyactionmap) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeyactionmap
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeyactionmap) UnmarshalJSON(b []byte) error {
+	var JourneyactionmapMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyactionmapMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := JourneyactionmapMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Version, ok := JourneyactionmapMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

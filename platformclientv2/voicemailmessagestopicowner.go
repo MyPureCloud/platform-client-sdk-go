@@ -13,20 +13,33 @@ type Voicemailmessagestopicowner struct {
 
 }
 
-func (u *Voicemailmessagestopicowner) MarshalJSON() ([]byte, error) {
+func (o *Voicemailmessagestopicowner) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmessagestopicowner
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailmessagestopicowner) UnmarshalJSON(b []byte) error {
+	var VoicemailmessagestopicownerMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailmessagestopicownerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := VoicemailmessagestopicownerMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

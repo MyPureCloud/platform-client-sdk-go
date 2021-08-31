@@ -46,29 +46,27 @@ type Campaignschedule struct {
 
 }
 
-func (u *Campaignschedule) MarshalJSON() ([]byte, error) {
+func (o *Campaignschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaignschedule
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -89,25 +87,77 @@ func (u *Campaignschedule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Intervals: u.Intervals,
+		Intervals: o.Intervals,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		Campaign: u.Campaign,
+		Campaign: o.Campaign,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaignschedule) UnmarshalJSON(b []byte) error {
+	var CampaignscheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignscheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CampaignscheduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CampaignscheduleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := CampaignscheduleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := CampaignscheduleMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := CampaignscheduleMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Intervals, ok := CampaignscheduleMap["intervals"].([]interface{}); ok {
+		IntervalsString, _ := json.Marshal(Intervals)
+		json.Unmarshal(IntervalsString, &o.Intervals)
+	}
+	
+	if TimeZone, ok := CampaignscheduleMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if Campaign, ok := CampaignscheduleMap["campaign"].(map[string]interface{}); ok {
+		CampaignString, _ := json.Marshal(Campaign)
+		json.Unmarshal(CampaignString, &o.Campaign)
+	}
+	
+	if SelfUri, ok := CampaignscheduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

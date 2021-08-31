@@ -29,13 +29,11 @@ type Dialerpreview struct {
 
 }
 
-func (u *Dialerpreview) MarshalJSON() ([]byte, error) {
+func (o *Dialerpreview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerpreview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Dialerpreview) MarshalJSON() ([]byte, error) {
 		PhoneNumberColumns *[]Phonenumbercolumn `json:"phoneNumberColumns,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ContactId: u.ContactId,
+		ContactId: o.ContactId,
 		
-		ContactListId: u.ContactListId,
+		ContactListId: o.ContactListId,
 		
-		CampaignId: u.CampaignId,
+		CampaignId: o.CampaignId,
 		
-		PhoneNumberColumns: u.PhoneNumberColumns,
-		Alias:    (*Alias)(u),
+		PhoneNumberColumns: o.PhoneNumberColumns,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerpreview) UnmarshalJSON(b []byte) error {
+	var DialerpreviewMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerpreviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialerpreviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ContactId, ok := DialerpreviewMap["contactId"].(string); ok {
+		o.ContactId = &ContactId
+	}
+	
+	if ContactListId, ok := DialerpreviewMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+	if CampaignId, ok := DialerpreviewMap["campaignId"].(string); ok {
+		o.CampaignId = &CampaignId
+	}
+	
+	if PhoneNumberColumns, ok := DialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
+		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
+		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

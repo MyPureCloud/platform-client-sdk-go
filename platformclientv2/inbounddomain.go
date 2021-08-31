@@ -37,13 +37,11 @@ type Inbounddomain struct {
 
 }
 
-func (u *Inbounddomain) MarshalJSON() ([]byte, error) {
+func (o *Inbounddomain) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Inbounddomain
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Inbounddomain) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		MxRecordStatus: u.MxRecordStatus,
+		MxRecordStatus: o.MxRecordStatus,
 		
-		SubDomain: u.SubDomain,
+		SubDomain: o.SubDomain,
 		
-		MailFromSettings: u.MailFromSettings,
+		MailFromSettings: o.MailFromSettings,
 		
-		CustomSMTPServer: u.CustomSMTPServer,
+		CustomSMTPServer: o.CustomSMTPServer,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Inbounddomain) UnmarshalJSON(b []byte) error {
+	var InbounddomainMap map[string]interface{}
+	err := json.Unmarshal(b, &InbounddomainMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := InbounddomainMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := InbounddomainMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if MxRecordStatus, ok := InbounddomainMap["mxRecordStatus"].(string); ok {
+		o.MxRecordStatus = &MxRecordStatus
+	}
+	
+	if SubDomain, ok := InbounddomainMap["subDomain"].(bool); ok {
+		o.SubDomain = &SubDomain
+	}
+	
+	if MailFromSettings, ok := InbounddomainMap["mailFromSettings"].(map[string]interface{}); ok {
+		MailFromSettingsString, _ := json.Marshal(MailFromSettings)
+		json.Unmarshal(MailFromSettingsString, &o.MailFromSettings)
+	}
+	
+	if CustomSMTPServer, ok := InbounddomainMap["customSMTPServer"].(map[string]interface{}); ok {
+		CustomSMTPServerString, _ := json.Marshal(CustomSMTPServer)
+		json.Unmarshal(CustomSMTPServerString, &o.CustomSMTPServer)
+	}
+	
+	if SelfUri, ok := InbounddomainMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

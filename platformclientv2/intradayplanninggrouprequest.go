@@ -26,20 +26,18 @@ type Intradayplanninggrouprequest struct {
 
 }
 
-func (u *Intradayplanninggrouprequest) MarshalJSON() ([]byte, error) {
+func (o *Intradayplanninggrouprequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Intradayplanninggrouprequest
-
 	
 	BusinessUnitDate := new(string)
-	if u.BusinessUnitDate != nil {
-		*BusinessUnitDate = timeutil.Strftime(u.BusinessUnitDate, "%Y-%m-%d")
+	if o.BusinessUnitDate != nil {
+		*BusinessUnitDate = timeutil.Strftime(o.BusinessUnitDate, "%Y-%m-%d")
 	} else {
 		BusinessUnitDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		BusinessUnitDate *string `json:"businessUnitDate,omitempty"`
 		
@@ -52,13 +50,44 @@ func (u *Intradayplanninggrouprequest) MarshalJSON() ([]byte, error) {
 	}{ 
 		BusinessUnitDate: BusinessUnitDate,
 		
-		Categories: u.Categories,
+		Categories: o.Categories,
 		
-		PlanningGroupIds: u.PlanningGroupIds,
+		PlanningGroupIds: o.PlanningGroupIds,
 		
-		IntervalLengthMinutes: u.IntervalLengthMinutes,
-		Alias:    (*Alias)(u),
+		IntervalLengthMinutes: o.IntervalLengthMinutes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Intradayplanninggrouprequest) UnmarshalJSON(b []byte) error {
+	var IntradayplanninggrouprequestMap map[string]interface{}
+	err := json.Unmarshal(b, &IntradayplanninggrouprequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if businessUnitDateString, ok := IntradayplanninggrouprequestMap["businessUnitDate"].(string); ok {
+		BusinessUnitDate, _ := time.Parse("2006-01-02", businessUnitDateString)
+		o.BusinessUnitDate = &BusinessUnitDate
+	}
+	
+	if Categories, ok := IntradayplanninggrouprequestMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
+	if PlanningGroupIds, ok := IntradayplanninggrouprequestMap["planningGroupIds"].([]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
+	if IntervalLengthMinutes, ok := IntradayplanninggrouprequestMap["intervalLengthMinutes"].(float64); ok {
+		IntervalLengthMinutesInt := int(IntervalLengthMinutes)
+		o.IntervalLengthMinutes = &IntervalLengthMinutesInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Wfmintradaydataupdatetopicintradayperformancepredictionagentdata struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradayperformancepredictionagentdata) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradayperformancepredictionagentdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradayperformancepredictionagentdata
-
 	
-
 	return json.Marshal(&struct { 
 		InteractingTimeSeconds *float32 `json:"interactingTimeSeconds,omitempty"`
 		*Alias
 	}{ 
-		InteractingTimeSeconds: u.InteractingTimeSeconds,
-		Alias:    (*Alias)(u),
+		InteractingTimeSeconds: o.InteractingTimeSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradayperformancepredictionagentdata) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradayperformancepredictionagentdataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradayperformancepredictionagentdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if InteractingTimeSeconds, ok := WfmintradaydataupdatetopicintradayperformancepredictionagentdataMap["interactingTimeSeconds"].(float64); ok {
+		InteractingTimeSecondsFloat32 := float32(InteractingTimeSeconds)
+		o.InteractingTimeSeconds = &InteractingTimeSecondsFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

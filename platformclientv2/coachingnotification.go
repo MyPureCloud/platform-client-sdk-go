@@ -54,21 +54,19 @@ type Coachingnotification struct {
 
 }
 
-func (u *Coachingnotification) MarshalJSON() ([]byte, error) {
+func (o *Coachingnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingnotification
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -93,29 +91,88 @@ func (u *Coachingnotification) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		MarkedAsRead: u.MarkedAsRead,
+		MarkedAsRead: o.MarkedAsRead,
 		
-		ActionType: u.ActionType,
+		ActionType: o.ActionType,
 		
-		Relationship: u.Relationship,
+		Relationship: o.Relationship,
 		
 		DateStart: DateStart,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		User: u.User,
+		User: o.User,
 		
-		Appointment: u.Appointment,
+		Appointment: o.Appointment,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingnotification) UnmarshalJSON(b []byte) error {
+	var CoachingnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CoachingnotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CoachingnotificationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if MarkedAsRead, ok := CoachingnotificationMap["markedAsRead"].(bool); ok {
+		o.MarkedAsRead = &MarkedAsRead
+	}
+	
+	if ActionType, ok := CoachingnotificationMap["actionType"].(string); ok {
+		o.ActionType = &ActionType
+	}
+	
+	if Relationship, ok := CoachingnotificationMap["relationship"].(string); ok {
+		o.Relationship = &Relationship
+	}
+	
+	if dateStartString, ok := CoachingnotificationMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if LengthInMinutes, ok := CoachingnotificationMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if Status, ok := CoachingnotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if User, ok := CoachingnotificationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Appointment, ok := CoachingnotificationMap["appointment"].(map[string]interface{}); ok {
+		AppointmentString, _ := json.Marshal(Appointment)
+		json.Unmarshal(AppointmentString, &o.Appointment)
+	}
+	
+	if SelfUri, ok := CoachingnotificationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

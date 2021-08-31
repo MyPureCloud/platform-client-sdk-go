@@ -18,21 +18,19 @@ type Validationservicerequest struct {
 
 }
 
-func (u *Validationservicerequest) MarshalJSON() ([]byte, error) {
+func (o *Validationservicerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Validationservicerequest
-
 	
 	DateImportEnded := new(string)
-	if u.DateImportEnded != nil {
+	if o.DateImportEnded != nil {
 		
-		*DateImportEnded = timeutil.Strftime(u.DateImportEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateImportEnded = timeutil.Strftime(o.DateImportEnded, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateImportEnded = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateImportEnded *string `json:"dateImportEnded,omitempty"`
 		
@@ -41,9 +39,29 @@ func (u *Validationservicerequest) MarshalJSON() ([]byte, error) {
 	}{ 
 		DateImportEnded: DateImportEnded,
 		
-		FileUrl: u.FileUrl,
-		Alias:    (*Alias)(u),
+		FileUrl: o.FileUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Validationservicerequest) UnmarshalJSON(b []byte) error {
+	var ValidationservicerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ValidationservicerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateImportEndedString, ok := ValidationservicerequestMap["dateImportEnded"].(string); ok {
+		DateImportEnded, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateImportEndedString)
+		o.DateImportEnded = &DateImportEnded
+	}
+	
+	if FileUrl, ok := ValidationservicerequestMap["fileUrl"].(string); ok {
+		o.FileUrl = &FileUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

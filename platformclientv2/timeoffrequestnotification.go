@@ -34,13 +34,11 @@ type Timeoffrequestnotification struct {
 
 }
 
-func (u *Timeoffrequestnotification) MarshalJSON() ([]byte, error) {
+func (o *Timeoffrequestnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffrequestnotification
-
 	
-
 	return json.Marshal(&struct { 
 		TimeOffRequestId *string `json:"timeOffRequestId,omitempty"`
 		
@@ -55,19 +53,57 @@ func (u *Timeoffrequestnotification) MarshalJSON() ([]byte, error) {
 		FullDayManagementUnitDates *[]string `json:"fullDayManagementUnitDates,omitempty"`
 		*Alias
 	}{ 
-		TimeOffRequestId: u.TimeOffRequestId,
+		TimeOffRequestId: o.TimeOffRequestId,
 		
-		User: u.User,
+		User: o.User,
 		
-		IsFullDayRequest: u.IsFullDayRequest,
+		IsFullDayRequest: o.IsFullDayRequest,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
-		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
-		Alias:    (*Alias)(u),
+		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeoffrequestnotification) UnmarshalJSON(b []byte) error {
+	var TimeoffrequestnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeoffrequestnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if TimeOffRequestId, ok := TimeoffrequestnotificationMap["timeOffRequestId"].(string); ok {
+		o.TimeOffRequestId = &TimeOffRequestId
+	}
+	
+	if User, ok := TimeoffrequestnotificationMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if IsFullDayRequest, ok := TimeoffrequestnotificationMap["isFullDayRequest"].(bool); ok {
+		o.IsFullDayRequest = &IsFullDayRequest
+	}
+	
+	if Status, ok := TimeoffrequestnotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if PartialDayStartDateTimes, ok := TimeoffrequestnotificationMap["partialDayStartDateTimes"].([]interface{}); ok {
+		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
+		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
+	}
+	
+	if FullDayManagementUnitDates, ok := TimeoffrequestnotificationMap["fullDayManagementUnitDates"].([]interface{}); ok {
+		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
+		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

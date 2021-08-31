@@ -30,29 +30,27 @@ type Segment struct {
 
 }
 
-func (u *Segment) MarshalJSON() ([]byte, error) {
+func (o *Segment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Segment
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartTime *string `json:"startTime,omitempty"`
 		
@@ -69,13 +67,46 @@ func (u *Segment) MarshalJSON() ([]byte, error) {
 		
 		EndTime: EndTime,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		HowEnded: u.HowEnded,
+		HowEnded: o.HowEnded,
 		
-		DisconnectType: u.DisconnectType,
-		Alias:    (*Alias)(u),
+		DisconnectType: o.DisconnectType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Segment) UnmarshalJSON(b []byte) error {
+	var SegmentMap map[string]interface{}
+	err := json.Unmarshal(b, &SegmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if startTimeString, ok := SegmentMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := SegmentMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if VarType, ok := SegmentMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if HowEnded, ok := SegmentMap["howEnded"].(string); ok {
+		o.HowEnded = &HowEnded
+	}
+	
+	if DisconnectType, ok := SegmentMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

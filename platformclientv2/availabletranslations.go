@@ -17,24 +17,43 @@ type Availabletranslations struct {
 
 }
 
-func (u *Availabletranslations) MarshalJSON() ([]byte, error) {
+func (o *Availabletranslations) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Availabletranslations
-
 	
-
 	return json.Marshal(&struct { 
 		OrgSpecific *[]string `json:"orgSpecific,omitempty"`
 		
 		Builtin *[]string `json:"builtin,omitempty"`
 		*Alias
 	}{ 
-		OrgSpecific: u.OrgSpecific,
+		OrgSpecific: o.OrgSpecific,
 		
-		Builtin: u.Builtin,
-		Alias:    (*Alias)(u),
+		Builtin: o.Builtin,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Availabletranslations) UnmarshalJSON(b []byte) error {
+	var AvailabletranslationsMap map[string]interface{}
+	err := json.Unmarshal(b, &AvailabletranslationsMap)
+	if err != nil {
+		return err
+	}
+	
+	if OrgSpecific, ok := AvailabletranslationsMap["orgSpecific"].([]interface{}); ok {
+		OrgSpecificString, _ := json.Marshal(OrgSpecific)
+		json.Unmarshal(OrgSpecificString, &o.OrgSpecific)
+	}
+	
+	if Builtin, ok := AvailabletranslationsMap["builtin"].([]interface{}); ok {
+		BuiltinString, _ := json.Marshal(Builtin)
+		json.Unmarshal(BuiltinString, &o.Builtin)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

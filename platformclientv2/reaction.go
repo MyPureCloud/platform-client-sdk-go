@@ -21,13 +21,11 @@ type Reaction struct {
 
 }
 
-func (u *Reaction) MarshalJSON() ([]byte, error) {
+func (o *Reaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reaction
-
 	
-
 	return json.Marshal(&struct { 
 		Data *string `json:"data,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Reaction) MarshalJSON() ([]byte, error) {
 		ReactionType *string `json:"reactionType,omitempty"`
 		*Alias
 	}{ 
-		Data: u.Data,
+		Data: o.Data,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ReactionType: u.ReactionType,
-		Alias:    (*Alias)(u),
+		ReactionType: o.ReactionType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reaction) UnmarshalJSON(b []byte) error {
+	var ReactionMap map[string]interface{}
+	err := json.Unmarshal(b, &ReactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Data, ok := ReactionMap["data"].(string); ok {
+		o.Data = &Data
+	}
+	
+	if Name, ok := ReactionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ReactionType, ok := ReactionMap["reactionType"].(string); ok {
+		o.ReactionType = &ReactionType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

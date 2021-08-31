@@ -114,29 +114,27 @@ type Queue struct {
 
 }
 
-func (u *Queue) MarshalJSON() ([]byte, error) {
+func (o *Queue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queue
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -191,59 +189,188 @@ func (u *Queue) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		MemberCount: u.MemberCount,
+		MemberCount: o.MemberCount,
 		
-		JoinedMemberCount: u.JoinedMemberCount,
+		JoinedMemberCount: o.JoinedMemberCount,
 		
-		MediaSettings: u.MediaSettings,
+		MediaSettings: o.MediaSettings,
 		
-		RoutingRules: u.RoutingRules,
+		RoutingRules: o.RoutingRules,
 		
-		Bullseye: u.Bullseye,
+		Bullseye: o.Bullseye,
 		
-		AcwSettings: u.AcwSettings,
+		AcwSettings: o.AcwSettings,
 		
-		SkillEvaluationMethod: u.SkillEvaluationMethod,
+		SkillEvaluationMethod: o.SkillEvaluationMethod,
 		
-		QueueFlow: u.QueueFlow,
+		QueueFlow: o.QueueFlow,
 		
-		WhisperPrompt: u.WhisperPrompt,
+		WhisperPrompt: o.WhisperPrompt,
 		
-		AutoAnswerOnly: u.AutoAnswerOnly,
+		AutoAnswerOnly: o.AutoAnswerOnly,
 		
-		EnableTranscription: u.EnableTranscription,
+		EnableTranscription: o.EnableTranscription,
 		
-		EnableManualAssignment: u.EnableManualAssignment,
+		EnableManualAssignment: o.EnableManualAssignment,
 		
-		CallingPartyName: u.CallingPartyName,
+		CallingPartyName: o.CallingPartyName,
 		
-		CallingPartyNumber: u.CallingPartyNumber,
+		CallingPartyNumber: o.CallingPartyNumber,
 		
-		DefaultScripts: u.DefaultScripts,
+		DefaultScripts: o.DefaultScripts,
 		
-		OutboundMessagingAddresses: u.OutboundMessagingAddresses,
+		OutboundMessagingAddresses: o.OutboundMessagingAddresses,
 		
-		OutboundEmailAddress: u.OutboundEmailAddress,
+		OutboundEmailAddress: o.OutboundEmailAddress,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queue) UnmarshalJSON(b []byte) error {
+	var QueueMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := QueueMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := QueueMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Description, ok := QueueMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if dateCreatedString, ok := QueueMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := QueueMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := QueueMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := QueueMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if MemberCount, ok := QueueMap["memberCount"].(float64); ok {
+		MemberCountInt := int(MemberCount)
+		o.MemberCount = &MemberCountInt
+	}
+	
+	if JoinedMemberCount, ok := QueueMap["joinedMemberCount"].(float64); ok {
+		JoinedMemberCountInt := int(JoinedMemberCount)
+		o.JoinedMemberCount = &JoinedMemberCountInt
+	}
+	
+	if MediaSettings, ok := QueueMap["mediaSettings"].(map[string]interface{}); ok {
+		MediaSettingsString, _ := json.Marshal(MediaSettings)
+		json.Unmarshal(MediaSettingsString, &o.MediaSettings)
+	}
+	
+	if RoutingRules, ok := QueueMap["routingRules"].([]interface{}); ok {
+		RoutingRulesString, _ := json.Marshal(RoutingRules)
+		json.Unmarshal(RoutingRulesString, &o.RoutingRules)
+	}
+	
+	if Bullseye, ok := QueueMap["bullseye"].(map[string]interface{}); ok {
+		BullseyeString, _ := json.Marshal(Bullseye)
+		json.Unmarshal(BullseyeString, &o.Bullseye)
+	}
+	
+	if AcwSettings, ok := QueueMap["acwSettings"].(map[string]interface{}); ok {
+		AcwSettingsString, _ := json.Marshal(AcwSettings)
+		json.Unmarshal(AcwSettingsString, &o.AcwSettings)
+	}
+	
+	if SkillEvaluationMethod, ok := QueueMap["skillEvaluationMethod"].(string); ok {
+		o.SkillEvaluationMethod = &SkillEvaluationMethod
+	}
+	
+	if QueueFlow, ok := QueueMap["queueFlow"].(map[string]interface{}); ok {
+		QueueFlowString, _ := json.Marshal(QueueFlow)
+		json.Unmarshal(QueueFlowString, &o.QueueFlow)
+	}
+	
+	if WhisperPrompt, ok := QueueMap["whisperPrompt"].(map[string]interface{}); ok {
+		WhisperPromptString, _ := json.Marshal(WhisperPrompt)
+		json.Unmarshal(WhisperPromptString, &o.WhisperPrompt)
+	}
+	
+	if AutoAnswerOnly, ok := QueueMap["autoAnswerOnly"].(bool); ok {
+		o.AutoAnswerOnly = &AutoAnswerOnly
+	}
+	
+	if EnableTranscription, ok := QueueMap["enableTranscription"].(bool); ok {
+		o.EnableTranscription = &EnableTranscription
+	}
+	
+	if EnableManualAssignment, ok := QueueMap["enableManualAssignment"].(bool); ok {
+		o.EnableManualAssignment = &EnableManualAssignment
+	}
+	
+	if CallingPartyName, ok := QueueMap["callingPartyName"].(string); ok {
+		o.CallingPartyName = &CallingPartyName
+	}
+	
+	if CallingPartyNumber, ok := QueueMap["callingPartyNumber"].(string); ok {
+		o.CallingPartyNumber = &CallingPartyNumber
+	}
+	
+	if DefaultScripts, ok := QueueMap["defaultScripts"].(map[string]interface{}); ok {
+		DefaultScriptsString, _ := json.Marshal(DefaultScripts)
+		json.Unmarshal(DefaultScriptsString, &o.DefaultScripts)
+	}
+	
+	if OutboundMessagingAddresses, ok := QueueMap["outboundMessagingAddresses"].(map[string]interface{}); ok {
+		OutboundMessagingAddressesString, _ := json.Marshal(OutboundMessagingAddresses)
+		json.Unmarshal(OutboundMessagingAddressesString, &o.OutboundMessagingAddresses)
+	}
+	
+	if OutboundEmailAddress, ok := QueueMap["outboundEmailAddress"].(map[string]interface{}); ok {
+		OutboundEmailAddressString, _ := json.Marshal(OutboundEmailAddress)
+		json.Unmarshal(OutboundEmailAddressString, &o.OutboundEmailAddress)
+	}
+	
+	if SelfUri, ok := QueueMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

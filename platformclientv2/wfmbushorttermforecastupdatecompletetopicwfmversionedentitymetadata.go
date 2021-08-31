@@ -22,21 +22,19 @@ type Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata struct 
 
 }
 
-func (u *Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Version *int `json:"version,omitempty"`
 		
@@ -45,13 +43,39 @@ func (u *Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata) Ma
 		DateModified *string `json:"dateModified,omitempty"`
 		*Alias
 	}{ 
-		Version: u.Version,
+		Version: o.Version,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadata) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Version, ok := WfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadataMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ModifiedBy, ok := WfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadataMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := WfmbushorttermforecastupdatecompletetopicwfmversionedentitymetadataMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

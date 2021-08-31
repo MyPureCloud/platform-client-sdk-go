@@ -17,24 +17,41 @@ type Generalprogramjobrequest struct {
 
 }
 
-func (u *Generalprogramjobrequest) MarshalJSON() ([]byte, error) {
+func (o *Generalprogramjobrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Generalprogramjobrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Dialect *string `json:"dialect,omitempty"`
 		
 		Mode *string `json:"mode,omitempty"`
 		*Alias
 	}{ 
-		Dialect: u.Dialect,
+		Dialect: o.Dialect,
 		
-		Mode: u.Mode,
-		Alias:    (*Alias)(u),
+		Mode: o.Mode,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Generalprogramjobrequest) UnmarshalJSON(b []byte) error {
+	var GeneralprogramjobrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &GeneralprogramjobrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Dialect, ok := GeneralprogramjobrequestMap["dialect"].(string); ok {
+		o.Dialect = &Dialect
+	}
+	
+	if Mode, ok := GeneralprogramjobrequestMap["mode"].(string); ok {
+		o.Mode = &Mode
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

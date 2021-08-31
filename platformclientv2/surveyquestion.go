@@ -45,13 +45,11 @@ type Surveyquestion struct {
 
 }
 
-func (u *Surveyquestion) MarshalJSON() ([]byte, error) {
+func (o *Surveyquestion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyquestion
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Surveyquestion) MarshalJSON() ([]byte, error) {
 		ExplanationPrompt *string `json:"explanationPrompt,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		HelpText: u.HelpText,
+		HelpText: o.HelpText,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		NaEnabled: u.NaEnabled,
+		NaEnabled: o.NaEnabled,
 		
-		VisibilityCondition: u.VisibilityCondition,
+		VisibilityCondition: o.VisibilityCondition,
 		
-		AnswerOptions: u.AnswerOptions,
+		AnswerOptions: o.AnswerOptions,
 		
-		MaxResponseCharacters: u.MaxResponseCharacters,
+		MaxResponseCharacters: o.MaxResponseCharacters,
 		
-		ExplanationPrompt: u.ExplanationPrompt,
-		Alias:    (*Alias)(u),
+		ExplanationPrompt: o.ExplanationPrompt,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyquestion) UnmarshalJSON(b []byte) error {
+	var SurveyquestionMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyquestionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SurveyquestionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Text, ok := SurveyquestionMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if HelpText, ok := SurveyquestionMap["helpText"].(string); ok {
+		o.HelpText = &HelpText
+	}
+	
+	if VarType, ok := SurveyquestionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if NaEnabled, ok := SurveyquestionMap["naEnabled"].(bool); ok {
+		o.NaEnabled = &NaEnabled
+	}
+	
+	if VisibilityCondition, ok := SurveyquestionMap["visibilityCondition"].(map[string]interface{}); ok {
+		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
+		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
+	}
+	
+	if AnswerOptions, ok := SurveyquestionMap["answerOptions"].([]interface{}); ok {
+		AnswerOptionsString, _ := json.Marshal(AnswerOptions)
+		json.Unmarshal(AnswerOptionsString, &o.AnswerOptions)
+	}
+	
+	if MaxResponseCharacters, ok := SurveyquestionMap["maxResponseCharacters"].(float64); ok {
+		MaxResponseCharactersInt := int(MaxResponseCharacters)
+		o.MaxResponseCharacters = &MaxResponseCharactersInt
+	}
+	
+	if ExplanationPrompt, ok := SurveyquestionMap["explanationPrompt"].(string); ok {
+		o.ExplanationPrompt = &ExplanationPrompt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

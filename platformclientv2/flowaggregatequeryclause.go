@@ -17,24 +17,42 @@ type Flowaggregatequeryclause struct {
 
 }
 
-func (u *Flowaggregatequeryclause) MarshalJSON() ([]byte, error) {
+func (o *Flowaggregatequeryclause) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowaggregatequeryclause
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Predicates *[]Flowaggregatequerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowaggregatequeryclause) UnmarshalJSON(b []byte) error {
+	var FlowaggregatequeryclauseMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowaggregatequeryclauseMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := FlowaggregatequeryclauseMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Predicates, ok := FlowaggregatequeryclauseMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

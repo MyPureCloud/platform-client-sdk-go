@@ -17,24 +17,42 @@ type Servicelevel struct {
 
 }
 
-func (u *Servicelevel) MarshalJSON() ([]byte, error) {
+func (o *Servicelevel) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Servicelevel
-
 	
-
 	return json.Marshal(&struct { 
 		Percentage *float64 `json:"percentage,omitempty"`
 		
 		DurationMs *int `json:"durationMs,omitempty"`
 		*Alias
 	}{ 
-		Percentage: u.Percentage,
+		Percentage: o.Percentage,
 		
-		DurationMs: u.DurationMs,
-		Alias:    (*Alias)(u),
+		DurationMs: o.DurationMs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Servicelevel) UnmarshalJSON(b []byte) error {
+	var ServicelevelMap map[string]interface{}
+	err := json.Unmarshal(b, &ServicelevelMap)
+	if err != nil {
+		return err
+	}
+	
+	if Percentage, ok := ServicelevelMap["percentage"].(float64); ok {
+		o.Percentage = &Percentage
+	}
+	
+	if DurationMs, ok := ServicelevelMap["durationMs"].(float64); ok {
+		DurationMsInt := int(DurationMs)
+		o.DurationMs = &DurationMsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

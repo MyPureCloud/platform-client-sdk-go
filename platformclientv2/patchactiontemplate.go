@@ -29,13 +29,11 @@ type Patchactiontemplate struct {
 
 }
 
-func (u *Patchactiontemplate) MarshalJSON() ([]byte, error) {
+func (o *Patchactiontemplate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchactiontemplate
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Patchactiontemplate) MarshalJSON() ([]byte, error) {
 		ContentOffer *Patchcontentoffer `json:"contentOffer,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		State: u.State,
+		State: o.State,
 		
-		ContentOffer: u.ContentOffer,
-		Alias:    (*Alias)(u),
+		ContentOffer: o.ContentOffer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchactiontemplate) UnmarshalJSON(b []byte) error {
+	var PatchactiontemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchactiontemplateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := PatchactiontemplateMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := PatchactiontemplateMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if MediaType, ok := PatchactiontemplateMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if State, ok := PatchactiontemplateMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ContentOffer, ok := PatchactiontemplateMap["contentOffer"].(map[string]interface{}); ok {
+		ContentOfferString, _ := json.Marshal(ContentOffer)
+		json.Unmarshal(ContentOfferString, &o.ContentOffer)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

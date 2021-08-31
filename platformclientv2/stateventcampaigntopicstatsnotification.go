@@ -17,24 +17,43 @@ type Stateventcampaigntopicstatsnotification struct {
 
 }
 
-func (u *Stateventcampaigntopicstatsnotification) MarshalJSON() ([]byte, error) {
+func (o *Stateventcampaigntopicstatsnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Stateventcampaigntopicstatsnotification
-
 	
-
 	return json.Marshal(&struct { 
 		Group *map[string]string `json:"group,omitempty"`
 		
 		Data *[]Stateventcampaigntopicdatum `json:"data,omitempty"`
 		*Alias
 	}{ 
-		Group: u.Group,
+		Group: o.Group,
 		
-		Data: u.Data,
-		Alias:    (*Alias)(u),
+		Data: o.Data,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Stateventcampaigntopicstatsnotification) UnmarshalJSON(b []byte) error {
+	var StateventcampaigntopicstatsnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &StateventcampaigntopicstatsnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Group, ok := StateventcampaigntopicstatsnotificationMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if Data, ok := StateventcampaigntopicstatsnotificationMap["data"].([]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

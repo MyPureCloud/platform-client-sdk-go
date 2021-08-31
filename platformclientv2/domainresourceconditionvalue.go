@@ -25,13 +25,11 @@ type Domainresourceconditionvalue struct {
 
 }
 
-func (u *Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
+func (o *Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainresourceconditionvalue
-
 	
-
 	return json.Marshal(&struct { 
 		User *User `json:"user,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Domainresourceconditionvalue) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainresourceconditionvalue) UnmarshalJSON(b []byte) error {
+	var DomainresourceconditionvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainresourceconditionvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := DomainresourceconditionvalueMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Queue, ok := DomainresourceconditionvalueMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Value, ok := DomainresourceconditionvalueMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarType, ok := DomainresourceconditionvalueMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

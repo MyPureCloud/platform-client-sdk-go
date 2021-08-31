@@ -74,37 +74,35 @@ type Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate struct {
 
 }
 
-func (u *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) MarshalJSON() ([]byte, error) {
+func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate
-
 	
 	AdherenceChangeTime := new(string)
-	if u.AdherenceChangeTime != nil {
+	if o.AdherenceChangeTime != nil {
 		
-		*AdherenceChangeTime = timeutil.Strftime(u.AdherenceChangeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*AdherenceChangeTime = timeutil.Strftime(o.AdherenceChangeTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		AdherenceChangeTime = nil
 	}
 	
 	PresenceUpdateTime := new(string)
-	if u.PresenceUpdateTime != nil {
+	if o.PresenceUpdateTime != nil {
 		
-		*PresenceUpdateTime = timeutil.Strftime(u.PresenceUpdateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*PresenceUpdateTime = timeutil.Strftime(o.PresenceUpdateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		PresenceUpdateTime = nil
 	}
 	
 	ActiveQueuesModifiedTime := new(string)
-	if u.ActiveQueuesModifiedTime != nil {
+	if o.ActiveQueuesModifiedTime != nil {
 		
-		*ActiveQueuesModifiedTime = timeutil.Strftime(u.ActiveQueuesModifiedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ActiveQueuesModifiedTime = timeutil.Strftime(o.ActiveQueuesModifiedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ActiveQueuesModifiedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		User *Wfmuserscheduleadherenceupdatedtopicuserreference `json:"user,omitempty"`
 		
@@ -139,39 +137,120 @@ func (u *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) Marsha
 		RemovedFromManagementUnit *bool `json:"removedFromManagementUnit,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		ManagementUnitId: u.ManagementUnitId,
+		ManagementUnitId: o.ManagementUnitId,
 		
-		Team: u.Team,
+		Team: o.Team,
 		
-		ScheduledActivityCategory: u.ScheduledActivityCategory,
+		ScheduledActivityCategory: o.ScheduledActivityCategory,
 		
-		SystemPresence: u.SystemPresence,
+		SystemPresence: o.SystemPresence,
 		
-		OrganizationSecondaryPresenceId: u.OrganizationSecondaryPresenceId,
+		OrganizationSecondaryPresenceId: o.OrganizationSecondaryPresenceId,
 		
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		ActualActivityCategory: u.ActualActivityCategory,
+		ActualActivityCategory: o.ActualActivityCategory,
 		
-		IsOutOfOffice: u.IsOutOfOffice,
+		IsOutOfOffice: o.IsOutOfOffice,
 		
-		AdherenceState: u.AdherenceState,
+		AdherenceState: o.AdherenceState,
 		
-		Impact: u.Impact,
+		Impact: o.Impact,
 		
 		AdherenceChangeTime: AdherenceChangeTime,
 		
 		PresenceUpdateTime: PresenceUpdateTime,
 		
-		ActiveQueues: u.ActiveQueues,
+		ActiveQueues: o.ActiveQueues,
 		
 		ActiveQueuesModifiedTime: ActiveQueuesModifiedTime,
 		
-		RemovedFromManagementUnit: u.RemovedFromManagementUnit,
-		Alias:    (*Alias)(u),
+		RemovedFromManagementUnit: o.RemovedFromManagementUnit,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdate) UnmarshalJSON(b []byte) error {
+	var WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if ManagementUnitId, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["managementUnitId"].(string); ok {
+		o.ManagementUnitId = &ManagementUnitId
+	}
+	
+	if Team, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["team"].(map[string]interface{}); ok {
+		TeamString, _ := json.Marshal(Team)
+		json.Unmarshal(TeamString, &o.Team)
+	}
+	
+	if ScheduledActivityCategory, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["scheduledActivityCategory"].(string); ok {
+		o.ScheduledActivityCategory = &ScheduledActivityCategory
+	}
+	
+	if SystemPresence, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+	
+	if OrganizationSecondaryPresenceId, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["organizationSecondaryPresenceId"].(string); ok {
+		o.OrganizationSecondaryPresenceId = &OrganizationSecondaryPresenceId
+	}
+	
+	if RoutingStatus, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["routingStatus"].(string); ok {
+		o.RoutingStatus = &RoutingStatus
+	}
+	
+	if ActualActivityCategory, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["actualActivityCategory"].(string); ok {
+		o.ActualActivityCategory = &ActualActivityCategory
+	}
+	
+	if IsOutOfOffice, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["isOutOfOffice"].(bool); ok {
+		o.IsOutOfOffice = &IsOutOfOffice
+	}
+	
+	if AdherenceState, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["adherenceState"].(string); ok {
+		o.AdherenceState = &AdherenceState
+	}
+	
+	if Impact, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["impact"].(string); ok {
+		o.Impact = &Impact
+	}
+	
+	if adherenceChangeTimeString, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["adherenceChangeTime"].(string); ok {
+		AdherenceChangeTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", adherenceChangeTimeString)
+		o.AdherenceChangeTime = &AdherenceChangeTime
+	}
+	
+	if presenceUpdateTimeString, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["presenceUpdateTime"].(string); ok {
+		PresenceUpdateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", presenceUpdateTimeString)
+		o.PresenceUpdateTime = &PresenceUpdateTime
+	}
+	
+	if ActiveQueues, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["activeQueues"].([]interface{}); ok {
+		ActiveQueuesString, _ := json.Marshal(ActiveQueues)
+		json.Unmarshal(ActiveQueuesString, &o.ActiveQueues)
+	}
+	
+	if activeQueuesModifiedTimeString, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["activeQueuesModifiedTime"].(string); ok {
+		ActiveQueuesModifiedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", activeQueuesModifiedTimeString)
+		o.ActiveQueuesModifiedTime = &ActiveQueuesModifiedTime
+	}
+	
+	if RemovedFromManagementUnit, ok := WfmuserscheduleadherenceupdatedtopicuserscheduleadherenceupdateMap["removedFromManagementUnit"].(bool); ok {
+		o.RemovedFromManagementUnit = &RemovedFromManagementUnit
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

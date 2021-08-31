@@ -13,20 +13,33 @@ type Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref
-
 	
-
 	return json.Marshal(&struct { 
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		*Alias
 	}{ 
-		PhoneNumber: u.PhoneNumber,
-		Alias:    (*Alias)(u),
+		PhoneNumber: o.PhoneNumber,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangesmsphonenumberrefMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangesmsphonenumberrefMap)
+	if err != nil {
+		return err
+	}
+	
+	if PhoneNumber, ok := OutboundmessagingmessagingcampaignconfigchangesmsphonenumberrefMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

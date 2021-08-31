@@ -25,13 +25,11 @@ type Numericrange struct {
 
 }
 
-func (u *Numericrange) MarshalJSON() ([]byte, error) {
+func (o *Numericrange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Numericrange
-
 	
-
 	return json.Marshal(&struct { 
 		Gt *float32 `json:"gt,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Numericrange) MarshalJSON() ([]byte, error) {
 		Lte *float32 `json:"lte,omitempty"`
 		*Alias
 	}{ 
-		Gt: u.Gt,
+		Gt: o.Gt,
 		
-		Gte: u.Gte,
+		Gte: o.Gte,
 		
-		Lt: u.Lt,
+		Lt: o.Lt,
 		
-		Lte: u.Lte,
-		Alias:    (*Alias)(u),
+		Lte: o.Lte,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Numericrange) UnmarshalJSON(b []byte) error {
+	var NumericrangeMap map[string]interface{}
+	err := json.Unmarshal(b, &NumericrangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Gt, ok := NumericrangeMap["gt"].(float64); ok {
+		GtFloat32 := float32(Gt)
+		o.Gt = &GtFloat32
+	}
+	
+	if Gte, ok := NumericrangeMap["gte"].(float64); ok {
+		GteFloat32 := float32(Gte)
+		o.Gte = &GteFloat32
+	}
+	
+	if Lt, ok := NumericrangeMap["lt"].(float64); ok {
+		LtFloat32 := float32(Lt)
+		o.Lt = &LtFloat32
+	}
+	
+	if Lte, ok := NumericrangeMap["lte"].(float64); ok {
+		LteFloat32 := float32(Lte)
+		o.Lte = &LteFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

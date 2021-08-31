@@ -30,21 +30,19 @@ type Voicemailuserpolicy struct {
 
 }
 
-func (u *Voicemailuserpolicy) MarshalJSON() ([]byte, error) {
+func (o *Voicemailuserpolicy) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailuserpolicy
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -57,17 +55,50 @@ func (u *Voicemailuserpolicy) MarshalJSON() ([]byte, error) {
 		SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		AlertTimeoutSeconds: u.AlertTimeoutSeconds,
+		AlertTimeoutSeconds: o.AlertTimeoutSeconds,
 		
-		Pin: u.Pin,
+		Pin: o.Pin,
 		
 		ModifiedDate: ModifiedDate,
 		
-		SendEmailNotifications: u.SendEmailNotifications,
-		Alias:    (*Alias)(u),
+		SendEmailNotifications: o.SendEmailNotifications,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailuserpolicy) UnmarshalJSON(b []byte) error {
+	var VoicemailuserpolicyMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailuserpolicyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := VoicemailuserpolicyMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if AlertTimeoutSeconds, ok := VoicemailuserpolicyMap["alertTimeoutSeconds"].(float64); ok {
+		AlertTimeoutSecondsInt := int(AlertTimeoutSeconds)
+		o.AlertTimeoutSeconds = &AlertTimeoutSecondsInt
+	}
+	
+	if Pin, ok := VoicemailuserpolicyMap["pin"].(string); ok {
+		o.Pin = &Pin
+	}
+	
+	if modifiedDateString, ok := VoicemailuserpolicyMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if SendEmailNotifications, ok := VoicemailuserpolicyMap["sendEmailNotifications"].(bool); ok {
+		o.SendEmailNotifications = &SendEmailNotifications
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

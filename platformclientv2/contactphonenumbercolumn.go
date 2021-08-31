@@ -21,13 +21,11 @@ type Contactphonenumbercolumn struct {
 
 }
 
-func (u *Contactphonenumbercolumn) MarshalJSON() ([]byte, error) {
+func (o *Contactphonenumbercolumn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactphonenumbercolumn
-
 	
-
 	return json.Marshal(&struct { 
 		ColumnName *string `json:"columnName,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Contactphonenumbercolumn) MarshalJSON() ([]byte, error) {
 		CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
 		*Alias
 	}{ 
-		ColumnName: u.ColumnName,
+		ColumnName: o.ColumnName,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		CallableTimeColumn: u.CallableTimeColumn,
-		Alias:    (*Alias)(u),
+		CallableTimeColumn: o.CallableTimeColumn,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactphonenumbercolumn) UnmarshalJSON(b []byte) error {
+	var ContactphonenumbercolumnMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactphonenumbercolumnMap)
+	if err != nil {
+		return err
+	}
+	
+	if ColumnName, ok := ContactphonenumbercolumnMap["columnName"].(string); ok {
+		o.ColumnName = &ColumnName
+	}
+	
+	if VarType, ok := ContactphonenumbercolumnMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if CallableTimeColumn, ok := ContactphonenumbercolumnMap["callableTimeColumn"].(string); ok {
+		o.CallableTimeColumn = &CallableTimeColumn
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

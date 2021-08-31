@@ -13,20 +13,34 @@ type Coachingappointmentaggregateresponse struct {
 
 }
 
-func (u *Coachingappointmentaggregateresponse) MarshalJSON() ([]byte, error) {
+func (o *Coachingappointmentaggregateresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingappointmentaggregateresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Queryresponsegroupeddata `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingappointmentaggregateresponse) UnmarshalJSON(b []byte) error {
+	var CoachingappointmentaggregateresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingappointmentaggregateresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := CoachingappointmentaggregateresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

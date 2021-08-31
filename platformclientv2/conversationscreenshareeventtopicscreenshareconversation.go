@@ -25,13 +25,11 @@ type Conversationscreenshareeventtopicscreenshareconversation struct {
 
 }
 
-func (u *Conversationscreenshareeventtopicscreenshareconversation) MarshalJSON() ([]byte, error) {
+func (o *Conversationscreenshareeventtopicscreenshareconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationscreenshareeventtopicscreenshareconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Conversationscreenshareeventtopicscreenshareconversation) MarshalJSON()
 		OtherMediaUris *[]string `json:"otherMediaUris,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
-		Alias:    (*Alias)(u),
+		OtherMediaUris: o.OtherMediaUris,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationscreenshareeventtopicscreenshareconversation) UnmarshalJSON(b []byte) error {
+	var ConversationscreenshareeventtopicscreenshareconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationscreenshareeventtopicscreenshareconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationscreenshareeventtopicscreenshareconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationscreenshareeventtopicscreenshareconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := ConversationscreenshareeventtopicscreenshareconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := ConversationscreenshareeventtopicscreenshareconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

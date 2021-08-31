@@ -25,13 +25,11 @@ type Oauthprovider struct {
 
 }
 
-func (u *Oauthprovider) MarshalJSON() ([]byte, error) {
+func (o *Oauthprovider) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Oauthprovider
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Oauthprovider) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Oauthprovider) UnmarshalJSON(b []byte) error {
+	var OauthproviderMap map[string]interface{}
+	err := json.Unmarshal(b, &OauthproviderMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OauthproviderMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OauthproviderMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := OauthproviderMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if SelfUri, ok := OauthproviderMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

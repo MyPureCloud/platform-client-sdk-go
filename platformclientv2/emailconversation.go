@@ -29,13 +29,11 @@ type Emailconversation struct {
 
 }
 
-func (u *Emailconversation) MarshalJSON() ([]byte, error) {
+func (o *Emailconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emailconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Emailconversation) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		OtherMediaUris: u.OtherMediaUris,
+		OtherMediaUris: o.OtherMediaUris,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emailconversation) UnmarshalJSON(b []byte) error {
+	var EmailconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EmailconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EmailconversationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Participants, ok := EmailconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if OtherMediaUris, ok := EmailconversationMap["otherMediaUris"].([]interface{}); ok {
+		OtherMediaUrisString, _ := json.Marshal(OtherMediaUris)
+		json.Unmarshal(OtherMediaUrisString, &o.OtherMediaUris)
+	}
+	
+	if SelfUri, ok := EmailconversationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

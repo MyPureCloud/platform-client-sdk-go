@@ -65,13 +65,11 @@ type Metrics struct {
 
 }
 
-func (u *Metrics) MarshalJSON() ([]byte, error) {
+func (o *Metrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Metrics
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,105 @@ func (u *Metrics) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		MetricDefinitionName: u.MetricDefinitionName,
+		MetricDefinitionName: o.MetricDefinitionName,
 		
-		MetricDefinitionId: u.MetricDefinitionId,
+		MetricDefinitionId: o.MetricDefinitionId,
 		
-		ExternalMetricDefinitionId: u.ExternalMetricDefinitionId,
+		ExternalMetricDefinitionId: o.ExternalMetricDefinitionId,
 		
-		UnitType: u.UnitType,
+		UnitType: o.UnitType,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		TemplateName: u.TemplateName,
+		TemplateName: o.TemplateName,
 		
-		MaxPoints: u.MaxPoints,
+		MaxPoints: o.MaxPoints,
 		
-		PerformanceProfileId: u.PerformanceProfileId,
+		PerformanceProfileId: o.PerformanceProfileId,
 		
-		UnitDefinition: u.UnitDefinition,
+		UnitDefinition: o.UnitDefinition,
 		
-		Precision: u.Precision,
+		Precision: o.Precision,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Metrics) UnmarshalJSON(b []byte) error {
+	var MetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &MetricsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MetricsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MetricsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Order, ok := MetricsMap["order"].(float64); ok {
+		OrderInt := int(Order)
+		o.Order = &OrderInt
+	}
+	
+	if MetricDefinitionName, ok := MetricsMap["metricDefinitionName"].(string); ok {
+		o.MetricDefinitionName = &MetricDefinitionName
+	}
+	
+	if MetricDefinitionId, ok := MetricsMap["metricDefinitionId"].(string); ok {
+		o.MetricDefinitionId = &MetricDefinitionId
+	}
+	
+	if ExternalMetricDefinitionId, ok := MetricsMap["externalMetricDefinitionId"].(string); ok {
+		o.ExternalMetricDefinitionId = &ExternalMetricDefinitionId
+	}
+	
+	if UnitType, ok := MetricsMap["unitType"].(string); ok {
+		o.UnitType = &UnitType
+	}
+	
+	if Enabled, ok := MetricsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if TemplateName, ok := MetricsMap["templateName"].(string); ok {
+		o.TemplateName = &TemplateName
+	}
+	
+	if MaxPoints, ok := MetricsMap["maxPoints"].(float64); ok {
+		MaxPointsInt := int(MaxPoints)
+		o.MaxPoints = &MaxPointsInt
+	}
+	
+	if PerformanceProfileId, ok := MetricsMap["performanceProfileId"].(string); ok {
+		o.PerformanceProfileId = &PerformanceProfileId
+	}
+	
+	if UnitDefinition, ok := MetricsMap["unitDefinition"].(string); ok {
+		o.UnitDefinition = &UnitDefinition
+	}
+	
+	if Precision, ok := MetricsMap["precision"].(float64); ok {
+		PrecisionInt := int(Precision)
+		o.Precision = &PrecisionInt
+	}
+	
+	if SelfUri, ok := MetricsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

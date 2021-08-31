@@ -33,13 +33,11 @@ type Architectpromptresourcenotificationpromptresourcenotification struct {
 
 }
 
-func (u *Architectpromptresourcenotificationpromptresourcenotification) MarshalJSON() ([]byte, error) {
+func (o *Architectpromptresourcenotificationpromptresourcenotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectpromptresourcenotificationpromptresourcenotification
-
 	
-
 	return json.Marshal(&struct { 
 		PromptId *string `json:"promptId,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Architectpromptresourcenotificationpromptresourcenotification) MarshalJ
 		DurationSeconds *float32 `json:"durationSeconds,omitempty"`
 		*Alias
 	}{ 
-		PromptId: u.PromptId,
+		PromptId: o.PromptId,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		MediaUri: u.MediaUri,
+		MediaUri: o.MediaUri,
 		
-		UploadStatus: u.UploadStatus,
+		UploadStatus: o.UploadStatus,
 		
-		DurationSeconds: u.DurationSeconds,
-		Alias:    (*Alias)(u),
+		DurationSeconds: o.DurationSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectpromptresourcenotificationpromptresourcenotification) UnmarshalJSON(b []byte) error {
+	var ArchitectpromptresourcenotificationpromptresourcenotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectpromptresourcenotificationpromptresourcenotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if PromptId, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["promptId"].(string); ok {
+		o.PromptId = &PromptId
+	}
+	
+	if Id, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Language, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if MediaUri, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["mediaUri"].(string); ok {
+		o.MediaUri = &MediaUri
+	}
+	
+	if UploadStatus, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["uploadStatus"].(string); ok {
+		o.UploadStatus = &UploadStatus
+	}
+	
+	if DurationSeconds, ok := ArchitectpromptresourcenotificationpromptresourcenotificationMap["durationSeconds"].(float64); ok {
+		DurationSecondsFloat32 := float32(DurationSeconds)
+		o.DurationSeconds = &DurationSecondsFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

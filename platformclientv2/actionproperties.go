@@ -29,13 +29,11 @@ type Actionproperties struct {
 
 }
 
-func (u *Actionproperties) MarshalJSON() ([]byte, error) {
+func (o *Actionproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actionproperties
-
 	
-
 	return json.Marshal(&struct { 
 		WebchatPrompt *string `json:"webchatPrompt,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Actionproperties) MarshalJSON() ([]byte, error) {
 		WebchatSurvey *Actionsurvey `json:"webchatSurvey,omitempty"`
 		*Alias
 	}{ 
-		WebchatPrompt: u.WebchatPrompt,
+		WebchatPrompt: o.WebchatPrompt,
 		
-		WebchatTitleText: u.WebchatTitleText,
+		WebchatTitleText: o.WebchatTitleText,
 		
-		WebchatAcceptText: u.WebchatAcceptText,
+		WebchatAcceptText: o.WebchatAcceptText,
 		
-		WebchatDeclineText: u.WebchatDeclineText,
+		WebchatDeclineText: o.WebchatDeclineText,
 		
-		WebchatSurvey: u.WebchatSurvey,
-		Alias:    (*Alias)(u),
+		WebchatSurvey: o.WebchatSurvey,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actionproperties) UnmarshalJSON(b []byte) error {
+	var ActionpropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionpropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if WebchatPrompt, ok := ActionpropertiesMap["webchatPrompt"].(string); ok {
+		o.WebchatPrompt = &WebchatPrompt
+	}
+	
+	if WebchatTitleText, ok := ActionpropertiesMap["webchatTitleText"].(string); ok {
+		o.WebchatTitleText = &WebchatTitleText
+	}
+	
+	if WebchatAcceptText, ok := ActionpropertiesMap["webchatAcceptText"].(string); ok {
+		o.WebchatAcceptText = &WebchatAcceptText
+	}
+	
+	if WebchatDeclineText, ok := ActionpropertiesMap["webchatDeclineText"].(string); ok {
+		o.WebchatDeclineText = &WebchatDeclineText
+	}
+	
+	if WebchatSurvey, ok := ActionpropertiesMap["webchatSurvey"].(map[string]interface{}); ok {
+		WebchatSurveyString, _ := json.Marshal(WebchatSurvey)
+		json.Unmarshal(WebchatSurveyString, &o.WebchatSurvey)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

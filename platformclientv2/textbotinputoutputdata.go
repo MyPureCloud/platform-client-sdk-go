@@ -13,20 +13,34 @@ type Textbotinputoutputdata struct {
 
 }
 
-func (u *Textbotinputoutputdata) MarshalJSON() ([]byte, error) {
+func (o *Textbotinputoutputdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotinputoutputdata
-
 	
-
 	return json.Marshal(&struct { 
 		Variables *map[string]interface{} `json:"variables,omitempty"`
 		*Alias
 	}{ 
-		Variables: u.Variables,
-		Alias:    (*Alias)(u),
+		Variables: o.Variables,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotinputoutputdata) UnmarshalJSON(b []byte) error {
+	var TextbotinputoutputdataMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotinputoutputdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Variables, ok := TextbotinputoutputdataMap["variables"].(map[string]interface{}); ok {
+		VariablesString, _ := json.Marshal(Variables)
+		json.Unmarshal(VariablesString, &o.Variables)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

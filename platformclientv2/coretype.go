@@ -54,21 +54,19 @@ type Coretype struct {
 
 }
 
-func (u *Coretype) MarshalJSON() ([]byte, error) {
+func (o *Coretype) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coretype
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -93,29 +91,91 @@ func (u *Coretype) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		Current: u.Current,
+		Current: o.Current,
 		
-		ValidationFields: u.ValidationFields,
+		ValidationFields: o.ValidationFields,
 		
-		ValidationLimits: u.ValidationLimits,
+		ValidationLimits: o.ValidationLimits,
 		
-		ItemValidationFields: u.ItemValidationFields,
+		ItemValidationFields: o.ItemValidationFields,
 		
-		ItemValidationLimits: u.ItemValidationLimits,
+		ItemValidationLimits: o.ItemValidationLimits,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coretype) UnmarshalJSON(b []byte) error {
+	var CoretypeMap map[string]interface{}
+	err := json.Unmarshal(b, &CoretypeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CoretypeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CoretypeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Version, ok := CoretypeMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := CoretypeMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if Schema, ok := CoretypeMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if Current, ok := CoretypeMap["current"].(bool); ok {
+		o.Current = &Current
+	}
+	
+	if ValidationFields, ok := CoretypeMap["validationFields"].([]interface{}); ok {
+		ValidationFieldsString, _ := json.Marshal(ValidationFields)
+		json.Unmarshal(ValidationFieldsString, &o.ValidationFields)
+	}
+	
+	if ValidationLimits, ok := CoretypeMap["validationLimits"].(map[string]interface{}); ok {
+		ValidationLimitsString, _ := json.Marshal(ValidationLimits)
+		json.Unmarshal(ValidationLimitsString, &o.ValidationLimits)
+	}
+	
+	if ItemValidationFields, ok := CoretypeMap["itemValidationFields"].([]interface{}); ok {
+		ItemValidationFieldsString, _ := json.Marshal(ItemValidationFields)
+		json.Unmarshal(ItemValidationFieldsString, &o.ItemValidationFields)
+	}
+	
+	if ItemValidationLimits, ok := CoretypeMap["itemValidationLimits"].(map[string]interface{}); ok {
+		ItemValidationLimitsString, _ := json.Marshal(ItemValidationLimits)
+		json.Unmarshal(ItemValidationLimitsString, &o.ItemValidationLimits)
+	}
+	
+	if SelfUri, ok := CoretypeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

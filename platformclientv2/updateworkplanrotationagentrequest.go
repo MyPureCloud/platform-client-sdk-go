@@ -25,13 +25,11 @@ type Updateworkplanrotationagentrequest struct {
 
 }
 
-func (u *Updateworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
+func (o *Updateworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updateworkplanrotationagentrequest
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Updateworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
 		Delete *bool `json:"delete,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		DateRange: u.DateRange,
+		DateRange: o.DateRange,
 		
-		Position: u.Position,
+		Position: o.Position,
 		
-		Delete: u.Delete,
-		Alias:    (*Alias)(u),
+		Delete: o.Delete,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updateworkplanrotationagentrequest) UnmarshalJSON(b []byte) error {
+	var UpdateworkplanrotationagentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdateworkplanrotationagentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := UpdateworkplanrotationagentrequestMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if DateRange, ok := UpdateworkplanrotationagentrequestMap["dateRange"].(map[string]interface{}); ok {
+		DateRangeString, _ := json.Marshal(DateRange)
+		json.Unmarshal(DateRangeString, &o.DateRange)
+	}
+	
+	if Position, ok := UpdateworkplanrotationagentrequestMap["position"].(float64); ok {
+		PositionInt := int(Position)
+		o.Position = &PositionInt
+	}
+	
+	if Delete, ok := UpdateworkplanrotationagentrequestMap["delete"].(bool); ok {
+		o.Delete = &Delete
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

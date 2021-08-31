@@ -25,13 +25,11 @@ type Dialerauditrequest struct {
 
 }
 
-func (u *Dialerauditrequest) MarshalJSON() ([]byte, error) {
+func (o *Dialerauditrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerauditrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueryPhrase *string `json:"queryPhrase,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Dialerauditrequest) MarshalJSON() ([]byte, error) {
 		Filters *[]Auditfilter `json:"filters,omitempty"`
 		*Alias
 	}{ 
-		QueryPhrase: u.QueryPhrase,
+		QueryPhrase: o.QueryPhrase,
 		
-		QueryFields: u.QueryFields,
+		QueryFields: o.QueryFields,
 		
-		Facets: u.Facets,
+		Facets: o.Facets,
 		
-		Filters: u.Filters,
-		Alias:    (*Alias)(u),
+		Filters: o.Filters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerauditrequest) UnmarshalJSON(b []byte) error {
+	var DialerauditrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerauditrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueryPhrase, ok := DialerauditrequestMap["queryPhrase"].(string); ok {
+		o.QueryPhrase = &QueryPhrase
+	}
+	
+	if QueryFields, ok := DialerauditrequestMap["queryFields"].([]interface{}); ok {
+		QueryFieldsString, _ := json.Marshal(QueryFields)
+		json.Unmarshal(QueryFieldsString, &o.QueryFields)
+	}
+	
+	if Facets, ok := DialerauditrequestMap["facets"].([]interface{}); ok {
+		FacetsString, _ := json.Marshal(Facets)
+		json.Unmarshal(FacetsString, &o.Facets)
+	}
+	
+	if Filters, ok := DialerauditrequestMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -42,29 +42,27 @@ type Trustee struct {
 
 }
 
-func (u *Trustee) MarshalJSON() ([]byte, error) {
+func (o *Trustee) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trustee
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateExpired := new(string)
-	if u.DateExpired != nil {
+	if o.DateExpired != nil {
 		
-		*DateExpired = timeutil.Strftime(u.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateExpired = timeutil.Strftime(o.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateExpired = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -83,23 +81,70 @@ func (u *Trustee) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		UsesDefaultRole: u.UsesDefaultRole,
+		UsesDefaultRole: o.UsesDefaultRole,
 		
 		DateCreated: DateCreated,
 		
 		DateExpired: DateExpired,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		Organization: u.Organization,
+		Organization: o.Organization,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trustee) UnmarshalJSON(b []byte) error {
+	var TrusteeMap map[string]interface{}
+	err := json.Unmarshal(b, &TrusteeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TrusteeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Enabled, ok := TrusteeMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if UsesDefaultRole, ok := TrusteeMap["usesDefaultRole"].(bool); ok {
+		o.UsesDefaultRole = &UsesDefaultRole
+	}
+	
+	if dateCreatedString, ok := TrusteeMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateExpiredString, ok := TrusteeMap["dateExpired"].(string); ok {
+		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
+		o.DateExpired = &DateExpired
+	}
+	
+	if CreatedBy, ok := TrusteeMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if Organization, ok := TrusteeMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+	if SelfUri, ok := TrusteeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

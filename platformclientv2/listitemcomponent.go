@@ -37,13 +37,11 @@ type Listitemcomponent struct {
 
 }
 
-func (u *Listitemcomponent) MarshalJSON() ([]byte, error) {
+func (o *Listitemcomponent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Listitemcomponent
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,61 @@ func (u *Listitemcomponent) MarshalJSON() ([]byte, error) {
 		Actions *Contentactions `json:"actions,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Rmid: u.Rmid,
+		Rmid: o.Rmid,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Image: u.Image,
+		Image: o.Image,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Actions: u.Actions,
-		Alias:    (*Alias)(u),
+		Actions: o.Actions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Listitemcomponent) UnmarshalJSON(b []byte) error {
+	var ListitemcomponentMap map[string]interface{}
+	err := json.Unmarshal(b, &ListitemcomponentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ListitemcomponentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Rmid, ok := ListitemcomponentMap["rmid"].(string); ok {
+		o.Rmid = &Rmid
+	}
+	
+	if VarType, ok := ListitemcomponentMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Image, ok := ListitemcomponentMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if Title, ok := ListitemcomponentMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Description, ok := ListitemcomponentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Actions, ok := ListitemcomponentMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

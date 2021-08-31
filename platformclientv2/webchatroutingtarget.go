@@ -29,13 +29,11 @@ type Webchatroutingtarget struct {
 
 }
 
-func (u *Webchatroutingtarget) MarshalJSON() ([]byte, error) {
+func (o *Webchatroutingtarget) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatroutingtarget
-
 	
-
 	return json.Marshal(&struct { 
 		TargetType *string `json:"targetType,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Webchatroutingtarget) MarshalJSON() ([]byte, error) {
 		Priority *int `json:"priority,omitempty"`
 		*Alias
 	}{ 
-		TargetType: u.TargetType,
+		TargetType: o.TargetType,
 		
-		TargetAddress: u.TargetAddress,
+		TargetAddress: o.TargetAddress,
 		
-		Skills: u.Skills,
+		Skills: o.Skills,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Priority: u.Priority,
-		Alias:    (*Alias)(u),
+		Priority: o.Priority,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatroutingtarget) UnmarshalJSON(b []byte) error {
+	var WebchatroutingtargetMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatroutingtargetMap)
+	if err != nil {
+		return err
+	}
+	
+	if TargetType, ok := WebchatroutingtargetMap["targetType"].(string); ok {
+		o.TargetType = &TargetType
+	}
+	
+	if TargetAddress, ok := WebchatroutingtargetMap["targetAddress"].(string); ok {
+		o.TargetAddress = &TargetAddress
+	}
+	
+	if Skills, ok := WebchatroutingtargetMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+	if Language, ok := WebchatroutingtargetMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Priority, ok := WebchatroutingtargetMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

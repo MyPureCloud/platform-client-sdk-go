@@ -17,24 +17,43 @@ type Rulesetdiagnostic struct {
 
 }
 
-func (u *Rulesetdiagnostic) MarshalJSON() ([]byte, error) {
+func (o *Rulesetdiagnostic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Rulesetdiagnostic
-
 	
-
 	return json.Marshal(&struct { 
 		RuleSet *Domainentityref `json:"ruleSet,omitempty"`
 		
 		Warnings *[]string `json:"warnings,omitempty"`
 		*Alias
 	}{ 
-		RuleSet: u.RuleSet,
+		RuleSet: o.RuleSet,
 		
-		Warnings: u.Warnings,
-		Alias:    (*Alias)(u),
+		Warnings: o.Warnings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Rulesetdiagnostic) UnmarshalJSON(b []byte) error {
+	var RulesetdiagnosticMap map[string]interface{}
+	err := json.Unmarshal(b, &RulesetdiagnosticMap)
+	if err != nil {
+		return err
+	}
+	
+	if RuleSet, ok := RulesetdiagnosticMap["ruleSet"].(map[string]interface{}); ok {
+		RuleSetString, _ := json.Marshal(RuleSet)
+		json.Unmarshal(RuleSetString, &o.RuleSet)
+	}
+	
+	if Warnings, ok := RulesetdiagnosticMap["warnings"].([]interface{}); ok {
+		WarningsString, _ := json.Marshal(Warnings)
+		json.Unmarshal(WarningsString, &o.Warnings)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

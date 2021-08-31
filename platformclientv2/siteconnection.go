@@ -53,13 +53,11 @@ type Siteconnection struct {
 
 }
 
-func (u *Siteconnection) MarshalJSON() ([]byte, error) {
+func (o *Siteconnection) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Siteconnection
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,87 @@ func (u *Siteconnection) MarshalJSON() ([]byte, error) {
 		SecondaryCoreSites *[]Domainentityref `json:"secondaryCoreSites,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Managed: u.Managed,
+		Managed: o.Managed,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		MediaModel: u.MediaModel,
+		MediaModel: o.MediaModel,
 		
-		EdgeList: u.EdgeList,
+		EdgeList: o.EdgeList,
 		
-		CoreSite: u.CoreSite,
+		CoreSite: o.CoreSite,
 		
-		PrimaryCoreSites: u.PrimaryCoreSites,
+		PrimaryCoreSites: o.PrimaryCoreSites,
 		
-		SecondaryCoreSites: u.SecondaryCoreSites,
-		Alias:    (*Alias)(u),
+		SecondaryCoreSites: o.SecondaryCoreSites,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Siteconnection) UnmarshalJSON(b []byte) error {
+	var SiteconnectionMap map[string]interface{}
+	err := json.Unmarshal(b, &SiteconnectionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SiteconnectionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SiteconnectionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := SiteconnectionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Managed, ok := SiteconnectionMap["managed"].(bool); ok {
+		o.Managed = &Managed
+	}
+	
+	if VarType, ok := SiteconnectionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Enabled, ok := SiteconnectionMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if MediaModel, ok := SiteconnectionMap["mediaModel"].(string); ok {
+		o.MediaModel = &MediaModel
+	}
+	
+	if EdgeList, ok := SiteconnectionMap["edgeList"].([]interface{}); ok {
+		EdgeListString, _ := json.Marshal(EdgeList)
+		json.Unmarshal(EdgeListString, &o.EdgeList)
+	}
+	
+	if CoreSite, ok := SiteconnectionMap["coreSite"].(bool); ok {
+		o.CoreSite = &CoreSite
+	}
+	
+	if PrimaryCoreSites, ok := SiteconnectionMap["primaryCoreSites"].([]interface{}); ok {
+		PrimaryCoreSitesString, _ := json.Marshal(PrimaryCoreSites)
+		json.Unmarshal(PrimaryCoreSitesString, &o.PrimaryCoreSites)
+	}
+	
+	if SecondaryCoreSites, ok := SiteconnectionMap["secondaryCoreSites"].([]interface{}); ok {
+		SecondaryCoreSitesString, _ := json.Marshal(SecondaryCoreSites)
+		json.Unmarshal(SecondaryCoreSitesString, &o.SecondaryCoreSites)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

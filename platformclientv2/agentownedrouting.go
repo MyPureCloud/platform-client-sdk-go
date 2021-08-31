@@ -21,13 +21,11 @@ type Agentownedrouting struct {
 
 }
 
-func (u *Agentownedrouting) MarshalJSON() ([]byte, error) {
+func (o *Agentownedrouting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Agentownedrouting
-
 	
-
 	return json.Marshal(&struct { 
 		EnableAgentOwnedCallbacks *bool `json:"enableAgentOwnedCallbacks,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Agentownedrouting) MarshalJSON() ([]byte, error) {
 		MaxOwnedCallbackDelayHours *int `json:"maxOwnedCallbackDelayHours,omitempty"`
 		*Alias
 	}{ 
-		EnableAgentOwnedCallbacks: u.EnableAgentOwnedCallbacks,
+		EnableAgentOwnedCallbacks: o.EnableAgentOwnedCallbacks,
 		
-		MaxOwnedCallbackHours: u.MaxOwnedCallbackHours,
+		MaxOwnedCallbackHours: o.MaxOwnedCallbackHours,
 		
-		MaxOwnedCallbackDelayHours: u.MaxOwnedCallbackDelayHours,
-		Alias:    (*Alias)(u),
+		MaxOwnedCallbackDelayHours: o.MaxOwnedCallbackDelayHours,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Agentownedrouting) UnmarshalJSON(b []byte) error {
+	var AgentownedroutingMap map[string]interface{}
+	err := json.Unmarshal(b, &AgentownedroutingMap)
+	if err != nil {
+		return err
+	}
+	
+	if EnableAgentOwnedCallbacks, ok := AgentownedroutingMap["enableAgentOwnedCallbacks"].(bool); ok {
+		o.EnableAgentOwnedCallbacks = &EnableAgentOwnedCallbacks
+	}
+	
+	if MaxOwnedCallbackHours, ok := AgentownedroutingMap["maxOwnedCallbackHours"].(float64); ok {
+		MaxOwnedCallbackHoursInt := int(MaxOwnedCallbackHours)
+		o.MaxOwnedCallbackHours = &MaxOwnedCallbackHoursInt
+	}
+	
+	if MaxOwnedCallbackDelayHours, ok := AgentownedroutingMap["maxOwnedCallbackDelayHours"].(float64); ok {
+		MaxOwnedCallbackDelayHoursInt := int(MaxOwnedCallbackDelayHours)
+		o.MaxOwnedCallbackDelayHours = &MaxOwnedCallbackDelayHoursInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

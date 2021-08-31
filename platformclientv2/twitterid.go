@@ -29,13 +29,11 @@ type Twitterid struct {
 
 }
 
-func (u *Twitterid) MarshalJSON() ([]byte, error) {
+func (o *Twitterid) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Twitterid
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Twitterid) MarshalJSON() ([]byte, error) {
 		ProfileUrl *string `json:"profileUrl,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ScreenName: u.ScreenName,
+		ScreenName: o.ScreenName,
 		
-		Verified: u.Verified,
+		Verified: o.Verified,
 		
-		ProfileUrl: u.ProfileUrl,
-		Alias:    (*Alias)(u),
+		ProfileUrl: o.ProfileUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Twitterid) UnmarshalJSON(b []byte) error {
+	var TwitteridMap map[string]interface{}
+	err := json.Unmarshal(b, &TwitteridMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TwitteridMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := TwitteridMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ScreenName, ok := TwitteridMap["screenName"].(string); ok {
+		o.ScreenName = &ScreenName
+	}
+	
+	if Verified, ok := TwitteridMap["verified"].(bool); ok {
+		o.Verified = &Verified
+	}
+	
+	if ProfileUrl, ok := TwitteridMap["profileUrl"].(string); ok {
+		o.ProfileUrl = &ProfileUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

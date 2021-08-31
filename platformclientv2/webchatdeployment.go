@@ -49,13 +49,11 @@ type Webchatdeployment struct {
 
 }
 
-func (u *Webchatdeployment) MarshalJSON() ([]byte, error) {
+func (o *Webchatdeployment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatdeployment
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,81 @@ func (u *Webchatdeployment) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		AuthenticationRequired: u.AuthenticationRequired,
+		AuthenticationRequired: o.AuthenticationRequired,
 		
-		AuthenticationUrl: u.AuthenticationUrl,
+		AuthenticationUrl: o.AuthenticationUrl,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		WebChatConfig: u.WebChatConfig,
+		WebChatConfig: o.WebChatConfig,
 		
-		AllowedDomains: u.AllowedDomains,
+		AllowedDomains: o.AllowedDomains,
 		
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatdeployment) UnmarshalJSON(b []byte) error {
+	var WebchatdeploymentMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatdeploymentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebchatdeploymentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WebchatdeploymentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := WebchatdeploymentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if AuthenticationRequired, ok := WebchatdeploymentMap["authenticationRequired"].(bool); ok {
+		o.AuthenticationRequired = &AuthenticationRequired
+	}
+	
+	if AuthenticationUrl, ok := WebchatdeploymentMap["authenticationUrl"].(string); ok {
+		o.AuthenticationUrl = &AuthenticationUrl
+	}
+	
+	if Disabled, ok := WebchatdeploymentMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if WebChatConfig, ok := WebchatdeploymentMap["webChatConfig"].(map[string]interface{}); ok {
+		WebChatConfigString, _ := json.Marshal(WebChatConfig)
+		json.Unmarshal(WebChatConfigString, &o.WebChatConfig)
+	}
+	
+	if AllowedDomains, ok := WebchatdeploymentMap["allowedDomains"].([]interface{}); ok {
+		AllowedDomainsString, _ := json.Marshal(AllowedDomains)
+		json.Unmarshal(AllowedDomainsString, &o.AllowedDomains)
+	}
+	
+	if Flow, ok := WebchatdeploymentMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if SelfUri, ok := WebchatdeploymentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

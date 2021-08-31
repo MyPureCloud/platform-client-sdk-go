@@ -13,20 +13,34 @@ type Draftrequest struct {
 
 }
 
-func (u *Draftrequest) MarshalJSON() ([]byte, error) {
+func (o *Draftrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Draftrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Intents *[]Draftintents `json:"intents,omitempty"`
 		*Alias
 	}{ 
-		Intents: u.Intents,
-		Alias:    (*Alias)(u),
+		Intents: o.Intents,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Draftrequest) UnmarshalJSON(b []byte) error {
+	var DraftrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &DraftrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Intents, ok := DraftrequestMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

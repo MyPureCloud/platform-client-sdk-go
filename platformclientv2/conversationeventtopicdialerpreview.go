@@ -33,13 +33,11 @@ type Conversationeventtopicdialerpreview struct {
 
 }
 
-func (u *Conversationeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicdialerpreview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Conversationeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ContactId: u.ContactId,
+		ContactId: o.ContactId,
 		
-		ContactListId: u.ContactListId,
+		ContactListId: o.ContactListId,
 		
-		CampaignId: u.CampaignId,
+		CampaignId: o.CampaignId,
 		
-		PhoneNumberColumns: u.PhoneNumberColumns,
+		PhoneNumberColumns: o.PhoneNumberColumns,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicdialerpreview) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicdialerpreviewMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicdialerpreviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationeventtopicdialerpreviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ContactId, ok := ConversationeventtopicdialerpreviewMap["contactId"].(string); ok {
+		o.ContactId = &ContactId
+	}
+	
+	if ContactListId, ok := ConversationeventtopicdialerpreviewMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+	if CampaignId, ok := ConversationeventtopicdialerpreviewMap["campaignId"].(string); ok {
+		o.CampaignId = &CampaignId
+	}
+	
+	if PhoneNumberColumns, ok := ConversationeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
+		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
+		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
+	}
+	
+	if AdditionalProperties, ok := ConversationeventtopicdialerpreviewMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -37,13 +37,11 @@ type Dialogflowagent struct {
 
 }
 
-func (u *Dialogflowagent) MarshalJSON() ([]byte, error) {
+func (o *Dialogflowagent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialogflowagent
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,64 @@ func (u *Dialogflowagent) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Project: u.Project,
+		Project: o.Project,
 		
-		Languages: u.Languages,
+		Languages: o.Languages,
 		
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
-		Environments: u.Environments,
+		Environments: o.Environments,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialogflowagent) UnmarshalJSON(b []byte) error {
+	var DialogflowagentMap map[string]interface{}
+	err := json.Unmarshal(b, &DialogflowagentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialogflowagentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialogflowagentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Project, ok := DialogflowagentMap["project"].(map[string]interface{}); ok {
+		ProjectString, _ := json.Marshal(Project)
+		json.Unmarshal(ProjectString, &o.Project)
+	}
+	
+	if Languages, ok := DialogflowagentMap["languages"].([]interface{}); ok {
+		LanguagesString, _ := json.Marshal(Languages)
+		json.Unmarshal(LanguagesString, &o.Languages)
+	}
+	
+	if Intents, ok := DialogflowagentMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if Environments, ok := DialogflowagentMap["environments"].([]interface{}); ok {
+		EnvironmentsString, _ := json.Marshal(Environments)
+		json.Unmarshal(EnvironmentsString, &o.Environments)
+	}
+	
+	if SelfUri, ok := DialogflowagentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

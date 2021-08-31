@@ -25,13 +25,11 @@ type Updateactioninput struct {
 
 }
 
-func (u *Updateactioninput) MarshalJSON() ([]byte, error) {
+func (o *Updateactioninput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updateactioninput
-
 	
-
 	return json.Marshal(&struct { 
 		Category *string `json:"category,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Updateactioninput) MarshalJSON() ([]byte, error) {
 		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Category: u.Category,
+		Category: o.Category,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Config: u.Config,
+		Config: o.Config,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updateactioninput) UnmarshalJSON(b []byte) error {
+	var UpdateactioninputMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdateactioninputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Category, ok := UpdateactioninputMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Name, ok := UpdateactioninputMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Config, ok := UpdateactioninputMap["config"].(map[string]interface{}); ok {
+		ConfigString, _ := json.Marshal(Config)
+		json.Unmarshal(ConfigString, &o.Config)
+	}
+	
+	if Version, ok := UpdateactioninputMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

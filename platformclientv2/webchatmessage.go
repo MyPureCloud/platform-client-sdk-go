@@ -42,21 +42,19 @@ type Webchatmessage struct {
 
 }
 
-func (u *Webchatmessage) MarshalJSON() ([]byte, error) {
+func (o *Webchatmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatmessage
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -75,23 +73,69 @@ func (u *Webchatmessage) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		Sender: u.Sender,
+		Sender: o.Sender,
 		
-		Body: u.Body,
+		Body: o.Body,
 		
-		BodyType: u.BodyType,
+		BodyType: o.BodyType,
 		
 		Timestamp: Timestamp,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatmessage) UnmarshalJSON(b []byte) error {
+	var WebchatmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebchatmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WebchatmessageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Conversation, ok := WebchatmessageMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if Sender, ok := WebchatmessageMap["sender"].(map[string]interface{}); ok {
+		SenderString, _ := json.Marshal(Sender)
+		json.Unmarshal(SenderString, &o.Sender)
+	}
+	
+	if Body, ok := WebchatmessageMap["body"].(string); ok {
+		o.Body = &Body
+	}
+	
+	if BodyType, ok := WebchatmessageMap["bodyType"].(string); ok {
+		o.BodyType = &BodyType
+	}
+	
+	if timestampString, ok := WebchatmessageMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if SelfUri, ok := WebchatmessageMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

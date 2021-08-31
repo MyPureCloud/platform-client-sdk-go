@@ -37,13 +37,11 @@ type Contact struct {
 
 }
 
-func (u *Contact) MarshalJSON() ([]byte, error) {
+func (o *Contact) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contact
-
 	
-
 	return json.Marshal(&struct { 
 		Address *string `json:"address,omitempty"`
 		
@@ -60,21 +58,60 @@ func (u *Contact) MarshalJSON() ([]byte, error) {
 		Integration *string `json:"integration,omitempty"`
 		*Alias
 	}{ 
-		Address: u.Address,
+		Address: o.Address,
 		
-		Display: u.Display,
+		Display: o.Display,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Extension: u.Extension,
+		Extension: o.Extension,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
-		Integration: u.Integration,
-		Alias:    (*Alias)(u),
+		Integration: o.Integration,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contact) UnmarshalJSON(b []byte) error {
+	var ContactMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactMap)
+	if err != nil {
+		return err
+	}
+	
+	if Address, ok := ContactMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if Display, ok := ContactMap["display"].(string); ok {
+		o.Display = &Display
+	}
+	
+	if MediaType, ok := ContactMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if VarType, ok := ContactMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Extension, ok := ContactMap["extension"].(string); ok {
+		o.Extension = &Extension
+	}
+	
+	if CountryCode, ok := ContactMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if Integration, ok := ContactMap["integration"].(string); ok {
+		o.Integration = &Integration
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

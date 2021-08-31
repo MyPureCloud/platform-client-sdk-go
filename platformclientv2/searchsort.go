@@ -17,24 +17,41 @@ type Searchsort struct {
 
 }
 
-func (u *Searchsort) MarshalJSON() ([]byte, error) {
+func (o *Searchsort) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Searchsort
-
 	
-
 	return json.Marshal(&struct { 
 		SortOrder *string `json:"sortOrder,omitempty"`
 		
 		SortBy *string `json:"sortBy,omitempty"`
 		*Alias
 	}{ 
-		SortOrder: u.SortOrder,
+		SortOrder: o.SortOrder,
 		
-		SortBy: u.SortBy,
-		Alias:    (*Alias)(u),
+		SortBy: o.SortBy,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Searchsort) UnmarshalJSON(b []byte) error {
+	var SearchsortMap map[string]interface{}
+	err := json.Unmarshal(b, &SearchsortMap)
+	if err != nil {
+		return err
+	}
+	
+	if SortOrder, ok := SearchsortMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+	
+	if SortBy, ok := SearchsortMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

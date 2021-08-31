@@ -25,13 +25,11 @@ type Reportingturnsresponse struct {
 
 }
 
-func (u *Reportingturnsresponse) MarshalJSON() ([]byte, error) {
+func (o *Reportingturnsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingturnsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Reportingturn `json:"entities,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Reportingturnsresponse) MarshalJSON() ([]byte, error) {
 		PreviousUri *string `json:"previousUri,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		PreviousUri: u.PreviousUri,
-		Alias:    (*Alias)(u),
+		PreviousUri: o.PreviousUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingturnsresponse) UnmarshalJSON(b []byte) error {
+	var ReportingturnsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingturnsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := ReportingturnsresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if NextUri, ok := ReportingturnsresponseMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if SelfUri, ok := ReportingturnsresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if PreviousUri, ok := ReportingturnsresponseMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

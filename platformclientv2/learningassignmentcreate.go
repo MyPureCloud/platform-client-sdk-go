@@ -22,21 +22,19 @@ type Learningassignmentcreate struct {
 
 }
 
-func (u *Learningassignmentcreate) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentcreate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentcreate
-
 	
 	RecommendedCompletionDate := new(string)
-	if u.RecommendedCompletionDate != nil {
+	if o.RecommendedCompletionDate != nil {
 		
-		*RecommendedCompletionDate = timeutil.Strftime(u.RecommendedCompletionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RecommendedCompletionDate = timeutil.Strftime(o.RecommendedCompletionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RecommendedCompletionDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ModuleId *string `json:"moduleId,omitempty"`
 		
@@ -45,13 +43,37 @@ func (u *Learningassignmentcreate) MarshalJSON() ([]byte, error) {
 		RecommendedCompletionDate *string `json:"recommendedCompletionDate,omitempty"`
 		*Alias
 	}{ 
-		ModuleId: u.ModuleId,
+		ModuleId: o.ModuleId,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
 		RecommendedCompletionDate: RecommendedCompletionDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentcreate) UnmarshalJSON(b []byte) error {
+	var LearningassignmentcreateMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentcreateMap)
+	if err != nil {
+		return err
+	}
+	
+	if ModuleId, ok := LearningassignmentcreateMap["moduleId"].(string); ok {
+		o.ModuleId = &ModuleId
+	}
+	
+	if UserId, ok := LearningassignmentcreateMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if recommendedCompletionDateString, ok := LearningassignmentcreateMap["recommendedCompletionDate"].(string); ok {
+		RecommendedCompletionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", recommendedCompletionDateString)
+		o.RecommendedCompletionDate = &RecommendedCompletionDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

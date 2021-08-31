@@ -13,20 +13,34 @@ type Participantattributes struct {
 
 }
 
-func (u *Participantattributes) MarshalJSON() ([]byte, error) {
+func (o *Participantattributes) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Participantattributes
-
 	
-
 	return json.Marshal(&struct { 
 		Attributes *map[string]string `json:"attributes,omitempty"`
 		*Alias
 	}{ 
-		Attributes: u.Attributes,
-		Alias:    (*Alias)(u),
+		Attributes: o.Attributes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Participantattributes) UnmarshalJSON(b []byte) error {
+	var ParticipantattributesMap map[string]interface{}
+	err := json.Unmarshal(b, &ParticipantattributesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Attributes, ok := ParticipantattributesMap["attributes"].(map[string]interface{}); ok {
+		AttributesString, _ := json.Marshal(Attributes)
+		json.Unmarshal(AttributesString, &o.Attributes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

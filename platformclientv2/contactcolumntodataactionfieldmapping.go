@@ -9,16 +9,25 @@ import (
 // Contactcolumntodataactionfieldmapping
 type Contactcolumntodataactionfieldmapping struct { }
 
-func (u *Contactcolumntodataactionfieldmapping) MarshalJSON() ([]byte, error) {
+func (o *Contactcolumntodataactionfieldmapping) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactcolumntodataactionfieldmapping
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Contactcolumntodataactionfieldmapping) UnmarshalJSON(b []byte) error {
+	var ContactcolumntodataactionfieldmappingMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactcolumntodataactionfieldmappingMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

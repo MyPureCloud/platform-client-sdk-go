@@ -17,24 +17,43 @@ type Mediatypeaccess struct {
 
 }
 
-func (u *Mediatypeaccess) MarshalJSON() ([]byte, error) {
+func (o *Mediatypeaccess) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediatypeaccess
-
 	
-
 	return json.Marshal(&struct { 
 		Inbound *[]Mediatype `json:"inbound,omitempty"`
 		
 		Outbound *[]Mediatype `json:"outbound,omitempty"`
 		*Alias
 	}{ 
-		Inbound: u.Inbound,
+		Inbound: o.Inbound,
 		
-		Outbound: u.Outbound,
-		Alias:    (*Alias)(u),
+		Outbound: o.Outbound,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediatypeaccess) UnmarshalJSON(b []byte) error {
+	var MediatypeaccessMap map[string]interface{}
+	err := json.Unmarshal(b, &MediatypeaccessMap)
+	if err != nil {
+		return err
+	}
+	
+	if Inbound, ok := MediatypeaccessMap["inbound"].([]interface{}); ok {
+		InboundString, _ := json.Marshal(Inbound)
+		json.Unmarshal(InboundString, &o.Inbound)
+	}
+	
+	if Outbound, ok := MediatypeaccessMap["outbound"].([]interface{}); ok {
+		OutboundString, _ := json.Marshal(Outbound)
+		json.Unmarshal(OutboundString, &o.Outbound)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

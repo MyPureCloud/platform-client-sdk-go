@@ -49,13 +49,11 @@ type Widgetdeployment struct {
 
 }
 
-func (u *Widgetdeployment) MarshalJSON() ([]byte, error) {
+func (o *Widgetdeployment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Widgetdeployment
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,81 @@ func (u *Widgetdeployment) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		AuthenticationRequired: u.AuthenticationRequired,
+		AuthenticationRequired: o.AuthenticationRequired,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		AllowedDomains: u.AllowedDomains,
+		AllowedDomains: o.AllowedDomains,
 		
-		ClientType: u.ClientType,
+		ClientType: o.ClientType,
 		
-		ClientConfig: u.ClientConfig,
+		ClientConfig: o.ClientConfig,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Widgetdeployment) UnmarshalJSON(b []byte) error {
+	var WidgetdeploymentMap map[string]interface{}
+	err := json.Unmarshal(b, &WidgetdeploymentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WidgetdeploymentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WidgetdeploymentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := WidgetdeploymentMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if AuthenticationRequired, ok := WidgetdeploymentMap["authenticationRequired"].(bool); ok {
+		o.AuthenticationRequired = &AuthenticationRequired
+	}
+	
+	if Disabled, ok := WidgetdeploymentMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if Flow, ok := WidgetdeploymentMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if AllowedDomains, ok := WidgetdeploymentMap["allowedDomains"].([]interface{}); ok {
+		AllowedDomainsString, _ := json.Marshal(AllowedDomains)
+		json.Unmarshal(AllowedDomainsString, &o.AllowedDomains)
+	}
+	
+	if ClientType, ok := WidgetdeploymentMap["clientType"].(string); ok {
+		o.ClientType = &ClientType
+	}
+	
+	if ClientConfig, ok := WidgetdeploymentMap["clientConfig"].(map[string]interface{}); ok {
+		ClientConfigString, _ := json.Marshal(ClientConfig)
+		json.Unmarshal(ClientConfigString, &o.ClientConfig)
+	}
+	
+	if SelfUri, ok := WidgetdeploymentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Lexslot struct {
 
 }
 
-func (u *Lexslot) MarshalJSON() ([]byte, error) {
+func (o *Lexslot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lexslot
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Lexslot) MarshalJSON() ([]byte, error) {
 		Priority *int `json:"priority,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Priority: u.Priority,
-		Alias:    (*Alias)(u),
+		Priority: o.Priority,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lexslot) UnmarshalJSON(b []byte) error {
+	var LexslotMap map[string]interface{}
+	err := json.Unmarshal(b, &LexslotMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := LexslotMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := LexslotMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if VarType, ok := LexslotMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Priority, ok := LexslotMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

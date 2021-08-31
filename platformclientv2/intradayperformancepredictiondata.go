@@ -21,13 +21,11 @@ type Intradayperformancepredictiondata struct {
 
 }
 
-func (u *Intradayperformancepredictiondata) MarshalJSON() ([]byte, error) {
+func (o *Intradayperformancepredictiondata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Intradayperformancepredictiondata
-
 	
-
 	return json.Marshal(&struct { 
 		ServiceLevelPercent *float64 `json:"serviceLevelPercent,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Intradayperformancepredictiondata) MarshalJSON() ([]byte, error) {
 		OccupancyPercent *float64 `json:"occupancyPercent,omitempty"`
 		*Alias
 	}{ 
-		ServiceLevelPercent: u.ServiceLevelPercent,
+		ServiceLevelPercent: o.ServiceLevelPercent,
 		
-		AverageSpeedOfAnswerSeconds: u.AverageSpeedOfAnswerSeconds,
+		AverageSpeedOfAnswerSeconds: o.AverageSpeedOfAnswerSeconds,
 		
-		OccupancyPercent: u.OccupancyPercent,
-		Alias:    (*Alias)(u),
+		OccupancyPercent: o.OccupancyPercent,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Intradayperformancepredictiondata) UnmarshalJSON(b []byte) error {
+	var IntradayperformancepredictiondataMap map[string]interface{}
+	err := json.Unmarshal(b, &IntradayperformancepredictiondataMap)
+	if err != nil {
+		return err
+	}
+	
+	if ServiceLevelPercent, ok := IntradayperformancepredictiondataMap["serviceLevelPercent"].(float64); ok {
+		o.ServiceLevelPercent = &ServiceLevelPercent
+	}
+	
+	if AverageSpeedOfAnswerSeconds, ok := IntradayperformancepredictiondataMap["averageSpeedOfAnswerSeconds"].(float64); ok {
+		o.AverageSpeedOfAnswerSeconds = &AverageSpeedOfAnswerSeconds
+	}
+	
+	if OccupancyPercent, ok := IntradayperformancepredictiondataMap["occupancyPercent"].(float64); ok {
+		o.OccupancyPercent = &OccupancyPercent
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

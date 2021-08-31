@@ -30,27 +30,25 @@ type Minerexecuterequest struct {
 
 }
 
-func (u *Minerexecuterequest) MarshalJSON() ([]byte, error) {
+func (o *Minerexecuterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Minerexecuterequest
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%d")
+	if o.DateStart != nil {
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%d")
 	} else {
 		DateStart = nil
 	}
 	
 	DateEnd := new(string)
-	if u.DateEnd != nil {
-		*DateEnd = timeutil.Strftime(u.DateEnd, "%Y-%m-%d")
+	if o.DateEnd != nil {
+		*DateEnd = timeutil.Strftime(o.DateEnd, "%Y-%m-%d")
 	} else {
 		DateEnd = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		DateStart *string `json:"dateStart,omitempty"`
 		
@@ -67,13 +65,47 @@ func (u *Minerexecuterequest) MarshalJSON() ([]byte, error) {
 		
 		DateEnd: DateEnd,
 		
-		UploadKey: u.UploadKey,
+		UploadKey: o.UploadKey,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		QueueIds: u.QueueIds,
-		Alias:    (*Alias)(u),
+		QueueIds: o.QueueIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Minerexecuterequest) UnmarshalJSON(b []byte) error {
+	var MinerexecuterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &MinerexecuterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if dateStartString, ok := MinerexecuterequestMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if dateEndString, ok := MinerexecuterequestMap["dateEnd"].(string); ok {
+		DateEnd, _ := time.Parse("2006-01-02", dateEndString)
+		o.DateEnd = &DateEnd
+	}
+	
+	if UploadKey, ok := MinerexecuterequestMap["uploadKey"].(string); ok {
+		o.UploadKey = &UploadKey
+	}
+	
+	if MediaType, ok := MinerexecuterequestMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if QueueIds, ok := MinerexecuterequestMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

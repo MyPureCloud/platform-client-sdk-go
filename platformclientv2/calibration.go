@@ -74,21 +74,19 @@ type Calibration struct {
 
 }
 
-func (u *Calibration) MarshalJSON() ([]byte, error) {
+func (o *Calibration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Calibration
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -123,39 +121,126 @@ func (u *Calibration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Calibrator: u.Calibrator,
+		Calibrator: o.Calibrator,
 		
-		Agent: u.Agent,
+		Agent: o.Agent,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		EvaluationForm: u.EvaluationForm,
+		EvaluationForm: o.EvaluationForm,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		AverageScore: u.AverageScore,
+		AverageScore: o.AverageScore,
 		
-		HighScore: u.HighScore,
+		HighScore: o.HighScore,
 		
-		LowScore: u.LowScore,
+		LowScore: o.LowScore,
 		
 		CreatedDate: CreatedDate,
 		
-		Evaluations: u.Evaluations,
+		Evaluations: o.Evaluations,
 		
-		Evaluators: u.Evaluators,
+		Evaluators: o.Evaluators,
 		
-		ScoringIndex: u.ScoringIndex,
+		ScoringIndex: o.ScoringIndex,
 		
-		ExpertEvaluator: u.ExpertEvaluator,
+		ExpertEvaluator: o.ExpertEvaluator,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Calibration) UnmarshalJSON(b []byte) error {
+	var CalibrationMap map[string]interface{}
+	err := json.Unmarshal(b, &CalibrationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CalibrationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CalibrationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Calibrator, ok := CalibrationMap["calibrator"].(map[string]interface{}); ok {
+		CalibratorString, _ := json.Marshal(Calibrator)
+		json.Unmarshal(CalibratorString, &o.Calibrator)
+	}
+	
+	if Agent, ok := CalibrationMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Conversation, ok := CalibrationMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if EvaluationForm, ok := CalibrationMap["evaluationForm"].(map[string]interface{}); ok {
+		EvaluationFormString, _ := json.Marshal(EvaluationForm)
+		json.Unmarshal(EvaluationFormString, &o.EvaluationForm)
+	}
+	
+	if ContextId, ok := CalibrationMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if AverageScore, ok := CalibrationMap["averageScore"].(float64); ok {
+		AverageScoreInt := int(AverageScore)
+		o.AverageScore = &AverageScoreInt
+	}
+	
+	if HighScore, ok := CalibrationMap["highScore"].(float64); ok {
+		HighScoreInt := int(HighScore)
+		o.HighScore = &HighScoreInt
+	}
+	
+	if LowScore, ok := CalibrationMap["lowScore"].(float64); ok {
+		LowScoreInt := int(LowScore)
+		o.LowScore = &LowScoreInt
+	}
+	
+	if createdDateString, ok := CalibrationMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if Evaluations, ok := CalibrationMap["evaluations"].([]interface{}); ok {
+		EvaluationsString, _ := json.Marshal(Evaluations)
+		json.Unmarshal(EvaluationsString, &o.Evaluations)
+	}
+	
+	if Evaluators, ok := CalibrationMap["evaluators"].([]interface{}); ok {
+		EvaluatorsString, _ := json.Marshal(Evaluators)
+		json.Unmarshal(EvaluatorsString, &o.Evaluators)
+	}
+	
+	if ScoringIndex, ok := CalibrationMap["scoringIndex"].(map[string]interface{}); ok {
+		ScoringIndexString, _ := json.Marshal(ScoringIndex)
+		json.Unmarshal(ScoringIndexString, &o.ScoringIndex)
+	}
+	
+	if ExpertEvaluator, ok := CalibrationMap["expertEvaluator"].(map[string]interface{}); ok {
+		ExpertEvaluatorString, _ := json.Marshal(ExpertEvaluator)
+		json.Unmarshal(ExpertEvaluatorString, &o.ExpertEvaluator)
+	}
+	
+	if SelfUri, ok := CalibrationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

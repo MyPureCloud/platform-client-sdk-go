@@ -29,13 +29,11 @@ type Tokeninfo struct {
 
 }
 
-func (u *Tokeninfo) MarshalJSON() ([]byte, error) {
+func (o *Tokeninfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Tokeninfo
-
 	
-
 	return json.Marshal(&struct { 
 		Organization *Namedentity `json:"organization,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Tokeninfo) MarshalJSON() ([]byte, error) {
 		OAuthClient *Orgoauthclient `json:"OAuthClient,omitempty"`
 		*Alias
 	}{ 
-		Organization: u.Organization,
+		Organization: o.Organization,
 		
-		HomeOrganization: u.HomeOrganization,
+		HomeOrganization: o.HomeOrganization,
 		
-		AuthorizedScope: u.AuthorizedScope,
+		AuthorizedScope: o.AuthorizedScope,
 		
-		ClonedUser: u.ClonedUser,
+		ClonedUser: o.ClonedUser,
 		
-		OAuthClient: u.OAuthClient,
-		Alias:    (*Alias)(u),
+		OAuthClient: o.OAuthClient,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Tokeninfo) UnmarshalJSON(b []byte) error {
+	var TokeninfoMap map[string]interface{}
+	err := json.Unmarshal(b, &TokeninfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Organization, ok := TokeninfoMap["organization"].(map[string]interface{}); ok {
+		OrganizationString, _ := json.Marshal(Organization)
+		json.Unmarshal(OrganizationString, &o.Organization)
+	}
+	
+	if HomeOrganization, ok := TokeninfoMap["homeOrganization"].(map[string]interface{}); ok {
+		HomeOrganizationString, _ := json.Marshal(HomeOrganization)
+		json.Unmarshal(HomeOrganizationString, &o.HomeOrganization)
+	}
+	
+	if AuthorizedScope, ok := TokeninfoMap["authorizedScope"].([]interface{}); ok {
+		AuthorizedScopeString, _ := json.Marshal(AuthorizedScope)
+		json.Unmarshal(AuthorizedScopeString, &o.AuthorizedScope)
+	}
+	
+	if ClonedUser, ok := TokeninfoMap["clonedUser"].(map[string]interface{}); ok {
+		ClonedUserString, _ := json.Marshal(ClonedUser)
+		json.Unmarshal(ClonedUserString, &o.ClonedUser)
+	}
+	
+	if OAuthClient, ok := TokeninfoMap["OAuthClient"].(map[string]interface{}); ok {
+		OAuthClientString, _ := json.Marshal(OAuthClient)
+		json.Unmarshal(OAuthClientString, &o.OAuthClient)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

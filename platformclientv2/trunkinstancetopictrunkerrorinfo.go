@@ -21,13 +21,11 @@ type Trunkinstancetopictrunkerrorinfo struct {
 
 }
 
-func (u *Trunkinstancetopictrunkerrorinfo) MarshalJSON() ([]byte, error) {
+func (o *Trunkinstancetopictrunkerrorinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkinstancetopictrunkerrorinfo
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Trunkinstancetopictrunkerrorinfo) MarshalJSON() ([]byte, error) {
 		Details *Trunkinstancetopictrunkerrorinfodetails `json:"details,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		Details: u.Details,
-		Alias:    (*Alias)(u),
+		Details: o.Details,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkinstancetopictrunkerrorinfo) UnmarshalJSON(b []byte) error {
+	var TrunkinstancetopictrunkerrorinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkinstancetopictrunkerrorinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := TrunkinstancetopictrunkerrorinfoMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Code, ok := TrunkinstancetopictrunkerrorinfoMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Details, ok := TrunkinstancetopictrunkerrorinfoMap["details"].(map[string]interface{}); ok {
+		DetailsString, _ := json.Marshal(Details)
+		json.Unmarshal(DetailsString, &o.Details)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

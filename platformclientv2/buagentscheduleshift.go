@@ -34,21 +34,19 @@ type Buagentscheduleshift struct {
 
 }
 
-func (u *Buagentscheduleshift) MarshalJSON() ([]byte, error) {
+func (o *Buagentscheduleshift) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentscheduleshift
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -63,19 +61,58 @@ func (u *Buagentscheduleshift) MarshalJSON() ([]byte, error) {
 		Schedule *Buschedulereference `json:"schedule,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		StartDate: StartDate,
 		
-		LengthMinutes: u.LengthMinutes,
+		LengthMinutes: o.LengthMinutes,
 		
-		Activities: u.Activities,
+		Activities: o.Activities,
 		
-		ManuallyEdited: u.ManuallyEdited,
+		ManuallyEdited: o.ManuallyEdited,
 		
-		Schedule: u.Schedule,
-		Alias:    (*Alias)(u),
+		Schedule: o.Schedule,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentscheduleshift) UnmarshalJSON(b []byte) error {
+	var BuagentscheduleshiftMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentscheduleshiftMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BuagentscheduleshiftMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if startDateString, ok := BuagentscheduleshiftMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if LengthMinutes, ok := BuagentscheduleshiftMap["lengthMinutes"].(float64); ok {
+		LengthMinutesInt := int(LengthMinutes)
+		o.LengthMinutes = &LengthMinutesInt
+	}
+	
+	if Activities, ok := BuagentscheduleshiftMap["activities"].([]interface{}); ok {
+		ActivitiesString, _ := json.Marshal(Activities)
+		json.Unmarshal(ActivitiesString, &o.Activities)
+	}
+	
+	if ManuallyEdited, ok := BuagentscheduleshiftMap["manuallyEdited"].(bool); ok {
+		o.ManuallyEdited = &ManuallyEdited
+	}
+	
+	if Schedule, ok := BuagentscheduleshiftMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

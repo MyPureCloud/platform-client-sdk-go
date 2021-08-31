@@ -57,13 +57,11 @@ type Policyactions struct {
 
 }
 
-func (u *Policyactions) MarshalJSON() ([]byte, error) {
+func (o *Policyactions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Policyactions
-
 	
-
 	return json.Marshal(&struct { 
 		RetainRecording *bool `json:"retainRecording,omitempty"`
 		
@@ -90,31 +88,99 @@ func (u *Policyactions) MarshalJSON() ([]byte, error) {
 		IntegrationExport *Integrationexport `json:"integrationExport,omitempty"`
 		*Alias
 	}{ 
-		RetainRecording: u.RetainRecording,
+		RetainRecording: o.RetainRecording,
 		
-		DeleteRecording: u.DeleteRecording,
+		DeleteRecording: o.DeleteRecording,
 		
-		AlwaysDelete: u.AlwaysDelete,
+		AlwaysDelete: o.AlwaysDelete,
 		
-		AssignEvaluations: u.AssignEvaluations,
+		AssignEvaluations: o.AssignEvaluations,
 		
-		AssignMeteredEvaluations: u.AssignMeteredEvaluations,
+		AssignMeteredEvaluations: o.AssignMeteredEvaluations,
 		
-		AssignMeteredAssignmentByAgent: u.AssignMeteredAssignmentByAgent,
+		AssignMeteredAssignmentByAgent: o.AssignMeteredAssignmentByAgent,
 		
-		AssignCalibrations: u.AssignCalibrations,
+		AssignCalibrations: o.AssignCalibrations,
 		
-		AssignSurveys: u.AssignSurveys,
+		AssignSurveys: o.AssignSurveys,
 		
-		RetentionDuration: u.RetentionDuration,
+		RetentionDuration: o.RetentionDuration,
 		
-		InitiateScreenRecording: u.InitiateScreenRecording,
+		InitiateScreenRecording: o.InitiateScreenRecording,
 		
-		MediaTranscriptions: u.MediaTranscriptions,
+		MediaTranscriptions: o.MediaTranscriptions,
 		
-		IntegrationExport: u.IntegrationExport,
-		Alias:    (*Alias)(u),
+		IntegrationExport: o.IntegrationExport,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Policyactions) UnmarshalJSON(b []byte) error {
+	var PolicyactionsMap map[string]interface{}
+	err := json.Unmarshal(b, &PolicyactionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if RetainRecording, ok := PolicyactionsMap["retainRecording"].(bool); ok {
+		o.RetainRecording = &RetainRecording
+	}
+	
+	if DeleteRecording, ok := PolicyactionsMap["deleteRecording"].(bool); ok {
+		o.DeleteRecording = &DeleteRecording
+	}
+	
+	if AlwaysDelete, ok := PolicyactionsMap["alwaysDelete"].(bool); ok {
+		o.AlwaysDelete = &AlwaysDelete
+	}
+	
+	if AssignEvaluations, ok := PolicyactionsMap["assignEvaluations"].([]interface{}); ok {
+		AssignEvaluationsString, _ := json.Marshal(AssignEvaluations)
+		json.Unmarshal(AssignEvaluationsString, &o.AssignEvaluations)
+	}
+	
+	if AssignMeteredEvaluations, ok := PolicyactionsMap["assignMeteredEvaluations"].([]interface{}); ok {
+		AssignMeteredEvaluationsString, _ := json.Marshal(AssignMeteredEvaluations)
+		json.Unmarshal(AssignMeteredEvaluationsString, &o.AssignMeteredEvaluations)
+	}
+	
+	if AssignMeteredAssignmentByAgent, ok := PolicyactionsMap["assignMeteredAssignmentByAgent"].([]interface{}); ok {
+		AssignMeteredAssignmentByAgentString, _ := json.Marshal(AssignMeteredAssignmentByAgent)
+		json.Unmarshal(AssignMeteredAssignmentByAgentString, &o.AssignMeteredAssignmentByAgent)
+	}
+	
+	if AssignCalibrations, ok := PolicyactionsMap["assignCalibrations"].([]interface{}); ok {
+		AssignCalibrationsString, _ := json.Marshal(AssignCalibrations)
+		json.Unmarshal(AssignCalibrationsString, &o.AssignCalibrations)
+	}
+	
+	if AssignSurveys, ok := PolicyactionsMap["assignSurveys"].([]interface{}); ok {
+		AssignSurveysString, _ := json.Marshal(AssignSurveys)
+		json.Unmarshal(AssignSurveysString, &o.AssignSurveys)
+	}
+	
+	if RetentionDuration, ok := PolicyactionsMap["retentionDuration"].(map[string]interface{}); ok {
+		RetentionDurationString, _ := json.Marshal(RetentionDuration)
+		json.Unmarshal(RetentionDurationString, &o.RetentionDuration)
+	}
+	
+	if InitiateScreenRecording, ok := PolicyactionsMap["initiateScreenRecording"].(map[string]interface{}); ok {
+		InitiateScreenRecordingString, _ := json.Marshal(InitiateScreenRecording)
+		json.Unmarshal(InitiateScreenRecordingString, &o.InitiateScreenRecording)
+	}
+	
+	if MediaTranscriptions, ok := PolicyactionsMap["mediaTranscriptions"].([]interface{}); ok {
+		MediaTranscriptionsString, _ := json.Marshal(MediaTranscriptions)
+		json.Unmarshal(MediaTranscriptionsString, &o.MediaTranscriptions)
+	}
+	
+	if IntegrationExport, ok := PolicyactionsMap["integrationExport"].(map[string]interface{}); ok {
+		IntegrationExportString, _ := json.Marshal(IntegrationExport)
+		json.Unmarshal(IntegrationExportString, &o.IntegrationExport)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

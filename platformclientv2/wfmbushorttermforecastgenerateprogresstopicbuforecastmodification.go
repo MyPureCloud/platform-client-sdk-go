@@ -53,13 +53,11 @@ type Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification struct {
 
 }
 
-func (u *Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -84,29 +82,89 @@ func (u *Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification) Mars
 		PlanningGroupIds *[]string `json:"planningGroupIds,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		StartIntervalIndex: u.StartIntervalIndex,
+		StartIntervalIndex: o.StartIntervalIndex,
 		
-		EndIntervalIndex: u.EndIntervalIndex,
+		EndIntervalIndex: o.EndIntervalIndex,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		LegacyMetric: u.LegacyMetric,
+		LegacyMetric: o.LegacyMetric,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Values: u.Values,
+		Values: o.Values,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Granularity: u.Granularity,
+		Granularity: o.Granularity,
 		
-		DisplayGranularity: u.DisplayGranularity,
+		DisplayGranularity: o.DisplayGranularity,
 		
-		PlanningGroupIds: u.PlanningGroupIds,
-		Alias:    (*Alias)(u),
+		PlanningGroupIds: o.PlanningGroupIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastgenerateprogresstopicbuforecastmodification) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if StartIntervalIndex, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["startIntervalIndex"].(float64); ok {
+		StartIntervalIndexInt := int(StartIntervalIndex)
+		o.StartIntervalIndex = &StartIntervalIndexInt
+	}
+	
+	if EndIntervalIndex, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["endIntervalIndex"].(float64); ok {
+		EndIntervalIndexInt := int(EndIntervalIndex)
+		o.EndIntervalIndex = &EndIntervalIndexInt
+	}
+	
+	if Metric, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if LegacyMetric, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["legacyMetric"].(string); ok {
+		o.LegacyMetric = &LegacyMetric
+	}
+	
+	if Value, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["value"].(float64); ok {
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
+	}
+	
+	if Values, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+	if Enabled, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Granularity, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["granularity"].(string); ok {
+		o.Granularity = &Granularity
+	}
+	
+	if DisplayGranularity, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["displayGranularity"].(string); ok {
+		o.DisplayGranularity = &DisplayGranularity
+	}
+	
+	if PlanningGroupIds, ok := WfmbushorttermforecastgenerateprogresstopicbuforecastmodificationMap["planningGroupIds"].([]interface{}); ok {
+		PlanningGroupIdsString, _ := json.Marshal(PlanningGroupIds)
+		json.Unmarshal(PlanningGroupIdsString, &o.PlanningGroupIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

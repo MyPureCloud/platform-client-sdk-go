@@ -21,13 +21,11 @@ type Transcripts struct {
 
 }
 
-func (u *Transcripts) MarshalJSON() ([]byte, error) {
+func (o *Transcripts) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcripts
-
 	
-
 	return json.Marshal(&struct { 
 		ExactMatch *[]string `json:"exactMatch,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Transcripts) MarshalJSON() ([]byte, error) {
 		DoesNotContain *[]string `json:"doesNotContain,omitempty"`
 		*Alias
 	}{ 
-		ExactMatch: u.ExactMatch,
+		ExactMatch: o.ExactMatch,
 		
-		Contains: u.Contains,
+		Contains: o.Contains,
 		
-		DoesNotContain: u.DoesNotContain,
-		Alias:    (*Alias)(u),
+		DoesNotContain: o.DoesNotContain,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcripts) UnmarshalJSON(b []byte) error {
+	var TranscriptsMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExactMatch, ok := TranscriptsMap["exactMatch"].([]interface{}); ok {
+		ExactMatchString, _ := json.Marshal(ExactMatch)
+		json.Unmarshal(ExactMatchString, &o.ExactMatch)
+	}
+	
+	if Contains, ok := TranscriptsMap["contains"].([]interface{}); ok {
+		ContainsString, _ := json.Marshal(Contains)
+		json.Unmarshal(ContainsString, &o.Contains)
+	}
+	
+	if DoesNotContain, ok := TranscriptsMap["doesNotContain"].([]interface{}); ok {
+		DoesNotContainString, _ := json.Marshal(DoesNotContain)
+		json.Unmarshal(DoesNotContainString, &o.DoesNotContain)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,41 @@ type Publishtopicpublishjob struct {
 
 }
 
-func (u *Publishtopicpublishjob) MarshalJSON() ([]byte, error) {
+func (o *Publishtopicpublishjob) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Publishtopicpublishjob
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		State *string `json:"state,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
-		Alias:    (*Alias)(u),
+		State: o.State,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Publishtopicpublishjob) UnmarshalJSON(b []byte) error {
+	var PublishtopicpublishjobMap map[string]interface{}
+	err := json.Unmarshal(b, &PublishtopicpublishjobMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PublishtopicpublishjobMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := PublishtopicpublishjobMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Textbotflowlocation struct {
 
 }
 
-func (u *Textbotflowlocation) MarshalJSON() ([]byte, error) {
+func (o *Textbotflowlocation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotflowlocation
-
 	
-
 	return json.Marshal(&struct { 
 		ActionName *string `json:"actionName,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Textbotflowlocation) MarshalJSON() ([]byte, error) {
 		SequenceName *string `json:"sequenceName,omitempty"`
 		*Alias
 	}{ 
-		ActionName: u.ActionName,
+		ActionName: o.ActionName,
 		
-		ActionNumber: u.ActionNumber,
+		ActionNumber: o.ActionNumber,
 		
-		SequenceName: u.SequenceName,
-		Alias:    (*Alias)(u),
+		SequenceName: o.SequenceName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotflowlocation) UnmarshalJSON(b []byte) error {
+	var TextbotflowlocationMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotflowlocationMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActionName, ok := TextbotflowlocationMap["actionName"].(string); ok {
+		o.ActionName = &ActionName
+	}
+	
+	if ActionNumber, ok := TextbotflowlocationMap["actionNumber"].(float64); ok {
+		ActionNumberInt := int(ActionNumber)
+		o.ActionNumber = &ActionNumberInt
+	}
+	
+	if SequenceName, ok := TextbotflowlocationMap["sequenceName"].(string); ok {
+		o.SequenceName = &SequenceName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Contactlistfilterpredicate struct {
 
 }
 
-func (u *Contactlistfilterpredicate) MarshalJSON() ([]byte, error) {
+func (o *Contactlistfilterpredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlistfilterpredicate
-
 	
-
 	return json.Marshal(&struct { 
 		Column *string `json:"column,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Contactlistfilterpredicate) MarshalJSON() ([]byte, error) {
 		Inverted *bool `json:"inverted,omitempty"`
 		*Alias
 	}{ 
-		Column: u.Column,
+		Column: o.Column,
 		
-		ColumnType: u.ColumnType,
+		ColumnType: o.ColumnType,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
+		VarRange: o.VarRange,
 		
-		Inverted: u.Inverted,
-		Alias:    (*Alias)(u),
+		Inverted: o.Inverted,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlistfilterpredicate) UnmarshalJSON(b []byte) error {
+	var ContactlistfilterpredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistfilterpredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Column, ok := ContactlistfilterpredicateMap["column"].(string); ok {
+		o.Column = &Column
+	}
+	
+	if ColumnType, ok := ContactlistfilterpredicateMap["columnType"].(string); ok {
+		o.ColumnType = &ColumnType
+	}
+	
+	if Operator, ok := ContactlistfilterpredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := ContactlistfilterpredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := ContactlistfilterpredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+	if Inverted, ok := ContactlistfilterpredicateMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

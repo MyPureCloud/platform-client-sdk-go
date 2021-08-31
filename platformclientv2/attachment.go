@@ -33,13 +33,11 @@ type Attachment struct {
 
 }
 
-func (u *Attachment) MarshalJSON() ([]byte, error) {
+func (o *Attachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Attachment
-
 	
-
 	return json.Marshal(&struct { 
 		AttachmentId *string `json:"attachmentId,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Attachment) MarshalJSON() ([]byte, error) {
 		InlineImage *bool `json:"inlineImage,omitempty"`
 		*Alias
 	}{ 
-		AttachmentId: u.AttachmentId,
+		AttachmentId: o.AttachmentId,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContentUri: u.ContentUri,
+		ContentUri: o.ContentUri,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		InlineImage: u.InlineImage,
-		Alias:    (*Alias)(u),
+		InlineImage: o.InlineImage,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Attachment) UnmarshalJSON(b []byte) error {
+	var AttachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &AttachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if AttachmentId, ok := AttachmentMap["attachmentId"].(string); ok {
+		o.AttachmentId = &AttachmentId
+	}
+	
+	if Name, ok := AttachmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContentUri, ok := AttachmentMap["contentUri"].(string); ok {
+		o.ContentUri = &ContentUri
+	}
+	
+	if ContentType, ok := AttachmentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if ContentLength, ok := AttachmentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if InlineImage, ok := AttachmentMap["inlineImage"].(bool); ok {
+		o.InlineImage = &InlineImage
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

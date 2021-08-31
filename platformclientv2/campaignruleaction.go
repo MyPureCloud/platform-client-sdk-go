@@ -25,13 +25,11 @@ type Campaignruleaction struct {
 
 }
 
-func (u *Campaignruleaction) MarshalJSON() ([]byte, error) {
+func (o *Campaignruleaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaignruleaction
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Campaignruleaction) MarshalJSON() ([]byte, error) {
 		CampaignRuleActionEntities *Campaignruleactionentities `json:"campaignRuleActionEntities,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Parameters: u.Parameters,
+		Parameters: o.Parameters,
 		
-		ActionType: u.ActionType,
+		ActionType: o.ActionType,
 		
-		CampaignRuleActionEntities: u.CampaignRuleActionEntities,
-		Alias:    (*Alias)(u),
+		CampaignRuleActionEntities: o.CampaignRuleActionEntities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaignruleaction) UnmarshalJSON(b []byte) error {
+	var CampaignruleactionMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignruleactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CampaignruleactionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Parameters, ok := CampaignruleactionMap["parameters"].(map[string]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+	if ActionType, ok := CampaignruleactionMap["actionType"].(string); ok {
+		o.ActionType = &ActionType
+	}
+	
+	if CampaignRuleActionEntities, ok := CampaignruleactionMap["campaignRuleActionEntities"].(map[string]interface{}); ok {
+		CampaignRuleActionEntitiesString, _ := json.Marshal(CampaignRuleActionEntities)
+		json.Unmarshal(CampaignRuleActionEntitiesString, &o.CampaignRuleActionEntities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

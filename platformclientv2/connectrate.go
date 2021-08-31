@@ -21,13 +21,11 @@ type Connectrate struct {
 
 }
 
-func (u *Connectrate) MarshalJSON() ([]byte, error) {
+func (o *Connectrate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Connectrate
-
 	
-
 	return json.Marshal(&struct { 
 		Attempts *int `json:"attempts,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Connectrate) MarshalJSON() ([]byte, error) {
 		ConnectRatio *float64 `json:"connectRatio,omitempty"`
 		*Alias
 	}{ 
-		Attempts: u.Attempts,
+		Attempts: o.Attempts,
 		
-		Connects: u.Connects,
+		Connects: o.Connects,
 		
-		ConnectRatio: u.ConnectRatio,
-		Alias:    (*Alias)(u),
+		ConnectRatio: o.ConnectRatio,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Connectrate) UnmarshalJSON(b []byte) error {
+	var ConnectrateMap map[string]interface{}
+	err := json.Unmarshal(b, &ConnectrateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Attempts, ok := ConnectrateMap["attempts"].(float64); ok {
+		AttemptsInt := int(Attempts)
+		o.Attempts = &AttemptsInt
+	}
+	
+	if Connects, ok := ConnectrateMap["connects"].(float64); ok {
+		ConnectsInt := int(Connects)
+		o.Connects = &ConnectsInt
+	}
+	
+	if ConnectRatio, ok := ConnectrateMap["connectRatio"].(float64); ok {
+		o.ConnectRatio = &ConnectRatio
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

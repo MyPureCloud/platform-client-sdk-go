@@ -29,13 +29,11 @@ type Surveyassignment struct {
 
 }
 
-func (u *Surveyassignment) MarshalJSON() ([]byte, error) {
+func (o *Surveyassignment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyassignment
-
 	
-
 	return json.Marshal(&struct { 
 		SurveyForm *Publishedsurveyformreference `json:"surveyForm,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Surveyassignment) MarshalJSON() ([]byte, error) {
 		SendingDomain *string `json:"sendingDomain,omitempty"`
 		*Alias
 	}{ 
-		SurveyForm: u.SurveyForm,
+		SurveyForm: o.SurveyForm,
 		
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		InviteTimeInterval: u.InviteTimeInterval,
+		InviteTimeInterval: o.InviteTimeInterval,
 		
-		SendingUser: u.SendingUser,
+		SendingUser: o.SendingUser,
 		
-		SendingDomain: u.SendingDomain,
-		Alias:    (*Alias)(u),
+		SendingDomain: o.SendingDomain,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyassignment) UnmarshalJSON(b []byte) error {
+	var SurveyassignmentMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyassignmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if SurveyForm, ok := SurveyassignmentMap["surveyForm"].(map[string]interface{}); ok {
+		SurveyFormString, _ := json.Marshal(SurveyForm)
+		json.Unmarshal(SurveyFormString, &o.SurveyForm)
+	}
+	
+	if Flow, ok := SurveyassignmentMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if InviteTimeInterval, ok := SurveyassignmentMap["inviteTimeInterval"].(string); ok {
+		o.InviteTimeInterval = &InviteTimeInterval
+	}
+	
+	if SendingUser, ok := SurveyassignmentMap["sendingUser"].(string); ok {
+		o.SendingUser = &SendingUser
+	}
+	
+	if SendingDomain, ok := SurveyassignmentMap["sendingDomain"].(string); ok {
+		o.SendingDomain = &SendingDomain
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

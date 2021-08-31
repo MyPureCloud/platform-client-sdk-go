@@ -25,13 +25,11 @@ type Permissiondetails struct {
 
 }
 
-func (u *Permissiondetails) MarshalJSON() ([]byte, error) {
+func (o *Permissiondetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Permissiondetails
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Permissiondetails) MarshalJSON() ([]byte, error) {
 		Enforced *bool `json:"enforced,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Permissions: u.Permissions,
+		Permissions: o.Permissions,
 		
-		AllowsCurrentUser: u.AllowsCurrentUser,
+		AllowsCurrentUser: o.AllowsCurrentUser,
 		
-		Enforced: u.Enforced,
-		Alias:    (*Alias)(u),
+		Enforced: o.Enforced,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Permissiondetails) UnmarshalJSON(b []byte) error {
+	var PermissiondetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &PermissiondetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := PermissiondetailsMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Permissions, ok := PermissiondetailsMap["permissions"].([]interface{}); ok {
+		PermissionsString, _ := json.Marshal(Permissions)
+		json.Unmarshal(PermissionsString, &o.Permissions)
+	}
+	
+	if AllowsCurrentUser, ok := PermissiondetailsMap["allowsCurrentUser"].(bool); ok {
+		o.AllowsCurrentUser = &AllowsCurrentUser
+	}
+	
+	if Enforced, ok := PermissiondetailsMap["enforced"].(bool); ok {
+		o.Enforced = &Enforced
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

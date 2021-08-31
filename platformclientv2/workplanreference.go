@@ -21,13 +21,11 @@ type Workplanreference struct {
 
 }
 
-func (u *Workplanreference) MarshalJSON() ([]byte, error) {
+func (o *Workplanreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Workplanreference) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ManagementUnit: u.ManagementUnit,
+		ManagementUnit: o.ManagementUnit,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanreference) UnmarshalJSON(b []byte) error {
+	var WorkplanreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WorkplanreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ManagementUnit, ok := WorkplanreferenceMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if SelfUri, ok := WorkplanreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

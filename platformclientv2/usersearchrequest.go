@@ -45,13 +45,11 @@ type Usersearchrequest struct {
 
 }
 
-func (u *Usersearchrequest) MarshalJSON() ([]byte, error) {
+func (o *Usersearchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Usersearchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		SortOrder *string `json:"sortOrder,omitempty"`
 		
@@ -72,25 +70,77 @@ func (u *Usersearchrequest) MarshalJSON() ([]byte, error) {
 		EnforcePermissions *bool `json:"enforcePermissions,omitempty"`
 		*Alias
 	}{ 
-		SortOrder: u.SortOrder,
+		SortOrder: o.SortOrder,
 		
-		SortBy: u.SortBy,
+		SortBy: o.SortBy,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		Expand: u.Expand,
+		Expand: o.Expand,
 		
-		Query: u.Query,
+		Query: o.Query,
 		
-		IntegrationPresenceSource: u.IntegrationPresenceSource,
+		IntegrationPresenceSource: o.IntegrationPresenceSource,
 		
-		EnforcePermissions: u.EnforcePermissions,
-		Alias:    (*Alias)(u),
+		EnforcePermissions: o.EnforcePermissions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Usersearchrequest) UnmarshalJSON(b []byte) error {
+	var UsersearchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UsersearchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if SortOrder, ok := UsersearchrequestMap["sortOrder"].(string); ok {
+		o.SortOrder = &SortOrder
+	}
+	
+	if SortBy, ok := UsersearchrequestMap["sortBy"].(string); ok {
+		o.SortBy = &SortBy
+	}
+	
+	if PageSize, ok := UsersearchrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := UsersearchrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Sort, ok := UsersearchrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if Expand, ok := UsersearchrequestMap["expand"].([]interface{}); ok {
+		ExpandString, _ := json.Marshal(Expand)
+		json.Unmarshal(ExpandString, &o.Expand)
+	}
+	
+	if Query, ok := UsersearchrequestMap["query"].([]interface{}); ok {
+		QueryString, _ := json.Marshal(Query)
+		json.Unmarshal(QueryString, &o.Query)
+	}
+	
+	if IntegrationPresenceSource, ok := UsersearchrequestMap["integrationPresenceSource"].(string); ok {
+		o.IntegrationPresenceSource = &IntegrationPresenceSource
+	}
+	
+	if EnforcePermissions, ok := UsersearchrequestMap["enforcePermissions"].(bool); ok {
+		o.EnforcePermissions = &EnforcePermissions
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

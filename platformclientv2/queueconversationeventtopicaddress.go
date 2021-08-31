@@ -33,13 +33,11 @@ type Queueconversationeventtopicaddress struct {
 
 }
 
-func (u *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopicaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		NameRaw: u.NameRaw,
+		NameRaw: o.NameRaw,
 		
-		AddressNormalized: u.AddressNormalized,
+		AddressNormalized: o.AddressNormalized,
 		
-		AddressRaw: u.AddressRaw,
+		AddressRaw: o.AddressRaw,
 		
-		AddressDisplayable: u.AddressDisplayable,
+		AddressDisplayable: o.AddressDisplayable,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationeventtopicaddress) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopicaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopicaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := QueueconversationeventtopicaddressMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if NameRaw, ok := QueueconversationeventtopicaddressMap["nameRaw"].(string); ok {
+		o.NameRaw = &NameRaw
+	}
+	
+	if AddressNormalized, ok := QueueconversationeventtopicaddressMap["addressNormalized"].(string); ok {
+		o.AddressNormalized = &AddressNormalized
+	}
+	
+	if AddressRaw, ok := QueueconversationeventtopicaddressMap["addressRaw"].(string); ok {
+		o.AddressRaw = &AddressRaw
+	}
+	
+	if AddressDisplayable, ok := QueueconversationeventtopicaddressMap["addressDisplayable"].(string); ok {
+		o.AddressDisplayable = &AddressDisplayable
+	}
+	
+	if AdditionalProperties, ok := QueueconversationeventtopicaddressMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

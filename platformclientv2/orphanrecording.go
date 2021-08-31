@@ -62,29 +62,27 @@ type Orphanrecording struct {
 
 }
 
-func (u *Orphanrecording) MarshalJSON() ([]byte, error) {
+func (o *Orphanrecording) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Orphanrecording
-
 	
 	CreatedTime := new(string)
-	if u.CreatedTime != nil {
+	if o.CreatedTime != nil {
 		
-		*CreatedTime = timeutil.Strftime(u.CreatedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedTime = timeutil.Strftime(o.CreatedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedTime = nil
 	}
 	
 	RecoveredTime := new(string)
-	if u.RecoveredTime != nil {
+	if o.RecoveredTime != nil {
 		
-		*RecoveredTime = timeutil.Strftime(u.RecoveredTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RecoveredTime = timeutil.Strftime(o.RecoveredTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RecoveredTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -113,33 +111,101 @@ func (u *Orphanrecording) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		CreatedTime: CreatedTime,
 		
 		RecoveredTime: RecoveredTime,
 		
-		ProviderType: u.ProviderType,
+		ProviderType: o.ProviderType,
 		
-		MediaSizeBytes: u.MediaSizeBytes,
+		MediaSizeBytes: o.MediaSizeBytes,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		FileState: u.FileState,
+		FileState: o.FileState,
 		
-		ProviderEndpoint: u.ProviderEndpoint,
+		ProviderEndpoint: o.ProviderEndpoint,
 		
-		Recording: u.Recording,
+		Recording: o.Recording,
 		
-		OrphanStatus: u.OrphanStatus,
+		OrphanStatus: o.OrphanStatus,
 		
-		SourceOrphaningId: u.SourceOrphaningId,
+		SourceOrphaningId: o.SourceOrphaningId,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Orphanrecording) UnmarshalJSON(b []byte) error {
+	var OrphanrecordingMap map[string]interface{}
+	err := json.Unmarshal(b, &OrphanrecordingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OrphanrecordingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OrphanrecordingMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if createdTimeString, ok := OrphanrecordingMap["createdTime"].(string); ok {
+		CreatedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdTimeString)
+		o.CreatedTime = &CreatedTime
+	}
+	
+	if recoveredTimeString, ok := OrphanrecordingMap["recoveredTime"].(string); ok {
+		RecoveredTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", recoveredTimeString)
+		o.RecoveredTime = &RecoveredTime
+	}
+	
+	if ProviderType, ok := OrphanrecordingMap["providerType"].(string); ok {
+		o.ProviderType = &ProviderType
+	}
+	
+	if MediaSizeBytes, ok := OrphanrecordingMap["mediaSizeBytes"].(float64); ok {
+		MediaSizeBytesInt := int(MediaSizeBytes)
+		o.MediaSizeBytes = &MediaSizeBytesInt
+	}
+	
+	if MediaType, ok := OrphanrecordingMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if FileState, ok := OrphanrecordingMap["fileState"].(string); ok {
+		o.FileState = &FileState
+	}
+	
+	if ProviderEndpoint, ok := OrphanrecordingMap["providerEndpoint"].(map[string]interface{}); ok {
+		ProviderEndpointString, _ := json.Marshal(ProviderEndpoint)
+		json.Unmarshal(ProviderEndpointString, &o.ProviderEndpoint)
+	}
+	
+	if Recording, ok := OrphanrecordingMap["recording"].(map[string]interface{}); ok {
+		RecordingString, _ := json.Marshal(Recording)
+		json.Unmarshal(RecordingString, &o.Recording)
+	}
+	
+	if OrphanStatus, ok := OrphanrecordingMap["orphanStatus"].(string); ok {
+		o.OrphanStatus = &OrphanStatus
+	}
+	
+	if SourceOrphaningId, ok := OrphanrecordingMap["sourceOrphaningId"].(string); ok {
+		o.SourceOrphaningId = &SourceOrphaningId
+	}
+	
+	if SelfUri, ok := OrphanrecordingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Policyerrors struct {
 
 }
 
-func (u *Policyerrors) MarshalJSON() ([]byte, error) {
+func (o *Policyerrors) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Policyerrors
-
 	
-
 	return json.Marshal(&struct { 
 		PolicyErrorMessages *[]Policyerrormessage `json:"policyErrorMessages,omitempty"`
 		*Alias
 	}{ 
-		PolicyErrorMessages: u.PolicyErrorMessages,
-		Alias:    (*Alias)(u),
+		PolicyErrorMessages: o.PolicyErrorMessages,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Policyerrors) UnmarshalJSON(b []byte) error {
+	var PolicyerrorsMap map[string]interface{}
+	err := json.Unmarshal(b, &PolicyerrorsMap)
+	if err != nil {
+		return err
+	}
+	
+	if PolicyErrorMessages, ok := PolicyerrorsMap["policyErrorMessages"].([]interface{}); ok {
+		PolicyErrorMessagesString, _ := json.Marshal(PolicyErrorMessages)
+		json.Unmarshal(PolicyErrorMessagesString, &o.PolicyErrorMessages)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

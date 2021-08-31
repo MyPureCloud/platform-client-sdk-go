@@ -54,21 +54,19 @@ type Createcallbackcommand struct {
 
 }
 
-func (u *Createcallbackcommand) MarshalJSON() ([]byte, error) {
+func (o *Createcallbackcommand) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createcallbackcommand
-
 	
 	CallbackScheduledTime := new(string)
-	if u.CallbackScheduledTime != nil {
+	if o.CallbackScheduledTime != nil {
 		
-		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CallbackScheduledTime = timeutil.Strftime(o.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CallbackScheduledTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ScriptId *string `json:"scriptId,omitempty"`
 		
@@ -93,29 +91,88 @@ func (u *Createcallbackcommand) MarshalJSON() ([]byte, error) {
 		CallerIdName *string `json:"callerIdName,omitempty"`
 		*Alias
 	}{ 
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		RoutingData: u.RoutingData,
+		RoutingData: o.RoutingData,
 		
-		CallbackUserName: u.CallbackUserName,
+		CallbackUserName: o.CallbackUserName,
 		
-		CallbackNumbers: u.CallbackNumbers,
+		CallbackNumbers: o.CallbackNumbers,
 		
 		CallbackScheduledTime: CallbackScheduledTime,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
-		ValidateCallbackNumbers: u.ValidateCallbackNumbers,
+		ValidateCallbackNumbers: o.ValidateCallbackNumbers,
 		
-		Data: u.Data,
+		Data: o.Data,
 		
-		CallerId: u.CallerId,
+		CallerId: o.CallerId,
 		
-		CallerIdName: u.CallerIdName,
-		Alias:    (*Alias)(u),
+		CallerIdName: o.CallerIdName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createcallbackcommand) UnmarshalJSON(b []byte) error {
+	var CreatecallbackcommandMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatecallbackcommandMap)
+	if err != nil {
+		return err
+	}
+	
+	if ScriptId, ok := CreatecallbackcommandMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if QueueId, ok := CreatecallbackcommandMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if RoutingData, ok := CreatecallbackcommandMap["routingData"].(map[string]interface{}); ok {
+		RoutingDataString, _ := json.Marshal(RoutingData)
+		json.Unmarshal(RoutingDataString, &o.RoutingData)
+	}
+	
+	if CallbackUserName, ok := CreatecallbackcommandMap["callbackUserName"].(string); ok {
+		o.CallbackUserName = &CallbackUserName
+	}
+	
+	if CallbackNumbers, ok := CreatecallbackcommandMap["callbackNumbers"].([]interface{}); ok {
+		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
+		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
+	}
+	
+	if callbackScheduledTimeString, ok := CreatecallbackcommandMap["callbackScheduledTime"].(string); ok {
+		CallbackScheduledTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callbackScheduledTimeString)
+		o.CallbackScheduledTime = &CallbackScheduledTime
+	}
+	
+	if CountryCode, ok := CreatecallbackcommandMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if ValidateCallbackNumbers, ok := CreatecallbackcommandMap["validateCallbackNumbers"].(bool); ok {
+		o.ValidateCallbackNumbers = &ValidateCallbackNumbers
+	}
+	
+	if Data, ok := CreatecallbackcommandMap["data"].(map[string]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+	if CallerId, ok := CreatecallbackcommandMap["callerId"].(string); ok {
+		o.CallerId = &CallerId
+	}
+	
+	if CallerIdName, ok := CreatecallbackcommandMap["callerIdName"].(string); ok {
+		o.CallerIdName = &CallerIdName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

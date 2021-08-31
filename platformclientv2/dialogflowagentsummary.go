@@ -29,13 +29,11 @@ type Dialogflowagentsummary struct {
 
 }
 
-func (u *Dialogflowagentsummary) MarshalJSON() ([]byte, error) {
+func (o *Dialogflowagentsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialogflowagentsummary
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Dialogflowagentsummary) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Project: u.Project,
+		Project: o.Project,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialogflowagentsummary) UnmarshalJSON(b []byte) error {
+	var DialogflowagentsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &DialogflowagentsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialogflowagentsummaryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialogflowagentsummaryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Project, ok := DialogflowagentsummaryMap["project"].(map[string]interface{}); ok {
+		ProjectString, _ := json.Marshal(Project)
+		json.Unmarshal(ProjectString, &o.Project)
+	}
+	
+	if Description, ok := DialogflowagentsummaryMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := DialogflowagentsummaryMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

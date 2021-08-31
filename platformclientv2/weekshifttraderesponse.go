@@ -17,24 +17,43 @@ type Weekshifttraderesponse struct {
 
 }
 
-func (u *Weekshifttraderesponse) MarshalJSON() ([]byte, error) {
+func (o *Weekshifttraderesponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Weekshifttraderesponse
-
 	
-
 	return json.Marshal(&struct { 
 		Trade *Shifttraderesponse `json:"trade,omitempty"`
 		
 		MatchReview *Shifttradematchreviewresponse `json:"matchReview,omitempty"`
 		*Alias
 	}{ 
-		Trade: u.Trade,
+		Trade: o.Trade,
 		
-		MatchReview: u.MatchReview,
-		Alias:    (*Alias)(u),
+		MatchReview: o.MatchReview,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Weekshifttraderesponse) UnmarshalJSON(b []byte) error {
+	var WeekshifttraderesponseMap map[string]interface{}
+	err := json.Unmarshal(b, &WeekshifttraderesponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Trade, ok := WeekshifttraderesponseMap["trade"].(map[string]interface{}); ok {
+		TradeString, _ := json.Marshal(Trade)
+		json.Unmarshal(TradeString, &o.Trade)
+	}
+	
+	if MatchReview, ok := WeekshifttraderesponseMap["matchReview"].(map[string]interface{}); ok {
+		MatchReviewString, _ := json.Marshal(MatchReview)
+		json.Unmarshal(MatchReviewString, &o.MatchReview)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

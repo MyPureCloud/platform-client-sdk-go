@@ -42,29 +42,27 @@ type Conversationbasic struct {
 
 }
 
-func (u *Conversationbasic) MarshalJSON() ([]byte, error) {
+func (o *Conversationbasic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationbasic
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -83,23 +81,70 @@ func (u *Conversationbasic) MarshalJSON() ([]byte, error) {
 		Participants *[]Participantbasic `json:"participants,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ExternalTag: u.ExternalTag,
+		ExternalTag: o.ExternalTag,
 		
 		StartTime: StartTime,
 		
 		EndTime: EndTime,
 		
-		Divisions: u.Divisions,
+		Divisions: o.Divisions,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Participants: u.Participants,
-		Alias:    (*Alias)(u),
+		Participants: o.Participants,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationbasic) UnmarshalJSON(b []byte) error {
+	var ConversationbasicMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationbasicMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationbasicMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ConversationbasicMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ExternalTag, ok := ConversationbasicMap["externalTag"].(string); ok {
+		o.ExternalTag = &ExternalTag
+	}
+	
+	if startTimeString, ok := ConversationbasicMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := ConversationbasicMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if Divisions, ok := ConversationbasicMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
+	if SelfUri, ok := ConversationbasicMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Participants, ok := ConversationbasicMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

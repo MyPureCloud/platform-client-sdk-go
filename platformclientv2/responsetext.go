@@ -17,24 +17,41 @@ type Responsetext struct {
 
 }
 
-func (u *Responsetext) MarshalJSON() ([]byte, error) {
+func (o *Responsetext) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Responsetext
-
 	
-
 	return json.Marshal(&struct { 
 		Content *string `json:"content,omitempty"`
 		
 		ContentType *string `json:"contentType,omitempty"`
 		*Alias
 	}{ 
-		Content: u.Content,
+		Content: o.Content,
 		
-		ContentType: u.ContentType,
-		Alias:    (*Alias)(u),
+		ContentType: o.ContentType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Responsetext) UnmarshalJSON(b []byte) error {
+	var ResponsetextMap map[string]interface{}
+	err := json.Unmarshal(b, &ResponsetextMap)
+	if err != nil {
+		return err
+	}
+	
+	if Content, ok := ResponsetextMap["content"].(string); ok {
+		o.Content = &Content
+	}
+	
+	if ContentType, ok := ResponsetextMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Queuemessagingaddresses struct {
 
 }
 
-func (u *Queuemessagingaddresses) MarshalJSON() ([]byte, error) {
+func (o *Queuemessagingaddresses) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queuemessagingaddresses
-
 	
-
 	return json.Marshal(&struct { 
 		SmsAddress *Domainentityref `json:"smsAddress,omitempty"`
 		*Alias
 	}{ 
-		SmsAddress: u.SmsAddress,
-		Alias:    (*Alias)(u),
+		SmsAddress: o.SmsAddress,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queuemessagingaddresses) UnmarshalJSON(b []byte) error {
+	var QueuemessagingaddressesMap map[string]interface{}
+	err := json.Unmarshal(b, &QueuemessagingaddressesMap)
+	if err != nil {
+		return err
+	}
+	
+	if SmsAddress, ok := QueuemessagingaddressesMap["smsAddress"].(map[string]interface{}); ok {
+		SmsAddressString, _ := json.Marshal(SmsAddress)
+		json.Unmarshal(SmsAddressString, &o.SmsAddress)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

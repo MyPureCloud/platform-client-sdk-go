@@ -37,13 +37,11 @@ type Contentofferstylingconfiguration struct {
 
 }
 
-func (u *Contentofferstylingconfiguration) MarshalJSON() ([]byte, error) {
+func (o *Contentofferstylingconfiguration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentofferstylingconfiguration
-
 	
-
 	return json.Marshal(&struct { 
 		Position *Contentpositionproperties `json:"position,omitempty"`
 		
@@ -60,21 +58,67 @@ func (u *Contentofferstylingconfiguration) MarshalJSON() ([]byte, error) {
 		Body *Textstyleproperties `json:"body,omitempty"`
 		*Alias
 	}{ 
-		Position: u.Position,
+		Position: o.Position,
 		
-		Offer: u.Offer,
+		Offer: o.Offer,
 		
-		CloseButton: u.CloseButton,
+		CloseButton: o.CloseButton,
 		
-		CtaButton: u.CtaButton,
+		CtaButton: o.CtaButton,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Headline: u.Headline,
+		Headline: o.Headline,
 		
-		Body: u.Body,
-		Alias:    (*Alias)(u),
+		Body: o.Body,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentofferstylingconfiguration) UnmarshalJSON(b []byte) error {
+	var ContentofferstylingconfigurationMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentofferstylingconfigurationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Position, ok := ContentofferstylingconfigurationMap["position"].(map[string]interface{}); ok {
+		PositionString, _ := json.Marshal(Position)
+		json.Unmarshal(PositionString, &o.Position)
+	}
+	
+	if Offer, ok := ContentofferstylingconfigurationMap["offer"].(map[string]interface{}); ok {
+		OfferString, _ := json.Marshal(Offer)
+		json.Unmarshal(OfferString, &o.Offer)
+	}
+	
+	if CloseButton, ok := ContentofferstylingconfigurationMap["closeButton"].(map[string]interface{}); ok {
+		CloseButtonString, _ := json.Marshal(CloseButton)
+		json.Unmarshal(CloseButtonString, &o.CloseButton)
+	}
+	
+	if CtaButton, ok := ContentofferstylingconfigurationMap["ctaButton"].(map[string]interface{}); ok {
+		CtaButtonString, _ := json.Marshal(CtaButton)
+		json.Unmarshal(CtaButtonString, &o.CtaButton)
+	}
+	
+	if Title, ok := ContentofferstylingconfigurationMap["title"].(map[string]interface{}); ok {
+		TitleString, _ := json.Marshal(Title)
+		json.Unmarshal(TitleString, &o.Title)
+	}
+	
+	if Headline, ok := ContentofferstylingconfigurationMap["headline"].(map[string]interface{}); ok {
+		HeadlineString, _ := json.Marshal(Headline)
+		json.Unmarshal(HeadlineString, &o.Headline)
+	}
+	
+	if Body, ok := ContentofferstylingconfigurationMap["body"].(map[string]interface{}); ok {
+		BodyString, _ := json.Marshal(Body)
+		json.Unmarshal(BodyString, &o.Body)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

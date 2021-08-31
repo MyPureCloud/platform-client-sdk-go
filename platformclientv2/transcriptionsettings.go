@@ -21,13 +21,11 @@ type Transcriptionsettings struct {
 
 }
 
-func (u *Transcriptionsettings) MarshalJSON() ([]byte, error) {
+func (o *Transcriptionsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptionsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Transcription *string `json:"transcription,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Transcriptionsettings) MarshalJSON() ([]byte, error) {
 		ContentSearchEnabled *bool `json:"contentSearchEnabled,omitempty"`
 		*Alias
 	}{ 
-		Transcription: u.Transcription,
+		Transcription: o.Transcription,
 		
-		TranscriptionConfidenceThreshold: u.TranscriptionConfidenceThreshold,
+		TranscriptionConfidenceThreshold: o.TranscriptionConfidenceThreshold,
 		
-		ContentSearchEnabled: u.ContentSearchEnabled,
-		Alias:    (*Alias)(u),
+		ContentSearchEnabled: o.ContentSearchEnabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptionsettings) UnmarshalJSON(b []byte) error {
+	var TranscriptionsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptionsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Transcription, ok := TranscriptionsettingsMap["transcription"].(string); ok {
+		o.Transcription = &Transcription
+	}
+	
+	if TranscriptionConfidenceThreshold, ok := TranscriptionsettingsMap["transcriptionConfidenceThreshold"].(float64); ok {
+		TranscriptionConfidenceThresholdInt := int(TranscriptionConfidenceThreshold)
+		o.TranscriptionConfidenceThreshold = &TranscriptionConfidenceThresholdInt
+	}
+	
+	if ContentSearchEnabled, ok := TranscriptionsettingsMap["contentSearchEnabled"].(bool); ok {
+		o.ContentSearchEnabled = &ContentSearchEnabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

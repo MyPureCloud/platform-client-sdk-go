@@ -25,13 +25,11 @@ type Patchcontentpositionproperties struct {
 
 }
 
-func (u *Patchcontentpositionproperties) MarshalJSON() ([]byte, error) {
+func (o *Patchcontentpositionproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchcontentpositionproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Top *string `json:"top,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Patchcontentpositionproperties) MarshalJSON() ([]byte, error) {
 		Right *string `json:"right,omitempty"`
 		*Alias
 	}{ 
-		Top: u.Top,
+		Top: o.Top,
 		
-		Bottom: u.Bottom,
+		Bottom: o.Bottom,
 		
-		Left: u.Left,
+		Left: o.Left,
 		
-		Right: u.Right,
-		Alias:    (*Alias)(u),
+		Right: o.Right,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchcontentpositionproperties) UnmarshalJSON(b []byte) error {
+	var PatchcontentpositionpropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchcontentpositionpropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Top, ok := PatchcontentpositionpropertiesMap["top"].(string); ok {
+		o.Top = &Top
+	}
+	
+	if Bottom, ok := PatchcontentpositionpropertiesMap["bottom"].(string); ok {
+		o.Bottom = &Bottom
+	}
+	
+	if Left, ok := PatchcontentpositionpropertiesMap["left"].(string); ok {
+		o.Left = &Left
+	}
+	
+	if Right, ok := PatchcontentpositionpropertiesMap["right"].(string); ok {
+		o.Right = &Right
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

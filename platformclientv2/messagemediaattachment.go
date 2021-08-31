@@ -29,13 +29,11 @@ type Messagemediaattachment struct {
 
 }
 
-func (u *Messagemediaattachment) MarshalJSON() ([]byte, error) {
+func (o *Messagemediaattachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagemediaattachment
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Messagemediaattachment) MarshalJSON() ([]byte, error) {
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
+		Url: o.Url,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ContentLength: u.ContentLength,
+		ContentLength: o.ContentLength,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagemediaattachment) UnmarshalJSON(b []byte) error {
+	var MessagemediaattachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagemediaattachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := MessagemediaattachmentMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if MediaType, ok := MessagemediaattachmentMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ContentLength, ok := MessagemediaattachmentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+	if Name, ok := MessagemediaattachmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Id, ok := MessagemediaattachmentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

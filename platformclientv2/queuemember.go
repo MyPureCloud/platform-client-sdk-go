@@ -41,13 +41,11 @@ type Queuemember struct {
 
 }
 
-func (u *Queuemember) MarshalJSON() ([]byte, error) {
+func (o *Queuemember) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queuemember
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Queuemember) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		User: u.User,
+		User: o.User,
 		
-		RingNumber: u.RingNumber,
+		RingNumber: o.RingNumber,
 		
-		Joined: u.Joined,
+		Joined: o.Joined,
 		
-		MemberBy: u.MemberBy,
+		MemberBy: o.MemberBy,
 		
-		RoutingStatus: u.RoutingStatus,
+		RoutingStatus: o.RoutingStatus,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queuemember) UnmarshalJSON(b []byte) error {
+	var QueuememberMap map[string]interface{}
+	err := json.Unmarshal(b, &QueuememberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueuememberMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := QueuememberMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if User, ok := QueuememberMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if RingNumber, ok := QueuememberMap["ringNumber"].(float64); ok {
+		RingNumberInt := int(RingNumber)
+		o.RingNumber = &RingNumberInt
+	}
+	
+	if Joined, ok := QueuememberMap["joined"].(bool); ok {
+		o.Joined = &Joined
+	}
+	
+	if MemberBy, ok := QueuememberMap["memberBy"].(string); ok {
+		o.MemberBy = &MemberBy
+	}
+	
+	if RoutingStatus, ok := QueuememberMap["routingStatus"].(map[string]interface{}); ok {
+		RoutingStatusString, _ := json.Marshal(RoutingStatus)
+		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	}
+	
+	if SelfUri, ok := QueuememberMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

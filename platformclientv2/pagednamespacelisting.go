@@ -9,16 +9,25 @@ import (
 // Pagednamespacelisting
 type Pagednamespacelisting struct { }
 
-func (u *Pagednamespacelisting) MarshalJSON() ([]byte, error) {
+func (o *Pagednamespacelisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Pagednamespacelisting
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Pagednamespacelisting) UnmarshalJSON(b []byte) error {
+	var PagednamespacelistingMap map[string]interface{}
+	err := json.Unmarshal(b, &PagednamespacelistingMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

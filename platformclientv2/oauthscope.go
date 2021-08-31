@@ -21,13 +21,11 @@ type Oauthscope struct {
 
 }
 
-func (u *Oauthscope) MarshalJSON() ([]byte, error) {
+func (o *Oauthscope) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Oauthscope
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Oauthscope) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Oauthscope) UnmarshalJSON(b []byte) error {
+	var OauthscopeMap map[string]interface{}
+	err := json.Unmarshal(b, &OauthscopeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OauthscopeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Description, ok := OauthscopeMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := OauthscopeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

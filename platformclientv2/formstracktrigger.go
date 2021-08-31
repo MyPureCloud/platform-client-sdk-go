@@ -25,13 +25,11 @@ type Formstracktrigger struct {
 
 }
 
-func (u *Formstracktrigger) MarshalJSON() ([]byte, error) {
+func (o *Formstracktrigger) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Formstracktrigger
-
 	
-
 	return json.Marshal(&struct { 
 		Selector *string `json:"selector,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Formstracktrigger) MarshalJSON() ([]byte, error) {
 		CaptureDataOnFormSubmit *bool `json:"captureDataOnFormSubmit,omitempty"`
 		*Alias
 	}{ 
-		Selector: u.Selector,
+		Selector: o.Selector,
 		
-		FormName: u.FormName,
+		FormName: o.FormName,
 		
-		CaptureDataOnFormAbandon: u.CaptureDataOnFormAbandon,
+		CaptureDataOnFormAbandon: o.CaptureDataOnFormAbandon,
 		
-		CaptureDataOnFormSubmit: u.CaptureDataOnFormSubmit,
-		Alias:    (*Alias)(u),
+		CaptureDataOnFormSubmit: o.CaptureDataOnFormSubmit,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Formstracktrigger) UnmarshalJSON(b []byte) error {
+	var FormstracktriggerMap map[string]interface{}
+	err := json.Unmarshal(b, &FormstracktriggerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Selector, ok := FormstracktriggerMap["selector"].(string); ok {
+		o.Selector = &Selector
+	}
+	
+	if FormName, ok := FormstracktriggerMap["formName"].(string); ok {
+		o.FormName = &FormName
+	}
+	
+	if CaptureDataOnFormAbandon, ok := FormstracktriggerMap["captureDataOnFormAbandon"].(bool); ok {
+		o.CaptureDataOnFormAbandon = &CaptureDataOnFormAbandon
+	}
+	
+	if CaptureDataOnFormSubmit, ok := FormstracktriggerMap["captureDataOnFormSubmit"].(bool); ok {
+		o.CaptureDataOnFormSubmit = &CaptureDataOnFormSubmit
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

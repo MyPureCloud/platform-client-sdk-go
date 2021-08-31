@@ -17,24 +17,41 @@ type Textboterrorinputevent struct {
 
 }
 
-func (u *Textboterrorinputevent) MarshalJSON() ([]byte, error) {
+func (o *Textboterrorinputevent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textboterrorinputevent
-
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
 		Message *string `json:"message,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Message: u.Message,
-		Alias:    (*Alias)(u),
+		Message: o.Message,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textboterrorinputevent) UnmarshalJSON(b []byte) error {
+	var TextboterrorinputeventMap map[string]interface{}
+	err := json.Unmarshal(b, &TextboterrorinputeventMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := TextboterrorinputeventMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Message, ok := TextboterrorinputeventMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

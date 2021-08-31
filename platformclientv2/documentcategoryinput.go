@@ -13,20 +13,33 @@ type Documentcategoryinput struct {
 
 }
 
-func (u *Documentcategoryinput) MarshalJSON() ([]byte, error) {
+func (o *Documentcategoryinput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentcategoryinput
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentcategoryinput) UnmarshalJSON(b []byte) error {
+	var DocumentcategoryinputMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentcategoryinputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DocumentcategoryinputMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Contextpattern struct {
 
 }
 
-func (u *Contextpattern) MarshalJSON() ([]byte, error) {
+func (o *Contextpattern) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contextpattern
-
 	
-
 	return json.Marshal(&struct { 
 		Criteria *[]Entitytypecriteria `json:"criteria,omitempty"`
 		*Alias
 	}{ 
-		Criteria: u.Criteria,
-		Alias:    (*Alias)(u),
+		Criteria: o.Criteria,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contextpattern) UnmarshalJSON(b []byte) error {
+	var ContextpatternMap map[string]interface{}
+	err := json.Unmarshal(b, &ContextpatternMap)
+	if err != nil {
+		return err
+	}
+	
+	if Criteria, ok := ContextpatternMap["criteria"].([]interface{}); ok {
+		CriteriaString, _ := json.Marshal(Criteria)
+		json.Unmarshal(CriteriaString, &o.Criteria)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

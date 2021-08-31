@@ -13,20 +13,34 @@ type Automatictimezonemappingsettings struct {
 
 }
 
-func (u *Automatictimezonemappingsettings) MarshalJSON() ([]byte, error) {
+func (o *Automatictimezonemappingsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Automatictimezonemappingsettings
-
 	
-
 	return json.Marshal(&struct { 
 		CallableWindows *[]Callablewindow `json:"callableWindows,omitempty"`
 		*Alias
 	}{ 
-		CallableWindows: u.CallableWindows,
-		Alias:    (*Alias)(u),
+		CallableWindows: o.CallableWindows,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Automatictimezonemappingsettings) UnmarshalJSON(b []byte) error {
+	var AutomatictimezonemappingsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &AutomatictimezonemappingsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if CallableWindows, ok := AutomatictimezonemappingsettingsMap["callableWindows"].([]interface{}); ok {
+		CallableWindowsString, _ := json.Marshal(CallableWindows)
+		json.Unmarshal(CallableWindowsString, &o.CallableWindows)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

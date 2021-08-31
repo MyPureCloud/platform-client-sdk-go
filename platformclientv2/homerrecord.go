@@ -214,21 +214,19 @@ type Homerrecord struct {
 
 }
 
-func (u *Homerrecord) MarshalJSON() ([]byte, error) {
+func (o *Homerrecord) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Homerrecord
-
 	
 	Date := new(string)
-	if u.Date != nil {
+	if o.Date != nil {
 		
-		*Date = timeutil.Strftime(u.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Date = timeutil.Strftime(o.Date, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Date = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -333,109 +331,325 @@ func (u *Homerrecord) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		Date: Date,
 		
-		MilliTs: u.MilliTs,
+		MilliTs: o.MilliTs,
 		
-		MicroTs: u.MicroTs,
+		MicroTs: o.MicroTs,
 		
-		Method: u.Method,
+		Method: o.Method,
 		
-		ReplyReason: u.ReplyReason,
+		ReplyReason: o.ReplyReason,
 		
-		Ruri: u.Ruri,
+		Ruri: o.Ruri,
 		
-		RuriUser: u.RuriUser,
+		RuriUser: o.RuriUser,
 		
-		RuriDomain: u.RuriDomain,
+		RuriDomain: o.RuriDomain,
 		
-		FromUser: u.FromUser,
+		FromUser: o.FromUser,
 		
-		FromDomain: u.FromDomain,
+		FromDomain: o.FromDomain,
 		
-		FromTag: u.FromTag,
+		FromTag: o.FromTag,
 		
-		ToUser: u.ToUser,
+		ToUser: o.ToUser,
 		
-		ToDomain: u.ToDomain,
+		ToDomain: o.ToDomain,
 		
-		ToTag: u.ToTag,
+		ToTag: o.ToTag,
 		
-		PidUser: u.PidUser,
+		PidUser: o.PidUser,
 		
-		ContactUser: u.ContactUser,
+		ContactUser: o.ContactUser,
 		
-		AuthUser: u.AuthUser,
+		AuthUser: o.AuthUser,
 		
-		Callid: u.Callid,
+		Callid: o.Callid,
 		
-		CallidAleg: u.CallidAleg,
+		CallidAleg: o.CallidAleg,
 		
-		Via1: u.Via1,
+		Via1: o.Via1,
 		
-		Via1Branch: u.Via1Branch,
+		Via1Branch: o.Via1Branch,
 		
-		Cseq: u.Cseq,
+		Cseq: o.Cseq,
 		
-		Diversion: u.Diversion,
+		Diversion: o.Diversion,
 		
-		Reason: u.Reason,
+		Reason: o.Reason,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		Auth: u.Auth,
+		Auth: o.Auth,
 		
-		UserAgent: u.UserAgent,
+		UserAgent: o.UserAgent,
 		
-		SourceIp: u.SourceIp,
+		SourceIp: o.SourceIp,
 		
-		SourcePort: u.SourcePort,
+		SourcePort: o.SourcePort,
 		
-		DestinationIp: u.DestinationIp,
+		DestinationIp: o.DestinationIp,
 		
-		DestinationPort: u.DestinationPort,
+		DestinationPort: o.DestinationPort,
 		
-		ContactIp: u.ContactIp,
+		ContactIp: o.ContactIp,
 		
-		ContactPort: u.ContactPort,
+		ContactPort: o.ContactPort,
 		
-		OriginatorIp: u.OriginatorIp,
+		OriginatorIp: o.OriginatorIp,
 		
-		OriginatorPort: u.OriginatorPort,
+		OriginatorPort: o.OriginatorPort,
 		
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		Proto: u.Proto,
+		Proto: o.Proto,
 		
-		Family: u.Family,
+		Family: o.Family,
 		
-		RtpStat: u.RtpStat,
+		RtpStat: o.RtpStat,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Node: u.Node,
+		Node: o.Node,
 		
-		Trans: u.Trans,
+		Trans: o.Trans,
 		
-		Dbnode: u.Dbnode,
+		Dbnode: o.Dbnode,
 		
-		Msg: u.Msg,
+		Msg: o.Msg,
 		
-		SourceAlias: u.SourceAlias,
+		SourceAlias: o.SourceAlias,
 		
-		DestinationAlias: u.DestinationAlias,
+		DestinationAlias: o.DestinationAlias,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		ParticipantId: u.ParticipantId,
+		ParticipantId: o.ParticipantId,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Homerrecord) UnmarshalJSON(b []byte) error {
+	var HomerrecordMap map[string]interface{}
+	err := json.Unmarshal(b, &HomerrecordMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := HomerrecordMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := HomerrecordMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateString, ok := HomerrecordMap["date"].(string); ok {
+		Date, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateString)
+		o.Date = &Date
+	}
+	
+	if MilliTs, ok := HomerrecordMap["milliTs"].(string); ok {
+		o.MilliTs = &MilliTs
+	}
+	
+	if MicroTs, ok := HomerrecordMap["microTs"].(string); ok {
+		o.MicroTs = &MicroTs
+	}
+	
+	if Method, ok := HomerrecordMap["method"].(string); ok {
+		o.Method = &Method
+	}
+	
+	if ReplyReason, ok := HomerrecordMap["replyReason"].(string); ok {
+		o.ReplyReason = &ReplyReason
+	}
+	
+	if Ruri, ok := HomerrecordMap["ruri"].(string); ok {
+		o.Ruri = &Ruri
+	}
+	
+	if RuriUser, ok := HomerrecordMap["ruriUser"].(string); ok {
+		o.RuriUser = &RuriUser
+	}
+	
+	if RuriDomain, ok := HomerrecordMap["ruriDomain"].(string); ok {
+		o.RuriDomain = &RuriDomain
+	}
+	
+	if FromUser, ok := HomerrecordMap["fromUser"].(string); ok {
+		o.FromUser = &FromUser
+	}
+	
+	if FromDomain, ok := HomerrecordMap["fromDomain"].(string); ok {
+		o.FromDomain = &FromDomain
+	}
+	
+	if FromTag, ok := HomerrecordMap["fromTag"].(string); ok {
+		o.FromTag = &FromTag
+	}
+	
+	if ToUser, ok := HomerrecordMap["toUser"].(string); ok {
+		o.ToUser = &ToUser
+	}
+	
+	if ToDomain, ok := HomerrecordMap["toDomain"].(string); ok {
+		o.ToDomain = &ToDomain
+	}
+	
+	if ToTag, ok := HomerrecordMap["toTag"].(string); ok {
+		o.ToTag = &ToTag
+	}
+	
+	if PidUser, ok := HomerrecordMap["pidUser"].(string); ok {
+		o.PidUser = &PidUser
+	}
+	
+	if ContactUser, ok := HomerrecordMap["contactUser"].(string); ok {
+		o.ContactUser = &ContactUser
+	}
+	
+	if AuthUser, ok := HomerrecordMap["authUser"].(string); ok {
+		o.AuthUser = &AuthUser
+	}
+	
+	if Callid, ok := HomerrecordMap["callid"].(string); ok {
+		o.Callid = &Callid
+	}
+	
+	if CallidAleg, ok := HomerrecordMap["callidAleg"].(string); ok {
+		o.CallidAleg = &CallidAleg
+	}
+	
+	if Via1, ok := HomerrecordMap["via1"].(string); ok {
+		o.Via1 = &Via1
+	}
+	
+	if Via1Branch, ok := HomerrecordMap["via1Branch"].(string); ok {
+		o.Via1Branch = &Via1Branch
+	}
+	
+	if Cseq, ok := HomerrecordMap["cseq"].(string); ok {
+		o.Cseq = &Cseq
+	}
+	
+	if Diversion, ok := HomerrecordMap["diversion"].(string); ok {
+		o.Diversion = &Diversion
+	}
+	
+	if Reason, ok := HomerrecordMap["reason"].(string); ok {
+		o.Reason = &Reason
+	}
+	
+	if ContentType, ok := HomerrecordMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if Auth, ok := HomerrecordMap["auth"].(string); ok {
+		o.Auth = &Auth
+	}
+	
+	if UserAgent, ok := HomerrecordMap["userAgent"].(string); ok {
+		o.UserAgent = &UserAgent
+	}
+	
+	if SourceIp, ok := HomerrecordMap["sourceIp"].(string); ok {
+		o.SourceIp = &SourceIp
+	}
+	
+	if SourcePort, ok := HomerrecordMap["sourcePort"].(string); ok {
+		o.SourcePort = &SourcePort
+	}
+	
+	if DestinationIp, ok := HomerrecordMap["destinationIp"].(string); ok {
+		o.DestinationIp = &DestinationIp
+	}
+	
+	if DestinationPort, ok := HomerrecordMap["destinationPort"].(string); ok {
+		o.DestinationPort = &DestinationPort
+	}
+	
+	if ContactIp, ok := HomerrecordMap["contactIp"].(string); ok {
+		o.ContactIp = &ContactIp
+	}
+	
+	if ContactPort, ok := HomerrecordMap["contactPort"].(string); ok {
+		o.ContactPort = &ContactPort
+	}
+	
+	if OriginatorIp, ok := HomerrecordMap["originatorIp"].(string); ok {
+		o.OriginatorIp = &OriginatorIp
+	}
+	
+	if OriginatorPort, ok := HomerrecordMap["originatorPort"].(string); ok {
+		o.OriginatorPort = &OriginatorPort
+	}
+	
+	if CorrelationId, ok := HomerrecordMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if Proto, ok := HomerrecordMap["proto"].(string); ok {
+		o.Proto = &Proto
+	}
+	
+	if Family, ok := HomerrecordMap["family"].(string); ok {
+		o.Family = &Family
+	}
+	
+	if RtpStat, ok := HomerrecordMap["rtpStat"].(string); ok {
+		o.RtpStat = &RtpStat
+	}
+	
+	if VarType, ok := HomerrecordMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Node, ok := HomerrecordMap["node"].(string); ok {
+		o.Node = &Node
+	}
+	
+	if Trans, ok := HomerrecordMap["trans"].(string); ok {
+		o.Trans = &Trans
+	}
+	
+	if Dbnode, ok := HomerrecordMap["dbnode"].(string); ok {
+		o.Dbnode = &Dbnode
+	}
+	
+	if Msg, ok := HomerrecordMap["msg"].(string); ok {
+		o.Msg = &Msg
+	}
+	
+	if SourceAlias, ok := HomerrecordMap["sourceAlias"].(string); ok {
+		o.SourceAlias = &SourceAlias
+	}
+	
+	if DestinationAlias, ok := HomerrecordMap["destinationAlias"].(string); ok {
+		o.DestinationAlias = &DestinationAlias
+	}
+	
+	if ConversationId, ok := HomerrecordMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if ParticipantId, ok := HomerrecordMap["participantId"].(string); ok {
+		o.ParticipantId = &ParticipantId
+	}
+	
+	if SelfUri, ok := HomerrecordMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -102,37 +102,35 @@ type Queueconversationeventtopicmessage struct {
 
 }
 
-func (u *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopicmessage
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -181,21 +179,21 @@ func (u *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		State: u.State,
+		State: o.State,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		ErrorInfo: u.ErrorInfo,
+		ErrorInfo: o.ErrorInfo,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
@@ -203,31 +201,145 @@ func (u *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		ToAddress: u.ToAddress,
+		ToAddress: o.ToAddress,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		Messages: u.Messages,
+		Messages: o.Messages,
 		
-		MessagesTranscriptUri: u.MessagesTranscriptUri,
+		MessagesTranscriptUri: o.MessagesTranscriptUri,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		RecipientCountry: u.RecipientCountry,
+		RecipientCountry: o.RecipientCountry,
 		
-		RecipientType: u.RecipientType,
+		RecipientType: o.RecipientType,
 		
-		JourneyContext: u.JourneyContext,
+		JourneyContext: o.JourneyContext,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationeventtopicmessage) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopicmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopicmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationeventtopicmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if State, ok := QueueconversationeventtopicmessageMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Held, ok := QueueconversationeventtopicmessageMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if ErrorInfo, ok := QueueconversationeventtopicmessageMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+	if Provider, ok := QueueconversationeventtopicmessageMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := QueueconversationeventtopicmessageMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := QueueconversationeventtopicmessageMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if DisconnectType, ok := QueueconversationeventtopicmessageMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := QueueconversationeventtopicmessageMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if connectedTimeString, ok := QueueconversationeventtopicmessageMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := QueueconversationeventtopicmessageMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if ToAddress, ok := QueueconversationeventtopicmessageMap["toAddress"].(map[string]interface{}); ok {
+		ToAddressString, _ := json.Marshal(ToAddress)
+		json.Unmarshal(ToAddressString, &o.ToAddress)
+	}
+	
+	if FromAddress, ok := QueueconversationeventtopicmessageMap["fromAddress"].(map[string]interface{}); ok {
+		FromAddressString, _ := json.Marshal(FromAddress)
+		json.Unmarshal(FromAddressString, &o.FromAddress)
+	}
+	
+	if Messages, ok := QueueconversationeventtopicmessageMap["messages"].([]interface{}); ok {
+		MessagesString, _ := json.Marshal(Messages)
+		json.Unmarshal(MessagesString, &o.Messages)
+	}
+	
+	if MessagesTranscriptUri, ok := QueueconversationeventtopicmessageMap["messagesTranscriptUri"].(string); ok {
+		o.MessagesTranscriptUri = &MessagesTranscriptUri
+	}
+	
+	if VarType, ok := QueueconversationeventtopicmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if RecipientCountry, ok := QueueconversationeventtopicmessageMap["recipientCountry"].(string); ok {
+		o.RecipientCountry = &RecipientCountry
+	}
+	
+	if RecipientType, ok := QueueconversationeventtopicmessageMap["recipientType"].(string); ok {
+		o.RecipientType = &RecipientType
+	}
+	
+	if JourneyContext, ok := QueueconversationeventtopicmessageMap["journeyContext"].(map[string]interface{}); ok {
+		JourneyContextString, _ := json.Marshal(JourneyContext)
+		json.Unmarshal(JourneyContextString, &o.JourneyContext)
+	}
+	
+	if Wrapup, ok := QueueconversationeventtopicmessageMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := QueueconversationeventtopicmessageMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := QueueconversationeventtopicmessageMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AdditionalProperties, ok := QueueconversationeventtopicmessageMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

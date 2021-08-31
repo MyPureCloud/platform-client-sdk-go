@@ -53,13 +53,11 @@ type Businessunitactivitycode struct {
 
 }
 
-func (u *Businessunitactivitycode) MarshalJSON() ([]byte, error) {
+func (o *Businessunitactivitycode) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Businessunitactivitycode
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,86 @@ func (u *Businessunitactivitycode) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Active: u.Active,
+		Active: o.Active,
 		
-		DefaultCode: u.DefaultCode,
+		DefaultCode: o.DefaultCode,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		CountsAsPaidTime: u.CountsAsPaidTime,
+		CountsAsPaidTime: o.CountsAsPaidTime,
 		
-		CountsAsWorkTime: u.CountsAsWorkTime,
+		CountsAsWorkTime: o.CountsAsWorkTime,
 		
-		AgentTimeOffSelectable: u.AgentTimeOffSelectable,
+		AgentTimeOffSelectable: o.AgentTimeOffSelectable,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Businessunitactivitycode) UnmarshalJSON(b []byte) error {
+	var BusinessunitactivitycodeMap map[string]interface{}
+	err := json.Unmarshal(b, &BusinessunitactivitycodeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BusinessunitactivitycodeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := BusinessunitactivitycodeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Active, ok := BusinessunitactivitycodeMap["active"].(bool); ok {
+		o.Active = &Active
+	}
+	
+	if DefaultCode, ok := BusinessunitactivitycodeMap["defaultCode"].(bool); ok {
+		o.DefaultCode = &DefaultCode
+	}
+	
+	if Category, ok := BusinessunitactivitycodeMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if LengthInMinutes, ok := BusinessunitactivitycodeMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if CountsAsPaidTime, ok := BusinessunitactivitycodeMap["countsAsPaidTime"].(bool); ok {
+		o.CountsAsPaidTime = &CountsAsPaidTime
+	}
+	
+	if CountsAsWorkTime, ok := BusinessunitactivitycodeMap["countsAsWorkTime"].(bool); ok {
+		o.CountsAsWorkTime = &CountsAsWorkTime
+	}
+	
+	if AgentTimeOffSelectable, ok := BusinessunitactivitycodeMap["agentTimeOffSelectable"].(bool); ok {
+		o.AgentTimeOffSelectable = &AgentTimeOffSelectable
+	}
+	
+	if Metadata, ok := BusinessunitactivitycodeMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := BusinessunitactivitycodeMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

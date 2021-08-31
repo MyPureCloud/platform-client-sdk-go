@@ -66,29 +66,27 @@ type Emergencygroup struct {
 
 }
 
-func (u *Emergencygroup) MarshalJSON() ([]byte, error) {
+func (o *Emergencygroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emergencygroup
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,35 +117,106 @@ func (u *Emergencygroup) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		EmergencyCallFlows: u.EmergencyCallFlows,
+		EmergencyCallFlows: o.EmergencyCallFlows,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emergencygroup) UnmarshalJSON(b []byte) error {
+	var EmergencygroupMap map[string]interface{}
+	err := json.Unmarshal(b, &EmergencygroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EmergencygroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EmergencygroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := EmergencygroupMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := EmergencygroupMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := EmergencygroupMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := EmergencygroupMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := EmergencygroupMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := EmergencygroupMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := EmergencygroupMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := EmergencygroupMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := EmergencygroupMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Enabled, ok := EmergencygroupMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if EmergencyCallFlows, ok := EmergencygroupMap["emergencyCallFlows"].([]interface{}); ok {
+		EmergencyCallFlowsString, _ := json.Marshal(EmergencyCallFlows)
+		json.Unmarshal(EmergencyCallFlowsString, &o.EmergencyCallFlows)
+	}
+	
+	if SelfUri, ok := EmergencygroupMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

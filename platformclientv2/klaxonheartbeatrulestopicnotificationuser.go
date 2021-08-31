@@ -17,24 +17,41 @@ type Klaxonheartbeatrulestopicnotificationuser struct {
 
 }
 
-func (u *Klaxonheartbeatrulestopicnotificationuser) MarshalJSON() ([]byte, error) {
+func (o *Klaxonheartbeatrulestopicnotificationuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Klaxonheartbeatrulestopicnotificationuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		DisplayName: u.DisplayName,
-		Alias:    (*Alias)(u),
+		DisplayName: o.DisplayName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Klaxonheartbeatrulestopicnotificationuser) UnmarshalJSON(b []byte) error {
+	var KlaxonheartbeatrulestopicnotificationuserMap map[string]interface{}
+	err := json.Unmarshal(b, &KlaxonheartbeatrulestopicnotificationuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KlaxonheartbeatrulestopicnotificationuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DisplayName, ok := KlaxonheartbeatrulestopicnotificationuserMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

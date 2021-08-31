@@ -45,13 +45,11 @@ type Klaxonheartbeatrulestopicheartbeatrule struct {
 
 }
 
-func (u *Klaxonheartbeatrulestopicheartbeatrule) MarshalJSON() ([]byte, error) {
+func (o *Klaxonheartbeatrulestopicheartbeatrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Klaxonheartbeatrulestopicheartbeatrule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,75 @@ func (u *Klaxonheartbeatrulestopicheartbeatrule) MarshalJSON() ([]byte, error) {
 		RuleType *string `json:"ruleType,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SenderId: u.SenderId,
+		SenderId: o.SenderId,
 		
-		HeartBeatTimeoutInMinutes: u.HeartBeatTimeoutInMinutes,
+		HeartBeatTimeoutInMinutes: o.HeartBeatTimeoutInMinutes,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		InAlarm: u.InAlarm,
+		InAlarm: o.InAlarm,
 		
-		NotificationUsers: u.NotificationUsers,
+		NotificationUsers: o.NotificationUsers,
 		
-		AlertTypes: u.AlertTypes,
+		AlertTypes: o.AlertTypes,
 		
-		RuleType: u.RuleType,
-		Alias:    (*Alias)(u),
+		RuleType: o.RuleType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Klaxonheartbeatrulestopicheartbeatrule) UnmarshalJSON(b []byte) error {
+	var KlaxonheartbeatrulestopicheartbeatruleMap map[string]interface{}
+	err := json.Unmarshal(b, &KlaxonheartbeatrulestopicheartbeatruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KlaxonheartbeatrulestopicheartbeatruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KlaxonheartbeatrulestopicheartbeatruleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SenderId, ok := KlaxonheartbeatrulestopicheartbeatruleMap["senderId"].(string); ok {
+		o.SenderId = &SenderId
+	}
+	
+	if HeartBeatTimeoutInMinutes, ok := KlaxonheartbeatrulestopicheartbeatruleMap["heartBeatTimeoutInMinutes"].(float64); ok {
+		HeartBeatTimeoutInMinutesFloat32 := float32(HeartBeatTimeoutInMinutes)
+		o.HeartBeatTimeoutInMinutes = &HeartBeatTimeoutInMinutesFloat32
+	}
+	
+	if Enabled, ok := KlaxonheartbeatrulestopicheartbeatruleMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if InAlarm, ok := KlaxonheartbeatrulestopicheartbeatruleMap["inAlarm"].(bool); ok {
+		o.InAlarm = &InAlarm
+	}
+	
+	if NotificationUsers, ok := KlaxonheartbeatrulestopicheartbeatruleMap["notificationUsers"].([]interface{}); ok {
+		NotificationUsersString, _ := json.Marshal(NotificationUsers)
+		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
+	}
+	
+	if AlertTypes, ok := KlaxonheartbeatrulestopicheartbeatruleMap["alertTypes"].([]interface{}); ok {
+		AlertTypesString, _ := json.Marshal(AlertTypes)
+		json.Unmarshal(AlertTypesString, &o.AlertTypes)
+	}
+	
+	if RuleType, ok := KlaxonheartbeatrulestopicheartbeatruleMap["ruleType"].(string); ok {
+		o.RuleType = &RuleType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

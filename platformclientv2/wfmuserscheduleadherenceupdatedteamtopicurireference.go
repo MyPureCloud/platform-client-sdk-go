@@ -17,24 +17,41 @@ type Wfmuserscheduleadherenceupdatedteamtopicurireference struct {
 
 }
 
-func (u *Wfmuserscheduleadherenceupdatedteamtopicurireference) MarshalJSON() ([]byte, error) {
+func (o *Wfmuserscheduleadherenceupdatedteamtopicurireference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmuserscheduleadherenceupdatedteamtopicurireference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmuserscheduleadherenceupdatedteamtopicurireference) UnmarshalJSON(b []byte) error {
+	var WfmuserscheduleadherenceupdatedteamtopicurireferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmuserscheduleadherenceupdatedteamtopicurireferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmuserscheduleadherenceupdatedteamtopicurireferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WfmuserscheduleadherenceupdatedteamtopicurireferenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

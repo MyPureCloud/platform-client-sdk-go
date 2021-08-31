@@ -29,13 +29,11 @@ type Presenceexpand struct {
 
 }
 
-func (u *Presenceexpand) MarshalJSON() ([]byte, error) {
+func (o *Presenceexpand) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Presenceexpand
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Presenceexpand) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Presences: u.Presences,
+		Presences: o.Presences,
 		
-		OutOfOffices: u.OutOfOffices,
+		OutOfOffices: o.OutOfOffices,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Presenceexpand) UnmarshalJSON(b []byte) error {
+	var PresenceexpandMap map[string]interface{}
+	err := json.Unmarshal(b, &PresenceexpandMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PresenceexpandMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PresenceexpandMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Presences, ok := PresenceexpandMap["presences"].([]interface{}); ok {
+		PresencesString, _ := json.Marshal(Presences)
+		json.Unmarshal(PresencesString, &o.Presences)
+	}
+	
+	if OutOfOffices, ok := PresenceexpandMap["outOfOffices"].([]interface{}); ok {
+		OutOfOfficesString, _ := json.Marshal(OutOfOffices)
+		json.Unmarshal(OutOfOfficesString, &o.OutOfOffices)
+	}
+	
+	if SelfUri, ok := PresenceexpandMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

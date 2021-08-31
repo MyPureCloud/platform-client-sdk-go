@@ -46,20 +46,18 @@ type Buschedulelistitem struct {
 
 }
 
-func (u *Buschedulelistitem) MarshalJSON() ([]byte, error) {
+func (o *Buschedulelistitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buschedulelistitem
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -80,25 +78,77 @@ func (u *Buschedulelistitem) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		ShortTermForecast: u.ShortTermForecast,
+		ShortTermForecast: o.ShortTermForecast,
 		
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buschedulelistitem) UnmarshalJSON(b []byte) error {
+	var BuschedulelistitemMap map[string]interface{}
+	err := json.Unmarshal(b, &BuschedulelistitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BuschedulelistitemMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BuschedulelistitemMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if WeekCount, ok := BuschedulelistitemMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if Description, ok := BuschedulelistitemMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := BuschedulelistitemMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if ShortTermForecast, ok := BuschedulelistitemMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+	if GenerationResults, ok := BuschedulelistitemMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if Metadata, ok := BuschedulelistitemMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if SelfUri, ok := BuschedulelistitemMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Queueconversationvideoeventtopicerrordetails struct {
 
 }
 
-func (u *Queueconversationvideoeventtopicerrordetails) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationvideoeventtopicerrordetails) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopicerrordetails
-
 	
-
 	return json.Marshal(&struct { 
 		Status *int `json:"status,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Queueconversationvideoeventtopicerrordetails) MarshalJSON() ([]byte, er
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		Code: u.Code,
+		Code: o.Code,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
+		MessageParams: o.MessageParams,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		Uri: u.Uri,
+		Uri: o.Uri,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationvideoeventtopicerrordetails) UnmarshalJSON(b []byte) error {
+	var QueueconversationvideoeventtopicerrordetailsMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationvideoeventtopicerrordetailsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := QueueconversationvideoeventtopicerrordetailsMap["status"].(float64); ok {
+		StatusInt := int(Status)
+		o.Status = &StatusInt
+	}
+	
+	if Code, ok := QueueconversationvideoeventtopicerrordetailsMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Message, ok := QueueconversationvideoeventtopicerrordetailsMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := QueueconversationvideoeventtopicerrordetailsMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := QueueconversationvideoeventtopicerrordetailsMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+	if ContextId, ok := QueueconversationvideoeventtopicerrordetailsMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if Uri, ok := QueueconversationvideoeventtopicerrordetailsMap["uri"].(string); ok {
+		o.Uri = &Uri
+	}
+	
+	if AdditionalProperties, ok := QueueconversationvideoeventtopicerrordetailsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

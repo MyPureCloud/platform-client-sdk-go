@@ -17,24 +17,41 @@ type Check struct {
 
 }
 
-func (u *Check) MarshalJSON() ([]byte, error) {
+func (o *Check) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Check
-
 	
-
 	return json.Marshal(&struct { 
 		Result *string `json:"result,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		Result: u.Result,
+		Result: o.Result,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Check) UnmarshalJSON(b []byte) error {
+	var CheckMap map[string]interface{}
+	err := json.Unmarshal(b, &CheckMap)
+	if err != nil {
+		return err
+	}
+	
+	if Result, ok := CheckMap["result"].(string); ok {
+		o.Result = &Result
+	}
+	
+	if VarType, ok := CheckMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

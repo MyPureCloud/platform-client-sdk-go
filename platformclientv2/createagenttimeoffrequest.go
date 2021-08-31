@@ -30,13 +30,11 @@ type Createagenttimeoffrequest struct {
 
 }
 
-func (u *Createagenttimeoffrequest) MarshalJSON() ([]byte, error) {
+func (o *Createagenttimeoffrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createagenttimeoffrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ActivityCodeId *string `json:"activityCodeId,omitempty"`
 		
@@ -49,17 +47,51 @@ func (u *Createagenttimeoffrequest) MarshalJSON() ([]byte, error) {
 		DailyDurationMinutes *int `json:"dailyDurationMinutes,omitempty"`
 		*Alias
 	}{ 
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		FullDayManagementUnitDates: u.FullDayManagementUnitDates,
+		FullDayManagementUnitDates: o.FullDayManagementUnitDates,
 		
-		PartialDayStartDateTimes: u.PartialDayStartDateTimes,
+		PartialDayStartDateTimes: o.PartialDayStartDateTimes,
 		
-		DailyDurationMinutes: u.DailyDurationMinutes,
-		Alias:    (*Alias)(u),
+		DailyDurationMinutes: o.DailyDurationMinutes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createagenttimeoffrequest) UnmarshalJSON(b []byte) error {
+	var CreateagenttimeoffrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreateagenttimeoffrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ActivityCodeId, ok := CreateagenttimeoffrequestMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if Notes, ok := CreateagenttimeoffrequestMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if FullDayManagementUnitDates, ok := CreateagenttimeoffrequestMap["fullDayManagementUnitDates"].([]interface{}); ok {
+		FullDayManagementUnitDatesString, _ := json.Marshal(FullDayManagementUnitDates)
+		json.Unmarshal(FullDayManagementUnitDatesString, &o.FullDayManagementUnitDates)
+	}
+	
+	if PartialDayStartDateTimes, ok := CreateagenttimeoffrequestMap["partialDayStartDateTimes"].([]interface{}); ok {
+		PartialDayStartDateTimesString, _ := json.Marshal(PartialDayStartDateTimes)
+		json.Unmarshal(PartialDayStartDateTimesString, &o.PartialDayStartDateTimes)
+	}
+	
+	if DailyDurationMinutes, ok := CreateagenttimeoffrequestMap["dailyDurationMinutes"].(float64); ok {
+		DailyDurationMinutesInt := int(DailyDurationMinutes)
+		o.DailyDurationMinutes = &DailyDurationMinutesInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Updatedraftinput struct {
 
 }
 
-func (u *Updatedraftinput) MarshalJSON() ([]byte, error) {
+func (o *Updatedraftinput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updatedraftinput
-
 	
-
 	return json.Marshal(&struct { 
 		Category *string `json:"category,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Updatedraftinput) MarshalJSON() ([]byte, error) {
 		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Category: u.Category,
+		Category: o.Category,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Config: u.Config,
+		Config: o.Config,
 		
-		Contract: u.Contract,
+		Contract: o.Contract,
 		
-		Secure: u.Secure,
+		Secure: o.Secure,
 		
-		Version: u.Version,
-		Alias:    (*Alias)(u),
+		Version: o.Version,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updatedraftinput) UnmarshalJSON(b []byte) error {
+	var UpdatedraftinputMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdatedraftinputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Category, ok := UpdatedraftinputMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Name, ok := UpdatedraftinputMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Config, ok := UpdatedraftinputMap["config"].(map[string]interface{}); ok {
+		ConfigString, _ := json.Marshal(Config)
+		json.Unmarshal(ConfigString, &o.Config)
+	}
+	
+	if Contract, ok := UpdatedraftinputMap["contract"].(map[string]interface{}); ok {
+		ContractString, _ := json.Marshal(Contract)
+		json.Unmarshal(ContractString, &o.Contract)
+	}
+	
+	if Secure, ok := UpdatedraftinputMap["secure"].(bool); ok {
+		o.Secure = &Secure
+	}
+	
+	if Version, ok := UpdatedraftinputMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

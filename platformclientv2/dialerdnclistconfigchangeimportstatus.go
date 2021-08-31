@@ -33,13 +33,11 @@ type Dialerdnclistconfigchangeimportstatus struct {
 
 }
 
-func (u *Dialerdnclistconfigchangeimportstatus) MarshalJSON() ([]byte, error) {
+func (o *Dialerdnclistconfigchangeimportstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerdnclistconfigchangeimportstatus
-
 	
-
 	return json.Marshal(&struct { 
 		ImportState *string `json:"importState,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Dialerdnclistconfigchangeimportstatus) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		ImportState: u.ImportState,
+		ImportState: o.ImportState,
 		
-		TotalRecords: u.TotalRecords,
+		TotalRecords: o.TotalRecords,
 		
-		CompletedRecords: u.CompletedRecords,
+		CompletedRecords: o.CompletedRecords,
 		
-		PercentageComplete: u.PercentageComplete,
+		PercentageComplete: o.PercentageComplete,
 		
-		FailureReason: u.FailureReason,
+		FailureReason: o.FailureReason,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerdnclistconfigchangeimportstatus) UnmarshalJSON(b []byte) error {
+	var DialerdnclistconfigchangeimportstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerdnclistconfigchangeimportstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if ImportState, ok := DialerdnclistconfigchangeimportstatusMap["importState"].(string); ok {
+		o.ImportState = &ImportState
+	}
+	
+	if TotalRecords, ok := DialerdnclistconfigchangeimportstatusMap["totalRecords"].(float64); ok {
+		TotalRecordsInt := int(TotalRecords)
+		o.TotalRecords = &TotalRecordsInt
+	}
+	
+	if CompletedRecords, ok := DialerdnclistconfigchangeimportstatusMap["completedRecords"].(float64); ok {
+		CompletedRecordsInt := int(CompletedRecords)
+		o.CompletedRecords = &CompletedRecordsInt
+	}
+	
+	if PercentageComplete, ok := DialerdnclistconfigchangeimportstatusMap["percentageComplete"].(float64); ok {
+		PercentageCompleteInt := int(PercentageComplete)
+		o.PercentageComplete = &PercentageCompleteInt
+	}
+	
+	if FailureReason, ok := DialerdnclistconfigchangeimportstatusMap["failureReason"].(string); ok {
+		o.FailureReason = &FailureReason
+	}
+	
+	if AdditionalProperties, ok := DialerdnclistconfigchangeimportstatusMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

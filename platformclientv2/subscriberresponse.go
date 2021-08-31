@@ -17,24 +17,42 @@ type Subscriberresponse struct {
 
 }
 
-func (u *Subscriberresponse) MarshalJSON() ([]byte, error) {
+func (o *Subscriberresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Subscriberresponse
-
 	
-
 	return json.Marshal(&struct { 
 		MessageReturned *[]string `json:"messageReturned,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		MessageReturned: u.MessageReturned,
+		MessageReturned: o.MessageReturned,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Subscriberresponse) UnmarshalJSON(b []byte) error {
+	var SubscriberresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SubscriberresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if MessageReturned, ok := SubscriberresponseMap["messageReturned"].([]interface{}); ok {
+		MessageReturnedString, _ := json.Marshal(MessageReturned)
+		json.Unmarshal(MessageReturnedString, &o.MessageReturned)
+	}
+	
+	if Status, ok := SubscriberresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

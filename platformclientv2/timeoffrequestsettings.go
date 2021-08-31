@@ -21,13 +21,11 @@ type Timeoffrequestsettings struct {
 
 }
 
-func (u *Timeoffrequestsettings) MarshalJSON() ([]byte, error) {
+func (o *Timeoffrequestsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffrequestsettings
-
 	
-
 	return json.Marshal(&struct { 
 		SubmissionRangeEnforced *bool `json:"submissionRangeEnforced,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Timeoffrequestsettings) MarshalJSON() ([]byte, error) {
 		SubmissionLatestDaysFromNow *int `json:"submissionLatestDaysFromNow,omitempty"`
 		*Alias
 	}{ 
-		SubmissionRangeEnforced: u.SubmissionRangeEnforced,
+		SubmissionRangeEnforced: o.SubmissionRangeEnforced,
 		
-		SubmissionEarliestDaysFromNow: u.SubmissionEarliestDaysFromNow,
+		SubmissionEarliestDaysFromNow: o.SubmissionEarliestDaysFromNow,
 		
-		SubmissionLatestDaysFromNow: u.SubmissionLatestDaysFromNow,
-		Alias:    (*Alias)(u),
+		SubmissionLatestDaysFromNow: o.SubmissionLatestDaysFromNow,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeoffrequestsettings) UnmarshalJSON(b []byte) error {
+	var TimeoffrequestsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeoffrequestsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if SubmissionRangeEnforced, ok := TimeoffrequestsettingsMap["submissionRangeEnforced"].(bool); ok {
+		o.SubmissionRangeEnforced = &SubmissionRangeEnforced
+	}
+	
+	if SubmissionEarliestDaysFromNow, ok := TimeoffrequestsettingsMap["submissionEarliestDaysFromNow"].(float64); ok {
+		SubmissionEarliestDaysFromNowInt := int(SubmissionEarliestDaysFromNow)
+		o.SubmissionEarliestDaysFromNow = &SubmissionEarliestDaysFromNowInt
+	}
+	
+	if SubmissionLatestDaysFromNow, ok := TimeoffrequestsettingsMap["submissionLatestDaysFromNow"].(float64); ok {
+		SubmissionLatestDaysFromNowInt := int(SubmissionLatestDaysFromNow)
+		o.SubmissionLatestDaysFromNow = &SubmissionLatestDaysFromNowInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

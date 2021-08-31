@@ -26,29 +26,27 @@ type Userlistschedulerequestbody struct {
 
 }
 
-func (u *Userlistschedulerequestbody) MarshalJSON() ([]byte, error) {
+func (o *Userlistschedulerequestbody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userlistschedulerequestbody
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		UserIds *[]string `json:"userIds,omitempty"`
 		
@@ -59,15 +57,45 @@ func (u *Userlistschedulerequestbody) MarshalJSON() ([]byte, error) {
 		LoadFullWeeks *bool `json:"loadFullWeeks,omitempty"`
 		*Alias
 	}{ 
-		UserIds: u.UserIds,
+		UserIds: o.UserIds,
 		
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
 		
-		LoadFullWeeks: u.LoadFullWeeks,
-		Alias:    (*Alias)(u),
+		LoadFullWeeks: o.LoadFullWeeks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userlistschedulerequestbody) UnmarshalJSON(b []byte) error {
+	var UserlistschedulerequestbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &UserlistschedulerequestbodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserIds, ok := UserlistschedulerequestbodyMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if startDateString, ok := UserlistschedulerequestbodyMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := UserlistschedulerequestbodyMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if LoadFullWeeks, ok := UserlistschedulerequestbodyMap["loadFullWeeks"].(bool); ok {
+		o.LoadFullWeeks = &LoadFullWeeks
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

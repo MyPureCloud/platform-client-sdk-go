@@ -33,13 +33,11 @@ type Postactioninput struct {
 
 }
 
-func (u *Postactioninput) MarshalJSON() ([]byte, error) {
+func (o *Postactioninput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Postactioninput
-
 	
-
 	return json.Marshal(&struct { 
 		Category *string `json:"category,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Postactioninput) MarshalJSON() ([]byte, error) {
 		Secure *bool `json:"secure,omitempty"`
 		*Alias
 	}{ 
-		Category: u.Category,
+		Category: o.Category,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		IntegrationId: u.IntegrationId,
+		IntegrationId: o.IntegrationId,
 		
-		Config: u.Config,
+		Config: o.Config,
 		
-		Contract: u.Contract,
+		Contract: o.Contract,
 		
-		Secure: u.Secure,
-		Alias:    (*Alias)(u),
+		Secure: o.Secure,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Postactioninput) UnmarshalJSON(b []byte) error {
+	var PostactioninputMap map[string]interface{}
+	err := json.Unmarshal(b, &PostactioninputMap)
+	if err != nil {
+		return err
+	}
+	
+	if Category, ok := PostactioninputMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Name, ok := PostactioninputMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if IntegrationId, ok := PostactioninputMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+	
+	if Config, ok := PostactioninputMap["config"].(map[string]interface{}); ok {
+		ConfigString, _ := json.Marshal(Config)
+		json.Unmarshal(ConfigString, &o.Config)
+	}
+	
+	if Contract, ok := PostactioninputMap["contract"].(map[string]interface{}); ok {
+		ContractString, _ := json.Marshal(Contract)
+		json.Unmarshal(ContractString, &o.Contract)
+	}
+	
+	if Secure, ok := PostactioninputMap["secure"].(bool); ok {
+		o.Secure = &Secure
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -41,13 +41,11 @@ type Scimconfigresourcetype struct {
 
 }
 
-func (u *Scimconfigresourcetype) MarshalJSON() ([]byte, error) {
+func (o *Scimconfigresourcetype) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimconfigresourcetype
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,69 @@ func (u *Scimconfigresourcetype) MarshalJSON() ([]byte, error) {
 		Meta *Scimmetadata `json:"meta,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		SchemaExtensions: u.SchemaExtensions,
+		SchemaExtensions: o.SchemaExtensions,
 		
-		Endpoint: u.Endpoint,
+		Endpoint: o.Endpoint,
 		
-		Meta: u.Meta,
-		Alias:    (*Alias)(u),
+		Meta: o.Meta,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimconfigresourcetype) UnmarshalJSON(b []byte) error {
+	var ScimconfigresourcetypeMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimconfigresourcetypeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ScimconfigresourcetypeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Schemas, ok := ScimconfigresourcetypeMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if Name, ok := ScimconfigresourcetypeMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ScimconfigresourcetypeMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Schema, ok := ScimconfigresourcetypeMap["schema"].(string); ok {
+		o.Schema = &Schema
+	}
+	
+	if SchemaExtensions, ok := ScimconfigresourcetypeMap["schemaExtensions"].([]interface{}); ok {
+		SchemaExtensionsString, _ := json.Marshal(SchemaExtensions)
+		json.Unmarshal(SchemaExtensionsString, &o.SchemaExtensions)
+	}
+	
+	if Endpoint, ok := ScimconfigresourcetypeMap["endpoint"].(string); ok {
+		o.Endpoint = &Endpoint
+	}
+	
+	if Meta, ok := ScimconfigresourcetypeMap["meta"].(map[string]interface{}); ok {
+		MetaString, _ := json.Marshal(Meta)
+		json.Unmarshal(MetaString, &o.Meta)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

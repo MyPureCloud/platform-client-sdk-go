@@ -26,29 +26,27 @@ type Lockinfo struct {
 
 }
 
-func (u *Lockinfo) MarshalJSON() ([]byte, error) {
+func (o *Lockinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lockinfo
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateExpires := new(string)
-	if u.DateExpires != nil {
+	if o.DateExpires != nil {
 		
-		*DateExpires = timeutil.Strftime(u.DateExpires, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateExpires = timeutil.Strftime(o.DateExpires, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateExpires = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		LockedBy *Domainentityref `json:"lockedBy,omitempty"`
 		
@@ -59,15 +57,45 @@ func (u *Lockinfo) MarshalJSON() ([]byte, error) {
 		Action *string `json:"action,omitempty"`
 		*Alias
 	}{ 
-		LockedBy: u.LockedBy,
+		LockedBy: o.LockedBy,
 		
 		DateCreated: DateCreated,
 		
 		DateExpires: DateExpires,
 		
-		Action: u.Action,
-		Alias:    (*Alias)(u),
+		Action: o.Action,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lockinfo) UnmarshalJSON(b []byte) error {
+	var LockinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &LockinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if LockedBy, ok := LockinfoMap["lockedBy"].(map[string]interface{}); ok {
+		LockedByString, _ := json.Marshal(LockedBy)
+		json.Unmarshal(LockedByString, &o.LockedBy)
+	}
+	
+	if dateCreatedString, ok := LockinfoMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateExpiresString, ok := LockinfoMap["dateExpires"].(string); ok {
+		DateExpires, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiresString)
+		o.DateExpires = &DateExpires
+	}
+	
+	if Action, ok := LockinfoMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

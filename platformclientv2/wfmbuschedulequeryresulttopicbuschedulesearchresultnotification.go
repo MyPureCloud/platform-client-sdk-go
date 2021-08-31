@@ -21,13 +21,11 @@ type Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification struct {
 
 }
 
-func (u *Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification
-
 	
-
 	return json.Marshal(&struct { 
 		OperationId *string `json:"operationId,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification) Marsha
 		DownloadUrl *string `json:"downloadUrl,omitempty"`
 		*Alias
 	}{ 
-		OperationId: u.OperationId,
+		OperationId: o.OperationId,
 		
-		BusinessUnitId: u.BusinessUnitId,
+		BusinessUnitId: o.BusinessUnitId,
 		
-		DownloadUrl: u.DownloadUrl,
-		Alias:    (*Alias)(u),
+		DownloadUrl: o.DownloadUrl,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuschedulequeryresulttopicbuschedulesearchresultnotification) UnmarshalJSON(b []byte) error {
+	var WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if OperationId, ok := WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+	if BusinessUnitId, ok := WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap["businessUnitId"].(string); ok {
+		o.BusinessUnitId = &BusinessUnitId
+	}
+	
+	if DownloadUrl, ok := WfmbuschedulequeryresulttopicbuschedulesearchresultnotificationMap["downloadUrl"].(string); ok {
+		o.DownloadUrl = &DownloadUrl
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Resolutiondetailquerypredicate struct {
 
 }
 
-func (u *Resolutiondetailquerypredicate) MarshalJSON() ([]byte, error) {
+func (o *Resolutiondetailquerypredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Resolutiondetailquerypredicate
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Resolutiondetailquerypredicate) MarshalJSON() ([]byte, error) {
 		VarRange *Numericrange `json:"range,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Operator: u.Operator,
+		Operator: o.Operator,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarRange: u.VarRange,
-		Alias:    (*Alias)(u),
+		VarRange: o.VarRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Resolutiondetailquerypredicate) UnmarshalJSON(b []byte) error {
+	var ResolutiondetailquerypredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &ResolutiondetailquerypredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ResolutiondetailquerypredicateMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Metric, ok := ResolutiondetailquerypredicateMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Operator, ok := ResolutiondetailquerypredicateMap["operator"].(string); ok {
+		o.Operator = &Operator
+	}
+	
+	if Value, ok := ResolutiondetailquerypredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarRange, ok := ResolutiondetailquerypredicateMap["range"].(map[string]interface{}); ok {
+		VarRangeString, _ := json.Marshal(VarRange)
+		json.Unmarshal(VarRangeString, &o.VarRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

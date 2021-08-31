@@ -21,13 +21,11 @@ type Timeoffrequestquerybody struct {
 
 }
 
-func (u *Timeoffrequestquerybody) MarshalJSON() ([]byte, error) {
+func (o *Timeoffrequestquerybody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeoffrequestquerybody
-
 	
-
 	return json.Marshal(&struct { 
 		UserIds *[]string `json:"userIds,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Timeoffrequestquerybody) MarshalJSON() ([]byte, error) {
 		DateRange *Daterange `json:"dateRange,omitempty"`
 		*Alias
 	}{ 
-		UserIds: u.UserIds,
+		UserIds: o.UserIds,
 		
-		Statuses: u.Statuses,
+		Statuses: o.Statuses,
 		
-		DateRange: u.DateRange,
-		Alias:    (*Alias)(u),
+		DateRange: o.DateRange,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeoffrequestquerybody) UnmarshalJSON(b []byte) error {
+	var TimeoffrequestquerybodyMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeoffrequestquerybodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserIds, ok := TimeoffrequestquerybodyMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if Statuses, ok := TimeoffrequestquerybodyMap["statuses"].([]interface{}); ok {
+		StatusesString, _ := json.Marshal(Statuses)
+		json.Unmarshal(StatusesString, &o.Statuses)
+	}
+	
+	if DateRange, ok := TimeoffrequestquerybodyMap["dateRange"].(map[string]interface{}); ok {
+		DateRangeString, _ := json.Marshal(DateRange)
+		json.Unmarshal(DateRangeString, &o.DateRange)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

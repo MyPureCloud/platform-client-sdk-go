@@ -21,13 +21,11 @@ type Analyticsproperty struct {
 
 }
 
-func (u *Analyticsproperty) MarshalJSON() ([]byte, error) {
+func (o *Analyticsproperty) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsproperty
-
 	
-
 	return json.Marshal(&struct { 
 		Property *string `json:"property,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Analyticsproperty) MarshalJSON() ([]byte, error) {
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Property: u.Property,
+		Property: o.Property,
 		
-		PropertyType: u.PropertyType,
+		PropertyType: o.PropertyType,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsproperty) UnmarshalJSON(b []byte) error {
+	var AnalyticspropertyMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticspropertyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Property, ok := AnalyticspropertyMap["property"].(string); ok {
+		o.Property = &Property
+	}
+	
+	if PropertyType, ok := AnalyticspropertyMap["propertyType"].(string); ok {
+		o.PropertyType = &PropertyType
+	}
+	
+	if Value, ok := AnalyticspropertyMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

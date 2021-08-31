@@ -21,13 +21,11 @@ type Whatsappdefinition struct {
 
 }
 
-func (u *Whatsappdefinition) MarshalJSON() ([]byte, error) {
+func (o *Whatsappdefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Whatsappdefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Whatsappdefinition) MarshalJSON() ([]byte, error) {
 		Language *string `json:"language,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Namespace: u.Namespace,
+		Namespace: o.Namespace,
 		
-		Language: u.Language,
-		Alias:    (*Alias)(u),
+		Language: o.Language,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Whatsappdefinition) UnmarshalJSON(b []byte) error {
+	var WhatsappdefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &WhatsappdefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := WhatsappdefinitionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Namespace, ok := WhatsappdefinitionMap["namespace"].(string); ok {
+		o.Namespace = &Namespace
+	}
+	
+	if Language, ok := WhatsappdefinitionMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

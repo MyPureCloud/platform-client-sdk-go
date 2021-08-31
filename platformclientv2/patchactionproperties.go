@@ -29,13 +29,11 @@ type Patchactionproperties struct {
 
 }
 
-func (u *Patchactionproperties) MarshalJSON() ([]byte, error) {
+func (o *Patchactionproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchactionproperties
-
 	
-
 	return json.Marshal(&struct { 
 		WebchatPrompt *string `json:"webchatPrompt,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Patchactionproperties) MarshalJSON() ([]byte, error) {
 		WebchatSurvey *Patchactionsurvey `json:"webchatSurvey,omitempty"`
 		*Alias
 	}{ 
-		WebchatPrompt: u.WebchatPrompt,
+		WebchatPrompt: o.WebchatPrompt,
 		
-		WebchatTitleText: u.WebchatTitleText,
+		WebchatTitleText: o.WebchatTitleText,
 		
-		WebchatAcceptText: u.WebchatAcceptText,
+		WebchatAcceptText: o.WebchatAcceptText,
 		
-		WebchatDeclineText: u.WebchatDeclineText,
+		WebchatDeclineText: o.WebchatDeclineText,
 		
-		WebchatSurvey: u.WebchatSurvey,
-		Alias:    (*Alias)(u),
+		WebchatSurvey: o.WebchatSurvey,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchactionproperties) UnmarshalJSON(b []byte) error {
+	var PatchactionpropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchactionpropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if WebchatPrompt, ok := PatchactionpropertiesMap["webchatPrompt"].(string); ok {
+		o.WebchatPrompt = &WebchatPrompt
+	}
+	
+	if WebchatTitleText, ok := PatchactionpropertiesMap["webchatTitleText"].(string); ok {
+		o.WebchatTitleText = &WebchatTitleText
+	}
+	
+	if WebchatAcceptText, ok := PatchactionpropertiesMap["webchatAcceptText"].(string); ok {
+		o.WebchatAcceptText = &WebchatAcceptText
+	}
+	
+	if WebchatDeclineText, ok := PatchactionpropertiesMap["webchatDeclineText"].(string); ok {
+		o.WebchatDeclineText = &WebchatDeclineText
+	}
+	
+	if WebchatSurvey, ok := PatchactionpropertiesMap["webchatSurvey"].(map[string]interface{}); ok {
+		WebchatSurveyString, _ := json.Marshal(WebchatSurvey)
+		json.Unmarshal(WebchatSurveyString, &o.WebchatSurvey)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

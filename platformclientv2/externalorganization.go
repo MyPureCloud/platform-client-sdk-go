@@ -98,29 +98,27 @@ type Externalorganization struct {
 
 }
 
-func (u *Externalorganization) MarshalJSON() ([]byte, error) {
+func (o *Externalorganization) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Externalorganization
-
 	
 	ModifyDate := new(string)
-	if u.ModifyDate != nil {
+	if o.ModifyDate != nil {
 		
-		*ModifyDate = timeutil.Strftime(u.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifyDate = timeutil.Strftime(o.ModifyDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifyDate = nil
 	}
 	
 	CreateDate := new(string)
-	if u.CreateDate != nil {
+	if o.CreateDate != nil {
 		
-		*CreateDate = timeutil.Strftime(u.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreateDate = timeutil.Strftime(o.CreateDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreateDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -167,51 +165,165 @@ func (u *Externalorganization) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		CompanyType: u.CompanyType,
+		CompanyType: o.CompanyType,
 		
-		Industry: u.Industry,
+		Industry: o.Industry,
 		
-		PrimaryContactId: u.PrimaryContactId,
+		PrimaryContactId: o.PrimaryContactId,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		FaxNumber: u.FaxNumber,
+		FaxNumber: o.FaxNumber,
 		
-		EmployeeCount: u.EmployeeCount,
+		EmployeeCount: o.EmployeeCount,
 		
-		Revenue: u.Revenue,
+		Revenue: o.Revenue,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		Websites: u.Websites,
+		Websites: o.Websites,
 		
-		Tickers: u.Tickers,
+		Tickers: o.Tickers,
 		
-		TwitterId: u.TwitterId,
+		TwitterId: o.TwitterId,
 		
-		ExternalSystemUrl: u.ExternalSystemUrl,
+		ExternalSystemUrl: o.ExternalSystemUrl,
 		
 		ModifyDate: ModifyDate,
 		
 		CreateDate: CreateDate,
 		
-		Trustor: u.Trustor,
+		Trustor: o.Trustor,
 		
-		Schema: u.Schema,
+		Schema: o.Schema,
 		
-		CustomFields: u.CustomFields,
+		CustomFields: o.CustomFields,
 		
-		ExternalDataSources: u.ExternalDataSources,
+		ExternalDataSources: o.ExternalDataSources,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Externalorganization) UnmarshalJSON(b []byte) error {
+	var ExternalorganizationMap map[string]interface{}
+	err := json.Unmarshal(b, &ExternalorganizationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ExternalorganizationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ExternalorganizationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if CompanyType, ok := ExternalorganizationMap["companyType"].(string); ok {
+		o.CompanyType = &CompanyType
+	}
+	
+	if Industry, ok := ExternalorganizationMap["industry"].(string); ok {
+		o.Industry = &Industry
+	}
+	
+	if PrimaryContactId, ok := ExternalorganizationMap["primaryContactId"].(string); ok {
+		o.PrimaryContactId = &PrimaryContactId
+	}
+	
+	if Address, ok := ExternalorganizationMap["address"].(map[string]interface{}); ok {
+		AddressString, _ := json.Marshal(Address)
+		json.Unmarshal(AddressString, &o.Address)
+	}
+	
+	if PhoneNumber, ok := ExternalorganizationMap["phoneNumber"].(map[string]interface{}); ok {
+		PhoneNumberString, _ := json.Marshal(PhoneNumber)
+		json.Unmarshal(PhoneNumberString, &o.PhoneNumber)
+	}
+	
+	if FaxNumber, ok := ExternalorganizationMap["faxNumber"].(map[string]interface{}); ok {
+		FaxNumberString, _ := json.Marshal(FaxNumber)
+		json.Unmarshal(FaxNumberString, &o.FaxNumber)
+	}
+	
+	if EmployeeCount, ok := ExternalorganizationMap["employeeCount"].(float64); ok {
+		EmployeeCountInt := int(EmployeeCount)
+		o.EmployeeCount = &EmployeeCountInt
+	}
+	
+	if Revenue, ok := ExternalorganizationMap["revenue"].(float64); ok {
+		RevenueInt := int(Revenue)
+		o.Revenue = &RevenueInt
+	}
+	
+	if Tags, ok := ExternalorganizationMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if Websites, ok := ExternalorganizationMap["websites"].([]interface{}); ok {
+		WebsitesString, _ := json.Marshal(Websites)
+		json.Unmarshal(WebsitesString, &o.Websites)
+	}
+	
+	if Tickers, ok := ExternalorganizationMap["tickers"].([]interface{}); ok {
+		TickersString, _ := json.Marshal(Tickers)
+		json.Unmarshal(TickersString, &o.Tickers)
+	}
+	
+	if TwitterId, ok := ExternalorganizationMap["twitterId"].(map[string]interface{}); ok {
+		TwitterIdString, _ := json.Marshal(TwitterId)
+		json.Unmarshal(TwitterIdString, &o.TwitterId)
+	}
+	
+	if ExternalSystemUrl, ok := ExternalorganizationMap["externalSystemUrl"].(string); ok {
+		o.ExternalSystemUrl = &ExternalSystemUrl
+	}
+	
+	if modifyDateString, ok := ExternalorganizationMap["modifyDate"].(string); ok {
+		ModifyDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifyDateString)
+		o.ModifyDate = &ModifyDate
+	}
+	
+	if createDateString, ok := ExternalorganizationMap["createDate"].(string); ok {
+		CreateDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createDateString)
+		o.CreateDate = &CreateDate
+	}
+	
+	if Trustor, ok := ExternalorganizationMap["trustor"].(map[string]interface{}); ok {
+		TrustorString, _ := json.Marshal(Trustor)
+		json.Unmarshal(TrustorString, &o.Trustor)
+	}
+	
+	if Schema, ok := ExternalorganizationMap["schema"].(map[string]interface{}); ok {
+		SchemaString, _ := json.Marshal(Schema)
+		json.Unmarshal(SchemaString, &o.Schema)
+	}
+	
+	if CustomFields, ok := ExternalorganizationMap["customFields"].(map[string]interface{}); ok {
+		CustomFieldsString, _ := json.Marshal(CustomFields)
+		json.Unmarshal(CustomFieldsString, &o.CustomFields)
+	}
+	
+	if ExternalDataSources, ok := ExternalorganizationMap["externalDataSources"].([]interface{}); ok {
+		ExternalDataSourcesString, _ := json.Marshal(ExternalDataSources)
+		json.Unmarshal(ExternalDataSourcesString, &o.ExternalDataSources)
+	}
+	
+	if SelfUri, ok := ExternalorganizationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

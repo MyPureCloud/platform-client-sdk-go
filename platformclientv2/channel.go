@@ -22,21 +22,19 @@ type Channel struct {
 
 }
 
-func (u *Channel) MarshalJSON() ([]byte, error) {
+func (o *Channel) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Channel
-
 	
 	Expires := new(string)
-	if u.Expires != nil {
+	if o.Expires != nil {
 		
-		*Expires = timeutil.Strftime(u.Expires, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Expires = timeutil.Strftime(o.Expires, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Expires = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ConnectUri *string `json:"connectUri,omitempty"`
 		
@@ -45,13 +43,37 @@ func (u *Channel) MarshalJSON() ([]byte, error) {
 		Expires *string `json:"expires,omitempty"`
 		*Alias
 	}{ 
-		ConnectUri: u.ConnectUri,
+		ConnectUri: o.ConnectUri,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
 		Expires: Expires,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Channel) UnmarshalJSON(b []byte) error {
+	var ChannelMap map[string]interface{}
+	err := json.Unmarshal(b, &ChannelMap)
+	if err != nil {
+		return err
+	}
+	
+	if ConnectUri, ok := ChannelMap["connectUri"].(string); ok {
+		o.ConnectUri = &ConnectUri
+	}
+	
+	if Id, ok := ChannelMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if expiresString, ok := ChannelMap["expires"].(string); ok {
+		Expires, _ := time.Parse("2006-01-02T15:04:05.999999Z", expiresString)
+		o.Expires = &Expires
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Scimv2enterpriseuser struct {
 
 }
 
-func (u *Scimv2enterpriseuser) MarshalJSON() ([]byte, error) {
+func (o *Scimv2enterpriseuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimv2enterpriseuser
-
 	
-
 	return json.Marshal(&struct { 
 		Division *string `json:"division,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Scimv2enterpriseuser) MarshalJSON() ([]byte, error) {
 		EmployeeNumber *string `json:"employeeNumber,omitempty"`
 		*Alias
 	}{ 
-		Division: u.Division,
+		Division: o.Division,
 		
-		Department: u.Department,
+		Department: o.Department,
 		
-		Manager: u.Manager,
+		Manager: o.Manager,
 		
-		EmployeeNumber: u.EmployeeNumber,
-		Alias:    (*Alias)(u),
+		EmployeeNumber: o.EmployeeNumber,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimv2enterpriseuser) UnmarshalJSON(b []byte) error {
+	var Scimv2enterpriseuserMap map[string]interface{}
+	err := json.Unmarshal(b, &Scimv2enterpriseuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Division, ok := Scimv2enterpriseuserMap["division"].(string); ok {
+		o.Division = &Division
+	}
+	
+	if Department, ok := Scimv2enterpriseuserMap["department"].(string); ok {
+		o.Department = &Department
+	}
+	
+	if Manager, ok := Scimv2enterpriseuserMap["manager"].(map[string]interface{}); ok {
+		ManagerString, _ := json.Marshal(Manager)
+		json.Unmarshal(ManagerString, &o.Manager)
+	}
+	
+	if EmployeeNumber, ok := Scimv2enterpriseuserMap["employeeNumber"].(string); ok {
+		o.EmployeeNumber = &EmployeeNumber
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

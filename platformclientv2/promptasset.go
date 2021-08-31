@@ -61,13 +61,11 @@ type Promptasset struct {
 
 }
 
-func (u *Promptasset) MarshalJSON() ([]byte, error) {
+func (o *Promptasset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Promptasset
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -96,33 +94,97 @@ func (u *Promptasset) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PromptId: u.PromptId,
+		PromptId: o.PromptId,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		MediaUri: u.MediaUri,
+		MediaUri: o.MediaUri,
 		
-		TtsString: u.TtsString,
+		TtsString: o.TtsString,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		UploadStatus: u.UploadStatus,
+		UploadStatus: o.UploadStatus,
 		
-		UploadUri: u.UploadUri,
+		UploadUri: o.UploadUri,
 		
-		LanguageDefault: u.LanguageDefault,
+		LanguageDefault: o.LanguageDefault,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		DurationSeconds: u.DurationSeconds,
+		DurationSeconds: o.DurationSeconds,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Promptasset) UnmarshalJSON(b []byte) error {
+	var PromptassetMap map[string]interface{}
+	err := json.Unmarshal(b, &PromptassetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PromptassetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PromptassetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PromptId, ok := PromptassetMap["promptId"].(string); ok {
+		o.PromptId = &PromptId
+	}
+	
+	if Language, ok := PromptassetMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if MediaUri, ok := PromptassetMap["mediaUri"].(string); ok {
+		o.MediaUri = &MediaUri
+	}
+	
+	if TtsString, ok := PromptassetMap["ttsString"].(string); ok {
+		o.TtsString = &TtsString
+	}
+	
+	if Text, ok := PromptassetMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if UploadStatus, ok := PromptassetMap["uploadStatus"].(string); ok {
+		o.UploadStatus = &UploadStatus
+	}
+	
+	if UploadUri, ok := PromptassetMap["uploadUri"].(string); ok {
+		o.UploadUri = &UploadUri
+	}
+	
+	if LanguageDefault, ok := PromptassetMap["languageDefault"].(bool); ok {
+		o.LanguageDefault = &LanguageDefault
+	}
+	
+	if Tags, ok := PromptassetMap["tags"].(map[string]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if DurationSeconds, ok := PromptassetMap["durationSeconds"].(float64); ok {
+		o.DurationSeconds = &DurationSeconds
+	}
+	
+	if SelfUri, ok := PromptassetMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

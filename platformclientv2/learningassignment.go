@@ -82,37 +82,35 @@ type Learningassignment struct {
 
 }
 
-func (u *Learningassignment) MarshalJSON() ([]byte, error) {
+func (o *Learningassignment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignment
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateRecommendedForCompletion := new(string)
-	if u.DateRecommendedForCompletion != nil {
+	if o.DateRecommendedForCompletion != nil {
 		
-		*DateRecommendedForCompletion = timeutil.Strftime(u.DateRecommendedForCompletion, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateRecommendedForCompletion = timeutil.Strftime(o.DateRecommendedForCompletion, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateRecommendedForCompletion = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -151,43 +149,137 @@ func (u *Learningassignment) MarshalJSON() ([]byte, error) {
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Assessment: u.Assessment,
+		Assessment: o.Assessment,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		IsOverdue: u.IsOverdue,
+		IsOverdue: o.IsOverdue,
 		
-		PercentageScore: u.PercentageScore,
+		PercentageScore: o.PercentageScore,
 		
-		IsRule: u.IsRule,
+		IsRule: o.IsRule,
 		
-		IsManual: u.IsManual,
+		IsManual: o.IsManual,
 		
-		IsPassed: u.IsPassed,
+		IsPassed: o.IsPassed,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateRecommendedForCompletion: DateRecommendedForCompletion,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Module: u.Module,
+		Module: o.Module,
 		
-		User: u.User,
+		User: o.User,
 		
-		AssessmentForm: u.AssessmentForm,
-		Alias:    (*Alias)(u),
+		AssessmentForm: o.AssessmentForm,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignment) UnmarshalJSON(b []byte) error {
+	var LearningassignmentMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LearningassignmentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Assessment, ok := LearningassignmentMap["assessment"].(map[string]interface{}); ok {
+		AssessmentString, _ := json.Marshal(Assessment)
+		json.Unmarshal(AssessmentString, &o.Assessment)
+	}
+	
+	if CreatedBy, ok := LearningassignmentMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := LearningassignmentMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ModifiedBy, ok := LearningassignmentMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := LearningassignmentMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if IsOverdue, ok := LearningassignmentMap["isOverdue"].(bool); ok {
+		o.IsOverdue = &IsOverdue
+	}
+	
+	if PercentageScore, ok := LearningassignmentMap["percentageScore"].(float64); ok {
+		PercentageScoreFloat32 := float32(PercentageScore)
+		o.PercentageScore = &PercentageScoreFloat32
+	}
+	
+	if IsRule, ok := LearningassignmentMap["isRule"].(bool); ok {
+		o.IsRule = &IsRule
+	}
+	
+	if IsManual, ok := LearningassignmentMap["isManual"].(bool); ok {
+		o.IsManual = &IsManual
+	}
+	
+	if IsPassed, ok := LearningassignmentMap["isPassed"].(bool); ok {
+		o.IsPassed = &IsPassed
+	}
+	
+	if SelfUri, ok := LearningassignmentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if State, ok := LearningassignmentMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateRecommendedForCompletionString, ok := LearningassignmentMap["dateRecommendedForCompletion"].(string); ok {
+		DateRecommendedForCompletion, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateRecommendedForCompletionString)
+		o.DateRecommendedForCompletion = &DateRecommendedForCompletion
+	}
+	
+	if Version, ok := LearningassignmentMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Module, ok := LearningassignmentMap["module"].(map[string]interface{}); ok {
+		ModuleString, _ := json.Marshal(Module)
+		json.Unmarshal(ModuleString, &o.Module)
+	}
+	
+	if User, ok := LearningassignmentMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if AssessmentForm, ok := LearningassignmentMap["assessmentForm"].(map[string]interface{}); ok {
+		AssessmentFormString, _ := json.Marshal(AssessmentForm)
+		json.Unmarshal(AssessmentFormString, &o.AssessmentForm)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

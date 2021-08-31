@@ -33,13 +33,11 @@ type Actionoutput struct {
 
 }
 
-func (u *Actionoutput) MarshalJSON() ([]byte, error) {
+func (o *Actionoutput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actionoutput
-
 	
-
 	return json.Marshal(&struct { 
 		SuccessSchema *Jsonschemadocument `json:"successSchema,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Actionoutput) MarshalJSON() ([]byte, error) {
 		ErrorSchemaFlattened *interface{} `json:"errorSchemaFlattened,omitempty"`
 		*Alias
 	}{ 
-		SuccessSchema: u.SuccessSchema,
+		SuccessSchema: o.SuccessSchema,
 		
-		SuccessSchemaUri: u.SuccessSchemaUri,
+		SuccessSchemaUri: o.SuccessSchemaUri,
 		
-		ErrorSchema: u.ErrorSchema,
+		ErrorSchema: o.ErrorSchema,
 		
-		ErrorSchemaUri: u.ErrorSchemaUri,
+		ErrorSchemaUri: o.ErrorSchemaUri,
 		
-		SuccessSchemaFlattened: u.SuccessSchemaFlattened,
+		SuccessSchemaFlattened: o.SuccessSchemaFlattened,
 		
-		ErrorSchemaFlattened: u.ErrorSchemaFlattened,
-		Alias:    (*Alias)(u),
+		ErrorSchemaFlattened: o.ErrorSchemaFlattened,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actionoutput) UnmarshalJSON(b []byte) error {
+	var ActionoutputMap map[string]interface{}
+	err := json.Unmarshal(b, &ActionoutputMap)
+	if err != nil {
+		return err
+	}
+	
+	if SuccessSchema, ok := ActionoutputMap["successSchema"].(map[string]interface{}); ok {
+		SuccessSchemaString, _ := json.Marshal(SuccessSchema)
+		json.Unmarshal(SuccessSchemaString, &o.SuccessSchema)
+	}
+	
+	if SuccessSchemaUri, ok := ActionoutputMap["successSchemaUri"].(string); ok {
+		o.SuccessSchemaUri = &SuccessSchemaUri
+	}
+	
+	if ErrorSchema, ok := ActionoutputMap["errorSchema"].(map[string]interface{}); ok {
+		ErrorSchemaString, _ := json.Marshal(ErrorSchema)
+		json.Unmarshal(ErrorSchemaString, &o.ErrorSchema)
+	}
+	
+	if ErrorSchemaUri, ok := ActionoutputMap["errorSchemaUri"].(string); ok {
+		o.ErrorSchemaUri = &ErrorSchemaUri
+	}
+	
+	if SuccessSchemaFlattened, ok := ActionoutputMap["successSchemaFlattened"].(map[string]interface{}); ok {
+		SuccessSchemaFlattenedString, _ := json.Marshal(SuccessSchemaFlattened)
+		json.Unmarshal(SuccessSchemaFlattenedString, &o.SuccessSchemaFlattened)
+	}
+	
+	if ErrorSchemaFlattened, ok := ActionoutputMap["errorSchemaFlattened"].(map[string]interface{}); ok {
+		ErrorSchemaFlattenedString, _ := json.Marshal(ErrorSchemaFlattened)
+		json.Unmarshal(ErrorSchemaFlattenedString, &o.ErrorSchemaFlattened)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

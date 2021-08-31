@@ -13,20 +13,34 @@ type Architectflownotificationerrormessageparams struct {
 
 }
 
-func (u *Architectflownotificationerrormessageparams) MarshalJSON() ([]byte, error) {
+func (o *Architectflownotificationerrormessageparams) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectflownotificationerrormessageparams
-
 	
-
 	return json.Marshal(&struct { 
 		AdditionalProperties *map[string]string `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectflownotificationerrormessageparams) UnmarshalJSON(b []byte) error {
+	var ArchitectflownotificationerrormessageparamsMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectflownotificationerrormessageparamsMap)
+	if err != nil {
+		return err
+	}
+	
+	if AdditionalProperties, ok := ArchitectflownotificationerrormessageparamsMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

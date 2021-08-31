@@ -49,13 +49,11 @@ type Okta struct {
 
 }
 
-func (u *Okta) MarshalJSON() ([]byte, error) {
+func (o *Okta) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Okta
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,79 @@ func (u *Okta) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		IssuerURI: u.IssuerURI,
+		IssuerURI: o.IssuerURI,
 		
-		SsoTargetURI: u.SsoTargetURI,
+		SsoTargetURI: o.SsoTargetURI,
 		
-		SloURI: u.SloURI,
+		SloURI: o.SloURI,
 		
-		SloBinding: u.SloBinding,
+		SloBinding: o.SloBinding,
 		
-		Certificate: u.Certificate,
+		Certificate: o.Certificate,
 		
-		Certificates: u.Certificates,
+		Certificates: o.Certificates,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Okta) UnmarshalJSON(b []byte) error {
+	var OktaMap map[string]interface{}
+	err := json.Unmarshal(b, &OktaMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OktaMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OktaMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := OktaMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if IssuerURI, ok := OktaMap["issuerURI"].(string); ok {
+		o.IssuerURI = &IssuerURI
+	}
+	
+	if SsoTargetURI, ok := OktaMap["ssoTargetURI"].(string); ok {
+		o.SsoTargetURI = &SsoTargetURI
+	}
+	
+	if SloURI, ok := OktaMap["sloURI"].(string); ok {
+		o.SloURI = &SloURI
+	}
+	
+	if SloBinding, ok := OktaMap["sloBinding"].(string); ok {
+		o.SloBinding = &SloBinding
+	}
+	
+	if Certificate, ok := OktaMap["certificate"].(string); ok {
+		o.Certificate = &Certificate
+	}
+	
+	if Certificates, ok := OktaMap["certificates"].([]interface{}); ok {
+		CertificatesString, _ := json.Marshal(Certificates)
+		json.Unmarshal(CertificatesString, &o.Certificates)
+	}
+	
+	if SelfUri, ok := OktaMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

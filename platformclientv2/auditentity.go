@@ -25,13 +25,11 @@ type Auditentity struct {
 
 }
 
-func (u *Auditentity) MarshalJSON() ([]byte, error) {
+func (o *Auditentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditentity
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Auditentity) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditentity) UnmarshalJSON(b []byte) error {
+	var AuditentityMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := AuditentityMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Id, ok := AuditentityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AuditentityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := AuditentityMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

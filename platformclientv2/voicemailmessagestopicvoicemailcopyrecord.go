@@ -17,24 +17,43 @@ type Voicemailmessagestopicvoicemailcopyrecord struct {
 
 }
 
-func (u *Voicemailmessagestopicvoicemailcopyrecord) MarshalJSON() ([]byte, error) {
+func (o *Voicemailmessagestopicvoicemailcopyrecord) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Voicemailmessagestopicvoicemailcopyrecord
-
 	
-
 	return json.Marshal(&struct { 
 		User *Voicemailmessagestopicowner `json:"user,omitempty"`
 		
 		Group *Voicemailmessagestopicowner `json:"group,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Group: u.Group,
-		Alias:    (*Alias)(u),
+		Group: o.Group,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Voicemailmessagestopicvoicemailcopyrecord) UnmarshalJSON(b []byte) error {
+	var VoicemailmessagestopicvoicemailcopyrecordMap map[string]interface{}
+	err := json.Unmarshal(b, &VoicemailmessagestopicvoicemailcopyrecordMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := VoicemailmessagestopicvoicemailcopyrecordMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Group, ok := VoicemailmessagestopicvoicemailcopyrecordMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

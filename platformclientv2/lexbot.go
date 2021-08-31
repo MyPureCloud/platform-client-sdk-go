@@ -25,13 +25,11 @@ type Lexbot struct {
 
 }
 
-func (u *Lexbot) MarshalJSON() ([]byte, error) {
+func (o *Lexbot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lexbot
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Lexbot) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lexbot) UnmarshalJSON(b []byte) error {
+	var LexbotMap map[string]interface{}
+	err := json.Unmarshal(b, &LexbotMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LexbotMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LexbotMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := LexbotMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := LexbotMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

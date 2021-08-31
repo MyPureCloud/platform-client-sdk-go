@@ -17,24 +17,42 @@ type Workplanconstraintconflictmessage struct {
 
 }
 
-func (u *Workplanconstraintconflictmessage) MarshalJSON() ([]byte, error) {
+func (o *Workplanconstraintconflictmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanconstraintconflictmessage
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		Arguments *[]Workplanvalidationmessageargument `json:"arguments,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Arguments: u.Arguments,
-		Alias:    (*Alias)(u),
+		Arguments: o.Arguments,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanconstraintconflictmessage) UnmarshalJSON(b []byte) error {
+	var WorkplanconstraintconflictmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanconstraintconflictmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := WorkplanconstraintconflictmessageMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Arguments, ok := WorkplanconstraintconflictmessageMap["arguments"].([]interface{}); ok {
+		ArgumentsString, _ := json.Marshal(Arguments)
+		json.Unmarshal(ArgumentsString, &o.Arguments)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

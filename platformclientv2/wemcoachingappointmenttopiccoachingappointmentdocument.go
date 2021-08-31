@@ -17,24 +17,41 @@ type Wemcoachingappointmenttopiccoachingappointmentdocument struct {
 
 }
 
-func (u *Wemcoachingappointmenttopiccoachingappointmentdocument) MarshalJSON() ([]byte, error) {
+func (o *Wemcoachingappointmenttopiccoachingappointmentdocument) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wemcoachingappointmenttopiccoachingappointmentdocument
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Action: u.Action,
-		Alias:    (*Alias)(u),
+		Action: o.Action,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wemcoachingappointmenttopiccoachingappointmentdocument) UnmarshalJSON(b []byte) error {
+	var WemcoachingappointmenttopiccoachingappointmentdocumentMap map[string]interface{}
+	err := json.Unmarshal(b, &WemcoachingappointmenttopiccoachingappointmentdocumentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WemcoachingappointmenttopiccoachingappointmentdocumentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Action, ok := WemcoachingappointmenttopiccoachingappointmentdocumentMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

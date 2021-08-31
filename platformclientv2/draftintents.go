@@ -25,13 +25,11 @@ type Draftintents struct {
 
 }
 
-func (u *Draftintents) MarshalJSON() ([]byte, error) {
+func (o *Draftintents) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Draftintents
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Draftintents) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Utterances: u.Utterances,
+		Utterances: o.Utterances,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Draftintents) UnmarshalJSON(b []byte) error {
+	var DraftintentsMap map[string]interface{}
+	err := json.Unmarshal(b, &DraftintentsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DraftintentsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DraftintentsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Utterances, ok := DraftintentsMap["utterances"].([]interface{}); ok {
+		UtterancesString, _ := json.Marshal(Utterances)
+		json.Unmarshal(UtterancesString, &o.Utterances)
+	}
+	
+	if SelfUri, ok := DraftintentsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

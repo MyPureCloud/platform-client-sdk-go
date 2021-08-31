@@ -17,24 +17,42 @@ type Apiusagequeryresult struct {
 
 }
 
-func (u *Apiusagequeryresult) MarshalJSON() ([]byte, error) {
+func (o *Apiusagequeryresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Apiusagequeryresult
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Apiusagerow `json:"results,omitempty"`
 		
 		QueryStatus *string `json:"queryStatus,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
+		Results: o.Results,
 		
-		QueryStatus: u.QueryStatus,
-		Alias:    (*Alias)(u),
+		QueryStatus: o.QueryStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Apiusagequeryresult) UnmarshalJSON(b []byte) error {
+	var ApiusagequeryresultMap map[string]interface{}
+	err := json.Unmarshal(b, &ApiusagequeryresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := ApiusagequeryresultMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if QueryStatus, ok := ApiusagequeryresultMap["queryStatus"].(string); ok {
+		o.QueryStatus = &QueryStatus
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

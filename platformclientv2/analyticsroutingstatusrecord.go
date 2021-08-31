@@ -22,29 +22,27 @@ type Analyticsroutingstatusrecord struct {
 
 }
 
-func (u *Analyticsroutingstatusrecord) MarshalJSON() ([]byte, error) {
+func (o *Analyticsroutingstatusrecord) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsroutingstatusrecord
-
 	
 	StartTime := new(string)
-	if u.StartTime != nil {
+	if o.StartTime != nil {
 		
-		*StartTime = timeutil.Strftime(u.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartTime = timeutil.Strftime(o.StartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartTime = nil
 	}
 	
 	EndTime := new(string)
-	if u.EndTime != nil {
+	if o.EndTime != nil {
 		
-		*EndTime = timeutil.Strftime(u.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndTime = timeutil.Strftime(o.EndTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartTime *string `json:"startTime,omitempty"`
 		
@@ -57,9 +55,34 @@ func (u *Analyticsroutingstatusrecord) MarshalJSON() ([]byte, error) {
 		
 		EndTime: EndTime,
 		
-		RoutingStatus: u.RoutingStatus,
-		Alias:    (*Alias)(u),
+		RoutingStatus: o.RoutingStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsroutingstatusrecord) UnmarshalJSON(b []byte) error {
+	var AnalyticsroutingstatusrecordMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsroutingstatusrecordMap)
+	if err != nil {
+		return err
+	}
+	
+	if startTimeString, ok := AnalyticsroutingstatusrecordMap["startTime"].(string); ok {
+		StartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startTimeString)
+		o.StartTime = &StartTime
+	}
+	
+	if endTimeString, ok := AnalyticsroutingstatusrecordMap["endTime"].(string); ok {
+		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
+		o.EndTime = &EndTime
+	}
+	
+	if RoutingStatus, ok := AnalyticsroutingstatusrecordMap["routingStatus"].(string); ok {
+		o.RoutingStatus = &RoutingStatus
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

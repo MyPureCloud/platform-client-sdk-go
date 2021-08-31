@@ -29,13 +29,11 @@ type Domainorgroledifference struct {
 
 }
 
-func (u *Domainorgroledifference) MarshalJSON() ([]byte, error) {
+func (o *Domainorgroledifference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainorgroledifference
-
 	
-
 	return json.Marshal(&struct { 
 		RemovedPermissionPolicies *[]Domainpermissionpolicy `json:"removedPermissionPolicies,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Domainorgroledifference) MarshalJSON() ([]byte, error) {
 		RoleFromDefault *Domainorganizationrole `json:"roleFromDefault,omitempty"`
 		*Alias
 	}{ 
-		RemovedPermissionPolicies: u.RemovedPermissionPolicies,
+		RemovedPermissionPolicies: o.RemovedPermissionPolicies,
 		
-		AddedPermissionPolicies: u.AddedPermissionPolicies,
+		AddedPermissionPolicies: o.AddedPermissionPolicies,
 		
-		SamePermissionPolicies: u.SamePermissionPolicies,
+		SamePermissionPolicies: o.SamePermissionPolicies,
 		
-		UserOrgRole: u.UserOrgRole,
+		UserOrgRole: o.UserOrgRole,
 		
-		RoleFromDefault: u.RoleFromDefault,
-		Alias:    (*Alias)(u),
+		RoleFromDefault: o.RoleFromDefault,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainorgroledifference) UnmarshalJSON(b []byte) error {
+	var DomainorgroledifferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainorgroledifferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if RemovedPermissionPolicies, ok := DomainorgroledifferenceMap["removedPermissionPolicies"].([]interface{}); ok {
+		RemovedPermissionPoliciesString, _ := json.Marshal(RemovedPermissionPolicies)
+		json.Unmarshal(RemovedPermissionPoliciesString, &o.RemovedPermissionPolicies)
+	}
+	
+	if AddedPermissionPolicies, ok := DomainorgroledifferenceMap["addedPermissionPolicies"].([]interface{}); ok {
+		AddedPermissionPoliciesString, _ := json.Marshal(AddedPermissionPolicies)
+		json.Unmarshal(AddedPermissionPoliciesString, &o.AddedPermissionPolicies)
+	}
+	
+	if SamePermissionPolicies, ok := DomainorgroledifferenceMap["samePermissionPolicies"].([]interface{}); ok {
+		SamePermissionPoliciesString, _ := json.Marshal(SamePermissionPolicies)
+		json.Unmarshal(SamePermissionPoliciesString, &o.SamePermissionPolicies)
+	}
+	
+	if UserOrgRole, ok := DomainorgroledifferenceMap["userOrgRole"].(map[string]interface{}); ok {
+		UserOrgRoleString, _ := json.Marshal(UserOrgRole)
+		json.Unmarshal(UserOrgRoleString, &o.UserOrgRole)
+	}
+	
+	if RoleFromDefault, ok := DomainorgroledifferenceMap["roleFromDefault"].(map[string]interface{}); ok {
+		RoleFromDefaultString, _ := json.Marshal(RoleFromDefault)
+		json.Unmarshal(RoleFromDefaultString, &o.RoleFromDefault)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

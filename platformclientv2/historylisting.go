@@ -90,29 +90,27 @@ type Historylisting struct {
 
 }
 
-func (u *Historylisting) MarshalJSON() ([]byte, error) {
+func (o *Historylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historylisting
-
 	
 	Started := new(string)
-	if u.Started != nil {
+	if o.Started != nil {
 		
-		*Started = timeutil.Strftime(u.Started, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Started = timeutil.Strftime(o.Started, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Started = nil
 	}
 	
 	Completed := new(string)
-	if u.Completed != nil {
+	if o.Completed != nil {
 		
-		*Completed = timeutil.Strftime(u.Completed, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Completed = timeutil.Strftime(o.Completed, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Completed = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -155,47 +153,149 @@ func (u *Historylisting) MarshalJSON() ([]byte, error) {
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Complete: u.Complete,
+		Complete: o.Complete,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		ErrorDetails: u.ErrorDetails,
+		ErrorDetails: o.ErrorDetails,
 		
-		ErrorMessageParams: u.ErrorMessageParams,
+		ErrorMessageParams: o.ErrorMessageParams,
 		
-		ActionName: u.ActionName,
+		ActionName: o.ActionName,
 		
-		ActionStatus: u.ActionStatus,
+		ActionStatus: o.ActionStatus,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		System: u.System,
+		System: o.System,
 		
 		Started: Started,
 		
 		Completed: Completed,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historylisting) UnmarshalJSON(b []byte) error {
+	var HistorylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &HistorylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := HistorylistingMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Complete, ok := HistorylistingMap["complete"].(bool); ok {
+		o.Complete = &Complete
+	}
+	
+	if User, ok := HistorylistingMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := HistorylistingMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if ErrorMessage, ok := HistorylistingMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if ErrorCode, ok := HistorylistingMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if ErrorDetails, ok := HistorylistingMap["errorDetails"].([]interface{}); ok {
+		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
+		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
+	}
+	
+	if ErrorMessageParams, ok := HistorylistingMap["errorMessageParams"].(map[string]interface{}); ok {
+		ErrorMessageParamsString, _ := json.Marshal(ErrorMessageParams)
+		json.Unmarshal(ErrorMessageParamsString, &o.ErrorMessageParams)
+	}
+	
+	if ActionName, ok := HistorylistingMap["actionName"].(string); ok {
+		o.ActionName = &ActionName
+	}
+	
+	if ActionStatus, ok := HistorylistingMap["actionStatus"].(string); ok {
+		o.ActionStatus = &ActionStatus
+	}
+	
+	if Name, ok := HistorylistingMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := HistorylistingMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if System, ok := HistorylistingMap["system"].(bool); ok {
+		o.System = &System
+	}
+	
+	if startedString, ok := HistorylistingMap["started"].(string); ok {
+		Started, _ := time.Parse("2006-01-02T15:04:05.999999Z", startedString)
+		o.Started = &Started
+	}
+	
+	if completedString, ok := HistorylistingMap["completed"].(string); ok {
+		Completed, _ := time.Parse("2006-01-02T15:04:05.999999Z", completedString)
+		o.Completed = &Completed
+	}
+	
+	if Entities, ok := HistorylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if Total, ok := HistorylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageSize, ok := HistorylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := HistorylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PageCount, ok := HistorylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

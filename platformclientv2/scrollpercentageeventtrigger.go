@@ -17,24 +17,42 @@ type Scrollpercentageeventtrigger struct {
 
 }
 
-func (u *Scrollpercentageeventtrigger) MarshalJSON() ([]byte, error) {
+func (o *Scrollpercentageeventtrigger) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scrollpercentageeventtrigger
-
 	
-
 	return json.Marshal(&struct { 
 		Percentage *int `json:"percentage,omitempty"`
 		
 		EventName *string `json:"eventName,omitempty"`
 		*Alias
 	}{ 
-		Percentage: u.Percentage,
+		Percentage: o.Percentage,
 		
-		EventName: u.EventName,
-		Alias:    (*Alias)(u),
+		EventName: o.EventName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scrollpercentageeventtrigger) UnmarshalJSON(b []byte) error {
+	var ScrollpercentageeventtriggerMap map[string]interface{}
+	err := json.Unmarshal(b, &ScrollpercentageeventtriggerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Percentage, ok := ScrollpercentageeventtriggerMap["percentage"].(float64); ok {
+		PercentageInt := int(Percentage)
+		o.Percentage = &PercentageInt
+	}
+	
+	if EventName, ok := ScrollpercentageeventtriggerMap["eventName"].(string); ok {
+		o.EventName = &EventName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

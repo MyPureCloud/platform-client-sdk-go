@@ -13,20 +13,34 @@ type Fileuploadsettings struct {
 
 }
 
-func (u *Fileuploadsettings) MarshalJSON() ([]byte, error) {
+func (o *Fileuploadsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Fileuploadsettings
-
 	
-
 	return json.Marshal(&struct { 
 		Modes *[]Fileuploadmode `json:"modes,omitempty"`
 		*Alias
 	}{ 
-		Modes: u.Modes,
-		Alias:    (*Alias)(u),
+		Modes: o.Modes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Fileuploadsettings) UnmarshalJSON(b []byte) error {
+	var FileuploadsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &FileuploadsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Modes, ok := FileuploadsettingsMap["modes"].([]interface{}); ok {
+		ModesString, _ := json.Marshal(Modes)
+		json.Unmarshal(ModesString, &o.Modes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

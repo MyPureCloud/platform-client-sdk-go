@@ -13,20 +13,34 @@ type Unreadmetric struct {
 
 }
 
-func (u *Unreadmetric) MarshalJSON() ([]byte, error) {
+func (o *Unreadmetric) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Unreadmetric
-
 	
-
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		*Alias
 	}{ 
-		Count: u.Count,
-		Alias:    (*Alias)(u),
+		Count: o.Count,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Unreadmetric) UnmarshalJSON(b []byte) error {
+	var UnreadmetricMap map[string]interface{}
+	err := json.Unmarshal(b, &UnreadmetricMap)
+	if err != nil {
+		return err
+	}
+	
+	if Count, ok := UnreadmetricMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

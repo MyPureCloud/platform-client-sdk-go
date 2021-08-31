@@ -21,13 +21,11 @@ type Answeroption struct {
 
 }
 
-func (u *Answeroption) MarshalJSON() ([]byte, error) {
+func (o *Answeroption) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Answeroption
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Answeroption) MarshalJSON() ([]byte, error) {
 		Value *int `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Answeroption) UnmarshalJSON(b []byte) error {
+	var AnsweroptionMap map[string]interface{}
+	err := json.Unmarshal(b, &AnsweroptionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AnsweroptionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Text, ok := AnsweroptionMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Value, ok := AnsweroptionMap["value"].(float64); ok {
+		ValueInt := int(Value)
+		o.Value = &ValueInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

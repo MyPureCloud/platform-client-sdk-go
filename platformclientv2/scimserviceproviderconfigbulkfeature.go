@@ -21,13 +21,11 @@ type Scimserviceproviderconfigbulkfeature struct {
 
 }
 
-func (u *Scimserviceproviderconfigbulkfeature) MarshalJSON() ([]byte, error) {
+func (o *Scimserviceproviderconfigbulkfeature) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimserviceproviderconfigbulkfeature
-
 	
-
 	return json.Marshal(&struct { 
 		Supported *bool `json:"supported,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Scimserviceproviderconfigbulkfeature) MarshalJSON() ([]byte, error) {
 		MaxPayloadSize *int `json:"maxPayloadSize,omitempty"`
 		*Alias
 	}{ 
-		Supported: u.Supported,
+		Supported: o.Supported,
 		
-		MaxOperations: u.MaxOperations,
+		MaxOperations: o.MaxOperations,
 		
-		MaxPayloadSize: u.MaxPayloadSize,
-		Alias:    (*Alias)(u),
+		MaxPayloadSize: o.MaxPayloadSize,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimserviceproviderconfigbulkfeature) UnmarshalJSON(b []byte) error {
+	var ScimserviceproviderconfigbulkfeatureMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimserviceproviderconfigbulkfeatureMap)
+	if err != nil {
+		return err
+	}
+	
+	if Supported, ok := ScimserviceproviderconfigbulkfeatureMap["supported"].(bool); ok {
+		o.Supported = &Supported
+	}
+	
+	if MaxOperations, ok := ScimserviceproviderconfigbulkfeatureMap["maxOperations"].(float64); ok {
+		MaxOperationsInt := int(MaxOperations)
+		o.MaxOperations = &MaxOperationsInt
+	}
+	
+	if MaxPayloadSize, ok := ScimserviceproviderconfigbulkfeatureMap["maxPayloadSize"].(float64); ok {
+		MaxPayloadSizeInt := int(MaxPayloadSize)
+		o.MaxPayloadSize = &MaxPayloadSizeInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

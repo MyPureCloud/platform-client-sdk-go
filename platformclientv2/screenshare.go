@@ -70,37 +70,35 @@ type Screenshare struct {
 
 }
 
-func (u *Screenshare) MarshalJSON() ([]byte, error) {
+func (o *Screenshare) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Screenshare
-
 	
 	StartAlertingTime := new(string)
-	if u.StartAlertingTime != nil {
+	if o.StartAlertingTime != nil {
 		
-		*StartAlertingTime = timeutil.Strftime(u.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartAlertingTime = timeutil.Strftime(o.StartAlertingTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartAlertingTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -133,17 +131,17 @@ func (u *Screenshare) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Context: u.Context,
+		Context: o.Context,
 		
-		Sharing: u.Sharing,
+		Sharing: o.Sharing,
 		
-		PeerCount: u.PeerCount,
+		PeerCount: o.PeerCount,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartAlertingTime: StartAlertingTime,
 		
@@ -151,19 +149,97 @@ func (u *Screenshare) MarshalJSON() ([]byte, error) {
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		Segments: u.Segments,
+		Segments: o.Segments,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
-		Alias:    (*Alias)(u),
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Screenshare) UnmarshalJSON(b []byte) error {
+	var ScreenshareMap map[string]interface{}
+	err := json.Unmarshal(b, &ScreenshareMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := ScreenshareMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := ScreenshareMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Context, ok := ScreenshareMap["context"].(string); ok {
+		o.Context = &Context
+	}
+	
+	if Sharing, ok := ScreenshareMap["sharing"].(bool); ok {
+		o.Sharing = &Sharing
+	}
+	
+	if PeerCount, ok := ScreenshareMap["peerCount"].(float64); ok {
+		PeerCountInt := int(PeerCount)
+		o.PeerCount = &PeerCountInt
+	}
+	
+	if DisconnectType, ok := ScreenshareMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startAlertingTimeString, ok := ScreenshareMap["startAlertingTime"].(string); ok {
+		StartAlertingTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startAlertingTimeString)
+		o.StartAlertingTime = &StartAlertingTime
+	}
+	
+	if connectedTimeString, ok := ScreenshareMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := ScreenshareMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Provider, ok := ScreenshareMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if PeerId, ok := ScreenshareMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if Segments, ok := ScreenshareMap["segments"].([]interface{}); ok {
+		SegmentsString, _ := json.Marshal(Segments)
+		json.Unmarshal(SegmentsString, &o.Segments)
+	}
+	
+	if Wrapup, ok := ScreenshareMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := ScreenshareMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := ScreenshareMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

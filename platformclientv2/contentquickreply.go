@@ -29,13 +29,11 @@ type Contentquickreply struct {
 
 }
 
-func (u *Contentquickreply) MarshalJSON() ([]byte, error) {
+func (o *Contentquickreply) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentquickreply
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Contentquickreply) MarshalJSON() ([]byte, error) {
 		Action *string `json:"action,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Payload: u.Payload,
+		Payload: o.Payload,
 		
-		Image: u.Image,
+		Image: o.Image,
 		
-		Action: u.Action,
-		Alias:    (*Alias)(u),
+		Action: o.Action,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentquickreply) UnmarshalJSON(b []byte) error {
+	var ContentquickreplyMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentquickreplyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ContentquickreplyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Text, ok := ContentquickreplyMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Payload, ok := ContentquickreplyMap["payload"].(string); ok {
+		o.Payload = &Payload
+	}
+	
+	if Image, ok := ContentquickreplyMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if Action, ok := ContentquickreplyMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

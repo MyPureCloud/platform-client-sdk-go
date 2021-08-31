@@ -74,45 +74,43 @@ type Wemcoachingappointmenttopiccoachingappointmentnotification struct {
 
 }
 
-func (u *Wemcoachingappointmenttopiccoachingappointmentnotification) MarshalJSON() ([]byte, error) {
+func (o *Wemcoachingappointmenttopiccoachingappointmentnotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wemcoachingappointmenttopiccoachingappointmentnotification
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateCompleted := new(string)
-	if u.DateCompleted != nil {
+	if o.DateCompleted != nil {
 		
-		*DateCompleted = timeutil.Strftime(u.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCompleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -147,39 +145,126 @@ func (u *Wemcoachingappointmenttopiccoachingappointmentnotification) MarshalJSON
 		ExternalLinks *[]Wemcoachingappointmenttopiccoachingappointmentexternallink `json:"externalLinks,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateStart: DateStart,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Facilitator: u.Facilitator,
+		Facilitator: o.Facilitator,
 		
-		Attendees: u.Attendees,
+		Attendees: o.Attendees,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		Conversations: u.Conversations,
+		Conversations: o.Conversations,
 		
-		Documents: u.Documents,
+		Documents: o.Documents,
 		
-		ChangeType: u.ChangeType,
+		ChangeType: o.ChangeType,
 		
 		DateCompleted: DateCompleted,
 		
-		ExternalLinks: u.ExternalLinks,
-		Alias:    (*Alias)(u),
+		ExternalLinks: o.ExternalLinks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wemcoachingappointmenttopiccoachingappointmentnotification) UnmarshalJSON(b []byte) error {
+	var WemcoachingappointmenttopiccoachingappointmentnotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WemcoachingappointmenttopiccoachingappointmentnotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateStartString, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if LengthInMinutes, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if Status, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Facilitator, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["facilitator"].(map[string]interface{}); ok {
+		FacilitatorString, _ := json.Marshal(Facilitator)
+		json.Unmarshal(FacilitatorString, &o.Facilitator)
+	}
+	
+	if Attendees, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["attendees"].([]interface{}); ok {
+		AttendeesString, _ := json.Marshal(Attendees)
+		json.Unmarshal(AttendeesString, &o.Attendees)
+	}
+	
+	if CreatedBy, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if ModifiedBy, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Conversations, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["conversations"].([]interface{}); ok {
+		ConversationsString, _ := json.Marshal(Conversations)
+		json.Unmarshal(ConversationsString, &o.Conversations)
+	}
+	
+	if Documents, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["documents"].([]interface{}); ok {
+		DocumentsString, _ := json.Marshal(Documents)
+		json.Unmarshal(DocumentsString, &o.Documents)
+	}
+	
+	if ChangeType, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["changeType"].(string); ok {
+		o.ChangeType = &ChangeType
+	}
+	
+	if dateCompletedString, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if ExternalLinks, ok := WemcoachingappointmenttopiccoachingappointmentnotificationMap["externalLinks"].([]interface{}); ok {
+		ExternalLinksString, _ := json.Marshal(ExternalLinks)
+		json.Unmarshal(ExternalLinksString, &o.ExternalLinks)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

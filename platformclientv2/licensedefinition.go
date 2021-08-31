@@ -33,13 +33,11 @@ type Licensedefinition struct {
 
 }
 
-func (u *Licensedefinition) MarshalJSON() ([]byte, error) {
+func (o *Licensedefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Licensedefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Licensedefinition) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Permissions: u.Permissions,
+		Permissions: o.Permissions,
 		
-		Prerequisites: u.Prerequisites,
+		Prerequisites: o.Prerequisites,
 		
-		Comprises: u.Comprises,
+		Comprises: o.Comprises,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Licensedefinition) UnmarshalJSON(b []byte) error {
+	var LicensedefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &LicensedefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LicensedefinitionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Description, ok := LicensedefinitionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Permissions, ok := LicensedefinitionMap["permissions"].(map[string]interface{}); ok {
+		PermissionsString, _ := json.Marshal(Permissions)
+		json.Unmarshal(PermissionsString, &o.Permissions)
+	}
+	
+	if Prerequisites, ok := LicensedefinitionMap["prerequisites"].([]interface{}); ok {
+		PrerequisitesString, _ := json.Marshal(Prerequisites)
+		json.Unmarshal(PrerequisitesString, &o.Prerequisites)
+	}
+	
+	if Comprises, ok := LicensedefinitionMap["comprises"].([]interface{}); ok {
+		ComprisesString, _ := json.Marshal(Comprises)
+		json.Unmarshal(ComprisesString, &o.Comprises)
+	}
+	
+	if SelfUri, ok := LicensedefinitionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

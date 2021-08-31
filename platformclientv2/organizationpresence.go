@@ -54,29 +54,27 @@ type Organizationpresence struct {
 
 }
 
-func (u *Organizationpresence) MarshalJSON() ([]byte, error) {
+func (o *Organizationpresence) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Organizationpresence
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -101,29 +99,89 @@ func (u *Organizationpresence) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		LanguageLabels: u.LanguageLabels,
+		LanguageLabels: o.LanguageLabels,
 		
-		SystemPresence: u.SystemPresence,
+		SystemPresence: o.SystemPresence,
 		
-		Deactivated: u.Deactivated,
+		Deactivated: o.Deactivated,
 		
-		Primary: u.Primary,
+		Primary: o.Primary,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		CreatedDate: CreatedDate,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		ModifiedDate: ModifiedDate,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Organizationpresence) UnmarshalJSON(b []byte) error {
+	var OrganizationpresenceMap map[string]interface{}
+	err := json.Unmarshal(b, &OrganizationpresenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OrganizationpresenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OrganizationpresenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if LanguageLabels, ok := OrganizationpresenceMap["languageLabels"].(map[string]interface{}); ok {
+		LanguageLabelsString, _ := json.Marshal(LanguageLabels)
+		json.Unmarshal(LanguageLabelsString, &o.LanguageLabels)
+	}
+	
+	if SystemPresence, ok := OrganizationpresenceMap["systemPresence"].(string); ok {
+		o.SystemPresence = &SystemPresence
+	}
+	
+	if Deactivated, ok := OrganizationpresenceMap["deactivated"].(bool); ok {
+		o.Deactivated = &Deactivated
+	}
+	
+	if Primary, ok := OrganizationpresenceMap["primary"].(bool); ok {
+		o.Primary = &Primary
+	}
+	
+	if CreatedBy, ok := OrganizationpresenceMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if createdDateString, ok := OrganizationpresenceMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if ModifiedBy, ok := OrganizationpresenceMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if modifiedDateString, ok := OrganizationpresenceMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if SelfUri, ok := OrganizationpresenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

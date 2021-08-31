@@ -78,37 +78,35 @@ type Reportschedule struct {
 
 }
 
-func (u *Reportschedule) MarshalJSON() ([]byte, error) {
+func (o *Reportschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportschedule
-
 	
 	NextFireTime := new(string)
-	if u.NextFireTime != nil {
+	if o.NextFireTime != nil {
 		
-		*NextFireTime = timeutil.Strftime(u.NextFireTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*NextFireTime = timeutil.Strftime(o.NextFireTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		NextFireTime = nil
 	}
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -145,11 +143,11 @@ func (u *Reportschedule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		QuartzCronExpression: u.QuartzCronExpression,
+		QuartzCronExpression: o.QuartzCronExpression,
 		
 		NextFireTime: NextFireTime,
 		
@@ -157,29 +155,113 @@ func (u *Reportschedule) MarshalJSON() ([]byte, error) {
 		
 		DateModified: DateModified,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		TimePeriod: u.TimePeriod,
+		TimePeriod: o.TimePeriod,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		ReportFormat: u.ReportFormat,
+		ReportFormat: o.ReportFormat,
 		
-		Locale: u.Locale,
+		Locale: o.Locale,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		ReportId: u.ReportId,
+		ReportId: o.ReportId,
 		
-		Parameters: u.Parameters,
+		Parameters: o.Parameters,
 		
-		LastRun: u.LastRun,
+		LastRun: o.LastRun,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportschedule) UnmarshalJSON(b []byte) error {
+	var ReportscheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportscheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReportscheduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ReportscheduleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if QuartzCronExpression, ok := ReportscheduleMap["quartzCronExpression"].(string); ok {
+		o.QuartzCronExpression = &QuartzCronExpression
+	}
+	
+	if nextFireTimeString, ok := ReportscheduleMap["nextFireTime"].(string); ok {
+		NextFireTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", nextFireTimeString)
+		o.NextFireTime = &NextFireTime
+	}
+	
+	if dateCreatedString, ok := ReportscheduleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := ReportscheduleMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Description, ok := ReportscheduleMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if TimeZone, ok := ReportscheduleMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if TimePeriod, ok := ReportscheduleMap["timePeriod"].(string); ok {
+		o.TimePeriod = &TimePeriod
+	}
+	
+	if Interval, ok := ReportscheduleMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if ReportFormat, ok := ReportscheduleMap["reportFormat"].(string); ok {
+		o.ReportFormat = &ReportFormat
+	}
+	
+	if Locale, ok := ReportscheduleMap["locale"].(string); ok {
+		o.Locale = &Locale
+	}
+	
+	if Enabled, ok := ReportscheduleMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if ReportId, ok := ReportscheduleMap["reportId"].(string); ok {
+		o.ReportId = &ReportId
+	}
+	
+	if Parameters, ok := ReportscheduleMap["parameters"].(map[string]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+	if LastRun, ok := ReportscheduleMap["lastRun"].(map[string]interface{}); ok {
+		LastRunString, _ := json.Marshal(LastRun)
+		json.Unmarshal(LastRunString, &o.LastRun)
+	}
+	
+	if SelfUri, ok := ReportscheduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

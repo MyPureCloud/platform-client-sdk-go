@@ -17,24 +17,43 @@ type Evaluationqualityv2topicevaluationscoringset struct {
 
 }
 
-func (u *Evaluationqualityv2topicevaluationscoringset) MarshalJSON() ([]byte, error) {
+func (o *Evaluationqualityv2topicevaluationscoringset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationqualityv2topicevaluationscoringset
-
 	
-
 	return json.Marshal(&struct { 
 		TotalScore *int `json:"totalScore,omitempty"`
 		
 		TotalCriticalScore *int `json:"totalCriticalScore,omitempty"`
 		*Alias
 	}{ 
-		TotalScore: u.TotalScore,
+		TotalScore: o.TotalScore,
 		
-		TotalCriticalScore: u.TotalCriticalScore,
-		Alias:    (*Alias)(u),
+		TotalCriticalScore: o.TotalCriticalScore,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationqualityv2topicevaluationscoringset) UnmarshalJSON(b []byte) error {
+	var Evaluationqualityv2topicevaluationscoringsetMap map[string]interface{}
+	err := json.Unmarshal(b, &Evaluationqualityv2topicevaluationscoringsetMap)
+	if err != nil {
+		return err
+	}
+	
+	if TotalScore, ok := Evaluationqualityv2topicevaluationscoringsetMap["totalScore"].(float64); ok {
+		TotalScoreInt := int(TotalScore)
+		o.TotalScore = &TotalScoreInt
+	}
+	
+	if TotalCriticalScore, ok := Evaluationqualityv2topicevaluationscoringsetMap["totalCriticalScore"].(float64); ok {
+		TotalCriticalScoreInt := int(TotalCriticalScore)
+		o.TotalCriticalScore = &TotalCriticalScoreInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

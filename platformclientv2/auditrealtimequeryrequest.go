@@ -33,13 +33,11 @@ type Auditrealtimequeryrequest struct {
 
 }
 
-func (u *Auditrealtimequeryrequest) MarshalJSON() ([]byte, error) {
+func (o *Auditrealtimequeryrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditrealtimequeryrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Auditrealtimequeryrequest) MarshalJSON() ([]byte, error) {
 		PageSize *int `json:"pageSize,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		ServiceName: u.ServiceName,
+		ServiceName: o.ServiceName,
 		
-		Filters: u.Filters,
+		Filters: o.Filters,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PageSize: u.PageSize,
-		Alias:    (*Alias)(u),
+		PageSize: o.PageSize,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditrealtimequeryrequest) UnmarshalJSON(b []byte) error {
+	var AuditrealtimequeryrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditrealtimequeryrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := AuditrealtimequeryrequestMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if ServiceName, ok := AuditrealtimequeryrequestMap["serviceName"].(string); ok {
+		o.ServiceName = &ServiceName
+	}
+	
+	if Filters, ok := AuditrealtimequeryrequestMap["filters"].([]interface{}); ok {
+		FiltersString, _ := json.Marshal(Filters)
+		json.Unmarshal(FiltersString, &o.Filters)
+	}
+	
+	if Sort, ok := AuditrealtimequeryrequestMap["sort"].([]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if PageNumber, ok := AuditrealtimequeryrequestMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PageSize, ok := AuditrealtimequeryrequestMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -58,21 +58,19 @@ type Managementunit struct {
 
 }
 
-func (u *Managementunit) MarshalJSON() ([]byte, error) {
+func (o *Managementunit) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Managementunit
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -99,31 +97,97 @@ func (u *Managementunit) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		BusinessUnit: u.BusinessUnit,
+		BusinessUnit: o.BusinessUnit,
 		
-		StartDayOfWeek: u.StartDayOfWeek,
+		StartDayOfWeek: o.StartDayOfWeek,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		Settings: u.Settings,
+		Settings: o.Settings,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Managementunit) UnmarshalJSON(b []byte) error {
+	var ManagementunitMap map[string]interface{}
+	err := json.Unmarshal(b, &ManagementunitMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ManagementunitMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ManagementunitMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if BusinessUnit, ok := ManagementunitMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
+	}
+	
+	if StartDayOfWeek, ok := ManagementunitMap["startDayOfWeek"].(string); ok {
+		o.StartDayOfWeek = &StartDayOfWeek
+	}
+	
+	if TimeZone, ok := ManagementunitMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if Settings, ok := ManagementunitMap["settings"].(map[string]interface{}); ok {
+		SettingsString, _ := json.Marshal(Settings)
+		json.Unmarshal(SettingsString, &o.Settings)
+	}
+	
+	if Metadata, ok := ManagementunitMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if Division, ok := ManagementunitMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Version, ok := ManagementunitMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateModifiedString, ok := ManagementunitMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := ManagementunitMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if SelfUri, ok := ManagementunitMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

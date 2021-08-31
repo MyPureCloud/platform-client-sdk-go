@@ -17,24 +17,42 @@ type Speechtextanalyticssettingsrequest struct {
 
 }
 
-func (u *Speechtextanalyticssettingsrequest) MarshalJSON() ([]byte, error) {
+func (o *Speechtextanalyticssettingsrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Speechtextanalyticssettingsrequest
-
 	
-
 	return json.Marshal(&struct { 
 		DefaultProgramId *string `json:"defaultProgramId,omitempty"`
 		
 		ExpectedDialects *[]string `json:"expectedDialects,omitempty"`
 		*Alias
 	}{ 
-		DefaultProgramId: u.DefaultProgramId,
+		DefaultProgramId: o.DefaultProgramId,
 		
-		ExpectedDialects: u.ExpectedDialects,
-		Alias:    (*Alias)(u),
+		ExpectedDialects: o.ExpectedDialects,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Speechtextanalyticssettingsrequest) UnmarshalJSON(b []byte) error {
+	var SpeechtextanalyticssettingsrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &SpeechtextanalyticssettingsrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if DefaultProgramId, ok := SpeechtextanalyticssettingsrequestMap["defaultProgramId"].(string); ok {
+		o.DefaultProgramId = &DefaultProgramId
+	}
+	
+	if ExpectedDialects, ok := SpeechtextanalyticssettingsrequestMap["expectedDialects"].([]interface{}); ok {
+		ExpectedDialectsString, _ := json.Marshal(ExpectedDialects)
+		json.Unmarshal(ExpectedDialectsString, &o.ExpectedDialects)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

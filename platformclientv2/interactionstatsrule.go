@@ -65,13 +65,11 @@ type Interactionstatsrule struct {
 
 }
 
-func (u *Interactionstatsrule) MarshalJSON() ([]byte, error) {
+func (o *Interactionstatsrule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Interactionstatsrule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -102,35 +100,104 @@ func (u *Interactionstatsrule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		DimensionValue: u.DimensionValue,
+		DimensionValue: o.DimensionValue,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		NumericRange: u.NumericRange,
+		NumericRange: o.NumericRange,
 		
-		Statistic: u.Statistic,
+		Statistic: o.Statistic,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		InAlarm: u.InAlarm,
+		InAlarm: o.InAlarm,
 		
-		NotificationUsers: u.NotificationUsers,
+		NotificationUsers: o.NotificationUsers,
 		
-		AlertTypes: u.AlertTypes,
+		AlertTypes: o.AlertTypes,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Interactionstatsrule) UnmarshalJSON(b []byte) error {
+	var InteractionstatsruleMap map[string]interface{}
+	err := json.Unmarshal(b, &InteractionstatsruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := InteractionstatsruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := InteractionstatsruleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Dimension, ok := InteractionstatsruleMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if DimensionValue, ok := InteractionstatsruleMap["dimensionValue"].(string); ok {
+		o.DimensionValue = &DimensionValue
+	}
+	
+	if Metric, ok := InteractionstatsruleMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if MediaType, ok := InteractionstatsruleMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if NumericRange, ok := InteractionstatsruleMap["numericRange"].(string); ok {
+		o.NumericRange = &NumericRange
+	}
+	
+	if Statistic, ok := InteractionstatsruleMap["statistic"].(string); ok {
+		o.Statistic = &Statistic
+	}
+	
+	if Value, ok := InteractionstatsruleMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+	if Enabled, ok := InteractionstatsruleMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if InAlarm, ok := InteractionstatsruleMap["inAlarm"].(bool); ok {
+		o.InAlarm = &InAlarm
+	}
+	
+	if NotificationUsers, ok := InteractionstatsruleMap["notificationUsers"].([]interface{}); ok {
+		NotificationUsersString, _ := json.Marshal(NotificationUsers)
+		json.Unmarshal(NotificationUsersString, &o.NotificationUsers)
+	}
+	
+	if AlertTypes, ok := InteractionstatsruleMap["alertTypes"].([]interface{}); ok {
+		AlertTypesString, _ := json.Marshal(AlertTypes)
+		json.Unmarshal(AlertTypesString, &o.AlertTypes)
+	}
+	
+	if SelfUri, ok := InteractionstatsruleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

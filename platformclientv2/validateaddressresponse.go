@@ -17,24 +17,42 @@ type Validateaddressresponse struct {
 
 }
 
-func (u *Validateaddressresponse) MarshalJSON() ([]byte, error) {
+func (o *Validateaddressresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Validateaddressresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Valid *bool `json:"valid,omitempty"`
 		
 		Response *Subscriberresponse `json:"response,omitempty"`
 		*Alias
 	}{ 
-		Valid: u.Valid,
+		Valid: o.Valid,
 		
-		Response: u.Response,
-		Alias:    (*Alias)(u),
+		Response: o.Response,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Validateaddressresponse) UnmarshalJSON(b []byte) error {
+	var ValidateaddressresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ValidateaddressresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Valid, ok := ValidateaddressresponseMap["valid"].(bool); ok {
+		o.Valid = &Valid
+	}
+	
+	if Response, ok := ValidateaddressresponseMap["response"].(map[string]interface{}); ok {
+		ResponseString, _ := json.Marshal(Response)
+		json.Unmarshal(ResponseString, &o.Response)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

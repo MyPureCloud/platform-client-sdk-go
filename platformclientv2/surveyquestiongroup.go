@@ -33,13 +33,11 @@ type Surveyquestiongroup struct {
 
 }
 
-func (u *Surveyquestiongroup) MarshalJSON() ([]byte, error) {
+func (o *Surveyquestiongroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyquestiongroup
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Surveyquestiongroup) MarshalJSON() ([]byte, error) {
 		VisibilityCondition *Visibilitycondition `json:"visibilityCondition,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		NaEnabled: u.NaEnabled,
+		NaEnabled: o.NaEnabled,
 		
-		Questions: u.Questions,
+		Questions: o.Questions,
 		
-		VisibilityCondition: u.VisibilityCondition,
-		Alias:    (*Alias)(u),
+		VisibilityCondition: o.VisibilityCondition,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyquestiongroup) UnmarshalJSON(b []byte) error {
+	var SurveyquestiongroupMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyquestiongroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SurveyquestiongroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SurveyquestiongroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := SurveyquestiongroupMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if NaEnabled, ok := SurveyquestiongroupMap["naEnabled"].(bool); ok {
+		o.NaEnabled = &NaEnabled
+	}
+	
+	if Questions, ok := SurveyquestiongroupMap["questions"].([]interface{}); ok {
+		QuestionsString, _ := json.Marshal(Questions)
+		json.Unmarshal(QuestionsString, &o.Questions)
+	}
+	
+	if VisibilityCondition, ok := SurveyquestiongroupMap["visibilityCondition"].(map[string]interface{}); ok {
+		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
+		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

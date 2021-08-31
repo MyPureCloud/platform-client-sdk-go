@@ -29,13 +29,11 @@ type Createpredictorrequest struct {
 
 }
 
-func (u *Createpredictorrequest) MarshalJSON() ([]byte, error) {
+func (o *Createpredictorrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createpredictorrequest
-
 	
-
 	return json.Marshal(&struct { 
 		QueueIds *[]string `json:"queueIds,omitempty"`
 		
@@ -48,17 +46,52 @@ func (u *Createpredictorrequest) MarshalJSON() ([]byte, error) {
 		WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
 		*Alias
 	}{ 
-		QueueIds: u.QueueIds,
+		QueueIds: o.QueueIds,
 		
-		Kpi: u.Kpi,
+		Kpi: o.Kpi,
 		
-		RoutingTimeoutSeconds: u.RoutingTimeoutSeconds,
+		RoutingTimeoutSeconds: o.RoutingTimeoutSeconds,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		WorkloadBalancingConfig: u.WorkloadBalancingConfig,
-		Alias:    (*Alias)(u),
+		WorkloadBalancingConfig: o.WorkloadBalancingConfig,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createpredictorrequest) UnmarshalJSON(b []byte) error {
+	var CreatepredictorrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatepredictorrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if QueueIds, ok := CreatepredictorrequestMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
+	}
+	
+	if Kpi, ok := CreatepredictorrequestMap["kpi"].(string); ok {
+		o.Kpi = &Kpi
+	}
+	
+	if RoutingTimeoutSeconds, ok := CreatepredictorrequestMap["routingTimeoutSeconds"].(float64); ok {
+		RoutingTimeoutSecondsInt := int(RoutingTimeoutSeconds)
+		o.RoutingTimeoutSeconds = &RoutingTimeoutSecondsInt
+	}
+	
+	if Schedule, ok := CreatepredictorrequestMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if WorkloadBalancingConfig, ok := CreatepredictorrequestMap["workloadBalancingConfig"].(map[string]interface{}); ok {
+		WorkloadBalancingConfigString, _ := json.Marshal(WorkloadBalancingConfig)
+		json.Unmarshal(WorkloadBalancingConfigString, &o.WorkloadBalancingConfig)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

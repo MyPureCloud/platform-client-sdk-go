@@ -17,24 +17,43 @@ type Fileuploadmode struct {
 
 }
 
-func (u *Fileuploadmode) MarshalJSON() ([]byte, error) {
+func (o *Fileuploadmode) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Fileuploadmode
-
 	
-
 	return json.Marshal(&struct { 
 		FileTypes *[]string `json:"fileTypes,omitempty"`
 		
 		MaxFileSizeKB *int `json:"maxFileSizeKB,omitempty"`
 		*Alias
 	}{ 
-		FileTypes: u.FileTypes,
+		FileTypes: o.FileTypes,
 		
-		MaxFileSizeKB: u.MaxFileSizeKB,
-		Alias:    (*Alias)(u),
+		MaxFileSizeKB: o.MaxFileSizeKB,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Fileuploadmode) UnmarshalJSON(b []byte) error {
+	var FileuploadmodeMap map[string]interface{}
+	err := json.Unmarshal(b, &FileuploadmodeMap)
+	if err != nil {
+		return err
+	}
+	
+	if FileTypes, ok := FileuploadmodeMap["fileTypes"].([]interface{}); ok {
+		FileTypesString, _ := json.Marshal(FileTypes)
+		json.Unmarshal(FileTypesString, &o.FileTypes)
+	}
+	
+	if MaxFileSizeKB, ok := FileuploadmodeMap["maxFileSizeKB"].(float64); ok {
+		MaxFileSizeKBInt := int(MaxFileSizeKB)
+		o.MaxFileSizeKB = &MaxFileSizeKBInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Embeddedintegration struct {
 
 }
 
-func (u *Embeddedintegration) MarshalJSON() ([]byte, error) {
+func (o *Embeddedintegration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Embeddedintegration
-
 	
-
 	return json.Marshal(&struct { 
 		EnableWhitelist *bool `json:"enableWhitelist,omitempty"`
 		
 		DomainWhitelist *[]string `json:"domainWhitelist,omitempty"`
 		*Alias
 	}{ 
-		EnableWhitelist: u.EnableWhitelist,
+		EnableWhitelist: o.EnableWhitelist,
 		
-		DomainWhitelist: u.DomainWhitelist,
-		Alias:    (*Alias)(u),
+		DomainWhitelist: o.DomainWhitelist,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Embeddedintegration) UnmarshalJSON(b []byte) error {
+	var EmbeddedintegrationMap map[string]interface{}
+	err := json.Unmarshal(b, &EmbeddedintegrationMap)
+	if err != nil {
+		return err
+	}
+	
+	if EnableWhitelist, ok := EmbeddedintegrationMap["enableWhitelist"].(bool); ok {
+		o.EnableWhitelist = &EnableWhitelist
+	}
+	
+	if DomainWhitelist, ok := EmbeddedintegrationMap["domainWhitelist"].([]interface{}); ok {
+		DomainWhitelistString, _ := json.Marshal(DomainWhitelist)
+		json.Unmarshal(DomainWhitelistString, &o.DomainWhitelist)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

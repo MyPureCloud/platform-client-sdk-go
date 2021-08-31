@@ -21,13 +21,11 @@ type Credentialspecification struct {
 
 }
 
-func (u *Credentialspecification) MarshalJSON() ([]byte, error) {
+func (o *Credentialspecification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Credentialspecification
-
 	
-
 	return json.Marshal(&struct { 
 		Required *bool `json:"required,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Credentialspecification) MarshalJSON() ([]byte, error) {
 		CredentialTypes *[]string `json:"credentialTypes,omitempty"`
 		*Alias
 	}{ 
-		Required: u.Required,
+		Required: o.Required,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		CredentialTypes: u.CredentialTypes,
-		Alias:    (*Alias)(u),
+		CredentialTypes: o.CredentialTypes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Credentialspecification) UnmarshalJSON(b []byte) error {
+	var CredentialspecificationMap map[string]interface{}
+	err := json.Unmarshal(b, &CredentialspecificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Required, ok := CredentialspecificationMap["required"].(bool); ok {
+		o.Required = &Required
+	}
+	
+	if Title, ok := CredentialspecificationMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if CredentialTypes, ok := CredentialspecificationMap["credentialTypes"].([]interface{}); ok {
+		CredentialTypesString, _ := json.Marshal(CredentialTypes)
+		json.Unmarshal(CredentialTypesString, &o.CredentialTypes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Callablewindow struct {
 
 }
 
-func (u *Callablewindow) MarshalJSON() ([]byte, error) {
+func (o *Callablewindow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callablewindow
-
 	
-
 	return json.Marshal(&struct { 
 		Mapped *Atzmtimeslot `json:"mapped,omitempty"`
 		
 		Unmapped *Atzmtimeslotwithtimezone `json:"unmapped,omitempty"`
 		*Alias
 	}{ 
-		Mapped: u.Mapped,
+		Mapped: o.Mapped,
 		
-		Unmapped: u.Unmapped,
-		Alias:    (*Alias)(u),
+		Unmapped: o.Unmapped,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callablewindow) UnmarshalJSON(b []byte) error {
+	var CallablewindowMap map[string]interface{}
+	err := json.Unmarshal(b, &CallablewindowMap)
+	if err != nil {
+		return err
+	}
+	
+	if Mapped, ok := CallablewindowMap["mapped"].(map[string]interface{}); ok {
+		MappedString, _ := json.Marshal(Mapped)
+		json.Unmarshal(MappedString, &o.Mapped)
+	}
+	
+	if Unmapped, ok := CallablewindowMap["unmapped"].(map[string]interface{}); ok {
+		UnmappedString, _ := json.Marshal(Unmapped)
+		json.Unmarshal(UnmappedString, &o.Unmapped)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -110,29 +110,27 @@ type Analyticsconversationsegment struct {
 
 }
 
-func (u *Analyticsconversationsegment) MarshalJSON() ([]byte, error) {
+func (o *Analyticsconversationsegment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsconversationsegment
-
 	
 	SegmentEnd := new(string)
-	if u.SegmentEnd != nil {
+	if o.SegmentEnd != nil {
 		
-		*SegmentEnd = timeutil.Strftime(u.SegmentEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*SegmentEnd = timeutil.Strftime(o.SegmentEnd, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		SegmentEnd = nil
 	}
 	
 	SegmentStart := new(string)
-	if u.SegmentStart != nil {
+	if o.SegmentStart != nil {
 		
-		*SegmentStart = timeutil.Strftime(u.SegmentStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*SegmentStart = timeutil.Strftime(o.SegmentStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		SegmentStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		AudioMuted *bool `json:"audioMuted,omitempty"`
 		
@@ -185,57 +183,177 @@ func (u *Analyticsconversationsegment) MarshalJSON() ([]byte, error) {
 		Properties *[]Analyticsproperty `json:"properties,omitempty"`
 		*Alias
 	}{ 
-		AudioMuted: u.AudioMuted,
+		AudioMuted: o.AudioMuted,
 		
-		Conference: u.Conference,
+		Conference: o.Conference,
 		
-		DestinationConversationId: u.DestinationConversationId,
+		DestinationConversationId: o.DestinationConversationId,
 		
-		DestinationSessionId: u.DestinationSessionId,
+		DestinationSessionId: o.DestinationSessionId,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		GroupId: u.GroupId,
+		GroupId: o.GroupId,
 		
-		Q850ResponseCodes: u.Q850ResponseCodes,
+		Q850ResponseCodes: o.Q850ResponseCodes,
 		
-		QueueId: u.QueueId,
+		QueueId: o.QueueId,
 		
-		RequestedLanguageId: u.RequestedLanguageId,
+		RequestedLanguageId: o.RequestedLanguageId,
 		
-		RequestedRoutingSkillIds: u.RequestedRoutingSkillIds,
+		RequestedRoutingSkillIds: o.RequestedRoutingSkillIds,
 		
-		RequestedRoutingUserIds: u.RequestedRoutingUserIds,
+		RequestedRoutingUserIds: o.RequestedRoutingUserIds,
 		
 		SegmentEnd: SegmentEnd,
 		
 		SegmentStart: SegmentStart,
 		
-		SegmentType: u.SegmentType,
+		SegmentType: o.SegmentType,
 		
-		SipResponseCodes: u.SipResponseCodes,
+		SipResponseCodes: o.SipResponseCodes,
 		
-		SourceConversationId: u.SourceConversationId,
+		SourceConversationId: o.SourceConversationId,
 		
-		SourceSessionId: u.SourceSessionId,
+		SourceSessionId: o.SourceSessionId,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
-		VideoMuted: u.VideoMuted,
+		VideoMuted: o.VideoMuted,
 		
-		WrapUpCode: u.WrapUpCode,
+		WrapUpCode: o.WrapUpCode,
 		
-		WrapUpNote: u.WrapUpNote,
+		WrapUpNote: o.WrapUpNote,
 		
-		WrapUpTags: u.WrapUpTags,
+		WrapUpTags: o.WrapUpTags,
 		
-		ScoredAgents: u.ScoredAgents,
+		ScoredAgents: o.ScoredAgents,
 		
-		Properties: u.Properties,
-		Alias:    (*Alias)(u),
+		Properties: o.Properties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsconversationsegment) UnmarshalJSON(b []byte) error {
+	var AnalyticsconversationsegmentMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsconversationsegmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if AudioMuted, ok := AnalyticsconversationsegmentMap["audioMuted"].(bool); ok {
+		o.AudioMuted = &AudioMuted
+	}
+	
+	if Conference, ok := AnalyticsconversationsegmentMap["conference"].(bool); ok {
+		o.Conference = &Conference
+	}
+	
+	if DestinationConversationId, ok := AnalyticsconversationsegmentMap["destinationConversationId"].(string); ok {
+		o.DestinationConversationId = &DestinationConversationId
+	}
+	
+	if DestinationSessionId, ok := AnalyticsconversationsegmentMap["destinationSessionId"].(string); ok {
+		o.DestinationSessionId = &DestinationSessionId
+	}
+	
+	if DisconnectType, ok := AnalyticsconversationsegmentMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if ErrorCode, ok := AnalyticsconversationsegmentMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if GroupId, ok := AnalyticsconversationsegmentMap["groupId"].(string); ok {
+		o.GroupId = &GroupId
+	}
+	
+	if Q850ResponseCodes, ok := AnalyticsconversationsegmentMap["q850ResponseCodes"].([]interface{}); ok {
+		Q850ResponseCodesString, _ := json.Marshal(Q850ResponseCodes)
+		json.Unmarshal(Q850ResponseCodesString, &o.Q850ResponseCodes)
+	}
+	
+	if QueueId, ok := AnalyticsconversationsegmentMap["queueId"].(string); ok {
+		o.QueueId = &QueueId
+	}
+	
+	if RequestedLanguageId, ok := AnalyticsconversationsegmentMap["requestedLanguageId"].(string); ok {
+		o.RequestedLanguageId = &RequestedLanguageId
+	}
+	
+	if RequestedRoutingSkillIds, ok := AnalyticsconversationsegmentMap["requestedRoutingSkillIds"].([]interface{}); ok {
+		RequestedRoutingSkillIdsString, _ := json.Marshal(RequestedRoutingSkillIds)
+		json.Unmarshal(RequestedRoutingSkillIdsString, &o.RequestedRoutingSkillIds)
+	}
+	
+	if RequestedRoutingUserIds, ok := AnalyticsconversationsegmentMap["requestedRoutingUserIds"].([]interface{}); ok {
+		RequestedRoutingUserIdsString, _ := json.Marshal(RequestedRoutingUserIds)
+		json.Unmarshal(RequestedRoutingUserIdsString, &o.RequestedRoutingUserIds)
+	}
+	
+	if segmentEndString, ok := AnalyticsconversationsegmentMap["segmentEnd"].(string); ok {
+		SegmentEnd, _ := time.Parse("2006-01-02T15:04:05.999999Z", segmentEndString)
+		o.SegmentEnd = &SegmentEnd
+	}
+	
+	if segmentStartString, ok := AnalyticsconversationsegmentMap["segmentStart"].(string); ok {
+		SegmentStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", segmentStartString)
+		o.SegmentStart = &SegmentStart
+	}
+	
+	if SegmentType, ok := AnalyticsconversationsegmentMap["segmentType"].(string); ok {
+		o.SegmentType = &SegmentType
+	}
+	
+	if SipResponseCodes, ok := AnalyticsconversationsegmentMap["sipResponseCodes"].([]interface{}); ok {
+		SipResponseCodesString, _ := json.Marshal(SipResponseCodes)
+		json.Unmarshal(SipResponseCodesString, &o.SipResponseCodes)
+	}
+	
+	if SourceConversationId, ok := AnalyticsconversationsegmentMap["sourceConversationId"].(string); ok {
+		o.SourceConversationId = &SourceConversationId
+	}
+	
+	if SourceSessionId, ok := AnalyticsconversationsegmentMap["sourceSessionId"].(string); ok {
+		o.SourceSessionId = &SourceSessionId
+	}
+	
+	if Subject, ok := AnalyticsconversationsegmentMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+	if VideoMuted, ok := AnalyticsconversationsegmentMap["videoMuted"].(bool); ok {
+		o.VideoMuted = &VideoMuted
+	}
+	
+	if WrapUpCode, ok := AnalyticsconversationsegmentMap["wrapUpCode"].(string); ok {
+		o.WrapUpCode = &WrapUpCode
+	}
+	
+	if WrapUpNote, ok := AnalyticsconversationsegmentMap["wrapUpNote"].(string); ok {
+		o.WrapUpNote = &WrapUpNote
+	}
+	
+	if WrapUpTags, ok := AnalyticsconversationsegmentMap["wrapUpTags"].([]interface{}); ok {
+		WrapUpTagsString, _ := json.Marshal(WrapUpTags)
+		json.Unmarshal(WrapUpTagsString, &o.WrapUpTags)
+	}
+	
+	if ScoredAgents, ok := AnalyticsconversationsegmentMap["scoredAgents"].([]interface{}); ok {
+		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
+		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+	if Properties, ok := AnalyticsconversationsegmentMap["properties"].([]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

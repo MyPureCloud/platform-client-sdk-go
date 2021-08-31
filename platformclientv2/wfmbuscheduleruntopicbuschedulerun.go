@@ -45,13 +45,11 @@ type Wfmbuscheduleruntopicbuschedulerun struct {
 
 }
 
-func (u *Wfmbuscheduleruntopicbuschedulerun) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuscheduleruntopicbuschedulerun) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuscheduleruntopicbuschedulerun
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,77 @@ func (u *Wfmbuscheduleruntopicbuschedulerun) MarshalJSON() ([]byte, error) {
 		MessageCount *int `json:"messageCount,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		PercentComplete: u.PercentComplete,
+		PercentComplete: o.PercentComplete,
 		
-		IntradayRescheduling: u.IntradayRescheduling,
+		IntradayRescheduling: o.IntradayRescheduling,
 		
-		State: u.State,
+		State: o.State,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		Schedule: u.Schedule,
+		Schedule: o.Schedule,
 		
-		SchedulingCanceledBy: u.SchedulingCanceledBy,
+		SchedulingCanceledBy: o.SchedulingCanceledBy,
 		
-		SchedulingCompletedTime: u.SchedulingCompletedTime,
+		SchedulingCompletedTime: o.SchedulingCompletedTime,
 		
-		MessageCount: u.MessageCount,
-		Alias:    (*Alias)(u),
+		MessageCount: o.MessageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuscheduleruntopicbuschedulerun) UnmarshalJSON(b []byte) error {
+	var WfmbuscheduleruntopicbuschedulerunMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuscheduleruntopicbuschedulerunMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbuscheduleruntopicbuschedulerunMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if PercentComplete, ok := WfmbuscheduleruntopicbuschedulerunMap["percentComplete"].(float64); ok {
+		PercentCompleteFloat32 := float32(PercentComplete)
+		o.PercentComplete = &PercentCompleteFloat32
+	}
+	
+	if IntradayRescheduling, ok := WfmbuscheduleruntopicbuschedulerunMap["intradayRescheduling"].(bool); ok {
+		o.IntradayRescheduling = &IntradayRescheduling
+	}
+	
+	if State, ok := WfmbuscheduleruntopicbuschedulerunMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if WeekCount, ok := WfmbuscheduleruntopicbuschedulerunMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if Schedule, ok := WfmbuscheduleruntopicbuschedulerunMap["schedule"].(map[string]interface{}); ok {
+		ScheduleString, _ := json.Marshal(Schedule)
+		json.Unmarshal(ScheduleString, &o.Schedule)
+	}
+	
+	if SchedulingCanceledBy, ok := WfmbuscheduleruntopicbuschedulerunMap["schedulingCanceledBy"].(map[string]interface{}); ok {
+		SchedulingCanceledByString, _ := json.Marshal(SchedulingCanceledBy)
+		json.Unmarshal(SchedulingCanceledByString, &o.SchedulingCanceledBy)
+	}
+	
+	if SchedulingCompletedTime, ok := WfmbuscheduleruntopicbuschedulerunMap["schedulingCompletedTime"].(string); ok {
+		o.SchedulingCompletedTime = &SchedulingCompletedTime
+	}
+	
+	if MessageCount, ok := WfmbuscheduleruntopicbuschedulerunMap["messageCount"].(float64); ok {
+		MessageCountInt := int(MessageCount)
+		o.MessageCount = &MessageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

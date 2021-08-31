@@ -17,24 +17,43 @@ type Workspacesummary struct {
 
 }
 
-func (u *Workspacesummary) MarshalJSON() ([]byte, error) {
+func (o *Workspacesummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workspacesummary
-
 	
-
 	return json.Marshal(&struct { 
 		TotalDocumentCount *int `json:"totalDocumentCount,omitempty"`
 		
 		TotalDocumentByteCount *int `json:"totalDocumentByteCount,omitempty"`
 		*Alias
 	}{ 
-		TotalDocumentCount: u.TotalDocumentCount,
+		TotalDocumentCount: o.TotalDocumentCount,
 		
-		TotalDocumentByteCount: u.TotalDocumentByteCount,
-		Alias:    (*Alias)(u),
+		TotalDocumentByteCount: o.TotalDocumentByteCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workspacesummary) UnmarshalJSON(b []byte) error {
+	var WorkspacesummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkspacesummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if TotalDocumentCount, ok := WorkspacesummaryMap["totalDocumentCount"].(float64); ok {
+		TotalDocumentCountInt := int(TotalDocumentCount)
+		o.TotalDocumentCount = &TotalDocumentCountInt
+	}
+	
+	if TotalDocumentByteCount, ok := WorkspacesummaryMap["totalDocumentByteCount"].(float64); ok {
+		TotalDocumentByteCountInt := int(TotalDocumentByteCount)
+		o.TotalDocumentByteCount = &TotalDocumentByteCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

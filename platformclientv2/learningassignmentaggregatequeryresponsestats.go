@@ -25,13 +25,11 @@ type Learningassignmentaggregatequeryresponsestats struct {
 
 }
 
-func (u *Learningassignmentaggregatequeryresponsestats) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentaggregatequeryresponsestats) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentaggregatequeryresponsestats
-
 	
-
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Learningassignmentaggregatequeryresponsestats) MarshalJSON() ([]byte, e
 		Sum *int `json:"sum,omitempty"`
 		*Alias
 	}{ 
-		Count: u.Count,
+		Count: o.Count,
 		
-		Min: u.Min,
+		Min: o.Min,
 		
-		Max: u.Max,
+		Max: o.Max,
 		
-		Sum: u.Sum,
-		Alias:    (*Alias)(u),
+		Sum: o.Sum,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentaggregatequeryresponsestats) UnmarshalJSON(b []byte) error {
+	var LearningassignmentaggregatequeryresponsestatsMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentaggregatequeryresponsestatsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Count, ok := LearningassignmentaggregatequeryresponsestatsMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+	if Min, ok := LearningassignmentaggregatequeryresponsestatsMap["min"].(float64); ok {
+		MinInt := int(Min)
+		o.Min = &MinInt
+	}
+	
+	if Max, ok := LearningassignmentaggregatequeryresponsestatsMap["max"].(float64); ok {
+		MaxInt := int(Max)
+		o.Max = &MaxInt
+	}
+	
+	if Sum, ok := LearningassignmentaggregatequeryresponsestatsMap["sum"].(float64); ok {
+		SumInt := int(Sum)
+		o.Sum = &SumInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

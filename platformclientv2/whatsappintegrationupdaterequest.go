@@ -33,13 +33,11 @@ type Whatsappintegrationupdaterequest struct {
 
 }
 
-func (u *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
+func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Whatsappintegrationupdaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		AuthenticationMethod: u.AuthenticationMethod,
+		AuthenticationMethod: o.AuthenticationMethod,
 		
-		ConfirmationCode: u.ConfirmationCode,
+		ConfirmationCode: o.ConfirmationCode,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Whatsappintegrationupdaterequest) UnmarshalJSON(b []byte) error {
+	var WhatsappintegrationupdaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &WhatsappintegrationupdaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WhatsappintegrationupdaterequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := WhatsappintegrationupdaterequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Action, ok := WhatsappintegrationupdaterequestMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if AuthenticationMethod, ok := WhatsappintegrationupdaterequestMap["authenticationMethod"].(string); ok {
+		o.AuthenticationMethod = &AuthenticationMethod
+	}
+	
+	if ConfirmationCode, ok := WhatsappintegrationupdaterequestMap["confirmationCode"].(string); ok {
+		o.ConfirmationCode = &ConfirmationCode
+	}
+	
+	if SelfUri, ok := WhatsappintegrationupdaterequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

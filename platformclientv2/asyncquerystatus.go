@@ -30,37 +30,35 @@ type Asyncquerystatus struct {
 
 }
 
-func (u *Asyncquerystatus) MarshalJSON() ([]byte, error) {
+func (o *Asyncquerystatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Asyncquerystatus
-
 	
 	ExpirationDate := new(string)
-	if u.ExpirationDate != nil {
+	if o.ExpirationDate != nil {
 		
-		*ExpirationDate = timeutil.Strftime(u.ExpirationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ExpirationDate = timeutil.Strftime(o.ExpirationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExpirationDate = nil
 	}
 	
 	SubmissionDate := new(string)
-	if u.SubmissionDate != nil {
+	if o.SubmissionDate != nil {
 		
-		*SubmissionDate = timeutil.Strftime(u.SubmissionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*SubmissionDate = timeutil.Strftime(o.SubmissionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		SubmissionDate = nil
 	}
 	
 	CompletionDate := new(string)
-	if u.CompletionDate != nil {
+	if o.CompletionDate != nil {
 		
-		*CompletionDate = timeutil.Strftime(u.CompletionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CompletionDate = timeutil.Strftime(o.CompletionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CompletionDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -73,17 +71,51 @@ func (u *Asyncquerystatus) MarshalJSON() ([]byte, error) {
 		CompletionDate *string `json:"completionDate,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		ErrorMessage: u.ErrorMessage,
+		ErrorMessage: o.ErrorMessage,
 		
 		ExpirationDate: ExpirationDate,
 		
 		SubmissionDate: SubmissionDate,
 		
 		CompletionDate: CompletionDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Asyncquerystatus) UnmarshalJSON(b []byte) error {
+	var AsyncquerystatusMap map[string]interface{}
+	err := json.Unmarshal(b, &AsyncquerystatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := AsyncquerystatusMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ErrorMessage, ok := AsyncquerystatusMap["errorMessage"].(string); ok {
+		o.ErrorMessage = &ErrorMessage
+	}
+	
+	if expirationDateString, ok := AsyncquerystatusMap["expirationDate"].(string); ok {
+		ExpirationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationDateString)
+		o.ExpirationDate = &ExpirationDate
+	}
+	
+	if submissionDateString, ok := AsyncquerystatusMap["submissionDate"].(string); ok {
+		SubmissionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", submissionDateString)
+		o.SubmissionDate = &SubmissionDate
+	}
+	
+	if completionDateString, ok := AsyncquerystatusMap["completionDate"].(string); ok {
+		CompletionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", completionDateString)
+		o.CompletionDate = &CompletionDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

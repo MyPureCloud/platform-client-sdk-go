@@ -17,24 +17,42 @@ type Trunkmetricsnetworktypeip struct {
 
 }
 
-func (u *Trunkmetricsnetworktypeip) MarshalJSON() ([]byte, error) {
+func (o *Trunkmetricsnetworktypeip) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkmetricsnetworktypeip
-
 	
-
 	return json.Marshal(&struct { 
 		Address *string `json:"address,omitempty"`
 		
 		ErrorInfo *Trunkerrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		Address: u.Address,
+		Address: o.Address,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkmetricsnetworktypeip) UnmarshalJSON(b []byte) error {
+	var TrunkmetricsnetworktypeipMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkmetricsnetworktypeipMap)
+	if err != nil {
+		return err
+	}
+	
+	if Address, ok := TrunkmetricsnetworktypeipMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if ErrorInfo, ok := TrunkmetricsnetworktypeipMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

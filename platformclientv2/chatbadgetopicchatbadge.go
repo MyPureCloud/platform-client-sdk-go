@@ -22,21 +22,19 @@ type Chatbadgetopicchatbadge struct {
 
 }
 
-func (u *Chatbadgetopicchatbadge) MarshalJSON() ([]byte, error) {
+func (o *Chatbadgetopicchatbadge) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Chatbadgetopicchatbadge
-
 	
 	LastUnreadNotificationDate := new(string)
-	if u.LastUnreadNotificationDate != nil {
+	if o.LastUnreadNotificationDate != nil {
 		
-		*LastUnreadNotificationDate = timeutil.Strftime(u.LastUnreadNotificationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*LastUnreadNotificationDate = timeutil.Strftime(o.LastUnreadNotificationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		LastUnreadNotificationDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Entity *Chatbadgetopicbadgeentity `json:"entity,omitempty"`
 		
@@ -45,13 +43,39 @@ func (u *Chatbadgetopicchatbadge) MarshalJSON() ([]byte, error) {
 		LastUnreadNotificationDate *string `json:"lastUnreadNotificationDate,omitempty"`
 		*Alias
 	}{ 
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		UnreadCount: u.UnreadCount,
+		UnreadCount: o.UnreadCount,
 		
 		LastUnreadNotificationDate: LastUnreadNotificationDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Chatbadgetopicchatbadge) UnmarshalJSON(b []byte) error {
+	var ChatbadgetopicchatbadgeMap map[string]interface{}
+	err := json.Unmarshal(b, &ChatbadgetopicchatbadgeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entity, ok := ChatbadgetopicchatbadgeMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if UnreadCount, ok := ChatbadgetopicchatbadgeMap["unreadCount"].(float64); ok {
+		UnreadCountInt := int(UnreadCount)
+		o.UnreadCount = &UnreadCountInt
+	}
+	
+	if lastUnreadNotificationDateString, ok := ChatbadgetopicchatbadgeMap["lastUnreadNotificationDate"].(string); ok {
+		LastUnreadNotificationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastUnreadNotificationDateString)
+		o.LastUnreadNotificationDate = &LastUnreadNotificationDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

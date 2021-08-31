@@ -21,13 +21,11 @@ type Routingconversationattributesrequest struct {
 
 }
 
-func (u *Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
+func (o *Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingconversationattributesrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Priority *int `json:"priority,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Routingconversationattributesrequest) MarshalJSON() ([]byte, error) {
 		LanguageId *string `json:"languageId,omitempty"`
 		*Alias
 	}{ 
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		SkillIds: u.SkillIds,
+		SkillIds: o.SkillIds,
 		
-		LanguageId: u.LanguageId,
-		Alias:    (*Alias)(u),
+		LanguageId: o.LanguageId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingconversationattributesrequest) UnmarshalJSON(b []byte) error {
+	var RoutingconversationattributesrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingconversationattributesrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Priority, ok := RoutingconversationattributesrequestMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if SkillIds, ok := RoutingconversationattributesrequestMap["skillIds"].([]interface{}); ok {
+		SkillIdsString, _ := json.Marshal(SkillIds)
+		json.Unmarshal(SkillIdsString, &o.SkillIds)
+	}
+	
+	if LanguageId, ok := RoutingconversationattributesrequestMap["languageId"].(string); ok {
+		o.LanguageId = &LanguageId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

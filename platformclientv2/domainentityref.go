@@ -21,13 +21,11 @@ type Domainentityref struct {
 
 }
 
-func (u *Domainentityref) MarshalJSON() ([]byte, error) {
+func (o *Domainentityref) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainentityref
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Domainentityref) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainentityref) UnmarshalJSON(b []byte) error {
+	var DomainentityrefMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainentityrefMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainentityrefMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainentityrefMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := DomainentityrefMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

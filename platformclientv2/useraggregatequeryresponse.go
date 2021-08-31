@@ -17,24 +17,43 @@ type Useraggregatequeryresponse struct {
 
 }
 
-func (u *Useraggregatequeryresponse) MarshalJSON() ([]byte, error) {
+func (o *Useraggregatequeryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Useraggregatequeryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		SystemToOrganizationMappings *map[string][]string `json:"systemToOrganizationMappings,omitempty"`
 		
 		Results *[]Useraggregatedatacontainer `json:"results,omitempty"`
 		*Alias
 	}{ 
-		SystemToOrganizationMappings: u.SystemToOrganizationMappings,
+		SystemToOrganizationMappings: o.SystemToOrganizationMappings,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Useraggregatequeryresponse) UnmarshalJSON(b []byte) error {
+	var UseraggregatequeryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &UseraggregatequeryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if SystemToOrganizationMappings, ok := UseraggregatequeryresponseMap["systemToOrganizationMappings"].(map[string]interface{}); ok {
+		SystemToOrganizationMappingsString, _ := json.Marshal(SystemToOrganizationMappings)
+		json.Unmarshal(SystemToOrganizationMappingsString, &o.SystemToOrganizationMappings)
+	}
+	
+	if Results, ok := UseraggregatequeryresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

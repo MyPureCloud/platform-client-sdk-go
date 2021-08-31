@@ -21,13 +21,11 @@ type Importscriptstatusresponse struct {
 
 }
 
-func (u *Importscriptstatusresponse) MarshalJSON() ([]byte, error) {
+func (o *Importscriptstatusresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Importscriptstatusresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Importscriptstatusresponse) MarshalJSON() ([]byte, error) {
 		Message *string `json:"message,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
+		Url: o.Url,
 		
-		Succeeded: u.Succeeded,
+		Succeeded: o.Succeeded,
 		
-		Message: u.Message,
-		Alias:    (*Alias)(u),
+		Message: o.Message,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Importscriptstatusresponse) UnmarshalJSON(b []byte) error {
+	var ImportscriptstatusresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ImportscriptstatusresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := ImportscriptstatusresponseMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if Succeeded, ok := ImportscriptstatusresponseMap["succeeded"].(bool); ok {
+		o.Succeeded = &Succeeded
+	}
+	
+	if Message, ok := ImportscriptstatusresponseMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

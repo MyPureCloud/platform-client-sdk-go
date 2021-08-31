@@ -13,20 +13,33 @@ type Generaltopic struct {
 
 }
 
-func (u *Generaltopic) MarshalJSON() ([]byte, error) {
+func (o *Generaltopic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Generaltopic
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
-		Alias:    (*Alias)(u),
+		Name: o.Name,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Generaltopic) UnmarshalJSON(b []byte) error {
+	var GeneraltopicMap map[string]interface{}
+	err := json.Unmarshal(b, &GeneraltopicMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := GeneraltopicMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Contactlistimportstatusimportstatus struct {
 
 }
 
-func (u *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
+func (o *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlistimportstatusimportstatus
-
 	
-
 	return json.Marshal(&struct { 
 		ImportState *string `json:"importState,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		ImportState: u.ImportState,
+		ImportState: o.ImportState,
 		
-		TotalRecords: u.TotalRecords,
+		TotalRecords: o.TotalRecords,
 		
-		CompletedRecords: u.CompletedRecords,
+		CompletedRecords: o.CompletedRecords,
 		
-		PercentageComplete: u.PercentageComplete,
+		PercentageComplete: o.PercentageComplete,
 		
-		FailureReason: u.FailureReason,
+		FailureReason: o.FailureReason,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
+	var ContactlistimportstatusimportstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistimportstatusimportstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if ImportState, ok := ContactlistimportstatusimportstatusMap["importState"].(string); ok {
+		o.ImportState = &ImportState
+	}
+	
+	if TotalRecords, ok := ContactlistimportstatusimportstatusMap["totalRecords"].(float64); ok {
+		TotalRecordsInt := int(TotalRecords)
+		o.TotalRecords = &TotalRecordsInt
+	}
+	
+	if CompletedRecords, ok := ContactlistimportstatusimportstatusMap["completedRecords"].(float64); ok {
+		CompletedRecordsInt := int(CompletedRecords)
+		o.CompletedRecords = &CompletedRecordsInt
+	}
+	
+	if PercentageComplete, ok := ContactlistimportstatusimportstatusMap["percentageComplete"].(float64); ok {
+		PercentageCompleteInt := int(PercentageComplete)
+		o.PercentageComplete = &PercentageCompleteInt
+	}
+	
+	if FailureReason, ok := ContactlistimportstatusimportstatusMap["failureReason"].(string); ok {
+		o.FailureReason = &FailureReason
+	}
+	
+	if AdditionalProperties, ok := ContactlistimportstatusimportstatusMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

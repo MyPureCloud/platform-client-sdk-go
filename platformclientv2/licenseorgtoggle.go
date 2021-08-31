@@ -17,24 +17,41 @@ type Licenseorgtoggle struct {
 
 }
 
-func (u *Licenseorgtoggle) MarshalJSON() ([]byte, error) {
+func (o *Licenseorgtoggle) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Licenseorgtoggle
-
 	
-
 	return json.Marshal(&struct { 
 		FeatureName *string `json:"featureName,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		*Alias
 	}{ 
-		FeatureName: u.FeatureName,
+		FeatureName: o.FeatureName,
 		
-		Enabled: u.Enabled,
-		Alias:    (*Alias)(u),
+		Enabled: o.Enabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Licenseorgtoggle) UnmarshalJSON(b []byte) error {
+	var LicenseorgtoggleMap map[string]interface{}
+	err := json.Unmarshal(b, &LicenseorgtoggleMap)
+	if err != nil {
+		return err
+	}
+	
+	if FeatureName, ok := LicenseorgtoggleMap["featureName"].(string); ok {
+		o.FeatureName = &FeatureName
+	}
+	
+	if Enabled, ok := LicenseorgtoggleMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

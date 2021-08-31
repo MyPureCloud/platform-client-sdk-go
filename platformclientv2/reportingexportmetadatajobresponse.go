@@ -49,13 +49,11 @@ type Reportingexportmetadatajobresponse struct {
 
 }
 
-func (u *Reportingexportmetadatajobresponse) MarshalJSON() ([]byte, error) {
+func (o *Reportingexportmetadatajobresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingexportmetadatajobresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Reportingexportmetadatajobresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ViewType: u.ViewType,
+		ViewType: o.ViewType,
 		
-		DateLimitations: u.DateLimitations,
+		DateLimitations: o.DateLimitations,
 		
-		RequiredFilters: u.RequiredFilters,
+		RequiredFilters: o.RequiredFilters,
 		
-		SupportedFilters: u.SupportedFilters,
+		SupportedFilters: o.SupportedFilters,
 		
-		RequiredColumnIds: u.RequiredColumnIds,
+		RequiredColumnIds: o.RequiredColumnIds,
 		
-		DependentColumnIds: u.DependentColumnIds,
+		DependentColumnIds: o.DependentColumnIds,
 		
-		AvailableColumnIds: u.AvailableColumnIds,
+		AvailableColumnIds: o.AvailableColumnIds,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingexportmetadatajobresponse) UnmarshalJSON(b []byte) error {
+	var ReportingexportmetadatajobresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingexportmetadatajobresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ReportingexportmetadatajobresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ReportingexportmetadatajobresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ViewType, ok := ReportingexportmetadatajobresponseMap["viewType"].(string); ok {
+		o.ViewType = &ViewType
+	}
+	
+	if DateLimitations, ok := ReportingexportmetadatajobresponseMap["dateLimitations"].(string); ok {
+		o.DateLimitations = &DateLimitations
+	}
+	
+	if RequiredFilters, ok := ReportingexportmetadatajobresponseMap["requiredFilters"].([]interface{}); ok {
+		RequiredFiltersString, _ := json.Marshal(RequiredFilters)
+		json.Unmarshal(RequiredFiltersString, &o.RequiredFilters)
+	}
+	
+	if SupportedFilters, ok := ReportingexportmetadatajobresponseMap["supportedFilters"].([]interface{}); ok {
+		SupportedFiltersString, _ := json.Marshal(SupportedFilters)
+		json.Unmarshal(SupportedFiltersString, &o.SupportedFilters)
+	}
+	
+	if RequiredColumnIds, ok := ReportingexportmetadatajobresponseMap["requiredColumnIds"].([]interface{}); ok {
+		RequiredColumnIdsString, _ := json.Marshal(RequiredColumnIds)
+		json.Unmarshal(RequiredColumnIdsString, &o.RequiredColumnIds)
+	}
+	
+	if DependentColumnIds, ok := ReportingexportmetadatajobresponseMap["dependentColumnIds"].(map[string]interface{}); ok {
+		DependentColumnIdsString, _ := json.Marshal(DependentColumnIds)
+		json.Unmarshal(DependentColumnIdsString, &o.DependentColumnIds)
+	}
+	
+	if AvailableColumnIds, ok := ReportingexportmetadatajobresponseMap["availableColumnIds"].([]interface{}); ok {
+		AvailableColumnIdsString, _ := json.Marshal(AvailableColumnIds)
+		json.Unmarshal(AvailableColumnIdsString, &o.AvailableColumnIds)
+	}
+	
+	if SelfUri, ok := ReportingexportmetadatajobresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

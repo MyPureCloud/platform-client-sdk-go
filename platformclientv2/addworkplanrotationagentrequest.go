@@ -21,13 +21,11 @@ type Addworkplanrotationagentrequest struct {
 
 }
 
-func (u *Addworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
+func (o *Addworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Addworkplanrotationagentrequest
-
 	
-
 	return json.Marshal(&struct { 
 		UserId *string `json:"userId,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Addworkplanrotationagentrequest) MarshalJSON() ([]byte, error) {
 		Position *int `json:"position,omitempty"`
 		*Alias
 	}{ 
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		DateRange: u.DateRange,
+		DateRange: o.DateRange,
 		
-		Position: u.Position,
-		Alias:    (*Alias)(u),
+		Position: o.Position,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Addworkplanrotationagentrequest) UnmarshalJSON(b []byte) error {
+	var AddworkplanrotationagentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &AddworkplanrotationagentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if UserId, ok := AddworkplanrotationagentrequestMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if DateRange, ok := AddworkplanrotationagentrequestMap["dateRange"].(map[string]interface{}); ok {
+		DateRangeString, _ := json.Marshal(DateRange)
+		json.Unmarshal(DateRangeString, &o.DateRange)
+	}
+	
+	if Position, ok := AddworkplanrotationagentrequestMap["position"].(float64); ok {
+		PositionInt := int(Position)
+		o.Position = &PositionInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

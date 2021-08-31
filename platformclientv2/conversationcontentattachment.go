@@ -37,13 +37,11 @@ type Conversationcontentattachment struct {
 
 }
 
-func (u *Conversationcontentattachment) MarshalJSON() ([]byte, error) {
+func (o *Conversationcontentattachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcontentattachment
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,60 @@ func (u *Conversationcontentattachment) MarshalJSON() ([]byte, error) {
 		Filename *string `json:"filename,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		Mime: u.Mime,
+		Mime: o.Mime,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		Sha256: u.Sha256,
+		Sha256: o.Sha256,
 		
-		Filename: u.Filename,
-		Alias:    (*Alias)(u),
+		Filename: o.Filename,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcontentattachment) UnmarshalJSON(b []byte) error {
+	var ConversationcontentattachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentattachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationcontentattachmentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if MediaType, ok := ConversationcontentattachmentMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if Url, ok := ConversationcontentattachmentMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if Mime, ok := ConversationcontentattachmentMap["mime"].(string); ok {
+		o.Mime = &Mime
+	}
+	
+	if Text, ok := ConversationcontentattachmentMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Sha256, ok := ConversationcontentattachmentMap["sha256"].(string); ok {
+		o.Sha256 = &Sha256
+	}
+	
+	if Filename, ok := ConversationcontentattachmentMap["filename"].(string); ok {
+		o.Filename = &Filename
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

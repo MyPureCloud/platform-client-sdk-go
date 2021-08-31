@@ -13,20 +13,34 @@ type Bushorttermforecastingsettings struct {
 
 }
 
-func (u *Bushorttermforecastingsettings) MarshalJSON() ([]byte, error) {
+func (o *Bushorttermforecastingsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bushorttermforecastingsettings
-
 	
-
 	return json.Marshal(&struct { 
 		DefaultHistoryWeeks *int `json:"defaultHistoryWeeks,omitempty"`
 		*Alias
 	}{ 
-		DefaultHistoryWeeks: u.DefaultHistoryWeeks,
-		Alias:    (*Alias)(u),
+		DefaultHistoryWeeks: o.DefaultHistoryWeeks,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bushorttermforecastingsettings) UnmarshalJSON(b []byte) error {
+	var BushorttermforecastingsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &BushorttermforecastingsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if DefaultHistoryWeeks, ok := BushorttermforecastingsettingsMap["defaultHistoryWeeks"].(float64); ok {
+		DefaultHistoryWeeksInt := int(DefaultHistoryWeeks)
+		o.DefaultHistoryWeeks = &DefaultHistoryWeeksInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

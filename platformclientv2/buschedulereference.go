@@ -22,20 +22,18 @@ type Buschedulereference struct {
 
 }
 
-func (u *Buschedulereference) MarshalJSON() ([]byte, error) {
+func (o *Buschedulereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buschedulereference
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -44,13 +42,37 @@ func (u *Buschedulereference) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buschedulereference) UnmarshalJSON(b []byte) error {
+	var BuschedulereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &BuschedulereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BuschedulereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BuschedulereferenceMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if SelfUri, ok := BuschedulereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

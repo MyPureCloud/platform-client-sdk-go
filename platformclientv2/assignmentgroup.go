@@ -25,13 +25,11 @@ type Assignmentgroup struct {
 
 }
 
-func (u *Assignmentgroup) MarshalJSON() ([]byte, error) {
+func (o *Assignmentgroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assignmentgroup
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Assignmentgroup) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		VarType: u.VarType,
-		Alias:    (*Alias)(u),
+		VarType: o.VarType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assignmentgroup) UnmarshalJSON(b []byte) error {
+	var AssignmentgroupMap map[string]interface{}
+	err := json.Unmarshal(b, &AssignmentgroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AssignmentgroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AssignmentgroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if SelfUri, ok := AssignmentgroupMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if VarType, ok := AssignmentgroupMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,33 @@ type Featurestate struct {
 
 }
 
-func (u *Featurestate) MarshalJSON() ([]byte, error) {
+func (o *Featurestate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Featurestate
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
-		Alias:    (*Alias)(u),
+		Enabled: o.Enabled,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Featurestate) UnmarshalJSON(b []byte) error {
+	var FeaturestateMap map[string]interface{}
+	err := json.Unmarshal(b, &FeaturestateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := FeaturestateMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

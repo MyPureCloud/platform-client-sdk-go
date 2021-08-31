@@ -21,13 +21,11 @@ type Timeallowed struct {
 
 }
 
-func (u *Timeallowed) MarshalJSON() ([]byte, error) {
+func (o *Timeallowed) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeallowed
-
 	
-
 	return json.Marshal(&struct { 
 		TimeSlots *[]Timeslot `json:"timeSlots,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Timeallowed) MarshalJSON() ([]byte, error) {
 		Empty *bool `json:"empty,omitempty"`
 		*Alias
 	}{ 
-		TimeSlots: u.TimeSlots,
+		TimeSlots: o.TimeSlots,
 		
-		TimeZoneId: u.TimeZoneId,
+		TimeZoneId: o.TimeZoneId,
 		
-		Empty: u.Empty,
-		Alias:    (*Alias)(u),
+		Empty: o.Empty,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeallowed) UnmarshalJSON(b []byte) error {
+	var TimeallowedMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeallowedMap)
+	if err != nil {
+		return err
+	}
+	
+	if TimeSlots, ok := TimeallowedMap["timeSlots"].([]interface{}); ok {
+		TimeSlotsString, _ := json.Marshal(TimeSlots)
+		json.Unmarshal(TimeSlotsString, &o.TimeSlots)
+	}
+	
+	if TimeZoneId, ok := TimeallowedMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
+	if Empty, ok := TimeallowedMap["empty"].(bool); ok {
+		o.Empty = &Empty
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

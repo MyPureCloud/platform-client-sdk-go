@@ -17,24 +17,41 @@ type Wemcoachingappointmenttopiccoachingappointmentexternallink struct {
 
 }
 
-func (u *Wemcoachingappointmenttopiccoachingappointmentexternallink) MarshalJSON() ([]byte, error) {
+func (o *Wemcoachingappointmenttopiccoachingappointmentexternallink) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wemcoachingappointmenttopiccoachingappointmentexternallink
-
 	
-
 	return json.Marshal(&struct { 
 		ExternalLink *string `json:"externalLink,omitempty"`
 		
 		Action *string `json:"action,omitempty"`
 		*Alias
 	}{ 
-		ExternalLink: u.ExternalLink,
+		ExternalLink: o.ExternalLink,
 		
-		Action: u.Action,
-		Alias:    (*Alias)(u),
+		Action: o.Action,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wemcoachingappointmenttopiccoachingappointmentexternallink) UnmarshalJSON(b []byte) error {
+	var WemcoachingappointmenttopiccoachingappointmentexternallinkMap map[string]interface{}
+	err := json.Unmarshal(b, &WemcoachingappointmenttopiccoachingappointmentexternallinkMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExternalLink, ok := WemcoachingappointmenttopiccoachingappointmentexternallinkMap["externalLink"].(string); ok {
+		o.ExternalLink = &ExternalLink
+	}
+	
+	if Action, ok := WemcoachingappointmenttopiccoachingappointmentexternallinkMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

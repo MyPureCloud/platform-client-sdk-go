@@ -17,24 +17,41 @@ type Sipdownloadresponse struct {
 
 }
 
-func (u *Sipdownloadresponse) MarshalJSON() ([]byte, error) {
+func (o *Sipdownloadresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Sipdownloadresponse
-
 	
-
 	return json.Marshal(&struct { 
 		DownloadId *string `json:"downloadId,omitempty"`
 		
 		DocumentId *string `json:"documentId,omitempty"`
 		*Alias
 	}{ 
-		DownloadId: u.DownloadId,
+		DownloadId: o.DownloadId,
 		
-		DocumentId: u.DocumentId,
-		Alias:    (*Alias)(u),
+		DocumentId: o.DocumentId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Sipdownloadresponse) UnmarshalJSON(b []byte) error {
+	var SipdownloadresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SipdownloadresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if DownloadId, ok := SipdownloadresponseMap["downloadId"].(string); ok {
+		o.DownloadId = &DownloadId
+	}
+	
+	if DocumentId, ok := SipdownloadresponseMap["documentId"].(string); ok {
+		o.DocumentId = &DocumentId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

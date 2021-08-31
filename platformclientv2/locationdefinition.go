@@ -73,13 +73,11 @@ type Locationdefinition struct {
 
 }
 
-func (u *Locationdefinition) MarshalJSON() ([]byte, error) {
+func (o *Locationdefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationdefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -114,39 +112,122 @@ func (u *Locationdefinition) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContactUser: u.ContactUser,
+		ContactUser: o.ContactUser,
 		
-		EmergencyNumber: u.EmergencyNumber,
+		EmergencyNumber: o.EmergencyNumber,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		State: u.State,
+		State: o.State,
 		
-		Notes: u.Notes,
+		Notes: o.Notes,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Path: u.Path,
+		Path: o.Path,
 		
-		ProfileImage: u.ProfileImage,
+		ProfileImage: o.ProfileImage,
 		
-		FloorplanImage: u.FloorplanImage,
+		FloorplanImage: o.FloorplanImage,
 		
-		AddressVerificationDetails: u.AddressVerificationDetails,
+		AddressVerificationDetails: o.AddressVerificationDetails,
 		
-		AddressVerified: u.AddressVerified,
+		AddressVerified: o.AddressVerified,
 		
-		AddressStored: u.AddressStored,
+		AddressStored: o.AddressStored,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationdefinition) UnmarshalJSON(b []byte) error {
+	var LocationdefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationdefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LocationdefinitionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LocationdefinitionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContactUser, ok := LocationdefinitionMap["contactUser"].(map[string]interface{}); ok {
+		ContactUserString, _ := json.Marshal(ContactUser)
+		json.Unmarshal(ContactUserString, &o.ContactUser)
+	}
+	
+	if EmergencyNumber, ok := LocationdefinitionMap["emergencyNumber"].(map[string]interface{}); ok {
+		EmergencyNumberString, _ := json.Marshal(EmergencyNumber)
+		json.Unmarshal(EmergencyNumberString, &o.EmergencyNumber)
+	}
+	
+	if Address, ok := LocationdefinitionMap["address"].(map[string]interface{}); ok {
+		AddressString, _ := json.Marshal(Address)
+		json.Unmarshal(AddressString, &o.Address)
+	}
+	
+	if State, ok := LocationdefinitionMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Notes, ok := LocationdefinitionMap["notes"].(string); ok {
+		o.Notes = &Notes
+	}
+	
+	if Version, ok := LocationdefinitionMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Path, ok := LocationdefinitionMap["path"].([]interface{}); ok {
+		PathString, _ := json.Marshal(Path)
+		json.Unmarshal(PathString, &o.Path)
+	}
+	
+	if ProfileImage, ok := LocationdefinitionMap["profileImage"].([]interface{}); ok {
+		ProfileImageString, _ := json.Marshal(ProfileImage)
+		json.Unmarshal(ProfileImageString, &o.ProfileImage)
+	}
+	
+	if FloorplanImage, ok := LocationdefinitionMap["floorplanImage"].([]interface{}); ok {
+		FloorplanImageString, _ := json.Marshal(FloorplanImage)
+		json.Unmarshal(FloorplanImageString, &o.FloorplanImage)
+	}
+	
+	if AddressVerificationDetails, ok := LocationdefinitionMap["addressVerificationDetails"].(map[string]interface{}); ok {
+		AddressVerificationDetailsString, _ := json.Marshal(AddressVerificationDetails)
+		json.Unmarshal(AddressVerificationDetailsString, &o.AddressVerificationDetails)
+	}
+	
+	if AddressVerified, ok := LocationdefinitionMap["addressVerified"].(bool); ok {
+		o.AddressVerified = &AddressVerified
+	}
+	
+	if AddressStored, ok := LocationdefinitionMap["addressStored"].(bool); ok {
+		o.AddressStored = &AddressStored
+	}
+	
+	if Images, ok := LocationdefinitionMap["images"].(string); ok {
+		o.Images = &Images
+	}
+	
+	if SelfUri, ok := LocationdefinitionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -45,13 +45,11 @@ type Timezonemappingpreview struct {
 
 }
 
-func (u *Timezonemappingpreview) MarshalJSON() ([]byte, error) {
+func (o *Timezonemappingpreview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timezonemappingpreview
-
 	
-
 	return json.Marshal(&struct { 
 		ContactList *Domainentityref `json:"contactList,omitempty"`
 		
@@ -72,25 +70,81 @@ func (u *Timezonemappingpreview) MarshalJSON() ([]byte, error) {
 		ContactListSize *int `json:"contactListSize,omitempty"`
 		*Alias
 	}{ 
-		ContactList: u.ContactList,
+		ContactList: o.ContactList,
 		
-		ContactsPerTimeZone: u.ContactsPerTimeZone,
+		ContactsPerTimeZone: o.ContactsPerTimeZone,
 		
-		ContactsMappedUsingZipCode: u.ContactsMappedUsingZipCode,
+		ContactsMappedUsingZipCode: o.ContactsMappedUsingZipCode,
 		
-		ContactsMappedToASingleZone: u.ContactsMappedToASingleZone,
+		ContactsMappedToASingleZone: o.ContactsMappedToASingleZone,
 		
-		ContactsMappedToASingleZoneUsingZipCode: u.ContactsMappedToASingleZoneUsingZipCode,
+		ContactsMappedToASingleZoneUsingZipCode: o.ContactsMappedToASingleZoneUsingZipCode,
 		
-		ContactsMappedToMultipleZones: u.ContactsMappedToMultipleZones,
+		ContactsMappedToMultipleZones: o.ContactsMappedToMultipleZones,
 		
-		ContactsMappedToMultipleZonesUsingZipCode: u.ContactsMappedToMultipleZonesUsingZipCode,
+		ContactsMappedToMultipleZonesUsingZipCode: o.ContactsMappedToMultipleZonesUsingZipCode,
 		
-		ContactsInDefaultWindow: u.ContactsInDefaultWindow,
+		ContactsInDefaultWindow: o.ContactsInDefaultWindow,
 		
-		ContactListSize: u.ContactListSize,
-		Alias:    (*Alias)(u),
+		ContactListSize: o.ContactListSize,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timezonemappingpreview) UnmarshalJSON(b []byte) error {
+	var TimezonemappingpreviewMap map[string]interface{}
+	err := json.Unmarshal(b, &TimezonemappingpreviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContactList, ok := TimezonemappingpreviewMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if ContactsPerTimeZone, ok := TimezonemappingpreviewMap["contactsPerTimeZone"].(map[string]interface{}); ok {
+		ContactsPerTimeZoneString, _ := json.Marshal(ContactsPerTimeZone)
+		json.Unmarshal(ContactsPerTimeZoneString, &o.ContactsPerTimeZone)
+	}
+	
+	if ContactsMappedUsingZipCode, ok := TimezonemappingpreviewMap["contactsMappedUsingZipCode"].(map[string]interface{}); ok {
+		ContactsMappedUsingZipCodeString, _ := json.Marshal(ContactsMappedUsingZipCode)
+		json.Unmarshal(ContactsMappedUsingZipCodeString, &o.ContactsMappedUsingZipCode)
+	}
+	
+	if ContactsMappedToASingleZone, ok := TimezonemappingpreviewMap["contactsMappedToASingleZone"].(float64); ok {
+		ContactsMappedToASingleZoneInt := int(ContactsMappedToASingleZone)
+		o.ContactsMappedToASingleZone = &ContactsMappedToASingleZoneInt
+	}
+	
+	if ContactsMappedToASingleZoneUsingZipCode, ok := TimezonemappingpreviewMap["contactsMappedToASingleZoneUsingZipCode"].(float64); ok {
+		ContactsMappedToASingleZoneUsingZipCodeInt := int(ContactsMappedToASingleZoneUsingZipCode)
+		o.ContactsMappedToASingleZoneUsingZipCode = &ContactsMappedToASingleZoneUsingZipCodeInt
+	}
+	
+	if ContactsMappedToMultipleZones, ok := TimezonemappingpreviewMap["contactsMappedToMultipleZones"].(float64); ok {
+		ContactsMappedToMultipleZonesInt := int(ContactsMappedToMultipleZones)
+		o.ContactsMappedToMultipleZones = &ContactsMappedToMultipleZonesInt
+	}
+	
+	if ContactsMappedToMultipleZonesUsingZipCode, ok := TimezonemappingpreviewMap["contactsMappedToMultipleZonesUsingZipCode"].(float64); ok {
+		ContactsMappedToMultipleZonesUsingZipCodeInt := int(ContactsMappedToMultipleZonesUsingZipCode)
+		o.ContactsMappedToMultipleZonesUsingZipCode = &ContactsMappedToMultipleZonesUsingZipCodeInt
+	}
+	
+	if ContactsInDefaultWindow, ok := TimezonemappingpreviewMap["contactsInDefaultWindow"].(float64); ok {
+		ContactsInDefaultWindowInt := int(ContactsInDefaultWindow)
+		o.ContactsInDefaultWindow = &ContactsInDefaultWindowInt
+	}
+	
+	if ContactListSize, ok := TimezonemappingpreviewMap["contactListSize"].(float64); ok {
+		ContactListSizeInt := int(ContactListSize)
+		o.ContactListSize = &ContactListSizeInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

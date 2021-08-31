@@ -13,20 +13,34 @@ type Roledivisiongrants struct {
 
 }
 
-func (u *Roledivisiongrants) MarshalJSON() ([]byte, error) {
+func (o *Roledivisiongrants) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Roledivisiongrants
-
 	
-
 	return json.Marshal(&struct { 
 		Grants *[]Roledivisionpair `json:"grants,omitempty"`
 		*Alias
 	}{ 
-		Grants: u.Grants,
-		Alias:    (*Alias)(u),
+		Grants: o.Grants,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Roledivisiongrants) UnmarshalJSON(b []byte) error {
+	var RoledivisiongrantsMap map[string]interface{}
+	err := json.Unmarshal(b, &RoledivisiongrantsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Grants, ok := RoledivisiongrantsMap["grants"].([]interface{}); ok {
+		GrantsString, _ := json.Marshal(Grants)
+		json.Unmarshal(GrantsString, &o.Grants)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

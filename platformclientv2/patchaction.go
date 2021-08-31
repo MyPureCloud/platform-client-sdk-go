@@ -25,13 +25,11 @@ type Patchaction struct {
 
 }
 
-func (u *Patchaction) MarshalJSON() ([]byte, error) {
+func (o *Patchaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchaction
-
 	
-
 	return json.Marshal(&struct { 
 		MediaType *string `json:"mediaType,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Patchaction) MarshalJSON() ([]byte, error) {
 		WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
 		*Alias
 	}{ 
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		ActionTemplate: u.ActionTemplate,
+		ActionTemplate: o.ActionTemplate,
 		
-		ArchitectFlowFields: u.ArchitectFlowFields,
+		ArchitectFlowFields: o.ArchitectFlowFields,
 		
-		WebMessagingOfferFields: u.WebMessagingOfferFields,
-		Alias:    (*Alias)(u),
+		WebMessagingOfferFields: o.WebMessagingOfferFields,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchaction) UnmarshalJSON(b []byte) error {
+	var PatchactionMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if MediaType, ok := PatchactionMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if ActionTemplate, ok := PatchactionMap["actionTemplate"].(map[string]interface{}); ok {
+		ActionTemplateString, _ := json.Marshal(ActionTemplate)
+		json.Unmarshal(ActionTemplateString, &o.ActionTemplate)
+	}
+	
+	if ArchitectFlowFields, ok := PatchactionMap["architectFlowFields"].(map[string]interface{}); ok {
+		ArchitectFlowFieldsString, _ := json.Marshal(ArchitectFlowFields)
+		json.Unmarshal(ArchitectFlowFieldsString, &o.ArchitectFlowFields)
+	}
+	
+	if WebMessagingOfferFields, ok := PatchactionMap["webMessagingOfferFields"].(map[string]interface{}); ok {
+		WebMessagingOfferFieldsString, _ := json.Marshal(WebMessagingOfferFields)
+		json.Unmarshal(WebMessagingOfferFieldsString, &o.WebMessagingOfferFields)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

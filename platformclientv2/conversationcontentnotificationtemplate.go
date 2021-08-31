@@ -29,13 +29,11 @@ type Conversationcontentnotificationtemplate struct {
 
 }
 
-func (u *Conversationcontentnotificationtemplate) MarshalJSON() ([]byte, error) {
+func (o *Conversationcontentnotificationtemplate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcontentnotificationtemplate
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Conversationcontentnotificationtemplate) MarshalJSON() ([]byte, error) 
 		Footer *Conversationnotificationtemplatefooter `json:"footer,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Header: u.Header,
+		Header: o.Header,
 		
-		Body: u.Body,
+		Body: o.Body,
 		
-		Footer: u.Footer,
-		Alias:    (*Alias)(u),
+		Footer: o.Footer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcontentnotificationtemplate) UnmarshalJSON(b []byte) error {
+	var ConversationcontentnotificationtemplateMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentnotificationtemplateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationcontentnotificationtemplateMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Language, ok := ConversationcontentnotificationtemplateMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Header, ok := ConversationcontentnotificationtemplateMap["header"].(map[string]interface{}); ok {
+		HeaderString, _ := json.Marshal(Header)
+		json.Unmarshal(HeaderString, &o.Header)
+	}
+	
+	if Body, ok := ConversationcontentnotificationtemplateMap["body"].(map[string]interface{}); ok {
+		BodyString, _ := json.Marshal(Body)
+		json.Unmarshal(BodyString, &o.Body)
+	}
+	
+	if Footer, ok := ConversationcontentnotificationtemplateMap["footer"].(map[string]interface{}); ok {
+		FooterString, _ := json.Marshal(Footer)
+		json.Unmarshal(FooterString, &o.Footer)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

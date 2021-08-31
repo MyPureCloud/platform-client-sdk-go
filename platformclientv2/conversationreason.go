@@ -17,24 +17,41 @@ type Conversationreason struct {
 
 }
 
-func (u *Conversationreason) MarshalJSON() ([]byte, error) {
+func (o *Conversationreason) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationreason
-
 	
-
 	return json.Marshal(&struct { 
 		Code *string `json:"code,omitempty"`
 		
 		Message *string `json:"message,omitempty"`
 		*Alias
 	}{ 
-		Code: u.Code,
+		Code: o.Code,
 		
-		Message: u.Message,
-		Alias:    (*Alias)(u),
+		Message: o.Message,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationreason) UnmarshalJSON(b []byte) error {
+	var ConversationreasonMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationreasonMap)
+	if err != nil {
+		return err
+	}
+	
+	if Code, ok := ConversationreasonMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+	if Message, ok := ConversationreasonMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -46,21 +46,19 @@ type Listedprogram struct {
 
 }
 
-func (u *Listedprogram) MarshalJSON() ([]byte, error) {
+func (o *Listedprogram) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Listedprogram
-
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -81,25 +79,76 @@ func (u *Listedprogram) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		TopicsCount: u.TopicsCount,
+		TopicsCount: o.TopicsCount,
 		
-		Tags: u.Tags,
+		Tags: o.Tags,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Listedprogram) UnmarshalJSON(b []byte) error {
+	var ListedprogramMap map[string]interface{}
+	err := json.Unmarshal(b, &ListedprogramMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ListedprogramMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ListedprogramMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := ListedprogramMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := ListedprogramMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if TopicsCount, ok := ListedprogramMap["topicsCount"].(float64); ok {
+		TopicsCountInt := int(TopicsCount)
+		o.TopicsCount = &TopicsCountInt
+	}
+	
+	if Tags, ok := ListedprogramMap["tags"].([]interface{}); ok {
+		TagsString, _ := json.Marshal(Tags)
+		json.Unmarshal(TagsString, &o.Tags)
+	}
+	
+	if ModifiedBy, ok := ListedprogramMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if dateModifiedString, ok := ListedprogramMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if SelfUri, ok := ListedprogramMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

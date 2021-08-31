@@ -17,24 +17,41 @@ type Channeltopic struct {
 
 }
 
-func (u *Channeltopic) MarshalJSON() ([]byte, error) {
+func (o *Channeltopic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Channeltopic
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Channeltopic) UnmarshalJSON(b []byte) error {
+	var ChanneltopicMap map[string]interface{}
+	err := json.Unmarshal(b, &ChanneltopicMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ChanneltopicMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := ChanneltopicMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

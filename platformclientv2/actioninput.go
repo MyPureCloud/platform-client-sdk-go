@@ -21,13 +21,11 @@ type Actioninput struct {
 
 }
 
-func (u *Actioninput) MarshalJSON() ([]byte, error) {
+func (o *Actioninput) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Actioninput
-
 	
-
 	return json.Marshal(&struct { 
 		InputSchema *Jsonschemadocument `json:"inputSchema,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Actioninput) MarshalJSON() ([]byte, error) {
 		InputSchemaUri *string `json:"inputSchemaUri,omitempty"`
 		*Alias
 	}{ 
-		InputSchema: u.InputSchema,
+		InputSchema: o.InputSchema,
 		
-		InputSchemaFlattened: u.InputSchemaFlattened,
+		InputSchemaFlattened: o.InputSchemaFlattened,
 		
-		InputSchemaUri: u.InputSchemaUri,
-		Alias:    (*Alias)(u),
+		InputSchemaUri: o.InputSchemaUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Actioninput) UnmarshalJSON(b []byte) error {
+	var ActioninputMap map[string]interface{}
+	err := json.Unmarshal(b, &ActioninputMap)
+	if err != nil {
+		return err
+	}
+	
+	if InputSchema, ok := ActioninputMap["inputSchema"].(map[string]interface{}); ok {
+		InputSchemaString, _ := json.Marshal(InputSchema)
+		json.Unmarshal(InputSchemaString, &o.InputSchema)
+	}
+	
+	if InputSchemaFlattened, ok := ActioninputMap["inputSchemaFlattened"].(map[string]interface{}); ok {
+		InputSchemaFlattenedString, _ := json.Marshal(InputSchemaFlattened)
+		json.Unmarshal(InputSchemaFlattenedString, &o.InputSchemaFlattened)
+	}
+	
+	if InputSchemaUri, ok := ActioninputMap["inputSchemaUri"].(string); ok {
+		o.InputSchemaUri = &InputSchemaUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

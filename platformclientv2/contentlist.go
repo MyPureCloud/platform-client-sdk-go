@@ -37,13 +37,11 @@ type Contentlist struct {
 
 }
 
-func (u *Contentlist) MarshalJSON() ([]byte, error) {
+func (o *Contentlist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contentlist
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,62 @@ func (u *Contentlist) MarshalJSON() ([]byte, error) {
 		Components *[]Listitemcomponent `json:"components,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ListType: u.ListType,
+		ListType: o.ListType,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SubmitLabel: u.SubmitLabel,
+		SubmitLabel: o.SubmitLabel,
 		
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Components: u.Components,
-		Alias:    (*Alias)(u),
+		Components: o.Components,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contentlist) UnmarshalJSON(b []byte) error {
+	var ContentlistMap map[string]interface{}
+	err := json.Unmarshal(b, &ContentlistMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ContentlistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ListType, ok := ContentlistMap["listType"].(string); ok {
+		o.ListType = &ListType
+	}
+	
+	if Title, ok := ContentlistMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Description, ok := ContentlistMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SubmitLabel, ok := ContentlistMap["submitLabel"].(string); ok {
+		o.SubmitLabel = &SubmitLabel
+	}
+	
+	if Actions, ok := ContentlistMap["actions"].(map[string]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Components, ok := ContentlistMap["components"].([]interface{}); ok {
+		ComponentsString, _ := json.Marshal(Components)
+		json.Unmarshal(ComponentsString, &o.Components)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

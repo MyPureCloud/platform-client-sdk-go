@@ -18,29 +18,27 @@ type Bugetcurrentagentschedulerequest struct {
 
 }
 
-func (u *Bugetcurrentagentschedulerequest) MarshalJSON() ([]byte, error) {
+func (o *Bugetcurrentagentschedulerequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bugetcurrentagentschedulerequest
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -50,8 +48,29 @@ func (u *Bugetcurrentagentschedulerequest) MarshalJSON() ([]byte, error) {
 		StartDate: StartDate,
 		
 		EndDate: EndDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bugetcurrentagentschedulerequest) UnmarshalJSON(b []byte) error {
+	var BugetcurrentagentschedulerequestMap map[string]interface{}
+	err := json.Unmarshal(b, &BugetcurrentagentschedulerequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := BugetcurrentagentschedulerequestMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := BugetcurrentagentschedulerequestMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

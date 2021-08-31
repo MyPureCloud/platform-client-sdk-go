@@ -21,13 +21,11 @@ type Phonechangetopicuseragentinfo struct {
 
 }
 
-func (u *Phonechangetopicuseragentinfo) MarshalJSON() ([]byte, error) {
+func (o *Phonechangetopicuseragentinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonechangetopicuseragentinfo
-
 	
-
 	return json.Marshal(&struct { 
 		FirmwareVersion *string `json:"firmwareVersion,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Phonechangetopicuseragentinfo) MarshalJSON() ([]byte, error) {
 		Model *string `json:"model,omitempty"`
 		*Alias
 	}{ 
-		FirmwareVersion: u.FirmwareVersion,
+		FirmwareVersion: o.FirmwareVersion,
 		
-		Manufacturer: u.Manufacturer,
+		Manufacturer: o.Manufacturer,
 		
-		Model: u.Model,
-		Alias:    (*Alias)(u),
+		Model: o.Model,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonechangetopicuseragentinfo) UnmarshalJSON(b []byte) error {
+	var PhonechangetopicuseragentinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonechangetopicuseragentinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if FirmwareVersion, ok := PhonechangetopicuseragentinfoMap["firmwareVersion"].(string); ok {
+		o.FirmwareVersion = &FirmwareVersion
+	}
+	
+	if Manufacturer, ok := PhonechangetopicuseragentinfoMap["manufacturer"].(string); ok {
+		o.Manufacturer = &Manufacturer
+	}
+	
+	if Model, ok := PhonechangetopicuseragentinfoMap["model"].(string); ok {
+		o.Model = &Model
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

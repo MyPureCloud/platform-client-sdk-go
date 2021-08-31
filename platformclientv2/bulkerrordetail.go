@@ -21,13 +21,11 @@ type Bulkerrordetail struct {
 
 }
 
-func (u *Bulkerrordetail) MarshalJSON() ([]byte, error) {
+func (o *Bulkerrordetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkerrordetail
-
 	
-
 	return json.Marshal(&struct { 
 		FieldName *string `json:"fieldName,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Bulkerrordetail) MarshalJSON() ([]byte, error) {
 		Message *string `json:"message,omitempty"`
 		*Alias
 	}{ 
-		FieldName: u.FieldName,
+		FieldName: o.FieldName,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Message: u.Message,
-		Alias:    (*Alias)(u),
+		Message: o.Message,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkerrordetail) UnmarshalJSON(b []byte) error {
+	var BulkerrordetailMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkerrordetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if FieldName, ok := BulkerrordetailMap["fieldName"].(string); ok {
+		o.FieldName = &FieldName
+	}
+	
+	if Value, ok := BulkerrordetailMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Message, ok := BulkerrordetailMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

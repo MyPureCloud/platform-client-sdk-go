@@ -25,13 +25,11 @@ type Audittopicmessageinfo struct {
 
 }
 
-func (u *Audittopicmessageinfo) MarshalJSON() ([]byte, error) {
+func (o *Audittopicmessageinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Audittopicmessageinfo
-
 	
-
 	return json.Marshal(&struct { 
 		LocalizableMessageCode *string `json:"localizableMessageCode,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Audittopicmessageinfo) MarshalJSON() ([]byte, error) {
 		MessageParams *map[string]string `json:"messageParams,omitempty"`
 		*Alias
 	}{ 
-		LocalizableMessageCode: u.LocalizableMessageCode,
+		LocalizableMessageCode: o.LocalizableMessageCode,
 		
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
-		Alias:    (*Alias)(u),
+		MessageParams: o.MessageParams,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Audittopicmessageinfo) UnmarshalJSON(b []byte) error {
+	var AudittopicmessageinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &AudittopicmessageinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if LocalizableMessageCode, ok := AudittopicmessageinfoMap["localizableMessageCode"].(string); ok {
+		o.LocalizableMessageCode = &LocalizableMessageCode
+	}
+	
+	if Message, ok := AudittopicmessageinfoMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := AudittopicmessageinfoMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := AudittopicmessageinfoMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

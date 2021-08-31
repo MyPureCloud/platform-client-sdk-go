@@ -33,13 +33,11 @@ type Conversationeventtopicaddress struct {
 
 }
 
-func (u *Conversationeventtopicaddress) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicaddress
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Conversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		NameRaw: u.NameRaw,
+		NameRaw: o.NameRaw,
 		
-		AddressNormalized: u.AddressNormalized,
+		AddressNormalized: o.AddressNormalized,
 		
-		AddressRaw: u.AddressRaw,
+		AddressRaw: o.AddressRaw,
 		
-		AddressDisplayable: u.AddressDisplayable,
+		AddressDisplayable: o.AddressDisplayable,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicaddress) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicaddressMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicaddressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ConversationeventtopicaddressMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if NameRaw, ok := ConversationeventtopicaddressMap["nameRaw"].(string); ok {
+		o.NameRaw = &NameRaw
+	}
+	
+	if AddressNormalized, ok := ConversationeventtopicaddressMap["addressNormalized"].(string); ok {
+		o.AddressNormalized = &AddressNormalized
+	}
+	
+	if AddressRaw, ok := ConversationeventtopicaddressMap["addressRaw"].(string); ok {
+		o.AddressRaw = &AddressRaw
+	}
+	
+	if AddressDisplayable, ok := ConversationeventtopicaddressMap["addressDisplayable"].(string); ok {
+		o.AddressDisplayable = &AddressDisplayable
+	}
+	
+	if AdditionalProperties, ok := ConversationeventtopicaddressMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,42 @@ type Edgelogicalinterfaceschangetopicdomainlogicalinterfacechange struct {
 
 }
 
-func (u *Edgelogicalinterfaceschangetopicdomainlogicalinterfacechange) MarshalJSON() ([]byte, error) {
+func (o *Edgelogicalinterfaceschangetopicdomainlogicalinterfacechange) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgelogicalinterfaceschangetopicdomainlogicalinterfacechange
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		ErrorInfo *Edgelogicalinterfaceschangetopicerrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgelogicalinterfaceschangetopicdomainlogicalinterfacechange) UnmarshalJSON(b []byte) error {
+	var EdgelogicalinterfaceschangetopicdomainlogicalinterfacechangeMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgelogicalinterfaceschangetopicdomainlogicalinterfacechangeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgelogicalinterfaceschangetopicdomainlogicalinterfacechangeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ErrorInfo, ok := EdgelogicalinterfaceschangetopicdomainlogicalinterfacechangeMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

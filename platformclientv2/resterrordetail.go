@@ -17,24 +17,41 @@ type Resterrordetail struct {
 
 }
 
-func (u *Resterrordetail) MarshalJSON() ([]byte, error) {
+func (o *Resterrordetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Resterrordetail
-
 	
-
 	return json.Marshal(&struct { 
 		VarError *string `json:"error,omitempty"`
 		
 		Details *string `json:"details,omitempty"`
 		*Alias
 	}{ 
-		VarError: u.VarError,
+		VarError: o.VarError,
 		
-		Details: u.Details,
-		Alias:    (*Alias)(u),
+		Details: o.Details,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Resterrordetail) UnmarshalJSON(b []byte) error {
+	var ResterrordetailMap map[string]interface{}
+	err := json.Unmarshal(b, &ResterrordetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarError, ok := ResterrordetailMap["error"].(string); ok {
+		o.VarError = &VarError
+	}
+	
+	if Details, ok := ResterrordetailMap["details"].(string); ok {
+		o.Details = &Details
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

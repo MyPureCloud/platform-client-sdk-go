@@ -33,13 +33,11 @@ type Campaignstats struct {
 
 }
 
-func (u *Campaignstats) MarshalJSON() ([]byte, error) {
+func (o *Campaignstats) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaignstats
-
 	
-
 	return json.Marshal(&struct { 
 		ContactRate *Connectrate `json:"contactRate,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Campaignstats) MarshalJSON() ([]byte, error) {
 		ScheduledCalls *int `json:"scheduledCalls,omitempty"`
 		*Alias
 	}{ 
-		ContactRate: u.ContactRate,
+		ContactRate: o.ContactRate,
 		
-		IdleAgents: u.IdleAgents,
+		IdleAgents: o.IdleAgents,
 		
-		EffectiveIdleAgents: u.EffectiveIdleAgents,
+		EffectiveIdleAgents: o.EffectiveIdleAgents,
 		
-		AdjustedCallsPerAgent: u.AdjustedCallsPerAgent,
+		AdjustedCallsPerAgent: o.AdjustedCallsPerAgent,
 		
-		OutstandingCalls: u.OutstandingCalls,
+		OutstandingCalls: o.OutstandingCalls,
 		
-		ScheduledCalls: u.ScheduledCalls,
-		Alias:    (*Alias)(u),
+		ScheduledCalls: o.ScheduledCalls,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaignstats) UnmarshalJSON(b []byte) error {
+	var CampaignstatsMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignstatsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContactRate, ok := CampaignstatsMap["contactRate"].(map[string]interface{}); ok {
+		ContactRateString, _ := json.Marshal(ContactRate)
+		json.Unmarshal(ContactRateString, &o.ContactRate)
+	}
+	
+	if IdleAgents, ok := CampaignstatsMap["idleAgents"].(float64); ok {
+		IdleAgentsInt := int(IdleAgents)
+		o.IdleAgents = &IdleAgentsInt
+	}
+	
+	if EffectiveIdleAgents, ok := CampaignstatsMap["effectiveIdleAgents"].(float64); ok {
+		o.EffectiveIdleAgents = &EffectiveIdleAgents
+	}
+	
+	if AdjustedCallsPerAgent, ok := CampaignstatsMap["adjustedCallsPerAgent"].(float64); ok {
+		o.AdjustedCallsPerAgent = &AdjustedCallsPerAgent
+	}
+	
+	if OutstandingCalls, ok := CampaignstatsMap["outstandingCalls"].(float64); ok {
+		OutstandingCallsInt := int(OutstandingCalls)
+		o.OutstandingCalls = &OutstandingCallsInt
+	}
+	
+	if ScheduledCalls, ok := CampaignstatsMap["scheduledCalls"].(float64); ok {
+		ScheduledCallsInt := int(ScheduledCalls)
+		o.ScheduledCalls = &ScheduledCallsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

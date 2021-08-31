@@ -9,16 +9,25 @@ import (
 // Arraynode
 type Arraynode struct { }
 
-func (u *Arraynode) MarshalJSON() ([]byte, error) {
+func (o *Arraynode) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Arraynode
+	
+	return json.Marshal(&struct { *Alias
+	}{ Alias:    (*Alias)(o),
+	})
+}
 
+func (o *Arraynode) UnmarshalJSON(b []byte) error {
+	var ArraynodeMap map[string]interface{}
+	err := json.Unmarshal(b, &ArraynodeMap)
+	if err != nil {
+		return err
+	}
 	
 
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(u),
-	})
+	return nil
 }
 
 // String returns a JSON representation of the model

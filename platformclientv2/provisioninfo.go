@@ -22,21 +22,19 @@ type Provisioninfo struct {
 
 }
 
-func (u *Provisioninfo) MarshalJSON() ([]byte, error) {
+func (o *Provisioninfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Provisioninfo
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Time *string `json:"time,omitempty"`
 		
@@ -47,11 +45,35 @@ func (u *Provisioninfo) MarshalJSON() ([]byte, error) {
 	}{ 
 		Time: Time,
 		
-		Source: u.Source,
+		Source: o.Source,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Provisioninfo) UnmarshalJSON(b []byte) error {
+	var ProvisioninfoMap map[string]interface{}
+	err := json.Unmarshal(b, &ProvisioninfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if timeString, ok := ProvisioninfoMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+	if Source, ok := ProvisioninfoMap["source"].(string); ok {
+		o.Source = &Source
+	}
+	
+	if ErrorInfo, ok := ProvisioninfoMap["errorInfo"].(string); ok {
+		o.ErrorInfo = &ErrorInfo
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Purecloud struct {
 
 }
 
-func (u *Purecloud) MarshalJSON() ([]byte, error) {
+func (o *Purecloud) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Purecloud
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Purecloud) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Purecloud) UnmarshalJSON(b []byte) error {
+	var PurecloudMap map[string]interface{}
+	err := json.Unmarshal(b, &PurecloudMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PurecloudMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PurecloudMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Disabled, ok := PurecloudMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if SelfUri, ok := PurecloudMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

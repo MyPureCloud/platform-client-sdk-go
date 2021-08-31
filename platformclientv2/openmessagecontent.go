@@ -17,24 +17,42 @@ type Openmessagecontent struct {
 
 }
 
-func (u *Openmessagecontent) MarshalJSON() ([]byte, error) {
+func (o *Openmessagecontent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Openmessagecontent
-
 	
-
 	return json.Marshal(&struct { 
 		ContentType *string `json:"contentType,omitempty"`
 		
 		Attachment *Contentattachment `json:"attachment,omitempty"`
 		*Alias
 	}{ 
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		Attachment: u.Attachment,
-		Alias:    (*Alias)(u),
+		Attachment: o.Attachment,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Openmessagecontent) UnmarshalJSON(b []byte) error {
+	var OpenmessagecontentMap map[string]interface{}
+	err := json.Unmarshal(b, &OpenmessagecontentMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContentType, ok := OpenmessagecontentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if Attachment, ok := OpenmessagecontentMap["attachment"].(map[string]interface{}); ok {
+		AttachmentString, _ := json.Marshal(Attachment)
+		json.Unmarshal(AttachmentString, &o.Attachment)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

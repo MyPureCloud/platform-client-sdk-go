@@ -17,24 +17,43 @@ type Dialeroutboundsettingsconfigchangecallablewindow struct {
 
 }
 
-func (u *Dialeroutboundsettingsconfigchangecallablewindow) MarshalJSON() ([]byte, error) {
+func (o *Dialeroutboundsettingsconfigchangecallablewindow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeroutboundsettingsconfigchangecallablewindow
-
 	
-
 	return json.Marshal(&struct { 
 		Mapped *Dialeroutboundsettingsconfigchangeatzmtimeslot `json:"mapped,omitempty"`
 		
 		Unmapped *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone `json:"unmapped,omitempty"`
 		*Alias
 	}{ 
-		Mapped: u.Mapped,
+		Mapped: o.Mapped,
 		
-		Unmapped: u.Unmapped,
-		Alias:    (*Alias)(u),
+		Unmapped: o.Unmapped,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialeroutboundsettingsconfigchangecallablewindow) UnmarshalJSON(b []byte) error {
+	var DialeroutboundsettingsconfigchangecallablewindowMap map[string]interface{}
+	err := json.Unmarshal(b, &DialeroutboundsettingsconfigchangecallablewindowMap)
+	if err != nil {
+		return err
+	}
+	
+	if Mapped, ok := DialeroutboundsettingsconfigchangecallablewindowMap["mapped"].(map[string]interface{}); ok {
+		MappedString, _ := json.Marshal(Mapped)
+		json.Unmarshal(MappedString, &o.Mapped)
+	}
+	
+	if Unmapped, ok := DialeroutboundsettingsconfigchangecallablewindowMap["unmapped"].(map[string]interface{}); ok {
+		UnmappedString, _ := json.Marshal(Unmapped)
+		json.Unmarshal(UnmappedString, &o.Unmapped)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

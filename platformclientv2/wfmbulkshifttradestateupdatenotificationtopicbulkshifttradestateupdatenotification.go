@@ -21,13 +21,11 @@ type Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotif
 
 }
 
-func (u *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotification) MarshalJSON() ([]byte, error) {
+func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotification) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotification
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdaten
 		Result *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdateresultlisting `json:"result,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		OperationId: u.OperationId,
+		OperationId: o.OperationId,
 		
-		Result: u.Result,
-		Alias:    (*Alias)(u),
+		Result: o.Result,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotification) UnmarshalJSON(b []byte) error {
+	var WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if OperationId, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+	if Result, ok := WfmbulkshifttradestateupdatenotificationtopicbulkshifttradestateupdatenotificationMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

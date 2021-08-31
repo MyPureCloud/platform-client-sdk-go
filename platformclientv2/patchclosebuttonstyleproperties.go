@@ -17,24 +17,42 @@ type Patchclosebuttonstyleproperties struct {
 
 }
 
-func (u *Patchclosebuttonstyleproperties) MarshalJSON() ([]byte, error) {
+func (o *Patchclosebuttonstyleproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchclosebuttonstyleproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Color *string `json:"color,omitempty"`
 		
 		Opacity *float32 `json:"opacity,omitempty"`
 		*Alias
 	}{ 
-		Color: u.Color,
+		Color: o.Color,
 		
-		Opacity: u.Opacity,
-		Alias:    (*Alias)(u),
+		Opacity: o.Opacity,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchclosebuttonstyleproperties) UnmarshalJSON(b []byte) error {
+	var PatchclosebuttonstylepropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchclosebuttonstylepropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Color, ok := PatchclosebuttonstylepropertiesMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if Opacity, ok := PatchclosebuttonstylepropertiesMap["opacity"].(float64); ok {
+		OpacityFloat32 := float32(Opacity)
+		o.Opacity = &OpacityFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

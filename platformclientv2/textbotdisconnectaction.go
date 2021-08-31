@@ -21,13 +21,11 @@ type Textbotdisconnectaction struct {
 
 }
 
-func (u *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
+func (o *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotdisconnectaction
-
 	
-
 	return json.Marshal(&struct { 
 		Reason *string `json:"reason,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
 		FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
 		*Alias
 	}{ 
-		Reason: u.Reason,
+		Reason: o.Reason,
 		
-		ReasonExtendedInfo: u.ReasonExtendedInfo,
+		ReasonExtendedInfo: o.ReasonExtendedInfo,
 		
-		FlowLocation: u.FlowLocation,
-		Alias:    (*Alias)(u),
+		FlowLocation: o.FlowLocation,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotdisconnectaction) UnmarshalJSON(b []byte) error {
+	var TextbotdisconnectactionMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotdisconnectactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Reason, ok := TextbotdisconnectactionMap["reason"].(string); ok {
+		o.Reason = &Reason
+	}
+	
+	if ReasonExtendedInfo, ok := TextbotdisconnectactionMap["reasonExtendedInfo"].(string); ok {
+		o.ReasonExtendedInfo = &ReasonExtendedInfo
+	}
+	
+	if FlowLocation, ok := TextbotdisconnectactionMap["flowLocation"].(map[string]interface{}); ok {
+		FlowLocationString, _ := json.Marshal(FlowLocation)
+		json.Unmarshal(FlowLocationString, &o.FlowLocation)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

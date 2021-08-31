@@ -22,20 +22,18 @@ type Gamificationstatus struct {
 
 }
 
-func (u *Gamificationstatus) MarshalJSON() ([]byte, error) {
+func (o *Gamificationstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gamificationstatus
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%d")
+	if o.DateStart != nil {
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%d")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		IsActive *bool `json:"isActive,omitempty"`
 		
@@ -44,13 +42,37 @@ func (u *Gamificationstatus) MarshalJSON() ([]byte, error) {
 		AutomaticUserAssignment *bool `json:"automaticUserAssignment,omitempty"`
 		*Alias
 	}{ 
-		IsActive: u.IsActive,
+		IsActive: o.IsActive,
 		
 		DateStart: DateStart,
 		
-		AutomaticUserAssignment: u.AutomaticUserAssignment,
-		Alias:    (*Alias)(u),
+		AutomaticUserAssignment: o.AutomaticUserAssignment,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gamificationstatus) UnmarshalJSON(b []byte) error {
+	var GamificationstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &GamificationstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if IsActive, ok := GamificationstatusMap["isActive"].(bool); ok {
+		o.IsActive = &IsActive
+	}
+	
+	if dateStartString, ok := GamificationstatusMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if AutomaticUserAssignment, ok := GamificationstatusMap["automaticUserAssignment"].(bool); ok {
+		o.AutomaticUserAssignment = &AutomaticUserAssignment
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

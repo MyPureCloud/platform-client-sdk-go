@@ -13,20 +13,33 @@ type Adhocrecordingtopicworkspacedata struct {
 
 }
 
-func (u *Adhocrecordingtopicworkspacedata) MarshalJSON() ([]byte, error) {
+func (o *Adhocrecordingtopicworkspacedata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Adhocrecordingtopicworkspacedata
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Adhocrecordingtopicworkspacedata) UnmarshalJSON(b []byte) error {
+	var AdhocrecordingtopicworkspacedataMap map[string]interface{}
+	err := json.Unmarshal(b, &AdhocrecordingtopicworkspacedataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AdhocrecordingtopicworkspacedataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

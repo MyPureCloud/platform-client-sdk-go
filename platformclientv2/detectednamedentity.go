@@ -25,13 +25,11 @@ type Detectednamedentity struct {
 
 }
 
-func (u *Detectednamedentity) MarshalJSON() ([]byte, error) {
+func (o *Detectednamedentity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Detectednamedentity
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Detectednamedentity) MarshalJSON() ([]byte, error) {
 		Value *Detectednamedentityvalue `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		EntityType: u.EntityType,
+		EntityType: o.EntityType,
 		
-		Probability: u.Probability,
+		Probability: o.Probability,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Detectednamedentity) UnmarshalJSON(b []byte) error {
+	var DetectednamedentityMap map[string]interface{}
+	err := json.Unmarshal(b, &DetectednamedentityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := DetectednamedentityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if EntityType, ok := DetectednamedentityMap["entityType"].(string); ok {
+		o.EntityType = &EntityType
+	}
+	
+	if Probability, ok := DetectednamedentityMap["probability"].(float64); ok {
+		o.Probability = &Probability
+	}
+	
+	if Value, ok := DetectednamedentityMap["value"].(map[string]interface{}); ok {
+		ValueString, _ := json.Marshal(Value)
+		json.Unmarshal(ValueString, &o.Value)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

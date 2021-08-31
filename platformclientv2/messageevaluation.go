@@ -30,21 +30,19 @@ type Messageevaluation struct {
 
 }
 
-func (u *Messageevaluation) MarshalJSON() ([]byte, error) {
+func (o *Messageevaluation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messageevaluation
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ContactColumn *string `json:"contactColumn,omitempty"`
 		
@@ -57,17 +55,49 @@ func (u *Messageevaluation) MarshalJSON() ([]byte, error) {
 		Timestamp *string `json:"timestamp,omitempty"`
 		*Alias
 	}{ 
-		ContactColumn: u.ContactColumn,
+		ContactColumn: o.ContactColumn,
 		
-		ContactAddress: u.ContactAddress,
+		ContactAddress: o.ContactAddress,
 		
-		MessageType: u.MessageType,
+		MessageType: o.MessageType,
 		
-		WrapupCodeId: u.WrapupCodeId,
+		WrapupCodeId: o.WrapupCodeId,
 		
 		Timestamp: Timestamp,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messageevaluation) UnmarshalJSON(b []byte) error {
+	var MessageevaluationMap map[string]interface{}
+	err := json.Unmarshal(b, &MessageevaluationMap)
+	if err != nil {
+		return err
+	}
+	
+	if ContactColumn, ok := MessageevaluationMap["contactColumn"].(string); ok {
+		o.ContactColumn = &ContactColumn
+	}
+	
+	if ContactAddress, ok := MessageevaluationMap["contactAddress"].(string); ok {
+		o.ContactAddress = &ContactAddress
+	}
+	
+	if MessageType, ok := MessageevaluationMap["messageType"].(string); ok {
+		o.MessageType = &MessageType
+	}
+	
+	if WrapupCodeId, ok := MessageevaluationMap["wrapupCodeId"].(string); ok {
+		o.WrapupCodeId = &WrapupCodeId
+	}
+	
+	if timestampString, ok := MessageevaluationMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

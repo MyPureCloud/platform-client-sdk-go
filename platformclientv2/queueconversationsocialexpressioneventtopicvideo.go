@@ -82,29 +82,27 @@ type Queueconversationsocialexpressioneventtopicvideo struct {
 
 }
 
-func (u *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationsocialexpressioneventtopicvideo
-
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -143,43 +141,133 @@ func (u *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Self: u.Self,
+		Self: o.Self,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Context: u.Context,
+		Context: o.Context,
 		
-		AudioMuted: u.AudioMuted,
+		AudioMuted: o.AudioMuted,
 		
-		VideoMuted: u.VideoMuted,
+		VideoMuted: o.VideoMuted,
 		
-		SharingScreen: u.SharingScreen,
+		SharingScreen: o.SharingScreen,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		ConnectedTime: ConnectedTime,
 		
 		DisconnectedTime: DisconnectedTime,
 		
-		Msids: u.Msids,
+		Msids: o.Msids,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byte) error {
+	var QueueconversationsocialexpressioneventtopicvideoMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationsocialexpressioneventtopicvideoMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := QueueconversationsocialexpressioneventtopicvideoMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Self, ok := QueueconversationsocialexpressioneventtopicvideoMap["self"].(map[string]interface{}); ok {
+		SelfString, _ := json.Marshal(Self)
+		json.Unmarshal(SelfString, &o.Self)
+	}
+	
+	if Id, ok := QueueconversationsocialexpressioneventtopicvideoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Context, ok := QueueconversationsocialexpressioneventtopicvideoMap["context"].(string); ok {
+		o.Context = &Context
+	}
+	
+	if AudioMuted, ok := QueueconversationsocialexpressioneventtopicvideoMap["audioMuted"].(bool); ok {
+		o.AudioMuted = &AudioMuted
+	}
+	
+	if VideoMuted, ok := QueueconversationsocialexpressioneventtopicvideoMap["videoMuted"].(bool); ok {
+		o.VideoMuted = &VideoMuted
+	}
+	
+	if SharingScreen, ok := QueueconversationsocialexpressioneventtopicvideoMap["sharingScreen"].(bool); ok {
+		o.SharingScreen = &SharingScreen
+	}
+	
+	if Provider, ok := QueueconversationsocialexpressioneventtopicvideoMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if ScriptId, ok := QueueconversationsocialexpressioneventtopicvideoMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := QueueconversationsocialexpressioneventtopicvideoMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if DisconnectType, ok := QueueconversationsocialexpressioneventtopicvideoMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if connectedTimeString, ok := QueueconversationsocialexpressioneventtopicvideoMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := QueueconversationsocialexpressioneventtopicvideoMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if Msids, ok := QueueconversationsocialexpressioneventtopicvideoMap["msids"].([]interface{}); ok {
+		MsidsString, _ := json.Marshal(Msids)
+		json.Unmarshal(MsidsString, &o.Msids)
+	}
+	
+	if Wrapup, ok := QueueconversationsocialexpressioneventtopicvideoMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := QueueconversationsocialexpressioneventtopicvideoMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicvideoMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicvideoMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

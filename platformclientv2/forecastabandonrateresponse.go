@@ -13,20 +13,34 @@ type Forecastabandonrateresponse struct {
 
 }
 
-func (u *Forecastabandonrateresponse) MarshalJSON() ([]byte, error) {
+func (o *Forecastabandonrateresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Forecastabandonrateresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Percent *int `json:"percent,omitempty"`
 		*Alias
 	}{ 
-		Percent: u.Percent,
-		Alias:    (*Alias)(u),
+		Percent: o.Percent,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Forecastabandonrateresponse) UnmarshalJSON(b []byte) error {
+	var ForecastabandonrateresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ForecastabandonrateresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Percent, ok := ForecastabandonrateresponseMap["percent"].(float64); ok {
+		PercentInt := int(Percent)
+		o.Percent = &PercentInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

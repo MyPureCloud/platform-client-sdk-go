@@ -29,13 +29,11 @@ type Quickreply struct {
 
 }
 
-func (u *Quickreply) MarshalJSON() ([]byte, error) {
+func (o *Quickreply) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Quickreply
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Quickreply) MarshalJSON() ([]byte, error) {
 		IsSelected *bool `json:"isSelected,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Payload: u.Payload,
+		Payload: o.Payload,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		IsSelected: u.IsSelected,
-		Alias:    (*Alias)(u),
+		IsSelected: o.IsSelected,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Quickreply) UnmarshalJSON(b []byte) error {
+	var QuickreplyMap map[string]interface{}
+	err := json.Unmarshal(b, &QuickreplyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := QuickreplyMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Payload, ok := QuickreplyMap["payload"].(string); ok {
+		o.Payload = &Payload
+	}
+	
+	if Url, ok := QuickreplyMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if Action, ok := QuickreplyMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if IsSelected, ok := QuickreplyMap["isSelected"].(bool); ok {
+		o.IsSelected = &IsSelected
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

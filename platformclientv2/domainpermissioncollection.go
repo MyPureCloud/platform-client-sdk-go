@@ -29,13 +29,11 @@ type Domainpermissioncollection struct {
 
 }
 
-func (u *Domainpermissioncollection) MarshalJSON() ([]byte, error) {
+func (o *Domainpermissioncollection) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainpermissioncollection
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Domainpermissioncollection) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		PermissionMap: u.PermissionMap,
+		PermissionMap: o.PermissionMap,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainpermissioncollection) UnmarshalJSON(b []byte) error {
+	var DomainpermissioncollectionMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainpermissioncollectionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainpermissioncollectionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainpermissioncollectionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Domain, ok := DomainpermissioncollectionMap["domain"].(string); ok {
+		o.Domain = &Domain
+	}
+	
+	if PermissionMap, ok := DomainpermissioncollectionMap["permissionMap"].(map[string]interface{}); ok {
+		PermissionMapString, _ := json.Marshal(PermissionMap)
+		json.Unmarshal(PermissionMapString, &o.PermissionMap)
+	}
+	
+	if SelfUri, ok := DomainpermissioncollectionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

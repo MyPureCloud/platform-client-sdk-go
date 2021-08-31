@@ -21,13 +21,11 @@ type Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone struct {
 
 }
 
-func (u *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) MarshalJSON() ([]byte, error) {
+func (o *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone
-
 	
-
 	return json.Marshal(&struct { 
 		EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) MarshalJSON
 		TimeZoneId *string `json:"timeZoneId,omitempty"`
 		*Alias
 	}{ 
-		EarliestCallableTime: u.EarliestCallableTime,
+		EarliestCallableTime: o.EarliestCallableTime,
 		
-		LatestCallableTime: u.LatestCallableTime,
+		LatestCallableTime: o.LatestCallableTime,
 		
-		TimeZoneId: u.TimeZoneId,
-		Alias:    (*Alias)(u),
+		TimeZoneId: o.TimeZoneId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) UnmarshalJSON(b []byte) error {
+	var DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap map[string]interface{}
+	err := json.Unmarshal(b, &DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap)
+	if err != nil {
+		return err
+	}
+	
+	if EarliestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["earliestCallableTime"].(string); ok {
+		o.EarliestCallableTime = &EarliestCallableTime
+	}
+	
+	if LatestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["latestCallableTime"].(string); ok {
+		o.LatestCallableTime = &LatestCallableTime
+	}
+	
+	if TimeZoneId, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

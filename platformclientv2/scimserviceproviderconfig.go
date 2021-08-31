@@ -49,13 +49,11 @@ type Scimserviceproviderconfig struct {
 
 }
 
-func (u *Scimserviceproviderconfig) MarshalJSON() ([]byte, error) {
+func (o *Scimserviceproviderconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimserviceproviderconfig
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
@@ -78,27 +76,87 @@ func (u *Scimserviceproviderconfig) MarshalJSON() ([]byte, error) {
 		Meta *Scimmetadata `json:"meta,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		DocumentationUri: u.DocumentationUri,
+		DocumentationUri: o.DocumentationUri,
 		
-		Patch: u.Patch,
+		Patch: o.Patch,
 		
-		Filter: u.Filter,
+		Filter: o.Filter,
 		
-		Etag: u.Etag,
+		Etag: o.Etag,
 		
-		Sort: u.Sort,
+		Sort: o.Sort,
 		
-		Bulk: u.Bulk,
+		Bulk: o.Bulk,
 		
-		ChangePassword: u.ChangePassword,
+		ChangePassword: o.ChangePassword,
 		
-		AuthenticationSchemes: u.AuthenticationSchemes,
+		AuthenticationSchemes: o.AuthenticationSchemes,
 		
-		Meta: u.Meta,
-		Alias:    (*Alias)(u),
+		Meta: o.Meta,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimserviceproviderconfig) UnmarshalJSON(b []byte) error {
+	var ScimserviceproviderconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimserviceproviderconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := ScimserviceproviderconfigMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if DocumentationUri, ok := ScimserviceproviderconfigMap["documentationUri"].(string); ok {
+		o.DocumentationUri = &DocumentationUri
+	}
+	
+	if Patch, ok := ScimserviceproviderconfigMap["patch"].(map[string]interface{}); ok {
+		PatchString, _ := json.Marshal(Patch)
+		json.Unmarshal(PatchString, &o.Patch)
+	}
+	
+	if Filter, ok := ScimserviceproviderconfigMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Etag, ok := ScimserviceproviderconfigMap["etag"].(map[string]interface{}); ok {
+		EtagString, _ := json.Marshal(Etag)
+		json.Unmarshal(EtagString, &o.Etag)
+	}
+	
+	if Sort, ok := ScimserviceproviderconfigMap["sort"].(map[string]interface{}); ok {
+		SortString, _ := json.Marshal(Sort)
+		json.Unmarshal(SortString, &o.Sort)
+	}
+	
+	if Bulk, ok := ScimserviceproviderconfigMap["bulk"].(map[string]interface{}); ok {
+		BulkString, _ := json.Marshal(Bulk)
+		json.Unmarshal(BulkString, &o.Bulk)
+	}
+	
+	if ChangePassword, ok := ScimserviceproviderconfigMap["changePassword"].(map[string]interface{}); ok {
+		ChangePasswordString, _ := json.Marshal(ChangePassword)
+		json.Unmarshal(ChangePasswordString, &o.ChangePassword)
+	}
+	
+	if AuthenticationSchemes, ok := ScimserviceproviderconfigMap["authenticationSchemes"].([]interface{}); ok {
+		AuthenticationSchemesString, _ := json.Marshal(AuthenticationSchemes)
+		json.Unmarshal(AuthenticationSchemesString, &o.AuthenticationSchemes)
+	}
+	
+	if Meta, ok := ScimserviceproviderconfigMap["meta"].(map[string]interface{}); ok {
+		MetaString, _ := json.Marshal(Meta)
+		json.Unmarshal(MetaString, &o.Meta)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

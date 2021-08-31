@@ -21,13 +21,11 @@ type Bulkorganizationsresponse struct {
 
 }
 
-func (u *Bulkorganizationsresponse) MarshalJSON() ([]byte, error) {
+func (o *Bulkorganizationsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkorganizationsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Bulkresponseresultexternalorganizationexternalorganization `json:"results,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Bulkorganizationsresponse) MarshalJSON() ([]byte, error) {
 		ErrorIndexes *[]int `json:"errorIndexes,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
+		Results: o.Results,
 		
-		ErrorCount: u.ErrorCount,
+		ErrorCount: o.ErrorCount,
 		
-		ErrorIndexes: u.ErrorIndexes,
-		Alias:    (*Alias)(u),
+		ErrorIndexes: o.ErrorIndexes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkorganizationsresponse) UnmarshalJSON(b []byte) error {
+	var BulkorganizationsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkorganizationsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := BulkorganizationsresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if ErrorCount, ok := BulkorganizationsresponseMap["errorCount"].(float64); ok {
+		ErrorCountInt := int(ErrorCount)
+		o.ErrorCount = &ErrorCountInt
+	}
+	
+	if ErrorIndexes, ok := BulkorganizationsresponseMap["errorIndexes"].([]interface{}); ok {
+		ErrorIndexesString, _ := json.Marshal(ErrorIndexes)
+		json.Unmarshal(ErrorIndexesString, &o.ErrorIndexes)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

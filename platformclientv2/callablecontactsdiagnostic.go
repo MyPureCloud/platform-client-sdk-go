@@ -25,13 +25,11 @@ type Callablecontactsdiagnostic struct {
 
 }
 
-func (u *Callablecontactsdiagnostic) MarshalJSON() ([]byte, error) {
+func (o *Callablecontactsdiagnostic) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callablecontactsdiagnostic
-
 	
-
 	return json.Marshal(&struct { 
 		AttemptLimits *Domainentityref `json:"attemptLimits,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Callablecontactsdiagnostic) MarshalJSON() ([]byte, error) {
 		RuleSets *[]Domainentityref `json:"ruleSets,omitempty"`
 		*Alias
 	}{ 
-		AttemptLimits: u.AttemptLimits,
+		AttemptLimits: o.AttemptLimits,
 		
-		DncLists: u.DncLists,
+		DncLists: o.DncLists,
 		
-		CallableTimeSet: u.CallableTimeSet,
+		CallableTimeSet: o.CallableTimeSet,
 		
-		RuleSets: u.RuleSets,
-		Alias:    (*Alias)(u),
+		RuleSets: o.RuleSets,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callablecontactsdiagnostic) UnmarshalJSON(b []byte) error {
+	var CallablecontactsdiagnosticMap map[string]interface{}
+	err := json.Unmarshal(b, &CallablecontactsdiagnosticMap)
+	if err != nil {
+		return err
+	}
+	
+	if AttemptLimits, ok := CallablecontactsdiagnosticMap["attemptLimits"].(map[string]interface{}); ok {
+		AttemptLimitsString, _ := json.Marshal(AttemptLimits)
+		json.Unmarshal(AttemptLimitsString, &o.AttemptLimits)
+	}
+	
+	if DncLists, ok := CallablecontactsdiagnosticMap["dncLists"].([]interface{}); ok {
+		DncListsString, _ := json.Marshal(DncLists)
+		json.Unmarshal(DncListsString, &o.DncLists)
+	}
+	
+	if CallableTimeSet, ok := CallablecontactsdiagnosticMap["callableTimeSet"].(map[string]interface{}); ok {
+		CallableTimeSetString, _ := json.Marshal(CallableTimeSet)
+		json.Unmarshal(CallableTimeSetString, &o.CallableTimeSet)
+	}
+	
+	if RuleSets, ok := CallablecontactsdiagnosticMap["ruleSets"].([]interface{}); ok {
+		RuleSetsString, _ := json.Marshal(RuleSets)
+		json.Unmarshal(RuleSetsString, &o.RuleSets)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

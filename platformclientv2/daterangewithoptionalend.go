@@ -18,27 +18,25 @@ type Daterangewithoptionalend struct {
 
 }
 
-func (u *Daterangewithoptionalend) MarshalJSON() ([]byte, error) {
+func (o *Daterangewithoptionalend) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Daterangewithoptionalend
-
 	
 	StartBusinessUnitDate := new(string)
-	if u.StartBusinessUnitDate != nil {
-		*StartBusinessUnitDate = timeutil.Strftime(u.StartBusinessUnitDate, "%Y-%m-%d")
+	if o.StartBusinessUnitDate != nil {
+		*StartBusinessUnitDate = timeutil.Strftime(o.StartBusinessUnitDate, "%Y-%m-%d")
 	} else {
 		StartBusinessUnitDate = nil
 	}
 	
 	EndBusinessUnitDate := new(string)
-	if u.EndBusinessUnitDate != nil {
-		*EndBusinessUnitDate = timeutil.Strftime(u.EndBusinessUnitDate, "%Y-%m-%d")
+	if o.EndBusinessUnitDate != nil {
+		*EndBusinessUnitDate = timeutil.Strftime(o.EndBusinessUnitDate, "%Y-%m-%d")
 	} else {
 		EndBusinessUnitDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartBusinessUnitDate *string `json:"startBusinessUnitDate,omitempty"`
 		
@@ -48,8 +46,29 @@ func (u *Daterangewithoptionalend) MarshalJSON() ([]byte, error) {
 		StartBusinessUnitDate: StartBusinessUnitDate,
 		
 		EndBusinessUnitDate: EndBusinessUnitDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Daterangewithoptionalend) UnmarshalJSON(b []byte) error {
+	var DaterangewithoptionalendMap map[string]interface{}
+	err := json.Unmarshal(b, &DaterangewithoptionalendMap)
+	if err != nil {
+		return err
+	}
+	
+	if startBusinessUnitDateString, ok := DaterangewithoptionalendMap["startBusinessUnitDate"].(string); ok {
+		StartBusinessUnitDate, _ := time.Parse("2006-01-02", startBusinessUnitDateString)
+		o.StartBusinessUnitDate = &StartBusinessUnitDate
+	}
+	
+	if endBusinessUnitDateString, ok := DaterangewithoptionalendMap["endBusinessUnitDate"].(string); ok {
+		EndBusinessUnitDate, _ := time.Parse("2006-01-02", endBusinessUnitDateString)
+		o.EndBusinessUnitDate = &EndBusinessUnitDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

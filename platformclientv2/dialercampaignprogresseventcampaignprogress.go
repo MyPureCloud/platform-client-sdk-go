@@ -33,13 +33,11 @@ type Dialercampaignprogresseventcampaignprogress struct {
 
 }
 
-func (u *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignprogresseventcampaignprogress
-
 	
-
 	return json.Marshal(&struct { 
 		Campaign *Dialercampaignprogresseventurireference `json:"campaign,omitempty"`
 		
@@ -54,19 +52,60 @@ func (u *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, err
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Campaign: u.Campaign,
+		Campaign: o.Campaign,
 		
-		NumberOfContactsCalled: u.NumberOfContactsCalled,
+		NumberOfContactsCalled: o.NumberOfContactsCalled,
 		
-		NumberOfContactsMessaged: u.NumberOfContactsMessaged,
+		NumberOfContactsMessaged: o.NumberOfContactsMessaged,
 		
-		TotalNumberOfContacts: u.TotalNumberOfContacts,
+		TotalNumberOfContacts: o.TotalNumberOfContacts,
 		
-		Percentage: u.Percentage,
+		Percentage: o.Percentage,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignprogresseventcampaignprogress) UnmarshalJSON(b []byte) error {
+	var DialercampaignprogresseventcampaignprogressMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignprogresseventcampaignprogressMap)
+	if err != nil {
+		return err
+	}
+	
+	if Campaign, ok := DialercampaignprogresseventcampaignprogressMap["campaign"].(map[string]interface{}); ok {
+		CampaignString, _ := json.Marshal(Campaign)
+		json.Unmarshal(CampaignString, &o.Campaign)
+	}
+	
+	if NumberOfContactsCalled, ok := DialercampaignprogresseventcampaignprogressMap["numberOfContactsCalled"].(float64); ok {
+		NumberOfContactsCalledFloat32 := float32(NumberOfContactsCalled)
+		o.NumberOfContactsCalled = &NumberOfContactsCalledFloat32
+	}
+	
+	if NumberOfContactsMessaged, ok := DialercampaignprogresseventcampaignprogressMap["numberOfContactsMessaged"].(float64); ok {
+		NumberOfContactsMessagedFloat32 := float32(NumberOfContactsMessaged)
+		o.NumberOfContactsMessaged = &NumberOfContactsMessagedFloat32
+	}
+	
+	if TotalNumberOfContacts, ok := DialercampaignprogresseventcampaignprogressMap["totalNumberOfContacts"].(float64); ok {
+		TotalNumberOfContactsFloat32 := float32(TotalNumberOfContacts)
+		o.TotalNumberOfContacts = &TotalNumberOfContactsFloat32
+	}
+	
+	if Percentage, ok := DialercampaignprogresseventcampaignprogressMap["percentage"].(float64); ok {
+		PercentageInt := int(Percentage)
+		o.Percentage = &PercentageInt
+	}
+	
+	if AdditionalProperties, ok := DialercampaignprogresseventcampaignprogressMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Reportingturnintentslot struct {
 
 }
 
-func (u *Reportingturnintentslot) MarshalJSON() ([]byte, error) {
+func (o *Reportingturnintentslot) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Reportingturnintentslot
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Reportingturnintentslot) MarshalJSON() ([]byte, error) {
 		Confidence *float64 `json:"confidence,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Confidence: u.Confidence,
-		Alias:    (*Alias)(u),
+		Confidence: o.Confidence,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Reportingturnintentslot) UnmarshalJSON(b []byte) error {
+	var ReportingturnintentslotMap map[string]interface{}
+	err := json.Unmarshal(b, &ReportingturnintentslotMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := ReportingturnintentslotMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Value, ok := ReportingturnintentslotMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if VarType, ok := ReportingturnintentslotMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Confidence, ok := ReportingturnintentslotMap["confidence"].(float64); ok {
+		o.Confidence = &Confidence
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

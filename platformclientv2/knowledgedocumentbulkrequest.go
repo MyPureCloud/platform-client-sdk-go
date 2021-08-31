@@ -33,13 +33,11 @@ type Knowledgedocumentbulkrequest struct {
 
 }
 
-func (u *Knowledgedocumentbulkrequest) MarshalJSON() ([]byte, error) {
+func (o *Knowledgedocumentbulkrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgedocumentbulkrequest
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Knowledgedocumentbulkrequest) MarshalJSON() ([]byte, error) {
 		Id *string `json:"id,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		ExternalUrl: u.ExternalUrl,
+		ExternalUrl: o.ExternalUrl,
 		
-		Faq: u.Faq,
+		Faq: o.Faq,
 		
-		Categories: u.Categories,
+		Categories: o.Categories,
 		
-		Article: u.Article,
+		Article: o.Article,
 		
-		Id: u.Id,
-		Alias:    (*Alias)(u),
+		Id: o.Id,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgedocumentbulkrequest) UnmarshalJSON(b []byte) error {
+	var KnowledgedocumentbulkrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgedocumentbulkrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := KnowledgedocumentbulkrequestMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if ExternalUrl, ok := KnowledgedocumentbulkrequestMap["externalUrl"].(string); ok {
+		o.ExternalUrl = &ExternalUrl
+	}
+	
+	if Faq, ok := KnowledgedocumentbulkrequestMap["faq"].(map[string]interface{}); ok {
+		FaqString, _ := json.Marshal(Faq)
+		json.Unmarshal(FaqString, &o.Faq)
+	}
+	
+	if Categories, ok := KnowledgedocumentbulkrequestMap["categories"].([]interface{}); ok {
+		CategoriesString, _ := json.Marshal(Categories)
+		json.Unmarshal(CategoriesString, &o.Categories)
+	}
+	
+	if Article, ok := KnowledgedocumentbulkrequestMap["article"].(map[string]interface{}); ok {
+		ArticleString, _ := json.Marshal(Article)
+		json.Unmarshal(ArticleString, &o.Article)
+	}
+	
+	if Id, ok := KnowledgedocumentbulkrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

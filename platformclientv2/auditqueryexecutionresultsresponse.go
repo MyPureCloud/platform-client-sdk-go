@@ -25,13 +25,11 @@ type Auditqueryexecutionresultsresponse struct {
 
 }
 
-func (u *Auditqueryexecutionresultsresponse) MarshalJSON() ([]byte, error) {
+func (o *Auditqueryexecutionresultsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Auditqueryexecutionresultsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Auditqueryexecutionresultsresponse) MarshalJSON() ([]byte, error) {
 		Entities *[]Auditlogmessage `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		Cursor: u.Cursor,
+		Cursor: o.Cursor,
 		
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Auditqueryexecutionresultsresponse) UnmarshalJSON(b []byte) error {
+	var AuditqueryexecutionresultsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AuditqueryexecutionresultsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AuditqueryexecutionresultsresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if PageSize, ok := AuditqueryexecutionresultsresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if Cursor, ok := AuditqueryexecutionresultsresponseMap["cursor"].(string); ok {
+		o.Cursor = &Cursor
+	}
+	
+	if Entities, ok := AuditqueryexecutionresultsresponseMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

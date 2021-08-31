@@ -13,20 +13,34 @@ type Entitylisting struct {
 
 }
 
-func (u *Entitylisting) MarshalJSON() ([]byte, error) {
+func (o *Entitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Entitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]interface{} `json:"entities,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
-		Alias:    (*Alias)(u),
+		Entities: o.Entities,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Entitylisting) UnmarshalJSON(b []byte) error {
+	var EntitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &EntitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := EntitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

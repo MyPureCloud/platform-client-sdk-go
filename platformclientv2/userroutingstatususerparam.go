@@ -21,13 +21,11 @@ type Userroutingstatususerparam struct {
 
 }
 
-func (u *Userroutingstatususerparam) MarshalJSON() ([]byte, error) {
+func (o *Userroutingstatususerparam) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userroutingstatususerparam
-
 	
-
 	return json.Marshal(&struct { 
 		Key *string `json:"key,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Userroutingstatususerparam) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Key: u.Key,
+		Key: o.Key,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userroutingstatususerparam) UnmarshalJSON(b []byte) error {
+	var UserroutingstatususerparamMap map[string]interface{}
+	err := json.Unmarshal(b, &UserroutingstatususerparamMap)
+	if err != nil {
+		return err
+	}
+	
+	if Key, ok := UserroutingstatususerparamMap["key"].(string); ok {
+		o.Key = &Key
+	}
+	
+	if Value, ok := UserroutingstatususerparamMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if AdditionalProperties, ok := UserroutingstatususerparamMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

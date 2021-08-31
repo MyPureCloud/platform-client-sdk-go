@@ -29,13 +29,11 @@ type Webchatmessageentitylist struct {
 
 }
 
-func (u *Webchatmessageentitylist) MarshalJSON() ([]byte, error) {
+func (o *Webchatmessageentitylist) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatmessageentitylist
-
 	
-
 	return json.Marshal(&struct { 
 		PageSize *int `json:"pageSize,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Webchatmessageentitylist) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PreviousPage: u.PreviousPage,
+		PreviousPage: o.PreviousPage,
 		
-		Next: u.Next,
+		Next: o.Next,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatmessageentitylist) UnmarshalJSON(b []byte) error {
+	var WebchatmessageentitylistMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatmessageentitylistMap)
+	if err != nil {
+		return err
+	}
+	
+	if PageSize, ok := WebchatmessageentitylistMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if Entities, ok := WebchatmessageentitylistMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PreviousPage, ok := WebchatmessageentitylistMap["previousPage"].(string); ok {
+		o.PreviousPage = &PreviousPage
+	}
+	
+	if Next, ok := WebchatmessageentitylistMap["next"].(string); ok {
+		o.Next = &Next
+	}
+	
+	if SelfUri, ok := WebchatmessageentitylistMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

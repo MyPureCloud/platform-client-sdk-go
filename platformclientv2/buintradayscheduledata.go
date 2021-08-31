@@ -13,20 +13,34 @@ type Buintradayscheduledata struct {
 
 }
 
-func (u *Buintradayscheduledata) MarshalJSON() ([]byte, error) {
+func (o *Buintradayscheduledata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buintradayscheduledata
-
 	
-
 	return json.Marshal(&struct { 
 		OnQueueTimeSeconds *int `json:"onQueueTimeSeconds,omitempty"`
 		*Alias
 	}{ 
-		OnQueueTimeSeconds: u.OnQueueTimeSeconds,
-		Alias:    (*Alias)(u),
+		OnQueueTimeSeconds: o.OnQueueTimeSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buintradayscheduledata) UnmarshalJSON(b []byte) error {
+	var BuintradayscheduledataMap map[string]interface{}
+	err := json.Unmarshal(b, &BuintradayscheduledataMap)
+	if err != nil {
+		return err
+	}
+	
+	if OnQueueTimeSeconds, ok := BuintradayscheduledataMap["onQueueTimeSeconds"].(float64); ok {
+		OnQueueTimeSecondsInt := int(OnQueueTimeSeconds)
+		o.OnQueueTimeSeconds = &OnQueueTimeSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

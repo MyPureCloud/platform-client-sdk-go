@@ -17,24 +17,42 @@ type Idleeventtrigger struct {
 
 }
 
-func (u *Idleeventtrigger) MarshalJSON() ([]byte, error) {
+func (o *Idleeventtrigger) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Idleeventtrigger
-
 	
-
 	return json.Marshal(&struct { 
 		EventName *string `json:"eventName,omitempty"`
 		
 		IdleAfterSeconds *int `json:"idleAfterSeconds,omitempty"`
 		*Alias
 	}{ 
-		EventName: u.EventName,
+		EventName: o.EventName,
 		
-		IdleAfterSeconds: u.IdleAfterSeconds,
-		Alias:    (*Alias)(u),
+		IdleAfterSeconds: o.IdleAfterSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Idleeventtrigger) UnmarshalJSON(b []byte) error {
+	var IdleeventtriggerMap map[string]interface{}
+	err := json.Unmarshal(b, &IdleeventtriggerMap)
+	if err != nil {
+		return err
+	}
+	
+	if EventName, ok := IdleeventtriggerMap["eventName"].(string); ok {
+		o.EventName = &EventName
+	}
+	
+	if IdleAfterSeconds, ok := IdleeventtriggerMap["idleAfterSeconds"].(float64); ok {
+		IdleAfterSecondsInt := int(IdleAfterSeconds)
+		o.IdleAfterSeconds = &IdleAfterSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

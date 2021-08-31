@@ -25,13 +25,11 @@ type Crossplatformmediapolicies struct {
 
 }
 
-func (u *Crossplatformmediapolicies) MarshalJSON() ([]byte, error) {
+func (o *Crossplatformmediapolicies) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Crossplatformmediapolicies
-
 	
-
 	return json.Marshal(&struct { 
 		CallPolicy *Crossplatformcallmediapolicy `json:"callPolicy,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Crossplatformmediapolicies) MarshalJSON() ([]byte, error) {
 		MessagePolicy *Crossplatformmessagemediapolicy `json:"messagePolicy,omitempty"`
 		*Alias
 	}{ 
-		CallPolicy: u.CallPolicy,
+		CallPolicy: o.CallPolicy,
 		
-		ChatPolicy: u.ChatPolicy,
+		ChatPolicy: o.ChatPolicy,
 		
-		EmailPolicy: u.EmailPolicy,
+		EmailPolicy: o.EmailPolicy,
 		
-		MessagePolicy: u.MessagePolicy,
-		Alias:    (*Alias)(u),
+		MessagePolicy: o.MessagePolicy,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Crossplatformmediapolicies) UnmarshalJSON(b []byte) error {
+	var CrossplatformmediapoliciesMap map[string]interface{}
+	err := json.Unmarshal(b, &CrossplatformmediapoliciesMap)
+	if err != nil {
+		return err
+	}
+	
+	if CallPolicy, ok := CrossplatformmediapoliciesMap["callPolicy"].(map[string]interface{}); ok {
+		CallPolicyString, _ := json.Marshal(CallPolicy)
+		json.Unmarshal(CallPolicyString, &o.CallPolicy)
+	}
+	
+	if ChatPolicy, ok := CrossplatformmediapoliciesMap["chatPolicy"].(map[string]interface{}); ok {
+		ChatPolicyString, _ := json.Marshal(ChatPolicy)
+		json.Unmarshal(ChatPolicyString, &o.ChatPolicy)
+	}
+	
+	if EmailPolicy, ok := CrossplatformmediapoliciesMap["emailPolicy"].(map[string]interface{}); ok {
+		EmailPolicyString, _ := json.Marshal(EmailPolicy)
+		json.Unmarshal(EmailPolicyString, &o.EmailPolicy)
+	}
+	
+	if MessagePolicy, ok := CrossplatformmediapoliciesMap["messagePolicy"].(map[string]interface{}); ok {
+		MessagePolicyString, _ := json.Marshal(MessagePolicy)
+		json.Unmarshal(MessagePolicyString, &o.MessagePolicy)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

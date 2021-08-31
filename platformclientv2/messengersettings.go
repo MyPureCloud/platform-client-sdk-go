@@ -25,13 +25,11 @@ type Messengersettings struct {
 
 }
 
-func (u *Messengersettings) MarshalJSON() ([]byte, error) {
+func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messengersettings
-
 	
-
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
 		
@@ -42,15 +40,45 @@ func (u *Messengersettings) MarshalJSON() ([]byte, error) {
 		FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
 		*Alias
 	}{ 
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Styles: u.Styles,
+		Styles: o.Styles,
 		
-		LauncherButton: u.LauncherButton,
+		LauncherButton: o.LauncherButton,
 		
-		FileUpload: u.FileUpload,
-		Alias:    (*Alias)(u),
+		FileUpload: o.FileUpload,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messengersettings) UnmarshalJSON(b []byte) error {
+	var MessengersettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &MessengersettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Enabled, ok := MessengersettingsMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Styles, ok := MessengersettingsMap["styles"].(map[string]interface{}); ok {
+		StylesString, _ := json.Marshal(Styles)
+		json.Unmarshal(StylesString, &o.Styles)
+	}
+	
+	if LauncherButton, ok := MessengersettingsMap["launcherButton"].(map[string]interface{}); ok {
+		LauncherButtonString, _ := json.Marshal(LauncherButton)
+		json.Unmarshal(LauncherButtonString, &o.LauncherButton)
+	}
+	
+	if FileUpload, ok := MessengersettingsMap["fileUpload"].(map[string]interface{}); ok {
+		FileUploadString, _ := json.Marshal(FileUpload)
+		json.Unmarshal(FileUploadString, &o.FileUpload)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

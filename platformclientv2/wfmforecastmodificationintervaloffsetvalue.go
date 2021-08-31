@@ -17,24 +17,42 @@ type Wfmforecastmodificationintervaloffsetvalue struct {
 
 }
 
-func (u *Wfmforecastmodificationintervaloffsetvalue) MarshalJSON() ([]byte, error) {
+func (o *Wfmforecastmodificationintervaloffsetvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmforecastmodificationintervaloffsetvalue
-
 	
-
 	return json.Marshal(&struct { 
 		IntervalIndex *int `json:"intervalIndex,omitempty"`
 		
 		Value *float64 `json:"value,omitempty"`
 		*Alias
 	}{ 
-		IntervalIndex: u.IntervalIndex,
+		IntervalIndex: o.IntervalIndex,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmforecastmodificationintervaloffsetvalue) UnmarshalJSON(b []byte) error {
+	var WfmforecastmodificationintervaloffsetvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmforecastmodificationintervaloffsetvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if IntervalIndex, ok := WfmforecastmodificationintervaloffsetvalueMap["intervalIndex"].(float64); ok {
+		IntervalIndexInt := int(IntervalIndex)
+		o.IntervalIndex = &IntervalIndexInt
+	}
+	
+	if Value, ok := WfmforecastmodificationintervaloffsetvalueMap["value"].(float64); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Analyticsconversationwithoutattributesmultigetresponse struct {
 
 }
 
-func (u *Analyticsconversationwithoutattributesmultigetresponse) MarshalJSON() ([]byte, error) {
+func (o *Analyticsconversationwithoutattributesmultigetresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsconversationwithoutattributesmultigetresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Conversations *[]Analyticsconversationwithoutattributes `json:"conversations,omitempty"`
 		*Alias
 	}{ 
-		Conversations: u.Conversations,
-		Alias:    (*Alias)(u),
+		Conversations: o.Conversations,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsconversationwithoutattributesmultigetresponse) UnmarshalJSON(b []byte) error {
+	var AnalyticsconversationwithoutattributesmultigetresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsconversationwithoutattributesmultigetresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Conversations, ok := AnalyticsconversationwithoutattributesmultigetresponseMap["conversations"].([]interface{}); ok {
+		ConversationsString, _ := json.Marshal(Conversations)
+		json.Unmarshal(ConversationsString, &o.Conversations)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

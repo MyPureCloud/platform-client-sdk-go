@@ -29,13 +29,11 @@ type Scimgrouplistresponse struct {
 
 }
 
-func (u *Scimgrouplistresponse) MarshalJSON() ([]byte, error) {
+func (o *Scimgrouplistresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimgrouplistresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Scimgrouplistresponse) MarshalJSON() ([]byte, error) {
 		Resources *[]Scimv2group `json:"Resources,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		TotalResults: u.TotalResults,
+		TotalResults: o.TotalResults,
 		
-		StartIndex: u.StartIndex,
+		StartIndex: o.StartIndex,
 		
-		ItemsPerPage: u.ItemsPerPage,
+		ItemsPerPage: o.ItemsPerPage,
 		
-		Resources: u.Resources,
-		Alias:    (*Alias)(u),
+		Resources: o.Resources,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimgrouplistresponse) UnmarshalJSON(b []byte) error {
+	var ScimgrouplistresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimgrouplistresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := ScimgrouplistresponseMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if TotalResults, ok := ScimgrouplistresponseMap["totalResults"].(float64); ok {
+		TotalResultsInt := int(TotalResults)
+		o.TotalResults = &TotalResultsInt
+	}
+	
+	if StartIndex, ok := ScimgrouplistresponseMap["startIndex"].(float64); ok {
+		StartIndexInt := int(StartIndex)
+		o.StartIndex = &StartIndexInt
+	}
+	
+	if ItemsPerPage, ok := ScimgrouplistresponseMap["itemsPerPage"].(float64); ok {
+		ItemsPerPageInt := int(ItemsPerPage)
+		o.ItemsPerPage = &ItemsPerPageInt
+	}
+	
+	if Resources, ok := ScimgrouplistresponseMap["Resources"].([]interface{}); ok {
+		ResourcesString, _ := json.Marshal(Resources)
+		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

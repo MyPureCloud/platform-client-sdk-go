@@ -17,24 +17,41 @@ type Supportedlanguage struct {
 
 }
 
-func (u *Supportedlanguage) MarshalJSON() ([]byte, error) {
+func (o *Supportedlanguage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Supportedlanguage
-
 	
-
 	return json.Marshal(&struct { 
 		Language *string `json:"language,omitempty"`
 		
 		IsDefault *bool `json:"isDefault,omitempty"`
 		*Alias
 	}{ 
-		Language: u.Language,
+		Language: o.Language,
 		
-		IsDefault: u.IsDefault,
-		Alias:    (*Alias)(u),
+		IsDefault: o.IsDefault,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Supportedlanguage) UnmarshalJSON(b []byte) error {
+	var SupportedlanguageMap map[string]interface{}
+	err := json.Unmarshal(b, &SupportedlanguageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Language, ok := SupportedlanguageMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if IsDefault, ok := SupportedlanguageMap["isDefault"].(bool); ok {
+		o.IsDefault = &IsDefault
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

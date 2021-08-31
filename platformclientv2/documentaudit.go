@@ -74,21 +74,19 @@ type Documentaudit struct {
 
 }
 
-func (u *Documentaudit) MarshalJSON() ([]byte, error) {
+func (o *Documentaudit) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Documentaudit
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -123,39 +121,119 @@ func (u *Documentaudit) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		User: u.User,
+		User: o.User,
 		
-		Workspace: u.Workspace,
+		Workspace: o.Workspace,
 		
-		TransactionId: u.TransactionId,
+		TransactionId: o.TransactionId,
 		
-		TransactionInitiator: u.TransactionInitiator,
+		TransactionInitiator: o.TransactionInitiator,
 		
-		Application: u.Application,
+		Application: o.Application,
 		
-		ServiceName: u.ServiceName,
+		ServiceName: o.ServiceName,
 		
-		Level: u.Level,
+		Level: o.Level,
 		
 		Timestamp: Timestamp,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		ActionContext: u.ActionContext,
+		ActionContext: o.ActionContext,
 		
-		Action: u.Action,
+		Action: o.Action,
 		
-		Entity: u.Entity,
+		Entity: o.Entity,
 		
-		Changes: u.Changes,
+		Changes: o.Changes,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Documentaudit) UnmarshalJSON(b []byte) error {
+	var DocumentauditMap map[string]interface{}
+	err := json.Unmarshal(b, &DocumentauditMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DocumentauditMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DocumentauditMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if User, ok := DocumentauditMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Workspace, ok := DocumentauditMap["workspace"].(map[string]interface{}); ok {
+		WorkspaceString, _ := json.Marshal(Workspace)
+		json.Unmarshal(WorkspaceString, &o.Workspace)
+	}
+	
+	if TransactionId, ok := DocumentauditMap["transactionId"].(string); ok {
+		o.TransactionId = &TransactionId
+	}
+	
+	if TransactionInitiator, ok := DocumentauditMap["transactionInitiator"].(bool); ok {
+		o.TransactionInitiator = &TransactionInitiator
+	}
+	
+	if Application, ok := DocumentauditMap["application"].(string); ok {
+		o.Application = &Application
+	}
+	
+	if ServiceName, ok := DocumentauditMap["serviceName"].(string); ok {
+		o.ServiceName = &ServiceName
+	}
+	
+	if Level, ok := DocumentauditMap["level"].(string); ok {
+		o.Level = &Level
+	}
+	
+	if timestampString, ok := DocumentauditMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if Status, ok := DocumentauditMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if ActionContext, ok := DocumentauditMap["actionContext"].(string); ok {
+		o.ActionContext = &ActionContext
+	}
+	
+	if Action, ok := DocumentauditMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Entity, ok := DocumentauditMap["entity"].(map[string]interface{}); ok {
+		EntityString, _ := json.Marshal(Entity)
+		json.Unmarshal(EntityString, &o.Entity)
+	}
+	
+	if Changes, ok := DocumentauditMap["changes"].([]interface{}); ok {
+		ChangesString, _ := json.Marshal(Changes)
+		json.Unmarshal(ChangesString, &o.Changes)
+	}
+	
+	if SelfUri, ok := DocumentauditMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

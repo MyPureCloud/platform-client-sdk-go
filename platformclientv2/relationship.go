@@ -33,13 +33,11 @@ type Relationship struct {
 
 }
 
-func (u *Relationship) MarshalJSON() ([]byte, error) {
+func (o *Relationship) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Relationship
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Relationship) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		User: u.User,
+		User: o.User,
 		
-		ExternalOrganization: u.ExternalOrganization,
+		ExternalOrganization: o.ExternalOrganization,
 		
-		Relationship: u.Relationship,
+		Relationship: o.Relationship,
 		
-		ExternalDataSources: u.ExternalDataSources,
+		ExternalDataSources: o.ExternalDataSources,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Relationship) UnmarshalJSON(b []byte) error {
+	var RelationshipMap map[string]interface{}
+	err := json.Unmarshal(b, &RelationshipMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := RelationshipMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if User, ok := RelationshipMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if ExternalOrganization, ok := RelationshipMap["externalOrganization"].(map[string]interface{}); ok {
+		ExternalOrganizationString, _ := json.Marshal(ExternalOrganization)
+		json.Unmarshal(ExternalOrganizationString, &o.ExternalOrganization)
+	}
+	
+	if Relationship, ok := RelationshipMap["relationship"].(string); ok {
+		o.Relationship = &Relationship
+	}
+	
+	if ExternalDataSources, ok := RelationshipMap["externalDataSources"].([]interface{}); ok {
+		ExternalDataSourcesString, _ := json.Marshal(ExternalDataSources)
+		json.Unmarshal(ExternalDataSourcesString, &o.ExternalDataSources)
+	}
+	
+	if SelfUri, ok := RelationshipMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

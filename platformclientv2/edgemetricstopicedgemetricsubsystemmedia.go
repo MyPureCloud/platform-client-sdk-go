@@ -17,24 +17,42 @@ type Edgemetricstopicedgemetricsubsystemmedia struct {
 
 }
 
-func (u *Edgemetricstopicedgemetricsubsystemmedia) MarshalJSON() ([]byte, error) {
+func (o *Edgemetricstopicedgemetricsubsystemmedia) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgemetricstopicedgemetricsubsystemmedia
-
 	
-
 	return json.Marshal(&struct { 
 		ProcessName *string `json:"processName,omitempty"`
 		
 		DelayMs *int `json:"delayMs,omitempty"`
 		*Alias
 	}{ 
-		ProcessName: u.ProcessName,
+		ProcessName: o.ProcessName,
 		
-		DelayMs: u.DelayMs,
-		Alias:    (*Alias)(u),
+		DelayMs: o.DelayMs,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgemetricstopicedgemetricsubsystemmedia) UnmarshalJSON(b []byte) error {
+	var EdgemetricstopicedgemetricsubsystemmediaMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgemetricstopicedgemetricsubsystemmediaMap)
+	if err != nil {
+		return err
+	}
+	
+	if ProcessName, ok := EdgemetricstopicedgemetricsubsystemmediaMap["processName"].(string); ok {
+		o.ProcessName = &ProcessName
+	}
+	
+	if DelayMs, ok := EdgemetricstopicedgemetricsubsystemmediaMap["delayMs"].(float64); ok {
+		DelayMsInt := int(DelayMs)
+		o.DelayMs = &DelayMsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

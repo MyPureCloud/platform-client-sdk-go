@@ -93,13 +93,11 @@ type Updateuser struct {
 
 }
 
-func (u *Updateuser) MarshalJSON() ([]byte, error) {
+func (o *Updateuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updateuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -144,49 +142,155 @@ func (u *Updateuser) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Chat: u.Chat,
+		Chat: o.Chat,
 		
-		Department: u.Department,
+		Department: o.Department,
 		
-		Email: u.Email,
+		Email: o.Email,
 		
-		PrimaryContactInfo: u.PrimaryContactInfo,
+		PrimaryContactInfo: o.PrimaryContactInfo,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		Title: u.Title,
+		Title: o.Title,
 		
-		Username: u.Username,
+		Username: o.Username,
 		
-		Manager: u.Manager,
+		Manager: o.Manager,
 		
-		Images: u.Images,
+		Images: o.Images,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ProfileSkills: u.ProfileSkills,
+		ProfileSkills: o.ProfileSkills,
 		
-		Locations: u.Locations,
+		Locations: o.Locations,
 		
-		Groups: u.Groups,
+		Groups: o.Groups,
 		
-		State: u.State,
+		State: o.State,
 		
-		AcdAutoAnswer: u.AcdAutoAnswer,
+		AcdAutoAnswer: o.AcdAutoAnswer,
 		
-		Certifications: u.Certifications,
+		Certifications: o.Certifications,
 		
-		Biography: u.Biography,
+		Biography: o.Biography,
 		
-		EmployerInfo: u.EmployerInfo,
+		EmployerInfo: o.EmployerInfo,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updateuser) UnmarshalJSON(b []byte) error {
+	var UpdateuserMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdateuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UpdateuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UpdateuserMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Chat, ok := UpdateuserMap["chat"].(map[string]interface{}); ok {
+		ChatString, _ := json.Marshal(Chat)
+		json.Unmarshal(ChatString, &o.Chat)
+	}
+	
+	if Department, ok := UpdateuserMap["department"].(string); ok {
+		o.Department = &Department
+	}
+	
+	if Email, ok := UpdateuserMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+	if PrimaryContactInfo, ok := UpdateuserMap["primaryContactInfo"].([]interface{}); ok {
+		PrimaryContactInfoString, _ := json.Marshal(PrimaryContactInfo)
+		json.Unmarshal(PrimaryContactInfoString, &o.PrimaryContactInfo)
+	}
+	
+	if Addresses, ok := UpdateuserMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if Title, ok := UpdateuserMap["title"].(string); ok {
+		o.Title = &Title
+	}
+	
+	if Username, ok := UpdateuserMap["username"].(string); ok {
+		o.Username = &Username
+	}
+	
+	if Manager, ok := UpdateuserMap["manager"].(string); ok {
+		o.Manager = &Manager
+	}
+	
+	if Images, ok := UpdateuserMap["images"].([]interface{}); ok {
+		ImagesString, _ := json.Marshal(Images)
+		json.Unmarshal(ImagesString, &o.Images)
+	}
+	
+	if Version, ok := UpdateuserMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ProfileSkills, ok := UpdateuserMap["profileSkills"].([]interface{}); ok {
+		ProfileSkillsString, _ := json.Marshal(ProfileSkills)
+		json.Unmarshal(ProfileSkillsString, &o.ProfileSkills)
+	}
+	
+	if Locations, ok := UpdateuserMap["locations"].([]interface{}); ok {
+		LocationsString, _ := json.Marshal(Locations)
+		json.Unmarshal(LocationsString, &o.Locations)
+	}
+	
+	if Groups, ok := UpdateuserMap["groups"].([]interface{}); ok {
+		GroupsString, _ := json.Marshal(Groups)
+		json.Unmarshal(GroupsString, &o.Groups)
+	}
+	
+	if State, ok := UpdateuserMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if AcdAutoAnswer, ok := UpdateuserMap["acdAutoAnswer"].(bool); ok {
+		o.AcdAutoAnswer = &AcdAutoAnswer
+	}
+	
+	if Certifications, ok := UpdateuserMap["certifications"].([]interface{}); ok {
+		CertificationsString, _ := json.Marshal(Certifications)
+		json.Unmarshal(CertificationsString, &o.Certifications)
+	}
+	
+	if Biography, ok := UpdateuserMap["biography"].(map[string]interface{}); ok {
+		BiographyString, _ := json.Marshal(Biography)
+		json.Unmarshal(BiographyString, &o.Biography)
+	}
+	
+	if EmployerInfo, ok := UpdateuserMap["employerInfo"].(map[string]interface{}); ok {
+		EmployerInfoString, _ := json.Marshal(EmployerInfo)
+		json.Unmarshal(EmployerInfoString, &o.EmployerInfo)
+	}
+	
+	if SelfUri, ok := UpdateuserMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

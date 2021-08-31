@@ -29,13 +29,11 @@ type Contactcallbackrequest struct {
 
 }
 
-func (u *Contactcallbackrequest) MarshalJSON() ([]byte, error) {
+func (o *Contactcallbackrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactcallbackrequest
-
 	
-
 	return json.Marshal(&struct { 
 		CampaignId *string `json:"campaignId,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Contactcallbackrequest) MarshalJSON() ([]byte, error) {
 		Schedule *string `json:"schedule,omitempty"`
 		*Alias
 	}{ 
-		CampaignId: u.CampaignId,
+		CampaignId: o.CampaignId,
 		
-		ContactListId: u.ContactListId,
+		ContactListId: o.ContactListId,
 		
-		ContactId: u.ContactId,
+		ContactId: o.ContactId,
 		
-		PhoneColumn: u.PhoneColumn,
+		PhoneColumn: o.PhoneColumn,
 		
-		Schedule: u.Schedule,
-		Alias:    (*Alias)(u),
+		Schedule: o.Schedule,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactcallbackrequest) UnmarshalJSON(b []byte) error {
+	var ContactcallbackrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactcallbackrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if CampaignId, ok := ContactcallbackrequestMap["campaignId"].(string); ok {
+		o.CampaignId = &CampaignId
+	}
+	
+	if ContactListId, ok := ContactcallbackrequestMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+	if ContactId, ok := ContactcallbackrequestMap["contactId"].(string); ok {
+		o.ContactId = &ContactId
+	}
+	
+	if PhoneColumn, ok := ContactcallbackrequestMap["phoneColumn"].(string); ok {
+		o.PhoneColumn = &PhoneColumn
+	}
+	
+	if Schedule, ok := ContactcallbackrequestMap["schedule"].(string); ok {
+		o.Schedule = &Schedule
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

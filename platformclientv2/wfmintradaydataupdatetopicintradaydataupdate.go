@@ -38,29 +38,27 @@ type Wfmintradaydataupdatetopicintradaydataupdate struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradaydataupdate) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradaydataupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradaydataupdate
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -81,17 +79,63 @@ func (u *Wfmintradaydataupdatetopicintradaydataupdate) MarshalJSON() ([]byte, er
 		
 		EndDate: EndDate,
 		
-		IntervalLengthMinutes: u.IntervalLengthMinutes,
+		IntervalLengthMinutes: o.IntervalLengthMinutes,
 		
-		NumberOfIntervals: u.NumberOfIntervals,
+		NumberOfIntervals: o.NumberOfIntervals,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		QueueIds: u.QueueIds,
+		QueueIds: o.QueueIds,
 		
-		IntradayDataGroupings: u.IntradayDataGroupings,
-		Alias:    (*Alias)(u),
+		IntradayDataGroupings: o.IntradayDataGroupings,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradaydataupdate) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradaydataupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradaydataupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := WfmintradaydataupdatetopicintradaydataupdateMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := WfmintradaydataupdatetopicintradaydataupdateMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if IntervalLengthMinutes, ok := WfmintradaydataupdatetopicintradaydataupdateMap["intervalLengthMinutes"].(float64); ok {
+		IntervalLengthMinutesInt := int(IntervalLengthMinutes)
+		o.IntervalLengthMinutes = &IntervalLengthMinutesInt
+	}
+	
+	if NumberOfIntervals, ok := WfmintradaydataupdatetopicintradaydataupdateMap["numberOfIntervals"].(float64); ok {
+		NumberOfIntervalsInt := int(NumberOfIntervals)
+		o.NumberOfIntervals = &NumberOfIntervalsInt
+	}
+	
+	if Metrics, ok := WfmintradaydataupdatetopicintradaydataupdateMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if QueueIds, ok := WfmintradaydataupdatetopicintradaydataupdateMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
+	}
+	
+	if IntradayDataGroupings, ok := WfmintradaydataupdatetopicintradaydataupdateMap["intradayDataGroupings"].([]interface{}); ok {
+		IntradayDataGroupingsString, _ := json.Marshal(IntradayDataGroupings)
+		json.Unmarshal(IntradayDataGroupingsString, &o.IntradayDataGroupings)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

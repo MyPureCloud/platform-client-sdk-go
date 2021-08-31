@@ -33,13 +33,11 @@ type Queueconversationcallbackeventtopicdialerpreview struct {
 
 }
 
-func (u *Queueconversationcallbackeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationcallbackeventtopicdialerpreview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationcallbackeventtopicdialerpreview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Queueconversationcallbackeventtopicdialerpreview) MarshalJSON() ([]byte
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ContactId: u.ContactId,
+		ContactId: o.ContactId,
 		
-		ContactListId: u.ContactListId,
+		ContactListId: o.ContactListId,
 		
-		CampaignId: u.CampaignId,
+		CampaignId: o.CampaignId,
 		
-		PhoneNumberColumns: u.PhoneNumberColumns,
+		PhoneNumberColumns: o.PhoneNumberColumns,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationcallbackeventtopicdialerpreview) UnmarshalJSON(b []byte) error {
+	var QueueconversationcallbackeventtopicdialerpreviewMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationcallbackeventtopicdialerpreviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationcallbackeventtopicdialerpreviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ContactId, ok := QueueconversationcallbackeventtopicdialerpreviewMap["contactId"].(string); ok {
+		o.ContactId = &ContactId
+	}
+	
+	if ContactListId, ok := QueueconversationcallbackeventtopicdialerpreviewMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+	if CampaignId, ok := QueueconversationcallbackeventtopicdialerpreviewMap["campaignId"].(string); ok {
+		o.CampaignId = &CampaignId
+	}
+	
+	if PhoneNumberColumns, ok := QueueconversationcallbackeventtopicdialerpreviewMap["phoneNumberColumns"].([]interface{}); ok {
+		PhoneNumberColumnsString, _ := json.Marshal(PhoneNumberColumns)
+		json.Unmarshal(PhoneNumberColumnsString, &o.PhoneNumberColumns)
+	}
+	
+	if AdditionalProperties, ok := QueueconversationcallbackeventtopicdialerpreviewMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

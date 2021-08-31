@@ -21,13 +21,11 @@ type Wfmbuscheduletopicbushorttermforecastreference struct {
 
 }
 
-func (u *Wfmbuscheduletopicbushorttermforecastreference) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuscheduletopicbushorttermforecastreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuscheduletopicbushorttermforecastreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Wfmbuscheduletopicbushorttermforecastreference) MarshalJSON() ([]byte, 
 		Description *string `json:"description,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		WeekDate: u.WeekDate,
+		WeekDate: o.WeekDate,
 		
-		Description: u.Description,
-		Alias:    (*Alias)(u),
+		Description: o.Description,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuscheduletopicbushorttermforecastreference) UnmarshalJSON(b []byte) error {
+	var WfmbuscheduletopicbushorttermforecastreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuscheduletopicbushorttermforecastreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WfmbuscheduletopicbushorttermforecastreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if WeekDate, ok := WfmbuscheduletopicbushorttermforecastreferenceMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+	if Description, ok := WfmbuscheduletopicbushorttermforecastreferenceMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

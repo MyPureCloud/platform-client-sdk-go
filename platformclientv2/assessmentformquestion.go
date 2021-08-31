@@ -53,13 +53,11 @@ type Assessmentformquestion struct {
 
 }
 
-func (u *Assessmentformquestion) MarshalJSON() ([]byte, error) {
+func (o *Assessmentformquestion) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Assessmentformquestion
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,87 @@ func (u *Assessmentformquestion) MarshalJSON() ([]byte, error) {
 		IsCritical *bool `json:"isCritical,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Text: u.Text,
+		Text: o.Text,
 		
-		HelpText: u.HelpText,
+		HelpText: o.HelpText,
 		
-		NaEnabled: u.NaEnabled,
+		NaEnabled: o.NaEnabled,
 		
-		CommentsRequired: u.CommentsRequired,
+		CommentsRequired: o.CommentsRequired,
 		
-		VisibilityCondition: u.VisibilityCondition,
+		VisibilityCondition: o.VisibilityCondition,
 		
-		AnswerOptions: u.AnswerOptions,
+		AnswerOptions: o.AnswerOptions,
 		
-		MaxResponseCharacters: u.MaxResponseCharacters,
+		MaxResponseCharacters: o.MaxResponseCharacters,
 		
-		IsKill: u.IsKill,
+		IsKill: o.IsKill,
 		
-		IsCritical: u.IsCritical,
-		Alias:    (*Alias)(u),
+		IsCritical: o.IsCritical,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Assessmentformquestion) UnmarshalJSON(b []byte) error {
+	var AssessmentformquestionMap map[string]interface{}
+	err := json.Unmarshal(b, &AssessmentformquestionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AssessmentformquestionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if VarType, ok := AssessmentformquestionMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Text, ok := AssessmentformquestionMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if HelpText, ok := AssessmentformquestionMap["helpText"].(string); ok {
+		o.HelpText = &HelpText
+	}
+	
+	if NaEnabled, ok := AssessmentformquestionMap["naEnabled"].(bool); ok {
+		o.NaEnabled = &NaEnabled
+	}
+	
+	if CommentsRequired, ok := AssessmentformquestionMap["commentsRequired"].(bool); ok {
+		o.CommentsRequired = &CommentsRequired
+	}
+	
+	if VisibilityCondition, ok := AssessmentformquestionMap["visibilityCondition"].(map[string]interface{}); ok {
+		VisibilityConditionString, _ := json.Marshal(VisibilityCondition)
+		json.Unmarshal(VisibilityConditionString, &o.VisibilityCondition)
+	}
+	
+	if AnswerOptions, ok := AssessmentformquestionMap["answerOptions"].([]interface{}); ok {
+		AnswerOptionsString, _ := json.Marshal(AnswerOptions)
+		json.Unmarshal(AnswerOptionsString, &o.AnswerOptions)
+	}
+	
+	if MaxResponseCharacters, ok := AssessmentformquestionMap["maxResponseCharacters"].(float64); ok {
+		MaxResponseCharactersInt := int(MaxResponseCharacters)
+		o.MaxResponseCharacters = &MaxResponseCharactersInt
+	}
+	
+	if IsKill, ok := AssessmentformquestionMap["isKill"].(bool); ok {
+		o.IsKill = &IsKill
+	}
+	
+	if IsCritical, ok := AssessmentformquestionMap["isCritical"].(bool); ok {
+		o.IsCritical = &IsCritical
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

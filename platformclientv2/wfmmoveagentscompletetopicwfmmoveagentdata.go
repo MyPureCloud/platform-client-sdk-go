@@ -17,24 +17,42 @@ type Wfmmoveagentscompletetopicwfmmoveagentdata struct {
 
 }
 
-func (u *Wfmmoveagentscompletetopicwfmmoveagentdata) MarshalJSON() ([]byte, error) {
+func (o *Wfmmoveagentscompletetopicwfmmoveagentdata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmmoveagentscompletetopicwfmmoveagentdata
-
 	
-
 	return json.Marshal(&struct { 
 		User *Wfmmoveagentscompletetopicuserreference `json:"user,omitempty"`
 		
 		Result *string `json:"result,omitempty"`
 		*Alias
 	}{ 
-		User: u.User,
+		User: o.User,
 		
-		Result: u.Result,
-		Alias:    (*Alias)(u),
+		Result: o.Result,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmmoveagentscompletetopicwfmmoveagentdata) UnmarshalJSON(b []byte) error {
+	var WfmmoveagentscompletetopicwfmmoveagentdataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmmoveagentscompletetopicwfmmoveagentdataMap)
+	if err != nil {
+		return err
+	}
+	
+	if User, ok := WfmmoveagentscompletetopicwfmmoveagentdataMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Result, ok := WfmmoveagentscompletetopicwfmmoveagentdataMap["result"].(string); ok {
+		o.Result = &Result
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

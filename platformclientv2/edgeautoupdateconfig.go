@@ -26,29 +26,27 @@ type Edgeautoupdateconfig struct {
 
 }
 
-func (u *Edgeautoupdateconfig) MarshalJSON() ([]byte, error) {
+func (o *Edgeautoupdateconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgeautoupdateconfig
-
 	
 	Start := new(string)
-	if u.Start != nil {
-		*Start = timeutil.Strftime(u.Start, "%Y-%m-%dT%H:%M:%S.%f")
+	if o.Start != nil {
+		*Start = timeutil.Strftime(o.Start, "%Y-%m-%dT%H:%M:%S.%f")
 		
 	} else {
 		Start = nil
 	}
 	
 	End := new(string)
-	if u.End != nil {
-		*End = timeutil.Strftime(u.End, "%Y-%m-%dT%H:%M:%S.%f")
+	if o.End != nil {
+		*End = timeutil.Strftime(o.End, "%Y-%m-%dT%H:%M:%S.%f")
 		
 	} else {
 		End = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		TimeZone *string `json:"timeZone,omitempty"`
 		
@@ -59,15 +57,44 @@ func (u *Edgeautoupdateconfig) MarshalJSON() ([]byte, error) {
 		End *string `json:"end,omitempty"`
 		*Alias
 	}{ 
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		Rrule: u.Rrule,
+		Rrule: o.Rrule,
 		
 		Start: Start,
 		
 		End: End,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgeautoupdateconfig) UnmarshalJSON(b []byte) error {
+	var EdgeautoupdateconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgeautoupdateconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if TimeZone, ok := EdgeautoupdateconfigMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if Rrule, ok := EdgeautoupdateconfigMap["rrule"].(string); ok {
+		o.Rrule = &Rrule
+	}
+	
+	if startString, ok := EdgeautoupdateconfigMap["start"].(string); ok {
+		Start, _ := time.Parse("2006-01-02T15:04:05.999999", startString)
+		o.Start = &Start
+	}
+	
+	if endString, ok := EdgeautoupdateconfigMap["end"].(string); ok {
+		End, _ := time.Parse("2006-01-02T15:04:05.999999", endString)
+		o.End = &End
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

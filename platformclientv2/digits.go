@@ -13,20 +13,33 @@ type Digits struct {
 
 }
 
-func (u *Digits) MarshalJSON() ([]byte, error) {
+func (o *Digits) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Digits
-
 	
-
 	return json.Marshal(&struct { 
 		Digits *string `json:"digits,omitempty"`
 		*Alias
 	}{ 
-		Digits: u.Digits,
-		Alias:    (*Alias)(u),
+		Digits: o.Digits,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Digits) UnmarshalJSON(b []byte) error {
+	var DigitsMap map[string]interface{}
+	err := json.Unmarshal(b, &DigitsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Digits, ok := DigitsMap["digits"].(string); ok {
+		o.Digits = &Digits
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

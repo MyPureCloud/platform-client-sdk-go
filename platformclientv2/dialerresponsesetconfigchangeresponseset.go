@@ -42,29 +42,27 @@ type Dialerresponsesetconfigchangeresponseset struct {
 
 }
 
-func (u *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error) {
+func (o *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerresponsesetconfigchangeresponseset
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -83,23 +81,71 @@ func (u *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error)
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Responses: u.Responses,
+		Responses: o.Responses,
 		
-		BeepDetectionEnabled: u.BeepDetectionEnabled,
+		BeepDetectionEnabled: o.BeepDetectionEnabled,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerresponsesetconfigchangeresponseset) UnmarshalJSON(b []byte) error {
+	var DialerresponsesetconfigchangeresponsesetMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerresponsesetconfigchangeresponsesetMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialerresponsesetconfigchangeresponsesetMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialerresponsesetconfigchangeresponsesetMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialerresponsesetconfigchangeresponsesetMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialerresponsesetconfigchangeresponsesetMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialerresponsesetconfigchangeresponsesetMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if Responses, ok := DialerresponsesetconfigchangeresponsesetMap["responses"].(map[string]interface{}); ok {
+		ResponsesString, _ := json.Marshal(Responses)
+		json.Unmarshal(ResponsesString, &o.Responses)
+	}
+	
+	if BeepDetectionEnabled, ok := DialerresponsesetconfigchangeresponsesetMap["beepDetectionEnabled"].(bool); ok {
+		o.BeepDetectionEnabled = &BeepDetectionEnabled
+	}
+	
+	if AdditionalProperties, ok := DialerresponsesetconfigchangeresponsesetMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -26,21 +26,19 @@ type Coachingappointmentstatusresponse struct {
 
 }
 
-func (u *Coachingappointmentstatusresponse) MarshalJSON() ([]byte, error) {
+func (o *Coachingappointmentstatusresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Coachingappointmentstatusresponse
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Appointment *Coachingappointmentreference `json:"appointment,omitempty"`
 		
@@ -51,15 +49,45 @@ func (u *Coachingappointmentstatusresponse) MarshalJSON() ([]byte, error) {
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		Appointment: u.Appointment,
+		Appointment: o.Appointment,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Coachingappointmentstatusresponse) UnmarshalJSON(b []byte) error {
+	var CoachingappointmentstatusresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &CoachingappointmentstatusresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Appointment, ok := CoachingappointmentstatusresponseMap["appointment"].(map[string]interface{}); ok {
+		AppointmentString, _ := json.Marshal(Appointment)
+		json.Unmarshal(AppointmentString, &o.Appointment)
+	}
+	
+	if CreatedBy, ok := CoachingappointmentstatusresponseMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := CoachingappointmentstatusresponseMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if Status, ok := CoachingappointmentstatusresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

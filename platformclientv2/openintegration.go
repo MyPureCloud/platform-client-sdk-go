@@ -66,29 +66,27 @@ type Openintegration struct {
 
 }
 
-func (u *Openintegration) MarshalJSON() ([]byte, error) {
+func (o *Openintegration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Openintegration
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -119,35 +117,109 @@ func (u *Openintegration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		OutboundNotificationWebhookUrl: u.OutboundNotificationWebhookUrl,
+		OutboundNotificationWebhookUrl: o.OutboundNotificationWebhookUrl,
 		
-		OutboundNotificationWebhookSignatureSecretToken: u.OutboundNotificationWebhookSignatureSecretToken,
+		OutboundNotificationWebhookSignatureSecretToken: o.OutboundNotificationWebhookSignatureSecretToken,
 		
-		WebhookHeaders: u.WebhookHeaders,
+		WebhookHeaders: o.WebhookHeaders,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		Recipient: u.Recipient,
+		Recipient: o.Recipient,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreateStatus: u.CreateStatus,
+		CreateStatus: o.CreateStatus,
 		
-		CreateError: u.CreateError,
+		CreateError: o.CreateError,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Openintegration) UnmarshalJSON(b []byte) error {
+	var OpenintegrationMap map[string]interface{}
+	err := json.Unmarshal(b, &OpenintegrationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OpenintegrationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OpenintegrationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if OutboundNotificationWebhookUrl, ok := OpenintegrationMap["outboundNotificationWebhookUrl"].(string); ok {
+		o.OutboundNotificationWebhookUrl = &OutboundNotificationWebhookUrl
+	}
+	
+	if OutboundNotificationWebhookSignatureSecretToken, ok := OpenintegrationMap["outboundNotificationWebhookSignatureSecretToken"].(string); ok {
+		o.OutboundNotificationWebhookSignatureSecretToken = &OutboundNotificationWebhookSignatureSecretToken
+	}
+	
+	if WebhookHeaders, ok := OpenintegrationMap["webhookHeaders"].(map[string]interface{}); ok {
+		WebhookHeadersString, _ := json.Marshal(WebhookHeaders)
+		json.Unmarshal(WebhookHeadersString, &o.WebhookHeaders)
+	}
+	
+	if Status, ok := OpenintegrationMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Recipient, ok := OpenintegrationMap["recipient"].(map[string]interface{}); ok {
+		RecipientString, _ := json.Marshal(Recipient)
+		json.Unmarshal(RecipientString, &o.Recipient)
+	}
+	
+	if dateCreatedString, ok := OpenintegrationMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := OpenintegrationMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := OpenintegrationMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ModifiedBy, ok := OpenintegrationMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if CreateStatus, ok := OpenintegrationMap["createStatus"].(string); ok {
+		o.CreateStatus = &CreateStatus
+	}
+	
+	if CreateError, ok := OpenintegrationMap["createError"].(map[string]interface{}); ok {
+		CreateErrorString, _ := json.Marshal(CreateError)
+		json.Unmarshal(CreateErrorString, &o.CreateError)
+	}
+	
+	if SelfUri, ok := OpenintegrationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -33,13 +33,11 @@ type Adherencesettings struct {
 
 }
 
-func (u *Adherencesettings) MarshalJSON() ([]byte, error) {
+func (o *Adherencesettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Adherencesettings
-
 	
-
 	return json.Marshal(&struct { 
 		SevereAlertThresholdMinutes *int `json:"severeAlertThresholdMinutes,omitempty"`
 		
@@ -54,19 +52,58 @@ func (u *Adherencesettings) MarshalJSON() ([]byte, error) {
 		IgnoredActivityCategories *Ignoredactivitycategories `json:"ignoredActivityCategories,omitempty"`
 		*Alias
 	}{ 
-		SevereAlertThresholdMinutes: u.SevereAlertThresholdMinutes,
+		SevereAlertThresholdMinutes: o.SevereAlertThresholdMinutes,
 		
-		AdherenceTargetPercent: u.AdherenceTargetPercent,
+		AdherenceTargetPercent: o.AdherenceTargetPercent,
 		
-		AdherenceExceptionThresholdSeconds: u.AdherenceExceptionThresholdSeconds,
+		AdherenceExceptionThresholdSeconds: o.AdherenceExceptionThresholdSeconds,
 		
-		NonOnQueueActivitiesEquivalent: u.NonOnQueueActivitiesEquivalent,
+		NonOnQueueActivitiesEquivalent: o.NonOnQueueActivitiesEquivalent,
 		
-		TrackOnQueueActivity: u.TrackOnQueueActivity,
+		TrackOnQueueActivity: o.TrackOnQueueActivity,
 		
-		IgnoredActivityCategories: u.IgnoredActivityCategories,
-		Alias:    (*Alias)(u),
+		IgnoredActivityCategories: o.IgnoredActivityCategories,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Adherencesettings) UnmarshalJSON(b []byte) error {
+	var AdherencesettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &AdherencesettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if SevereAlertThresholdMinutes, ok := AdherencesettingsMap["severeAlertThresholdMinutes"].(float64); ok {
+		SevereAlertThresholdMinutesInt := int(SevereAlertThresholdMinutes)
+		o.SevereAlertThresholdMinutes = &SevereAlertThresholdMinutesInt
+	}
+	
+	if AdherenceTargetPercent, ok := AdherencesettingsMap["adherenceTargetPercent"].(float64); ok {
+		AdherenceTargetPercentInt := int(AdherenceTargetPercent)
+		o.AdherenceTargetPercent = &AdherenceTargetPercentInt
+	}
+	
+	if AdherenceExceptionThresholdSeconds, ok := AdherencesettingsMap["adherenceExceptionThresholdSeconds"].(float64); ok {
+		AdherenceExceptionThresholdSecondsInt := int(AdherenceExceptionThresholdSeconds)
+		o.AdherenceExceptionThresholdSeconds = &AdherenceExceptionThresholdSecondsInt
+	}
+	
+	if NonOnQueueActivitiesEquivalent, ok := AdherencesettingsMap["nonOnQueueActivitiesEquivalent"].(bool); ok {
+		o.NonOnQueueActivitiesEquivalent = &NonOnQueueActivitiesEquivalent
+	}
+	
+	if TrackOnQueueActivity, ok := AdherencesettingsMap["trackOnQueueActivity"].(bool); ok {
+		o.TrackOnQueueActivity = &TrackOnQueueActivity
+	}
+	
+	if IgnoredActivityCategories, ok := AdherencesettingsMap["ignoredActivityCategories"].(map[string]interface{}); ok {
+		IgnoredActivityCategoriesString, _ := json.Marshal(IgnoredActivityCategories)
+		json.Unmarshal(IgnoredActivityCategoriesString, &o.IgnoredActivityCategories)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

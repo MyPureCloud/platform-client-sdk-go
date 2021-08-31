@@ -33,13 +33,11 @@ type Minerintent struct {
 
 }
 
-func (u *Minerintent) MarshalJSON() ([]byte, error) {
+func (o *Minerintent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Minerintent
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Minerintent) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Miner: u.Miner,
+		Miner: o.Miner,
 		
-		Utterances: u.Utterances,
+		Utterances: o.Utterances,
 		
-		AnalyticVolumePercent: u.AnalyticVolumePercent,
+		AnalyticVolumePercent: o.AnalyticVolumePercent,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Minerintent) UnmarshalJSON(b []byte) error {
+	var MinerintentMap map[string]interface{}
+	err := json.Unmarshal(b, &MinerintentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := MinerintentMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := MinerintentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Miner, ok := MinerintentMap["miner"].(map[string]interface{}); ok {
+		MinerString, _ := json.Marshal(Miner)
+		json.Unmarshal(MinerString, &o.Miner)
+	}
+	
+	if Utterances, ok := MinerintentMap["utterances"].([]interface{}); ok {
+		UtterancesString, _ := json.Marshal(Utterances)
+		json.Unmarshal(UtterancesString, &o.Utterances)
+	}
+	
+	if AnalyticVolumePercent, ok := MinerintentMap["analyticVolumePercent"].(float64); ok {
+		o.AnalyticVolumePercent = &AnalyticVolumePercent
+	}
+	
+	if SelfUri, ok := MinerintentMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

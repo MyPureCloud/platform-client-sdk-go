@@ -33,13 +33,11 @@ type Userroutinglanguage struct {
 
 }
 
-func (u *Userroutinglanguage) MarshalJSON() ([]byte, error) {
+func (o *Userroutinglanguage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userroutinglanguage
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,54 @@ func (u *Userroutinglanguage) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Proficiency: u.Proficiency,
+		Proficiency: o.Proficiency,
 		
-		State: u.State,
+		State: o.State,
 		
-		LanguageUri: u.LanguageUri,
+		LanguageUri: o.LanguageUri,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userroutinglanguage) UnmarshalJSON(b []byte) error {
+	var UserroutinglanguageMap map[string]interface{}
+	err := json.Unmarshal(b, &UserroutinglanguageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserroutinglanguageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserroutinglanguageMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Proficiency, ok := UserroutinglanguageMap["proficiency"].(float64); ok {
+		o.Proficiency = &Proficiency
+	}
+	
+	if State, ok := UserroutinglanguageMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if LanguageUri, ok := UserroutinglanguageMap["languageUri"].(string); ok {
+		o.LanguageUri = &LanguageUri
+	}
+	
+	if SelfUri, ok := UserroutinglanguageMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

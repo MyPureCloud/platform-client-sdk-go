@@ -21,13 +21,11 @@ type Bulkupdateshifttradestateresponse struct {
 
 }
 
-func (u *Bulkupdateshifttradestateresponse) MarshalJSON() ([]byte, error) {
+func (o *Bulkupdateshifttradestateresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Bulkupdateshifttradestateresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Status *string `json:"status,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Bulkupdateshifttradestateresponse) MarshalJSON() ([]byte, error) {
 		Result *Bulkupdateshifttradestateresult `json:"result,omitempty"`
 		*Alias
 	}{ 
-		Status: u.Status,
+		Status: o.Status,
 		
-		OperationId: u.OperationId,
+		OperationId: o.OperationId,
 		
-		Result: u.Result,
-		Alias:    (*Alias)(u),
+		Result: o.Result,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Bulkupdateshifttradestateresponse) UnmarshalJSON(b []byte) error {
+	var BulkupdateshifttradestateresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BulkupdateshifttradestateresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Status, ok := BulkupdateshifttradestateresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if OperationId, ok := BulkupdateshifttradestateresponseMap["operationId"].(string); ok {
+		o.OperationId = &OperationId
+	}
+	
+	if Result, ok := BulkupdateshifttradestateresponseMap["result"].(map[string]interface{}); ok {
+		ResultString, _ := json.Marshal(Result)
+		json.Unmarshal(ResultString, &o.Result)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

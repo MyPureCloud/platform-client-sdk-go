@@ -25,13 +25,11 @@ type Flowexecutionlaunchresponse struct {
 
 }
 
-func (u *Flowexecutionlaunchresponse) MarshalJSON() ([]byte, error) {
+func (o *Flowexecutionlaunchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowexecutionlaunchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Flowexecutionlaunchresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		FlowVersion: u.FlowVersion,
+		FlowVersion: o.FlowVersion,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowexecutionlaunchresponse) UnmarshalJSON(b []byte) error {
+	var FlowexecutionlaunchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowexecutionlaunchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FlowexecutionlaunchresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FlowexecutionlaunchresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if FlowVersion, ok := FlowexecutionlaunchresponseMap["flowVersion"].(map[string]interface{}); ok {
+		FlowVersionString, _ := json.Marshal(FlowVersion)
+		json.Unmarshal(FlowVersionString, &o.FlowVersion)
+	}
+	
+	if SelfUri, ok := FlowexecutionlaunchresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

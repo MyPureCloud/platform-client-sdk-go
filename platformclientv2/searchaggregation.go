@@ -33,13 +33,11 @@ type Searchaggregation struct {
 
 }
 
-func (u *Searchaggregation) MarshalJSON() ([]byte, error) {
+func (o *Searchaggregation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Searchaggregation
-
 	
-
 	return json.Marshal(&struct { 
 		Field *string `json:"field,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Searchaggregation) MarshalJSON() ([]byte, error) {
 		Order *[]string `json:"order,omitempty"`
 		*Alias
 	}{ 
-		Field: u.Field,
+		Field: o.Field,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		Size: u.Size,
+		Size: o.Size,
 		
-		Order: u.Order,
-		Alias:    (*Alias)(u),
+		Order: o.Order,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Searchaggregation) UnmarshalJSON(b []byte) error {
+	var SearchaggregationMap map[string]interface{}
+	err := json.Unmarshal(b, &SearchaggregationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Field, ok := SearchaggregationMap["field"].(string); ok {
+		o.Field = &Field
+	}
+	
+	if Name, ok := SearchaggregationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := SearchaggregationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Value, ok := SearchaggregationMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if Size, ok := SearchaggregationMap["size"].(float64); ok {
+		SizeInt := int(Size)
+		o.Size = &SizeInt
+	}
+	
+	if Order, ok := SearchaggregationMap["order"].([]interface{}); ok {
+		OrderString, _ := json.Marshal(Order)
+		json.Unmarshal(OrderString, &o.Order)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

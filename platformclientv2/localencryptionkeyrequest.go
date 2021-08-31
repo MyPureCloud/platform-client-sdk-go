@@ -21,13 +21,11 @@ type Localencryptionkeyrequest struct {
 
 }
 
-func (u *Localencryptionkeyrequest) MarshalJSON() ([]byte, error) {
+func (o *Localencryptionkeyrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Localencryptionkeyrequest
-
 	
-
 	return json.Marshal(&struct { 
 		ConfigId *string `json:"configId,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Localencryptionkeyrequest) MarshalJSON() ([]byte, error) {
 		KeypairId *string `json:"keypairId,omitempty"`
 		*Alias
 	}{ 
-		ConfigId: u.ConfigId,
+		ConfigId: o.ConfigId,
 		
-		PublicKey: u.PublicKey,
+		PublicKey: o.PublicKey,
 		
-		KeypairId: u.KeypairId,
-		Alias:    (*Alias)(u),
+		KeypairId: o.KeypairId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Localencryptionkeyrequest) UnmarshalJSON(b []byte) error {
+	var LocalencryptionkeyrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &LocalencryptionkeyrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ConfigId, ok := LocalencryptionkeyrequestMap["configId"].(string); ok {
+		o.ConfigId = &ConfigId
+	}
+	
+	if PublicKey, ok := LocalencryptionkeyrequestMap["publicKey"].(string); ok {
+		o.PublicKey = &PublicKey
+	}
+	
+	if KeypairId, ok := LocalencryptionkeyrequestMap["keypairId"].(string); ok {
+		o.KeypairId = &KeypairId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

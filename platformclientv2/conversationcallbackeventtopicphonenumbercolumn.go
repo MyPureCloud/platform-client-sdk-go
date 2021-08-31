@@ -21,13 +21,11 @@ type Conversationcallbackeventtopicphonenumbercolumn struct {
 
 }
 
-func (u *Conversationcallbackeventtopicphonenumbercolumn) MarshalJSON() ([]byte, error) {
+func (o *Conversationcallbackeventtopicphonenumbercolumn) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcallbackeventtopicphonenumbercolumn
-
 	
-
 	return json.Marshal(&struct { 
 		ColumnName *string `json:"columnName,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Conversationcallbackeventtopicphonenumbercolumn) MarshalJSON() ([]byte,
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		ColumnName: u.ColumnName,
+		ColumnName: o.ColumnName,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcallbackeventtopicphonenumbercolumn) UnmarshalJSON(b []byte) error {
+	var ConversationcallbackeventtopicphonenumbercolumnMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcallbackeventtopicphonenumbercolumnMap)
+	if err != nil {
+		return err
+	}
+	
+	if ColumnName, ok := ConversationcallbackeventtopicphonenumbercolumnMap["columnName"].(string); ok {
+		o.ColumnName = &ColumnName
+	}
+	
+	if VarType, ok := ConversationcallbackeventtopicphonenumbercolumnMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if AdditionalProperties, ok := ConversationcallbackeventtopicphonenumbercolumnMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

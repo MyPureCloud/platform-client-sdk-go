@@ -54,21 +54,19 @@ type Analyticsmediaendpointstat struct {
 
 }
 
-func (u *Analyticsmediaendpointstat) MarshalJSON() ([]byte, error) {
+func (o *Analyticsmediaendpointstat) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsmediaendpointstat
-
 	
 	EventTime := new(string)
-	if u.EventTime != nil {
+	if o.EventTime != nil {
 		
-		*EventTime = timeutil.Strftime(u.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EventTime = timeutil.Strftime(o.EventTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EventTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Codecs *[]string `json:"codecs,omitempty"`
 		
@@ -93,29 +91,93 @@ func (u *Analyticsmediaendpointstat) MarshalJSON() ([]byte, error) {
 		UnderrunPackets *int `json:"underrunPackets,omitempty"`
 		*Alias
 	}{ 
-		Codecs: u.Codecs,
+		Codecs: o.Codecs,
 		
-		DiscardedPackets: u.DiscardedPackets,
+		DiscardedPackets: o.DiscardedPackets,
 		
-		DuplicatePackets: u.DuplicatePackets,
+		DuplicatePackets: o.DuplicatePackets,
 		
 		EventTime: EventTime,
 		
-		InvalidPackets: u.InvalidPackets,
+		InvalidPackets: o.InvalidPackets,
 		
-		MaxLatencyMs: u.MaxLatencyMs,
+		MaxLatencyMs: o.MaxLatencyMs,
 		
-		MinMos: u.MinMos,
+		MinMos: o.MinMos,
 		
-		MinRFactor: u.MinRFactor,
+		MinRFactor: o.MinRFactor,
 		
-		OverrunPackets: u.OverrunPackets,
+		OverrunPackets: o.OverrunPackets,
 		
-		ReceivedPackets: u.ReceivedPackets,
+		ReceivedPackets: o.ReceivedPackets,
 		
-		UnderrunPackets: u.UnderrunPackets,
-		Alias:    (*Alias)(u),
+		UnderrunPackets: o.UnderrunPackets,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsmediaendpointstat) UnmarshalJSON(b []byte) error {
+	var AnalyticsmediaendpointstatMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsmediaendpointstatMap)
+	if err != nil {
+		return err
+	}
+	
+	if Codecs, ok := AnalyticsmediaendpointstatMap["codecs"].([]interface{}); ok {
+		CodecsString, _ := json.Marshal(Codecs)
+		json.Unmarshal(CodecsString, &o.Codecs)
+	}
+	
+	if DiscardedPackets, ok := AnalyticsmediaendpointstatMap["discardedPackets"].(float64); ok {
+		DiscardedPacketsInt := int(DiscardedPackets)
+		o.DiscardedPackets = &DiscardedPacketsInt
+	}
+	
+	if DuplicatePackets, ok := AnalyticsmediaendpointstatMap["duplicatePackets"].(float64); ok {
+		DuplicatePacketsInt := int(DuplicatePackets)
+		o.DuplicatePackets = &DuplicatePacketsInt
+	}
+	
+	if eventTimeString, ok := AnalyticsmediaendpointstatMap["eventTime"].(string); ok {
+		EventTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", eventTimeString)
+		o.EventTime = &EventTime
+	}
+	
+	if InvalidPackets, ok := AnalyticsmediaendpointstatMap["invalidPackets"].(float64); ok {
+		InvalidPacketsInt := int(InvalidPackets)
+		o.InvalidPackets = &InvalidPacketsInt
+	}
+	
+	if MaxLatencyMs, ok := AnalyticsmediaendpointstatMap["maxLatencyMs"].(float64); ok {
+		MaxLatencyMsInt := int(MaxLatencyMs)
+		o.MaxLatencyMs = &MaxLatencyMsInt
+	}
+	
+	if MinMos, ok := AnalyticsmediaendpointstatMap["minMos"].(float64); ok {
+		o.MinMos = &MinMos
+	}
+	
+	if MinRFactor, ok := AnalyticsmediaendpointstatMap["minRFactor"].(float64); ok {
+		o.MinRFactor = &MinRFactor
+	}
+	
+	if OverrunPackets, ok := AnalyticsmediaendpointstatMap["overrunPackets"].(float64); ok {
+		OverrunPacketsInt := int(OverrunPackets)
+		o.OverrunPackets = &OverrunPacketsInt
+	}
+	
+	if ReceivedPackets, ok := AnalyticsmediaendpointstatMap["receivedPackets"].(float64); ok {
+		ReceivedPacketsInt := int(ReceivedPackets)
+		o.ReceivedPackets = &ReceivedPacketsInt
+	}
+	
+	if UnderrunPackets, ok := AnalyticsmediaendpointstatMap["underrunPackets"].(float64); ok {
+		UnderrunPacketsInt := int(UnderrunPackets)
+		o.UnderrunPackets = &UnderrunPacketsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

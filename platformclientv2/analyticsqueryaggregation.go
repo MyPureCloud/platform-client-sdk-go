@@ -29,13 +29,11 @@ type Analyticsqueryaggregation struct {
 
 }
 
-func (u *Analyticsqueryaggregation) MarshalJSON() ([]byte, error) {
+func (o *Analyticsqueryaggregation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Analyticsqueryaggregation
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -48,17 +46,50 @@ func (u *Analyticsqueryaggregation) MarshalJSON() ([]byte, error) {
 		Ranges *[]Aggregationrange `json:"ranges,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		Size: u.Size,
+		Size: o.Size,
 		
-		Ranges: u.Ranges,
-		Alias:    (*Alias)(u),
+		Ranges: o.Ranges,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Analyticsqueryaggregation) UnmarshalJSON(b []byte) error {
+	var AnalyticsqueryaggregationMap map[string]interface{}
+	err := json.Unmarshal(b, &AnalyticsqueryaggregationMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := AnalyticsqueryaggregationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Dimension, ok := AnalyticsqueryaggregationMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Metric, ok := AnalyticsqueryaggregationMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if Size, ok := AnalyticsqueryaggregationMap["size"].(float64); ok {
+		SizeInt := int(Size)
+		o.Size = &SizeInt
+	}
+	
+	if Ranges, ok := AnalyticsqueryaggregationMap["ranges"].([]interface{}); ok {
+		RangesString, _ := json.Marshal(Ranges)
+		json.Unmarshal(RangesString, &o.Ranges)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

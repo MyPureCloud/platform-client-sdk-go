@@ -38,21 +38,19 @@ type Historyentry struct {
 
 }
 
-func (u *Historyentry) MarshalJSON() ([]byte, error) {
+func (o *Historyentry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Historyentry
-
 	
 	Timestamp := new(string)
-	if u.Timestamp != nil {
+	if o.Timestamp != nil {
 		
-		*Timestamp = timeutil.Strftime(u.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Timestamp = timeutil.Strftime(o.Timestamp, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Timestamp = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Action *string `json:"action,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Historyentry) MarshalJSON() ([]byte, error) {
 		Secure *bool `json:"secure,omitempty"`
 		*Alias
 	}{ 
-		Action: u.Action,
+		Action: o.Action,
 		
-		Resource: u.Resource,
+		Resource: o.Resource,
 		
 		Timestamp: Timestamp,
 		
-		User: u.User,
+		User: o.User,
 		
-		Client: u.Client,
+		Client: o.Client,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		Secure: u.Secure,
-		Alias:    (*Alias)(u),
+		Secure: o.Secure,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Historyentry) UnmarshalJSON(b []byte) error {
+	var HistoryentryMap map[string]interface{}
+	err := json.Unmarshal(b, &HistoryentryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Action, ok := HistoryentryMap["action"].(string); ok {
+		o.Action = &Action
+	}
+	
+	if Resource, ok := HistoryentryMap["resource"].(string); ok {
+		o.Resource = &Resource
+	}
+	
+	if timestampString, ok := HistoryentryMap["timestamp"].(string); ok {
+		Timestamp, _ := time.Parse("2006-01-02T15:04:05.999999Z", timestampString)
+		o.Timestamp = &Timestamp
+	}
+	
+	if User, ok := HistoryentryMap["user"].(map[string]interface{}); ok {
+		UserString, _ := json.Marshal(User)
+		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if Client, ok := HistoryentryMap["client"].(map[string]interface{}); ok {
+		ClientString, _ := json.Marshal(Client)
+		json.Unmarshal(ClientString, &o.Client)
+	}
+	
+	if Version, ok := HistoryentryMap["version"].(string); ok {
+		o.Version = &Version
+	}
+	
+	if Secure, ok := HistoryentryMap["secure"].(bool); ok {
+		o.Secure = &Secure
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

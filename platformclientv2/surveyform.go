@@ -58,21 +58,19 @@ type Surveyform struct {
 
 }
 
-func (u *Surveyform) MarshalJSON() ([]byte, error) {
+func (o *Surveyform) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Surveyform
-
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -99,31 +97,93 @@ func (u *Surveyform) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		ModifiedDate: ModifiedDate,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		Disabled: u.Disabled,
+		Disabled: o.Disabled,
 		
-		ContextId: u.ContextId,
+		ContextId: o.ContextId,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Header: u.Header,
+		Header: o.Header,
 		
-		Footer: u.Footer,
+		Footer: o.Footer,
 		
-		QuestionGroups: u.QuestionGroups,
+		QuestionGroups: o.QuestionGroups,
 		
-		PublishedVersions: u.PublishedVersions,
+		PublishedVersions: o.PublishedVersions,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Surveyform) UnmarshalJSON(b []byte) error {
+	var SurveyformMap map[string]interface{}
+	err := json.Unmarshal(b, &SurveyformMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SurveyformMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SurveyformMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if modifiedDateString, ok := SurveyformMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if Published, ok := SurveyformMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if Disabled, ok := SurveyformMap["disabled"].(bool); ok {
+		o.Disabled = &Disabled
+	}
+	
+	if ContextId, ok := SurveyformMap["contextId"].(string); ok {
+		o.ContextId = &ContextId
+	}
+	
+	if Language, ok := SurveyformMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Header, ok := SurveyformMap["header"].(string); ok {
+		o.Header = &Header
+	}
+	
+	if Footer, ok := SurveyformMap["footer"].(string); ok {
+		o.Footer = &Footer
+	}
+	
+	if QuestionGroups, ok := SurveyformMap["questionGroups"].([]interface{}); ok {
+		QuestionGroupsString, _ := json.Marshal(QuestionGroups)
+		json.Unmarshal(QuestionGroupsString, &o.QuestionGroups)
+	}
+	
+	if PublishedVersions, ok := SurveyformMap["publishedVersions"].(map[string]interface{}); ok {
+		PublishedVersionsString, _ := json.Marshal(PublishedVersions)
+		json.Unmarshal(PublishedVersionsString, &o.PublishedVersions)
+	}
+	
+	if SelfUri, ok := SurveyformMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -13,20 +13,34 @@ type Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings struct {
 
 }
 
-func (u *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings) MarshalJSON() ([]byte, error) {
+func (o *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings
-
 	
-
 	return json.Marshal(&struct { 
 		CallableWindows *[]Dialeroutboundsettingsconfigchangecallablewindow `json:"callableWindows,omitempty"`
 		*Alias
 	}{ 
-		CallableWindows: u.CallableWindows,
-		Alias:    (*Alias)(u),
+		CallableWindows: o.CallableWindows,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings) UnmarshalJSON(b []byte) error {
+	var DialeroutboundsettingsconfigchangeautomatictimezonemappingsettingsMap map[string]interface{}
+	err := json.Unmarshal(b, &DialeroutboundsettingsconfigchangeautomatictimezonemappingsettingsMap)
+	if err != nil {
+		return err
+	}
+	
+	if CallableWindows, ok := DialeroutboundsettingsconfigchangeautomatictimezonemappingsettingsMap["callableWindows"].([]interface{}); ok {
+		CallableWindowsString, _ := json.Marshal(CallableWindows)
+		json.Unmarshal(CallableWindowsString, &o.CallableWindows)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

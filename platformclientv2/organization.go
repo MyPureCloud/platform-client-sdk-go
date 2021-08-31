@@ -69,13 +69,11 @@ type Organization struct {
 
 }
 
-func (u *Organization) MarshalJSON() ([]byte, error) {
+func (o *Organization) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Organization
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -108,37 +106,110 @@ func (u *Organization) MarshalJSON() ([]byte, error) {
 		Features *map[string]bool `json:"features,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		DefaultLanguage: u.DefaultLanguage,
+		DefaultLanguage: o.DefaultLanguage,
 		
-		DefaultCountryCode: u.DefaultCountryCode,
+		DefaultCountryCode: o.DefaultCountryCode,
 		
-		ThirdPartyOrgName: u.ThirdPartyOrgName,
+		ThirdPartyOrgName: o.ThirdPartyOrgName,
 		
-		ThirdPartyURI: u.ThirdPartyURI,
+		ThirdPartyURI: o.ThirdPartyURI,
 		
-		Domain: u.Domain,
+		Domain: o.Domain,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		State: u.State,
+		State: o.State,
 		
-		DefaultSiteId: u.DefaultSiteId,
+		DefaultSiteId: o.DefaultSiteId,
 		
-		SupportURI: u.SupportURI,
+		SupportURI: o.SupportURI,
 		
-		VoicemailEnabled: u.VoicemailEnabled,
+		VoicemailEnabled: o.VoicemailEnabled,
 		
-		ProductPlatform: u.ProductPlatform,
+		ProductPlatform: o.ProductPlatform,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		Features: u.Features,
-		Alias:    (*Alias)(u),
+		Features: o.Features,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Organization) UnmarshalJSON(b []byte) error {
+	var OrganizationMap map[string]interface{}
+	err := json.Unmarshal(b, &OrganizationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OrganizationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OrganizationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if DefaultLanguage, ok := OrganizationMap["defaultLanguage"].(string); ok {
+		o.DefaultLanguage = &DefaultLanguage
+	}
+	
+	if DefaultCountryCode, ok := OrganizationMap["defaultCountryCode"].(string); ok {
+		o.DefaultCountryCode = &DefaultCountryCode
+	}
+	
+	if ThirdPartyOrgName, ok := OrganizationMap["thirdPartyOrgName"].(string); ok {
+		o.ThirdPartyOrgName = &ThirdPartyOrgName
+	}
+	
+	if ThirdPartyURI, ok := OrganizationMap["thirdPartyURI"].(string); ok {
+		o.ThirdPartyURI = &ThirdPartyURI
+	}
+	
+	if Domain, ok := OrganizationMap["domain"].(string); ok {
+		o.Domain = &Domain
+	}
+	
+	if Version, ok := OrganizationMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if State, ok := OrganizationMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if DefaultSiteId, ok := OrganizationMap["defaultSiteId"].(string); ok {
+		o.DefaultSiteId = &DefaultSiteId
+	}
+	
+	if SupportURI, ok := OrganizationMap["supportURI"].(string); ok {
+		o.SupportURI = &SupportURI
+	}
+	
+	if VoicemailEnabled, ok := OrganizationMap["voicemailEnabled"].(bool); ok {
+		o.VoicemailEnabled = &VoicemailEnabled
+	}
+	
+	if ProductPlatform, ok := OrganizationMap["productPlatform"].(string); ok {
+		o.ProductPlatform = &ProductPlatform
+	}
+	
+	if SelfUri, ok := OrganizationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if Features, ok := OrganizationMap["features"].(map[string]interface{}); ok {
+		FeaturesString, _ := json.Marshal(Features)
+		json.Unmarshal(FeaturesString, &o.Features)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

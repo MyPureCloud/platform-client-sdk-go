@@ -29,13 +29,11 @@ type Emailattachment struct {
 
 }
 
-func (u *Emailattachment) MarshalJSON() ([]byte, error) {
+func (o *Emailattachment) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emailattachment
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Emailattachment) MarshalJSON() ([]byte, error) {
 		ContentLength *int `json:"contentLength,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		ContentPath: u.ContentPath,
+		ContentPath: o.ContentPath,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		AttachmentId: u.AttachmentId,
+		AttachmentId: o.AttachmentId,
 		
-		ContentLength: u.ContentLength,
-		Alias:    (*Alias)(u),
+		ContentLength: o.ContentLength,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emailattachment) UnmarshalJSON(b []byte) error {
+	var EmailattachmentMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailattachmentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := EmailattachmentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if ContentPath, ok := EmailattachmentMap["contentPath"].(string); ok {
+		o.ContentPath = &ContentPath
+	}
+	
+	if ContentType, ok := EmailattachmentMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if AttachmentId, ok := EmailattachmentMap["attachmentId"].(string); ok {
+		o.AttachmentId = &AttachmentId
+	}
+	
+	if ContentLength, ok := EmailattachmentMap["contentLength"].(float64); ok {
+		ContentLengthInt := int(ContentLength)
+		o.ContentLength = &ContentLengthInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

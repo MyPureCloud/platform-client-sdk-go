@@ -29,13 +29,11 @@ type Faxsendresponse struct {
 
 }
 
-func (u *Faxsendresponse) MarshalJSON() ([]byte, error) {
+func (o *Faxsendresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Faxsendresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Faxsendresponse) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		UploadDestinationUri: u.UploadDestinationUri,
+		UploadDestinationUri: o.UploadDestinationUri,
 		
-		UploadMethodType: u.UploadMethodType,
+		UploadMethodType: o.UploadMethodType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Faxsendresponse) UnmarshalJSON(b []byte) error {
+	var FaxsendresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &FaxsendresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FaxsendresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FaxsendresponseMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if UploadDestinationUri, ok := FaxsendresponseMap["uploadDestinationUri"].(string); ok {
+		o.UploadDestinationUri = &UploadDestinationUri
+	}
+	
+	if UploadMethodType, ok := FaxsendresponseMap["uploadMethodType"].(string); ok {
+		o.UploadMethodType = &UploadMethodType
+	}
+	
+	if SelfUri, ok := FaxsendresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

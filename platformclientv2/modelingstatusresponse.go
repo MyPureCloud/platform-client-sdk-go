@@ -25,13 +25,11 @@ type Modelingstatusresponse struct {
 
 }
 
-func (u *Modelingstatusresponse) MarshalJSON() ([]byte, error) {
+func (o *Modelingstatusresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Modelingstatusresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Modelingstatusresponse) MarshalJSON() ([]byte, error) {
 		ModelingResultUri *string `json:"modelingResultUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		ErrorDetails: u.ErrorDetails,
+		ErrorDetails: o.ErrorDetails,
 		
-		ModelingResultUri: u.ModelingResultUri,
-		Alias:    (*Alias)(u),
+		ModelingResultUri: o.ModelingResultUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Modelingstatusresponse) UnmarshalJSON(b []byte) error {
+	var ModelingstatusresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ModelingstatusresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ModelingstatusresponseMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Status, ok := ModelingstatusresponseMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if ErrorDetails, ok := ModelingstatusresponseMap["errorDetails"].([]interface{}); ok {
+		ErrorDetailsString, _ := json.Marshal(ErrorDetails)
+		json.Unmarshal(ErrorDetailsString, &o.ErrorDetails)
+	}
+	
+	if ModelingResultUri, ok := ModelingstatusresponseMap["modelingResultUri"].(string); ok {
+		o.ModelingResultUri = &ModelingResultUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

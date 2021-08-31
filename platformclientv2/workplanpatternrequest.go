@@ -13,20 +13,34 @@ type Workplanpatternrequest struct {
 
 }
 
-func (u *Workplanpatternrequest) MarshalJSON() ([]byte, error) {
+func (o *Workplanpatternrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanpatternrequest
-
 	
-
 	return json.Marshal(&struct { 
 		WorkPlanIds *[]string `json:"workPlanIds,omitempty"`
 		*Alias
 	}{ 
-		WorkPlanIds: u.WorkPlanIds,
-		Alias:    (*Alias)(u),
+		WorkPlanIds: o.WorkPlanIds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanpatternrequest) UnmarshalJSON(b []byte) error {
+	var WorkplanpatternrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanpatternrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if WorkPlanIds, ok := WorkplanpatternrequestMap["workPlanIds"].([]interface{}); ok {
+		WorkPlanIdsString, _ := json.Marshal(WorkPlanIds)
+		json.Unmarshal(WorkPlanIdsString, &o.WorkPlanIds)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

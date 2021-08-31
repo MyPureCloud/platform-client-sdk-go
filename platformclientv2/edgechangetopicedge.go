@@ -17,24 +17,41 @@ type Edgechangetopicedge struct {
 
 }
 
-func (u *Edgechangetopicedge) MarshalJSON() ([]byte, error) {
+func (o *Edgechangetopicedge) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgechangetopicedge
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		OnlineStatus *string `json:"onlineStatus,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		OnlineStatus: u.OnlineStatus,
-		Alias:    (*Alias)(u),
+		OnlineStatus: o.OnlineStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgechangetopicedge) UnmarshalJSON(b []byte) error {
+	var EdgechangetopicedgeMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgechangetopicedgeMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EdgechangetopicedgeMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if OnlineStatus, ok := EdgechangetopicedgeMap["onlineStatus"].(string); ok {
+		o.OnlineStatus = &OnlineStatus
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

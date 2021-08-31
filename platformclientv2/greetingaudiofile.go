@@ -21,13 +21,11 @@ type Greetingaudiofile struct {
 
 }
 
-func (u *Greetingaudiofile) MarshalJSON() ([]byte, error) {
+func (o *Greetingaudiofile) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Greetingaudiofile
-
 	
-
 	return json.Marshal(&struct { 
 		DurationMilliseconds *int `json:"durationMilliseconds,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Greetingaudiofile) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		DurationMilliseconds: u.DurationMilliseconds,
+		DurationMilliseconds: o.DurationMilliseconds,
 		
-		SizeBytes: u.SizeBytes,
+		SizeBytes: o.SizeBytes,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Greetingaudiofile) UnmarshalJSON(b []byte) error {
+	var GreetingaudiofileMap map[string]interface{}
+	err := json.Unmarshal(b, &GreetingaudiofileMap)
+	if err != nil {
+		return err
+	}
+	
+	if DurationMilliseconds, ok := GreetingaudiofileMap["durationMilliseconds"].(float64); ok {
+		DurationMillisecondsInt := int(DurationMilliseconds)
+		o.DurationMilliseconds = &DurationMillisecondsInt
+	}
+	
+	if SizeBytes, ok := GreetingaudiofileMap["sizeBytes"].(float64); ok {
+		SizeBytesInt := int(SizeBytes)
+		o.SizeBytes = &SizeBytesInt
+	}
+	
+	if SelfUri, ok := GreetingaudiofileMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

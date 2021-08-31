@@ -25,13 +25,11 @@ type Architectpromptnotificationerrordetail struct {
 
 }
 
-func (u *Architectpromptnotificationerrordetail) MarshalJSON() ([]byte, error) {
+func (o *Architectpromptnotificationerrordetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Architectpromptnotificationerrordetail
-
 	
-
 	return json.Marshal(&struct { 
 		ErrorCode *string `json:"errorCode,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Architectpromptnotificationerrordetail) MarshalJSON() ([]byte, error) {
 		FieldName *string `json:"fieldName,omitempty"`
 		*Alias
 	}{ 
-		ErrorCode: u.ErrorCode,
+		ErrorCode: o.ErrorCode,
 		
-		EntityId: u.EntityId,
+		EntityId: o.EntityId,
 		
-		EntityName: u.EntityName,
+		EntityName: o.EntityName,
 		
-		FieldName: u.FieldName,
-		Alias:    (*Alias)(u),
+		FieldName: o.FieldName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Architectpromptnotificationerrordetail) UnmarshalJSON(b []byte) error {
+	var ArchitectpromptnotificationerrordetailMap map[string]interface{}
+	err := json.Unmarshal(b, &ArchitectpromptnotificationerrordetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if ErrorCode, ok := ArchitectpromptnotificationerrordetailMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
+	}
+	
+	if EntityId, ok := ArchitectpromptnotificationerrordetailMap["entityId"].(string); ok {
+		o.EntityId = &EntityId
+	}
+	
+	if EntityName, ok := ArchitectpromptnotificationerrordetailMap["entityName"].(string); ok {
+		o.EntityName = &EntityName
+	}
+	
+	if FieldName, ok := ArchitectpromptnotificationerrordetailMap["fieldName"].(string); ok {
+		o.FieldName = &FieldName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

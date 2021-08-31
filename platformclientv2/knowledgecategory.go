@@ -42,29 +42,27 @@ type Knowledgecategory struct {
 
 }
 
-func (u *Knowledgecategory) MarshalJSON() ([]byte, error) {
+func (o *Knowledgecategory) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgecategory
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -83,23 +81,69 @@ func (u *Knowledgecategory) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		KnowledgeBase: u.KnowledgeBase,
+		KnowledgeBase: o.KnowledgeBase,
 		
-		LanguageCode: u.LanguageCode,
+		LanguageCode: o.LanguageCode,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgecategory) UnmarshalJSON(b []byte) error {
+	var KnowledgecategoryMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgecategoryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KnowledgecategoryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KnowledgecategoryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := KnowledgecategoryMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if KnowledgeBase, ok := KnowledgecategoryMap["knowledgeBase"].(map[string]interface{}); ok {
+		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
+		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if LanguageCode, ok := KnowledgecategoryMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
+	}
+	
+	if dateCreatedString, ok := KnowledgecategoryMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := KnowledgecategoryMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if SelfUri, ok := KnowledgecategoryMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -82,29 +82,27 @@ type Outboundroute struct {
 
 }
 
-func (u *Outboundroute) MarshalJSON() ([]byte, error) {
+func (o *Outboundroute) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundroute
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -143,43 +141,132 @@ func (u *Outboundroute) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		ClassificationTypes: u.ClassificationTypes,
+		ClassificationTypes: o.ClassificationTypes,
 		
-		Enabled: u.Enabled,
+		Enabled: o.Enabled,
 		
-		Distribution: u.Distribution,
+		Distribution: o.Distribution,
 		
-		ExternalTrunkBases: u.ExternalTrunkBases,
+		ExternalTrunkBases: o.ExternalTrunkBases,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		Managed: u.Managed,
+		Managed: o.Managed,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundroute) UnmarshalJSON(b []byte) error {
+	var OutboundrouteMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundrouteMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OutboundrouteMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := OutboundrouteMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := OutboundrouteMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := OutboundrouteMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := OutboundrouteMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := OutboundrouteMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := OutboundrouteMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := OutboundrouteMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := OutboundrouteMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := OutboundrouteMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := OutboundrouteMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if ClassificationTypes, ok := OutboundrouteMap["classificationTypes"].([]interface{}); ok {
+		ClassificationTypesString, _ := json.Marshal(ClassificationTypes)
+		json.Unmarshal(ClassificationTypesString, &o.ClassificationTypes)
+	}
+	
+	if Enabled, ok := OutboundrouteMap["enabled"].(bool); ok {
+		o.Enabled = &Enabled
+	}
+	
+	if Distribution, ok := OutboundrouteMap["distribution"].(string); ok {
+		o.Distribution = &Distribution
+	}
+	
+	if ExternalTrunkBases, ok := OutboundrouteMap["externalTrunkBases"].([]interface{}); ok {
+		ExternalTrunkBasesString, _ := json.Marshal(ExternalTrunkBases)
+		json.Unmarshal(ExternalTrunkBasesString, &o.ExternalTrunkBases)
+	}
+	
+	if Site, ok := OutboundrouteMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if Managed, ok := OutboundrouteMap["managed"].(bool); ok {
+		o.Managed = &Managed
+	}
+	
+	if SelfUri, ok := OutboundrouteMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

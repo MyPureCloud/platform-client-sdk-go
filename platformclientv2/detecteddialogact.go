@@ -17,24 +17,41 @@ type Detecteddialogact struct {
 
 }
 
-func (u *Detecteddialogact) MarshalJSON() ([]byte, error) {
+func (o *Detecteddialogact) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Detecteddialogact
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Probability *float64 `json:"probability,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Probability: u.Probability,
-		Alias:    (*Alias)(u),
+		Probability: o.Probability,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Detecteddialogact) UnmarshalJSON(b []byte) error {
+	var DetecteddialogactMap map[string]interface{}
+	err := json.Unmarshal(b, &DetecteddialogactMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := DetecteddialogactMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Probability, ok := DetecteddialogactMap["probability"].(float64); ok {
+		o.Probability = &Probability
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

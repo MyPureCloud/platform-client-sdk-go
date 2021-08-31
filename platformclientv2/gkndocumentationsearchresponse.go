@@ -45,13 +45,11 @@ type Gkndocumentationsearchresponse struct {
 
 }
 
-func (u *Gkndocumentationsearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Gkndocumentationsearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gkndocumentationsearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Total *int `json:"total,omitempty"`
 		
@@ -72,25 +70,78 @@ func (u *Gkndocumentationsearchresponse) MarshalJSON() ([]byte, error) {
 		Results *[]Gkndocumentationresult `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Total: u.Total,
+		Total: o.Total,
 		
-		PageCount: u.PageCount,
+		PageCount: o.PageCount,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		PreviousPage: u.PreviousPage,
+		PreviousPage: o.PreviousPage,
 		
-		CurrentPage: u.CurrentPage,
+		CurrentPage: o.CurrentPage,
 		
-		NextPage: u.NextPage,
+		NextPage: o.NextPage,
 		
-		Types: u.Types,
+		Types: o.Types,
 		
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gkndocumentationsearchresponse) UnmarshalJSON(b []byte) error {
+	var GkndocumentationsearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &GkndocumentationsearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Total, ok := GkndocumentationsearchresponseMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if PageCount, ok := GkndocumentationsearchresponseMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+	if PageSize, ok := GkndocumentationsearchresponseMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := GkndocumentationsearchresponseMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if PreviousPage, ok := GkndocumentationsearchresponseMap["previousPage"].(string); ok {
+		o.PreviousPage = &PreviousPage
+	}
+	
+	if CurrentPage, ok := GkndocumentationsearchresponseMap["currentPage"].(string); ok {
+		o.CurrentPage = &CurrentPage
+	}
+	
+	if NextPage, ok := GkndocumentationsearchresponseMap["nextPage"].(string); ok {
+		o.NextPage = &NextPage
+	}
+	
+	if Types, ok := GkndocumentationsearchresponseMap["types"].([]interface{}); ok {
+		TypesString, _ := json.Marshal(Types)
+		json.Unmarshal(TypesString, &o.Types)
+	}
+	
+	if Results, ok := GkndocumentationsearchresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Conversationemaileventtopicjourneycontext struct {
 
 }
 
-func (u *Conversationemaileventtopicjourneycontext) MarshalJSON() ([]byte, error) {
+func (o *Conversationemaileventtopicjourneycontext) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationemaileventtopicjourneycontext
-
 	
-
 	return json.Marshal(&struct { 
 		Customer *Conversationemaileventtopicjourneycustomer `json:"customer,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Conversationemaileventtopicjourneycontext) MarshalJSON() ([]byte, error
 		TriggeringAction *Conversationemaileventtopicjourneyaction `json:"triggeringAction,omitempty"`
 		*Alias
 	}{ 
-		Customer: u.Customer,
+		Customer: o.Customer,
 		
-		CustomerSession: u.CustomerSession,
+		CustomerSession: o.CustomerSession,
 		
-		TriggeringAction: u.TriggeringAction,
-		Alias:    (*Alias)(u),
+		TriggeringAction: o.TriggeringAction,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationemaileventtopicjourneycontext) UnmarshalJSON(b []byte) error {
+	var ConversationemaileventtopicjourneycontextMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationemaileventtopicjourneycontextMap)
+	if err != nil {
+		return err
+	}
+	
+	if Customer, ok := ConversationemaileventtopicjourneycontextMap["customer"].(map[string]interface{}); ok {
+		CustomerString, _ := json.Marshal(Customer)
+		json.Unmarshal(CustomerString, &o.Customer)
+	}
+	
+	if CustomerSession, ok := ConversationemaileventtopicjourneycontextMap["customerSession"].(map[string]interface{}); ok {
+		CustomerSessionString, _ := json.Marshal(CustomerSession)
+		json.Unmarshal(CustomerSessionString, &o.CustomerSession)
+	}
+	
+	if TriggeringAction, ok := ConversationemaileventtopicjourneycontextMap["triggeringAction"].(map[string]interface{}); ok {
+		TriggeringActionString, _ := json.Marshal(TriggeringAction)
+		json.Unmarshal(TriggeringActionString, &o.TriggeringAction)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

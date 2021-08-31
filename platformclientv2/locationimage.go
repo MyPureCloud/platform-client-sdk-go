@@ -17,24 +17,41 @@ type Locationimage struct {
 
 }
 
-func (u *Locationimage) MarshalJSON() ([]byte, error) {
+func (o *Locationimage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Locationimage
-
 	
-
 	return json.Marshal(&struct { 
 		Resolution *string `json:"resolution,omitempty"`
 		
 		ImageUri *string `json:"imageUri,omitempty"`
 		*Alias
 	}{ 
-		Resolution: u.Resolution,
+		Resolution: o.Resolution,
 		
-		ImageUri: u.ImageUri,
-		Alias:    (*Alias)(u),
+		ImageUri: o.ImageUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Locationimage) UnmarshalJSON(b []byte) error {
+	var LocationimageMap map[string]interface{}
+	err := json.Unmarshal(b, &LocationimageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Resolution, ok := LocationimageMap["resolution"].(string); ok {
+		o.Resolution = &Resolution
+	}
+	
+	if ImageUri, ok := LocationimageMap["imageUri"].(string); ok {
+		o.ImageUri = &ImageUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

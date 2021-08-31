@@ -41,13 +41,11 @@ type Facetentry struct {
 
 }
 
-func (u *Facetentry) MarshalJSON() ([]byte, error) {
+func (o *Facetentry) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facetentry
-
 	
-
 	return json.Marshal(&struct { 
 		Attribute *Termattribute `json:"attribute,omitempty"`
 		
@@ -66,23 +64,73 @@ func (u *Facetentry) MarshalJSON() ([]byte, error) {
 		Terms *[]Facetterm `json:"terms,omitempty"`
 		*Alias
 	}{ 
-		Attribute: u.Attribute,
+		Attribute: o.Attribute,
 		
-		Statistics: u.Statistics,
+		Statistics: o.Statistics,
 		
-		Other: u.Other,
+		Other: o.Other,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		Missing: u.Missing,
+		Missing: o.Missing,
 		
-		TermCount: u.TermCount,
+		TermCount: o.TermCount,
 		
-		TermType: u.TermType,
+		TermType: o.TermType,
 		
-		Terms: u.Terms,
-		Alias:    (*Alias)(u),
+		Terms: o.Terms,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facetentry) UnmarshalJSON(b []byte) error {
+	var FacetentryMap map[string]interface{}
+	err := json.Unmarshal(b, &FacetentryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Attribute, ok := FacetentryMap["attribute"].(map[string]interface{}); ok {
+		AttributeString, _ := json.Marshal(Attribute)
+		json.Unmarshal(AttributeString, &o.Attribute)
+	}
+	
+	if Statistics, ok := FacetentryMap["statistics"].(map[string]interface{}); ok {
+		StatisticsString, _ := json.Marshal(Statistics)
+		json.Unmarshal(StatisticsString, &o.Statistics)
+	}
+	
+	if Other, ok := FacetentryMap["other"].(float64); ok {
+		OtherInt := int(Other)
+		o.Other = &OtherInt
+	}
+	
+	if Total, ok := FacetentryMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if Missing, ok := FacetentryMap["missing"].(float64); ok {
+		MissingInt := int(Missing)
+		o.Missing = &MissingInt
+	}
+	
+	if TermCount, ok := FacetentryMap["termCount"].(float64); ok {
+		TermCountInt := int(TermCount)
+		o.TermCount = &TermCountInt
+	}
+	
+	if TermType, ok := FacetentryMap["termType"].(string); ok {
+		o.TermType = &TermType
+	}
+	
+	if Terms, ok := FacetentryMap["terms"].([]interface{}); ok {
+		TermsString, _ := json.Marshal(Terms)
+		json.Unmarshal(TermsString, &o.Terms)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

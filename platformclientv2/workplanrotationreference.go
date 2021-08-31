@@ -17,24 +17,41 @@ type Workplanrotationreference struct {
 
 }
 
-func (u *Workplanrotationreference) MarshalJSON() ([]byte, error) {
+func (o *Workplanrotationreference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workplanrotationreference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workplanrotationreference) UnmarshalJSON(b []byte) error {
+	var WorkplanrotationreferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkplanrotationreferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WorkplanrotationreferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := WorkplanrotationreferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

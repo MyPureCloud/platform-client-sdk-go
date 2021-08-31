@@ -17,24 +17,41 @@ type Evaluationqualityv2topicuser struct {
 
 }
 
-func (u *Evaluationqualityv2topicuser) MarshalJSON() ([]byte, error) {
+func (o *Evaluationqualityv2topicuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationqualityv2topicuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		DisplayName *string `json:"displayName,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		DisplayName: u.DisplayName,
-		Alias:    (*Alias)(u),
+		DisplayName: o.DisplayName,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationqualityv2topicuser) UnmarshalJSON(b []byte) error {
+	var Evaluationqualityv2topicuserMap map[string]interface{}
+	err := json.Unmarshal(b, &Evaluationqualityv2topicuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := Evaluationqualityv2topicuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if DisplayName, ok := Evaluationqualityv2topicuserMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

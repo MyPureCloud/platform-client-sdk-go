@@ -29,13 +29,11 @@ type Schedulingsettingsresponse struct {
 
 }
 
-func (u *Schedulingsettingsresponse) MarshalJSON() ([]byte, error) {
+func (o *Schedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulingsettingsresponse
-
 	
-
 	return json.Marshal(&struct { 
 		MaxOccupancyPercentForDeferredWork *int `json:"maxOccupancyPercentForDeferredWork,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Schedulingsettingsresponse) MarshalJSON() ([]byte, error) {
 		StartDayOfWeekend *string `json:"startDayOfWeekend,omitempty"`
 		*Alias
 	}{ 
-		MaxOccupancyPercentForDeferredWork: u.MaxOccupancyPercentForDeferredWork,
+		MaxOccupancyPercentForDeferredWork: o.MaxOccupancyPercentForDeferredWork,
 		
-		DefaultShrinkagePercent: u.DefaultShrinkagePercent,
+		DefaultShrinkagePercent: o.DefaultShrinkagePercent,
 		
-		ShrinkageOverrides: u.ShrinkageOverrides,
+		ShrinkageOverrides: o.ShrinkageOverrides,
 		
-		PlanningPeriod: u.PlanningPeriod,
+		PlanningPeriod: o.PlanningPeriod,
 		
-		StartDayOfWeekend: u.StartDayOfWeekend,
-		Alias:    (*Alias)(u),
+		StartDayOfWeekend: o.StartDayOfWeekend,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulingsettingsresponse) UnmarshalJSON(b []byte) error {
+	var SchedulingsettingsresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulingsettingsresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if MaxOccupancyPercentForDeferredWork, ok := SchedulingsettingsresponseMap["maxOccupancyPercentForDeferredWork"].(float64); ok {
+		MaxOccupancyPercentForDeferredWorkInt := int(MaxOccupancyPercentForDeferredWork)
+		o.MaxOccupancyPercentForDeferredWork = &MaxOccupancyPercentForDeferredWorkInt
+	}
+	
+	if DefaultShrinkagePercent, ok := SchedulingsettingsresponseMap["defaultShrinkagePercent"].(float64); ok {
+		o.DefaultShrinkagePercent = &DefaultShrinkagePercent
+	}
+	
+	if ShrinkageOverrides, ok := SchedulingsettingsresponseMap["shrinkageOverrides"].(map[string]interface{}); ok {
+		ShrinkageOverridesString, _ := json.Marshal(ShrinkageOverrides)
+		json.Unmarshal(ShrinkageOverridesString, &o.ShrinkageOverrides)
+	}
+	
+	if PlanningPeriod, ok := SchedulingsettingsresponseMap["planningPeriod"].(map[string]interface{}); ok {
+		PlanningPeriodString, _ := json.Marshal(PlanningPeriod)
+		json.Unmarshal(PlanningPeriodString, &o.PlanningPeriod)
+	}
+	
+	if StartDayOfWeekend, ok := SchedulingsettingsresponseMap["startDayOfWeekend"].(string); ok {
+		o.StartDayOfWeekend = &StartDayOfWeekend
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

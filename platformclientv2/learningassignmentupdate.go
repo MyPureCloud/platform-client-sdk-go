@@ -17,24 +17,42 @@ type Learningassignmentupdate struct {
 
 }
 
-func (u *Learningassignmentupdate) MarshalJSON() ([]byte, error) {
+func (o *Learningassignmentupdate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningassignmentupdate
-
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
 		Assessment *Learningassessment `json:"assessment,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Assessment: u.Assessment,
-		Alias:    (*Alias)(u),
+		Assessment: o.Assessment,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningassignmentupdate) UnmarshalJSON(b []byte) error {
+	var LearningassignmentupdateMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningassignmentupdateMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := LearningassignmentupdateMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Assessment, ok := LearningassignmentupdateMap["assessment"].(map[string]interface{}); ok {
+		AssessmentString, _ := json.Marshal(Assessment)
+		json.Unmarshal(AssessmentString, &o.Assessment)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

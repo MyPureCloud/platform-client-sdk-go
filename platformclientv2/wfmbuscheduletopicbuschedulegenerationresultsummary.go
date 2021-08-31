@@ -21,13 +21,11 @@ type Wfmbuscheduletopicbuschedulegenerationresultsummary struct {
 
 }
 
-func (u *Wfmbuscheduletopicbuschedulegenerationresultsummary) MarshalJSON() ([]byte, error) {
+func (o *Wfmbuscheduletopicbuschedulegenerationresultsummary) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbuscheduletopicbuschedulegenerationresultsummary
-
 	
-
 	return json.Marshal(&struct { 
 		Failed *bool `json:"failed,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Wfmbuscheduletopicbuschedulegenerationresultsummary) MarshalJSON() ([]b
 		MessageCount *int `json:"messageCount,omitempty"`
 		*Alias
 	}{ 
-		Failed: u.Failed,
+		Failed: o.Failed,
 		
-		RunId: u.RunId,
+		RunId: o.RunId,
 		
-		MessageCount: u.MessageCount,
-		Alias:    (*Alias)(u),
+		MessageCount: o.MessageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbuscheduletopicbuschedulegenerationresultsummary) UnmarshalJSON(b []byte) error {
+	var WfmbuscheduletopicbuschedulegenerationresultsummaryMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbuscheduletopicbuschedulegenerationresultsummaryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Failed, ok := WfmbuscheduletopicbuschedulegenerationresultsummaryMap["failed"].(bool); ok {
+		o.Failed = &Failed
+	}
+	
+	if RunId, ok := WfmbuscheduletopicbuschedulegenerationresultsummaryMap["runId"].(string); ok {
+		o.RunId = &RunId
+	}
+	
+	if MessageCount, ok := WfmbuscheduletopicbuschedulegenerationresultsummaryMap["messageCount"].(float64); ok {
+		MessageCountInt := int(MessageCount)
+		o.MessageCount = &MessageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

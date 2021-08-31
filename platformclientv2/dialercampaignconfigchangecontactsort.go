@@ -25,13 +25,11 @@ type Dialercampaignconfigchangecontactsort struct {
 
 }
 
-func (u *Dialercampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
+func (o *Dialercampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercampaignconfigchangecontactsort
-
 	
-
 	return json.Marshal(&struct { 
 		FieldName *string `json:"fieldName,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Dialercampaignconfigchangecontactsort) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		FieldName: u.FieldName,
+		FieldName: o.FieldName,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Numeric: u.Numeric,
+		Numeric: o.Numeric,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercampaignconfigchangecontactsort) UnmarshalJSON(b []byte) error {
+	var DialercampaignconfigchangecontactsortMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercampaignconfigchangecontactsortMap)
+	if err != nil {
+		return err
+	}
+	
+	if FieldName, ok := DialercampaignconfigchangecontactsortMap["fieldName"].(string); ok {
+		o.FieldName = &FieldName
+	}
+	
+	if Direction, ok := DialercampaignconfigchangecontactsortMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Numeric, ok := DialercampaignconfigchangecontactsortMap["numeric"].(bool); ok {
+		o.Numeric = &Numeric
+	}
+	
+	if AdditionalProperties, ok := DialercampaignconfigchangecontactsortMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

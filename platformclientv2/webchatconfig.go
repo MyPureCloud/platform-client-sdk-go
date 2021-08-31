@@ -13,20 +13,33 @@ type Webchatconfig struct {
 
 }
 
-func (u *Webchatconfig) MarshalJSON() ([]byte, error) {
+func (o *Webchatconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webchatconfig
-
 	
-
 	return json.Marshal(&struct { 
 		WebChatSkin *string `json:"webChatSkin,omitempty"`
 		*Alias
 	}{ 
-		WebChatSkin: u.WebChatSkin,
-		Alias:    (*Alias)(u),
+		WebChatSkin: o.WebChatSkin,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webchatconfig) UnmarshalJSON(b []byte) error {
+	var WebchatconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &WebchatconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if WebChatSkin, ok := WebchatconfigMap["webChatSkin"].(string); ok {
+		o.WebChatSkin = &WebChatSkin
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

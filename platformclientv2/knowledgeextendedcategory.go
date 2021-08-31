@@ -50,29 +50,27 @@ type Knowledgeextendedcategory struct {
 
 }
 
-func (u *Knowledgeextendedcategory) MarshalJSON() ([]byte, error) {
+func (o *Knowledgeextendedcategory) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Knowledgeextendedcategory
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -95,27 +93,83 @@ func (u *Knowledgeextendedcategory) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		KnowledgeBase: u.KnowledgeBase,
+		KnowledgeBase: o.KnowledgeBase,
 		
-		LanguageCode: u.LanguageCode,
+		LanguageCode: o.LanguageCode,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Parent: u.Parent,
+		Parent: o.Parent,
 		
-		Children: u.Children,
+		Children: o.Children,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Knowledgeextendedcategory) UnmarshalJSON(b []byte) error {
+	var KnowledgeextendedcategoryMap map[string]interface{}
+	err := json.Unmarshal(b, &KnowledgeextendedcategoryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KnowledgeextendedcategoryMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KnowledgeextendedcategoryMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := KnowledgeextendedcategoryMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if KnowledgeBase, ok := KnowledgeextendedcategoryMap["knowledgeBase"].(map[string]interface{}); ok {
+		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
+		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if LanguageCode, ok := KnowledgeextendedcategoryMap["languageCode"].(string); ok {
+		o.LanguageCode = &LanguageCode
+	}
+	
+	if dateCreatedString, ok := KnowledgeextendedcategoryMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := KnowledgeextendedcategoryMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Parent, ok := KnowledgeextendedcategoryMap["parent"].(map[string]interface{}); ok {
+		ParentString, _ := json.Marshal(Parent)
+		json.Unmarshal(ParentString, &o.Parent)
+	}
+	
+	if Children, ok := KnowledgeextendedcategoryMap["children"].([]interface{}); ok {
+		ChildrenString, _ := json.Marshal(Children)
+		json.Unmarshal(ChildrenString, &o.Children)
+	}
+	
+	if SelfUri, ok := KnowledgeextendedcategoryMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

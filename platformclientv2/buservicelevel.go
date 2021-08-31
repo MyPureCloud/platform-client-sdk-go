@@ -21,13 +21,11 @@ type Buservicelevel struct {
 
 }
 
-func (u *Buservicelevel) MarshalJSON() ([]byte, error) {
+func (o *Buservicelevel) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buservicelevel
-
 	
-
 	return json.Marshal(&struct { 
 		Include *bool `json:"include,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Buservicelevel) MarshalJSON() ([]byte, error) {
 		Seconds *int `json:"seconds,omitempty"`
 		*Alias
 	}{ 
-		Include: u.Include,
+		Include: o.Include,
 		
-		Percent: u.Percent,
+		Percent: o.Percent,
 		
-		Seconds: u.Seconds,
-		Alias:    (*Alias)(u),
+		Seconds: o.Seconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buservicelevel) UnmarshalJSON(b []byte) error {
+	var BuservicelevelMap map[string]interface{}
+	err := json.Unmarshal(b, &BuservicelevelMap)
+	if err != nil {
+		return err
+	}
+	
+	if Include, ok := BuservicelevelMap["include"].(bool); ok {
+		o.Include = &Include
+	}
+	
+	if Percent, ok := BuservicelevelMap["percent"].(float64); ok {
+		PercentInt := int(Percent)
+		o.Percent = &PercentInt
+	}
+	
+	if Seconds, ok := BuservicelevelMap["seconds"].(float64); ok {
+		SecondsInt := int(Seconds)
+		o.Seconds = &SecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -114,45 +114,43 @@ type Queueconversationvideoeventtopiccallback struct {
 
 }
 
-func (u *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationvideoeventtopiccallback
-
 	
 	StartHoldTime := new(string)
-	if u.StartHoldTime != nil {
+	if o.StartHoldTime != nil {
 		
-		*StartHoldTime = timeutil.Strftime(u.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartHoldTime = timeutil.Strftime(o.StartHoldTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartHoldTime = nil
 	}
 	
 	ConnectedTime := new(string)
-	if u.ConnectedTime != nil {
+	if o.ConnectedTime != nil {
 		
-		*ConnectedTime = timeutil.Strftime(u.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ConnectedTime = timeutil.Strftime(o.ConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ConnectedTime = nil
 	}
 	
 	DisconnectedTime := new(string)
-	if u.DisconnectedTime != nil {
+	if o.DisconnectedTime != nil {
 		
-		*DisconnectedTime = timeutil.Strftime(u.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DisconnectedTime = timeutil.Strftime(o.DisconnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DisconnectedTime = nil
 	}
 	
 	CallbackScheduledTime := new(string)
-	if u.CallbackScheduledTime != nil {
+	if o.CallbackScheduledTime != nil {
 		
-		*CallbackScheduledTime = timeutil.Strftime(u.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CallbackScheduledTime = timeutil.Strftime(o.CallbackScheduledTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CallbackScheduledTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		State *string `json:"state,omitempty"`
 		
@@ -207,37 +205,37 @@ func (u *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error)
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		State: u.State,
+		State: o.State,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		Held: u.Held,
+		Held: o.Held,
 		
-		DisconnectType: u.DisconnectType,
+		DisconnectType: o.DisconnectType,
 		
 		StartHoldTime: StartHoldTime,
 		
-		DialerPreview: u.DialerPreview,
+		DialerPreview: o.DialerPreview,
 		
-		Voicemail: u.Voicemail,
+		Voicemail: o.Voicemail,
 		
-		CallbackNumbers: u.CallbackNumbers,
+		CallbackNumbers: o.CallbackNumbers,
 		
-		CallbackUserName: u.CallbackUserName,
+		CallbackUserName: o.CallbackUserName,
 		
-		ScriptId: u.ScriptId,
+		ScriptId: o.ScriptId,
 		
-		PeerId: u.PeerId,
+		PeerId: o.PeerId,
 		
-		ExternalCampaign: u.ExternalCampaign,
+		ExternalCampaign: o.ExternalCampaign,
 		
-		SkipEnabled: u.SkipEnabled,
+		SkipEnabled: o.SkipEnabled,
 		
-		Provider: u.Provider,
+		Provider: o.Provider,
 		
-		TimeoutSeconds: u.TimeoutSeconds,
+		TimeoutSeconds: o.TimeoutSeconds,
 		
 		ConnectedTime: ConnectedTime,
 		
@@ -245,21 +243,147 @@ func (u *Queueconversationvideoeventtopiccallback) MarshalJSON() ([]byte, error)
 		
 		CallbackScheduledTime: CallbackScheduledTime,
 		
-		AutomatedCallbackConfigId: u.AutomatedCallbackConfigId,
+		AutomatedCallbackConfigId: o.AutomatedCallbackConfigId,
 		
-		Wrapup: u.Wrapup,
+		Wrapup: o.Wrapup,
 		
-		AfterCallWork: u.AfterCallWork,
+		AfterCallWork: o.AfterCallWork,
 		
-		AfterCallWorkRequired: u.AfterCallWorkRequired,
+		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
-		CallerId: u.CallerId,
+		CallerId: o.CallerId,
 		
-		CallerIdName: u.CallerIdName,
+		CallerIdName: o.CallerIdName,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationvideoeventtopiccallback) UnmarshalJSON(b []byte) error {
+	var QueueconversationvideoeventtopiccallbackMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationvideoeventtopiccallbackMap)
+	if err != nil {
+		return err
+	}
+	
+	if State, ok := QueueconversationvideoeventtopiccallbackMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if Id, ok := QueueconversationvideoeventtopiccallbackMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Direction, ok := QueueconversationvideoeventtopiccallbackMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if Held, ok := QueueconversationvideoeventtopiccallbackMap["held"].(bool); ok {
+		o.Held = &Held
+	}
+	
+	if DisconnectType, ok := QueueconversationvideoeventtopiccallbackMap["disconnectType"].(string); ok {
+		o.DisconnectType = &DisconnectType
+	}
+	
+	if startHoldTimeString, ok := QueueconversationvideoeventtopiccallbackMap["startHoldTime"].(string); ok {
+		StartHoldTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", startHoldTimeString)
+		o.StartHoldTime = &StartHoldTime
+	}
+	
+	if DialerPreview, ok := QueueconversationvideoeventtopiccallbackMap["dialerPreview"].(map[string]interface{}); ok {
+		DialerPreviewString, _ := json.Marshal(DialerPreview)
+		json.Unmarshal(DialerPreviewString, &o.DialerPreview)
+	}
+	
+	if Voicemail, ok := QueueconversationvideoeventtopiccallbackMap["voicemail"].(map[string]interface{}); ok {
+		VoicemailString, _ := json.Marshal(Voicemail)
+		json.Unmarshal(VoicemailString, &o.Voicemail)
+	}
+	
+	if CallbackNumbers, ok := QueueconversationvideoeventtopiccallbackMap["callbackNumbers"].([]interface{}); ok {
+		CallbackNumbersString, _ := json.Marshal(CallbackNumbers)
+		json.Unmarshal(CallbackNumbersString, &o.CallbackNumbers)
+	}
+	
+	if CallbackUserName, ok := QueueconversationvideoeventtopiccallbackMap["callbackUserName"].(string); ok {
+		o.CallbackUserName = &CallbackUserName
+	}
+	
+	if ScriptId, ok := QueueconversationvideoeventtopiccallbackMap["scriptId"].(string); ok {
+		o.ScriptId = &ScriptId
+	}
+	
+	if PeerId, ok := QueueconversationvideoeventtopiccallbackMap["peerId"].(string); ok {
+		o.PeerId = &PeerId
+	}
+	
+	if ExternalCampaign, ok := QueueconversationvideoeventtopiccallbackMap["externalCampaign"].(bool); ok {
+		o.ExternalCampaign = &ExternalCampaign
+	}
+	
+	if SkipEnabled, ok := QueueconversationvideoeventtopiccallbackMap["skipEnabled"].(bool); ok {
+		o.SkipEnabled = &SkipEnabled
+	}
+	
+	if Provider, ok := QueueconversationvideoeventtopiccallbackMap["provider"].(string); ok {
+		o.Provider = &Provider
+	}
+	
+	if TimeoutSeconds, ok := QueueconversationvideoeventtopiccallbackMap["timeoutSeconds"].(float64); ok {
+		TimeoutSecondsInt := int(TimeoutSeconds)
+		o.TimeoutSeconds = &TimeoutSecondsInt
+	}
+	
+	if connectedTimeString, ok := QueueconversationvideoeventtopiccallbackMap["connectedTime"].(string); ok {
+		ConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", connectedTimeString)
+		o.ConnectedTime = &ConnectedTime
+	}
+	
+	if disconnectedTimeString, ok := QueueconversationvideoeventtopiccallbackMap["disconnectedTime"].(string); ok {
+		DisconnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", disconnectedTimeString)
+		o.DisconnectedTime = &DisconnectedTime
+	}
+	
+	if callbackScheduledTimeString, ok := QueueconversationvideoeventtopiccallbackMap["callbackScheduledTime"].(string); ok {
+		CallbackScheduledTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callbackScheduledTimeString)
+		o.CallbackScheduledTime = &CallbackScheduledTime
+	}
+	
+	if AutomatedCallbackConfigId, ok := QueueconversationvideoeventtopiccallbackMap["automatedCallbackConfigId"].(string); ok {
+		o.AutomatedCallbackConfigId = &AutomatedCallbackConfigId
+	}
+	
+	if Wrapup, ok := QueueconversationvideoeventtopiccallbackMap["wrapup"].(map[string]interface{}); ok {
+		WrapupString, _ := json.Marshal(Wrapup)
+		json.Unmarshal(WrapupString, &o.Wrapup)
+	}
+	
+	if AfterCallWork, ok := QueueconversationvideoeventtopiccallbackMap["afterCallWork"].(map[string]interface{}); ok {
+		AfterCallWorkString, _ := json.Marshal(AfterCallWork)
+		json.Unmarshal(AfterCallWorkString, &o.AfterCallWork)
+	}
+	
+	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopiccallbackMap["afterCallWorkRequired"].(bool); ok {
+		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if CallerId, ok := QueueconversationvideoeventtopiccallbackMap["callerId"].(string); ok {
+		o.CallerId = &CallerId
+	}
+	
+	if CallerIdName, ok := QueueconversationvideoeventtopiccallbackMap["callerIdName"].(string); ok {
+		o.CallerIdName = &CallerIdName
+	}
+	
+	if AdditionalProperties, ok := QueueconversationvideoeventtopiccallbackMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

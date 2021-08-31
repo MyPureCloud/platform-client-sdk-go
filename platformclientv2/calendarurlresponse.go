@@ -17,24 +17,41 @@ type Calendarurlresponse struct {
 
 }
 
-func (u *Calendarurlresponse) MarshalJSON() ([]byte, error) {
+func (o *Calendarurlresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Calendarurlresponse
-
 	
-
 	return json.Marshal(&struct { 
 		CalendarUrl *string `json:"calendarUrl,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		CalendarUrl: u.CalendarUrl,
+		CalendarUrl: o.CalendarUrl,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Calendarurlresponse) UnmarshalJSON(b []byte) error {
+	var CalendarurlresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &CalendarurlresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if CalendarUrl, ok := CalendarurlresponseMap["calendarUrl"].(string); ok {
+		o.CalendarUrl = &CalendarUrl
+	}
+	
+	if SelfUri, ok := CalendarurlresponseMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

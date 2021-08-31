@@ -26,21 +26,19 @@ type Buforecastresult struct {
 
 }
 
-func (u *Buforecastresult) MarshalJSON() ([]byte, error) {
+func (o *Buforecastresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buforecastresult
-
 	
 	ReferenceStartDate := new(string)
-	if u.ReferenceStartDate != nil {
+	if o.ReferenceStartDate != nil {
 		
-		*ReferenceStartDate = timeutil.Strftime(u.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ReferenceStartDate = timeutil.Strftime(o.ReferenceStartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ReferenceStartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ReferenceStartDate *string `json:"referenceStartDate,omitempty"`
 		
@@ -53,13 +51,44 @@ func (u *Buforecastresult) MarshalJSON() ([]byte, error) {
 	}{ 
 		ReferenceStartDate: ReferenceStartDate,
 		
-		PlanningGroups: u.PlanningGroups,
+		PlanningGroups: o.PlanningGroups,
 		
-		WeekNumber: u.WeekNumber,
+		WeekNumber: o.WeekNumber,
 		
-		WeekCount: u.WeekCount,
-		Alias:    (*Alias)(u),
+		WeekCount: o.WeekCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buforecastresult) UnmarshalJSON(b []byte) error {
+	var BuforecastresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BuforecastresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if referenceStartDateString, ok := BuforecastresultMap["referenceStartDate"].(string); ok {
+		ReferenceStartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", referenceStartDateString)
+		o.ReferenceStartDate = &ReferenceStartDate
+	}
+	
+	if PlanningGroups, ok := BuforecastresultMap["planningGroups"].([]interface{}); ok {
+		PlanningGroupsString, _ := json.Marshal(PlanningGroups)
+		json.Unmarshal(PlanningGroupsString, &o.PlanningGroups)
+	}
+	
+	if WeekNumber, ok := BuforecastresultMap["weekNumber"].(float64); ok {
+		WeekNumberInt := int(WeekNumber)
+		o.WeekNumber = &WeekNumberInt
+	}
+	
+	if WeekCount, ok := BuforecastresultMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

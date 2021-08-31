@@ -21,13 +21,11 @@ type Buagentschedulessearchresponse struct {
 
 }
 
-func (u *Buagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
+func (o *Buagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentschedulessearchresponse
-
 	
-
 	return json.Marshal(&struct { 
 		AgentSchedules *[]Buagentschedulesearchresponse `json:"agentSchedules,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Buagentschedulessearchresponse) MarshalJSON() ([]byte, error) {
 		PublishedSchedules *[]Buagentschedulepublishedschedulereference `json:"publishedSchedules,omitempty"`
 		*Alias
 	}{ 
-		AgentSchedules: u.AgentSchedules,
+		AgentSchedules: o.AgentSchedules,
 		
-		BusinessUnitTimeZone: u.BusinessUnitTimeZone,
+		BusinessUnitTimeZone: o.BusinessUnitTimeZone,
 		
-		PublishedSchedules: u.PublishedSchedules,
-		Alias:    (*Alias)(u),
+		PublishedSchedules: o.PublishedSchedules,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentschedulessearchresponse) UnmarshalJSON(b []byte) error {
+	var BuagentschedulessearchresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentschedulessearchresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if AgentSchedules, ok := BuagentschedulessearchresponseMap["agentSchedules"].([]interface{}); ok {
+		AgentSchedulesString, _ := json.Marshal(AgentSchedules)
+		json.Unmarshal(AgentSchedulesString, &o.AgentSchedules)
+	}
+	
+	if BusinessUnitTimeZone, ok := BuagentschedulessearchresponseMap["businessUnitTimeZone"].(string); ok {
+		o.BusinessUnitTimeZone = &BusinessUnitTimeZone
+	}
+	
+	if PublishedSchedules, ok := BuagentschedulessearchresponseMap["publishedSchedules"].([]interface{}); ok {
+		PublishedSchedulesString, _ := json.Marshal(PublishedSchedules)
+		json.Unmarshal(PublishedSchedulesString, &o.PublishedSchedules)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

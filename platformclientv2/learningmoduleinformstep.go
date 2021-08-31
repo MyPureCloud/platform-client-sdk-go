@@ -33,13 +33,11 @@ type Learningmoduleinformstep struct {
 
 }
 
-func (u *Learningmoduleinformstep) MarshalJSON() ([]byte, error) {
+func (o *Learningmoduleinformstep) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmoduleinformstep
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Learningmoduleinformstep) MarshalJSON() ([]byte, error) {
 		Order *int `json:"order,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Value: u.Value,
+		Value: o.Value,
 		
-		SharingUri: u.SharingUri,
+		SharingUri: o.SharingUri,
 		
-		ContentType: u.ContentType,
+		ContentType: o.ContentType,
 		
-		Order: u.Order,
-		Alias:    (*Alias)(u),
+		Order: o.Order,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmoduleinformstep) UnmarshalJSON(b []byte) error {
+	var LearningmoduleinformstepMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmoduleinformstepMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := LearningmoduleinformstepMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Name, ok := LearningmoduleinformstepMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Value, ok := LearningmoduleinformstepMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+	if SharingUri, ok := LearningmoduleinformstepMap["sharingUri"].(string); ok {
+		o.SharingUri = &SharingUri
+	}
+	
+	if ContentType, ok := LearningmoduleinformstepMap["contentType"].(string); ok {
+		o.ContentType = &ContentType
+	}
+	
+	if Order, ok := LearningmoduleinformstepMap["order"].(float64); ok {
+		OrderInt := int(Order)
+		o.Order = &OrderInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Domainnetworkcommandresponse struct {
 
 }
 
-func (u *Domainnetworkcommandresponse) MarshalJSON() ([]byte, error) {
+func (o *Domainnetworkcommandresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainnetworkcommandresponse
-
 	
-
 	return json.Marshal(&struct { 
 		CorrelationId *string `json:"correlationId,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Domainnetworkcommandresponse) MarshalJSON() ([]byte, error) {
 		ErrorInfo **Errordetails `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		CorrelationId: u.CorrelationId,
+		CorrelationId: o.CorrelationId,
 		
-		CommandName: u.CommandName,
+		CommandName: o.CommandName,
 		
-		Acknowledged: u.Acknowledged,
+		Acknowledged: o.Acknowledged,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainnetworkcommandresponse) UnmarshalJSON(b []byte) error {
+	var DomainnetworkcommandresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainnetworkcommandresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if CorrelationId, ok := DomainnetworkcommandresponseMap["correlationId"].(string); ok {
+		o.CorrelationId = &CorrelationId
+	}
+	
+	if CommandName, ok := DomainnetworkcommandresponseMap["commandName"].(string); ok {
+		o.CommandName = &CommandName
+	}
+	
+	if Acknowledged, ok := DomainnetworkcommandresponseMap["acknowledged"].(bool); ok {
+		o.Acknowledged = &Acknowledged
+	}
+	
+	if ErrorInfo, ok := DomainnetworkcommandresponseMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

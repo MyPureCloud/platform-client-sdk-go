@@ -29,13 +29,11 @@ type Ctabuttonstyleproperties struct {
 
 }
 
-func (u *Ctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
+func (o *Ctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ctabuttonstyleproperties
-
 	
-
 	return json.Marshal(&struct { 
 		Color *string `json:"color,omitempty"`
 		
@@ -48,17 +46,48 @@ func (u *Ctabuttonstyleproperties) MarshalJSON() ([]byte, error) {
 		BackgroundColor *string `json:"backgroundColor,omitempty"`
 		*Alias
 	}{ 
-		Color: u.Color,
+		Color: o.Color,
 		
-		Font: u.Font,
+		Font: o.Font,
 		
-		FontSize: u.FontSize,
+		FontSize: o.FontSize,
 		
-		TextAlign: u.TextAlign,
+		TextAlign: o.TextAlign,
 		
-		BackgroundColor: u.BackgroundColor,
-		Alias:    (*Alias)(u),
+		BackgroundColor: o.BackgroundColor,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ctabuttonstyleproperties) UnmarshalJSON(b []byte) error {
+	var CtabuttonstylepropertiesMap map[string]interface{}
+	err := json.Unmarshal(b, &CtabuttonstylepropertiesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Color, ok := CtabuttonstylepropertiesMap["color"].(string); ok {
+		o.Color = &Color
+	}
+	
+	if Font, ok := CtabuttonstylepropertiesMap["font"].(string); ok {
+		o.Font = &Font
+	}
+	
+	if FontSize, ok := CtabuttonstylepropertiesMap["fontSize"].(string); ok {
+		o.FontSize = &FontSize
+	}
+	
+	if TextAlign, ok := CtabuttonstylepropertiesMap["textAlign"].(string); ok {
+		o.TextAlign = &TextAlign
+	}
+	
+	if BackgroundColor, ok := CtabuttonstylepropertiesMap["backgroundColor"].(string); ok {
+		o.BackgroundColor = &BackgroundColor
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Keyrotationschedule struct {
 
 }
 
-func (u *Keyrotationschedule) MarshalJSON() ([]byte, error) {
+func (o *Keyrotationschedule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Keyrotationschedule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Keyrotationschedule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Period: u.Period,
+		Period: o.Period,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Keyrotationschedule) UnmarshalJSON(b []byte) error {
+	var KeyrotationscheduleMap map[string]interface{}
+	err := json.Unmarshal(b, &KeyrotationscheduleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := KeyrotationscheduleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := KeyrotationscheduleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Period, ok := KeyrotationscheduleMap["period"].(string); ok {
+		o.Period = &Period
+	}
+	
+	if SelfUri, ok := KeyrotationscheduleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

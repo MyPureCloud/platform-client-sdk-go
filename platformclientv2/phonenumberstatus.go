@@ -13,20 +13,33 @@ type Phonenumberstatus struct {
 
 }
 
-func (u *Phonenumberstatus) MarshalJSON() ([]byte, error) {
+func (o *Phonenumberstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Phonenumberstatus
-
 	
-
 	return json.Marshal(&struct { 
 		Callable *bool `json:"callable,omitempty"`
 		*Alias
 	}{ 
-		Callable: u.Callable,
-		Alias:    (*Alias)(u),
+		Callable: o.Callable,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Phonenumberstatus) UnmarshalJSON(b []byte) error {
+	var PhonenumberstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &PhonenumberstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Callable, ok := PhonenumberstatusMap["callable"].(bool); ok {
+		o.Callable = &Callable
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

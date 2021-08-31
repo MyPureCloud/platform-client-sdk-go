@@ -21,13 +21,11 @@ type Calltoaction struct {
 
 }
 
-func (u *Calltoaction) MarshalJSON() ([]byte, error) {
+func (o *Calltoaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Calltoaction
-
 	
-
 	return json.Marshal(&struct { 
 		Text *string `json:"text,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Calltoaction) MarshalJSON() ([]byte, error) {
 		Target *string `json:"target,omitempty"`
 		*Alias
 	}{ 
-		Text: u.Text,
+		Text: o.Text,
 		
-		Url: u.Url,
+		Url: o.Url,
 		
-		Target: u.Target,
-		Alias:    (*Alias)(u),
+		Target: o.Target,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Calltoaction) UnmarshalJSON(b []byte) error {
+	var CalltoactionMap map[string]interface{}
+	err := json.Unmarshal(b, &CalltoactionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Text, ok := CalltoactionMap["text"].(string); ok {
+		o.Text = &Text
+	}
+	
+	if Url, ok := CalltoactionMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if Target, ok := CalltoactionMap["target"].(string); ok {
+		o.Target = &Target
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

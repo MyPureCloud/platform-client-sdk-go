@@ -21,13 +21,11 @@ type Uploadurlresponse struct {
 
 }
 
-func (u *Uploadurlresponse) MarshalJSON() ([]byte, error) {
+func (o *Uploadurlresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Uploadurlresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Url *string `json:"url,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Uploadurlresponse) MarshalJSON() ([]byte, error) {
 		Headers *map[string]string `json:"headers,omitempty"`
 		*Alias
 	}{ 
-		Url: u.Url,
+		Url: o.Url,
 		
-		UploadKey: u.UploadKey,
+		UploadKey: o.UploadKey,
 		
-		Headers: u.Headers,
-		Alias:    (*Alias)(u),
+		Headers: o.Headers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Uploadurlresponse) UnmarshalJSON(b []byte) error {
+	var UploadurlresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &UploadurlresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Url, ok := UploadurlresponseMap["url"].(string); ok {
+		o.Url = &Url
+	}
+	
+	if UploadKey, ok := UploadurlresponseMap["uploadKey"].(string); ok {
+		o.UploadKey = &UploadKey
+	}
+	
+	if Headers, ok := UploadurlresponseMap["headers"].(map[string]interface{}); ok {
+		HeadersString, _ := json.Marshal(Headers)
+		json.Unmarshal(HeadersString, &o.Headers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -25,13 +25,11 @@ type Createsecuresession struct {
 
 }
 
-func (u *Createsecuresession) MarshalJSON() ([]byte, error) {
+func (o *Createsecuresession) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Createsecuresession
-
 	
-
 	return json.Marshal(&struct { 
 		SourceParticipantId *string `json:"sourceParticipantId,omitempty"`
 		
@@ -42,15 +40,42 @@ func (u *Createsecuresession) MarshalJSON() ([]byte, error) {
 		Disconnect *bool `json:"disconnect,omitempty"`
 		*Alias
 	}{ 
-		SourceParticipantId: u.SourceParticipantId,
+		SourceParticipantId: o.SourceParticipantId,
 		
-		FlowId: u.FlowId,
+		FlowId: o.FlowId,
 		
-		UserData: u.UserData,
+		UserData: o.UserData,
 		
-		Disconnect: u.Disconnect,
-		Alias:    (*Alias)(u),
+		Disconnect: o.Disconnect,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Createsecuresession) UnmarshalJSON(b []byte) error {
+	var CreatesecuresessionMap map[string]interface{}
+	err := json.Unmarshal(b, &CreatesecuresessionMap)
+	if err != nil {
+		return err
+	}
+	
+	if SourceParticipantId, ok := CreatesecuresessionMap["sourceParticipantId"].(string); ok {
+		o.SourceParticipantId = &SourceParticipantId
+	}
+	
+	if FlowId, ok := CreatesecuresessionMap["flowId"].(string); ok {
+		o.FlowId = &FlowId
+	}
+	
+	if UserData, ok := CreatesecuresessionMap["userData"].(string); ok {
+		o.UserData = &UserData
+	}
+	
+	if Disconnect, ok := CreatesecuresessionMap["disconnect"].(bool); ok {
+		o.Disconnect = &Disconnect
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

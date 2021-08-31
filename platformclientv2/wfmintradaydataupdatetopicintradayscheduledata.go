@@ -17,24 +17,43 @@ type Wfmintradaydataupdatetopicintradayscheduledata struct {
 
 }
 
-func (u *Wfmintradaydataupdatetopicintradayscheduledata) MarshalJSON() ([]byte, error) {
+func (o *Wfmintradaydataupdatetopicintradayscheduledata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmintradaydataupdatetopicintradayscheduledata
-
 	
-
 	return json.Marshal(&struct { 
 		OnQueueTimeSeconds *int `json:"onQueueTimeSeconds,omitempty"`
 		
 		ScheduledTimeSeconds *int `json:"scheduledTimeSeconds,omitempty"`
 		*Alias
 	}{ 
-		OnQueueTimeSeconds: u.OnQueueTimeSeconds,
+		OnQueueTimeSeconds: o.OnQueueTimeSeconds,
 		
-		ScheduledTimeSeconds: u.ScheduledTimeSeconds,
-		Alias:    (*Alias)(u),
+		ScheduledTimeSeconds: o.ScheduledTimeSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmintradaydataupdatetopicintradayscheduledata) UnmarshalJSON(b []byte) error {
+	var WfmintradaydataupdatetopicintradayscheduledataMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmintradaydataupdatetopicintradayscheduledataMap)
+	if err != nil {
+		return err
+	}
+	
+	if OnQueueTimeSeconds, ok := WfmintradaydataupdatetopicintradayscheduledataMap["onQueueTimeSeconds"].(float64); ok {
+		OnQueueTimeSecondsInt := int(OnQueueTimeSeconds)
+		o.OnQueueTimeSeconds = &OnQueueTimeSecondsInt
+	}
+	
+	if ScheduledTimeSeconds, ok := WfmintradaydataupdatetopicintradayscheduledataMap["scheduledTimeSeconds"].(float64); ok {
+		ScheduledTimeSecondsInt := int(ScheduledTimeSeconds)
+		o.ScheduledTimeSeconds = &ScheduledTimeSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

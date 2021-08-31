@@ -42,21 +42,19 @@ type Buagentscheduleactivity struct {
 
 }
 
-func (u *Buagentscheduleactivity) MarshalJSON() ([]byte, error) {
+func (o *Buagentscheduleactivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buagentscheduleactivity
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -77,21 +75,66 @@ func (u *Buagentscheduleactivity) MarshalJSON() ([]byte, error) {
 	}{ 
 		StartDate: StartDate,
 		
-		LengthMinutes: u.LengthMinutes,
+		LengthMinutes: o.LengthMinutes,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		ActivityCodeId: u.ActivityCodeId,
+		ActivityCodeId: o.ActivityCodeId,
 		
-		Paid: u.Paid,
+		Paid: o.Paid,
 		
-		TimeOffRequestId: u.TimeOffRequestId,
+		TimeOffRequestId: o.TimeOffRequestId,
 		
-		ExternalActivityId: u.ExternalActivityId,
+		ExternalActivityId: o.ExternalActivityId,
 		
-		ExternalActivityType: u.ExternalActivityType,
-		Alias:    (*Alias)(u),
+		ExternalActivityType: o.ExternalActivityType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buagentscheduleactivity) UnmarshalJSON(b []byte) error {
+	var BuagentscheduleactivityMap map[string]interface{}
+	err := json.Unmarshal(b, &BuagentscheduleactivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := BuagentscheduleactivityMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if LengthMinutes, ok := BuagentscheduleactivityMap["lengthMinutes"].(float64); ok {
+		LengthMinutesInt := int(LengthMinutes)
+		o.LengthMinutes = &LengthMinutesInt
+	}
+	
+	if Description, ok := BuagentscheduleactivityMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if ActivityCodeId, ok := BuagentscheduleactivityMap["activityCodeId"].(string); ok {
+		o.ActivityCodeId = &ActivityCodeId
+	}
+	
+	if Paid, ok := BuagentscheduleactivityMap["paid"].(bool); ok {
+		o.Paid = &Paid
+	}
+	
+	if TimeOffRequestId, ok := BuagentscheduleactivityMap["timeOffRequestId"].(string); ok {
+		o.TimeOffRequestId = &TimeOffRequestId
+	}
+	
+	if ExternalActivityId, ok := BuagentscheduleactivityMap["externalActivityId"].(string); ok {
+		o.ExternalActivityId = &ExternalActivityId
+	}
+	
+	if ExternalActivityType, ok := BuagentscheduleactivityMap["externalActivityType"].(string); ok {
+		o.ExternalActivityType = &ExternalActivityType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

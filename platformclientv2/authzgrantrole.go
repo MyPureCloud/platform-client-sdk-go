@@ -33,13 +33,11 @@ type Authzgrantrole struct {
 
 }
 
-func (u *Authzgrantrole) MarshalJSON() ([]byte, error) {
+func (o *Authzgrantrole) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Authzgrantrole
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Authzgrantrole) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Policies: u.Policies,
+		Policies: o.Policies,
 		
-		VarDefault: u.VarDefault,
+		VarDefault: o.VarDefault,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Authzgrantrole) UnmarshalJSON(b []byte) error {
+	var AuthzgrantroleMap map[string]interface{}
+	err := json.Unmarshal(b, &AuthzgrantroleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AuthzgrantroleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AuthzgrantroleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := AuthzgrantroleMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Policies, ok := AuthzgrantroleMap["policies"].([]interface{}); ok {
+		PoliciesString, _ := json.Marshal(Policies)
+		json.Unmarshal(PoliciesString, &o.Policies)
+	}
+	
+	if VarDefault, ok := AuthzgrantroleMap["default"].(bool); ok {
+		o.VarDefault = &VarDefault
+	}
+	
+	if SelfUri, ok := AuthzgrantroleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

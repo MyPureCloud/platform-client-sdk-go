@@ -22,21 +22,19 @@ type Logcaptureuserconfiguration struct {
 
 }
 
-func (u *Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
+func (o *Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Logcaptureuserconfiguration
-
 	
 	DateExpired := new(string)
-	if u.DateExpired != nil {
+	if o.DateExpired != nil {
 		
-		*DateExpired = timeutil.Strftime(u.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateExpired = timeutil.Strftime(o.DateExpired, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateExpired = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -45,13 +43,37 @@ func (u *Logcaptureuserconfiguration) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		DateExpired: DateExpired,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Logcaptureuserconfiguration) UnmarshalJSON(b []byte) error {
+	var LogcaptureuserconfigurationMap map[string]interface{}
+	err := json.Unmarshal(b, &LogcaptureuserconfigurationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LogcaptureuserconfigurationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if dateExpiredString, ok := LogcaptureuserconfigurationMap["dateExpired"].(string); ok {
+		DateExpired, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateExpiredString)
+		o.DateExpired = &DateExpired
+	}
+	
+	if SelfUri, ok := LogcaptureuserconfigurationMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

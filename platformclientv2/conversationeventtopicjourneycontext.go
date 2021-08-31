@@ -21,13 +21,11 @@ type Conversationeventtopicjourneycontext struct {
 
 }
 
-func (u *Conversationeventtopicjourneycontext) MarshalJSON() ([]byte, error) {
+func (o *Conversationeventtopicjourneycontext) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationeventtopicjourneycontext
-
 	
-
 	return json.Marshal(&struct { 
 		Customer *Conversationeventtopicjourneycustomer `json:"customer,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Conversationeventtopicjourneycontext) MarshalJSON() ([]byte, error) {
 		TriggeringAction *Conversationeventtopicjourneyaction `json:"triggeringAction,omitempty"`
 		*Alias
 	}{ 
-		Customer: u.Customer,
+		Customer: o.Customer,
 		
-		CustomerSession: u.CustomerSession,
+		CustomerSession: o.CustomerSession,
 		
-		TriggeringAction: u.TriggeringAction,
-		Alias:    (*Alias)(u),
+		TriggeringAction: o.TriggeringAction,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationeventtopicjourneycontext) UnmarshalJSON(b []byte) error {
+	var ConversationeventtopicjourneycontextMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationeventtopicjourneycontextMap)
+	if err != nil {
+		return err
+	}
+	
+	if Customer, ok := ConversationeventtopicjourneycontextMap["customer"].(map[string]interface{}); ok {
+		CustomerString, _ := json.Marshal(Customer)
+		json.Unmarshal(CustomerString, &o.Customer)
+	}
+	
+	if CustomerSession, ok := ConversationeventtopicjourneycontextMap["customerSession"].(map[string]interface{}); ok {
+		CustomerSessionString, _ := json.Marshal(CustomerSession)
+		json.Unmarshal(CustomerSessionString, &o.CustomerSession)
+	}
+	
+	if TriggeringAction, ok := ConversationeventtopicjourneycontextMap["triggeringAction"].(map[string]interface{}); ok {
+		TriggeringActionString, _ := json.Marshal(TriggeringAction)
+		json.Unmarshal(TriggeringActionString, &o.TriggeringAction)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -142,29 +142,27 @@ type Campaign struct {
 
 }
 
-func (u *Campaign) MarshalJSON() ([]byte, error) {
+func (o *Campaign) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaign
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -233,73 +231,238 @@ func (u *Campaign) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		ContactList: u.ContactList,
+		ContactList: o.ContactList,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		DialingMode: u.DialingMode,
+		DialingMode: o.DialingMode,
 		
-		Script: u.Script,
+		Script: o.Script,
 		
-		EdgeGroup: u.EdgeGroup,
+		EdgeGroup: o.EdgeGroup,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		CampaignStatus: u.CampaignStatus,
+		CampaignStatus: o.CampaignStatus,
 		
-		PhoneColumns: u.PhoneColumns,
+		PhoneColumns: o.PhoneColumns,
 		
-		AbandonRate: u.AbandonRate,
+		AbandonRate: o.AbandonRate,
 		
-		DncLists: u.DncLists,
+		DncLists: o.DncLists,
 		
-		CallableTimeSet: u.CallableTimeSet,
+		CallableTimeSet: o.CallableTimeSet,
 		
-		CallAnalysisResponseSet: u.CallAnalysisResponseSet,
+		CallAnalysisResponseSet: o.CallAnalysisResponseSet,
 		
-		Errors: u.Errors,
+		Errors: o.Errors,
 		
-		CallerName: u.CallerName,
+		CallerName: o.CallerName,
 		
-		CallerAddress: u.CallerAddress,
+		CallerAddress: o.CallerAddress,
 		
-		OutboundLineCount: u.OutboundLineCount,
+		OutboundLineCount: o.OutboundLineCount,
 		
-		RuleSets: u.RuleSets,
+		RuleSets: o.RuleSets,
 		
-		SkipPreviewDisabled: u.SkipPreviewDisabled,
+		SkipPreviewDisabled: o.SkipPreviewDisabled,
 		
-		PreviewTimeOutSeconds: u.PreviewTimeOutSeconds,
+		PreviewTimeOutSeconds: o.PreviewTimeOutSeconds,
 		
-		AlwaysRunning: u.AlwaysRunning,
+		AlwaysRunning: o.AlwaysRunning,
 		
-		ContactSort: u.ContactSort,
+		ContactSort: o.ContactSort,
 		
-		ContactSorts: u.ContactSorts,
+		ContactSorts: o.ContactSorts,
 		
-		NoAnswerTimeout: u.NoAnswerTimeout,
+		NoAnswerTimeout: o.NoAnswerTimeout,
 		
-		CallAnalysisLanguage: u.CallAnalysisLanguage,
+		CallAnalysisLanguage: o.CallAnalysisLanguage,
 		
-		Priority: u.Priority,
+		Priority: o.Priority,
 		
-		ContactListFilters: u.ContactListFilters,
+		ContactListFilters: o.ContactListFilters,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaign) UnmarshalJSON(b []byte) error {
+	var CampaignMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaignMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CampaignMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CampaignMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := CampaignMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := CampaignMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := CampaignMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if ContactList, ok := CampaignMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if Queue, ok := CampaignMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if DialingMode, ok := CampaignMap["dialingMode"].(string); ok {
+		o.DialingMode = &DialingMode
+	}
+	
+	if Script, ok := CampaignMap["script"].(map[string]interface{}); ok {
+		ScriptString, _ := json.Marshal(Script)
+		json.Unmarshal(ScriptString, &o.Script)
+	}
+	
+	if EdgeGroup, ok := CampaignMap["edgeGroup"].(map[string]interface{}); ok {
+		EdgeGroupString, _ := json.Marshal(EdgeGroup)
+		json.Unmarshal(EdgeGroupString, &o.EdgeGroup)
+	}
+	
+	if Site, ok := CampaignMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if CampaignStatus, ok := CampaignMap["campaignStatus"].(string); ok {
+		o.CampaignStatus = &CampaignStatus
+	}
+	
+	if PhoneColumns, ok := CampaignMap["phoneColumns"].([]interface{}); ok {
+		PhoneColumnsString, _ := json.Marshal(PhoneColumns)
+		json.Unmarshal(PhoneColumnsString, &o.PhoneColumns)
+	}
+	
+	if AbandonRate, ok := CampaignMap["abandonRate"].(float64); ok {
+		o.AbandonRate = &AbandonRate
+	}
+	
+	if DncLists, ok := CampaignMap["dncLists"].([]interface{}); ok {
+		DncListsString, _ := json.Marshal(DncLists)
+		json.Unmarshal(DncListsString, &o.DncLists)
+	}
+	
+	if CallableTimeSet, ok := CampaignMap["callableTimeSet"].(map[string]interface{}); ok {
+		CallableTimeSetString, _ := json.Marshal(CallableTimeSet)
+		json.Unmarshal(CallableTimeSetString, &o.CallableTimeSet)
+	}
+	
+	if CallAnalysisResponseSet, ok := CampaignMap["callAnalysisResponseSet"].(map[string]interface{}); ok {
+		CallAnalysisResponseSetString, _ := json.Marshal(CallAnalysisResponseSet)
+		json.Unmarshal(CallAnalysisResponseSetString, &o.CallAnalysisResponseSet)
+	}
+	
+	if Errors, ok := CampaignMap["errors"].([]interface{}); ok {
+		ErrorsString, _ := json.Marshal(Errors)
+		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if CallerName, ok := CampaignMap["callerName"].(string); ok {
+		o.CallerName = &CallerName
+	}
+	
+	if CallerAddress, ok := CampaignMap["callerAddress"].(string); ok {
+		o.CallerAddress = &CallerAddress
+	}
+	
+	if OutboundLineCount, ok := CampaignMap["outboundLineCount"].(float64); ok {
+		OutboundLineCountInt := int(OutboundLineCount)
+		o.OutboundLineCount = &OutboundLineCountInt
+	}
+	
+	if RuleSets, ok := CampaignMap["ruleSets"].([]interface{}); ok {
+		RuleSetsString, _ := json.Marshal(RuleSets)
+		json.Unmarshal(RuleSetsString, &o.RuleSets)
+	}
+	
+	if SkipPreviewDisabled, ok := CampaignMap["skipPreviewDisabled"].(bool); ok {
+		o.SkipPreviewDisabled = &SkipPreviewDisabled
+	}
+	
+	if PreviewTimeOutSeconds, ok := CampaignMap["previewTimeOutSeconds"].(float64); ok {
+		PreviewTimeOutSecondsInt := int(PreviewTimeOutSeconds)
+		o.PreviewTimeOutSeconds = &PreviewTimeOutSecondsInt
+	}
+	
+	if AlwaysRunning, ok := CampaignMap["alwaysRunning"].(bool); ok {
+		o.AlwaysRunning = &AlwaysRunning
+	}
+	
+	if ContactSort, ok := CampaignMap["contactSort"].(map[string]interface{}); ok {
+		ContactSortString, _ := json.Marshal(ContactSort)
+		json.Unmarshal(ContactSortString, &o.ContactSort)
+	}
+	
+	if ContactSorts, ok := CampaignMap["contactSorts"].([]interface{}); ok {
+		ContactSortsString, _ := json.Marshal(ContactSorts)
+		json.Unmarshal(ContactSortsString, &o.ContactSorts)
+	}
+	
+	if NoAnswerTimeout, ok := CampaignMap["noAnswerTimeout"].(float64); ok {
+		NoAnswerTimeoutInt := int(NoAnswerTimeout)
+		o.NoAnswerTimeout = &NoAnswerTimeoutInt
+	}
+	
+	if CallAnalysisLanguage, ok := CampaignMap["callAnalysisLanguage"].(string); ok {
+		o.CallAnalysisLanguage = &CallAnalysisLanguage
+	}
+	
+	if Priority, ok := CampaignMap["priority"].(float64); ok {
+		PriorityInt := int(Priority)
+		o.Priority = &PriorityInt
+	}
+	
+	if ContactListFilters, ok := CampaignMap["contactListFilters"].([]interface{}); ok {
+		ContactListFiltersString, _ := json.Marshal(ContactListFilters)
+		json.Unmarshal(ContactListFiltersString, &o.ContactListFilters)
+	}
+	
+	if Division, ok := CampaignMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if SelfUri, ok := CampaignMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

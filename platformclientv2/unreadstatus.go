@@ -13,20 +13,33 @@ type Unreadstatus struct {
 
 }
 
-func (u *Unreadstatus) MarshalJSON() ([]byte, error) {
+func (o *Unreadstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Unreadstatus
-
 	
-
 	return json.Marshal(&struct { 
 		Unread *bool `json:"unread,omitempty"`
 		*Alias
 	}{ 
-		Unread: u.Unread,
-		Alias:    (*Alias)(u),
+		Unread: o.Unread,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Unreadstatus) UnmarshalJSON(b []byte) error {
+	var UnreadstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &UnreadstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Unread, ok := UnreadstatusMap["unread"].(bool); ok {
+		o.Unread = &Unread
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

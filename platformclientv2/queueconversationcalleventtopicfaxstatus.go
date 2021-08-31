@@ -41,13 +41,11 @@ type Queueconversationcalleventtopicfaxstatus struct {
 
 }
 
-func (u *Queueconversationcalleventtopicfaxstatus) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationcalleventtopicfaxstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationcalleventtopicfaxstatus
-
 	
-
 	return json.Marshal(&struct { 
 		Direction *string `json:"direction,omitempty"`
 		
@@ -66,23 +64,73 @@ func (u *Queueconversationcalleventtopicfaxstatus) MarshalJSON() ([]byte, error)
 		LineErrors *int `json:"lineErrors,omitempty"`
 		*Alias
 	}{ 
-		Direction: u.Direction,
+		Direction: o.Direction,
 		
-		ExpectedPages: u.ExpectedPages,
+		ExpectedPages: o.ExpectedPages,
 		
-		ActivePage: u.ActivePage,
+		ActivePage: o.ActivePage,
 		
-		LinesTransmitted: u.LinesTransmitted,
+		LinesTransmitted: o.LinesTransmitted,
 		
-		BytesTransmitted: u.BytesTransmitted,
+		BytesTransmitted: o.BytesTransmitted,
 		
-		DataRate: u.DataRate,
+		DataRate: o.DataRate,
 		
-		PageErrors: u.PageErrors,
+		PageErrors: o.PageErrors,
 		
-		LineErrors: u.LineErrors,
-		Alias:    (*Alias)(u),
+		LineErrors: o.LineErrors,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationcalleventtopicfaxstatus) UnmarshalJSON(b []byte) error {
+	var QueueconversationcalleventtopicfaxstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationcalleventtopicfaxstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Direction, ok := QueueconversationcalleventtopicfaxstatusMap["direction"].(string); ok {
+		o.Direction = &Direction
+	}
+	
+	if ExpectedPages, ok := QueueconversationcalleventtopicfaxstatusMap["expectedPages"].(float64); ok {
+		ExpectedPagesInt := int(ExpectedPages)
+		o.ExpectedPages = &ExpectedPagesInt
+	}
+	
+	if ActivePage, ok := QueueconversationcalleventtopicfaxstatusMap["activePage"].(float64); ok {
+		ActivePageInt := int(ActivePage)
+		o.ActivePage = &ActivePageInt
+	}
+	
+	if LinesTransmitted, ok := QueueconversationcalleventtopicfaxstatusMap["linesTransmitted"].(float64); ok {
+		LinesTransmittedInt := int(LinesTransmitted)
+		o.LinesTransmitted = &LinesTransmittedInt
+	}
+	
+	if BytesTransmitted, ok := QueueconversationcalleventtopicfaxstatusMap["bytesTransmitted"].(float64); ok {
+		BytesTransmittedInt := int(BytesTransmitted)
+		o.BytesTransmitted = &BytesTransmittedInt
+	}
+	
+	if DataRate, ok := QueueconversationcalleventtopicfaxstatusMap["dataRate"].(float64); ok {
+		DataRateInt := int(DataRate)
+		o.DataRate = &DataRateInt
+	}
+	
+	if PageErrors, ok := QueueconversationcalleventtopicfaxstatusMap["pageErrors"].(float64); ok {
+		PageErrorsInt := int(PageErrors)
+		o.PageErrors = &PageErrorsInt
+	}
+	
+	if LineErrors, ok := QueueconversationcalleventtopicfaxstatusMap["lineErrors"].(float64); ok {
+		LineErrorsInt := int(LineErrors)
+		o.LineErrors = &LineErrorsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

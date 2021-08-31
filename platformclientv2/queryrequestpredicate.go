@@ -17,24 +17,41 @@ type Queryrequestpredicate struct {
 
 }
 
-func (u *Queryrequestpredicate) MarshalJSON() ([]byte, error) {
+func (o *Queryrequestpredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queryrequestpredicate
-
 	
-
 	return json.Marshal(&struct { 
 		Dimension *string `json:"dimension,omitempty"`
 		
 		Value *string `json:"value,omitempty"`
 		*Alias
 	}{ 
-		Dimension: u.Dimension,
+		Dimension: o.Dimension,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queryrequestpredicate) UnmarshalJSON(b []byte) error {
+	var QueryrequestpredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &QueryrequestpredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if Dimension, ok := QueryrequestpredicateMap["dimension"].(string); ok {
+		o.Dimension = &Dimension
+	}
+	
+	if Value, ok := QueryrequestpredicateMap["value"].(string); ok {
+		o.Value = &Value
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

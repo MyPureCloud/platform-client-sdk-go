@@ -13,20 +13,34 @@ type Flowobservationqueryresponse struct {
 
 }
 
-func (u *Flowobservationqueryresponse) MarshalJSON() ([]byte, error) {
+func (o *Flowobservationqueryresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowobservationqueryresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Results *[]Flowobservationdatacontainer `json:"results,omitempty"`
 		*Alias
 	}{ 
-		Results: u.Results,
-		Alias:    (*Alias)(u),
+		Results: o.Results,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowobservationqueryresponse) UnmarshalJSON(b []byte) error {
+	var FlowobservationqueryresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowobservationqueryresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Results, ok := FlowobservationqueryresponseMap["results"].([]interface{}); ok {
+		ResultsString, _ := json.Marshal(Results)
+		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

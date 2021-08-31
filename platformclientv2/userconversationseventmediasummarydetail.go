@@ -17,24 +17,43 @@ type Userconversationseventmediasummarydetail struct {
 
 }
 
-func (u *Userconversationseventmediasummarydetail) MarshalJSON() ([]byte, error) {
+func (o *Userconversationseventmediasummarydetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userconversationseventmediasummarydetail
-
 	
-
 	return json.Marshal(&struct { 
 		Active *int `json:"active,omitempty"`
 		
 		Acw *int `json:"acw,omitempty"`
 		*Alias
 	}{ 
-		Active: u.Active,
+		Active: o.Active,
 		
-		Acw: u.Acw,
-		Alias:    (*Alias)(u),
+		Acw: o.Acw,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userconversationseventmediasummarydetail) UnmarshalJSON(b []byte) error {
+	var UserconversationseventmediasummarydetailMap map[string]interface{}
+	err := json.Unmarshal(b, &UserconversationseventmediasummarydetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if Active, ok := UserconversationseventmediasummarydetailMap["active"].(float64); ok {
+		ActiveInt := int(Active)
+		o.Active = &ActiveInt
+	}
+	
+	if Acw, ok := UserconversationseventmediasummarydetailMap["acw"].(float64); ok {
+		AcwInt := int(Acw)
+		o.Acw = &AcwInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

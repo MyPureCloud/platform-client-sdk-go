@@ -21,13 +21,11 @@ type Namedentitytypedefinition struct {
 
 }
 
-func (u *Namedentitytypedefinition) MarshalJSON() ([]byte, error) {
+func (o *Namedentitytypedefinition) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Namedentitytypedefinition
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Namedentitytypedefinition) MarshalJSON() ([]byte, error) {
 		Mechanism *Namedentitytypemechanism `json:"mechanism,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Mechanism: u.Mechanism,
-		Alias:    (*Alias)(u),
+		Mechanism: o.Mechanism,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Namedentitytypedefinition) UnmarshalJSON(b []byte) error {
+	var NamedentitytypedefinitionMap map[string]interface{}
+	err := json.Unmarshal(b, &NamedentitytypedefinitionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := NamedentitytypedefinitionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := NamedentitytypedefinitionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Mechanism, ok := NamedentitytypedefinitionMap["mechanism"].(map[string]interface{}); ok {
+		MechanismString, _ := json.Marshal(Mechanism)
+		json.Unmarshal(MechanismString, &o.Mechanism)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

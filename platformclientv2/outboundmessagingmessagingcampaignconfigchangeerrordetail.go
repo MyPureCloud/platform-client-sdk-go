@@ -17,24 +17,41 @@ type Outboundmessagingmessagingcampaignconfigchangeerrordetail struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangeerrordetail) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangeerrordetail) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangeerrordetail
-
 	
-
 	return json.Marshal(&struct { 
 		VarError *string `json:"error,omitempty"`
 		
 		Details *string `json:"details,omitempty"`
 		*Alias
 	}{ 
-		VarError: u.VarError,
+		VarError: o.VarError,
 		
-		Details: u.Details,
-		Alias:    (*Alias)(u),
+		Details: o.Details,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangeerrordetail) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangeerrordetailMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangeerrordetailMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarError, ok := OutboundmessagingmessagingcampaignconfigchangeerrordetailMap["error"].(string); ok {
+		o.VarError = &VarError
+	}
+	
+	if Details, ok := OutboundmessagingmessagingcampaignconfigchangeerrordetailMap["details"].(string); ok {
+		o.Details = &Details
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

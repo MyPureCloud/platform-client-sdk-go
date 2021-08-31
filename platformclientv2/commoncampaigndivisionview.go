@@ -29,13 +29,11 @@ type Commoncampaigndivisionview struct {
 
 }
 
-func (u *Commoncampaigndivisionview) MarshalJSON() ([]byte, error) {
+func (o *Commoncampaigndivisionview) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Commoncampaigndivisionview
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Commoncampaigndivisionview) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		MediaType: u.MediaType,
+		MediaType: o.MediaType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Commoncampaigndivisionview) UnmarshalJSON(b []byte) error {
+	var CommoncampaigndivisionviewMap map[string]interface{}
+	err := json.Unmarshal(b, &CommoncampaigndivisionviewMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CommoncampaigndivisionviewMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CommoncampaigndivisionviewMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := CommoncampaigndivisionviewMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if MediaType, ok := CommoncampaigndivisionviewMap["mediaType"].(string); ok {
+		o.MediaType = &MediaType
+	}
+	
+	if SelfUri, ok := CommoncampaigndivisionviewMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

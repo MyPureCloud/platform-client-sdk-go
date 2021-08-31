@@ -33,13 +33,11 @@ type Queueconversationeventtopicconversation struct {
 
 }
 
-func (u *Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) {
+func (o *Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queueconversationeventtopicconversation
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Queueconversationeventtopicconversation) MarshalJSON() ([]byte, error) 
 		ExternalTag *string `json:"externalTag,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		MaxParticipants: u.MaxParticipants,
+		MaxParticipants: o.MaxParticipants,
 		
-		Participants: u.Participants,
+		Participants: o.Participants,
 		
-		RecordingState: u.RecordingState,
+		RecordingState: o.RecordingState,
 		
-		Address: u.Address,
+		Address: o.Address,
 		
-		ExternalTag: u.ExternalTag,
-		Alias:    (*Alias)(u),
+		ExternalTag: o.ExternalTag,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queueconversationeventtopicconversation) UnmarshalJSON(b []byte) error {
+	var QueueconversationeventtopicconversationMap map[string]interface{}
+	err := json.Unmarshal(b, &QueueconversationeventtopicconversationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := QueueconversationeventtopicconversationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if MaxParticipants, ok := QueueconversationeventtopicconversationMap["maxParticipants"].(float64); ok {
+		MaxParticipantsInt := int(MaxParticipants)
+		o.MaxParticipants = &MaxParticipantsInt
+	}
+	
+	if Participants, ok := QueueconversationeventtopicconversationMap["participants"].([]interface{}); ok {
+		ParticipantsString, _ := json.Marshal(Participants)
+		json.Unmarshal(ParticipantsString, &o.Participants)
+	}
+	
+	if RecordingState, ok := QueueconversationeventtopicconversationMap["recordingState"].(string); ok {
+		o.RecordingState = &RecordingState
+	}
+	
+	if Address, ok := QueueconversationeventtopicconversationMap["address"].(string); ok {
+		o.Address = &Address
+	}
+	
+	if ExternalTag, ok := QueueconversationeventtopicconversationMap["externalTag"].(string); ok {
+		o.ExternalTag = &ExternalTag
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

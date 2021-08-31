@@ -17,24 +17,42 @@ type Activation struct {
 
 }
 
-func (u *Activation) MarshalJSON() ([]byte, error) {
+func (o *Activation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Activation
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
 		DelayInSeconds *int `json:"delayInSeconds,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		DelayInSeconds: u.DelayInSeconds,
-		Alias:    (*Alias)(u),
+		DelayInSeconds: o.DelayInSeconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Activation) UnmarshalJSON(b []byte) error {
+	var ActivationMap map[string]interface{}
+	err := json.Unmarshal(b, &ActivationMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := ActivationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if DelayInSeconds, ok := ActivationMap["delayInSeconds"].(float64); ok {
+		DelayInSecondsInt := int(DelayInSeconds)
+		o.DelayInSeconds = &DelayInSecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

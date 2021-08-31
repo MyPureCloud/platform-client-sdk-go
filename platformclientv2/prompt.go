@@ -33,13 +33,11 @@ type Prompt struct {
 
 }
 
-func (u *Prompt) MarshalJSON() ([]byte, error) {
+func (o *Prompt) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Prompt
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,56 @@ func (u *Prompt) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Resources: u.Resources,
+		Resources: o.Resources,
 		
-		CurrentOperation: u.CurrentOperation,
+		CurrentOperation: o.CurrentOperation,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Prompt) UnmarshalJSON(b []byte) error {
+	var PromptMap map[string]interface{}
+	err := json.Unmarshal(b, &PromptMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PromptMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := PromptMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := PromptMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Resources, ok := PromptMap["resources"].([]interface{}); ok {
+		ResourcesString, _ := json.Marshal(Resources)
+		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+	if CurrentOperation, ok := PromptMap["currentOperation"].(map[string]interface{}); ok {
+		CurrentOperationString, _ := json.Marshal(CurrentOperation)
+		json.Unmarshal(CurrentOperationString, &o.CurrentOperation)
+	}
+	
+	if SelfUri, ok := PromptMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

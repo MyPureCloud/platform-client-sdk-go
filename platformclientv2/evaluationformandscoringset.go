@@ -17,24 +17,43 @@ type Evaluationformandscoringset struct {
 
 }
 
-func (u *Evaluationformandscoringset) MarshalJSON() ([]byte, error) {
+func (o *Evaluationformandscoringset) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationformandscoringset
-
 	
-
 	return json.Marshal(&struct { 
 		EvaluationForm *Evaluationform `json:"evaluationForm,omitempty"`
 		
 		Answers *Evaluationscoringset `json:"answers,omitempty"`
 		*Alias
 	}{ 
-		EvaluationForm: u.EvaluationForm,
+		EvaluationForm: o.EvaluationForm,
 		
-		Answers: u.Answers,
-		Alias:    (*Alias)(u),
+		Answers: o.Answers,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationformandscoringset) UnmarshalJSON(b []byte) error {
+	var EvaluationformandscoringsetMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationformandscoringsetMap)
+	if err != nil {
+		return err
+	}
+	
+	if EvaluationForm, ok := EvaluationformandscoringsetMap["evaluationForm"].(map[string]interface{}); ok {
+		EvaluationFormString, _ := json.Marshal(EvaluationForm)
+		json.Unmarshal(EvaluationFormString, &o.EvaluationForm)
+	}
+	
+	if Answers, ok := EvaluationformandscoringsetMap["answers"].(map[string]interface{}); ok {
+		AnswersString, _ := json.Marshal(Answers)
+		json.Unmarshal(AnswersString, &o.Answers)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Gdprsubject struct {
 
 }
 
-func (u *Gdprsubject) MarshalJSON() ([]byte, error) {
+func (o *Gdprsubject) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Gdprsubject
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -78,27 +76,84 @@ func (u *Gdprsubject) MarshalJSON() ([]byte, error) {
 		EmailAddresses *[]string `json:"emailAddresses,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		ExternalContactId: u.ExternalContactId,
+		ExternalContactId: o.ExternalContactId,
 		
-		DialerContactId: u.DialerContactId,
+		DialerContactId: o.DialerContactId,
 		
-		JourneyCustomer: u.JourneyCustomer,
+		JourneyCustomer: o.JourneyCustomer,
 		
-		SocialHandle: u.SocialHandle,
+		SocialHandle: o.SocialHandle,
 		
-		ExternalId: u.ExternalId,
+		ExternalId: o.ExternalId,
 		
-		Addresses: u.Addresses,
+		Addresses: o.Addresses,
 		
-		PhoneNumbers: u.PhoneNumbers,
+		PhoneNumbers: o.PhoneNumbers,
 		
-		EmailAddresses: u.EmailAddresses,
-		Alias:    (*Alias)(u),
+		EmailAddresses: o.EmailAddresses,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Gdprsubject) UnmarshalJSON(b []byte) error {
+	var GdprsubjectMap map[string]interface{}
+	err := json.Unmarshal(b, &GdprsubjectMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := GdprsubjectMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if UserId, ok := GdprsubjectMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if ExternalContactId, ok := GdprsubjectMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
+	}
+	
+	if DialerContactId, ok := GdprsubjectMap["dialerContactId"].(map[string]interface{}); ok {
+		DialerContactIdString, _ := json.Marshal(DialerContactId)
+		json.Unmarshal(DialerContactIdString, &o.DialerContactId)
+	}
+	
+	if JourneyCustomer, ok := GdprsubjectMap["journeyCustomer"].(map[string]interface{}); ok {
+		JourneyCustomerString, _ := json.Marshal(JourneyCustomer)
+		json.Unmarshal(JourneyCustomerString, &o.JourneyCustomer)
+	}
+	
+	if SocialHandle, ok := GdprsubjectMap["socialHandle"].(map[string]interface{}); ok {
+		SocialHandleString, _ := json.Marshal(SocialHandle)
+		json.Unmarshal(SocialHandleString, &o.SocialHandle)
+	}
+	
+	if ExternalId, ok := GdprsubjectMap["externalId"].(string); ok {
+		o.ExternalId = &ExternalId
+	}
+	
+	if Addresses, ok := GdprsubjectMap["addresses"].([]interface{}); ok {
+		AddressesString, _ := json.Marshal(Addresses)
+		json.Unmarshal(AddressesString, &o.Addresses)
+	}
+	
+	if PhoneNumbers, ok := GdprsubjectMap["phoneNumbers"].([]interface{}); ok {
+		PhoneNumbersString, _ := json.Marshal(PhoneNumbers)
+		json.Unmarshal(PhoneNumbersString, &o.PhoneNumbers)
+	}
+	
+	if EmailAddresses, ok := GdprsubjectMap["emailAddresses"].([]interface{}); ok {
+		EmailAddressesString, _ := json.Marshal(EmailAddresses)
+		json.Unmarshal(EmailAddressesString, &o.EmailAddresses)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

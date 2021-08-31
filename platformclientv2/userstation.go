@@ -38,21 +38,19 @@ type Userstation struct {
 
 }
 
-func (u *Userstation) MarshalJSON() ([]byte, error) {
+func (o *Userstation) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userstation
-
 	
 	AssociatedDate := new(string)
-	if u.AssociatedDate != nil {
+	if o.AssociatedDate != nil {
 		
-		*AssociatedDate = timeutil.Strftime(u.AssociatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*AssociatedDate = timeutil.Strftime(o.AssociatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		AssociatedDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,64 @@ func (u *Userstation) MarshalJSON() ([]byte, error) {
 		ProviderInfo *map[string]string `json:"providerInfo,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		AssociatedUser: u.AssociatedUser,
+		AssociatedUser: o.AssociatedUser,
 		
 		AssociatedDate: AssociatedDate,
 		
-		DefaultUser: u.DefaultUser,
+		DefaultUser: o.DefaultUser,
 		
-		ProviderInfo: u.ProviderInfo,
-		Alias:    (*Alias)(u),
+		ProviderInfo: o.ProviderInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userstation) UnmarshalJSON(b []byte) error {
+	var UserstationMap map[string]interface{}
+	err := json.Unmarshal(b, &UserstationMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := UserstationMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := UserstationMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VarType, ok := UserstationMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if AssociatedUser, ok := UserstationMap["associatedUser"].(map[string]interface{}); ok {
+		AssociatedUserString, _ := json.Marshal(AssociatedUser)
+		json.Unmarshal(AssociatedUserString, &o.AssociatedUser)
+	}
+	
+	if associatedDateString, ok := UserstationMap["associatedDate"].(string); ok {
+		AssociatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", associatedDateString)
+		o.AssociatedDate = &AssociatedDate
+	}
+	
+	if DefaultUser, ok := UserstationMap["defaultUser"].(map[string]interface{}); ok {
+		DefaultUserString, _ := json.Marshal(DefaultUser)
+		json.Unmarshal(DefaultUserString, &o.DefaultUser)
+	}
+	
+	if ProviderInfo, ok := UserstationMap["providerInfo"].(map[string]interface{}); ok {
+		ProviderInfoString, _ := json.Marshal(ProviderInfo)
+		json.Unmarshal(ProviderInfoString, &o.ProviderInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -17,24 +17,43 @@ type Wfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalue st
 
 }
 
-func (u *Wfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalue) MarshalJSON() ([]byte, error) {
+func (o *Wfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalue) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalue
-
 	
-
 	return json.Marshal(&struct { 
 		IntervalIndex *int `json:"intervalIndex,omitempty"`
 		
 		Value *float32 `json:"value,omitempty"`
 		*Alias
 	}{ 
-		IntervalIndex: u.IntervalIndex,
+		IntervalIndex: o.IntervalIndex,
 		
-		Value: u.Value,
-		Alias:    (*Alias)(u),
+		Value: o.Value,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalue) UnmarshalJSON(b []byte) error {
+	var WfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalueMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalueMap)
+	if err != nil {
+		return err
+	}
+	
+	if IntervalIndex, ok := WfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalueMap["intervalIndex"].(float64); ok {
+		IntervalIndexInt := int(IntervalIndex)
+		o.IntervalIndex = &IntervalIndexInt
+	}
+	
+	if Value, ok := WfmbushorttermforecastupdatecompletetopicmodificationintervaloffsetvalueMap["value"].(float64); ok {
+		ValueFloat32 := float32(Value)
+		o.Value = &ValueFloat32
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -49,13 +49,11 @@ type Commoncampaigndivisionviewentitylisting struct {
 
 }
 
-func (u *Commoncampaigndivisionviewentitylisting) MarshalJSON() ([]byte, error) {
+func (o *Commoncampaigndivisionviewentitylisting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Commoncampaigndivisionviewentitylisting
-
 	
-
 	return json.Marshal(&struct { 
 		Entities *[]Commoncampaigndivisionview `json:"entities,omitempty"`
 		
@@ -78,27 +76,83 @@ func (u *Commoncampaigndivisionviewentitylisting) MarshalJSON() ([]byte, error) 
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
-		Entities: u.Entities,
+		Entities: o.Entities,
 		
-		PageSize: u.PageSize,
+		PageSize: o.PageSize,
 		
-		PageNumber: u.PageNumber,
+		PageNumber: o.PageNumber,
 		
-		Total: u.Total,
+		Total: o.Total,
 		
-		FirstUri: u.FirstUri,
+		FirstUri: o.FirstUri,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		NextUri: u.NextUri,
+		NextUri: o.NextUri,
 		
-		PreviousUri: u.PreviousUri,
+		PreviousUri: o.PreviousUri,
 		
-		LastUri: u.LastUri,
+		LastUri: o.LastUri,
 		
-		PageCount: u.PageCount,
-		Alias:    (*Alias)(u),
+		PageCount: o.PageCount,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Commoncampaigndivisionviewentitylisting) UnmarshalJSON(b []byte) error {
+	var CommoncampaigndivisionviewentitylistingMap map[string]interface{}
+	err := json.Unmarshal(b, &CommoncampaigndivisionviewentitylistingMap)
+	if err != nil {
+		return err
+	}
+	
+	if Entities, ok := CommoncampaigndivisionviewentitylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
+	}
+	
+	if PageSize, ok := CommoncampaigndivisionviewentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
+	}
+	
+	if PageNumber, ok := CommoncampaigndivisionviewentitylistingMap["pageNumber"].(float64); ok {
+		PageNumberInt := int(PageNumber)
+		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := CommoncampaigndivisionviewentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
+	}
+	
+	if FirstUri, ok := CommoncampaigndivisionviewentitylistingMap["firstUri"].(string); ok {
+		o.FirstUri = &FirstUri
+	}
+	
+	if SelfUri, ok := CommoncampaigndivisionviewentitylistingMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if NextUri, ok := CommoncampaigndivisionviewentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := CommoncampaigndivisionviewentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := CommoncampaigndivisionviewentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
+	if PageCount, ok := CommoncampaigndivisionviewentitylistingMap["pageCount"].(float64); ok {
+		PageCountInt := int(PageCount)
+		o.PageCount = &PageCountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -37,13 +37,11 @@ type Dialerrulesetconfigchangerule struct {
 
 }
 
-func (u *Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
+func (o *Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerrulesetconfigchangerule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -60,21 +58,64 @@ func (u *Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		Category: u.Category,
+		Category: o.Category,
 		
-		Actions: u.Actions,
+		Actions: o.Actions,
 		
-		Conditions: u.Conditions,
+		Conditions: o.Conditions,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerrulesetconfigchangerule) UnmarshalJSON(b []byte) error {
+	var DialerrulesetconfigchangeruleMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerrulesetconfigchangeruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DialerrulesetconfigchangeruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialerrulesetconfigchangeruleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Order, ok := DialerrulesetconfigchangeruleMap["order"].(float64); ok {
+		OrderInt := int(Order)
+		o.Order = &OrderInt
+	}
+	
+	if Category, ok := DialerrulesetconfigchangeruleMap["category"].(string); ok {
+		o.Category = &Category
+	}
+	
+	if Actions, ok := DialerrulesetconfigchangeruleMap["actions"].([]interface{}); ok {
+		ActionsString, _ := json.Marshal(Actions)
+		json.Unmarshal(ActionsString, &o.Actions)
+	}
+	
+	if Conditions, ok := DialerrulesetconfigchangeruleMap["conditions"].([]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangeruleMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

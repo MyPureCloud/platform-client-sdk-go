@@ -17,24 +17,41 @@ type Usageexecutionresult struct {
 
 }
 
-func (u *Usageexecutionresult) MarshalJSON() ([]byte, error) {
+func (o *Usageexecutionresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Usageexecutionresult
-
 	
-
 	return json.Marshal(&struct { 
 		ExecutionId *string `json:"executionId,omitempty"`
 		
 		ResultsUri *string `json:"resultsUri,omitempty"`
 		*Alias
 	}{ 
-		ExecutionId: u.ExecutionId,
+		ExecutionId: o.ExecutionId,
 		
-		ResultsUri: u.ResultsUri,
-		Alias:    (*Alias)(u),
+		ResultsUri: o.ResultsUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Usageexecutionresult) UnmarshalJSON(b []byte) error {
+	var UsageexecutionresultMap map[string]interface{}
+	err := json.Unmarshal(b, &UsageexecutionresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if ExecutionId, ok := UsageexecutionresultMap["executionId"].(string); ok {
+		o.ExecutionId = &ExecutionId
+	}
+	
+	if ResultsUri, ok := UsageexecutionresultMap["resultsUri"].(string); ok {
+		o.ResultsUri = &ResultsUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

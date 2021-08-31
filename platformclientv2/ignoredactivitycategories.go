@@ -13,20 +13,34 @@ type Ignoredactivitycategories struct {
 
 }
 
-func (u *Ignoredactivitycategories) MarshalJSON() ([]byte, error) {
+func (o *Ignoredactivitycategories) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Ignoredactivitycategories
-
 	
-
 	return json.Marshal(&struct { 
 		Values *[]string `json:"values,omitempty"`
 		*Alias
 	}{ 
-		Values: u.Values,
-		Alias:    (*Alias)(u),
+		Values: o.Values,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Ignoredactivitycategories) UnmarshalJSON(b []byte) error {
+	var IgnoredactivitycategoriesMap map[string]interface{}
+	err := json.Unmarshal(b, &IgnoredactivitycategoriesMap)
+	if err != nil {
+		return err
+	}
+	
+	if Values, ok := IgnoredactivitycategoriesMap["values"].([]interface{}); ok {
+		ValuesString, _ := json.Marshal(Values)
+		json.Unmarshal(ValuesString, &o.Values)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

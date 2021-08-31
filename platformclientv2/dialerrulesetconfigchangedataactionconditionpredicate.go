@@ -33,13 +33,11 @@ type Dialerrulesetconfigchangedataactionconditionpredicate struct {
 
 }
 
-func (u *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([]byte, error) {
+func (o *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialerrulesetconfigchangedataactionconditionpredicate
-
 	
-
 	return json.Marshal(&struct { 
 		OutputField *string `json:"outputField,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		OutputField: u.OutputField,
+		OutputField: o.OutputField,
 		
-		OutputOperator: u.OutputOperator,
+		OutputOperator: o.OutputOperator,
 		
-		ComparisonValue: u.ComparisonValue,
+		ComparisonValue: o.ComparisonValue,
 		
-		OutputFieldMissingResolution: u.OutputFieldMissingResolution,
+		OutputFieldMissingResolution: o.OutputFieldMissingResolution,
 		
-		Inverted: u.Inverted,
+		Inverted: o.Inverted,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialerrulesetconfigchangedataactionconditionpredicate) UnmarshalJSON(b []byte) error {
+	var DialerrulesetconfigchangedataactionconditionpredicateMap map[string]interface{}
+	err := json.Unmarshal(b, &DialerrulesetconfigchangedataactionconditionpredicateMap)
+	if err != nil {
+		return err
+	}
+	
+	if OutputField, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["outputField"].(string); ok {
+		o.OutputField = &OutputField
+	}
+	
+	if OutputOperator, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["outputOperator"].(string); ok {
+		o.OutputOperator = &OutputOperator
+	}
+	
+	if ComparisonValue, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["comparisonValue"].(string); ok {
+		o.ComparisonValue = &ComparisonValue
+	}
+	
+	if OutputFieldMissingResolution, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["outputFieldMissingResolution"].(bool); ok {
+		o.OutputFieldMissingResolution = &OutputFieldMissingResolution
+	}
+	
+	if Inverted, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["inverted"].(bool); ok {
+		o.Inverted = &Inverted
+	}
+	
+	if AdditionalProperties, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

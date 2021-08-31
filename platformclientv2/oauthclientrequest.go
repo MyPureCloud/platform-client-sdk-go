@@ -50,21 +50,19 @@ type Oauthclientrequest struct {
 
 }
 
-func (u *Oauthclientrequest) MarshalJSON() ([]byte, error) {
+func (o *Oauthclientrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Oauthclientrequest
-
 	
 	DateToDelete := new(string)
-	if u.DateToDelete != nil {
+	if o.DateToDelete != nil {
 		
-		*DateToDelete = timeutil.Strftime(u.DateToDelete, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateToDelete = timeutil.Strftime(o.DateToDelete, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateToDelete = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -87,27 +85,84 @@ func (u *Oauthclientrequest) MarshalJSON() ([]byte, error) {
 		DateToDelete *string `json:"dateToDelete,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		AccessTokenValiditySeconds: u.AccessTokenValiditySeconds,
+		AccessTokenValiditySeconds: o.AccessTokenValiditySeconds,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		RegisteredRedirectUri: u.RegisteredRedirectUri,
+		RegisteredRedirectUri: o.RegisteredRedirectUri,
 		
-		RoleIds: u.RoleIds,
+		RoleIds: o.RoleIds,
 		
-		AuthorizedGrantType: u.AuthorizedGrantType,
+		AuthorizedGrantType: o.AuthorizedGrantType,
 		
-		Scope: u.Scope,
+		Scope: o.Scope,
 		
-		RoleDivisions: u.RoleDivisions,
+		RoleDivisions: o.RoleDivisions,
 		
-		State: u.State,
+		State: o.State,
 		
 		DateToDelete: DateToDelete,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Oauthclientrequest) UnmarshalJSON(b []byte) error {
+	var OauthclientrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &OauthclientrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := OauthclientrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if AccessTokenValiditySeconds, ok := OauthclientrequestMap["accessTokenValiditySeconds"].(float64); ok {
+		AccessTokenValiditySecondsInt := int(AccessTokenValiditySeconds)
+		o.AccessTokenValiditySeconds = &AccessTokenValiditySecondsInt
+	}
+	
+	if Description, ok := OauthclientrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if RegisteredRedirectUri, ok := OauthclientrequestMap["registeredRedirectUri"].([]interface{}); ok {
+		RegisteredRedirectUriString, _ := json.Marshal(RegisteredRedirectUri)
+		json.Unmarshal(RegisteredRedirectUriString, &o.RegisteredRedirectUri)
+	}
+	
+	if RoleIds, ok := OauthclientrequestMap["roleIds"].([]interface{}); ok {
+		RoleIdsString, _ := json.Marshal(RoleIds)
+		json.Unmarshal(RoleIdsString, &o.RoleIds)
+	}
+	
+	if AuthorizedGrantType, ok := OauthclientrequestMap["authorizedGrantType"].(string); ok {
+		o.AuthorizedGrantType = &AuthorizedGrantType
+	}
+	
+	if Scope, ok := OauthclientrequestMap["scope"].([]interface{}); ok {
+		ScopeString, _ := json.Marshal(Scope)
+		json.Unmarshal(ScopeString, &o.Scope)
+	}
+	
+	if RoleDivisions, ok := OauthclientrequestMap["roleDivisions"].([]interface{}); ok {
+		RoleDivisionsString, _ := json.Marshal(RoleDivisions)
+		json.Unmarshal(RoleDivisionsString, &o.RoleDivisions)
+	}
+	
+	if State, ok := OauthclientrequestMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if dateToDeleteString, ok := OauthclientrequestMap["dateToDelete"].(string); ok {
+		DateToDelete, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateToDeleteString)
+		o.DateToDelete = &DateToDelete
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

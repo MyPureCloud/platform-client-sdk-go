@@ -42,21 +42,19 @@ type Domainedgesoftwareversiondto struct {
 
 }
 
-func (u *Domainedgesoftwareversiondto) MarshalJSON() ([]byte, error) {
+func (o *Domainedgesoftwareversiondto) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Domainedgesoftwareversiondto
-
 	
 	PublishDate := new(string)
-	if u.PublishDate != nil {
+	if o.PublishDate != nil {
 		
-		*PublishDate = timeutil.Strftime(u.PublishDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*PublishDate = timeutil.Strftime(o.PublishDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		PublishDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -75,23 +73,67 @@ func (u *Domainedgesoftwareversiondto) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		EdgeVersion: u.EdgeVersion,
+		EdgeVersion: o.EdgeVersion,
 		
 		PublishDate: PublishDate,
 		
-		EdgeUri: u.EdgeUri,
+		EdgeUri: o.EdgeUri,
 		
-		LatestRelease: u.LatestRelease,
+		LatestRelease: o.LatestRelease,
 		
-		Current: u.Current,
+		Current: o.Current,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Domainedgesoftwareversiondto) UnmarshalJSON(b []byte) error {
+	var DomainedgesoftwareversiondtoMap map[string]interface{}
+	err := json.Unmarshal(b, &DomainedgesoftwareversiondtoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := DomainedgesoftwareversiondtoMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DomainedgesoftwareversiondtoMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if EdgeVersion, ok := DomainedgesoftwareversiondtoMap["edgeVersion"].(string); ok {
+		o.EdgeVersion = &EdgeVersion
+	}
+	
+	if publishDateString, ok := DomainedgesoftwareversiondtoMap["publishDate"].(string); ok {
+		PublishDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", publishDateString)
+		o.PublishDate = &PublishDate
+	}
+	
+	if EdgeUri, ok := DomainedgesoftwareversiondtoMap["edgeUri"].(string); ok {
+		o.EdgeUri = &EdgeUri
+	}
+	
+	if LatestRelease, ok := DomainedgesoftwareversiondtoMap["latestRelease"].(bool); ok {
+		o.LatestRelease = &LatestRelease
+	}
+	
+	if Current, ok := DomainedgesoftwareversiondtoMap["current"].(bool); ok {
+		o.Current = &Current
+	}
+	
+	if SelfUri, ok := DomainedgesoftwareversiondtoMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -69,13 +69,11 @@ type Evaluationquestiongroupscore struct {
 
 }
 
-func (u *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
+func (o *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluationquestiongroupscore
-
 	
-
 	return json.Marshal(&struct { 
 		QuestionGroupId *string `json:"questionGroupId,omitempty"`
 		
@@ -108,37 +106,121 @@ func (u *Evaluationquestiongroupscore) MarshalJSON() ([]byte, error) {
 		QuestionScores *[]Evaluationquestionscore `json:"questionScores,omitempty"`
 		*Alias
 	}{ 
-		QuestionGroupId: u.QuestionGroupId,
+		QuestionGroupId: o.QuestionGroupId,
 		
-		TotalScore: u.TotalScore,
+		TotalScore: o.TotalScore,
 		
-		MaxTotalScore: u.MaxTotalScore,
+		MaxTotalScore: o.MaxTotalScore,
 		
-		MarkedNA: u.MarkedNA,
+		MarkedNA: o.MarkedNA,
 		
-		TotalCriticalScore: u.TotalCriticalScore,
+		TotalCriticalScore: o.TotalCriticalScore,
 		
-		MaxTotalCriticalScore: u.MaxTotalCriticalScore,
+		MaxTotalCriticalScore: o.MaxTotalCriticalScore,
 		
-		TotalNonCriticalScore: u.TotalNonCriticalScore,
+		TotalNonCriticalScore: o.TotalNonCriticalScore,
 		
-		MaxTotalNonCriticalScore: u.MaxTotalNonCriticalScore,
+		MaxTotalNonCriticalScore: o.MaxTotalNonCriticalScore,
 		
-		TotalScoreUnweighted: u.TotalScoreUnweighted,
+		TotalScoreUnweighted: o.TotalScoreUnweighted,
 		
-		MaxTotalScoreUnweighted: u.MaxTotalScoreUnweighted,
+		MaxTotalScoreUnweighted: o.MaxTotalScoreUnweighted,
 		
-		TotalCriticalScoreUnweighted: u.TotalCriticalScoreUnweighted,
+		TotalCriticalScoreUnweighted: o.TotalCriticalScoreUnweighted,
 		
-		MaxTotalCriticalScoreUnweighted: u.MaxTotalCriticalScoreUnweighted,
+		MaxTotalCriticalScoreUnweighted: o.MaxTotalCriticalScoreUnweighted,
 		
-		TotalNonCriticalScoreUnweighted: u.TotalNonCriticalScoreUnweighted,
+		TotalNonCriticalScoreUnweighted: o.TotalNonCriticalScoreUnweighted,
 		
-		MaxTotalNonCriticalScoreUnweighted: u.MaxTotalNonCriticalScoreUnweighted,
+		MaxTotalNonCriticalScoreUnweighted: o.MaxTotalNonCriticalScoreUnweighted,
 		
-		QuestionScores: u.QuestionScores,
-		Alias:    (*Alias)(u),
+		QuestionScores: o.QuestionScores,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluationquestiongroupscore) UnmarshalJSON(b []byte) error {
+	var EvaluationquestiongroupscoreMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluationquestiongroupscoreMap)
+	if err != nil {
+		return err
+	}
+	
+	if QuestionGroupId, ok := EvaluationquestiongroupscoreMap["questionGroupId"].(string); ok {
+		o.QuestionGroupId = &QuestionGroupId
+	}
+	
+	if TotalScore, ok := EvaluationquestiongroupscoreMap["totalScore"].(float64); ok {
+		TotalScoreFloat32 := float32(TotalScore)
+		o.TotalScore = &TotalScoreFloat32
+	}
+	
+	if MaxTotalScore, ok := EvaluationquestiongroupscoreMap["maxTotalScore"].(float64); ok {
+		MaxTotalScoreFloat32 := float32(MaxTotalScore)
+		o.MaxTotalScore = &MaxTotalScoreFloat32
+	}
+	
+	if MarkedNA, ok := EvaluationquestiongroupscoreMap["markedNA"].(bool); ok {
+		o.MarkedNA = &MarkedNA
+	}
+	
+	if TotalCriticalScore, ok := EvaluationquestiongroupscoreMap["totalCriticalScore"].(float64); ok {
+		TotalCriticalScoreFloat32 := float32(TotalCriticalScore)
+		o.TotalCriticalScore = &TotalCriticalScoreFloat32
+	}
+	
+	if MaxTotalCriticalScore, ok := EvaluationquestiongroupscoreMap["maxTotalCriticalScore"].(float64); ok {
+		MaxTotalCriticalScoreFloat32 := float32(MaxTotalCriticalScore)
+		o.MaxTotalCriticalScore = &MaxTotalCriticalScoreFloat32
+	}
+	
+	if TotalNonCriticalScore, ok := EvaluationquestiongroupscoreMap["totalNonCriticalScore"].(float64); ok {
+		TotalNonCriticalScoreFloat32 := float32(TotalNonCriticalScore)
+		o.TotalNonCriticalScore = &TotalNonCriticalScoreFloat32
+	}
+	
+	if MaxTotalNonCriticalScore, ok := EvaluationquestiongroupscoreMap["maxTotalNonCriticalScore"].(float64); ok {
+		MaxTotalNonCriticalScoreFloat32 := float32(MaxTotalNonCriticalScore)
+		o.MaxTotalNonCriticalScore = &MaxTotalNonCriticalScoreFloat32
+	}
+	
+	if TotalScoreUnweighted, ok := EvaluationquestiongroupscoreMap["totalScoreUnweighted"].(float64); ok {
+		TotalScoreUnweightedFloat32 := float32(TotalScoreUnweighted)
+		o.TotalScoreUnweighted = &TotalScoreUnweightedFloat32
+	}
+	
+	if MaxTotalScoreUnweighted, ok := EvaluationquestiongroupscoreMap["maxTotalScoreUnweighted"].(float64); ok {
+		MaxTotalScoreUnweightedFloat32 := float32(MaxTotalScoreUnweighted)
+		o.MaxTotalScoreUnweighted = &MaxTotalScoreUnweightedFloat32
+	}
+	
+	if TotalCriticalScoreUnweighted, ok := EvaluationquestiongroupscoreMap["totalCriticalScoreUnweighted"].(float64); ok {
+		TotalCriticalScoreUnweightedFloat32 := float32(TotalCriticalScoreUnweighted)
+		o.TotalCriticalScoreUnweighted = &TotalCriticalScoreUnweightedFloat32
+	}
+	
+	if MaxTotalCriticalScoreUnweighted, ok := EvaluationquestiongroupscoreMap["maxTotalCriticalScoreUnweighted"].(float64); ok {
+		MaxTotalCriticalScoreUnweightedFloat32 := float32(MaxTotalCriticalScoreUnweighted)
+		o.MaxTotalCriticalScoreUnweighted = &MaxTotalCriticalScoreUnweightedFloat32
+	}
+	
+	if TotalNonCriticalScoreUnweighted, ok := EvaluationquestiongroupscoreMap["totalNonCriticalScoreUnweighted"].(float64); ok {
+		TotalNonCriticalScoreUnweightedFloat32 := float32(TotalNonCriticalScoreUnweighted)
+		o.TotalNonCriticalScoreUnweighted = &TotalNonCriticalScoreUnweightedFloat32
+	}
+	
+	if MaxTotalNonCriticalScoreUnweighted, ok := EvaluationquestiongroupscoreMap["maxTotalNonCriticalScoreUnweighted"].(float64); ok {
+		MaxTotalNonCriticalScoreUnweightedFloat32 := float32(MaxTotalNonCriticalScoreUnweighted)
+		o.MaxTotalNonCriticalScoreUnweighted = &MaxTotalNonCriticalScoreUnweightedFloat32
+	}
+	
+	if QuestionScores, ok := EvaluationquestiongroupscoreMap["questionScores"].([]interface{}); ok {
+		QuestionScoresString, _ := json.Marshal(QuestionScores)
+		json.Unmarshal(QuestionScoresString, &o.QuestionScores)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

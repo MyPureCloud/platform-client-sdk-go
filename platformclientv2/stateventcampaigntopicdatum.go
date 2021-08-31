@@ -17,24 +17,42 @@ type Stateventcampaigntopicdatum struct {
 
 }
 
-func (u *Stateventcampaigntopicdatum) MarshalJSON() ([]byte, error) {
+func (o *Stateventcampaigntopicdatum) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Stateventcampaigntopicdatum
-
 	
-
 	return json.Marshal(&struct { 
 		Interval *string `json:"interval,omitempty"`
 		
 		Metrics *[]Stateventcampaigntopicmetric `json:"metrics,omitempty"`
 		*Alias
 	}{ 
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Metrics: u.Metrics,
-		Alias:    (*Alias)(u),
+		Metrics: o.Metrics,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Stateventcampaigntopicdatum) UnmarshalJSON(b []byte) error {
+	var StateventcampaigntopicdatumMap map[string]interface{}
+	err := json.Unmarshal(b, &StateventcampaigntopicdatumMap)
+	if err != nil {
+		return err
+	}
+	
+	if Interval, ok := StateventcampaigntopicdatumMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Metrics, ok := StateventcampaigntopicdatumMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

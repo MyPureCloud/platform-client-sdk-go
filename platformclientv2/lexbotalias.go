@@ -45,13 +45,11 @@ type Lexbotalias struct {
 
 }
 
-func (u *Lexbotalias) MarshalJSON() ([]byte, error) {
+func (o *Lexbotalias) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Lexbotalias
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -72,25 +70,74 @@ func (u *Lexbotalias) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Bot: u.Bot,
+		Bot: o.Bot,
 		
-		BotVersion: u.BotVersion,
+		BotVersion: o.BotVersion,
 		
-		Status: u.Status,
+		Status: o.Status,
 		
-		FailureReason: u.FailureReason,
+		FailureReason: o.FailureReason,
 		
-		Language: u.Language,
+		Language: o.Language,
 		
-		Intents: u.Intents,
+		Intents: o.Intents,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Lexbotalias) UnmarshalJSON(b []byte) error {
+	var LexbotaliasMap map[string]interface{}
+	err := json.Unmarshal(b, &LexbotaliasMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LexbotaliasMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LexbotaliasMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Bot, ok := LexbotaliasMap["bot"].(map[string]interface{}); ok {
+		BotString, _ := json.Marshal(Bot)
+		json.Unmarshal(BotString, &o.Bot)
+	}
+	
+	if BotVersion, ok := LexbotaliasMap["botVersion"].(string); ok {
+		o.BotVersion = &BotVersion
+	}
+	
+	if Status, ok := LexbotaliasMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if FailureReason, ok := LexbotaliasMap["failureReason"].(string); ok {
+		o.FailureReason = &FailureReason
+	}
+	
+	if Language, ok := LexbotaliasMap["language"].(string); ok {
+		o.Language = &Language
+	}
+	
+	if Intents, ok := LexbotaliasMap["intents"].([]interface{}); ok {
+		IntentsString, _ := json.Marshal(Intents)
+		json.Unmarshal(IntentsString, &o.Intents)
+	}
+	
+	if SelfUri, ok := LexbotaliasMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

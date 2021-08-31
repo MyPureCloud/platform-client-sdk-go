@@ -25,13 +25,11 @@ type Recordingeventmediaresult struct {
 
 }
 
-func (u *Recordingeventmediaresult) MarshalJSON() ([]byte, error) {
+func (o *Recordingeventmediaresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Recordingeventmediaresult
-
 	
-
 	return json.Marshal(&struct { 
 		ChannelId *string `json:"channelId,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Recordingeventmediaresult) MarshalJSON() ([]byte, error) {
 		WaveformData *[]float32 `json:"waveformData,omitempty"`
 		*Alias
 	}{ 
-		ChannelId: u.ChannelId,
+		ChannelId: o.ChannelId,
 		
-		WaveUri: u.WaveUri,
+		WaveUri: o.WaveUri,
 		
-		MediaUri: u.MediaUri,
+		MediaUri: o.MediaUri,
 		
-		WaveformData: u.WaveformData,
-		Alias:    (*Alias)(u),
+		WaveformData: o.WaveformData,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Recordingeventmediaresult) UnmarshalJSON(b []byte) error {
+	var RecordingeventmediaresultMap map[string]interface{}
+	err := json.Unmarshal(b, &RecordingeventmediaresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if ChannelId, ok := RecordingeventmediaresultMap["channelId"].(string); ok {
+		o.ChannelId = &ChannelId
+	}
+	
+	if WaveUri, ok := RecordingeventmediaresultMap["waveUri"].(string); ok {
+		o.WaveUri = &WaveUri
+	}
+	
+	if MediaUri, ok := RecordingeventmediaresultMap["mediaUri"].(string); ok {
+		o.MediaUri = &MediaUri
+	}
+	
+	if WaveformData, ok := RecordingeventmediaresultMap["waveformData"].([]interface{}); ok {
+		WaveformDataString, _ := json.Marshal(WaveformData)
+		json.Unmarshal(WaveformDataString, &o.WaveformData)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

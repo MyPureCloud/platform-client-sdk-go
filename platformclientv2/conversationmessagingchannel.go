@@ -42,37 +42,35 @@ type Conversationmessagingchannel struct {
 
 }
 
-func (u *Conversationmessagingchannel) MarshalJSON() ([]byte, error) {
+func (o *Conversationmessagingchannel) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationmessagingchannel
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	DateDeleted := new(string)
-	if u.DateDeleted != nil {
+	if o.DateDeleted != nil {
 		
-		*DateDeleted = timeutil.Strftime(u.DateDeleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateDeleted = timeutil.Strftime(o.DateDeleted, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateDeleted = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -91,23 +89,71 @@ func (u *Conversationmessagingchannel) MarshalJSON() ([]byte, error) {
 		DateDeleted *string `json:"dateDeleted,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Platform: u.Platform,
+		Platform: o.Platform,
 		
-		MessageId: u.MessageId,
+		MessageId: o.MessageId,
 		
-		To: u.To,
+		To: o.To,
 		
-		From: u.From,
+		From: o.From,
 		
 		Time: Time,
 		
 		DateModified: DateModified,
 		
 		DateDeleted: DateDeleted,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationmessagingchannel) UnmarshalJSON(b []byte) error {
+	var ConversationmessagingchannelMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationmessagingchannelMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationmessagingchannelMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Platform, ok := ConversationmessagingchannelMap["platform"].(string); ok {
+		o.Platform = &Platform
+	}
+	
+	if MessageId, ok := ConversationmessagingchannelMap["messageId"].(string); ok {
+		o.MessageId = &MessageId
+	}
+	
+	if To, ok := ConversationmessagingchannelMap["to"].(map[string]interface{}); ok {
+		ToString, _ := json.Marshal(To)
+		json.Unmarshal(ToString, &o.To)
+	}
+	
+	if From, ok := ConversationmessagingchannelMap["from"].(map[string]interface{}); ok {
+		FromString, _ := json.Marshal(From)
+		json.Unmarshal(FromString, &o.From)
+	}
+	
+	if timeString, ok := ConversationmessagingchannelMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+	if dateModifiedString, ok := ConversationmessagingchannelMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if dateDeletedString, ok := ConversationmessagingchannelMap["dateDeleted"].(string); ok {
+		DateDeleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateDeletedString)
+		o.DateDeleted = &DateDeleted
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

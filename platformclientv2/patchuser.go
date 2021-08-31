@@ -17,24 +17,41 @@ type Patchuser struct {
 
 }
 
-func (u *Patchuser) MarshalJSON() ([]byte, error) {
+func (o *Patchuser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Patchuser
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
 		AcdAutoAnswer *bool `json:"acdAutoAnswer,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		AcdAutoAnswer: u.AcdAutoAnswer,
-		Alias:    (*Alias)(u),
+		AcdAutoAnswer: o.AcdAutoAnswer,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Patchuser) UnmarshalJSON(b []byte) error {
+	var PatchuserMap map[string]interface{}
+	err := json.Unmarshal(b, &PatchuserMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := PatchuserMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if AcdAutoAnswer, ok := PatchuserMap["acdAutoAnswer"].(bool); ok {
+		o.AcdAutoAnswer = &AcdAutoAnswer
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

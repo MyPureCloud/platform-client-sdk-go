@@ -29,13 +29,11 @@ type Textbotflowlaunchrequest struct {
 
 }
 
-func (u *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
+func (o *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Textbotflowlaunchrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Flow *Textbotflow `json:"flow,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Textbotflowlaunchrequest) MarshalJSON() ([]byte, error) {
 		Channel *Textbotchannel `json:"channel,omitempty"`
 		*Alias
 	}{ 
-		Flow: u.Flow,
+		Flow: o.Flow,
 		
-		ExternalSessionId: u.ExternalSessionId,
+		ExternalSessionId: o.ExternalSessionId,
 		
-		ConversationId: u.ConversationId,
+		ConversationId: o.ConversationId,
 		
-		InputData: u.InputData,
+		InputData: o.InputData,
 		
-		Channel: u.Channel,
-		Alias:    (*Alias)(u),
+		Channel: o.Channel,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Textbotflowlaunchrequest) UnmarshalJSON(b []byte) error {
+	var TextbotflowlaunchrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &TextbotflowlaunchrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Flow, ok := TextbotflowlaunchrequestMap["flow"].(map[string]interface{}); ok {
+		FlowString, _ := json.Marshal(Flow)
+		json.Unmarshal(FlowString, &o.Flow)
+	}
+	
+	if ExternalSessionId, ok := TextbotflowlaunchrequestMap["externalSessionId"].(string); ok {
+		o.ExternalSessionId = &ExternalSessionId
+	}
+	
+	if ConversationId, ok := TextbotflowlaunchrequestMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
+	}
+	
+	if InputData, ok := TextbotflowlaunchrequestMap["inputData"].(map[string]interface{}); ok {
+		InputDataString, _ := json.Marshal(InputData)
+		json.Unmarshal(InputDataString, &o.InputData)
+	}
+	
+	if Channel, ok := TextbotflowlaunchrequestMap["channel"].(map[string]interface{}); ok {
+		ChannelString, _ := json.Marshal(Channel)
+		json.Unmarshal(ChannelString, &o.Channel)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

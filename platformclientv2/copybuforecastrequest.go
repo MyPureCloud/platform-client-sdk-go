@@ -18,31 +18,49 @@ type Copybuforecastrequest struct {
 
 }
 
-func (u *Copybuforecastrequest) MarshalJSON() ([]byte, error) {
+func (o *Copybuforecastrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Copybuforecastrequest
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Description *string `json:"description,omitempty"`
 		
 		WeekDate *string `json:"weekDate,omitempty"`
 		*Alias
 	}{ 
-		Description: u.Description,
+		Description: o.Description,
 		
 		WeekDate: WeekDate,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Copybuforecastrequest) UnmarshalJSON(b []byte) error {
+	var CopybuforecastrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &CopybuforecastrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Description, ok := CopybuforecastrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if weekDateString, ok := CopybuforecastrequestMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

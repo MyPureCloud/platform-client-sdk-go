@@ -41,13 +41,11 @@ type Facebookintegrationrequest struct {
 
 }
 
-func (u *Facebookintegrationrequest) MarshalJSON() ([]byte, error) {
+func (o *Facebookintegrationrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Facebookintegrationrequest
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -66,23 +64,66 @@ func (u *Facebookintegrationrequest) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PageAccessToken: u.PageAccessToken,
+		PageAccessToken: o.PageAccessToken,
 		
-		UserAccessToken: u.UserAccessToken,
+		UserAccessToken: o.UserAccessToken,
 		
-		PageId: u.PageId,
+		PageId: o.PageId,
 		
-		AppId: u.AppId,
+		AppId: o.AppId,
 		
-		AppSecret: u.AppSecret,
+		AppSecret: o.AppSecret,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Facebookintegrationrequest) UnmarshalJSON(b []byte) error {
+	var FacebookintegrationrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &FacebookintegrationrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FacebookintegrationrequestMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FacebookintegrationrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PageAccessToken, ok := FacebookintegrationrequestMap["pageAccessToken"].(string); ok {
+		o.PageAccessToken = &PageAccessToken
+	}
+	
+	if UserAccessToken, ok := FacebookintegrationrequestMap["userAccessToken"].(string); ok {
+		o.UserAccessToken = &UserAccessToken
+	}
+	
+	if PageId, ok := FacebookintegrationrequestMap["pageId"].(string); ok {
+		o.PageId = &PageId
+	}
+	
+	if AppId, ok := FacebookintegrationrequestMap["appId"].(string); ok {
+		o.AppId = &AppId
+	}
+	
+	if AppSecret, ok := FacebookintegrationrequestMap["appSecret"].(string); ok {
+		o.AppSecret = &AppSecret
+	}
+	
+	if SelfUri, ok := FacebookintegrationrequestMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

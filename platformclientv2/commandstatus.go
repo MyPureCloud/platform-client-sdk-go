@@ -42,21 +42,19 @@ type Commandstatus struct {
 
 }
 
-func (u *Commandstatus) MarshalJSON() ([]byte, error) {
+func (o *Commandstatus) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Commandstatus
-
 	
 	Expiration := new(string)
-	if u.Expiration != nil {
+	if o.Expiration != nil {
 		
-		*Expiration = timeutil.Strftime(u.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Expiration = timeutil.Strftime(o.Expiration, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Expiration = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -75,23 +73,68 @@ func (u *Commandstatus) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		Expiration: Expiration,
 		
-		UserId: u.UserId,
+		UserId: o.UserId,
 		
-		StatusCode: u.StatusCode,
+		StatusCode: o.StatusCode,
 		
-		CommandType: u.CommandType,
+		CommandType: o.CommandType,
 		
-		Document: u.Document,
+		Document: o.Document,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Commandstatus) UnmarshalJSON(b []byte) error {
+	var CommandstatusMap map[string]interface{}
+	err := json.Unmarshal(b, &CommandstatusMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CommandstatusMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := CommandstatusMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if expirationString, ok := CommandstatusMap["expiration"].(string); ok {
+		Expiration, _ := time.Parse("2006-01-02T15:04:05.999999Z", expirationString)
+		o.Expiration = &Expiration
+	}
+	
+	if UserId, ok := CommandstatusMap["userId"].(string); ok {
+		o.UserId = &UserId
+	}
+	
+	if StatusCode, ok := CommandstatusMap["statusCode"].(string); ok {
+		o.StatusCode = &StatusCode
+	}
+	
+	if CommandType, ok := CommandstatusMap["commandType"].(string); ok {
+		o.CommandType = &CommandType
+	}
+	
+	if Document, ok := CommandstatusMap["document"].(map[string]interface{}); ok {
+		DocumentString, _ := json.Marshal(Document)
+		json.Unmarshal(DocumentString, &o.Document)
+	}
+	
+	if SelfUri, ok := CommandstatusMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

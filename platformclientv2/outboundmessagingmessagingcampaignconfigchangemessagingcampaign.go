@@ -78,29 +78,27 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 
 }
 
-func (u *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) MarshalJSON() ([]byte, error) {
+func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Outboundmessagingmessagingcampaignconfigchangemessagingcampaign
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -137,41 +135,133 @@ func (u *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		Errors *[]Outboundmessagingmessagingcampaignconfigchangeerrordetail `json:"errors,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
-		CampaignStatus: u.CampaignStatus,
+		CampaignStatus: o.CampaignStatus,
 		
-		CallableTimeSet: u.CallableTimeSet,
+		CallableTimeSet: o.CallableTimeSet,
 		
-		ContactList: u.ContactList,
+		ContactList: o.ContactList,
 		
-		DncLists: u.DncLists,
+		DncLists: o.DncLists,
 		
-		ContactListFilters: u.ContactListFilters,
+		ContactListFilters: o.ContactListFilters,
 		
-		AlwaysRunning: u.AlwaysRunning,
+		AlwaysRunning: o.AlwaysRunning,
 		
-		ContactSorts: u.ContactSorts,
+		ContactSorts: o.ContactSorts,
 		
-		MessagesPerMinute: u.MessagesPerMinute,
+		MessagesPerMinute: o.MessagesPerMinute,
 		
-		SmsConfig: u.SmsConfig,
+		SmsConfig: o.SmsConfig,
 		
-		EmailConfig: u.EmailConfig,
+		EmailConfig: o.EmailConfig,
 		
-		Errors: u.Errors,
-		Alias:    (*Alias)(u),
+		Errors: o.Errors,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) UnmarshalJSON(b []byte) error {
+	var OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap map[string]interface{}
+	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Division, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Name, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if CampaignStatus, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["campaignStatus"].(string); ok {
+		o.CampaignStatus = &CampaignStatus
+	}
+	
+	if CallableTimeSet, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["callableTimeSet"].(map[string]interface{}); ok {
+		CallableTimeSetString, _ := json.Marshal(CallableTimeSet)
+		json.Unmarshal(CallableTimeSetString, &o.CallableTimeSet)
+	}
+	
+	if ContactList, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if DncLists, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dncLists"].([]interface{}); ok {
+		DncListsString, _ := json.Marshal(DncLists)
+		json.Unmarshal(DncListsString, &o.DncLists)
+	}
+	
+	if ContactListFilters, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["contactListFilters"].([]interface{}); ok {
+		ContactListFiltersString, _ := json.Marshal(ContactListFilters)
+		json.Unmarshal(ContactListFiltersString, &o.ContactListFilters)
+	}
+	
+	if AlwaysRunning, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["alwaysRunning"].(bool); ok {
+		o.AlwaysRunning = &AlwaysRunning
+	}
+	
+	if ContactSorts, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["contactSorts"].([]interface{}); ok {
+		ContactSortsString, _ := json.Marshal(ContactSorts)
+		json.Unmarshal(ContactSortsString, &o.ContactSorts)
+	}
+	
+	if MessagesPerMinute, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["messagesPerMinute"].(float64); ok {
+		MessagesPerMinuteInt := int(MessagesPerMinute)
+		o.MessagesPerMinute = &MessagesPerMinuteInt
+	}
+	
+	if SmsConfig, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["smsConfig"].(map[string]interface{}); ok {
+		SmsConfigString, _ := json.Marshal(SmsConfig)
+		json.Unmarshal(SmsConfigString, &o.SmsConfig)
+	}
+	
+	if EmailConfig, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["emailConfig"].(map[string]interface{}); ok {
+		EmailConfigString, _ := json.Marshal(EmailConfig)
+		json.Unmarshal(EmailConfigString, &o.EmailConfig)
+	}
+	
+	if Errors, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["errors"].([]interface{}); ok {
+		ErrorsString, _ := json.Marshal(Errors)
+		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

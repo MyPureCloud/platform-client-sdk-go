@@ -29,13 +29,11 @@ type Subjectdivisiongrants struct {
 
 }
 
-func (u *Subjectdivisiongrants) MarshalJSON() ([]byte, error) {
+func (o *Subjectdivisiongrants) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Subjectdivisiongrants
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Subjectdivisiongrants) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Divisions: u.Divisions,
+		Divisions: o.Divisions,
 		
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Subjectdivisiongrants) UnmarshalJSON(b []byte) error {
+	var SubjectdivisiongrantsMap map[string]interface{}
+	err := json.Unmarshal(b, &SubjectdivisiongrantsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SubjectdivisiongrantsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SubjectdivisiongrantsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Divisions, ok := SubjectdivisiongrantsMap["divisions"].([]interface{}); ok {
+		DivisionsString, _ := json.Marshal(Divisions)
+		json.Unmarshal(DivisionsString, &o.Divisions)
+	}
+	
+	if VarType, ok := SubjectdivisiongrantsMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if SelfUri, ok := SubjectdivisiongrantsMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

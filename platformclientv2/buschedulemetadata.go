@@ -50,20 +50,18 @@ type Buschedulemetadata struct {
 
 }
 
-func (u *Buschedulemetadata) MarshalJSON() ([]byte, error) {
+func (o *Buschedulemetadata) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buschedulemetadata
-
 	
 	WeekDate := new(string)
-	if u.WeekDate != nil {
-		*WeekDate = timeutil.Strftime(u.WeekDate, "%Y-%m-%d")
+	if o.WeekDate != nil {
+		*WeekDate = timeutil.Strftime(o.WeekDate, "%Y-%m-%d")
 	} else {
 		WeekDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -86,27 +84,84 @@ func (u *Buschedulemetadata) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
 		WeekDate: WeekDate,
 		
-		WeekCount: u.WeekCount,
+		WeekCount: o.WeekCount,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Published: u.Published,
+		Published: o.Published,
 		
-		ShortTermForecast: u.ShortTermForecast,
+		ShortTermForecast: o.ShortTermForecast,
 		
-		GenerationResults: u.GenerationResults,
+		GenerationResults: o.GenerationResults,
 		
-		Metadata: u.Metadata,
+		Metadata: o.Metadata,
 		
-		ManagementUnits: u.ManagementUnits,
+		ManagementUnits: o.ManagementUnits,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buschedulemetadata) UnmarshalJSON(b []byte) error {
+	var BuschedulemetadataMap map[string]interface{}
+	err := json.Unmarshal(b, &BuschedulemetadataMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := BuschedulemetadataMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if weekDateString, ok := BuschedulemetadataMap["weekDate"].(string); ok {
+		WeekDate, _ := time.Parse("2006-01-02", weekDateString)
+		o.WeekDate = &WeekDate
+	}
+	
+	if WeekCount, ok := BuschedulemetadataMap["weekCount"].(float64); ok {
+		WeekCountInt := int(WeekCount)
+		o.WeekCount = &WeekCountInt
+	}
+	
+	if Description, ok := BuschedulemetadataMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Published, ok := BuschedulemetadataMap["published"].(bool); ok {
+		o.Published = &Published
+	}
+	
+	if ShortTermForecast, ok := BuschedulemetadataMap["shortTermForecast"].(map[string]interface{}); ok {
+		ShortTermForecastString, _ := json.Marshal(ShortTermForecast)
+		json.Unmarshal(ShortTermForecastString, &o.ShortTermForecast)
+	}
+	
+	if GenerationResults, ok := BuschedulemetadataMap["generationResults"].(map[string]interface{}); ok {
+		GenerationResultsString, _ := json.Marshal(GenerationResults)
+		json.Unmarshal(GenerationResultsString, &o.GenerationResults)
+	}
+	
+	if Metadata, ok := BuschedulemetadataMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
+	}
+	
+	if ManagementUnits, ok := BuschedulemetadataMap["managementUnits"].([]interface{}); ok {
+		ManagementUnitsString, _ := json.Marshal(ManagementUnits)
+		json.Unmarshal(ManagementUnitsString, &o.ManagementUnits)
+	}
+	
+	if SelfUri, ok := BuschedulemetadataMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

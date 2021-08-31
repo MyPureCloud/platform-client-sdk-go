@@ -21,13 +21,11 @@ type Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody struct {
 
 }
 
-func (u *Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody) MarshalJSON() ([]byte, error) {
+func (o *Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody) Mar
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Configuration: u.Configuration,
+		Configuration: o.Configuration,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Webdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbody) UnmarshalJSON(b []byte) error {
+	var WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap map[string]interface{}
+	err := json.Unmarshal(b, &WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Configuration, ok := WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap["configuration"].(map[string]interface{}); ok {
+		ConfigurationString, _ := json.Marshal(Configuration)
+		json.Unmarshal(ConfigurationString, &o.Configuration)
+	}
+	
+	if Status, ok := WebdeploymentsdeploymenttopicwebmessagingdeploymentchangeeventbodyMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

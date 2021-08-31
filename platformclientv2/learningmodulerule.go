@@ -25,13 +25,11 @@ type Learningmodulerule struct {
 
 }
 
-func (u *Learningmodulerule) MarshalJSON() ([]byte, error) {
+func (o *Learningmodulerule) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Learningmodulerule
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Learningmodulerule) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		IsActive: u.IsActive,
+		IsActive: o.IsActive,
 		
-		Parts: u.Parts,
+		Parts: o.Parts,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Learningmodulerule) UnmarshalJSON(b []byte) error {
+	var LearningmoduleruleMap map[string]interface{}
+	err := json.Unmarshal(b, &LearningmoduleruleMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LearningmoduleruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if IsActive, ok := LearningmoduleruleMap["isActive"].(bool); ok {
+		o.IsActive = &IsActive
+	}
+	
+	if Parts, ok := LearningmoduleruleMap["parts"].([]interface{}); ok {
+		PartsString, _ := json.Marshal(Parts)
+		json.Unmarshal(PartsString, &o.Parts)
+	}
+	
+	if SelfUri, ok := LearningmoduleruleMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

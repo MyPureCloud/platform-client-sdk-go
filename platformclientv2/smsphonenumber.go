@@ -90,53 +90,51 @@ type Smsphonenumber struct {
 
 }
 
-func (u *Smsphonenumber) MarshalJSON() ([]byte, error) {
+func (o *Smsphonenumber) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Smsphonenumber
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
 	PurchaseDate := new(string)
-	if u.PurchaseDate != nil {
+	if o.PurchaseDate != nil {
 		
-		*PurchaseDate = timeutil.Strftime(u.PurchaseDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*PurchaseDate = timeutil.Strftime(o.PurchaseDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		PurchaseDate = nil
 	}
 	
 	CancellationDate := new(string)
-	if u.CancellationDate != nil {
+	if o.CancellationDate != nil {
 		
-		*CancellationDate = timeutil.Strftime(u.CancellationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CancellationDate = timeutil.Strftime(o.CancellationDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CancellationDate = nil
 	}
 	
 	RenewalDate := new(string)
-	if u.RenewalDate != nil {
+	if o.RenewalDate != nil {
 		
-		*RenewalDate = timeutil.Strftime(u.RenewalDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*RenewalDate = timeutil.Strftime(o.RenewalDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		RenewalDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -179,31 +177,31 @@ func (u *Smsphonenumber) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		PhoneNumber: u.PhoneNumber,
+		PhoneNumber: o.PhoneNumber,
 		
-		PhoneNumberType: u.PhoneNumberType,
+		PhoneNumberType: o.PhoneNumberType,
 		
-		ProvisionedThroughPureCloud: u.ProvisionedThroughPureCloud,
+		ProvisionedThroughPureCloud: o.ProvisionedThroughPureCloud,
 		
-		PhoneNumberStatus: u.PhoneNumberStatus,
+		PhoneNumberStatus: o.PhoneNumberStatus,
 		
-		Capabilities: u.Capabilities,
+		Capabilities: o.Capabilities,
 		
-		CountryCode: u.CountryCode,
+		CountryCode: o.CountryCode,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		PurchaseDate: PurchaseDate,
 		
@@ -211,15 +209,116 @@ func (u *Smsphonenumber) MarshalJSON() ([]byte, error) {
 		
 		RenewalDate: RenewalDate,
 		
-		AutoRenewable: u.AutoRenewable,
+		AutoRenewable: o.AutoRenewable,
 		
-		AddressId: u.AddressId,
+		AddressId: o.AddressId,
 		
-		ShortCodeBillingType: u.ShortCodeBillingType,
+		ShortCodeBillingType: o.ShortCodeBillingType,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
+	var SmsphonenumberMap map[string]interface{}
+	err := json.Unmarshal(b, &SmsphonenumberMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SmsphonenumberMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SmsphonenumberMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if PhoneNumber, ok := SmsphonenumberMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
+	}
+	
+	if PhoneNumberType, ok := SmsphonenumberMap["phoneNumberType"].(string); ok {
+		o.PhoneNumberType = &PhoneNumberType
+	}
+	
+	if ProvisionedThroughPureCloud, ok := SmsphonenumberMap["provisionedThroughPureCloud"].(bool); ok {
+		o.ProvisionedThroughPureCloud = &ProvisionedThroughPureCloud
+	}
+	
+	if PhoneNumberStatus, ok := SmsphonenumberMap["phoneNumberStatus"].(string); ok {
+		o.PhoneNumberStatus = &PhoneNumberStatus
+	}
+	
+	if Capabilities, ok := SmsphonenumberMap["capabilities"].([]interface{}); ok {
+		CapabilitiesString, _ := json.Marshal(Capabilities)
+		json.Unmarshal(CapabilitiesString, &o.Capabilities)
+	}
+	
+	if CountryCode, ok := SmsphonenumberMap["countryCode"].(string); ok {
+		o.CountryCode = &CountryCode
+	}
+	
+	if dateCreatedString, ok := SmsphonenumberMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := SmsphonenumberMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := SmsphonenumberMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ModifiedBy, ok := SmsphonenumberMap["modifiedBy"].(map[string]interface{}); ok {
+		ModifiedByString, _ := json.Marshal(ModifiedBy)
+		json.Unmarshal(ModifiedByString, &o.ModifiedBy)
+	}
+	
+	if Version, ok := SmsphonenumberMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if purchaseDateString, ok := SmsphonenumberMap["purchaseDate"].(string); ok {
+		PurchaseDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", purchaseDateString)
+		o.PurchaseDate = &PurchaseDate
+	}
+	
+	if cancellationDateString, ok := SmsphonenumberMap["cancellationDate"].(string); ok {
+		CancellationDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", cancellationDateString)
+		o.CancellationDate = &CancellationDate
+	}
+	
+	if renewalDateString, ok := SmsphonenumberMap["renewalDate"].(string); ok {
+		RenewalDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", renewalDateString)
+		o.RenewalDate = &RenewalDate
+	}
+	
+	if AutoRenewable, ok := SmsphonenumberMap["autoRenewable"].(string); ok {
+		o.AutoRenewable = &AutoRenewable
+	}
+	
+	if AddressId, ok := SmsphonenumberMap["addressId"].(map[string]interface{}); ok {
+		AddressIdString, _ := json.Marshal(AddressId)
+		json.Unmarshal(AddressIdString, &o.AddressId)
+	}
+	
+	if ShortCodeBillingType, ok := SmsphonenumberMap["shortCodeBillingType"].(string); ok {
+		o.ShortCodeBillingType = &ShortCodeBillingType
+	}
+	
+	if SelfUri, ok := SmsphonenumberMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

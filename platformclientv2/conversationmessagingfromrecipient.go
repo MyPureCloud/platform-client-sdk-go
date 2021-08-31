@@ -37,13 +37,11 @@ type Conversationmessagingfromrecipient struct {
 
 }
 
-func (u *Conversationmessagingfromrecipient) MarshalJSON() ([]byte, error) {
+func (o *Conversationmessagingfromrecipient) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationmessagingfromrecipient
-
 	
-
 	return json.Marshal(&struct { 
 		Nickname *string `json:"nickname,omitempty"`
 		
@@ -60,21 +58,60 @@ func (u *Conversationmessagingfromrecipient) MarshalJSON() ([]byte, error) {
 		Email *string `json:"email,omitempty"`
 		*Alias
 	}{ 
-		Nickname: u.Nickname,
+		Nickname: o.Nickname,
 		
-		Id: u.Id,
+		Id: o.Id,
 		
-		IdType: u.IdType,
+		IdType: o.IdType,
 		
-		Image: u.Image,
+		Image: o.Image,
 		
-		FirstName: u.FirstName,
+		FirstName: o.FirstName,
 		
-		LastName: u.LastName,
+		LastName: o.LastName,
 		
-		Email: u.Email,
-		Alias:    (*Alias)(u),
+		Email: o.Email,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationmessagingfromrecipient) UnmarshalJSON(b []byte) error {
+	var ConversationmessagingfromrecipientMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationmessagingfromrecipientMap)
+	if err != nil {
+		return err
+	}
+	
+	if Nickname, ok := ConversationmessagingfromrecipientMap["nickname"].(string); ok {
+		o.Nickname = &Nickname
+	}
+	
+	if Id, ok := ConversationmessagingfromrecipientMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if IdType, ok := ConversationmessagingfromrecipientMap["idType"].(string); ok {
+		o.IdType = &IdType
+	}
+	
+	if Image, ok := ConversationmessagingfromrecipientMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if FirstName, ok := ConversationmessagingfromrecipientMap["firstName"].(string); ok {
+		o.FirstName = &FirstName
+	}
+	
+	if LastName, ok := ConversationmessagingfromrecipientMap["lastName"].(string); ok {
+		o.LastName = &LastName
+	}
+	
+	if Email, ok := ConversationmessagingfromrecipientMap["email"].(string); ok {
+		o.Email = &Email
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

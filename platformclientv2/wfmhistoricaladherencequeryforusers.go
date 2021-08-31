@@ -30,29 +30,27 @@ type Wfmhistoricaladherencequeryforusers struct {
 
 }
 
-func (u *Wfmhistoricaladherencequeryforusers) MarshalJSON() ([]byte, error) {
+func (o *Wfmhistoricaladherencequeryforusers) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Wfmhistoricaladherencequeryforusers
-
 	
 	StartDate := new(string)
-	if u.StartDate != nil {
+	if o.StartDate != nil {
 		
-		*StartDate = timeutil.Strftime(u.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*StartDate = timeutil.Strftime(o.StartDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		StartDate = nil
 	}
 	
 	EndDate := new(string)
-	if u.EndDate != nil {
+	if o.EndDate != nil {
 		
-		*EndDate = timeutil.Strftime(u.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*EndDate = timeutil.Strftime(o.EndDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		StartDate *string `json:"startDate,omitempty"`
 		
@@ -69,13 +67,47 @@ func (u *Wfmhistoricaladherencequeryforusers) MarshalJSON() ([]byte, error) {
 		
 		EndDate: EndDate,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		UserIds: u.UserIds,
+		UserIds: o.UserIds,
 		
-		IncludeExceptions: u.IncludeExceptions,
-		Alias:    (*Alias)(u),
+		IncludeExceptions: o.IncludeExceptions,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Wfmhistoricaladherencequeryforusers) UnmarshalJSON(b []byte) error {
+	var WfmhistoricaladherencequeryforusersMap map[string]interface{}
+	err := json.Unmarshal(b, &WfmhistoricaladherencequeryforusersMap)
+	if err != nil {
+		return err
+	}
+	
+	if startDateString, ok := WfmhistoricaladherencequeryforusersMap["startDate"].(string); ok {
+		StartDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", startDateString)
+		o.StartDate = &StartDate
+	}
+	
+	if endDateString, ok := WfmhistoricaladherencequeryforusersMap["endDate"].(string); ok {
+		EndDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", endDateString)
+		o.EndDate = &EndDate
+	}
+	
+	if TimeZone, ok := WfmhistoricaladherencequeryforusersMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if UserIds, ok := WfmhistoricaladherencequeryforusersMap["userIds"].([]interface{}); ok {
+		UserIdsString, _ := json.Marshal(UserIds)
+		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if IncludeExceptions, ok := WfmhistoricaladherencequeryforusersMap["includeExceptions"].(bool); ok {
+		o.IncludeExceptions = &IncludeExceptions
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

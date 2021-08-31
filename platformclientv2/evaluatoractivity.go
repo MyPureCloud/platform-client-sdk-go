@@ -53,13 +53,11 @@ type Evaluatoractivity struct {
 
 }
 
-func (u *Evaluatoractivity) MarshalJSON() ([]byte, error) {
+func (o *Evaluatoractivity) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Evaluatoractivity
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -84,29 +82,92 @@ func (u *Evaluatoractivity) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Evaluator: u.Evaluator,
+		Evaluator: o.Evaluator,
 		
-		NumEvaluationsAssigned: u.NumEvaluationsAssigned,
+		NumEvaluationsAssigned: o.NumEvaluationsAssigned,
 		
-		NumEvaluationsStarted: u.NumEvaluationsStarted,
+		NumEvaluationsStarted: o.NumEvaluationsStarted,
 		
-		NumEvaluationsCompleted: u.NumEvaluationsCompleted,
+		NumEvaluationsCompleted: o.NumEvaluationsCompleted,
 		
-		NumCalibrationsAssigned: u.NumCalibrationsAssigned,
+		NumCalibrationsAssigned: o.NumCalibrationsAssigned,
 		
-		NumCalibrationsStarted: u.NumCalibrationsStarted,
+		NumCalibrationsStarted: o.NumCalibrationsStarted,
 		
-		NumCalibrationsCompleted: u.NumCalibrationsCompleted,
+		NumCalibrationsCompleted: o.NumCalibrationsCompleted,
 		
-		NumEvaluationsWithoutViewPermission: u.NumEvaluationsWithoutViewPermission,
+		NumEvaluationsWithoutViewPermission: o.NumEvaluationsWithoutViewPermission,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Evaluatoractivity) UnmarshalJSON(b []byte) error {
+	var EvaluatoractivityMap map[string]interface{}
+	err := json.Unmarshal(b, &EvaluatoractivityMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := EvaluatoractivityMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := EvaluatoractivityMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Evaluator, ok := EvaluatoractivityMap["evaluator"].(map[string]interface{}); ok {
+		EvaluatorString, _ := json.Marshal(Evaluator)
+		json.Unmarshal(EvaluatorString, &o.Evaluator)
+	}
+	
+	if NumEvaluationsAssigned, ok := EvaluatoractivityMap["numEvaluationsAssigned"].(float64); ok {
+		NumEvaluationsAssignedInt := int(NumEvaluationsAssigned)
+		o.NumEvaluationsAssigned = &NumEvaluationsAssignedInt
+	}
+	
+	if NumEvaluationsStarted, ok := EvaluatoractivityMap["numEvaluationsStarted"].(float64); ok {
+		NumEvaluationsStartedInt := int(NumEvaluationsStarted)
+		o.NumEvaluationsStarted = &NumEvaluationsStartedInt
+	}
+	
+	if NumEvaluationsCompleted, ok := EvaluatoractivityMap["numEvaluationsCompleted"].(float64); ok {
+		NumEvaluationsCompletedInt := int(NumEvaluationsCompleted)
+		o.NumEvaluationsCompleted = &NumEvaluationsCompletedInt
+	}
+	
+	if NumCalibrationsAssigned, ok := EvaluatoractivityMap["numCalibrationsAssigned"].(float64); ok {
+		NumCalibrationsAssignedInt := int(NumCalibrationsAssigned)
+		o.NumCalibrationsAssigned = &NumCalibrationsAssignedInt
+	}
+	
+	if NumCalibrationsStarted, ok := EvaluatoractivityMap["numCalibrationsStarted"].(float64); ok {
+		NumCalibrationsStartedInt := int(NumCalibrationsStarted)
+		o.NumCalibrationsStarted = &NumCalibrationsStartedInt
+	}
+	
+	if NumCalibrationsCompleted, ok := EvaluatoractivityMap["numCalibrationsCompleted"].(float64); ok {
+		NumCalibrationsCompletedInt := int(NumCalibrationsCompleted)
+		o.NumCalibrationsCompleted = &NumCalibrationsCompletedInt
+	}
+	
+	if NumEvaluationsWithoutViewPermission, ok := EvaluatoractivityMap["numEvaluationsWithoutViewPermission"].(float64); ok {
+		NumEvaluationsWithoutViewPermissionInt := int(NumEvaluationsWithoutViewPermission)
+		o.NumEvaluationsWithoutViewPermission = &NumEvaluationsWithoutViewPermissionInt
+	}
+	
+	if SelfUri, ok := EvaluatoractivityMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

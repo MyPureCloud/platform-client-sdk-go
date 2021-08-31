@@ -33,13 +33,11 @@ type Authzdivision struct {
 
 }
 
-func (u *Authzdivision) MarshalJSON() ([]byte, error) {
+func (o *Authzdivision) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Authzdivision
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,55 @@ func (u *Authzdivision) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		HomeDivision: u.HomeDivision,
+		HomeDivision: o.HomeDivision,
 		
-		ObjectCounts: u.ObjectCounts,
+		ObjectCounts: o.ObjectCounts,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Authzdivision) UnmarshalJSON(b []byte) error {
+	var AuthzdivisionMap map[string]interface{}
+	err := json.Unmarshal(b, &AuthzdivisionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := AuthzdivisionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := AuthzdivisionMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := AuthzdivisionMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if HomeDivision, ok := AuthzdivisionMap["homeDivision"].(bool); ok {
+		o.HomeDivision = &HomeDivision
+	}
+	
+	if ObjectCounts, ok := AuthzdivisionMap["objectCounts"].(map[string]interface{}); ok {
+		ObjectCountsString, _ := json.Marshal(ObjectCounts)
+		json.Unmarshal(ObjectCountsString, &o.ObjectCounts)
+	}
+	
+	if SelfUri, ok := AuthzdivisionMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -29,13 +29,11 @@ type Flowmilestone struct {
 
 }
 
-func (u *Flowmilestone) MarshalJSON() ([]byte, error) {
+func (o *Flowmilestone) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Flowmilestone
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -48,17 +46,49 @@ func (u *Flowmilestone) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Division: u.Division,
+		Division: o.Division,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Flowmilestone) UnmarshalJSON(b []byte) error {
+	var FlowmilestoneMap map[string]interface{}
+	err := json.Unmarshal(b, &FlowmilestoneMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := FlowmilestoneMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := FlowmilestoneMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Division, ok := FlowmilestoneMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Description, ok := FlowmilestoneMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if SelfUri, ok := FlowmilestoneMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

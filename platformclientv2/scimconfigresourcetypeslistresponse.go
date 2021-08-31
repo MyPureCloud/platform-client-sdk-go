@@ -29,13 +29,11 @@ type Scimconfigresourcetypeslistresponse struct {
 
 }
 
-func (u *Scimconfigresourcetypeslistresponse) MarshalJSON() ([]byte, error) {
+func (o *Scimconfigresourcetypeslistresponse) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scimconfigresourcetypeslistresponse
-
 	
-
 	return json.Marshal(&struct { 
 		Schemas *[]string `json:"schemas,omitempty"`
 		
@@ -48,17 +46,53 @@ func (u *Scimconfigresourcetypeslistresponse) MarshalJSON() ([]byte, error) {
 		Resources *[]Scimconfigresourcetype `json:"Resources,omitempty"`
 		*Alias
 	}{ 
-		Schemas: u.Schemas,
+		Schemas: o.Schemas,
 		
-		TotalResults: u.TotalResults,
+		TotalResults: o.TotalResults,
 		
-		StartIndex: u.StartIndex,
+		StartIndex: o.StartIndex,
 		
-		ItemsPerPage: u.ItemsPerPage,
+		ItemsPerPage: o.ItemsPerPage,
 		
-		Resources: u.Resources,
-		Alias:    (*Alias)(u),
+		Resources: o.Resources,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scimconfigresourcetypeslistresponse) UnmarshalJSON(b []byte) error {
+	var ScimconfigresourcetypeslistresponseMap map[string]interface{}
+	err := json.Unmarshal(b, &ScimconfigresourcetypeslistresponseMap)
+	if err != nil {
+		return err
+	}
+	
+	if Schemas, ok := ScimconfigresourcetypeslistresponseMap["schemas"].([]interface{}); ok {
+		SchemasString, _ := json.Marshal(Schemas)
+		json.Unmarshal(SchemasString, &o.Schemas)
+	}
+	
+	if TotalResults, ok := ScimconfigresourcetypeslistresponseMap["totalResults"].(float64); ok {
+		TotalResultsInt := int(TotalResults)
+		o.TotalResults = &TotalResultsInt
+	}
+	
+	if StartIndex, ok := ScimconfigresourcetypeslistresponseMap["startIndex"].(float64); ok {
+		StartIndexInt := int(StartIndex)
+		o.StartIndex = &StartIndexInt
+	}
+	
+	if ItemsPerPage, ok := ScimconfigresourcetypeslistresponseMap["itemsPerPage"].(float64); ok {
+		ItemsPerPageInt := int(ItemsPerPage)
+		o.ItemsPerPage = &ItemsPerPageInt
+	}
+	
+	if Resources, ok := ScimconfigresourcetypeslistresponseMap["Resources"].([]interface{}); ok {
+		ResourcesString, _ := json.Marshal(Resources)
+		json.Unmarshal(ResourcesString, &o.Resources)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

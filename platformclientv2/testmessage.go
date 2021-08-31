@@ -38,21 +38,19 @@ type Testmessage struct {
 
 }
 
-func (u *Testmessage) MarshalJSON() ([]byte, error) {
+func (o *Testmessage) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Testmessage
-
 	
 	Time := new(string)
-	if u.Time != nil {
+	if o.Time != nil {
 		
-		*Time = timeutil.Strftime(u.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*Time = timeutil.Strftime(o.Time, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		Time = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -69,21 +67,63 @@ func (u *Testmessage) MarshalJSON() ([]byte, error) {
 		Time *string `json:"time,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		To: u.To,
+		To: o.To,
 		
-		From: u.From,
+		From: o.From,
 		
-		Subject: u.Subject,
+		Subject: o.Subject,
 		
-		TextBody: u.TextBody,
+		TextBody: o.TextBody,
 		
-		HtmlBody: u.HtmlBody,
+		HtmlBody: o.HtmlBody,
 		
 		Time: Time,
-		Alias:    (*Alias)(u),
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Testmessage) UnmarshalJSON(b []byte) error {
+	var TestmessageMap map[string]interface{}
+	err := json.Unmarshal(b, &TestmessageMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := TestmessageMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if To, ok := TestmessageMap["to"].([]interface{}); ok {
+		ToString, _ := json.Marshal(To)
+		json.Unmarshal(ToString, &o.To)
+	}
+	
+	if From, ok := TestmessageMap["from"].(map[string]interface{}); ok {
+		FromString, _ := json.Marshal(From)
+		json.Unmarshal(FromString, &o.From)
+	}
+	
+	if Subject, ok := TestmessageMap["subject"].(string); ok {
+		o.Subject = &Subject
+	}
+	
+	if TextBody, ok := TestmessageMap["textBody"].(string); ok {
+		o.TextBody = &TextBody
+	}
+	
+	if HtmlBody, ok := TestmessageMap["htmlBody"].(string); ok {
+		o.HtmlBody = &HtmlBody
+	}
+	
+	if timeString, ok := TestmessageMap["time"].(string); ok {
+		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
+		o.Time = &Time
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

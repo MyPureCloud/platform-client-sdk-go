@@ -21,13 +21,11 @@ type Buforecasttimeseriesresult struct {
 
 }
 
-func (u *Buforecasttimeseriesresult) MarshalJSON() ([]byte, error) {
+func (o *Buforecasttimeseriesresult) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buforecasttimeseriesresult
-
 	
-
 	return json.Marshal(&struct { 
 		Metric *string `json:"metric,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Buforecasttimeseriesresult) MarshalJSON() ([]byte, error) {
 		ForecastType *string `json:"forecastType,omitempty"`
 		*Alias
 	}{ 
-		Metric: u.Metric,
+		Metric: o.Metric,
 		
-		ForecastingMethod: u.ForecastingMethod,
+		ForecastingMethod: o.ForecastingMethod,
 		
-		ForecastType: u.ForecastType,
-		Alias:    (*Alias)(u),
+		ForecastType: o.ForecastType,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buforecasttimeseriesresult) UnmarshalJSON(b []byte) error {
+	var BuforecasttimeseriesresultMap map[string]interface{}
+	err := json.Unmarshal(b, &BuforecasttimeseriesresultMap)
+	if err != nil {
+		return err
+	}
+	
+	if Metric, ok := BuforecasttimeseriesresultMap["metric"].(string); ok {
+		o.Metric = &Metric
+	}
+	
+	if ForecastingMethod, ok := BuforecasttimeseriesresultMap["forecastingMethod"].(string); ok {
+		o.ForecastingMethod = &ForecastingMethod
+	}
+	
+	if ForecastType, ok := BuforecasttimeseriesresultMap["forecastType"].(string); ok {
+		o.ForecastType = &ForecastType
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

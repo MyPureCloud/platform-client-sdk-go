@@ -74,29 +74,27 @@ type Schedulegroup struct {
 
 }
 
-func (u *Schedulegroup) MarshalJSON() ([]byte, error) {
+func (o *Schedulegroup) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Schedulegroup
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -131,39 +129,120 @@ func (u *Schedulegroup) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		TimeZone: u.TimeZone,
+		TimeZone: o.TimeZone,
 		
-		OpenSchedules: u.OpenSchedules,
+		OpenSchedules: o.OpenSchedules,
 		
-		ClosedSchedules: u.ClosedSchedules,
+		ClosedSchedules: o.ClosedSchedules,
 		
-		HolidaySchedules: u.HolidaySchedules,
+		HolidaySchedules: o.HolidaySchedules,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Schedulegroup) UnmarshalJSON(b []byte) error {
+	var SchedulegroupMap map[string]interface{}
+	err := json.Unmarshal(b, &SchedulegroupMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := SchedulegroupMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := SchedulegroupMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := SchedulegroupMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := SchedulegroupMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := SchedulegroupMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := SchedulegroupMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := SchedulegroupMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := SchedulegroupMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := SchedulegroupMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := SchedulegroupMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := SchedulegroupMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if TimeZone, ok := SchedulegroupMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if OpenSchedules, ok := SchedulegroupMap["openSchedules"].([]interface{}); ok {
+		OpenSchedulesString, _ := json.Marshal(OpenSchedules)
+		json.Unmarshal(OpenSchedulesString, &o.OpenSchedules)
+	}
+	
+	if ClosedSchedules, ok := SchedulegroupMap["closedSchedules"].([]interface{}); ok {
+		ClosedSchedulesString, _ := json.Marshal(ClosedSchedules)
+		json.Unmarshal(ClosedSchedulesString, &o.ClosedSchedules)
+	}
+	
+	if HolidaySchedules, ok := SchedulegroupMap["holidaySchedules"].([]interface{}); ok {
+		HolidaySchedulesString, _ := json.Marshal(HolidaySchedules)
+		json.Unmarshal(HolidaySchedulesString, &o.HolidaySchedules)
+	}
+	
+	if SelfUri, ok := SchedulegroupMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

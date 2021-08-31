@@ -17,24 +17,42 @@ type Botintent struct {
 
 }
 
-func (u *Botintent) MarshalJSON() ([]byte, error) {
+func (o *Botintent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Botintent
-
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
 		Slots *map[string]Botslot `json:"slots,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Slots: u.Slots,
-		Alias:    (*Alias)(u),
+		Slots: o.Slots,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Botintent) UnmarshalJSON(b []byte) error {
+	var BotintentMap map[string]interface{}
+	err := json.Unmarshal(b, &BotintentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := BotintentMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Slots, ok := BotintentMap["slots"].(map[string]interface{}); ok {
+		SlotsString, _ := json.Marshal(Slots)
+		json.Unmarshal(SlotsString, &o.Slots)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

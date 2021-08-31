@@ -49,13 +49,11 @@ type Asyncconversationquery struct {
 
 }
 
-func (u *Asyncconversationquery) MarshalJSON() ([]byte, error) {
+func (o *Asyncconversationquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Asyncconversationquery
-
 	
-
 	return json.Marshal(&struct { 
 		ConversationFilters *[]Conversationdetailqueryfilter `json:"conversationFilters,omitempty"`
 		
@@ -78,27 +76,84 @@ func (u *Asyncconversationquery) MarshalJSON() ([]byte, error) {
 		StartOfDayIntervalMatching *bool `json:"startOfDayIntervalMatching,omitempty"`
 		*Alias
 	}{ 
-		ConversationFilters: u.ConversationFilters,
+		ConversationFilters: o.ConversationFilters,
 		
-		SegmentFilters: u.SegmentFilters,
+		SegmentFilters: o.SegmentFilters,
 		
-		EvaluationFilters: u.EvaluationFilters,
+		EvaluationFilters: o.EvaluationFilters,
 		
-		SurveyFilters: u.SurveyFilters,
+		SurveyFilters: o.SurveyFilters,
 		
-		ResolutionFilters: u.ResolutionFilters,
+		ResolutionFilters: o.ResolutionFilters,
 		
-		Order: u.Order,
+		Order: o.Order,
 		
-		OrderBy: u.OrderBy,
+		OrderBy: o.OrderBy,
 		
-		Interval: u.Interval,
+		Interval: o.Interval,
 		
-		Limit: u.Limit,
+		Limit: o.Limit,
 		
-		StartOfDayIntervalMatching: u.StartOfDayIntervalMatching,
-		Alias:    (*Alias)(u),
+		StartOfDayIntervalMatching: o.StartOfDayIntervalMatching,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Asyncconversationquery) UnmarshalJSON(b []byte) error {
+	var AsyncconversationqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &AsyncconversationqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if ConversationFilters, ok := AsyncconversationqueryMap["conversationFilters"].([]interface{}); ok {
+		ConversationFiltersString, _ := json.Marshal(ConversationFilters)
+		json.Unmarshal(ConversationFiltersString, &o.ConversationFilters)
+	}
+	
+	if SegmentFilters, ok := AsyncconversationqueryMap["segmentFilters"].([]interface{}); ok {
+		SegmentFiltersString, _ := json.Marshal(SegmentFilters)
+		json.Unmarshal(SegmentFiltersString, &o.SegmentFilters)
+	}
+	
+	if EvaluationFilters, ok := AsyncconversationqueryMap["evaluationFilters"].([]interface{}); ok {
+		EvaluationFiltersString, _ := json.Marshal(EvaluationFilters)
+		json.Unmarshal(EvaluationFiltersString, &o.EvaluationFilters)
+	}
+	
+	if SurveyFilters, ok := AsyncconversationqueryMap["surveyFilters"].([]interface{}); ok {
+		SurveyFiltersString, _ := json.Marshal(SurveyFilters)
+		json.Unmarshal(SurveyFiltersString, &o.SurveyFilters)
+	}
+	
+	if ResolutionFilters, ok := AsyncconversationqueryMap["resolutionFilters"].([]interface{}); ok {
+		ResolutionFiltersString, _ := json.Marshal(ResolutionFilters)
+		json.Unmarshal(ResolutionFiltersString, &o.ResolutionFilters)
+	}
+	
+	if Order, ok := AsyncconversationqueryMap["order"].(string); ok {
+		o.Order = &Order
+	}
+	
+	if OrderBy, ok := AsyncconversationqueryMap["orderBy"].(string); ok {
+		o.OrderBy = &OrderBy
+	}
+	
+	if Interval, ok := AsyncconversationqueryMap["interval"].(string); ok {
+		o.Interval = &Interval
+	}
+	
+	if Limit, ok := AsyncconversationqueryMap["limit"].(float64); ok {
+		LimitInt := int(Limit)
+		o.Limit = &LimitInt
+	}
+	
+	if StartOfDayIntervalMatching, ok := AsyncconversationqueryMap["startOfDayIntervalMatching"].(bool); ok {
+		o.StartOfDayIntervalMatching = &StartOfDayIntervalMatching
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

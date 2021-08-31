@@ -21,13 +21,11 @@ type Trunkmetricstopictrunkmetrics struct {
 
 }
 
-func (u *Trunkmetricstopictrunkmetrics) MarshalJSON() ([]byte, error) {
+func (o *Trunkmetricstopictrunkmetrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkmetricstopictrunkmetrics
-
 	
-
 	return json.Marshal(&struct { 
 		Calls *Trunkmetricstopictrunkmetricscalls `json:"calls,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Trunkmetricstopictrunkmetrics) MarshalJSON() ([]byte, error) {
 		Trunk *Trunkmetricstopicurireference `json:"trunk,omitempty"`
 		*Alias
 	}{ 
-		Calls: u.Calls,
+		Calls: o.Calls,
 		
-		Qos: u.Qos,
+		Qos: o.Qos,
 		
-		Trunk: u.Trunk,
-		Alias:    (*Alias)(u),
+		Trunk: o.Trunk,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkmetricstopictrunkmetrics) UnmarshalJSON(b []byte) error {
+	var TrunkmetricstopictrunkmetricsMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkmetricstopictrunkmetricsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Calls, ok := TrunkmetricstopictrunkmetricsMap["calls"].(map[string]interface{}); ok {
+		CallsString, _ := json.Marshal(Calls)
+		json.Unmarshal(CallsString, &o.Calls)
+	}
+	
+	if Qos, ok := TrunkmetricstopictrunkmetricsMap["qos"].(map[string]interface{}); ok {
+		QosString, _ := json.Marshal(Qos)
+		json.Unmarshal(QosString, &o.Qos)
+	}
+	
+	if Trunk, ok := TrunkmetricstopictrunkmetricsMap["trunk"].(map[string]interface{}); ok {
+		TrunkString, _ := json.Marshal(Trunk)
+		json.Unmarshal(TrunkString, &o.Trunk)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

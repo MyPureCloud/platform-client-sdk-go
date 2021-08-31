@@ -21,13 +21,11 @@ type Conversationcobrowseeventtopicjourneycontext struct {
 
 }
 
-func (u *Conversationcobrowseeventtopicjourneycontext) MarshalJSON() ([]byte, error) {
+func (o *Conversationcobrowseeventtopicjourneycontext) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationcobrowseeventtopicjourneycontext
-
 	
-
 	return json.Marshal(&struct { 
 		Customer *Conversationcobrowseeventtopicjourneycustomer `json:"customer,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Conversationcobrowseeventtopicjourneycontext) MarshalJSON() ([]byte, er
 		TriggeringAction *Conversationcobrowseeventtopicjourneyaction `json:"triggeringAction,omitempty"`
 		*Alias
 	}{ 
-		Customer: u.Customer,
+		Customer: o.Customer,
 		
-		CustomerSession: u.CustomerSession,
+		CustomerSession: o.CustomerSession,
 		
-		TriggeringAction: u.TriggeringAction,
-		Alias:    (*Alias)(u),
+		TriggeringAction: o.TriggeringAction,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationcobrowseeventtopicjourneycontext) UnmarshalJSON(b []byte) error {
+	var ConversationcobrowseeventtopicjourneycontextMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcobrowseeventtopicjourneycontextMap)
+	if err != nil {
+		return err
+	}
+	
+	if Customer, ok := ConversationcobrowseeventtopicjourneycontextMap["customer"].(map[string]interface{}); ok {
+		CustomerString, _ := json.Marshal(Customer)
+		json.Unmarshal(CustomerString, &o.Customer)
+	}
+	
+	if CustomerSession, ok := ConversationcobrowseeventtopicjourneycontextMap["customerSession"].(map[string]interface{}); ok {
+		CustomerSessionString, _ := json.Marshal(CustomerSession)
+		json.Unmarshal(CustomerSessionString, &o.CustomerSession)
+	}
+	
+	if TriggeringAction, ok := ConversationcobrowseeventtopicjourneycontextMap["triggeringAction"].(map[string]interface{}); ok {
+		TriggeringActionString, _ := json.Marshal(TriggeringAction)
+		json.Unmarshal(TriggeringActionString, &o.TriggeringAction)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

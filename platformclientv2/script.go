@@ -66,45 +66,43 @@ type Script struct {
 
 }
 
-func (u *Script) MarshalJSON() ([]byte, error) {
+func (o *Script) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Script
-
 	
 	CreatedDate := new(string)
-	if u.CreatedDate != nil {
+	if o.CreatedDate != nil {
 		
-		*CreatedDate = timeutil.Strftime(u.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreatedDate = timeutil.Strftime(o.CreatedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreatedDate = nil
 	}
 	
 	ModifiedDate := new(string)
-	if u.ModifiedDate != nil {
+	if o.ModifiedDate != nil {
 		
-		*ModifiedDate = timeutil.Strftime(u.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*ModifiedDate = timeutil.Strftime(o.ModifiedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ModifiedDate = nil
 	}
 	
 	PublishedDate := new(string)
-	if u.PublishedDate != nil {
+	if o.PublishedDate != nil {
 		
-		*PublishedDate = timeutil.Strftime(u.PublishedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*PublishedDate = timeutil.Strftime(o.PublishedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		PublishedDate = nil
 	}
 	
 	VersionDate := new(string)
-	if u.VersionDate != nil {
+	if o.VersionDate != nil {
 		
-		*VersionDate = timeutil.Strftime(u.VersionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*VersionDate = timeutil.Strftime(o.VersionDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		VersionDate = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -135,11 +133,11 @@ func (u *Script) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		VersionId: u.VersionId,
+		VersionId: o.VersionId,
 		
 		CreatedDate: CreatedDate,
 		
@@ -149,21 +147,96 @@ func (u *Script) MarshalJSON() ([]byte, error) {
 		
 		VersionDate: VersionDate,
 		
-		StartPageId: u.StartPageId,
+		StartPageId: o.StartPageId,
 		
-		StartPageName: u.StartPageName,
+		StartPageName: o.StartPageName,
 		
-		Features: u.Features,
+		Features: o.Features,
 		
-		Variables: u.Variables,
+		Variables: o.Variables,
 		
-		CustomActions: u.CustomActions,
+		CustomActions: o.CustomActions,
 		
-		Pages: u.Pages,
+		Pages: o.Pages,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Script) UnmarshalJSON(b []byte) error {
+	var ScriptMap map[string]interface{}
+	err := json.Unmarshal(b, &ScriptMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ScriptMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := ScriptMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if VersionId, ok := ScriptMap["versionId"].(string); ok {
+		o.VersionId = &VersionId
+	}
+	
+	if createdDateString, ok := ScriptMap["createdDate"].(string); ok {
+		CreatedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", createdDateString)
+		o.CreatedDate = &CreatedDate
+	}
+	
+	if modifiedDateString, ok := ScriptMap["modifiedDate"].(string); ok {
+		ModifiedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", modifiedDateString)
+		o.ModifiedDate = &ModifiedDate
+	}
+	
+	if publishedDateString, ok := ScriptMap["publishedDate"].(string); ok {
+		PublishedDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", publishedDateString)
+		o.PublishedDate = &PublishedDate
+	}
+	
+	if versionDateString, ok := ScriptMap["versionDate"].(string); ok {
+		VersionDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", versionDateString)
+		o.VersionDate = &VersionDate
+	}
+	
+	if StartPageId, ok := ScriptMap["startPageId"].(string); ok {
+		o.StartPageId = &StartPageId
+	}
+	
+	if StartPageName, ok := ScriptMap["startPageName"].(string); ok {
+		o.StartPageName = &StartPageName
+	}
+	
+	if Features, ok := ScriptMap["features"].(map[string]interface{}); ok {
+		FeaturesString, _ := json.Marshal(Features)
+		json.Unmarshal(FeaturesString, &o.Features)
+	}
+	
+	if Variables, ok := ScriptMap["variables"].(map[string]interface{}); ok {
+		VariablesString, _ := json.Marshal(Variables)
+		json.Unmarshal(VariablesString, &o.Variables)
+	}
+	
+	if CustomActions, ok := ScriptMap["customActions"].(map[string]interface{}); ok {
+		CustomActionsString, _ := json.Marshal(CustomActions)
+		json.Unmarshal(CustomActionsString, &o.CustomActions)
+	}
+	
+	if Pages, ok := ScriptMap["pages"].([]interface{}); ok {
+		PagesString, _ := json.Marshal(Pages)
+		json.Unmarshal(PagesString, &o.Pages)
+	}
+	
+	if SelfUri, ok := ScriptMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

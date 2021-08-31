@@ -17,24 +17,42 @@ type Buaveragespeedofanswer struct {
 
 }
 
-func (u *Buaveragespeedofanswer) MarshalJSON() ([]byte, error) {
+func (o *Buaveragespeedofanswer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Buaveragespeedofanswer
-
 	
-
 	return json.Marshal(&struct { 
 		Include *bool `json:"include,omitempty"`
 		
 		Seconds *int `json:"seconds,omitempty"`
 		*Alias
 	}{ 
-		Include: u.Include,
+		Include: o.Include,
 		
-		Seconds: u.Seconds,
-		Alias:    (*Alias)(u),
+		Seconds: o.Seconds,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Buaveragespeedofanswer) UnmarshalJSON(b []byte) error {
+	var BuaveragespeedofanswerMap map[string]interface{}
+	err := json.Unmarshal(b, &BuaveragespeedofanswerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Include, ok := BuaveragespeedofanswerMap["include"].(bool); ok {
+		o.Include = &Include
+	}
+	
+	if Seconds, ok := BuaveragespeedofanswerMap["seconds"].(float64); ok {
+		SecondsInt := int(Seconds)
+		o.Seconds = &SecondsInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

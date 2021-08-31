@@ -17,24 +17,42 @@ type Messagingtemplaterequest struct {
 
 }
 
-func (u *Messagingtemplaterequest) MarshalJSON() ([]byte, error) {
+func (o *Messagingtemplaterequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Messagingtemplaterequest
-
 	
-
 	return json.Marshal(&struct { 
 		ResponseId *string `json:"responseId,omitempty"`
 		
 		Parameters *[]Templateparameter `json:"parameters,omitempty"`
 		*Alias
 	}{ 
-		ResponseId: u.ResponseId,
+		ResponseId: o.ResponseId,
 		
-		Parameters: u.Parameters,
-		Alias:    (*Alias)(u),
+		Parameters: o.Parameters,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Messagingtemplaterequest) UnmarshalJSON(b []byte) error {
+	var MessagingtemplaterequestMap map[string]interface{}
+	err := json.Unmarshal(b, &MessagingtemplaterequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if ResponseId, ok := MessagingtemplaterequestMap["responseId"].(string); ok {
+		o.ResponseId = &ResponseId
+	}
+	
+	if Parameters, ok := MessagingtemplaterequestMap["parameters"].([]interface{}); ok {
+		ParametersString, _ := json.Marshal(Parameters)
+		json.Unmarshal(ParametersString, &o.Parameters)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

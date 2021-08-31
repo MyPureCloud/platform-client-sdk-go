@@ -21,13 +21,11 @@ type Contactlistdownloadreadyexporturi struct {
 
 }
 
-func (u *Contactlistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
+func (o *Contactlistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Contactlistdownloadreadyexporturi
-
 	
-
 	return json.Marshal(&struct { 
 		Uri *string `json:"uri,omitempty"`
 		
@@ -36,13 +34,37 @@ func (u *Contactlistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		Uri: u.Uri,
+		Uri: o.Uri,
 		
-		ExportTimestamp: u.ExportTimestamp,
+		ExportTimestamp: o.ExportTimestamp,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Contactlistdownloadreadyexporturi) UnmarshalJSON(b []byte) error {
+	var ContactlistdownloadreadyexporturiMap map[string]interface{}
+	err := json.Unmarshal(b, &ContactlistdownloadreadyexporturiMap)
+	if err != nil {
+		return err
+	}
+	
+	if Uri, ok := ContactlistdownloadreadyexporturiMap["uri"].(string); ok {
+		o.Uri = &Uri
+	}
+	
+	if ExportTimestamp, ok := ContactlistdownloadreadyexporturiMap["exportTimestamp"].(string); ok {
+		o.ExportTimestamp = &ExportTimestamp
+	}
+	
+	if AdditionalProperties, ok := ContactlistdownloadreadyexporturiMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

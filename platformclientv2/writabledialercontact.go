@@ -33,13 +33,11 @@ type Writabledialercontact struct {
 
 }
 
-func (u *Writabledialercontact) MarshalJSON() ([]byte, error) {
+func (o *Writabledialercontact) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Writabledialercontact
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -54,19 +52,57 @@ func (u *Writabledialercontact) MarshalJSON() ([]byte, error) {
 		PhoneNumberStatus *map[string]Phonenumberstatus `json:"phoneNumberStatus,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		ContactListId: u.ContactListId,
+		ContactListId: o.ContactListId,
 		
-		Data: u.Data,
+		Data: o.Data,
 		
-		LatestSmsEvaluations: u.LatestSmsEvaluations,
+		LatestSmsEvaluations: o.LatestSmsEvaluations,
 		
-		Callable: u.Callable,
+		Callable: o.Callable,
 		
-		PhoneNumberStatus: u.PhoneNumberStatus,
-		Alias:    (*Alias)(u),
+		PhoneNumberStatus: o.PhoneNumberStatus,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Writabledialercontact) UnmarshalJSON(b []byte) error {
+	var WritabledialercontactMap map[string]interface{}
+	err := json.Unmarshal(b, &WritabledialercontactMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WritabledialercontactMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if ContactListId, ok := WritabledialercontactMap["contactListId"].(string); ok {
+		o.ContactListId = &ContactListId
+	}
+	
+	if Data, ok := WritabledialercontactMap["data"].(map[string]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+	if LatestSmsEvaluations, ok := WritabledialercontactMap["latestSmsEvaluations"].(map[string]interface{}); ok {
+		LatestSmsEvaluationsString, _ := json.Marshal(LatestSmsEvaluations)
+		json.Unmarshal(LatestSmsEvaluationsString, &o.LatestSmsEvaluations)
+	}
+	
+	if Callable, ok := WritabledialercontactMap["callable"].(bool); ok {
+		o.Callable = &Callable
+	}
+	
+	if PhoneNumberStatus, ok := WritabledialercontactMap["phoneNumberStatus"].(map[string]interface{}); ok {
+		PhoneNumberStatusString, _ := json.Marshal(PhoneNumberStatus)
+		json.Unmarshal(PhoneNumberStatusString, &o.PhoneNumberStatus)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

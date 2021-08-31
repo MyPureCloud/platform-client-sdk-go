@@ -18,21 +18,19 @@ type Callrecord struct {
 
 }
 
-func (u *Callrecord) MarshalJSON() ([]byte, error) {
+func (o *Callrecord) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Callrecord
-
 	
 	LastAttempt := new(string)
-	if u.LastAttempt != nil {
+	if o.LastAttempt != nil {
 		
-		*LastAttempt = timeutil.Strftime(u.LastAttempt, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*LastAttempt = timeutil.Strftime(o.LastAttempt, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		LastAttempt = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		LastAttempt *string `json:"lastAttempt,omitempty"`
 		
@@ -41,9 +39,29 @@ func (u *Callrecord) MarshalJSON() ([]byte, error) {
 	}{ 
 		LastAttempt: LastAttempt,
 		
-		LastResult: u.LastResult,
-		Alias:    (*Alias)(u),
+		LastResult: o.LastResult,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Callrecord) UnmarshalJSON(b []byte) error {
+	var CallrecordMap map[string]interface{}
+	err := json.Unmarshal(b, &CallrecordMap)
+	if err != nil {
+		return err
+	}
+	
+	if lastAttemptString, ok := CallrecordMap["lastAttempt"].(string); ok {
+		LastAttempt, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastAttemptString)
+		o.LastAttempt = &LastAttempt
+	}
+	
+	if LastResult, ok := CallrecordMap["lastResult"].(string); ok {
+		o.LastResult = &LastResult
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

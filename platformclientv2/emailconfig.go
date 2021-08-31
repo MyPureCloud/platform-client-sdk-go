@@ -25,13 +25,11 @@ type Emailconfig struct {
 
 }
 
-func (u *Emailconfig) MarshalJSON() ([]byte, error) {
+func (o *Emailconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Emailconfig
-
 	
-
 	return json.Marshal(&struct { 
 		EmailColumns *[]string `json:"emailColumns,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Emailconfig) MarshalJSON() ([]byte, error) {
 		ReplyToAddress *Replytoemailaddress `json:"replyToAddress,omitempty"`
 		*Alias
 	}{ 
-		EmailColumns: u.EmailColumns,
+		EmailColumns: o.EmailColumns,
 		
-		ContentTemplate: u.ContentTemplate,
+		ContentTemplate: o.ContentTemplate,
 		
-		FromAddress: u.FromAddress,
+		FromAddress: o.FromAddress,
 		
-		ReplyToAddress: u.ReplyToAddress,
-		Alias:    (*Alias)(u),
+		ReplyToAddress: o.ReplyToAddress,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Emailconfig) UnmarshalJSON(b []byte) error {
+	var EmailconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &EmailconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if EmailColumns, ok := EmailconfigMap["emailColumns"].([]interface{}); ok {
+		EmailColumnsString, _ := json.Marshal(EmailColumns)
+		json.Unmarshal(EmailColumnsString, &o.EmailColumns)
+	}
+	
+	if ContentTemplate, ok := EmailconfigMap["contentTemplate"].(map[string]interface{}); ok {
+		ContentTemplateString, _ := json.Marshal(ContentTemplate)
+		json.Unmarshal(ContentTemplateString, &o.ContentTemplate)
+	}
+	
+	if FromAddress, ok := EmailconfigMap["fromAddress"].(map[string]interface{}); ok {
+		FromAddressString, _ := json.Marshal(FromAddress)
+		json.Unmarshal(FromAddressString, &o.FromAddress)
+	}
+	
+	if ReplyToAddress, ok := EmailconfigMap["replyToAddress"].(map[string]interface{}); ok {
+		ReplyToAddressString, _ := json.Marshal(ReplyToAddress)
+		json.Unmarshal(ReplyToAddressString, &o.ReplyToAddress)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

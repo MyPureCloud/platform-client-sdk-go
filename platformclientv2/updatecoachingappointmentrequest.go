@@ -38,21 +38,19 @@ type Updatecoachingappointmentrequest struct {
 
 }
 
-func (u *Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
+func (o *Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Updatecoachingappointmentrequest
-
 	
 	DateStart := new(string)
-	if u.DateStart != nil {
+	if o.DateStart != nil {
 		
-		*DateStart = timeutil.Strftime(u.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateStart = timeutil.Strftime(o.DateStart, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateStart = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Name *string `json:"name,omitempty"`
 		
@@ -69,21 +67,64 @@ func (u *Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		Status *string `json:"status,omitempty"`
 		*Alias
 	}{ 
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
 		DateStart: DateStart,
 		
-		LengthInMinutes: u.LengthInMinutes,
+		LengthInMinutes: o.LengthInMinutes,
 		
-		ConversationIds: u.ConversationIds,
+		ConversationIds: o.ConversationIds,
 		
-		DocumentIds: u.DocumentIds,
+		DocumentIds: o.DocumentIds,
 		
-		Status: u.Status,
-		Alias:    (*Alias)(u),
+		Status: o.Status,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Updatecoachingappointmentrequest) UnmarshalJSON(b []byte) error {
+	var UpdatecoachingappointmentrequestMap map[string]interface{}
+	err := json.Unmarshal(b, &UpdatecoachingappointmentrequestMap)
+	if err != nil {
+		return err
+	}
+	
+	if Name, ok := UpdatecoachingappointmentrequestMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := UpdatecoachingappointmentrequestMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if dateStartString, ok := UpdatecoachingappointmentrequestMap["dateStart"].(string); ok {
+		DateStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateStartString)
+		o.DateStart = &DateStart
+	}
+	
+	if LengthInMinutes, ok := UpdatecoachingappointmentrequestMap["lengthInMinutes"].(float64); ok {
+		LengthInMinutesInt := int(LengthInMinutes)
+		o.LengthInMinutes = &LengthInMinutesInt
+	}
+	
+	if ConversationIds, ok := UpdatecoachingappointmentrequestMap["conversationIds"].([]interface{}); ok {
+		ConversationIdsString, _ := json.Marshal(ConversationIds)
+		json.Unmarshal(ConversationIdsString, &o.ConversationIds)
+	}
+	
+	if DocumentIds, ok := UpdatecoachingappointmentrequestMap["documentIds"].([]interface{}); ok {
+		DocumentIdsString, _ := json.Marshal(DocumentIds)
+		json.Unmarshal(DocumentIdsString, &o.DocumentIds)
+	}
+	
+	if Status, ok := UpdatecoachingappointmentrequestMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

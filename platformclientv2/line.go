@@ -94,29 +94,27 @@ type Line struct {
 
 }
 
-func (u *Line) MarshalJSON() ([]byte, error) {
+func (o *Line) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Line
-
 	
 	DateCreated := new(string)
-	if u.DateCreated != nil {
+	if o.DateCreated != nil {
 		
-		*DateCreated = timeutil.Strftime(u.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateCreated = nil
 	}
 	
 	DateModified := new(string)
-	if u.DateModified != nil {
+	if o.DateModified != nil {
 		
-		*DateModified = timeutil.Strftime(u.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*DateModified = timeutil.Strftime(o.DateModified, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		DateModified = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -161,49 +159,156 @@ func (u *Line) MarshalJSON() ([]byte, error) {
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Name: u.Name,
+		Name: o.Name,
 		
-		Description: u.Description,
+		Description: o.Description,
 		
-		Version: u.Version,
+		Version: o.Version,
 		
 		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
-		ModifiedBy: u.ModifiedBy,
+		ModifiedBy: o.ModifiedBy,
 		
-		CreatedBy: u.CreatedBy,
+		CreatedBy: o.CreatedBy,
 		
-		State: u.State,
+		State: o.State,
 		
-		ModifiedByApp: u.ModifiedByApp,
+		ModifiedByApp: o.ModifiedByApp,
 		
-		CreatedByApp: u.CreatedByApp,
+		CreatedByApp: o.CreatedByApp,
 		
-		Properties: u.Properties,
+		Properties: o.Properties,
 		
-		EdgeGroup: u.EdgeGroup,
+		EdgeGroup: o.EdgeGroup,
 		
-		Template: u.Template,
+		Template: o.Template,
 		
-		Site: u.Site,
+		Site: o.Site,
 		
-		LineBaseSettings: u.LineBaseSettings,
+		LineBaseSettings: o.LineBaseSettings,
 		
-		PrimaryEdge: u.PrimaryEdge,
+		PrimaryEdge: o.PrimaryEdge,
 		
-		SecondaryEdge: u.SecondaryEdge,
+		SecondaryEdge: o.SecondaryEdge,
 		
-		LoggedInUser: u.LoggedInUser,
+		LoggedInUser: o.LoggedInUser,
 		
-		DefaultForUser: u.DefaultForUser,
+		DefaultForUser: o.DefaultForUser,
 		
-		SelfUri: u.SelfUri,
-		Alias:    (*Alias)(u),
+		SelfUri: o.SelfUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Line) UnmarshalJSON(b []byte) error {
+	var LineMap map[string]interface{}
+	err := json.Unmarshal(b, &LineMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := LineMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := LineMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if Description, ok := LineMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
+	if Version, ok := LineMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
+	}
+	
+	if dateCreatedString, ok := LineMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := LineMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if ModifiedBy, ok := LineMap["modifiedBy"].(string); ok {
+		o.ModifiedBy = &ModifiedBy
+	}
+	
+	if CreatedBy, ok := LineMap["createdBy"].(string); ok {
+		o.CreatedBy = &CreatedBy
+	}
+	
+	if State, ok := LineMap["state"].(string); ok {
+		o.State = &State
+	}
+	
+	if ModifiedByApp, ok := LineMap["modifiedByApp"].(string); ok {
+		o.ModifiedByApp = &ModifiedByApp
+	}
+	
+	if CreatedByApp, ok := LineMap["createdByApp"].(string); ok {
+		o.CreatedByApp = &CreatedByApp
+	}
+	
+	if Properties, ok := LineMap["properties"].(map[string]interface{}); ok {
+		PropertiesString, _ := json.Marshal(Properties)
+		json.Unmarshal(PropertiesString, &o.Properties)
+	}
+	
+	if EdgeGroup, ok := LineMap["edgeGroup"].(map[string]interface{}); ok {
+		EdgeGroupString, _ := json.Marshal(EdgeGroup)
+		json.Unmarshal(EdgeGroupString, &o.EdgeGroup)
+	}
+	
+	if Template, ok := LineMap["template"].(map[string]interface{}); ok {
+		TemplateString, _ := json.Marshal(Template)
+		json.Unmarshal(TemplateString, &o.Template)
+	}
+	
+	if Site, ok := LineMap["site"].(map[string]interface{}); ok {
+		SiteString, _ := json.Marshal(Site)
+		json.Unmarshal(SiteString, &o.Site)
+	}
+	
+	if LineBaseSettings, ok := LineMap["lineBaseSettings"].(map[string]interface{}); ok {
+		LineBaseSettingsString, _ := json.Marshal(LineBaseSettings)
+		json.Unmarshal(LineBaseSettingsString, &o.LineBaseSettings)
+	}
+	
+	if PrimaryEdge, ok := LineMap["primaryEdge"].(map[string]interface{}); ok {
+		PrimaryEdgeString, _ := json.Marshal(PrimaryEdge)
+		json.Unmarshal(PrimaryEdgeString, &o.PrimaryEdge)
+	}
+	
+	if SecondaryEdge, ok := LineMap["secondaryEdge"].(map[string]interface{}); ok {
+		SecondaryEdgeString, _ := json.Marshal(SecondaryEdge)
+		json.Unmarshal(SecondaryEdgeString, &o.SecondaryEdge)
+	}
+	
+	if LoggedInUser, ok := LineMap["loggedInUser"].(map[string]interface{}); ok {
+		LoggedInUserString, _ := json.Marshal(LoggedInUser)
+		json.Unmarshal(LoggedInUserString, &o.LoggedInUser)
+	}
+	
+	if DefaultForUser, ok := LineMap["defaultForUser"].(map[string]interface{}); ok {
+		DefaultForUserString, _ := json.Marshal(DefaultForUser)
+		json.Unmarshal(DefaultForUserString, &o.DefaultForUser)
+	}
+	
+	if SelfUri, ok := LineMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

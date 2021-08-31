@@ -13,20 +13,34 @@ type Queryresponsestats struct {
 
 }
 
-func (u *Queryresponsestats) MarshalJSON() ([]byte, error) {
+func (o *Queryresponsestats) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Queryresponsestats
-
 	
-
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		*Alias
 	}{ 
-		Count: u.Count,
-		Alias:    (*Alias)(u),
+		Count: o.Count,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Queryresponsestats) UnmarshalJSON(b []byte) error {
+	var QueryresponsestatsMap map[string]interface{}
+	err := json.Unmarshal(b, &QueryresponsestatsMap)
+	if err != nil {
+		return err
+	}
+	
+	if Count, ok := QueryresponsestatsMap["count"].(float64); ok {
+		CountInt := int(Count)
+		o.Count = &CountInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -26,21 +26,19 @@ type Trunkinstancetopictrunkmetricsoptions struct {
 
 }
 
-func (u *Trunkinstancetopictrunkmetricsoptions) MarshalJSON() ([]byte, error) {
+func (o *Trunkinstancetopictrunkmetricsoptions) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Trunkinstancetopictrunkmetricsoptions
-
 	
 	OptionStateTime := new(string)
-	if u.OptionStateTime != nil {
+	if o.OptionStateTime != nil {
 		
-		*OptionStateTime = timeutil.Strftime(u.OptionStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*OptionStateTime = timeutil.Strftime(o.OptionStateTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		OptionStateTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		ProxyAddress *string `json:"proxyAddress,omitempty"`
 		
@@ -51,15 +49,44 @@ func (u *Trunkinstancetopictrunkmetricsoptions) MarshalJSON() ([]byte, error) {
 		ErrorInfo *Trunkinstancetopictrunkerrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
-		ProxyAddress: u.ProxyAddress,
+		ProxyAddress: o.ProxyAddress,
 		
-		OptionState: u.OptionState,
+		OptionState: o.OptionState,
 		
 		OptionStateTime: OptionStateTime,
 		
-		ErrorInfo: u.ErrorInfo,
-		Alias:    (*Alias)(u),
+		ErrorInfo: o.ErrorInfo,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Trunkinstancetopictrunkmetricsoptions) UnmarshalJSON(b []byte) error {
+	var TrunkinstancetopictrunkmetricsoptionsMap map[string]interface{}
+	err := json.Unmarshal(b, &TrunkinstancetopictrunkmetricsoptionsMap)
+	if err != nil {
+		return err
+	}
+	
+	if ProxyAddress, ok := TrunkinstancetopictrunkmetricsoptionsMap["proxyAddress"].(string); ok {
+		o.ProxyAddress = &ProxyAddress
+	}
+	
+	if OptionState, ok := TrunkinstancetopictrunkmetricsoptionsMap["optionState"].(bool); ok {
+		o.OptionState = &OptionState
+	}
+	
+	if optionStateTimeString, ok := TrunkinstancetopictrunkmetricsoptionsMap["optionStateTime"].(string); ok {
+		OptionStateTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", optionStateTimeString)
+		o.OptionStateTime = &OptionStateTime
+	}
+	
+	if ErrorInfo, ok := TrunkinstancetopictrunkmetricsoptionsMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

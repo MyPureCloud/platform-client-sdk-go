@@ -21,13 +21,11 @@ type Userobservationquery struct {
 
 }
 
-func (u *Userobservationquery) MarshalJSON() ([]byte, error) {
+func (o *Userobservationquery) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Userobservationquery
-
 	
-
 	return json.Marshal(&struct { 
 		Filter *Userobservationqueryfilter `json:"filter,omitempty"`
 		
@@ -36,13 +34,39 @@ func (u *Userobservationquery) MarshalJSON() ([]byte, error) {
 		DetailMetrics *[]string `json:"detailMetrics,omitempty"`
 		*Alias
 	}{ 
-		Filter: u.Filter,
+		Filter: o.Filter,
 		
-		Metrics: u.Metrics,
+		Metrics: o.Metrics,
 		
-		DetailMetrics: u.DetailMetrics,
-		Alias:    (*Alias)(u),
+		DetailMetrics: o.DetailMetrics,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Userobservationquery) UnmarshalJSON(b []byte) error {
+	var UserobservationqueryMap map[string]interface{}
+	err := json.Unmarshal(b, &UserobservationqueryMap)
+	if err != nil {
+		return err
+	}
+	
+	if Filter, ok := UserobservationqueryMap["filter"].(map[string]interface{}); ok {
+		FilterString, _ := json.Marshal(Filter)
+		json.Unmarshal(FilterString, &o.Filter)
+	}
+	
+	if Metrics, ok := UserobservationqueryMap["metrics"].([]interface{}); ok {
+		MetricsString, _ := json.Marshal(Metrics)
+		json.Unmarshal(MetricsString, &o.Metrics)
+	}
+	
+	if DetailMetrics, ok := UserobservationqueryMap["detailMetrics"].([]interface{}); ok {
+		DetailMetricsString, _ := json.Marshal(DetailMetrics)
+		json.Unmarshal(DetailMetricsString, &o.DetailMetrics)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Weekschedulereference struct {
 
 }
 
-func (u *Weekschedulereference) MarshalJSON() ([]byte, error) {
+func (o *Weekschedulereference) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Weekschedulereference
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Weekschedulereference) MarshalJSON() ([]byte, error) {
 		WeekDate *string `json:"weekDate,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		SelfUri: u.SelfUri,
+		SelfUri: o.SelfUri,
 		
-		WeekDate: u.WeekDate,
-		Alias:    (*Alias)(u),
+		WeekDate: o.WeekDate,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Weekschedulereference) UnmarshalJSON(b []byte) error {
+	var WeekschedulereferenceMap map[string]interface{}
+	err := json.Unmarshal(b, &WeekschedulereferenceMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := WeekschedulereferenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if SelfUri, ok := WeekschedulereferenceMap["selfUri"].(string); ok {
+		o.SelfUri = &SelfUri
+	}
+	
+	if WeekDate, ok := WeekschedulereferenceMap["weekDate"].(string); ok {
+		o.WeekDate = &WeekDate
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

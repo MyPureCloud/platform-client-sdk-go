@@ -25,13 +25,11 @@ type Workdayvaluesmetricitem struct {
 
 }
 
-func (u *Workdayvaluesmetricitem) MarshalJSON() ([]byte, error) {
+func (o *Workdayvaluesmetricitem) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Workdayvaluesmetricitem
-
 	
-
 	return json.Marshal(&struct { 
 		MetricDefinition *Domainentityref `json:"metricDefinition,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Workdayvaluesmetricitem) MarshalJSON() ([]byte, error) {
 		Trend *[]Workdayvaluestrenditem `json:"trend,omitempty"`
 		*Alias
 	}{ 
-		MetricDefinition: u.MetricDefinition,
+		MetricDefinition: o.MetricDefinition,
 		
-		Average: u.Average,
+		Average: o.Average,
 		
-		UnitType: u.UnitType,
+		UnitType: o.UnitType,
 		
-		Trend: u.Trend,
-		Alias:    (*Alias)(u),
+		Trend: o.Trend,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Workdayvaluesmetricitem) UnmarshalJSON(b []byte) error {
+	var WorkdayvaluesmetricitemMap map[string]interface{}
+	err := json.Unmarshal(b, &WorkdayvaluesmetricitemMap)
+	if err != nil {
+		return err
+	}
+	
+	if MetricDefinition, ok := WorkdayvaluesmetricitemMap["metricDefinition"].(map[string]interface{}); ok {
+		MetricDefinitionString, _ := json.Marshal(MetricDefinition)
+		json.Unmarshal(MetricDefinitionString, &o.MetricDefinition)
+	}
+	
+	if Average, ok := WorkdayvaluesmetricitemMap["average"].(float64); ok {
+		o.Average = &Average
+	}
+	
+	if UnitType, ok := WorkdayvaluesmetricitemMap["unitType"].(string); ok {
+		o.UnitType = &UnitType
+	}
+	
+	if Trend, ok := WorkdayvaluesmetricitemMap["trend"].([]interface{}); ok {
+		TrendString, _ := json.Marshal(Trend)
+		json.Unmarshal(TrendString, &o.Trend)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

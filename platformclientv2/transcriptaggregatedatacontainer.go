@@ -17,24 +17,43 @@ type Transcriptaggregatedatacontainer struct {
 
 }
 
-func (u *Transcriptaggregatedatacontainer) MarshalJSON() ([]byte, error) {
+func (o *Transcriptaggregatedatacontainer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Transcriptaggregatedatacontainer
-
 	
-
 	return json.Marshal(&struct { 
 		Group *map[string]string `json:"group,omitempty"`
 		
 		Data *[]Statisticalresponse `json:"data,omitempty"`
 		*Alias
 	}{ 
-		Group: u.Group,
+		Group: o.Group,
 		
-		Data: u.Data,
-		Alias:    (*Alias)(u),
+		Data: o.Data,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Transcriptaggregatedatacontainer) UnmarshalJSON(b []byte) error {
+	var TranscriptaggregatedatacontainerMap map[string]interface{}
+	err := json.Unmarshal(b, &TranscriptaggregatedatacontainerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Group, ok := TranscriptaggregatedatacontainerMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if Data, ok := TranscriptaggregatedatacontainerMap["data"].([]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

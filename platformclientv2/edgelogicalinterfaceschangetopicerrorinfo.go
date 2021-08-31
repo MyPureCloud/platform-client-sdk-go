@@ -25,13 +25,11 @@ type Edgelogicalinterfaceschangetopicerrorinfo struct {
 
 }
 
-func (u *Edgelogicalinterfaceschangetopicerrorinfo) MarshalJSON() ([]byte, error) {
+func (o *Edgelogicalinterfaceschangetopicerrorinfo) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Edgelogicalinterfaceschangetopicerrorinfo
-
 	
-
 	return json.Marshal(&struct { 
 		Message *string `json:"message,omitempty"`
 		
@@ -42,15 +40,43 @@ func (u *Edgelogicalinterfaceschangetopicerrorinfo) MarshalJSON() ([]byte, error
 		Code *string `json:"code,omitempty"`
 		*Alias
 	}{ 
-		Message: u.Message,
+		Message: o.Message,
 		
-		MessageWithParams: u.MessageWithParams,
+		MessageWithParams: o.MessageWithParams,
 		
-		MessageParams: u.MessageParams,
+		MessageParams: o.MessageParams,
 		
-		Code: u.Code,
-		Alias:    (*Alias)(u),
+		Code: o.Code,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Edgelogicalinterfaceschangetopicerrorinfo) UnmarshalJSON(b []byte) error {
+	var EdgelogicalinterfaceschangetopicerrorinfoMap map[string]interface{}
+	err := json.Unmarshal(b, &EdgelogicalinterfaceschangetopicerrorinfoMap)
+	if err != nil {
+		return err
+	}
+	
+	if Message, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["message"].(string); ok {
+		o.Message = &Message
+	}
+	
+	if MessageWithParams, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["messageWithParams"].(string); ok {
+		o.MessageWithParams = &MessageWithParams
+	}
+	
+	if MessageParams, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["messageParams"].(map[string]interface{}); ok {
+		MessageParamsString, _ := json.Marshal(MessageParams)
+		json.Unmarshal(MessageParamsString, &o.MessageParams)
+	}
+	
+	if Code, ok := EdgelogicalinterfaceschangetopicerrorinfoMap["code"].(string); ok {
+		o.Code = &Code
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

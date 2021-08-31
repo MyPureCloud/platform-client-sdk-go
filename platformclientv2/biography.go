@@ -29,13 +29,11 @@ type Biography struct {
 
 }
 
-func (u *Biography) MarshalJSON() ([]byte, error) {
+func (o *Biography) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Biography
-
 	
-
 	return json.Marshal(&struct { 
 		Biography *string `json:"biography,omitempty"`
 		
@@ -48,17 +46,51 @@ func (u *Biography) MarshalJSON() ([]byte, error) {
 		Education *[]Education `json:"education,omitempty"`
 		*Alias
 	}{ 
-		Biography: u.Biography,
+		Biography: o.Biography,
 		
-		Interests: u.Interests,
+		Interests: o.Interests,
 		
-		Hobbies: u.Hobbies,
+		Hobbies: o.Hobbies,
 		
-		Spouse: u.Spouse,
+		Spouse: o.Spouse,
 		
-		Education: u.Education,
-		Alias:    (*Alias)(u),
+		Education: o.Education,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Biography) UnmarshalJSON(b []byte) error {
+	var BiographyMap map[string]interface{}
+	err := json.Unmarshal(b, &BiographyMap)
+	if err != nil {
+		return err
+	}
+	
+	if Biography, ok := BiographyMap["biography"].(string); ok {
+		o.Biography = &Biography
+	}
+	
+	if Interests, ok := BiographyMap["interests"].([]interface{}); ok {
+		InterestsString, _ := json.Marshal(Interests)
+		json.Unmarshal(InterestsString, &o.Interests)
+	}
+	
+	if Hobbies, ok := BiographyMap["hobbies"].([]interface{}); ok {
+		HobbiesString, _ := json.Marshal(Hobbies)
+		json.Unmarshal(HobbiesString, &o.Hobbies)
+	}
+	
+	if Spouse, ok := BiographyMap["spouse"].(string); ok {
+		o.Spouse = &Spouse
+	}
+	
+	if Education, ok := BiographyMap["education"].([]interface{}); ok {
+		EducationString, _ := json.Marshal(Education)
+		json.Unmarshal(EducationString, &o.Education)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

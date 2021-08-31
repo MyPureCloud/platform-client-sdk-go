@@ -94,61 +94,59 @@ type Campaigninteraction struct {
 
 }
 
-func (u *Campaigninteraction) MarshalJSON() ([]byte, error) {
+func (o *Campaigninteraction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Campaigninteraction
-
 	
 	LastActivePreviewWrapupTime := new(string)
-	if u.LastActivePreviewWrapupTime != nil {
+	if o.LastActivePreviewWrapupTime != nil {
 		
-		*LastActivePreviewWrapupTime = timeutil.Strftime(u.LastActivePreviewWrapupTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*LastActivePreviewWrapupTime = timeutil.Strftime(o.LastActivePreviewWrapupTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		LastActivePreviewWrapupTime = nil
 	}
 	
 	CreationTime := new(string)
-	if u.CreationTime != nil {
+	if o.CreationTime != nil {
 		
-		*CreationTime = timeutil.Strftime(u.CreationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CreationTime = timeutil.Strftime(o.CreationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CreationTime = nil
 	}
 	
 	CallPlacedTime := new(string)
-	if u.CallPlacedTime != nil {
+	if o.CallPlacedTime != nil {
 		
-		*CallPlacedTime = timeutil.Strftime(u.CallPlacedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CallPlacedTime = timeutil.Strftime(o.CallPlacedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CallPlacedTime = nil
 	}
 	
 	CallRoutedTime := new(string)
-	if u.CallRoutedTime != nil {
+	if o.CallRoutedTime != nil {
 		
-		*CallRoutedTime = timeutil.Strftime(u.CallRoutedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*CallRoutedTime = timeutil.Strftime(o.CallRoutedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		CallRoutedTime = nil
 	}
 	
 	PreviewConnectedTime := new(string)
-	if u.PreviewConnectedTime != nil {
+	if o.PreviewConnectedTime != nil {
 		
-		*PreviewConnectedTime = timeutil.Strftime(u.PreviewConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*PreviewConnectedTime = timeutil.Strftime(o.PreviewConnectedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		PreviewConnectedTime = nil
 	}
 	
 	PreviewPopDeliveredTime := new(string)
-	if u.PreviewPopDeliveredTime != nil {
+	if o.PreviewPopDeliveredTime != nil {
 		
-		*PreviewPopDeliveredTime = timeutil.Strftime(u.PreviewPopDeliveredTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+		*PreviewPopDeliveredTime = timeutil.Strftime(o.PreviewPopDeliveredTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		PreviewPopDeliveredTime = nil
 	}
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -193,17 +191,17 @@ func (u *Campaigninteraction) MarshalJSON() ([]byte, error) {
 		Skills *[]Domainentityref `json:"skills,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Campaign: u.Campaign,
+		Campaign: o.Campaign,
 		
-		Agent: u.Agent,
+		Agent: o.Agent,
 		
-		Contact: u.Contact,
+		Contact: o.Contact,
 		
-		DestinationAddress: u.DestinationAddress,
+		DestinationAddress: o.DestinationAddress,
 		
-		ActivePreviewCall: u.ActivePreviewCall,
+		ActivePreviewCall: o.ActivePreviewCall,
 		
 		LastActivePreviewWrapupTime: LastActivePreviewWrapupTime,
 		
@@ -215,27 +213,135 @@ func (u *Campaigninteraction) MarshalJSON() ([]byte, error) {
 		
 		PreviewConnectedTime: PreviewConnectedTime,
 		
-		Queue: u.Queue,
+		Queue: o.Queue,
 		
-		Script: u.Script,
+		Script: o.Script,
 		
-		Disposition: u.Disposition,
+		Disposition: o.Disposition,
 		
-		CallerName: u.CallerName,
+		CallerName: o.CallerName,
 		
-		CallerAddress: u.CallerAddress,
+		CallerAddress: o.CallerAddress,
 		
 		PreviewPopDeliveredTime: PreviewPopDeliveredTime,
 		
-		Conversation: u.Conversation,
+		Conversation: o.Conversation,
 		
-		DialerSystemParticipantId: u.DialerSystemParticipantId,
+		DialerSystemParticipantId: o.DialerSystemParticipantId,
 		
-		DialingMode: u.DialingMode,
+		DialingMode: o.DialingMode,
 		
-		Skills: u.Skills,
-		Alias:    (*Alias)(u),
+		Skills: o.Skills,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Campaigninteraction) UnmarshalJSON(b []byte) error {
+	var CampaigninteractionMap map[string]interface{}
+	err := json.Unmarshal(b, &CampaigninteractionMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := CampaigninteractionMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Campaign, ok := CampaigninteractionMap["campaign"].(map[string]interface{}); ok {
+		CampaignString, _ := json.Marshal(Campaign)
+		json.Unmarshal(CampaignString, &o.Campaign)
+	}
+	
+	if Agent, ok := CampaigninteractionMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Contact, ok := CampaigninteractionMap["contact"].(map[string]interface{}); ok {
+		ContactString, _ := json.Marshal(Contact)
+		json.Unmarshal(ContactString, &o.Contact)
+	}
+	
+	if DestinationAddress, ok := CampaigninteractionMap["destinationAddress"].(string); ok {
+		o.DestinationAddress = &DestinationAddress
+	}
+	
+	if ActivePreviewCall, ok := CampaigninteractionMap["activePreviewCall"].(bool); ok {
+		o.ActivePreviewCall = &ActivePreviewCall
+	}
+	
+	if lastActivePreviewWrapupTimeString, ok := CampaigninteractionMap["lastActivePreviewWrapupTime"].(string); ok {
+		LastActivePreviewWrapupTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", lastActivePreviewWrapupTimeString)
+		o.LastActivePreviewWrapupTime = &LastActivePreviewWrapupTime
+	}
+	
+	if creationTimeString, ok := CampaigninteractionMap["creationTime"].(string); ok {
+		CreationTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", creationTimeString)
+		o.CreationTime = &CreationTime
+	}
+	
+	if callPlacedTimeString, ok := CampaigninteractionMap["callPlacedTime"].(string); ok {
+		CallPlacedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callPlacedTimeString)
+		o.CallPlacedTime = &CallPlacedTime
+	}
+	
+	if callRoutedTimeString, ok := CampaigninteractionMap["callRoutedTime"].(string); ok {
+		CallRoutedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", callRoutedTimeString)
+		o.CallRoutedTime = &CallRoutedTime
+	}
+	
+	if previewConnectedTimeString, ok := CampaigninteractionMap["previewConnectedTime"].(string); ok {
+		PreviewConnectedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", previewConnectedTimeString)
+		o.PreviewConnectedTime = &PreviewConnectedTime
+	}
+	
+	if Queue, ok := CampaigninteractionMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Script, ok := CampaigninteractionMap["script"].(map[string]interface{}); ok {
+		ScriptString, _ := json.Marshal(Script)
+		json.Unmarshal(ScriptString, &o.Script)
+	}
+	
+	if Disposition, ok := CampaigninteractionMap["disposition"].(string); ok {
+		o.Disposition = &Disposition
+	}
+	
+	if CallerName, ok := CampaigninteractionMap["callerName"].(string); ok {
+		o.CallerName = &CallerName
+	}
+	
+	if CallerAddress, ok := CampaigninteractionMap["callerAddress"].(string); ok {
+		o.CallerAddress = &CallerAddress
+	}
+	
+	if previewPopDeliveredTimeString, ok := CampaigninteractionMap["previewPopDeliveredTime"].(string); ok {
+		PreviewPopDeliveredTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", previewPopDeliveredTimeString)
+		o.PreviewPopDeliveredTime = &PreviewPopDeliveredTime
+	}
+	
+	if Conversation, ok := CampaigninteractionMap["conversation"].(map[string]interface{}); ok {
+		ConversationString, _ := json.Marshal(Conversation)
+		json.Unmarshal(ConversationString, &o.Conversation)
+	}
+	
+	if DialerSystemParticipantId, ok := CampaigninteractionMap["dialerSystemParticipantId"].(string); ok {
+		o.DialerSystemParticipantId = &DialerSystemParticipantId
+	}
+	
+	if DialingMode, ok := CampaigninteractionMap["dialingMode"].(string); ok {
+		o.DialingMode = &DialingMode
+	}
+	
+	if Skills, ok := CampaigninteractionMap["skills"].([]interface{}); ok {
+		SkillsString, _ := json.Marshal(Skills)
+		json.Unmarshal(SkillsString, &o.Skills)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

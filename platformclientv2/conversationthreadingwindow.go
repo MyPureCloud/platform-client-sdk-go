@@ -21,13 +21,11 @@ type Conversationthreadingwindow struct {
 
 }
 
-func (u *Conversationthreadingwindow) MarshalJSON() ([]byte, error) {
+func (o *Conversationthreadingwindow) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Conversationthreadingwindow
-
 	
-
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Conversationthreadingwindow) MarshalJSON() ([]byte, error) {
 		DefaultTimeoutMinutes *int `json:"defaultTimeoutMinutes,omitempty"`
 		*Alias
 	}{ 
-		Id: u.Id,
+		Id: o.Id,
 		
-		Settings: u.Settings,
+		Settings: o.Settings,
 		
-		DefaultTimeoutMinutes: u.DefaultTimeoutMinutes,
-		Alias:    (*Alias)(u),
+		DefaultTimeoutMinutes: o.DefaultTimeoutMinutes,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Conversationthreadingwindow) UnmarshalJSON(b []byte) error {
+	var ConversationthreadingwindowMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationthreadingwindowMap)
+	if err != nil {
+		return err
+	}
+	
+	if Id, ok := ConversationthreadingwindowMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Settings, ok := ConversationthreadingwindowMap["settings"].([]interface{}); ok {
+		SettingsString, _ := json.Marshal(Settings)
+		json.Unmarshal(SettingsString, &o.Settings)
+	}
+	
+	if DefaultTimeoutMinutes, ok := ConversationthreadingwindowMap["defaultTimeoutMinutes"].(float64); ok {
+		DefaultTimeoutMinutesInt := int(DefaultTimeoutMinutes)
+		o.DefaultTimeoutMinutes = &DefaultTimeoutMinutesInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Routingstatusdetailqueryfilter struct {
 
 }
 
-func (u *Routingstatusdetailqueryfilter) MarshalJSON() ([]byte, error) {
+func (o *Routingstatusdetailqueryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Routingstatusdetailqueryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Routingstatusdetailqueryfilter) MarshalJSON() ([]byte, error) {
 		Predicates *[]Routingstatusdetailquerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
+		Clauses: o.Clauses,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Routingstatusdetailqueryfilter) UnmarshalJSON(b []byte) error {
+	var RoutingstatusdetailqueryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &RoutingstatusdetailqueryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := RoutingstatusdetailqueryfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := RoutingstatusdetailqueryfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if Predicates, ok := RoutingstatusdetailqueryfilterMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

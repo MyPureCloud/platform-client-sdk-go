@@ -25,13 +25,11 @@ type Timeinterval struct {
 
 }
 
-func (u *Timeinterval) MarshalJSON() ([]byte, error) {
+func (o *Timeinterval) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Timeinterval
-
 	
-
 	return json.Marshal(&struct { 
 		Months *int `json:"months,omitempty"`
 		
@@ -42,15 +40,46 @@ func (u *Timeinterval) MarshalJSON() ([]byte, error) {
 		Hours *int `json:"hours,omitempty"`
 		*Alias
 	}{ 
-		Months: u.Months,
+		Months: o.Months,
 		
-		Weeks: u.Weeks,
+		Weeks: o.Weeks,
 		
-		Days: u.Days,
+		Days: o.Days,
 		
-		Hours: u.Hours,
-		Alias:    (*Alias)(u),
+		Hours: o.Hours,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Timeinterval) UnmarshalJSON(b []byte) error {
+	var TimeintervalMap map[string]interface{}
+	err := json.Unmarshal(b, &TimeintervalMap)
+	if err != nil {
+		return err
+	}
+	
+	if Months, ok := TimeintervalMap["months"].(float64); ok {
+		MonthsInt := int(Months)
+		o.Months = &MonthsInt
+	}
+	
+	if Weeks, ok := TimeintervalMap["weeks"].(float64); ok {
+		WeeksInt := int(Weeks)
+		o.Weeks = &WeeksInt
+	}
+	
+	if Days, ok := TimeintervalMap["days"].(float64); ok {
+		DaysInt := int(Days)
+		o.Days = &DaysInt
+	}
+	
+	if Hours, ok := TimeintervalMap["hours"].(float64); ok {
+		HoursInt := int(Hours)
+		o.Hours = &HoursInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

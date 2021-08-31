@@ -21,13 +21,11 @@ type Segmentdetailqueryfilter struct {
 
 }
 
-func (u *Segmentdetailqueryfilter) MarshalJSON() ([]byte, error) {
+func (o *Segmentdetailqueryfilter) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Segmentdetailqueryfilter
-
 	
-
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Segmentdetailqueryfilter) MarshalJSON() ([]byte, error) {
 		Predicates *[]Segmentdetailquerypredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
-		VarType: u.VarType,
+		VarType: o.VarType,
 		
-		Clauses: u.Clauses,
+		Clauses: o.Clauses,
 		
-		Predicates: u.Predicates,
-		Alias:    (*Alias)(u),
+		Predicates: o.Predicates,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Segmentdetailqueryfilter) UnmarshalJSON(b []byte) error {
+	var SegmentdetailqueryfilterMap map[string]interface{}
+	err := json.Unmarshal(b, &SegmentdetailqueryfilterMap)
+	if err != nil {
+		return err
+	}
+	
+	if VarType, ok := SegmentdetailqueryfilterMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if Clauses, ok := SegmentdetailqueryfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if Predicates, ok := SegmentdetailqueryfilterMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

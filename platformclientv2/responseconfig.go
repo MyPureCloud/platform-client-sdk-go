@@ -25,13 +25,11 @@ type Responseconfig struct {
 
 }
 
-func (u *Responseconfig) MarshalJSON() ([]byte, error) {
+func (o *Responseconfig) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Responseconfig
-
 	
-
 	return json.Marshal(&struct { 
 		TranslationMap *map[string]string `json:"translationMap,omitempty"`
 		
@@ -42,15 +40,44 @@ func (u *Responseconfig) MarshalJSON() ([]byte, error) {
 		SuccessTemplateUri *string `json:"successTemplateUri,omitempty"`
 		*Alias
 	}{ 
-		TranslationMap: u.TranslationMap,
+		TranslationMap: o.TranslationMap,
 		
-		TranslationMapDefaults: u.TranslationMapDefaults,
+		TranslationMapDefaults: o.TranslationMapDefaults,
 		
-		SuccessTemplate: u.SuccessTemplate,
+		SuccessTemplate: o.SuccessTemplate,
 		
-		SuccessTemplateUri: u.SuccessTemplateUri,
-		Alias:    (*Alias)(u),
+		SuccessTemplateUri: o.SuccessTemplateUri,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Responseconfig) UnmarshalJSON(b []byte) error {
+	var ResponseconfigMap map[string]interface{}
+	err := json.Unmarshal(b, &ResponseconfigMap)
+	if err != nil {
+		return err
+	}
+	
+	if TranslationMap, ok := ResponseconfigMap["translationMap"].(map[string]interface{}); ok {
+		TranslationMapString, _ := json.Marshal(TranslationMap)
+		json.Unmarshal(TranslationMapString, &o.TranslationMap)
+	}
+	
+	if TranslationMapDefaults, ok := ResponseconfigMap["translationMapDefaults"].(map[string]interface{}); ok {
+		TranslationMapDefaultsString, _ := json.Marshal(TranslationMapDefaults)
+		json.Unmarshal(TranslationMapDefaultsString, &o.TranslationMapDefaults)
+	}
+	
+	if SuccessTemplate, ok := ResponseconfigMap["successTemplate"].(string); ok {
+		o.SuccessTemplate = &SuccessTemplate
+	}
+	
+	if SuccessTemplateUri, ok := ResponseconfigMap["successTemplateUri"].(string); ok {
+		o.SuccessTemplateUri = &SuccessTemplateUri
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

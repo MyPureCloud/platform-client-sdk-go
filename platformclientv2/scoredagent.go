@@ -17,24 +17,43 @@ type Scoredagent struct {
 
 }
 
-func (u *Scoredagent) MarshalJSON() ([]byte, error) {
+func (o *Scoredagent) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Scoredagent
-
 	
-
 	return json.Marshal(&struct { 
 		Agent *Addressableentityref `json:"agent,omitempty"`
 		
 		Score *int `json:"score,omitempty"`
 		*Alias
 	}{ 
-		Agent: u.Agent,
+		Agent: o.Agent,
 		
-		Score: u.Score,
-		Alias:    (*Alias)(u),
+		Score: o.Score,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Scoredagent) UnmarshalJSON(b []byte) error {
+	var ScoredagentMap map[string]interface{}
+	err := json.Unmarshal(b, &ScoredagentMap)
+	if err != nil {
+		return err
+	}
+	
+	if Agent, ok := ScoredagentMap["agent"].(map[string]interface{}); ok {
+		AgentString, _ := json.Marshal(Agent)
+		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if Score, ok := ScoredagentMap["score"].(float64); ok {
+		ScoreInt := int(Score)
+		o.Score = &ScoreInt
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

@@ -21,13 +21,11 @@ type Dialercontactlistfilterconfigchangefilterclause struct {
 
 }
 
-func (u *Dialercontactlistfilterconfigchangefilterclause) MarshalJSON() ([]byte, error) {
+func (o *Dialercontactlistfilterconfigchangefilterclause) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Dialercontactlistfilterconfigchangefilterclause
-
 	
-
 	return json.Marshal(&struct { 
 		FilterType *string `json:"filterType,omitempty"`
 		
@@ -36,13 +34,38 @@ func (u *Dialercontactlistfilterconfigchangefilterclause) MarshalJSON() ([]byte,
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
-		FilterType: u.FilterType,
+		FilterType: o.FilterType,
 		
-		Predicates: u.Predicates,
+		Predicates: o.Predicates,
 		
-		AdditionalProperties: u.AdditionalProperties,
-		Alias:    (*Alias)(u),
+		AdditionalProperties: o.AdditionalProperties,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Dialercontactlistfilterconfigchangefilterclause) UnmarshalJSON(b []byte) error {
+	var DialercontactlistfilterconfigchangefilterclauseMap map[string]interface{}
+	err := json.Unmarshal(b, &DialercontactlistfilterconfigchangefilterclauseMap)
+	if err != nil {
+		return err
+	}
+	
+	if FilterType, ok := DialercontactlistfilterconfigchangefilterclauseMap["filterType"].(string); ok {
+		o.FilterType = &FilterType
+	}
+	
+	if Predicates, ok := DialercontactlistfilterconfigchangefilterclauseMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
+	}
+	
+	if AdditionalProperties, ok := DialercontactlistfilterconfigchangefilterclauseMap["additionalProperties"].(map[string]interface{}); ok {
+		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
+		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

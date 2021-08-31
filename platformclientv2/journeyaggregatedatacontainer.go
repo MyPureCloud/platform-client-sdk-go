@@ -17,24 +17,43 @@ type Journeyaggregatedatacontainer struct {
 
 }
 
-func (u *Journeyaggregatedatacontainer) MarshalJSON() ([]byte, error) {
+func (o *Journeyaggregatedatacontainer) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Journeyaggregatedatacontainer
-
 	
-
 	return json.Marshal(&struct { 
 		Group *map[string]string `json:"group,omitempty"`
 		
 		Data *[]Statisticalresponse `json:"data,omitempty"`
 		*Alias
 	}{ 
-		Group: u.Group,
+		Group: o.Group,
 		
-		Data: u.Data,
-		Alias:    (*Alias)(u),
+		Data: o.Data,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Journeyaggregatedatacontainer) UnmarshalJSON(b []byte) error {
+	var JourneyaggregatedatacontainerMap map[string]interface{}
+	err := json.Unmarshal(b, &JourneyaggregatedatacontainerMap)
+	if err != nil {
+		return err
+	}
+	
+	if Group, ok := JourneyaggregatedatacontainerMap["group"].(map[string]interface{}); ok {
+		GroupString, _ := json.Marshal(Group)
+		json.Unmarshal(GroupString, &o.Group)
+	}
+	
+	if Data, ok := JourneyaggregatedatacontainerMap["data"].([]interface{}); ok {
+		DataString, _ := json.Marshal(Data)
+		json.Unmarshal(DataString, &o.Data)
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model

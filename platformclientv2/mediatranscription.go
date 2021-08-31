@@ -21,13 +21,11 @@ type Mediatranscription struct {
 
 }
 
-func (u *Mediatranscription) MarshalJSON() ([]byte, error) {
+func (o *Mediatranscription) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Mediatranscription
-
 	
-
 	return json.Marshal(&struct { 
 		DisplayName *string `json:"displayName,omitempty"`
 		
@@ -36,13 +34,36 @@ func (u *Mediatranscription) MarshalJSON() ([]byte, error) {
 		IntegrationId *string `json:"integrationId,omitempty"`
 		*Alias
 	}{ 
-		DisplayName: u.DisplayName,
+		DisplayName: o.DisplayName,
 		
-		TranscriptionProvider: u.TranscriptionProvider,
+		TranscriptionProvider: o.TranscriptionProvider,
 		
-		IntegrationId: u.IntegrationId,
-		Alias:    (*Alias)(u),
+		IntegrationId: o.IntegrationId,
+		Alias:    (*Alias)(o),
 	})
+}
+
+func (o *Mediatranscription) UnmarshalJSON(b []byte) error {
+	var MediatranscriptionMap map[string]interface{}
+	err := json.Unmarshal(b, &MediatranscriptionMap)
+	if err != nil {
+		return err
+	}
+	
+	if DisplayName, ok := MediatranscriptionMap["displayName"].(string); ok {
+		o.DisplayName = &DisplayName
+	}
+	
+	if TranscriptionProvider, ok := MediatranscriptionMap["transcriptionProvider"].(string); ok {
+		o.TranscriptionProvider = &TranscriptionProvider
+	}
+	
+	if IntegrationId, ok := MediatranscriptionMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
+	}
+	
+
+	return nil
 }
 
 // String returns a JSON representation of the model
