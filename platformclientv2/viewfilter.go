@@ -487,6 +487,14 @@ type Viewfilter struct {
 	// HasScoredEvaluation - Indicates filtering for scored evaluation
 	HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
 
+
+	// IsAgentOwnedCallback - Indicates filtering for agent owned callback interactions
+	IsAgentOwnedCallback *bool `json:"isAgentOwnedCallback,omitempty"`
+
+
+	// AgentCallbackOwnerIds - The list of callback owners used to filter interactions
+	AgentCallbackOwnerIds *[]string `json:"agentCallbackOwnerIds,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -734,6 +742,10 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		HasEvaluation *bool `json:"hasEvaluation,omitempty"`
 		
 		HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
+		
+		IsAgentOwnedCallback *bool `json:"isAgentOwnedCallback,omitempty"`
+		
+		AgentCallbackOwnerIds *[]string `json:"agentCallbackOwnerIds,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -975,6 +987,10 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		HasEvaluation: o.HasEvaluation,
 		
 		HasScoredEvaluation: o.HasScoredEvaluation,
+		
+		IsAgentOwnedCallback: o.IsAgentOwnedCallback,
+		
+		AgentCallbackOwnerIds: o.AgentCallbackOwnerIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1561,6 +1577,15 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	
 	if HasScoredEvaluation, ok := ViewfilterMap["hasScoredEvaluation"].(bool); ok {
 		o.HasScoredEvaluation = &HasScoredEvaluation
+	}
+	
+	if IsAgentOwnedCallback, ok := ViewfilterMap["isAgentOwnedCallback"].(bool); ok {
+		o.IsAgentOwnedCallback = &IsAgentOwnedCallback
+	}
+	
+	if AgentCallbackOwnerIds, ok := ViewfilterMap["agentCallbackOwnerIds"].([]interface{}); ok {
+		AgentCallbackOwnerIdsString, _ := json.Marshal(AgentCallbackOwnerIds)
+		json.Unmarshal(AgentCallbackOwnerIdsString, &o.AgentCallbackOwnerIds)
 	}
 	
 

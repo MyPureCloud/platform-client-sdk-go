@@ -36,6 +36,10 @@ type Pureengage struct {
 	SloBinding *string `json:"sloBinding,omitempty"`
 
 
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+
+
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
@@ -73,6 +77,8 @@ func (o *Pureengage) MarshalJSON() ([]byte, error) {
 		
 		SloBinding *string `json:"sloBinding,omitempty"`
 		
+		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+		
 		Certificate *string `json:"certificate,omitempty"`
 		
 		Certificates *[]string `json:"certificates,omitempty"`
@@ -95,6 +101,8 @@ func (o *Pureengage) MarshalJSON() ([]byte, error) {
 		SloURI: o.SloURI,
 		
 		SloBinding: o.SloBinding,
+		
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
 		Certificate: o.Certificate,
 		
@@ -140,6 +148,10 @@ func (o *Pureengage) UnmarshalJSON(b []byte) error {
 	
 	if SloBinding, ok := PureengageMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
+	}
+	
+	if RelyingPartyIdentifier, ok := PureengageMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
 	
 	if Certificate, ok := PureengageMap["certificate"].(string); ok {

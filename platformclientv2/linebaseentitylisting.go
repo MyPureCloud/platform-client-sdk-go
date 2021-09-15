@@ -32,12 +32,12 @@ type Linebaseentitylisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 
 	// LastUri
@@ -67,9 +67,9 @@ func (o *Linebaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -88,9 +88,9 @@ func (o *Linebaseentitylisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri: o.SelfUri,
 		
-		NextUri: o.NextUri,
-		
 		PreviousUri: o.PreviousUri,
+		
+		NextUri: o.NextUri,
 		
 		LastUri: o.LastUri,
 		
@@ -134,12 +134,12 @@ func (o *Linebaseentitylisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
 	
-	if NextUri, ok := LinebaseentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-	
 	if PreviousUri, ok := LinebaseentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
+	}
+	
+	if NextUri, ok := LinebaseentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
 	
 	if LastUri, ok := LinebaseentitylistingMap["lastUri"].(string); ok {

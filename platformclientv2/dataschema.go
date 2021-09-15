@@ -9,7 +9,7 @@ import (
 
 // Dataschema
 type Dataschema struct { 
-	// Id - The globally unique identifier for the object.
+	// Id - The globally unique identifier for the schema.  Only required if a schema is used for custom fields during external entity creation or updates.
 	Id *string `json:"id,omitempty"`
 
 

@@ -69,8 +69,16 @@ type Queue struct {
 	SkillEvaluationMethod *string `json:"skillEvaluationMethod,omitempty"`
 
 
-	// QueueFlow - The in-queue flow to use for conversations waiting in queue.
+	// QueueFlow - The in-queue flow to use for call conversations waiting in queue.
 	QueueFlow *Domainentityref `json:"queueFlow,omitempty"`
+
+
+	// EmailInQueueFlow - The in-queue flow to use for email conversations waiting in queue.
+	EmailInQueueFlow *Domainentityref `json:"emailInQueueFlow,omitempty"`
+
+
+	// MessageInQueueFlow - The in-queue flow to use for message conversations waiting in queue.
+	MessageInQueueFlow *Domainentityref `json:"messageInQueueFlow,omitempty"`
 
 
 	// WhisperPrompt - The prompt used for whisper on the queue, if configured.
@@ -168,6 +176,10 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		
 		QueueFlow *Domainentityref `json:"queueFlow,omitempty"`
 		
+		EmailInQueueFlow *Domainentityref `json:"emailInQueueFlow,omitempty"`
+		
+		MessageInQueueFlow *Domainentityref `json:"messageInQueueFlow,omitempty"`
+		
 		WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
 		
 		AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
@@ -220,6 +232,10 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		SkillEvaluationMethod: o.SkillEvaluationMethod,
 		
 		QueueFlow: o.QueueFlow,
+		
+		EmailInQueueFlow: o.EmailInQueueFlow,
+		
+		MessageInQueueFlow: o.MessageInQueueFlow,
 		
 		WhisperPrompt: o.WhisperPrompt,
 		
@@ -323,6 +339,16 @@ func (o *Queue) UnmarshalJSON(b []byte) error {
 	if QueueFlow, ok := QueueMap["queueFlow"].(map[string]interface{}); ok {
 		QueueFlowString, _ := json.Marshal(QueueFlow)
 		json.Unmarshal(QueueFlowString, &o.QueueFlow)
+	}
+	
+	if EmailInQueueFlow, ok := QueueMap["emailInQueueFlow"].(map[string]interface{}); ok {
+		EmailInQueueFlowString, _ := json.Marshal(EmailInQueueFlow)
+		json.Unmarshal(EmailInQueueFlowString, &o.EmailInQueueFlow)
+	}
+	
+	if MessageInQueueFlow, ok := QueueMap["messageInQueueFlow"].(map[string]interface{}); ok {
+		MessageInQueueFlowString, _ := json.Marshal(MessageInQueueFlow)
+		json.Unmarshal(MessageInQueueFlowString, &o.MessageInQueueFlow)
 	}
 	
 	if WhisperPrompt, ok := QueueMap["whisperPrompt"].(map[string]interface{}); ok {

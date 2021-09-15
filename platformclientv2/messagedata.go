@@ -61,6 +61,10 @@ type Messagedata struct {
 	CreatedBy *User `json:"createdBy,omitempty"`
 
 
+	// ConversationId - The id of the conversation of this message.
+	ConversationId *string `json:"conversationId,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -106,6 +110,8 @@ func (o *Messagedata) MarshalJSON() ([]byte, error) {
 		
 		CreatedBy *User `json:"createdBy,omitempty"`
 		
+		ConversationId *string `json:"conversationId,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -134,6 +140,8 @@ func (o *Messagedata) MarshalJSON() ([]byte, error) {
 		Stickers: o.Stickers,
 		
 		CreatedBy: o.CreatedBy,
+		
+		ConversationId: o.ConversationId,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -201,6 +209,10 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 	if CreatedBy, ok := MessagedataMap["createdBy"].(map[string]interface{}); ok {
 		CreatedByString, _ := json.Marshal(CreatedBy)
 		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if ConversationId, ok := MessagedataMap["conversationId"].(string); ok {
+		o.ConversationId = &ConversationId
 	}
 	
 	if SelfUri, ok := MessagedataMap["selfUri"].(string); ok {

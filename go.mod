@@ -1,4 +1,4 @@
-module github.com/mypurecloud/platform-client-sdk-go/v53
+module github.com/mypurecloud/platform-client-sdk-go/v54
 
 go 1.15
 

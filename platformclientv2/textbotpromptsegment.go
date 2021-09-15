@@ -19,6 +19,10 @@ type Textbotpromptsegment struct {
 	// Format - Additional details describing the segment’s contents, which the client should honour where possible.
 	Format *Format `json:"format,omitempty"`
 
+
+	// Content - Details to display Rich Media content. This is only populated when the segment 'type' is 'Rich Media'.
+	Content *[]Messagecontent `json:"content,omitempty"`
+
 }
 
 func (o *Textbotpromptsegment) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Textbotpromptsegment) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		Format *Format `json:"format,omitempty"`
+		
+		Content *[]Messagecontent `json:"content,omitempty"`
 		*Alias
 	}{ 
 		Text: o.Text,
@@ -39,6 +45,8 @@ func (o *Textbotpromptsegment) MarshalJSON() ([]byte, error) {
 		VarType: o.VarType,
 		
 		Format: o.Format,
+		
+		Content: o.Content,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,11 @@ func (o *Textbotpromptsegment) UnmarshalJSON(b []byte) error {
 	if Format, ok := TextbotpromptsegmentMap["format"].(map[string]interface{}); ok {
 		FormatString, _ := json.Marshal(Format)
 		json.Unmarshal(FormatString, &o.Format)
+	}
+	
+	if Content, ok := TextbotpromptsegmentMap["content"].([]interface{}); ok {
+		ContentString, _ := json.Marshal(Content)
+		json.Unmarshal(ContentString, &o.Content)
 	}
 	
 

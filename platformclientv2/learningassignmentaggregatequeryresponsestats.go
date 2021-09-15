@@ -13,15 +13,15 @@ type Learningassignmentaggregatequeryresponsestats struct {
 
 
 	// Min - The minimum value in this metric
-	Min *int `json:"min,omitempty"`
+	Min *float32 `json:"min,omitempty"`
 
 
 	// Max - The maximum value in this metric
-	Max *int `json:"max,omitempty"`
+	Max *float32 `json:"max,omitempty"`
 
 
 	// Sum - The total of the values for this metric
-	Sum *int `json:"sum,omitempty"`
+	Sum *float32 `json:"sum,omitempty"`
 
 }
 
@@ -33,11 +33,11 @@ func (o *Learningassignmentaggregatequeryresponsestats) MarshalJSON() ([]byte, e
 	return json.Marshal(&struct { 
 		Count *int `json:"count,omitempty"`
 		
-		Min *int `json:"min,omitempty"`
+		Min *float32 `json:"min,omitempty"`
 		
-		Max *int `json:"max,omitempty"`
+		Max *float32 `json:"max,omitempty"`
 		
-		Sum *int `json:"sum,omitempty"`
+		Sum *float32 `json:"sum,omitempty"`
 		*Alias
 	}{ 
 		Count: o.Count,
@@ -64,18 +64,18 @@ func (o *Learningassignmentaggregatequeryresponsestats) UnmarshalJSON(b []byte) 
 	}
 	
 	if Min, ok := LearningassignmentaggregatequeryresponsestatsMap["min"].(float64); ok {
-		MinInt := int(Min)
-		o.Min = &MinInt
+		MinFloat32 := float32(Min)
+		o.Min = &MinFloat32
 	}
 	
 	if Max, ok := LearningassignmentaggregatequeryresponsestatsMap["max"].(float64); ok {
-		MaxInt := int(Max)
-		o.Max = &MaxInt
+		MaxFloat32 := float32(Max)
+		o.Max = &MaxFloat32
 	}
 	
 	if Sum, ok := LearningassignmentaggregatequeryresponsestatsMap["sum"].(float64); ok {
-		SumInt := int(Sum)
-		o.Sum = &SumInt
+		SumFloat32 := float32(Sum)
+		o.Sum = &SumFloat32
 	}
 	
 

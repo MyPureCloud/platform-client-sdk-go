@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -52,6 +53,22 @@ type Metrics struct {
 	PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
 
 
+	// LinkedMetric - The linked metric entity reference
+	LinkedMetric *Addressableentityref `json:"linkedMetric,omitempty"`
+
+
+	// DateCreated - The created date of this metric
+	DateCreated *int `json:"dateCreated,omitempty"`
+
+
+	// DateUnlinked - The unlinked workday for this metric if this metric was ever unlinked. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateUnlinked *time.Time `json:"dateUnlinked,omitempty"`
+
+
+	// SourcePerformanceProfile - The source performance profile when this metric is linked
+	SourcePerformanceProfile *Performanceprofile `json:"sourcePerformanceProfile,omitempty"`
+
+
 	// UnitDefinition - Unit definition of linked external metric
 	UnitDefinition *string `json:"unitDefinition,omitempty"`
 
@@ -69,6 +86,13 @@ func (o *Metrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Metrics
+	
+	DateUnlinked := new(string)
+	if o.DateUnlinked != nil {
+		*DateUnlinked = timeutil.Strftime(o.DateUnlinked, "%Y-%m-%d")
+	} else {
+		DateUnlinked = nil
+	}
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
@@ -92,6 +116,14 @@ func (o *Metrics) MarshalJSON() ([]byte, error) {
 		MaxPoints *int `json:"maxPoints,omitempty"`
 		
 		PerformanceProfileId *string `json:"performanceProfileId,omitempty"`
+		
+		LinkedMetric *Addressableentityref `json:"linkedMetric,omitempty"`
+		
+		DateCreated *int `json:"dateCreated,omitempty"`
+		
+		DateUnlinked *string `json:"dateUnlinked,omitempty"`
+		
+		SourcePerformanceProfile *Performanceprofile `json:"sourcePerformanceProfile,omitempty"`
 		
 		UnitDefinition *string `json:"unitDefinition,omitempty"`
 		
@@ -121,6 +153,14 @@ func (o *Metrics) MarshalJSON() ([]byte, error) {
 		MaxPoints: o.MaxPoints,
 		
 		PerformanceProfileId: o.PerformanceProfileId,
+		
+		LinkedMetric: o.LinkedMetric,
+		
+		DateCreated: o.DateCreated,
+		
+		DateUnlinked: DateUnlinked,
+		
+		SourcePerformanceProfile: o.SourcePerformanceProfile,
 		
 		UnitDefinition: o.UnitDefinition,
 		
@@ -182,6 +222,26 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 	
 	if PerformanceProfileId, ok := MetricsMap["performanceProfileId"].(string); ok {
 		o.PerformanceProfileId = &PerformanceProfileId
+	}
+	
+	if LinkedMetric, ok := MetricsMap["linkedMetric"].(map[string]interface{}); ok {
+		LinkedMetricString, _ := json.Marshal(LinkedMetric)
+		json.Unmarshal(LinkedMetricString, &o.LinkedMetric)
+	}
+	
+	if DateCreated, ok := MetricsMap["dateCreated"].(float64); ok {
+		DateCreatedInt := int(DateCreated)
+		o.DateCreated = &DateCreatedInt
+	}
+	
+	if dateUnlinkedString, ok := MetricsMap["dateUnlinked"].(string); ok {
+		DateUnlinked, _ := time.Parse("2006-01-02", dateUnlinkedString)
+		o.DateUnlinked = &DateUnlinked
+	}
+	
+	if SourcePerformanceProfile, ok := MetricsMap["sourcePerformanceProfile"].(map[string]interface{}); ok {
+		SourcePerformanceProfileString, _ := json.Marshal(SourcePerformanceProfile)
+		json.Unmarshal(SourcePerformanceProfileString, &o.SourcePerformanceProfile)
 	}
 	
 	if UnitDefinition, ok := MetricsMap["unitDefinition"].(string); ok {

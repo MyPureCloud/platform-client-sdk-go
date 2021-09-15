@@ -8,7 +8,7 @@ import (
 
 // Bullseye
 type Bullseye struct { 
-	// Rings
+	// Rings - The bullseye rings configured for this queue.
 	Rings *[]Ring `json:"rings,omitempty"`
 
 }

@@ -36,16 +36,16 @@ type Gsuite struct {
 	SloBinding *string `json:"sloBinding,omitempty"`
 
 
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+
+
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
 
 	// Certificates
 	Certificates *[]string `json:"certificates,omitempty"`
-
-
-	// RelyingPartyIdentifier
-	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -73,11 +73,11 @@ func (o *Gsuite) MarshalJSON() ([]byte, error) {
 		
 		SloBinding *string `json:"sloBinding,omitempty"`
 		
+		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+		
 		Certificate *string `json:"certificate,omitempty"`
 		
 		Certificates *[]string `json:"certificates,omitempty"`
-		
-		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
@@ -96,11 +96,11 @@ func (o *Gsuite) MarshalJSON() ([]byte, error) {
 		
 		SloBinding: o.SloBinding,
 		
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
+		
 		Certificate: o.Certificate,
 		
 		Certificates: o.Certificates,
-		
-		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -142,6 +142,10 @@ func (o *Gsuite) UnmarshalJSON(b []byte) error {
 		o.SloBinding = &SloBinding
 	}
 	
+	if RelyingPartyIdentifier, ok := GsuiteMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
+	}
+	
 	if Certificate, ok := GsuiteMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
@@ -149,10 +153,6 @@ func (o *Gsuite) UnmarshalJSON(b []byte) error {
 	if Certificates, ok := GsuiteMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
-	}
-	
-	if RelyingPartyIdentifier, ok := GsuiteMap["relyingPartyIdentifier"].(string); ok {
-		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
 	
 	if SelfUri, ok := GsuiteMap["selfUri"].(string); ok {

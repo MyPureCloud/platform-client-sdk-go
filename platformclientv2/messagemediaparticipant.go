@@ -164,6 +164,10 @@ type Messagemediaparticipant struct {
 	// RecipientType - The type of the recipient. Eg: Provisioned phoneNumber is the recipient for sms message type.
 	RecipientType *string `json:"recipientType,omitempty"`
 
+
+	// Authenticated - If true, the participant member is authenticated.
+	Authenticated *bool `json:"authenticated,omitempty"`
+
 }
 
 func (o *Messagemediaparticipant) MarshalJSON() ([]byte, error) {
@@ -297,6 +301,8 @@ func (o *Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		RecipientCountry *string `json:"recipientCountry,omitempty"`
 		
 		RecipientType *string `json:"recipientType,omitempty"`
+		
+		Authenticated *bool `json:"authenticated,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -376,6 +382,8 @@ func (o *Messagemediaparticipant) MarshalJSON() ([]byte, error) {
 		RecipientCountry: o.RecipientCountry,
 		
 		RecipientType: o.RecipientType,
+		
+		Authenticated: o.Authenticated,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -563,6 +571,10 @@ func (o *Messagemediaparticipant) UnmarshalJSON(b []byte) error {
 	
 	if RecipientType, ok := MessagemediaparticipantMap["recipientType"].(string); ok {
 		o.RecipientType = &RecipientType
+	}
+	
+	if Authenticated, ok := MessagemediaparticipantMap["authenticated"].(bool); ok {
+		o.Authenticated = &Authenticated
 	}
 	
 

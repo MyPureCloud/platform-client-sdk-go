@@ -41,6 +41,10 @@ type Performanceprofile struct {
 	Active *bool `json:"active,omitempty"`
 
 
+	// MemberCount - The number of members in this performance profile
+	MemberCount *int `json:"memberCount,omitempty"`
+
+
 	// MaxLeaderboardRankSize - The maximum rank size for the leaderboard. This counts the number of ranks can be retrieved in a leaderboard queries
 	MaxLeaderboardRankSize *int `json:"maxLeaderboardRankSize,omitempty"`
 
@@ -80,6 +84,8 @@ func (o *Performanceprofile) MarshalJSON() ([]byte, error) {
 		
 		Active *bool `json:"active,omitempty"`
 		
+		MemberCount *int `json:"memberCount,omitempty"`
+		
 		MaxLeaderboardRankSize *int `json:"maxLeaderboardRankSize,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -100,6 +106,8 @@ func (o *Performanceprofile) MarshalJSON() ([]byte, error) {
 		ReportingIntervals: o.ReportingIntervals,
 		
 		Active: o.Active,
+		
+		MemberCount: o.MemberCount,
 		
 		MaxLeaderboardRankSize: o.MaxLeaderboardRankSize,
 		
@@ -149,6 +157,11 @@ func (o *Performanceprofile) UnmarshalJSON(b []byte) error {
 	
 	if Active, ok := PerformanceprofileMap["active"].(bool); ok {
 		o.Active = &Active
+	}
+	
+	if MemberCount, ok := PerformanceprofileMap["memberCount"].(float64); ok {
+		MemberCountInt := int(MemberCount)
+		o.MemberCount = &MemberCountInt
 	}
 	
 	if MaxLeaderboardRankSize, ok := PerformanceprofileMap["maxLeaderboardRankSize"].(float64); ok {

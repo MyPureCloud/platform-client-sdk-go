@@ -45,6 +45,10 @@ type Predictor struct {
 	WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
 
 
+	// ErrorCode - Predictor error code - optional details on why the predictor went into error state.
+	ErrorCode *string `json:"errorCode,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -90,6 +94,8 @@ func (o *Predictor) MarshalJSON() ([]byte, error) {
 		
 		WorkloadBalancingConfig *Predictorworkloadbalancing `json:"workloadBalancingConfig,omitempty"`
 		
+		ErrorCode *string `json:"errorCode,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -110,6 +116,8 @@ func (o *Predictor) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		WorkloadBalancingConfig: o.WorkloadBalancingConfig,
+		
+		ErrorCode: o.ErrorCode,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -163,6 +171,10 @@ func (o *Predictor) UnmarshalJSON(b []byte) error {
 	if WorkloadBalancingConfig, ok := PredictorMap["workloadBalancingConfig"].(map[string]interface{}); ok {
 		WorkloadBalancingConfigString, _ := json.Marshal(WorkloadBalancingConfig)
 		json.Unmarshal(WorkloadBalancingConfigString, &o.WorkloadBalancingConfig)
+	}
+	
+	if ErrorCode, ok := PredictorMap["errorCode"].(string); ok {
+		o.ErrorCode = &ErrorCode
 	}
 	
 	if SelfUri, ok := PredictorMap["selfUri"].(string); ok {

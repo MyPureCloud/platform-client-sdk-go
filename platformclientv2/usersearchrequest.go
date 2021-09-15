@@ -36,7 +36,7 @@ type Usersearchrequest struct {
 	Query *[]Usersearchcriteria `json:"query,omitempty"`
 
 
-	// IntegrationPresenceSource - Gets an integration presence for users instead of their defaults. This parameter will only be used when presence is provided as an \"expand\". When using this parameter the maximum number of users that can be returned is 10.
+	// IntegrationPresenceSource - Gets an integration presence for users instead of their defaults. This parameter will only be used when presence is provided as an \"expand\". When using this parameter the maximum number of users that can be returned is 100.
 	IntegrationPresenceSource *string `json:"integrationPresenceSource,omitempty"`
 
 

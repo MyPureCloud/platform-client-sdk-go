@@ -8,11 +8,11 @@ import (
 
 // Ring
 type Ring struct { 
-	// ExpansionCriteria
+	// ExpansionCriteria - The conditions that will trigger conversations to move to the next bullseye ring.
 	ExpansionCriteria *[]Expansioncriterium `json:"expansionCriteria,omitempty"`
 
 
-	// Actions
+	// Actions - The actions that will be performed just before moving conversations to the next bullseye ring.
 	Actions *Actions `json:"actions,omitempty"`
 
 }

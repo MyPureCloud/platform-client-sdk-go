@@ -1463,7 +1463,7 @@ func (a GamificationApi) GetGamificationScorecardsPointsAlltime(endWorkday time.
 
 // GetGamificationScorecardsPointsAverage invokes GET /api/v2/gamification/scorecards/points/average
 //
-// Average points of the requesting user&#39;s division
+// Average points of the requesting user&#39;s division or performance profile
 //
 // 
 func (a GamificationApi) GetGamificationScorecardsPointsAverage(workday time.Time) (*Singleworkdayaveragepoints, *APIResponse, error) {
@@ -2031,7 +2031,7 @@ func (a GamificationApi) GetGamificationScorecardsUserPointsTrends(userId string
 
 // GetGamificationScorecardsUserValuesTrends invokes GET /api/v2/gamification/scorecards/users/{userId}/values/trends
 //
-// Values Trends of a user
+// Values trends of a user
 //
 // 
 func (a GamificationApi) GetGamificationScorecardsUserValuesTrends(userId string, startWorkday time.Time, endWorkday time.Time, timeZone string) (*Workdayvaluestrend, *APIResponse, error) {
@@ -2395,7 +2395,7 @@ func (a GamificationApi) GetGamificationScorecardsUsersValuesTrends(filterType s
 
 // GetGamificationScorecardsValuesAverage invokes GET /api/v2/gamification/scorecards/values/average
 //
-// Average values of the requesting user&#39;s division
+// Average values of the requesting user&#39;s division or performance profile
 //
 // 
 func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Time, timeZone string) (*Singleworkdayaveragevalues, *APIResponse, error) {
@@ -2474,7 +2474,7 @@ func (a GamificationApi) GetGamificationScorecardsValuesAverage(workday time.Tim
 // Values trends of the requesting user or group
 //
 // 
-func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time.Time, endWorkday time.Time, filterType string, timeZone string) (*Workdayvaluestrend, *APIResponse, error) {
+func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time.Time, endWorkday time.Time, filterType string, referenceWorkday time.Time, timeZone string) (*Workdayvaluestrend, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/scorecards/values/trends"
@@ -2512,6 +2512,8 @@ func (a GamificationApi) GetGamificationScorecardsValuesTrends(startWorkday time
 	}
 	
 	queryParams["filterType"] = a.Configuration.APIClient.ParameterToString(filterType, "")
+	
+	queryParams["referenceWorkday"] = a.Configuration.APIClient.ParameterToString(referenceWorkday, "")
 	
 	queryParams["startWorkday"] = a.Configuration.APIClient.ParameterToString(startWorkday, "")
 	
@@ -3055,6 +3057,81 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body M
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Metric" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PostGamificationProfiles invokes POST /api/v2/gamification/profiles
+//
+// Create a new custom performance profile
+//
+// 
+func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile) (*Getprofilesresponse, *APIResponse, error) {
+	var httpMethod = "POST"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/gamification/profiles"
+	defaultReturn := new(Getprofilesresponse)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling GamificationApi->PostGamificationProfiles")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Getprofilesresponse
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Getprofilesresponse" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -36,16 +36,16 @@ type Genericsaml struct {
 	SloBinding *string `json:"sloBinding,omitempty"`
 
 
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+
+
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
 
 	// Certificates
 	Certificates *[]string `json:"certificates,omitempty"`
-
-
-	// RelyingPartyIdentifier
-	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 
 
 	// LogoImageData
@@ -85,11 +85,11 @@ func (o *Genericsaml) MarshalJSON() ([]byte, error) {
 		
 		SloBinding *string `json:"sloBinding,omitempty"`
 		
+		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+		
 		Certificate *string `json:"certificate,omitempty"`
 		
 		Certificates *[]string `json:"certificates,omitempty"`
-		
-		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
 		
 		LogoImageData *string `json:"logoImageData,omitempty"`
 		
@@ -114,11 +114,11 @@ func (o *Genericsaml) MarshalJSON() ([]byte, error) {
 		
 		SloBinding: o.SloBinding,
 		
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
+		
 		Certificate: o.Certificate,
 		
 		Certificates: o.Certificates,
-		
-		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
 		LogoImageData: o.LogoImageData,
 		
@@ -166,6 +166,10 @@ func (o *Genericsaml) UnmarshalJSON(b []byte) error {
 		o.SloBinding = &SloBinding
 	}
 	
+	if RelyingPartyIdentifier, ok := GenericsamlMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
+	}
+	
 	if Certificate, ok := GenericsamlMap["certificate"].(string); ok {
 		o.Certificate = &Certificate
 	}
@@ -173,10 +177,6 @@ func (o *Genericsaml) UnmarshalJSON(b []byte) error {
 	if Certificates, ok := GenericsamlMap["certificates"].([]interface{}); ok {
 		CertificatesString, _ := json.Marshal(Certificates)
 		json.Unmarshal(CertificatesString, &o.Certificates)
-	}
-	
-	if RelyingPartyIdentifier, ok := GenericsamlMap["relyingPartyIdentifier"].(string); ok {
-		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
 	
 	if LogoImageData, ok := GenericsamlMap["logoImageData"].(string); ok {

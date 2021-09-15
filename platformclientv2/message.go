@@ -61,6 +61,10 @@ type Message struct {
 	Provider *string `json:"provider,omitempty"`
 
 
+	// Authenticated - If true, the participant member is authenticated.
+	Authenticated *bool `json:"authenticated,omitempty"`
+
+
 	// VarType - Indicates the type of message platform from which the message originated.
 	VarType *string `json:"type,omitempty"`
 
@@ -107,6 +111,10 @@ type Message struct {
 
 	// AfterCallWorkRequired - Indicates if after-call work is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+
+
+	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 
 }
 
@@ -174,6 +182,8 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 		
 		Provider *string `json:"provider,omitempty"`
 		
+		Authenticated *bool `json:"authenticated,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		RecipientCountry *string `json:"recipientCountry,omitempty"`
@@ -197,6 +207,8 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Aftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
+		
+		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -225,6 +237,8 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 		
 		Provider: o.Provider,
 		
+		Authenticated: o.Authenticated,
+		
 		VarType: o.VarType,
 		
 		RecipientCountry: o.RecipientCountry,
@@ -248,6 +262,8 @@ func (o *Message) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		AgentAssistantId: o.AgentAssistantId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -317,6 +333,10 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 		o.Provider = &Provider
 	}
 	
+	if Authenticated, ok := MessageMap["authenticated"].(bool); ok {
+		o.Authenticated = &Authenticated
+	}
+	
 	if VarType, ok := MessageMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
@@ -369,6 +389,10 @@ func (o *Message) UnmarshalJSON(b []byte) error {
 	
 	if AfterCallWorkRequired, ok := MessageMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AgentAssistantId, ok := MessageMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
 	}
 	
 

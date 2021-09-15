@@ -312,21 +312,20 @@ func (a NotificationsApi) GetNotificationsChannels(includechannels string) (*Cha
 //
 // Verify a channel still exists and is valid
 //
-// 
-func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*bool, *APIResponse, error) {
+// Returns a 200 OK if channel exists, and a 404 Not Found if it doesn&#39;t
+func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*APIResponse, error) {
 	var httpMethod = "HEAD"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/notifications/channels/{channelId}"
 	path = strings.Replace(path, "{channelId}", fmt.Sprintf("%v", channelId), -1)
-	defaultReturn := new(bool)
 	if true == false {
-		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
 
 	// verify the required parameter 'channelId' is set
 	if &channelId == nil {
 		// 
-		return defaultReturn, nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->HeadNotificationsChannel")
+		return nil, errors.New("Missing required parameter 'channelId' when calling NotificationsApi->HeadNotificationsChannel")
 	}
 
 	headerParams := make(map[string]string)
@@ -365,20 +364,14 @@ func (a NotificationsApi) HeadNotificationsChannel(channelId string) (*bool, *AP
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *bool
+
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
-	} else {
-		if "bool" == "string" {
-			copy(response.RawBody, &successPayload)
-		} else {
-			err = json.Unmarshal(response.RawBody, &successPayload)
-		}
 	}
-	return successPayload, response, err
+	return response, err
 }
 
 // PostNotificationsChannelSubscriptions invokes POST /api/v2/notifications/channels/{channelId}/subscriptions

@@ -36,6 +36,10 @@ type Salesforce struct {
 	SloBinding *string `json:"sloBinding,omitempty"`
 
 
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+
+
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
@@ -69,6 +73,8 @@ func (o *Salesforce) MarshalJSON() ([]byte, error) {
 		
 		SloBinding *string `json:"sloBinding,omitempty"`
 		
+		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+		
 		Certificate *string `json:"certificate,omitempty"`
 		
 		Certificates *[]string `json:"certificates,omitempty"`
@@ -89,6 +95,8 @@ func (o *Salesforce) MarshalJSON() ([]byte, error) {
 		SloURI: o.SloURI,
 		
 		SloBinding: o.SloBinding,
+		
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
 		Certificate: o.Certificate,
 		
@@ -132,6 +140,10 @@ func (o *Salesforce) UnmarshalJSON(b []byte) error {
 	
 	if SloBinding, ok := SalesforceMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
+	}
+	
+	if RelyingPartyIdentifier, ok := SalesforceMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
 	
 	if Certificate, ok := SalesforceMap["certificate"].(string); ok {

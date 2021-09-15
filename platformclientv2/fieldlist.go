@@ -43,6 +43,10 @@ type Fieldlist struct {
 	// Required
 	Required *bool `json:"required,omitempty"`
 
+
+	// Gdpr
+	Gdpr *bool `json:"gdpr,omitempty"`
+
 }
 
 func (o *Fieldlist) MarshalJSON() ([]byte, error) {
@@ -68,6 +72,8 @@ func (o *Fieldlist) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		Required *bool `json:"required,omitempty"`
+		
+		Gdpr *bool `json:"gdpr,omitempty"`
 		*Alias
 	}{ 
 		CustomLabels: o.CustomLabels,
@@ -87,6 +93,8 @@ func (o *Fieldlist) MarshalJSON() ([]byte, error) {
 		VarType: o.VarType,
 		
 		Required: o.Required,
+		
+		Gdpr: o.Gdpr,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -134,6 +142,10 @@ func (o *Fieldlist) UnmarshalJSON(b []byte) error {
 	
 	if Required, ok := FieldlistMap["required"].(bool); ok {
 		o.Required = &Required
+	}
+	
+	if Gdpr, ok := FieldlistMap["gdpr"].(bool); ok {
+		o.Gdpr = &Gdpr
 	}
 	
 

@@ -16,6 +16,10 @@ type Topicsentitylisting struct {
 	PageSize *int `json:"pageSize,omitempty"`
 
 
+	// Total
+	Total *int `json:"total,omitempty"`
+
+
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -39,6 +43,8 @@ func (o *Topicsentitylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
+		Total *int `json:"total,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
@@ -49,6 +55,8 @@ func (o *Topicsentitylisting) MarshalJSON() ([]byte, error) {
 		Entities: o.Entities,
 		
 		PageSize: o.PageSize,
+		
+		Total: o.Total,
 		
 		SelfUri: o.SelfUri,
 		
@@ -74,6 +82,11 @@ func (o *Topicsentitylisting) UnmarshalJSON(b []byte) error {
 	if PageSize, ok := TopicsentitylistingMap["pageSize"].(float64); ok {
 		PageSizeInt := int(PageSize)
 		o.PageSize = &PageSizeInt
+	}
+	
+	if Total, ok := TopicsentitylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
 	}
 	
 	if SelfUri, ok := TopicsentitylistingMap["selfUri"].(string); ok {

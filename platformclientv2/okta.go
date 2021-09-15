@@ -36,6 +36,10 @@ type Okta struct {
 	SloBinding *string `json:"sloBinding,omitempty"`
 
 
+	// RelyingPartyIdentifier
+	RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+
+
 	// Certificate
 	Certificate *string `json:"certificate,omitempty"`
 
@@ -69,6 +73,8 @@ func (o *Okta) MarshalJSON() ([]byte, error) {
 		
 		SloBinding *string `json:"sloBinding,omitempty"`
 		
+		RelyingPartyIdentifier *string `json:"relyingPartyIdentifier,omitempty"`
+		
 		Certificate *string `json:"certificate,omitempty"`
 		
 		Certificates *[]string `json:"certificates,omitempty"`
@@ -89,6 +95,8 @@ func (o *Okta) MarshalJSON() ([]byte, error) {
 		SloURI: o.SloURI,
 		
 		SloBinding: o.SloBinding,
+		
+		RelyingPartyIdentifier: o.RelyingPartyIdentifier,
 		
 		Certificate: o.Certificate,
 		
@@ -132,6 +140,10 @@ func (o *Okta) UnmarshalJSON(b []byte) error {
 	
 	if SloBinding, ok := OktaMap["sloBinding"].(string); ok {
 		o.SloBinding = &SloBinding
+	}
+	
+	if RelyingPartyIdentifier, ok := OktaMap["relyingPartyIdentifier"].(string); ok {
+		o.RelyingPartyIdentifier = &RelyingPartyIdentifier
 	}
 	
 	if Certificate, ok := OktaMap["certificate"].(string); ok {
