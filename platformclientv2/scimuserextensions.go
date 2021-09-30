@@ -16,7 +16,7 @@ type Scimuserextensions struct {
 	RoutingLanguages *[]Scimuserroutinglanguage `json:"routingLanguages,omitempty"`
 
 
-	// ExternalIds - The list of external identifiers assigned to user. Always includes an immutable SCIM authority prefixed with \"x-pc:scimv2:v1\".
+	// ExternalIds - The list of external identifiers assigned to user. Always includes an immutable SCIM authority prefixed with \"x-pc:scimv2:v1\". ExternalIds are searchable with complex filter query parameter using 'authority' and 'value', e.g., filter=urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:externalIds[authority eq \"matchAuthName\" and value eq \"matchingExternalKeyValue\"].
 	ExternalIds *[]Scimgenesysuserexternalid `json:"externalIds,omitempty"`
 
 }

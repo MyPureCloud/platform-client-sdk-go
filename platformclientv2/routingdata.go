@@ -31,6 +31,10 @@ type Routingdata struct {
 	// ScoredAgents - A list of scored agents for routing decisions
 	ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
 
+
+	// RoutingFlags - An array of flags indicating how the conversation should be routed
+	RoutingFlags *[]string `json:"routingFlags,omitempty"`
+
 }
 
 func (o *Routingdata) MarshalJSON() ([]byte, error) {
@@ -50,6 +54,8 @@ func (o *Routingdata) MarshalJSON() ([]byte, error) {
 		PreferredAgentIds *[]string `json:"preferredAgentIds,omitempty"`
 		
 		ScoredAgents *[]Scoredagent `json:"scoredAgents,omitempty"`
+		
+		RoutingFlags *[]string `json:"routingFlags,omitempty"`
 		*Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -63,6 +69,8 @@ func (o *Routingdata) MarshalJSON() ([]byte, error) {
 		PreferredAgentIds: o.PreferredAgentIds,
 		
 		ScoredAgents: o.ScoredAgents,
+		
+		RoutingFlags: o.RoutingFlags,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -100,6 +108,11 @@ func (o *Routingdata) UnmarshalJSON(b []byte) error {
 	if ScoredAgents, ok := RoutingdataMap["scoredAgents"].([]interface{}); ok {
 		ScoredAgentsString, _ := json.Marshal(ScoredAgents)
 		json.Unmarshal(ScoredAgentsString, &o.ScoredAgents)
+	}
+	
+	if RoutingFlags, ok := RoutingdataMap["routingFlags"].([]interface{}); ok {
+		RoutingFlagsString, _ := json.Marshal(RoutingFlags)
+		json.Unmarshal(RoutingFlagsString, &o.RoutingFlags)
 	}
 	
 

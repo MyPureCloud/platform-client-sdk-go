@@ -97,6 +97,10 @@ type Queueconversationsocialexpressioneventtopicmessage struct {
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
 
+	// AgentAssistantId
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
@@ -176,6 +180,8 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) MarshalJSON() ([]by
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
+		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
@@ -222,6 +228,8 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) MarshalJSON() ([]by
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		AgentAssistantId: o.AgentAssistantId,
 		
 		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
@@ -331,6 +339,10 @@ func (o *Queueconversationsocialexpressioneventtopicmessage) UnmarshalJSON(b []b
 	
 	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicmessageMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AgentAssistantId, ok := QueueconversationsocialexpressioneventtopicmessageMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
 	}
 	
 	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicmessageMap["additionalProperties"].(map[string]interface{}); ok {

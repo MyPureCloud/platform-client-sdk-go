@@ -393,7 +393,7 @@ func (a QualityApi) DeleteQualityFormsSurvey(formId string) (*APIResponse, error
 //
 // Gets a list of Agent Activities
 //
-// Including the number of evaluations and average evaluation score
+// Includes the number of evaluations and average evaluation score. These statistics include released evaluations only when evaluatorUserId is provided. In the absence of evaluatorUserId in the request, the api excludes evaluations which are set to never release for the calculation of evaluation statistics. 
 func (a QualityApi) GetQualityAgentsActivity(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, startTime time.Time, endTime time.Time, agentUserId []string, evaluatorUserId string, name string, group string) (*Agentactivityentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

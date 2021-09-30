@@ -125,6 +125,10 @@ type Recording struct {
 	RecordingErrorStatus *string `json:"recordingErrorStatus,omitempty"`
 
 
+	// OriginalRecordingStartTime - The start time of the full recording, before any segment access restrictions are applied. Null when there is no playable media. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	OriginalRecordingStartTime *time.Time `json:"originalRecordingStartTime,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -173,6 +177,14 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		*ExportedDate = timeutil.Strftime(o.ExportedDate, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		ExportedDate = nil
+	}
+	
+	OriginalRecordingStartTime := new(string)
+	if o.OriginalRecordingStartTime != nil {
+		
+		*OriginalRecordingStartTime = timeutil.Strftime(o.OriginalRecordingStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		OriginalRecordingStartTime = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -234,6 +246,8 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		
 		RecordingErrorStatus *string `json:"recordingErrorStatus,omitempty"`
 		
+		OriginalRecordingStartTime *string `json:"originalRecordingStartTime,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -294,6 +308,8 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		RecordingFileRole: o.RecordingFileRole,
 		
 		RecordingErrorStatus: o.RecordingErrorStatus,
+		
+		OriginalRecordingStartTime: OriginalRecordingStartTime,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -438,6 +454,11 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	
 	if RecordingErrorStatus, ok := RecordingMap["recordingErrorStatus"].(string); ok {
 		o.RecordingErrorStatus = &RecordingErrorStatus
+	}
+	
+	if originalRecordingStartTimeString, ok := RecordingMap["originalRecordingStartTime"].(string); ok {
+		OriginalRecordingStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", originalRecordingStartTimeString)
+		o.OriginalRecordingStartTime = &OriginalRecordingStartTime
 	}
 	
 	if SelfUri, ok := RecordingMap["selfUri"].(string); ok {

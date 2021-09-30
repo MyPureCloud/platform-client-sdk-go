@@ -89,6 +89,10 @@ type Analyticssession struct {
 	DeliveryStatusChangeDate *time.Time `json:"deliveryStatusChangeDate,omitempty"`
 
 
+	// DestinationAddresses - Destination address(es) of transfers or consults
+	DestinationAddresses *[]string `json:"destinationAddresses,omitempty"`
+
+
 	// Direction - The direction of the communication
 	Direction *string `json:"direction,omitempty"`
 
@@ -360,6 +364,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		DeliveryStatusChangeDate *string `json:"deliveryStatusChangeDate,omitempty"`
 		
+		DestinationAddresses *[]string `json:"destinationAddresses,omitempty"`
+		
 		Direction *string `json:"direction,omitempty"`
 		
 		DispositionAnalyzer *string `json:"dispositionAnalyzer,omitempty"`
@@ -504,6 +510,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		DeliveryStatus: o.DeliveryStatus,
 		
 		DeliveryStatusChangeDate: DeliveryStatusChangeDate,
+		
+		DestinationAddresses: o.DestinationAddresses,
 		
 		Direction: o.Direction,
 		
@@ -702,6 +710,11 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if deliveryStatusChangeDateString, ok := AnalyticssessionMap["deliveryStatusChangeDate"].(string); ok {
 		DeliveryStatusChangeDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deliveryStatusChangeDateString)
 		o.DeliveryStatusChangeDate = &DeliveryStatusChangeDate
+	}
+	
+	if DestinationAddresses, ok := AnalyticssessionMap["destinationAddresses"].([]interface{}); ok {
+		DestinationAddressesString, _ := json.Marshal(DestinationAddresses)
+		json.Unmarshal(DestinationAddressesString, &o.DestinationAddresses)
 	}
 	
 	if Direction, ok := AnalyticssessionMap["direction"].(string); ok {

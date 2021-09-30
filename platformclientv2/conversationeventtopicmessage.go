@@ -97,6 +97,10 @@ type Conversationeventtopicmessage struct {
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
 
+	// AgentAssistantId
+	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+
+
 	// AdditionalProperties
 	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
@@ -176,6 +180,8 @@ func (o *Conversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
+		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
+		
 		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
@@ -222,6 +228,8 @@ func (o *Conversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
+		
+		AgentAssistantId: o.AgentAssistantId,
 		
 		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
@@ -331,6 +339,10 @@ func (o *Conversationeventtopicmessage) UnmarshalJSON(b []byte) error {
 	
 	if AfterCallWorkRequired, ok := ConversationeventtopicmessageMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
+	}
+	
+	if AgentAssistantId, ok := ConversationeventtopicmessageMap["agentAssistantId"].(string); ok {
+		o.AgentAssistantId = &AgentAssistantId
 	}
 	
 	if AdditionalProperties, ok := ConversationeventtopicmessageMap["additionalProperties"].(map[string]interface{}); ok {

@@ -19,6 +19,10 @@ type Textbotdisconnectaction struct {
 	// FlowLocation - Describes where in the Bot Flow the user was when the disconnect occurred.
 	FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
 
+
+	// FlowOutcomes - The list of Flow Outcomes for the bot flow and their details.
+	FlowOutcomes *[]Textbotflowoutcome `json:"flowOutcomes,omitempty"`
+
 }
 
 func (o *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
 		ReasonExtendedInfo *string `json:"reasonExtendedInfo,omitempty"`
 		
 		FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
+		
+		FlowOutcomes *[]Textbotflowoutcome `json:"flowOutcomes,omitempty"`
 		*Alias
 	}{ 
 		Reason: o.Reason,
@@ -39,6 +45,8 @@ func (o *Textbotdisconnectaction) MarshalJSON() ([]byte, error) {
 		ReasonExtendedInfo: o.ReasonExtendedInfo,
 		
 		FlowLocation: o.FlowLocation,
+		
+		FlowOutcomes: o.FlowOutcomes,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,11 @@ func (o *Textbotdisconnectaction) UnmarshalJSON(b []byte) error {
 	if FlowLocation, ok := TextbotdisconnectactionMap["flowLocation"].(map[string]interface{}); ok {
 		FlowLocationString, _ := json.Marshal(FlowLocation)
 		json.Unmarshal(FlowLocationString, &o.FlowLocation)
+	}
+	
+	if FlowOutcomes, ok := TextbotdisconnectactionMap["flowOutcomes"].([]interface{}); ok {
+		FlowOutcomesString, _ := json.Marshal(FlowOutcomes)
+		json.Unmarshal(FlowOutcomesString, &o.FlowOutcomes)
 	}
 	
 

@@ -27,6 +27,10 @@ type Textbotexitaction struct {
 	// OutputData - The output data for the bot flow.
 	OutputData *Textbotinputoutputdata `json:"outputData,omitempty"`
 
+
+	// FlowOutcomes - The list of Flow Outcomes for the bot flow and their details.
+	FlowOutcomes *[]Textbotflowoutcome `json:"flowOutcomes,omitempty"`
+
 }
 
 func (o *Textbotexitaction) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Textbotexitaction) MarshalJSON() ([]byte, error) {
 		FlowLocation *Textbotflowlocation `json:"flowLocation,omitempty"`
 		
 		OutputData *Textbotinputoutputdata `json:"outputData,omitempty"`
+		
+		FlowOutcomes *[]Textbotflowoutcome `json:"flowOutcomes,omitempty"`
 		*Alias
 	}{ 
 		Reason: o.Reason,
@@ -55,6 +61,8 @@ func (o *Textbotexitaction) MarshalJSON() ([]byte, error) {
 		FlowLocation: o.FlowLocation,
 		
 		OutputData: o.OutputData,
+		
+		FlowOutcomes: o.FlowOutcomes,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -86,6 +94,11 @@ func (o *Textbotexitaction) UnmarshalJSON(b []byte) error {
 	if OutputData, ok := TextbotexitactionMap["outputData"].(map[string]interface{}); ok {
 		OutputDataString, _ := json.Marshal(OutputData)
 		json.Unmarshal(OutputDataString, &o.OutputData)
+	}
+	
+	if FlowOutcomes, ok := TextbotexitactionMap["flowOutcomes"].([]interface{}); ok {
+		FlowOutcomesString, _ := json.Marshal(FlowOutcomes)
+		json.Unmarshal(FlowOutcomesString, &o.FlowOutcomes)
 	}
 	
 

@@ -19,6 +19,10 @@ type Durationcondition struct {
 	// DurationRange
 	DurationRange *string `json:"durationRange,omitempty"`
 
+
+	// DurationMode
+	DurationMode *string `json:"durationMode,omitempty"`
+
 }
 
 func (o *Durationcondition) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Durationcondition) MarshalJSON() ([]byte, error) {
 		DurationOperator *string `json:"durationOperator,omitempty"`
 		
 		DurationRange *string `json:"durationRange,omitempty"`
+		
+		DurationMode *string `json:"durationMode,omitempty"`
 		*Alias
 	}{ 
 		DurationTarget: o.DurationTarget,
@@ -39,6 +45,8 @@ func (o *Durationcondition) MarshalJSON() ([]byte, error) {
 		DurationOperator: o.DurationOperator,
 		
 		DurationRange: o.DurationRange,
+		
+		DurationMode: o.DurationMode,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -60,6 +68,10 @@ func (o *Durationcondition) UnmarshalJSON(b []byte) error {
 	
 	if DurationRange, ok := DurationconditionMap["durationRange"].(string); ok {
 		o.DurationRange = &DurationRange
+	}
+	
+	if DurationMode, ok := DurationconditionMap["durationMode"].(string); ok {
+		o.DurationMode = &DurationMode
 	}
 	
 

@@ -66,7 +66,7 @@ func NewAPIResponse(r *http.Response, body []byte) (*APIResponse, error) {
 
 	response.StatusCode = r.StatusCode
 	response.Status = r.Status
-	response.HasBody = body != nil
+	response.HasBody = len(body) > 0
 	response.IsSuccess = r.StatusCode >= 200 && r.StatusCode < 300
 	response.Header = r.Header
 	if header, exists := response.Header["Inin-Correlation-Id"]; exists {
@@ -106,7 +106,7 @@ func NewAPIResponse(r *http.Response, body []byte) (*APIResponse, error) {
 	// This shouldn't happen, but can if there isn't a response body for an unsuccessful request.
 	if !response.IsSuccess {
 		err := APIError{
-			Message:   "API Error: Unknown API Error",
+			Message:   fmt.Sprintf("API Error: %v", r.Status),
 			ContextID: response.CorrelationID,
 		}
 		response.SetError(&err)

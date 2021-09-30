@@ -488,6 +488,10 @@ type Viewfilter struct {
 	HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
 
 
+	// EmailDeliveryStatusList - The list of email delivery statuses used to filter views
+	EmailDeliveryStatusList *[]string `json:"emailDeliveryStatusList,omitempty"`
+
+
 	// IsAgentOwnedCallback - Indicates filtering for agent owned callback interactions
 	IsAgentOwnedCallback *bool `json:"isAgentOwnedCallback,omitempty"`
 
@@ -743,6 +747,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		HasScoredEvaluation *bool `json:"hasScoredEvaluation,omitempty"`
 		
+		EmailDeliveryStatusList *[]string `json:"emailDeliveryStatusList,omitempty"`
+		
 		IsAgentOwnedCallback *bool `json:"isAgentOwnedCallback,omitempty"`
 		
 		AgentCallbackOwnerIds *[]string `json:"agentCallbackOwnerIds,omitempty"`
@@ -987,6 +993,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		HasEvaluation: o.HasEvaluation,
 		
 		HasScoredEvaluation: o.HasScoredEvaluation,
+		
+		EmailDeliveryStatusList: o.EmailDeliveryStatusList,
 		
 		IsAgentOwnedCallback: o.IsAgentOwnedCallback,
 		
@@ -1577,6 +1585,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	
 	if HasScoredEvaluation, ok := ViewfilterMap["hasScoredEvaluation"].(bool); ok {
 		o.HasScoredEvaluation = &HasScoredEvaluation
+	}
+	
+	if EmailDeliveryStatusList, ok := ViewfilterMap["emailDeliveryStatusList"].([]interface{}); ok {
+		EmailDeliveryStatusListString, _ := json.Marshal(EmailDeliveryStatusList)
+		json.Unmarshal(EmailDeliveryStatusListString, &o.EmailDeliveryStatusList)
 	}
 	
 	if IsAgentOwnedCallback, ok := ViewfilterMap["isAgentOwnedCallback"].(bool); ok {
