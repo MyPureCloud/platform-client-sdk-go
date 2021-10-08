@@ -28,8 +28,24 @@ type Opennormalizedmessage struct {
 	Content *[]Openmessagecontent `json:"content,omitempty"`
 
 
+	// Status - Message receipt status, only used with type Receipt.
+	Status *string `json:"status,omitempty"`
+
+
+	// Reasons - List of reasons for a message receipt that indicates the message has failed. Only used with Failed status.
+	Reasons *[]Reason `json:"reasons,omitempty"`
+
+
+	// IsFinalReceipt - Indicates if this is the last message receipt for this message, or if another message receipt can be expected.
+	IsFinalReceipt *bool `json:"isFinalReceipt,omitempty"`
+
+
 	// Direction - The direction of the message.
 	Direction *string `json:"direction,omitempty"`
+
+
+	// Metadata - Additional metadata about this message.
+	Metadata *map[string]string `json:"metadata,omitempty"`
 
 }
 
@@ -49,7 +65,15 @@ func (o *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 		
 		Content *[]Openmessagecontent `json:"content,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
+		Reasons *[]Reason `json:"reasons,omitempty"`
+		
+		IsFinalReceipt *bool `json:"isFinalReceipt,omitempty"`
+		
 		Direction *string `json:"direction,omitempty"`
+		
+		Metadata *map[string]string `json:"metadata,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -62,7 +86,15 @@ func (o *Opennormalizedmessage) MarshalJSON() ([]byte, error) {
 		
 		Content: o.Content,
 		
+		Status: o.Status,
+		
+		Reasons: o.Reasons,
+		
+		IsFinalReceipt: o.IsFinalReceipt,
+		
 		Direction: o.Direction,
+		
+		Metadata: o.Metadata,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -96,8 +128,26 @@ func (o *Opennormalizedmessage) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(ContentString, &o.Content)
 	}
 	
+	if Status, ok := OpennormalizedmessageMap["status"].(string); ok {
+		o.Status = &Status
+	}
+	
+	if Reasons, ok := OpennormalizedmessageMap["reasons"].([]interface{}); ok {
+		ReasonsString, _ := json.Marshal(Reasons)
+		json.Unmarshal(ReasonsString, &o.Reasons)
+	}
+	
+	if IsFinalReceipt, ok := OpennormalizedmessageMap["isFinalReceipt"].(bool); ok {
+		o.IsFinalReceipt = &IsFinalReceipt
+	}
+	
 	if Direction, ok := OpennormalizedmessageMap["direction"].(string); ok {
 		o.Direction = &Direction
+	}
+	
+	if Metadata, ok := OpennormalizedmessageMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
 

@@ -15,6 +15,10 @@ type Overallbestpoints struct {
 	// BestPoints - List of gamification best point items
 	BestPoints *[]Overallbestpointsitem `json:"bestPoints,omitempty"`
 
+
+	// PerformanceProfile - The targeted performance profile for the average points
+	PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+
 }
 
 func (o *Overallbestpoints) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Overallbestpoints) MarshalJSON() ([]byte, error) {
 		Division *Division `json:"division,omitempty"`
 		
 		BestPoints *[]Overallbestpointsitem `json:"bestPoints,omitempty"`
+		
+		PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
 		*Alias
 	}{ 
 		Division: o.Division,
 		
 		BestPoints: o.BestPoints,
+		
+		PerformanceProfile: o.PerformanceProfile,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,6 +58,11 @@ func (o *Overallbestpoints) UnmarshalJSON(b []byte) error {
 	if BestPoints, ok := OverallbestpointsMap["bestPoints"].([]interface{}); ok {
 		BestPointsString, _ := json.Marshal(BestPoints)
 		json.Unmarshal(BestPointsString, &o.BestPoints)
+	}
+	
+	if PerformanceProfile, ok := OverallbestpointsMap["performanceProfile"].(map[string]interface{}); ok {
+		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
+		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)
 	}
 	
 

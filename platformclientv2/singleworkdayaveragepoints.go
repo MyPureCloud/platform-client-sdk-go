@@ -20,6 +20,10 @@ type Singleworkdayaveragepoints struct {
 	// AveragePoints - The average points per agent earned within the division
 	AveragePoints *float64 `json:"averagePoints,omitempty"`
 
+
+	// PerformanceProfile - The targeted performance profile for the average points
+	PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+
 }
 
 func (o *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
@@ -40,6 +44,8 @@ func (o *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
 		Division *Division `json:"division,omitempty"`
 		
 		AveragePoints *float64 `json:"averagePoints,omitempty"`
+		
+		PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
 		*Alias
 	}{ 
 		DateWorkday: DateWorkday,
@@ -47,6 +53,8 @@ func (o *Singleworkdayaveragepoints) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		AveragePoints: o.AveragePoints,
+		
+		PerformanceProfile: o.PerformanceProfile,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -70,6 +78,11 @@ func (o *Singleworkdayaveragepoints) UnmarshalJSON(b []byte) error {
 	
 	if AveragePoints, ok := SingleworkdayaveragepointsMap["averagePoints"].(float64); ok {
 		o.AveragePoints = &AveragePoints
+	}
+	
+	if PerformanceProfile, ok := SingleworkdayaveragepointsMap["performanceProfile"].(map[string]interface{}); ok {
+		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
+		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)
 	}
 	
 

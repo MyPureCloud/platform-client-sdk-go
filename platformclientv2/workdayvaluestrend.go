@@ -32,6 +32,10 @@ type Workdayvaluestrend struct {
 	// Results - The metric value trends
 	Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
 
+
+	// PerformanceProfile - The targeted performance profile for the average points
+	PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+
 }
 
 func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 		Timezone *string `json:"timezone,omitempty"`
 		
 		Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
+		
+		PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
 		*Alias
 	}{ 
 		DateStartWorkday: DateStartWorkday,
@@ -78,6 +84,8 @@ func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 		Timezone: o.Timezone,
 		
 		Results: o.Results,
+		
+		PerformanceProfile: o.PerformanceProfile,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -116,6 +124,11 @@ func (o *Workdayvaluestrend) UnmarshalJSON(b []byte) error {
 	if Results, ok := WorkdayvaluestrendMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if PerformanceProfile, ok := WorkdayvaluestrendMap["performanceProfile"].(map[string]interface{}); ok {
+		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
+		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)
 	}
 	
 

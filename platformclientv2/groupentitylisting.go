@@ -32,12 +32,12 @@ type Groupentitylisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// LastUri
@@ -67,9 +67,9 @@ func (o *Groupentitylisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		LastUri *string `json:"lastUri,omitempty"`
 		
@@ -88,9 +88,9 @@ func (o *Groupentitylisting) MarshalJSON() ([]byte, error) {
 		
 		SelfUri: o.SelfUri,
 		
-		PreviousUri: o.PreviousUri,
-		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
 		
 		LastUri: o.LastUri,
 		
@@ -134,12 +134,12 @@ func (o *Groupentitylisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
 	
-	if PreviousUri, ok := GroupentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-	
 	if NextUri, ok := GroupentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := GroupentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
 	}
 	
 	if LastUri, ok := GroupentitylistingMap["lastUri"].(string); ok {

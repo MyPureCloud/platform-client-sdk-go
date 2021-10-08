@@ -27,6 +27,14 @@ type Openmessagingtorecipient struct {
 	// LastName - Last name of the recipient.
 	LastName *string `json:"lastName,omitempty"`
 
+
+	// Image - URL of an image that represents the recipient.
+	Image *string `json:"image,omitempty"`
+
+
+	// Email - E-mail address of the recipient.
+	Email *string `json:"email,omitempty"`
+
 }
 
 func (o *Openmessagingtorecipient) MarshalJSON() ([]byte, error) {
@@ -44,6 +52,10 @@ func (o *Openmessagingtorecipient) MarshalJSON() ([]byte, error) {
 		FirstName *string `json:"firstName,omitempty"`
 		
 		LastName *string `json:"lastName,omitempty"`
+		
+		Image *string `json:"image,omitempty"`
+		
+		Email *string `json:"email,omitempty"`
 		*Alias
 	}{ 
 		Nickname: o.Nickname,
@@ -55,6 +67,10 @@ func (o *Openmessagingtorecipient) MarshalJSON() ([]byte, error) {
 		FirstName: o.FirstName,
 		
 		LastName: o.LastName,
+		
+		Image: o.Image,
+		
+		Email: o.Email,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -84,6 +100,14 @@ func (o *Openmessagingtorecipient) UnmarshalJSON(b []byte) error {
 	
 	if LastName, ok := OpenmessagingtorecipientMap["lastName"].(string); ok {
 		o.LastName = &LastName
+	}
+	
+	if Image, ok := OpenmessagingtorecipientMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if Email, ok := OpenmessagingtorecipientMap["email"].(string); ok {
+		o.Email = &Email
 	}
 	
 

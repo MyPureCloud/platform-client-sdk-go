@@ -16,23 +16,23 @@ type Facebookintegrationrequest struct {
 	Name *string `json:"name,omitempty"`
 
 
-	// PageAccessToken - The long-lived Page Access Token of a facebook page.  See https://developers.facebook.com/docs/facebook-login/access-tokens.  When a pageAccessToken is provided, pageId and userAccessToken are not required.
+	// PageAccessToken - The long-lived Page Access Token of Facebook page.  See https://developers.facebook.com/docs/facebook-login/access-tokens.  When a pageAccessToken is provided, pageId and userAccessToken are not required.
 	PageAccessToken *string `json:"pageAccessToken,omitempty"`
 
 
-	// UserAccessToken - The short-lived User Access Token of the facebook user logged into the facebook app.  See https://developers.facebook.com/docs/facebook-login/access-tokens.  When userAccessToken is provided, pageId is mandatory.  When userAccessToken/pageId combination is provided, pageAccessToken is not required.
+	// UserAccessToken - The short-lived User Access Token of the Facebook user logged into the Facebook app.  See https://developers.facebook.com/docs/facebook-login/access-tokens.  When userAccessToken is provided, pageId is mandatory.  When userAccessToken/pageId combination is provided, pageAccessToken is not required.
 	UserAccessToken *string `json:"userAccessToken,omitempty"`
 
 
-	// PageId - The page Id of a facebook page. The pageId is required when userAccessToken is provided.
+	// PageId - The page Id of Facebook page. The pageId is required when userAccessToken is provided.
 	PageId *string `json:"pageId,omitempty"`
 
 
-	// AppId - The app Id of a facebook app. The appId is required when a customer wants to use their own approved facebook app.
+	// AppId - The app Id of Facebook app. The appId is required when a customer wants to use their own approved Facebook app.
 	AppId *string `json:"appId,omitempty"`
 
 
-	// AppSecret - The app Secret of a facebook app. The appSecret is required when appId is provided.
+	// AppSecret - The app Secret of Facebook app. The appSecret is required when appId is provided.
 	AppSecret *string `json:"appSecret,omitempty"`
 
 

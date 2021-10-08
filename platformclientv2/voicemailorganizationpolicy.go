@@ -9,11 +9,11 @@ import (
 
 // Voicemailorganizationpolicy
 type Voicemailorganizationpolicy struct { 
-	// Enabled - Whether voicemail is enable for this organization
+	// Enabled - Whether voicemail is enabled for this organization
 	Enabled *bool `json:"enabled,omitempty"`
 
 
-	// AlertTimeoutSeconds - The organization's default number of seconds to ring a user's phone before a call is transfered to voicemail
+	// AlertTimeoutSeconds - The organization's default number of seconds to ring a user's phone before a call is transferred to voicemail
 	AlertTimeoutSeconds *int `json:"alertTimeoutSeconds,omitempty"`
 
 
@@ -27,6 +27,10 @@ type Voicemailorganizationpolicy struct {
 
 	// PinRequired - If this is true, a PIN is required when accessing a user's voicemail from a phone.
 	PinRequired *bool `json:"pinRequired,omitempty"`
+
+
+	// InteractiveResponseRequired - Whether user should be prompted with a confirmation prompt when connecting to a Group Ring call
+	InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
 
 
 	// SendEmailNotifications - Whether email notifications are sent for new voicemails in the organization. If false, new voicemail email notifications are not be sent for the organization overriding any user or group setting.
@@ -66,6 +70,8 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		
 		PinRequired *bool `json:"pinRequired,omitempty"`
 		
+		InteractiveResponseRequired *bool `json:"interactiveResponseRequired,omitempty"`
+		
 		SendEmailNotifications *bool `json:"sendEmailNotifications,omitempty"`
 		
 		DisableEmailPii *bool `json:"disableEmailPii,omitempty"`
@@ -82,6 +88,8 @@ func (o *Voicemailorganizationpolicy) MarshalJSON() ([]byte, error) {
 		VoicemailExtension: o.VoicemailExtension,
 		
 		PinRequired: o.PinRequired,
+		
+		InteractiveResponseRequired: o.InteractiveResponseRequired,
 		
 		SendEmailNotifications: o.SendEmailNotifications,
 		
@@ -119,6 +127,10 @@ func (o *Voicemailorganizationpolicy) UnmarshalJSON(b []byte) error {
 	
 	if PinRequired, ok := VoicemailorganizationpolicyMap["pinRequired"].(bool); ok {
 		o.PinRequired = &PinRequired
+	}
+	
+	if InteractiveResponseRequired, ok := VoicemailorganizationpolicyMap["interactiveResponseRequired"].(bool); ok {
+		o.InteractiveResponseRequired = &InteractiveResponseRequired
 	}
 	
 	if SendEmailNotifications, ok := VoicemailorganizationpolicyMap["sendEmailNotifications"].(bool); ok {

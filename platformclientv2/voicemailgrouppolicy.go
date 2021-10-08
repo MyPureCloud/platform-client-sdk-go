@@ -36,12 +36,16 @@ type Voicemailgrouppolicy struct {
 	StopRingingAfterRotations *int `json:"stopRingingAfterRotations,omitempty"`
 
 
-	// OverflowGroupId -  A fallback group to contact when all of the members in this group did not answer the call.
+	// OverflowGroupId - A fallback group to contact when all of the members in this group did not answer the call.
 	OverflowGroupId *string `json:"overflowGroupId,omitempty"`
 
 
 	// GroupAlertType - Specifies if the members in this group should be contacted randomly, in a specific order, or by round-robin.
 	GroupAlertType *string `json:"groupAlertType,omitempty"`
+
+
+	// InteractiveResponsePromptId - The prompt to use when connecting a user to a Group Ring call
+	InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
 
 }
 
@@ -68,6 +72,8 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		OverflowGroupId *string `json:"overflowGroupId,omitempty"`
 		
 		GroupAlertType *string `json:"groupAlertType,omitempty"`
+		
+		InteractiveResponsePromptId *string `json:"interactiveResponsePromptId,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -87,6 +93,8 @@ func (o *Voicemailgrouppolicy) MarshalJSON() ([]byte, error) {
 		OverflowGroupId: o.OverflowGroupId,
 		
 		GroupAlertType: o.GroupAlertType,
+		
+		InteractiveResponsePromptId: o.InteractiveResponsePromptId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -135,6 +143,10 @@ func (o *Voicemailgrouppolicy) UnmarshalJSON(b []byte) error {
 	
 	if GroupAlertType, ok := VoicemailgrouppolicyMap["groupAlertType"].(string); ok {
 		o.GroupAlertType = &GroupAlertType
+	}
+	
+	if InteractiveResponsePromptId, ok := VoicemailgrouppolicyMap["interactiveResponsePromptId"].(string); ok {
+		o.InteractiveResponsePromptId = &InteractiveResponsePromptId
 	}
 	
 

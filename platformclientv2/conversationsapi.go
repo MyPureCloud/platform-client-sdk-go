@@ -8014,7 +8014,7 @@ func (a ConversationsApi) PostAnalyticsConversationsDetailsQuery(body Conversati
 
 // PostConversationAssign invokes POST /api/v2/conversations/{conversationId}/assign
 //
-// Attempts to manually assign a specified conversation to a specified agent.  Ignores bullseye ring, PAR score, skills, and languages.
+// Attempts to manually assign a specified conversation to a specified user.  Ignores bullseye ring, PAR score, skills, and languages.
 //
 // 
 func (a ConversationsApi) PostConversationAssign(conversationId string, body Conversationuser) (*string, *APIResponse, error) {

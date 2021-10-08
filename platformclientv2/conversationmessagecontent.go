@@ -12,6 +12,10 @@ type Conversationmessagecontent struct {
 	ContentType *string `json:"contentType,omitempty"`
 
 
+	// Location - Location content.
+	Location *Conversationcontentlocation `json:"location,omitempty"`
+
+
 	// Attachment - Attachment content.
 	Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 
@@ -29,7 +33,7 @@ type Conversationmessagecontent struct {
 
 
 	// Generic - Generic Template Object
-	Generic *Contentgeneric `json:"generic,omitempty"`
+	Generic *Conversationcontentgeneric `json:"generic,omitempty"`
 
 }
 
@@ -41,6 +45,8 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		ContentType *string `json:"contentType,omitempty"`
 		
+		Location *Conversationcontentlocation `json:"location,omitempty"`
+		
 		Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 		
 		QuickReply *Conversationcontentquickreply `json:"quickReply,omitempty"`
@@ -49,10 +55,12 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		
 		ButtonResponse *Conversationcontentbuttonresponse `json:"buttonResponse,omitempty"`
 		
-		Generic *Contentgeneric `json:"generic,omitempty"`
+		Generic *Conversationcontentgeneric `json:"generic,omitempty"`
 		*Alias
 	}{ 
 		ContentType: o.ContentType,
+		
+		Location: o.Location,
 		
 		Attachment: o.Attachment,
 		
@@ -76,6 +84,11 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 	
 	if ContentType, ok := ConversationmessagecontentMap["contentType"].(string); ok {
 		o.ContentType = &ContentType
+	}
+	
+	if Location, ok := ConversationmessagecontentMap["location"].(map[string]interface{}); ok {
+		LocationString, _ := json.Marshal(Location)
+		json.Unmarshal(LocationString, &o.Location)
 	}
 	
 	if Attachment, ok := ConversationmessagecontentMap["attachment"].(map[string]interface{}); ok {

@@ -13,8 +13,12 @@ type Validationservicerequest struct {
 	DateImportEnded *time.Time `json:"dateImportEnded,omitempty"`
 
 
-	// FileUrl - Path to the file in the storage including the file name
+	// FileUrl - File URL is deprecated, please use upload key
 	FileUrl *string `json:"fileUrl,omitempty"`
+
+
+	// UploadKey - S3 key for the uploaded file
+	UploadKey *string `json:"uploadKey,omitempty"`
 
 }
 
@@ -35,11 +39,15 @@ func (o *Validationservicerequest) MarshalJSON() ([]byte, error) {
 		DateImportEnded *string `json:"dateImportEnded,omitempty"`
 		
 		FileUrl *string `json:"fileUrl,omitempty"`
+		
+		UploadKey *string `json:"uploadKey,omitempty"`
 		*Alias
 	}{ 
 		DateImportEnded: DateImportEnded,
 		
 		FileUrl: o.FileUrl,
+		
+		UploadKey: o.UploadKey,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -58,6 +66,10 @@ func (o *Validationservicerequest) UnmarshalJSON(b []byte) error {
 	
 	if FileUrl, ok := ValidationservicerequestMap["fileUrl"].(string); ok {
 		o.FileUrl = &FileUrl
+	}
+	
+	if UploadKey, ok := ValidationservicerequestMap["uploadKey"].(string); ok {
+		o.UploadKey = &UploadKey
 	}
 	
 

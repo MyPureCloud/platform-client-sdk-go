@@ -17,6 +17,10 @@ type Edge struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// Division - The division to which this entity belongs.
+	Division *Division `json:"division,omitempty"`
+
+
 	// Description - The resource's description.
 	Description *string `json:"description,omitempty"`
 
@@ -200,6 +204,8 @@ func (o *Edge) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Division `json:"division,omitempty"`
+		
 		Description *string `json:"description,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
@@ -282,6 +288,8 @@ func (o *Edge) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		Description: o.Description,
 		
@@ -377,6 +385,11 @@ func (o *Edge) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := EdgeMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if Division, ok := EdgeMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
 	if Description, ok := EdgeMap["description"].(string); ok {

@@ -11,6 +11,10 @@ type Webmessagingofferfields struct {
 	// OfferText - Text value to be used when inviting a visitor to engage with a web messaging offer.
 	OfferText *string `json:"offerText,omitempty"`
 
+
+	// ArchitectFlow - Flow to be invoked, overrides default flow when specified.
+	ArchitectFlow *Addressableentityref `json:"architectFlow,omitempty"`
+
 }
 
 func (o *Webmessagingofferfields) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Webmessagingofferfields) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		OfferText *string `json:"offerText,omitempty"`
+		
+		ArchitectFlow *Addressableentityref `json:"architectFlow,omitempty"`
 		*Alias
 	}{ 
 		OfferText: o.OfferText,
+		
+		ArchitectFlow: o.ArchitectFlow,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -36,6 +44,11 @@ func (o *Webmessagingofferfields) UnmarshalJSON(b []byte) error {
 	
 	if OfferText, ok := WebmessagingofferfieldsMap["offerText"].(string); ok {
 		o.OfferText = &OfferText
+	}
+	
+	if ArchitectFlow, ok := WebmessagingofferfieldsMap["architectFlow"].(map[string]interface{}); ok {
+		ArchitectFlowString, _ := json.Marshal(ArchitectFlow)
+		json.Unmarshal(ArchitectFlowString, &o.ArchitectFlow)
 	}
 	
 

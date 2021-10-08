@@ -7688,7 +7688,7 @@ func (a ArchitectApi) PutFlow(flowId string, body Flow) (*Flow, *APIResponse, er
 // Updates a specific datatable by id
 //
 // Updates a schema for a datatable with the given datatableId -updates allow only new fields to be added in the schema, no changes or removals of existing fields.
-func (a ArchitectApi) PutFlowsDatatable(datatableId string, expand string, body Datatable) (*Datatable, *APIResponse, error) {
+func (a ArchitectApi) PutFlowsDatatable(datatableId string, body Datatable, expand string) (*Datatable, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/flows/datatables/{datatableId}"
@@ -7702,6 +7702,11 @@ func (a ArchitectApi) PutFlowsDatatable(datatableId string, expand string, body 
 	if &datatableId == nil {
 		// 
 		return defaultReturn, nil, errors.New("Missing required parameter 'datatableId' when calling ArchitectApi->PutFlowsDatatable")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling ArchitectApi->PutFlowsDatatable")
 	}
 
 	headerParams := make(map[string]string)

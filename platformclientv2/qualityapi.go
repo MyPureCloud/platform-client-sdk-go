@@ -1927,11 +1927,11 @@ func (a QualityApi) GetQualityFormsSurveysBulk(id []string) (*Surveyformentityli
 // Retrieve a list of the latest form versions by context ids
 //
 // 
-func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, published bool) (*Surveyformentitylisting, *APIResponse, error) {
+func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, published bool) ([]Surveyform, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/quality/forms/surveys/bulk/contexts"
-	defaultReturn := new(Surveyformentitylisting)
+	defaultReturn := make([]Surveyform, 0)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1982,14 +1982,14 @@ func (a QualityApi) GetQualityFormsSurveysBulkContexts(contextId []string, publi
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Surveyformentitylisting
+	var successPayload []Surveyform
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Surveyformentitylisting" == "string" {
+		if "[]Surveyform" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

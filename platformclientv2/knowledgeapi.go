@@ -687,7 +687,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocument(documentId strin
 // Get documents
 //
 // 
-func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, categories string, title string, documentIds []string) (*Documentlisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId string, languageCode string, before string, after string, limit string, pageSize string, categories string, title string, sortBy string, sortOrder string, documentIds []string) (*Documentlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases/{knowledgeBaseId}/languages/{languageCode}/documents"
@@ -737,6 +737,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageDocuments(knowledgeBaseId
 	queryParams["categories"] = a.Configuration.APIClient.ParameterToString(categories, "")
 	
 	queryParams["title"] = a.Configuration.APIClient.ParameterToString(title, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 	queryParams["documentIds"] = a.Configuration.APIClient.ParameterToString(documentIds, "multi")
 	
@@ -1039,7 +1043,7 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebaseLanguageTrainings(knowledgeBaseId
 // Get knowledge bases
 //
 // 
-func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string, name string, coreLanguage string, published bool) (*Knowledgebaselisting, *APIResponse, error) {
+func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, limit string, pageSize string, name string, coreLanguage string, published bool, sortBy string, sortOrder string) (*Knowledgebaselisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/knowledge/knowledgebases"
@@ -1079,6 +1083,10 @@ func (a KnowledgeApi) GetKnowledgeKnowledgebases(before string, after string, li
 	queryParams["coreLanguage"] = a.Configuration.APIClient.ParameterToString(coreLanguage, "")
 	
 	queryParams["published"] = a.Configuration.APIClient.ParameterToString(published, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	
 
 	// to determine the Content-Type header

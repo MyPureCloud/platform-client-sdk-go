@@ -59,6 +59,10 @@ type Availabletopic struct {
 	// PublicApiTemplateUriPaths
 	PublicApiTemplateUriPaths *[]string `json:"publicApiTemplateUriPaths,omitempty"`
 
+
+	// TopicParameters - Parameters in the topic name that can be substituted
+	TopicParameters *[]string `json:"topicParameters,omitempty"`
+
 }
 
 func (o *Availabletopic) MarshalJSON() ([]byte, error) {
@@ -92,6 +96,8 @@ func (o *Availabletopic) MarshalJSON() ([]byte, error) {
 		Transports *[]string `json:"transports,omitempty"`
 		
 		PublicApiTemplateUriPaths *[]string `json:"publicApiTemplateUriPaths,omitempty"`
+		
+		TopicParameters *[]string `json:"topicParameters,omitempty"`
 		*Alias
 	}{ 
 		Description: o.Description,
@@ -119,6 +125,8 @@ func (o *Availabletopic) MarshalJSON() ([]byte, error) {
 		Transports: o.Transports,
 		
 		PublicApiTemplateUriPaths: o.PublicApiTemplateUriPaths,
+		
+		TopicParameters: o.TopicParameters,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -185,6 +193,11 @@ func (o *Availabletopic) UnmarshalJSON(b []byte) error {
 	if PublicApiTemplateUriPaths, ok := AvailabletopicMap["publicApiTemplateUriPaths"].([]interface{}); ok {
 		PublicApiTemplateUriPathsString, _ := json.Marshal(PublicApiTemplateUriPaths)
 		json.Unmarshal(PublicApiTemplateUriPathsString, &o.PublicApiTemplateUriPaths)
+	}
+	
+	if TopicParameters, ok := AvailabletopicMap["topicParameters"].([]interface{}); ok {
+		TopicParametersString, _ := json.Marshal(TopicParameters)
+		json.Unmarshal(TopicParametersString, &o.TopicParameters)
 	}
 	
 

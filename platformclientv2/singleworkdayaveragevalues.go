@@ -28,6 +28,10 @@ type Singleworkdayaveragevalues struct {
 	// Results - The metric value averages
 	Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
 
+
+	// PerformanceProfile - The targeted performance profile for the average points
+	PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+
 }
 
 func (o *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
@@ -52,6 +56,8 @@ func (o *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
 		Timezone *string `json:"timezone,omitempty"`
 		
 		Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
+		
+		PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
 		*Alias
 	}{ 
 		DateWorkday: DateWorkday,
@@ -63,6 +69,8 @@ func (o *Singleworkdayaveragevalues) MarshalJSON() ([]byte, error) {
 		Timezone: o.Timezone,
 		
 		Results: o.Results,
+		
+		PerformanceProfile: o.PerformanceProfile,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -96,6 +104,11 @@ func (o *Singleworkdayaveragevalues) UnmarshalJSON(b []byte) error {
 	if Results, ok := SingleworkdayaveragevaluesMap["results"].([]interface{}); ok {
 		ResultsString, _ := json.Marshal(Results)
 		json.Unmarshal(ResultsString, &o.Results)
+	}
+	
+	if PerformanceProfile, ok := SingleworkdayaveragevaluesMap["performanceProfile"].(map[string]interface{}); ok {
+		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
+		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)
 	}
 	
 

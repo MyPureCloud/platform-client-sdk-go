@@ -9,7 +9,7 @@ import (
 
 // Buagentscheduleshift
 type Buagentscheduleshift struct { 
-	// Id - The globally unique identifier for the object.
+	// Id - The ID of the shift
 	Id *string `json:"id,omitempty"`
 
 

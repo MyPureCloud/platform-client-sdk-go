@@ -32,6 +32,10 @@ type Leaderboard struct {
 	// UserRank - The requesting user's rank
 	UserRank *Leaderboarditem `json:"userRank,omitempty"`
 
+
+	// PerformanceProfile - The targeted performance profile for the average points
+	PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+
 }
 
 func (o *Leaderboard) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Leaderboard) MarshalJSON() ([]byte, error) {
 		Leaders *[]Leaderboarditem `json:"leaders,omitempty"`
 		
 		UserRank *Leaderboarditem `json:"userRank,omitempty"`
+		
+		PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
 		*Alias
 	}{ 
 		Division: o.Division,
@@ -78,6 +84,8 @@ func (o *Leaderboard) MarshalJSON() ([]byte, error) {
 		Leaders: o.Leaders,
 		
 		UserRank: o.UserRank,
+		
+		PerformanceProfile: o.PerformanceProfile,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -117,6 +125,11 @@ func (o *Leaderboard) UnmarshalJSON(b []byte) error {
 	if UserRank, ok := LeaderboardMap["userRank"].(map[string]interface{}); ok {
 		UserRankString, _ := json.Marshal(UserRank)
 		json.Unmarshal(UserRankString, &o.UserRank)
+	}
+	
+	if PerformanceProfile, ok := LeaderboardMap["performanceProfile"].(map[string]interface{}); ok {
+		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
+		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)
 	}
 	
 

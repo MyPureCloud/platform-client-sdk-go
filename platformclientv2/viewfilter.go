@@ -499,6 +499,10 @@ type Viewfilter struct {
 	// AgentCallbackOwnerIds - The list of callback owners used to filter interactions
 	AgentCallbackOwnerIds *[]string `json:"agentCallbackOwnerIds,omitempty"`
 
+
+	// TranscriptTopics - The list of transcript topics requested in filter
+	TranscriptTopics *[]Transcripttopics `json:"transcriptTopics,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -752,6 +756,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		IsAgentOwnedCallback *bool `json:"isAgentOwnedCallback,omitempty"`
 		
 		AgentCallbackOwnerIds *[]string `json:"agentCallbackOwnerIds,omitempty"`
+		
+		TranscriptTopics *[]Transcripttopics `json:"transcriptTopics,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -999,6 +1005,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		IsAgentOwnedCallback: o.IsAgentOwnedCallback,
 		
 		AgentCallbackOwnerIds: o.AgentCallbackOwnerIds,
+		
+		TranscriptTopics: o.TranscriptTopics,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1599,6 +1607,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if AgentCallbackOwnerIds, ok := ViewfilterMap["agentCallbackOwnerIds"].([]interface{}); ok {
 		AgentCallbackOwnerIdsString, _ := json.Marshal(AgentCallbackOwnerIds)
 		json.Unmarshal(AgentCallbackOwnerIdsString, &o.AgentCallbackOwnerIds)
+	}
+	
+	if TranscriptTopics, ok := ViewfilterMap["transcriptTopics"].([]interface{}); ok {
+		TranscriptTopicsString, _ := json.Marshal(TranscriptTopics)
+		json.Unmarshal(TranscriptTopicsString, &o.TranscriptTopics)
 	}
 	
 
