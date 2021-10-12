@@ -110,7 +110,7 @@ func (c *APIClient) CallAPI(path string, method string,
 	}
 
 	// Set form data
-	if formParams != nil {
+	if len(formParams) > 0 {
 		request.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 		request.SetBody(ioutil.NopCloser(strings.NewReader(formParams.Encode())))
 	}
@@ -123,7 +123,7 @@ func (c *APIClient) CallAPI(path string, method string,
 	}
 
 	// Set provided headers
-	if headerParams != nil {
+	if len(headerParams) > 0 {
 		for k, v := range headerParams {
 			request.Header.Set(k, v)
 		}

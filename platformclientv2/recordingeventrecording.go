@@ -25,11 +25,11 @@ type Recordingeventrecording struct {
 
 
 	// EstimatedTranscodeTimeMs
-	EstimatedTranscodeTimeMs *float32 `json:"estimatedTranscodeTimeMs,omitempty"`
+	EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
 
 
 	// ActualTranscodeTimeMs
-	ActualTranscodeTimeMs *float32 `json:"actualTranscodeTimeMs,omitempty"`
+	ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
 
 }
 
@@ -47,9 +47,9 @@ func (o *Recordingeventrecording) MarshalJSON() ([]byte, error) {
 		
 		MediaUris *[]Recordingeventmediaresult `json:"mediaUris,omitempty"`
 		
-		EstimatedTranscodeTimeMs *float32 `json:"estimatedTranscodeTimeMs,omitempty"`
+		EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
 		
-		ActualTranscodeTimeMs *float32 `json:"actualTranscodeTimeMs,omitempty"`
+		ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -92,13 +92,13 @@ func (o *Recordingeventrecording) UnmarshalJSON(b []byte) error {
 	}
 	
 	if EstimatedTranscodeTimeMs, ok := RecordingeventrecordingMap["estimatedTranscodeTimeMs"].(float64); ok {
-		EstimatedTranscodeTimeMsFloat32 := float32(EstimatedTranscodeTimeMs)
-		o.EstimatedTranscodeTimeMs = &EstimatedTranscodeTimeMsFloat32
+		EstimatedTranscodeTimeMsInt := int(EstimatedTranscodeTimeMs)
+		o.EstimatedTranscodeTimeMs = &EstimatedTranscodeTimeMsInt
 	}
 	
 	if ActualTranscodeTimeMs, ok := RecordingeventrecordingMap["actualTranscodeTimeMs"].(float64); ok {
-		ActualTranscodeTimeMsFloat32 := float32(ActualTranscodeTimeMs)
-		o.ActualTranscodeTimeMs = &ActualTranscodeTimeMsFloat32
+		ActualTranscodeTimeMsInt := int(ActualTranscodeTimeMs)
+		o.ActualTranscodeTimeMs = &ActualTranscodeTimeMsInt
 	}
 	
 

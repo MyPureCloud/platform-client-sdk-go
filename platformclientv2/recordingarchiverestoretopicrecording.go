@@ -25,11 +25,11 @@ type Recordingarchiverestoretopicrecording struct {
 
 
 	// EstimatedTranscodeTimeMs
-	EstimatedTranscodeTimeMs *float32 `json:"estimatedTranscodeTimeMs,omitempty"`
+	EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
 
 
 	// ActualTranscodeTimeMs
-	ActualTranscodeTimeMs *float32 `json:"actualTranscodeTimeMs,omitempty"`
+	ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
 
 }
 
@@ -47,9 +47,9 @@ func (o *Recordingarchiverestoretopicrecording) MarshalJSON() ([]byte, error) {
 		
 		MediaUris *[]Recordingarchiverestoretopicmediaresult `json:"mediaUris,omitempty"`
 		
-		EstimatedTranscodeTimeMs *float32 `json:"estimatedTranscodeTimeMs,omitempty"`
+		EstimatedTranscodeTimeMs *int `json:"estimatedTranscodeTimeMs,omitempty"`
 		
-		ActualTranscodeTimeMs *float32 `json:"actualTranscodeTimeMs,omitempty"`
+		ActualTranscodeTimeMs *int `json:"actualTranscodeTimeMs,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -92,13 +92,13 @@ func (o *Recordingarchiverestoretopicrecording) UnmarshalJSON(b []byte) error {
 	}
 	
 	if EstimatedTranscodeTimeMs, ok := RecordingarchiverestoretopicrecordingMap["estimatedTranscodeTimeMs"].(float64); ok {
-		EstimatedTranscodeTimeMsFloat32 := float32(EstimatedTranscodeTimeMs)
-		o.EstimatedTranscodeTimeMs = &EstimatedTranscodeTimeMsFloat32
+		EstimatedTranscodeTimeMsInt := int(EstimatedTranscodeTimeMs)
+		o.EstimatedTranscodeTimeMs = &EstimatedTranscodeTimeMsInt
 	}
 	
 	if ActualTranscodeTimeMs, ok := RecordingarchiverestoretopicrecordingMap["actualTranscodeTimeMs"].(float64); ok {
-		ActualTranscodeTimeMsFloat32 := float32(ActualTranscodeTimeMs)
-		o.ActualTranscodeTimeMs = &ActualTranscodeTimeMsFloat32
+		ActualTranscodeTimeMsInt := int(ActualTranscodeTimeMs)
+		o.ActualTranscodeTimeMs = &ActualTranscodeTimeMsInt
 	}
 	
 
