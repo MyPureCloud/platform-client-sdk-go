@@ -4499,7 +4499,7 @@ func (a RoutingApi) GetUserRoutingskills(userId string, pageSize int, pageNumber
 //
 // Update attributes of an in-queue conversation
 //
-// Returns an object indicating the updated values of all settable attributes. Supported attributes: priority (each point of priority is equivalent to one minute of time in queue), skillIds and languageId.
+// Returns an object indicating the updated values of all settable attributes. Supported attributes: skillIds, languageId, and priority.
 func (a RoutingApi) PatchRoutingConversation(conversationId string, body Routingconversationattributesrequest) (*Routingconversationattributesresponse, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables

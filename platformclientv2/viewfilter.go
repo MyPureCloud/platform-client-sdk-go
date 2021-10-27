@@ -503,6 +503,58 @@ type Viewfilter struct {
 	// TranscriptTopics - The list of transcript topics requested in filter
 	TranscriptTopics *[]Transcripttopics `json:"transcriptTopics,omitempty"`
 
+
+	// JourneyFrequencyCapReasons - The list of frequency cap reasons to filter offer constraints
+	JourneyFrequencyCapReasons *[]string `json:"journeyFrequencyCapReasons,omitempty"`
+
+
+	// JourneyBlockingActionMapIds - The list of blocking action maps to filter offer constraints
+	JourneyBlockingActionMapIds *[]string `json:"journeyBlockingActionMapIds,omitempty"`
+
+
+	// JourneyActionTargetIds - The list of action targets to filter offer constraints
+	JourneyActionTargetIds *[]string `json:"journeyActionTargetIds,omitempty"`
+
+
+	// JourneyBlockingScheduleGroupIds - The list of blocking schedule groups to filter offer constraints
+	JourneyBlockingScheduleGroupIds *[]string `json:"journeyBlockingScheduleGroupIds,omitempty"`
+
+
+	// JourneyBlockingEmergencyScheduleGroupIds - The list of emergency schedule groups to filter offer constraints
+	JourneyBlockingEmergencyScheduleGroupIds *[]string `json:"journeyBlockingEmergencyScheduleGroupIds,omitempty"`
+
+
+	// JourneyUrlEqualConditions - The list of url equal conditions to filter offer constraints
+	JourneyUrlEqualConditions *[]string `json:"journeyUrlEqualConditions,omitempty"`
+
+
+	// JourneyUrlNotEqualConditions - The list of url not equal conditions to filter offer constraints
+	JourneyUrlNotEqualConditions *[]string `json:"journeyUrlNotEqualConditions,omitempty"`
+
+
+	// JourneyUrlStartsWithConditions - The list of url starts with conditions to filter offer constraints
+	JourneyUrlStartsWithConditions *[]string `json:"journeyUrlStartsWithConditions,omitempty"`
+
+
+	// JourneyUrlEndsWithConditions - The list of url ends with conditions to filter offer constraints
+	JourneyUrlEndsWithConditions *[]string `json:"journeyUrlEndsWithConditions,omitempty"`
+
+
+	// JourneyUrlContainsAnyConditions - The list of url contains any conditions to filter offer constraints
+	JourneyUrlContainsAnyConditions *[]string `json:"journeyUrlContainsAnyConditions,omitempty"`
+
+
+	// JourneyUrlNotContainsAnyConditions - The list of url not contains any conditions to filter offer constraints
+	JourneyUrlNotContainsAnyConditions *[]string `json:"journeyUrlNotContainsAnyConditions,omitempty"`
+
+
+	// JourneyUrlContainsAllConditions - The list of url contains all conditions to filter offer constraints
+	JourneyUrlContainsAllConditions *[]string `json:"journeyUrlContainsAllConditions,omitempty"`
+
+
+	// JourneyUrlNotContainsAllConditions - The list of url not contains all conditions to filter offer constraints
+	JourneyUrlNotContainsAllConditions *[]string `json:"journeyUrlNotContainsAllConditions,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -758,6 +810,32 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		AgentCallbackOwnerIds *[]string `json:"agentCallbackOwnerIds,omitempty"`
 		
 		TranscriptTopics *[]Transcripttopics `json:"transcriptTopics,omitempty"`
+		
+		JourneyFrequencyCapReasons *[]string `json:"journeyFrequencyCapReasons,omitempty"`
+		
+		JourneyBlockingActionMapIds *[]string `json:"journeyBlockingActionMapIds,omitempty"`
+		
+		JourneyActionTargetIds *[]string `json:"journeyActionTargetIds,omitempty"`
+		
+		JourneyBlockingScheduleGroupIds *[]string `json:"journeyBlockingScheduleGroupIds,omitempty"`
+		
+		JourneyBlockingEmergencyScheduleGroupIds *[]string `json:"journeyBlockingEmergencyScheduleGroupIds,omitempty"`
+		
+		JourneyUrlEqualConditions *[]string `json:"journeyUrlEqualConditions,omitempty"`
+		
+		JourneyUrlNotEqualConditions *[]string `json:"journeyUrlNotEqualConditions,omitempty"`
+		
+		JourneyUrlStartsWithConditions *[]string `json:"journeyUrlStartsWithConditions,omitempty"`
+		
+		JourneyUrlEndsWithConditions *[]string `json:"journeyUrlEndsWithConditions,omitempty"`
+		
+		JourneyUrlContainsAnyConditions *[]string `json:"journeyUrlContainsAnyConditions,omitempty"`
+		
+		JourneyUrlNotContainsAnyConditions *[]string `json:"journeyUrlNotContainsAnyConditions,omitempty"`
+		
+		JourneyUrlContainsAllConditions *[]string `json:"journeyUrlContainsAllConditions,omitempty"`
+		
+		JourneyUrlNotContainsAllConditions *[]string `json:"journeyUrlNotContainsAllConditions,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1007,6 +1085,32 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		AgentCallbackOwnerIds: o.AgentCallbackOwnerIds,
 		
 		TranscriptTopics: o.TranscriptTopics,
+		
+		JourneyFrequencyCapReasons: o.JourneyFrequencyCapReasons,
+		
+		JourneyBlockingActionMapIds: o.JourneyBlockingActionMapIds,
+		
+		JourneyActionTargetIds: o.JourneyActionTargetIds,
+		
+		JourneyBlockingScheduleGroupIds: o.JourneyBlockingScheduleGroupIds,
+		
+		JourneyBlockingEmergencyScheduleGroupIds: o.JourneyBlockingEmergencyScheduleGroupIds,
+		
+		JourneyUrlEqualConditions: o.JourneyUrlEqualConditions,
+		
+		JourneyUrlNotEqualConditions: o.JourneyUrlNotEqualConditions,
+		
+		JourneyUrlStartsWithConditions: o.JourneyUrlStartsWithConditions,
+		
+		JourneyUrlEndsWithConditions: o.JourneyUrlEndsWithConditions,
+		
+		JourneyUrlContainsAnyConditions: o.JourneyUrlContainsAnyConditions,
+		
+		JourneyUrlNotContainsAnyConditions: o.JourneyUrlNotContainsAnyConditions,
+		
+		JourneyUrlContainsAllConditions: o.JourneyUrlContainsAllConditions,
+		
+		JourneyUrlNotContainsAllConditions: o.JourneyUrlNotContainsAllConditions,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1612,6 +1716,71 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if TranscriptTopics, ok := ViewfilterMap["transcriptTopics"].([]interface{}); ok {
 		TranscriptTopicsString, _ := json.Marshal(TranscriptTopics)
 		json.Unmarshal(TranscriptTopicsString, &o.TranscriptTopics)
+	}
+	
+	if JourneyFrequencyCapReasons, ok := ViewfilterMap["journeyFrequencyCapReasons"].([]interface{}); ok {
+		JourneyFrequencyCapReasonsString, _ := json.Marshal(JourneyFrequencyCapReasons)
+		json.Unmarshal(JourneyFrequencyCapReasonsString, &o.JourneyFrequencyCapReasons)
+	}
+	
+	if JourneyBlockingActionMapIds, ok := ViewfilterMap["journeyBlockingActionMapIds"].([]interface{}); ok {
+		JourneyBlockingActionMapIdsString, _ := json.Marshal(JourneyBlockingActionMapIds)
+		json.Unmarshal(JourneyBlockingActionMapIdsString, &o.JourneyBlockingActionMapIds)
+	}
+	
+	if JourneyActionTargetIds, ok := ViewfilterMap["journeyActionTargetIds"].([]interface{}); ok {
+		JourneyActionTargetIdsString, _ := json.Marshal(JourneyActionTargetIds)
+		json.Unmarshal(JourneyActionTargetIdsString, &o.JourneyActionTargetIds)
+	}
+	
+	if JourneyBlockingScheduleGroupIds, ok := ViewfilterMap["journeyBlockingScheduleGroupIds"].([]interface{}); ok {
+		JourneyBlockingScheduleGroupIdsString, _ := json.Marshal(JourneyBlockingScheduleGroupIds)
+		json.Unmarshal(JourneyBlockingScheduleGroupIdsString, &o.JourneyBlockingScheduleGroupIds)
+	}
+	
+	if JourneyBlockingEmergencyScheduleGroupIds, ok := ViewfilterMap["journeyBlockingEmergencyScheduleGroupIds"].([]interface{}); ok {
+		JourneyBlockingEmergencyScheduleGroupIdsString, _ := json.Marshal(JourneyBlockingEmergencyScheduleGroupIds)
+		json.Unmarshal(JourneyBlockingEmergencyScheduleGroupIdsString, &o.JourneyBlockingEmergencyScheduleGroupIds)
+	}
+	
+	if JourneyUrlEqualConditions, ok := ViewfilterMap["journeyUrlEqualConditions"].([]interface{}); ok {
+		JourneyUrlEqualConditionsString, _ := json.Marshal(JourneyUrlEqualConditions)
+		json.Unmarshal(JourneyUrlEqualConditionsString, &o.JourneyUrlEqualConditions)
+	}
+	
+	if JourneyUrlNotEqualConditions, ok := ViewfilterMap["journeyUrlNotEqualConditions"].([]interface{}); ok {
+		JourneyUrlNotEqualConditionsString, _ := json.Marshal(JourneyUrlNotEqualConditions)
+		json.Unmarshal(JourneyUrlNotEqualConditionsString, &o.JourneyUrlNotEqualConditions)
+	}
+	
+	if JourneyUrlStartsWithConditions, ok := ViewfilterMap["journeyUrlStartsWithConditions"].([]interface{}); ok {
+		JourneyUrlStartsWithConditionsString, _ := json.Marshal(JourneyUrlStartsWithConditions)
+		json.Unmarshal(JourneyUrlStartsWithConditionsString, &o.JourneyUrlStartsWithConditions)
+	}
+	
+	if JourneyUrlEndsWithConditions, ok := ViewfilterMap["journeyUrlEndsWithConditions"].([]interface{}); ok {
+		JourneyUrlEndsWithConditionsString, _ := json.Marshal(JourneyUrlEndsWithConditions)
+		json.Unmarshal(JourneyUrlEndsWithConditionsString, &o.JourneyUrlEndsWithConditions)
+	}
+	
+	if JourneyUrlContainsAnyConditions, ok := ViewfilterMap["journeyUrlContainsAnyConditions"].([]interface{}); ok {
+		JourneyUrlContainsAnyConditionsString, _ := json.Marshal(JourneyUrlContainsAnyConditions)
+		json.Unmarshal(JourneyUrlContainsAnyConditionsString, &o.JourneyUrlContainsAnyConditions)
+	}
+	
+	if JourneyUrlNotContainsAnyConditions, ok := ViewfilterMap["journeyUrlNotContainsAnyConditions"].([]interface{}); ok {
+		JourneyUrlNotContainsAnyConditionsString, _ := json.Marshal(JourneyUrlNotContainsAnyConditions)
+		json.Unmarshal(JourneyUrlNotContainsAnyConditionsString, &o.JourneyUrlNotContainsAnyConditions)
+	}
+	
+	if JourneyUrlContainsAllConditions, ok := ViewfilterMap["journeyUrlContainsAllConditions"].([]interface{}); ok {
+		JourneyUrlContainsAllConditionsString, _ := json.Marshal(JourneyUrlContainsAllConditions)
+		json.Unmarshal(JourneyUrlContainsAllConditionsString, &o.JourneyUrlContainsAllConditions)
+	}
+	
+	if JourneyUrlNotContainsAllConditions, ok := ViewfilterMap["journeyUrlNotContainsAllConditions"].([]interface{}); ok {
+		JourneyUrlNotContainsAllConditionsString, _ := json.Marshal(JourneyUrlNotContainsAllConditions)
+		json.Unmarshal(JourneyUrlNotContainsAllConditionsString, &o.JourneyUrlNotContainsAllConditions)
 	}
 	
 

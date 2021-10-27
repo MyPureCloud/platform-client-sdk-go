@@ -9,40 +9,48 @@ import (
 
 // Recordingmessagingmessage
 type Recordingmessagingmessage struct { 
-	// From
+	// From - The message sender session id.
 	From *string `json:"from,omitempty"`
 
 
-	// FromUser
+	// FromUser - The user who sent this message.
 	FromUser *User `json:"fromUser,omitempty"`
 
 
-	// FromExternalContact
+	// FromExternalContact - The PureCloud external contact sender details.
 	FromExternalContact *Externalcontact `json:"fromExternalContact,omitempty"`
 
 
-	// To
+	// To - The message recipient.
 	To *string `json:"to,omitempty"`
 
 
-	// Timestamp - Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// Timestamp - The time when the message was sent. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Timestamp *time.Time `json:"timestamp,omitempty"`
 
 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// MessageText
+	// MessageText - The content of this message.
 	MessageText *string `json:"messageText,omitempty"`
 
 
-	// MessageMediaAttachments
+	// MessageMediaAttachments - List of media objects attached  with this message.
 	MessageMediaAttachments *[]Messagemediaattachment `json:"messageMediaAttachments,omitempty"`
 
 
-	// MessageStickerAttachments
+	// MessageStickerAttachments - List of message stickers attached with this message.
 	MessageStickerAttachments *[]Messagestickerattachment `json:"messageStickerAttachments,omitempty"`
+
+
+	// QuickReplies - List of quick reply options offered with this message.
+	QuickReplies *[]Quickreply `json:"quickReplies,omitempty"`
+
+
+	// ButtonResponse - Button Response selected by user for this message.
+	ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
 
 }
 
@@ -77,6 +85,10 @@ func (o *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		MessageMediaAttachments *[]Messagemediaattachment `json:"messageMediaAttachments,omitempty"`
 		
 		MessageStickerAttachments *[]Messagestickerattachment `json:"messageStickerAttachments,omitempty"`
+		
+		QuickReplies *[]Quickreply `json:"quickReplies,omitempty"`
+		
+		ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
 		*Alias
 	}{ 
 		From: o.From,
@@ -96,6 +108,10 @@ func (o *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		MessageMediaAttachments: o.MessageMediaAttachments,
 		
 		MessageStickerAttachments: o.MessageStickerAttachments,
+		
+		QuickReplies: o.QuickReplies,
+		
+		ButtonResponse: o.ButtonResponse,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -146,6 +162,16 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if MessageStickerAttachments, ok := RecordingmessagingmessageMap["messageStickerAttachments"].([]interface{}); ok {
 		MessageStickerAttachmentsString, _ := json.Marshal(MessageStickerAttachments)
 		json.Unmarshal(MessageStickerAttachmentsString, &o.MessageStickerAttachments)
+	}
+	
+	if QuickReplies, ok := RecordingmessagingmessageMap["quickReplies"].([]interface{}); ok {
+		QuickRepliesString, _ := json.Marshal(QuickReplies)
+		json.Unmarshal(QuickRepliesString, &o.QuickReplies)
+	}
+	
+	if ButtonResponse, ok := RecordingmessagingmessageMap["buttonResponse"].(map[string]interface{}); ok {
+		ButtonResponseString, _ := json.Marshal(ButtonResponse)
+		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
 	}
 	
 

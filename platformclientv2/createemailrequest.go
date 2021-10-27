@@ -67,6 +67,10 @@ type Createemailrequest struct {
 	// TextBody - A text body content of the email.
 	TextBody *string `json:"textBody,omitempty"`
 
+
+	// ExternalContactId - The external contact with which the email should be associated. This field is only valid for OUTBOUND email.
+	ExternalContactId *string `json:"externalContactId,omitempty"`
+
 }
 
 func (o *Createemailrequest) MarshalJSON() ([]byte, error) {
@@ -104,6 +108,8 @@ func (o *Createemailrequest) MarshalJSON() ([]byte, error) {
 		HtmlBody *string `json:"htmlBody,omitempty"`
 		
 		TextBody *string `json:"textBody,omitempty"`
+		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
 		*Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -135,6 +141,8 @@ func (o *Createemailrequest) MarshalJSON() ([]byte, error) {
 		HtmlBody: o.HtmlBody,
 		
 		TextBody: o.TextBody,
+		
+		ExternalContactId: o.ExternalContactId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -207,6 +215,10 @@ func (o *Createemailrequest) UnmarshalJSON(b []byte) error {
 	
 	if TextBody, ok := CreateemailrequestMap["textBody"].(string); ok {
 		o.TextBody = &TextBody
+	}
+	
+	if ExternalContactId, ok := CreateemailrequestMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
 	}
 	
 

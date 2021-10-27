@@ -125,8 +125,24 @@
       "class": "ArchitectFlowNotificationFlowNotification"
     },
     {
+      "topic": "v2.gamification.scorecards.users.{id}",
+      "class": "GamificationScorecardChangeTopicScorecardChange"
+    },
+    {
       "topic": "v2.groups.{id}.greetings",
       "class": "GroupGreetingEventGreeting"
+    },
+    {
+      "topic": "v2.journey.sessions.{id}.action.events",
+      "class": "JourneyWebActionEventsNotificationWebActionEventsNotification"
+    },
+    {
+      "topic": "v2.journey.sessions.{id}.outcome.events",
+      "class": "JourneyOutcomeEventsNotificationOutcomeEventsNotification"
+    },
+    {
+      "topic": "v2.journey.sessions.{id}.web.events",
+      "class": "JourneyWebEventsNotificationWebEventsNotification"
     },
     {
       "topic": "v2.managementunits.{id}.workforcemanagement.intraday",

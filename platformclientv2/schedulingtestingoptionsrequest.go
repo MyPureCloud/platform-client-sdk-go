@@ -23,6 +23,10 @@ type Schedulingtestingoptionsrequest struct {
 	// PopulateWarnings - Whether to populate warnings in the generated schedule
 	PopulateWarnings *bool `json:"populateWarnings,omitempty"`
 
+
+	// PopulateDeprecatedWarnings - Whether to populate deprecated warnings in the generated schedule
+	PopulateDeprecatedWarnings *bool `json:"populateDeprecatedWarnings,omitempty"`
+
 }
 
 func (o *Schedulingtestingoptionsrequest) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Schedulingtestingoptionsrequest) MarshalJSON() ([]byte, error) {
 		FailScheduling *bool `json:"failScheduling,omitempty"`
 		
 		PopulateWarnings *bool `json:"populateWarnings,omitempty"`
+		
+		PopulateDeprecatedWarnings *bool `json:"populateDeprecatedWarnings,omitempty"`
 		*Alias
 	}{ 
 		FastScheduling: o.FastScheduling,
@@ -47,6 +53,8 @@ func (o *Schedulingtestingoptionsrequest) MarshalJSON() ([]byte, error) {
 		FailScheduling: o.FailScheduling,
 		
 		PopulateWarnings: o.PopulateWarnings,
+		
+		PopulateDeprecatedWarnings: o.PopulateDeprecatedWarnings,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -72,6 +80,10 @@ func (o *Schedulingtestingoptionsrequest) UnmarshalJSON(b []byte) error {
 	
 	if PopulateWarnings, ok := SchedulingtestingoptionsrequestMap["populateWarnings"].(bool); ok {
 		o.PopulateWarnings = &PopulateWarnings
+	}
+	
+	if PopulateDeprecatedWarnings, ok := SchedulingtestingoptionsrequestMap["populateDeprecatedWarnings"].(bool); ok {
+		o.PopulateDeprecatedWarnings = &PopulateDeprecatedWarnings
 	}
 	
 

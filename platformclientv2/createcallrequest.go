@@ -55,6 +55,10 @@ type Createcallrequest struct {
 	// UuiData - User to User Information (UUI) data managed by SIP session application.
 	UuiData *string `json:"uuiData,omitempty"`
 
+
+	// ExternalContactId - The external contact with which to associate the call.
+	ExternalContactId *string `json:"externalContactId,omitempty"`
+
 }
 
 func (o *Createcallrequest) MarshalJSON() ([]byte, error) {
@@ -86,6 +90,8 @@ func (o *Createcallrequest) MarshalJSON() ([]byte, error) {
 		Participants *[]Destination `json:"participants,omitempty"`
 		
 		UuiData *string `json:"uuiData,omitempty"`
+		
+		ExternalContactId *string `json:"externalContactId,omitempty"`
 		*Alias
 	}{ 
 		PhoneNumber: o.PhoneNumber,
@@ -111,6 +117,8 @@ func (o *Createcallrequest) MarshalJSON() ([]byte, error) {
 		Participants: o.Participants,
 		
 		UuiData: o.UuiData,
+		
+		ExternalContactId: o.ExternalContactId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -172,6 +180,10 @@ func (o *Createcallrequest) UnmarshalJSON(b []byte) error {
 	
 	if UuiData, ok := CreatecallrequestMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
+	}
+	
+	if ExternalContactId, ok := CreatecallrequestMap["externalContactId"].(string); ok {
+		o.ExternalContactId = &ExternalContactId
 	}
 	
 

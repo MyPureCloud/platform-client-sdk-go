@@ -24,12 +24,8 @@ type Createoutboundmessagingconversationrequest struct {
 	UseExistingConversation *bool `json:"useExistingConversation,omitempty"`
 
 
-	// ExternalContactId - The external contact Id of the recipient of the message.
+	// ExternalContactId - The external contact with which the message will be associated.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
-
-
-	// ExternalOrganizationId - The external organization Id of the recipient of the message.
-	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, erro
 		UseExistingConversation *bool `json:"useExistingConversation,omitempty"`
 		
 		ExternalContactId *string `json:"externalContactId,omitempty"`
-		
-		ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 		*Alias
 	}{ 
 		QueueId: o.QueueId,
@@ -61,8 +55,6 @@ func (o *Createoutboundmessagingconversationrequest) MarshalJSON() ([]byte, erro
 		UseExistingConversation: o.UseExistingConversation,
 		
 		ExternalContactId: o.ExternalContactId,
-		
-		ExternalOrganizationId: o.ExternalOrganizationId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -92,10 +84,6 @@ func (o *Createoutboundmessagingconversationrequest) UnmarshalJSON(b []byte) err
 	
 	if ExternalContactId, ok := CreateoutboundmessagingconversationrequestMap["externalContactId"].(string); ok {
 		o.ExternalContactId = &ExternalContactId
-	}
-	
-	if ExternalOrganizationId, ok := CreateoutboundmessagingconversationrequestMap["externalOrganizationId"].(string); ok {
-		o.ExternalOrganizationId = &ExternalOrganizationId
 	}
 	
 

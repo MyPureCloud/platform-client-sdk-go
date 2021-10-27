@@ -41,7 +41,7 @@ type Reportingturn struct {
 	AskActionResult *string `json:"askActionResult,omitempty"`
 
 
-	// Conversation - The conversation details, across potentially multiple Cicero sessions.
+	// Conversation - The conversation details, across potentially multiple Bot Flow sessions.
 	Conversation *Addressableentityref `json:"conversation,omitempty"`
 
 }

@@ -20,7 +20,7 @@ type Membergroup struct {
 	Division *Division `json:"division,omitempty"`
 
 
-	// VarType - The type of group, e.g. TEAM, etc.
+	// VarType - The group type
 	VarType *string `json:"type,omitempty"`
 
 

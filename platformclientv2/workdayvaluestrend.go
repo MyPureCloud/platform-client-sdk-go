@@ -17,6 +17,10 @@ type Workdayvaluestrend struct {
 	DateEndWorkday *time.Time `json:"dateEndWorkday,omitempty"`
 
 
+	// DateReferenceWorkday - The reference workday used to determine the metric definition. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateReferenceWorkday *time.Time `json:"dateReferenceWorkday,omitempty"`
+
+
 	// Division - The targeted division for the query
 	Division *Division `json:"division,omitempty"`
 
@@ -35,6 +39,10 @@ type Workdayvaluestrend struct {
 
 	// PerformanceProfile - The targeted performance profile for the average points
 	PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+
+
+	// Metric - The targeted metric for the average points
+	Metric *Addressableentityref `json:"metric,omitempty"`
 
 }
 
@@ -57,10 +65,19 @@ func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 		DateEndWorkday = nil
 	}
 	
+	DateReferenceWorkday := new(string)
+	if o.DateReferenceWorkday != nil {
+		*DateReferenceWorkday = timeutil.Strftime(o.DateReferenceWorkday, "%Y-%m-%d")
+	} else {
+		DateReferenceWorkday = nil
+	}
+	
 	return json.Marshal(&struct { 
 		DateStartWorkday *string `json:"dateStartWorkday,omitempty"`
 		
 		DateEndWorkday *string `json:"dateEndWorkday,omitempty"`
+		
+		DateReferenceWorkday *string `json:"dateReferenceWorkday,omitempty"`
 		
 		Division *Division `json:"division,omitempty"`
 		
@@ -71,11 +88,15 @@ func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 		Results *[]Workdayvaluesmetricitem `json:"results,omitempty"`
 		
 		PerformanceProfile *Addressableentityref `json:"performanceProfile,omitempty"`
+		
+		Metric *Addressableentityref `json:"metric,omitempty"`
 		*Alias
 	}{ 
 		DateStartWorkday: DateStartWorkday,
 		
 		DateEndWorkday: DateEndWorkday,
+		
+		DateReferenceWorkday: DateReferenceWorkday,
 		
 		Division: o.Division,
 		
@@ -86,6 +107,8 @@ func (o *Workdayvaluestrend) MarshalJSON() ([]byte, error) {
 		Results: o.Results,
 		
 		PerformanceProfile: o.PerformanceProfile,
+		
+		Metric: o.Metric,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -105,6 +128,11 @@ func (o *Workdayvaluestrend) UnmarshalJSON(b []byte) error {
 	if dateEndWorkdayString, ok := WorkdayvaluestrendMap["dateEndWorkday"].(string); ok {
 		DateEndWorkday, _ := time.Parse("2006-01-02", dateEndWorkdayString)
 		o.DateEndWorkday = &DateEndWorkday
+	}
+	
+	if dateReferenceWorkdayString, ok := WorkdayvaluestrendMap["dateReferenceWorkday"].(string); ok {
+		DateReferenceWorkday, _ := time.Parse("2006-01-02", dateReferenceWorkdayString)
+		o.DateReferenceWorkday = &DateReferenceWorkday
 	}
 	
 	if Division, ok := WorkdayvaluestrendMap["division"].(map[string]interface{}); ok {
@@ -129,6 +157,11 @@ func (o *Workdayvaluestrend) UnmarshalJSON(b []byte) error {
 	if PerformanceProfile, ok := WorkdayvaluestrendMap["performanceProfile"].(map[string]interface{}); ok {
 		PerformanceProfileString, _ := json.Marshal(PerformanceProfile)
 		json.Unmarshal(PerformanceProfileString, &o.PerformanceProfile)
+	}
+	
+	if Metric, ok := WorkdayvaluestrendMap["metric"].(map[string]interface{}); ok {
+		MetricString, _ := json.Marshal(Metric)
+		json.Unmarshal(MetricString, &o.Metric)
 	}
 	
 

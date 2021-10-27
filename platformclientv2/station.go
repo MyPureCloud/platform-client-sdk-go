@@ -60,6 +60,10 @@ type Station struct {
 	WebRtcForceTurn *bool `json:"webRtcForceTurn,omitempty"`
 
 
+	// WebRtcCallAppearances - The number of call appearances on the station.
+	WebRtcCallAppearances *int `json:"webRtcCallAppearances,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -97,6 +101,8 @@ func (o *Station) MarshalJSON() ([]byte, error) {
 		
 		WebRtcForceTurn *bool `json:"webRtcForceTurn,omitempty"`
 		
+		WebRtcCallAppearances *int `json:"webRtcCallAppearances,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -125,6 +131,8 @@ func (o *Station) MarshalJSON() ([]byte, error) {
 		WebRtcPersistentEnabled: o.WebRtcPersistentEnabled,
 		
 		WebRtcForceTurn: o.WebRtcForceTurn,
+		
+		WebRtcCallAppearances: o.WebRtcCallAppearances,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -191,6 +199,11 @@ func (o *Station) UnmarshalJSON(b []byte) error {
 	
 	if WebRtcForceTurn, ok := StationMap["webRtcForceTurn"].(bool); ok {
 		o.WebRtcForceTurn = &WebRtcForceTurn
+	}
+	
+	if WebRtcCallAppearances, ok := StationMap["webRtcCallAppearances"].(float64); ok {
+		WebRtcCallAppearancesInt := int(WebRtcCallAppearances)
+		o.WebRtcCallAppearances = &WebRtcCallAppearancesInt
 	}
 	
 	if SelfUri, ok := StationMap["selfUri"].(string); ok {
