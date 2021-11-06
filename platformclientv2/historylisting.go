@@ -77,12 +77,12 @@ type Historylisting struct {
 	PageSize *int `json:"pageSize,omitempty"`
 
 
-	// Total
-	Total *int `json:"total,omitempty"`
-
-
 	// PageNumber
 	PageNumber *int `json:"pageNumber,omitempty"`
+
+
+	// Total
+	Total *int `json:"total,omitempty"`
 
 
 	// PageCount
@@ -146,9 +146,9 @@ func (o *Historylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize *int `json:"pageSize,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
-		
 		PageNumber *int `json:"pageNumber,omitempty"`
+		
+		Total *int `json:"total,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -187,9 +187,9 @@ func (o *Historylisting) MarshalJSON() ([]byte, error) {
 		
 		PageSize: o.PageSize,
 		
-		Total: o.Total,
-		
 		PageNumber: o.PageNumber,
+		
+		Total: o.Total,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -279,14 +279,14 @@ func (o *Historylisting) UnmarshalJSON(b []byte) error {
 		o.PageSize = &PageSizeInt
 	}
 	
-	if Total, ok := HistorylistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
-	}
-	
 	if PageNumber, ok := HistorylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
+	}
+	
+	if Total, ok := HistorylistingMap["total"].(float64); ok {
+		TotalInt := int(Total)
+		o.Total = &TotalInt
 	}
 	
 	if PageCount, ok := HistorylistingMap["pageCount"].(float64); ok {

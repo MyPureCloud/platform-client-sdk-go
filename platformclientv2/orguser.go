@@ -1,5 +1,6 @@
 package platformclientv2
 import (
+	"time"
 	"github.com/leekchan/timeutil"
 	"encoding/json"
 	"strconv"
@@ -140,6 +141,10 @@ type Orguser struct {
 	LastTokenIssued *Oauthlasttokenissued `json:"lastTokenIssued,omitempty"`
 
 
+	// DateLastLogin - The last time the user logged in using username and password. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateLastLogin *time.Time `json:"dateLastLogin,omitempty"`
+
+
 	// Organization
 	Organization *Organization `json:"organization,omitempty"`
 
@@ -149,6 +154,14 @@ func (o *Orguser) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Orguser
+	
+	DateLastLogin := new(string)
+	if o.DateLastLogin != nil {
+		
+		*DateLastLogin = timeutil.Strftime(o.DateLastLogin, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateLastLogin = nil
+	}
 	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
@@ -216,6 +229,8 @@ func (o *Orguser) MarshalJSON() ([]byte, error) {
 		LanguagePreference *string `json:"languagePreference,omitempty"`
 		
 		LastTokenIssued *Oauthlasttokenissued `json:"lastTokenIssued,omitempty"`
+		
+		DateLastLogin *string `json:"dateLastLogin,omitempty"`
 		
 		Organization *Organization `json:"organization,omitempty"`
 		*Alias
@@ -285,6 +300,8 @@ func (o *Orguser) MarshalJSON() ([]byte, error) {
 		LanguagePreference: o.LanguagePreference,
 		
 		LastTokenIssued: o.LastTokenIssued,
+		
+		DateLastLogin: DateLastLogin,
 		
 		Organization: o.Organization,
 		Alias:    (*Alias)(o),
@@ -452,6 +469,11 @@ func (o *Orguser) UnmarshalJSON(b []byte) error {
 	if LastTokenIssued, ok := OrguserMap["lastTokenIssued"].(map[string]interface{}); ok {
 		LastTokenIssuedString, _ := json.Marshal(LastTokenIssued)
 		json.Unmarshal(LastTokenIssuedString, &o.LastTokenIssued)
+	}
+	
+	if dateLastLoginString, ok := OrguserMap["dateLastLogin"].(string); ok {
+		DateLastLogin, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateLastLoginString)
+		o.DateLastLogin = &DateLastLogin
 	}
 	
 	if Organization, ok := OrguserMap["organization"].(map[string]interface{}); ok {

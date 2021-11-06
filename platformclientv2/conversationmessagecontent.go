@@ -16,6 +16,10 @@ type Conversationmessagecontent struct {
 	Location *Conversationcontentlocation `json:"location,omitempty"`
 
 
+	// Story - Ephemeral story content.
+	Story *Conversationcontentstory `json:"story,omitempty"`
+
+
 	// Attachment - Attachment content.
 	Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 
@@ -47,6 +51,8 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		
 		Location *Conversationcontentlocation `json:"location,omitempty"`
 		
+		Story *Conversationcontentstory `json:"story,omitempty"`
+		
 		Attachment *Conversationcontentattachment `json:"attachment,omitempty"`
 		
 		QuickReply *Conversationcontentquickreply `json:"quickReply,omitempty"`
@@ -61,6 +67,8 @@ func (o *Conversationmessagecontent) MarshalJSON() ([]byte, error) {
 		ContentType: o.ContentType,
 		
 		Location: o.Location,
+		
+		Story: o.Story,
 		
 		Attachment: o.Attachment,
 		
@@ -89,6 +97,11 @@ func (o *Conversationmessagecontent) UnmarshalJSON(b []byte) error {
 	if Location, ok := ConversationmessagecontentMap["location"].(map[string]interface{}); ok {
 		LocationString, _ := json.Marshal(Location)
 		json.Unmarshal(LocationString, &o.Location)
+	}
+	
+	if Story, ok := ConversationmessagecontentMap["story"].(map[string]interface{}); ok {
+		StoryString, _ := json.Marshal(Story)
+		json.Unmarshal(StoryString, &o.Story)
 	}
 	
 	if Attachment, ok := ConversationmessagecontentMap["attachment"].(map[string]interface{}); ok {

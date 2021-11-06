@@ -555,6 +555,10 @@ type Viewfilter struct {
 	// JourneyUrlNotContainsAllConditions - The list of url not contains all conditions to filter offer constraints
 	JourneyUrlNotContainsAllConditions *[]string `json:"journeyUrlNotContainsAllConditions,omitempty"`
 
+
+	// FlowMilestoneIds - The list of flow milestones to filter exports
+	FlowMilestoneIds *[]string `json:"flowMilestoneIds,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -836,6 +840,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		JourneyUrlContainsAllConditions *[]string `json:"journeyUrlContainsAllConditions,omitempty"`
 		
 		JourneyUrlNotContainsAllConditions *[]string `json:"journeyUrlNotContainsAllConditions,omitempty"`
+		
+		FlowMilestoneIds *[]string `json:"flowMilestoneIds,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1111,6 +1117,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		JourneyUrlContainsAllConditions: o.JourneyUrlContainsAllConditions,
 		
 		JourneyUrlNotContainsAllConditions: o.JourneyUrlNotContainsAllConditions,
+		
+		FlowMilestoneIds: o.FlowMilestoneIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1781,6 +1789,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if JourneyUrlNotContainsAllConditions, ok := ViewfilterMap["journeyUrlNotContainsAllConditions"].([]interface{}); ok {
 		JourneyUrlNotContainsAllConditionsString, _ := json.Marshal(JourneyUrlNotContainsAllConditions)
 		json.Unmarshal(JourneyUrlNotContainsAllConditionsString, &o.JourneyUrlNotContainsAllConditions)
+	}
+	
+	if FlowMilestoneIds, ok := ViewfilterMap["flowMilestoneIds"].([]interface{}); ok {
+		FlowMilestoneIdsString, _ := json.Marshal(FlowMilestoneIds)
+		json.Unmarshal(FlowMilestoneIdsString, &o.FlowMilestoneIds)
 	}
 	
 

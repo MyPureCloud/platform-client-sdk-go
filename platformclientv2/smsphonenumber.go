@@ -85,6 +85,10 @@ type Smsphonenumber struct {
 	ShortCodeBillingType *string `json:"shortCodeBillingType,omitempty"`
 
 
+	// ProvisioningStatus - Status of latest asynchronous provisioning action
+	ProvisioningStatus *Smsprovisioningstatus `json:"provisioningStatus,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -174,6 +178,8 @@ func (o *Smsphonenumber) MarshalJSON() ([]byte, error) {
 		
 		ShortCodeBillingType *string `json:"shortCodeBillingType,omitempty"`
 		
+		ProvisioningStatus *Smsprovisioningstatus `json:"provisioningStatus,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -214,6 +220,8 @@ func (o *Smsphonenumber) MarshalJSON() ([]byte, error) {
 		AddressId: o.AddressId,
 		
 		ShortCodeBillingType: o.ShortCodeBillingType,
+		
+		ProvisioningStatus: o.ProvisioningStatus,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -311,6 +319,11 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	
 	if ShortCodeBillingType, ok := SmsphonenumberMap["shortCodeBillingType"].(string); ok {
 		o.ShortCodeBillingType = &ShortCodeBillingType
+	}
+	
+	if ProvisioningStatus, ok := SmsphonenumberMap["provisioningStatus"].(map[string]interface{}); ok {
+		ProvisioningStatusString, _ := json.Marshal(ProvisioningStatus)
+		json.Unmarshal(ProvisioningStatusString, &o.ProvisioningStatus)
 	}
 	
 	if SelfUri, ok := SmsphonenumberMap["selfUri"].(string); ok {
