@@ -43,6 +43,10 @@ type Wfmbuscheduleruntopicbuschedulerun struct {
 	// MessageCount
 	MessageCount *int `json:"messageCount,omitempty"`
 
+
+	// MessageSeverityCounts
+	MessageSeverityCounts *[]Wfmbuscheduleruntopicschedulermessageseveritycount `json:"messageSeverityCounts,omitempty"`
+
 }
 
 func (o *Wfmbuscheduleruntopicbuschedulerun) MarshalJSON() ([]byte, error) {
@@ -68,6 +72,8 @@ func (o *Wfmbuscheduleruntopicbuschedulerun) MarshalJSON() ([]byte, error) {
 		SchedulingCompletedTime *string `json:"schedulingCompletedTime,omitempty"`
 		
 		MessageCount *int `json:"messageCount,omitempty"`
+		
+		MessageSeverityCounts *[]Wfmbuscheduleruntopicschedulermessageseveritycount `json:"messageSeverityCounts,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -87,6 +93,8 @@ func (o *Wfmbuscheduleruntopicbuschedulerun) MarshalJSON() ([]byte, error) {
 		SchedulingCompletedTime: o.SchedulingCompletedTime,
 		
 		MessageCount: o.MessageCount,
+		
+		MessageSeverityCounts: o.MessageSeverityCounts,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -137,6 +145,11 @@ func (o *Wfmbuscheduleruntopicbuschedulerun) UnmarshalJSON(b []byte) error {
 	if MessageCount, ok := WfmbuscheduleruntopicbuschedulerunMap["messageCount"].(float64); ok {
 		MessageCountInt := int(MessageCount)
 		o.MessageCount = &MessageCountInt
+	}
+	
+	if MessageSeverityCounts, ok := WfmbuscheduleruntopicbuschedulerunMap["messageSeverityCounts"].([]interface{}); ok {
+		MessageSeverityCountsString, _ := json.Marshal(MessageSeverityCounts)
+		json.Unmarshal(MessageSeverityCountsString, &o.MessageSeverityCounts)
 	}
 	
 

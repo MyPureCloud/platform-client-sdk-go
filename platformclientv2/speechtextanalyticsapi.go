@@ -445,7 +445,7 @@ func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsConversationCommunicati
 //
 // Get list of supported Speech &amp; Text Analytics dialects
 //
-// 
+// This api has been deprecated. Use api/v2/topics/dialects instead
 func (a SpeechTextAnalyticsApi) GetSpeechandtextanalyticsDialects() ([]interface{}, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

@@ -19,6 +19,10 @@ type Coachingslotsresponse struct {
 	// FacilitatorSchedules - Periods of availability for facilitators to schedule coaching appointment
 	FacilitatorSchedules *[]Useravailabletimes `json:"facilitatorSchedules,omitempty"`
 
+
+	// WfmScheduleActivities - Detailed data for WFM scheduled activities
+	WfmScheduleActivities *[]Wfmscheduleactivity `json:"wfmScheduleActivities,omitempty"`
+
 }
 
 func (o *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
 		AttendeeSchedules *[]Useravailabletimes `json:"attendeeSchedules,omitempty"`
 		
 		FacilitatorSchedules *[]Useravailabletimes `json:"facilitatorSchedules,omitempty"`
+		
+		WfmScheduleActivities *[]Wfmscheduleactivity `json:"wfmScheduleActivities,omitempty"`
 		*Alias
 	}{ 
 		SuggestedSlots: o.SuggestedSlots,
@@ -39,6 +45,8 @@ func (o *Coachingslotsresponse) MarshalJSON() ([]byte, error) {
 		AttendeeSchedules: o.AttendeeSchedules,
 		
 		FacilitatorSchedules: o.FacilitatorSchedules,
+		
+		WfmScheduleActivities: o.WfmScheduleActivities,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -63,6 +71,11 @@ func (o *Coachingslotsresponse) UnmarshalJSON(b []byte) error {
 	if FacilitatorSchedules, ok := CoachingslotsresponseMap["facilitatorSchedules"].([]interface{}); ok {
 		FacilitatorSchedulesString, _ := json.Marshal(FacilitatorSchedules)
 		json.Unmarshal(FacilitatorSchedulesString, &o.FacilitatorSchedules)
+	}
+	
+	if WfmScheduleActivities, ok := CoachingslotsresponseMap["wfmScheduleActivities"].([]interface{}); ok {
+		WfmScheduleActivitiesString, _ := json.Marshal(WfmScheduleActivities)
+		json.Unmarshal(WfmScheduleActivitiesString, &o.WfmScheduleActivities)
 	}
 	
 

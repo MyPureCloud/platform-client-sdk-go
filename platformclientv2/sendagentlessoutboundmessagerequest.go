@@ -27,6 +27,10 @@ type Sendagentlessoutboundmessagerequest struct {
 	// MessagingTemplate - The messaging template to use in the case of WhatsApp messenger type. This field is required when using WhatsApp messenger type
 	MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
 
+
+	// UseExistingActiveConversation - Use an existing active conversation to send the agentless outbound message. Set this parameter to 'true' to use active conversation. Default value: false
+	UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
+
 }
 
 func (o *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 		TextBody *string `json:"textBody,omitempty"`
 		
 		MessagingTemplate *Messagingtemplaterequest `json:"messagingTemplate,omitempty"`
+		
+		UseExistingActiveConversation *bool `json:"useExistingActiveConversation,omitempty"`
 		*Alias
 	}{ 
 		FromAddress: o.FromAddress,
@@ -55,6 +61,8 @@ func (o *Sendagentlessoutboundmessagerequest) MarshalJSON() ([]byte, error) {
 		TextBody: o.TextBody,
 		
 		MessagingTemplate: o.MessagingTemplate,
+		
+		UseExistingActiveConversation: o.UseExistingActiveConversation,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -85,6 +93,10 @@ func (o *Sendagentlessoutboundmessagerequest) UnmarshalJSON(b []byte) error {
 	if MessagingTemplate, ok := SendagentlessoutboundmessagerequestMap["messagingTemplate"].(map[string]interface{}); ok {
 		MessagingTemplateString, _ := json.Marshal(MessagingTemplate)
 		json.Unmarshal(MessagingTemplateString, &o.MessagingTemplate)
+	}
+	
+	if UseExistingActiveConversation, ok := SendagentlessoutboundmessagerequestMap["useExistingActiveConversation"].(bool); ok {
+		o.UseExistingActiveConversation = &UseExistingActiveConversation
 	}
 	
 

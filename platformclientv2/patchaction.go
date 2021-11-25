@@ -23,6 +23,10 @@ type Patchaction struct {
 	// WebMessagingOfferFields - Admin-configurable fields of a web messaging offer action.
 	WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
 
+
+	// OpenActionFields - Admin-configurable fields of an open action.
+	OpenActionFields *Openactionfields `json:"openActionFields,omitempty"`
+
 }
 
 func (o *Patchaction) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Patchaction) MarshalJSON() ([]byte, error) {
 		ArchitectFlowFields *Architectflowfields `json:"architectFlowFields,omitempty"`
 		
 		WebMessagingOfferFields *Webmessagingofferfields `json:"webMessagingOfferFields,omitempty"`
+		
+		OpenActionFields *Openactionfields `json:"openActionFields,omitempty"`
 		*Alias
 	}{ 
 		MediaType: o.MediaType,
@@ -47,6 +53,8 @@ func (o *Patchaction) MarshalJSON() ([]byte, error) {
 		ArchitectFlowFields: o.ArchitectFlowFields,
 		
 		WebMessagingOfferFields: o.WebMessagingOfferFields,
+		
+		OpenActionFields: o.OpenActionFields,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -75,6 +83,11 @@ func (o *Patchaction) UnmarshalJSON(b []byte) error {
 	if WebMessagingOfferFields, ok := PatchactionMap["webMessagingOfferFields"].(map[string]interface{}); ok {
 		WebMessagingOfferFieldsString, _ := json.Marshal(WebMessagingOfferFields)
 		json.Unmarshal(WebMessagingOfferFieldsString, &o.WebMessagingOfferFields)
+	}
+	
+	if OpenActionFields, ok := PatchactionMap["openActionFields"].(map[string]interface{}); ok {
+		OpenActionFieldsString, _ := json.Marshal(OpenActionFields)
+		json.Unmarshal(OpenActionFieldsString, &o.OpenActionFields)
 	}
 	
 

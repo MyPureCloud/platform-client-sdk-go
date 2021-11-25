@@ -41,8 +41,12 @@ type Queue struct {
 	CreatedBy *string `json:"createdBy,omitempty"`
 
 
-	// MemberCount - The total number of members (joined or unjoined) in the queue.
+	// MemberCount - The total number of members in the queue.
 	MemberCount *int `json:"memberCount,omitempty"`
+
+
+	// UserMemberCount - The number of user members (i.e., non-group members) in the queue.
+	UserMemberCount *int `json:"userMemberCount,omitempty"`
 
 
 	// JoinedMemberCount - The number of joined members in the queue.
@@ -162,6 +166,8 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		
 		MemberCount *int `json:"memberCount,omitempty"`
 		
+		UserMemberCount *int `json:"userMemberCount,omitempty"`
+		
 		JoinedMemberCount *int `json:"joinedMemberCount,omitempty"`
 		
 		MediaSettings *map[string]Mediasetting `json:"mediaSettings,omitempty"`
@@ -218,6 +224,8 @@ func (o *Queue) MarshalJSON() ([]byte, error) {
 		CreatedBy: o.CreatedBy,
 		
 		MemberCount: o.MemberCount,
+		
+		UserMemberCount: o.UserMemberCount,
 		
 		JoinedMemberCount: o.JoinedMemberCount,
 		
@@ -305,6 +313,11 @@ func (o *Queue) UnmarshalJSON(b []byte) error {
 	if MemberCount, ok := QueueMap["memberCount"].(float64); ok {
 		MemberCountInt := int(MemberCount)
 		o.MemberCount = &MemberCountInt
+	}
+	
+	if UserMemberCount, ok := QueueMap["userMemberCount"].(float64); ok {
+		UserMemberCountInt := int(UserMemberCount)
+		o.UserMemberCount = &UserMemberCountInt
 	}
 	
 	if JoinedMemberCount, ok := QueueMap["joinedMemberCount"].(float64); ok {

@@ -3086,10 +3086,10 @@ func (a RoutingApi) GetRoutingQueuesDivisionviews(pageSize int, pageNumber int, 
 
 // GetRoutingQueuesDivisionviewsAll invokes GET /api/v2/routing/queues/divisionviews/all
 //
-// Get a paged listing of simplified queue objects.  Can be used to get a digest of all queues in an organization.
+// Get a paged listing of simplified queue objects, sorted by name.  Can be used to get a digest of all queues in an organization.
 //
 // 
-func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber int, sortBy string, sortOrder string) (*Queueentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber int, sortOrder string) (*Queueentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/divisionviews/all"
@@ -3119,8 +3119,6 @@ func (a RoutingApi) GetRoutingQueuesDivisionviewsAll(pageSize int, pageNumber in
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
-	
-	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
 	
 	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
 	

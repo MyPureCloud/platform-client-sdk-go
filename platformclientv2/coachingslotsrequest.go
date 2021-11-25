@@ -23,6 +23,10 @@ type Coachingslotsrequest struct {
 	// FacilitatorIds - List of facilitators to determine coaching appointment slots
 	FacilitatorIds *[]string `json:"facilitatorIds,omitempty"`
 
+
+	// InterruptibleAppointmentIds - List of appointment ids to exclude from consideration when determining blocked slots
+	InterruptibleAppointmentIds *[]string `json:"interruptibleAppointmentIds,omitempty"`
+
 }
 
 func (o *Coachingslotsrequest) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Coachingslotsrequest) MarshalJSON() ([]byte, error) {
 		AttendeeIds *[]string `json:"attendeeIds,omitempty"`
 		
 		FacilitatorIds *[]string `json:"facilitatorIds,omitempty"`
+		
+		InterruptibleAppointmentIds *[]string `json:"interruptibleAppointmentIds,omitempty"`
 		*Alias
 	}{ 
 		Interval: o.Interval,
@@ -47,6 +53,8 @@ func (o *Coachingslotsrequest) MarshalJSON() ([]byte, error) {
 		AttendeeIds: o.AttendeeIds,
 		
 		FacilitatorIds: o.FacilitatorIds,
+		
+		InterruptibleAppointmentIds: o.InterruptibleAppointmentIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -75,6 +83,11 @@ func (o *Coachingslotsrequest) UnmarshalJSON(b []byte) error {
 	if FacilitatorIds, ok := CoachingslotsrequestMap["facilitatorIds"].([]interface{}); ok {
 		FacilitatorIdsString, _ := json.Marshal(FacilitatorIds)
 		json.Unmarshal(FacilitatorIdsString, &o.FacilitatorIds)
+	}
+	
+	if InterruptibleAppointmentIds, ok := CoachingslotsrequestMap["interruptibleAppointmentIds"].([]interface{}); ok {
+		InterruptibleAppointmentIdsString, _ := json.Marshal(InterruptibleAppointmentIds)
+		json.Unmarshal(InterruptibleAppointmentIdsString, &o.InterruptibleAppointmentIds)
 	}
 	
 

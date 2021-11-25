@@ -57,8 +57,8 @@ type Metrics struct {
 	LinkedMetric *Addressableentityref `json:"linkedMetric,omitempty"`
 
 
-	// DateCreated - The created date of this metric
-	DateCreated *int `json:"dateCreated,omitempty"`
+	// DateCreated - The created date of this metric. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
 	// DateUnlinked - The unlinked workday for this metric if this metric was ever unlinked. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
@@ -86,6 +86,14 @@ func (o *Metrics) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Metrics
+	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
 	
 	DateUnlinked := new(string)
 	if o.DateUnlinked != nil {
@@ -119,7 +127,7 @@ func (o *Metrics) MarshalJSON() ([]byte, error) {
 		
 		LinkedMetric *Addressableentityref `json:"linkedMetric,omitempty"`
 		
-		DateCreated *int `json:"dateCreated,omitempty"`
+		DateCreated *string `json:"dateCreated,omitempty"`
 		
 		DateUnlinked *string `json:"dateUnlinked,omitempty"`
 		
@@ -156,7 +164,7 @@ func (o *Metrics) MarshalJSON() ([]byte, error) {
 		
 		LinkedMetric: o.LinkedMetric,
 		
-		DateCreated: o.DateCreated,
+		DateCreated: DateCreated,
 		
 		DateUnlinked: DateUnlinked,
 		
@@ -229,9 +237,9 @@ func (o *Metrics) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(LinkedMetricString, &o.LinkedMetric)
 	}
 	
-	if DateCreated, ok := MetricsMap["dateCreated"].(float64); ok {
-		DateCreatedInt := int(DateCreated)
-		o.DateCreated = &DateCreatedInt
+	if dateCreatedString, ok := MetricsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 	if dateUnlinkedString, ok := MetricsMap["dateUnlinked"].(string); ok {

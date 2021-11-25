@@ -36,6 +36,10 @@ type Openmessagingchannel struct {
 	// Time - Original time of the event. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	Time *time.Time `json:"time,omitempty"`
 
+
+	// Metadata - Information about the channel.
+	Metadata *Channelmetadata `json:"metadata,omitempty"`
+
 }
 
 func (o *Openmessagingchannel) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Openmessagingchannel) MarshalJSON() ([]byte, error) {
 		From *Openmessagingfromrecipient `json:"from,omitempty"`
 		
 		Time *string `json:"time,omitempty"`
+		
+		Metadata *Channelmetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -80,6 +86,8 @@ func (o *Openmessagingchannel) MarshalJSON() ([]byte, error) {
 		From: o.From,
 		
 		Time: Time,
+		
+		Metadata: o.Metadata,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -120,6 +128,11 @@ func (o *Openmessagingchannel) UnmarshalJSON(b []byte) error {
 	if timeString, ok := OpenmessagingchannelMap["time"].(string); ok {
 		Time, _ := time.Parse("2006-01-02T15:04:05.999999Z", timeString)
 		o.Time = &Time
+	}
+	
+	if Metadata, ok := OpenmessagingchannelMap["metadata"].(map[string]interface{}); ok {
+		MetadataString, _ := json.Marshal(Metadata)
+		json.Unmarshal(MetadataString, &o.Metadata)
 	}
 	
 

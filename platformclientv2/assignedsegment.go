@@ -12,10 +12,6 @@ type Assignedsegment struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Segment - The ID of the segment assigned.
-	Segment *Addressableentityref `json:"segment,omitempty"`
-
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -29,14 +25,10 @@ func (o *Assignedsegment) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Segment *Addressableentityref `json:"segment,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
-		
-		Segment: o.Segment,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -52,11 +44,6 @@ func (o *Assignedsegment) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := AssignedsegmentMap["id"].(string); ok {
 		o.Id = &Id
-	}
-	
-	if Segment, ok := AssignedsegmentMap["segment"].(map[string]interface{}); ok {
-		SegmentString, _ := json.Marshal(Segment)
-		json.Unmarshal(SegmentString, &o.Segment)
 	}
 	
 	if SelfUri, ok := AssignedsegmentMap["selfUri"].(string); ok {

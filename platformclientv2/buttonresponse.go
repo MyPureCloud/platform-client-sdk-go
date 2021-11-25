@@ -19,6 +19,10 @@ type Buttonresponse struct {
 	// Payload - Content of the textback payload after clicking a button
 	Payload *string `json:"payload,omitempty"`
 
+
+	// MessageType - Button response message type that captures QuickReply , Cards and Carousel .This is used  as label for Card selection
+	MessageType *string `json:"messageType,omitempty"`
+
 }
 
 func (o *Buttonresponse) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Buttonresponse) MarshalJSON() ([]byte, error) {
 		Text *string `json:"text,omitempty"`
 		
 		Payload *string `json:"payload,omitempty"`
+		
+		MessageType *string `json:"messageType,omitempty"`
 		*Alias
 	}{ 
 		VarType: o.VarType,
@@ -39,6 +45,8 @@ func (o *Buttonresponse) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Payload: o.Payload,
+		
+		MessageType: o.MessageType,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -60,6 +68,10 @@ func (o *Buttonresponse) UnmarshalJSON(b []byte) error {
 	
 	if Payload, ok := ButtonresponseMap["payload"].(string); ok {
 		o.Payload = &Payload
+	}
+	
+	if MessageType, ok := ButtonresponseMap["messageType"].(string); ok {
+		o.MessageType = &MessageType
 	}
 	
 

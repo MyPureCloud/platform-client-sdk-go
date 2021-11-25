@@ -19,6 +19,10 @@ type Conversationmetrics struct {
 	// SentimentTrend - The Sentiment Trend
 	SentimentTrend *float64 `json:"sentimentTrend,omitempty"`
 
+
+	// SentimentTrendClass - The Sentiment Trend Class
+	SentimentTrendClass *string `json:"sentimentTrendClass,omitempty"`
+
 }
 
 func (o *Conversationmetrics) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Conversationmetrics) MarshalJSON() ([]byte, error) {
 		SentimentScore *float64 `json:"sentimentScore,omitempty"`
 		
 		SentimentTrend *float64 `json:"sentimentTrend,omitempty"`
+		
+		SentimentTrendClass *string `json:"sentimentTrendClass,omitempty"`
 		*Alias
 	}{ 
 		Conversation: o.Conversation,
@@ -39,6 +45,8 @@ func (o *Conversationmetrics) MarshalJSON() ([]byte, error) {
 		SentimentScore: o.SentimentScore,
 		
 		SentimentTrend: o.SentimentTrend,
+		
+		SentimentTrendClass: o.SentimentTrendClass,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,10 @@ func (o *Conversationmetrics) UnmarshalJSON(b []byte) error {
 	
 	if SentimentTrend, ok := ConversationmetricsMap["sentimentTrend"].(float64); ok {
 		o.SentimentTrend = &SentimentTrend
+	}
+	
+	if SentimentTrendClass, ok := ConversationmetricsMap["sentimentTrendClass"].(string); ok {
+		o.SentimentTrendClass = &SentimentTrendClass
 	}
 	
 

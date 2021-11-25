@@ -41,6 +41,10 @@ type Patchoutcome struct {
 	Journey *Journey `json:"journey,omitempty"`
 
 
+	// AssociatedValueField - The field from the event indicating the associated value.
+	AssociatedValueField *Associatedvaluefield `json:"associatedValueField,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -92,6 +96,8 @@ func (o *Patchoutcome) MarshalJSON() ([]byte, error) {
 		
 		Journey *Journey `json:"journey,omitempty"`
 		
+		AssociatedValueField *Associatedvaluefield `json:"associatedValueField,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		CreatedDate *string `json:"createdDate,omitempty"`
@@ -114,6 +120,8 @@ func (o *Patchoutcome) MarshalJSON() ([]byte, error) {
 		Context: o.Context,
 		
 		Journey: o.Journey,
+		
+		AssociatedValueField: o.AssociatedValueField,
 		
 		SelfUri: o.SelfUri,
 		
@@ -164,6 +172,11 @@ func (o *Patchoutcome) UnmarshalJSON(b []byte) error {
 	if Journey, ok := PatchoutcomeMap["journey"].(map[string]interface{}); ok {
 		JourneyString, _ := json.Marshal(Journey)
 		json.Unmarshal(JourneyString, &o.Journey)
+	}
+	
+	if AssociatedValueField, ok := PatchoutcomeMap["associatedValueField"].(map[string]interface{}); ok {
+		AssociatedValueFieldString, _ := json.Marshal(AssociatedValueField)
+		json.Unmarshal(AssociatedValueFieldString, &o.AssociatedValueField)
 	}
 	
 	if SelfUri, ok := PatchoutcomeMap["selfUri"].(string); ok {

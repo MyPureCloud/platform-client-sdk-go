@@ -1466,7 +1466,7 @@ func (a LanguageUnderstandingApi) PatchLanguageunderstandingDomain(domainId stri
 
 // PatchLanguageunderstandingMinerDraft invokes PATCH /api/v2/languageunderstanding/miners/{minerId}/drafts/{draftId}
 //
-// Save information for the draft
+// Save information for the draft. Either topic draft or intent draft should be sent.
 //
 // 
 func (a LanguageUnderstandingApi) PatchLanguageunderstandingMinerDraft(minerId string, draftId string, body Draftrequest) (*Draft, *APIResponse, error) {
@@ -2111,7 +2111,7 @@ func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerDrafts(minerId s
 
 // PostLanguageunderstandingMinerExecute invokes POST /api/v2/languageunderstanding/miners/{minerId}/execute
 //
-// Start the mining process. Specify date range pair with mediaType and queueIds for mining data from Genesys Cloud. Specify only uploadKey for mining through an external file.
+// Start the mining process. Specify date range pair with mediaType, queueIds, participantType for mining data from Genesys Cloud. Specify only uploadKey for mining through an external file.
 //
 // 
 func (a LanguageUnderstandingApi) PostLanguageunderstandingMinerExecute(minerId string, body Minerexecuterequest) (*Miner, *APIResponse, error) {

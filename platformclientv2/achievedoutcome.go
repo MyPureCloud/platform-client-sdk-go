@@ -12,10 +12,6 @@ type Achievedoutcome struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Outcome - The ID of the outcome achieved.
-	Outcome *Addressableentityref `json:"outcome,omitempty"`
-
-
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -29,14 +25,10 @@ func (o *Achievedoutcome) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
-		Outcome *Addressableentityref `json:"outcome,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
-		
-		Outcome: o.Outcome,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -52,11 +44,6 @@ func (o *Achievedoutcome) UnmarshalJSON(b []byte) error {
 	
 	if Id, ok := AchievedoutcomeMap["id"].(string); ok {
 		o.Id = &Id
-	}
-	
-	if Outcome, ok := AchievedoutcomeMap["outcome"].(map[string]interface{}); ok {
-		OutcomeString, _ := json.Marshal(Outcome)
-		json.Unmarshal(OutcomeString, &o.Outcome)
 	}
 	
 	if SelfUri, ok := AchievedoutcomeMap["selfUri"].(string); ok {
