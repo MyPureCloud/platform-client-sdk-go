@@ -23,6 +23,10 @@ type Messengersettings struct {
 	// FileUpload - The file upload settings for messenger
 	FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
 
+
+	// Position - The position settings for messenger
+	Position *Messengerpositionsettings `json:"position,omitempty"`
+
 }
 
 func (o *Messengersettings) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 		LauncherButton *Launcherbuttonsettings `json:"launcherButton,omitempty"`
 		
 		FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
+		
+		Position *Messengerpositionsettings `json:"position,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -47,6 +53,8 @@ func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 		LauncherButton: o.LauncherButton,
 		
 		FileUpload: o.FileUpload,
+		
+		Position: o.Position,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -75,6 +83,11 @@ func (o *Messengersettings) UnmarshalJSON(b []byte) error {
 	if FileUpload, ok := MessengersettingsMap["fileUpload"].(map[string]interface{}); ok {
 		FileUploadString, _ := json.Marshal(FileUpload)
 		json.Unmarshal(FileUploadString, &o.FileUpload)
+	}
+	
+	if Position, ok := MessengersettingsMap["position"].(map[string]interface{}); ok {
+		PositionString, _ := json.Marshal(Position)
+		json.Unmarshal(PositionString, &o.Position)
 	}
 	
 

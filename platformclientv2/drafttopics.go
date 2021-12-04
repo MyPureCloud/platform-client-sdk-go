@@ -12,8 +12,28 @@ type Drafttopics struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Name - Name/Label for a topic.
+	// Name - Topic name.
 	Name *string `json:"name,omitempty"`
+
+
+	// Miner - The miner to which the topic belongs.
+	Miner *Miner `json:"miner,omitempty"`
+
+
+	// ConversationCount - Number of conversations where a topic has occurred.
+	ConversationCount *int `json:"conversationCount,omitempty"`
+
+
+	// ConversationPercent - Percentage of conversations where a topic has occurred.
+	ConversationPercent *float32 `json:"conversationPercent,omitempty"`
+
+
+	// UtteranceCount - Number of unique utterances where a topic has occurred.
+	UtteranceCount *int `json:"utteranceCount,omitempty"`
+
+
+	// PhraseCount - Number of unique phrases (sub-utterances) where a topic has occurred.
+	PhraseCount *int `json:"phraseCount,omitempty"`
 
 
 	// Phrases - The phrases that are extracted for a topic.
@@ -35,6 +55,16 @@ func (o *Drafttopics) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Miner *Miner `json:"miner,omitempty"`
+		
+		ConversationCount *int `json:"conversationCount,omitempty"`
+		
+		ConversationPercent *float32 `json:"conversationPercent,omitempty"`
+		
+		UtteranceCount *int `json:"utteranceCount,omitempty"`
+		
+		PhraseCount *int `json:"phraseCount,omitempty"`
+		
 		Phrases *[]string `json:"phrases,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -43,6 +73,16 @@ func (o *Drafttopics) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Miner: o.Miner,
+		
+		ConversationCount: o.ConversationCount,
+		
+		ConversationPercent: o.ConversationPercent,
+		
+		UtteranceCount: o.UtteranceCount,
+		
+		PhraseCount: o.PhraseCount,
 		
 		Phrases: o.Phrases,
 		
@@ -64,6 +104,31 @@ func (o *Drafttopics) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := DrafttopicsMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if Miner, ok := DrafttopicsMap["miner"].(map[string]interface{}); ok {
+		MinerString, _ := json.Marshal(Miner)
+		json.Unmarshal(MinerString, &o.Miner)
+	}
+	
+	if ConversationCount, ok := DrafttopicsMap["conversationCount"].(float64); ok {
+		ConversationCountInt := int(ConversationCount)
+		o.ConversationCount = &ConversationCountInt
+	}
+	
+	if ConversationPercent, ok := DrafttopicsMap["conversationPercent"].(float64); ok {
+		ConversationPercentFloat32 := float32(ConversationPercent)
+		o.ConversationPercent = &ConversationPercentFloat32
+	}
+	
+	if UtteranceCount, ok := DrafttopicsMap["utteranceCount"].(float64); ok {
+		UtteranceCountInt := int(UtteranceCount)
+		o.UtteranceCount = &UtteranceCountInt
+	}
+	
+	if PhraseCount, ok := DrafttopicsMap["phraseCount"].(float64); ok {
+		PhraseCountInt := int(PhraseCount)
+		o.PhraseCount = &PhraseCountInt
 	}
 	
 	if Phrases, ok := DrafttopicsMap["phrases"].([]interface{}); ok {

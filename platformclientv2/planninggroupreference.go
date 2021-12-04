@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Planninggroupreference - Planning Group
+// Planninggroupreference
 type Planninggroupreference struct { 
 	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`

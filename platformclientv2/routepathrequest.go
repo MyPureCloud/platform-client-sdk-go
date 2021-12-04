@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Routepathrequest - Route path configuration
+// Routepathrequest
 type Routepathrequest struct { 
 	// QueueId - The ID of the queue to associate with the route path
 	QueueId *string `json:"queueId,omitempty"`
@@ -24,7 +24,7 @@ type Routepathrequest struct {
 	SkillIds *[]string `json:"skillIds,omitempty"`
 
 
-	// SourcePlanningGroup - The planning group from which to copy route paths
+	// SourcePlanningGroup - The planning group from which to take route paths. This property is only needed if a route path already exists in another planning group.Note that taking a route path from another planning group will modify the other planning group
 	SourcePlanningGroup *Sourceplanninggrouprequest `json:"sourcePlanningGroup,omitempty"`
 
 }

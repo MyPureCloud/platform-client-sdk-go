@@ -1552,12 +1552,12 @@ func (a RecordingApi) GetRecordingJob(jobId string) (*Recordingjob, *APIResponse
 // Get IDs of recordings that the bulk job failed for
 //
 // 
-func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int, pageNumber int) (*Failedrecordingsentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int, pageNumber int, includeTotal bool, cursor string) (*Failedrecordingentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs/{jobId}/failedrecordings"
 	path = strings.Replace(path, "{jobId}", fmt.Sprintf("%v", jobId), -1)
-	defaultReturn := new(Failedrecordingsentitylisting)
+	defaultReturn := new(Failedrecordingentitylisting)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -1589,6 +1589,10 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
 	
+	queryParams["includeTotal"] = a.Configuration.APIClient.ParameterToString(includeTotal, "")
+	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -1608,14 +1612,14 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Failedrecordingsentitylisting
+	var successPayload *Failedrecordingentitylisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Failedrecordingsentitylisting" == "string" {
+		if "Failedrecordingentitylisting" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -1629,7 +1633,7 @@ func (a RecordingApi) GetRecordingJobFailedrecordings(jobId string, pageSize int
 // Get the status of all jobs within the user&#39;s organization
 //
 // 
-func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy string, state string, showOnlyMyJobs bool, jobType string) (*Recordingjobentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy string, state string, showOnlyMyJobs bool, jobType string, includeTotal bool, cursor string) (*Recordingjobentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/jobs"
@@ -1667,6 +1671,10 @@ func (a RecordingApi) GetRecordingJobs(pageSize int, pageNumber int, sortBy stri
 	queryParams["showOnlyMyJobs"] = a.Configuration.APIClient.ParameterToString(showOnlyMyJobs, "")
 	
 	queryParams["jobType"] = a.Configuration.APIClient.ParameterToString(jobType, "")
+	
+	queryParams["includeTotal"] = a.Configuration.APIClient.ParameterToString(includeTotal, "")
+	
+	queryParams["cursor"] = a.Configuration.APIClient.ParameterToString(cursor, "")
 	
 
 	// to determine the Content-Type header
