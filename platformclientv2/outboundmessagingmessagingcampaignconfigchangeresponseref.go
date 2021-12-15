@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Outboundmessagingmessagingcampaignconfigchangeresponseref
+// Outboundmessagingmessagingcampaignconfigchangeresponseref - A reference for a Response
 type Outboundmessagingmessagingcampaignconfigchangeresponseref struct { 
-	// Id
+	// Id - The unique response id
 	Id *string `json:"id,omitempty"`
 
 }

@@ -9,80 +9,76 @@ import (
 
 // Conversationeventtopiccobrowse
 type Conversationeventtopiccobrowse struct { 
-	// State
+	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
 
 
-	// DisconnectType
+	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// Self
+	// Self - Address and name data for a call endpoint.
 	Self *Conversationeventtopicaddress `json:"self,omitempty"`
 
 
-	// RoomId
+	// RoomId - The room id for the chat.
 	RoomId *string `json:"roomId,omitempty"`
 
 
-	// CobrowseSessionId
+	// CobrowseSessionId - The co-browse session ID.
 	CobrowseSessionId *string `json:"cobrowseSessionId,omitempty"`
 
 
-	// CobrowseRole
+	// CobrowseRole - This value identifies the role of the co-browse client within the co-browse session (a client is a sharer or a viewer).
 	CobrowseRole *string `json:"cobrowseRole,omitempty"`
 
 
-	// Controlling
+	// Controlling - ID of co-browse participants for which this client has been granted control (list is empty if this client cannot control any shared pages).
 	Controlling *[]string `json:"controlling,omitempty"`
 
 
-	// ViewerUrl
+	// ViewerUrl - The URL that can be used to open co-browse session in web browser.
 	ViewerUrl *string `json:"viewerUrl,omitempty"`
 
 
-	// Provider
+	// Provider - The source provider of the co-browse communication.
 	Provider *string `json:"provider,omitempty"`
 
 
-	// ScriptId
+	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
-	// PeerId
+	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// ProviderEventTime
+	// ProviderEventTime - The time when the provider event which triggered this conversation update happened in the corrected provider clock (milliseconds since 1970-01-01 00:00:00 UTC).
 	ProviderEventTime *time.Time `json:"providerEventTime,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// DisconnectedTime
+	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
-	// Wrapup
+	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Conversationeventtopicwrapup `json:"wrapup,omitempty"`
 
 
-	// AfterCallWork
+	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
-	// AfterCallWorkRequired
+	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -151,8 +147,6 @@ func (o *Conversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 		AfterCallWork *Conversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -190,8 +184,6 @@ func (o *Conversationeventtopiccobrowse) MarshalJSON() ([]byte, error) {
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -280,11 +272,6 @@ func (o *Conversationeventtopiccobrowse) UnmarshalJSON(b []byte) error {
 	
 	if AfterCallWorkRequired, ok := ConversationeventtopiccobrowseMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
-	}
-	
-	if AdditionalProperties, ok := ConversationeventtopiccobrowseMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

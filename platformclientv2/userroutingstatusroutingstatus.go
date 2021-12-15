@@ -9,11 +9,11 @@ import (
 
 // Userroutingstatusroutingstatus
 type Userroutingstatusroutingstatus struct { 
-	// Status
+	// Status - Indicates the Routing State of the agent.
 	Status *string `json:"status,omitempty"`
 
 
-	// StartTime
+	// StartTime - The timestamp when the agent went into this state.
 	StartTime *time.Time `json:"startTime,omitempty"`
 
 }

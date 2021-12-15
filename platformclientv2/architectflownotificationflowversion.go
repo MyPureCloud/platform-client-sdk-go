@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Architectflownotificationflowversion
+// Architectflownotificationflowversion - A bare-bones flow version object
 type Architectflownotificationflowversion struct { 
-	// Id
+	// Id - The version ID
 	Id *string `json:"id,omitempty"`
 
 }

@@ -9,35 +9,15 @@ import (
 
 // Dialercontactlistconfigchangecontactlist
 type Dialercontactlistconfigchangecontactlist struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// ColumnNames
+	// ColumnNames - the contact column names
 	ColumnNames *[]string `json:"columnNames,omitempty"`
 
 
-	// PhoneColumns
+	// PhoneColumns - the columns containing phone numbers
 	PhoneColumns *[]Dialercontactlistconfigchangecontactphonenumbercolumn `json:"phoneColumns,omitempty"`
 
 
-	// EmailColumns
+	// EmailColumns - the columns containing email addresses
 	EmailColumns *[]Dialercontactlistconfigchangeemailcolumn `json:"emailColumns,omitempty"`
 
 
@@ -45,15 +25,15 @@ type Dialercontactlistconfigchangecontactlist struct {
 	ImportStatus *Dialercontactlistconfigchangeimportstatus `json:"importStatus,omitempty"`
 
 
-	// PreviewModeColumnName
+	// PreviewModeColumnName - the name of the column that holds the indicators for contacts that are to be dialed in preview mode only
 	PreviewModeColumnName *string `json:"previewModeColumnName,omitempty"`
 
 
-	// PreviewModeAcceptedValues
+	// PreviewModeAcceptedValues - list of user-defined values indicating the contact is to be dialed in preview mode only
 	PreviewModeAcceptedValues *[]string `json:"previewModeAcceptedValues,omitempty"`
 
 
-	// Size
+	// Size - the number of contacts in the contact list
 	Size *int `json:"size,omitempty"`
 
 
@@ -61,20 +41,36 @@ type Dialercontactlistconfigchangecontactlist struct {
 	AttemptLimits *Dialercontactlistconfigchangeurireference `json:"attemptLimits,omitempty"`
 
 
-	// AutomaticTimeZoneMapping
+	// AutomaticTimeZoneMapping - whether or not automatic time zone mapping is enabled on the list
 	AutomaticTimeZoneMapping *bool `json:"automaticTimeZoneMapping,omitempty"`
 
 
-	// ZipCodeColumnName
+	// ZipCodeColumnName - zip code column from the contact list to be used optionally with automatic time zone mapping
 	ZipCodeColumnName *string `json:"zipCodeColumnName,omitempty"`
 
 
-	// Division
+	// Division - A UriReference for a resource
 	Division *Dialercontactlistconfigchangeurireference `json:"division,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -100,16 +96,6 @@ func (o *Dialercontactlistconfigchangecontactlist) MarshalJSON() ([]byte, error)
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		ColumnNames *[]string `json:"columnNames,omitempty"`
 		
 		PhoneColumns *[]Dialercontactlistconfigchangecontactphonenumbercolumn `json:"phoneColumns,omitempty"`
@@ -132,19 +118,17 @@ func (o *Dialercontactlistconfigchangecontactlist) MarshalJSON() ([]byte, error)
 		
 		Division *Dialercontactlistconfigchangeurireference `json:"division,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		ColumnNames: o.ColumnNames,
 		
 		PhoneColumns: o.PhoneColumns,
@@ -167,7 +151,15 @@ func (o *Dialercontactlistconfigchangecontactlist) MarshalJSON() ([]byte, error)
 		
 		Division: o.Division,
 		
-		AdditionalProperties: o.AdditionalProperties,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -177,29 +169,6 @@ func (o *Dialercontactlistconfigchangecontactlist) UnmarshalJSON(b []byte) error
 	err := json.Unmarshal(b, &DialercontactlistconfigchangecontactlistMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialercontactlistconfigchangecontactlistMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialercontactlistconfigchangecontactlistMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialercontactlistconfigchangecontactlistMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialercontactlistconfigchangecontactlistMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialercontactlistconfigchangecontactlistMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if ColumnNames, ok := DialercontactlistconfigchangecontactlistMap["columnNames"].([]interface{}); ok {
@@ -254,9 +223,27 @@ func (o *Dialercontactlistconfigchangecontactlist) UnmarshalJSON(b []byte) error
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
-	if AdditionalProperties, ok := DialercontactlistconfigchangecontactlistMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Id, ok := DialercontactlistconfigchangecontactlistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialercontactlistconfigchangecontactlistMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialercontactlistconfigchangecontactlistMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialercontactlistconfigchangecontactlistMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialercontactlistconfigchangecontactlistMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

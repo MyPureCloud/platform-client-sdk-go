@@ -8,20 +8,16 @@ import (
 
 // Dialercontactlistconfigchangecontactphonenumbercolumn
 type Dialercontactlistconfigchangecontactphonenumbercolumn struct { 
-	// ColumnName
+	// ColumnName - name of the phone column
 	ColumnName *string `json:"columnName,omitempty"`
 
 
-	// VarType
+	// VarType - type of the phone column, for example, 'cell' or 'home'
 	VarType *string `json:"type,omitempty"`
 
 
-	// CallableTimeColumn
+	// CallableTimeColumn - name of the column indicating the timezone to be considered for determining callable times
 	CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -36,8 +32,6 @@ func (o *Dialercontactlistconfigchangecontactphonenumbercolumn) MarshalJSON() ([
 		VarType *string `json:"type,omitempty"`
 		
 		CallableTimeColumn *string `json:"callableTimeColumn,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ColumnName: o.ColumnName,
@@ -45,8 +39,6 @@ func (o *Dialercontactlistconfigchangecontactphonenumbercolumn) MarshalJSON() ([
 		VarType: o.VarType,
 		
 		CallableTimeColumn: o.CallableTimeColumn,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -68,11 +60,6 @@ func (o *Dialercontactlistconfigchangecontactphonenumbercolumn) UnmarshalJSON(b 
 	
 	if CallableTimeColumn, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["callableTimeColumn"].(string); ok {
 		o.CallableTimeColumn = &CallableTimeColumn
-	}
-	
-	if AdditionalProperties, ok := DialercontactlistconfigchangecontactphonenumbercolumnMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

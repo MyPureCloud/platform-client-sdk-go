@@ -8,11 +8,11 @@ import (
 
 // Conversationmessageeventtopicmessagesticker
 type Conversationmessageeventtopicmessagesticker struct { 
-	// Url
+	// Url - The location of the sticker, useful for retrieving it
 	Url *string `json:"url,omitempty"`
 
 
-	// Id
+	// Id - The unique id of the the sticker object.
 	Id *string `json:"id,omitempty"`
 
 }

@@ -37,6 +37,10 @@ type Webdeploymentconfigurationversion struct {
 	Messenger *Messengersettings `json:"messenger,omitempty"`
 
 
+	// SupportCenter - The settings for support center
+	SupportCenter *Supportcentersettings `json:"supportCenter,omitempty"`
+
+
 	// Cobrowse - The settings for cobrowse
 	Cobrowse *Cobrowsesettings `json:"cobrowse,omitempty"`
 
@@ -126,6 +130,8 @@ func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		
 		Messenger *Messengersettings `json:"messenger,omitempty"`
 		
+		SupportCenter *Supportcentersettings `json:"supportCenter,omitempty"`
+		
 		Cobrowse *Cobrowsesettings `json:"cobrowse,omitempty"`
 		
 		JourneyEvents *Journeyeventssettings `json:"journeyEvents,omitempty"`
@@ -162,6 +168,8 @@ func (o *Webdeploymentconfigurationversion) MarshalJSON() ([]byte, error) {
 		DefaultLanguage: o.DefaultLanguage,
 		
 		Messenger: o.Messenger,
+		
+		SupportCenter: o.SupportCenter,
 		
 		Cobrowse: o.Cobrowse,
 		
@@ -223,6 +231,11 @@ func (o *Webdeploymentconfigurationversion) UnmarshalJSON(b []byte) error {
 	if Messenger, ok := WebdeploymentconfigurationversionMap["messenger"].(map[string]interface{}); ok {
 		MessengerString, _ := json.Marshal(Messenger)
 		json.Unmarshal(MessengerString, &o.Messenger)
+	}
+	
+	if SupportCenter, ok := WebdeploymentconfigurationversionMap["supportCenter"].(map[string]interface{}); ok {
+		SupportCenterString, _ := json.Marshal(SupportCenter)
+		json.Unmarshal(SupportCenterString, &o.SupportCenter)
 	}
 	
 	if Cobrowse, ok := WebdeploymentconfigurationversionMap["cobrowse"].(map[string]interface{}); ok {

@@ -9,100 +9,96 @@ import (
 
 // Queueconversationeventtopicmessage
 type Queueconversationeventtopicmessage struct { 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// State
+	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
 
 
-	// Held
+	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
 
-	// ErrorInfo
+	// ErrorInfo - Detailed information about an error response.
 	ErrorInfo *Queueconversationeventtopicerrordetails `json:"errorInfo,omitempty"`
 
 
-	// Provider
+	// Provider - The source provider of the email.
 	Provider *string `json:"provider,omitempty"`
 
 
-	// ScriptId
+	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
-	// PeerId
+	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// DisconnectType
+	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
 
-	// StartHoldTime
+	// StartHoldTime - The timestamp the email was placed on hold in the cloud clock if the email is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// DisconnectedTime
+	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
-	// ToAddress
+	// ToAddress - Address and name data for a call endpoint.
 	ToAddress *Queueconversationeventtopicaddress `json:"toAddress,omitempty"`
 
 
-	// FromAddress
+	// FromAddress - Address and name data for a call endpoint.
 	FromAddress *Queueconversationeventtopicaddress `json:"fromAddress,omitempty"`
 
 
-	// Messages
+	// Messages - The messages sent on this communication channel.
 	Messages *[]Queueconversationeventtopicmessagedetails `json:"messages,omitempty"`
 
 
-	// MessagesTranscriptUri
+	// MessagesTranscriptUri - the messages transcript file uri.
 	MessagesTranscriptUri *string `json:"messagesTranscriptUri,omitempty"`
 
 
-	// VarType
+	// VarType - Indicates the type of message platform from which the message originated.
 	VarType *string `json:"type,omitempty"`
 
 
-	// RecipientCountry
+	// RecipientCountry - Indicates the country where the recipient is associated in ISO 3166-1 alpha-2 format.
 	RecipientCountry *string `json:"recipientCountry,omitempty"`
 
 
-	// RecipientType
+	// RecipientType - The type of the recipient. Eg: Provisioned phoneNumber is the recipient for sms message type.
 	RecipientType *string `json:"recipientType,omitempty"`
 
 
-	// JourneyContext
+	// JourneyContext - A subset of the Journey System's data relevant to a part of a conversation (for external linkage and internal usage/context).
 	JourneyContext *Queueconversationeventtopicjourneycontext `json:"journeyContext,omitempty"`
 
 
-	// Wrapup
+	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
 
 
-	// AfterCallWork
+	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
-	// AfterCallWorkRequired
+	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
 
-	// AgentAssistantId
+	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -181,8 +177,6 @@ func (o *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -230,8 +224,6 @@ func (o *Queueconversationeventtopicmessage) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -343,11 +335,6 @@ func (o *Queueconversationeventtopicmessage) UnmarshalJSON(b []byte) error {
 	
 	if AgentAssistantId, ok := QueueconversationeventtopicmessageMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
-	}
-	
-	if AdditionalProperties, ok := QueueconversationeventtopicmessageMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

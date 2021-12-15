@@ -12,24 +12,20 @@ type Dialercampaignprogresseventcampaignprogress struct {
 	Campaign *Dialercampaignprogresseventurireference `json:"campaign,omitempty"`
 
 
-	// NumberOfContactsCalled
+	// NumberOfContactsCalled - The number of contacts that have been called so far
 	NumberOfContactsCalled *float32 `json:"numberOfContactsCalled,omitempty"`
 
 
-	// NumberOfContactsMessaged
+	// NumberOfContactsMessaged - The number of contacts that have been messaged so far
 	NumberOfContactsMessaged *float32 `json:"numberOfContactsMessaged,omitempty"`
 
 
-	// TotalNumberOfContacts
+	// TotalNumberOfContacts - The total number of contacts in the contact list
 	TotalNumberOfContacts *float32 `json:"totalNumberOfContacts,omitempty"`
 
 
-	// Percentage
+	// Percentage - numberOfContactsContacted/totalNumberOfContacts*100
 	Percentage *int `json:"percentage,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, err
 		TotalNumberOfContacts *float32 `json:"totalNumberOfContacts,omitempty"`
 		
 		Percentage *int `json:"percentage,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Campaign: o.Campaign,
@@ -61,8 +55,6 @@ func (o *Dialercampaignprogresseventcampaignprogress) MarshalJSON() ([]byte, err
 		TotalNumberOfContacts: o.TotalNumberOfContacts,
 		
 		Percentage: o.Percentage,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -97,11 +89,6 @@ func (o *Dialercampaignprogresseventcampaignprogress) UnmarshalJSON(b []byte) er
 	if Percentage, ok := DialercampaignprogresseventcampaignprogressMap["percentage"].(float64); ok {
 		PercentageInt := int(Percentage)
 		o.Percentage = &PercentageInt
-	}
-	
-	if AdditionalProperties, ok := DialercampaignprogresseventcampaignprogressMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

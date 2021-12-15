@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Architectpromptnotificationclient
+// Architectpromptnotificationclient - The client who initiated the change.
 type Architectpromptnotificationclient struct { 
-	// Id
+	// Id - The ID of the client.
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The name of the client, if available.
 	Name *string `json:"name,omitempty"`
 
 }

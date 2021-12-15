@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Outboundmessagingmessagingcampaignconfigchangesmsconfig
+// Outboundmessagingmessagingcampaignconfigchangesmsconfig - An outbound-messaging messaging campaign SMS Config
 type Outboundmessagingmessagingcampaignconfigchangesmsconfig struct { 
-	// MessageColumn
+	// MessageColumn - The Contact List column specifying the message to send to the contact.
 	MessageColumn *string `json:"messageColumn,omitempty"`
 
 
-	// PhoneColumn
+	// PhoneColumn - The Contact List column specifying the phone number to send a message to.
 	PhoneColumn *string `json:"phoneColumn,omitempty"`
 
 

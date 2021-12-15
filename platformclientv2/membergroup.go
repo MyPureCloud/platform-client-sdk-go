@@ -17,7 +17,7 @@ type Membergroup struct {
 
 
 	// Division - The division to which this entity belongs.
-	Division *Division `json:"division,omitempty"`
+	Division *Writabledivision `json:"division,omitempty"`
 
 
 	// VarType - The group type
@@ -43,7 +43,7 @@ func (o *Membergroup) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
-		Division *Division `json:"division,omitempty"`
+		Division *Writabledivision `json:"division,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
 		

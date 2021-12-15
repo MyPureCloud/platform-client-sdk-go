@@ -9,23 +9,23 @@ import (
 
 // Dialerwrapupcodemappingconfigchangewrapupcodemapping
 type Dialerwrapupcodemappingconfigchangewrapupcodemapping struct { 
-	// Id
+	// Id - The globally unique identifier for the object.
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The UI-visible name of the object
 	Name *string `json:"name,omitempty"`
 
 
-	// DateCreated
+	// DateCreated - Creation time of the entity
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
-	// DateModified
+	// DateModified - Last modified time of the entity
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
 
-	// Version
+	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
 
 

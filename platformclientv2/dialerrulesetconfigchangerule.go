@@ -8,32 +8,28 @@ import (
 
 // Dialerrulesetconfigchangerule
 type Dialerrulesetconfigchangerule struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// Order
-	Order *int `json:"order,omitempty"`
-
-
-	// Category
-	Category *string `json:"category,omitempty"`
-
-
-	// Actions
-	Actions *[]Dialerrulesetconfigchangeaction `json:"actions,omitempty"`
-
-
-	// Conditions
+	// Conditions - The list of rule conditions; all must evaluate to true to trigger the rule actions
 	Conditions *[]Dialerrulesetconfigchangecondition `json:"conditions,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The identifier of the rule
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The name of the rule
+	Name *string `json:"name,omitempty"`
+
+
+	// Order - The ranked order of the rule; rules are processed from lowest number to highest
+	Order *int `json:"order,omitempty"`
+
+
+	// Category - The category of the rule
+	Category *string `json:"category,omitempty"`
+
+
+	// Actions - The list of rule actions to be taken if the conditions are true
+	Actions *[]Dialerrulesetconfigchangeaction `json:"actions,omitempty"`
 
 }
 
@@ -43,6 +39,8 @@ func (o *Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 	type Alias Dialerrulesetconfigchangerule
 	
 	return json.Marshal(&struct { 
+		Conditions *[]Dialerrulesetconfigchangecondition `json:"conditions,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -52,12 +50,10 @@ func (o *Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 		Category *string `json:"category,omitempty"`
 		
 		Actions *[]Dialerrulesetconfigchangeaction `json:"actions,omitempty"`
-		
-		Conditions *[]Dialerrulesetconfigchangecondition `json:"conditions,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		Conditions: o.Conditions,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -67,10 +63,6 @@ func (o *Dialerrulesetconfigchangerule) MarshalJSON() ([]byte, error) {
 		Category: o.Category,
 		
 		Actions: o.Actions,
-		
-		Conditions: o.Conditions,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -80,6 +72,11 @@ func (o *Dialerrulesetconfigchangerule) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &DialerrulesetconfigchangeruleMap)
 	if err != nil {
 		return err
+	}
+	
+	if Conditions, ok := DialerrulesetconfigchangeruleMap["conditions"].([]interface{}); ok {
+		ConditionsString, _ := json.Marshal(Conditions)
+		json.Unmarshal(ConditionsString, &o.Conditions)
 	}
 	
 	if Id, ok := DialerrulesetconfigchangeruleMap["id"].(string); ok {
@@ -102,16 +99,6 @@ func (o *Dialerrulesetconfigchangerule) UnmarshalJSON(b []byte) error {
 	if Actions, ok := DialerrulesetconfigchangeruleMap["actions"].([]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)
-	}
-	
-	if Conditions, ok := DialerrulesetconfigchangeruleMap["conditions"].([]interface{}); ok {
-		ConditionsString, _ := json.Marshal(Conditions)
-		json.Unmarshal(ConditionsString, &o.Conditions)
-	}
-	
-	if AdditionalProperties, ok := DialerrulesetconfigchangeruleMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

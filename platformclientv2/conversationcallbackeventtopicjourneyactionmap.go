@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Conversationcallbackeventtopicjourneyactionmap
+// Conversationcallbackeventtopicjourneyactionmap - Details about the action map from the Journey System which triggered this action
 type Conversationcallbackeventtopicjourneyactionmap struct { 
-	// Id
+	// Id - The ID of the actionMap in the Journey System which triggered this action
 	Id *string `json:"id,omitempty"`
 
 
-	// Version
+	// Version - The version number of the actionMap in the Journey System at the time this action was triggered
 	Version *int `json:"version,omitempty"`
 
 }

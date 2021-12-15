@@ -9,30 +9,6 @@ import (
 
 // Outboundmessagingmessagingcampaignconfigchangemessagingcampaign
 type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Division
-	Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// CampaignStatus
 	CampaignStatus *string `json:"campaignStatus,omitempty"`
 
@@ -41,27 +17,27 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 	CallableTimeSet *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"callableTimeSet,omitempty"`
 
 
-	// ContactList
+	// ContactList - A UriReference for a resource
 	ContactList *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"contactList,omitempty"`
 
 
-	// DncLists
+	// DncLists - The dnc lists to check before sending a message for this messaging campaign.
 	DncLists *[]Outboundmessagingmessagingcampaignconfigchangeurireference `json:"dncLists,omitempty"`
 
 
-	// ContactListFilters
+	// ContactListFilters - The contact list filters to check before sending a message for this messaging campaign.
 	ContactListFilters *[]Outboundmessagingmessagingcampaignconfigchangeurireference `json:"contactListFilters,omitempty"`
 
 
-	// AlwaysRunning
+	// AlwaysRunning - Whether this messaging campaign is always running.
 	AlwaysRunning *bool `json:"alwaysRunning,omitempty"`
 
 
-	// ContactSorts
+	// ContactSorts - The order in which to sort contacts for dialing, based on up to four columns.
 	ContactSorts *[]Outboundmessagingmessagingcampaignconfigchangecontactsort `json:"contactSorts,omitempty"`
 
 
-	// MessagesPerMinute
+	// MessagesPerMinute - How many messages this messaging campaign will send per minute.
 	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 
 
@@ -73,8 +49,32 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 	EmailConfig *Outboundmessagingmessagingcampaignconfigchangeemailconfig `json:"emailConfig,omitempty"`
 
 
-	// Errors
+	// Errors - A list of current error conditions associated with this messaging campaign
 	Errors *[]Outboundmessagingmessagingcampaignconfigchangeerrordetail `json:"errors,omitempty"`
+
+
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Division - A UriReference for a resource
+	Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -100,18 +100,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		CampaignStatus *string `json:"campaignStatus,omitempty"`
 		
 		CallableTimeSet *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"callableTimeSet,omitempty"`
@@ -133,20 +121,20 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		EmailConfig *Outboundmessagingmessagingcampaignconfigchangeemailconfig `json:"emailConfig,omitempty"`
 		
 		Errors *[]Outboundmessagingmessagingcampaignconfigchangeerrordetail `json:"errors,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Division: o.Division,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		CampaignStatus: o.CampaignStatus,
 		
 		CallableTimeSet: o.CallableTimeSet,
@@ -168,6 +156,18 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		EmailConfig: o.EmailConfig,
 		
 		Errors: o.Errors,
+		
+		Id: o.Id,
+		
+		Division: o.Division,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -177,34 +177,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	err := json.Unmarshal(b, &OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Division, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["division"].(map[string]interface{}); ok {
-		DivisionString, _ := json.Marshal(Division)
-		json.Unmarshal(DivisionString, &o.Division)
-	}
-	
-	if Name, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if CampaignStatus, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["campaignStatus"].(string); ok {
@@ -258,6 +230,34 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	if Errors, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["errors"].([]interface{}); ok {
 		ErrorsString, _ := json.Marshal(Errors)
 		json.Unmarshal(ErrorsString, &o.Errors)
+	}
+	
+	if Id, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Division, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
+	}
+	
+	if Name, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

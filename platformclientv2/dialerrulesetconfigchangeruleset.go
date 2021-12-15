@@ -9,31 +9,11 @@ import (
 
 // Dialerrulesetconfigchangeruleset
 type Dialerrulesetconfigchangeruleset struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// ContactList
 	ContactList *Dialerrulesetconfigchangeurireference `json:"contactList,omitempty"`
 
 
-	// Queue
+	// Queue - A UriReference for a resource
 	Queue *Dialerrulesetconfigchangeurireference `json:"queue,omitempty"`
 
 
@@ -41,8 +21,24 @@ type Dialerrulesetconfigchangeruleset struct {
 	Rules *[]Dialerrulesetconfigchangerule `json:"rules,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -68,6 +64,12 @@ func (o *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
+		ContactList *Dialerrulesetconfigchangeurireference `json:"contactList,omitempty"`
+		
+		Queue *Dialerrulesetconfigchangeurireference `json:"queue,omitempty"`
+		
+		Rules *[]Dialerrulesetconfigchangerule `json:"rules,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -77,16 +79,14 @@ func (o *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		ContactList *Dialerrulesetconfigchangeurireference `json:"contactList,omitempty"`
-		
-		Queue *Dialerrulesetconfigchangeurireference `json:"queue,omitempty"`
-		
-		Rules *[]Dialerrulesetconfigchangerule `json:"rules,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		ContactList: o.ContactList,
+		
+		Queue: o.Queue,
+		
+		Rules: o.Rules,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -96,14 +96,6 @@ func (o *Dialerrulesetconfigchangeruleset) MarshalJSON() ([]byte, error) {
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		ContactList: o.ContactList,
-		
-		Queue: o.Queue,
-		
-		Rules: o.Rules,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -113,6 +105,21 @@ func (o *Dialerrulesetconfigchangeruleset) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &DialerrulesetconfigchangerulesetMap)
 	if err != nil {
 		return err
+	}
+	
+	if ContactList, ok := DialerrulesetconfigchangerulesetMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if Queue, ok := DialerrulesetconfigchangerulesetMap["queue"].(map[string]interface{}); ok {
+		QueueString, _ := json.Marshal(Queue)
+		json.Unmarshal(QueueString, &o.Queue)
+	}
+	
+	if Rules, ok := DialerrulesetconfigchangerulesetMap["rules"].([]interface{}); ok {
+		RulesString, _ := json.Marshal(Rules)
+		json.Unmarshal(RulesString, &o.Rules)
 	}
 	
 	if Id, ok := DialerrulesetconfigchangerulesetMap["id"].(string); ok {
@@ -136,26 +143,6 @@ func (o *Dialerrulesetconfigchangeruleset) UnmarshalJSON(b []byte) error {
 	if Version, ok := DialerrulesetconfigchangerulesetMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if ContactList, ok := DialerrulesetconfigchangerulesetMap["contactList"].(map[string]interface{}); ok {
-		ContactListString, _ := json.Marshal(ContactList)
-		json.Unmarshal(ContactListString, &o.ContactList)
-	}
-	
-	if Queue, ok := DialerrulesetconfigchangerulesetMap["queue"].(map[string]interface{}); ok {
-		QueueString, _ := json.Marshal(Queue)
-		json.Unmarshal(QueueString, &o.Queue)
-	}
-	
-	if Rules, ok := DialerrulesetconfigchangerulesetMap["rules"].([]interface{}); ok {
-		RulesString, _ := json.Marshal(Rules)
-		json.Unmarshal(RulesString, &o.Rules)
-	}
-	
-	if AdditionalProperties, ok := DialerrulesetconfigchangerulesetMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

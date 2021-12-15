@@ -8,27 +8,27 @@ import (
 
 // Architectsystempromptresourcenotificationsystempromptresourcenotification
 type Architectsystempromptresourcenotificationsystempromptresourcenotification struct { 
-	// PromptId
+	// PromptId - Id of the prompt that this notification is for.
 	PromptId *string `json:"promptId,omitempty"`
 
 
-	// Id
+	// Id - Id of the prompt resource that this notification is for.
 	Id *string `json:"id,omitempty"`
 
 
-	// Language
+	// Language - Language resource that this notification is for.
 	Language *string `json:"language,omitempty"`
 
 
-	// MediaUri
+	// MediaUri - Uri to the file for this system prompt resource.
 	MediaUri *string `json:"mediaUri,omitempty"`
 
 
-	// UploadStatus
+	// UploadStatus - Current upload status of the prompt resource (created, uploaded, transcoded, transcodeFailed).
 	UploadStatus *string `json:"uploadStatus,omitempty"`
 
 
-	// DurationSeconds
+	// DurationSeconds - Duration (in seconds) for the transcoded audio file.
 	DurationSeconds *float32 `json:"durationSeconds,omitempty"`
 
 }

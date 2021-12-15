@@ -29,6 +29,10 @@ type Analyticsconversationwithoutattributes struct {
 	ExternalTag *string `json:"externalTag,omitempty"`
 
 
+	// KnowledgeBaseIds - The unique identifier(s) of the knowledge base(s) used
+	KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
+
+
 	// MediaStatsMinConversationMos - The lowest estimated average MOS among all the audio streams belonging to this conversation
 	MediaStatsMinConversationMos *float64 `json:"mediaStatsMinConversationMos,omitempty"`
 
@@ -39,6 +43,10 @@ type Analyticsconversationwithoutattributes struct {
 
 	// OriginatingDirection - The original direction of the conversation
 	OriginatingDirection *string `json:"originatingDirection,omitempty"`
+
+
+	// SelfServed - Indicates whether all flow sessions were self serviced
+	SelfServed *bool `json:"selfServed,omitempty"`
 
 
 	// Evaluations - Evaluations associated with this conversation
@@ -90,11 +98,15 @@ func (o *Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
 		
 		ExternalTag *string `json:"externalTag,omitempty"`
 		
+		KnowledgeBaseIds *[]string `json:"knowledgeBaseIds,omitempty"`
+		
 		MediaStatsMinConversationMos *float64 `json:"mediaStatsMinConversationMos,omitempty"`
 		
 		MediaStatsMinConversationRFactor *float64 `json:"mediaStatsMinConversationRFactor,omitempty"`
 		
 		OriginatingDirection *string `json:"originatingDirection,omitempty"`
+		
+		SelfServed *bool `json:"selfServed,omitempty"`
 		
 		Evaluations *[]Analyticsevaluation `json:"evaluations,omitempty"`
 		
@@ -115,11 +127,15 @@ func (o *Analyticsconversationwithoutattributes) MarshalJSON() ([]byte, error) {
 		
 		ExternalTag: o.ExternalTag,
 		
+		KnowledgeBaseIds: o.KnowledgeBaseIds,
+		
 		MediaStatsMinConversationMos: o.MediaStatsMinConversationMos,
 		
 		MediaStatsMinConversationRFactor: o.MediaStatsMinConversationRFactor,
 		
 		OriginatingDirection: o.OriginatingDirection,
+		
+		SelfServed: o.SelfServed,
 		
 		Evaluations: o.Evaluations,
 		
@@ -162,6 +178,11 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
 		o.ExternalTag = &ExternalTag
 	}
 	
+	if KnowledgeBaseIds, ok := AnalyticsconversationwithoutattributesMap["knowledgeBaseIds"].([]interface{}); ok {
+		KnowledgeBaseIdsString, _ := json.Marshal(KnowledgeBaseIds)
+		json.Unmarshal(KnowledgeBaseIdsString, &o.KnowledgeBaseIds)
+	}
+	
 	if MediaStatsMinConversationMos, ok := AnalyticsconversationwithoutattributesMap["mediaStatsMinConversationMos"].(float64); ok {
 		o.MediaStatsMinConversationMos = &MediaStatsMinConversationMos
 	}
@@ -172,6 +193,10 @@ func (o *Analyticsconversationwithoutattributes) UnmarshalJSON(b []byte) error {
 	
 	if OriginatingDirection, ok := AnalyticsconversationwithoutattributesMap["originatingDirection"].(string); ok {
 		o.OriginatingDirection = &OriginatingDirection
+	}
+	
+	if SelfServed, ok := AnalyticsconversationwithoutattributesMap["selfServed"].(bool); ok {
+		o.SelfServed = &SelfServed
 	}
 	
 	if Evaluations, ok := AnalyticsconversationwithoutattributesMap["evaluations"].([]interface{}); ok {

@@ -9,31 +9,11 @@ import (
 
 // Dialercampaignscheduleconfigchangecampaignschedule
 type Dialercampaignscheduleconfigchangecampaignschedule struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// Intervals
+	// Intervals - a list of start and end times
 	Intervals *[]Dialercampaignscheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
 
 
-	// TimeZone
+	// TimeZone - time zone identifier to be applied to the intervals; for example Africa/Abidjan
 	TimeZone *string `json:"timeZone,omitempty"`
 
 
@@ -41,8 +21,24 @@ type Dialercampaignscheduleconfigchangecampaignschedule struct {
 	Campaign *Dialercampaignscheduleconfigchangeurireference `json:"campaign,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -68,6 +64,12 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) MarshalJSON() ([]by
 	}
 	
 	return json.Marshal(&struct { 
+		Intervals *[]Dialercampaignscheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		Campaign *Dialercampaignscheduleconfigchangeurireference `json:"campaign,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -77,16 +79,14 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) MarshalJSON() ([]by
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		Intervals *[]Dialercampaignscheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
-		
-		TimeZone *string `json:"timeZone,omitempty"`
-		
-		Campaign *Dialercampaignscheduleconfigchangeurireference `json:"campaign,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		Intervals: o.Intervals,
+		
+		TimeZone: o.TimeZone,
+		
+		Campaign: o.Campaign,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -96,14 +96,6 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) MarshalJSON() ([]by
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		Intervals: o.Intervals,
-		
-		TimeZone: o.TimeZone,
-		
-		Campaign: o.Campaign,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -113,6 +105,20 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) UnmarshalJSON(b []b
 	err := json.Unmarshal(b, &DialercampaignscheduleconfigchangecampaignscheduleMap)
 	if err != nil {
 		return err
+	}
+	
+	if Intervals, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["intervals"].([]interface{}); ok {
+		IntervalsString, _ := json.Marshal(Intervals)
+		json.Unmarshal(IntervalsString, &o.Intervals)
+	}
+	
+	if TimeZone, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if Campaign, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["campaign"].(map[string]interface{}); ok {
+		CampaignString, _ := json.Marshal(Campaign)
+		json.Unmarshal(CampaignString, &o.Campaign)
 	}
 	
 	if Id, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["id"].(string); ok {
@@ -136,25 +142,6 @@ func (o *Dialercampaignscheduleconfigchangecampaignschedule) UnmarshalJSON(b []b
 	if Version, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if Intervals, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["intervals"].([]interface{}); ok {
-		IntervalsString, _ := json.Marshal(Intervals)
-		json.Unmarshal(IntervalsString, &o.Intervals)
-	}
-	
-	if TimeZone, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["timeZone"].(string); ok {
-		o.TimeZone = &TimeZone
-	}
-	
-	if Campaign, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["campaign"].(map[string]interface{}); ok {
-		CampaignString, _ := json.Marshal(Campaign)
-		json.Unmarshal(CampaignString, &o.Campaign)
-	}
-	
-	if AdditionalProperties, ok := DialercampaignscheduleconfigchangecampaignscheduleMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

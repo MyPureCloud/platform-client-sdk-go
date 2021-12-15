@@ -8,23 +8,23 @@ import (
 
 // Conversationeventtopicmessagemedia
 type Conversationeventtopicmessagemedia struct { 
-	// Url
+	// Url - The location of the media, useful for retrieving it
 	Url *string `json:"url,omitempty"`
 
 
-	// MediaType
+	// MediaType - The optional internet media type of the the media object.  If null then the media type should be dictated by the url
 	MediaType *string `json:"mediaType,omitempty"`
 
 
-	// ContentLengthBytes
+	// ContentLengthBytes - The optional content length of the the media object, in bytes.
 	ContentLengthBytes *int `json:"contentLengthBytes,omitempty"`
 
 
-	// Name
+	// Name - The optional name of the the media object.
 	Name *string `json:"name,omitempty"`
 
 
-	// Id
+	// Id - The optional id of the the media object.
 	Id *string `json:"id,omitempty"`
 
 }

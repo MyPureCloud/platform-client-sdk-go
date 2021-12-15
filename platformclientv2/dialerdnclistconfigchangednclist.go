@@ -9,47 +9,27 @@ import (
 
 // Dialerdnclistconfigchangednclist
 type Dialerdnclistconfigchangednclist struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// ImportStatus
 	ImportStatus *Dialerdnclistconfigchangeimportstatus `json:"importStatus,omitempty"`
 
 
-	// Size
+	// Size - the number of phone numbers in the do not call list
 	Size *int `json:"size,omitempty"`
 
 
-	// DncSourceType
+	// DncSourceType - the type of dnc list being created, rds (csv file), gryphon, or dnc.com
 	DncSourceType *string `json:"dncSourceType,omitempty"`
 
 
-	// LoginId
+	// LoginId - the loginId if the dncSourceType is dnc.com
 	LoginId *string `json:"loginId,omitempty"`
 
 
-	// DncCodes
+	// DncCodes - the list of dnc.com codes to be treated as DNC
 	DncCodes *[]string `json:"dncCodes,omitempty"`
 
 
-	// LicenseId
+	// LicenseId - the license number if the dncSourceType is gryphon
 	LicenseId *string `json:"licenseId,omitempty"`
 
 
@@ -61,8 +41,24 @@ type Dialerdnclistconfigchangednclist struct {
 	Division *Dialerdnclistconfigchangeurireference `json:"division,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -88,16 +84,6 @@ func (o *Dialerdnclistconfigchangednclist) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		ImportStatus *Dialerdnclistconfigchangeimportstatus `json:"importStatus,omitempty"`
 		
 		Size *int `json:"size,omitempty"`
@@ -114,19 +100,17 @@ func (o *Dialerdnclistconfigchangednclist) MarshalJSON() ([]byte, error) {
 		
 		Division *Dialerdnclistconfigchangeurireference `json:"division,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		ImportStatus: o.ImportStatus,
 		
 		Size: o.Size,
@@ -143,7 +127,15 @@ func (o *Dialerdnclistconfigchangednclist) MarshalJSON() ([]byte, error) {
 		
 		Division: o.Division,
 		
-		AdditionalProperties: o.AdditionalProperties,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -153,29 +145,6 @@ func (o *Dialerdnclistconfigchangednclist) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &DialerdnclistconfigchangednclistMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialerdnclistconfigchangednclistMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialerdnclistconfigchangednclistMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialerdnclistconfigchangednclistMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialerdnclistconfigchangednclistMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialerdnclistconfigchangednclistMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if ImportStatus, ok := DialerdnclistconfigchangednclistMap["importStatus"].(map[string]interface{}); ok {
@@ -214,9 +183,27 @@ func (o *Dialerdnclistconfigchangednclist) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
-	if AdditionalProperties, ok := DialerdnclistconfigchangednclistMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Id, ok := DialerdnclistconfigchangednclistMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialerdnclistconfigchangednclistMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialerdnclistconfigchangednclistMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialerdnclistconfigchangednclistMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialerdnclistconfigchangednclistMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

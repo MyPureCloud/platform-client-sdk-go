@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Queueconversationvideoeventtopicjourneycontext
+// Queueconversationvideoeventtopicjourneycontext - A subset of the Journey System's data relevant to a part of a conversation (for external linkage and internal usage/context).
 type Queueconversationvideoeventtopicjourneycontext struct { 
 	// Customer
 	Customer *Queueconversationvideoeventtopicjourneycustomer `json:"customer,omitempty"`

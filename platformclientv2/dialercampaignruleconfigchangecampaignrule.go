@@ -9,48 +9,44 @@ import (
 
 // Dialercampaignruleconfigchangecampaignrule
 type Dialercampaignruleconfigchangecampaignrule struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// CampaignRuleEntities
 	CampaignRuleEntities *Dialercampaignruleconfigchangecampaignruleentities `json:"campaignRuleEntities,omitempty"`
 
 
-	// CampaignRuleConditions
+	// CampaignRuleConditions - The list of conditions that will trigger this Campaign Rule
 	CampaignRuleConditions *[]Dialercampaignruleconfigchangecampaignrulecondition `json:"campaignRuleConditions,omitempty"`
 
 
-	// CampaignRuleActions
+	// CampaignRuleActions - The list of actions that will be taken when this Campaign Rule's conditions are met
 	CampaignRuleActions *[]Dialercampaignruleconfigchangecampaignruleaction `json:"campaignRuleActions,omitempty"`
 
 
-	// MatchAnyConditions
+	// MatchAnyConditions - Whether this Campaign Rule should match any conditions (inclusive OR) or match all conditions (ALL)
 	MatchAnyConditions *bool `json:"matchAnyConditions,omitempty"`
 
 
-	// Enabled
+	// Enabled - Whether this campaign rule is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -76,16 +72,6 @@ func (o *Dialercampaignruleconfigchangecampaignrule) MarshalJSON() ([]byte, erro
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		CampaignRuleEntities *Dialercampaignruleconfigchangecampaignruleentities `json:"campaignRuleEntities,omitempty"`
 		
 		CampaignRuleConditions *[]Dialercampaignruleconfigchangecampaignrulecondition `json:"campaignRuleConditions,omitempty"`
@@ -96,19 +82,17 @@ func (o *Dialercampaignruleconfigchangecampaignrule) MarshalJSON() ([]byte, erro
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		CampaignRuleEntities: o.CampaignRuleEntities,
 		
 		CampaignRuleConditions: o.CampaignRuleConditions,
@@ -119,7 +103,15 @@ func (o *Dialercampaignruleconfigchangecampaignrule) MarshalJSON() ([]byte, erro
 		
 		Enabled: o.Enabled,
 		
-		AdditionalProperties: o.AdditionalProperties,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -129,29 +121,6 @@ func (o *Dialercampaignruleconfigchangecampaignrule) UnmarshalJSON(b []byte) err
 	err := json.Unmarshal(b, &DialercampaignruleconfigchangecampaignruleMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialercampaignruleconfigchangecampaignruleMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialercampaignruleconfigchangecampaignruleMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialercampaignruleconfigchangecampaignruleMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialercampaignruleconfigchangecampaignruleMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialercampaignruleconfigchangecampaignruleMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if CampaignRuleEntities, ok := DialercampaignruleconfigchangecampaignruleMap["campaignRuleEntities"].(map[string]interface{}); ok {
@@ -177,9 +146,27 @@ func (o *Dialercampaignruleconfigchangecampaignrule) UnmarshalJSON(b []byte) err
 		o.Enabled = &Enabled
 	}
 	
-	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Id, ok := DialercampaignruleconfigchangecampaignruleMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialercampaignruleconfigchangecampaignruleMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialercampaignruleconfigchangecampaignruleMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialercampaignruleconfigchangecampaignruleMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialercampaignruleconfigchangecampaignruleMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

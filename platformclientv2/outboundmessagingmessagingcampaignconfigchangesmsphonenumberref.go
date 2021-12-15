@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref
+// Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref - A reference for an SmsPhoneNumber
 type Outboundmessagingmessagingcampaignconfigchangesmsphonenumberref struct { 
-	// PhoneNumber
+	// PhoneNumber - The unique phone number
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 
 }

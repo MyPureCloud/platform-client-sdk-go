@@ -9,28 +9,24 @@ import (
 
 // Queueconversationscreenshareeventtopicwrapup
 type Queueconversationscreenshareeventtopicwrapup struct { 
-	// Code
+	// Code - The user configured wrap up code name.
 	Code *string `json:"code,omitempty"`
 
 
-	// Notes
+	// Notes - Text entered by the agent to describe the call or disposition.
 	Notes *string `json:"notes,omitempty"`
 
 
-	// Tags
+	// Tags - List of tags selected by the agent to describe the call or disposition.
 	Tags *[]string `json:"tags,omitempty"`
 
 
-	// DurationSeconds
+	// DurationSeconds - The length of time in seconds that the agent spent doing after call work., Note, the format of utc-millisec should be ignored, our code generator needs it to generate a Long for us internally
 	DurationSeconds *int `json:"durationSeconds,omitempty"`
 
 
-	// EndTime
+	// EndTime - The timestamp when the wrapup was finished.
 	EndTime *time.Time `json:"endTime,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -57,8 +53,6 @@ func (o *Queueconversationscreenshareeventtopicwrapup) MarshalJSON() ([]byte, er
 		DurationSeconds *int `json:"durationSeconds,omitempty"`
 		
 		EndTime *string `json:"endTime,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Code: o.Code,
@@ -70,8 +64,6 @@ func (o *Queueconversationscreenshareeventtopicwrapup) MarshalJSON() ([]byte, er
 		DurationSeconds: o.DurationSeconds,
 		
 		EndTime: EndTime,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -104,11 +96,6 @@ func (o *Queueconversationscreenshareeventtopicwrapup) UnmarshalJSON(b []byte) e
 	if endTimeString, ok := QueueconversationscreenshareeventtopicwrapupMap["endTime"].(string); ok {
 		EndTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endTimeString)
 		o.EndTime = &EndTime
-	}
-	
-	if AdditionalProperties, ok := QueueconversationscreenshareeventtopicwrapupMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

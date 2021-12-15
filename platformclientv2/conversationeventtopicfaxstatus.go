@@ -6,37 +6,37 @@ import (
 	"strings"
 )
 
-// Conversationeventtopicfaxstatus
+// Conversationeventtopicfaxstatus - Extra information on fax transmission.
 type Conversationeventtopicfaxstatus struct { 
-	// Direction
+	// Direction - The fax direction, either \"send\" or \"receive\".
 	Direction *string `json:"direction,omitempty"`
 
 
-	// ExpectedPages
+	// ExpectedPages - Total number of expected pages, if known.
 	ExpectedPages *int `json:"expectedPages,omitempty"`
 
 
-	// ActivePage
+	// ActivePage - Active page of the transmission.
 	ActivePage *int `json:"activePage,omitempty"`
 
 
-	// LinesTransmitted
+	// LinesTransmitted - Number of lines that have completed transmission.
 	LinesTransmitted *int `json:"linesTransmitted,omitempty"`
 
 
-	// BytesTransmitted
+	// BytesTransmitted - Number of bytes that have competed transmission.
 	BytesTransmitted *int `json:"bytesTransmitted,omitempty"`
 
 
-	// BaudRate
+	// BaudRate - Current signaling rate of transmission, baud rate.
 	BaudRate *int `json:"baudRate,omitempty"`
 
 
-	// PageErrors
+	// PageErrors - Number of page errors.
 	PageErrors *int `json:"pageErrors,omitempty"`
 
 
-	// LineErrors
+	// LineErrors - Number of line errors.
 	LineErrors *int `json:"lineErrors,omitempty"`
 
 }

@@ -6,22 +6,18 @@ import (
 	"strings"
 )
 
-// Dialercampaignruleconfigchangecampaignruleactionentities
+// Dialercampaignruleconfigchangecampaignruleactionentities - the campaign/sequence entities that this action acts on
 type Dialercampaignruleconfigchangecampaignruleactionentities struct { 
-	// Campaigns
-	Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
-
-
-	// Sequences
-	Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
-
-
-	// UseTriggeringEntity
+	// UseTriggeringEntity - Whether this action should act on the entity that triggered it
 	UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Campaigns - A list of campaignIds to act on
+	Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
+
+
+	// Sequences - A list of sequenceIds to act on
+	Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
 
 }
 
@@ -31,22 +27,18 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) MarshalJSON()
 	type Alias Dialercampaignruleconfigchangecampaignruleactionentities
 	
 	return json.Marshal(&struct { 
+		UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
+		
 		Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
 		
 		Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
-		
-		UseTriggeringEntity *bool `json:"useTriggeringEntity,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		UseTriggeringEntity: o.UseTriggeringEntity,
+		
 		Campaigns: o.Campaigns,
 		
 		Sequences: o.Sequences,
-		
-		UseTriggeringEntity: o.UseTriggeringEntity,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -58,6 +50,10 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) UnmarshalJSON
 		return err
 	}
 	
+	if UseTriggeringEntity, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["useTriggeringEntity"].(bool); ok {
+		o.UseTriggeringEntity = &UseTriggeringEntity
+	}
+	
 	if Campaigns, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["campaigns"].([]interface{}); ok {
 		CampaignsString, _ := json.Marshal(Campaigns)
 		json.Unmarshal(CampaignsString, &o.Campaigns)
@@ -66,15 +62,6 @@ func (o *Dialercampaignruleconfigchangecampaignruleactionentities) UnmarshalJSON
 	if Sequences, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["sequences"].([]interface{}); ok {
 		SequencesString, _ := json.Marshal(Sequences)
 		json.Unmarshal(SequencesString, &o.Sequences)
-	}
-	
-	if UseTriggeringEntity, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["useTriggeringEntity"].(bool); ok {
-		o.UseTriggeringEntity = &UseTriggeringEntity
-	}
-	
-	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleactionentitiesMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

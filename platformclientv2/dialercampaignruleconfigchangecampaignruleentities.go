@@ -8,11 +8,11 @@ import (
 
 // Dialercampaignruleconfigchangecampaignruleentities
 type Dialercampaignruleconfigchangecampaignruleentities struct { 
-	// Campaigns
+	// Campaigns - A list of campaignIds to act on
 	Campaigns *[]Dialercampaignruleconfigchangeurireference `json:"campaigns,omitempty"`
 
 
-	// Sequences
+	// Sequences - A list of sequenceIds to act on
 	Sequences *[]Dialercampaignruleconfigchangeurireference `json:"sequences,omitempty"`
 
 }

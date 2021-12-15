@@ -8,19 +8,19 @@ import (
 
 // Dialercontactlistfilterconfigchangefilterpredicate
 type Dialercontactlistfilterconfigchangefilterpredicate struct { 
-	// Column
+	// Column - The contact list column
 	Column *string `json:"column,omitempty"`
 
 
-	// ColumnType
+	// ColumnType - Whether a contact column is numeric or alphabetic
 	ColumnType *string `json:"columnType,omitempty"`
 
 
-	// Operator
+	// Operator - The comparison operator
 	Operator *string `json:"operator,omitempty"`
 
 
-	// Value
+	// Value - The value the predicate applies to
 	Value *string `json:"value,omitempty"`
 
 
@@ -28,12 +28,8 @@ type Dialercontactlistfilterconfigchangefilterpredicate struct {
 	VarRange *Dialercontactlistfilterconfigchangerange `json:"range,omitempty"`
 
 
-	// Inverted
+	// Inverted - Whether or not to invert to result of evaluating the predicate
 	Inverted *bool `json:"inverted,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -54,8 +50,6 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]by
 		VarRange *Dialercontactlistfilterconfigchangerange `json:"range,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Column: o.Column,
@@ -69,8 +63,6 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) MarshalJSON() ([]by
 		VarRange: o.VarRange,
 		
 		Inverted: o.Inverted,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -105,11 +97,6 @@ func (o *Dialercontactlistfilterconfigchangefilterpredicate) UnmarshalJSON(b []b
 	
 	if Inverted, ok := DialercontactlistfilterconfigchangefilterpredicateMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
-	}
-	
-	if AdditionalProperties, ok := DialercontactlistfilterconfigchangefilterpredicateMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

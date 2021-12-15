@@ -8,11 +8,11 @@ import (
 
 // Conversationcallbackeventtopicvoicemail
 type Conversationcallbackeventtopicvoicemail struct { 
-	// Id
+	// Id - The voicemail id
 	Id *string `json:"id,omitempty"`
 
 
-	// UploadStatus
+	// UploadStatus - current state of the voicemail upload
 	UploadStatus *string `json:"uploadStatus,omitempty"`
 
 }

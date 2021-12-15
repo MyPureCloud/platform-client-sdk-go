@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Dialercontactlistfilterconfigchangeurireference
+// Dialercontactlistfilterconfigchangeurireference - A UriReference for a resource
 type Dialercontactlistfilterconfigchangeurireference struct { 
-	// Id
+	// Id - The ID of the resource
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
 
 }

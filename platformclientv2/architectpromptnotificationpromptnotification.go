@@ -8,15 +8,15 @@ import (
 
 // Architectpromptnotificationpromptnotification
 type Architectpromptnotificationpromptnotification struct { 
-	// Id
+	// Id - The prompt ID
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The prompt name
 	Name *string `json:"name,omitempty"`
 
 
-	// Description
+	// Description - The prompt description
 	Description *string `json:"description,omitempty"`
 
 

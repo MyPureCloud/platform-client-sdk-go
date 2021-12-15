@@ -7,17 +7,17 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicaftercallwork
+// Queueconversationsocialexpressioneventtopicaftercallwork - A communication's after-call work data.
 type Queueconversationsocialexpressioneventtopicaftercallwork struct { 
-	// State
+	// State - The communication's after-call work state.
 	State *string `json:"state,omitempty"`
 
 
-	// StartTime
+	// StartTime - The timestamp when this communication started after-call work in the cloud clock.
 	StartTime *time.Time `json:"startTime,omitempty"`
 
 
-	// EndTime
+	// EndTime - The timestamp when this communication ended after-call work in the cloud clock.
 	EndTime *time.Time `json:"endTime,omitempty"`
 
 }

@@ -9,44 +9,44 @@ import (
 
 // Dialeroutboundsettingsconfigchangeoutboundsettings
 type Dialeroutboundsettingsconfigchangeoutboundsettings struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// MaxCallsPerAgent
+	// MaxCallsPerAgent - The maximum number of calls that can be placed per agent on any campaign
 	MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 
 
-	// MaxLineUtilization
+	// MaxLineUtilization - The maximum percentage of lines that should be used for Outbound, expressed as a decimal in the range [0.0, 1.0]
 	MaxLineUtilization *float32 `json:"maxLineUtilization,omitempty"`
 
 
-	// AbandonSeconds
+	// AbandonSeconds - The number of seconds used to determine if a call is abandoned
 	AbandonSeconds *float32 `json:"abandonSeconds,omitempty"`
 
 
-	// ComplianceAbandonRateDenominator
+	// ComplianceAbandonRateDenominator - The denominator to be used in determining the compliance abandon rate
 	ComplianceAbandonRateDenominator *string `json:"complianceAbandonRateDenominator,omitempty"`
 
 
 	// AutomaticTimeZoneMapping
 	AutomaticTimeZoneMapping *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
+
+
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -72,16 +72,6 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) MarshalJSON() ([]by
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		MaxCallsPerAgent *int `json:"maxCallsPerAgent,omitempty"`
 		
 		MaxLineUtilization *float32 `json:"maxLineUtilization,omitempty"`
@@ -91,18 +81,18 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) MarshalJSON() ([]by
 		ComplianceAbandonRateDenominator *string `json:"complianceAbandonRateDenominator,omitempty"`
 		
 		AutomaticTimeZoneMapping *Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings `json:"automaticTimeZoneMapping,omitempty"`
+		
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		MaxCallsPerAgent: o.MaxCallsPerAgent,
 		
 		MaxLineUtilization: o.MaxLineUtilization,
@@ -112,6 +102,16 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) MarshalJSON() ([]by
 		ComplianceAbandonRateDenominator: o.ComplianceAbandonRateDenominator,
 		
 		AutomaticTimeZoneMapping: o.AutomaticTimeZoneMapping,
+		
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -121,29 +121,6 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) UnmarshalJSON(b []b
 	err := json.Unmarshal(b, &DialeroutboundsettingsconfigchangeoutboundsettingsMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if MaxCallsPerAgent, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["maxCallsPerAgent"].(float64); ok {
@@ -168,6 +145,29 @@ func (o *Dialeroutboundsettingsconfigchangeoutboundsettings) UnmarshalJSON(b []b
 	if AutomaticTimeZoneMapping, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["automaticTimeZoneMapping"].(map[string]interface{}); ok {
 		AutomaticTimeZoneMappingString, _ := json.Marshal(AutomaticTimeZoneMapping)
 		json.Unmarshal(AutomaticTimeZoneMappingString, &o.AutomaticTimeZoneMapping)
+	}
+	
+	if Id, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialeroutboundsettingsconfigchangeoutboundsettingsMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

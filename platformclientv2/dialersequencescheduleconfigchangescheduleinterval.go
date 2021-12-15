@@ -8,16 +8,12 @@ import (
 
 // Dialersequencescheduleconfigchangescheduleinterval
 type Dialersequencescheduleconfigchangescheduleinterval struct { 
-	// Start
+	// Start - scheduled start time represented as an ISO-8601 string; for example, yyyy-MM-ddTHH:mm:ss.SSSZ
 	Start *string `json:"start,omitempty"`
 
 
-	// End
+	// End - scheduled end time represented as an ISO-8601 string; for example, yyyy-MM-ddTHH:mm:ss.SSSZ
 	End *string `json:"end,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -30,15 +26,11 @@ func (o *Dialersequencescheduleconfigchangescheduleinterval) MarshalJSON() ([]by
 		Start *string `json:"start,omitempty"`
 		
 		End *string `json:"end,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Start: o.Start,
 		
 		End: o.End,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -56,11 +48,6 @@ func (o *Dialersequencescheduleconfigchangescheduleinterval) UnmarshalJSON(b []b
 	
 	if End, ok := DialersequencescheduleconfigchangescheduleintervalMap["end"].(string); ok {
 		o.End = &End
-	}
-	
-	if AdditionalProperties, ok := DialersequencescheduleconfigchangescheduleintervalMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

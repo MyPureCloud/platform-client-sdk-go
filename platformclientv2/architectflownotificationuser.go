@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Architectflownotificationuser
+// Architectflownotificationuser - The user who initiated the change.
 type Architectflownotificationuser struct { 
-	// Id
+	// Id - The ID of the user.
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The name of the user, if available.
 	Name *string `json:"name,omitempty"`
 
 

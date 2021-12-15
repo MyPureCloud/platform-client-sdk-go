@@ -9,71 +9,71 @@ import (
 
 // Queueconversationvideoeventtopicparticipant
 type Queueconversationvideoeventtopicparticipant struct { 
-	// Id
+	// Id - A globally unique identifier for this conversation.
 	Id *string `json:"id,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this participant was connected to the conversation in the provider clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// EndTime
+	// EndTime - The timestamp when this participant disconnected from the conversation in the provider clock.
 	EndTime *time.Time `json:"endTime,omitempty"`
 
 
-	// UserId
+	// UserId - If this participant represents a user, then this will be the globally unique identifier for the user.
 	UserId *string `json:"userId,omitempty"`
 
 
-	// ExternalContactId
+	// ExternalContactId - If this participant represents an external contact, then this will be the globally unique identifier for the external contact.
 	ExternalContactId *string `json:"externalContactId,omitempty"`
 
 
-	// ExternalOrganizationId
+	// ExternalOrganizationId - If this participant represents an external org, then this will be the globally unique identifier for the external org.
 	ExternalOrganizationId *string `json:"externalOrganizationId,omitempty"`
 
 
-	// Name
+	// Name - A human readable name identifying the participant.
 	Name *string `json:"name,omitempty"`
 
 
-	// QueueId
+	// QueueId - If present, the queue id that the communication channel came in on.
 	QueueId *string `json:"queueId,omitempty"`
 
 
-	// GroupId
+	// GroupId - If present, the group id that the participant represents.
 	GroupId *string `json:"groupId,omitempty"`
 
 
-	// TeamId
+	// TeamId - The team id that this participant is a member of when added to the conversation.
 	TeamId *string `json:"teamId,omitempty"`
 
 
-	// Purpose
+	// Purpose - A well known string that specifies the purpose or type of this participant.
 	Purpose *string `json:"purpose,omitempty"`
 
 
-	// ConsultParticipantId
+	// ConsultParticipantId - If this participant is part of a consult transfer, then this will be the participant id of the participant being transferred.
 	ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 
 
-	// Address
+	// Address - The address for the this participant. For a phone call this will be the ANI.
 	Address *string `json:"address,omitempty"`
 
 
-	// WrapupRequired
+	// WrapupRequired - True iff this participant is required to enter wrapup for this conversation.
 	WrapupRequired *bool `json:"wrapupRequired,omitempty"`
 
 
-	// WrapupExpected
+	// WrapupExpected - True when a participant is expected to enter a wrapup code once the call connects.
 	WrapupExpected *bool `json:"wrapupExpected,omitempty"`
 
 
-	// WrapupPrompt
+	// WrapupPrompt - This field controls how the UI prompts the agent for a wrapup.
 	WrapupPrompt *string `json:"wrapupPrompt,omitempty"`
 
 
-	// WrapupTimeoutMs
+	// WrapupTimeoutMs - Specifies how long a timed ACW session will last.
 	WrapupTimeoutMs *int `json:"wrapupTimeoutMs,omitempty"`
 
 
@@ -81,11 +81,11 @@ type Queueconversationvideoeventtopicparticipant struct {
 	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
 
 
-	// StartAcwTime
+	// StartAcwTime - The timestamp when this participant started after-call work.
 	StartAcwTime *time.Time `json:"startAcwTime,omitempty"`
 
 
-	// EndAcwTime
+	// EndAcwTime - The timestamp when this participant ended after-call work.
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
 
@@ -93,27 +93,27 @@ type Queueconversationvideoeventtopicparticipant struct {
 	ConversationRoutingData *Queueconversationvideoeventtopicconversationroutingdata `json:"conversationRoutingData,omitempty"`
 
 
-	// AlertingTimeoutMs
+	// AlertingTimeoutMs - Specifies how long the agent has to answer an interaction before being marked as not responding.
 	AlertingTimeoutMs *int `json:"alertingTimeoutMs,omitempty"`
 
 
-	// MonitoredParticipantId
+	// MonitoredParticipantId - If this participant is a monitor, then this will be the id of the participant that is being monitored.
 	MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 
 
-	// CoachedParticipantId
+	// CoachedParticipantId - If this participant is a coach, then this will be the id of the participant that is being coached.
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
 
-	// ScreenRecordingState
+	// ScreenRecordingState - The current screen recording state for this participant.
 	ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 
 
-	// FlaggedReason
+	// FlaggedReason - If this participant has flagged the conversation, the reason code given.
 	FlaggedReason *string `json:"flaggedReason,omitempty"`
 
 
-	// Attributes
+	// Attributes - Additional participant attributes
 	Attributes *map[string]string `json:"attributes,omitempty"`
 
 
@@ -151,10 +151,6 @@ type Queueconversationvideoeventtopicparticipant struct {
 
 	// Videos
 	Videos *[]Queueconversationvideoeventtopicvideo `json:"videos,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -267,8 +263,6 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		SocialExpressions *[]Queueconversationvideoeventtopicsocialexpression `json:"socialExpressions,omitempty"`
 		
 		Videos *[]Queueconversationvideoeventtopicvideo `json:"videos,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -342,8 +336,6 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		SocialExpressions: o.SocialExpressions,
 		
 		Videos: o.Videos,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -515,11 +507,6 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	if Videos, ok := QueueconversationvideoeventtopicparticipantMap["videos"].([]interface{}); ok {
 		VideosString, _ := json.Marshal(Videos)
 		json.Unmarshal(VideosString, &o.Videos)
-	}
-	
-	if AdditionalProperties, ok := QueueconversationvideoeventtopicparticipantMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

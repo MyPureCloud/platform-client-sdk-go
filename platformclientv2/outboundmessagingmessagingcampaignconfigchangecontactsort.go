@@ -16,12 +16,8 @@ type Outboundmessagingmessagingcampaignconfigchangecontactsort struct {
 	Direction *string `json:"direction,omitempty"`
 
 
-	// Numeric
+	// Numeric - Whether that column contains numeric data
 	Numeric *bool `json:"numeric,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -36,8 +32,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangecontactsort) MarshalJSON(
 		Direction *string `json:"direction,omitempty"`
 		
 		Numeric *bool `json:"numeric,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		FieldName: o.FieldName,
@@ -45,8 +39,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangecontactsort) MarshalJSON(
 		Direction: o.Direction,
 		
 		Numeric: o.Numeric,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -68,11 +60,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangecontactsort) UnmarshalJSO
 	
 	if Numeric, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["numeric"].(bool); ok {
 		o.Numeric = &Numeric
-	}
-	
-	if AdditionalProperties, ok := OutboundmessagingmessagingcampaignconfigchangecontactsortMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

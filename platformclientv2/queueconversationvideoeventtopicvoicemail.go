@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Queueconversationvideoeventtopicvoicemail
+// Queueconversationvideoeventtopicvoicemail - The voicemail data to be used when this callback is an ACD voicemail.
 type Queueconversationvideoeventtopicvoicemail struct { 
-	// Id
+	// Id - The voicemail id
 	Id *string `json:"id,omitempty"`
 
 
-	// UploadStatus
+	// UploadStatus - current state of the voicemail upload
 	UploadStatus *string `json:"uploadStatus,omitempty"`
 
 }

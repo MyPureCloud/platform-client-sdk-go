@@ -9,31 +9,31 @@ import (
 
 // Queueconversationvideoeventtopiccall
 type Queueconversationvideoeventtopiccall struct { 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// State
+	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
 
 
-	// Recording
+	// Recording - True if this call is being recorded.
 	Recording *bool `json:"recording,omitempty"`
 
 
-	// RecordingState
+	// RecordingState - State of recording on this call.
 	RecordingState *string `json:"recordingState,omitempty"`
 
 
-	// Muted
+	// Muted - True if this call is muted so that remote participants can't hear any audio from this end.
 	Muted *bool `json:"muted,omitempty"`
 
 
-	// Confined
+	// Confined - True if this call is held and the person on this side hears hold music.
 	Confined *bool `json:"confined,omitempty"`
 
 
-	// Held
+	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
 
@@ -41,19 +41,19 @@ type Queueconversationvideoeventtopiccall struct {
 	ErrorInfo *Queueconversationvideoeventtopicerrordetails `json:"errorInfo,omitempty"`
 
 
-	// DisconnectType
+	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
 
-	// StartHoldTime
+	// StartHoldTime - The timestamp the call was placed on hold in the cloud clock if the call is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
 
 
-	// Direction
+	// Direction - Whether a call is inbound or outbound.
 	Direction *string `json:"direction,omitempty"`
 
 
-	// DocumentId
+	// DocumentId - If call is a fax of a document in content management, the id of the document in content management.
 	DocumentId *string `json:"documentId,omitempty"`
 
 
@@ -61,31 +61,31 @@ type Queueconversationvideoeventtopiccall struct {
 	Self *Queueconversationvideoeventtopicaddress `json:"self,omitempty"`
 
 
-	// Other
+	// Other - Address and name data for a call endpoint.
 	Other *Queueconversationvideoeventtopicaddress `json:"other,omitempty"`
 
 
-	// Provider
+	// Provider - The source provider of the call.
 	Provider *string `json:"provider,omitempty"`
 
 
-	// ScriptId
+	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
-	// PeerId
+	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// DisconnectedTime
+	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
-	// DisconnectReasons
+	// DisconnectReasons - List of reasons that this call was disconnected. This will be set once the call disconnects.
 	DisconnectReasons *[]Queueconversationvideoeventtopicdisconnectreason `json:"disconnectReasons,omitempty"`
 
 
@@ -93,11 +93,11 @@ type Queueconversationvideoeventtopiccall struct {
 	FaxStatus *Queueconversationvideoeventtopicfaxstatus `json:"faxStatus,omitempty"`
 
 
-	// UuiData
+	// UuiData - User to User Information (UUI) data managed by SIP session application.
 	UuiData *string `json:"uuiData,omitempty"`
 
 
-	// Wrapup
+	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
 
 
@@ -105,16 +105,12 @@ type Queueconversationvideoeventtopiccall struct {
 	AfterCallWork *Queueconversationvideoeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
-	// AfterCallWorkRequired
+	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
 
-	// AgentAssistantId
+	// AgentAssistantId - UUID of virtual agent assistant that provide suggestions to the agent participant during the conversation.
 	AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -199,8 +195,6 @@ func (o *Queueconversationvideoeventtopiccall) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 		
 		AgentAssistantId *string `json:"agentAssistantId,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -254,8 +248,6 @@ func (o *Queueconversationvideoeventtopiccall) MarshalJSON() ([]byte, error) {
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
 		
 		AgentAssistantId: o.AgentAssistantId,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -379,11 +371,6 @@ func (o *Queueconversationvideoeventtopiccall) UnmarshalJSON(b []byte) error {
 	
 	if AgentAssistantId, ok := QueueconversationvideoeventtopiccallMap["agentAssistantId"].(string); ok {
 		o.AgentAssistantId = &AgentAssistantId
-	}
-	
-	if AdditionalProperties, ok := QueueconversationvideoeventtopiccallMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

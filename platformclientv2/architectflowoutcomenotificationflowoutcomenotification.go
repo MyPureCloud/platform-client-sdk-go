@@ -8,15 +8,15 @@ import (
 
 // Architectflowoutcomenotificationflowoutcomenotification
 type Architectflowoutcomenotificationflowoutcomenotification struct { 
-	// Id
+	// Id - The flow outcome ID
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The flow outcome name
 	Name *string `json:"name,omitempty"`
 
 
-	// Description
+	// Description - The flow outcome description
 	Description *string `json:"description,omitempty"`
 
 

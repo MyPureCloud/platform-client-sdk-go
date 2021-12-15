@@ -89,6 +89,10 @@ type Userqueue struct {
 	WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
 
 
+	// OnHoldPrompt - The audio to be played when calls on this queue are on hold. If not configured, the default on-hold music will play.
+	OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
+
+
 	// EnableTranscription - Indicates whether voice transcription is enabled for this queue.
 	EnableTranscription *bool `json:"enableTranscription,omitempty"`
 
@@ -188,6 +192,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		
 		WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
 		
+		OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
+		
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
 		
 		EnableManualAssignment *bool `json:"enableManualAssignment,omitempty"`
@@ -246,6 +252,8 @@ func (o *Userqueue) MarshalJSON() ([]byte, error) {
 		MessageInQueueFlow: o.MessageInQueueFlow,
 		
 		WhisperPrompt: o.WhisperPrompt,
+		
+		OnHoldPrompt: o.OnHoldPrompt,
 		
 		EnableTranscription: o.EnableTranscription,
 		
@@ -367,6 +375,11 @@ func (o *Userqueue) UnmarshalJSON(b []byte) error {
 	if WhisperPrompt, ok := UserqueueMap["whisperPrompt"].(map[string]interface{}); ok {
 		WhisperPromptString, _ := json.Marshal(WhisperPrompt)
 		json.Unmarshal(WhisperPromptString, &o.WhisperPrompt)
+	}
+	
+	if OnHoldPrompt, ok := UserqueueMap["onHoldPrompt"].(map[string]interface{}); ok {
+		OnHoldPromptString, _ := json.Marshal(OnHoldPrompt)
+		json.Unmarshal(OnHoldPromptString, &o.OnHoldPrompt)
 	}
 	
 	if EnableTranscription, ok := UserqueueMap["enableTranscription"].(bool); ok {

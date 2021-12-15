@@ -9,27 +9,27 @@ import (
 
 // Queueconversationeventtopiccallback
 type Queueconversationeventtopiccallback struct { 
-	// State
+	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
 
 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// Direction
+	// Direction - The direction of the call
 	Direction *string `json:"direction,omitempty"`
 
 
-	// Held
+	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
 
-	// DisconnectType
+	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
 
-	// StartHoldTime
+	// StartHoldTime - The timestamp the callback was placed on hold in the cloud clock if the callback is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
 
 
@@ -41,76 +41,72 @@ type Queueconversationeventtopiccallback struct {
 	Voicemail *Queueconversationeventtopicvoicemail `json:"voicemail,omitempty"`
 
 
-	// CallbackNumbers
+	// CallbackNumbers - The phone number(s) to use to place the callback.
 	CallbackNumbers *[]string `json:"callbackNumbers,omitempty"`
 
 
-	// CallbackUserName
+	// CallbackUserName - The name of the user requesting a callback.
 	CallbackUserName *string `json:"callbackUserName,omitempty"`
 
 
-	// ScriptId
+	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
-	// PeerId
+	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// ExternalCampaign
+	// ExternalCampaign - True if the call for the callback uses external dialing.
 	ExternalCampaign *bool `json:"externalCampaign,omitempty"`
 
 
-	// SkipEnabled
+	// SkipEnabled - True if the ability to skip a callback should be enabled.
 	SkipEnabled *bool `json:"skipEnabled,omitempty"`
 
 
-	// Provider
+	// Provider - The source provider of the callback.
 	Provider *string `json:"provider,omitempty"`
 
 
-	// TimeoutSeconds
+	// TimeoutSeconds - The number of seconds before the system automatically places a call for a callback.  0 means the automatic placement is disabled.
 	TimeoutSeconds *int `json:"timeoutSeconds,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// DisconnectedTime
+	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
-	// CallbackScheduledTime
+	// CallbackScheduledTime - The timestamp when this communication is scheduled in the provider clock. If this value is missing it indicates the callback will be placed immediately.
 	CallbackScheduledTime *time.Time `json:"callbackScheduledTime,omitempty"`
 
 
-	// AutomatedCallbackConfigId
+	// AutomatedCallbackConfigId - The id of the config for automatically placing the callback (and handling the disposition). If null, the callback will not be placed automatically but routed to an agent as per normal.
 	AutomatedCallbackConfigId *string `json:"automatedCallbackConfigId,omitempty"`
 
 
-	// Wrapup
+	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationeventtopicwrapup `json:"wrapup,omitempty"`
 
 
-	// AfterCallWork
+	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Queueconversationeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
-	// AfterCallWorkRequired
+	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
 
 
-	// CallerId
+	// CallerId - The phone number displayed to recipients of the phone call. The value should conform to the E164 format.
 	CallerId *string `json:"callerId,omitempty"`
 
 
-	// CallerIdName
+	// CallerIdName - The name displayed to recipients of the phone call.
 	CallerIdName *string `json:"callerIdName,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -201,8 +197,6 @@ func (o *Queueconversationeventtopiccallback) MarshalJSON() ([]byte, error) {
 		CallerId *string `json:"callerId,omitempty"`
 		
 		CallerIdName *string `json:"callerIdName,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -254,8 +248,6 @@ func (o *Queueconversationeventtopiccallback) MarshalJSON() ([]byte, error) {
 		CallerId: o.CallerId,
 		
 		CallerIdName: o.CallerIdName,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -375,11 +367,6 @@ func (o *Queueconversationeventtopiccallback) UnmarshalJSON(b []byte) error {
 	
 	if CallerIdName, ok := QueueconversationeventtopiccallbackMap["callerIdName"].(string); ok {
 		o.CallerIdName = &CallerIdName
-	}
-	
-	if AdditionalProperties, ok := QueueconversationeventtopiccallbackMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

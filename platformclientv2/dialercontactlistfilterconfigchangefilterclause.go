@@ -8,16 +8,12 @@ import (
 
 // Dialercontactlistfilterconfigchangefilterclause
 type Dialercontactlistfilterconfigchangefilterclause struct { 
-	// FilterType
+	// FilterType - Contact list filter type
 	FilterType *string `json:"filterType,omitempty"`
 
 
-	// Predicates
+	// Predicates - The list of predicates in that clause
 	Predicates *[]Dialercontactlistfilterconfigchangefilterpredicate `json:"predicates,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -30,15 +26,11 @@ func (o *Dialercontactlistfilterconfigchangefilterclause) MarshalJSON() ([]byte,
 		FilterType *string `json:"filterType,omitempty"`
 		
 		Predicates *[]Dialercontactlistfilterconfigchangefilterpredicate `json:"predicates,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		FilterType: o.FilterType,
 		
 		Predicates: o.Predicates,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -57,11 +49,6 @@ func (o *Dialercontactlistfilterconfigchangefilterclause) UnmarshalJSON(b []byte
 	if Predicates, ok := DialercontactlistfilterconfigchangefilterclauseMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)
-	}
-	
-	if AdditionalProperties, ok := DialercontactlistfilterconfigchangefilterclauseMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

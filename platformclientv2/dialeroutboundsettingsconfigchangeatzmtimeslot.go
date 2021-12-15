@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Dialeroutboundsettingsconfigchangeatzmtimeslot
+// Dialeroutboundsettingsconfigchangeatzmtimeslot - The time interval to place outbound calls
 type Dialeroutboundsettingsconfigchangeatzmtimeslot struct { 
-	// EarliestCallableTime
+	// EarliestCallableTime - The earliest time to dial a contact
 	EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
 
 
-	// LatestCallableTime
+	// LatestCallableTime - The latest time to dial a contact
 	LatestCallableTime *string `json:"latestCallableTime,omitempty"`
 
 }

@@ -9,32 +9,28 @@ import (
 
 // Dialercallabletimesetconfigchangecallabletimeset
 type Dialercallabletimesetconfigchangecallabletimeset struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// CallableTimes
+	// CallableTimes - The list of callable times
 	CallableTimes *[]Dialercallabletimesetconfigchangecallabletime `json:"callableTimes,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -60,6 +56,8 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) MarshalJSON() ([]byte
 	}
 	
 	return json.Marshal(&struct { 
+		CallableTimes *[]Dialercallabletimesetconfigchangecallabletime `json:"callableTimes,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -69,12 +67,10 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) MarshalJSON() ([]byte
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		CallableTimes *[]Dialercallabletimesetconfigchangecallabletime `json:"callableTimes,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		CallableTimes: o.CallableTimes,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -84,10 +80,6 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) MarshalJSON() ([]byte
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		CallableTimes: o.CallableTimes,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -97,6 +89,11 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) UnmarshalJSON(b []byt
 	err := json.Unmarshal(b, &DialercallabletimesetconfigchangecallabletimesetMap)
 	if err != nil {
 		return err
+	}
+	
+	if CallableTimes, ok := DialercallabletimesetconfigchangecallabletimesetMap["callableTimes"].([]interface{}); ok {
+		CallableTimesString, _ := json.Marshal(CallableTimes)
+		json.Unmarshal(CallableTimesString, &o.CallableTimes)
 	}
 	
 	if Id, ok := DialercallabletimesetconfigchangecallabletimesetMap["id"].(string); ok {
@@ -120,16 +117,6 @@ func (o *Dialercallabletimesetconfigchangecallabletimeset) UnmarshalJSON(b []byt
 	if Version, ok := DialercallabletimesetconfigchangecallabletimesetMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if CallableTimes, ok := DialercallabletimesetconfigchangecallabletimesetMap["callableTimes"].([]interface{}); ok {
-		CallableTimesString, _ := json.Marshal(CallableTimes)
-		json.Unmarshal(CallableTimesString, &o.CallableTimes)
-	}
-	
-	if AdditionalProperties, ok := DialercallabletimesetconfigchangecallabletimesetMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

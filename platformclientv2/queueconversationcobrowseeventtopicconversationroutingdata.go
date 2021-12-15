@@ -8,23 +8,23 @@ import (
 
 // Queueconversationcobrowseeventtopicconversationroutingdata
 type Queueconversationcobrowseeventtopicconversationroutingdata struct { 
-	// Queue
+	// Queue - A UriReference for a resource
 	Queue *Queueconversationcobrowseeventtopicurireference `json:"queue,omitempty"`
 
 
-	// Language
+	// Language - A UriReference for a resource
 	Language *Queueconversationcobrowseeventtopicurireference `json:"language,omitempty"`
 
 
-	// Priority
+	// Priority - The priority of the conversation to use for routing decisions
 	Priority *int `json:"priority,omitempty"`
 
 
-	// Skills
+	// Skills - The skills to use for routing decisions
 	Skills *[]Queueconversationcobrowseeventtopicurireference `json:"skills,omitempty"`
 
 
-	// ScoredAgents
+	// ScoredAgents - A collection of agents and their assigned scores for this conversation (0 - 100, higher being better), for use in routing to preferred agents
 	ScoredAgents *[]Queueconversationcobrowseeventtopicscoredagent `json:"scoredAgents,omitempty"`
 
 }

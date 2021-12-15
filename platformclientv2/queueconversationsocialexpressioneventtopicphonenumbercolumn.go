@@ -15,10 +15,6 @@ type Queueconversationsocialexpressioneventtopicphonenumbercolumn struct {
 	// VarType
 	VarType *string `json:"type,omitempty"`
 
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
-
 }
 
 func (o *Queueconversationsocialexpressioneventtopicphonenumbercolumn) MarshalJSON() ([]byte, error) {
@@ -30,15 +26,11 @@ func (o *Queueconversationsocialexpressioneventtopicphonenumbercolumn) MarshalJS
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -56,11 +48,6 @@ func (o *Queueconversationsocialexpressioneventtopicphonenumbercolumn) Unmarshal
 	
 	if VarType, ok := QueueconversationsocialexpressioneventtopicphonenumbercolumnMap["type"].(string); ok {
 		o.VarType = &VarType
-	}
-	
-	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicphonenumbercolumnMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

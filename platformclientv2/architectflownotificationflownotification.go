@@ -8,19 +8,19 @@ import (
 
 // Architectflownotificationflownotification
 type Architectflownotificationflownotification struct { 
-	// Id
+	// Id - The flow ID
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The flow name
 	Name *string `json:"name,omitempty"`
 
 
-	// Description
+	// Description - The flow description
 	Description *string `json:"description,omitempty"`
 
 
-	// Deleted
+	// Deleted - The flow deleted state
 	Deleted *bool `json:"deleted,omitempty"`
 
 
@@ -28,11 +28,11 @@ type Architectflownotificationflownotification struct {
 	CheckedInVersion *Architectflownotificationflowversion `json:"checkedInVersion,omitempty"`
 
 
-	// SavedVersion
+	// SavedVersion - A bare-bones flow version object
 	SavedVersion *Architectflownotificationflowversion `json:"savedVersion,omitempty"`
 
 
-	// PublishedVersion
+	// PublishedVersion - A bare-bones flow version object
 	PublishedVersion *Architectflownotificationflowversion `json:"publishedVersion,omitempty"`
 
 

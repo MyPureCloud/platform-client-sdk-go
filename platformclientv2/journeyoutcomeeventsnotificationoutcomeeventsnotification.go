@@ -33,12 +33,12 @@ type Journeyoutcomeeventsnotificationoutcomeeventsnotification struct {
 	CustomerIdType *string `json:"customerIdType,omitempty"`
 
 
-	// EventType
-	EventType *string `json:"eventType,omitempty"`
-
-
 	// Session
 	Session *Journeyoutcomeeventsnotificationsession `json:"session,omitempty"`
+
+
+	// EventType
+	EventType *string `json:"eventType,omitempty"`
 
 
 	// OutcomeAchievedEvent
@@ -76,9 +76,9 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) MarshalJSON(
 		
 		CustomerIdType *string `json:"customerIdType,omitempty"`
 		
-		EventType *string `json:"eventType,omitempty"`
-		
 		Session *Journeyoutcomeeventsnotificationsession `json:"session,omitempty"`
+		
+		EventType *string `json:"eventType,omitempty"`
 		
 		OutcomeAchievedEvent *Journeyoutcomeeventsnotificationoutcomeachievedmessage `json:"outcomeAchievedEvent,omitempty"`
 		
@@ -97,9 +97,9 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) MarshalJSON(
 		
 		CustomerIdType: o.CustomerIdType,
 		
-		EventType: o.EventType,
-		
 		Session: o.Session,
+		
+		EventType: o.EventType,
 		
 		OutcomeAchievedEvent: o.OutcomeAchievedEvent,
 		
@@ -141,13 +141,13 @@ func (o *Journeyoutcomeeventsnotificationoutcomeeventsnotification) UnmarshalJSO
 		o.CustomerIdType = &CustomerIdType
 	}
 	
-	if EventType, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["eventType"].(string); ok {
-		o.EventType = &EventType
-	}
-	
 	if Session, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["session"].(map[string]interface{}); ok {
 		SessionString, _ := json.Marshal(Session)
 		json.Unmarshal(SessionString, &o.Session)
+	}
+	
+	if EventType, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["eventType"].(string); ok {
+		o.EventType = &EventType
 	}
 	
 	if OutcomeAchievedEvent, ok := JourneyoutcomeeventsnotificationoutcomeeventsnotificationMap["outcomeAchievedEvent"].(map[string]interface{}); ok {

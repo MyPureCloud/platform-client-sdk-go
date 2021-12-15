@@ -8,16 +8,12 @@ import (
 
 // Dialercampaignconfigchangephonecolumn
 type Dialercampaignconfigchangephonecolumn struct { 
-	// ColumnName
+	// ColumnName - The name of the phone column
 	ColumnName *string `json:"columnName,omitempty"`
 
 
-	// VarType
+	// VarType - The type of the phone column, for example, 'cell' or 'home'
 	VarType *string `json:"type,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -30,15 +26,11 @@ func (o *Dialercampaignconfigchangephonecolumn) MarshalJSON() ([]byte, error) {
 		ColumnName *string `json:"columnName,omitempty"`
 		
 		VarType *string `json:"type,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ColumnName: o.ColumnName,
 		
 		VarType: o.VarType,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -56,11 +48,6 @@ func (o *Dialercampaignconfigchangephonecolumn) UnmarshalJSON(b []byte) error {
 	
 	if VarType, ok := DialercampaignconfigchangephonecolumnMap["type"].(string); ok {
 		o.VarType = &VarType
-	}
-	
-	if AdditionalProperties, ok := DialercampaignconfigchangephonecolumnMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

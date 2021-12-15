@@ -9,31 +9,11 @@ import (
 
 // Dialercontactlistfilterconfigchangecontactlistfilter
 type Dialercontactlistfilterconfigchangecontactlistfilter struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// ContactList
 	ContactList *Dialercontactlistfilterconfigchangeurireference `json:"contactList,omitempty"`
 
 
-	// ContactListColumns
+	// ContactListColumns - The list of contact list columns
 	ContactListColumns *[]string `json:"contactListColumns,omitempty"`
 
 
@@ -41,12 +21,28 @@ type Dialercontactlistfilterconfigchangecontactlistfilter struct {
 	Clauses *[]Dialercontactlistfilterconfigchangefilterclause `json:"clauses,omitempty"`
 
 
-	// FilterType
+	// FilterType - Contact list filter type
 	FilterType *string `json:"filterType,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -72,6 +68,14 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) MarshalJSON() ([]
 	}
 	
 	return json.Marshal(&struct { 
+		ContactList *Dialercontactlistfilterconfigchangeurireference `json:"contactList,omitempty"`
+		
+		ContactListColumns *[]string `json:"contactListColumns,omitempty"`
+		
+		Clauses *[]Dialercontactlistfilterconfigchangefilterclause `json:"clauses,omitempty"`
+		
+		FilterType *string `json:"filterType,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -81,18 +85,16 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) MarshalJSON() ([]
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		ContactList *Dialercontactlistfilterconfigchangeurireference `json:"contactList,omitempty"`
-		
-		ContactListColumns *[]string `json:"contactListColumns,omitempty"`
-		
-		Clauses *[]Dialercontactlistfilterconfigchangefilterclause `json:"clauses,omitempty"`
-		
-		FilterType *string `json:"filterType,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		ContactList: o.ContactList,
+		
+		ContactListColumns: o.ContactListColumns,
+		
+		Clauses: o.Clauses,
+		
+		FilterType: o.FilterType,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -102,16 +104,6 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) MarshalJSON() ([]
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		ContactList: o.ContactList,
-		
-		ContactListColumns: o.ContactListColumns,
-		
-		Clauses: o.Clauses,
-		
-		FilterType: o.FilterType,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -121,6 +113,25 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) UnmarshalJSON(b [
 	err := json.Unmarshal(b, &DialercontactlistfilterconfigchangecontactlistfilterMap)
 	if err != nil {
 		return err
+	}
+	
+	if ContactList, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["contactList"].(map[string]interface{}); ok {
+		ContactListString, _ := json.Marshal(ContactList)
+		json.Unmarshal(ContactListString, &o.ContactList)
+	}
+	
+	if ContactListColumns, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["contactListColumns"].([]interface{}); ok {
+		ContactListColumnsString, _ := json.Marshal(ContactListColumns)
+		json.Unmarshal(ContactListColumnsString, &o.ContactListColumns)
+	}
+	
+	if Clauses, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["clauses"].([]interface{}); ok {
+		ClausesString, _ := json.Marshal(Clauses)
+		json.Unmarshal(ClausesString, &o.Clauses)
+	}
+	
+	if FilterType, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["filterType"].(string); ok {
+		o.FilterType = &FilterType
 	}
 	
 	if Id, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["id"].(string); ok {
@@ -144,30 +155,6 @@ func (o *Dialercontactlistfilterconfigchangecontactlistfilter) UnmarshalJSON(b [
 	if Version, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if ContactList, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["contactList"].(map[string]interface{}); ok {
-		ContactListString, _ := json.Marshal(ContactList)
-		json.Unmarshal(ContactListString, &o.ContactList)
-	}
-	
-	if ContactListColumns, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["contactListColumns"].([]interface{}); ok {
-		ContactListColumnsString, _ := json.Marshal(ContactListColumns)
-		json.Unmarshal(ContactListColumnsString, &o.ContactListColumns)
-	}
-	
-	if Clauses, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["clauses"].([]interface{}); ok {
-		ClausesString, _ := json.Marshal(Clauses)
-		json.Unmarshal(ClausesString, &o.Clauses)
-	}
-	
-	if FilterType, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["filterType"].(string); ok {
-		o.FilterType = &FilterType
-	}
-	
-	if AdditionalProperties, ok := DialercontactlistfilterconfigchangecontactlistfilterMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

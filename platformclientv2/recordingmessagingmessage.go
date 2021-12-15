@@ -52,6 +52,10 @@ type Recordingmessagingmessage struct {
 	// ButtonResponse - Button Response selected by user for this message.
 	ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
 
+
+	// Story - Ephemeral story content.
+	Story *Recordingcontentstory `json:"story,omitempty"`
+
 }
 
 func (o *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
@@ -89,6 +93,8 @@ func (o *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		QuickReplies *[]Quickreply `json:"quickReplies,omitempty"`
 		
 		ButtonResponse *Buttonresponse `json:"buttonResponse,omitempty"`
+		
+		Story *Recordingcontentstory `json:"story,omitempty"`
 		*Alias
 	}{ 
 		From: o.From,
@@ -112,6 +118,8 @@ func (o *Recordingmessagingmessage) MarshalJSON() ([]byte, error) {
 		QuickReplies: o.QuickReplies,
 		
 		ButtonResponse: o.ButtonResponse,
+		
+		Story: o.Story,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -172,6 +180,11 @@ func (o *Recordingmessagingmessage) UnmarshalJSON(b []byte) error {
 	if ButtonResponse, ok := RecordingmessagingmessageMap["buttonResponse"].(map[string]interface{}); ok {
 		ButtonResponseString, _ := json.Marshal(ButtonResponse)
 		json.Unmarshal(ButtonResponseString, &o.ButtonResponse)
+	}
+	
+	if Story, ok := RecordingmessagingmessageMap["story"].(map[string]interface{}); ok {
+		StoryString, _ := json.Marshal(Story)
+		json.Unmarshal(StoryString, &o.Story)
 	}
 	
 

@@ -9,26 +9,6 @@ import (
 
 // Dialerattemptlimitsconfigchangeattemptlimits
 type Dialerattemptlimitsconfigchangeattemptlimits struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// MaxAttemptsPerContact
 	MaxAttemptsPerContact *int `json:"maxAttemptsPerContact,omitempty"`
 
@@ -37,24 +17,40 @@ type Dialerattemptlimitsconfigchangeattemptlimits struct {
 	MaxAttemptsPerNumber *int `json:"maxAttemptsPerNumber,omitempty"`
 
 
-	// TimeZoneId
+	// TimeZoneId - The timezone is necessary to define when \"today\" starts and ends
 	TimeZoneId *string `json:"timeZoneId,omitempty"`
 
 
-	// ResetPeriod
+	// ResetPeriod - After how long the number of attempts will be set back to 0
 	ResetPeriod *string `json:"resetPeriod,omitempty"`
 
 
-	// RecallEntries
+	// RecallEntries - Configuration for recall attempts
 	RecallEntries *map[string]Dialerattemptlimitsconfigchangerecallentry `json:"recallEntries,omitempty"`
 
 
-	// BreadthFirstRecalls
+	// BreadthFirstRecalls - Whether recalls are performed before considering other numbers (true) or after (false)
 	BreadthFirstRecalls *bool `json:"breadthFirstRecalls,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -80,16 +76,6 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) MarshalJSON() ([]byte, er
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		MaxAttemptsPerContact *int `json:"maxAttemptsPerContact,omitempty"`
 		
 		MaxAttemptsPerNumber *int `json:"maxAttemptsPerNumber,omitempty"`
@@ -102,19 +88,17 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) MarshalJSON() ([]byte, er
 		
 		BreadthFirstRecalls *bool `json:"breadthFirstRecalls,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		MaxAttemptsPerContact: o.MaxAttemptsPerContact,
 		
 		MaxAttemptsPerNumber: o.MaxAttemptsPerNumber,
@@ -127,7 +111,15 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) MarshalJSON() ([]byte, er
 		
 		BreadthFirstRecalls: o.BreadthFirstRecalls,
 		
-		AdditionalProperties: o.AdditionalProperties,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -137,29 +129,6 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) UnmarshalJSON(b []byte) e
 	err := json.Unmarshal(b, &DialerattemptlimitsconfigchangeattemptlimitsMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if MaxAttemptsPerContact, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["maxAttemptsPerContact"].(float64); ok {
@@ -189,9 +158,27 @@ func (o *Dialerattemptlimitsconfigchangeattemptlimits) UnmarshalJSON(b []byte) e
 		o.BreadthFirstRecalls = &BreadthFirstRecalls
 	}
 	
-	if AdditionalProperties, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Id, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialerattemptlimitsconfigchangeattemptlimitsMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

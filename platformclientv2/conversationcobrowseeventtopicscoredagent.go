@@ -8,11 +8,11 @@ import (
 
 // Conversationcobrowseeventtopicscoredagent
 type Conversationcobrowseeventtopicscoredagent struct { 
-	// Agent
+	// Agent - A UriReference for a resource
 	Agent *Conversationcobrowseeventtopicurireference `json:"agent,omitempty"`
 
 
-	// Score
+	// Score - Agent's score for the current conversation, from 0 - 100, higher being better
 	Score *int `json:"score,omitempty"`
 
 }

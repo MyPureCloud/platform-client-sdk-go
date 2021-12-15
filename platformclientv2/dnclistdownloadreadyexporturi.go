@@ -15,10 +15,6 @@ type Dnclistdownloadreadyexporturi struct {
 	// ExportTimestamp
 	ExportTimestamp *string `json:"exportTimestamp,omitempty"`
 
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
-
 }
 
 func (o *Dnclistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
@@ -30,15 +26,11 @@ func (o *Dnclistdownloadreadyexporturi) MarshalJSON() ([]byte, error) {
 		Uri *string `json:"uri,omitempty"`
 		
 		ExportTimestamp *string `json:"exportTimestamp,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Uri: o.Uri,
 		
 		ExportTimestamp: o.ExportTimestamp,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -56,11 +48,6 @@ func (o *Dnclistdownloadreadyexporturi) UnmarshalJSON(b []byte) error {
 	
 	if ExportTimestamp, ok := DnclistdownloadreadyexporturiMap["exportTimestamp"].(string); ok {
 		o.ExportTimestamp = &ExportTimestamp
-	}
-	
-	if AdditionalProperties, ok := DnclistdownloadreadyexporturiMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

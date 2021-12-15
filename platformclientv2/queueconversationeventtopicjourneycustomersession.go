@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Queueconversationeventtopicjourneycustomersession
+// Queueconversationeventtopicjourneycustomersession - A subset of the Journey System's tracked customer session data at a point-in-time (for external linkage and internal usage/context)
 type Queueconversationeventtopicjourneycustomersession struct { 
-	// Id
+	// Id - An ID of a Customer/User's session within the Journey System at a point-in-time
 	Id *string `json:"id,omitempty"`
 
 
-	// VarType
+	// VarType - The type of the Customer/User's session within the Journey System (e.g. web, app)
 	VarType *string `json:"type,omitempty"`
 
 }

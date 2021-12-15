@@ -8,28 +8,24 @@ import (
 
 // Dialerrulesetconfigchangedataactionconditionpredicate
 type Dialerrulesetconfigchangedataactionconditionpredicate struct { 
-	// OutputField
+	// OutputField - The name of an output field from the data action's output to use for this condition
 	OutputField *string `json:"outputField,omitempty"`
 
 
-	// OutputOperator
+	// OutputOperator - The operation with which to evaluate this condition
 	OutputOperator *string `json:"outputOperator,omitempty"`
 
 
-	// ComparisonValue
+	// ComparisonValue - The value to compare against for this condition
 	ComparisonValue *string `json:"comparisonValue,omitempty"`
 
 
-	// OutputFieldMissingResolution
+	// OutputFieldMissingResolution - The result of this predicate if the requested output field is missing from the data action's result
 	OutputFieldMissingResolution *bool `json:"outputFieldMissingResolution,omitempty"`
 
 
-	// Inverted
+	// Inverted - If true, inverts the result of evaluating this Predicate. Default is false.
 	Inverted *bool `json:"inverted,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([
 		OutputFieldMissingResolution *bool `json:"outputFieldMissingResolution,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		OutputField: o.OutputField,
@@ -61,8 +55,6 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) MarshalJSON() ([
 		OutputFieldMissingResolution: o.OutputFieldMissingResolution,
 		
 		Inverted: o.Inverted,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -92,11 +84,6 @@ func (o *Dialerrulesetconfigchangedataactionconditionpredicate) UnmarshalJSON(b 
 	
 	if Inverted, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["inverted"].(bool); ok {
 		o.Inverted = &Inverted
-	}
-	
-	if AdditionalProperties, ok := DialerrulesetconfigchangedataactionconditionpredicateMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

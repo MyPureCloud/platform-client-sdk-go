@@ -6,18 +6,18 @@ import (
 	"strings"
 )
 
-// Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone
+// Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone - The time interval to place outbound calls
 type Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone struct { 
-	// EarliestCallableTime
+	// TimeZoneId - The time zone to use for contacts that cannot be mapped
+	TimeZoneId *string `json:"timeZoneId,omitempty"`
+
+
+	// EarliestCallableTime - The earliest time to dial a contact
 	EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
 
 
-	// LatestCallableTime
+	// LatestCallableTime - The latest time to dial a contact
 	LatestCallableTime *string `json:"latestCallableTime,omitempty"`
-
-
-	// TimeZoneId
-	TimeZoneId *string `json:"timeZoneId,omitempty"`
 
 }
 
@@ -27,18 +27,18 @@ func (o *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) MarshalJSON
 	type Alias Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone
 	
 	return json.Marshal(&struct { 
+		TimeZoneId *string `json:"timeZoneId,omitempty"`
+		
 		EarliestCallableTime *string `json:"earliestCallableTime,omitempty"`
 		
 		LatestCallableTime *string `json:"latestCallableTime,omitempty"`
-		
-		TimeZoneId *string `json:"timeZoneId,omitempty"`
 		*Alias
 	}{ 
+		TimeZoneId: o.TimeZoneId,
+		
 		EarliestCallableTime: o.EarliestCallableTime,
 		
 		LatestCallableTime: o.LatestCallableTime,
-		
-		TimeZoneId: o.TimeZoneId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -50,16 +50,16 @@ func (o *Dialeroutboundsettingsconfigchangeatzmtimeslotwithtimezone) UnmarshalJS
 		return err
 	}
 	
+	if TimeZoneId, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["timeZoneId"].(string); ok {
+		o.TimeZoneId = &TimeZoneId
+	}
+	
 	if EarliestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["earliestCallableTime"].(string); ok {
 		o.EarliestCallableTime = &EarliestCallableTime
 	}
 	
 	if LatestCallableTime, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["latestCallableTime"].(string); ok {
 		o.LatestCallableTime = &LatestCallableTime
-	}
-	
-	if TimeZoneId, ok := DialeroutboundsettingsconfigchangeatzmtimeslotwithtimezoneMap["timeZoneId"].(string); ok {
-		o.TimeZoneId = &TimeZoneId
 	}
 	
 

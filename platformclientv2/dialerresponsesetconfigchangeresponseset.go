@@ -9,36 +9,32 @@ import (
 
 // Dialerresponsesetconfigchangeresponseset
 type Dialerresponsesetconfigchangeresponseset struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// Responses
+	// Responses - Map of disposition identifiers to reactions. For example: {\"disposition.classification.callable.person\": {\"reactionType\": \"transfer\"}}
 	Responses *map[string]Dialerresponsesetconfigchangereaction `json:"responses,omitempty"`
 
 
-	// BeepDetectionEnabled
+	// BeepDetectionEnabled - When beep detection is enabled, answering machine detection will wait for the beep before transferring the call
 	BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -64,6 +60,10 @@ func (o *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error)
 	}
 	
 	return json.Marshal(&struct { 
+		Responses *map[string]Dialerresponsesetconfigchangereaction `json:"responses,omitempty"`
+		
+		BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -73,14 +73,12 @@ func (o *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error)
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		Responses *map[string]Dialerresponsesetconfigchangereaction `json:"responses,omitempty"`
-		
-		BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		Responses: o.Responses,
+		
+		BeepDetectionEnabled: o.BeepDetectionEnabled,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -90,12 +88,6 @@ func (o *Dialerresponsesetconfigchangeresponseset) MarshalJSON() ([]byte, error)
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		Responses: o.Responses,
-		
-		BeepDetectionEnabled: o.BeepDetectionEnabled,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -105,6 +97,15 @@ func (o *Dialerresponsesetconfigchangeresponseset) UnmarshalJSON(b []byte) error
 	err := json.Unmarshal(b, &DialerresponsesetconfigchangeresponsesetMap)
 	if err != nil {
 		return err
+	}
+	
+	if Responses, ok := DialerresponsesetconfigchangeresponsesetMap["responses"].(map[string]interface{}); ok {
+		ResponsesString, _ := json.Marshal(Responses)
+		json.Unmarshal(ResponsesString, &o.Responses)
+	}
+	
+	if BeepDetectionEnabled, ok := DialerresponsesetconfigchangeresponsesetMap["beepDetectionEnabled"].(bool); ok {
+		o.BeepDetectionEnabled = &BeepDetectionEnabled
 	}
 	
 	if Id, ok := DialerresponsesetconfigchangeresponsesetMap["id"].(string); ok {
@@ -128,20 +129,6 @@ func (o *Dialerresponsesetconfigchangeresponseset) UnmarshalJSON(b []byte) error
 	if Version, ok := DialerresponsesetconfigchangeresponsesetMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if Responses, ok := DialerresponsesetconfigchangeresponsesetMap["responses"].(map[string]interface{}); ok {
-		ResponsesString, _ := json.Marshal(Responses)
-		json.Unmarshal(ResponsesString, &o.Responses)
-	}
-	
-	if BeepDetectionEnabled, ok := DialerresponsesetconfigchangeresponsesetMap["beepDetectionEnabled"].(bool); ok {
-		o.BeepDetectionEnabled = &BeepDetectionEnabled
-	}
-	
-	if AdditionalProperties, ok := DialerresponsesetconfigchangeresponsesetMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

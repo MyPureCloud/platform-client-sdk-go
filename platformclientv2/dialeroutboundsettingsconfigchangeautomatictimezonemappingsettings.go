@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings
+// Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings - The settings for automatic time zone mapping
 type Dialeroutboundsettingsconfigchangeautomatictimezonemappingsettings struct { 
-	// CallableWindows
+	// CallableWindows - The time intervals to use for automatic time zone mapping
 	CallableWindows *[]Dialeroutboundsettingsconfigchangecallablewindow `json:"callableWindows,omitempty"`
 
 }

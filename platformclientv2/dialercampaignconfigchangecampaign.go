@@ -9,47 +9,27 @@ import (
 
 // Dialercampaignconfigchangecampaign
 type Dialercampaignconfigchangecampaign struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
 	// ContactList
 	ContactList *Dialercampaignconfigchangeurireference `json:"contactList,omitempty"`
 
 
-	// Queue
+	// Queue - A UriReference for a resource
 	Queue *Dialercampaignconfigchangeurireference `json:"queue,omitempty"`
 
 
-	// DialingMode
+	// DialingMode - dialing mode of the campaign
 	DialingMode *string `json:"dialingMode,omitempty"`
 
 
-	// Script
+	// Script - A UriReference for a resource
 	Script *Dialercampaignconfigchangeurireference `json:"script,omitempty"`
 
 
-	// EdgeGroup
+	// EdgeGroup - A UriReference for a resource
 	EdgeGroup *Dialercampaignconfigchangeurireference `json:"edgeGroup,omitempty"`
 
 
-	// Site
+	// Site - A UriReference for a resource
 	Site *Dialercampaignconfigchangeurireference `json:"site,omitempty"`
 
 
@@ -57,55 +37,55 @@ type Dialercampaignconfigchangecampaign struct {
 	CampaignStatus *string `json:"campaignStatus,omitempty"`
 
 
-	// PhoneColumns
+	// PhoneColumns - the contact list phone columns to be called for the campaign
 	PhoneColumns *[]Dialercampaignconfigchangephonecolumn `json:"phoneColumns,omitempty"`
 
 
-	// AbandonRate
+	// AbandonRate - the targeted abandon rate percentage
 	AbandonRate *float32 `json:"abandonRate,omitempty"`
 
 
-	// DncLists
+	// DncLists - identifiers of the do not call lists
 	DncLists *[]Dialercampaignconfigchangeurireference `json:"dncLists,omitempty"`
 
 
-	// CallableTimeSet
+	// CallableTimeSet - A UriReference for a resource
 	CallableTimeSet *Dialercampaignconfigchangeurireference `json:"callableTimeSet,omitempty"`
 
 
-	// CallAnalysisResponseSet
+	// CallAnalysisResponseSet - A UriReference for a resource
 	CallAnalysisResponseSet *Dialercampaignconfigchangeurireference `json:"callAnalysisResponseSet,omitempty"`
 
 
-	// CallerName
+	// CallerName - caller id name to be displayed on the outbound call
 	CallerName *string `json:"callerName,omitempty"`
 
 
-	// CallerAddress
+	// CallerAddress - caller id phone number to be displayed on the outbound call
 	CallerAddress *string `json:"callerAddress,omitempty"`
 
 
-	// OutboundLineCount
+	// OutboundLineCount - for agentless campaigns, the number of outbound lines to be concurrently dialed
 	OutboundLineCount *int `json:"outboundLineCount,omitempty"`
 
 
-	// Errors
+	// Errors - a list of current error conditions associated with the campaign
 	Errors *[]Dialercampaignconfigchangeresterrordetail `json:"errors,omitempty"`
 
 
-	// RuleSets
+	// RuleSets - identifiers of the rule sets
 	RuleSets *[]Dialercampaignconfigchangeurireference `json:"ruleSets,omitempty"`
 
 
-	// SkipPreviewDisabled
+	// SkipPreviewDisabled - for preview campaigns, indicator of whether the agent can skip a preview without placing a call
 	SkipPreviewDisabled *bool `json:"skipPreviewDisabled,omitempty"`
 
 
-	// PreviewTimeOutSeconds
+	// PreviewTimeOutSeconds - for preview campaigns, number of seconds before a call will be automatically placed. A value of 0 indicates no automatic placement of calls
 	PreviewTimeOutSeconds *int `json:"previewTimeOutSeconds,omitempty"`
 
 
-	// SingleNumberPreview
+	// SingleNumberPreview - for preview campaigns with multiple phone columns, indicator if one (true) or multiple (false) phone numbers will be available to call for each preview
 	SingleNumberPreview *bool `json:"singleNumberPreview,omitempty"`
 
 
@@ -113,36 +93,52 @@ type Dialercampaignconfigchangecampaign struct {
 	ContactSort *Dialercampaignconfigchangecontactsort `json:"contactSort,omitempty"`
 
 
-	// ContactSorts
+	// ContactSorts - List of contact sort objects.
 	ContactSorts *[]Dialercampaignconfigchangecontactsort `json:"contactSorts,omitempty"`
 
 
-	// NoAnswerTimeout
+	// NoAnswerTimeout - for non-preview campaigns, how long to wait before dispositioning as 'no-answer', default 30 seconds
 	NoAnswerTimeout *int `json:"noAnswerTimeout,omitempty"`
 
 
-	// CallAnalysisLanguage
+	// CallAnalysisLanguage - The language the edge will use to analyze the call
 	CallAnalysisLanguage *string `json:"callAnalysisLanguage,omitempty"`
 
 
-	// Priority
+	// Priority - The priority of this campaign relative to other campaigns
 	Priority *int `json:"priority,omitempty"`
 
 
-	// ContactListFilters
+	// ContactListFilters - List of contact filters
 	ContactListFilters *[]Dialercampaignconfigchangeurireference `json:"contactListFilters,omitempty"`
 
 
-	// Division
+	// Division - A UriReference for a resource
 	Division *Dialercampaignconfigchangeurireference `json:"division,omitempty"`
 
 
-	// AgentOwnedColumn
+	// AgentOwnedColumn - For Preview Campaigns. Name of the contact column in the contact list containing the userIds of agents to assign specific contact records to.
 	AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -168,16 +164,6 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		ContactList *Dialercampaignconfigchangeurireference `json:"contactList,omitempty"`
 		
 		Queue *Dialercampaignconfigchangeurireference `json:"queue,omitempty"`
@@ -234,19 +220,17 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 		
 		AgentOwnedColumn *string `json:"agentOwnedColumn,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		ContactList: o.ContactList,
 		
 		Queue: o.Queue,
@@ -303,7 +287,15 @@ func (o *Dialercampaignconfigchangecampaign) MarshalJSON() ([]byte, error) {
 		
 		AgentOwnedColumn: o.AgentOwnedColumn,
 		
-		AdditionalProperties: o.AdditionalProperties,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -313,29 +305,6 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &DialercampaignconfigchangecampaignMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialercampaignconfigchangecampaignMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialercampaignconfigchangecampaignMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialercampaignconfigchangecampaignMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialercampaignconfigchangecampaignMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialercampaignconfigchangecampaignMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if ContactList, ok := DialercampaignconfigchangecampaignMap["contactList"].(map[string]interface{}); ok {
@@ -470,9 +439,27 @@ func (o *Dialercampaignconfigchangecampaign) UnmarshalJSON(b []byte) error {
 		o.AgentOwnedColumn = &AgentOwnedColumn
 	}
 	
-	if AdditionalProperties, ok := DialercampaignconfigchangecampaignMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Id, ok := DialercampaignconfigchangecampaignMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialercampaignconfigchangecampaignMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialercampaignconfigchangecampaignMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialercampaignconfigchangecampaignMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialercampaignconfigchangecampaignMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

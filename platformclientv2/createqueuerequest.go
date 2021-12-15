@@ -89,6 +89,10 @@ type Createqueuerequest struct {
 	WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
 
 
+	// OnHoldPrompt - The audio to be played when calls on this queue are on hold. If not configured, the default on-hold music will play.
+	OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
+
+
 	// AutoAnswerOnly - Specifies whether the configured whisper should play for all ACD calls, or only for those which are auto-answered.
 	AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
 
@@ -192,6 +196,8 @@ func (o *Createqueuerequest) MarshalJSON() ([]byte, error) {
 		
 		WhisperPrompt *Domainentityref `json:"whisperPrompt,omitempty"`
 		
+		OnHoldPrompt *Domainentityref `json:"onHoldPrompt,omitempty"`
+		
 		AutoAnswerOnly *bool `json:"autoAnswerOnly,omitempty"`
 		
 		EnableTranscription *bool `json:"enableTranscription,omitempty"`
@@ -252,6 +258,8 @@ func (o *Createqueuerequest) MarshalJSON() ([]byte, error) {
 		MessageInQueueFlow: o.MessageInQueueFlow,
 		
 		WhisperPrompt: o.WhisperPrompt,
+		
+		OnHoldPrompt: o.OnHoldPrompt,
 		
 		AutoAnswerOnly: o.AutoAnswerOnly,
 		
@@ -375,6 +383,11 @@ func (o *Createqueuerequest) UnmarshalJSON(b []byte) error {
 	if WhisperPrompt, ok := CreatequeuerequestMap["whisperPrompt"].(map[string]interface{}); ok {
 		WhisperPromptString, _ := json.Marshal(WhisperPrompt)
 		json.Unmarshal(WhisperPromptString, &o.WhisperPrompt)
+	}
+	
+	if OnHoldPrompt, ok := CreatequeuerequestMap["onHoldPrompt"].(map[string]interface{}); ok {
+		OnHoldPromptString, _ := json.Marshal(OnHoldPrompt)
+		json.Unmarshal(OnHoldPromptString, &o.OnHoldPrompt)
 	}
 	
 	if AutoAnswerOnly, ok := CreatequeuerequestMap["autoAnswerOnly"].(bool); ok {

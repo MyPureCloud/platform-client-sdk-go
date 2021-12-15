@@ -8,28 +8,24 @@ import (
 
 // Conversationemaileventtopicattachment
 type Conversationemaileventtopicattachment struct { 
-	// AttachmentId
+	// AttachmentId - The unique identifier for the attachment.
 	AttachmentId *string `json:"attachmentId,omitempty"`
 
 
-	// Name
+	// Name - The name of the attachment.
 	Name *string `json:"name,omitempty"`
 
 
-	// ContentUri
+	// ContentUri - The content uri of the attachment. If set, this is commonly a public api download location.
 	ContentUri *string `json:"contentUri,omitempty"`
 
 
-	// ContentType
+	// ContentType - The type of file the attachment is.
 	ContentType *string `json:"contentType,omitempty"`
 
 
-	// ContentLength
+	// ContentLength - The length of the attachment file.
 	ContentLength *int `json:"contentLength,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Conversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
 		ContentType *string `json:"contentType,omitempty"`
 		
 		ContentLength *int `json:"contentLength,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		AttachmentId: o.AttachmentId,
@@ -61,8 +55,6 @@ func (o *Conversationemaileventtopicattachment) MarshalJSON() ([]byte, error) {
 		ContentType: o.ContentType,
 		
 		ContentLength: o.ContentLength,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -93,11 +85,6 @@ func (o *Conversationemaileventtopicattachment) UnmarshalJSON(b []byte) error {
 	if ContentLength, ok := ConversationemaileventtopicattachmentMap["contentLength"].(float64); ok {
 		ContentLengthInt := int(ContentLength)
 		o.ContentLength = &ContentLengthInt
-	}
-	
-	if AdditionalProperties, ok := ConversationemaileventtopicattachmentMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

@@ -9,7 +9,7 @@ import (
 
 // Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification
 type Architectdependencytrackingbuildnotificationdependencytrackingbuildnotification struct { 
-	// Status
+	// Status - The organization's new dependency tracking build status
 	Status *string `json:"status,omitempty"`
 
 
@@ -21,7 +21,7 @@ type Architectdependencytrackingbuildnotificationdependencytrackingbuildnotifica
 	Client *Architectdependencytrackingbuildnotificationclient `json:"client,omitempty"`
 
 
-	// StartTime
+	// StartTime - The time the last build started, in ISO 8601 format
 	StartTime *time.Time `json:"startTime,omitempty"`
 
 }

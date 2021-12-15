@@ -8,11 +8,11 @@ import (
 
 // Wfmuserscheduleadherenceupdatedmutopicurireference
 type Wfmuserscheduleadherenceupdatedmutopicurireference struct { 
-	// Id
+	// Id - The ID of the resource
 	Id *string `json:"id,omitempty"`
 
 
-	// Name
+	// Name - The name of the resource
 	Name *string `json:"name,omitempty"`
 
 }

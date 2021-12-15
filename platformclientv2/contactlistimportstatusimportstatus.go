@@ -8,28 +8,24 @@ import (
 
 // Contactlistimportstatusimportstatus
 type Contactlistimportstatusimportstatus struct { 
-	// ImportState
+	// ImportState - current status of the import
 	ImportState *string `json:"importState,omitempty"`
 
 
-	// TotalRecords
+	// TotalRecords - total number of records to be imported
 	TotalRecords *int `json:"totalRecords,omitempty"`
 
 
-	// CompletedRecords
+	// CompletedRecords - number of records finished importing
 	CompletedRecords *int `json:"completedRecords,omitempty"`
 
 
-	// PercentageComplete
+	// PercentageComplete - percentage of records finished importing
 	PercentageComplete *int `json:"percentageComplete,omitempty"`
 
 
-	// FailureReason
+	// FailureReason - if the import has failed, the reason for the failure
 	FailureReason *string `json:"failureReason,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		PercentageComplete *int `json:"percentageComplete,omitempty"`
 		
 		FailureReason *string `json:"failureReason,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		ImportState: o.ImportState,
@@ -61,8 +55,6 @@ func (o *Contactlistimportstatusimportstatus) MarshalJSON() ([]byte, error) {
 		PercentageComplete: o.PercentageComplete,
 		
 		FailureReason: o.FailureReason,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -95,11 +87,6 @@ func (o *Contactlistimportstatusimportstatus) UnmarshalJSON(b []byte) error {
 	
 	if FailureReason, ok := ContactlistimportstatusimportstatusMap["failureReason"].(string); ok {
 		o.FailureReason = &FailureReason
-	}
-	
-	if AdditionalProperties, ok := ContactlistimportstatusimportstatusMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

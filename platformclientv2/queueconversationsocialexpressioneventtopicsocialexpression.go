@@ -9,80 +9,76 @@ import (
 
 // Queueconversationsocialexpressioneventtopicsocialexpression
 type Queueconversationsocialexpressioneventtopicsocialexpression struct { 
-	// State
+	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
 
 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// SocialMediaId
+	// SocialMediaId - A globally unique identifier for the social media.
 	SocialMediaId *string `json:"socialMediaId,omitempty"`
 
 
-	// SocialMediaHub
+	// SocialMediaHub - The social network of the communication
 	SocialMediaHub *string `json:"socialMediaHub,omitempty"`
 
 
-	// SocialUserName
+	// SocialUserName - The social media user name of the communication
 	SocialUserName *string `json:"socialUserName,omitempty"`
 
 
-	// PreviewText
+	// PreviewText - The text preview of the communication contents
 	PreviewText *string `json:"previewText,omitempty"`
 
 
-	// RecordingId
+	// RecordingId - A globally unique identifier for the recording associated with this chat.
 	RecordingId *string `json:"recordingId,omitempty"`
 
 
-	// Held
+	// Held - True if this call is held and the person on this side hears silence.
 	Held *bool `json:"held,omitempty"`
 
 
-	// Provider
+	// Provider - The source provider of the social expression.
 	Provider *string `json:"provider,omitempty"`
 
 
-	// ScriptId
+	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
-	// PeerId
+	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// DisconnectType
+	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
 
-	// StartHoldTime
+	// StartHoldTime - The timestamp the chat was placed on hold in the cloud clock if the chat is currently on hold.
 	StartHoldTime *time.Time `json:"startHoldTime,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// DisconnectedTime
+	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
-	// Wrapup
+	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationsocialexpressioneventtopicwrapup `json:"wrapup,omitempty"`
 
 
-	// AfterCallWork
+	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Queueconversationsocialexpressioneventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
-	// AfterCallWorkRequired
+	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -151,8 +147,6 @@ func (o *Queueconversationsocialexpressioneventtopicsocialexpression) MarshalJSO
 		AfterCallWork *Queueconversationsocialexpressioneventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -190,8 +184,6 @@ func (o *Queueconversationsocialexpressioneventtopicsocialexpression) MarshalJSO
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -278,11 +270,6 @@ func (o *Queueconversationsocialexpressioneventtopicsocialexpression) UnmarshalJ
 	
 	if AfterCallWorkRequired, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
-	}
-	
-	if AdditionalProperties, ok := QueueconversationsocialexpressioneventtopicsocialexpressionMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

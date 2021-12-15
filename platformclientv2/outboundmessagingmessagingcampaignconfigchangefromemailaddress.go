@@ -6,17 +6,17 @@ import (
 	"strings"
 )
 
-// Outboundmessagingmessagingcampaignconfigchangefromemailaddress
+// Outboundmessagingmessagingcampaignconfigchangefromemailaddress - An outbound-messaging messaging campaign email address
 type Outboundmessagingmessagingcampaignconfigchangefromemailaddress struct { 
-	// FriendlyName
+	// FriendlyName - The friendly name of the email address.
 	FriendlyName *string `json:"friendlyName,omitempty"`
 
 
-	// LocalPart
+	// LocalPart - The local part of the email address.
 	LocalPart *string `json:"localPart,omitempty"`
 
 
-	// Domain
+	// Domain - A UriReference for a resource
 	Domain *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"domain,omitempty"`
 
 }

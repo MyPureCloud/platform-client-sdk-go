@@ -9,64 +9,60 @@ import (
 
 // Queueconversationvideoeventtopicscreenshare
 type Queueconversationvideoeventtopicscreenshare struct { 
-	// State
+	// State - The connection state of this communication.
 	State *string `json:"state,omitempty"`
 
 
-	// Self
+	// Self - Address and name data for a call endpoint.
 	Self *Queueconversationvideoeventtopicaddress `json:"self,omitempty"`
 
 
-	// Id
+	// Id - A globally unique identifier for this communication.
 	Id *string `json:"id,omitempty"`
 
 
-	// Context
+	// Context - The room id context (xmpp jid) for the conference session.
 	Context *string `json:"context,omitempty"`
 
 
-	// Sharing
+	// Sharing - Indicates whether this participant is sharing their screen to the session.
 	Sharing *bool `json:"sharing,omitempty"`
 
 
-	// Provider
+	// Provider - The source provider of the screen share.
 	Provider *string `json:"provider,omitempty"`
 
 
-	// ScriptId
+	// ScriptId - The UUID of the script to use.
 	ScriptId *string `json:"scriptId,omitempty"`
 
 
-	// PeerId
+	// PeerId - The id of the peer communication corresponding to a matching leg for this communication.
 	PeerId *string `json:"peerId,omitempty"`
 
 
-	// DisconnectType
+	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
 
-	// ConnectedTime
+	// ConnectedTime - The timestamp when this communication was connected in the cloud clock.
 	ConnectedTime *time.Time `json:"connectedTime,omitempty"`
 
 
-	// DisconnectedTime
+	// DisconnectedTime - The timestamp when this communication disconnected from the conversation in the provider clock.
 	DisconnectedTime *time.Time `json:"disconnectedTime,omitempty"`
 
 
-	// Wrapup
+	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationvideoeventtopicwrapup `json:"wrapup,omitempty"`
 
 
-	// AfterCallWork
+	// AfterCallWork - A communication's after-call work data.
 	AfterCallWork *Queueconversationvideoeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 
 
-	// AfterCallWorkRequired
+	// AfterCallWorkRequired - Indicates if after-call is required for a communication. Only used when the ACW Setting is Agent Requested.
 	AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -119,8 +115,6 @@ func (o *Queueconversationvideoeventtopicscreenshare) MarshalJSON() ([]byte, err
 		AfterCallWork *Queueconversationvideoeventtopicaftercallwork `json:"afterCallWork,omitempty"`
 		
 		AfterCallWorkRequired *bool `json:"afterCallWorkRequired,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		State: o.State,
@@ -150,8 +144,6 @@ func (o *Queueconversationvideoeventtopicscreenshare) MarshalJSON() ([]byte, err
 		AfterCallWork: o.AfterCallWork,
 		
 		AfterCallWorkRequired: o.AfterCallWorkRequired,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -222,11 +214,6 @@ func (o *Queueconversationvideoeventtopicscreenshare) UnmarshalJSON(b []byte) er
 	
 	if AfterCallWorkRequired, ok := QueueconversationvideoeventtopicscreenshareMap["afterCallWorkRequired"].(bool); ok {
 		o.AfterCallWorkRequired = &AfterCallWorkRequired
-	}
-	
-	if AdditionalProperties, ok := QueueconversationvideoeventtopicscreenshareMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

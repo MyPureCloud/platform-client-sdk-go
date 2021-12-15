@@ -9,31 +9,11 @@ import (
 
 // Dialersequenceconfigchangecampaignsequence
 type Dialersequenceconfigchangecampaignsequence struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// Campaigns
+	// Campaigns - the ordered list of campaign identifiers
 	Campaigns *[]Dialersequenceconfigchangeurireference `json:"campaigns,omitempty"`
 
 
-	// CurrentCampaign
+	// CurrentCampaign - the zero-based index of the current campaign in the campaigns list
 	CurrentCampaign *int `json:"currentCampaign,omitempty"`
 
 
@@ -41,16 +21,32 @@ type Dialersequenceconfigchangecampaignsequence struct {
 	Status *string `json:"status,omitempty"`
 
 
-	// StopMessage
+	// StopMessage - if a sequence has unexpectedly stopped, this message provides the reason
 	StopMessage *string `json:"stopMessage,omitempty"`
 
 
-	// Repeat
+	// Repeat - indicates if a sequence is to repeat from the beginning after the last campaign completes; default is false
 	Repeat *bool `json:"repeat,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -76,16 +72,6 @@ func (o *Dialersequenceconfigchangecampaignsequence) MarshalJSON() ([]byte, erro
 	}
 	
 	return json.Marshal(&struct { 
-		Id *string `json:"id,omitempty"`
-		
-		Name *string `json:"name,omitempty"`
-		
-		DateCreated *string `json:"dateCreated,omitempty"`
-		
-		DateModified *string `json:"dateModified,omitempty"`
-		
-		Version *int `json:"version,omitempty"`
-		
 		Campaigns *[]Dialersequenceconfigchangeurireference `json:"campaigns,omitempty"`
 		
 		CurrentCampaign *int `json:"currentCampaign,omitempty"`
@@ -96,19 +82,17 @@ func (o *Dialersequenceconfigchangecampaignsequence) MarshalJSON() ([]byte, erro
 		
 		Repeat *bool `json:"repeat,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		Id *string `json:"id,omitempty"`
+		
+		Name *string `json:"name,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
+		DateModified *string `json:"dateModified,omitempty"`
+		
+		Version *int `json:"version,omitempty"`
 		*Alias
 	}{ 
-		Id: o.Id,
-		
-		Name: o.Name,
-		
-		DateCreated: DateCreated,
-		
-		DateModified: DateModified,
-		
-		Version: o.Version,
-		
 		Campaigns: o.Campaigns,
 		
 		CurrentCampaign: o.CurrentCampaign,
@@ -119,7 +103,15 @@ func (o *Dialersequenceconfigchangecampaignsequence) MarshalJSON() ([]byte, erro
 		
 		Repeat: o.Repeat,
 		
-		AdditionalProperties: o.AdditionalProperties,
+		Id: o.Id,
+		
+		Name: o.Name,
+		
+		DateCreated: DateCreated,
+		
+		DateModified: DateModified,
+		
+		Version: o.Version,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -129,29 +121,6 @@ func (o *Dialersequenceconfigchangecampaignsequence) UnmarshalJSON(b []byte) err
 	err := json.Unmarshal(b, &DialersequenceconfigchangecampaignsequenceMap)
 	if err != nil {
 		return err
-	}
-	
-	if Id, ok := DialersequenceconfigchangecampaignsequenceMap["id"].(string); ok {
-		o.Id = &Id
-	}
-	
-	if Name, ok := DialersequenceconfigchangecampaignsequenceMap["name"].(string); ok {
-		o.Name = &Name
-	}
-	
-	if dateCreatedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateCreated"].(string); ok {
-		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
-		o.DateCreated = &DateCreated
-	}
-	
-	if dateModifiedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateModified"].(string); ok {
-		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
-		o.DateModified = &DateModified
-	}
-	
-	if Version, ok := DialersequenceconfigchangecampaignsequenceMap["version"].(float64); ok {
-		VersionInt := int(Version)
-		o.Version = &VersionInt
 	}
 	
 	if Campaigns, ok := DialersequenceconfigchangecampaignsequenceMap["campaigns"].([]interface{}); ok {
@@ -176,9 +145,27 @@ func (o *Dialersequenceconfigchangecampaignsequence) UnmarshalJSON(b []byte) err
 		o.Repeat = &Repeat
 	}
 	
-	if AdditionalProperties, ok := DialersequenceconfigchangecampaignsequenceMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
+	if Id, ok := DialersequenceconfigchangecampaignsequenceMap["id"].(string); ok {
+		o.Id = &Id
+	}
+	
+	if Name, ok := DialersequenceconfigchangecampaignsequenceMap["name"].(string); ok {
+		o.Name = &Name
+	}
+	
+	if dateCreatedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
+	}
+	
+	if dateModifiedString, ok := DialersequenceconfigchangecampaignsequenceMap["dateModified"].(string); ok {
+		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
+		o.DateModified = &DateModified
+	}
+	
+	if Version, ok := DialersequenceconfigchangecampaignsequenceMap["version"].(float64); ok {
+		VersionInt := int(Version)
+		o.Version = &VersionInt
 	}
 	
 

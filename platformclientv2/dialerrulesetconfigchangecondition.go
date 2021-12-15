@@ -8,72 +8,68 @@ import (
 
 // Dialerrulesetconfigchangecondition
 type Dialerrulesetconfigchangecondition struct { 
-	// VarType
-	VarType *string `json:"type,omitempty"`
-
-
-	// Inverted
-	Inverted *bool `json:"inverted,omitempty"`
-
-
-	// AttributeName
-	AttributeName *string `json:"attributeName,omitempty"`
-
-
-	// Value
-	Value *string `json:"value,omitempty"`
-
-
-	// ValueType
-	ValueType *string `json:"valueType,omitempty"`
-
-
-	// Operator
-	Operator *string `json:"operator,omitempty"`
-
-
-	// Codes
-	Codes *[]string `json:"codes,omitempty"`
-
-
-	// PropertyType
-	PropertyType *string `json:"propertyType,omitempty"`
-
-
-	// Property
-	Property *string `json:"property,omitempty"`
-
-
-	// DataNotFoundResolution
-	DataNotFoundResolution *bool `json:"dataNotFoundResolution,omitempty"`
-
-
-	// ContactIdField
-	ContactIdField *string `json:"contactIdField,omitempty"`
-
-
-	// CallAnalysisResultField
-	CallAnalysisResultField *string `json:"callAnalysisResultField,omitempty"`
-
-
-	// AgentWrapupField
-	AgentWrapupField *string `json:"agentWrapupField,omitempty"`
-
-
-	// ContactColumnToDataActionFieldMappings
-	ContactColumnToDataActionFieldMappings *[]Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
-
-
-	// Predicates
-	Predicates *[]Dialerrulesetconfigchangedataactionconditionpredicate `json:"predicates,omitempty"`
-
-
-	// DataAction
+	// DataAction - A UriReference for a resource
 	DataAction *Dialerrulesetconfigchangeurireference `json:"dataAction,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// VarType - The type of the condition
+	VarType *string `json:"type,omitempty"`
+
+
+	// Inverted - Indicates whether to evaluate for the opposite of the stated condition; default is false
+	Inverted *bool `json:"inverted,omitempty"`
+
+
+	// AttributeName - An attribute name associated with the condition (applies only to certain rule conditions)
+	AttributeName *string `json:"attributeName,omitempty"`
+
+
+	// Value - A value associated with the condition
+	Value *string `json:"value,omitempty"`
+
+
+	// ValueType - Determines the type of the value associated with the condition
+	ValueType *string `json:"valueType,omitempty"`
+
+
+	// Operator - An operation type for condition evaluation
+	Operator *string `json:"operator,omitempty"`
+
+
+	// Codes - List of wrap-up code identifiers (used only in conditions of type 'wrapupCondition')
+	Codes *[]string `json:"codes,omitempty"`
+
+
+	// PropertyType - Determines the type of the property associated with the condition
+	PropertyType *string `json:"propertyType,omitempty"`
+
+
+	// Property - A value associated with the property type of this condition
+	Property *string `json:"property,omitempty"`
+
+
+	// DataNotFoundResolution - The result of this condition if the data action returns a result indicating there was no data. Required for a DataActionCondition.
+	DataNotFoundResolution *bool `json:"dataNotFoundResolution,omitempty"`
+
+
+	// ContactIdField - The input field from the data action that the contactId will be passed to for this condition. Valid for a dataActionCondition.
+	ContactIdField *string `json:"contactIdField,omitempty"`
+
+
+	// CallAnalysisResultField - The input field from the data action that the callAnalysisResult will be passed to for this condition. Valid for a wrapup dataActionCondition.
+	CallAnalysisResultField *string `json:"callAnalysisResultField,omitempty"`
+
+
+	// AgentWrapupField - The input field from the data action that the agentWrapup will be passed to for this condition. Valid for a wrapup dataActionCondition.
+	AgentWrapupField *string `json:"agentWrapupField,omitempty"`
+
+
+	// ContactColumnToDataActionFieldMappings - A list of mappings defining which contact data fields will be passed to which data action input fields for this condition. Valid for a dataActionCondition.
+	ContactColumnToDataActionFieldMappings *[]Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
+
+
+	// Predicates - A list of predicates defining the comparisons to use for this condition. Required for a dataActionCondition.
+	Predicates *[]Dialerrulesetconfigchangedataactionconditionpredicate `json:"predicates,omitempty"`
 
 }
 
@@ -83,6 +79,8 @@ func (o *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 	type Alias Dialerrulesetconfigchangecondition
 	
 	return json.Marshal(&struct { 
+		DataAction *Dialerrulesetconfigchangeurireference `json:"dataAction,omitempty"`
+		
 		VarType *string `json:"type,omitempty"`
 		
 		Inverted *bool `json:"inverted,omitempty"`
@@ -112,12 +110,10 @@ func (o *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 		ContactColumnToDataActionFieldMappings *[]Dialerrulesetconfigchangecontactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
 		
 		Predicates *[]Dialerrulesetconfigchangedataactionconditionpredicate `json:"predicates,omitempty"`
-		
-		DataAction *Dialerrulesetconfigchangeurireference `json:"dataAction,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		DataAction: o.DataAction,
+		
 		VarType: o.VarType,
 		
 		Inverted: o.Inverted,
@@ -147,10 +143,6 @@ func (o *Dialerrulesetconfigchangecondition) MarshalJSON() ([]byte, error) {
 		ContactColumnToDataActionFieldMappings: o.ContactColumnToDataActionFieldMappings,
 		
 		Predicates: o.Predicates,
-		
-		DataAction: o.DataAction,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -160,6 +152,11 @@ func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &DialerrulesetconfigchangeconditionMap)
 	if err != nil {
 		return err
+	}
+	
+	if DataAction, ok := DialerrulesetconfigchangeconditionMap["dataAction"].(map[string]interface{}); ok {
+		DataActionString, _ := json.Marshal(DataAction)
+		json.Unmarshal(DataActionString, &o.DataAction)
 	}
 	
 	if VarType, ok := DialerrulesetconfigchangeconditionMap["type"].(string); ok {
@@ -223,16 +220,6 @@ func (o *Dialerrulesetconfigchangecondition) UnmarshalJSON(b []byte) error {
 	if Predicates, ok := DialerrulesetconfigchangeconditionMap["predicates"].([]interface{}); ok {
 		PredicatesString, _ := json.Marshal(Predicates)
 		json.Unmarshal(PredicatesString, &o.Predicates)
-	}
-	
-	if DataAction, ok := DialerrulesetconfigchangeconditionMap["dataAction"].(map[string]interface{}); ok {
-		DataActionString, _ := json.Marshal(DataAction)
-		json.Unmarshal(DataActionString, &o.DataAction)
-	}
-	
-	if AdditionalProperties, ok := DialerrulesetconfigchangeconditionMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

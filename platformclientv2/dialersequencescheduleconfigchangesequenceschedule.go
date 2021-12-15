@@ -9,31 +9,11 @@ import (
 
 // Dialersequencescheduleconfigchangesequenceschedule
 type Dialersequencescheduleconfigchangesequenceschedule struct { 
-	// Id
-	Id *string `json:"id,omitempty"`
-
-
-	// Name
-	Name *string `json:"name,omitempty"`
-
-
-	// DateCreated
-	DateCreated *time.Time `json:"dateCreated,omitempty"`
-
-
-	// DateModified
-	DateModified *time.Time `json:"dateModified,omitempty"`
-
-
-	// Version
-	Version *int `json:"version,omitempty"`
-
-
-	// Intervals
+	// Intervals - a list of start and end times
 	Intervals *[]Dialersequencescheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
 
 
-	// TimeZone
+	// TimeZone - time zone identifier to be applied to the intervals; for example Africa/Abidjan
 	TimeZone *string `json:"timeZone,omitempty"`
 
 
@@ -41,8 +21,24 @@ type Dialersequencescheduleconfigchangesequenceschedule struct {
 	Sequence *Dialersequencescheduleconfigchangeurireference `json:"sequence,omitempty"`
 
 
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	// Id - The globally unique identifier for the object.
+	Id *string `json:"id,omitempty"`
+
+
+	// Name - The UI-visible name of the object
+	Name *string `json:"name,omitempty"`
+
+
+	// DateCreated - Creation time of the entity
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
+	// DateModified - Last modified time of the entity
+	DateModified *time.Time `json:"dateModified,omitempty"`
+
+
+	// Version - Required for updates, must match the version number of the most recent update
+	Version *int `json:"version,omitempty"`
 
 }
 
@@ -68,6 +64,12 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]by
 	}
 	
 	return json.Marshal(&struct { 
+		Intervals *[]Dialersequencescheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
+		
+		TimeZone *string `json:"timeZone,omitempty"`
+		
+		Sequence *Dialersequencescheduleconfigchangeurireference `json:"sequence,omitempty"`
+		
 		Id *string `json:"id,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -77,16 +79,14 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]by
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
-		
-		Intervals *[]Dialersequencescheduleconfigchangescheduleinterval `json:"intervals,omitempty"`
-		
-		TimeZone *string `json:"timeZone,omitempty"`
-		
-		Sequence *Dialersequencescheduleconfigchangeurireference `json:"sequence,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
+		Intervals: o.Intervals,
+		
+		TimeZone: o.TimeZone,
+		
+		Sequence: o.Sequence,
+		
 		Id: o.Id,
 		
 		Name: o.Name,
@@ -96,14 +96,6 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) MarshalJSON() ([]by
 		DateModified: DateModified,
 		
 		Version: o.Version,
-		
-		Intervals: o.Intervals,
-		
-		TimeZone: o.TimeZone,
-		
-		Sequence: o.Sequence,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -113,6 +105,20 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	err := json.Unmarshal(b, &DialersequencescheduleconfigchangesequencescheduleMap)
 	if err != nil {
 		return err
+	}
+	
+	if Intervals, ok := DialersequencescheduleconfigchangesequencescheduleMap["intervals"].([]interface{}); ok {
+		IntervalsString, _ := json.Marshal(Intervals)
+		json.Unmarshal(IntervalsString, &o.Intervals)
+	}
+	
+	if TimeZone, ok := DialersequencescheduleconfigchangesequencescheduleMap["timeZone"].(string); ok {
+		o.TimeZone = &TimeZone
+	}
+	
+	if Sequence, ok := DialersequencescheduleconfigchangesequencescheduleMap["sequence"].(map[string]interface{}); ok {
+		SequenceString, _ := json.Marshal(Sequence)
+		json.Unmarshal(SequenceString, &o.Sequence)
 	}
 	
 	if Id, ok := DialersequencescheduleconfigchangesequencescheduleMap["id"].(string); ok {
@@ -136,25 +142,6 @@ func (o *Dialersequencescheduleconfigchangesequenceschedule) UnmarshalJSON(b []b
 	if Version, ok := DialersequencescheduleconfigchangesequencescheduleMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
-	}
-	
-	if Intervals, ok := DialersequencescheduleconfigchangesequencescheduleMap["intervals"].([]interface{}); ok {
-		IntervalsString, _ := json.Marshal(Intervals)
-		json.Unmarshal(IntervalsString, &o.Intervals)
-	}
-	
-	if TimeZone, ok := DialersequencescheduleconfigchangesequencescheduleMap["timeZone"].(string); ok {
-		o.TimeZone = &TimeZone
-	}
-	
-	if Sequence, ok := DialersequencescheduleconfigchangesequencescheduleMap["sequence"].(map[string]interface{}); ok {
-		SequenceString, _ := json.Marshal(Sequence)
-		json.Unmarshal(SequenceString, &o.Sequence)
-	}
-	
-	if AdditionalProperties, ok := DialersequencescheduleconfigchangesequencescheduleMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

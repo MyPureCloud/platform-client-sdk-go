@@ -8,20 +8,16 @@ import (
 
 // Dialercampaignruleconfigchangecampaignrulecondition
 type Dialercampaignruleconfigchangecampaignrulecondition struct { 
-	// Id
+	// Id - The globally unique identifier for the condition
 	Id *string `json:"id,omitempty"`
 
 
-	// Parameters
+	// Parameters - The parameters to match this condition
 	Parameters *map[string]string `json:"parameters,omitempty"`
 
 
-	// ConditionType
+	// ConditionType - The type of this condition
 	ConditionType *string `json:"conditionType,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -36,8 +32,6 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]b
 		Parameters *map[string]string `json:"parameters,omitempty"`
 		
 		ConditionType *string `json:"conditionType,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -45,8 +39,6 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) MarshalJSON() ([]b
 		Parameters: o.Parameters,
 		
 		ConditionType: o.ConditionType,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -69,11 +61,6 @@ func (o *Dialercampaignruleconfigchangecampaignrulecondition) UnmarshalJSON(b []
 	
 	if ConditionType, ok := DialercampaignruleconfigchangecampaignruleconditionMap["conditionType"].(string); ok {
 		o.ConditionType = &ConditionType
-	}
-	
-	if AdditionalProperties, ok := DialercampaignruleconfigchangecampaignruleconditionMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

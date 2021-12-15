@@ -6,25 +6,25 @@ import (
 	"strings"
 )
 
-// Queueconversationsocialexpressioneventtopicconversationroutingdata
+// Queueconversationsocialexpressioneventtopicconversationroutingdata - Information on how a communication should be routed to an agent.
 type Queueconversationsocialexpressioneventtopicconversationroutingdata struct { 
 	// Queue
 	Queue *Queueconversationsocialexpressioneventtopicurireference `json:"queue,omitempty"`
 
 
-	// Language
+	// Language - A UriReference for a resource
 	Language *Queueconversationsocialexpressioneventtopicurireference `json:"language,omitempty"`
 
 
-	// Priority
+	// Priority - The priority of the conversation to use for routing decisions
 	Priority *int `json:"priority,omitempty"`
 
 
-	// Skills
+	// Skills - The skills to use for routing decisions
 	Skills *[]Queueconversationsocialexpressioneventtopicurireference `json:"skills,omitempty"`
 
 
-	// ScoredAgents
+	// ScoredAgents - A collection of agents and their assigned scores for this conversation (0 - 100, higher being better), for use in routing to preferred agents
 	ScoredAgents *[]Queueconversationsocialexpressioneventtopicscoredagent `json:"scoredAgents,omitempty"`
 
 }

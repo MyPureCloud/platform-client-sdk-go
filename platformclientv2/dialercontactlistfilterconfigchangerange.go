@@ -6,30 +6,26 @@ import (
 	"strings"
 )
 
-// Dialercontactlistfilterconfigchangerange
+// Dialercontactlistfilterconfigchangerange - FilterRange is one of the attributes of a FilterPredicate
 type Dialercontactlistfilterconfigchangerange struct { 
-	// Min
+	// Min - Minimum end of the range
 	Min *string `json:"min,omitempty"`
 
 
-	// Max
+	// Max - Maximum end of the range
 	Max *string `json:"max,omitempty"`
 
 
-	// MinInclusive
+	// MinInclusive - Whether or not to include the minimum in the range
 	MinInclusive *bool `json:"minInclusive,omitempty"`
 
 
-	// MaxInclusive
+	// MaxInclusive - Whether or not to include the maximum in the range
 	MaxInclusive *bool `json:"maxInclusive,omitempty"`
 
 
-	// InSet
+	// InSet - Elements that apply to the IN operator
 	InSet *[]string `json:"inSet,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error)
 		MaxInclusive *bool `json:"maxInclusive,omitempty"`
 		
 		InSet *[]string `json:"inSet,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Min: o.Min,
@@ -61,8 +55,6 @@ func (o *Dialercontactlistfilterconfigchangerange) MarshalJSON() ([]byte, error)
 		MaxInclusive: o.MaxInclusive,
 		
 		InSet: o.InSet,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -93,11 +85,6 @@ func (o *Dialercontactlistfilterconfigchangerange) UnmarshalJSON(b []byte) error
 	if InSet, ok := DialercontactlistfilterconfigchangerangeMap["inSet"].([]interface{}); ok {
 		InSetString, _ := json.Marshal(InSet)
 		json.Unmarshal(InSetString, &o.InSet)
-	}
-	
-	if AdditionalProperties, ok := DialercontactlistfilterconfigchangerangeMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

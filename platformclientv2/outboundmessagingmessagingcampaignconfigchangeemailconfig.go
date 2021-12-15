@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Outboundmessagingmessagingcampaignconfigchangeemailconfig
+// Outboundmessagingmessagingcampaignconfigchangeemailconfig - An outbound-messaging messaging campaign email Config
 type Outboundmessagingmessagingcampaignconfigchangeemailconfig struct { 
-	// EmailColumns
+	// EmailColumns - The Contact List column specifying the email to send to the contact.
 	EmailColumns *[]string `json:"emailColumns,omitempty"`
 
 
-	// ContentTemplate
+	// ContentTemplate - A reference for a Response
 	ContentTemplate *Outboundmessagingmessagingcampaignconfigchangeresponseref `json:"contentTemplate,omitempty"`
 
 

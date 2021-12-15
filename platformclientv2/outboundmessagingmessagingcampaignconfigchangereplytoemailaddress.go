@@ -6,13 +6,13 @@ import (
 	"strings"
 )
 
-// Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress
+// Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress - An outbound-messaging messaging campaign email address
 type Outboundmessagingmessagingcampaignconfigchangereplytoemailaddress struct { 
-	// Domain
+	// Domain - A UriReference for a resource
 	Domain *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"domain,omitempty"`
 
 
-	// Route
+	// Route - A UriReference for a resource
 	Route *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"route,omitempty"`
 
 }

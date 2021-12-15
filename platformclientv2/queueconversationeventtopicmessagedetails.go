@@ -9,27 +9,27 @@ import (
 
 // Queueconversationeventtopicmessagedetails
 type Queueconversationeventtopicmessagedetails struct { 
-	// MessageId
+	// MessageId - UUID identifying the message media.
 	MessageId *string `json:"messageId,omitempty"`
 
 
-	// MessageTime
+	// MessageTime - The time when the message was sent or received.
 	MessageTime *time.Time `json:"messageTime,omitempty"`
 
 
-	// MessageStatus
+	// MessageStatus - Indicates the delivery status of the message.
 	MessageStatus *string `json:"messageStatus,omitempty"`
 
 
-	// MessageSegmentCount
+	// MessageSegmentCount - The message segment count, greater than 1 if the message content was split into multiple parts for this message type, e.g. SMS character limits.
 	MessageSegmentCount *int `json:"messageSegmentCount,omitempty"`
 
 
-	// Media
+	// Media - The media (images, files, etc) associated with this message, if any
 	Media *[]Queueconversationeventtopicmessagemedia `json:"media,omitempty"`
 
 
-	// Stickers
+	// Stickers - A list of stickers included in the message
 	Stickers *[]Queueconversationeventtopicmessagesticker `json:"stickers,omitempty"`
 
 }

@@ -6,30 +6,26 @@ import (
 	"strings"
 )
 
-// Queueconversationeventtopicaddress
+// Queueconversationeventtopicaddress - Address and name data for a call endpoint.
 type Queueconversationeventtopicaddress struct { 
-	// Name
+	// Name - This will be nameRaw if present, or a locality lookup of the address field otherwise.
 	Name *string `json:"name,omitempty"`
 
 
-	// NameRaw
+	// NameRaw - The name as close to the bits on the wire as possible.
 	NameRaw *string `json:"nameRaw,omitempty"`
 
 
-	// AddressNormalized
+	// AddressNormalized - The normalized address. This field is acquired from the Address Normalization Table.  The addressRaw could have gone through some transformations, such as only using the numeric portion, before being run through the Address Normalization Table.
 	AddressNormalized *string `json:"addressNormalized,omitempty"`
 
 
-	// AddressRaw
+	// AddressRaw - The address as close to the bits on the wire as possible.
 	AddressRaw *string `json:"addressRaw,omitempty"`
 
 
-	// AddressDisplayable
+	// AddressDisplayable - The displayable address. This field is acquired from the Address Normalization Table.  The addressRaw could have gone through some transformations, such as only using the numeric portion, before being run through the Address Normalization Table.
 	AddressDisplayable *string `json:"addressDisplayable,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -48,8 +44,6 @@ func (o *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 		AddressRaw *string `json:"addressRaw,omitempty"`
 		
 		AddressDisplayable *string `json:"addressDisplayable,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -61,8 +55,6 @@ func (o *Queueconversationeventtopicaddress) MarshalJSON() ([]byte, error) {
 		AddressRaw: o.AddressRaw,
 		
 		AddressDisplayable: o.AddressDisplayable,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -92,11 +84,6 @@ func (o *Queueconversationeventtopicaddress) UnmarshalJSON(b []byte) error {
 	
 	if AddressDisplayable, ok := QueueconversationeventtopicaddressMap["addressDisplayable"].(string); ok {
 		o.AddressDisplayable = &AddressDisplayable
-	}
-	
-	if AdditionalProperties, ok := QueueconversationeventtopicaddressMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 

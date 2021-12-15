@@ -8,15 +8,15 @@ import (
 
 // Queueconversationsocialexpressioneventtopicdisconnectreason
 type Queueconversationsocialexpressioneventtopicdisconnectreason struct { 
-	// VarType
+	// VarType - Disconnect reason protocol type.
 	VarType *string `json:"type,omitempty"`
 
 
-	// Code
+	// Code - Protocol specific reason code. See the Q.850 and SIP specs.
 	Code *int `json:"code,omitempty"`
 
 
-	// Phrase
+	// Phrase - Human readable English description of the disconnect reason.
 	Phrase *string `json:"phrase,omitempty"`
 
 }

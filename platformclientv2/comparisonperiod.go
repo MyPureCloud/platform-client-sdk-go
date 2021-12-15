@@ -41,6 +41,10 @@ type Comparisonperiod struct {
 	InteractionCountOff *int `json:"interactionCountOff,omitempty"`
 
 
+	// KpiResults - KPI results for each metric
+	KpiResults *[]Kpiresult `json:"kpiResults,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -84,6 +88,8 @@ func (o *Comparisonperiod) MarshalJSON() ([]byte, error) {
 		
 		InteractionCountOff *int `json:"interactionCountOff,omitempty"`
 		
+		KpiResults *[]Kpiresult `json:"kpiResults,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -102,6 +108,8 @@ func (o *Comparisonperiod) MarshalJSON() ([]byte, error) {
 		InteractionCountOn: o.InteractionCountOn,
 		
 		InteractionCountOff: o.InteractionCountOff,
+		
+		KpiResults: o.KpiResults,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -151,6 +159,11 @@ func (o *Comparisonperiod) UnmarshalJSON(b []byte) error {
 	if InteractionCountOff, ok := ComparisonperiodMap["interactionCountOff"].(float64); ok {
 		InteractionCountOffInt := int(InteractionCountOff)
 		o.InteractionCountOff = &InteractionCountOffInt
+	}
+	
+	if KpiResults, ok := ComparisonperiodMap["kpiResults"].([]interface{}); ok {
+		KpiResultsString, _ := json.Marshal(KpiResults)
+		json.Unmarshal(KpiResultsString, &o.KpiResults)
 	}
 	
 	if SelfUri, ok := ComparisonperiodMap["selfUri"].(string); ok {

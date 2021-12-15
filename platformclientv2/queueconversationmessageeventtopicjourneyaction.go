@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Queueconversationmessageeventtopicjourneyaction
+// Queueconversationmessageeventtopicjourneyaction - A subset of the Journey System's action data relevant to a part of a conversation (for external linkage and internal usage/context)
 type Queueconversationmessageeventtopicjourneyaction struct { 
-	// Id
+	// Id - The ID of an action from the Journey System (an action is spawned from an actionMap)
 	Id *string `json:"id,omitempty"`
 
 

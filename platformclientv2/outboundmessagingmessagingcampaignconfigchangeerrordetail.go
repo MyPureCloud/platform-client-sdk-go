@@ -8,11 +8,11 @@ import (
 
 // Outboundmessagingmessagingcampaignconfigchangeerrordetail
 type Outboundmessagingmessagingcampaignconfigchangeerrordetail struct { 
-	// VarError
+	// VarError - The name of the error code.
 	VarError *string `json:"error,omitempty"`
 
 
-	// Details
+	// Details - The additional information regarding the error message.
 	Details *string `json:"details,omitempty"`
 
 }

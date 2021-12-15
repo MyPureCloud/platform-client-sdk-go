@@ -6,38 +6,34 @@ import (
 	"strings"
 )
 
-// Queueconversationeventtopicerrordetails
+// Queueconversationeventtopicerrordetails - Detailed information about an error response.
 type Queueconversationeventtopicerrordetails struct { 
-	// Status
+	// Status - The HTTP status code for this message (400, 401, 403, 404, 500, etc.
 	Status *int `json:"status,omitempty"`
 
 
-	// Code
+	// Code - A code unique to this error.
 	Code *string `json:"code,omitempty"`
 
 
-	// Message
+	// Message - Friendly description of this error.
 	Message *string `json:"message,omitempty"`
 
 
-	// MessageWithParams
+	// MessageWithParams - This is the same as message except it uses template fields for variable replacement. For instance: 'User {username} was not found'
 	MessageWithParams *string `json:"messageWithParams,omitempty"`
 
 
-	// MessageParams
+	// MessageParams - Used in conjunction with messageWithParams. These are the template parameters. For instance: UserParam.key = 'username', UserParam.value = 'john.doe'
 	MessageParams *map[string]string `json:"messageParams,omitempty"`
 
 
-	// ContextId
+	// ContextId - The correlation Id or context Id for this message. If left blank the Public API will look at the HTTP response header 'ININ-Correlation-Id' instead.
 	ContextId *string `json:"contextId,omitempty"`
 
 
 	// Uri
 	Uri *string `json:"uri,omitempty"`
-
-
-	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 
 }
 
@@ -60,8 +56,6 @@ func (o *Queueconversationeventtopicerrordetails) MarshalJSON() ([]byte, error) 
 		ContextId *string `json:"contextId,omitempty"`
 		
 		Uri *string `json:"uri,omitempty"`
-		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Status: o.Status,
@@ -77,8 +71,6 @@ func (o *Queueconversationeventtopicerrordetails) MarshalJSON() ([]byte, error) 
 		ContextId: o.ContextId,
 		
 		Uri: o.Uri,
-		
-		AdditionalProperties: o.AdditionalProperties,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -118,11 +110,6 @@ func (o *Queueconversationeventtopicerrordetails) UnmarshalJSON(b []byte) error 
 	
 	if Uri, ok := QueueconversationeventtopicerrordetailsMap["uri"].(string); ok {
 		o.Uri = &Uri
-	}
-	
-	if AdditionalProperties, ok := QueueconversationeventtopicerrordetailsMap["additionalProperties"].(map[string]interface{}); ok {
-		AdditionalPropertiesString, _ := json.Marshal(AdditionalProperties)
-		json.Unmarshal(AdditionalPropertiesString, &o.AdditionalProperties)
 	}
 	
 
