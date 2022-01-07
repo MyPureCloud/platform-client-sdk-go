@@ -20,6 +20,14 @@ type Wfmversionedentitymetadata struct {
 	// DateModified - The date the associated entity was last modified. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
+
+	// CreatedBy - The user who created the associated entity, if available
+	CreatedBy *Userreference `json:"createdBy,omitempty"`
+
+
+	// DateCreated - The date the associated entity was created, if available. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
 }
 
 func (o *Wfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
@@ -35,12 +43,24 @@ func (o *Wfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
 		DateModified = nil
 	}
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Version *int `json:"version,omitempty"`
 		
 		ModifiedBy *Userreference `json:"modifiedBy,omitempty"`
 		
 		DateModified *string `json:"dateModified,omitempty"`
+		
+		CreatedBy *Userreference `json:"createdBy,omitempty"`
+		
+		DateCreated *string `json:"dateCreated,omitempty"`
 		*Alias
 	}{ 
 		Version: o.Version,
@@ -48,6 +68,10 @@ func (o *Wfmversionedentitymetadata) MarshalJSON() ([]byte, error) {
 		ModifiedBy: o.ModifiedBy,
 		
 		DateModified: DateModified,
+		
+		CreatedBy: o.CreatedBy,
+		
+		DateCreated: DateCreated,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -72,6 +96,16 @@ func (o *Wfmversionedentitymetadata) UnmarshalJSON(b []byte) error {
 	if dateModifiedString, ok := WfmversionedentitymetadataMap["dateModified"].(string); ok {
 		DateModified, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateModifiedString)
 		o.DateModified = &DateModified
+	}
+	
+	if CreatedBy, ok := WfmversionedentitymetadataMap["createdBy"].(map[string]interface{}); ok {
+		CreatedByString, _ := json.Marshal(CreatedBy)
+		json.Unmarshal(CreatedByString, &o.CreatedBy)
+	}
+	
+	if dateCreatedString, ok := WfmversionedentitymetadataMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 

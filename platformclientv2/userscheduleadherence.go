@@ -21,6 +21,10 @@ type Userscheduleadherence struct {
 	User *Userreference `json:"user,omitempty"`
 
 
+	// BusinessUnit - The business unit to which this user belongs
+	BusinessUnit *Businessunit `json:"businessUnit,omitempty"`
+
+
 	// ManagementUnit - The management unit to which this user belongs
 	ManagementUnit *Managementunit `json:"managementUnit,omitempty"`
 
@@ -122,6 +126,8 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		
 		User *Userreference `json:"user,omitempty"`
 		
+		BusinessUnit *Businessunit `json:"businessUnit,omitempty"`
+		
 		ManagementUnit *Managementunit `json:"managementUnit,omitempty"`
 		
 		Team *Team `json:"team,omitempty"`
@@ -160,6 +166,8 @@ func (o *Userscheduleadherence) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		User: o.User,
+		
+		BusinessUnit: o.BusinessUnit,
 		
 		ManagementUnit: o.ManagementUnit,
 		
@@ -214,6 +222,11 @@ func (o *Userscheduleadherence) UnmarshalJSON(b []byte) error {
 	if User, ok := UserscheduleadherenceMap["user"].(map[string]interface{}); ok {
 		UserString, _ := json.Marshal(User)
 		json.Unmarshal(UserString, &o.User)
+	}
+	
+	if BusinessUnit, ok := UserscheduleadherenceMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
 	}
 	
 	if ManagementUnit, ok := UserscheduleadherenceMap["managementUnit"].(map[string]interface{}); ok {

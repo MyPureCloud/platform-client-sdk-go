@@ -559,6 +559,10 @@ type Viewfilter struct {
 	// FlowMilestoneIds - The list of flow milestones to filter exports
 	FlowMilestoneIds *[]string `json:"flowMilestoneIds,omitempty"`
 
+
+	// IsAssessmentPassed - Filter to indicate if Agent passed assessment or not
+	IsAssessmentPassed *bool `json:"isAssessmentPassed,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -842,6 +846,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		JourneyUrlNotContainsAllConditions *[]string `json:"journeyUrlNotContainsAllConditions,omitempty"`
 		
 		FlowMilestoneIds *[]string `json:"flowMilestoneIds,omitempty"`
+		
+		IsAssessmentPassed *bool `json:"isAssessmentPassed,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1119,6 +1125,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		JourneyUrlNotContainsAllConditions: o.JourneyUrlNotContainsAllConditions,
 		
 		FlowMilestoneIds: o.FlowMilestoneIds,
+		
+		IsAssessmentPassed: o.IsAssessmentPassed,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1794,6 +1802,10 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if FlowMilestoneIds, ok := ViewfilterMap["flowMilestoneIds"].([]interface{}); ok {
 		FlowMilestoneIdsString, _ := json.Marshal(FlowMilestoneIds)
 		json.Unmarshal(FlowMilestoneIdsString, &o.FlowMilestoneIds)
+	}
+	
+	if IsAssessmentPassed, ok := ViewfilterMap["isAssessmentPassed"].(bool); ok {
+		o.IsAssessmentPassed = &IsAssessmentPassed
 	}
 	
 
