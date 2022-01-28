@@ -8,7 +8,7 @@ import (
 
 // Additionalmessage
 type Additionalmessage struct { 
-	// TextBody - The body of the text message.
+	// TextBody - The body of the text message.  Maximum character counts are: SMS - 765 characters, other channels - 2000 characters.
 	TextBody *string `json:"textBody,omitempty"`
 
 

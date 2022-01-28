@@ -9,7 +9,7 @@ import (
 // Scoredagent
 type Scoredagent struct { 
 	// Agent - The agent
-	Agent *Addressableentityref `json:"agent,omitempty"`
+	Agent *Domainentityref `json:"agent,omitempty"`
 
 
 	// Score - Agent's score for the current conversation, from 0 - 100, higher being better
@@ -23,7 +23,7 @@ func (o *Scoredagent) MarshalJSON() ([]byte, error) {
 	type Alias Scoredagent
 	
 	return json.Marshal(&struct { 
-		Agent *Addressableentityref `json:"agent,omitempty"`
+		Agent *Domainentityref `json:"agent,omitempty"`
 		
 		Score *int `json:"score,omitempty"`
 		*Alias

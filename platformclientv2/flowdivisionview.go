@@ -24,12 +24,20 @@ type Flowdivisionview struct {
 	VarType *string `json:"type,omitempty"`
 
 
+	// Description - the flow description
+	Description *string `json:"description,omitempty"`
+
+
 	// InputSchema - json schema describing the inputs for the flow
 	InputSchema *Jsonschemadocument `json:"inputSchema,omitempty"`
 
 
 	// OutputSchema - json schema describing the outputs for the flow
 	OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
+
+
+	// SupportedLanguages - List of supported languages for the published version of the flow.
+	SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
 
 
 	// PublishedVersion - published version information if there is a published version
@@ -59,9 +67,13 @@ func (o *Flowdivisionview) MarshalJSON() ([]byte, error) {
 		
 		VarType *string `json:"type,omitempty"`
 		
+		Description *string `json:"description,omitempty"`
+		
 		InputSchema *Jsonschemadocument `json:"inputSchema,omitempty"`
 		
 		OutputSchema *Jsonschemadocument `json:"outputSchema,omitempty"`
+		
+		SupportedLanguages *[]Supportedlanguage `json:"supportedLanguages,omitempty"`
 		
 		PublishedVersion *Flowversion `json:"publishedVersion,omitempty"`
 		
@@ -78,9 +90,13 @@ func (o *Flowdivisionview) MarshalJSON() ([]byte, error) {
 		
 		VarType: o.VarType,
 		
+		Description: o.Description,
+		
 		InputSchema: o.InputSchema,
 		
 		OutputSchema: o.OutputSchema,
+		
+		SupportedLanguages: o.SupportedLanguages,
 		
 		PublishedVersion: o.PublishedVersion,
 		
@@ -115,6 +131,10 @@ func (o *Flowdivisionview) UnmarshalJSON(b []byte) error {
 		o.VarType = &VarType
 	}
 	
+	if Description, ok := FlowdivisionviewMap["description"].(string); ok {
+		o.Description = &Description
+	}
+	
 	if InputSchema, ok := FlowdivisionviewMap["inputSchema"].(map[string]interface{}); ok {
 		InputSchemaString, _ := json.Marshal(InputSchema)
 		json.Unmarshal(InputSchemaString, &o.InputSchema)
@@ -123,6 +143,11 @@ func (o *Flowdivisionview) UnmarshalJSON(b []byte) error {
 	if OutputSchema, ok := FlowdivisionviewMap["outputSchema"].(map[string]interface{}); ok {
 		OutputSchemaString, _ := json.Marshal(OutputSchema)
 		json.Unmarshal(OutputSchemaString, &o.OutputSchema)
+	}
+	
+	if SupportedLanguages, ok := FlowdivisionviewMap["supportedLanguages"].([]interface{}); ok {
+		SupportedLanguagesString, _ := json.Marshal(SupportedLanguages)
+		json.Unmarshal(SupportedLanguagesString, &o.SupportedLanguages)
 	}
 	
 	if PublishedVersion, ok := FlowdivisionviewMap["publishedVersion"].(map[string]interface{}); ok {

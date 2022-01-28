@@ -28,6 +28,10 @@ type Webmessagingmessage struct {
 	Content *[]Webmessagingcontent `json:"content,omitempty"`
 
 
+	// Events - List of event elements.
+	Events *[]Webmessagingevent `json:"events,omitempty"`
+
+
 	// Direction - The direction of the message.  Direction is always from the perspective of the Genesys Cloud platform.  An Inbound message is one sent from a guest to the Genesys Cloud Platform.  An Outbound message is one sent from the Genesys Cloud Platform to a guest.
 	Direction *string `json:"direction,omitempty"`
 
@@ -53,6 +57,8 @@ func (o *Webmessagingmessage) MarshalJSON() ([]byte, error) {
 		
 		Content *[]Webmessagingcontent `json:"content,omitempty"`
 		
+		Events *[]Webmessagingevent `json:"events,omitempty"`
+		
 		Direction *string `json:"direction,omitempty"`
 		
 		OriginatingEntity *string `json:"originatingEntity,omitempty"`
@@ -67,6 +73,8 @@ func (o *Webmessagingmessage) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Content: o.Content,
+		
+		Events: o.Events,
 		
 		Direction: o.Direction,
 		
@@ -102,6 +110,11 @@ func (o *Webmessagingmessage) UnmarshalJSON(b []byte) error {
 	if Content, ok := WebmessagingmessageMap["content"].([]interface{}); ok {
 		ContentString, _ := json.Marshal(Content)
 		json.Unmarshal(ContentString, &o.Content)
+	}
+	
+	if Events, ok := WebmessagingmessageMap["events"].([]interface{}); ok {
+		EventsString, _ := json.Marshal(Events)
+		json.Unmarshal(EventsString, &o.Events)
 	}
 	
 	if Direction, ok := WebmessagingmessageMap["direction"].(string); ok {

@@ -23,6 +23,14 @@ type Defaultobjective struct {
 	// Enabled - A flag for whether this objective is enabled for the related metric
 	Enabled *bool `json:"enabled,omitempty"`
 
+
+	// Topics - A list of topic ids for detected topic metrics
+	Topics *[]Addressableentityref `json:"topics,omitempty"`
+
+
+	// TopicIdsFilterType - A filter type for topic Ids. It's only used for objectives with topicIds. Default filter behavior is \"or\".
+	TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
+
 }
 
 func (o *Defaultobjective) MarshalJSON() ([]byte, error) {
@@ -38,6 +46,10 @@ func (o *Defaultobjective) MarshalJSON() ([]byte, error) {
 		Zones *[]Objectivezone `json:"zones,omitempty"`
 		
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		Topics *[]Addressableentityref `json:"topics,omitempty"`
+		
+		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -47,6 +59,10 @@ func (o *Defaultobjective) MarshalJSON() ([]byte, error) {
 		Zones: o.Zones,
 		
 		Enabled: o.Enabled,
+		
+		Topics: o.Topics,
+		
+		TopicIdsFilterType: o.TopicIdsFilterType,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -73,6 +89,15 @@ func (o *Defaultobjective) UnmarshalJSON(b []byte) error {
 	
 	if Enabled, ok := DefaultobjectiveMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
+	}
+	
+	if Topics, ok := DefaultobjectiveMap["topics"].([]interface{}); ok {
+		TopicsString, _ := json.Marshal(Topics)
+		json.Unmarshal(TopicsString, &o.Topics)
+	}
+	
+	if TopicIdsFilterType, ok := DefaultobjectiveMap["topicIdsFilterType"].(string); ok {
+		o.TopicIdsFilterType = &TopicIdsFilterType
 	}
 	
 

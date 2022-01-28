@@ -25,6 +25,10 @@ type Wfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdate struct 
 	ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 
 
+	// ScheduledActivityCode
+	ScheduledActivityCode *Wfmuserscheduleadherenceupdatedteamtopicactivitycodereference `json:"scheduledActivityCode,omitempty"`
+
+
 	// SystemPresence
 	SystemPresence *string `json:"systemPresence,omitempty"`
 
@@ -112,6 +116,8 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdate) Ma
 		
 		ScheduledActivityCategory *string `json:"scheduledActivityCategory,omitempty"`
 		
+		ScheduledActivityCode *Wfmuserscheduleadherenceupdatedteamtopicactivitycodereference `json:"scheduledActivityCode,omitempty"`
+		
 		SystemPresence *string `json:"systemPresence,omitempty"`
 		
 		OrganizationSecondaryPresenceId *string `json:"organizationSecondaryPresenceId,omitempty"`
@@ -144,6 +150,8 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdate) Ma
 		Team: o.Team,
 		
 		ScheduledActivityCategory: o.ScheduledActivityCategory,
+		
+		ScheduledActivityCode: o.ScheduledActivityCode,
 		
 		SystemPresence: o.SystemPresence,
 		
@@ -195,6 +203,11 @@ func (o *Wfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdate) Un
 	
 	if ScheduledActivityCategory, ok := WfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdateMap["scheduledActivityCategory"].(string); ok {
 		o.ScheduledActivityCategory = &ScheduledActivityCategory
+	}
+	
+	if ScheduledActivityCode, ok := WfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdateMap["scheduledActivityCode"].(map[string]interface{}); ok {
+		ScheduledActivityCodeString, _ := json.Marshal(ScheduledActivityCode)
+		json.Unmarshal(ScheduledActivityCodeString, &o.ScheduledActivityCode)
 	}
 	
 	if SystemPresence, ok := WfmuserscheduleadherenceupdatedteamtopicuserscheduleadherenceupdateMap["systemPresence"].(string); ok {

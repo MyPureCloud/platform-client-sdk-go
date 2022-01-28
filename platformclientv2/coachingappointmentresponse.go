@@ -69,6 +69,18 @@ type Coachingappointmentresponse struct {
 	IsOverdue *bool `json:"isOverdue,omitempty"`
 
 
+	// WfmSchedule - The Workforce Management schedule the appointment is associated with.
+	WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+
+
+	// DateCompleted - The date/time the coaching appointment was set to completed status. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCompleted *time.Time `json:"dateCompleted,omitempty"`
+
+
+	// ExternalLinks - The list of external links related to the appointment
+	ExternalLinks *[]string `json:"externalLinks,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -103,6 +115,14 @@ func (o *Coachingappointmentresponse) MarshalJSON() ([]byte, error) {
 		DateModified = nil
 	}
 	
+	DateCompleted := new(string)
+	if o.DateCompleted != nil {
+		
+		*DateCompleted = timeutil.Strftime(o.DateCompleted, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCompleted = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -133,6 +153,12 @@ func (o *Coachingappointmentresponse) MarshalJSON() ([]byte, error) {
 		Documents *[]Documentreference `json:"documents,omitempty"`
 		
 		IsOverdue *bool `json:"isOverdue,omitempty"`
+		
+		WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+		
+		DateCompleted *string `json:"dateCompleted,omitempty"`
+		
+		ExternalLinks *[]string `json:"externalLinks,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
@@ -166,6 +192,12 @@ func (o *Coachingappointmentresponse) MarshalJSON() ([]byte, error) {
 		Documents: o.Documents,
 		
 		IsOverdue: o.IsOverdue,
+		
+		WfmSchedule: o.WfmSchedule,
+		
+		DateCompleted: DateCompleted,
+		
+		ExternalLinks: o.ExternalLinks,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -247,6 +279,21 @@ func (o *Coachingappointmentresponse) UnmarshalJSON(b []byte) error {
 	
 	if IsOverdue, ok := CoachingappointmentresponseMap["isOverdue"].(bool); ok {
 		o.IsOverdue = &IsOverdue
+	}
+	
+	if WfmSchedule, ok := CoachingappointmentresponseMap["wfmSchedule"].(map[string]interface{}); ok {
+		WfmScheduleString, _ := json.Marshal(WfmSchedule)
+		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)
+	}
+	
+	if dateCompletedString, ok := CoachingappointmentresponseMap["dateCompleted"].(string); ok {
+		DateCompleted, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCompletedString)
+		o.DateCompleted = &DateCompleted
+	}
+	
+	if ExternalLinks, ok := CoachingappointmentresponseMap["externalLinks"].([]interface{}); ok {
+		ExternalLinksString, _ := json.Marshal(ExternalLinks)
+		json.Unmarshal(ExternalLinksString, &o.ExternalLinks)
 	}
 	
 	if SelfUri, ok := CoachingappointmentresponseMap["selfUri"].(string); ok {

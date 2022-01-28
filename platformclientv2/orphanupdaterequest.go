@@ -13,8 +13,16 @@ type Orphanupdaterequest struct {
 	ArchiveDate *time.Time `json:"archiveDate,omitempty"`
 
 
-	// DeleteDate - The orphan recording's delete date. Must be greater than archiveDate if set, otherwise one day from now. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	// DeleteDate - The orphan recording's delete date. Must be greater than archiveDate and exportDate if set, otherwise one day from now. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DeleteDate *time.Time `json:"deleteDate,omitempty"`
+
+
+	// ExportDate - The orphan recording's export date. Must be greater than 1 day from now if set. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	ExportDate *time.Time `json:"exportDate,omitempty"`
+
+
+	// IntegrationId - IntegrationId to access AWS S3 bucket for export. This field is required if exportDate is set.
+	IntegrationId *string `json:"integrationId,omitempty"`
 
 
 	// ConversationId - A conversation Id that this orphan's recording is to be attached to. If not present, the conversationId will be deduced from the recording media.
@@ -43,10 +51,22 @@ func (o *Orphanupdaterequest) MarshalJSON() ([]byte, error) {
 		DeleteDate = nil
 	}
 	
+	ExportDate := new(string)
+	if o.ExportDate != nil {
+		
+		*ExportDate = timeutil.Strftime(o.ExportDate, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		ExportDate = nil
+	}
+	
 	return json.Marshal(&struct { 
 		ArchiveDate *string `json:"archiveDate,omitempty"`
 		
 		DeleteDate *string `json:"deleteDate,omitempty"`
+		
+		ExportDate *string `json:"exportDate,omitempty"`
+		
+		IntegrationId *string `json:"integrationId,omitempty"`
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		*Alias
@@ -54,6 +74,10 @@ func (o *Orphanupdaterequest) MarshalJSON() ([]byte, error) {
 		ArchiveDate: ArchiveDate,
 		
 		DeleteDate: DeleteDate,
+		
+		ExportDate: ExportDate,
+		
+		IntegrationId: o.IntegrationId,
 		
 		ConversationId: o.ConversationId,
 		Alias:    (*Alias)(o),
@@ -75,6 +99,15 @@ func (o *Orphanupdaterequest) UnmarshalJSON(b []byte) error {
 	if deleteDateString, ok := OrphanupdaterequestMap["deleteDate"].(string); ok {
 		DeleteDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", deleteDateString)
 		o.DeleteDate = &DeleteDate
+	}
+	
+	if exportDateString, ok := OrphanupdaterequestMap["exportDate"].(string); ok {
+		ExportDate, _ := time.Parse("2006-01-02T15:04:05.999999Z", exportDateString)
+		o.ExportDate = &ExportDate
+	}
+	
+	if IntegrationId, ok := OrphanupdaterequestMap["integrationId"].(string); ok {
+		o.IntegrationId = &IntegrationId
 	}
 	
 	if ConversationId, ok := OrphanupdaterequestMap["conversationId"].(string); ok {

@@ -36,6 +36,14 @@ type Updatecoachingappointmentrequest struct {
 	// Status - The status of the coaching appointment.
 	Status *string `json:"status,omitempty"`
 
+
+	// WfmSchedule - The Workforce Management schedule the appointment is associated with.
+	WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+
+
+	// ExternalLinks - The list of external links related to the appointment
+	ExternalLinks *[]string `json:"externalLinks,omitempty"`
+
 }
 
 func (o *Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
@@ -65,6 +73,10 @@ func (o *Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		DocumentIds *[]string `json:"documentIds,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
+		
+		WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+		
+		ExternalLinks *[]string `json:"externalLinks,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -80,6 +92,10 @@ func (o *Updatecoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		DocumentIds: o.DocumentIds,
 		
 		Status: o.Status,
+		
+		WfmSchedule: o.WfmSchedule,
+		
+		ExternalLinks: o.ExternalLinks,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -121,6 +137,16 @@ func (o *Updatecoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 	
 	if Status, ok := UpdatecoachingappointmentrequestMap["status"].(string); ok {
 		o.Status = &Status
+	}
+	
+	if WfmSchedule, ok := UpdatecoachingappointmentrequestMap["wfmSchedule"].(map[string]interface{}); ok {
+		WfmScheduleString, _ := json.Marshal(WfmSchedule)
+		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)
+	}
+	
+	if ExternalLinks, ok := UpdatecoachingappointmentrequestMap["externalLinks"].([]interface{}); ok {
+		ExternalLinksString, _ := json.Marshal(ExternalLinks)
+		json.Unmarshal(ExternalLinksString, &o.ExternalLinks)
 	}
 	
 

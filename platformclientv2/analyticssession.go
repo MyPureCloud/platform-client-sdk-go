@@ -117,6 +117,10 @@ type Analyticssession struct {
 	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
 
+	// ExtendedDeliveryStatus - Extended email delivery status
+	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
+
+
 	// FlowInType - Type of flow in that occurred when entering ACD.
 	FlowInType *string `json:"flowInType,omitempty"`
 
@@ -378,6 +382,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		
 		EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 		
+		ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
+		
 		FlowInType *string `json:"flowInType,omitempty"`
 		
 		FlowOutType *string `json:"flowOutType,omitempty"`
@@ -524,6 +530,8 @@ func (o *Analyticssession) MarshalJSON() ([]byte, error) {
 		EdgeId: o.EdgeId,
 		
 		EligibleAgentCounts: o.EligibleAgentCounts,
+		
+		ExtendedDeliveryStatus: o.ExtendedDeliveryStatus,
 		
 		FlowInType: o.FlowInType,
 		
@@ -740,6 +748,10 @@ func (o *Analyticssession) UnmarshalJSON(b []byte) error {
 	if EligibleAgentCounts, ok := AnalyticssessionMap["eligibleAgentCounts"].([]interface{}); ok {
 		EligibleAgentCountsString, _ := json.Marshal(EligibleAgentCounts)
 		json.Unmarshal(EligibleAgentCountsString, &o.EligibleAgentCounts)
+	}
+	
+	if ExtendedDeliveryStatus, ok := AnalyticssessionMap["extendedDeliveryStatus"].(string); ok {
+		o.ExtendedDeliveryStatus = &ExtendedDeliveryStatus
 	}
 	
 	if FlowInType, ok := AnalyticssessionMap["flowInType"].(string); ok {

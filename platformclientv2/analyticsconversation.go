@@ -17,6 +17,10 @@ type Analyticsconversation struct {
 	ConversationId *string `json:"conversationId,omitempty"`
 
 
+	// ConversationInitiator - Indicates the participant purpose of the participant initiating a message conversation
+	ConversationInitiator *string `json:"conversationInitiator,omitempty"`
+
+
 	// ConversationStart - The start time of a conversation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	ConversationStart *time.Time `json:"conversationStart,omitempty"`
 
@@ -92,6 +96,8 @@ func (o *Analyticsconversation) MarshalJSON() ([]byte, error) {
 		
 		ConversationId *string `json:"conversationId,omitempty"`
 		
+		ConversationInitiator *string `json:"conversationInitiator,omitempty"`
+		
 		ConversationStart *string `json:"conversationStart,omitempty"`
 		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
@@ -120,6 +126,8 @@ func (o *Analyticsconversation) MarshalJSON() ([]byte, error) {
 		ConversationEnd: ConversationEnd,
 		
 		ConversationId: o.ConversationId,
+		
+		ConversationInitiator: o.ConversationInitiator,
 		
 		ConversationStart: ConversationStart,
 		
@@ -162,6 +170,10 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 	
 	if ConversationId, ok := AnalyticsconversationMap["conversationId"].(string); ok {
 		o.ConversationId = &ConversationId
+	}
+	
+	if ConversationInitiator, ok := AnalyticsconversationMap["conversationInitiator"].(string); ok {
+		o.ConversationInitiator = &ConversationInitiator
 	}
 	
 	if conversationStartString, ok := AnalyticsconversationMap["conversationStart"].(string); ok {

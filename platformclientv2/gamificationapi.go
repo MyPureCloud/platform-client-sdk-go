@@ -2841,7 +2841,7 @@ func (a GamificationApi) GetGamificationTemplates() (*Gettemplatesresponse, *API
 // Creates a gamified metric with a given metric definition and metric objective
 //
 // 
-func (a GamificationApi) PostGamificationMetrics(body Metric) (*Metric, *APIResponse, error) {
+func (a GamificationApi) PostGamificationMetrics(body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metrics"
@@ -3311,7 +3311,7 @@ func (a GamificationApi) PostGamificationProfileMetricLink(sourceProfileId strin
 // Creates a gamified metric with a given metric definition and metric objective under in a performance profile
 //
 // 
-func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body Metric) (*Metric, *APIResponse, error) {
+func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics"
@@ -3467,7 +3467,7 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile)
 // Updates a metric
 //
 // 
-func (a GamificationApi) PutGamificationMetric(metricId string, body Metric, performanceProfileId string) (*Metric, *APIResponse, error) {
+func (a GamificationApi) PutGamificationMetric(metricId string, body Createmetric, performanceProfileId string) (*Metric, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/metrics/{metricId}"
@@ -3626,7 +3626,7 @@ func (a GamificationApi) PutGamificationProfile(performanceProfileId string, bod
 // Updates a metric in performance profile
 //
 // 
-func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId string, body Metric) (*Metric, *APIResponse, error) {
+func (a GamificationApi) PutGamificationProfileMetric(profileId string, metricId string, body Createmetric) (*Metric, *APIResponse, error) {
 	var httpMethod = "PUT"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles/{profileId}/metrics/{metricId}"

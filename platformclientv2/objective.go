@@ -25,6 +25,14 @@ type Objective struct {
 	Enabled *bool `json:"enabled,omitempty"`
 
 
+	// Topics - A list of topic ids for detected topic metrics
+	Topics *[]Addressableentityref `json:"topics,omitempty"`
+
+
+	// TopicIdsFilterType - A filter type for topic Ids. It's only used for objectives with topicIds. Default filter behavior is \"or\".
+	TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
+
+
 	// DateStart - start date of the objective. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
 	DateStart *time.Time `json:"dateStart,omitempty"`
 
@@ -51,6 +59,10 @@ func (o *Objective) MarshalJSON() ([]byte, error) {
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
+		Topics *[]Addressableentityref `json:"topics,omitempty"`
+		
+		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
+		
 		DateStart *string `json:"dateStart,omitempty"`
 		*Alias
 	}{ 
@@ -61,6 +73,10 @@ func (o *Objective) MarshalJSON() ([]byte, error) {
 		Zones: o.Zones,
 		
 		Enabled: o.Enabled,
+		
+		Topics: o.Topics,
+		
+		TopicIdsFilterType: o.TopicIdsFilterType,
 		
 		DateStart: DateStart,
 		Alias:    (*Alias)(o),
@@ -89,6 +105,15 @@ func (o *Objective) UnmarshalJSON(b []byte) error {
 	
 	if Enabled, ok := ObjectiveMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
+	}
+	
+	if Topics, ok := ObjectiveMap["topics"].([]interface{}); ok {
+		TopicsString, _ := json.Marshal(Topics)
+		json.Unmarshal(TopicsString, &o.Topics)
+	}
+	
+	if TopicIdsFilterType, ok := ObjectiveMap["topicIdsFilterType"].(string); ok {
+		o.TopicIdsFilterType = &TopicIdsFilterType
 	}
 	
 	if dateStartString, ok := ObjectiveMap["dateStart"].(string); ok {

@@ -89,6 +89,22 @@ type Smsphonenumber struct {
 	ProvisioningStatus *Smsprovisioningstatus `json:"provisioningStatus,omitempty"`
 
 
+	// Country - Localized country name for the country code this phone number belongs too
+	Country *string `json:"country,omitempty"`
+
+
+	// SupportsSms - Set to true if this phone number has the capability to support SMS
+	SupportsSms *bool `json:"supportsSms,omitempty"`
+
+
+	// SupportsMms - Set to true if this phone number has the capability to support MMS
+	SupportsMms *bool `json:"supportsMms,omitempty"`
+
+
+	// SupportsVoice - Set to true if this phone number has the capability to support voice
+	SupportsVoice *bool `json:"supportsVoice,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -180,6 +196,14 @@ func (o *Smsphonenumber) MarshalJSON() ([]byte, error) {
 		
 		ProvisioningStatus *Smsprovisioningstatus `json:"provisioningStatus,omitempty"`
 		
+		Country *string `json:"country,omitempty"`
+		
+		SupportsSms *bool `json:"supportsSms,omitempty"`
+		
+		SupportsMms *bool `json:"supportsMms,omitempty"`
+		
+		SupportsVoice *bool `json:"supportsVoice,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -222,6 +246,14 @@ func (o *Smsphonenumber) MarshalJSON() ([]byte, error) {
 		ShortCodeBillingType: o.ShortCodeBillingType,
 		
 		ProvisioningStatus: o.ProvisioningStatus,
+		
+		Country: o.Country,
+		
+		SupportsSms: o.SupportsSms,
+		
+		SupportsMms: o.SupportsMms,
+		
+		SupportsVoice: o.SupportsVoice,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -324,6 +356,22 @@ func (o *Smsphonenumber) UnmarshalJSON(b []byte) error {
 	if ProvisioningStatus, ok := SmsphonenumberMap["provisioningStatus"].(map[string]interface{}); ok {
 		ProvisioningStatusString, _ := json.Marshal(ProvisioningStatus)
 		json.Unmarshal(ProvisioningStatusString, &o.ProvisioningStatus)
+	}
+	
+	if Country, ok := SmsphonenumberMap["country"].(string); ok {
+		o.Country = &Country
+	}
+	
+	if SupportsSms, ok := SmsphonenumberMap["supportsSms"].(bool); ok {
+		o.SupportsSms = &SupportsSms
+	}
+	
+	if SupportsMms, ok := SmsphonenumberMap["supportsMms"].(bool); ok {
+		o.SupportsMms = &SupportsMms
+	}
+	
+	if SupportsVoice, ok := SmsphonenumberMap["supportsVoice"].(bool); ok {
+		o.SupportsVoice = &SupportsVoice
 	}
 	
 	if SelfUri, ok := SmsphonenumberMap["selfUri"].(string); ok {

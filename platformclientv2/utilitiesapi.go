@@ -98,7 +98,7 @@ func (a UtilitiesApi) GetDate() (*Serverdate, *APIResponse, error) {
 
 // GetIpranges invokes GET /api/v2/ipranges
 //
-// Get public ip address ranges for PureCloud
+// Get public ip address ranges for Genesys Cloud
 //
 // 
 func (a UtilitiesApi) GetIpranges() (*Ipaddressrangelisting, *APIResponse, error) {

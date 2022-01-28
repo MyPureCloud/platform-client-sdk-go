@@ -8,6 +8,10 @@ import (
 
 // Messengerapps - The apps embedded in the messenger
 type Messengerapps struct { 
+	// Conversations - The conversation settings that handles chats within the messenger
+	Conversations *Conversationappsettings `json:"conversations,omitempty"`
+
+
 	// Knowledge - The knowledge base config for messenger
 	Knowledge *Knowledge `json:"knowledge,omitempty"`
 
@@ -19,9 +23,13 @@ func (o *Messengerapps) MarshalJSON() ([]byte, error) {
 	type Alias Messengerapps
 	
 	return json.Marshal(&struct { 
+		Conversations *Conversationappsettings `json:"conversations,omitempty"`
+		
 		Knowledge *Knowledge `json:"knowledge,omitempty"`
 		*Alias
 	}{ 
+		Conversations: o.Conversations,
+		
 		Knowledge: o.Knowledge,
 		Alias:    (*Alias)(o),
 	})
@@ -32,6 +40,11 @@ func (o *Messengerapps) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &MessengerappsMap)
 	if err != nil {
 		return err
+	}
+	
+	if Conversations, ok := MessengerappsMap["conversations"].(map[string]interface{}); ok {
+		ConversationsString, _ := json.Marshal(Conversations)
+		json.Unmarshal(ConversationsString, &o.Conversations)
 	}
 	
 	if Knowledge, ok := MessengerappsMap["knowledge"].(map[string]interface{}); ok {

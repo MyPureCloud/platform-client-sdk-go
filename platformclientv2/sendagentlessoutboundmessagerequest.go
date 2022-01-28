@@ -20,7 +20,7 @@ type Sendagentlessoutboundmessagerequest struct {
 	ToAddressMessengerType *string `json:"toAddressMessengerType,omitempty"`
 
 
-	// TextBody - The text of the message to send. This field is required in the case of SMS messenger type
+	// TextBody - The text of the message to send. This field is required in the case of SMS messenger type. Maximum character counts are: SMS - 765 characters, other channels - 2000 characters.
 	TextBody *string `json:"textBody,omitempty"`
 
 

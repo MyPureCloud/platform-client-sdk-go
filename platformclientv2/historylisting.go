@@ -69,20 +69,20 @@ type Historylisting struct {
 	Completed *time.Time `json:"completed,omitempty"`
 
 
-	// Entities
-	Entities *[]Historyentry `json:"entities,omitempty"`
+	// PageSize
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// PageNumber
 	PageNumber *int `json:"pageNumber,omitempty"`
 
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
-
-
 	// Total
 	Total *int `json:"total,omitempty"`
+
+
+	// Entities
+	Entities *[]Historyentry `json:"entities,omitempty"`
 
 
 	// PageCount
@@ -142,13 +142,13 @@ func (o *Historylisting) MarshalJSON() ([]byte, error) {
 		
 		Completed *string `json:"completed,omitempty"`
 		
-		Entities *[]Historyentry `json:"entities,omitempty"`
+		PageSize *int `json:"pageSize,omitempty"`
 		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
-		
 		Total *int `json:"total,omitempty"`
+		
+		Entities *[]Historyentry `json:"entities,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -183,13 +183,13 @@ func (o *Historylisting) MarshalJSON() ([]byte, error) {
 		
 		Completed: Completed,
 		
-		Entities: o.Entities,
+		PageSize: o.PageSize,
 		
 		PageNumber: o.PageNumber,
 		
-		PageSize: o.PageSize,
-		
 		Total: o.Total,
+		
+		Entities: o.Entities,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -269,9 +269,9 @@ func (o *Historylisting) UnmarshalJSON(b []byte) error {
 		o.Completed = &Completed
 	}
 	
-	if Entities, ok := HistorylistingMap["entities"].([]interface{}); ok {
-		EntitiesString, _ := json.Marshal(Entities)
-		json.Unmarshal(EntitiesString, &o.Entities)
+	if PageSize, ok := HistorylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
 	}
 	
 	if PageNumber, ok := HistorylistingMap["pageNumber"].(float64); ok {
@@ -279,14 +279,14 @@ func (o *Historylisting) UnmarshalJSON(b []byte) error {
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if PageSize, ok := HistorylistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
 	if Total, ok := HistorylistingMap["total"].(float64); ok {
 		TotalInt := int(Total)
 		o.Total = &TotalInt
+	}
+	
+	if Entities, ok := HistorylistingMap["entities"].([]interface{}); ok {
+		EntitiesString, _ := json.Marshal(Entities)
+		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
 	if PageCount, ok := HistorylistingMap["pageCount"].(float64); ok {

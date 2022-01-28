@@ -485,7 +485,7 @@ func (a CoachingApi) GetCoachingAppointmentStatuses(appointmentId string, pageNu
 // Get appointments for users and optional date range
 //
 // 
-func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string, intervalCondition string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments"
@@ -537,6 +537,8 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 	
 	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
 	
+	queryParams["intervalCondition"] = a.Configuration.APIClient.ParameterToString(intervalCondition, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -577,7 +579,7 @@ func (a CoachingApi) GetCoachingAppointments(userIds []string, interval string, 
 // Get my appointments for a given date range
 //
 // 
-func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string) (*Coachingappointmentresponselist, *APIResponse, error) {
+func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, pageSize int, statuses []string, facilitatorIds []string, sortOrder string, relationships []string, completionInterval string, overdue string, intervalCondition string) (*Coachingappointmentresponselist, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/coaching/appointments/me"
@@ -621,6 +623,8 @@ func (a CoachingApi) GetCoachingAppointmentsMe(interval string, pageNumber int, 
 	queryParams["completionInterval"] = a.Configuration.APIClient.ParameterToString(completionInterval, "")
 	
 	queryParams["overdue"] = a.Configuration.APIClient.ParameterToString(overdue, "")
+	
+	queryParams["intervalCondition"] = a.Configuration.APIClient.ParameterToString(intervalCondition, "")
 	
 
 	// to determine the Content-Type header

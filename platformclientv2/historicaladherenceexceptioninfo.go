@@ -16,7 +16,7 @@ type Historicaladherenceexceptioninfo struct {
 	EndOffsetSeconds *int `json:"endOffsetSeconds,omitempty"`
 
 
-	// ScheduledActivityCodeId - The ID of the scheduled activity for this user
+	// ScheduledActivityCodeId - The ID of the scheduled activity code for this user
 	ScheduledActivityCodeId *string `json:"scheduledActivityCodeId,omitempty"`
 
 
@@ -40,7 +40,7 @@ type Historicaladherenceexceptioninfo struct {
 	Impact *string `json:"impact,omitempty"`
 
 
-	// SecondaryPresenceLookupId - The lookup ID used to retrieve secondary status from map of lookup ID to corresponding secondary presence ID
+	// SecondaryPresenceLookupId - The lookup ID used to retrieve the actual secondary status from map of lookup ID to corresponding secondary presence ID
 	SecondaryPresenceLookupId *string `json:"secondaryPresenceLookupId,omitempty"`
 
 }

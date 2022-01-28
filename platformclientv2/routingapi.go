@@ -3894,7 +3894,7 @@ func (a RoutingApi) GetRoutingSmsPhonenumber(addressId string) (*Smsphonenumber,
 // Get a list of provisioned phone numbers.
 //
 // 
-func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType string, phoneNumberStatus string, pageSize int, pageNumber int) (*Smsphonenumberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberType []string, phoneNumberStatus []string, countryCode []string, pageSize int, pageNumber int, sortBy string, sortOrder string, language string) (*Smsphonenumberentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/sms/phonenumbers"
@@ -3923,13 +3923,21 @@ func (a RoutingApi) GetRoutingSmsPhonenumbers(phoneNumber string, phoneNumberTyp
 	
 	queryParams["phoneNumber"] = a.Configuration.APIClient.ParameterToString(phoneNumber, "")
 	
-	queryParams["phoneNumberType"] = a.Configuration.APIClient.ParameterToString(phoneNumberType, "")
+	queryParams["phoneNumberType"] = a.Configuration.APIClient.ParameterToString(phoneNumberType, "multi")
 	
-	queryParams["phoneNumberStatus"] = a.Configuration.APIClient.ParameterToString(phoneNumberStatus, "")
+	queryParams["phoneNumberStatus"] = a.Configuration.APIClient.ParameterToString(phoneNumberStatus, "multi")
+	
+	queryParams["countryCode"] = a.Configuration.APIClient.ParameterToString(countryCode, "multi")
 	
 	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
 	
 	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["language"] = a.Configuration.APIClient.ParameterToString(language, "")
 	
 
 	// to determine the Content-Type header

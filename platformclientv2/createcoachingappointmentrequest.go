@@ -40,6 +40,14 @@ type Createcoachingappointmentrequest struct {
 	// DocumentIds - IDs of documents associated with this coaching appointment.
 	DocumentIds *[]string `json:"documentIds,omitempty"`
 
+
+	// WfmSchedule - The Workforce Management schedule the appointment is associated with.
+	WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+
+
+	// ExternalLinks - The list of external links related to the appointment
+	ExternalLinks *[]string `json:"externalLinks,omitempty"`
+
 }
 
 func (o *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
@@ -71,6 +79,10 @@ func (o *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		ConversationIds *[]string `json:"conversationIds,omitempty"`
 		
 		DocumentIds *[]string `json:"documentIds,omitempty"`
+		
+		WfmSchedule *Wfmschedulereference `json:"wfmSchedule,omitempty"`
+		
+		ExternalLinks *[]string `json:"externalLinks,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -88,6 +100,10 @@ func (o *Createcoachingappointmentrequest) MarshalJSON() ([]byte, error) {
 		ConversationIds: o.ConversationIds,
 		
 		DocumentIds: o.DocumentIds,
+		
+		WfmSchedule: o.WfmSchedule,
+		
+		ExternalLinks: o.ExternalLinks,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -134,6 +150,16 @@ func (o *Createcoachingappointmentrequest) UnmarshalJSON(b []byte) error {
 	if DocumentIds, ok := CreatecoachingappointmentrequestMap["documentIds"].([]interface{}); ok {
 		DocumentIdsString, _ := json.Marshal(DocumentIds)
 		json.Unmarshal(DocumentIdsString, &o.DocumentIds)
+	}
+	
+	if WfmSchedule, ok := CreatecoachingappointmentrequestMap["wfmSchedule"].(map[string]interface{}); ok {
+		WfmScheduleString, _ := json.Marshal(WfmSchedule)
+		json.Unmarshal(WfmScheduleString, &o.WfmSchedule)
+	}
+	
+	if ExternalLinks, ok := CreatecoachingappointmentrequestMap["externalLinks"].([]interface{}); ok {
+		ExternalLinksString, _ := json.Marshal(ExternalLinks)
+		json.Unmarshal(ExternalLinksString, &o.ExternalLinks)
 	}
 	
 
