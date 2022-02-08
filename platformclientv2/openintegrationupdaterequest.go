@@ -16,6 +16,10 @@ type Openintegrationupdaterequest struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// OutboundNotificationWebhookUrl - The outbound notification webhook URL for the Open messaging integration.
 	OutboundNotificationWebhookUrl *string `json:"outboundNotificationWebhookUrl,omitempty"`
 
@@ -43,6 +47,8 @@ func (o *Openintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		OutboundNotificationWebhookUrl *string `json:"outboundNotificationWebhookUrl,omitempty"`
 		
 		OutboundNotificationWebhookSignatureSecretToken *string `json:"outboundNotificationWebhookSignatureSecretToken,omitempty"`
@@ -55,6 +61,8 @@ func (o *Openintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		OutboundNotificationWebhookUrl: o.OutboundNotificationWebhookUrl,
 		
@@ -80,6 +88,11 @@ func (o *Openintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := OpenintegrationupdaterequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := OpenintegrationupdaterequestMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if OutboundNotificationWebhookUrl, ok := OpenintegrationupdaterequestMap["outboundNotificationWebhookUrl"].(string); ok {

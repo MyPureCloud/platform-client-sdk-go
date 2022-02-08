@@ -17,6 +17,10 @@ type Lineintegration struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// ChannelId - The Channel Id from LINE messenger
 	ChannelId *string `json:"channelId,omitempty"`
 
@@ -92,6 +96,8 @@ func (o *Lineintegration) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		ChannelId *string `json:"channelId,omitempty"`
 		
 		WebhookUri *string `json:"webhookUri,omitempty"`
@@ -120,6 +126,8 @@ func (o *Lineintegration) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		ChannelId: o.ChannelId,
 		
@@ -161,6 +169,11 @@ func (o *Lineintegration) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := LineintegrationMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := LineintegrationMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if ChannelId, ok := LineintegrationMap["channelId"].(string); ok {

@@ -64,6 +64,10 @@ type Viewfilter struct {
 	UserIds *[]string `json:"userIds,omitempty"`
 
 
+	// ManagementUnitIds - The management unit ids are used to filter the view
+	ManagementUnitIds *[]string `json:"managementUnitIds,omitempty"`
+
+
 	// AddressTos - The address To values are used to filter the view
 	AddressTos *[]string `json:"addressTos,omitempty"`
 
@@ -599,6 +603,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		UserIds *[]string `json:"userIds,omitempty"`
 		
+		ManagementUnitIds *[]string `json:"managementUnitIds,omitempty"`
+		
 		AddressTos *[]string `json:"addressTos,omitempty"`
 		
 		AddressFroms *[]string `json:"addressFroms,omitempty"`
@@ -877,6 +883,8 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		FilterUsersByQueueIds: o.FilterUsersByQueueIds,
 		
 		UserIds: o.UserIds,
+		
+		ManagementUnitIds: o.ManagementUnitIds,
 		
 		AddressTos: o.AddressTos,
 		
@@ -1206,6 +1214,11 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	if UserIds, ok := ViewfilterMap["userIds"].([]interface{}); ok {
 		UserIdsString, _ := json.Marshal(UserIds)
 		json.Unmarshal(UserIdsString, &o.UserIds)
+	}
+	
+	if ManagementUnitIds, ok := ViewfilterMap["managementUnitIds"].([]interface{}); ok {
+		ManagementUnitIdsString, _ := json.Marshal(ManagementUnitIds)
+		json.Unmarshal(ManagementUnitIdsString, &o.ManagementUnitIds)
 	}
 	
 	if AddressTos, ok := ViewfilterMap["addressTos"].([]interface{}); ok {

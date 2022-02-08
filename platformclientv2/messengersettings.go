@@ -27,10 +27,6 @@ type Messengersettings struct {
 	// Apps - The apps embedded in the messenger
 	Apps *Messengerapps `json:"apps,omitempty"`
 
-
-	// Position - The position settings for messenger
-	Position *Messengerpositionsettings `json:"position,omitempty"`
-
 }
 
 func (o *Messengersettings) MarshalJSON() ([]byte, error) {
@@ -48,8 +44,6 @@ func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 		FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
 		
 		Apps *Messengerapps `json:"apps,omitempty"`
-		
-		Position *Messengerpositionsettings `json:"position,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -61,8 +55,6 @@ func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 		FileUpload: o.FileUpload,
 		
 		Apps: o.Apps,
-		
-		Position: o.Position,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -96,11 +88,6 @@ func (o *Messengersettings) UnmarshalJSON(b []byte) error {
 	if Apps, ok := MessengersettingsMap["apps"].(map[string]interface{}); ok {
 		AppsString, _ := json.Marshal(Apps)
 		json.Unmarshal(AppsString, &o.Apps)
-	}
-	
-	if Position, ok := MessengersettingsMap["position"].(map[string]interface{}); ok {
-		PositionString, _ := json.Marshal(Position)
-		json.Unmarshal(PositionString, &o.Position)
 	}
 	
 

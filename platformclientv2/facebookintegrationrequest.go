@@ -16,6 +16,10 @@ type Facebookintegrationrequest struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// PageAccessToken - The long-lived Page Access Token of Facebook page.  See https://developers.facebook.com/docs/facebook-login/access-tokens.  When a pageAccessToken is provided, pageId and userAccessToken are not required.
 	PageAccessToken *string `json:"pageAccessToken,omitempty"`
 
@@ -51,6 +55,8 @@ func (o *Facebookintegrationrequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		PageAccessToken *string `json:"pageAccessToken,omitempty"`
 		
 		UserAccessToken *string `json:"userAccessToken,omitempty"`
@@ -67,6 +73,8 @@ func (o *Facebookintegrationrequest) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		PageAccessToken: o.PageAccessToken,
 		
@@ -96,6 +104,11 @@ func (o *Facebookintegrationrequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := FacebookintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := FacebookintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if PageAccessToken, ok := FacebookintegrationrequestMap["pageAccessToken"].(string); ok {

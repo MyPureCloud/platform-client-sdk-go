@@ -17,6 +17,10 @@ type Messagingintegration struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// Status - The status of the Integration
 	Status *string `json:"status,omitempty"`
 
@@ -80,6 +84,8 @@ func (o *Messagingintegration) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
 		
 		MessengerType *string `json:"messengerType,omitempty"`
@@ -102,6 +108,8 @@ func (o *Messagingintegration) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		Status: o.Status,
 		
@@ -137,6 +145,11 @@ func (o *Messagingintegration) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := MessagingintegrationMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := MessagingintegrationMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if Status, ok := MessagingintegrationMap["status"].(string); ok {

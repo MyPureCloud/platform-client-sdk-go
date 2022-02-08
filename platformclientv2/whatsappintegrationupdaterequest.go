@@ -16,6 +16,10 @@ type Whatsappintegrationupdaterequest struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// Action - The action used to activate and then confirm a WhatsApp Integration.
 	Action *string `json:"action,omitempty"`
 
@@ -43,6 +47,8 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		Action *string `json:"action,omitempty"`
 		
 		AuthenticationMethod *string `json:"authenticationMethod,omitempty"`
@@ -55,6 +61,8 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		Action: o.Action,
 		
@@ -80,6 +88,11 @@ func (o *Whatsappintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := WhatsappintegrationupdaterequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := WhatsappintegrationupdaterequestMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if Action, ok := WhatsappintegrationupdaterequestMap["action"].(string); ok {

@@ -16,6 +16,10 @@ type Lineintegrationrequest struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// ChannelId - The Channel Id from LINE messenger. New Official LINE account: To create a new official account, LINE requires a Webhook URL. It can be created without specifying Channel Id & Channel Secret. Once the Official account is created by LINE, use the update LINE Integration API to update Channel Id and Channel Secret.  All other accounts: Channel Id is mandatory. (NOTE: ChannelId can only be updated if the integration is set to inactive)
 	ChannelId *string `json:"channelId,omitempty"`
 
@@ -47,6 +51,8 @@ func (o *Lineintegrationrequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		ChannelId *string `json:"channelId,omitempty"`
 		
 		ChannelSecret *string `json:"channelSecret,omitempty"`
@@ -61,6 +67,8 @@ func (o *Lineintegrationrequest) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		ChannelId: o.ChannelId,
 		
@@ -88,6 +96,11 @@ func (o *Lineintegrationrequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := LineintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := LineintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if ChannelId, ok := LineintegrationrequestMap["channelId"].(string); ok {

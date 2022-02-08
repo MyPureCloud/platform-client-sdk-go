@@ -57,6 +57,14 @@ type Messagedata struct {
 	Stickers *[]Messagesticker `json:"stickers,omitempty"`
 
 
+	// NormalizedMessage - The message into normalized format
+	NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
+
+
+	// NormalizedReceipts - The delivery event associated with this message in normalized format, if the message direction was outbound
+	NormalizedReceipts *[]Conversationnormalizedmessage `json:"normalizedReceipts,omitempty"`
+
+
 	// CreatedBy - User who sent this message.
 	CreatedBy *User `json:"createdBy,omitempty"`
 
@@ -108,6 +116,10 @@ func (o *Messagedata) MarshalJSON() ([]byte, error) {
 		
 		Stickers *[]Messagesticker `json:"stickers,omitempty"`
 		
+		NormalizedMessage *Conversationnormalizedmessage `json:"normalizedMessage,omitempty"`
+		
+		NormalizedReceipts *[]Conversationnormalizedmessage `json:"normalizedReceipts,omitempty"`
+		
 		CreatedBy *User `json:"createdBy,omitempty"`
 		
 		ConversationId *string `json:"conversationId,omitempty"`
@@ -138,6 +150,10 @@ func (o *Messagedata) MarshalJSON() ([]byte, error) {
 		Media: o.Media,
 		
 		Stickers: o.Stickers,
+		
+		NormalizedMessage: o.NormalizedMessage,
+		
+		NormalizedReceipts: o.NormalizedReceipts,
 		
 		CreatedBy: o.CreatedBy,
 		
@@ -204,6 +220,16 @@ func (o *Messagedata) UnmarshalJSON(b []byte) error {
 	if Stickers, ok := MessagedataMap["stickers"].([]interface{}); ok {
 		StickersString, _ := json.Marshal(Stickers)
 		json.Unmarshal(StickersString, &o.Stickers)
+	}
+	
+	if NormalizedMessage, ok := MessagedataMap["normalizedMessage"].(map[string]interface{}); ok {
+		NormalizedMessageString, _ := json.Marshal(NormalizedMessage)
+		json.Unmarshal(NormalizedMessageString, &o.NormalizedMessage)
+	}
+	
+	if NormalizedReceipts, ok := MessagedataMap["normalizedReceipts"].([]interface{}); ok {
+		NormalizedReceiptsString, _ := json.Marshal(NormalizedReceipts)
+		json.Unmarshal(NormalizedReceiptsString, &o.NormalizedReceipts)
 	}
 	
 	if CreatedBy, ok := MessagedataMap["createdBy"].(map[string]interface{}); ok {

@@ -16,6 +16,10 @@ type Twitterintegrationrequest struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// AccessTokenKey - The Access Token Key from Twitter messenger
 	AccessTokenKey *string `json:"accessTokenKey,omitempty"`
 
@@ -55,6 +59,8 @@ func (o *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		AccessTokenKey *string `json:"accessTokenKey,omitempty"`
 		
 		AccessTokenSecret *string `json:"accessTokenSecret,omitempty"`
@@ -73,6 +79,8 @@ func (o *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		AccessTokenKey: o.AccessTokenKey,
 		
@@ -104,6 +112,11 @@ func (o *Twitterintegrationrequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := TwitterintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := TwitterintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if AccessTokenKey, ok := TwitterintegrationrequestMap["accessTokenKey"].(string); ok {

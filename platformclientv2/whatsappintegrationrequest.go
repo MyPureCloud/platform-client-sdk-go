@@ -16,6 +16,10 @@ type Whatsappintegrationrequest struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// SupportedContent - Defines the SupportedContent profile configured for an integration
+	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+
+
 	// PhoneNumber - The phone number associated to the whatsApp integration
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 
@@ -39,6 +43,8 @@ func (o *Whatsappintegrationrequest) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
+		
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
 		WabaCertificate *string `json:"wabaCertificate,omitempty"`
@@ -49,6 +55,8 @@ func (o *Whatsappintegrationrequest) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		SupportedContent: o.SupportedContent,
 		
 		PhoneNumber: o.PhoneNumber,
 		
@@ -72,6 +80,11 @@ func (o *Whatsappintegrationrequest) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := WhatsappintegrationrequestMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if SupportedContent, ok := WhatsappintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
+		SupportedContentString, _ := json.Marshal(SupportedContent)
+		json.Unmarshal(SupportedContentString, &o.SupportedContent)
 	}
 	
 	if PhoneNumber, ok := WhatsappintegrationrequestMap["phoneNumber"].(string); ok {

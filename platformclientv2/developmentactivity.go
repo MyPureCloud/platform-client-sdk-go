@@ -25,6 +25,14 @@ type Developmentactivity struct {
 	DateCreated *time.Time `json:"dateCreated,omitempty"`
 
 
+	// PercentageScore - The user's percentage score for this activity
+	PercentageScore *float32 `json:"percentageScore,omitempty"`
+
+
+	// IsPassed - True if the activity was passed
+	IsPassed *bool `json:"isPassed,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -96,6 +104,10 @@ func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
 		
+		PercentageScore *float32 `json:"percentageScore,omitempty"`
+		
+		IsPassed *bool `json:"isPassed,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		Name *string `json:"name,omitempty"`
@@ -120,6 +132,10 @@ func (o *Developmentactivity) MarshalJSON() ([]byte, error) {
 		CreatedBy: o.CreatedBy,
 		
 		DateCreated: DateCreated,
+		
+		PercentageScore: o.PercentageScore,
+		
+		IsPassed: o.IsPassed,
 		
 		SelfUri: o.SelfUri,
 		
@@ -164,6 +180,15 @@ func (o *Developmentactivity) UnmarshalJSON(b []byte) error {
 	if dateCreatedString, ok := DevelopmentactivityMap["dateCreated"].(string); ok {
 		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
 		o.DateCreated = &DateCreated
+	}
+	
+	if PercentageScore, ok := DevelopmentactivityMap["percentageScore"].(float64); ok {
+		PercentageScoreFloat32 := float32(PercentageScore)
+		o.PercentageScore = &PercentageScoreFloat32
+	}
+	
+	if IsPassed, ok := DevelopmentactivityMap["isPassed"].(bool); ok {
+		o.IsPassed = &IsPassed
 	}
 	
 	if SelfUri, ok := DevelopmentactivityMap["selfUri"].(string); ok {
