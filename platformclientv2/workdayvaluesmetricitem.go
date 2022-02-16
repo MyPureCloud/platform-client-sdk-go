@@ -8,7 +8,11 @@ import (
 
 // Workdayvaluesmetricitem
 type Workdayvaluesmetricitem struct { 
-	// MetricDefinition - Gamification metric for the average and the trend
+	// Metric - Gamification metric for the average and the trend
+	Metric *Addressableentityref `json:"metric,omitempty"`
+
+
+	// MetricDefinition - Gamification metric definition for the average and the trend
 	MetricDefinition *Domainentityref `json:"metricDefinition,omitempty"`
 
 
@@ -31,6 +35,8 @@ func (o *Workdayvaluesmetricitem) MarshalJSON() ([]byte, error) {
 	type Alias Workdayvaluesmetricitem
 	
 	return json.Marshal(&struct { 
+		Metric *Addressableentityref `json:"metric,omitempty"`
+		
 		MetricDefinition *Domainentityref `json:"metricDefinition,omitempty"`
 		
 		Average *float64 `json:"average,omitempty"`
@@ -40,6 +46,8 @@ func (o *Workdayvaluesmetricitem) MarshalJSON() ([]byte, error) {
 		Trend *[]Workdayvaluestrenditem `json:"trend,omitempty"`
 		*Alias
 	}{ 
+		Metric: o.Metric,
+		
 		MetricDefinition: o.MetricDefinition,
 		
 		Average: o.Average,
@@ -56,6 +64,11 @@ func (o *Workdayvaluesmetricitem) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &WorkdayvaluesmetricitemMap)
 	if err != nil {
 		return err
+	}
+	
+	if Metric, ok := WorkdayvaluesmetricitemMap["metric"].(map[string]interface{}); ok {
+		MetricString, _ := json.Marshal(Metric)
+		json.Unmarshal(MetricString, &o.Metric)
 	}
 	
 	if MetricDefinition, ok := WorkdayvaluesmetricitemMap["metricDefinition"].(map[string]interface{}); ok {

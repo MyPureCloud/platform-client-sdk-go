@@ -25,6 +25,14 @@ type Objective struct {
 	Enabled *bool `json:"enabled,omitempty"`
 
 
+	// MediaTypes - A list of media types for the metric
+	MediaTypes *[]string `json:"mediaTypes,omitempty"`
+
+
+	// Queues - A list of queues for the metric
+	Queues *[]Addressableentityref `json:"queues,omitempty"`
+
+
 	// Topics - A list of topic ids for detected topic metrics
 	Topics *[]Addressableentityref `json:"topics,omitempty"`
 
@@ -59,6 +67,10 @@ func (o *Objective) MarshalJSON() ([]byte, error) {
 		
 		Enabled *bool `json:"enabled,omitempty"`
 		
+		MediaTypes *[]string `json:"mediaTypes,omitempty"`
+		
+		Queues *[]Addressableentityref `json:"queues,omitempty"`
+		
 		Topics *[]Addressableentityref `json:"topics,omitempty"`
 		
 		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
@@ -73,6 +85,10 @@ func (o *Objective) MarshalJSON() ([]byte, error) {
 		Zones: o.Zones,
 		
 		Enabled: o.Enabled,
+		
+		MediaTypes: o.MediaTypes,
+		
+		Queues: o.Queues,
 		
 		Topics: o.Topics,
 		
@@ -105,6 +121,16 @@ func (o *Objective) UnmarshalJSON(b []byte) error {
 	
 	if Enabled, ok := ObjectiveMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
+	}
+	
+	if MediaTypes, ok := ObjectiveMap["mediaTypes"].([]interface{}); ok {
+		MediaTypesString, _ := json.Marshal(MediaTypes)
+		json.Unmarshal(MediaTypesString, &o.MediaTypes)
+	}
+	
+	if Queues, ok := ObjectiveMap["queues"].([]interface{}); ok {
+		QueuesString, _ := json.Marshal(Queues)
+		json.Unmarshal(QueuesString, &o.Queues)
 	}
 	
 	if Topics, ok := ObjectiveMap["topics"].([]interface{}); ok {

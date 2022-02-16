@@ -11,6 +11,10 @@ type Supportcentersettings struct {
 	// Enabled - Whether or not support center is enabled
 	Enabled *bool `json:"enabled,omitempty"`
 
+
+	// KnowledgeBase - The knowledge base for support center
+	KnowledgeBase *Addressableentityref `json:"knowledgeBase,omitempty"`
+
 }
 
 func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Enabled *bool `json:"enabled,omitempty"`
+		
+		KnowledgeBase *Addressableentityref `json:"knowledgeBase,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
+		
+		KnowledgeBase: o.KnowledgeBase,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -36,6 +44,11 @@ func (o *Supportcentersettings) UnmarshalJSON(b []byte) error {
 	
 	if Enabled, ok := SupportcentersettingsMap["enabled"].(bool); ok {
 		o.Enabled = &Enabled
+	}
+	
+	if KnowledgeBase, ok := SupportcentersettingsMap["knowledgeBase"].(map[string]interface{}); ok {
+		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
+		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
 	}
 	
 

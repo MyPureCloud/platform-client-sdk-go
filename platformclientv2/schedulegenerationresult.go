@@ -23,6 +23,10 @@ type Schedulegenerationresult struct {
 	// Messages - User facing messages related to the schedule generation run
 	Messages *[]Schedulegenerationmessage `json:"messages,omitempty"`
 
+
+	// MessageSeverities - The list of messages by severity in this schedule generation run
+	MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
+
 }
 
 func (o *Schedulegenerationresult) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Schedulegenerationresult) MarshalJSON() ([]byte, error) {
 		MessageCount *int `json:"messageCount,omitempty"`
 		
 		Messages *[]Schedulegenerationmessage `json:"messages,omitempty"`
+		
+		MessageSeverities *[]Schedulermessagetypeseverity `json:"messageSeverities,omitempty"`
 		*Alias
 	}{ 
 		Failed: o.Failed,
@@ -47,6 +53,8 @@ func (o *Schedulegenerationresult) MarshalJSON() ([]byte, error) {
 		MessageCount: o.MessageCount,
 		
 		Messages: o.Messages,
+		
+		MessageSeverities: o.MessageSeverities,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -74,6 +82,11 @@ func (o *Schedulegenerationresult) UnmarshalJSON(b []byte) error {
 	if Messages, ok := SchedulegenerationresultMap["messages"].([]interface{}); ok {
 		MessagesString, _ := json.Marshal(Messages)
 		json.Unmarshal(MessagesString, &o.Messages)
+	}
+	
+	if MessageSeverities, ok := SchedulegenerationresultMap["messageSeverities"].([]interface{}); ok {
+		MessageSeveritiesString, _ := json.Marshal(MessageSeverities)
+		json.Unmarshal(MessageSeveritiesString, &o.MessageSeverities)
 	}
 	
 

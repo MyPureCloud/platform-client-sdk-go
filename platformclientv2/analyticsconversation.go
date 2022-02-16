@@ -25,6 +25,10 @@ type Analyticsconversation struct {
 	ConversationStart *time.Time `json:"conversationStart,omitempty"`
 
 
+	// CustomerParticipation - Indicates a messaging conversation in which the customer participated by sending at least one message
+	CustomerParticipation *bool `json:"customerParticipation,omitempty"`
+
+
 	// DivisionIds - Identifier(s) of division(s) associated with a conversation
 	DivisionIds *[]string `json:"divisionIds,omitempty"`
 
@@ -100,6 +104,8 @@ func (o *Analyticsconversation) MarshalJSON() ([]byte, error) {
 		
 		ConversationStart *string `json:"conversationStart,omitempty"`
 		
+		CustomerParticipation *bool `json:"customerParticipation,omitempty"`
+		
 		DivisionIds *[]string `json:"divisionIds,omitempty"`
 		
 		ExternalTag *string `json:"externalTag,omitempty"`
@@ -130,6 +136,8 @@ func (o *Analyticsconversation) MarshalJSON() ([]byte, error) {
 		ConversationInitiator: o.ConversationInitiator,
 		
 		ConversationStart: ConversationStart,
+		
+		CustomerParticipation: o.CustomerParticipation,
 		
 		DivisionIds: o.DivisionIds,
 		
@@ -179,6 +187,10 @@ func (o *Analyticsconversation) UnmarshalJSON(b []byte) error {
 	if conversationStartString, ok := AnalyticsconversationMap["conversationStart"].(string); ok {
 		ConversationStart, _ := time.Parse("2006-01-02T15:04:05.999999Z", conversationStartString)
 		o.ConversationStart = &ConversationStart
+	}
+	
+	if CustomerParticipation, ok := AnalyticsconversationMap["customerParticipation"].(bool); ok {
+		o.CustomerParticipation = &CustomerParticipation
 	}
 	
 	if DivisionIds, ok := AnalyticsconversationMap["divisionIds"].([]interface{}); ok {

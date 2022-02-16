@@ -15,6 +15,10 @@ type Conversationappsettings struct {
 	// ShowUserTypingIndicator - The toggle to enable or disable typing indicator for messenger
 	ShowUserTypingIndicator *bool `json:"showUserTypingIndicator,omitempty"`
 
+
+	// AutoStartType - The auto start type for the messenger conversation
+	AutoStartType *string `json:"autoStartType,omitempty"`
+
 }
 
 func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		ShowAgentTypingIndicator *bool `json:"showAgentTypingIndicator,omitempty"`
 		
 		ShowUserTypingIndicator *bool `json:"showUserTypingIndicator,omitempty"`
+		
+		AutoStartType *string `json:"autoStartType,omitempty"`
 		*Alias
 	}{ 
 		ShowAgentTypingIndicator: o.ShowAgentTypingIndicator,
 		
 		ShowUserTypingIndicator: o.ShowUserTypingIndicator,
+		
+		AutoStartType: o.AutoStartType,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -48,6 +56,10 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	
 	if ShowUserTypingIndicator, ok := ConversationappsettingsMap["showUserTypingIndicator"].(bool); ok {
 		o.ShowUserTypingIndicator = &ShowUserTypingIndicator
+	}
+	
+	if AutoStartType, ok := ConversationappsettingsMap["autoStartType"].(string); ok {
+		o.AutoStartType = &AutoStartType
 	}
 	
 

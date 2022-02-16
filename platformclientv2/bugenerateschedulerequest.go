@@ -19,6 +19,10 @@ type Bugenerateschedulerequest struct {
 	// WeekCount - The number of weeks in the schedule. One extra day is added at the end
 	WeekCount *int `json:"weekCount,omitempty"`
 
+
+	// Options - Additional scheduling options
+	Options *Schedulingoptionsrequest `json:"options,omitempty"`
+
 }
 
 func (o *Bugenerateschedulerequest) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Bugenerateschedulerequest) MarshalJSON() ([]byte, error) {
 		ShortTermForecast *Bushorttermforecastreference `json:"shortTermForecast,omitempty"`
 		
 		WeekCount *int `json:"weekCount,omitempty"`
+		
+		Options *Schedulingoptionsrequest `json:"options,omitempty"`
 		*Alias
 	}{ 
 		Description: o.Description,
@@ -39,6 +45,8 @@ func (o *Bugenerateschedulerequest) MarshalJSON() ([]byte, error) {
 		ShortTermForecast: o.ShortTermForecast,
 		
 		WeekCount: o.WeekCount,
+		
+		Options: o.Options,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -62,6 +70,11 @@ func (o *Bugenerateschedulerequest) UnmarshalJSON(b []byte) error {
 	if WeekCount, ok := BugenerateschedulerequestMap["weekCount"].(float64); ok {
 		WeekCountInt := int(WeekCount)
 		o.WeekCount = &WeekCountInt
+	}
+	
+	if Options, ok := BugenerateschedulerequestMap["options"].(map[string]interface{}); ok {
+		OptionsString, _ := json.Marshal(Options)
+		json.Unmarshal(OptionsString, &o.Options)
 	}
 	
 

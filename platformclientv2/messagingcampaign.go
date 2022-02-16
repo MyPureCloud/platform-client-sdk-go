@@ -61,6 +61,10 @@ type Messagingcampaign struct {
 	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 
 
+	// ContactListFilters - The contact list filter to check before sending a message for this messaging campaign.
+	ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
+
+
 	// Errors - A list of current error conditions associated with this messaging campaign.
 	Errors *[]Resterrordetail `json:"errors,omitempty"`
 
@@ -122,6 +126,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		
 		MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 		
+		ContactListFilters *[]Domainentityref `json:"contactListFilters,omitempty"`
+		
 		Errors *[]Resterrordetail `json:"errors,omitempty"`
 		
 		SmsConfig *Smsconfig `json:"smsConfig,omitempty"`
@@ -154,6 +160,8 @@ func (o *Messagingcampaign) MarshalJSON() ([]byte, error) {
 		ContactSorts: o.ContactSorts,
 		
 		MessagesPerMinute: o.MessagesPerMinute,
+		
+		ContactListFilters: o.ContactListFilters,
 		
 		Errors: o.Errors,
 		
@@ -230,6 +238,11 @@ func (o *Messagingcampaign) UnmarshalJSON(b []byte) error {
 	if MessagesPerMinute, ok := MessagingcampaignMap["messagesPerMinute"].(float64); ok {
 		MessagesPerMinuteInt := int(MessagesPerMinute)
 		o.MessagesPerMinute = &MessagesPerMinuteInt
+	}
+	
+	if ContactListFilters, ok := MessagingcampaignMap["contactListFilters"].([]interface{}); ok {
+		ContactListFiltersString, _ := json.Marshal(ContactListFilters)
+		json.Unmarshal(ContactListFiltersString, &o.ContactListFilters)
 	}
 	
 	if Errors, ok := MessagingcampaignMap["errors"].([]interface{}); ok {

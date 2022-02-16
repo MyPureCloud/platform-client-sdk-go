@@ -13,7 +13,7 @@ type Stateventqueuetopicstatsnotification struct {
 
 
 	// Data
-	Data *[]Stateventqueuetopicdatum `json:"data,omitempty"`
+	Data *[]Stateventqueuetopicintervalmetrics `json:"data,omitempty"`
 
 }
 
@@ -25,7 +25,7 @@ func (o *Stateventqueuetopicstatsnotification) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Group *map[string]string `json:"group,omitempty"`
 		
-		Data *[]Stateventqueuetopicdatum `json:"data,omitempty"`
+		Data *[]Stateventqueuetopicintervalmetrics `json:"data,omitempty"`
 		*Alias
 	}{ 
 		Group: o.Group,

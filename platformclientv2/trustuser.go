@@ -85,6 +85,10 @@ type Trustuser struct {
 	Presence *Userpresence `json:"presence,omitempty"`
 
 
+	// IntegrationPresence - Integration presence
+	IntegrationPresence *Userpresence `json:"integrationPresence,omitempty"`
+
+
 	// ConversationSummary - Summary of conversion statistics for conversation types.
 	ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
 
@@ -202,6 +206,8 @@ func (o *Trustuser) MarshalJSON() ([]byte, error) {
 		
 		Presence *Userpresence `json:"presence,omitempty"`
 		
+		IntegrationPresence *Userpresence `json:"integrationPresence,omitempty"`
+		
 		ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
 		
 		OutOfOffice *Outofoffice `json:"outOfOffice,omitempty"`
@@ -272,6 +278,8 @@ func (o *Trustuser) MarshalJSON() ([]byte, error) {
 		RoutingStatus: o.RoutingStatus,
 		
 		Presence: o.Presence,
+		
+		IntegrationPresence: o.IntegrationPresence,
 		
 		ConversationSummary: o.ConversationSummary,
 		
@@ -401,6 +409,11 @@ func (o *Trustuser) UnmarshalJSON(b []byte) error {
 	if Presence, ok := TrustuserMap["presence"].(map[string]interface{}); ok {
 		PresenceString, _ := json.Marshal(Presence)
 		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if IntegrationPresence, ok := TrustuserMap["integrationPresence"].(map[string]interface{}); ok {
+		IntegrationPresenceString, _ := json.Marshal(IntegrationPresence)
+		json.Unmarshal(IntegrationPresenceString, &o.IntegrationPresence)
 	}
 	
 	if ConversationSummary, ok := TrustuserMap["conversationSummary"].(map[string]interface{}); ok {

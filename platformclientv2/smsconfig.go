@@ -19,6 +19,10 @@ type Smsconfig struct {
 	// SenderSmsPhoneNumber - A reference to the SMS Phone Number that will be used as the sender of a message.
 	SenderSmsPhoneNumber *Smsphonenumberref `json:"senderSmsPhoneNumber,omitempty"`
 
+
+	// ContentTemplate - The content template used to formulate the message to send to the contact.
+	ContentTemplate *Domainentityref `json:"contentTemplate,omitempty"`
+
 }
 
 func (o *Smsconfig) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Smsconfig) MarshalJSON() ([]byte, error) {
 		PhoneColumn *string `json:"phoneColumn,omitempty"`
 		
 		SenderSmsPhoneNumber *Smsphonenumberref `json:"senderSmsPhoneNumber,omitempty"`
+		
+		ContentTemplate *Domainentityref `json:"contentTemplate,omitempty"`
 		*Alias
 	}{ 
 		MessageColumn: o.MessageColumn,
@@ -39,6 +45,8 @@ func (o *Smsconfig) MarshalJSON() ([]byte, error) {
 		PhoneColumn: o.PhoneColumn,
 		
 		SenderSmsPhoneNumber: o.SenderSmsPhoneNumber,
+		
+		ContentTemplate: o.ContentTemplate,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,11 @@ func (o *Smsconfig) UnmarshalJSON(b []byte) error {
 	if SenderSmsPhoneNumber, ok := SmsconfigMap["senderSmsPhoneNumber"].(map[string]interface{}); ok {
 		SenderSmsPhoneNumberString, _ := json.Marshal(SenderSmsPhoneNumber)
 		json.Unmarshal(SenderSmsPhoneNumberString, &o.SenderSmsPhoneNumber)
+	}
+	
+	if ContentTemplate, ok := SmsconfigMap["contentTemplate"].(map[string]interface{}); ok {
+		ContentTemplateString, _ := json.Marshal(ContentTemplate)
+		json.Unmarshal(ContentTemplateString, &o.ContentTemplate)
 	}
 	
 

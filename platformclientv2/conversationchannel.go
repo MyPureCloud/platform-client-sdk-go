@@ -12,7 +12,11 @@ type Conversationchannel struct {
 	VarType *string `json:"type,omitempty"`
 
 
-	// Platform - The platform used to deliver media for the conversation for a given channel (e.g. Twitter, Messenger, PureCloud Edge).
+	// MessageType - Message type for messaging conversations.
+	MessageType *string `json:"messageType,omitempty"`
+
+
+	// Platform - The source provider for the conversation (e.g. Edge, PureCloud Messaging, PureCloud Email).
 	Platform *string `json:"platform,omitempty"`
 
 }
@@ -25,10 +29,14 @@ func (o *Conversationchannel) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
 		
+		MessageType *string `json:"messageType,omitempty"`
+		
 		Platform *string `json:"platform,omitempty"`
 		*Alias
 	}{ 
 		VarType: o.VarType,
+		
+		MessageType: o.MessageType,
 		
 		Platform: o.Platform,
 		Alias:    (*Alias)(o),
@@ -44,6 +52,10 @@ func (o *Conversationchannel) UnmarshalJSON(b []byte) error {
 	
 	if VarType, ok := ConversationchannelMap["type"].(string); ok {
 		o.VarType = &VarType
+	}
+	
+	if MessageType, ok := ConversationchannelMap["messageType"].(string); ok {
+		o.MessageType = &MessageType
 	}
 	
 	if Platform, ok := ConversationchannelMap["platform"].(string); ok {

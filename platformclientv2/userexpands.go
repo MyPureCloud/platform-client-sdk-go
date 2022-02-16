@@ -16,6 +16,10 @@ type Userexpands struct {
 	Presence *Userpresence `json:"presence,omitempty"`
 
 
+	// IntegrationPresence - Active 3rd party presence
+	IntegrationPresence *Userpresence `json:"integrationPresence,omitempty"`
+
+
 	// ConversationSummary - Summary of conversion statistics for conversation types.
 	ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
 
@@ -47,6 +51,8 @@ func (o *Userexpands) MarshalJSON() ([]byte, error) {
 		
 		Presence *Userpresence `json:"presence,omitempty"`
 		
+		IntegrationPresence *Userpresence `json:"integrationPresence,omitempty"`
+		
 		ConversationSummary *Userconversationsummary `json:"conversationSummary,omitempty"`
 		
 		OutOfOffice *Outofoffice `json:"outOfOffice,omitempty"`
@@ -61,6 +67,8 @@ func (o *Userexpands) MarshalJSON() ([]byte, error) {
 		RoutingStatus: o.RoutingStatus,
 		
 		Presence: o.Presence,
+		
+		IntegrationPresence: o.IntegrationPresence,
 		
 		ConversationSummary: o.ConversationSummary,
 		
@@ -90,6 +98,11 @@ func (o *Userexpands) UnmarshalJSON(b []byte) error {
 	if Presence, ok := UserexpandsMap["presence"].(map[string]interface{}); ok {
 		PresenceString, _ := json.Marshal(Presence)
 		json.Unmarshal(PresenceString, &o.Presence)
+	}
+	
+	if IntegrationPresence, ok := UserexpandsMap["integrationPresence"].(map[string]interface{}); ok {
+		IntegrationPresenceString, _ := json.Marshal(IntegrationPresence)
+		json.Unmarshal(IntegrationPresenceString, &o.IntegrationPresence)
 	}
 	
 	if ConversationSummary, ok := UserexpandsMap["conversationSummary"].(map[string]interface{}); ok {

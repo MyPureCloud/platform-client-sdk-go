@@ -65,6 +65,10 @@ type Buschedulerun struct {
 	MessageCount *int `json:"messageCount,omitempty"`
 
 
+	// MessageSeverityCounts - The list of schedule generation message counts by severity for this schedule generation run
+	MessageSeverityCounts *[]Schedulermessageseveritycount `json:"messageSeverityCounts,omitempty"`
+
+
 	// ReschedulingOptions - Rescheduling options for this run.  Null unless intradayRescheduling is true
 	ReschedulingOptions *Reschedulingoptionsrunresponse `json:"reschedulingOptions,omitempty"`
 
@@ -143,6 +147,8 @@ func (o *Buschedulerun) MarshalJSON() ([]byte, error) {
 		
 		MessageCount *int `json:"messageCount,omitempty"`
 		
+		MessageSeverityCounts *[]Schedulermessageseveritycount `json:"messageSeverityCounts,omitempty"`
+		
 		ReschedulingOptions *Reschedulingoptionsrunresponse `json:"reschedulingOptions,omitempty"`
 		
 		ReschedulingResultExpiration *string `json:"reschedulingResultExpiration,omitempty"`
@@ -177,6 +183,8 @@ func (o *Buschedulerun) MarshalJSON() ([]byte, error) {
 		SchedulingCompletedTime: SchedulingCompletedTime,
 		
 		MessageCount: o.MessageCount,
+		
+		MessageSeverityCounts: o.MessageSeverityCounts,
 		
 		ReschedulingOptions: o.ReschedulingOptions,
 		
@@ -256,6 +264,11 @@ func (o *Buschedulerun) UnmarshalJSON(b []byte) error {
 	if MessageCount, ok := BuschedulerunMap["messageCount"].(float64); ok {
 		MessageCountInt := int(MessageCount)
 		o.MessageCount = &MessageCountInt
+	}
+	
+	if MessageSeverityCounts, ok := BuschedulerunMap["messageSeverityCounts"].([]interface{}); ok {
+		MessageSeverityCountsString, _ := json.Marshal(MessageSeverityCounts)
+		json.Unmarshal(MessageSeverityCountsString, &o.MessageSeverityCounts)
 	}
 	
 	if ReschedulingOptions, ok := BuschedulerunMap["reschedulingOptions"].(map[string]interface{}); ok {

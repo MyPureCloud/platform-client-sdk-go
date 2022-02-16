@@ -29,6 +29,14 @@ type Createobjective struct {
 	TopicIds *[]string `json:"topicIds,omitempty"`
 
 
+	// MediaTypes - A list of media types for the metric
+	MediaTypes *[]string `json:"mediaTypes,omitempty"`
+
+
+	// QueueIds - A list of queue ids for the metric
+	QueueIds *[]string `json:"queueIds,omitempty"`
+
+
 	// TopicIdsFilterType - A filter type for topic Ids. It's only used for objectives with topicIds. Default filter behavior is \"or\".
 	TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
 
@@ -61,6 +69,10 @@ func (o *Createobjective) MarshalJSON() ([]byte, error) {
 		
 		TopicIds *[]string `json:"topicIds,omitempty"`
 		
+		MediaTypes *[]string `json:"mediaTypes,omitempty"`
+		
+		QueueIds *[]string `json:"queueIds,omitempty"`
+		
 		TopicIdsFilterType *string `json:"topicIdsFilterType,omitempty"`
 		
 		DateStart *string `json:"dateStart,omitempty"`
@@ -75,6 +87,10 @@ func (o *Createobjective) MarshalJSON() ([]byte, error) {
 		Enabled: o.Enabled,
 		
 		TopicIds: o.TopicIds,
+		
+		MediaTypes: o.MediaTypes,
+		
+		QueueIds: o.QueueIds,
 		
 		TopicIdsFilterType: o.TopicIdsFilterType,
 		
@@ -110,6 +126,16 @@ func (o *Createobjective) UnmarshalJSON(b []byte) error {
 	if TopicIds, ok := CreateobjectiveMap["topicIds"].([]interface{}); ok {
 		TopicIdsString, _ := json.Marshal(TopicIds)
 		json.Unmarshal(TopicIdsString, &o.TopicIds)
+	}
+	
+	if MediaTypes, ok := CreateobjectiveMap["mediaTypes"].([]interface{}); ok {
+		MediaTypesString, _ := json.Marshal(MediaTypes)
+		json.Unmarshal(MediaTypesString, &o.MediaTypes)
+	}
+	
+	if QueueIds, ok := CreateobjectiveMap["queueIds"].([]interface{}); ok {
+		QueueIdsString, _ := json.Marshal(QueueIds)
+		json.Unmarshal(QueueIdsString, &o.QueueIds)
 	}
 	
 	if TopicIdsFilterType, ok := CreateobjectiveMap["topicIdsFilterType"].(string); ok {

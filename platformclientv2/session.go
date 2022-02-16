@@ -137,6 +137,14 @@ type Session struct {
 	ConversationSubject *string `json:"conversationSubject,omitempty"`
 
 
+	// LastUserDisconnectType - Disconnect reason for the last user connected to the conversation.
+	LastUserDisconnectType *string `json:"lastUserDisconnectType,omitempty"`
+
+
+	// LastAcdOutcome - Last ACD outcome for the conversation.
+	LastAcdOutcome *string `json:"lastAcdOutcome,omitempty"`
+
+
 	// Authenticated - Indicates whether or not the session is authenticated.
 	Authenticated *bool `json:"authenticated,omitempty"`
 
@@ -272,6 +280,10 @@ func (o *Session) MarshalJSON() ([]byte, error) {
 		
 		ConversationSubject *string `json:"conversationSubject,omitempty"`
 		
+		LastUserDisconnectType *string `json:"lastUserDisconnectType,omitempty"`
+		
+		LastAcdOutcome *string `json:"lastAcdOutcome,omitempty"`
+		
 		Authenticated *bool `json:"authenticated,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
@@ -352,6 +364,10 @@ func (o *Session) MarshalJSON() ([]byte, error) {
 		OriginatingDirection: o.OriginatingDirection,
 		
 		ConversationSubject: o.ConversationSubject,
+		
+		LastUserDisconnectType: o.LastUserDisconnectType,
+		
+		LastAcdOutcome: o.LastAcdOutcome,
 		
 		Authenticated: o.Authenticated,
 		
@@ -525,6 +541,14 @@ func (o *Session) UnmarshalJSON(b []byte) error {
 	
 	if ConversationSubject, ok := SessionMap["conversationSubject"].(string); ok {
 		o.ConversationSubject = &ConversationSubject
+	}
+	
+	if LastUserDisconnectType, ok := SessionMap["lastUserDisconnectType"].(string); ok {
+		o.LastUserDisconnectType = &LastUserDisconnectType
+	}
+	
+	if LastAcdOutcome, ok := SessionMap["lastAcdOutcome"].(string); ok {
+		o.LastAcdOutcome = &LastAcdOutcome
 	}
 	
 	if Authenticated, ok := SessionMap["authenticated"].(bool); ok {

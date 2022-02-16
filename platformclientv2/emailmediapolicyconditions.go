@@ -31,6 +31,10 @@ type Emailmediapolicyconditions struct {
 	// TimeAllowed
 	TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
 
+
+	// CustomerParticipation
+	CustomerParticipation *string `json:"customerParticipation,omitempty"`
+
 }
 
 func (o *Emailmediapolicyconditions) MarshalJSON() ([]byte, error) {
@@ -50,6 +54,8 @@ func (o *Emailmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		Languages *[]Language `json:"languages,omitempty"`
 		
 		TimeAllowed *Timeallowed `json:"timeAllowed,omitempty"`
+		
+		CustomerParticipation *string `json:"customerParticipation,omitempty"`
 		*Alias
 	}{ 
 		ForUsers: o.ForUsers,
@@ -63,6 +69,8 @@ func (o *Emailmediapolicyconditions) MarshalJSON() ([]byte, error) {
 		Languages: o.Languages,
 		
 		TimeAllowed: o.TimeAllowed,
+		
+		CustomerParticipation: o.CustomerParticipation,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -102,6 +110,10 @@ func (o *Emailmediapolicyconditions) UnmarshalJSON(b []byte) error {
 	if TimeAllowed, ok := EmailmediapolicyconditionsMap["timeAllowed"].(map[string]interface{}); ok {
 		TimeAllowedString, _ := json.Marshal(TimeAllowed)
 		json.Unmarshal(TimeAllowedString, &o.TimeAllowed)
+	}
+	
+	if CustomerParticipation, ok := EmailmediapolicyconditionsMap["customerParticipation"].(string); ok {
+		o.CustomerParticipation = &CustomerParticipation
 	}
 	
 

@@ -20,6 +20,10 @@ type Businessunitsettings struct {
 	ShortTermForecasting *Bushorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
 
 
+	// Scheduling - Scheduling settings
+	Scheduling *Buschedulingsettings `json:"scheduling,omitempty"`
+
+
 	// Metadata - Version metadata for this business unit
 	Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 
@@ -37,6 +41,8 @@ func (o *Businessunitsettings) MarshalJSON() ([]byte, error) {
 		
 		ShortTermForecasting *Bushorttermforecastingsettings `json:"shortTermForecasting,omitempty"`
 		
+		Scheduling *Buschedulingsettings `json:"scheduling,omitempty"`
+		
 		Metadata *Wfmversionedentitymetadata `json:"metadata,omitempty"`
 		*Alias
 	}{ 
@@ -45,6 +51,8 @@ func (o *Businessunitsettings) MarshalJSON() ([]byte, error) {
 		TimeZone: o.TimeZone,
 		
 		ShortTermForecasting: o.ShortTermForecasting,
+		
+		Scheduling: o.Scheduling,
 		
 		Metadata: o.Metadata,
 		Alias:    (*Alias)(o),
@@ -69,6 +77,11 @@ func (o *Businessunitsettings) UnmarshalJSON(b []byte) error {
 	if ShortTermForecasting, ok := BusinessunitsettingsMap["shortTermForecasting"].(map[string]interface{}); ok {
 		ShortTermForecastingString, _ := json.Marshal(ShortTermForecasting)
 		json.Unmarshal(ShortTermForecastingString, &o.ShortTermForecasting)
+	}
+	
+	if Scheduling, ok := BusinessunitsettingsMap["scheduling"].(map[string]interface{}); ok {
+		SchedulingString, _ := json.Marshal(Scheduling)
+		json.Unmarshal(SchedulingString, &o.Scheduling)
 	}
 	
 	if Metadata, ok := BusinessunitsettingsMap["metadata"].(map[string]interface{}); ok {
