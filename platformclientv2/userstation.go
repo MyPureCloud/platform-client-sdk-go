@@ -36,6 +36,10 @@ type Userstation struct {
 	// ProviderInfo - Provider-specific info for this station, e.g. { \"edgeGroupId\": \"ffe7b15c-a9cc-4f4c-88f5-781327819a49\" }
 	ProviderInfo *map[string]string `json:"providerInfo,omitempty"`
 
+
+	// WebRtcCallAppearances - The number of call appearances on the station.
+	WebRtcCallAppearances *int `json:"webRtcCallAppearances,omitempty"`
+
 }
 
 func (o *Userstation) MarshalJSON() ([]byte, error) {
@@ -65,6 +69,8 @@ func (o *Userstation) MarshalJSON() ([]byte, error) {
 		DefaultUser *User `json:"defaultUser,omitempty"`
 		
 		ProviderInfo *map[string]string `json:"providerInfo,omitempty"`
+		
+		WebRtcCallAppearances *int `json:"webRtcCallAppearances,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -80,6 +86,8 @@ func (o *Userstation) MarshalJSON() ([]byte, error) {
 		DefaultUser: o.DefaultUser,
 		
 		ProviderInfo: o.ProviderInfo,
+		
+		WebRtcCallAppearances: o.WebRtcCallAppearances,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -121,6 +129,11 @@ func (o *Userstation) UnmarshalJSON(b []byte) error {
 	if ProviderInfo, ok := UserstationMap["providerInfo"].(map[string]interface{}); ok {
 		ProviderInfoString, _ := json.Marshal(ProviderInfo)
 		json.Unmarshal(ProviderInfoString, &o.ProviderInfo)
+	}
+	
+	if WebRtcCallAppearances, ok := UserstationMap["webRtcCallAppearances"].(float64); ok {
+		WebRtcCallAppearancesInt := int(WebRtcCallAppearances)
+		o.WebRtcCallAppearances = &WebRtcCallAppearancesInt
 	}
 	
 

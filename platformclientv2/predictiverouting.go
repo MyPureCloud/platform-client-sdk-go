@@ -7,15 +7,23 @@ import (
 )
 
 // Predictiverouting
-type Predictiverouting struct { }
+type Predictiverouting struct { 
+	// RespectSkills - A switch used to determine if agent skills will be considered.
+	RespectSkills *bool `json:"respectSkills,omitempty"`
+
+}
 
 func (o *Predictiverouting) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
 	type Alias Predictiverouting
 	
-	return json.Marshal(&struct { *Alias
-	}{ Alias:    (*Alias)(o),
+	return json.Marshal(&struct { 
+		RespectSkills *bool `json:"respectSkills,omitempty"`
+		*Alias
+	}{ 
+		RespectSkills: o.RespectSkills,
+		Alias:    (*Alias)(o),
 	})
 }
 
@@ -24,6 +32,10 @@ func (o *Predictiverouting) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &PredictiveroutingMap)
 	if err != nil {
 		return err
+	}
+	
+	if RespectSkills, ok := PredictiveroutingMap["respectSkills"].(bool); ok {
+		o.RespectSkills = &RespectSkills
 	}
 	
 

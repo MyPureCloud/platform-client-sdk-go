@@ -12,16 +12,12 @@ type Queuememberentitylisting struct {
 	Entities *[]Queuemember `json:"entities,omitempty"`
 
 
-	// PageSize
-	PageSize *int `json:"pageSize,omitempty"`
-
-
 	// PageNumber
 	PageNumber *int `json:"pageNumber,omitempty"`
 
 
-	// Total
-	Total *int `json:"total,omitempty"`
+	// PageSize
+	PageSize *int `json:"pageSize,omitempty"`
 
 
 	// FirstUri
@@ -39,14 +35,6 @@ type Queuememberentitylisting struct {
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
-	// PageCount
-	PageCount *int `json:"pageCount,omitempty"`
-
 }
 
 func (o *Queuememberentitylisting) MarshalJSON() ([]byte, error) {
@@ -57,11 +45,9 @@ func (o *Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 	return json.Marshal(&struct { 
 		Entities *[]Queuemember `json:"entities,omitempty"`
 		
-		PageSize *int `json:"pageSize,omitempty"`
-		
 		PageNumber *int `json:"pageNumber,omitempty"`
 		
-		Total *int `json:"total,omitempty"`
+		PageSize *int `json:"pageSize,omitempty"`
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
@@ -70,19 +56,13 @@ func (o *Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		NextUri *string `json:"nextUri,omitempty"`
 		
 		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
-		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
 	}{ 
 		Entities: o.Entities,
 		
-		PageSize: o.PageSize,
-		
 		PageNumber: o.PageNumber,
 		
-		Total: o.Total,
+		PageSize: o.PageSize,
 		
 		FirstUri: o.FirstUri,
 		
@@ -91,10 +71,6 @@ func (o *Queuememberentitylisting) MarshalJSON() ([]byte, error) {
 		NextUri: o.NextUri,
 		
 		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
-		
-		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -111,19 +87,14 @@ func (o *Queuememberentitylisting) UnmarshalJSON(b []byte) error {
 		json.Unmarshal(EntitiesString, &o.Entities)
 	}
 	
-	if PageSize, ok := QueuememberentitylistingMap["pageSize"].(float64); ok {
-		PageSizeInt := int(PageSize)
-		o.PageSize = &PageSizeInt
-	}
-	
 	if PageNumber, ok := QueuememberentitylistingMap["pageNumber"].(float64); ok {
 		PageNumberInt := int(PageNumber)
 		o.PageNumber = &PageNumberInt
 	}
 	
-	if Total, ok := QueuememberentitylistingMap["total"].(float64); ok {
-		TotalInt := int(Total)
-		o.Total = &TotalInt
+	if PageSize, ok := QueuememberentitylistingMap["pageSize"].(float64); ok {
+		PageSizeInt := int(PageSize)
+		o.PageSize = &PageSizeInt
 	}
 	
 	if FirstUri, ok := QueuememberentitylistingMap["firstUri"].(string); ok {
@@ -140,15 +111,6 @@ func (o *Queuememberentitylisting) UnmarshalJSON(b []byte) error {
 	
 	if PreviousUri, ok := QueuememberentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
-	}
-	
-	if LastUri, ok := QueuememberentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-	
-	if PageCount, ok := QueuememberentitylistingMap["pageCount"].(float64); ok {
-		PageCountInt := int(PageCount)
-		o.PageCount = &PageCountInt
 	}
 	
 

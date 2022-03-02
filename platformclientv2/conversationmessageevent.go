@@ -15,6 +15,10 @@ type Conversationmessageevent struct {
 	// CoBrowse - CoBrowse event.
 	CoBrowse *Conversationeventcobrowse `json:"coBrowse,omitempty"`
 
+
+	// Typing - Typing event.
+	Typing *Conversationeventtyping `json:"typing,omitempty"`
+
 }
 
 func (o *Conversationmessageevent) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Conversationmessageevent) MarshalJSON() ([]byte, error) {
 		EventType *string `json:"eventType,omitempty"`
 		
 		CoBrowse *Conversationeventcobrowse `json:"coBrowse,omitempty"`
+		
+		Typing *Conversationeventtyping `json:"typing,omitempty"`
 		*Alias
 	}{ 
 		EventType: o.EventType,
 		
 		CoBrowse: o.CoBrowse,
+		
+		Typing: o.Typing,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -49,6 +57,11 @@ func (o *Conversationmessageevent) UnmarshalJSON(b []byte) error {
 	if CoBrowse, ok := ConversationmessageeventMap["coBrowse"].(map[string]interface{}); ok {
 		CoBrowseString, _ := json.Marshal(CoBrowse)
 		json.Unmarshal(CoBrowseString, &o.CoBrowse)
+	}
+	
+	if Typing, ok := ConversationmessageeventMap["typing"].(map[string]interface{}); ok {
+		TypingString, _ := json.Marshal(Typing)
+		json.Unmarshal(TypingString, &o.Typing)
 	}
 	
 

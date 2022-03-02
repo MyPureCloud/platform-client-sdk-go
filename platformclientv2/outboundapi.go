@@ -6600,7 +6600,7 @@ func (a OutboundApi) PostOutboundDnclistExport(dncListId string) (*Domainentityr
 // Add phone numbers to a DNC list.
 //
 // Only Internal DNC lists may be appended to
-func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []string) (*APIResponse, error) {
+func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []string, expirationDateTime string) (*APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/outbound/dnclists/{dncListId}/phonenumbers"
@@ -6636,6 +6636,8 @@ func (a OutboundApi) PostOutboundDnclistPhonenumbers(dncListId string, body []st
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["expirationDateTime"] = a.Configuration.APIClient.ParameterToString(expirationDateTime, "")
 	
 
 	// to determine the Content-Type header

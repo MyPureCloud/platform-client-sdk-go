@@ -517,7 +517,7 @@ func (a RecordingApi) DeleteRecordingMediaretentionpolicy(policyId string) (*API
 // Gets a specific recording.
 //
 // 
-func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecording(conversationId string, recordingId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string, mediaFormats []string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings/{recordingId}"
@@ -569,6 +569,8 @@ func (a RecordingApi) GetConversationRecording(conversationId string, recordingI
 	queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, "")
 	
 	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
+	
+	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
 
 	// to determine the Content-Type header
@@ -926,7 +928,7 @@ func (a RecordingApi) GetConversationRecordingmetadataRecordingId(conversationId
 // Get all of a Conversation&#39;s Recordings.
 //
 // 
-func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int, formatId string) ([]Recording, *APIResponse, error) {
+func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs int, formatId string, mediaFormats []string) ([]Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/conversations/{conversationId}/recordings"
@@ -962,6 +964,8 @@ func (a RecordingApi) GetConversationRecordings(conversationId string, maxWaitMs
 	queryParams["maxWaitMs"] = a.Configuration.APIClient.ParameterToString(maxWaitMs, "")
 	
 	queryParams["formatId"] = a.Configuration.APIClient.ParameterToString(formatId, "")
+	
+	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
 
 	// to determine the Content-Type header
@@ -1076,7 +1080,7 @@ func (a RecordingApi) GetOrphanrecording(orphanId string) (*Orphanrecording, *AP
 // Gets the media of a single orphan recording
 //
 // A 202 response means the orphaned media is currently transcoding and will be available shortly.A 200 response denotes the transcoded orphan media is available now and is contained in the response body.
-func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string) (*Recording, *APIResponse, error) {
+func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, emailFormatId string, chatFormatId string, messageFormatId string, download bool, fileName string, locale string, mediaFormats []string) (*Recording, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/orphanrecordings/{orphanId}/media"
@@ -1122,6 +1126,8 @@ func (a RecordingApi) GetOrphanrecordingMedia(orphanId string, formatId string, 
 	queryParams["fileName"] = a.Configuration.APIClient.ParameterToString(fileName, "")
 	
 	queryParams["locale"] = a.Configuration.APIClient.ParameterToString(locale, "")
+	
+	queryParams["mediaFormats"] = a.Configuration.APIClient.ParameterToString(mediaFormats, "multi")
 	
 
 	// to determine the Content-Type header

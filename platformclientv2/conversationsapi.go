@@ -10809,7 +10809,7 @@ func (a ConversationsApi) PostConversationsMessages(body Createoutboundmessaging
 //
 // Send an agentless outbound message
 //
-// Send an agentlesss (api participant) outbound message using a client credential grant. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. This will generate a new Conversation, if there is an existing active Conversation between the fromAddress and toAddress already, then this POST will fail.
+// Send an agentless (api participant) outbound message using a client credential grant. In order to call this endpoint you will need OAuth token generated using OAuth client credentials authorized with at least messaging scope. This will generate a new Conversation, if there is an existing active Conversation between the fromAddress and toAddress already, then this POST will fail.
 func (a ConversationsApi) PostConversationsMessagesAgentless(body Sendagentlessoutboundmessagerequest) (*Sendagentlessoutboundmessageresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

@@ -3392,7 +3392,7 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 // Create a new custom performance profile
 //
 // 
-func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile) (*Getprofilesresponse, *APIResponse, error) {
+func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile, copyMetrics bool) (*Getprofilesresponse, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles"
@@ -3423,6 +3423,8 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile)
 	for key := range a.Configuration.DefaultHeader {
 		headerParams[key] = a.Configuration.DefaultHeader[key]
 	}
+	
+	queryParams["copyMetrics"] = a.Configuration.APIClient.ParameterToString(copyMetrics, "")
 	
 
 	// to determine the Content-Type header

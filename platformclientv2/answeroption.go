@@ -19,6 +19,10 @@ type Answeroption struct {
 	// Value
 	Value *int `json:"value,omitempty"`
 
+
+	// AssistanceConditions
+	AssistanceConditions *[]Assistancecondition `json:"assistanceConditions,omitempty"`
+
 }
 
 func (o *Answeroption) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Answeroption) MarshalJSON() ([]byte, error) {
 		Text *string `json:"text,omitempty"`
 		
 		Value *int `json:"value,omitempty"`
+		
+		AssistanceConditions *[]Assistancecondition `json:"assistanceConditions,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -39,6 +45,8 @@ func (o *Answeroption) MarshalJSON() ([]byte, error) {
 		Text: o.Text,
 		
 		Value: o.Value,
+		
+		AssistanceConditions: o.AssistanceConditions,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -61,6 +69,11 @@ func (o *Answeroption) UnmarshalJSON(b []byte) error {
 	if Value, ok := AnsweroptionMap["value"].(float64); ok {
 		ValueInt := int(Value)
 		o.Value = &ValueInt
+	}
+	
+	if AssistanceConditions, ok := AnsweroptionMap["assistanceConditions"].([]interface{}); ok {
+		AssistanceConditionsString, _ := json.Marshal(AssistanceConditions)
+		json.Unmarshal(AssistanceConditionsString, &o.AssistanceConditions)
 	}
 	
 

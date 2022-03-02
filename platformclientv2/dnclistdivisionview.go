@@ -28,6 +28,10 @@ type Dnclistdivisionview struct {
 	Size *int `json:"size,omitempty"`
 
 
+	// DncSourceType - The type of the DncList.
+	DncSourceType *string `json:"dncSourceType,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -49,6 +53,8 @@ func (o *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
 		
 		Size *int `json:"size,omitempty"`
 		
+		DncSourceType *string `json:"dncSourceType,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -61,6 +67,8 @@ func (o *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
 		ImportStatus: o.ImportStatus,
 		
 		Size: o.Size,
+		
+		DncSourceType: o.DncSourceType,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -95,6 +103,10 @@ func (o *Dnclistdivisionview) UnmarshalJSON(b []byte) error {
 	if Size, ok := DnclistdivisionviewMap["size"].(float64); ok {
 		SizeInt := int(Size)
 		o.Size = &SizeInt
+	}
+	
+	if DncSourceType, ok := DnclistdivisionviewMap["dncSourceType"].(string); ok {
+		o.DncSourceType = &DncSourceType
 	}
 	
 	if SelfUri, ok := DnclistdivisionviewMap["selfUri"].(string); ok {

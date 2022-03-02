@@ -9,7 +9,7 @@ import (
 // Expirededgelisting
 type Expirededgelisting struct { 
 	// Entities
-	Entities *[]Edgeidnamepair `json:"entities,omitempty"`
+	Entities *[]Domainentityref `json:"entities,omitempty"`
 
 }
 
@@ -19,7 +19,7 @@ func (o *Expirededgelisting) MarshalJSON() ([]byte, error) {
 	type Alias Expirededgelisting
 	
 	return json.Marshal(&struct { 
-		Entities *[]Edgeidnamepair `json:"entities,omitempty"`
+		Entities *[]Domainentityref `json:"entities,omitempty"`
 		*Alias
 	}{ 
 		Entities: o.Entities,

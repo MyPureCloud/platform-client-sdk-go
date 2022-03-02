@@ -35,6 +35,10 @@ type Evaluationscoringset struct {
 	// AgentComments - Comments from the agent while reviewing evaluation results
 	AgentComments *string `json:"agentComments,omitempty"`
 
+
+	// TranscriptTopics - List of topics found within the conversation's transcripts
+	TranscriptTopics *[]Transcripttopic `json:"transcriptTopics,omitempty"`
+
 }
 
 func (o *Evaluationscoringset) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,8 @@ func (o *Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		Comments *string `json:"comments,omitempty"`
 		
 		AgentComments *string `json:"agentComments,omitempty"`
+		
+		TranscriptTopics *[]Transcripttopic `json:"transcriptTopics,omitempty"`
 		*Alias
 	}{ 
 		TotalScore: o.TotalScore,
@@ -71,6 +77,8 @@ func (o *Evaluationscoringset) MarshalJSON() ([]byte, error) {
 		Comments: o.Comments,
 		
 		AgentComments: o.AgentComments,
+		
+		TranscriptTopics: o.TranscriptTopics,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -112,6 +120,11 @@ func (o *Evaluationscoringset) UnmarshalJSON(b []byte) error {
 	
 	if AgentComments, ok := EvaluationscoringsetMap["agentComments"].(string); ok {
 		o.AgentComments = &AgentComments
+	}
+	
+	if TranscriptTopics, ok := EvaluationscoringsetMap["transcriptTopics"].([]interface{}); ok {
+		TranscriptTopicsString, _ := json.Marshal(TranscriptTopics)
+		json.Unmarshal(TranscriptTopicsString, &o.TranscriptTopics)
 	}
 	
 

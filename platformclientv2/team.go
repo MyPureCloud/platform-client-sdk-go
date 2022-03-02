@@ -25,6 +25,10 @@ type Team struct {
 	Description *string `json:"description,omitempty"`
 
 
+	// DateCreated - Last modified datetime. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	DateCreated *time.Time `json:"dateCreated,omitempty"`
+
+
 	// DateModified - Last modified datetime. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	DateModified *time.Time `json:"dateModified,omitempty"`
 
@@ -43,6 +47,14 @@ func (o *Team) MarshalJSON() ([]byte, error) {
 	_  = timeutil.Timedelta{}
 	type Alias Team
 	
+	DateCreated := new(string)
+	if o.DateCreated != nil {
+		
+		*DateCreated = timeutil.Strftime(o.DateCreated, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		DateCreated = nil
+	}
+	
 	DateModified := new(string)
 	if o.DateModified != nil {
 		
@@ -60,6 +72,8 @@ func (o *Team) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
+		DateCreated *string `json:"dateCreated,omitempty"`
+		
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		MemberCount *int `json:"memberCount,omitempty"`
@@ -74,6 +88,8 @@ func (o *Team) MarshalJSON() ([]byte, error) {
 		Division: o.Division,
 		
 		Description: o.Description,
+		
+		DateCreated: DateCreated,
 		
 		DateModified: DateModified,
 		
@@ -106,6 +122,11 @@ func (o *Team) UnmarshalJSON(b []byte) error {
 	
 	if Description, ok := TeamMap["description"].(string); ok {
 		o.Description = &Description
+	}
+	
+	if dateCreatedString, ok := TeamMap["dateCreated"].(string); ok {
+		DateCreated, _ := time.Parse("2006-01-02T15:04:05.999999Z", dateCreatedString)
+		o.DateCreated = &DateCreated
 	}
 	
 	if dateModifiedString, ok := TeamMap["dateModified"].(string); ok {

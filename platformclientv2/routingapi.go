@@ -2757,12 +2757,12 @@ func (a RoutingApi) GetRoutingQueueMembers(queueId string, pageNumber int, pageS
 // DEPRECATED: use GET /routing/queues/{queueId}/members.  Get the members of this queue.
 //
 // 
-func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylisting, *APIResponse, error) {
+func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSize int, sortOrder string, expand []string, joined bool, name string, profileSkills []string, skills []string, languages []string, routingStatus []string, presence []string) (*Queuememberentitylistingv1, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
 	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	defaultReturn := new(Queuememberentitylisting)
+	defaultReturn := new(Queuememberentitylistingv1)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -2831,14 +2831,14 @@ func (a RoutingApi) GetRoutingQueueUsers(queueId string, pageNumber int, pageSiz
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
-	var successPayload *Queuememberentitylisting
+	var successPayload *Queuememberentitylistingv1
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Queuememberentitylisting" == "string" {
+		if "Queuememberentitylistingv1" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)
@@ -5068,12 +5068,12 @@ func (a RoutingApi) PatchRoutingQueueUser(queueId string, memberId string, body 
 // DEPRECATED: use PATCH /routing/queues/{queueId}/members.  Join or unjoin a set of users for a queue.
 //
 // 
-func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (*Queuememberentitylisting, *APIResponse, error) {
+func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (*Queuememberentitylistingv1, *APIResponse, error) {
 	var httpMethod = "PATCH"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/routing/queues/{queueId}/users"
 	path = strings.Replace(path, "{queueId}", fmt.Sprintf("%v", queueId), -1)
-	defaultReturn := new(Queuememberentitylisting)
+	defaultReturn := new(Queuememberentitylistingv1)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -5128,14 +5128,14 @@ func (a RoutingApi) PatchRoutingQueueUsers(queueId string, body []Queuemember) (
 	// body params
 	postBody = &body
 
-	var successPayload *Queuememberentitylisting
+	var successPayload *Queuememberentitylistingv1
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Queuememberentitylisting" == "string" {
+		if "Queuememberentitylistingv1" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

@@ -24,6 +24,10 @@ type Surveyquestionscore struct {
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
 
+	// AssistedAnswerId - AnswerId found with evaluation assistance conditions
+	AssistedAnswerId *string `json:"assistedAnswerId,omitempty"`
+
+
 	// NpsScore
 	NpsScore *int `json:"npsScore,omitempty"`
 
@@ -51,6 +55,8 @@ func (o *Surveyquestionscore) MarshalJSON() ([]byte, error) {
 		
 		MarkedNA *bool `json:"markedNA,omitempty"`
 		
+		AssistedAnswerId *string `json:"assistedAnswerId,omitempty"`
+		
 		NpsScore *int `json:"npsScore,omitempty"`
 		
 		NpsTextAnswer *string `json:"npsTextAnswer,omitempty"`
@@ -65,6 +71,8 @@ func (o *Surveyquestionscore) MarshalJSON() ([]byte, error) {
 		Score: o.Score,
 		
 		MarkedNA: o.MarkedNA,
+		
+		AssistedAnswerId: o.AssistedAnswerId,
 		
 		NpsScore: o.NpsScore,
 		
@@ -97,6 +105,10 @@ func (o *Surveyquestionscore) UnmarshalJSON(b []byte) error {
 	
 	if MarkedNA, ok := SurveyquestionscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
+	}
+	
+	if AssistedAnswerId, ok := SurveyquestionscoreMap["assistedAnswerId"].(string); ok {
+		o.AssistedAnswerId = &AssistedAnswerId
 	}
 	
 	if NpsScore, ok := SurveyquestionscoreMap["npsScore"].(float64); ok {

@@ -24,6 +24,10 @@ type Evaluationquestionscore struct {
 	MarkedNA *bool `json:"markedNA,omitempty"`
 
 
+	// AssistedAnswerId - AnswerId found with evaluation assistance conditions
+	AssistedAnswerId *string `json:"assistedAnswerId,omitempty"`
+
+
 	// FailedKillQuestion - Applicable only on fatal questions. Indicates that the answer selected was not the highest score available for the question
 	FailedKillQuestion *bool `json:"failedKillQuestion,omitempty"`
 
@@ -47,6 +51,8 @@ func (o *Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		
 		MarkedNA *bool `json:"markedNA,omitempty"`
 		
+		AssistedAnswerId *string `json:"assistedAnswerId,omitempty"`
+		
 		FailedKillQuestion *bool `json:"failedKillQuestion,omitempty"`
 		
 		Comments *string `json:"comments,omitempty"`
@@ -59,6 +65,8 @@ func (o *Evaluationquestionscore) MarshalJSON() ([]byte, error) {
 		Score: o.Score,
 		
 		MarkedNA: o.MarkedNA,
+		
+		AssistedAnswerId: o.AssistedAnswerId,
 		
 		FailedKillQuestion: o.FailedKillQuestion,
 		
@@ -89,6 +97,10 @@ func (o *Evaluationquestionscore) UnmarshalJSON(b []byte) error {
 	
 	if MarkedNA, ok := EvaluationquestionscoreMap["markedNA"].(bool); ok {
 		o.MarkedNA = &MarkedNA
+	}
+	
+	if AssistedAnswerId, ok := EvaluationquestionscoreMap["assistedAnswerId"].(string); ok {
+		o.AssistedAnswerId = &AssistedAnswerId
 	}
 	
 	if FailedKillQuestion, ok := EvaluationquestionscoreMap["failedKillQuestion"].(bool); ok {
