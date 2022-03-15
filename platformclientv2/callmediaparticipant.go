@@ -185,12 +185,20 @@ type Callmediaparticipant struct {
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
 
+	// BargedParticipantId - If this participant barged in a participant's call, then this will be the id of the targeted participant.
+	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+
+
 	// ConsultParticipantId - The ID of the consult transfer target participant when performing a consult transfer.
 	ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 
 
 	// UuiData - User-to-User information which maps to a SIP header field defined in RFC7433. UUI data is used in the Public Switched Telephone Network (PSTN) for use cases described in RFC6567.
 	UuiData *string `json:"uuiData,omitempty"`
+
+
+	// BargedTime - The timestamp when this participant was connected to the barge conference in the provider clock. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	BargedTime *time.Time `json:"bargedTime,omitempty"`
 
 }
 
@@ -245,6 +253,14 @@ func (o *Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		*EndAcwTime = timeutil.Strftime(o.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndAcwTime = nil
+	}
+	
+	BargedTime := new(string)
+	if o.BargedTime != nil {
+		
+		*BargedTime = timeutil.Strftime(o.BargedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		BargedTime = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -336,9 +352,13 @@ func (o *Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 		
+		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+		
 		ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 		
 		UuiData *string `json:"uuiData,omitempty"`
+		
+		BargedTime *string `json:"bargedTime,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -429,9 +449,13 @@ func (o *Callmediaparticipant) MarshalJSON() ([]byte, error) {
 		
 		CoachedParticipantId: o.CoachedParticipantId,
 		
+		BargedParticipantId: o.BargedParticipantId,
+		
 		ConsultParticipantId: o.ConsultParticipantId,
 		
 		UuiData: o.UuiData,
+		
+		BargedTime: BargedTime,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -640,12 +664,21 @@ func (o *Callmediaparticipant) UnmarshalJSON(b []byte) error {
 		o.CoachedParticipantId = &CoachedParticipantId
 	}
 	
+	if BargedParticipantId, ok := CallmediaparticipantMap["bargedParticipantId"].(string); ok {
+		o.BargedParticipantId = &BargedParticipantId
+	}
+	
 	if ConsultParticipantId, ok := CallmediaparticipantMap["consultParticipantId"].(string); ok {
 		o.ConsultParticipantId = &ConsultParticipantId
 	}
 	
 	if UuiData, ok := CallmediaparticipantMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
+	}
+	
+	if bargedTimeString, ok := CallmediaparticipantMap["bargedTime"].(string); ok {
+		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
+		o.BargedTime = &BargedTime
 	}
 	
 

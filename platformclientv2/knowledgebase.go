@@ -21,7 +21,7 @@ type Knowledgebase struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// CoreLanguage - Core language for knowledge base in which initial content must be created first
+	// CoreLanguage - Core language for knowledge base in which initial content must be created, language codes [en-US, en-UK, en-AU, de-DE] are supported currently, however the new DX knowledge will support all these language codes
 	CoreLanguage *string `json:"coreLanguage,omitempty"`
 
 

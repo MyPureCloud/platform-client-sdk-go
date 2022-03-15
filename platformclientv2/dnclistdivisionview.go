@@ -32,6 +32,10 @@ type Dnclistdivisionview struct {
 	DncSourceType *string `json:"dncSourceType,omitempty"`
 
 
+	// ContactMethod - The contact method. Required if dncSourceType is rds.
+	ContactMethod *string `json:"contactMethod,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -55,6 +59,8 @@ func (o *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
 		
 		DncSourceType *string `json:"dncSourceType,omitempty"`
 		
+		ContactMethod *string `json:"contactMethod,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -69,6 +75,8 @@ func (o *Dnclistdivisionview) MarshalJSON() ([]byte, error) {
 		Size: o.Size,
 		
 		DncSourceType: o.DncSourceType,
+		
+		ContactMethod: o.ContactMethod,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -107,6 +115,10 @@ func (o *Dnclistdivisionview) UnmarshalJSON(b []byte) error {
 	
 	if DncSourceType, ok := DnclistdivisionviewMap["dncSourceType"].(string); ok {
 		o.DncSourceType = &DncSourceType
+	}
+	
+	if ContactMethod, ok := DnclistdivisionviewMap["contactMethod"].(string); ok {
+		o.ContactMethod = &ContactMethod
 	}
 	
 	if SelfUri, ok := DnclistdivisionviewMap["selfUri"].(string); ok {

@@ -33,6 +33,10 @@ type Encryptionkey struct {
 	LocalEncryptionConfiguration *Localencryptionconfiguration `json:"localEncryptionConfiguration,omitempty"`
 
 
+	// KeyConfigurationType - Key type used in this configuration
+	KeyConfigurationType *string `json:"keyConfigurationType,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -64,6 +68,8 @@ func (o *Encryptionkey) MarshalJSON() ([]byte, error) {
 		
 		LocalEncryptionConfiguration *Localencryptionconfiguration `json:"localEncryptionConfiguration,omitempty"`
 		
+		KeyConfigurationType *string `json:"keyConfigurationType,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -78,6 +84,8 @@ func (o *Encryptionkey) MarshalJSON() ([]byte, error) {
 		User: o.User,
 		
 		LocalEncryptionConfiguration: o.LocalEncryptionConfiguration,
+		
+		KeyConfigurationType: o.KeyConfigurationType,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -116,6 +124,10 @@ func (o *Encryptionkey) UnmarshalJSON(b []byte) error {
 	if LocalEncryptionConfiguration, ok := EncryptionkeyMap["localEncryptionConfiguration"].(map[string]interface{}); ok {
 		LocalEncryptionConfigurationString, _ := json.Marshal(LocalEncryptionConfiguration)
 		json.Unmarshal(LocalEncryptionConfigurationString, &o.LocalEncryptionConfiguration)
+	}
+	
+	if KeyConfigurationType, ok := EncryptionkeyMap["keyConfigurationType"].(string); ok {
+		o.KeyConfigurationType = &KeyConfigurationType
 	}
 	
 	if SelfUri, ok := EncryptionkeyMap["selfUri"].(string); ok {

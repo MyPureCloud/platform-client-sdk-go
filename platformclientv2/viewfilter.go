@@ -567,6 +567,18 @@ type Viewfilter struct {
 	// IsAssessmentPassed - Filter to indicate if Agent passed assessment or not
 	IsAssessmentPassed *bool `json:"isAssessmentPassed,omitempty"`
 
+
+	// ConversationInitiator - Indicates the Brand (Bot/User/Agent) or End User who initiated the first message in the conversation
+	ConversationInitiator *string `json:"conversationInitiator,omitempty"`
+
+
+	// HasCustomerParticipated - Indicates if the customer has participated in an initiated conversation
+	HasCustomerParticipated *bool `json:"hasCustomerParticipated,omitempty"`
+
+
+	// IsAcdInteraction - Filter to indicate if interaction was ACD or non-ACD
+	IsAcdInteraction *bool `json:"isAcdInteraction,omitempty"`
+
 }
 
 func (o *Viewfilter) MarshalJSON() ([]byte, error) {
@@ -854,6 +866,12 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		FlowMilestoneIds *[]string `json:"flowMilestoneIds,omitempty"`
 		
 		IsAssessmentPassed *bool `json:"isAssessmentPassed,omitempty"`
+		
+		ConversationInitiator *string `json:"conversationInitiator,omitempty"`
+		
+		HasCustomerParticipated *bool `json:"hasCustomerParticipated,omitempty"`
+		
+		IsAcdInteraction *bool `json:"isAcdInteraction,omitempty"`
 		*Alias
 	}{ 
 		MediaTypes: o.MediaTypes,
@@ -1135,6 +1153,12 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		FlowMilestoneIds: o.FlowMilestoneIds,
 		
 		IsAssessmentPassed: o.IsAssessmentPassed,
+		
+		ConversationInitiator: o.ConversationInitiator,
+		
+		HasCustomerParticipated: o.HasCustomerParticipated,
+		
+		IsAcdInteraction: o.IsAcdInteraction,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -1819,6 +1843,18 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 	
 	if IsAssessmentPassed, ok := ViewfilterMap["isAssessmentPassed"].(bool); ok {
 		o.IsAssessmentPassed = &IsAssessmentPassed
+	}
+	
+	if ConversationInitiator, ok := ViewfilterMap["conversationInitiator"].(string); ok {
+		o.ConversationInitiator = &ConversationInitiator
+	}
+	
+	if HasCustomerParticipated, ok := ViewfilterMap["hasCustomerParticipated"].(bool); ok {
+		o.HasCustomerParticipated = &HasCustomerParticipated
+	}
+	
+	if IsAcdInteraction, ok := ViewfilterMap["isAcdInteraction"].(bool); ok {
+		o.IsAcdInteraction = &IsAcdInteraction
 	}
 	
 

@@ -41,6 +41,10 @@ type Dnclistcreate struct {
 	DncSourceType *string `json:"dncSourceType,omitempty"`
 
 
+	// ContactMethod - The contact method. Required if dncSourceType is rds.
+	ContactMethod *string `json:"contactMethod,omitempty"`
+
+
 	// LoginId - A dnc.com loginId. Required if the dncSourceType is dnc.com.
 	LoginId *string `json:"loginId,omitempty"`
 
@@ -100,6 +104,8 @@ func (o *Dnclistcreate) MarshalJSON() ([]byte, error) {
 		
 		DncSourceType *string `json:"dncSourceType,omitempty"`
 		
+		ContactMethod *string `json:"contactMethod,omitempty"`
+		
 		LoginId *string `json:"loginId,omitempty"`
 		
 		DncCodes *[]string `json:"dncCodes,omitempty"`
@@ -126,6 +132,8 @@ func (o *Dnclistcreate) MarshalJSON() ([]byte, error) {
 		Size: o.Size,
 		
 		DncSourceType: o.DncSourceType,
+		
+		ContactMethod: o.ContactMethod,
 		
 		LoginId: o.LoginId,
 		
@@ -182,6 +190,10 @@ func (o *Dnclistcreate) UnmarshalJSON(b []byte) error {
 	
 	if DncSourceType, ok := DnclistcreateMap["dncSourceType"].(string); ok {
 		o.DncSourceType = &DncSourceType
+	}
+	
+	if ContactMethod, ok := DnclistcreateMap["contactMethod"].(string); ok {
+		o.ContactMethod = &ContactMethod
 	}
 	
 	if LoginId, ok := DnclistcreateMap["loginId"].(string); ok {

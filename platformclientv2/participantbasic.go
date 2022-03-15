@@ -188,6 +188,10 @@ type Participantbasic struct {
 	// EndAcwTime - The timestamp when this participant ended after-call work. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	EndAcwTime *time.Time `json:"endAcwTime,omitempty"`
 
+
+	// BargedParticipantId - If this participant barged in a participant's call, then this will be the id of the targeted participant.
+	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+
 }
 
 func (o *Participantbasic) MarshalJSON() ([]byte, error) {
@@ -325,6 +329,8 @@ func (o *Participantbasic) MarshalJSON() ([]byte, error) {
 		StartAcwTime *string `json:"startAcwTime,omitempty"`
 		
 		EndAcwTime *string `json:"endAcwTime,omitempty"`
+		
+		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -416,6 +422,8 @@ func (o *Participantbasic) MarshalJSON() ([]byte, error) {
 		StartAcwTime: StartAcwTime,
 		
 		EndAcwTime: EndAcwTime,
+		
+		BargedParticipantId: o.BargedParticipantId,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -625,6 +633,10 @@ func (o *Participantbasic) UnmarshalJSON(b []byte) error {
 	if endAcwTimeString, ok := ParticipantbasicMap["endAcwTime"].(string); ok {
 		EndAcwTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", endAcwTimeString)
 		o.EndAcwTime = &EndAcwTime
+	}
+	
+	if BargedParticipantId, ok := ParticipantbasicMap["bargedParticipantId"].(string); ok {
+		o.BargedParticipantId = &BargedParticipantId
 	}
 	
 

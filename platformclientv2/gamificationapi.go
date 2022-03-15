@@ -3392,11 +3392,11 @@ func (a GamificationApi) PostGamificationProfileMetrics(profileId string, body C
 // Create a new custom performance profile
 //
 // 
-func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile, copyMetrics bool) (*Getprofilesresponse, *APIResponse, error) {
+func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile, copyMetrics bool) (*Performanceprofile, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/gamification/profiles"
-	defaultReturn := new(Getprofilesresponse)
+	defaultReturn := new(Performanceprofile)
 	if true == false {
 		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
 	}
@@ -3448,14 +3448,14 @@ func (a GamificationApi) PostGamificationProfiles(body Createperformanceprofile,
 	// body params
 	postBody = &body
 
-	var successPayload *Getprofilesresponse
+	var successPayload *Performanceprofile
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
 		// Nothing special to do here, but do avoid processing the response
 	} else if err == nil && response.Error != nil {
 		err = errors.New(response.ErrorMessage)
 	} else {
-		if "Getprofilesresponse" == "string" {
+		if "Performanceprofile" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

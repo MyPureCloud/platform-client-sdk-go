@@ -5408,7 +5408,7 @@ func (a WorkforceManagementApi) GetWorkforcemanagementManagementunitsDivisionvie
 //
 // Get a list of notifications for the current user
 //
-// 
+// Notifications are only initially sent if you have the relevant Notify and Edit permissions
 func (a WorkforceManagementApi) GetWorkforcemanagementNotifications() (*Notificationsresponse, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables

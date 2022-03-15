@@ -84,6 +84,10 @@ type Acwdetaileventtopicaftercallworkevent struct {
 	WrapupCode *string `json:"wrapupCode,omitempty"`
 
 
+	// WrapupNotes
+	WrapupNotes *string `json:"wrapupNotes,omitempty"`
+
+
 	// WrapupDurationMs
 	WrapupDurationMs *int `json:"wrapupDurationMs,omitempty"`
 
@@ -133,6 +137,8 @@ func (o *Acwdetaileventtopicaftercallworkevent) MarshalJSON() ([]byte, error) {
 		
 		WrapupCode *string `json:"wrapupCode,omitempty"`
 		
+		WrapupNotes *string `json:"wrapupNotes,omitempty"`
+		
 		WrapupDurationMs *int `json:"wrapupDurationMs,omitempty"`
 		*Alias
 	}{ 
@@ -173,6 +179,8 @@ func (o *Acwdetaileventtopicaftercallworkevent) MarshalJSON() ([]byte, error) {
 		QueueId: o.QueueId,
 		
 		WrapupCode: o.WrapupCode,
+		
+		WrapupNotes: o.WrapupNotes,
 		
 		WrapupDurationMs: o.WrapupDurationMs,
 		Alias:    (*Alias)(o),
@@ -263,6 +271,10 @@ func (o *Acwdetaileventtopicaftercallworkevent) UnmarshalJSON(b []byte) error {
 	
 	if WrapupCode, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupCode"].(string); ok {
 		o.WrapupCode = &WrapupCode
+	}
+	
+	if WrapupNotes, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupNotes"].(string); ok {
+		o.WrapupNotes = &WrapupNotes
 	}
 	
 	if WrapupDurationMs, ok := AcwdetaileventtopicaftercallworkeventMap["wrapupDurationMs"].(float64); ok {

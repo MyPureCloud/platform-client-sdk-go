@@ -33,6 +33,10 @@ type Responseset struct {
 	Responses *map[string]Reaction `json:"responses,omitempty"`
 
 
+	// BeepDetectionEnabled - Whether to enable answering machine beep detection
+	BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -72,6 +76,8 @@ func (o *Responseset) MarshalJSON() ([]byte, error) {
 		
 		Responses *map[string]Reaction `json:"responses,omitempty"`
 		
+		BeepDetectionEnabled *bool `json:"beepDetectionEnabled,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -86,6 +92,8 @@ func (o *Responseset) MarshalJSON() ([]byte, error) {
 		Version: o.Version,
 		
 		Responses: o.Responses,
+		
+		BeepDetectionEnabled: o.BeepDetectionEnabled,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -125,6 +133,10 @@ func (o *Responseset) UnmarshalJSON(b []byte) error {
 	if Responses, ok := ResponsesetMap["responses"].(map[string]interface{}); ok {
 		ResponsesString, _ := json.Marshal(Responses)
 		json.Unmarshal(ResponsesString, &o.Responses)
+	}
+	
+	if BeepDetectionEnabled, ok := ResponsesetMap["beepDetectionEnabled"].(bool); ok {
+		o.BeepDetectionEnabled = &BeepDetectionEnabled
 	}
 	
 	if SelfUri, ok := ResponsesetMap["selfUri"].(string); ok {

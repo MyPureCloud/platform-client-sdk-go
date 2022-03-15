@@ -77,6 +77,10 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	ConvertedTo *string `json:"convertedTo,omitempty"`
 
 
+	// CustomerParticipation - Indicates a messaging conversation in which the customer participated by sending at least one message
+	CustomerParticipation *bool `json:"customerParticipation,omitempty"`
+
+
 	// DeliveryStatus - The email or SMS delivery status
 	DeliveryStatus *string `json:"deliveryStatus,omitempty"`
 
@@ -370,6 +374,8 @@ func (o *Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte
 		
 		ConvertedTo *string `json:"convertedTo,omitempty"`
 		
+		CustomerParticipation *bool `json:"customerParticipation,omitempty"`
+		
 		DeliveryStatus *string `json:"deliveryStatus,omitempty"`
 		
 		DestinationAddresses *[]string `json:"destinationAddresses,omitempty"`
@@ -526,6 +532,8 @@ func (o *Conversationmetricstopicconversationmetricrecord) MarshalJSON() ([]byte
 		ConvertedFrom: o.ConvertedFrom,
 		
 		ConvertedTo: o.ConvertedTo,
+		
+		CustomerParticipation: o.CustomerParticipation,
 		
 		DeliveryStatus: o.DeliveryStatus,
 		
@@ -729,6 +737,10 @@ func (o *Conversationmetricstopicconversationmetricrecord) UnmarshalJSON(b []byt
 	
 	if ConvertedTo, ok := ConversationmetricstopicconversationmetricrecordMap["convertedTo"].(string); ok {
 		o.ConvertedTo = &ConvertedTo
+	}
+	
+	if CustomerParticipation, ok := ConversationmetricstopicconversationmetricrecordMap["customerParticipation"].(bool); ok {
+		o.CustomerParticipation = &CustomerParticipation
 	}
 	
 	if DeliveryStatus, ok := ConversationmetricstopicconversationmetricrecordMap["deliveryStatus"].(string); ok {

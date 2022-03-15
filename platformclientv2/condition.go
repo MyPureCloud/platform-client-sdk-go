@@ -43,6 +43,34 @@ type Condition struct {
 	// PropertyType - The type of the property associated with this Condition. Required for a contactPropertyCondition.
 	PropertyType *string `json:"propertyType,omitempty"`
 
+
+	// DataAction - The Data Action to use for this condition. Required for a dataActionCondition.
+	DataAction *Domainentityref `json:"dataAction,omitempty"`
+
+
+	// DataNotFoundResolution - The result of this condition if the data action returns a result indicating there was no data. Required for a DataActionCondition.
+	DataNotFoundResolution *bool `json:"dataNotFoundResolution,omitempty"`
+
+
+	// ContactIdField - The input field from the data action that the contactId will be passed to for this condition. Valid for a dataActionCondition.
+	ContactIdField *string `json:"contactIdField,omitempty"`
+
+
+	// CallAnalysisResultField - The input field from the data action that the callAnalysisResult will be passed to for this condition. Valid for a wrapup dataActionCondition.
+	CallAnalysisResultField *string `json:"callAnalysisResultField,omitempty"`
+
+
+	// AgentWrapupField - The input field from the data action that the agentWrapup will be passed to for this condition. Valid for a wrapup dataActionCondition.
+	AgentWrapupField *string `json:"agentWrapupField,omitempty"`
+
+
+	// ContactColumnToDataActionFieldMappings - A list of mappings defining which contact data fields will be passed to which data action input fields for this condition. Valid for a dataActionCondition.
+	ContactColumnToDataActionFieldMappings *[]Contactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
+
+
+	// Predicates - A list of predicates defining the comparisons to use for this condition. Required for a dataActionCondition.
+	Predicates *[]Dataactionconditionpredicate `json:"predicates,omitempty"`
+
 }
 
 func (o *Condition) MarshalJSON() ([]byte, error) {
@@ -68,6 +96,20 @@ func (o *Condition) MarshalJSON() ([]byte, error) {
 		Property *string `json:"property,omitempty"`
 		
 		PropertyType *string `json:"propertyType,omitempty"`
+		
+		DataAction *Domainentityref `json:"dataAction,omitempty"`
+		
+		DataNotFoundResolution *bool `json:"dataNotFoundResolution,omitempty"`
+		
+		ContactIdField *string `json:"contactIdField,omitempty"`
+		
+		CallAnalysisResultField *string `json:"callAnalysisResultField,omitempty"`
+		
+		AgentWrapupField *string `json:"agentWrapupField,omitempty"`
+		
+		ContactColumnToDataActionFieldMappings *[]Contactcolumntodataactionfieldmapping `json:"contactColumnToDataActionFieldMappings,omitempty"`
+		
+		Predicates *[]Dataactionconditionpredicate `json:"predicates,omitempty"`
 		*Alias
 	}{ 
 		VarType: o.VarType,
@@ -87,6 +129,20 @@ func (o *Condition) MarshalJSON() ([]byte, error) {
 		Property: o.Property,
 		
 		PropertyType: o.PropertyType,
+		
+		DataAction: o.DataAction,
+		
+		DataNotFoundResolution: o.DataNotFoundResolution,
+		
+		ContactIdField: o.ContactIdField,
+		
+		CallAnalysisResultField: o.CallAnalysisResultField,
+		
+		AgentWrapupField: o.AgentWrapupField,
+		
+		ContactColumnToDataActionFieldMappings: o.ContactColumnToDataActionFieldMappings,
+		
+		Predicates: o.Predicates,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -133,6 +189,37 @@ func (o *Condition) UnmarshalJSON(b []byte) error {
 	
 	if PropertyType, ok := ConditionMap["propertyType"].(string); ok {
 		o.PropertyType = &PropertyType
+	}
+	
+	if DataAction, ok := ConditionMap["dataAction"].(map[string]interface{}); ok {
+		DataActionString, _ := json.Marshal(DataAction)
+		json.Unmarshal(DataActionString, &o.DataAction)
+	}
+	
+	if DataNotFoundResolution, ok := ConditionMap["dataNotFoundResolution"].(bool); ok {
+		o.DataNotFoundResolution = &DataNotFoundResolution
+	}
+	
+	if ContactIdField, ok := ConditionMap["contactIdField"].(string); ok {
+		o.ContactIdField = &ContactIdField
+	}
+	
+	if CallAnalysisResultField, ok := ConditionMap["callAnalysisResultField"].(string); ok {
+		o.CallAnalysisResultField = &CallAnalysisResultField
+	}
+	
+	if AgentWrapupField, ok := ConditionMap["agentWrapupField"].(string); ok {
+		o.AgentWrapupField = &AgentWrapupField
+	}
+	
+	if ContactColumnToDataActionFieldMappings, ok := ConditionMap["contactColumnToDataActionFieldMappings"].([]interface{}); ok {
+		ContactColumnToDataActionFieldMappingsString, _ := json.Marshal(ContactColumnToDataActionFieldMappings)
+		json.Unmarshal(ContactColumnToDataActionFieldMappingsString, &o.ContactColumnToDataActionFieldMappings)
+	}
+	
+	if Predicates, ok := ConditionMap["predicates"].([]interface{}); ok {
+		PredicatesString, _ := json.Marshal(Predicates)
+		json.Unmarshal(PredicatesString, &o.Predicates)
 	}
 	
 
