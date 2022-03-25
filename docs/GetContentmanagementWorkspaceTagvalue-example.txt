@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getcontentmanagementworkspacetagvaluerequest()
-data, response, err := apiInstance.GetContentmanagementWorkspaceTagvalue($workspaceId, $tagId, $expand)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetContentmanagementWorkspaceTagvalue: %v\n", err)
-}

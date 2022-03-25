@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Patchconversationscobrowsesessionparticipantcommunicationrequest()
-data, response, err := apiInstance.PatchConversationsCobrowsesessionParticipantCommunication($conversationId, $participantId, $communicationId, $body)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling PatchConversationsCobrowsesessionParticipantCommunication: %v\n", err)
-}

@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Deleteworkforcemanagementbusinessunitweekshorttermforecastrequest()
-response, err := apiInstance.DeleteWorkforcemanagementBusinessunitWeekShorttermforecast($businessUnitId, $weekDateId, $forecastId)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling DeleteWorkforcemanagementBusinessunitWeekShorttermforecast: %v\n", err)
-}

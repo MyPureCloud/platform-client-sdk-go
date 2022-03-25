@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getqualityevaluatorsactivityrequest()
-data, response, err := apiInstance.GetQualityEvaluatorsActivity($pageSize, $pageNumber, $sortBy, $expand, $nextPage, $previousPage, $startTime, $endTime, $name, $permission, $group)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetQualityEvaluatorsActivity: %v\n", err)
-}

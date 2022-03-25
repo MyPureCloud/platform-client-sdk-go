@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Deletelanguageunderstandingdomainfeedbackfeedbackidrequest()
-response, err := apiInstance.DeleteLanguageunderstandingDomainFeedbackFeedbackId($domainId, $feedbackId)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling DeleteLanguageunderstandingDomainFeedbackFeedbackId: %v\n", err)
-}

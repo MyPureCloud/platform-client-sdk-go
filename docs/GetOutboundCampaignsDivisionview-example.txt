@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getoutboundcampaignsdivisionviewrequest()
-data, response, err := apiInstance.GetOutboundCampaignsDivisionview($campaignId)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetOutboundCampaignsDivisionview: %v\n", err)
-}

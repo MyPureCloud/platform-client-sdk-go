@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getscriptsrequest()
-data, response, err := apiInstance.GetScripts($pageSize, $pageNumber, $expand, $name, $feature, $flowId, $sortBy, $sortOrder, $scriptDataVersion)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetScripts: %v\n", err)
-}

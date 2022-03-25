@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getuserfavoritesrequest()
-data, response, err := apiInstance.GetUserFavorites($userId, $pageSize, $pageNumber, $sortOrder, $expand)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetUserFavorites: %v\n", err)
-}

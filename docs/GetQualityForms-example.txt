@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getqualityformsrequest()
-data, response, err := apiInstance.GetQualityForms($pageSize, $pageNumber, $sortBy, $nextPage, $previousPage, $expand, $name, $sortOrder)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetQualityForms: %v\n", err)
-}

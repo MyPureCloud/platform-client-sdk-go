@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getoutbounddnclistsdivisionviewrequest()
-data, response, err := apiInstance.GetOutboundDnclistsDivisionview($dncListId, $includeImportStatus, $includeSize)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetOutboundDnclistsDivisionview: %v\n", err)
-}

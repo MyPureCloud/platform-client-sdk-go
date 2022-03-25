@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getoutboundeventsrequest()
-data, response, err := apiInstance.GetOutboundEvents($pageSize, $pageNumber, $filterType, $category, $level, $sortBy, $sortOrder)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetOutboundEvents: %v\n", err)
-}

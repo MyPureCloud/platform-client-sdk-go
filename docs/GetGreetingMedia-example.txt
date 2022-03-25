@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getgreetingmediarequest()
-data, response, err := apiInstance.GetGreetingMedia($greetingId, $formatId)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetGreetingMedia: %v\n", err)
-}

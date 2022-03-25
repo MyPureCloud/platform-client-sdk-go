@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getoutboundcampaignagentownedmappingpreviewresultsrequest()
-data, response, err := apiInstance.GetOutboundCampaignAgentownedmappingpreviewResults($campaignId)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetOutboundCampaignAgentownedmappingpreviewResults: %v\n", err)
-}

@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Getqualityevaluationsqueryrequest()
-data, response, err := apiInstance.GetQualityEvaluationsQuery($pageSize, $pageNumber, $sortBy, $expand, $nextPage, $previousPage, $conversationId, $agentUserId, $evaluatorUserId, $queueId, $startTime, $endTime, $evaluationState, $isReleased, $agentHasRead, $expandAnswerTotalScores, $maximum, $sortOrder)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling GetQualityEvaluationsQuery: %v\n", err)
-}

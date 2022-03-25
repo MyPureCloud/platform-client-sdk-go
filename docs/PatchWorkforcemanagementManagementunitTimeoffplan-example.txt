@@ -1,6 +1,0 @@
-apiInstance := platformclientv2.Patchworkforcemanagementmanagementunittimeoffplanrequest()
-data, response, err := apiInstance.PatchWorkforcemanagementManagementunitTimeoffplan($managementUnitId, $timeOffPlanId, $body)
-fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
-if err != nil {
-	fmt.Printf("Error calling PatchWorkforcemanagementManagementunitTimeoffplan: %v\n", err)
-}
