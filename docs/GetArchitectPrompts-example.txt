@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getarchitectpromptsrequest()
+data, response, err := apiInstance.GetArchitectPrompts($pageNumber, $pageSize, $name, $description, $nameOrDescription, $sortBy, $sortOrder)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetArchitectPrompts: %v\n", err)
+}

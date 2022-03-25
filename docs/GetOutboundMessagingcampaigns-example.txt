@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getoutboundmessagingcampaignsrequest()
+data, response, err := apiInstance.GetOutboundMessagingcampaigns($pageSize, $pageNumber, $sortBy, $sortOrder, $name, $contactListId, $divisionId, $varType, $senderSmsPhoneNumber, $id)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetOutboundMessagingcampaigns: %v\n", err)
+}

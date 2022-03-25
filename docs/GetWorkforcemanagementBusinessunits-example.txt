@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getworkforcemanagementbusinessunitsrequest()
+data, response, err := apiInstance.GetWorkforcemanagementBusinessunits($feature, $divisionId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetWorkforcemanagementBusinessunits: %v\n", err)
+}

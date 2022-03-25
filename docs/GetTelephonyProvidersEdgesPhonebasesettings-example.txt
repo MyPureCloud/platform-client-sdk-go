@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Gettelephonyprovidersedgesphonebasesettingsrequest()
+data, response, err := apiInstance.GetTelephonyProvidersEdgesPhonebasesettings($pageSize, $pageNumber, $sortBy, $sortOrder, $expand, $name)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetTelephonyProvidersEdgesPhonebasesettings: %v\n", err)
+}

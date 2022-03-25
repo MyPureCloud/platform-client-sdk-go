@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Patchintegrationrequest()
+data, response, err := apiInstance.PatchIntegration($integrationId, $body, $pageSize, $pageNumber, $sortBy, $expand, $nextPage, $previousPage)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PatchIntegration: %v\n", err)
+}

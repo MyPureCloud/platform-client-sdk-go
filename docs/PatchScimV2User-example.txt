@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Patchscimv2userrequest()
+data, response, err := apiInstance.PatchScimV2User($userId, $body, $ifMatch)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PatchScimV2User: %v\n", err)
+}

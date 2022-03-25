@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Deleteconversationparticipantcoderequest()
+response, err := apiInstance.DeleteConversationParticipantCode($conversationId, $participantId, $addCommunicationCode)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling DeleteConversationParticipantCode: %v\n", err)
+}

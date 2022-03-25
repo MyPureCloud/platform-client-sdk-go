@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Patchspeechandtextanalyticssettingsrequest()
+data, response, err := apiInstance.PatchSpeechandtextanalyticsSettings($body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PatchSpeechandtextanalyticsSettings: %v\n", err)
+}

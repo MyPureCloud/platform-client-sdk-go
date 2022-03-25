@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getroutingqueuemembersrequest()
+data, response, err := apiInstance.GetRoutingQueueMembers($queueId, $pageNumber, $pageSize, $sortOrder, $expand, $name, $profileSkills, $skills, $languages, $routingStatus, $presence, $memberBy, $joined)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetRoutingQueueMembers: %v\n", err)
+}

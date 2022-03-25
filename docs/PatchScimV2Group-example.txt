@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Patchscimv2grouprequest()
+data, response, err := apiInstance.PatchScimV2Group($groupId, $body, $ifMatch)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PatchScimV2Group: %v\n", err)
+}

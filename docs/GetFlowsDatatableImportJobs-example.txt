@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getflowsdatatableimportjobsrequest()
+data, response, err := apiInstance.GetFlowsDatatableImportJobs($datatableId, $pageNumber, $pageSize)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetFlowsDatatableImportJobs: %v\n", err)
+}

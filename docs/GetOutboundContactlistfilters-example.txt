@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getoutboundcontactlistfiltersrequest()
+data, response, err := apiInstance.GetOutboundContactlistfilters($pageSize, $pageNumber, $allowEmptyResult, $filterType, $name, $sortBy, $sortOrder, $contactListId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetOutboundContactlistfilters: %v\n", err)
+}

@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getuseroutofofficerequest()
+data, response, err := apiInstance.GetUserOutofoffice($userId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetUserOutofoffice: %v\n", err)
+}

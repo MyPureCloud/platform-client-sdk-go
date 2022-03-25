@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getmessagingsupportedcontentrequest()
+data, response, err := apiInstance.GetMessagingSupportedcontent($pageSize, $pageNumber)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetMessagingSupportedcontent: %v\n", err)
+}

@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getscimv2grouprequest()
+data, response, err := apiInstance.GetScimV2Group($groupId, $attributes, $excludedAttributes, $ifNoneMatch)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetScimV2Group: %v\n", err)
+}

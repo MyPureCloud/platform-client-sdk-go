@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Putcontentmanagementworkspacerequest()
+data, response, err := apiInstance.PutContentmanagementWorkspace($workspaceId, $body)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PutContentmanagementWorkspace: %v\n", err)
+}

@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getanalyticsbotflowreportingturnsrequest()
+data, response, err := apiInstance.GetAnalyticsBotflowReportingturns($botFlowId, $after, $pageSize, $actionId, $sessionId)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetAnalyticsBotflowReportingturns: %v\n", err)
+}

@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getgroupmembersrequest()
+data, response, err := apiInstance.GetGroupMembers($groupId, $pageSize, $pageNumber, $sortOrder, $expand)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetGroupMembers: %v\n", err)
+}

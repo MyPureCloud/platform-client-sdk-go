@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Getexternalcontactsorganizationsrequest()
+data, response, err := apiInstance.GetExternalcontactsOrganizations($pageSize, $pageNumber, $q, $trustorId, $sortOrder, $expand, $includeTrustors)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling GetExternalcontactsOrganizations: %v\n", err)
+}

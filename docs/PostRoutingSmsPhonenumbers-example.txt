@@ -1,0 +1,6 @@
+apiInstance := platformclientv2.Postroutingsmsphonenumbersrequest()
+data, response, err := apiInstance.PostRoutingSmsPhonenumbers($body, $async)
+fmt.Printf("Response:\n  Success: %v\n  Status code: %v\n  Correlation ID: %v\n", response.IsSuccess, response.StatusCode, response.CorrelationID)
+if err != nil {
+	fmt.Printf("Error calling PostRoutingSmsPhonenumbers: %v\n", err)
+}
