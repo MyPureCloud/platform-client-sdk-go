@@ -100,7 +100,7 @@ func (a OAuthApi) DeleteOauthClient(clientId string) (*APIResponse, error) {
 // Get a client that is authorized by the resource owner
 //
 // 
-func (a OAuthApi) GetOauthAuthorization(clientId string) (*Oauthauthorization, *APIResponse, error) {
+func (a OAuthApi) GetOauthAuthorization(clientId string, acceptLanguage string) (*Oauthauthorization, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/authorizations/{clientId}"
@@ -152,6 +152,10 @@ func (a OAuthApi) GetOauthAuthorization(clientId string) (*Oauthauthorization, *
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+
+	// header params "Accept-Language"
+	headerParams["Accept-Language"] = acceptLanguage
+
 	var successPayload *Oauthauthorization
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {
@@ -170,10 +174,10 @@ func (a OAuthApi) GetOauthAuthorization(clientId string) (*Oauthauthorization, *
 
 // GetOauthAuthorizations invokes GET /api/v2/oauth/authorizations
 //
-// List clients that are authorized by the resource owner
+// List clients that have been authorized, requested, or revoked by the resource owner
 //
 // 
-func (a OAuthApi) GetOauthAuthorizations() (*Oauthauthorizationlisting, *APIResponse, error) {
+func (a OAuthApi) GetOauthAuthorizations(acceptLanguage string) (*Oauthauthorizationlisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/oauth/authorizations"
@@ -219,6 +223,10 @@ func (a OAuthApi) GetOauthAuthorizations() (*Oauthauthorizationlisting, *APIResp
 	if localVarHttpHeaderAccept != "" {
 		headerParams["Accept"] = localVarHttpHeaderAccept
 	}
+
+	// header params "Accept-Language"
+	headerParams["Accept-Language"] = acceptLanguage
+
 	var successPayload *Oauthauthorizationlisting
 	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
 	if err != nil {

@@ -8,11 +8,11 @@ import (
 
 // Assistancecondition
 type Assistancecondition struct { 
-	// Operator
+	// Operator - The operator for the assistance condition. The operator defines whether the listed topicIds should EXIST or NOTEXIST for the condition to be evaluated as true.
 	Operator *string `json:"operator,omitempty"`
 
 
-	// TopicIds
+	// TopicIds - List of topicIds within the assistance condition which would be combined together using logical OR operator. Eg ( topicId_1 || topicId_2 ) .
 	TopicIds *[]string `json:"topicIds,omitempty"`
 
 }

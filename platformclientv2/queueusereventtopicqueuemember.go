@@ -25,7 +25,7 @@ type Queueusereventtopicqueuemember struct {
 
 
 	// AdditionalProperties
-	AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+	AdditionalProperties *map[string]Queueusereventtopicobject `json:"additionalProperties,omitempty"`
 
 }
 
@@ -43,7 +43,7 @@ func (o *Queueusereventtopicqueuemember) MarshalJSON() ([]byte, error) {
 		
 		Joined *bool `json:"joined,omitempty"`
 		
-		AdditionalProperties *interface{} `json:"additionalProperties,omitempty"`
+		AdditionalProperties *map[string]Queueusereventtopicobject `json:"additionalProperties,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,

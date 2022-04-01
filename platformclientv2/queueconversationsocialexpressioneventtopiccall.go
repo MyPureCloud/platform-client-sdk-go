@@ -97,6 +97,10 @@ type Queueconversationsocialexpressioneventtopiccall struct {
 	UuiData *string `json:"uuiData,omitempty"`
 
 
+	// BargedTime - The timestamp when this participant was connected to the barge conference in the provider clock.
+	BargedTime *time.Time `json:"bargedTime,omitempty"`
+
+
 	// Wrapup - Call wrap up or disposition data.
 	Wrapup *Queueconversationsocialexpressioneventtopicwrapup `json:"wrapup,omitempty"`
 
@@ -143,6 +147,14 @@ func (o *Queueconversationsocialexpressioneventtopiccall) MarshalJSON() ([]byte,
 		DisconnectedTime = nil
 	}
 	
+	BargedTime := new(string)
+	if o.BargedTime != nil {
+		
+		*BargedTime = timeutil.Strftime(o.BargedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		BargedTime = nil
+	}
+	
 	return json.Marshal(&struct { 
 		Id *string `json:"id,omitempty"`
 		
@@ -187,6 +199,8 @@ func (o *Queueconversationsocialexpressioneventtopiccall) MarshalJSON() ([]byte,
 		FaxStatus *Queueconversationsocialexpressioneventtopicfaxstatus `json:"faxStatus,omitempty"`
 		
 		UuiData *string `json:"uuiData,omitempty"`
+		
+		BargedTime *string `json:"bargedTime,omitempty"`
 		
 		Wrapup *Queueconversationsocialexpressioneventtopicwrapup `json:"wrapup,omitempty"`
 		
@@ -240,6 +254,8 @@ func (o *Queueconversationsocialexpressioneventtopiccall) MarshalJSON() ([]byte,
 		FaxStatus: o.FaxStatus,
 		
 		UuiData: o.UuiData,
+		
+		BargedTime: BargedTime,
 		
 		Wrapup: o.Wrapup,
 		
@@ -353,6 +369,11 @@ func (o *Queueconversationsocialexpressioneventtopiccall) UnmarshalJSON(b []byte
 	
 	if UuiData, ok := QueueconversationsocialexpressioneventtopiccallMap["uuiData"].(string); ok {
 		o.UuiData = &UuiData
+	}
+	
+	if bargedTimeString, ok := QueueconversationsocialexpressioneventtopiccallMap["bargedTime"].(string); ok {
+		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
+		o.BargedTime = &BargedTime
 	}
 	
 	if Wrapup, ok := QueueconversationsocialexpressioneventtopiccallMap["wrapup"].(map[string]interface{}); ok {

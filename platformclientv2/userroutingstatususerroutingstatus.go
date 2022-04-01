@@ -8,6 +8,10 @@ import (
 
 // Userroutingstatususerroutingstatus
 type Userroutingstatususerroutingstatus struct { 
+	// Id
+	Id *Userroutingstatusobject `json:"id,omitempty"`
+
+
 	// RoutingStatus
 	RoutingStatus *Userroutingstatusroutingstatus `json:"routingStatus,omitempty"`
 
@@ -23,11 +27,15 @@ func (o *Userroutingstatususerroutingstatus) MarshalJSON() ([]byte, error) {
 	type Alias Userroutingstatususerroutingstatus
 	
 	return json.Marshal(&struct { 
+		Id *Userroutingstatusobject `json:"id,omitempty"`
+		
 		RoutingStatus *Userroutingstatusroutingstatus `json:"routingStatus,omitempty"`
 		
 		ErrorInfo *Userroutingstatuserrorinfo `json:"errorInfo,omitempty"`
 		*Alias
 	}{ 
+		Id: o.Id,
+		
 		RoutingStatus: o.RoutingStatus,
 		
 		ErrorInfo: o.ErrorInfo,
@@ -40,6 +48,11 @@ func (o *Userroutingstatususerroutingstatus) UnmarshalJSON(b []byte) error {
 	err := json.Unmarshal(b, &UserroutingstatususerroutingstatusMap)
 	if err != nil {
 		return err
+	}
+	
+	if Id, ok := UserroutingstatususerroutingstatusMap["id"].(map[string]interface{}); ok {
+		IdString, _ := json.Marshal(Id)
+		json.Unmarshal(IdString, &o.Id)
 	}
 	
 	if RoutingStatus, ok := UserroutingstatususerroutingstatusMap["routingStatus"].(map[string]interface{}); ok {

@@ -37,6 +37,10 @@ type Queueconversationsocialexpressioneventtopicvideo struct {
 	SharingScreen *bool `json:"sharingScreen,omitempty"`
 
 
+	// PeerCount - The number of peer participants from the perspective of the participant in the conference.
+	PeerCount *Queueconversationsocialexpressioneventtopicobject `json:"peerCount,omitempty"`
+
+
 	// Provider - The media provider controlling the video.
 	Provider *string `json:"provider,omitempty"`
 
@@ -114,6 +118,8 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte
 		
 		SharingScreen *bool `json:"sharingScreen,omitempty"`
 		
+		PeerCount *Queueconversationsocialexpressioneventtopicobject `json:"peerCount,omitempty"`
+		
 		Provider *string `json:"provider,omitempty"`
 		
 		ScriptId *string `json:"scriptId,omitempty"`
@@ -148,6 +154,8 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) MarshalJSON() ([]byte
 		VideoMuted: o.VideoMuted,
 		
 		SharingScreen: o.SharingScreen,
+		
+		PeerCount: o.PeerCount,
 		
 		Provider: o.Provider,
 		
@@ -206,6 +214,11 @@ func (o *Queueconversationsocialexpressioneventtopicvideo) UnmarshalJSON(b []byt
 	
 	if SharingScreen, ok := QueueconversationsocialexpressioneventtopicvideoMap["sharingScreen"].(bool); ok {
 		o.SharingScreen = &SharingScreen
+	}
+	
+	if PeerCount, ok := QueueconversationsocialexpressioneventtopicvideoMap["peerCount"].(map[string]interface{}); ok {
+		PeerCountString, _ := json.Marshal(PeerCount)
+		json.Unmarshal(PeerCountString, &o.PeerCount)
 	}
 	
 	if Provider, ok := QueueconversationsocialexpressioneventtopicvideoMap["provider"].(string); ok {

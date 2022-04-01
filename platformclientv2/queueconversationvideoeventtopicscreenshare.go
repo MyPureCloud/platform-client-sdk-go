@@ -41,6 +41,10 @@ type Queueconversationvideoeventtopicscreenshare struct {
 	PeerId *string `json:"peerId,omitempty"`
 
 
+	// PeerCount
+	PeerCount *Queueconversationvideoeventtopicobject `json:"peerCount,omitempty"`
+
+
 	// DisconnectType - System defined string indicating what caused the communication to disconnect. Will be null until the communication disconnects.
 	DisconnectType *string `json:"disconnectType,omitempty"`
 
@@ -104,6 +108,8 @@ func (o *Queueconversationvideoeventtopicscreenshare) MarshalJSON() ([]byte, err
 		
 		PeerId *string `json:"peerId,omitempty"`
 		
+		PeerCount *Queueconversationvideoeventtopicobject `json:"peerCount,omitempty"`
+		
 		DisconnectType *string `json:"disconnectType,omitempty"`
 		
 		ConnectedTime *string `json:"connectedTime,omitempty"`
@@ -132,6 +138,8 @@ func (o *Queueconversationvideoeventtopicscreenshare) MarshalJSON() ([]byte, err
 		ScriptId: o.ScriptId,
 		
 		PeerId: o.PeerId,
+		
+		PeerCount: o.PeerCount,
 		
 		DisconnectType: o.DisconnectType,
 		
@@ -186,6 +194,11 @@ func (o *Queueconversationvideoeventtopicscreenshare) UnmarshalJSON(b []byte) er
 	
 	if PeerId, ok := QueueconversationvideoeventtopicscreenshareMap["peerId"].(string); ok {
 		o.PeerId = &PeerId
+	}
+	
+	if PeerCount, ok := QueueconversationvideoeventtopicscreenshareMap["peerCount"].(map[string]interface{}); ok {
+		PeerCountString, _ := json.Marshal(PeerCount)
+		json.Unmarshal(PeerCountString, &o.PeerCount)
 	}
 	
 	if DisconnectType, ok := QueueconversationvideoeventtopicscreenshareMap["disconnectType"].(string); ok {

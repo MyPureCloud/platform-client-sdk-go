@@ -19,6 +19,10 @@ type Conversationmessageevent struct {
 	// Typing - Typing event.
 	Typing *Conversationeventtyping `json:"typing,omitempty"`
 
+
+	// Presence - Presence event.
+	Presence *Conversationeventpresence `json:"presence,omitempty"`
+
 }
 
 func (o *Conversationmessageevent) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Conversationmessageevent) MarshalJSON() ([]byte, error) {
 		CoBrowse *Conversationeventcobrowse `json:"coBrowse,omitempty"`
 		
 		Typing *Conversationeventtyping `json:"typing,omitempty"`
+		
+		Presence *Conversationeventpresence `json:"presence,omitempty"`
 		*Alias
 	}{ 
 		EventType: o.EventType,
@@ -39,6 +45,8 @@ func (o *Conversationmessageevent) MarshalJSON() ([]byte, error) {
 		CoBrowse: o.CoBrowse,
 		
 		Typing: o.Typing,
+		
+		Presence: o.Presence,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -62,6 +70,11 @@ func (o *Conversationmessageevent) UnmarshalJSON(b []byte) error {
 	if Typing, ok := ConversationmessageeventMap["typing"].(map[string]interface{}); ok {
 		TypingString, _ := json.Marshal(Typing)
 		json.Unmarshal(TypingString, &o.Typing)
+	}
+	
+	if Presence, ok := ConversationmessageeventMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
 	}
 	
 

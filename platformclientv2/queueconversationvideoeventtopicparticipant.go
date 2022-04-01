@@ -105,6 +105,10 @@ type Queueconversationvideoeventtopicparticipant struct {
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
 
+	// BargedParticipantId - If this participant created a barge in conference, then this will be the id of the participant that is barged in.
+	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+
+
 	// ScreenRecordingState - The current screen recording state for this participant.
 	ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 
@@ -240,6 +244,8 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 		
+		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+		
 		ScreenRecordingState *string `json:"screenRecordingState,omitempty"`
 		
 		FlaggedReason *string `json:"flaggedReason,omitempty"`
@@ -312,6 +318,8 @@ func (o *Queueconversationvideoeventtopicparticipant) MarshalJSON() ([]byte, err
 		MonitoredParticipantId: o.MonitoredParticipantId,
 		
 		CoachedParticipantId: o.CoachedParticipantId,
+		
+		BargedParticipantId: o.BargedParticipantId,
 		
 		ScreenRecordingState: o.ScreenRecordingState,
 		
@@ -449,6 +457,10 @@ func (o *Queueconversationvideoeventtopicparticipant) UnmarshalJSON(b []byte) er
 	
 	if CoachedParticipantId, ok := QueueconversationvideoeventtopicparticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
+	}
+	
+	if BargedParticipantId, ok := QueueconversationvideoeventtopicparticipantMap["bargedParticipantId"].(string); ok {
+		o.BargedParticipantId = &BargedParticipantId
 	}
 	
 	if ScreenRecordingState, ok := QueueconversationvideoeventtopicparticipantMap["screenRecordingState"].(string); ok {

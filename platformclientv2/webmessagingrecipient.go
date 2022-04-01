@@ -19,6 +19,10 @@ type Webmessagingrecipient struct {
 	// Nickname - Nickname or display name of the recipient.
 	Nickname *string `json:"nickname,omitempty"`
 
+
+	// AdditionalIds - List of recipient additional identifiers
+	AdditionalIds *[]Recipientadditionalidentifier `json:"additionalIds,omitempty"`
+
 }
 
 func (o *Webmessagingrecipient) MarshalJSON() ([]byte, error) {
@@ -32,6 +36,8 @@ func (o *Webmessagingrecipient) MarshalJSON() ([]byte, error) {
 		LastName *string `json:"lastName,omitempty"`
 		
 		Nickname *string `json:"nickname,omitempty"`
+		
+		AdditionalIds *[]Recipientadditionalidentifier `json:"additionalIds,omitempty"`
 		*Alias
 	}{ 
 		FirstName: o.FirstName,
@@ -39,6 +45,8 @@ func (o *Webmessagingrecipient) MarshalJSON() ([]byte, error) {
 		LastName: o.LastName,
 		
 		Nickname: o.Nickname,
+		
+		AdditionalIds: o.AdditionalIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -60,6 +68,11 @@ func (o *Webmessagingrecipient) UnmarshalJSON(b []byte) error {
 	
 	if Nickname, ok := WebmessagingrecipientMap["nickname"].(string); ok {
 		o.Nickname = &Nickname
+	}
+	
+	if AdditionalIds, ok := WebmessagingrecipientMap["additionalIds"].([]interface{}); ok {
+		AdditionalIdsString, _ := json.Marshal(AdditionalIds)
+		json.Unmarshal(AdditionalIdsString, &o.AdditionalIds)
 	}
 	
 

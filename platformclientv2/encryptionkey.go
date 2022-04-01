@@ -37,6 +37,10 @@ type Encryptionkey struct {
 	KeyConfigurationType *string `json:"keyConfigurationType,omitempty"`
 
 
+	// KmsKeyArn - ARN of internal key to be wrapped by AWS KMS Symmetric key
+	KmsKeyArn *string `json:"kmsKeyArn,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -70,6 +74,8 @@ func (o *Encryptionkey) MarshalJSON() ([]byte, error) {
 		
 		KeyConfigurationType *string `json:"keyConfigurationType,omitempty"`
 		
+		KmsKeyArn *string `json:"kmsKeyArn,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -86,6 +92,8 @@ func (o *Encryptionkey) MarshalJSON() ([]byte, error) {
 		LocalEncryptionConfiguration: o.LocalEncryptionConfiguration,
 		
 		KeyConfigurationType: o.KeyConfigurationType,
+		
+		KmsKeyArn: o.KmsKeyArn,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -128,6 +136,10 @@ func (o *Encryptionkey) UnmarshalJSON(b []byte) error {
 	
 	if KeyConfigurationType, ok := EncryptionkeyMap["keyConfigurationType"].(string); ok {
 		o.KeyConfigurationType = &KeyConfigurationType
+	}
+	
+	if KmsKeyArn, ok := EncryptionkeyMap["kmsKeyArn"].(string); ok {
+		o.KmsKeyArn = &KmsKeyArn
 	}
 	
 	if SelfUri, ok := EncryptionkeyMap["selfUri"].(string); ok {

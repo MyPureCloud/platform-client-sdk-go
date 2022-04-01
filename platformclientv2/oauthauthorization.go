@@ -17,6 +17,10 @@ type Oauthauthorization struct {
 	Scope *[]string `json:"scope,omitempty"`
 
 
+	// Roles
+	Roles *[]string `json:"roles,omitempty"`
+
+
 	// ResourceOwner
 	ResourceOwner *Domainentityref `json:"resourceOwner,omitempty"`
 
@@ -39,6 +43,10 @@ type Oauthauthorization struct {
 
 	// Pending
 	Pending *bool `json:"pending,omitempty"`
+
+
+	// State
+	State *string `json:"state,omitempty"`
 
 
 	// SelfUri - The URI for this object
@@ -72,6 +80,8 @@ func (o *Oauthauthorization) MarshalJSON() ([]byte, error) {
 		
 		Scope *[]string `json:"scope,omitempty"`
 		
+		Roles *[]string `json:"roles,omitempty"`
+		
 		ResourceOwner *Domainentityref `json:"resourceOwner,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -84,12 +94,16 @@ func (o *Oauthauthorization) MarshalJSON() ([]byte, error) {
 		
 		Pending *bool `json:"pending,omitempty"`
 		
+		State *string `json:"state,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
 		Client: o.Client,
 		
 		Scope: o.Scope,
+		
+		Roles: o.Roles,
 		
 		ResourceOwner: o.ResourceOwner,
 		
@@ -102,6 +116,8 @@ func (o *Oauthauthorization) MarshalJSON() ([]byte, error) {
 		ModifiedBy: o.ModifiedBy,
 		
 		Pending: o.Pending,
+		
+		State: o.State,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -123,6 +139,11 @@ func (o *Oauthauthorization) UnmarshalJSON(b []byte) error {
 	if Scope, ok := OauthauthorizationMap["scope"].([]interface{}); ok {
 		ScopeString, _ := json.Marshal(Scope)
 		json.Unmarshal(ScopeString, &o.Scope)
+	}
+	
+	if Roles, ok := OauthauthorizationMap["roles"].([]interface{}); ok {
+		RolesString, _ := json.Marshal(Roles)
+		json.Unmarshal(RolesString, &o.Roles)
 	}
 	
 	if ResourceOwner, ok := OauthauthorizationMap["resourceOwner"].(map[string]interface{}); ok {
@@ -152,6 +173,10 @@ func (o *Oauthauthorization) UnmarshalJSON(b []byte) error {
 	
 	if Pending, ok := OauthauthorizationMap["pending"].(bool); ok {
 		o.Pending = &Pending
+	}
+	
+	if State, ok := OauthauthorizationMap["state"].(string); ok {
+		o.State = &State
 	}
 	
 	if SelfUri, ok := OauthauthorizationMap["selfUri"].(string); ok {

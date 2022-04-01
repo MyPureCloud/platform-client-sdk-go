@@ -33,7 +33,7 @@ type Historicaladherenceexceptioninfo struct {
 
 
 	// RoutingStatus - Actual underlying routing status, used to determine whether a user is actually in adherence when OnQueue
-	RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
+	RoutingStatus *string `json:"routingStatus,omitempty"`
 
 
 	// Impact - The impact of the current adherence state for this user
@@ -63,7 +63,7 @@ func (o *Historicaladherenceexceptioninfo) MarshalJSON() ([]byte, error) {
 		
 		SystemPresence *string `json:"systemPresence,omitempty"`
 		
-		RoutingStatus *Routingstatus `json:"routingStatus,omitempty"`
+		RoutingStatus *string `json:"routingStatus,omitempty"`
 		
 		Impact *string `json:"impact,omitempty"`
 		
@@ -124,9 +124,8 @@ func (o *Historicaladherenceexceptioninfo) UnmarshalJSON(b []byte) error {
 		o.SystemPresence = &SystemPresence
 	}
 	
-	if RoutingStatus, ok := HistoricaladherenceexceptioninfoMap["routingStatus"].(map[string]interface{}); ok {
-		RoutingStatusString, _ := json.Marshal(RoutingStatus)
-		json.Unmarshal(RoutingStatusString, &o.RoutingStatus)
+	if RoutingStatus, ok := HistoricaladherenceexceptioninfoMap["routingStatus"].(string); ok {
+		o.RoutingStatus = &RoutingStatus
 	}
 	
 	if Impact, ok := HistoricaladherenceexceptioninfoMap["impact"].(string); ok {

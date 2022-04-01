@@ -5731,642 +5731,6 @@
     "return": "Faxdocument",
     "example": "apiInstance := platformclientv2.Putfaxdocumentrequest()\ndata, response, err := apiInstance.PutFaxDocument($documentId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutFaxDocument: %v\\n\", err)\n}"
   },
-  "deletescimuser": {
-    "operationId": "deletescimuser",
-    "functionName": "DeleteScimUser",
-    "signature": "DeleteScimUser(userId, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Empty",
-    "example": "apiInstance := platformclientv2.Deletescimuserrequest()\ndata, response, err := apiInstance.DeleteScimUser($userId, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimUser: %v\\n\", err)\n}"
-  },
-  "deletescimv2user": {
-    "operationId": "deletescimv2user",
-    "functionName": "DeleteScimV2User",
-    "signature": "DeleteScimV2User(userId, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Empty",
-    "example": "apiInstance := platformclientv2.Deletescimv2userrequest()\ndata, response, err := apiInstance.DeleteScimV2User($userId, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimV2User: %v\\n\", err)\n}"
-  },
-  "getscimgroup": {
-    "operationId": "getscimgroup",
-    "functionName": "GetScimGroup",
-    "signature": "GetScimGroup(groupId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "apiInstance := platformclientv2.Getscimgrouprequest()\ndata, response, err := apiInstance.GetScimGroup($groupId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroup: %v\\n\", err)\n}"
-  },
-  "getscimgroups": {
-    "operationId": "getscimgroups",
-    "functionName": "GetScimGroups",
-    "signature": "GetScimGroups(startIndex, count, attributes, excludedAttributes, filter)",
-    "parameters": [
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimgrouplistresponse",
-    "example": "apiInstance := platformclientv2.Getscimgroupsrequest()\ndata, response, err := apiInstance.GetScimGroups($startIndex, $count, $attributes, $excludedAttributes, $filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroups: %v\\n\", err)\n}"
-  },
-  "getscimresourcetype": {
-    "operationId": "getscimresourcetype",
-    "functionName": "GetScimResourcetype",
-    "signature": "GetScimResourcetype(resourceType)",
-    "parameters": [
-      {
-        "name": "resourceType",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimconfigresourcetype",
-    "example": "apiInstance := platformclientv2.Getscimresourcetyperequest()\ndata, response, err := apiInstance.GetScimResourcetype($resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetype: %v\\n\", err)\n}"
-  },
-  "getscimresourcetypes": {
-    "operationId": "getscimresourcetypes",
-    "functionName": "GetScimResourcetypes",
-    "signature": "GetScimResourcetypes()",
-    "return": "Scimconfigresourcetypeslistresponse",
-    "example": "apiInstance := platformclientv2.Getscimresourcetypesrequest()\ndata, response, err := apiInstance.GetScimResourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetypes: %v\\n\", err)\n}"
-  },
-  "getscimschema": {
-    "operationId": "getscimschema",
-    "functionName": "GetScimSchema",
-    "signature": "GetScimSchema(schemaId)",
-    "parameters": [
-      {
-        "name": "schemaId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2schemadefinition",
-    "example": "apiInstance := platformclientv2.Getscimschemarequest()\ndata, response, err := apiInstance.GetScimSchema($schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchema: %v\\n\", err)\n}"
-  },
-  "getscimschemas": {
-    "operationId": "getscimschemas",
-    "functionName": "GetScimSchemas",
-    "signature": "GetScimSchemas(filter)",
-    "parameters": [
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2schemalistresponse",
-    "example": "apiInstance := platformclientv2.Getscimschemasrequest()\ndata, response, err := apiInstance.GetScimSchemas($filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchemas: %v\\n\", err)\n}"
-  },
-  "getscimserviceproviderconfig": {
-    "operationId": "getscimserviceproviderconfig",
-    "functionName": "GetScimServiceproviderconfig",
-    "signature": "GetScimServiceproviderconfig(ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimserviceproviderconfig",
-    "example": "apiInstance := platformclientv2.Getscimserviceproviderconfigrequest()\ndata, response, err := apiInstance.GetScimServiceproviderconfig($ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimServiceproviderconfig: %v\\n\", err)\n}"
-  },
-  "getscimuser": {
-    "operationId": "getscimuser",
-    "functionName": "GetScimUser",
-    "signature": "GetScimUser(userId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Getscimuserrequest()\ndata, response, err := apiInstance.GetScimUser($userId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUser: %v\\n\", err)\n}"
-  },
-  "getscimusers": {
-    "operationId": "getscimusers",
-    "functionName": "GetScimUsers",
-    "signature": "GetScimUsers(startIndex, count, attributes, excludedAttributes, filter)",
-    "parameters": [
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimuserlistresponse",
-    "example": "apiInstance := platformclientv2.Getscimusersrequest()\ndata, response, err := apiInstance.GetScimUsers($startIndex, $count, $attributes, $excludedAttributes, $filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUsers: %v\\n\", err)\n}"
-  },
-  "getscimv2group": {
-    "operationId": "getscimv2group",
-    "functionName": "GetScimV2Group",
-    "signature": "GetScimV2Group(groupId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "apiInstance := platformclientv2.Getscimv2grouprequest()\ndata, response, err := apiInstance.GetScimV2Group($groupId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Group: %v\\n\", err)\n}"
-  },
-  "getscimv2groups": {
-    "operationId": "getscimv2groups",
-    "functionName": "GetScimV2Groups",
-    "signature": "GetScimV2Groups(filter, startIndex, count, attributes, excludedAttributes)",
-    "parameters": [
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimgrouplistresponse",
-    "example": "apiInstance := platformclientv2.Getscimv2groupsrequest()\ndata, response, err := apiInstance.GetScimV2Groups($filter, $startIndex, $count, $attributes, $excludedAttributes)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Groups: %v\\n\", err)\n}"
-  },
-  "getscimv2resourcetype": {
-    "operationId": "getscimv2resourcetype",
-    "functionName": "GetScimV2Resourcetype",
-    "signature": "GetScimV2Resourcetype(resourceType)",
-    "parameters": [
-      {
-        "name": "resourceType",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimconfigresourcetype",
-    "example": "apiInstance := platformclientv2.Getscimv2resourcetyperequest()\ndata, response, err := apiInstance.GetScimV2Resourcetype($resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetype: %v\\n\", err)\n}"
-  },
-  "getscimv2resourcetypes": {
-    "operationId": "getscimv2resourcetypes",
-    "functionName": "GetScimV2Resourcetypes",
-    "signature": "GetScimV2Resourcetypes()",
-    "return": "Scimconfigresourcetypeslistresponse",
-    "example": "apiInstance := platformclientv2.Getscimv2resourcetypesrequest()\ndata, response, err := apiInstance.GetScimV2Resourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetypes: %v\\n\", err)\n}"
-  },
-  "getscimv2schema": {
-    "operationId": "getscimv2schema",
-    "functionName": "GetScimV2Schema",
-    "signature": "GetScimV2Schema(schemaId)",
-    "parameters": [
-      {
-        "name": "schemaId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2schemadefinition",
-    "example": "apiInstance := platformclientv2.Getscimv2schemarequest()\ndata, response, err := apiInstance.GetScimV2Schema($schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schema: %v\\n\", err)\n}"
-  },
-  "getscimv2schemas": {
-    "operationId": "getscimv2schemas",
-    "functionName": "GetScimV2Schemas",
-    "signature": "GetScimV2Schemas(filter)",
-    "parameters": [
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2schemalistresponse",
-    "example": "apiInstance := platformclientv2.Getscimv2schemasrequest()\ndata, response, err := apiInstance.GetScimV2Schemas($filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schemas: %v\\n\", err)\n}"
-  },
-  "getscimv2serviceproviderconfig": {
-    "operationId": "getscimv2serviceproviderconfig",
-    "functionName": "GetScimV2Serviceproviderconfig",
-    "signature": "GetScimV2Serviceproviderconfig(ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimserviceproviderconfig",
-    "example": "apiInstance := platformclientv2.Getscimv2serviceproviderconfigrequest()\ndata, response, err := apiInstance.GetScimV2Serviceproviderconfig($ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Serviceproviderconfig: %v\\n\", err)\n}"
-  },
-  "getscimv2user": {
-    "operationId": "getscimv2user",
-    "functionName": "GetScimV2User",
-    "signature": "GetScimV2User(userId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Getscimv2userrequest()\ndata, response, err := apiInstance.GetScimV2User($userId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2User: %v\\n\", err)\n}"
-  },
-  "getscimv2users": {
-    "operationId": "getscimv2users",
-    "functionName": "GetScimV2Users",
-    "signature": "GetScimV2Users(startIndex, count, attributes, excludedAttributes, filter)",
-    "parameters": [
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimuserlistresponse",
-    "example": "apiInstance := platformclientv2.Getscimv2usersrequest()\ndata, response, err := apiInstance.GetScimV2Users($startIndex, $count, $attributes, $excludedAttributes, $filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Users: %v\\n\", err)\n}"
-  },
-  "patchscimgroup": {
-    "operationId": "patchscimgroup",
-    "functionName": "PatchScimGroup",
-    "signature": "PatchScimGroup(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "apiInstance := platformclientv2.Patchscimgrouprequest()\ndata, response, err := apiInstance.PatchScimGroup($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimGroup: %v\\n\", err)\n}"
-  },
-  "patchscimuser": {
-    "operationId": "patchscimuser",
-    "functionName": "PatchScimUser",
-    "signature": "PatchScimUser(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Patchscimuserrequest()\ndata, response, err := apiInstance.PatchScimUser($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimUser: %v\\n\", err)\n}"
-  },
-  "patchscimv2group": {
-    "operationId": "patchscimv2group",
-    "functionName": "PatchScimV2Group",
-    "signature": "PatchScimV2Group(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "apiInstance := platformclientv2.Patchscimv2grouprequest()\ndata, response, err := apiInstance.PatchScimV2Group($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2Group: %v\\n\", err)\n}"
-  },
-  "patchscimv2user": {
-    "operationId": "patchscimv2user",
-    "functionName": "PatchScimV2User",
-    "signature": "PatchScimV2User(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Patchscimv2userrequest()\ndata, response, err := apiInstance.PatchScimV2User($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2User: %v\\n\", err)\n}"
-  },
-  "postscimusers": {
-    "operationId": "postscimusers",
-    "functionName": "PostScimUsers",
-    "signature": "PostScimUsers(body)",
-    "parameters": [
-      {
-        "name": "body",
-        "type": "Scimv2createuser",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Postscimusersrequest()\ndata, response, err := apiInstance.PostScimUsers($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimUsers: %v\\n\", err)\n}"
-  },
-  "postscimv2users": {
-    "operationId": "postscimv2users",
-    "functionName": "PostScimV2Users",
-    "signature": "PostScimV2Users(body)",
-    "parameters": [
-      {
-        "name": "body",
-        "type": "Scimv2createuser",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Postscimv2usersrequest()\ndata, response, err := apiInstance.PostScimV2Users($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimV2Users: %v\\n\", err)\n}"
-  },
-  "putscimgroup": {
-    "operationId": "putscimgroup",
-    "functionName": "PutScimGroup",
-    "signature": "PutScimGroup(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2group",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "apiInstance := platformclientv2.Putscimgrouprequest()\ndata, response, err := apiInstance.PutScimGroup($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimGroup: %v\\n\", err)\n}"
-  },
-  "putscimuser": {
-    "operationId": "putscimuser",
-    "functionName": "PutScimUser",
-    "signature": "PutScimUser(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2user",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Putscimuserrequest()\ndata, response, err := apiInstance.PutScimUser($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimUser: %v\\n\", err)\n}"
-  },
-  "putscimv2group": {
-    "operationId": "putscimv2group",
-    "functionName": "PutScimV2Group",
-    "signature": "PutScimV2Group(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2group",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "apiInstance := platformclientv2.Putscimv2grouprequest()\ndata, response, err := apiInstance.PutScimV2Group($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2Group: %v\\n\", err)\n}"
-  },
-  "putscimv2user": {
-    "operationId": "putscimv2user",
-    "functionName": "PutScimV2User",
-    "signature": "PutScimV2User(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2user",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "apiInstance := platformclientv2.Putscimv2userrequest()\ndata, response, err := apiInstance.PutScimV2User($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2User: %v\\n\", err)\n}"
-  },
   "deleteconversationparticipantcode": {
     "operationId": "deleteconversationparticipantcode",
     "functionName": "DeleteConversationParticipantCode",
@@ -7833,6 +7197,20 @@
     "return": "Empty",
     "example": "apiInstance := platformclientv2.Patchconversationscallbackparticipantcommunicationrequest()\ndata, response, err := apiInstance.PatchConversationsCallbackParticipantCommunication($conversationId, $participantId, $communicationId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationsCallbackParticipantCommunication: %v\\n\", err)\n}"
   },
+  "patchconversationscallbacks": {
+    "operationId": "patchconversationscallbacks",
+    "functionName": "PatchConversationsCallbacks",
+    "signature": "PatchConversationsCallbacks(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Patchcallbackrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Patchcallbackresponse",
+    "example": "apiInstance := platformclientv2.Patchconversationscallbacksrequest()\ndata, response, err := apiInstance.PatchConversationsCallbacks($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationsCallbacks: %v\\n\", err)\n}"
+  },
   "patchconversationschat": {
     "operationId": "patchconversationschat",
     "functionName": "PatchConversationsChat",
@@ -8587,6 +7965,33 @@
     ],
     "return": "Createcallbackresponse",
     "example": "apiInstance := platformclientv2.Postconversationscallbacksrequest()\ndata, response, err := apiInstance.PostConversationsCallbacks($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsCallbacks: %v\\n\", err)\n}"
+  },
+  "postconversationscallbacksbulkdisconnect": {
+    "operationId": "postconversationscallbacksbulkdisconnect",
+    "functionName": "PostConversationsCallbacksBulkDisconnect",
+    "signature": "PostConversationsCallbacksBulkDisconnect(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Bulkcallbackdisconnectrequest",
+        "required": "true"
+      }
+    ],
+    "example": "apiInstance := platformclientv2.Postconversationscallbacksbulkdisconnectrequest()\nresponse, err := apiInstance.PostConversationsCallbacksBulkDisconnect($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsCallbacksBulkDisconnect: %v\\n\", err)\n}"
+  },
+  "postconversationscallbacksbulkupdate": {
+    "operationId": "postconversationscallbacksbulkupdate",
+    "functionName": "PostConversationsCallbacksBulkUpdate",
+    "signature": "PostConversationsCallbacksBulkUpdate(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Bulkcallbackpatchrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Bulkcallbackpatchresponse",
+    "example": "apiInstance := platformclientv2.Postconversationscallbacksbulkupdaterequest()\ndata, response, err := apiInstance.PostConversationsCallbacksBulkUpdate($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostConversationsCallbacksBulkUpdate: %v\\n\", err)\n}"
   },
   "postconversationscalls": {
     "operationId": "postconversationscalls",
@@ -14787,6 +14192,642 @@
     "return": "Knowledgebase",
     "example": "apiInstance := platformclientv2.Postknowledgeknowledgebasesrequest()\ndata, response, err := apiInstance.PostKnowledgeKnowledgebases($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebases: %v\\n\", err)\n}"
   },
+  "deletescimuser": {
+    "operationId": "deletescimuser",
+    "functionName": "DeleteScimUser",
+    "signature": "DeleteScimUser(userId, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Empty",
+    "example": "apiInstance := platformclientv2.Deletescimuserrequest()\ndata, response, err := apiInstance.DeleteScimUser($userId, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimUser: %v\\n\", err)\n}"
+  },
+  "deletescimv2user": {
+    "operationId": "deletescimv2user",
+    "functionName": "DeleteScimV2User",
+    "signature": "DeleteScimV2User(userId, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Empty",
+    "example": "apiInstance := platformclientv2.Deletescimv2userrequest()\ndata, response, err := apiInstance.DeleteScimV2User($userId, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimV2User: %v\\n\", err)\n}"
+  },
+  "getscimgroup": {
+    "operationId": "getscimgroup",
+    "functionName": "GetScimGroup",
+    "signature": "GetScimGroup(groupId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "apiInstance := platformclientv2.Getscimgrouprequest()\ndata, response, err := apiInstance.GetScimGroup($groupId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroup: %v\\n\", err)\n}"
+  },
+  "getscimgroups": {
+    "operationId": "getscimgroups",
+    "functionName": "GetScimGroups",
+    "signature": "GetScimGroups(startIndex, count, attributes, excludedAttributes, filter)",
+    "parameters": [
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimgrouplistresponse",
+    "example": "apiInstance := platformclientv2.Getscimgroupsrequest()\ndata, response, err := apiInstance.GetScimGroups($startIndex, $count, $attributes, $excludedAttributes, $filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroups: %v\\n\", err)\n}"
+  },
+  "getscimresourcetype": {
+    "operationId": "getscimresourcetype",
+    "functionName": "GetScimResourcetype",
+    "signature": "GetScimResourcetype(resourceType)",
+    "parameters": [
+      {
+        "name": "resourceType",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimconfigresourcetype",
+    "example": "apiInstance := platformclientv2.Getscimresourcetyperequest()\ndata, response, err := apiInstance.GetScimResourcetype($resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetype: %v\\n\", err)\n}"
+  },
+  "getscimresourcetypes": {
+    "operationId": "getscimresourcetypes",
+    "functionName": "GetScimResourcetypes",
+    "signature": "GetScimResourcetypes()",
+    "return": "Scimconfigresourcetypeslistresponse",
+    "example": "apiInstance := platformclientv2.Getscimresourcetypesrequest()\ndata, response, err := apiInstance.GetScimResourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetypes: %v\\n\", err)\n}"
+  },
+  "getscimschema": {
+    "operationId": "getscimschema",
+    "functionName": "GetScimSchema",
+    "signature": "GetScimSchema(schemaId)",
+    "parameters": [
+      {
+        "name": "schemaId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2schemadefinition",
+    "example": "apiInstance := platformclientv2.Getscimschemarequest()\ndata, response, err := apiInstance.GetScimSchema($schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchema: %v\\n\", err)\n}"
+  },
+  "getscimschemas": {
+    "operationId": "getscimschemas",
+    "functionName": "GetScimSchemas",
+    "signature": "GetScimSchemas(filter)",
+    "parameters": [
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2schemalistresponse",
+    "example": "apiInstance := platformclientv2.Getscimschemasrequest()\ndata, response, err := apiInstance.GetScimSchemas($filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchemas: %v\\n\", err)\n}"
+  },
+  "getscimserviceproviderconfig": {
+    "operationId": "getscimserviceproviderconfig",
+    "functionName": "GetScimServiceproviderconfig",
+    "signature": "GetScimServiceproviderconfig(ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimserviceproviderconfig",
+    "example": "apiInstance := platformclientv2.Getscimserviceproviderconfigrequest()\ndata, response, err := apiInstance.GetScimServiceproviderconfig($ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimServiceproviderconfig: %v\\n\", err)\n}"
+  },
+  "getscimuser": {
+    "operationId": "getscimuser",
+    "functionName": "GetScimUser",
+    "signature": "GetScimUser(userId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Getscimuserrequest()\ndata, response, err := apiInstance.GetScimUser($userId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUser: %v\\n\", err)\n}"
+  },
+  "getscimusers": {
+    "operationId": "getscimusers",
+    "functionName": "GetScimUsers",
+    "signature": "GetScimUsers(startIndex, count, attributes, excludedAttributes, filter)",
+    "parameters": [
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimuserlistresponse",
+    "example": "apiInstance := platformclientv2.Getscimusersrequest()\ndata, response, err := apiInstance.GetScimUsers($startIndex, $count, $attributes, $excludedAttributes, $filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUsers: %v\\n\", err)\n}"
+  },
+  "getscimv2group": {
+    "operationId": "getscimv2group",
+    "functionName": "GetScimV2Group",
+    "signature": "GetScimV2Group(groupId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "apiInstance := platformclientv2.Getscimv2grouprequest()\ndata, response, err := apiInstance.GetScimV2Group($groupId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Group: %v\\n\", err)\n}"
+  },
+  "getscimv2groups": {
+    "operationId": "getscimv2groups",
+    "functionName": "GetScimV2Groups",
+    "signature": "GetScimV2Groups(filter, startIndex, count, attributes, excludedAttributes)",
+    "parameters": [
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimgrouplistresponse",
+    "example": "apiInstance := platformclientv2.Getscimv2groupsrequest()\ndata, response, err := apiInstance.GetScimV2Groups($filter, $startIndex, $count, $attributes, $excludedAttributes)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Groups: %v\\n\", err)\n}"
+  },
+  "getscimv2resourcetype": {
+    "operationId": "getscimv2resourcetype",
+    "functionName": "GetScimV2Resourcetype",
+    "signature": "GetScimV2Resourcetype(resourceType)",
+    "parameters": [
+      {
+        "name": "resourceType",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimconfigresourcetype",
+    "example": "apiInstance := platformclientv2.Getscimv2resourcetyperequest()\ndata, response, err := apiInstance.GetScimV2Resourcetype($resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetype: %v\\n\", err)\n}"
+  },
+  "getscimv2resourcetypes": {
+    "operationId": "getscimv2resourcetypes",
+    "functionName": "GetScimV2Resourcetypes",
+    "signature": "GetScimV2Resourcetypes()",
+    "return": "Scimconfigresourcetypeslistresponse",
+    "example": "apiInstance := platformclientv2.Getscimv2resourcetypesrequest()\ndata, response, err := apiInstance.GetScimV2Resourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetypes: %v\\n\", err)\n}"
+  },
+  "getscimv2schema": {
+    "operationId": "getscimv2schema",
+    "functionName": "GetScimV2Schema",
+    "signature": "GetScimV2Schema(schemaId)",
+    "parameters": [
+      {
+        "name": "schemaId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2schemadefinition",
+    "example": "apiInstance := platformclientv2.Getscimv2schemarequest()\ndata, response, err := apiInstance.GetScimV2Schema($schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schema: %v\\n\", err)\n}"
+  },
+  "getscimv2schemas": {
+    "operationId": "getscimv2schemas",
+    "functionName": "GetScimV2Schemas",
+    "signature": "GetScimV2Schemas(filter)",
+    "parameters": [
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2schemalistresponse",
+    "example": "apiInstance := platformclientv2.Getscimv2schemasrequest()\ndata, response, err := apiInstance.GetScimV2Schemas($filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schemas: %v\\n\", err)\n}"
+  },
+  "getscimv2serviceproviderconfig": {
+    "operationId": "getscimv2serviceproviderconfig",
+    "functionName": "GetScimV2Serviceproviderconfig",
+    "signature": "GetScimV2Serviceproviderconfig(ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimserviceproviderconfig",
+    "example": "apiInstance := platformclientv2.Getscimv2serviceproviderconfigrequest()\ndata, response, err := apiInstance.GetScimV2Serviceproviderconfig($ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Serviceproviderconfig: %v\\n\", err)\n}"
+  },
+  "getscimv2user": {
+    "operationId": "getscimv2user",
+    "functionName": "GetScimV2User",
+    "signature": "GetScimV2User(userId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Getscimv2userrequest()\ndata, response, err := apiInstance.GetScimV2User($userId, $attributes, $excludedAttributes, $ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2User: %v\\n\", err)\n}"
+  },
+  "getscimv2users": {
+    "operationId": "getscimv2users",
+    "functionName": "GetScimV2Users",
+    "signature": "GetScimV2Users(startIndex, count, attributes, excludedAttributes, filter)",
+    "parameters": [
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimuserlistresponse",
+    "example": "apiInstance := platformclientv2.Getscimv2usersrequest()\ndata, response, err := apiInstance.GetScimV2Users($startIndex, $count, $attributes, $excludedAttributes, $filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Users: %v\\n\", err)\n}"
+  },
+  "patchscimgroup": {
+    "operationId": "patchscimgroup",
+    "functionName": "PatchScimGroup",
+    "signature": "PatchScimGroup(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "apiInstance := platformclientv2.Patchscimgrouprequest()\ndata, response, err := apiInstance.PatchScimGroup($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimGroup: %v\\n\", err)\n}"
+  },
+  "patchscimuser": {
+    "operationId": "patchscimuser",
+    "functionName": "PatchScimUser",
+    "signature": "PatchScimUser(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Patchscimuserrequest()\ndata, response, err := apiInstance.PatchScimUser($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimUser: %v\\n\", err)\n}"
+  },
+  "patchscimv2group": {
+    "operationId": "patchscimv2group",
+    "functionName": "PatchScimV2Group",
+    "signature": "PatchScimV2Group(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "apiInstance := platformclientv2.Patchscimv2grouprequest()\ndata, response, err := apiInstance.PatchScimV2Group($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2Group: %v\\n\", err)\n}"
+  },
+  "patchscimv2user": {
+    "operationId": "patchscimv2user",
+    "functionName": "PatchScimV2User",
+    "signature": "PatchScimV2User(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Patchscimv2userrequest()\ndata, response, err := apiInstance.PatchScimV2User($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2User: %v\\n\", err)\n}"
+  },
+  "postscimusers": {
+    "operationId": "postscimusers",
+    "functionName": "PostScimUsers",
+    "signature": "PostScimUsers(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Scimv2createuser",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Postscimusersrequest()\ndata, response, err := apiInstance.PostScimUsers($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimUsers: %v\\n\", err)\n}"
+  },
+  "postscimv2users": {
+    "operationId": "postscimv2users",
+    "functionName": "PostScimV2Users",
+    "signature": "PostScimV2Users(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Scimv2createuser",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Postscimv2usersrequest()\ndata, response, err := apiInstance.PostScimV2Users($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimV2Users: %v\\n\", err)\n}"
+  },
+  "putscimgroup": {
+    "operationId": "putscimgroup",
+    "functionName": "PutScimGroup",
+    "signature": "PutScimGroup(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2group",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "apiInstance := platformclientv2.Putscimgrouprequest()\ndata, response, err := apiInstance.PutScimGroup($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimGroup: %v\\n\", err)\n}"
+  },
+  "putscimuser": {
+    "operationId": "putscimuser",
+    "functionName": "PutScimUser",
+    "signature": "PutScimUser(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2user",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Putscimuserrequest()\ndata, response, err := apiInstance.PutScimUser($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimUser: %v\\n\", err)\n}"
+  },
+  "putscimv2group": {
+    "operationId": "putscimv2group",
+    "functionName": "PutScimV2Group",
+    "signature": "PutScimV2Group(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2group",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "apiInstance := platformclientv2.Putscimv2grouprequest()\ndata, response, err := apiInstance.PutScimV2Group($groupId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2Group: %v\\n\", err)\n}"
+  },
+  "putscimv2user": {
+    "operationId": "putscimv2user",
+    "functionName": "PutScimV2User",
+    "signature": "PutScimV2User(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2user",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "apiInstance := platformclientv2.Putscimv2userrequest()\ndata, response, err := apiInstance.PutScimV2User($userId, $body, $ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2User: %v\\n\", err)\n}"
+  },
   "deletelanguageunderstandingdomain": {
     "operationId": "deletelanguageunderstandingdomain",
     "functionName": "DeleteLanguageunderstandingDomain",
@@ -16596,23 +16637,35 @@
   "getoauthauthorization": {
     "operationId": "getoauthauthorization",
     "functionName": "GetOauthAuthorization",
-    "signature": "GetOauthAuthorization(clientId)",
+    "signature": "GetOauthAuthorization(clientId, acceptLanguage)",
     "parameters": [
       {
         "name": "clientId",
         "type": "string",
         "required": "true"
+      },
+      {
+        "name": "acceptLanguage",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Oauthauthorization",
-    "example": "apiInstance := platformclientv2.Getoauthauthorizationrequest()\ndata, response, err := apiInstance.GetOauthAuthorization($clientId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOauthAuthorization: %v\\n\", err)\n}"
+    "example": "apiInstance := platformclientv2.Getoauthauthorizationrequest()\ndata, response, err := apiInstance.GetOauthAuthorization($clientId, $acceptLanguage)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOauthAuthorization: %v\\n\", err)\n}"
   },
   "getoauthauthorizations": {
     "operationId": "getoauthauthorizations",
     "functionName": "GetOauthAuthorizations",
-    "signature": "GetOauthAuthorizations()",
+    "signature": "GetOauthAuthorizations(acceptLanguage)",
+    "parameters": [
+      {
+        "name": "acceptLanguage",
+        "type": "string",
+        "required": "false"
+      }
+    ],
     "return": "Oauthauthorizationlisting",
-    "example": "apiInstance := platformclientv2.Getoauthauthorizationsrequest()\ndata, response, err := apiInstance.GetOauthAuthorizations()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOauthAuthorizations: %v\\n\", err)\n}"
+    "example": "apiInstance := platformclientv2.Getoauthauthorizationsrequest()\ndata, response, err := apiInstance.GetOauthAuthorizations($acceptLanguage)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetOauthAuthorizations: %v\\n\", err)\n}"
   },
   "getoauthclient": {
     "operationId": "getoauthclient",
@@ -22578,6 +22631,19 @@
     ],
     "example": "apiInstance := platformclientv2.Deleteresponsemanagementresponserequest()\nresponse, err := apiInstance.DeleteResponsemanagementResponse($responseId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteResponsemanagementResponse: %v\\n\", err)\n}"
   },
+  "deleteresponsemanagementresponseasset": {
+    "operationId": "deleteresponsemanagementresponseasset",
+    "functionName": "DeleteResponsemanagementResponseasset",
+    "signature": "DeleteResponsemanagementResponseasset(responseAssetId)",
+    "parameters": [
+      {
+        "name": "responseAssetId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "apiInstance := platformclientv2.Deleteresponsemanagementresponseassetrequest()\nresponse, err := apiInstance.DeleteResponsemanagementResponseasset($responseAssetId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteResponsemanagementResponseasset: %v\\n\", err)\n}"
+  },
   "getresponsemanagementlibraries": {
     "operationId": "getresponsemanagementlibraries",
     "functionName": "GetResponsemanagementLibraries",
@@ -22635,6 +22701,34 @@
     "return": "Response",
     "example": "apiInstance := platformclientv2.Getresponsemanagementresponserequest()\ndata, response, err := apiInstance.GetResponsemanagementResponse($responseId, $expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetResponsemanagementResponse: %v\\n\", err)\n}"
   },
+  "getresponsemanagementresponseasset": {
+    "operationId": "getresponsemanagementresponseasset",
+    "functionName": "GetResponsemanagementResponseasset",
+    "signature": "GetResponsemanagementResponseasset(responseAssetId)",
+    "parameters": [
+      {
+        "name": "responseAssetId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Responseasset",
+    "example": "apiInstance := platformclientv2.Getresponsemanagementresponseassetrequest()\ndata, response, err := apiInstance.GetResponsemanagementResponseasset($responseAssetId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetResponsemanagementResponseasset: %v\\n\", err)\n}"
+  },
+  "getresponsemanagementresponseassetsstatusstatusid": {
+    "operationId": "getresponsemanagementresponseassetsstatusstatusid",
+    "functionName": "GetResponsemanagementResponseassetsStatusStatusId",
+    "signature": "GetResponsemanagementResponseassetsStatusStatusId(statusId)",
+    "parameters": [
+      {
+        "name": "statusId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Responseassetstatus",
+    "example": "apiInstance := platformclientv2.Getresponsemanagementresponseassetsstatusstatusidrequest()\ndata, response, err := apiInstance.GetResponsemanagementResponseassetsStatusStatusId($statusId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling GetResponsemanagementResponseassetsStatusStatusId: %v\\n\", err)\n}"
+  },
   "getresponsemanagementresponses": {
     "operationId": "getresponsemanagementresponses",
     "functionName": "GetResponsemanagementResponses",
@@ -22677,6 +22771,39 @@
     ],
     "return": "Library",
     "example": "apiInstance := platformclientv2.Postresponsemanagementlibrariesrequest()\ndata, response, err := apiInstance.PostResponsemanagementLibraries($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostResponsemanagementLibraries: %v\\n\", err)\n}"
+  },
+  "postresponsemanagementresponseassetssearch": {
+    "operationId": "postresponsemanagementresponseassetssearch",
+    "functionName": "PostResponsemanagementResponseassetsSearch",
+    "signature": "PostResponsemanagementResponseassetsSearch(body, expand)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Responseassetsearchrequest",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Responseassetsearchresults",
+    "example": "apiInstance := platformclientv2.Postresponsemanagementresponseassetssearchrequest()\ndata, response, err := apiInstance.PostResponsemanagementResponseassetsSearch($body, $expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostResponsemanagementResponseassetsSearch: %v\\n\", err)\n}"
+  },
+  "postresponsemanagementresponseassetsuploads": {
+    "operationId": "postresponsemanagementresponseassetsuploads",
+    "functionName": "PostResponsemanagementResponseassetsUploads",
+    "signature": "PostResponsemanagementResponseassetsUploads(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Createresponseassetrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Createresponseassetresponse",
+    "example": "apiInstance := platformclientv2.Postresponsemanagementresponseassetsuploadsrequest()\ndata, response, err := apiInstance.PostResponsemanagementResponseassetsUploads($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostResponsemanagementResponseassetsUploads: %v\\n\", err)\n}"
   },
   "postresponsemanagementresponses": {
     "operationId": "postresponsemanagementresponses",
@@ -22753,6 +22880,25 @@
     ],
     "return": "Response",
     "example": "apiInstance := platformclientv2.Putresponsemanagementresponserequest()\ndata, response, err := apiInstance.PutResponsemanagementResponse($responseId, $body, $expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutResponsemanagementResponse: %v\\n\", err)\n}"
+  },
+  "putresponsemanagementresponseasset": {
+    "operationId": "putresponsemanagementresponseasset",
+    "functionName": "PutResponsemanagementResponseasset",
+    "signature": "PutResponsemanagementResponseasset(responseAssetId, body)",
+    "parameters": [
+      {
+        "name": "responseAssetId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Responseassetrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Responseasset",
+    "example": "apiInstance := platformclientv2.Putresponsemanagementresponseassetrequest()\ndata, response, err := apiInstance.PutResponsemanagementResponseasset($responseAssetId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PutResponsemanagementResponseasset: %v\\n\", err)\n}"
   },
   "deleteroutingassessment": {
     "operationId": "deleteroutingassessment",
@@ -28751,20 +28897,6 @@
     "return": "Uploadurlresponse",
     "example": "apiInstance := platformclientv2.Postuploadsworkforcemanagementhistoricaldatacsvrequest()\ndata, response, err := apiInstance.PostUploadsWorkforcemanagementHistoricaldataCsv($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUploadsWorkforcemanagementHistoricaldataCsv: %v\\n\", err)\n}"
   },
-  "postuploadsworkforcemanagementhistoricaldatajson": {
-    "operationId": "postuploadsworkforcemanagementhistoricaldatajson",
-    "functionName": "PostUploadsWorkforcemanagementHistoricaldataJson",
-    "signature": "PostUploadsWorkforcemanagementHistoricaldataJson(body)",
-    "parameters": [
-      {
-        "name": "body",
-        "type": "Uploadurlrequest",
-        "required": "true"
-      }
-    ],
-    "return": "Uploadurlresponse",
-    "example": "apiInstance := platformclientv2.Postuploadsworkforcemanagementhistoricaldatajsonrequest()\ndata, response, err := apiInstance.PostUploadsWorkforcemanagementHistoricaldataJson($body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostUploadsWorkforcemanagementHistoricaldataJson: %v\\n\", err)\n}"
-  },
   "getusagequeryexecutionidresults": {
     "operationId": "getusagequeryexecutionidresults",
     "functionName": "GetUsageQueryExecutionIdResults",
@@ -32677,6 +32809,64 @@
     "return": "Buasyncschedulerunresponse",
     "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekschedulereschedulerequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekScheduleReschedule($businessUnitId, $weekId, $scheduleId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekScheduleReschedule: %v\\n\", err)\n}"
   },
+  "postworkforcemanagementbusinessunitweekscheduleupdate": {
+    "operationId": "postworkforcemanagementbusinessunitweekscheduleupdate",
+    "functionName": "PostWorkforcemanagementBusinessunitWeekScheduleUpdate",
+    "signature": "PostWorkforcemanagementBusinessunitWeekScheduleUpdate(businessUnitId, weekId, scheduleId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "weekId",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "scheduleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Processscheduleupdateuploadrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Buasyncscheduleresponse",
+    "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekscheduleupdaterequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekScheduleUpdate($businessUnitId, $weekId, $scheduleId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekScheduleUpdate: %v\\n\", err)\n}"
+  },
+  "postworkforcemanagementbusinessunitweekscheduleupdateuploadurl": {
+    "operationId": "postworkforcemanagementbusinessunitweekscheduleupdateuploadurl",
+    "functionName": "PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl",
+    "signature": "PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl(businessUnitId, weekId, scheduleId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "weekId",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "scheduleId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Uploadurlrequestbody",
+        "required": "true"
+      }
+    ],
+    "return": "Updatescheduleuploadresponse",
+    "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekscheduleupdateuploadurlrequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl($businessUnitId, $weekId, $scheduleId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekScheduleUpdateUploadurl: %v\\n\", err)\n}"
+  },
   "postworkforcemanagementbusinessunitweekschedules": {
     "operationId": "postworkforcemanagementbusinessunitweekschedules",
     "functionName": "PostWorkforcemanagementBusinessunitWeekSchedules",
@@ -32724,6 +32914,54 @@
     ],
     "return": "Buasyncschedulerunresponse",
     "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekschedulesgeneraterequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekSchedulesGenerate($businessUnitId, $weekId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekSchedulesGenerate: %v\\n\", err)\n}"
+  },
+  "postworkforcemanagementbusinessunitweekschedulesimport": {
+    "operationId": "postworkforcemanagementbusinessunitweekschedulesimport",
+    "functionName": "PostWorkforcemanagementBusinessunitWeekSchedulesImport",
+    "signature": "PostWorkforcemanagementBusinessunitWeekSchedulesImport(businessUnitId, weekId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "weekId",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Wfmprocessuploadrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Scheduleuploadprocessingresponse",
+    "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekschedulesimportrequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekSchedulesImport($businessUnitId, $weekId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekSchedulesImport: %v\\n\", err)\n}"
+  },
+  "postworkforcemanagementbusinessunitweekschedulesimportuploadurl": {
+    "operationId": "postworkforcemanagementbusinessunitweekschedulesimportuploadurl",
+    "functionName": "PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl",
+    "signature": "PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl(businessUnitId, weekId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "weekId",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Uploadurlrequestbody",
+        "required": "true"
+      }
+    ],
+    "return": "Importscheduleuploadresponse",
+    "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekschedulesimportuploadurlrequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl($businessUnitId, $weekId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekSchedulesImportUploadurl: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunitweekshorttermforecastcopy": {
     "operationId": "postworkforcemanagementbusinessunitweekshorttermforecastcopy",
@@ -32787,6 +33025,54 @@
     ],
     "return": "Asyncforecastoperationresult",
     "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekshorttermforecastsgeneraterequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate($businessUnitId, $weekDateId, $body, $forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate: %v\\n\", err)\n}"
+  },
+  "postworkforcemanagementbusinessunitweekshorttermforecastsimport": {
+    "operationId": "postworkforcemanagementbusinessunitweekshorttermforecastsimport",
+    "functionName": "PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport",
+    "signature": "PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport(businessUnitId, weekDateId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "weekDateId",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Wfmprocessuploadrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Importforecastresponse",
+    "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekshorttermforecastsimportrequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport($businessUnitId, $weekDateId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport: %v\\n\", err)\n}"
+  },
+  "postworkforcemanagementbusinessunitweekshorttermforecastsimportuploadurl": {
+    "operationId": "postworkforcemanagementbusinessunitweekshorttermforecastsimportuploadurl",
+    "functionName": "PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl",
+    "signature": "PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl(businessUnitId, weekDateId, body)",
+    "parameters": [
+      {
+        "name": "businessUnitId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "weekDateId",
+        "type": "time.Time",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Uploadurlrequestbody",
+        "required": "true"
+      }
+    ],
+    "return": "Importforecastuploadresponse",
+    "example": "apiInstance := platformclientv2.Postworkforcemanagementbusinessunitweekshorttermforecastsimportuploadurlrequest()\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl($businessUnitId, $weekDateId, $body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunits": {
     "operationId": "postworkforcemanagementbusinessunits",

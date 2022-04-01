@@ -15,6 +15,10 @@ type Webmessagingevent struct {
 	// CoBrowse - Cobrowse event.
 	CoBrowse *Webmessagingeventcobrowse `json:"coBrowse,omitempty"`
 
+
+	// Presence - Presence event.
+	Presence *Webmessagingeventpresence `json:"presence,omitempty"`
+
 }
 
 func (o *Webmessagingevent) MarshalJSON() ([]byte, error) {
@@ -26,11 +30,15 @@ func (o *Webmessagingevent) MarshalJSON() ([]byte, error) {
 		EventType *string `json:"eventType,omitempty"`
 		
 		CoBrowse *Webmessagingeventcobrowse `json:"coBrowse,omitempty"`
+		
+		Presence *Webmessagingeventpresence `json:"presence,omitempty"`
 		*Alias
 	}{ 
 		EventType: o.EventType,
 		
 		CoBrowse: o.CoBrowse,
+		
+		Presence: o.Presence,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -49,6 +57,11 @@ func (o *Webmessagingevent) UnmarshalJSON(b []byte) error {
 	if CoBrowse, ok := WebmessagingeventMap["coBrowse"].(map[string]interface{}); ok {
 		CoBrowseString, _ := json.Marshal(CoBrowse)
 		json.Unmarshal(CoBrowseString, &o.CoBrowse)
+	}
+	
+	if Presence, ok := WebmessagingeventMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
 	}
 	
 

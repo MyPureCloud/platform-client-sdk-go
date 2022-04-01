@@ -568,8 +568,8 @@ type Viewfilter struct {
 	IsAssessmentPassed *bool `json:"isAssessmentPassed,omitempty"`
 
 
-	// ConversationInitiator - Indicates the Brand (Bot/User/Agent) or End User who initiated the first message in the conversation
-	ConversationInitiator *string `json:"conversationInitiator,omitempty"`
+	// ConversationInitiators - The list to filter based on Brands (Bot/User/Agent) or End User who initiated the first message in the conversation
+	ConversationInitiators *[]string `json:"conversationInitiators,omitempty"`
 
 
 	// HasCustomerParticipated - Indicates if the customer has participated in an initiated conversation
@@ -867,7 +867,7 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		IsAssessmentPassed *bool `json:"isAssessmentPassed,omitempty"`
 		
-		ConversationInitiator *string `json:"conversationInitiator,omitempty"`
+		ConversationInitiators *[]string `json:"conversationInitiators,omitempty"`
 		
 		HasCustomerParticipated *bool `json:"hasCustomerParticipated,omitempty"`
 		
@@ -1154,7 +1154,7 @@ func (o *Viewfilter) MarshalJSON() ([]byte, error) {
 		
 		IsAssessmentPassed: o.IsAssessmentPassed,
 		
-		ConversationInitiator: o.ConversationInitiator,
+		ConversationInitiators: o.ConversationInitiators,
 		
 		HasCustomerParticipated: o.HasCustomerParticipated,
 		
@@ -1845,8 +1845,9 @@ func (o *Viewfilter) UnmarshalJSON(b []byte) error {
 		o.IsAssessmentPassed = &IsAssessmentPassed
 	}
 	
-	if ConversationInitiator, ok := ViewfilterMap["conversationInitiator"].(string); ok {
-		o.ConversationInitiator = &ConversationInitiator
+	if ConversationInitiators, ok := ViewfilterMap["conversationInitiators"].([]interface{}); ok {
+		ConversationInitiatorsString, _ := json.Marshal(ConversationInitiators)
+		json.Unmarshal(ConversationInitiatorsString, &o.ConversationInitiators)
 	}
 	
 	if HasCustomerParticipated, ok := ViewfilterMap["hasCustomerParticipated"].(bool); ok {

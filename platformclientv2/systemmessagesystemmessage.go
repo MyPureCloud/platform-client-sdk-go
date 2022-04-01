@@ -41,7 +41,7 @@ type Systemmessagesystemmessage struct {
 
 
 	// Data
-	Data *interface{} `json:"data,omitempty"`
+	Data *map[string]Systemmessageobject `json:"data,omitempty"`
 
 }
 
@@ -67,7 +67,7 @@ func (o *Systemmessagesystemmessage) MarshalJSON() ([]byte, error) {
 		
 		Message *string `json:"message,omitempty"`
 		
-		Data *interface{} `json:"data,omitempty"`
+		Data *map[string]Systemmessageobject `json:"data,omitempty"`
 		*Alias
 	}{ 
 		ChannelId: o.ChannelId,

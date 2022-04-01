@@ -125,7 +125,7 @@ type Createqueuerequest struct {
 	OutboundEmailAddress *Queueemailaddress `json:"outboundEmailAddress,omitempty"`
 
 
-	// SourceQueueId - The id of an existing queue to copy the settings from when creating a new queue.
+	// SourceQueueId - The id of an existing queue to copy the settings (does not include GPR settings) from when creating a new queue.
 	SourceQueueId *string `json:"sourceQueueId,omitempty"`
 
 

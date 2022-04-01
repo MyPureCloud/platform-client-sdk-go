@@ -185,6 +185,14 @@ type Conversationcalleventtopiccallmediaparticipant struct {
 	CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
 
 
+	// BargedParticipantId
+	BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+
+
+	// BargedTime
+	BargedTime *time.Time `json:"bargedTime,omitempty"`
+
+
 	// ConsultParticipantId
 	ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 
@@ -245,6 +253,14 @@ func (o *Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, 
 		*EndAcwTime = timeutil.Strftime(o.EndAcwTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		EndAcwTime = nil
+	}
+	
+	BargedTime := new(string)
+	if o.BargedTime != nil {
+		
+		*BargedTime = timeutil.Strftime(o.BargedTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		BargedTime = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -335,6 +351,10 @@ func (o *Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, 
 		MonitoredParticipantId *string `json:"monitoredParticipantId,omitempty"`
 		
 		CoachedParticipantId *string `json:"coachedParticipantId,omitempty"`
+		
+		BargedParticipantId *string `json:"bargedParticipantId,omitempty"`
+		
+		BargedTime *string `json:"bargedTime,omitempty"`
 		
 		ConsultParticipantId *string `json:"consultParticipantId,omitempty"`
 		
@@ -428,6 +448,10 @@ func (o *Conversationcalleventtopiccallmediaparticipant) MarshalJSON() ([]byte, 
 		MonitoredParticipantId: o.MonitoredParticipantId,
 		
 		CoachedParticipantId: o.CoachedParticipantId,
+		
+		BargedParticipantId: o.BargedParticipantId,
+		
+		BargedTime: BargedTime,
 		
 		ConsultParticipantId: o.ConsultParticipantId,
 		
@@ -637,6 +661,15 @@ func (o *Conversationcalleventtopiccallmediaparticipant) UnmarshalJSON(b []byte)
 	
 	if CoachedParticipantId, ok := ConversationcalleventtopiccallmediaparticipantMap["coachedParticipantId"].(string); ok {
 		o.CoachedParticipantId = &CoachedParticipantId
+	}
+	
+	if BargedParticipantId, ok := ConversationcalleventtopiccallmediaparticipantMap["bargedParticipantId"].(string); ok {
+		o.BargedParticipantId = &BargedParticipantId
+	}
+	
+	if bargedTimeString, ok := ConversationcalleventtopiccallmediaparticipantMap["bargedTime"].(string); ok {
+		BargedTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", bargedTimeString)
+		o.BargedTime = &BargedTime
 	}
 	
 	if ConsultParticipantId, ok := ConversationcalleventtopiccallmediaparticipantMap["consultParticipantId"].(string); ok {
