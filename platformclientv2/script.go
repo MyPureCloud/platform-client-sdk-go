@@ -17,6 +17,10 @@ type Script struct {
 	Name *string `json:"name,omitempty"`
 
 
+	// Division - The division to which this entity belongs.
+	Division *Division `json:"division,omitempty"`
+
+
 	// VersionId
 	VersionId *string `json:"versionId,omitempty"`
 
@@ -108,6 +112,8 @@ func (o *Script) MarshalJSON() ([]byte, error) {
 		
 		Name *string `json:"name,omitempty"`
 		
+		Division *Division `json:"division,omitempty"`
+		
 		VersionId *string `json:"versionId,omitempty"`
 		
 		CreatedDate *string `json:"createdDate,omitempty"`
@@ -136,6 +142,8 @@ func (o *Script) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Name: o.Name,
+		
+		Division: o.Division,
 		
 		VersionId: o.VersionId,
 		
@@ -177,6 +185,11 @@ func (o *Script) UnmarshalJSON(b []byte) error {
 	
 	if Name, ok := ScriptMap["name"].(string); ok {
 		o.Name = &Name
+	}
+	
+	if Division, ok := ScriptMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
 	if VersionId, ok := ScriptMap["versionId"].(string); ok {

@@ -20,6 +20,10 @@ type Facebookintegrationupdaterequest struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// PageAccessToken - The long-lived Page Access Token of Facebook page.  See https://developers.facebook.com/docs/facebook-login/access-tokens.  Either pageAccessToken or userAccessToken should be provided.
 	PageAccessToken *string `json:"pageAccessToken,omitempty"`
 
@@ -45,6 +49,8 @@ func (o *Facebookintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		PageAccessToken *string `json:"pageAccessToken,omitempty"`
 		
 		UserAccessToken *string `json:"userAccessToken,omitempty"`
@@ -57,6 +63,8 @@ func (o *Facebookintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		PageAccessToken: o.PageAccessToken,
 		
@@ -85,6 +93,11 @@ func (o *Facebookintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := FacebookintegrationupdaterequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := FacebookintegrationupdaterequestMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if PageAccessToken, ok := FacebookintegrationupdaterequestMap["pageAccessToken"].(string); ok {

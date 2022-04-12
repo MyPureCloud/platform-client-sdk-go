@@ -21,6 +21,10 @@ type Lineintegration struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// ChannelId - The Channel Id from LINE messenger
 	ChannelId *string `json:"channelId,omitempty"`
 
@@ -98,6 +102,8 @@ func (o *Lineintegration) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		ChannelId *string `json:"channelId,omitempty"`
 		
 		WebhookUri *string `json:"webhookUri,omitempty"`
@@ -128,6 +134,8 @@ func (o *Lineintegration) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		ChannelId: o.ChannelId,
 		
@@ -174,6 +182,11 @@ func (o *Lineintegration) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := LineintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := LineintegrationMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if ChannelId, ok := LineintegrationMap["channelId"].(string); ok {

@@ -21,6 +21,10 @@ type Facebookintegration struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// AppId - The App Id from Facebook messenger
 	AppId *string `json:"appId,omitempty"`
 
@@ -106,6 +110,8 @@ func (o *Facebookintegration) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		AppId *string `json:"appId,omitempty"`
 		
 		PageId *string `json:"pageId,omitempty"`
@@ -140,6 +146,8 @@ func (o *Facebookintegration) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		AppId: o.AppId,
 		
@@ -190,6 +198,11 @@ func (o *Facebookintegration) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := FacebookintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := FacebookintegrationMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if AppId, ok := FacebookintegrationMap["appId"].(string); ok {

@@ -15,6 +15,26 @@ type Supportcentersettings struct {
 	// KnowledgeBase - The knowledge base for support center
 	KnowledgeBase *Addressableentityref `json:"knowledgeBase,omitempty"`
 
+
+	// CustomMessages - Customizable display texts for support center
+	CustomMessages *[]Supportcentercustommessage `json:"customMessages,omitempty"`
+
+
+	// RouterType - Router type for support center
+	RouterType *string `json:"routerType,omitempty"`
+
+
+	// Screens - Available screens for the support center with its modules
+	Screens *[]Supportcenterscreen `json:"screens,omitempty"`
+
+
+	// EnabledCategories - Enabled article categories for support center
+	EnabledCategories *[]Addressableentityref `json:"enabledCategories,omitempty"`
+
+
+	// StyleSetting - Style attributes for support center
+	StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
+
 }
 
 func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
@@ -26,11 +46,31 @@ func (o *Supportcentersettings) MarshalJSON() ([]byte, error) {
 		Enabled *bool `json:"enabled,omitempty"`
 		
 		KnowledgeBase *Addressableentityref `json:"knowledgeBase,omitempty"`
+		
+		CustomMessages *[]Supportcentercustommessage `json:"customMessages,omitempty"`
+		
+		RouterType *string `json:"routerType,omitempty"`
+		
+		Screens *[]Supportcenterscreen `json:"screens,omitempty"`
+		
+		EnabledCategories *[]Addressableentityref `json:"enabledCategories,omitempty"`
+		
+		StyleSetting *Supportcenterstylesetting `json:"styleSetting,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
 		
 		KnowledgeBase: o.KnowledgeBase,
+		
+		CustomMessages: o.CustomMessages,
+		
+		RouterType: o.RouterType,
+		
+		Screens: o.Screens,
+		
+		EnabledCategories: o.EnabledCategories,
+		
+		StyleSetting: o.StyleSetting,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -49,6 +89,30 @@ func (o *Supportcentersettings) UnmarshalJSON(b []byte) error {
 	if KnowledgeBase, ok := SupportcentersettingsMap["knowledgeBase"].(map[string]interface{}); ok {
 		KnowledgeBaseString, _ := json.Marshal(KnowledgeBase)
 		json.Unmarshal(KnowledgeBaseString, &o.KnowledgeBase)
+	}
+	
+	if CustomMessages, ok := SupportcentersettingsMap["customMessages"].([]interface{}); ok {
+		CustomMessagesString, _ := json.Marshal(CustomMessages)
+		json.Unmarshal(CustomMessagesString, &o.CustomMessages)
+	}
+	
+	if RouterType, ok := SupportcentersettingsMap["routerType"].(string); ok {
+		o.RouterType = &RouterType
+	}
+	
+	if Screens, ok := SupportcentersettingsMap["screens"].([]interface{}); ok {
+		ScreensString, _ := json.Marshal(Screens)
+		json.Unmarshal(ScreensString, &o.Screens)
+	}
+	
+	if EnabledCategories, ok := SupportcentersettingsMap["enabledCategories"].([]interface{}); ok {
+		EnabledCategoriesString, _ := json.Marshal(EnabledCategories)
+		json.Unmarshal(EnabledCategoriesString, &o.EnabledCategories)
+	}
+	
+	if StyleSetting, ok := SupportcentersettingsMap["styleSetting"].(map[string]interface{}); ok {
+		StyleSettingString, _ := json.Marshal(StyleSetting)
+		json.Unmarshal(StyleSettingString, &o.StyleSetting)
 	}
 	
 

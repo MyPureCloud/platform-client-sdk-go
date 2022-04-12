@@ -1325,7 +1325,7 @@ func (a RecordingApi) GetRecordingBatchrequest(jobId string) (*Batchdownloadjobs
 // Gets media retention policy list with query options to filter on name and enabled.
 //
 // for a less verbose response, add summary=true to this endpoint
-func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool) (*Policyentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool, deleteDaysThreshold int) (*Policyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/crossplatform/mediaretentionpolicies"
@@ -1371,6 +1371,8 @@ func (a RecordingApi) GetRecordingCrossplatformMediaretentionpolicies(pageSize i
 	queryParams["summary"] = a.Configuration.APIClient.ParameterToString(summary, "")
 	
 	queryParams["hasErrors"] = a.Configuration.APIClient.ParameterToString(hasErrors, "")
+	
+	queryParams["deleteDaysThreshold"] = a.Configuration.APIClient.ParameterToString(deleteDaysThreshold, "")
 	
 
 	// to determine the Content-Type header
@@ -1862,7 +1864,7 @@ func (a RecordingApi) GetRecordingLocalkeysSettings() (*Localencryptionconfigura
 // Gets media retention policy list with query options to filter on name and enabled.
 //
 // for a less verbose response, add summary=true to this endpoint
-func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool) (*Policyentitylisting, *APIResponse, error) {
+func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumber int, sortBy string, expand []string, nextPage string, previousPage string, name string, enabled bool, summary bool, hasErrors bool, deleteDaysThreshold int) (*Policyentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/recording/mediaretentionpolicies"
@@ -1908,6 +1910,8 @@ func (a RecordingApi) GetRecordingMediaretentionpolicies(pageSize int, pageNumbe
 	queryParams["summary"] = a.Configuration.APIClient.ParameterToString(summary, "")
 	
 	queryParams["hasErrors"] = a.Configuration.APIClient.ParameterToString(hasErrors, "")
+	
+	queryParams["deleteDaysThreshold"] = a.Configuration.APIClient.ParameterToString(deleteDaysThreshold, "")
 	
 
 	// to determine the Content-Type header

@@ -21,6 +21,10 @@ type Messagingintegration struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// Status - The status of the Integration
 	Status *string `json:"status,omitempty"`
 
@@ -86,6 +90,8 @@ func (o *Messagingintegration) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		Status *string `json:"status,omitempty"`
 		
 		MessengerType *string `json:"messengerType,omitempty"`
@@ -110,6 +116,8 @@ func (o *Messagingintegration) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		Status: o.Status,
 		
@@ -150,6 +158,11 @@ func (o *Messagingintegration) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := MessagingintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := MessagingintegrationMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if Status, ok := MessagingintegrationMap["status"].(string); ok {

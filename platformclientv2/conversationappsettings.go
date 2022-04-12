@@ -16,8 +16,12 @@ type Conversationappsettings struct {
 	ShowUserTypingIndicator *bool `json:"showUserTypingIndicator,omitempty"`
 
 
-	// AutoStartType - The auto start type for the messenger conversation
+	// AutoStartType - Deprecated. The auto start type for the messenger conversation
 	AutoStartType *string `json:"autoStartType,omitempty"`
+
+
+	// AutoStart - The auto start for the messenger conversation
+	AutoStart *Autostart `json:"autoStart,omitempty"`
 
 }
 
@@ -32,6 +36,8 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		ShowUserTypingIndicator *bool `json:"showUserTypingIndicator,omitempty"`
 		
 		AutoStartType *string `json:"autoStartType,omitempty"`
+		
+		AutoStart *Autostart `json:"autoStart,omitempty"`
 		*Alias
 	}{ 
 		ShowAgentTypingIndicator: o.ShowAgentTypingIndicator,
@@ -39,6 +45,8 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		ShowUserTypingIndicator: o.ShowUserTypingIndicator,
 		
 		AutoStartType: o.AutoStartType,
+		
+		AutoStart: o.AutoStart,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -60,6 +68,11 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	
 	if AutoStartType, ok := ConversationappsettingsMap["autoStartType"].(string); ok {
 		o.AutoStartType = &AutoStartType
+	}
+	
+	if AutoStart, ok := ConversationappsettingsMap["autoStart"].(map[string]interface{}); ok {
+		AutoStartString, _ := json.Marshal(AutoStart)
+		json.Unmarshal(AutoStartString, &o.AutoStart)
 	}
 	
 

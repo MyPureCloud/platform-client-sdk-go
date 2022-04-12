@@ -53,6 +53,10 @@ type Auditlogmessage struct {
 	EntityType *string `json:"entityType,omitempty"`
 
 
+	// Status - Status of the event being audited
+	Status *string `json:"status,omitempty"`
+
+
 	// PropertyChanges - List of properties that were changed and changes made to those properties.
 	PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
 
@@ -98,6 +102,8 @@ func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		
 		EntityType *string `json:"entityType,omitempty"`
 		
+		Status *string `json:"status,omitempty"`
+		
 		PropertyChanges *[]Propertychange `json:"propertyChanges,omitempty"`
 		
 		Context *map[string]string `json:"context,omitempty"`
@@ -124,6 +130,8 @@ func (o *Auditlogmessage) MarshalJSON() ([]byte, error) {
 		Entity: o.Entity,
 		
 		EntityType: o.EntityType,
+		
+		Status: o.Status,
 		
 		PropertyChanges: o.PropertyChanges,
 		
@@ -187,6 +195,10 @@ func (o *Auditlogmessage) UnmarshalJSON(b []byte) error {
 	
 	if EntityType, ok := AuditlogmessageMap["entityType"].(string); ok {
 		o.EntityType = &EntityType
+	}
+	
+	if Status, ok := AuditlogmessageMap["status"].(string); ok {
+		o.Status = &Status
 	}
 	
 	if PropertyChanges, ok := AuditlogmessageMap["propertyChanges"].([]interface{}); ok {

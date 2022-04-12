@@ -7002,7 +7002,7 @@
       }
     ],
     "return": "Conversation",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\nvar body platformclientv2.Conversation // Conversation\n// Update a conversation by setting it's recording state, merging in other conversations to create a conference, or disconnecting all of the participants\ndata, response, err := apiInstance.PatchConversationsCall(conversationId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationsCall: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar conversationId string // conversationId\nvar body platformclientv2.Conversation // Conversation\n// Update a conversation by setting its recording state, merging in other conversations to create a conference, or disconnecting all of the participants\ndata, response, err := apiInstance.PatchConversationsCall(conversationId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationsCall: %v\\n\", err)\n}"
   },
   "patchconversationscallparticipant": {
     "operationId": "patchconversationscallparticipant",
@@ -17805,6 +17805,19 @@
     "return": "Messagingcampaign",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar messagingCampaignId string // The Messaging Campaign ID\n// Delete an Outbound Messaging Campaign\ndata, response, err := apiInstance.DeleteOutboundMessagingcampaign(messagingCampaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundMessagingcampaign: %v\\n\", err)\n}"
   },
+  "deleteoutboundmessagingcampaignprogress": {
+    "operationId": "deleteoutboundmessagingcampaignprogress",
+    "functionName": "DeleteOutboundMessagingcampaignProgress",
+    "signature": "DeleteOutboundMessagingcampaignProgress(messagingCampaignId)",
+    "parameters": [
+      {
+        "name": "messagingCampaignId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar messagingCampaignId string // The Messaging Campaign ID\n// Reset messaging campaign progress and recycle the messaging campaign\nresponse, err := apiInstance.DeleteOutboundMessagingcampaignProgress(messagingCampaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundMessagingcampaignProgress: %v\\n\", err)\n}"
+  },
   "deleteoutboundruleset": {
     "operationId": "deleteoutboundruleset",
     "functionName": "DeleteOutboundRuleset",
@@ -20074,20 +20087,6 @@
     "return": "Userpresence",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewPresenceApiWithConfig(config)\n\nvar userId string // user Id\nvar sourceId string // Presence source ID\n// Get a user's Presence\ndata, response, err := apiInstance.GetUserPresence(userId, sourceId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserPresence: %v\\n\", err)\n}"
   },
-  "getuserpresencesmicrosoftteams": {
-    "operationId": "getuserpresencesmicrosoftteams",
-    "functionName": "GetUserPresencesMicrosoftteams",
-    "signature": "GetUserPresencesMicrosoftteams(userId)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Presenceexpand",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewPresenceApiWithConfig(config)\n\nvar userId string // user Id\n// Get a user's Microsoft Teams presence.\ndata, response, err := apiInstance.GetUserPresencesMicrosoftteams(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserPresencesMicrosoftteams: %v\\n\", err)\n}"
-  },
   "getuserpresencespurecloud": {
     "operationId": "getuserpresencespurecloud",
     "functionName": "GetUserPresencesPurecloud",
@@ -20101,20 +20100,6 @@
     ],
     "return": "Userpresence",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewPresenceApiWithConfig(config)\n\nvar userId string // user Id\n// Get a user's Genesys Cloud presence.\ndata, response, err := apiInstance.GetUserPresencesPurecloud(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserPresencesPurecloud: %v\\n\", err)\n}"
-  },
-  "getuserpresenceszoomphone": {
-    "operationId": "getuserpresenceszoomphone",
-    "functionName": "GetUserPresencesZoomphone",
-    "signature": "GetUserPresencesZoomphone(userId)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Presenceexpand",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewPresenceApiWithConfig(config)\n\nvar userId string // user Id\n// Get a user's Zoom Phone presence.\ndata, response, err := apiInstance.GetUserPresencesZoomphone(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetUserPresencesZoomphone: %v\\n\", err)\n}"
   },
   "patchuserpresence": {
     "operationId": "patchuserpresence",
@@ -21880,7 +21865,7 @@
   "getrecordingcrossplatformmediaretentionpolicies": {
     "operationId": "getrecordingcrossplatformmediaretentionpolicies",
     "functionName": "GetRecordingCrossplatformMediaretentionpolicies",
-    "signature": "GetRecordingCrossplatformMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors)",
+    "signature": "GetRecordingCrossplatformMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors, deleteDaysThreshold)",
     "parameters": [
       {
         "name": "pageSize",
@@ -21931,10 +21916,15 @@
         "name": "hasErrors",
         "type": "bool",
         "required": "false"
+      },
+      {
+        "name": "deleteDaysThreshold",
+        "type": "int",
+        "required": "false"
       }
     ],
     "return": "Policyentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar name string // the policy name - used for filtering results in searches.\nvar enabled bool // checks to see if policy is enabled - use enabled = true or enabled = false\nvar summary bool // provides a less verbose response of policy lists.\nvar hasErrors bool // provides a way to fetch all policies with errors or policies that do not have errors\n// Gets media retention policy list with query options to filter on name and enabled.\ndata, response, err := apiInstance.GetRecordingCrossplatformMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingCrossplatformMediaretentionpolicies: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar name string // the policy name - used for filtering results in searches.\nvar enabled bool // checks to see if policy is enabled - use enabled = true or enabled = false\nvar summary bool // provides a less verbose response of policy lists.\nvar hasErrors bool // provides a way to fetch all policies with errors or policies that do not have errors\nvar deleteDaysThreshold int // provides a way to fetch all policies with any actions having deleteDays exceeding the provided value\n// Gets media retention policy list with query options to filter on name and enabled.\ndata, response, err := apiInstance.GetRecordingCrossplatformMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors, deleteDaysThreshold)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingCrossplatformMediaretentionpolicies: %v\\n\", err)\n}"
   },
   "getrecordingcrossplatformmediaretentionpolicy": {
     "operationId": "getrecordingcrossplatformmediaretentionpolicy",
@@ -22071,7 +22061,7 @@
   "getrecordingmediaretentionpolicies": {
     "operationId": "getrecordingmediaretentionpolicies",
     "functionName": "GetRecordingMediaretentionpolicies",
-    "signature": "GetRecordingMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors)",
+    "signature": "GetRecordingMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors, deleteDaysThreshold)",
     "parameters": [
       {
         "name": "pageSize",
@@ -22122,10 +22112,15 @@
         "name": "hasErrors",
         "type": "bool",
         "required": "false"
+      },
+      {
+        "name": "deleteDaysThreshold",
+        "type": "int",
+        "required": "false"
       }
     ],
     "return": "Policyentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar name string // the policy name - used for filtering results in searches.\nvar enabled bool // checks to see if policy is enabled - use enabled = true or enabled = false\nvar summary bool // provides a less verbose response of policy lists.\nvar hasErrors bool // provides a way to fetch all policies with errors or policies that do not have errors\n// Gets media retention policy list with query options to filter on name and enabled.\ndata, response, err := apiInstance.GetRecordingMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingMediaretentionpolicies: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar pageSize int // The total page size requested\nvar pageNumber int // The page number requested\nvar sortBy string // variable name requested to sort by\nvar expand []string // variable name requested by expand list\nvar nextPage string // next page token\nvar previousPage string // Previous page token\nvar name string // the policy name - used for filtering results in searches.\nvar enabled bool // checks to see if policy is enabled - use enabled = true or enabled = false\nvar summary bool // provides a less verbose response of policy lists.\nvar hasErrors bool // provides a way to fetch all policies with errors or policies that do not have errors\nvar deleteDaysThreshold int // provides a way to fetch all policies with any actions having deleteDays exceeding the provided value\n// Gets media retention policy list with query options to filter on name and enabled.\ndata, response, err := apiInstance.GetRecordingMediaretentionpolicies(pageSize, pageNumber, sortBy, expand, nextPage, previousPage, name, enabled, summary, hasErrors, deleteDaysThreshold)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRecordingMediaretentionpolicies: %v\\n\", err)\n}"
   },
   "getrecordingmediaretentionpolicy": {
     "operationId": "getrecordingmediaretentionpolicy",
@@ -25022,7 +25017,7 @@
   "getscripts": {
     "operationId": "getscripts",
     "functionName": "GetScripts",
-    "signature": "GetScripts(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion)",
+    "signature": "GetScripts(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)",
     "parameters": [
       {
         "name": "pageSize",
@@ -25068,15 +25063,79 @@
         "name": "scriptDataVersion",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "divisionIds",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Scriptentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar expand string // Expand\nvar name string // Name filter\nvar feature string // Feature filter\nvar flowId string // Secure flow id filter\nvar sortBy string // SortBy\nvar sortOrder string // SortOrder\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\n// Get the list of scripts\ndata, response, err := apiInstance.GetScripts(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScripts: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar expand string // Expand\nvar name string // Name filter\nvar feature string // Feature filter\nvar flowId string // Secure flow id filter\nvar sortBy string // SortBy\nvar sortOrder string // SortOrder\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\nvar divisionIds string // Filters scripts to requested divisionIds\n// Get the list of scripts\ndata, response, err := apiInstance.GetScripts(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScripts: %v\\n\", err)\n}"
+  },
+  "getscriptsdivisionviews": {
+    "operationId": "getscriptsdivisionviews",
+    "functionName": "GetScriptsDivisionviews",
+    "signature": "GetScriptsDivisionviews(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "feature",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "flowId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "sortBy",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "sortOrder",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "scriptDataVersion",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "divisionIds",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scriptentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar expand string // Expand\nvar name string // Name filter\nvar feature string // Feature filter\nvar flowId string // Secure flow id filter\nvar sortBy string // SortBy\nvar sortOrder string // SortOrder\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\nvar divisionIds string // Filters scripts to requested divisionIds\n// Get the metadata for a list of scripts\ndata, response, err := apiInstance.GetScriptsDivisionviews(pageSize, pageNumber, expand, name, feature, flowId, sortBy, sortOrder, scriptDataVersion, divisionIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScriptsDivisionviews: %v\\n\", err)\n}"
   },
   "getscriptspublished": {
     "operationId": "getscriptspublished",
     "functionName": "GetScriptsPublished",
-    "signature": "GetScriptsPublished(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion)",
+    "signature": "GetScriptsPublished(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion, divisionIds)",
     "parameters": [
       {
         "name": "pageSize",
@@ -25112,10 +25171,64 @@
         "name": "scriptDataVersion",
         "type": "string",
         "required": "false"
+      },
+      {
+        "name": "divisionIds",
+        "type": "string",
+        "required": "false"
       }
     ],
     "return": "Scriptentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar expand string // Expand\nvar name string // Name filter\nvar feature string // Feature filter\nvar flowId string // Secure flow id filter\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\n// Get the published scripts.\ndata, response, err := apiInstance.GetScriptsPublished(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScriptsPublished: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar expand string // Expand\nvar name string // Name filter\nvar feature string // Feature filter\nvar flowId string // Secure flow id filter\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\nvar divisionIds string // Filters scripts to requested divisionIds\n// Get the published scripts.\ndata, response, err := apiInstance.GetScriptsPublished(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion, divisionIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScriptsPublished: %v\\n\", err)\n}"
+  },
+  "getscriptspublisheddivisionviews": {
+    "operationId": "getscriptspublisheddivisionviews",
+    "functionName": "GetScriptsPublishedDivisionviews",
+    "signature": "GetScriptsPublishedDivisionviews(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion, divisionIds)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "expand",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "feature",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "flowId",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "scriptDataVersion",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "divisionIds",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scriptentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewScriptsApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar expand string // Expand\nvar name string // Name filter\nvar feature string // Feature filter\nvar flowId string // Secure flow id filter\nvar scriptDataVersion string // Advanced usage - controls the data version of the script\nvar divisionIds string // Filters scripts to requested divisionIds\n// Get the published scripts metadata.\ndata, response, err := apiInstance.GetScriptsPublishedDivisionviews(pageSize, pageNumber, expand, name, feature, flowId, scriptDataVersion, divisionIds)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScriptsPublishedDivisionviews: %v\\n\", err)\n}"
   },
   "getscriptspublishedscriptid": {
     "operationId": "getscriptspublishedscriptid",
@@ -27113,7 +27226,7 @@
       }
     ],
     "return": "Extensionpoolentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Sort by\nvar number string // Number\n// Get a listing of extension pools\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesExtensionpools(pageSize, pageNumber, sortBy, number)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesExtensionpools: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortBy string // Sort by\nvar number string // Deprecated, filtering by number not supported\n// Get a listing of extension pools\ndata, response, err := apiInstance.GetTelephonyProvidersEdgesExtensionpools(pageSize, pageNumber, sortBy, number)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTelephonyProvidersEdgesExtensionpools: %v\\n\", err)\n}"
   },
   "gettelephonyprovidersedgesextensions": {
     "operationId": "gettelephonyprovidersedgesextensions",
@@ -30965,7 +31078,7 @@
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\n// Delete a short term forecast\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitWeekShorttermforecast(businessUnitId, weekDateId, forecastId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitWeekShorttermforecast: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\n// Delete a short term forecast\nresponse, err := apiInstance.DeleteWorkforcemanagementBusinessunitWeekShorttermforecast(businessUnitId, weekDateId, forecastId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementBusinessunitWeekShorttermforecast: %v\\n\", err)\n}"
   },
   "deleteworkforcemanagementcalendarurlics": {
     "operationId": "deleteworkforcemanagementcalendarurlics",
@@ -31002,7 +31115,7 @@
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit object to delete\n// Deletes a time off limit object\nresponse, err := apiInstance.DeleteWorkforcemanagementManagementunitTimeofflimit(managementUnitId, timeOffLimitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementManagementunitTimeofflimit: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit object to delete\n// Deletes a time off limit object\nresponse, err := apiInstance.DeleteWorkforcemanagementManagementunitTimeofflimit(managementUnitId, timeOffLimitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementManagementunitTimeofflimit: %v\\n\", err)\n}"
   },
   "deleteworkforcemanagementmanagementunittimeoffplan": {
     "operationId": "deleteworkforcemanagementmanagementunittimeoffplan",
@@ -31020,7 +31133,7 @@
         "required": "true"
       }
     ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID.\nvar timeOffPlanId string // The ID of the time off plan to delete\n// Deletes a time off plan\nresponse, err := apiInstance.DeleteWorkforcemanagementManagementunitTimeoffplan(managementUnitId, timeOffPlanId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementManagementunitTimeoffplan: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\nvar timeOffPlanId string // The ID of the time off plan to delete\n// Deletes a time off plan\nresponse, err := apiInstance.DeleteWorkforcemanagementManagementunitTimeoffplan(managementUnitId, timeOffPlanId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteWorkforcemanagementManagementunitTimeoffplan: %v\\n\", err)\n}"
   },
   "deleteworkforcemanagementmanagementunitworkplan": {
     "operationId": "deleteworkforcemanagementmanagementunitworkplan",
@@ -31176,7 +31289,7 @@
       }
     ],
     "return": "Wfmintradayplanninggrouplisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit\nvar date time.Time // yyyy-MM-dd date string interpreted in the configured business unit time zone. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get intraday planning groups for the given date\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitIntradayPlanninggroups(businessUnitId, date)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitIntradayPlanninggroups: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar date time.Time // yyyy-MM-dd date string interpreted in the configured business unit time zone. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\n// Get intraday planning groups for the given date\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitIntradayPlanninggroups(businessUnitId, date)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitIntradayPlanninggroups: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunitmanagementunits": {
     "operationId": "getworkforcemanagementbusinessunitmanagementunits",
@@ -31497,7 +31610,7 @@
       }
     ],
     "return": "Bushorttermforecast",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\nvar expand []string // \n// Get a short term forecast\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecast(businessUnitId, weekDateId, forecastId, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecast: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\nvar expand []string // \n// Get a short term forecast\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecast(businessUnitId, weekDateId, forecastId, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecast: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunitweekshorttermforecastdata": {
     "operationId": "getworkforcemanagementbusinessunitweekshorttermforecastdata",
@@ -31531,7 +31644,7 @@
       }
     ],
     "return": "Buforecastresultresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\nvar weekNumber int // The week number to fetch (for multi-week forecasts)\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Get the result of a short term forecast calculation\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastData(businessUnitId, weekDateId, forecastId, weekNumber, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastData: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\nvar weekNumber int // The week number to fetch (for multi-week forecasts)\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Get the result of a short term forecast calculation\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastData(businessUnitId, weekDateId, forecastId, weekNumber, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastData: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunitweekshorttermforecastgenerationresults": {
     "operationId": "getworkforcemanagementbusinessunitweekshorttermforecastgenerationresults",
@@ -31555,7 +31668,7 @@
       }
     ],
     "return": "Buforecastgenerationresult",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\n// Gets the forecast generation results\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults(businessUnitId, weekDateId, forecastId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\n// Gets the forecast generation results\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults(businessUnitId, weekDateId, forecastId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastGenerationresults: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunitweekshorttermforecastlongtermforecastdata": {
     "operationId": "getworkforcemanagementbusinessunitweekshorttermforecastlongtermforecastdata",
@@ -31584,7 +31697,7 @@
       }
     ],
     "return": "Longtermforecastresultresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Get the result of a long term forecast calculation\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata(businessUnitId, weekDateId, forecastId, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Get the result of a long term forecast calculation\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata(businessUnitId, weekDateId, forecastId, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastLongtermforecastdata: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunitweekshorttermforecastplanninggroups": {
     "operationId": "getworkforcemanagementbusinessunitweekshorttermforecastplanninggroups",
@@ -31608,7 +31721,7 @@
       }
     ],
     "return": "Forecastplanninggroupsresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\n// Gets the forecast planning group snapshot\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups(businessUnitId, weekDateId, forecastId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast\n// Gets the forecast planning group snapshot\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups(businessUnitId, weekDateId, forecastId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecastPlanninggroups: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunitweekshorttermforecasts": {
     "operationId": "getworkforcemanagementbusinessunitweekshorttermforecasts",
@@ -31627,7 +31740,7 @@
       }
     ],
     "return": "Bushorttermforecastlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId string // The week start date of the forecast in yyyy-MM-dd format or 'recent' (without quotes) to fetch recent forecasts\n// Get short term forecasts\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecasts(businessUnitId, weekDateId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecasts: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId string // The week start date of the forecast in yyyy-MM-dd format or 'recent' (without quotes) to fetch recent forecasts\n// Get short term forecasts\ndata, response, err := apiInstance.GetWorkforcemanagementBusinessunitWeekShorttermforecasts(businessUnitId, weekDateId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementBusinessunitWeekShorttermforecasts: %v\\n\", err)\n}"
   },
   "getworkforcemanagementbusinessunits": {
     "operationId": "getworkforcemanagementbusinessunits",
@@ -31747,7 +31860,7 @@
       }
     ],
     "return": "Userscheduleadherencelisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Get a list of user schedule adherence records for the requested management unit\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitAdherence(managementUnitId, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitAdherence: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Get a list of user schedule adherence records for the requested management unit\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitAdherence(managementUnitId, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitAdherence: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitagent": {
     "operationId": "getworkforcemanagementmanagementunitagent",
@@ -31771,7 +31884,7 @@
       }
     ],
     "return": "Wfmagent",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The id of the management unit, or 'mine' for the management unit of the logged-in user.\nvar agentId string // The agent id\nvar excludeCapabilities bool // Excludes all capabilities of the agent such as queues, languages, and skills\n// Get data for agent in the management unit\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitAgent(managementUnitId, agentId, excludeCapabilities)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitAgent: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar agentId string // The agent id\nvar excludeCapabilities bool // Excludes all capabilities of the agent such as queues, languages, and skills\n// Get data for agent in the management unit\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitAgent(managementUnitId, agentId, excludeCapabilities)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitAgent: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitagentshifttrades": {
     "operationId": "getworkforcemanagementmanagementunitagentshifttrades",
@@ -31790,7 +31903,7 @@
       }
     ],
     "return": "Shifttradelistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The id of the management unit, or 'mine' for the management unit of the logged-in user.\nvar agentId string // The agent id\n// Gets all the shift trades for a given agent\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitAgentShifttrades(managementUnitId, agentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitAgentShifttrades: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar agentId string // The agent id\n// Gets all the shift trades for a given agent\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitAgentShifttrades(managementUnitId, agentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitAgentShifttrades: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitshifttradesmatched": {
     "operationId": "getworkforcemanagementmanagementunitshifttradesmatched",
@@ -31804,7 +31917,7 @@
       }
     ],
     "return": "Shifttradematchessummaryresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\n// Gets a summary of all shift trades in the matched state\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitShifttradesMatched(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitShifttradesMatched: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\n// Gets a summary of all shift trades in the matched state\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitShifttradesMatched(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitShifttradesMatched: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitshifttradesusers": {
     "operationId": "getworkforcemanagementmanagementunitshifttradesusers",
@@ -31818,7 +31931,7 @@
       }
     ],
     "return": "Wfmuserentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\n// Gets list of users available for whom you can send direct shift trade requests\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitShifttradesUsers(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitShifttradesUsers: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\n// Gets list of users available for whom you can send direct shift trade requests\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitShifttradesUsers(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitShifttradesUsers: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunittimeofflimit": {
     "operationId": "getworkforcemanagementmanagementunittimeofflimit",
@@ -31837,7 +31950,7 @@
       }
     ],
     "return": "Timeofflimit",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit to fetch\n// Gets a time off limit object\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeofflimit(managementUnitId, timeOffLimitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeofflimit: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit to fetch\n// Gets a time off limit object\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeofflimit(managementUnitId, timeOffLimitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeofflimit: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunittimeofflimits": {
     "operationId": "getworkforcemanagementmanagementunittimeofflimits",
@@ -31851,7 +31964,7 @@
       }
     ],
     "return": "Timeofflimitlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\n// Gets a list of time off limit objects under management unit.\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeofflimits(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeofflimits: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\n// Gets a list of time off limit objects under management unit.\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeofflimits(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeofflimits: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunittimeoffplan": {
     "operationId": "getworkforcemanagementmanagementunittimeoffplan",
@@ -31870,7 +31983,7 @@
       }
     ],
     "return": "Timeoffplan",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID.\nvar timeOffPlanId string // The ID of the time off plan to fetch\n// Gets a time off plan\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeoffplan(managementUnitId, timeOffPlanId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeoffplan: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\nvar timeOffPlanId string // The ID of the time off plan to fetch\n// Gets a time off plan\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeoffplan(managementUnitId, timeOffPlanId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeoffplan: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunittimeoffplans": {
     "operationId": "getworkforcemanagementmanagementunittimeoffplans",
@@ -31884,7 +31997,7 @@
       }
     ],
     "return": "Timeoffplanlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID.\n// Gets a list of time off plans\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeoffplans(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeoffplans: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\n// Gets a list of time off plans\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitTimeoffplans(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitTimeoffplans: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitusertimeoffrequest": {
     "operationId": "getworkforcemanagementmanagementunitusertimeoffrequest",
@@ -31908,7 +32021,7 @@
       }
     ],
     "return": "Timeoffrequestresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The muId of the management unit, or 'mine' for the management unit of the logged-in user.\nvar userId string // The userId to whom the Time Off Request applies.\nvar timeOffRequestId string // Time Off Request Id\n// Get a time off request\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUserTimeoffrequest(managementUnitId, userId, timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUserTimeoffrequest: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar userId string // The userId to whom the Time Off Request applies.\nvar timeOffRequestId string // Time Off Request Id\n// Get a time off request\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUserTimeoffrequest(managementUnitId, userId, timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUserTimeoffrequest: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitusertimeoffrequesttimeofflimits": {
     "operationId": "getworkforcemanagementmanagementunitusertimeoffrequesttimeofflimits",
@@ -31932,7 +32045,7 @@
       }
     ],
     "return": "Querytimeofflimitvaluesresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar userId string // The userId to whom the time off request applies.\nvar timeOffRequestId string // The ID of the time off request, which dates and activityCodeId determine limit values to retrieve\n// Retrieves time off limit, allocated and waitlisted values according to specific time off request\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits(managementUnitId, userId, timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar userId string // The userId to whom the time off request applies.\nvar timeOffRequestId string // The ID of the time off request, which dates and activityCodeId determine limit values to retrieve\n// Retrieves time off limit, allocated and waitlisted values according to specific time off request\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits(managementUnitId, userId, timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUserTimeoffrequestTimeofflimits: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitusertimeoffrequests": {
     "operationId": "getworkforcemanagementmanagementunitusertimeoffrequests",
@@ -31956,7 +32069,7 @@
       }
     ],
     "return": "Timeoffrequestlist",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The muId of the management unit, or 'mine' for the management unit of the logged-in user.\nvar userId string // The userId to whom the Time Off Request applies.\nvar recentlyReviewed bool // Limit results to requests that have been reviewed within the preceding 30 days\n// Get a list of time off requests for a given user\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUserTimeoffrequests(managementUnitId, userId, recentlyReviewed)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUserTimeoffrequests: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar userId string // The userId to whom the Time Off Request applies.\nvar recentlyReviewed bool // Limit results to requests that have been reviewed within the preceding 30 days\n// Get a list of time off requests for a given user\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUserTimeoffrequests(managementUnitId, userId, recentlyReviewed)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUserTimeoffrequests: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitusers": {
     "operationId": "getworkforcemanagementmanagementunitusers",
@@ -31970,7 +32083,7 @@
       }
     ],
     "return": "Wfmuserentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\n// Get users in the management unit\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUsers(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUsers: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\n// Get users in the management unit\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitUsers(managementUnitId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitUsers: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitweekschedule": {
     "operationId": "getworkforcemanagementmanagementunitweekschedule",
@@ -32062,7 +32175,7 @@
       }
     ],
     "return": "Weekshifttradelistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar evaluateMatches bool // Whether to evaluate the matches for violations\n// Gets all the shift trades for a given week\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, evaluateMatches)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar evaluateMatches bool // Whether to evaluate the matches for violations\n// Gets all the shift trades for a given week\ndata, response, err := apiInstance.GetWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, evaluateMatches)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n}"
   },
   "getworkforcemanagementmanagementunitworkplan": {
     "operationId": "getworkforcemanagementmanagementunitworkplan",
@@ -32233,7 +32346,7 @@
       }
     ],
     "return": "Timeoffrequestresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar timeOffRequestId string // Time Off Request Id\n// Get a time off request for the current user\ndata, response, err := apiInstance.GetWorkforcemanagementTimeoffrequest(timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementTimeoffrequest: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar timeOffRequestId string // The ID of the time off request\n// Get a time off request for the current user\ndata, response, err := apiInstance.GetWorkforcemanagementTimeoffrequest(timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementTimeoffrequest: %v\\n\", err)\n}"
   },
   "getworkforcemanagementtimeoffrequestwaitlistpositions": {
     "operationId": "getworkforcemanagementtimeoffrequestwaitlistpositions",
@@ -32247,7 +32360,7 @@
       }
     ],
     "return": "Waitlistpositionlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar timeOffRequestId string // Time Off Request Id\n// Get the daily waitlist positions of a time off request for the current user\ndata, response, err := apiInstance.GetWorkforcemanagementTimeoffrequestWaitlistpositions(timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementTimeoffrequestWaitlistpositions: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar timeOffRequestId string // The ID of the time off request\n// Get the daily waitlist positions of a time off request for the current user\ndata, response, err := apiInstance.GetWorkforcemanagementTimeoffrequestWaitlistpositions(timeOffRequestId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetWorkforcemanagementTimeoffrequestWaitlistpositions: %v\\n\", err)\n}"
   },
   "getworkforcemanagementtimeoffrequests": {
     "operationId": "getworkforcemanagementtimeoffrequests",
@@ -32418,7 +32531,7 @@
       }
     ],
     "return": "Timeofflimit",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar timeOffLimitId string // The id of time off limit object to update\nvar body platformclientv2.Updatetimeofflimitrequest // body\n// Updates a time off limit object.\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitTimeofflimit(managementUnitId, timeOffLimitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitTimeofflimit: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar timeOffLimitId string // The id of time off limit object to update\nvar body platformclientv2.Updatetimeofflimitrequest // body\n// Updates a time off limit object.\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitTimeofflimit(managementUnitId, timeOffLimitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitTimeofflimit: %v\\n\", err)\n}"
   },
   "patchworkforcemanagementmanagementunittimeoffplan": {
     "operationId": "patchworkforcemanagementmanagementunittimeoffplan",
@@ -32442,7 +32555,7 @@
       }
     ],
     "return": "Timeoffplan",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID.\nvar timeOffPlanId string // The ID of the time off plan to update\nvar body platformclientv2.Updatetimeoffplanrequest // body\n// Updates a time off plan\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitTimeoffplan(managementUnitId, timeOffPlanId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitTimeoffplan: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\nvar timeOffPlanId string // The ID of the time off plan to update\nvar body platformclientv2.Updatetimeoffplanrequest // body\n// Updates a time off plan\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitTimeoffplan(managementUnitId, timeOffPlanId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitTimeoffplan: %v\\n\", err)\n}"
   },
   "patchworkforcemanagementmanagementunitusertimeoffrequest": {
     "operationId": "patchworkforcemanagementmanagementunitusertimeoffrequest",
@@ -32471,7 +32584,7 @@
       }
     ],
     "return": "Timeoffrequestresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The muId of the management unit, or 'mine' for the management unit of the logged-in user.\nvar userId string // The id of the user the requested time off request belongs to\nvar timeOffRequestId string // The id of the time off request to update\nvar body platformclientv2.Admintimeoffrequestpatch // body\n// Update a time off request\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitUserTimeoffrequest(managementUnitId, userId, timeOffRequestId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitUserTimeoffrequest: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar userId string // The id of the user the requested time off request belongs to\nvar timeOffRequestId string // The id of the time off request to update\nvar body platformclientv2.Admintimeoffrequestpatch // body\n// Update a time off request\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitUserTimeoffrequest(managementUnitId, userId, timeOffRequestId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitUserTimeoffrequest: %v\\n\", err)\n}"
   },
   "patchworkforcemanagementmanagementunitweekshifttrade": {
     "operationId": "patchworkforcemanagementmanagementunitweekshifttrade",
@@ -32500,7 +32613,7 @@
       }
     ],
     "return": "Shifttraderesponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Patchshifttraderequest // body\nvar tradeId string // The ID of the shift trade to update\n// Updates a shift trade. This route can only be called by the initiating agent\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitWeekShifttrade(managementUnitId, weekDateId, body, tradeId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitWeekShifttrade: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Patchshifttraderequest // body\nvar tradeId string // The ID of the shift trade to update\n// Updates a shift trade. This route can only be called by the initiating agent\ndata, response, err := apiInstance.PatchWorkforcemanagementManagementunitWeekShifttrade(managementUnitId, weekDateId, body, tradeId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementManagementunitWeekShifttrade: %v\\n\", err)\n}"
   },
   "patchworkforcemanagementmanagementunitworkplan": {
     "operationId": "patchworkforcemanagementmanagementunitworkplan",
@@ -32572,7 +32685,7 @@
       }
     ],
     "return": "Timeoffrequestresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar timeOffRequestId string // Time Off Request Id\nvar body platformclientv2.Agenttimeoffrequestpatch // body\n// Update a time off request for the current user\ndata, response, err := apiInstance.PatchWorkforcemanagementTimeoffrequest(timeOffRequestId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementTimeoffrequest: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar timeOffRequestId string // The ID of the time off request\nvar body platformclientv2.Agenttimeoffrequestpatch // body\n// Update a time off request for the current user\ndata, response, err := apiInstance.PatchWorkforcemanagementTimeoffrequest(timeOffRequestId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchWorkforcemanagementTimeoffrequest: %v\\n\", err)\n}"
   },
   "postworkforcemanagementadherencehistorical": {
     "operationId": "postworkforcemanagementadherencehistorical",
@@ -32672,7 +32785,7 @@
       }
     ],
     "return": "Asyncintradayresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\nvar body platformclientv2.Intradayplanninggrouprequest // body\n// Get intraday data for the given date for the requested planningGroupIds\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitIntraday(businessUnitId, forceAsync, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitIntraday: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\nvar body platformclientv2.Intradayplanninggrouprequest // body\n// Get intraday data for the given date for the requested planningGroupIds\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitIntraday(businessUnitId, forceAsync, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitIntraday: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunitplanninggroups": {
     "operationId": "postworkforcemanagementbusinessunitplanninggroups",
@@ -32995,7 +33108,7 @@
       }
     ],
     "return": "Asyncforecastoperationresult",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast to copy\nvar body platformclientv2.Copybuforecastrequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Copy a short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy(businessUnitId, weekDateId, forecastId, body, forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar forecastId string // The ID of the forecast to copy\nvar body platformclientv2.Copybuforecastrequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Copy a short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy(businessUnitId, weekDateId, forecastId, body, forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastCopy: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunitweekshorttermforecastsgenerate": {
     "operationId": "postworkforcemanagementbusinessunitweekshorttermforecastsgenerate",
@@ -33024,7 +33137,7 @@
       }
     ],
     "return": "Asyncforecastoperationresult",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Generatebuforecastrequest // \nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Generate a short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate(businessUnitId, weekDateId, body, forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // The week start date of the forecast in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Generatebuforecastrequest // \nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Generate a short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate(businessUnitId, weekDateId, body, forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsGenerate: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunitweekshorttermforecastsimport": {
     "operationId": "postworkforcemanagementbusinessunitweekshorttermforecastsimport",
@@ -33048,7 +33161,7 @@
       }
     ],
     "return": "Importforecastresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // First day of schedule week in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Wfmprocessuploadrequest // \n// Starts importing the uploaded short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport(businessUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // First day of schedule week in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Wfmprocessuploadrequest // \n// Starts importing the uploaded short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport(businessUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsImport: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunitweekshorttermforecastsimportuploadurl": {
     "operationId": "postworkforcemanagementbusinessunitweekshorttermforecastsimportuploadurl",
@@ -33072,7 +33185,7 @@
       }
     ],
     "return": "Importforecastuploadresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The business unit ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // First day of schedule week in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Uploadurlrequestbody // body\n// Creates a signed upload URL for importing a short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl(businessUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar businessUnitId string // The ID of the business unit to which the forecast belongs\nvar weekDateId time.Time // First day of schedule week in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Uploadurlrequestbody // body\n// Creates a signed upload URL for importing a short term forecast\ndata, response, err := apiInstance.PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl(businessUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementBusinessunitWeekShorttermforecastsImportUploadurl: %v\\n\", err)\n}"
   },
   "postworkforcemanagementbusinessunits": {
     "operationId": "postworkforcemanagementbusinessunits",
@@ -33149,7 +33262,7 @@
       }
     ],
     "return": "Buasyncagentschedulessearchresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Busearchagentschedulesrequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Query published schedules for given given time range for set of users\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitAgentschedulesSearch(managementUnitId, body, forceAsync, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitAgentschedulesSearch: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Busearchagentschedulesrequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\nvar forceDownloadService bool // Force the result of this operation to be sent via download service.  For testing/app development purposes\n// Query published schedules for given given time range for set of users\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitAgentschedulesSearch(managementUnitId, body, forceAsync, forceDownloadService)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitAgentschedulesSearch: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunithistoricaladherencequery": {
     "operationId": "postworkforcemanagementmanagementunithistoricaladherencequery",
@@ -33168,7 +33281,7 @@
       }
     ],
     "return": "Wfmhistoricaladherenceresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit\nvar body platformclientv2.Wfmhistoricaladherencequery // body\n// Request a historical adherence report\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitHistoricaladherencequery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitHistoricaladherencequery: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\nvar body platformclientv2.Wfmhistoricaladherencequery // body\n// Request a historical adherence report\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitHistoricaladherencequery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitHistoricaladherencequery: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunitmove": {
     "operationId": "postworkforcemanagementmanagementunitmove",
@@ -33206,7 +33319,7 @@
       }
     ],
     "return": "Userschedulecontainer",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Userlistschedulerequestbody // body\n// Query published schedules for given given time range for set of users\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitSchedulesSearch(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitSchedulesSearch: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Userlistschedulerequestbody // body\n// Query published schedules for given given time range for set of users\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitSchedulesSearch(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitSchedulesSearch: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunittimeofflimits": {
     "operationId": "postworkforcemanagementmanagementunittimeofflimits",
@@ -33225,7 +33338,7 @@
       }
     ],
     "return": "Timeofflimit",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar body platformclientv2.Createtimeofflimitrequest // body\n// Creates a new time off limit object under management unit.\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeofflimits(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeofflimits: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar body platformclientv2.Createtimeofflimitrequest // body\n// Creates a new time off limit object under management unit.\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeofflimits(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeofflimits: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunittimeofflimitsvaluesquery": {
     "operationId": "postworkforcemanagementmanagementunittimeofflimitsvaluesquery",
@@ -33244,7 +33357,7 @@
       }
     ],
     "return": "Querytimeofflimitvaluesresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar body platformclientv2.Querytimeofflimitvaluesrequest // body\n// Retrieves time off limit related values based on a given set of filters.\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar body platformclientv2.Querytimeofflimitvaluesrequest // body\n// Retrieves time off limit related values based on a given set of filters.\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeofflimitsValuesQuery: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunittimeoffplans": {
     "operationId": "postworkforcemanagementmanagementunittimeoffplans",
@@ -33263,7 +33376,7 @@
       }
     ],
     "return": "Timeoffplan",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID.\nvar body platformclientv2.Createtimeoffplanrequest // body\n// Creates a new time off plan\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffplans(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffplans: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit\nvar body platformclientv2.Createtimeoffplanrequest // body\n// Creates a new time off plan\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffplans(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffplans: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunittimeoffrequests": {
     "operationId": "postworkforcemanagementmanagementunittimeoffrequests",
@@ -33282,7 +33395,7 @@
       }
     ],
     "return": "Timeoffrequestlist",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The muId of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Createadmintimeoffrequest // body\n// Create a new time off request\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffrequests(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffrequests: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Createadmintimeoffrequest // body\n// Create a new time off request\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffrequests(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffrequests: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunittimeoffrequestsquery": {
     "operationId": "postworkforcemanagementmanagementunittimeoffrequestsquery",
@@ -33301,7 +33414,7 @@
       }
     ],
     "return": "Timeoffrequestlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The muId of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Timeoffrequestquerybody // body\n// Fetches time off requests matching the conditions specified in the request body\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffrequestsQuery: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar body platformclientv2.Timeoffrequestquerybody // body\n// Fetches time off requests matching the conditions specified in the request body\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffrequestsQuery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffrequestsQuery: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunittimeoffrequestswaitlistpositionsquery": {
     "operationId": "postworkforcemanagementmanagementunittimeoffrequestswaitlistpositionsquery",
@@ -33320,7 +33433,7 @@
       }
     ],
     "return": "Waitlistpositionlisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar body platformclientv2.Querywaitlistpositionsrequest // body\n// Retrieves daily waitlist position for a list of time off requests\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar body platformclientv2.Querywaitlistpositionsrequest // body\n// Retrieves daily waitlist position for a list of time off requests\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery(managementUnitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitTimeoffrequestsWaitlistpositionsQuery: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttradematch": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttradematch",
@@ -33349,7 +33462,7 @@
       }
     ],
     "return": "Matchshifttraderesponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Matchshifttraderequest // body\nvar tradeId string // The ID of the shift trade to update\n// Matches a shift trade. This route can only be called by the receiving agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradeMatch(managementUnitId, weekDateId, body, tradeId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradeMatch: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Matchshifttraderequest // body\nvar tradeId string // The ID of the shift trade to update\n// Matches a shift trade. This route can only be called by the receiving agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradeMatch(managementUnitId, weekDateId, body, tradeId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradeMatch: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttrades": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttrades",
@@ -33373,7 +33486,7 @@
       }
     ],
     "return": "Shifttraderesponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Addshifttraderequest // body\n// Adds a shift trade\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Addshifttraderequest // body\n// Adds a shift trade\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttrades(managementUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttrades: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttradessearch": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttradessearch",
@@ -33397,7 +33510,7 @@
       }
     ],
     "return": "Searchshifttradesresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Searchshifttradesrequest // body\n// Searches for potential shift trade matches for the current agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesSearch: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Searchshifttradesrequest // body\n// Searches for potential shift trade matches for the current agent\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesSearch(managementUnitId, weekDateId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesSearch: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunitweekshifttradesstatebulk": {
     "operationId": "postworkforcemanagementmanagementunitweekshifttradesstatebulk",
@@ -33426,7 +33539,7 @@
       }
     ],
     "return": "Bulkupdateshifttradestateresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Bulkshifttradestateupdaterequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Updates the state of a batch of shift trades\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesStateBulk(managementUnitId, weekDateId, body, forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesStateBulk: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit, or 'mine' for the management unit of the logged-in user.\nvar weekDateId time.Time // The start date of the week schedule in yyyy-MM-dd format. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd\nvar body platformclientv2.Bulkshifttradestateupdaterequest // body\nvar forceAsync bool // Force the result of this operation to be sent asynchronously via notification.  For testing/app development purposes\n// Updates the state of a batch of shift trades\ndata, response, err := apiInstance.PostWorkforcemanagementManagementunitWeekShifttradesStateBulk(managementUnitId, weekDateId, body, forceAsync)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostWorkforcemanagementManagementunitWeekShifttradesStateBulk: %v\\n\", err)\n}"
   },
   "postworkforcemanagementmanagementunitworkplancopy": {
     "operationId": "postworkforcemanagementmanagementunitworkplancopy",
@@ -33640,6 +33753,6 @@
       }
     ],
     "return": "Timeofflimit",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The management unit ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit object to set values for\nvar body platformclientv2.Settimeofflimitvaluesrequest // body\n// Sets daily values for a date range of time off limit object\ndata, response, err := apiInstance.PutWorkforcemanagementManagementunitTimeofflimitValues(managementUnitId, timeOffLimitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutWorkforcemanagementManagementunitTimeofflimitValues: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewWorkforceManagementApiWithConfig(config)\n\nvar managementUnitId string // The ID of the management unit.\nvar timeOffLimitId string // The ID of the time off limit object to set values for\nvar body platformclientv2.Settimeofflimitvaluesrequest // body\n// Sets daily values for a date range of time off limit object\ndata, response, err := apiInstance.PutWorkforcemanagementManagementunitTimeofflimitValues(managementUnitId, timeOffLimitId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutWorkforcemanagementManagementunitTimeofflimitValues: %v\\n\", err)\n}"
   }
 }

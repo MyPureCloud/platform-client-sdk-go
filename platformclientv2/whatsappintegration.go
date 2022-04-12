@@ -21,6 +21,10 @@ type Whatsappintegration struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// PhoneNumber - The phone number associated to the whatsApp integration.
 	PhoneNumber *string `json:"phoneNumber,omitempty"`
 
@@ -102,6 +106,8 @@ func (o *Whatsappintegration) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		PhoneNumber *string `json:"phoneNumber,omitempty"`
 		
 		Status *string `json:"status,omitempty"`
@@ -134,6 +140,8 @@ func (o *Whatsappintegration) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		PhoneNumber: o.PhoneNumber,
 		
@@ -182,6 +190,11 @@ func (o *Whatsappintegration) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := WhatsappintegrationMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := WhatsappintegrationMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if PhoneNumber, ok := WhatsappintegrationMap["phoneNumber"].(string); ok {

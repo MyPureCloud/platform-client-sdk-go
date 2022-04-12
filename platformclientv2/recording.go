@@ -129,6 +129,10 @@ type Recording struct {
 	OriginalRecordingStartTime *time.Time `json:"originalRecordingStartTime,omitempty"`
 
 
+	// CreationTime - The creation time of the recording. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
+	CreationTime *time.Time `json:"creationTime,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -185,6 +189,14 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		*OriginalRecordingStartTime = timeutil.Strftime(o.OriginalRecordingStartTime, "%Y-%m-%dT%H:%M:%S.%fZ")
 	} else {
 		OriginalRecordingStartTime = nil
+	}
+	
+	CreationTime := new(string)
+	if o.CreationTime != nil {
+		
+		*CreationTime = timeutil.Strftime(o.CreationTime, "%Y-%m-%dT%H:%M:%S.%fZ")
+	} else {
+		CreationTime = nil
 	}
 	
 	return json.Marshal(&struct { 
@@ -248,6 +260,8 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		
 		OriginalRecordingStartTime *string `json:"originalRecordingStartTime,omitempty"`
 		
+		CreationTime *string `json:"creationTime,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -310,6 +324,8 @@ func (o *Recording) MarshalJSON() ([]byte, error) {
 		RecordingErrorStatus: o.RecordingErrorStatus,
 		
 		OriginalRecordingStartTime: OriginalRecordingStartTime,
+		
+		CreationTime: CreationTime,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -459,6 +475,11 @@ func (o *Recording) UnmarshalJSON(b []byte) error {
 	if originalRecordingStartTimeString, ok := RecordingMap["originalRecordingStartTime"].(string); ok {
 		OriginalRecordingStartTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", originalRecordingStartTimeString)
 		o.OriginalRecordingStartTime = &OriginalRecordingStartTime
+	}
+	
+	if creationTimeString, ok := RecordingMap["creationTime"].(string); ok {
+		CreationTime, _ := time.Parse("2006-01-02T15:04:05.999999Z", creationTimeString)
+		o.CreationTime = &CreationTime
 	}
 	
 	if SelfUri, ok := RecordingMap["selfUri"].(string); ok {

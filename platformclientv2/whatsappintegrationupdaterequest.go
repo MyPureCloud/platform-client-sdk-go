@@ -20,6 +20,10 @@ type Whatsappintegrationupdaterequest struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// Action - The action used to activate and then confirm a WhatsApp Integration.
 	Action *string `json:"action,omitempty"`
 
@@ -49,6 +53,8 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		Action *string `json:"action,omitempty"`
 		
 		AuthenticationMethod *string `json:"authenticationMethod,omitempty"`
@@ -63,6 +69,8 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		Action: o.Action,
 		
@@ -93,6 +101,11 @@ func (o *Whatsappintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := WhatsappintegrationupdaterequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := WhatsappintegrationupdaterequestMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if Action, ok := WhatsappintegrationupdaterequestMap["action"].(string); ok {

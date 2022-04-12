@@ -5663,7 +5663,7 @@ func (a ConversationsApi) PatchConversationParticipantAttributes(conversationId 
 
 // PatchConversationsCall invokes PATCH /api/v2/conversations/calls/{conversationId}
 //
-// Update a conversation by setting it&#39;s recording state, merging in other conversations to create a conference, or disconnecting all of the participants
+// Update a conversation by setting its recording state, merging in other conversations to create a conference, or disconnecting all of the participants
 //
 // 
 func (a ConversationsApi) PatchConversationsCall(conversationId string, body Conversation) (*Conversation, *APIResponse, error) {

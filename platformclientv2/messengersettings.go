@@ -27,6 +27,10 @@ type Messengersettings struct {
 	// Apps - The apps embedded in the messenger
 	Apps *Messengerapps `json:"apps,omitempty"`
 
+
+	// HomeScreen - The homescreen settings for messenger
+	HomeScreen *Messengerhomescreen `json:"homeScreen,omitempty"`
+
 }
 
 func (o *Messengersettings) MarshalJSON() ([]byte, error) {
@@ -44,6 +48,8 @@ func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 		FileUpload *Fileuploadsettings `json:"fileUpload,omitempty"`
 		
 		Apps *Messengerapps `json:"apps,omitempty"`
+		
+		HomeScreen *Messengerhomescreen `json:"homeScreen,omitempty"`
 		*Alias
 	}{ 
 		Enabled: o.Enabled,
@@ -55,6 +61,8 @@ func (o *Messengersettings) MarshalJSON() ([]byte, error) {
 		FileUpload: o.FileUpload,
 		
 		Apps: o.Apps,
+		
+		HomeScreen: o.HomeScreen,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -88,6 +96,11 @@ func (o *Messengersettings) UnmarshalJSON(b []byte) error {
 	if Apps, ok := MessengersettingsMap["apps"].(map[string]interface{}); ok {
 		AppsString, _ := json.Marshal(Apps)
 		json.Unmarshal(AppsString, &o.Apps)
+	}
+	
+	if HomeScreen, ok := MessengersettingsMap["homeScreen"].(map[string]interface{}); ok {
+		HomeScreenString, _ := json.Marshal(HomeScreen)
+		json.Unmarshal(HomeScreenString, &o.HomeScreen)
 	}
 	
 

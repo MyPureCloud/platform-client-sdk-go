@@ -915,6 +915,72 @@ func (a OutboundApi) DeleteOutboundMessagingcampaign(messagingCampaignId string)
 	return successPayload, response, err
 }
 
+// DeleteOutboundMessagingcampaignProgress invokes DELETE /api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress
+//
+// Reset messaging campaign progress and recycle the messaging campaign
+//
+// 
+func (a OutboundApi) DeleteOutboundMessagingcampaignProgress(messagingCampaignId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/messagingcampaigns/{messagingCampaignId}/progress"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->DeleteOutboundMessagingcampaignProgress")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteOutboundRuleset invokes DELETE /api/v2/outbound/rulesets/{ruleSetId}
 //
 // Delete a Rule Set.

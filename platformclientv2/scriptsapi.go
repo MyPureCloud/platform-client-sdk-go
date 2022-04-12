@@ -263,7 +263,7 @@ func (a ScriptsApi) GetScriptPages(scriptId string, scriptDataVersion string) ([
 // Get the list of scripts
 //
 // 
-func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string) (*Scriptentitylisting, *APIResponse, error) {
+func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts"
@@ -308,6 +308,95 @@ func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
 	
+	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Scriptentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Scriptentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetScriptsDivisionviews invokes GET /api/v2/scripts/divisionviews
+//
+// Get the metadata for a list of scripts
+//
+// 
+func (a ScriptsApi) GetScriptsDivisionviews(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, sortBy string, sortOrder string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/scripts/divisionviews"
+	defaultReturn := new(Scriptentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
+	
+	queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, "")
+	
+	queryParams["sortBy"] = a.Configuration.APIClient.ParameterToString(sortBy, "")
+	
+	queryParams["sortOrder"] = a.Configuration.APIClient.ParameterToString(sortOrder, "")
+	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
+	
+	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
+	
 
 	// to determine the Content-Type header
 	localVarHttpContentTypes := []string{ "application/json",  }
@@ -348,7 +437,7 @@ func (a ScriptsApi) GetScripts(pageSize int, pageNumber int, expand string, name
 // Get the published scripts.
 //
 // 
-func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, scriptDataVersion string) (*Scriptentitylisting, *APIResponse, error) {
+func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/scripts/published"
@@ -388,6 +477,91 @@ func (a ScriptsApi) GetScriptsPublished(pageSize int, pageNumber int, expand str
 	queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, "")
 	
 	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
+	
+	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Scriptentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Scriptentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetScriptsPublishedDivisionviews invokes GET /api/v2/scripts/published/divisionviews
+//
+// Get the published scripts metadata.
+//
+// 
+func (a ScriptsApi) GetScriptsPublishedDivisionviews(pageSize int, pageNumber int, expand string, name string, feature string, flowId string, scriptDataVersion string, divisionIds string) (*Scriptentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/scripts/published/divisionviews"
+	defaultReturn := new(Scriptentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+	queryParams["pageSize"] = a.Configuration.APIClient.ParameterToString(pageSize, "")
+	
+	queryParams["pageNumber"] = a.Configuration.APIClient.ParameterToString(pageNumber, "")
+	
+	queryParams["expand"] = a.Configuration.APIClient.ParameterToString(expand, "")
+	
+	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["feature"] = a.Configuration.APIClient.ParameterToString(feature, "")
+	
+	queryParams["flowId"] = a.Configuration.APIClient.ParameterToString(flowId, "")
+	
+	queryParams["scriptDataVersion"] = a.Configuration.APIClient.ParameterToString(scriptDataVersion, "")
+	
+	queryParams["divisionIds"] = a.Configuration.APIClient.ParameterToString(divisionIds, "")
 	
 
 	// to determine the Content-Type header

@@ -20,6 +20,10 @@ type Twitterintegrationrequest struct {
 	SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 
 
+	// MessagingSetting
+	MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+
+
 	// AccessTokenKey - The Access Token Key from Twitter messenger
 	AccessTokenKey *string `json:"accessTokenKey,omitempty"`
 
@@ -61,6 +65,8 @@ func (o *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
 		
 		SupportedContent *Supportedcontentreference `json:"supportedContent,omitempty"`
 		
+		MessagingSetting *Messagingsettingreference `json:"messagingSetting,omitempty"`
+		
 		AccessTokenKey *string `json:"accessTokenKey,omitempty"`
 		
 		AccessTokenSecret *string `json:"accessTokenSecret,omitempty"`
@@ -81,6 +87,8 @@ func (o *Twitterintegrationrequest) MarshalJSON() ([]byte, error) {
 		Name: o.Name,
 		
 		SupportedContent: o.SupportedContent,
+		
+		MessagingSetting: o.MessagingSetting,
 		
 		AccessTokenKey: o.AccessTokenKey,
 		
@@ -117,6 +125,11 @@ func (o *Twitterintegrationrequest) UnmarshalJSON(b []byte) error {
 	if SupportedContent, ok := TwitterintegrationrequestMap["supportedContent"].(map[string]interface{}); ok {
 		SupportedContentString, _ := json.Marshal(SupportedContent)
 		json.Unmarshal(SupportedContentString, &o.SupportedContent)
+	}
+	
+	if MessagingSetting, ok := TwitterintegrationrequestMap["messagingSetting"].(map[string]interface{}); ok {
+		MessagingSettingString, _ := json.Marshal(MessagingSetting)
+		json.Unmarshal(MessagingSettingString, &o.MessagingSetting)
 	}
 	
 	if AccessTokenKey, ok := TwitterintegrationrequestMap["accessTokenKey"].(string); ok {
