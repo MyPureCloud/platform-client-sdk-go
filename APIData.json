@@ -7661,7 +7661,7 @@
       }
     ],
     "return": "Whatsappintegration",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar integrationId string // Integration ID\nvar body platformclientv2.Whatsappintegrationupdaterequest // WhatsAppIntegrationUpdateRequest\n// Update or activate a WhatsApp messaging integration.\ndata, response, err := apiInstance.PatchConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationsMessagingIntegrationsWhatsappIntegrationId: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewConversationsApiWithConfig(config)\n\nvar integrationId string // Integration ID\nvar body platformclientv2.Whatsappintegrationupdaterequest // WhatsAppIntegrationUpdateRequest\n// Update or activate a WhatsApp messaging integration\ndata, response, err := apiInstance.PatchConversationsMessagingIntegrationsWhatsappIntegrationId(integrationId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchConversationsMessagingIntegrationsWhatsappIntegrationId: %v\\n\", err)\n}"
   },
   "patchconversationsmessagingsupportedcontentsupportedcontentid": {
     "operationId": "patchconversationsmessagingsupportedcontentsupportedcontentid",
@@ -9890,16 +9890,16 @@
   "getgamificationprofile": {
     "operationId": "getgamificationprofile",
     "functionName": "GetGamificationProfile",
-    "signature": "GetGamificationProfile(performanceProfileId)",
+    "signature": "GetGamificationProfile(profileId)",
     "parameters": [
       {
-        "name": "performanceProfileId",
+        "name": "profileId",
         "type": "string",
         "required": "true"
       }
     ],
     "return": "Performanceprofile",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar performanceProfileId string // Performance Profile Id\n// Performance profile by id\ndata, response, err := apiInstance.GetGamificationProfile(performanceProfileId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationProfile: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\n// Performance profile by id\ndata, response, err := apiInstance.GetGamificationProfile(profileId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetGamificationProfile: %v\\n\", err)\n}"
   },
   "getgamificationprofilemembers": {
     "operationId": "getgamificationprofilemembers",
@@ -10443,30 +10443,30 @@
   "postgamificationprofileactivate": {
     "operationId": "postgamificationprofileactivate",
     "functionName": "PostGamificationProfileActivate",
-    "signature": "PostGamificationProfileActivate(performanceProfileId)",
+    "signature": "PostGamificationProfileActivate(profileId)",
     "parameters": [
       {
-        "name": "performanceProfileId",
+        "name": "profileId",
         "type": "string",
         "required": "true"
       }
     ],
     "return": "Performanceprofile",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar performanceProfileId string // Performance Profile Id\n// Activate a performance profile\ndata, response, err := apiInstance.PostGamificationProfileActivate(performanceProfileId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfileActivate: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\n// Activate a performance profile\ndata, response, err := apiInstance.PostGamificationProfileActivate(profileId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfileActivate: %v\\n\", err)\n}"
   },
   "postgamificationprofiledeactivate": {
     "operationId": "postgamificationprofiledeactivate",
     "functionName": "PostGamificationProfileDeactivate",
-    "signature": "PostGamificationProfileDeactivate(performanceProfileId)",
+    "signature": "PostGamificationProfileDeactivate(profileId)",
     "parameters": [
       {
-        "name": "performanceProfileId",
+        "name": "profileId",
         "type": "string",
         "required": "true"
       }
     ],
     "return": "Performanceprofile",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar performanceProfileId string // Performance Profile Id\n// Deactivate a performance profile\ndata, response, err := apiInstance.PostGamificationProfileDeactivate(performanceProfileId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfileDeactivate: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\n// Deactivate a performance profile\ndata, response, err := apiInstance.PostGamificationProfileDeactivate(profileId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostGamificationProfileDeactivate: %v\\n\", err)\n}"
   },
   "postgamificationprofilemembers": {
     "operationId": "postgamificationprofilemembers",
@@ -10595,10 +10595,10 @@
   "putgamificationprofile": {
     "operationId": "putgamificationprofile",
     "functionName": "PutGamificationProfile",
-    "signature": "PutGamificationProfile(performanceProfileId, body)",
+    "signature": "PutGamificationProfile(profileId, body)",
     "parameters": [
       {
-        "name": "performanceProfileId",
+        "name": "profileId",
         "type": "string",
         "required": "true"
       },
@@ -10609,7 +10609,7 @@
       }
     ],
     "return": "Performanceprofile",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar performanceProfileId string // Performance Profile Id\nvar body platformclientv2.Performanceprofile // performanceProfile\n// Updates a performance profile\ndata, response, err := apiInstance.PutGamificationProfile(performanceProfileId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutGamificationProfile: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewGamificationApiWithConfig(config)\n\nvar profileId string // performanceProfileId\nvar body platformclientv2.Performanceprofile // performanceProfile\n// Updates a performance profile\ndata, response, err := apiInstance.PutGamificationProfile(profileId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutGamificationProfile: %v\\n\", err)\n}"
   },
   "putgamificationprofilemetric": {
     "operationId": "putgamificationprofilemetric",
@@ -22315,7 +22315,7 @@
       }
     ],
     "return": "Recordingjob",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar body platformclientv2.Recordingjobsquery // query\n// Create a recording bulk job\ndata, response, err := apiInstance.PostRecordingJobs(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostRecordingJobs: %v\\n\", err)\n}"
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewRecordingApiWithConfig(config)\n\nvar body platformclientv2.Recordingjobsquery // query\n// Create a recording bulk job.\ndata, response, err := apiInstance.PostRecordingJobs(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostRecordingJobs: %v\\n\", err)\n}"
   },
   "postrecordinglocalkeys": {
     "operationId": "postrecordinglocalkeys",

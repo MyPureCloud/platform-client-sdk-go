@@ -26,7 +26,7 @@ type Calibration struct {
 
 
 	// Conversation
-	Conversation *Conversation `json:"conversation,omitempty"`
+	Conversation *Conversationreference `json:"conversation,omitempty"`
 
 
 	// EvaluationForm
@@ -96,7 +96,7 @@ func (o *Calibration) MarshalJSON() ([]byte, error) {
 		
 		Agent *User `json:"agent,omitempty"`
 		
-		Conversation *Conversation `json:"conversation,omitempty"`
+		Conversation *Conversationreference `json:"conversation,omitempty"`
 		
 		EvaluationForm *Evaluationform `json:"evaluationForm,omitempty"`
 		

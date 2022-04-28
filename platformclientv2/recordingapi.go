@@ -2769,9 +2769,9 @@ func (a RecordingApi) PostRecordingCrossplatformMediaretentionpolicies(body Cros
 
 // PostRecordingJobs invokes POST /api/v2/recording/jobs
 //
-// Create a recording bulk job
+// Create a recording bulk job.
 //
-// 
+// Each organization can run up to a maximum of two concurrent jobs that are either in pending or processing state.
 func (a RecordingApi) PostRecordingJobs(body Recordingjobsquery) (*Recordingjob, *APIResponse, error) {
 	var httpMethod = "POST"
 	// create path and map variables

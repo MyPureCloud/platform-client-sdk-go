@@ -33,6 +33,10 @@ type Wfmusernotificationtopicwfmusernotification struct {
 	TimeOffRequest *Wfmusernotificationtopictimeoffrequestnotification `json:"timeOffRequest,omitempty"`
 
 
+	// AdherenceExplanation
+	AdherenceExplanation *Wfmusernotificationtopicadherenceexplanationnotification `json:"adherenceExplanation,omitempty"`
+
+
 	// AgentNotification
 	AgentNotification *bool `json:"agentNotification,omitempty"`
 
@@ -72,6 +76,8 @@ func (o *Wfmusernotificationtopicwfmusernotification) MarshalJSON() ([]byte, err
 		
 		TimeOffRequest *Wfmusernotificationtopictimeoffrequestnotification `json:"timeOffRequest,omitempty"`
 		
+		AdherenceExplanation *Wfmusernotificationtopicadherenceexplanationnotification `json:"adherenceExplanation,omitempty"`
+		
 		AgentNotification *bool `json:"agentNotification,omitempty"`
 		
 		OtherNotificationIdsInGroup *[]string `json:"otherNotificationIdsInGroup,omitempty"`
@@ -90,6 +96,8 @@ func (o *Wfmusernotificationtopicwfmusernotification) MarshalJSON() ([]byte, err
 		ShiftTrade: o.ShiftTrade,
 		
 		TimeOffRequest: o.TimeOffRequest,
+		
+		AdherenceExplanation: o.AdherenceExplanation,
 		
 		AgentNotification: o.AgentNotification,
 		
@@ -132,6 +140,11 @@ func (o *Wfmusernotificationtopicwfmusernotification) UnmarshalJSON(b []byte) er
 	if TimeOffRequest, ok := WfmusernotificationtopicwfmusernotificationMap["timeOffRequest"].(map[string]interface{}); ok {
 		TimeOffRequestString, _ := json.Marshal(TimeOffRequest)
 		json.Unmarshal(TimeOffRequestString, &o.TimeOffRequest)
+	}
+	
+	if AdherenceExplanation, ok := WfmusernotificationtopicwfmusernotificationMap["adherenceExplanation"].(map[string]interface{}); ok {
+		AdherenceExplanationString, _ := json.Marshal(AdherenceExplanation)
+		json.Unmarshal(AdherenceExplanationString, &o.AdherenceExplanation)
 	}
 	
 	if AgentNotification, ok := WfmusernotificationtopicwfmusernotificationMap["agentNotification"].(bool); ok {

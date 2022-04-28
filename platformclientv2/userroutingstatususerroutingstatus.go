@@ -8,8 +8,8 @@ import (
 
 // Userroutingstatususerroutingstatus
 type Userroutingstatususerroutingstatus struct { 
-	// Id
-	Id *Userroutingstatusobject `json:"id,omitempty"`
+	// Id - The unique identifier of the user.
+	Id *string `json:"id,omitempty"`
 
 
 	// RoutingStatus
@@ -27,7 +27,7 @@ func (o *Userroutingstatususerroutingstatus) MarshalJSON() ([]byte, error) {
 	type Alias Userroutingstatususerroutingstatus
 	
 	return json.Marshal(&struct { 
-		Id *Userroutingstatusobject `json:"id,omitempty"`
+		Id *string `json:"id,omitempty"`
 		
 		RoutingStatus *Userroutingstatusroutingstatus `json:"routingStatus,omitempty"`
 		
@@ -50,9 +50,8 @@ func (o *Userroutingstatususerroutingstatus) UnmarshalJSON(b []byte) error {
 		return err
 	}
 	
-	if Id, ok := UserroutingstatususerroutingstatusMap["id"].(map[string]interface{}); ok {
-		IdString, _ := json.Marshal(Id)
-		json.Unmarshal(IdString, &o.Id)
+	if Id, ok := UserroutingstatususerroutingstatusMap["id"].(string); ok {
+		o.Id = &Id
 	}
 	
 	if RoutingStatus, ok := UserroutingstatususerroutingstatusMap["routingStatus"].(map[string]interface{}); ok {

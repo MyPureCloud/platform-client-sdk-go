@@ -24,12 +24,16 @@ type Messagingcampaignentitylisting struct {
 	Total *int `json:"total,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// SelfUri
@@ -38,10 +42,6 @@ type Messagingcampaignentitylisting struct {
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
-
-
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
 
 
 	// PageCount
@@ -63,15 +63,15 @@ func (o *Messagingcampaignentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total *int `json:"total,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		FirstUri *string `json:"firstUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
-		
-		PreviousUri *string `json:"previousUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -84,15 +84,15 @@ func (o *Messagingcampaignentitylisting) MarshalJSON() ([]byte, error) {
 		
 		Total: o.Total,
 		
-		LastUri: o.LastUri,
-		
 		FirstUri: o.FirstUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
-		
-		PreviousUri: o.PreviousUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -126,12 +126,16 @@ func (o *Messagingcampaignentitylisting) UnmarshalJSON(b []byte) error {
 		o.Total = &TotalInt
 	}
 	
-	if LastUri, ok := MessagingcampaignentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-	
 	if FirstUri, ok := MessagingcampaignentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
+	}
+	
+	if PreviousUri, ok := MessagingcampaignentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := MessagingcampaignentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
 	
 	if SelfUri, ok := MessagingcampaignentitylistingMap["selfUri"].(string); ok {
@@ -140,10 +144,6 @@ func (o *Messagingcampaignentitylisting) UnmarshalJSON(b []byte) error {
 	
 	if NextUri, ok := MessagingcampaignentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
-	}
-	
-	if PreviousUri, ok := MessagingcampaignentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
 	}
 	
 	if PageCount, ok := MessagingcampaignentitylistingMap["pageCount"].(float64); ok {

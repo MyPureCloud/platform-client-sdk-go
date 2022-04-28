@@ -36,6 +36,10 @@ type Whatsappintegrationupdaterequest struct {
 	ConfirmationCode *string `json:"confirmationCode,omitempty"`
 
 
+	// PhoneNumber - Phone number to associate with the WhatsApp integration
+	PhoneNumber *string `json:"phoneNumber,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -61,6 +65,8 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		
 		ConfirmationCode *string `json:"confirmationCode,omitempty"`
 		
+		PhoneNumber *string `json:"phoneNumber,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -77,6 +83,8 @@ func (o *Whatsappintegrationupdaterequest) MarshalJSON() ([]byte, error) {
 		AuthenticationMethod: o.AuthenticationMethod,
 		
 		ConfirmationCode: o.ConfirmationCode,
+		
+		PhoneNumber: o.PhoneNumber,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -118,6 +126,10 @@ func (o *Whatsappintegrationupdaterequest) UnmarshalJSON(b []byte) error {
 	
 	if ConfirmationCode, ok := WhatsappintegrationupdaterequestMap["confirmationCode"].(string); ok {
 		o.ConfirmationCode = &ConfirmationCode
+	}
+	
+	if PhoneNumber, ok := WhatsappintegrationupdaterequestMap["phoneNumber"].(string); ok {
+		o.PhoneNumber = &PhoneNumber
 	}
 	
 	if SelfUri, ok := WhatsappintegrationupdaterequestMap["selfUri"].(string); ok {
