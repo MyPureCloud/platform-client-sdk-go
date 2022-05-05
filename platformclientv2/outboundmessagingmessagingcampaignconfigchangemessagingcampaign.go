@@ -41,6 +41,10 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 	MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 
 
+	// RuleSets
+	RuleSets *[]Outboundmessagingmessagingcampaignconfigchangeurireference `json:"ruleSets,omitempty"`
+
+
 	// SmsConfig
 	SmsConfig *Outboundmessagingmessagingcampaignconfigchangesmsconfig `json:"smsConfig,omitempty"`
 
@@ -57,10 +61,6 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 	Id *string `json:"id,omitempty"`
 
 
-	// Division - A UriReference for a resource
-	Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
-
-
 	// Name - The UI-visible name of the object
 	Name *string `json:"name,omitempty"`
 
@@ -75,6 +75,10 @@ type Outboundmessagingmessagingcampaignconfigchangemessagingcampaign struct {
 
 	// Version - Required for updates, must match the version number of the most recent update
 	Version *int `json:"version,omitempty"`
+
+
+	// Division - A UriReference for a resource
+	Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
 
 }
 
@@ -116,6 +120,8 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		
 		MessagesPerMinute *int `json:"messagesPerMinute,omitempty"`
 		
+		RuleSets *[]Outboundmessagingmessagingcampaignconfigchangeurireference `json:"ruleSets,omitempty"`
+		
 		SmsConfig *Outboundmessagingmessagingcampaignconfigchangesmsconfig `json:"smsConfig,omitempty"`
 		
 		EmailConfig *Outboundmessagingmessagingcampaignconfigchangeemailconfig `json:"emailConfig,omitempty"`
@@ -124,8 +130,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		
 		Id *string `json:"id,omitempty"`
 		
-		Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
-		
 		Name *string `json:"name,omitempty"`
 		
 		DateCreated *string `json:"dateCreated,omitempty"`
@@ -133,6 +137,8 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		DateModified *string `json:"dateModified,omitempty"`
 		
 		Version *int `json:"version,omitempty"`
+		
+		Division *Outboundmessagingmessagingcampaignconfigchangeurireference `json:"division,omitempty"`
 		*Alias
 	}{ 
 		CampaignStatus: o.CampaignStatus,
@@ -151,6 +157,8 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		
 		MessagesPerMinute: o.MessagesPerMinute,
 		
+		RuleSets: o.RuleSets,
+		
 		SmsConfig: o.SmsConfig,
 		
 		EmailConfig: o.EmailConfig,
@@ -159,8 +167,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		
 		Id: o.Id,
 		
-		Division: o.Division,
-		
 		Name: o.Name,
 		
 		DateCreated: DateCreated,
@@ -168,6 +174,8 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Marsha
 		DateModified: DateModified,
 		
 		Version: o.Version,
+		
+		Division: o.Division,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -217,6 +225,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 		o.MessagesPerMinute = &MessagesPerMinuteInt
 	}
 	
+	if RuleSets, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["ruleSets"].([]interface{}); ok {
+		RuleSetsString, _ := json.Marshal(RuleSets)
+		json.Unmarshal(RuleSetsString, &o.RuleSets)
+	}
+	
 	if SmsConfig, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["smsConfig"].(map[string]interface{}); ok {
 		SmsConfigString, _ := json.Marshal(SmsConfig)
 		json.Unmarshal(SmsConfigString, &o.SmsConfig)
@@ -236,11 +249,6 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 		o.Id = &Id
 	}
 	
-	if Division, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["division"].(map[string]interface{}); ok {
-		DivisionString, _ := json.Marshal(Division)
-		json.Unmarshal(DivisionString, &o.Division)
-	}
-	
 	if Name, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["name"].(string); ok {
 		o.Name = &Name
 	}
@@ -258,6 +266,11 @@ func (o *Outboundmessagingmessagingcampaignconfigchangemessagingcampaign) Unmars
 	if Version, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["version"].(float64); ok {
 		VersionInt := int(Version)
 		o.Version = &VersionInt
+	}
+	
+	if Division, ok := OutboundmessagingmessagingcampaignconfigchangemessagingcampaignMap["division"].(map[string]interface{}); ok {
+		DivisionString, _ := json.Marshal(Division)
+		json.Unmarshal(DivisionString, &o.Division)
 	}
 	
 

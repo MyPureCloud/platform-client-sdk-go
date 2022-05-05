@@ -1,85 +1,138 @@
-Platform API version: 5632
+Platform API version: 5677
 
 
-# Major Changes (6 changes)
+# Major Changes (7 changes)
 
-**/api/v2/gamification/profiles/{performanceProfileId}** (1 change)
+**GET /api/v2/integrations/actions/drafts** (1 change)
 
-* Path /api/v2/gamification/profiles/{performanceProfileId} was removed
+* Parameter ids was added
 
-**/api/v2/gamification/profiles/{performanceProfileId}/activate** (1 change)
+**GET /api/v2/integrations/actions** (1 change)
 
-* Path /api/v2/gamification/profiles/{performanceProfileId}/activate was removed
+* Parameter ids was added
 
-**/api/v2/gamification/profiles/{performanceProfileId}/deactivate** (1 change)
+**GET /api/v2/routing/email/domains** (1 change)
 
-* Path /api/v2/gamification/profiles/{performanceProfileId}/deactivate was removed
+* Parameter excludeStatus was added
 
-**Calibration** (1 change)
+**ConversationCardAction** (1 change)
 
-* Property conversation was changed from Conversation to ConversationReference
+* Model ConversationCardAction was removed
 
-**Evaluation** (1 change)
+**ConversationContentCard** (2 changes)
 
-* Property conversation was changed from Conversation to ConversationReference
+* Property defaultAction was changed from ConversationCardAction to ConversationContentCardAction
+* Property actions was changed from ConversationCardAction[] to ConversationContentCardAction[]
 
-**CalibrationCreate** (1 change)
+**CardAction** (1 change)
 
-* Property conversation was changed from Conversation to ConversationReference
+* Property selected was removed
 
 
-# Minor Changes (14 changes)
+# Minor Changes (31 changes)
 
-**POST /api/v2/conversations/messaging/integrations/whatsapp** (1 change)
-
-* Response 202 was added
-
-**/api/v2/gamification/profiles/{profileId}** (3 changes)
+**/api/v2/recording/keyconfigurations/{keyConfigurationId}** (3 changes)
 
 * Path was added
 * Operation GET was added
 * Operation PUT was added
 
-**/api/v2/gamification/profiles/{profileId}/activate** (2 changes)
+**/api/v2/recording/keyconfigurations** (3 changes)
+
+* Path was added
+* Operation GET was added
+* Operation POST was added
+
+**/api/v2/recording/keyconfigurations/validate** (2 changes)
 
 * Path was added
 * Operation POST was added
 
-**/api/v2/gamification/profiles/{profileId}/deactivate** (2 changes)
+**ReportingExportJobResponse** (1 change)
 
-* Path was added
-* Operation POST was added
+* Enum value PREDICTIVE_ROUTING_MODEL_VIEW was added to property viewType
 
-**MemberGroup** (1 change)
+**ReportingExportMetadataJobResponse** (1 change)
 
-* Enum value SKILLGROUP was added to property type
+* Enum value PREDICTIVE_ROUTING_MODEL_VIEW was added to property viewType
 
-**WhatsAppAvailablePhoneNumberDetails** (1 change)
+**ReportingExportJobRequest** (1 change)
+
+* Enum value PREDICTIVE_ROUTING_MODEL_VIEW was added to property viewType
+
+**RecordingEncryptionConfiguration** (1 change)
 
 * Model was added
 
-**WhatsAppAvailablePhoneNumberDetailsListing** (1 change)
+**RecordingEncryptionConfigurationListing** (1 change)
 
 * Model was added
 
-**WhatsAppIntegration** (1 change)
+**MessageDetails** (1 change)
 
-* Optional property availablePhoneNumbers was added
+* Optional property errorInfo was added
 
-**WhatsAppIntegrationUpdateRequest** (2 changes)
+**DynamicContactQueueingSettings** (1 change)
 
-* name is no longer readonly
-* Optional property phoneNumber was added
+* Model was added
+
+**ConversationContentCardAction** (1 change)
+
+* Model was added
+
+**ContentCard** (1 change)
+
+* Model was added
+
+**ContentCardAction** (1 change)
+
+* Model was added
+
+**ContentCarousel** (1 change)
+
+* Model was added
+
+**ContentStory** (1 change)
+
+* Model was added
+
+**MessageContent** (6 changes)
+
+* Enum value Story was added to property contentType
+* Enum value Card was added to property contentType
+* Enum value Carousel was added to property contentType
+* Optional property story was added
+* Optional property card was added
+* Optional property carousel was added
+
+**MessagingRecipient** (1 change)
+
+* Optional property additionalIds was added
+
+**CardAction** (1 change)
+
+* Optional property isSelected was added
+
+**UserScheduleAdherence** (1 change)
+
+* Enum value Explained was added to property adherenceState
+
+**AdherenceExplanationNotification** (2 changes)
+
+* Optional property managementUnit was added
+* Optional property businessUnit was added
 
 
-# Point Changes (4 changes)
+# Point Changes (6 changes)
 
-**PATCH /api/v2/conversations/messaging/integrations/whatsapp/{integrationId}** (2 changes)
+**GET /api/v2/integrations/actions/drafts** (3 changes)
 
-* Description was changed
-* Summary was changed
+* Description was changed for parameter category
+* Description was changed for parameter name
+* Description was changed for parameter secure
 
-**POST /api/v2/recording/jobs** (2 changes)
+**GET /api/v2/integrations/actions** (3 changes)
 
-* Description was changed
-* Summary was changed
+* Description was changed for parameter category
+* Description was changed for parameter name
+* Description was changed for parameter secure

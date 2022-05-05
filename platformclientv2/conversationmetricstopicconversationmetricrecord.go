@@ -113,7 +113,7 @@ type Conversationmetricstopicconversationmetricrecord struct {
 	EligibleAgentCounts *[]int `json:"eligibleAgentCounts,omitempty"`
 
 
-	// ExtendedDeliveryStatus - Extended email delivery status
+	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 
 

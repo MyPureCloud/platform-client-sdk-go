@@ -6,8 +6,8 @@ import (
 	"strings"
 )
 
-// Conversationcardaction - CardAction Object
-type Conversationcardaction struct { 
+// Conversationcontentcardaction - CardAction Object
+type Conversationcontentcardaction struct { 
 	// VarType - Describes the type of action.
 	VarType *string `json:"type,omitempty"`
 
@@ -25,10 +25,10 @@ type Conversationcardaction struct {
 
 }
 
-func (o *Conversationcardaction) MarshalJSON() ([]byte, error) {
+func (o *Conversationcontentcardaction) MarshalJSON() ([]byte, error) {
 	// Redundant initialization to avoid unused import errors for models with no Time values
 	_  = timeutil.Timedelta{}
-	type Alias Conversationcardaction
+	type Alias Conversationcontentcardaction
 	
 	return json.Marshal(&struct { 
 		VarType *string `json:"type,omitempty"`
@@ -51,26 +51,26 @@ func (o *Conversationcardaction) MarshalJSON() ([]byte, error) {
 	})
 }
 
-func (o *Conversationcardaction) UnmarshalJSON(b []byte) error {
-	var ConversationcardactionMap map[string]interface{}
-	err := json.Unmarshal(b, &ConversationcardactionMap)
+func (o *Conversationcontentcardaction) UnmarshalJSON(b []byte) error {
+	var ConversationcontentcardactionMap map[string]interface{}
+	err := json.Unmarshal(b, &ConversationcontentcardactionMap)
 	if err != nil {
 		return err
 	}
 	
-	if VarType, ok := ConversationcardactionMap["type"].(string); ok {
+	if VarType, ok := ConversationcontentcardactionMap["type"].(string); ok {
 		o.VarType = &VarType
 	}
 	
-	if Text, ok := ConversationcardactionMap["text"].(string); ok {
+	if Text, ok := ConversationcontentcardactionMap["text"].(string); ok {
 		o.Text = &Text
 	}
 	
-	if Payload, ok := ConversationcardactionMap["payload"].(string); ok {
+	if Payload, ok := ConversationcontentcardactionMap["payload"].(string); ok {
 		o.Payload = &Payload
 	}
 	
-	if Url, ok := ConversationcardactionMap["url"].(string); ok {
+	if Url, ok := ConversationcontentcardactionMap["url"].(string); ok {
 		o.Url = &Url
 	}
 	
@@ -79,7 +79,7 @@ func (o *Conversationcardaction) UnmarshalJSON(b []byte) error {
 }
 
 // String returns a JSON representation of the model
-func (o *Conversationcardaction) String() string {
+func (o *Conversationcontentcardaction) String() string {
 	j, _ := json.Marshal(o)
 	str, _ := strconv.Unquote(strings.Replace(strconv.Quote(string(j)), `\\u`, `\u`, -1))
 

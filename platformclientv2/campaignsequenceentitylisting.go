@@ -28,20 +28,20 @@ type Campaignsequenceentitylisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PageCount
@@ -65,13 +65,13 @@ func (o *Campaignsequenceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -86,13 +86,13 @@ func (o *Campaignsequenceentitylisting) MarshalJSON() ([]byte, error) {
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
-		
 		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -130,20 +130,20 @@ func (o *Campaignsequenceentitylisting) UnmarshalJSON(b []byte) error {
 		o.FirstUri = &FirstUri
 	}
 	
-	if PreviousUri, ok := CampaignsequenceentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-	
-	if LastUri, ok := CampaignsequenceentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-	
 	if SelfUri, ok := CampaignsequenceentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
 	
 	if NextUri, ok := CampaignsequenceentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := CampaignsequenceentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := CampaignsequenceentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
 	
 	if PageCount, ok := CampaignsequenceentitylistingMap["pageCount"].(float64); ok {

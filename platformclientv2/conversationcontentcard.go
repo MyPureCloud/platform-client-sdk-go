@@ -16,20 +16,20 @@ type Conversationcontentcard struct {
 	Description *string `json:"description,omitempty"`
 
 
-	// DefaultAction - Default action to be taken.
-	DefaultAction *Conversationcardaction `json:"defaultAction,omitempty"`
-
-
-	// Actions - A List of action objects.
-	Actions *[]Conversationcardaction `json:"actions,omitempty"`
-
-
-	// Image
+	// Image - URL of an image.
 	Image *string `json:"image,omitempty"`
 
 
-	// Video
+	// Video - URL of a video.
 	Video *string `json:"video,omitempty"`
+
+
+	// DefaultAction - The default button action.
+	DefaultAction *Conversationcontentcardaction `json:"defaultAction,omitempty"`
+
+
+	// Actions - An array of action objects.
+	Actions *[]Conversationcontentcardaction `json:"actions,omitempty"`
 
 }
 
@@ -43,26 +43,26 @@ func (o *Conversationcontentcard) MarshalJSON() ([]byte, error) {
 		
 		Description *string `json:"description,omitempty"`
 		
-		DefaultAction *Conversationcardaction `json:"defaultAction,omitempty"`
-		
-		Actions *[]Conversationcardaction `json:"actions,omitempty"`
-		
 		Image *string `json:"image,omitempty"`
 		
 		Video *string `json:"video,omitempty"`
+		
+		DefaultAction *Conversationcontentcardaction `json:"defaultAction,omitempty"`
+		
+		Actions *[]Conversationcontentcardaction `json:"actions,omitempty"`
 		*Alias
 	}{ 
 		Title: o.Title,
 		
 		Description: o.Description,
 		
-		DefaultAction: o.DefaultAction,
-		
-		Actions: o.Actions,
-		
 		Image: o.Image,
 		
 		Video: o.Video,
+		
+		DefaultAction: o.DefaultAction,
+		
+		Actions: o.Actions,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -82,6 +82,14 @@ func (o *Conversationcontentcard) UnmarshalJSON(b []byte) error {
 		o.Description = &Description
 	}
 	
+	if Image, ok := ConversationcontentcardMap["image"].(string); ok {
+		o.Image = &Image
+	}
+	
+	if Video, ok := ConversationcontentcardMap["video"].(string); ok {
+		o.Video = &Video
+	}
+	
 	if DefaultAction, ok := ConversationcontentcardMap["defaultAction"].(map[string]interface{}); ok {
 		DefaultActionString, _ := json.Marshal(DefaultAction)
 		json.Unmarshal(DefaultActionString, &o.DefaultAction)
@@ -90,14 +98,6 @@ func (o *Conversationcontentcard) UnmarshalJSON(b []byte) error {
 	if Actions, ok := ConversationcontentcardMap["actions"].([]interface{}); ok {
 		ActionsString, _ := json.Marshal(Actions)
 		json.Unmarshal(ActionsString, &o.Actions)
-	}
-	
-	if Image, ok := ConversationcontentcardMap["image"].(string); ok {
-		o.Image = &Image
-	}
-	
-	if Video, ok := ConversationcontentcardMap["video"].(string); ok {
-		o.Video = &Video
 	}
 	
 

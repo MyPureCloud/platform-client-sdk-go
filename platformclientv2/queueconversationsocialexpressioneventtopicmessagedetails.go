@@ -29,6 +29,10 @@ type Queueconversationsocialexpressioneventtopicmessagedetails struct {
 	Media *[]Queueconversationsocialexpressioneventtopicmessagemedia `json:"media,omitempty"`
 
 
+	// ErrorInfo - Detailed information about an error response.
+	ErrorInfo *Queueconversationsocialexpressioneventtopicerrordetails `json:"errorInfo,omitempty"`
+
+
 	// Stickers - A list of stickers included in the message
 	Stickers *[]Queueconversationsocialexpressioneventtopicmessagesticker `json:"stickers,omitempty"`
 
@@ -58,6 +62,8 @@ func (o *Queueconversationsocialexpressioneventtopicmessagedetails) MarshalJSON(
 		
 		Media *[]Queueconversationsocialexpressioneventtopicmessagemedia `json:"media,omitempty"`
 		
+		ErrorInfo *Queueconversationsocialexpressioneventtopicerrordetails `json:"errorInfo,omitempty"`
+		
 		Stickers *[]Queueconversationsocialexpressioneventtopicmessagesticker `json:"stickers,omitempty"`
 		*Alias
 	}{ 
@@ -70,6 +76,8 @@ func (o *Queueconversationsocialexpressioneventtopicmessagedetails) MarshalJSON(
 		MessageSegmentCount: o.MessageSegmentCount,
 		
 		Media: o.Media,
+		
+		ErrorInfo: o.ErrorInfo,
 		
 		Stickers: o.Stickers,
 		Alias:    (*Alias)(o),
@@ -104,6 +112,11 @@ func (o *Queueconversationsocialexpressioneventtopicmessagedetails) UnmarshalJSO
 	if Media, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["media"].([]interface{}); ok {
 		MediaString, _ := json.Marshal(Media)
 		json.Unmarshal(MediaString, &o.Media)
+	}
+	
+	if ErrorInfo, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["errorInfo"].(map[string]interface{}); ok {
+		ErrorInfoString, _ := json.Marshal(ErrorInfo)
+		json.Unmarshal(ErrorInfoString, &o.ErrorInfo)
 	}
 	
 	if Stickers, ok := QueueconversationsocialexpressioneventtopicmessagedetailsMap["stickers"].([]interface{}); ok {

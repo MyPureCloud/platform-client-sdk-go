@@ -12,7 +12,7 @@ type Buttoncomponent struct {
 	Title *string `json:"title,omitempty"`
 
 
-	// Actions - The button actions.
+	// Actions - The button actions (Deprecated).
 	Actions *Contentactions `json:"actions,omitempty"`
 
 }

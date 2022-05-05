@@ -129,7 +129,7 @@ type Flowmetricstopicflowmetricrecord struct {
 	ExitReason *string `json:"exitReason,omitempty"`
 
 
-	// ExtendedDeliveryStatus - Extended email delivery status
+	// ExtendedDeliveryStatus - Extended delivery status
 	ExtendedDeliveryStatus *string `json:"extendedDeliveryStatus,omitempty"`
 
 

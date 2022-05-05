@@ -28,7 +28,7 @@ type Contentlist struct {
 	SubmitLabel *string `json:"submitLabel,omitempty"`
 
 
-	// Actions - The list actions.
+	// Actions - The list actions (Deprecated).
 	Actions *Contentactions `json:"actions,omitempty"`
 
 

@@ -6,9 +6,9 @@ import (
 	"strings"
 )
 
-// Messagecontent - Message content element.
+// Messagecontent - Message content element. If contentType = \"Attachment\" only one item is allowed.
 type Messagecontent struct { 
-	// ContentType - Type of this content element. If contentType = \"Attachment\" only one item is allowed.
+	// ContentType - Type of this content element.
 	ContentType *string `json:"contentType,omitempty"`
 
 
@@ -28,11 +28,11 @@ type Messagecontent struct {
 	ButtonResponse *Contentbuttonresponse `json:"buttonResponse,omitempty"`
 
 
-	// Generic - Generic content.
+	// Generic - Generic content (Deprecated).
 	Generic *Contentgeneric `json:"generic,omitempty"`
 
 
-	// List - List content.
+	// List - List content (Deprecated).
 	List *Contentlist `json:"list,omitempty"`
 
 
@@ -50,6 +50,18 @@ type Messagecontent struct {
 
 	// Postback - Structured message postback (Deprecated).
 	Postback *Contentpostback `json:"postback,omitempty"`
+
+
+	// Story - Ephemeral story content.
+	Story *Contentstory `json:"story,omitempty"`
+
+
+	// Card - Card content
+	Card *Contentcard `json:"card,omitempty"`
+
+
+	// Carousel - Carousel content
+	Carousel *Contentcarousel `json:"carousel,omitempty"`
 
 }
 
@@ -80,6 +92,12 @@ func (o *Messagecontent) MarshalJSON() ([]byte, error) {
 		Mention *Messagingrecipient `json:"mention,omitempty"`
 		
 		Postback *Contentpostback `json:"postback,omitempty"`
+		
+		Story *Contentstory `json:"story,omitempty"`
+		
+		Card *Contentcard `json:"card,omitempty"`
+		
+		Carousel *Contentcarousel `json:"carousel,omitempty"`
 		*Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -103,6 +121,12 @@ func (o *Messagecontent) MarshalJSON() ([]byte, error) {
 		Mention: o.Mention,
 		
 		Postback: o.Postback,
+		
+		Story: o.Story,
+		
+		Card: o.Card,
+		
+		Carousel: o.Carousel,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -166,6 +190,21 @@ func (o *Messagecontent) UnmarshalJSON(b []byte) error {
 	if Postback, ok := MessagecontentMap["postback"].(map[string]interface{}); ok {
 		PostbackString, _ := json.Marshal(Postback)
 		json.Unmarshal(PostbackString, &o.Postback)
+	}
+	
+	if Story, ok := MessagecontentMap["story"].(map[string]interface{}); ok {
+		StoryString, _ := json.Marshal(Story)
+		json.Unmarshal(StoryString, &o.Story)
+	}
+	
+	if Card, ok := MessagecontentMap["card"].(map[string]interface{}); ok {
+		CardString, _ := json.Marshal(Card)
+		json.Unmarshal(CardString, &o.Card)
+	}
+	
+	if Carousel, ok := MessagecontentMap["carousel"].(map[string]interface{}); ok {
+		CarouselString, _ := json.Marshal(Carousel)
+		json.Unmarshal(CarouselString, &o.Carousel)
 	}
 	
 

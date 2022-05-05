@@ -17,6 +17,14 @@ type Adherenceexplanationnotification struct {
 	Agent *Userreference `json:"agent,omitempty"`
 
 
+	// ManagementUnit - The management unit to which the agent belonged at the time the adherence explanation was submitted
+	ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
+
+
+	// BusinessUnit - The business unit to which the agent belonged at the time the adherence explanation was submitted
+	BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
+
+
 	// StartDate - The start date of the adherence explanation. Date time is represented as an ISO-8601 string. For example: yyyy-MM-ddTHH:mm:ss[.mmm]Z
 	StartDate *time.Time `json:"startDate,omitempty"`
 
@@ -60,6 +68,10 @@ func (o *Adherenceexplanationnotification) MarshalJSON() ([]byte, error) {
 		
 		Agent *Userreference `json:"agent,omitempty"`
 		
+		ManagementUnit *Managementunitreference `json:"managementUnit,omitempty"`
+		
+		BusinessUnit *Businessunitreference `json:"businessUnit,omitempty"`
+		
 		StartDate *string `json:"startDate,omitempty"`
 		
 		LengthMinutes *int `json:"lengthMinutes,omitempty"`
@@ -76,6 +88,10 @@ func (o *Adherenceexplanationnotification) MarshalJSON() ([]byte, error) {
 		Id: o.Id,
 		
 		Agent: o.Agent,
+		
+		ManagementUnit: o.ManagementUnit,
+		
+		BusinessUnit: o.BusinessUnit,
 		
 		StartDate: StartDate,
 		
@@ -106,6 +122,16 @@ func (o *Adherenceexplanationnotification) UnmarshalJSON(b []byte) error {
 	if Agent, ok := AdherenceexplanationnotificationMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if ManagementUnit, ok := AdherenceexplanationnotificationMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if BusinessUnit, ok := AdherenceexplanationnotificationMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
 	}
 	
 	if startDateString, ok := AdherenceexplanationnotificationMap["startDate"].(string); ok {

@@ -35,6 +35,10 @@ type Messagingrecipient struct {
 	// Email - E-mail address of the recipient.
 	Email *string `json:"email,omitempty"`
 
+
+	// AdditionalIds - List of recipient additional identifiers
+	AdditionalIds *[]Recipientadditionalidentifier `json:"additionalIds,omitempty"`
+
 }
 
 func (o *Messagingrecipient) MarshalJSON() ([]byte, error) {
@@ -56,6 +60,8 @@ func (o *Messagingrecipient) MarshalJSON() ([]byte, error) {
 		LastName *string `json:"lastName,omitempty"`
 		
 		Email *string `json:"email,omitempty"`
+		
+		AdditionalIds *[]Recipientadditionalidentifier `json:"additionalIds,omitempty"`
 		*Alias
 	}{ 
 		Nickname: o.Nickname,
@@ -71,6 +77,8 @@ func (o *Messagingrecipient) MarshalJSON() ([]byte, error) {
 		LastName: o.LastName,
 		
 		Email: o.Email,
+		
+		AdditionalIds: o.AdditionalIds,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -108,6 +116,11 @@ func (o *Messagingrecipient) UnmarshalJSON(b []byte) error {
 	
 	if Email, ok := MessagingrecipientMap["email"].(string); ok {
 		o.Email = &Email
+	}
+	
+	if AdditionalIds, ok := MessagingrecipientMap["additionalIds"].([]interface{}); ok {
+		AdditionalIdsString, _ := json.Marshal(AdditionalIds)
+		json.Unmarshal(AdditionalIdsString, &o.AdditionalIds)
 	}
 	
 

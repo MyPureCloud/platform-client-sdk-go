@@ -24,8 +24,8 @@ type Cardaction struct {
 	Url *string `json:"url,omitempty"`
 
 
-	// Selected
-	Selected *bool `json:"selected,omitempty"`
+	// IsSelected - Indicates if the card option is selected by end customer.
+	IsSelected *bool `json:"isSelected,omitempty"`
 
 }
 
@@ -43,7 +43,7 @@ func (o *Cardaction) MarshalJSON() ([]byte, error) {
 		
 		Url *string `json:"url,omitempty"`
 		
-		Selected *bool `json:"selected,omitempty"`
+		IsSelected *bool `json:"isSelected,omitempty"`
 		*Alias
 	}{ 
 		VarType: o.VarType,
@@ -54,7 +54,7 @@ func (o *Cardaction) MarshalJSON() ([]byte, error) {
 		
 		Url: o.Url,
 		
-		Selected: o.Selected,
+		IsSelected: o.IsSelected,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -82,8 +82,8 @@ func (o *Cardaction) UnmarshalJSON(b []byte) error {
 		o.Url = &Url
 	}
 	
-	if Selected, ok := CardactionMap["selected"].(bool); ok {
-		o.Selected = &Selected
+	if IsSelected, ok := CardactionMap["isSelected"].(bool); ok {
+		o.IsSelected = &IsSelected
 	}
 	
 

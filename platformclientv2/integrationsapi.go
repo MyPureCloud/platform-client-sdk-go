@@ -1085,7 +1085,7 @@ func (a IntegrationsApi) GetIntegrationsActionTemplate(actionId string, fileName
 // Retrieves all actions associated with filters passed in via query param.
 //
 // 
-func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions"
@@ -1127,6 +1127,8 @@ func (a IntegrationsApi) GetIntegrationsActions(pageSize int, pageNumber int, ne
 	queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "")
 	
 	queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, "")
 	
@@ -1253,7 +1255,7 @@ func (a IntegrationsApi) GetIntegrationsActionsCategories(pageSize int, pageNumb
 // Retrieves all action drafts associated with the filters passed in via query param.
 //
 // 
-func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
+func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber int, nextPage string, previousPage string, sortBy string, sortOrder string, category string, name string, ids string, secure string, includeAuthActions string) (*Actionentitylisting, *APIResponse, error) {
 	var httpMethod = "GET"
 	// create path and map variables
 	path := a.Configuration.BasePath + "/api/v2/integrations/actions/drafts"
@@ -1295,6 +1297,8 @@ func (a IntegrationsApi) GetIntegrationsActionsDrafts(pageSize int, pageNumber i
 	queryParams["category"] = a.Configuration.APIClient.ParameterToString(category, "")
 	
 	queryParams["name"] = a.Configuration.APIClient.ParameterToString(name, "")
+	
+	queryParams["ids"] = a.Configuration.APIClient.ParameterToString(ids, "")
 	
 	queryParams["secure"] = a.Configuration.APIClient.ParameterToString(secure, "")
 	

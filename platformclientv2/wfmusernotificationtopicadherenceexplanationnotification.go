@@ -17,6 +17,14 @@ type Wfmusernotificationtopicadherenceexplanationnotification struct {
 	Agent *Wfmusernotificationtopicuserreference `json:"agent,omitempty"`
 
 
+	// ManagementUnit
+	ManagementUnit *Wfmusernotificationtopicmanagementunit `json:"managementUnit,omitempty"`
+
+
+	// BusinessUnit
+	BusinessUnit *Wfmusernotificationtopicbusinessunit `json:"businessUnit,omitempty"`
+
+
 	// StartDate
 	StartDate *time.Time `json:"startDate,omitempty"`
 
@@ -56,6 +64,10 @@ func (o *Wfmusernotificationtopicadherenceexplanationnotification) MarshalJSON()
 		
 		Agent *Wfmusernotificationtopicuserreference `json:"agent,omitempty"`
 		
+		ManagementUnit *Wfmusernotificationtopicmanagementunit `json:"managementUnit,omitempty"`
+		
+		BusinessUnit *Wfmusernotificationtopicbusinessunit `json:"businessUnit,omitempty"`
+		
 		StartDate *string `json:"startDate,omitempty"`
 		
 		LengthMinutes *int `json:"lengthMinutes,omitempty"`
@@ -70,6 +82,10 @@ func (o *Wfmusernotificationtopicadherenceexplanationnotification) MarshalJSON()
 		Id: o.Id,
 		
 		Agent: o.Agent,
+		
+		ManagementUnit: o.ManagementUnit,
+		
+		BusinessUnit: o.BusinessUnit,
 		
 		StartDate: StartDate,
 		
@@ -98,6 +114,16 @@ func (o *Wfmusernotificationtopicadherenceexplanationnotification) UnmarshalJSON
 	if Agent, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["agent"].(map[string]interface{}); ok {
 		AgentString, _ := json.Marshal(Agent)
 		json.Unmarshal(AgentString, &o.Agent)
+	}
+	
+	if ManagementUnit, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["managementUnit"].(map[string]interface{}); ok {
+		ManagementUnitString, _ := json.Marshal(ManagementUnit)
+		json.Unmarshal(ManagementUnitString, &o.ManagementUnit)
+	}
+	
+	if BusinessUnit, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["businessUnit"].(map[string]interface{}); ok {
+		BusinessUnitString, _ := json.Marshal(BusinessUnit)
+		json.Unmarshal(BusinessUnitString, &o.BusinessUnit)
 	}
 	
 	if startDateString, ok := WfmusernotificationtopicadherenceexplanationnotificationMap["startDate"].(string); ok {

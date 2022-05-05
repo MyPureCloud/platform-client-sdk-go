@@ -16,7 +16,7 @@ type Contentactions struct {
 	UrlTarget *string `json:"urlTarget,omitempty"`
 
 
-	// Textback - Text to be sent back in reply when the item is selected.
+	// Textback - Text to be returned as the payload from a ButtonResponse when a button is clicked. The textback and title are a combination which will have to be unique across each card and carousel in order to determine which button was clicked in that card or carousel.
 	Textback *string `json:"textback,omitempty"`
 
 }

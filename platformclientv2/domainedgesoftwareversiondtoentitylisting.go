@@ -28,20 +28,20 @@ type Domainedgesoftwareversiondtoentitylisting struct {
 	FirstUri *string `json:"firstUri,omitempty"`
 
 
-	// PreviousUri
-	PreviousUri *string `json:"previousUri,omitempty"`
-
-
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
-
-
 	// SelfUri
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
 	// NextUri
 	NextUri *string `json:"nextUri,omitempty"`
+
+
+	// PreviousUri
+	PreviousUri *string `json:"previousUri,omitempty"`
+
+
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
 
 
 	// PageCount
@@ -65,13 +65,13 @@ func (o *Domainedgesoftwareversiondtoentitylisting) MarshalJSON() ([]byte, error
 		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
-		PreviousUri *string `json:"previousUri,omitempty"`
-		
-		LastUri *string `json:"lastUri,omitempty"`
-		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
 		NextUri *string `json:"nextUri,omitempty"`
+		
+		PreviousUri *string `json:"previousUri,omitempty"`
+		
+		LastUri *string `json:"lastUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -86,13 +86,13 @@ func (o *Domainedgesoftwareversiondtoentitylisting) MarshalJSON() ([]byte, error
 		
 		FirstUri: o.FirstUri,
 		
-		PreviousUri: o.PreviousUri,
-		
-		LastUri: o.LastUri,
-		
 		SelfUri: o.SelfUri,
 		
 		NextUri: o.NextUri,
+		
+		PreviousUri: o.PreviousUri,
+		
+		LastUri: o.LastUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -130,20 +130,20 @@ func (o *Domainedgesoftwareversiondtoentitylisting) UnmarshalJSON(b []byte) erro
 		o.FirstUri = &FirstUri
 	}
 	
-	if PreviousUri, ok := DomainedgesoftwareversiondtoentitylistingMap["previousUri"].(string); ok {
-		o.PreviousUri = &PreviousUri
-	}
-	
-	if LastUri, ok := DomainedgesoftwareversiondtoentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
-	}
-	
 	if SelfUri, ok := DomainedgesoftwareversiondtoentitylistingMap["selfUri"].(string); ok {
 		o.SelfUri = &SelfUri
 	}
 	
 	if NextUri, ok := DomainedgesoftwareversiondtoentitylistingMap["nextUri"].(string); ok {
 		o.NextUri = &NextUri
+	}
+	
+	if PreviousUri, ok := DomainedgesoftwareversiondtoentitylistingMap["previousUri"].(string); ok {
+		o.PreviousUri = &PreviousUri
+	}
+	
+	if LastUri, ok := DomainedgesoftwareversiondtoentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
 	}
 	
 	if PageCount, ok := DomainedgesoftwareversiondtoentitylistingMap["pageCount"].(float64); ok {

@@ -6,7 +6,7 @@ import (
 	"strings"
 )
 
-// Contentgeneric - Generic content object.
+// Contentgeneric - Deprecated, should use Card.
 type Contentgeneric struct { 
 	// Title - Text to show in the title.
 	Title *string `json:"title,omitempty"`
@@ -24,7 +24,7 @@ type Contentgeneric struct {
 	Video *string `json:"video,omitempty"`
 
 
-	// Actions - Actions to be taken.
+	// Actions - Actions to be taken (Deprecated).
 	Actions *Contentactions `json:"actions,omitempty"`
 
 
