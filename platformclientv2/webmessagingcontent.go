@@ -27,6 +27,14 @@ type Webmessagingcontent struct {
 	// Generic - Generic content.
 	Generic *Webmessaginggeneric `json:"generic,omitempty"`
 
+
+	// Card - Card content
+	Card *Contentcard `json:"card,omitempty"`
+
+
+	// Carousel - Carousel content
+	Carousel *Contentcarousel `json:"carousel,omitempty"`
+
 }
 
 func (o *Webmessagingcontent) MarshalJSON() ([]byte, error) {
@@ -44,6 +52,10 @@ func (o *Webmessagingcontent) MarshalJSON() ([]byte, error) {
 		ButtonResponse *Webmessagingbuttonresponse `json:"buttonResponse,omitempty"`
 		
 		Generic *Webmessaginggeneric `json:"generic,omitempty"`
+		
+		Card *Contentcard `json:"card,omitempty"`
+		
+		Carousel *Contentcarousel `json:"carousel,omitempty"`
 		*Alias
 	}{ 
 		ContentType: o.ContentType,
@@ -55,6 +67,10 @@ func (o *Webmessagingcontent) MarshalJSON() ([]byte, error) {
 		ButtonResponse: o.ButtonResponse,
 		
 		Generic: o.Generic,
+		
+		Card: o.Card,
+		
+		Carousel: o.Carousel,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -88,6 +104,16 @@ func (o *Webmessagingcontent) UnmarshalJSON(b []byte) error {
 	if Generic, ok := WebmessagingcontentMap["generic"].(map[string]interface{}); ok {
 		GenericString, _ := json.Marshal(Generic)
 		json.Unmarshal(GenericString, &o.Generic)
+	}
+	
+	if Card, ok := WebmessagingcontentMap["card"].(map[string]interface{}); ok {
+		CardString, _ := json.Marshal(Card)
+		json.Unmarshal(CardString, &o.Card)
+	}
+	
+	if Carousel, ok := WebmessagingcontentMap["carousel"].(map[string]interface{}); ok {
+		CarouselString, _ := json.Marshal(Carousel)
+		json.Unmarshal(CarouselString, &o.Carousel)
 	}
 	
 

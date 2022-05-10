@@ -2474,6 +2474,25 @@
     "return": "Flowruntimeexecution",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowExecutionId string // flow execution ID\n// Get a flow execution's details. Flow execution details are available for several days after the flow is started.\ndata, response, err := apiInstance.GetFlowsExecution(flowExecutionId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowsExecution: %v\\n\", err)\n}"
   },
+  "getflowsjob": {
+    "operationId": "getflowsjob",
+    "functionName": "GetFlowsJob",
+    "signature": "GetFlowsJob(jobId, expand)",
+    "parameters": [
+      {
+        "name": "jobId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "expand",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Architectjobstateresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar jobId string // Job ID\nvar expand []string // Which fields, if any, to expand.\n// Fetch Architect Job Status\ndata, response, err := apiInstance.GetFlowsJob(jobId, expand)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFlowsJob: %v\\n\", err)\n}"
+  },
   "getflowsmilestone": {
     "operationId": "getflowsmilestone",
     "functionName": "GetFlowsMilestone",
@@ -3060,6 +3079,13 @@
     ],
     "return": "Flowexecutionlaunchresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\nvar flowLaunchRequest platformclientv2.Flowexecutionlaunchrequest // \n// Launch an instance of a flow definition, for flow types that support it such as the 'workflow' type.\ndata, response, err := apiInstance.PostFlowsExecutions(flowLaunchRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostFlowsExecutions: %v\\n\", err)\n}"
+  },
+  "postflowsjobs": {
+    "operationId": "postflowsjobs",
+    "functionName": "PostFlowsJobs",
+    "signature": "PostFlowsJobs()",
+    "return": "Registerarchitectjobresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewArchitectApiWithConfig(config)\n\n// Register Architect Job. Returns a URL where a file, such as an Architect flow YAML file, can be PUT which will then initiate the job.\ndata, response, err := apiInstance.PostFlowsJobs()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostFlowsJobs: %v\\n\", err)\n}"
   },
   "postflowsmilestones": {
     "operationId": "postflowsmilestones",
@@ -4342,6 +4368,92 @@
     ],
     "return": "Chatsettings",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewChatApiWithConfig(config)\n\nvar body platformclientv2.Chatsettings // Chat\n// Update Chat Settings.\ndata, response, err := apiInstance.PutChatSettings(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutChatSettings: %v\\n\", err)\n}"
+  },
+  "deletefaxdocument": {
+    "operationId": "deletefaxdocument",
+    "functionName": "DeleteFaxDocument",
+    "signature": "DeleteFaxDocument(documentId)",
+    "parameters": [
+      {
+        "name": "documentId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\n// Delete a fax document.\nresponse, err := apiInstance.DeleteFaxDocument(documentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteFaxDocument: %v\\n\", err)\n}"
+  },
+  "getfaxdocument": {
+    "operationId": "getfaxdocument",
+    "functionName": "GetFaxDocument",
+    "signature": "GetFaxDocument(documentId)",
+    "parameters": [
+      {
+        "name": "documentId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Faxdocument",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\n// Get a document.\ndata, response, err := apiInstance.GetFaxDocument(documentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxDocument: %v\\n\", err)\n}"
+  },
+  "getfaxdocumentcontent": {
+    "operationId": "getfaxdocumentcontent",
+    "functionName": "GetFaxDocumentContent",
+    "signature": "GetFaxDocumentContent(documentId)",
+    "parameters": [
+      {
+        "name": "documentId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Downloadresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\n// Download a fax document.\ndata, response, err := apiInstance.GetFaxDocumentContent(documentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxDocumentContent: %v\\n\", err)\n}"
+  },
+  "getfaxdocuments": {
+    "operationId": "getfaxdocuments",
+    "functionName": "GetFaxDocuments",
+    "signature": "GetFaxDocuments(pageSize, pageNumber)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Faxdocumententitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get a list of fax documents.\ndata, response, err := apiInstance.GetFaxDocuments(pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxDocuments: %v\\n\", err)\n}"
+  },
+  "getfaxsummary": {
+    "operationId": "getfaxsummary",
+    "functionName": "GetFaxSummary",
+    "signature": "GetFaxSummary()",
+    "return": "Faxsummary",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\n// Get fax summary\ndata, response, err := apiInstance.GetFaxSummary()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxSummary: %v\\n\", err)\n}"
+  },
+  "putfaxdocument": {
+    "operationId": "putfaxdocument",
+    "functionName": "PutFaxDocument",
+    "signature": "PutFaxDocument(documentId, body)",
+    "parameters": [
+      {
+        "name": "documentId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Faxdocument",
+        "required": "true"
+      }
+    ],
+    "return": "Faxdocument",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\nvar body platformclientv2.Faxdocument // Document\n// Update a fax document.\ndata, response, err := apiInstance.PutFaxDocument(documentId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutFaxDocument: %v\\n\", err)\n}"
   },
   "deletecoachingappointment": {
     "operationId": "deletecoachingappointment",
@@ -5644,92 +5756,6 @@
     ],
     "return": "Tagvalue",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewContentManagementApiWithConfig(config)\n\nvar workspaceId string // Workspace ID\nvar tagId string // Tag ID\nvar body platformclientv2.Tagvalue // Workspace\n// Update a workspace tag. Will update all documents with the new tag value.\ndata, response, err := apiInstance.PutContentmanagementWorkspaceTagvalue(workspaceId, tagId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutContentmanagementWorkspaceTagvalue: %v\\n\", err)\n}"
-  },
-  "deletefaxdocument": {
-    "operationId": "deletefaxdocument",
-    "functionName": "DeleteFaxDocument",
-    "signature": "DeleteFaxDocument(documentId)",
-    "parameters": [
-      {
-        "name": "documentId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\n// Delete a fax document.\nresponse, err := apiInstance.DeleteFaxDocument(documentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteFaxDocument: %v\\n\", err)\n}"
-  },
-  "getfaxdocument": {
-    "operationId": "getfaxdocument",
-    "functionName": "GetFaxDocument",
-    "signature": "GetFaxDocument(documentId)",
-    "parameters": [
-      {
-        "name": "documentId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Faxdocument",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\n// Get a document.\ndata, response, err := apiInstance.GetFaxDocument(documentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxDocument: %v\\n\", err)\n}"
-  },
-  "getfaxdocumentcontent": {
-    "operationId": "getfaxdocumentcontent",
-    "functionName": "GetFaxDocumentContent",
-    "signature": "GetFaxDocumentContent(documentId)",
-    "parameters": [
-      {
-        "name": "documentId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Downloadresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\n// Download a fax document.\ndata, response, err := apiInstance.GetFaxDocumentContent(documentId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxDocumentContent: %v\\n\", err)\n}"
-  },
-  "getfaxdocuments": {
-    "operationId": "getfaxdocuments",
-    "functionName": "GetFaxDocuments",
-    "signature": "GetFaxDocuments(pageSize, pageNumber)",
-    "parameters": [
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Faxdocumententitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\n// Get a list of fax documents.\ndata, response, err := apiInstance.GetFaxDocuments(pageSize, pageNumber)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxDocuments: %v\\n\", err)\n}"
-  },
-  "getfaxsummary": {
-    "operationId": "getfaxsummary",
-    "functionName": "GetFaxSummary",
-    "signature": "GetFaxSummary()",
-    "return": "Faxsummary",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\n// Get fax summary\ndata, response, err := apiInstance.GetFaxSummary()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetFaxSummary: %v\\n\", err)\n}"
-  },
-  "putfaxdocument": {
-    "operationId": "putfaxdocument",
-    "functionName": "PutFaxDocument",
-    "signature": "PutFaxDocument(documentId, body)",
-    "parameters": [
-      {
-        "name": "documentId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Faxdocument",
-        "required": "true"
-      }
-    ],
-    "return": "Faxdocument",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewFaxApiWithConfig(config)\n\nvar documentId string // Document ID\nvar body platformclientv2.Faxdocument // Document\n// Update a fax document.\ndata, response, err := apiInstance.PutFaxDocument(documentId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutFaxDocument: %v\\n\", err)\n}"
   },
   "deleteconversationparticipantcode": {
     "operationId": "deleteconversationparticipantcode",
@@ -14202,641 +14228,151 @@
     "return": "Knowledgebase",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewKnowledgeApiWithConfig(config)\n\nvar body platformclientv2.Knowledgebase // \n// Create new knowledge base\ndata, response, err := apiInstance.PostKnowledgeKnowledgebases(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostKnowledgeKnowledgebases: %v\\n\", err)\n}"
   },
-  "deletescimuser": {
-    "operationId": "deletescimuser",
-    "functionName": "DeleteScimUser",
-    "signature": "DeleteScimUser(userId, ifMatch)",
+  "deletelanguage": {
+    "operationId": "deletelanguage",
+    "functionName": "DeleteLanguage",
+    "signature": "DeleteLanguage(languageId)",
+    "parameters": [
+      {
+        "name": "languageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete Language (Deprecated)\nresponse, err := apiInstance.DeleteLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteLanguage: %v\\n\", err)\n}"
+  },
+  "deleteroutinglanguage": {
+    "operationId": "deleteroutinglanguage",
+    "functionName": "DeleteRoutingLanguage",
+    "signature": "DeleteRoutingLanguage(languageId)",
+    "parameters": [
+      {
+        "name": "languageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete Language\nresponse, err := apiInstance.DeleteRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingLanguage: %v\\n\", err)\n}"
+  },
+  "getlanguage": {
+    "operationId": "getlanguage",
+    "functionName": "GetLanguage",
+    "signature": "GetLanguage(languageId)",
+    "parameters": [
+      {
+        "name": "languageId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Language",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get language (Deprecated)\ndata, response, err := apiInstance.GetLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguage: %v\\n\", err)\n}"
+  },
+  "getlanguages": {
+    "operationId": "getlanguages",
+    "functionName": "GetLanguages",
+    "signature": "GetLanguages(pageSize, pageNumber, sortOrder, name)",
+    "parameters": [
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "pageNumber",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "sortOrder",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "name",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Languageentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\nvar name string // Name\n// Get the list of supported languages. (Deprecated)\ndata, response, err := apiInstance.GetLanguages(pageSize, pageNumber, sortOrder, name)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguages: %v\\n\", err)\n}"
+  },
+  "getlanguagestranslations": {
+    "operationId": "getlanguagestranslations",
+    "functionName": "GetLanguagesTranslations",
+    "signature": "GetLanguagesTranslations()",
+    "return": "Availabletranslations",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\n// Get all available languages for translation\ndata, response, err := apiInstance.GetLanguagesTranslations()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslations: %v\\n\", err)\n}"
+  },
+  "getlanguagestranslationsbuiltin": {
+    "operationId": "getlanguagestranslationsbuiltin",
+    "functionName": "GetLanguagesTranslationsBuiltin",
+    "signature": "GetLanguagesTranslationsBuiltin(language)",
+    "parameters": [
+      {
+        "name": "language",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "map[string]interface{}",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar language string // The language of the builtin translation to retrieve\n// Get the builtin translation for a language\ndata, response, err := apiInstance.GetLanguagesTranslationsBuiltin(language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsBuiltin: %v\\n\", err)\n}"
+  },
+  "getlanguagestranslationsorganization": {
+    "operationId": "getlanguagestranslationsorganization",
+    "functionName": "GetLanguagesTranslationsOrganization",
+    "signature": "GetLanguagesTranslationsOrganization(language)",
+    "parameters": [
+      {
+        "name": "language",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "map[string]interface{}",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar language string // The language of the translation to retrieve for the organization\n// Get effective translation for an organization by language\ndata, response, err := apiInstance.GetLanguagesTranslationsOrganization(language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsOrganization: %v\\n\", err)\n}"
+  },
+  "getlanguagestranslationsuser": {
+    "operationId": "getlanguagestranslationsuser",
+    "functionName": "GetLanguagesTranslationsUser",
+    "signature": "GetLanguagesTranslationsUser(userId)",
     "parameters": [
       {
         "name": "userId",
         "type": "string",
         "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
       }
     ],
-    "return": "Empty",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Delete a user\ndata, response, err := apiInstance.DeleteScimUser(userId, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimUser: %v\\n\", err)\n}"
+    "return": "map[string]interface{}",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar userId string // The user id\n// Get effective language translation for a user\ndata, response, err := apiInstance.GetLanguagesTranslationsUser(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsUser: %v\\n\", err)\n}"
   },
-  "deletescimv2user": {
-    "operationId": "deletescimv2user",
-    "functionName": "DeleteScimV2User",
-    "signature": "DeleteScimV2User(userId, ifMatch)",
+  "getroutinglanguage": {
+    "operationId": "getroutinglanguage",
+    "functionName": "GetRoutingLanguage",
+    "signature": "GetRoutingLanguage(languageId)",
     "parameters": [
       {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Empty",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Delete a user\ndata, response, err := apiInstance.DeleteScimV2User(userId, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimV2User: %v\\n\", err)\n}"
-  },
-  "getscimgroup": {
-    "operationId": "getscimgroup",
-    "functionName": "GetScimGroup",
-    "signature": "GetScimGroup(groupId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/groups.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a group\ndata, response, err := apiInstance.GetScimGroup(groupId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroup: %v\\n\", err)\n}"
-  },
-  "getscimgroups": {
-    "operationId": "getscimgroups",
-    "functionName": "GetScimGroups",
-    "signature": "GetScimGroups(startIndex, count, attributes, excludedAttributes, filter)",
-    "parameters": [
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimgrouplistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar filter string // Filters results. If nothing is specified, returns all groups. Examples of valid values: \\\"id eq 5f4bc742-a019-4e38-8e2a-d39d5bc0b0f3\\\", \\\"displayname eq Sales\\\".\n// Get a list of groups\ndata, response, err := apiInstance.GetScimGroups(startIndex, count, attributes, excludedAttributes, filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroups: %v\\n\", err)\n}"
-  },
-  "getscimresourcetype": {
-    "operationId": "getscimresourcetype",
-    "functionName": "GetScimResourcetype",
-    "signature": "GetScimResourcetype(resourceType)",
-    "parameters": [
-      {
-        "name": "resourceType",
+        "name": "languageId",
         "type": "string",
         "required": "true"
       }
     ],
-    "return": "Scimconfigresourcetype",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar resourceType string // The type of resource. Returned with GET /api/v2/scim/resourcetypes.\n// Get a resource type\ndata, response, err := apiInstance.GetScimResourcetype(resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetype: %v\\n\", err)\n}"
+    "return": "Language",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get language\ndata, response, err := apiInstance.GetRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingLanguage: %v\\n\", err)\n}"
   },
-  "getscimresourcetypes": {
-    "operationId": "getscimresourcetypes",
-    "functionName": "GetScimResourcetypes",
-    "signature": "GetScimResourcetypes()",
-    "return": "Scimconfigresourcetypeslistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\n// Get a list of resource types\ndata, response, err := apiInstance.GetScimResourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetypes: %v\\n\", err)\n}"
-  },
-  "getscimschema": {
-    "operationId": "getscimschema",
-    "functionName": "GetScimSchema",
-    "signature": "GetScimSchema(schemaId)",
-    "parameters": [
-      {
-        "name": "schemaId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2schemadefinition",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar schemaId string // The ID of a schema. Returned with GET /api/v2/scim/schemas.\n// Get a SCIM schema\ndata, response, err := apiInstance.GetScimSchema(schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchema: %v\\n\", err)\n}"
-  },
-  "getscimschemas": {
-    "operationId": "getscimschemas",
-    "functionName": "GetScimSchemas",
-    "signature": "GetScimSchemas(filter)",
-    "parameters": [
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2schemalistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar filter string // Filtered results are invalid and return 403 Unauthorized.\n// Get a list of SCIM schemas\ndata, response, err := apiInstance.GetScimSchemas(filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchemas: %v\\n\", err)\n}"
-  },
-  "getscimserviceproviderconfig": {
-    "operationId": "getscimserviceproviderconfig",
-    "functionName": "GetScimServiceproviderconfig",
-    "signature": "GetScimServiceproviderconfig(ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimserviceproviderconfig",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/serviceproviderconfig. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified. \n// Get a service provider's configuration\ndata, response, err := apiInstance.GetScimServiceproviderconfig(ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimServiceproviderconfig: %v\\n\", err)\n}"
-  },
-  "getscimuser": {
-    "operationId": "getscimuser",
-    "functionName": "GetScimUser",
-    "signature": "GetScimUser(userId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a user\ndata, response, err := apiInstance.GetScimUser(userId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUser: %v\\n\", err)\n}"
-  },
-  "getscimusers": {
-    "operationId": "getscimusers",
-    "functionName": "GetScimUsers",
-    "signature": "GetScimUsers(startIndex, count, attributes, excludedAttributes, filter)",
-    "parameters": [
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimuserlistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar filter string // Filters results. If nothing is specified, returns all active users. Examples of valid values: \\\"id eq 857449b0-d9e7-4cd0-acbf-a6adfb9ef1e9\\\", \\\"userName eq search@sample.org\\\", \\\"manager eq 16e10e2f-1136-43fe-bb84-eac073168a49\\\", \\\"email eq search@sample.org\\\", \\\"division eq divisionName\\\", \\\"externalId eq 167844\\\", \\\"active eq false\\\", \\\"employeeNumber eq 9876543210\\\".\n// Get a list of users\ndata, response, err := apiInstance.GetScimUsers(startIndex, count, attributes, excludedAttributes, filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUsers: %v\\n\", err)\n}"
-  },
-  "getscimv2group": {
-    "operationId": "getscimv2group",
-    "functionName": "GetScimV2Group",
-    "signature": "GetScimV2Group(groupId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/v2/groups.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a group\ndata, response, err := apiInstance.GetScimV2Group(groupId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Group: %v\\n\", err)\n}"
-  },
-  "getscimv2groups": {
-    "operationId": "getscimv2groups",
-    "functionName": "GetScimV2Groups",
-    "signature": "GetScimV2Groups(filter, startIndex, count, attributes, excludedAttributes)",
-    "parameters": [
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimgrouplistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar filter string // Filters results. If nothing is specified, returns all groups. Examples of valid values: \\\"id eq 5f4bc742-a019-4e38-8e2a-d39d5bc0b0f3\\\", \\\"displayname eq Sales\\\".\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\n// Get a list of groups\ndata, response, err := apiInstance.GetScimV2Groups(filter, startIndex, count, attributes, excludedAttributes)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Groups: %v\\n\", err)\n}"
-  },
-  "getscimv2resourcetype": {
-    "operationId": "getscimv2resourcetype",
-    "functionName": "GetScimV2Resourcetype",
-    "signature": "GetScimV2Resourcetype(resourceType)",
-    "parameters": [
-      {
-        "name": "resourceType",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimconfigresourcetype",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar resourceType string // The type of resource. Returned with GET /api/v2/scim/v2/resourcetypes.\n// Get a resource type\ndata, response, err := apiInstance.GetScimV2Resourcetype(resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetype: %v\\n\", err)\n}"
-  },
-  "getscimv2resourcetypes": {
-    "operationId": "getscimv2resourcetypes",
-    "functionName": "GetScimV2Resourcetypes",
-    "signature": "GetScimV2Resourcetypes()",
-    "return": "Scimconfigresourcetypeslistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\n// Get a list of resource types\ndata, response, err := apiInstance.GetScimV2Resourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetypes: %v\\n\", err)\n}"
-  },
-  "getscimv2schema": {
-    "operationId": "getscimv2schema",
-    "functionName": "GetScimV2Schema",
-    "signature": "GetScimV2Schema(schemaId)",
-    "parameters": [
-      {
-        "name": "schemaId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2schemadefinition",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar schemaId string // The ID of a schema. Returned with GET /api/v2/scim/v2/schemas.\n// Get a SCIM schema\ndata, response, err := apiInstance.GetScimV2Schema(schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schema: %v\\n\", err)\n}"
-  },
-  "getscimv2schemas": {
-    "operationId": "getscimv2schemas",
-    "functionName": "GetScimV2Schemas",
-    "signature": "GetScimV2Schemas(filter)",
-    "parameters": [
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2schemalistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar filter string // Filtered results are invalid and return 403 Unauthorized.\n// Get a list of SCIM schemas\ndata, response, err := apiInstance.GetScimV2Schemas(filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schemas: %v\\n\", err)\n}"
-  },
-  "getscimv2serviceproviderconfig": {
-    "operationId": "getscimv2serviceproviderconfig",
-    "functionName": "GetScimV2Serviceproviderconfig",
-    "signature": "GetScimV2Serviceproviderconfig(ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimserviceproviderconfig",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/serviceproviderconfig. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified. \n// Get a service provider's configuration\ndata, response, err := apiInstance.GetScimV2Serviceproviderconfig(ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Serviceproviderconfig: %v\\n\", err)\n}"
-  },
-  "getscimv2user": {
-    "operationId": "getscimv2user",
-    "functionName": "GetScimV2User",
-    "signature": "GetScimV2User(userId, attributes, excludedAttributes, ifNoneMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "ifNoneMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a user\ndata, response, err := apiInstance.GetScimV2User(userId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2User: %v\\n\", err)\n}"
-  },
-  "getscimv2users": {
-    "operationId": "getscimv2users",
-    "functionName": "GetScimV2Users",
-    "signature": "GetScimV2Users(startIndex, count, attributes, excludedAttributes, filter)",
-    "parameters": [
-      {
-        "name": "startIndex",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "count",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "attributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "excludedAttributes",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "filter",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimuserlistresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar filter string // Filters results. If nothing is specified, returns all active users. Examples of valid values: \\\"id eq 857449b0-d9e7-4cd0-acbf-a6adfb9ef1e9\\\", \\\"userName eq search@sample.org\\\", \\\"manager eq 16e10e2f-1136-43fe-bb84-eac073168a49\\\", \\\"email eq search@sample.org\\\", \\\"division eq divisionName\\\", \\\"externalId eq 167844\\\", \\\"active eq false\\\", \\\"employeeNumber eq 9876543210\\\".\n// Get a list of users\ndata, response, err := apiInstance.GetScimV2Users(startIndex, count, attributes, excludedAttributes, filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Users: %v\\n\", err)\n}"
-  },
-  "patchscimgroup": {
-    "operationId": "patchscimgroup",
-    "functionName": "PatchScimGroup",
-    "signature": "PatchScimGroup(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/groups.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a group\ndata, response, err := apiInstance.PatchScimGroup(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimGroup: %v\\n\", err)\n}"
-  },
-  "patchscimuser": {
-    "operationId": "patchscimuser",
-    "functionName": "PatchScimUser",
-    "signature": "PatchScimUser(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a user\ndata, response, err := apiInstance.PatchScimUser(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimUser: %v\\n\", err)\n}"
-  },
-  "patchscimv2group": {
-    "operationId": "patchscimv2group",
-    "functionName": "PatchScimV2Group",
-    "signature": "PatchScimV2Group(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/v2/groups.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a group\ndata, response, err := apiInstance.PatchScimV2Group(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2Group: %v\\n\", err)\n}"
-  },
-  "patchscimv2user": {
-    "operationId": "patchscimv2user",
-    "functionName": "PatchScimV2User",
-    "signature": "PatchScimV2User(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2patchrequest",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a user\ndata, response, err := apiInstance.PatchScimV2User(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2User: %v\\n\", err)\n}"
-  },
-  "postscimusers": {
-    "operationId": "postscimusers",
-    "functionName": "PostScimUsers",
-    "signature": "PostScimUsers(body)",
+  "postlanguages": {
+    "operationId": "postlanguages",
+    "functionName": "PostLanguages",
+    "signature": "PostLanguages(body)",
     "parameters": [
       {
         "name": "body",
-        "type": "Scimv2createuser",
+        "type": "Language",
         "required": "true"
       }
     ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar body platformclientv2.Scimv2createuser // The information used to create a user.\n// Create a user\ndata, response, err := apiInstance.PostScimUsers(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimUsers: %v\\n\", err)\n}"
-  },
-  "postscimv2users": {
-    "operationId": "postscimv2users",
-    "functionName": "PostScimV2Users",
-    "signature": "PostScimV2Users(body)",
-    "parameters": [
-      {
-        "name": "body",
-        "type": "Scimv2createuser",
-        "required": "true"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar body platformclientv2.Scimv2createuser // The information used to create a user.\n// Create a user\ndata, response, err := apiInstance.PostScimV2Users(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimV2Users: %v\\n\", err)\n}"
-  },
-  "putscimgroup": {
-    "operationId": "putscimgroup",
-    "functionName": "PutScimGroup",
-    "signature": "PutScimGroup(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2group",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/groups.\nvar body platformclientv2.Scimv2group // The information used to replace a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a group\ndata, response, err := apiInstance.PutScimGroup(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimGroup: %v\\n\", err)\n}"
-  },
-  "putscimuser": {
-    "operationId": "putscimuser",
-    "functionName": "PutScimUser",
-    "signature": "PutScimUser(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2user",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar body platformclientv2.Scimv2user // The information used to replace a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a user\ndata, response, err := apiInstance.PutScimUser(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimUser: %v\\n\", err)\n}"
-  },
-  "putscimv2group": {
-    "operationId": "putscimv2group",
-    "functionName": "PutScimV2Group",
-    "signature": "PutScimV2Group(groupId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "groupId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2group",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2group",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/v2/groups.\nvar body platformclientv2.Scimv2group // The information used to replace a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a group\ndata, response, err := apiInstance.PutScimV2Group(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2Group: %v\\n\", err)\n}"
-  },
-  "putscimv2user": {
-    "operationId": "putscimv2user",
-    "functionName": "PutScimV2User",
-    "signature": "PutScimV2User(userId, body, ifMatch)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "body",
-        "type": "Scimv2user",
-        "required": "true"
-      },
-      {
-        "name": "ifMatch",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Scimv2user",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar body platformclientv2.Scimv2user // The information used to replace a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a user\ndata, response, err := apiInstance.PutScimV2User(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2User: %v\\n\", err)\n}"
+    "return": "Language",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar body platformclientv2.Language // Language\n// Create Language (Deprecated)\ndata, response, err := apiInstance.PostLanguages(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLanguages: %v\\n\", err)\n}"
   },
   "deletelanguageunderstandingdomain": {
     "operationId": "deletelanguageunderstandingdomain",
@@ -15440,152 +14976,6 @@
     ],
     "return": "Nludomainversion",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguageUnderstandingApiWithConfig(config)\n\nvar domainId string // ID of the NLU domain.\nvar domainVersionId string // ID of the NLU domain version.\nvar body platformclientv2.Nludomainversion // The updated NLU Domain Version.\n// Update an NLU Domain Version.\ndata, response, err := apiInstance.PutLanguageunderstandingDomainVersion(domainId, domainVersionId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutLanguageunderstandingDomainVersion: %v\\n\", err)\n}"
-  },
-  "deletelanguage": {
-    "operationId": "deletelanguage",
-    "functionName": "DeleteLanguage",
-    "signature": "DeleteLanguage(languageId)",
-    "parameters": [
-      {
-        "name": "languageId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete Language (Deprecated)\nresponse, err := apiInstance.DeleteLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteLanguage: %v\\n\", err)\n}"
-  },
-  "deleteroutinglanguage": {
-    "operationId": "deleteroutinglanguage",
-    "functionName": "DeleteRoutingLanguage",
-    "signature": "DeleteRoutingLanguage(languageId)",
-    "parameters": [
-      {
-        "name": "languageId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Delete Language\nresponse, err := apiInstance.DeleteRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteRoutingLanguage: %v\\n\", err)\n}"
-  },
-  "getlanguage": {
-    "operationId": "getlanguage",
-    "functionName": "GetLanguage",
-    "signature": "GetLanguage(languageId)",
-    "parameters": [
-      {
-        "name": "languageId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Language",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get language (Deprecated)\ndata, response, err := apiInstance.GetLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguage: %v\\n\", err)\n}"
-  },
-  "getlanguages": {
-    "operationId": "getlanguages",
-    "functionName": "GetLanguages",
-    "signature": "GetLanguages(pageSize, pageNumber, sortOrder, name)",
-    "parameters": [
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "pageNumber",
-        "type": "int",
-        "required": "false"
-      },
-      {
-        "name": "sortOrder",
-        "type": "string",
-        "required": "false"
-      },
-      {
-        "name": "name",
-        "type": "string",
-        "required": "false"
-      }
-    ],
-    "return": "Languageentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar pageSize int // Page size\nvar pageNumber int // Page number\nvar sortOrder string // Ascending or descending sort order\nvar name string // Name\n// Get the list of supported languages. (Deprecated)\ndata, response, err := apiInstance.GetLanguages(pageSize, pageNumber, sortOrder, name)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguages: %v\\n\", err)\n}"
-  },
-  "getlanguagestranslations": {
-    "operationId": "getlanguagestranslations",
-    "functionName": "GetLanguagesTranslations",
-    "signature": "GetLanguagesTranslations()",
-    "return": "Availabletranslations",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\n// Get all available languages for translation\ndata, response, err := apiInstance.GetLanguagesTranslations()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslations: %v\\n\", err)\n}"
-  },
-  "getlanguagestranslationsbuiltin": {
-    "operationId": "getlanguagestranslationsbuiltin",
-    "functionName": "GetLanguagesTranslationsBuiltin",
-    "signature": "GetLanguagesTranslationsBuiltin(language)",
-    "parameters": [
-      {
-        "name": "language",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "map[string]interface{}",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar language string // The language of the builtin translation to retrieve\n// Get the builtin translation for a language\ndata, response, err := apiInstance.GetLanguagesTranslationsBuiltin(language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsBuiltin: %v\\n\", err)\n}"
-  },
-  "getlanguagestranslationsorganization": {
-    "operationId": "getlanguagestranslationsorganization",
-    "functionName": "GetLanguagesTranslationsOrganization",
-    "signature": "GetLanguagesTranslationsOrganization(language)",
-    "parameters": [
-      {
-        "name": "language",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "map[string]interface{}",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar language string // The language of the translation to retrieve for the organization\n// Get effective translation for an organization by language\ndata, response, err := apiInstance.GetLanguagesTranslationsOrganization(language)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsOrganization: %v\\n\", err)\n}"
-  },
-  "getlanguagestranslationsuser": {
-    "operationId": "getlanguagestranslationsuser",
-    "functionName": "GetLanguagesTranslationsUser",
-    "signature": "GetLanguagesTranslationsUser(userId)",
-    "parameters": [
-      {
-        "name": "userId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "map[string]interface{}",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar userId string // The user id\n// Get effective language translation for a user\ndata, response, err := apiInstance.GetLanguagesTranslationsUser(userId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetLanguagesTranslationsUser: %v\\n\", err)\n}"
-  },
-  "getroutinglanguage": {
-    "operationId": "getroutinglanguage",
-    "functionName": "GetRoutingLanguage",
-    "signature": "GetRoutingLanguage(languageId)",
-    "parameters": [
-      {
-        "name": "languageId",
-        "type": "string",
-        "required": "true"
-      }
-    ],
-    "return": "Language",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar languageId string // Language ID\n// Get language\ndata, response, err := apiInstance.GetRoutingLanguage(languageId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetRoutingLanguage: %v\\n\", err)\n}"
-  },
-  "postlanguages": {
-    "operationId": "postlanguages",
-    "functionName": "PostLanguages",
-    "signature": "PostLanguages(body)",
-    "parameters": [
-      {
-        "name": "body",
-        "type": "Language",
-        "required": "true"
-      }
-    ],
-    "return": "Language",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewLanguagesApiWithConfig(config)\n\nvar body platformclientv2.Language // Language\n// Create Language (Deprecated)\ndata, response, err := apiInstance.PostLanguages(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostLanguages: %v\\n\", err)\n}"
   },
   "deletelearningassignment": {
     "operationId": "deletelearningassignment",
@@ -17634,6 +17024,642 @@
     "return": "Trustuser",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOrganizationAuthorizationApiWithConfig(config)\n\nvar trustorOrgId string // Trustor Organization Id\nvar trusteeUserId string // Trustee User Id\n// Add a Trustee user to the trust.\ndata, response, err := apiInstance.PutOrgauthorizationTrustorUser(trustorOrgId, trusteeUserId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOrgauthorizationTrustorUser: %v\\n\", err)\n}"
   },
+  "deletescimuser": {
+    "operationId": "deletescimuser",
+    "functionName": "DeleteScimUser",
+    "signature": "DeleteScimUser(userId, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Empty",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Delete a user\ndata, response, err := apiInstance.DeleteScimUser(userId, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimUser: %v\\n\", err)\n}"
+  },
+  "deletescimv2user": {
+    "operationId": "deletescimv2user",
+    "functionName": "DeleteScimV2User",
+    "signature": "DeleteScimV2User(userId, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Empty",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Delete a user\ndata, response, err := apiInstance.DeleteScimV2User(userId, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteScimV2User: %v\\n\", err)\n}"
+  },
+  "getscimgroup": {
+    "operationId": "getscimgroup",
+    "functionName": "GetScimGroup",
+    "signature": "GetScimGroup(groupId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/groups.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a group\ndata, response, err := apiInstance.GetScimGroup(groupId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroup: %v\\n\", err)\n}"
+  },
+  "getscimgroups": {
+    "operationId": "getscimgroups",
+    "functionName": "GetScimGroups",
+    "signature": "GetScimGroups(startIndex, count, attributes, excludedAttributes, filter)",
+    "parameters": [
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimgrouplistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar filter string // Filters results. If nothing is specified, returns all groups. Examples of valid values: \\\"id eq 5f4bc742-a019-4e38-8e2a-d39d5bc0b0f3\\\", \\\"displayname eq Sales\\\".\n// Get a list of groups\ndata, response, err := apiInstance.GetScimGroups(startIndex, count, attributes, excludedAttributes, filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimGroups: %v\\n\", err)\n}"
+  },
+  "getscimresourcetype": {
+    "operationId": "getscimresourcetype",
+    "functionName": "GetScimResourcetype",
+    "signature": "GetScimResourcetype(resourceType)",
+    "parameters": [
+      {
+        "name": "resourceType",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimconfigresourcetype",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar resourceType string // The type of resource. Returned with GET /api/v2/scim/resourcetypes.\n// Get a resource type\ndata, response, err := apiInstance.GetScimResourcetype(resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetype: %v\\n\", err)\n}"
+  },
+  "getscimresourcetypes": {
+    "operationId": "getscimresourcetypes",
+    "functionName": "GetScimResourcetypes",
+    "signature": "GetScimResourcetypes()",
+    "return": "Scimconfigresourcetypeslistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\n// Get a list of resource types\ndata, response, err := apiInstance.GetScimResourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimResourcetypes: %v\\n\", err)\n}"
+  },
+  "getscimschema": {
+    "operationId": "getscimschema",
+    "functionName": "GetScimSchema",
+    "signature": "GetScimSchema(schemaId)",
+    "parameters": [
+      {
+        "name": "schemaId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2schemadefinition",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar schemaId string // The ID of a schema. Returned with GET /api/v2/scim/schemas.\n// Get a SCIM schema\ndata, response, err := apiInstance.GetScimSchema(schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchema: %v\\n\", err)\n}"
+  },
+  "getscimschemas": {
+    "operationId": "getscimschemas",
+    "functionName": "GetScimSchemas",
+    "signature": "GetScimSchemas(filter)",
+    "parameters": [
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2schemalistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar filter string // Filtered results are invalid and return 403 Unauthorized.\n// Get a list of SCIM schemas\ndata, response, err := apiInstance.GetScimSchemas(filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimSchemas: %v\\n\", err)\n}"
+  },
+  "getscimserviceproviderconfig": {
+    "operationId": "getscimserviceproviderconfig",
+    "functionName": "GetScimServiceproviderconfig",
+    "signature": "GetScimServiceproviderconfig(ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimserviceproviderconfig",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/serviceproviderconfig. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified. \n// Get a service provider's configuration\ndata, response, err := apiInstance.GetScimServiceproviderconfig(ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimServiceproviderconfig: %v\\n\", err)\n}"
+  },
+  "getscimuser": {
+    "operationId": "getscimuser",
+    "functionName": "GetScimUser",
+    "signature": "GetScimUser(userId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a user\ndata, response, err := apiInstance.GetScimUser(userId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUser: %v\\n\", err)\n}"
+  },
+  "getscimusers": {
+    "operationId": "getscimusers",
+    "functionName": "GetScimUsers",
+    "signature": "GetScimUsers(startIndex, count, attributes, excludedAttributes, filter)",
+    "parameters": [
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimuserlistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar filter string // Filters results. If nothing is specified, returns all active users. Examples of valid values: \\\"id eq 857449b0-d9e7-4cd0-acbf-a6adfb9ef1e9\\\", \\\"userName eq search@sample.org\\\", \\\"manager eq 16e10e2f-1136-43fe-bb84-eac073168a49\\\", \\\"email eq search@sample.org\\\", \\\"division eq divisionName\\\", \\\"externalId eq 167844\\\", \\\"active eq false\\\", \\\"employeeNumber eq 9876543210\\\".\n// Get a list of users\ndata, response, err := apiInstance.GetScimUsers(startIndex, count, attributes, excludedAttributes, filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimUsers: %v\\n\", err)\n}"
+  },
+  "getscimv2group": {
+    "operationId": "getscimv2group",
+    "functionName": "GetScimV2Group",
+    "signature": "GetScimV2Group(groupId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/v2/groups.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a group\ndata, response, err := apiInstance.GetScimV2Group(groupId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Group: %v\\n\", err)\n}"
+  },
+  "getscimv2groups": {
+    "operationId": "getscimv2groups",
+    "functionName": "GetScimV2Groups",
+    "signature": "GetScimV2Groups(filter, startIndex, count, attributes, excludedAttributes)",
+    "parameters": [
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimgrouplistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar filter string // Filters results. If nothing is specified, returns all groups. Examples of valid values: \\\"id eq 5f4bc742-a019-4e38-8e2a-d39d5bc0b0f3\\\", \\\"displayname eq Sales\\\".\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns \\\"id\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\n// Get a list of groups\ndata, response, err := apiInstance.GetScimV2Groups(filter, startIndex, count, attributes, excludedAttributes)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Groups: %v\\n\", err)\n}"
+  },
+  "getscimv2resourcetype": {
+    "operationId": "getscimv2resourcetype",
+    "functionName": "GetScimV2Resourcetype",
+    "signature": "GetScimV2Resourcetype(resourceType)",
+    "parameters": [
+      {
+        "name": "resourceType",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimconfigresourcetype",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar resourceType string // The type of resource. Returned with GET /api/v2/scim/v2/resourcetypes.\n// Get a resource type\ndata, response, err := apiInstance.GetScimV2Resourcetype(resourceType)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetype: %v\\n\", err)\n}"
+  },
+  "getscimv2resourcetypes": {
+    "operationId": "getscimv2resourcetypes",
+    "functionName": "GetScimV2Resourcetypes",
+    "signature": "GetScimV2Resourcetypes()",
+    "return": "Scimconfigresourcetypeslistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\n// Get a list of resource types\ndata, response, err := apiInstance.GetScimV2Resourcetypes()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Resourcetypes: %v\\n\", err)\n}"
+  },
+  "getscimv2schema": {
+    "operationId": "getscimv2schema",
+    "functionName": "GetScimV2Schema",
+    "signature": "GetScimV2Schema(schemaId)",
+    "parameters": [
+      {
+        "name": "schemaId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2schemadefinition",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar schemaId string // The ID of a schema. Returned with GET /api/v2/scim/v2/schemas.\n// Get a SCIM schema\ndata, response, err := apiInstance.GetScimV2Schema(schemaId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schema: %v\\n\", err)\n}"
+  },
+  "getscimv2schemas": {
+    "operationId": "getscimv2schemas",
+    "functionName": "GetScimV2Schemas",
+    "signature": "GetScimV2Schemas(filter)",
+    "parameters": [
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2schemalistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar filter string // Filtered results are invalid and return 403 Unauthorized.\n// Get a list of SCIM schemas\ndata, response, err := apiInstance.GetScimV2Schemas(filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Schemas: %v\\n\", err)\n}"
+  },
+  "getscimv2serviceproviderconfig": {
+    "operationId": "getscimv2serviceproviderconfig",
+    "functionName": "GetScimV2Serviceproviderconfig",
+    "signature": "GetScimV2Serviceproviderconfig(ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimserviceproviderconfig",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/serviceproviderconfig. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified. \n// Get a service provider's configuration\ndata, response, err := apiInstance.GetScimV2Serviceproviderconfig(ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Serviceproviderconfig: %v\\n\", err)\n}"
+  },
+  "getscimv2user": {
+    "operationId": "getscimv2user",
+    "functionName": "GetScimV2User",
+    "signature": "GetScimV2User(userId, attributes, excludedAttributes, ifNoneMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "ifNoneMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar ifNoneMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns the current configuration of the resource. If the ETag is current, returns 304 Not Modified.\n// Get a user\ndata, response, err := apiInstance.GetScimV2User(userId, attributes, excludedAttributes, ifNoneMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2User: %v\\n\", err)\n}"
+  },
+  "getscimv2users": {
+    "operationId": "getscimv2users",
+    "functionName": "GetScimV2Users",
+    "signature": "GetScimV2Users(startIndex, count, attributes, excludedAttributes, filter)",
+    "parameters": [
+      {
+        "name": "startIndex",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "count",
+        "type": "int",
+        "required": "false"
+      },
+      {
+        "name": "attributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "excludedAttributes",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "filter",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimuserlistresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar startIndex int // The 1-based index of the first query result.\nvar count int // The requested number of items per page. A value of 0 returns \\\"totalResults\\\". A page size over 25 may exceed internal resource limits and return a 429 error. For a page size over 25, use the \\\"excludedAttributes\\\" or \\\"attributes\\\" query parameters to exclude or only include secondary lookup values such as \\\"externalId\\\",  \\\"roles\\\", \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingLanguages\\\", or \\\"urn:ietf:params:scim:schemas:extension:genesys:purecloud:2.0:User:routingSkills\\\".\nvar attributes []string // Indicates which attributes to include. Returns these attributes and the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"attributes\\\" to avoid expensive secondary calls for the default attributes.\nvar excludedAttributes []string // Indicates which attributes to exclude. Returns the default attributes minus \\\"excludedAttributes\\\". Always returns the \\\"id\\\", \\\"userName\\\", \\\"active\\\", and \\\"meta\\\" attributes. Use \\\"excludedAttributes\\\" to avoid expensive secondary calls for the default attributes.\nvar filter string // Filters results. If nothing is specified, returns all active users. Examples of valid values: \\\"id eq 857449b0-d9e7-4cd0-acbf-a6adfb9ef1e9\\\", \\\"userName eq search@sample.org\\\", \\\"manager eq 16e10e2f-1136-43fe-bb84-eac073168a49\\\", \\\"email eq search@sample.org\\\", \\\"division eq divisionName\\\", \\\"externalId eq 167844\\\", \\\"active eq false\\\", \\\"employeeNumber eq 9876543210\\\".\n// Get a list of users\ndata, response, err := apiInstance.GetScimV2Users(startIndex, count, attributes, excludedAttributes, filter)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetScimV2Users: %v\\n\", err)\n}"
+  },
+  "patchscimgroup": {
+    "operationId": "patchscimgroup",
+    "functionName": "PatchScimGroup",
+    "signature": "PatchScimGroup(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/groups.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a group\ndata, response, err := apiInstance.PatchScimGroup(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimGroup: %v\\n\", err)\n}"
+  },
+  "patchscimuser": {
+    "operationId": "patchscimuser",
+    "functionName": "PatchScimUser",
+    "signature": "PatchScimUser(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a user\ndata, response, err := apiInstance.PatchScimUser(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimUser: %v\\n\", err)\n}"
+  },
+  "patchscimv2group": {
+    "operationId": "patchscimv2group",
+    "functionName": "PatchScimV2Group",
+    "signature": "PatchScimV2Group(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/v2/groups.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a group\ndata, response, err := apiInstance.PatchScimV2Group(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2Group: %v\\n\", err)\n}"
+  },
+  "patchscimv2user": {
+    "operationId": "patchscimv2user",
+    "functionName": "PatchScimV2User",
+    "signature": "PatchScimV2User(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2patchrequest",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar body platformclientv2.Scimv2patchrequest // The information used to modify a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Modify a user\ndata, response, err := apiInstance.PatchScimV2User(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PatchScimV2User: %v\\n\", err)\n}"
+  },
+  "postscimusers": {
+    "operationId": "postscimusers",
+    "functionName": "PostScimUsers",
+    "signature": "PostScimUsers(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Scimv2createuser",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar body platformclientv2.Scimv2createuser // The information used to create a user.\n// Create a user\ndata, response, err := apiInstance.PostScimUsers(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimUsers: %v\\n\", err)\n}"
+  },
+  "postscimv2users": {
+    "operationId": "postscimv2users",
+    "functionName": "PostScimV2Users",
+    "signature": "PostScimV2Users(body)",
+    "parameters": [
+      {
+        "name": "body",
+        "type": "Scimv2createuser",
+        "required": "true"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar body platformclientv2.Scimv2createuser // The information used to create a user.\n// Create a user\ndata, response, err := apiInstance.PostScimV2Users(body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostScimV2Users: %v\\n\", err)\n}"
+  },
+  "putscimgroup": {
+    "operationId": "putscimgroup",
+    "functionName": "PutScimGroup",
+    "signature": "PutScimGroup(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2group",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/groups.\nvar body platformclientv2.Scimv2group // The information used to replace a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a group\ndata, response, err := apiInstance.PutScimGroup(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimGroup: %v\\n\", err)\n}"
+  },
+  "putscimuser": {
+    "operationId": "putscimuser",
+    "functionName": "PutScimUser",
+    "signature": "PutScimUser(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2user",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/users.\nvar body platformclientv2.Scimv2user // The information used to replace a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a user\ndata, response, err := apiInstance.PutScimUser(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimUser: %v\\n\", err)\n}"
+  },
+  "putscimv2group": {
+    "operationId": "putscimv2group",
+    "functionName": "PutScimV2Group",
+    "signature": "PutScimV2Group(groupId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "groupId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2group",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2group",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar groupId string // The ID of a group. Returned with GET /api/v2/scim/v2/groups.\nvar body platformclientv2.Scimv2group // The information used to replace a group.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/groups/{groupId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a group\ndata, response, err := apiInstance.PutScimV2Group(groupId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2Group: %v\\n\", err)\n}"
+  },
+  "putscimv2user": {
+    "operationId": "putscimv2user",
+    "functionName": "PutScimV2User",
+    "signature": "PutScimV2User(userId, body, ifMatch)",
+    "parameters": [
+      {
+        "name": "userId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Scimv2user",
+        "required": "true"
+      },
+      {
+        "name": "ifMatch",
+        "type": "string",
+        "required": "false"
+      }
+    ],
+    "return": "Scimv2user",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewSCIMApiWithConfig(config)\n\nvar userId string // The ID of a user. Returned with GET /api/v2/scim/v2/users.\nvar body platformclientv2.Scimv2user // The information used to replace a user.\nvar ifMatch string // The ETag of a resource in double quotes. Returned as header and meta.version with initial call to GET /api/v2/scim/v2/users/{userId}. Example: \\\"42\\\". If the ETag is different from the version on the server, returns 400 with a \\\"scimType\\\" of \\\"invalidVers\\\".\n// Replace a user\ndata, response, err := apiInstance.PutScimV2User(userId, body, ifMatch)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutScimV2User: %v\\n\", err)\n}"
+  },
   "deleteoutboundattemptlimit": {
     "operationId": "deleteoutboundattemptlimit",
     "functionName": "DeleteOutboundAttemptlimit",
@@ -17853,6 +17879,32 @@
       }
     ],
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar campaignId string // Campaign ID\n// Delete a dialer campaign schedule.\nresponse, err := apiInstance.DeleteOutboundSchedulesCampaign(campaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundSchedulesCampaign: %v\\n\", err)\n}"
+  },
+  "deleteoutboundschedulesemailcampaign": {
+    "operationId": "deleteoutboundschedulesemailcampaign",
+    "functionName": "DeleteOutboundSchedulesEmailcampaign",
+    "signature": "DeleteOutboundSchedulesEmailcampaign(emailCampaignId)",
+    "parameters": [
+      {
+        "name": "emailCampaignId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar emailCampaignId string // Email Campaign ID\n// Delete an email campaign schedule.\nresponse, err := apiInstance.DeleteOutboundSchedulesEmailcampaign(emailCampaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundSchedulesEmailcampaign: %v\\n\", err)\n}"
+  },
+  "deleteoutboundschedulesmessagingcampaign": {
+    "operationId": "deleteoutboundschedulesmessagingcampaign",
+    "functionName": "DeleteOutboundSchedulesMessagingcampaign",
+    "signature": "DeleteOutboundSchedulesMessagingcampaign(messagingCampaignId)",
+    "parameters": [
+      {
+        "name": "messagingCampaignId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar messagingCampaignId string // Messaging Campaign ID\n// Delete a messaging campaign schedule.\nresponse, err := apiInstance.DeleteOutboundSchedulesMessagingcampaign(messagingCampaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID)\nif err != nil {\n\tfmt.Printf(\"Error calling DeleteOutboundSchedulesMessagingcampaign: %v\\n\", err)\n}"
   },
   "deleteoutboundschedulessequence": {
     "operationId": "deleteoutboundschedulessequence",
@@ -19197,6 +19249,48 @@
     "return": "[]Campaignschedule",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\n// Query for a list of dialer campaign schedules.\ndata, response, err := apiInstance.GetOutboundSchedulesCampaigns()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundSchedulesCampaigns: %v\\n\", err)\n}"
   },
+  "getoutboundschedulesemailcampaign": {
+    "operationId": "getoutboundschedulesemailcampaign",
+    "functionName": "GetOutboundSchedulesEmailcampaign",
+    "signature": "GetOutboundSchedulesEmailcampaign(emailCampaignId)",
+    "parameters": [
+      {
+        "name": "emailCampaignId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Emailcampaignschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar emailCampaignId string // Email Campaign ID\n// Get an email campaign schedule.\ndata, response, err := apiInstance.GetOutboundSchedulesEmailcampaign(emailCampaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundSchedulesEmailcampaign: %v\\n\", err)\n}"
+  },
+  "getoutboundschedulesemailcampaigns": {
+    "operationId": "getoutboundschedulesemailcampaigns",
+    "functionName": "GetOutboundSchedulesEmailcampaigns",
+    "signature": "GetOutboundSchedulesEmailcampaigns()",
+    "return": "Messagingcampaignscheduleentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\n// Query for a list of email campaign schedules.\ndata, response, err := apiInstance.GetOutboundSchedulesEmailcampaigns()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundSchedulesEmailcampaigns: %v\\n\", err)\n}"
+  },
+  "getoutboundschedulesmessagingcampaign": {
+    "operationId": "getoutboundschedulesmessagingcampaign",
+    "functionName": "GetOutboundSchedulesMessagingcampaign",
+    "signature": "GetOutboundSchedulesMessagingcampaign(messagingCampaignId)",
+    "parameters": [
+      {
+        "name": "messagingCampaignId",
+        "type": "string",
+        "required": "true"
+      }
+    ],
+    "return": "Messagingcampaignschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar messagingCampaignId string // Messaging Campaign ID\n// Get a messaging campaign schedule.\ndata, response, err := apiInstance.GetOutboundSchedulesMessagingcampaign(messagingCampaignId)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundSchedulesMessagingcampaign: %v\\n\", err)\n}"
+  },
+  "getoutboundschedulesmessagingcampaigns": {
+    "operationId": "getoutboundschedulesmessagingcampaigns",
+    "functionName": "GetOutboundSchedulesMessagingcampaigns",
+    "signature": "GetOutboundSchedulesMessagingcampaigns()",
+    "return": "Messagingcampaignscheduleentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\n// Query for a list of messaging campaign schedules.\ndata, response, err := apiInstance.GetOutboundSchedulesMessagingcampaigns()\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetOutboundSchedulesMessagingcampaigns: %v\\n\", err)\n}"
+  },
   "getoutboundschedulessequence": {
     "operationId": "getoutboundschedulessequence",
     "functionName": "GetOutboundSchedulesSequence",
@@ -19957,6 +20051,44 @@
     ],
     "return": "Campaignschedule",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar campaignId string // Campaign ID\nvar body platformclientv2.Campaignschedule // CampaignSchedule\n// Update a new campaign schedule.\ndata, response, err := apiInstance.PutOutboundSchedulesCampaign(campaignId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOutboundSchedulesCampaign: %v\\n\", err)\n}"
+  },
+  "putoutboundschedulesemailcampaign": {
+    "operationId": "putoutboundschedulesemailcampaign",
+    "functionName": "PutOutboundSchedulesEmailcampaign",
+    "signature": "PutOutboundSchedulesEmailcampaign(emailCampaignId, body)",
+    "parameters": [
+      {
+        "name": "emailCampaignId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Emailcampaignschedule",
+        "required": "true"
+      }
+    ],
+    "return": "Emailcampaignschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar emailCampaignId string // Email Campaign ID\nvar body platformclientv2.Emailcampaignschedule // EmailCampaignSchedule\n// Update an email campaign schedule.\ndata, response, err := apiInstance.PutOutboundSchedulesEmailcampaign(emailCampaignId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOutboundSchedulesEmailcampaign: %v\\n\", err)\n}"
+  },
+  "putoutboundschedulesmessagingcampaign": {
+    "operationId": "putoutboundschedulesmessagingcampaign",
+    "functionName": "PutOutboundSchedulesMessagingcampaign",
+    "signature": "PutOutboundSchedulesMessagingcampaign(messagingCampaignId, body)",
+    "parameters": [
+      {
+        "name": "messagingCampaignId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "body",
+        "type": "Messagingcampaignschedule",
+        "required": "true"
+      }
+    ],
+    "return": "Messagingcampaignschedule",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewOutboundApiWithConfig(config)\n\nvar messagingCampaignId string // Messaging Campaign ID\nvar body platformclientv2.Messagingcampaignschedule // MessagingCampaignSchedule\n// Update a new messaging campaign schedule.\ndata, response, err := apiInstance.PutOutboundSchedulesMessagingcampaign(messagingCampaignId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutOutboundSchedulesMessagingcampaign: %v\\n\", err)\n}"
   },
   "putoutboundschedulessequence": {
     "operationId": "putoutboundschedulessequence",
@@ -26326,82 +26458,6 @@
     "return": "Sipdownloadresponse",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyApiWithConfig(config)\n\nvar sIPSearchPublicRequest platformclientv2.Sipsearchpublicrequest // \n// Request a download of a pcap file to S3\ndata, response, err := apiInstance.PostTelephonySiptracesDownload(sIPSearchPublicRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTelephonySiptracesDownload: %v\\n\", err)\n}"
   },
-  "gettextbotsbotssearch": {
-    "operationId": "gettextbotsbotssearch",
-    "functionName": "GetTextbotsBotsSearch",
-    "signature": "GetTextbotsBotsSearch(botType, botName, botId, pageSize)",
-    "parameters": [
-      {
-        "name": "botType",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "botName",
-        "type": "string",
-        "required": "false"
-      },
-      {
-        "name": "botId",
-        "type": "[]string",
-        "required": "false"
-      },
-      {
-        "name": "pageSize",
-        "type": "int",
-        "required": "false"
-      }
-    ],
-    "return": "Botsearchresponseentitylisting",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar botType []string // Bot types\nvar botName string // Bot name\nvar botId []string // Bot IDs\nvar pageSize int // The maximum results to return\n// Find bots using the currently configured friendly name or ID.\ndata, response, err := apiInstance.GetTextbotsBotsSearch(botType, botName, botId, pageSize)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTextbotsBotsSearch: %v\\n\", err)\n}"
-  },
-  "posttextbotsbotflowssessionturns": {
-    "operationId": "posttextbotsbotflowssessionturns",
-    "functionName": "PostTextbotsBotflowsSessionTurns",
-    "signature": "PostTextbotsBotflowsSessionTurns(sessionId, turnRequest)",
-    "parameters": [
-      {
-        "name": "sessionId",
-        "type": "string",
-        "required": "true"
-      },
-      {
-        "name": "turnRequest",
-        "type": "Textbotflowturnrequest",
-        "required": "true"
-      }
-    ],
-    "return": "Textbotflowturnresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar sessionId string // The bot flow session ID, typically obtained from 'POST /api/v2/textbots/botflows/sessions'\nvar turnRequest platformclientv2.Textbotflowturnrequest // \n// Issue a bot flow turn event\ndata, response, err := apiInstance.PostTextbotsBotflowsSessionTurns(sessionId, turnRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTextbotsBotflowsSessionTurns: %v\\n\", err)\n}"
-  },
-  "posttextbotsbotflowssessions": {
-    "operationId": "posttextbotsbotflowssessions",
-    "functionName": "PostTextbotsBotflowsSessions",
-    "signature": "PostTextbotsBotflowsSessions(launchRequest)",
-    "parameters": [
-      {
-        "name": "launchRequest",
-        "type": "Textbotflowlaunchrequest",
-        "required": "true"
-      }
-    ],
-    "return": "Textbotflowlaunchresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar launchRequest platformclientv2.Textbotflowlaunchrequest // \n// Create an execution instance of a bot flow definition.\ndata, response, err := apiInstance.PostTextbotsBotflowsSessions(launchRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTextbotsBotflowsSessions: %v\\n\", err)\n}"
-  },
-  "posttextbotsbotsexecute": {
-    "operationId": "posttextbotsbotsexecute",
-    "functionName": "PostTextbotsBotsExecute",
-    "signature": "PostTextbotsBotsExecute(postTextRequest)",
-    "parameters": [
-      {
-        "name": "postTextRequest",
-        "type": "Posttextrequest",
-        "required": "true"
-      }
-    ],
-    "return": "Posttextresponse",
-    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar postTextRequest platformclientv2.Posttextrequest // \n// Send an intent to a bot to start a dialog/interact with it via text\ndata, response, err := apiInstance.PostTextbotsBotsExecute(postTextRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTextbotsBotsExecute: %v\\n\", err)\n}"
-  },
   "deletetelephonyprovidersedge": {
     "operationId": "deletetelephonyprovidersedge",
     "functionName": "DeleteTelephonyProvidersEdge",
@@ -29001,6 +29057,82 @@
     ],
     "return": "Trunkbase",
     "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTelephonyProvidersEdgeApiWithConfig(config)\n\nvar trunkBaseSettingsId string // Trunk Base ID\nvar body platformclientv2.Trunkbase // Trunk base settings\n// Update a Trunk Base Settings object by ID\ndata, response, err := apiInstance.PutTelephonyProvidersEdgesTrunkbasesetting(trunkBaseSettingsId, body)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PutTelephonyProvidersEdgesTrunkbasesetting: %v\\n\", err)\n}"
+  },
+  "gettextbotsbotssearch": {
+    "operationId": "gettextbotsbotssearch",
+    "functionName": "GetTextbotsBotsSearch",
+    "signature": "GetTextbotsBotsSearch(botType, botName, botId, pageSize)",
+    "parameters": [
+      {
+        "name": "botType",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "botName",
+        "type": "string",
+        "required": "false"
+      },
+      {
+        "name": "botId",
+        "type": "[]string",
+        "required": "false"
+      },
+      {
+        "name": "pageSize",
+        "type": "int",
+        "required": "false"
+      }
+    ],
+    "return": "Botsearchresponseentitylisting",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar botType []string // Bot types\nvar botName string // Bot name\nvar botId []string // Bot IDs\nvar pageSize int // The maximum results to return\n// Find bots using the currently configured friendly name or ID.\ndata, response, err := apiInstance.GetTextbotsBotsSearch(botType, botName, botId, pageSize)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling GetTextbotsBotsSearch: %v\\n\", err)\n}"
+  },
+  "posttextbotsbotflowssessionturns": {
+    "operationId": "posttextbotsbotflowssessionturns",
+    "functionName": "PostTextbotsBotflowsSessionTurns",
+    "signature": "PostTextbotsBotflowsSessionTurns(sessionId, turnRequest)",
+    "parameters": [
+      {
+        "name": "sessionId",
+        "type": "string",
+        "required": "true"
+      },
+      {
+        "name": "turnRequest",
+        "type": "Textbotflowturnrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Textbotflowturnresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar sessionId string // The bot flow session ID, typically obtained from 'POST /api/v2/textbots/botflows/sessions'\nvar turnRequest platformclientv2.Textbotflowturnrequest // \n// Issue a bot flow turn event\ndata, response, err := apiInstance.PostTextbotsBotflowsSessionTurns(sessionId, turnRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTextbotsBotflowsSessionTurns: %v\\n\", err)\n}"
+  },
+  "posttextbotsbotflowssessions": {
+    "operationId": "posttextbotsbotflowssessions",
+    "functionName": "PostTextbotsBotflowsSessions",
+    "signature": "PostTextbotsBotflowsSessions(launchRequest)",
+    "parameters": [
+      {
+        "name": "launchRequest",
+        "type": "Textbotflowlaunchrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Textbotflowlaunchresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar launchRequest platformclientv2.Textbotflowlaunchrequest // \n// Create an execution instance of a bot flow definition.\ndata, response, err := apiInstance.PostTextbotsBotflowsSessions(launchRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTextbotsBotflowsSessions: %v\\n\", err)\n}"
+  },
+  "posttextbotsbotsexecute": {
+    "operationId": "posttextbotsbotsexecute",
+    "functionName": "PostTextbotsBotsExecute",
+    "signature": "PostTextbotsBotsExecute(postTextRequest)",
+    "parameters": [
+      {
+        "name": "postTextRequest",
+        "type": "Posttextrequest",
+        "required": "true"
+      }
+    ],
+    "return": "Posttextresponse",
+    "example": "config := platformclientv2.GetDefaultConfiguration()\nconfig.BasePath = \"\"    // expected format: mypurecloud.com\nconfig.AccessToken = \"your_access_token\" // or use AuthorizeClientCredentials(...) or AuthorizeCodeGrant(...)\n\napiInstance := platformclientv2.NewTextbotsApiWithConfig(config)\n\nvar postTextRequest platformclientv2.Posttextrequest // \n// Send an intent to a bot to start a dialog/interact with it via text\ndata, response, err := apiInstance.PostTextbotsBotsExecute(postTextRequest)\nfmt.Printf(\"Response:\\n  Success: %v\\n  Status code: %v\\n  Correlation ID: %v\\n  Body: %v\\n\", response.IsSuccess, response.StatusCode, response.CorrelationID, data.String())\nif err != nil {\n\tfmt.Printf(\"Error calling PostTextbotsBotsExecute: %v\\n\", err)\n}"
   },
   "deletetoken": {
     "operationId": "deletetoken",

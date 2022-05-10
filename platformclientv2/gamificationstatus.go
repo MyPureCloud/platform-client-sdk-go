@@ -20,6 +20,10 @@ type Gamificationstatus struct {
 	// AutomaticUserAssignment - Automatic assignment of users to the default profile
 	AutomaticUserAssignment *bool `json:"automaticUserAssignment,omitempty"`
 
+
+	// DateStartPersonalBest - Personal best aggregation starting date. Dates are represented as an ISO-8601 string. For example: yyyy-MM-dd
+	DateStartPersonalBest *time.Time `json:"dateStartPersonalBest,omitempty"`
+
 }
 
 func (o *Gamificationstatus) MarshalJSON() ([]byte, error) {
@@ -34,12 +38,21 @@ func (o *Gamificationstatus) MarshalJSON() ([]byte, error) {
 		DateStart = nil
 	}
 	
+	DateStartPersonalBest := new(string)
+	if o.DateStartPersonalBest != nil {
+		*DateStartPersonalBest = timeutil.Strftime(o.DateStartPersonalBest, "%Y-%m-%d")
+	} else {
+		DateStartPersonalBest = nil
+	}
+	
 	return json.Marshal(&struct { 
 		IsActive *bool `json:"isActive,omitempty"`
 		
 		DateStart *string `json:"dateStart,omitempty"`
 		
 		AutomaticUserAssignment *bool `json:"automaticUserAssignment,omitempty"`
+		
+		DateStartPersonalBest *string `json:"dateStartPersonalBest,omitempty"`
 		*Alias
 	}{ 
 		IsActive: o.IsActive,
@@ -47,6 +60,8 @@ func (o *Gamificationstatus) MarshalJSON() ([]byte, error) {
 		DateStart: DateStart,
 		
 		AutomaticUserAssignment: o.AutomaticUserAssignment,
+		
+		DateStartPersonalBest: DateStartPersonalBest,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -69,6 +84,11 @@ func (o *Gamificationstatus) UnmarshalJSON(b []byte) error {
 	
 	if AutomaticUserAssignment, ok := GamificationstatusMap["automaticUserAssignment"].(bool); ok {
 		o.AutomaticUserAssignment = &AutomaticUserAssignment
+	}
+	
+	if dateStartPersonalBestString, ok := GamificationstatusMap["dateStartPersonalBest"].(string); ok {
+		DateStartPersonalBest, _ := time.Parse("2006-01-02", dateStartPersonalBestString)
+		o.DateStartPersonalBest = &DateStartPersonalBest
 	}
 	
 

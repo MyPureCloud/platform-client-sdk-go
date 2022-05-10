@@ -84,6 +84,10 @@ type Learningmodule struct {
 	// SummaryData - The learning module summary data
 	SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
 
+
+	// CoverArt - The cover art for the learning module
+	CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
+
 }
 
 func (o *Learningmodule) MarshalJSON() ([]byte, error) {
@@ -145,6 +149,8 @@ func (o *Learningmodule) MarshalJSON() ([]byte, error) {
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
 		
 		SummaryData *Learningmodulesummary `json:"summaryData,omitempty"`
+		
+		CoverArt *Learningmodulecoverartresponse `json:"coverArt,omitempty"`
 		*Alias
 	}{ 
 		Id: o.Id,
@@ -184,6 +190,8 @@ func (o *Learningmodule) MarshalJSON() ([]byte, error) {
 		AssessmentForm: o.AssessmentForm,
 		
 		SummaryData: o.SummaryData,
+		
+		CoverArt: o.CoverArt,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -279,6 +287,11 @@ func (o *Learningmodule) UnmarshalJSON(b []byte) error {
 	if SummaryData, ok := LearningmoduleMap["summaryData"].(map[string]interface{}); ok {
 		SummaryDataString, _ := json.Marshal(SummaryData)
 		json.Unmarshal(SummaryDataString, &o.SummaryData)
+	}
+	
+	if CoverArt, ok := LearningmoduleMap["coverArt"].(map[string]interface{}); ok {
+		CoverArtString, _ := json.Marshal(CoverArt)
+		json.Unmarshal(CoverArtString, &o.CoverArt)
 	}
 	
 

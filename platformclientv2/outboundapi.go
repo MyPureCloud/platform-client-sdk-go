@@ -1113,6 +1113,138 @@ func (a OutboundApi) DeleteOutboundSchedulesCampaign(campaignId string) (*APIRes
 	return response, err
 }
 
+// DeleteOutboundSchedulesEmailcampaign invokes DELETE /api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}
+//
+// Delete an email campaign schedule.
+//
+// 
+func (a OutboundApi) DeleteOutboundSchedulesEmailcampaign(emailCampaignId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}"
+	path = strings.Replace(path, "{emailCampaignId}", fmt.Sprintf("%v", emailCampaignId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'emailCampaignId' is set
+	if &emailCampaignId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'emailCampaignId' when calling OutboundApi->DeleteOutboundSchedulesEmailcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
+// DeleteOutboundSchedulesMessagingcampaign invokes DELETE /api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}
+//
+// Delete a messaging campaign schedule.
+//
+// 
+func (a OutboundApi) DeleteOutboundSchedulesMessagingcampaign(messagingCampaignId string) (*APIResponse, error) {
+	var httpMethod = "DELETE"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	if true == false {
+		return nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->DeleteOutboundSchedulesMessagingcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	}
+	return response, err
+}
+
 // DeleteOutboundSchedulesSequence invokes DELETE /api/v2/outbound/schedules/sequences/{sequenceId}
 //
 // Delete a dialer sequence schedule.
@@ -4805,6 +4937,286 @@ func (a OutboundApi) GetOutboundSchedulesCampaigns() ([]Campaignschedule, *APIRe
 	return successPayload, response, err
 }
 
+// GetOutboundSchedulesEmailcampaign invokes GET /api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}
+//
+// Get an email campaign schedule.
+//
+// 
+func (a OutboundApi) GetOutboundSchedulesEmailcampaign(emailCampaignId string) (*Emailcampaignschedule, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}"
+	path = strings.Replace(path, "{emailCampaignId}", fmt.Sprintf("%v", emailCampaignId), -1)
+	defaultReturn := new(Emailcampaignschedule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'emailCampaignId' is set
+	if &emailCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'emailCampaignId' when calling OutboundApi->GetOutboundSchedulesEmailcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Emailcampaignschedule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Emailcampaignschedule" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundSchedulesEmailcampaigns invokes GET /api/v2/outbound/schedules/emailcampaigns
+//
+// Query for a list of email campaign schedules.
+//
+// 
+func (a OutboundApi) GetOutboundSchedulesEmailcampaigns() (*Messagingcampaignscheduleentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns"
+	defaultReturn := new(Messagingcampaignscheduleentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaignscheduleentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Messagingcampaignscheduleentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundSchedulesMessagingcampaign invokes GET /api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}
+//
+// Get a messaging campaign schedule.
+//
+// 
+func (a OutboundApi) GetOutboundSchedulesMessagingcampaign(messagingCampaignId string) (*Messagingcampaignschedule, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Messagingcampaignschedule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->GetOutboundSchedulesMessagingcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaignschedule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Messagingcampaignschedule" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// GetOutboundSchedulesMessagingcampaigns invokes GET /api/v2/outbound/schedules/messagingcampaigns
+//
+// Query for a list of messaging campaign schedules.
+//
+// 
+func (a OutboundApi) GetOutboundSchedulesMessagingcampaigns() (*Messagingcampaignscheduleentitylisting, *APIResponse, error) {
+	var httpMethod = "GET"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns"
+	defaultReturn := new(Messagingcampaignscheduleentitylisting)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	var successPayload *Messagingcampaignscheduleentitylisting
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Messagingcampaignscheduleentitylisting" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
 // GetOutboundSchedulesSequence invokes GET /api/v2/outbound/schedules/sequences/{sequenceId}
 //
 // Get a dialer sequence schedule.
@@ -8169,6 +8581,168 @@ func (a OutboundApi) PutOutboundSchedulesCampaign(campaignId string, body Campai
 		err = errors.New(response.ErrorMessage)
 	} else {
 		if "Campaignschedule" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutOutboundSchedulesEmailcampaign invokes PUT /api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}
+//
+// Update an email campaign schedule.
+//
+// 
+func (a OutboundApi) PutOutboundSchedulesEmailcampaign(emailCampaignId string, body Emailcampaignschedule) (*Emailcampaignschedule, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}"
+	path = strings.Replace(path, "{emailCampaignId}", fmt.Sprintf("%v", emailCampaignId), -1)
+	defaultReturn := new(Emailcampaignschedule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'emailCampaignId' is set
+	if &emailCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'emailCampaignId' when calling OutboundApi->PutOutboundSchedulesEmailcampaign")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSchedulesEmailcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Emailcampaignschedule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Emailcampaignschedule" == "string" {
+			copy(response.RawBody, &successPayload)
+		} else {
+			err = json.Unmarshal(response.RawBody, &successPayload)
+		}
+	}
+	return successPayload, response, err
+}
+
+// PutOutboundSchedulesMessagingcampaign invokes PUT /api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}
+//
+// Update a new messaging campaign schedule.
+//
+// 
+func (a OutboundApi) PutOutboundSchedulesMessagingcampaign(messagingCampaignId string, body Messagingcampaignschedule) (*Messagingcampaignschedule, *APIResponse, error) {
+	var httpMethod = "PUT"
+	// create path and map variables
+	path := a.Configuration.BasePath + "/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}"
+	path = strings.Replace(path, "{messagingCampaignId}", fmt.Sprintf("%v", messagingCampaignId), -1)
+	defaultReturn := new(Messagingcampaignschedule)
+	if true == false {
+		return defaultReturn, nil, errors.New("This message brought to you by the laws of physics being broken")
+	}
+
+	// verify the required parameter 'messagingCampaignId' is set
+	if &messagingCampaignId == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'messagingCampaignId' when calling OutboundApi->PutOutboundSchedulesMessagingcampaign")
+	}
+	// verify the required parameter 'body' is set
+	if &body == nil {
+		// 
+		return defaultReturn, nil, errors.New("Missing required parameter 'body' when calling OutboundApi->PutOutboundSchedulesMessagingcampaign")
+	}
+
+	headerParams := make(map[string]string)
+	queryParams := make(map[string]string)
+	formParams := url.Values{}
+	var postBody interface{}
+	var postFileName string
+	var fileBytes []byte
+	// authentication (PureCloud OAuth) required
+
+	// oauth required
+	if a.Configuration.AccessToken != ""{
+		headerParams["Authorization"] =  "Bearer " + a.Configuration.AccessToken
+	}
+	// add default headers if any
+	for key := range a.Configuration.DefaultHeader {
+		headerParams[key] = a.Configuration.DefaultHeader[key]
+	}
+	
+
+	// to determine the Content-Type header
+	localVarHttpContentTypes := []string{ "application/json",  }
+
+	// set Content-Type header
+	localVarHttpContentType := a.Configuration.APIClient.SelectHeaderContentType(localVarHttpContentTypes)
+	if localVarHttpContentType != "" {
+		headerParams["Content-Type"] = localVarHttpContentType
+	}
+	// to determine the Accept header
+	localVarHttpHeaderAccepts := []string{
+		"application/json",
+	}
+
+	// set Accept header
+	localVarHttpHeaderAccept := a.Configuration.APIClient.SelectHeaderAccept(localVarHttpHeaderAccepts)
+	if localVarHttpHeaderAccept != "" {
+		headerParams["Accept"] = localVarHttpHeaderAccept
+	}
+	// body params
+	postBody = &body
+
+	var successPayload *Messagingcampaignschedule
+	response, err := a.Configuration.APIClient.CallAPI(path, httpMethod, postBody, headerParams, queryParams, formParams, postFileName, fileBytes)
+	if err != nil {
+		// Nothing special to do here, but do avoid processing the response
+	} else if err == nil && response.Error != nil {
+		err = errors.New(response.ErrorMessage)
+	} else {
+		if "Messagingcampaignschedule" == "string" {
 			copy(response.RawBody, &successPayload)
 		} else {
 			err = json.Unmarshal(response.RawBody, &successPayload)

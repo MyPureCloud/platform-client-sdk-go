@@ -28,6 +28,10 @@ type Divspermittedentitylisting struct {
 	AllDivsPermitted *bool `json:"allDivsPermitted,omitempty"`
 
 
+	// LastUri
+	LastUri *string `json:"lastUri,omitempty"`
+
+
 	// FirstUri
 	FirstUri *string `json:"firstUri,omitempty"`
 
@@ -36,16 +40,12 @@ type Divspermittedentitylisting struct {
 	SelfUri *string `json:"selfUri,omitempty"`
 
 
-	// NextUri
-	NextUri *string `json:"nextUri,omitempty"`
-
-
 	// PreviousUri
 	PreviousUri *string `json:"previousUri,omitempty"`
 
 
-	// LastUri
-	LastUri *string `json:"lastUri,omitempty"`
+	// NextUri
+	NextUri *string `json:"nextUri,omitempty"`
 
 
 	// PageCount
@@ -69,15 +69,15 @@ func (o *Divspermittedentitylisting) MarshalJSON() ([]byte, error) {
 		
 		AllDivsPermitted *bool `json:"allDivsPermitted,omitempty"`
 		
+		LastUri *string `json:"lastUri,omitempty"`
+		
 		FirstUri *string `json:"firstUri,omitempty"`
 		
 		SelfUri *string `json:"selfUri,omitempty"`
 		
-		NextUri *string `json:"nextUri,omitempty"`
-		
 		PreviousUri *string `json:"previousUri,omitempty"`
 		
-		LastUri *string `json:"lastUri,omitempty"`
+		NextUri *string `json:"nextUri,omitempty"`
 		
 		PageCount *int `json:"pageCount,omitempty"`
 		*Alias
@@ -92,15 +92,15 @@ func (o *Divspermittedentitylisting) MarshalJSON() ([]byte, error) {
 		
 		AllDivsPermitted: o.AllDivsPermitted,
 		
+		LastUri: o.LastUri,
+		
 		FirstUri: o.FirstUri,
 		
 		SelfUri: o.SelfUri,
 		
-		NextUri: o.NextUri,
-		
 		PreviousUri: o.PreviousUri,
 		
-		LastUri: o.LastUri,
+		NextUri: o.NextUri,
 		
 		PageCount: o.PageCount,
 		Alias:    (*Alias)(o),
@@ -138,6 +138,10 @@ func (o *Divspermittedentitylisting) UnmarshalJSON(b []byte) error {
 		o.AllDivsPermitted = &AllDivsPermitted
 	}
 	
+	if LastUri, ok := DivspermittedentitylistingMap["lastUri"].(string); ok {
+		o.LastUri = &LastUri
+	}
+	
 	if FirstUri, ok := DivspermittedentitylistingMap["firstUri"].(string); ok {
 		o.FirstUri = &FirstUri
 	}
@@ -146,16 +150,12 @@ func (o *Divspermittedentitylisting) UnmarshalJSON(b []byte) error {
 		o.SelfUri = &SelfUri
 	}
 	
-	if NextUri, ok := DivspermittedentitylistingMap["nextUri"].(string); ok {
-		o.NextUri = &NextUri
-	}
-	
 	if PreviousUri, ok := DivspermittedentitylistingMap["previousUri"].(string); ok {
 		o.PreviousUri = &PreviousUri
 	}
 	
-	if LastUri, ok := DivspermittedentitylistingMap["lastUri"].(string); ok {
-		o.LastUri = &LastUri
+	if NextUri, ok := DivspermittedentitylistingMap["nextUri"].(string); ok {
+		o.NextUri = &NextUri
 	}
 	
 	if PageCount, ok := DivspermittedentitylistingMap["pageCount"].(float64); ok {

@@ -11,6 +11,10 @@ type Eventsetting struct {
 	// Typing - Settings regarding typing events
 	Typing *Typingsetting `json:"typing,omitempty"`
 
+
+	// Presence - Settings regarding presence events
+	Presence *Presencesetting `json:"presence,omitempty"`
+
 }
 
 func (o *Eventsetting) MarshalJSON() ([]byte, error) {
@@ -20,9 +24,13 @@ func (o *Eventsetting) MarshalJSON() ([]byte, error) {
 	
 	return json.Marshal(&struct { 
 		Typing *Typingsetting `json:"typing,omitempty"`
+		
+		Presence *Presencesetting `json:"presence,omitempty"`
 		*Alias
 	}{ 
 		Typing: o.Typing,
+		
+		Presence: o.Presence,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -37,6 +45,11 @@ func (o *Eventsetting) UnmarshalJSON(b []byte) error {
 	if Typing, ok := EventsettingMap["typing"].(map[string]interface{}); ok {
 		TypingString, _ := json.Marshal(Typing)
 		json.Unmarshal(TypingString, &o.Typing)
+	}
+	
+	if Presence, ok := EventsettingMap["presence"].(map[string]interface{}); ok {
+		PresenceString, _ := json.Marshal(Presence)
+		json.Unmarshal(PresenceString, &o.Presence)
 	}
 	
 

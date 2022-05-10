@@ -23,6 +23,10 @@ type Conversationappsettings struct {
 	// AutoStart - The auto start for the messenger conversation
 	AutoStart *Autostart `json:"autoStart,omitempty"`
 
+
+	// Markdown - The markdown for the messenger app
+	Markdown *Markdown `json:"markdown,omitempty"`
+
 }
 
 func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
@@ -38,6 +42,8 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		AutoStartType *string `json:"autoStartType,omitempty"`
 		
 		AutoStart *Autostart `json:"autoStart,omitempty"`
+		
+		Markdown *Markdown `json:"markdown,omitempty"`
 		*Alias
 	}{ 
 		ShowAgentTypingIndicator: o.ShowAgentTypingIndicator,
@@ -47,6 +53,8 @@ func (o *Conversationappsettings) MarshalJSON() ([]byte, error) {
 		AutoStartType: o.AutoStartType,
 		
 		AutoStart: o.AutoStart,
+		
+		Markdown: o.Markdown,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -73,6 +81,11 @@ func (o *Conversationappsettings) UnmarshalJSON(b []byte) error {
 	if AutoStart, ok := ConversationappsettingsMap["autoStart"].(map[string]interface{}); ok {
 		AutoStartString, _ := json.Marshal(AutoStart)
 		json.Unmarshal(AutoStartString, &o.AutoStart)
+	}
+	
+	if Markdown, ok := ConversationappsettingsMap["markdown"].(map[string]interface{}); ok {
+		MarkdownString, _ := json.Marshal(Markdown)
+		json.Unmarshal(MarkdownString, &o.Markdown)
 	}
 	
 

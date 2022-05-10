@@ -1,138 +1,128 @@
-Platform API version: 5677
+Platform API version: 5697
 
 
-# Major Changes (7 changes)
-
-**GET /api/v2/integrations/actions/drafts** (1 change)
-
-* Parameter ids was added
-
-**GET /api/v2/integrations/actions** (1 change)
-
-* Parameter ids was added
-
-**GET /api/v2/routing/email/domains** (1 change)
-
-* Parameter excludeStatus was added
-
-**ConversationCardAction** (1 change)
-
-* Model ConversationCardAction was removed
-
-**ConversationContentCard** (2 changes)
-
-* Property defaultAction was changed from ConversationCardAction to ConversationContentCardAction
-* Property actions was changed from ConversationCardAction[] to ConversationContentCardAction[]
-
-**CardAction** (1 change)
-
-* Property selected was removed
+# Major Changes (0 changes)
 
 
-# Minor Changes (31 changes)
+# Minor Changes (43 changes)
 
-**/api/v2/recording/keyconfigurations/{keyConfigurationId}** (3 changes)
+**/api/v2/outbound/schedules/emailcampaigns/{emailCampaignId}** (4 changes)
 
 * Path was added
 * Operation GET was added
 * Operation PUT was added
+* Operation DELETE was added
 
-**/api/v2/recording/keyconfigurations** (3 changes)
+**/api/v2/outbound/schedules/emailcampaigns** (2 changes)
 
 * Path was added
 * Operation GET was added
-* Operation POST was added
 
-**/api/v2/recording/keyconfigurations/validate** (2 changes)
+**/api/v2/outbound/schedules/messagingcampaigns/{messagingCampaignId}** (4 changes)
+
+* Path was added
+* Operation GET was added
+* Operation PUT was added
+* Operation DELETE was added
+
+**/api/v2/outbound/schedules/messagingcampaigns** (2 changes)
+
+* Path was added
+* Operation GET was added
+
+**/api/v2/flows/jobs** (2 changes)
 
 * Path was added
 * Operation POST was added
 
-**ReportingExportJobResponse** (1 change)
+**/api/v2/flows/jobs/{jobId}** (2 changes)
 
-* Enum value PREDICTIVE_ROUTING_MODEL_VIEW was added to property viewType
+* Path was added
+* Operation GET was added
 
-**ReportingExportMetadataJobResponse** (1 change)
+**ViewFilter** (3 changes)
 
-* Enum value PREDICTIVE_ROUTING_MODEL_VIEW was added to property viewType
+* Enum value AmazonLexV2 was added to property botProductList
+* Enum value GoogleDialogFlowCxResell was added to property botProductList
+* Enum value MicrosoftSttBotFlow was added to property botProductList
 
-**ReportingExportJobRequest** (1 change)
+**ExternalContact** (4 changes)
 
-* Enum value PREDICTIVE_ROUTING_MODEL_VIEW was added to property viewType
+* Optional property type was added
+* Optional property canonicalContact was added
+* Optional property mergeSet was added
+* Optional property mergeOperation was added
 
-**RecordingEncryptionConfiguration** (1 change)
+**EventSetting** (1 change)
 
-* Model was added
+* Optional property presence was added
 
-**RecordingEncryptionConfigurationListing** (1 change)
-
-* Model was added
-
-**MessageDetails** (1 change)
-
-* Optional property errorInfo was added
-
-**DynamicContactQueueingSettings** (1 change)
+**PresenceSetting** (1 change)
 
 * Model was added
 
-**ConversationContentCardAction** (1 change)
+**EmailCampaignSchedule** (1 change)
 
 * Model was added
 
-**ContentCard** (1 change)
+**MessagingCampaignSchedule** (1 change)
 
 * Model was added
 
-**ContentCardAction** (1 change)
+**MessagingCampaignScheduleEntityListing** (1 change)
 
 * Model was added
 
-**ContentCarousel** (1 change)
+**GamificationStatus** (1 change)
+
+* Optional property dateStartPersonalBest was added
+
+**RegisterArchitectJobResponse** (1 change)
 
 * Model was added
 
-**ContentStory** (1 change)
+**ArchitectJobMessage** (1 change)
 
 * Model was added
 
-**MessageContent** (6 changes)
+**ArchitectJobStateResponse** (1 change)
 
-* Enum value Story was added to property contentType
+* Model was added
+
+**ConversationAppSettings** (1 change)
+
+* Optional property markdown was added
+
+**Markdown** (1 change)
+
+* Model was added
+
+**WebMessagingContent** (4 changes)
+
 * Enum value Card was added to property contentType
 * Enum value Carousel was added to property contentType
-* Optional property story was added
 * Optional property card was added
 * Optional property carousel was added
 
-**MessagingRecipient** (1 change)
+**LearningModule** (1 change)
 
-* Optional property additionalIds was added
+* Optional property coverArt was added
 
-**CardAction** (1 change)
+**LearningModuleCoverArtResponse** (1 change)
 
-* Optional property isSelected was added
+* Model was added
 
-**UserScheduleAdherence** (1 change)
+**LearningModuleCoverArtRequest** (1 change)
 
-* Enum value Explained was added to property adherenceState
+* Model was added
 
-**AdherenceExplanationNotification** (2 changes)
+**LearningModuleRequest** (1 change)
 
-* Optional property managementUnit was added
-* Optional property businessUnit was added
+* Optional property coverArt was added
+
+**RealTimeAdherenceExplanation** (1 change)
+
+* Model was added
 
 
-# Point Changes (6 changes)
-
-**GET /api/v2/integrations/actions/drafts** (3 changes)
-
-* Description was changed for parameter category
-* Description was changed for parameter name
-* Description was changed for parameter secure
-
-**GET /api/v2/integrations/actions** (3 changes)
-
-* Description was changed for parameter category
-* Description was changed for parameter name
-* Description was changed for parameter secure
+# Point Changes (0 changes)

@@ -113,6 +113,22 @@ type Externalcontact struct {
 	ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
 
 
+	// VarType - The type of contact
+	VarType *string `json:"type,omitempty"`
+
+
+	// CanonicalContact - The contact at the head of the merge tree. If null, this contact is not a part of any merge.
+	CanonicalContact *Contactaddressableentityref `json:"canonicalContact,omitempty"`
+
+
+	// MergeSet - The set of all contacts that are a part of the merge tree. If null, this contact is not a part of any merge.
+	MergeSet *[]Contactaddressableentityref `json:"mergeSet,omitempty"`
+
+
+	// MergeOperation - Information about the merge history of this contact. If null, this contact is not a part of any merge.
+	MergeOperation *Mergeoperation `json:"mergeOperation,omitempty"`
+
+
 	// SelfUri - The URI for this object
 	SelfUri *string `json:"selfUri,omitempty"`
 
@@ -192,6 +208,14 @@ func (o *Externalcontact) MarshalJSON() ([]byte, error) {
 		
 		ExternalDataSources *[]Externaldatasource `json:"externalDataSources,omitempty"`
 		
+		VarType *string `json:"type,omitempty"`
+		
+		CanonicalContact *Contactaddressableentityref `json:"canonicalContact,omitempty"`
+		
+		MergeSet *[]Contactaddressableentityref `json:"mergeSet,omitempty"`
+		
+		MergeOperation *Mergeoperation `json:"mergeOperation,omitempty"`
+		
 		SelfUri *string `json:"selfUri,omitempty"`
 		*Alias
 	}{ 
@@ -246,6 +270,14 @@ func (o *Externalcontact) MarshalJSON() ([]byte, error) {
 		CustomFields: o.CustomFields,
 		
 		ExternalDataSources: o.ExternalDataSources,
+		
+		VarType: o.VarType,
+		
+		CanonicalContact: o.CanonicalContact,
+		
+		MergeSet: o.MergeSet,
+		
+		MergeOperation: o.MergeOperation,
 		
 		SelfUri: o.SelfUri,
 		Alias:    (*Alias)(o),
@@ -376,6 +408,25 @@ func (o *Externalcontact) UnmarshalJSON(b []byte) error {
 	if ExternalDataSources, ok := ExternalcontactMap["externalDataSources"].([]interface{}); ok {
 		ExternalDataSourcesString, _ := json.Marshal(ExternalDataSources)
 		json.Unmarshal(ExternalDataSourcesString, &o.ExternalDataSources)
+	}
+	
+	if VarType, ok := ExternalcontactMap["type"].(string); ok {
+		o.VarType = &VarType
+	}
+	
+	if CanonicalContact, ok := ExternalcontactMap["canonicalContact"].(map[string]interface{}); ok {
+		CanonicalContactString, _ := json.Marshal(CanonicalContact)
+		json.Unmarshal(CanonicalContactString, &o.CanonicalContact)
+	}
+	
+	if MergeSet, ok := ExternalcontactMap["mergeSet"].([]interface{}); ok {
+		MergeSetString, _ := json.Marshal(MergeSet)
+		json.Unmarshal(MergeSetString, &o.MergeSet)
+	}
+	
+	if MergeOperation, ok := ExternalcontactMap["mergeOperation"].(map[string]interface{}); ok {
+		MergeOperationString, _ := json.Marshal(MergeOperation)
+		json.Unmarshal(MergeOperationString, &o.MergeOperation)
 	}
 	
 	if SelfUri, ok := ExternalcontactMap["selfUri"].(string); ok {

@@ -31,6 +31,10 @@ type Learningmodulerequest struct {
 	// AssessmentForm - The assessment form for learning module
 	AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
 
+
+	// CoverArt - The cover art for the learning module
+	CoverArt *Learningmodulecoverartrequest `json:"coverArt,omitempty"`
+
 }
 
 func (o *Learningmodulerequest) MarshalJSON() ([]byte, error) {
@@ -50,6 +54,8 @@ func (o *Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		VarType *string `json:"type,omitempty"`
 		
 		AssessmentForm *Assessmentform `json:"assessmentForm,omitempty"`
+		
+		CoverArt *Learningmodulecoverartrequest `json:"coverArt,omitempty"`
 		*Alias
 	}{ 
 		Name: o.Name,
@@ -63,6 +69,8 @@ func (o *Learningmodulerequest) MarshalJSON() ([]byte, error) {
 		VarType: o.VarType,
 		
 		AssessmentForm: o.AssessmentForm,
+		
+		CoverArt: o.CoverArt,
 		Alias:    (*Alias)(o),
 	})
 }
@@ -99,6 +107,11 @@ func (o *Learningmodulerequest) UnmarshalJSON(b []byte) error {
 	if AssessmentForm, ok := LearningmodulerequestMap["assessmentForm"].(map[string]interface{}); ok {
 		AssessmentFormString, _ := json.Marshal(AssessmentForm)
 		json.Unmarshal(AssessmentFormString, &o.AssessmentForm)
+	}
+	
+	if CoverArt, ok := LearningmodulerequestMap["coverArt"].(map[string]interface{}); ok {
+		CoverArtString, _ := json.Marshal(CoverArt)
+		json.Unmarshal(CoverArtString, &o.CoverArt)
 	}
 	
 

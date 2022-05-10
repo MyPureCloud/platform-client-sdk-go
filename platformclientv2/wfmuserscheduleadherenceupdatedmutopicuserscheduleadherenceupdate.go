@@ -57,6 +57,10 @@ type Wfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdate struct {
 	Impact *string `json:"impact,omitempty"`
 
 
+	// AdherenceExplanation
+	AdherenceExplanation *Wfmuserscheduleadherenceupdatedmutopicrealtimeadherenceexplanation `json:"adherenceExplanation,omitempty"`
+
+
 	// AdherenceChangeTime
 	AdherenceChangeTime *time.Time `json:"adherenceChangeTime,omitempty"`
 
@@ -132,6 +136,8 @@ func (o *Wfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdate) Mars
 		
 		Impact *string `json:"impact,omitempty"`
 		
+		AdherenceExplanation *Wfmuserscheduleadherenceupdatedmutopicrealtimeadherenceexplanation `json:"adherenceExplanation,omitempty"`
+		
 		AdherenceChangeTime *string `json:"adherenceChangeTime,omitempty"`
 		
 		PresenceUpdateTime *string `json:"presenceUpdateTime,omitempty"`
@@ -166,6 +172,8 @@ func (o *Wfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdate) Mars
 		AdherenceState: o.AdherenceState,
 		
 		Impact: o.Impact,
+		
+		AdherenceExplanation: o.AdherenceExplanation,
 		
 		AdherenceChangeTime: AdherenceChangeTime,
 		
@@ -236,6 +244,11 @@ func (o *Wfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdate) Unma
 	
 	if Impact, ok := WfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdateMap["impact"].(string); ok {
 		o.Impact = &Impact
+	}
+	
+	if AdherenceExplanation, ok := WfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdateMap["adherenceExplanation"].(map[string]interface{}); ok {
+		AdherenceExplanationString, _ := json.Marshal(AdherenceExplanation)
+		json.Unmarshal(AdherenceExplanationString, &o.AdherenceExplanation)
 	}
 	
 	if adherenceChangeTimeString, ok := WfmuserscheduleadherenceupdatedmutopicuserscheduleadherenceupdateMap["adherenceChangeTime"].(string); ok {
